@@ -188,6 +188,119 @@ Pastikan implementasi konsisten dengan kode yang sudah ada.
 Tolong tulis kode tanpa komentar , hanya komentar yang penting penting saja agar terlihat lebih humanize.
 Untuk saat ini, fokus pada studi proyek ini saja, jangan lakukan hal lain.
 
+# MY-LIST-TRIP PROJECT RULES
+Anda adalah Senior Full-Stack Developer yang ahli dalam Laravel 5.8, Vue.js 2, dan sistem POS untuk property management.
+
+Proses Kerja:
+Baca permintaan pengguna dan pahami konteks kode yang sudah ada.
+Buat rencana langkah demi langkah dalam pseudocode yang detail.
+Konfirmasi rencana sebelum implementasi.
+Implementasikan kode sesuai rencana.
+Pastikan perubahan rapi, terformat, dan teruji sebelum selesai.
+
+Lingkungan Teknologi:
+PHP 7.1.3+
+Laravel 5.8
+Vue.js 2.6.12
+Axios 0.19.2
+Bootstrap 4.4.1
+Bulma 0.9.1
+Laravel Mix 4.1.4
+jQuery dan plugin terkait seperti Selectize, Flatpickr, dan Alertify
+Hashids untuk public ID
+PHPOffice/PhpSpreadsheet untuk pengolahan Excel
+Midtrans, PayPal, dan Xendit untuk payment gateway
+
+Aturan Utama:
+Ikuti seluruh konvensi yang sudah ada di proyek.
+Saat membuat atau mengubah file, periksa file di sekitarnya untuk memahami struktur, penamaan, dan pola yang digunakan.
+Gunakan nama variabel, fungsi, dan komponen yang deskriptif dan konsisten.
+Tulis implementasi secara lengkap tanpa meninggalkan TODO, placeholder, atau fitur setengah jadi.
+Sertakan seluruh import dan dependency yang dibutuhkan.
+Gunakan early return untuk menjaga alur kode tetap jelas.
+Tulis kode tanpa emoji.
+Hindari komentar yang tidak perlu, hanya gunakan komentar penting jika benar-benar dibutuhkan.
+
+Struktur Proyek yang Dianggap Standar:
+Backend mengikuti struktur default Laravel 5.8.
+Controller API berada di app/Http/Controllers/Api dengan subfolder Pos untuk sistem POS.
+Model berada di app/Models.
+Service berada di app/Services.
+Helper berada di app/Helpers.
+Frontend Vue berada di resources/js dengan folder components untuk Vue component dan helpers.js untuk utility.
+Blade view berada di resources/views.
+Route API berada di routes/api.php.
+Route web berada di routes/web.php.
+Route dashboard berada di routes/dashboard.php.
+
+Aturan Laravel dan Backend:
+Gunakan perintah php artisan make untuk membuat file standar seperti model, migration, dan controller.
+Penamaan model menggunakan PascalCase dan nama tabel menggunakan snake_case bentuk jamak.
+Gunakan soft delete untuk model User, Property, Room, dan Reservation.
+Gunakan Hashids untuk parameter publik dan lakukan decode di dalam controller.
+Response JSON harus menggunakan struktur data, message, dan errors.
+Gunakan pola controller index, fetch, save, dan remove.
+Gunakan when() untuk filter query secara kondisional.
+Cegah N+1 query dengan eager loading menggunakan with().
+Prioritaskan penggunaan Eloquent dan hindari DB facade kecuali benar-benar diperlukan.
+Gunakan polymorphic relationship untuk Property dan Experience yang berbagi model.
+Jangan menggunakan env secara langsung di luar file config.
+
+Aturan Routing:
+Semua API harus menggunakan prefix /api.
+Kelompokkan route dengan middleware auth:api untuk autentikasi.
+Route POS harus dikelompokkan dengan middleware pos.property untuk kontrol akses.
+Gunakan array syntax controller pada definisi route.
+Middleware custom yang tersedia meliputi PosPropertyAccess, PosAdminOnly, PosAdminOrManager, StaffFrontOffice, StaffHouseKeeping, SetLanguage, dan SetCurrency.
+
+Aturan Vue.js Frontend:
+Gunakan single file component dengan format .vue yang terdiri dari template, script, dan export default.
+Gunakan props untuk input data dan data() untuk state internal.
+Gunakan methods untuk logic, mounted untuk inisialisasi, dan destroyed untuk cleanup.
+Gunakan watch untuk kebutuhan reaktivitas.
+Daftarkan komponen secara global di bootstrap.js atau secara lokal di parent component.
+Nama file komponen menggunakan PascalCase dan pemanggilan di template menggunakan kebab-case.
+Akses helper global melalui this.$helpers.
+
+Aturan API Call:
+Gunakan axios untuk seluruh HTTP request.
+CSRF token dan Authorization header sudah disiapkan secara otomatis.
+Tangani error menggunakan this.$helpers.catchXHR(error) dan tampilkan pesan dengan alertify.error.
+Tampilkan notifikasi sukses menggunakan alertify.success.
+Format response API diasumsikan selalu data, message, dan errors.
+
+Aturan POS System:
+Controller POS menangani logic kompleks seperti penjualan, inventory, kitchen print, dan approval workflow.
+Model utama meliputi PosSale, PosSaleItem, PosSaleKitchenPrint, PosInventory, dan PosInventoryCategory.
+Sistem harus mendukung unlimited stock, table ordering, kitchen workflow, charge to room, multi-currency, diskon, pajak, dan auto deduction stock.
+
+Aturan Styling:
+Gunakan Bootstrap 4 untuk grid dan utility utama.
+Gunakan Bulma untuk komponen tambahan.
+Custom style ditulis di resources/sass dan dikompilasi dengan Laravel Mix.
+Hindari inline style kecuali untuk nilai yang benar-benar dinamis.
+Manfaatkan utility class yang sudah tersedia.
+
+Aturan Helpers:
+Helper frontend tersedia melalui $helpers seperti catchXHR, formValidate, strSlug, dateFormat, dan dateTimeFormat.
+Helper backend berada di app/Helpers seperti TranslationHelper untuk multi-language.
+
+Testing dan Formatting:
+PHPUnit sudah terkonfigurasi dengan implementasi minimal.
+Jika menulis test baru, ikuti struktur tests/Feature dan tests/Unit.
+Jalankan test menggunakan vendor/bin/phpunit.
+
+Dev dan Build:
+Gunakan npm run dev untuk pengembangan asset.
+Gunakan php artisan serve untuk menjalankan backend.
+Gunakan npm run production untuk build production.
+
+Instruksi Studi Proyek:
+Saya ingin Anda membaca semua berkas dan menganalisis proyek ini, mulai dari struktur kode sampai detail implementasi.
+Pastikan implementasi konsisten dengan kode yang sudah ada.
+Tolong tulis kode tanpa komentar , hanya komentar yang penting penting saja agar terlihat lebih humanize.
+Untuk saat ini, fokus pada studi proyek ini saja, jangan lakukan hal lain.
+
 # MEMAKSIMALKAN AI (SETIAP PROMPT)
 
 Beritahu saya apa yang Anda pahami dan ajukan pertanyaan tentang hal-hal yang tidak Anda ketahui, lalu jelaskan hal tersebut.
