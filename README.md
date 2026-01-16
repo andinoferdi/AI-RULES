@@ -44,15 +44,17 @@ Komponen Server adalah default. Tambahkan "use client" hanya saat Anda butuh sta
 Gunakan file khusus App Router saat relevan, seperti layout.tsx untuk layout, loading.tsx untuk loading state, error.tsx untuk error boundary, dan not-found.tsx untuk 404 di segment terkait.
 Jaga batas antara Server dan Client agar bundle client tidak membengkak.
 
-Struktur Proyek Standar:
-src/app untuk routing App Router.
-src/blocks untuk komponen halaman besar.
-src/components untuk komponen reusable.
-src/services untuk API layer dan custom hooks data.
-src/types untuk TypeScript types.
-src/contexts untuk context providers.
-src/hooks untuk custom hooks non data fetch.
-src/lib untuk utilities dan helpers.
+Struktur Proyek Wajib:
+src/app: untuk routing (App Router).
+src/app/api: untuk menangani API (endpoints server).
+src/blocks: untuk komponen halaman utama (layout atau blok besar).
+src/components: untuk komponen yang dapat digunakan ulang (reusable).
+src/services: lapisan API dan custom hooks untuk pengambilan data.
+src/types: untuk tipe TypeScript.
+src/stores: untuk menyimpan state global, misalnya item menu (navbar, sidebar).
+src/contexts: untuk context providers.
+src/hooks: untuk custom hooks non-fetch (utility hooks).
+src/lib: untuk utilitas dan helper umum.
 
 Data Fetching dan Caching:
 Untuk data yang bisa diambil di Server Component, prioritaskan fetch di server agar SEO dan performa bagus.
@@ -76,12 +78,15 @@ Gunakan React Hook Form untuk manajemen form, dan gunakan resolver Zod agar rule
 Pastikan error message muncul dekat input yang salah, dan state submit menonaktifkan tombol saat processing.
 
 UI, Aksesibilitas, dan Komponen:
+Komponen sebaiknya dibagi menjadi tiga jenis: komponen primitif, komponen logika, dan komponen partial. Komponen primitif berisi kode UI murni. Komponen logika mengimpor komponen UI dan menambahkan logika; komponen ini dapat digunakan ulang di semua halaman. Komponen partial hanya dipakai pada satu halaman dan diletakkan di folder halaman masing-masing, misalnya src/blocks/landing/home/components/.
 Gunakan Radix Primitives sebagai dasar komponen interaktif. Lengkapi label dan aria agar screen reader punya konteks.
 Gunakan shadcn ui untuk komponen siap pakai, lalu sesuaikan styling secara konsisten dengan Tailwind.
 Pastikan keyboard navigation berfungsi. Pastikan focus state terlihat.
 Gunakan atribut React yang benar, seperti tabIndex dan aria-label.
+Saat mengimpor, gunakan path absolut seperti @/... dan hindari path relatif ./....
 
 Styling dengan Tailwind v4:
+Untuk styling, jangan meng-hardcode kelas seperti text-white atau bg-gray-600. Usahakan semua gaya diambil dari global CSS (misalnya kelas utilitas, variabel, atau design tokens) agar konsisten dan mudah dipelihara.
 Gunakan Tailwind classes, hindari inline style dan custom CSS kecuali memang diperlukan.
 Import Tailwind lewat @import "tailwindcss" di CSS.
 Kelola token tema lewat @theme jika Anda perlu warna atau spacing khusus.
@@ -104,6 +109,7 @@ Jalankan test yang relevan saja sebelum selesai.
 
 Instruksi Studi Proyek:
 Saya ingin Anda membaca semua berkas dan menganalisis proyek ini, mulai dari struktur kode sampai detail implementasi.
+Lalu buat rangkuman bagian mana yang sudah sesuai aturan dan bagian mana yang belum konsisten, misalnya folder yang masih perlu ditambahkan, tetapi dalam scope yang masih dibutuhkan saja, jika tidak dibutuhkan maka tidak perlu
 Pastikan implementasi konsisten dengan kode yang sudah ada.
 Tolong tulis kode tanpa komentar , hanya komentar yang penting penting saja agar terlihat lebih humanize.
 Untuk saat ini, fokus pada studi proyek ini saja, jangan lakukan hal lain.
