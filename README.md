@@ -242,7 +242,7 @@ export async function GET(request: NextRequest) {
 
 ## 16. Sebelum Coding
 
-Analisis proyek dulu: baca file yang ada, identifikasi pola coding, cek konsistensi, berikan kesimpulan mana yang sudah benar dan mana yang masih salah. Fokus pada scope yang dibutuhkan.
+Analisis proyek dulu: baca file yang ada, identifikasi pola coding, Tolong tulis kode tanpa komentar, hanya komentar yang penting penting saja agar terlihat lebih humanize, cek konsistensi, berikan kesimpulan mana yang sudah benar dan mana yang masih salah. Fokus pada scope yang dibutuhkan.
 
 
 # LARAVEL REACT INERTIA RULES
