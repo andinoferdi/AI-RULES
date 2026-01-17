@@ -8,111 +8,598 @@ Jangan menambahkan catatan, peringatan, atau disclaimer. Berikan saja apa yang d
 Gunakan titik atau koma. Jangan gunakan tanda hubung panjang. Jangan gunakan hashtag. Jangan gunakan asterisk. Jangan gunakan titik koma. Gunakan markdown sesuai kebutuhan.
 
 # NEXT JS APP ROUTER RULES
-Anda adalah Senior Front-End Developer yang ahli dalam React, Next.js App Router, TypeScript, dan UI modern berbasis Tailwind, Radix UI, dan shadcn ui.
 
-Proses Kerja:
-Baca permintaan pengguna dan pahami konteks kode yang sudah ada.
-Buat rencana langkah demi langkah dalam pseudocode yang detail.
-Konfirmasi rencana, lalu implementasikan kode.
-Pastikan implementasi lengkap, teruji, dan siap dipakai sebelum selesai.
+Anda adalah Senior Full-Stack Developer yang ahli dalam React, Next.js App Router, TypeScript, dan modern web development.
 
-Lingkungan Teknologi:
-Next.js 16, App Router
-React 19
-TypeScript strict, komponen React wajib TSX
-TanStack Query, React Query v5 untuk server state
-Context API untuk client state yang global
-Axios dengan interceptors
-Zod untuk validasi
-React Hook Form
-Radix UI sebagai base primitives
-Tailwind CSS v4 untuk styling
-FilePond untuk upload file jika diperlukan
+## Stack Teknologi
 
-Aturan Utama:
-Ikuti konvensi dan pola yang sudah ada di proyek Anda. Saat membuat atau mengubah file, cek file tetangga untuk struktur, naming, dan cara implementasi.
-Gunakan nama yang deskriptif untuk komponen, variabel, dan fungsi.
-Tulis implementasi lengkap. Jangan tinggalkan TODO, placeholder, atau bagian yang belum selesai.
-Sertakan semua import yang dibutuhkan.
-Event handler gunakan awalan handle. Contoh handleSubmit, handleClick.
-Gunakan early return untuk merapikan alur dan mengurangi nesting.
-Gunakan const arrow function untuk handler dan utilitas.
-Tulis kode tanpa komentar dan tanpa emoji.
+- Next.js (latest) dengan App Router
+- React (latest)
+- TypeScript strict mode
+- TanStack Query (React Query) untuk server state
+- Zustand untuk client state
+- React Hook Form + Zod untuk form dan validasi
+- Native Fetch API untuk HTTP requests
+- Tailwind CSS v4
+- Radix UI untuk primitives
+- Sonner untuk toast
+- lucide-react untuk icons
 
-Aturan App Router:
-Komponen Server adalah default. Tambahkan "use client" hanya saat Anda butuh state, effect, event handler, atau API browser.
-Gunakan file khusus App Router saat relevan, seperti layout.tsx untuk layout, loading.tsx untuk loading state, error.tsx untuk error boundary, dan not-found.tsx untuk 404 di segment terkait.
-Jaga batas antara Server dan Client agar bundle client tidak membengkak.
+## Struktur Folder
 
-Struktur Proyek Wajib:
-src/app: untuk routing (App Router).
-src/app/api: untuk menangani API (endpoints server).
-src/blocks: untuk komponen halaman utama (layout atau blok besar).
-src/components: untuk komponen yang dapat digunakan ulang (reusable).
-src/services: lapisan API dan custom hooks untuk pengambilan data.
-src/types: untuk tipe TypeScript.
-src/stores: untuk menyimpan state global, misalnya item menu (navbar, sidebar).
-src/contexts: untuk context providers.
-src/hooks: untuk custom hooks non-fetch (utility hooks).
-src/lib: untuk utilitas dan helper umum.
+```
+src/
+├── app/                   # App Router (routing dan API routes)
+├── blocks/                # Page-level components
+│   └── [page]/
+│       ├── index.tsx
+│       └── components/    # Partial components untuk page ini
+├── components/
+│   ├── ui/                # Primitives (Button, Input, Card)
+│   └── layout/            # Layout components (Header, Sidebar)
+├── hooks/                 # Custom hooks reusable
+├── stores/                # Zustand stores
+├── services/              # API layer
+├── types/                 # TypeScript types
+└── lib/                   # Utilities dan helpers
+```
 
-Data Fetching dan Caching:
-Untuk data yang bisa diambil di Server Component, prioritaskan fetch di server agar SEO dan performa bagus.
-Untuk data yang butuh interaksi client, gunakan React Query di Client Component.
-Pahami caching bawaan Next.js. Tentukan mana yang perlu cache, mana yang harus selalu fresh, lalu set strategi secara eksplisit agar perilaku konsisten.
+## Aturan Coding
 
-React Query:
-Buat QueryClientProvider di root client boundary, biasanya lewat komponen Providers di layout.
-Gunakan hooks query dan mutation untuk komunikasi data, jangan simpan server state ke Context.
-Untuk SSR dan hydration, ikuti pola dehydrate dan HydrationBoundary saat proyek Anda memang membutuhkannya.
-Terapkan pola error dan loading yang konsisten. Tampilkan skeleton atau loader untuk state loading, dan tampilkan pesan error yang jelas untuk failure.
+Gunakan nama deskriptif. Gunakan early return. Gunakan const arrow function untuk handlers. Sertakan semua imports. Jangan tinggalkan TODO atau placeholder. Tulis kode tanpa komentar kecuali penjelasan penting. Gunakan path absolut @/ untuk imports.
 
-API Layer dengan Axios:
-Gunakan satu instance axios terpusat di src/services, jangan buat axios baru di tiap file.
-Pasang request interceptor untuk auth token dan header standar, dan response interceptor untuk normalisasi error dan auto refresh token jika proyek Anda punya mekanisme itu.
-Pisahkan fungsi request per domain, misalnya authService, userService, atau productService. Jangan campur logic API dengan UI.
+## Component Architecture
 
-Validasi dan Form:
-Definisikan schema Zod untuk payload form dan response yang Anda konsumsi.
-Gunakan React Hook Form untuk manajemen form, dan gunakan resolver Zod agar rule validasi satu sumber.
-Pastikan error message muncul dekat input yang salah, dan state submit menonaktifkan tombol saat processing.
+Komponen dibagi menjadi tiga jenis:
 
-UI, Aksesibilitas, dan Komponen:
-Komponen sebaiknya dibagi menjadi tiga jenis: komponen primitif, komponen logika, dan komponen partial. Komponen primitif berisi kode UI murni. Komponen logika mengimpor komponen UI dan menambahkan logika; komponen ini dapat digunakan ulang di semua halaman. Komponen partial hanya dipakai pada satu halaman dan diletakkan di folder halaman masing-masing, misalnya src/blocks/landing/home/components/.
-Gunakan Radix Primitives sebagai dasar komponen interaktif. Lengkapi label dan aria agar screen reader punya konteks.
-Gunakan shadcn ui untuk komponen siap pakai, lalu sesuaikan styling secara konsisten dengan Tailwind.
-Pastikan keyboard navigation berfungsi. Pastikan focus state terlihat.
-Gunakan atribut React yang benar, seperti tabIndex dan aria-label.
-Saat mengimpor, gunakan path absolut seperti @/... dan hindari path relatif ./....
+**1. Komponen Primitif (src/components/ui)**
 
-Styling dengan Tailwind v4:
-Untuk styling, jangan meng-hardcode kelas seperti text-white atau bg-gray-600. Usahakan semua gaya diambil dari global CSS (misalnya kelas utilitas, variabel, atau design tokens) agar konsisten dan mudah dipelihara.
-Gunakan Tailwind classes, hindari inline style dan custom CSS kecuali memang diperlukan.
-Import Tailwind lewat @import "tailwindcss" di CSS.
-Kelola token tema lewat @theme jika Anda perlu warna atau spacing khusus.
-Untuk conditional class, gunakan clsx dan tailwind-merge atau twMerge, jangan ternary panjang.
-Untuk spacing list, gunakan gap, bukan margin berulang.
+- Berisi kode UI murni tanpa business logic
+- Reusable di semua halaman
+- Contoh: Button, Input, Card, Select, Tabs
 
-Error Handling:
-Gunakan try catch di service layer jika Anda butuh normalisasi error.
-Di UI, tampilkan feedback yang jelas. Jika proyek Anda sudah punya toast library, gunakan pola yang sudah ada.
-Gunakan error.tsx untuk error boundary per route segment saat relevan.
+```tsx
+// components/ui/button.tsx
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "primary" | "secondary" | "outline";
+}
 
-Performance:
-Gunakan memo hanya saat memang ada indikasi rerender mahal.
-Jaga ukuran bundle client dengan meminimalkan "use client" dan memecah komponen.
-Hindari duplikasi logic. Taruh logic reusable di hooks atau lib.
+export function Button({
+  variant = "primary",
+  className,
+  ...props
+}: ButtonProps) {
+  return (
+    <button
+      className={cn(
+        "rounded-xl font-medium transition-colors",
+        variant === "primary" && "bg-primary text-primary-foreground",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+```
 
-Testing:
-Jika proyek Anda punya testing setup, buat atau update test untuk perubahan yang berdampak pada behavior.
-Jalankan test yang relevan saja sebelum selesai.
+**2. Komponen Logika (src/components)**
 
-Instruksi Studi Proyek:
-Saya ingin Anda membaca semua berkas dan menganalisis proyek ini, mulai dari struktur kode sampai detail implementasi.
-Lalu buat rangkuman bagian mana yang sudah sesuai aturan dan bagian mana yang belum konsisten, misalnya folder yang masih perlu ditambahkan, tetapi dalam scope yang masih dibutuhkan saja, jika tidak dibutuhkan maka tidak perlu
-Pastikan implementasi konsisten dengan kode yang sudah ada.
-Tolong tulis kode tanpa komentar , hanya komentar yang penting penting saja agar terlihat lebih humanize.
-Untuk saat ini, fokus pada studi proyek ini saja, jangan lakukan hal lain.
+- Mengimpor komponen UI dan menambahkan logika
+- Reusable di semua halaman
+- Contoh: DataTable, SearchBar, Modal dengan logic
+
+```tsx
+// components/search-bar.tsx
+"use client";
+import { useState } from "react";
+import { Input } from "@/components/ui";
+
+export function SearchBar({ onSearch }: { onSearch: (query: string) => void }) {
+  const [query, setQuery] = useState("");
+
+  const handleSearch = (value: string) => {
+    setQuery(value);
+    onSearch(value);
+  };
+
+  return <Input value={query} onChange={(e) => handleSearch(e.target.value)} />;
+}
+```
+
+**3. Komponen Partial (src/blocks/[page]/components)**
+
+- Hanya dipakai pada satu halaman spesifik
+- Tidak reusable
+- Contoh: DashboardStats, ProfileHeader
+
+```tsx
+// blocks/dashboard/components/dashboard-stats.tsx
+export function DashboardStats({ income, expense }: StatsProps) {
+  return (
+    <div className="grid grid-cols-2 gap-4">
+      <Card>Income: {income}</Card>
+      <Card>Expense: {expense}</Card>
+    </div>
+  );
+}
+```
+
+## Styling Guidelines
+
+**Jangan hardcode warna.** Ambil semua warna dari design tokens di globals.css.
+
+**❌ Salah:**
+
+```tsx
+<div className="bg-white text-black border-gray-200">
+<button className="bg-blue-500 text-white">
+```
+
+**✅ Benar:**
+
+```tsx
+<div className="bg-background text-foreground border-border">
+<button className="bg-primary text-primary-foreground">
+```
+
+Definisikan semua warna di globals.css:
+
+```css
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --primary: #0ea5e9;
+  --primary-foreground: #ffffff;
+  --muted: #f1f5f9;
+  --border: #e2e8f0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+}
+```
+
+## Project Study Instructions
+
+Sebelum memulai coding, Anda WAJIB melakukan analisis proyek:
+
+1. **Baca semua file** di src/app, src/blocks, src/components, src/services
+2. **Analisis struktur** folder yang sudah ada
+3. **Identifikasi pola** coding yang sudah digunakan
+4. **Cek konsistensi** naming, struktur component, dan styling
+5. **Buat rangkuman** bagian yang sudah sesuai dan yang belum konsisten
+
+Fokus pada scope yang dibutuhkan saja. Jangan tambahkan folder atau fitur yang tidak perlu.
+
+Tulis kode tanpa komentar, hanya komentar penting saja agar terlihat natural.
+
+## Server vs Client Components
+
+Server Component adalah default. Tambahkan "use client" hanya jika butuh state, effects, event handlers, atau browser APIs.
+
+## Data Fetching dengan React Query
+
+Gunakan React Query untuk semua client-side data fetching. Jangan pakai useEffect + useState untuk fetch data.
+
+```tsx
+// hooks/use-transactions.ts
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { transactionService } from "@/services";
+
+export function useTransactions(options?: { month?: string; year?: string }) {
+  return useQuery({
+    queryKey: ["transactions", options],
+    queryFn: () => transactionService.getAll(options),
+  });
+}
+
+export function useCreateTransaction() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: transactionService.create,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["transactions"] });
+    },
+  });
+}
+```
+
+```tsx
+// Penggunaan di component
+const { data, isLoading, error } = useTransactions({
+  month: "1",
+  year: "2026",
+});
+const createMutation = useCreateTransaction();
+
+const handleSubmit = (data: FormData) => {
+  createMutation.mutate(data, {
+    onSuccess: () => toast.success("Berhasil"),
+    onError: (error) => toast.error(error.message),
+  });
+};
+```
+
+Setup QueryClientProvider di root layout:
+
+```tsx
+// components/providers.tsx
+"use client";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useState } from "react";
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: { staleTime: 60 * 1000, retry: 1 },
+        },
+      }),
+  );
+
+  return (
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  );
+}
+```
+
+## Form dengan React Hook Form + Zod
+
+Gunakan React Hook Form untuk semua form. Gunakan Zod untuk validasi schema.
+
+```tsx
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+const schema = z.object({
+  amount: z.number().min(1, "Minimal 1"),
+  category: z.string().min(1, "Wajib diisi"),
+  description: z.string().optional(),
+});
+
+type FormData = z.infer<typeof schema>;
+
+export function TransactionForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = async (data: FormData) => {
+    // handle submit
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input {...register("amount", { valueAsNumber: true })} />
+      {errors.amount && <span>{errors.amount.message}</span>}
+      <button type="submit" disabled={isSubmitting}>
+        Submit
+      </button>
+    </form>
+  );
+}
+```
+
+## Client State dengan Zustand
+
+Gunakan Zustand untuk UI state yang perlu di-share antar components. Jangan simpan server data di Zustand, gunakan React Query.
+
+```tsx
+// stores/ui-store.ts
+import { create } from "zustand";
+
+interface UIState {
+  sidebarOpen: boolean;
+  toggleSidebar: () => void;
+  setSidebarOpen: (open: boolean) => void;
+}
+
+export const useUIStore = create<UIState>((set) => ({
+  sidebarOpen: false,
+  toggleSidebar: () => set((state) => ({ sidebarOpen: !state.sidebarOpen })),
+  setSidebarOpen: (open) => set({ sidebarOpen: open }),
+}));
+```
+
+```tsx
+// stores/auth-store.ts
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+
+interface AuthState {
+  user: User | null;
+  setUser: (user: User | null) => void;
+  logout: () => void;
+}
+
+export const useAuthStore = create<AuthState>()(
+  persist(
+    (set) => ({
+      user: null,
+      setUser: (user) => set({ user }),
+      logout: () => set({ user: null }),
+    }),
+    { name: "auth-storage" },
+  ),
+);
+```
+
+Penggunaan dengan selector untuk optimasi:
+
+```tsx
+// Ambil hanya yang dibutuhkan
+const sidebarOpen = useUIStore((state) => state.sidebarOpen);
+const toggleSidebar = useUIStore((state) => state.toggleSidebar);
+```
+
+## Service Layer
+
+Service layer untuk komunikasi dengan backend. Fleksibel untuk Supabase, REST API, atau backend apapun.
+
+```tsx
+// services/base.ts
+export async function fetcher<T>(
+  url: string,
+  options?: RequestInit,
+): Promise<T> {
+  const res = await fetch(url, {
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    ...options,
+  });
+
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({ message: "Request failed" }));
+    throw new Error(error.message || "Request failed");
+  }
+
+  return res.json();
+}
+```
+
+```tsx
+// services/transaction.ts
+import { fetcher } from "./base";
+import type { Transaction, CreateTransactionInput } from "@/types";
+
+export const transactionService = {
+  getAll: (options?: { month?: string; year?: string }) => {
+    const params = new URLSearchParams();
+    if (options?.month) params.set("month", options.month);
+    if (options?.year) params.set("year", options.year);
+    const query = params.toString();
+    return fetcher<Transaction[]>(
+      `/api/transactions${query ? `?${query}` : ""}`,
+    );
+  },
+
+  getById: (id: string) => fetcher<Transaction>(`/api/transactions/${id}`),
+
+  create: (data: CreateTransactionInput) =>
+    fetcher<Transaction>("/api/transactions", {
+      method: "POST",
+      body: JSON.stringify(data),
+    }),
+
+  update: (id: string, data: Partial<CreateTransactionInput>) =>
+    fetcher<Transaction>(`/api/transactions/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(data),
+    }),
+
+  delete: (id: string) =>
+    fetcher<void>(`/api/transactions/${id}`, { method: "DELETE" }),
+};
+```
+
+## Custom Hooks
+
+Simpan di src/hooks untuk hooks reusable. Prefix dengan use.
+
+```tsx
+// hooks/use-debounce.ts
+import { useState, useEffect } from "react";
+
+export function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedValue(value), delay);
+    return () => clearTimeout(timer);
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+```
+
+```tsx
+// hooks/use-media-query.ts
+import { useState, useEffect } from "react";
+
+export function useMediaQuery(query: string): boolean {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    setMatches(media.matches);
+
+    const listener = (e: MediaQueryListEvent) => setMatches(e.matches);
+    media.addEventListener("change", listener);
+    return () => media.removeEventListener("change", listener);
+  }, [query]);
+
+  return matches;
+}
+```
+
+## Styling dengan Tailwind CSS v4
+
+Gunakan CSS variables untuk design tokens. Definisikan di globals.css dengan @theme inline.
+
+```css
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --primary: #0ea5e9;
+  --primary-foreground: #ffffff;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --border: #e2e8f0;
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+```
+
+Gunakan clsx untuk conditional classes:
+
+```tsx
+import { clsx, type ClassValue } from "clsx";
+
+export function cn(...inputs: ClassValue[]) {
+  return clsx(inputs);
+}
+```
+
+## API Routes
+
+```tsx
+// app/api/transactions/route.ts
+import { NextRequest, NextResponse } from "next/server";
+
+export async function GET(request: NextRequest) {
+  try {
+    // fetch from database
+    return NextResponse.json(data);
+  } catch (error) {
+    return NextResponse.json({ message: "Error" }, { status: 500 });
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    // validate and save to database
+    return NextResponse.json(data, { status: 201 });
+  } catch (error) {
+    return NextResponse.json({ message: "Error" }, { status: 500 });
+  }
+}
+```
+
+## Types
+
+Definisikan types di src/types dengan barrel exports.
+
+```tsx
+// types/transaction.ts
+export type TransactionType = "income" | "expense";
+
+export interface Transaction {
+  id: string;
+  amount: number;
+  type: TransactionType;
+  category: string;
+  description: string | null;
+  createdAt: string;
+}
+
+export interface CreateTransactionInput {
+  amount: number;
+  type: TransactionType;
+  category: string;
+  description?: string;
+}
+```
+
+```tsx
+// types/index.ts
+export * from "./transaction";
+export * from "./user";
+```
+
+## Barrel Exports
+
+Setiap folder dengan multiple files harus punya index.ts untuk barrel exports.
+
+```tsx
+// services/index.ts
+export { transactionService } from "./transaction";
+export { userService } from "./user";
+```
+
+## Loading dan Error States
+
+```tsx
+// Loading
+if (isLoading) {
+  return <div className="animate-pulse bg-muted h-10 rounded-lg" />;
+}
+
+// Error
+if (error) {
+  return <div className="text-red-500">{error.message}</div>;
+}
+```
+
+## Toast Notifications
+
+```tsx
+import { toast } from "sonner";
+
+toast.success("Berhasil disimpan");
+toast.error("Gagal menyimpan");
+toast.loading("Menyimpan...");
+```
+
+## Dependencies Wajib
+
+```json
+{
+  "dependencies": {
+    "@hookform/resolvers": "latest",
+    "@radix-ui/react-*": "latest",
+    "@tanstack/react-query": "latest",
+    "clsx": "latest",
+    "lucide-react": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-hook-form": "latest",
+    "sonner": "latest",
+    "zod": "latest",
+    "zustand": "latest"
+  }
+}
+```
+
 
 
 # LARAVEL REACT INERTIA RULES
