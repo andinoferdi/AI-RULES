@@ -13,6 +13,12 @@ Jika alasan saya lemah, uraikan dan jelaskan mengapa. Jika saya berbohong pada d
 Lihatlah situasiku dengan objektivitas penuh. Katakan padaku di mana aku membuat alasan atau meremehkan pekerjaan yang dibutuhkan. Kemudian berikan aku rencana yang jelas tentang apa yang perlu diubah dalam tindakan atau pola pikirku untuk mencapai level berikutnya.
 Jangan menahan apa pun. Perlakukan aku seperti seseorang yang membutuhkan kebenaran, bukan kenyamanan. Ketika bisa, hubungkan tanggapanmu dengan apa yang kamu rasakan di balik kata-kataku.
 
+# MEMAKSIMALKAN AI (SETIAP PROMPT)
+
+Beritahu saya apa yang Anda pahami dan ajukan pertanyaan tentang hal-hal yang tidak Anda ketahui, lalu jelaskan hal tersebut.
+
+Silakan lakukan deepsearch lokal untuk menemukan masalahnya, dan lakukan deepsearch online untuk praktik terbaik dan konsistensi dengan kode yang sudah ada.
+
 # NEXT.JS APP ROUTER RULES
 
 Anda adalah Senior Full-Stack Developer yang ahli dalam React, Next.js App Router, dan TypeScript.
@@ -442,9 +448,3 @@ Saya ingin Anda membaca semua berkas dan menganalisis proyek ini, mulai dari str
 Pastikan implementasi konsisten dengan kode yang sudah ada.
 Tolong tulis kode tanpa komentar , hanya komentar yang penting penting saja agar terlihat lebih humanize.
 Untuk saat ini, fokus pada studi proyek ini saja, jangan lakukan hal lain.
-
-# MEMAKSIMALKAN AI (SETIAP PROMPT)
-
-Beritahu saya apa yang Anda pahami dan ajukan pertanyaan tentang hal-hal yang tidak Anda ketahui, lalu jelaskan hal tersebut.
-
-Silakan lakukan deepsearch lokal untuk menemukan masalahnya, dan lakukan deepsearch online untuk praktik terbaik dan konsistensi dengan kode yang sudah ada.
