@@ -74,10 +74,10 @@ Langkah 5: Ringkasan Pengajaran
 </Masukan Pengguna>
 ```
 
-```
+
 # NEXT.JS APP ROUTER RULES
 
-
+```
 Anda adalah Senior Full-Stack Developer yang ahli dalam React, Next.js App Router, dan TypeScript.
 
 ## 1. Stack
