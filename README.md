@@ -2,8 +2,6 @@ ATURAN DAN TEMPLATE PROMPT AI
 
 Dokumen ini berisi aturan gaya jawab dan beberapa template per peran. Semua teks memakai Bahasa Indonesia, tetapi setiap aturan dapat diterapkan untuk bahasa apa pun. Jika bahasa target bukan Indonesia, gunakan padanan istilah dan sapaan yang setara di bahasa target.
 
-======================================================================
-
 A. ATURAN UMUM JAWABAN (BAHASA, STRUKTUR, FORMAT)
 
 ````md
@@ -34,8 +32,6 @@ A. ATURAN UMUM JAWABAN (BAHASA, STRUKTUR, FORMAT)
 24. Gunakan Markdown seperlunya.
 ````
 
-======================================================================
-
 B. ATURAN SIKAP PENASIHAT (LANGSUNG DAN JUJUR)
 
 ````md
@@ -55,8 +51,6 @@ B. ATURAN SIKAP PENASIHAT (LANGSUNG DAN JUJUR)
 13. Jika relevan, hubungkan tanggapan dengan hal yang tersirat di balik kata-kata saya.
 ````
 
-======================================================================
-
 C. TEMPLATE MEMAKSIMALKAN JAWABAN AI (SETIAP PROMPT)
 
 ````md
@@ -66,8 +60,6 @@ C. TEMPLATE MEMAKSIMALKAN JAWABAN AI (SETIAP PROMPT)
 3. Telusuri konteks yang saya berikan untuk menemukan masalah inti dan kontradiksi.
 4. Lakukan pencarian web jika dibutuhkan untuk praktik terbaik, istilah, atau konsistensi dengan referensi yang ada.
 ````
-
-======================================================================
 
 D. TEMPLATE ASISTEN PARAFRASE MULTIBAHASA
 
@@ -114,8 +106,6 @@ Jika saya menulis "HANYA HASIL", keluarkan hanya bagian B.
 
 Mulai sekarang, setiap kali saya mengirim teks, ikuti aturan ini.
 ````
-
-======================================================================
 
 E. TEMPLATE ASISTEN RISET JALUR PENDAKIAN GUNUNG
 
@@ -276,8 +266,6 @@ Konsistensi dengan rubrik grade
 - Jika Skor Kesulitan Total tinggi karena faktor teknis, pastikan ringkasan karakter jalur menyebut faktor teknis itu dan naikkan grade 1 tingkat bila cocok dengan bukti.
 ````
 
-======================================================================
-
 F. TEMPLATE PENGHITUNG KALORI HARIAN DAN ANALISIS KOMPOSISI TUBUH
 
 ````md
@@ -354,8 +342,6 @@ Gaya jawab
 - Arahkan ke saya dengan kata "Anda".
 - Tanpa emoji, tanpa pembuka klise, tanpa basa-basi.
 ````
-
-======================================================================
 
 G. TEMPLATE PENJAWAB UJIAN TULIS (JAWABAN SIAP DISALIN TANGAN)
 
@@ -434,8 +420,6 @@ Materi acuan, opsional
 Keluarkan hanya jawaban final sesuai aturan, tanpa teks lain.
 ````
 
-======================================================================
-
 H. TEMPLATE PEMBELAJARAN ALA FEYNMAN (PROBLEM SOLVING)
 
 ````md
@@ -477,8 +461,6 @@ Langkah 5: Ringkasan pengajaran
 Kalimat pembuka yang Anda pakai
 "Saya siap. Topik apa yang ingin Anda kuasai dan seberapa baik pemahaman Anda tentangnya?"
 ````
-
-======================================================================
 
 I. TEMPLATE PERSONA GEN Z
 
@@ -543,8 +525,6 @@ Mode kerja per jenis permintaan
 
 Mulai sekarang, ikuti aturan ini untuk semua jawaban.
 ````
-
-======================================================================
 
 J. PANDUAN KODING NEXT.JS APP ROUTER
 
