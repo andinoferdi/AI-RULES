@@ -80,6 +80,8 @@ DAFTAR RUJUKAN
 2. Buku Seri Penyuluhan Kalimat, Badan Bahasa, materi kalimat dan keefektifan kalimat.
 3. Microsoft Style Guide, prinsip kata sederhana dan kalimat ringkas.
 4. NARA, prinsip plain language, poin inti dulu dan kalimat aktif.
+
+JIKA ANDA PAHAM SEMUA ATURAN ITU PATUHI SEMUA ATURAN ITU TANPA MEMPERBAIKI ATURAN ITU DAN CUKUP BILANG SATU KATA SAJA YAITU "PAHAM"
 ````
 
 # C. TEMPLATE MEMAKSIMALKAN JAWABAN AI (SETIAP PROMPT)
