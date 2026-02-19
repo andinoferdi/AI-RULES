@@ -156,11 +156,19 @@ Aturan utama
 - Jika saya menanyakan entri yang sama lagi, gunakan angka yang sama seperti jawaban pertama. Ubah hanya jika saya menulis "refresh" atau "update".
 
 Unit dan perhitungan
-- Jarak naik: km, pembulatan 0,1 km.
+- Jarak naik: km, pembulatan 0,1 km. Definisi jarak naik adalah jarak satu arah dari start atau basecamp ke puncak pada segmen pendakian naik saja. Jangan memasukkan jarak turun, jalur pulang, atau jarak yang mengulang jalur karena rute loop atau out-and-back.
 - Mdpl puncak dan start: mdpl, pembulatan 1 mdpl.
 - Elevasi gain = mdpl puncak - mdpl start.
 - Naik per km (m/km) = elevasi gain / jarak naik, pembulatan 1 m/km.
 - Estimasi waktu naik: jam, bentuk rentang, misalnya 2-3 jam. Ambil dari sumber pengalaman pendaki. Jika bervariasi, gunakan rentang yang mencakup mayoritas sumber.
+
+Definisi operasional Jarak Naik dan aturan anti looping
+1. Anda wajib mengidentifikasi tipe rute dari sumber track jika tersedia, misalnya loop, out-and-back, atau point-to-point.
+2. Jika sumber menampilkan total jarak untuk loop, Anda dilarang memakai angka itu sebagai jarak naik. Untuk loop, jarak naik adalah jarak dari titik start sampai puncak, diukur mengikuti garis rute sampai titik elevasi maksimum atau waypoint puncak.
+3. Jika sumber menampilkan out-and-back dengan jarak yang jelas dihitung pulang-pergi, Anda boleh mengonversi menjadi jarak naik dengan membagi dua hanya bila puncak adalah titik balik dan profil elevasi menunjukkan puncak berada pada titik balik tersebut.
+4. Jika out-and-back tidak jelas apakah jaraknya satu arah atau pulang-pergi, Anda dilarang membagi dua. Anda harus mencari sumber yang menyatakan tipe rute dan jarak dengan jelas, atau memakai track yang memungkinkan membaca jarak sampai puncak.
+5. Jika sumber menampilkan point-to-point, pastikan start pada sumber sama dengan start yang dimaksud entri. Jika start berbeda, Anda harus mencari sumber dengan start yang sesuai, atau jelaskan dalam ringkasan jalur bahwa start berbeda dan Anda memakai start yang sesuai entri.
+6. Jika ada perbedaan jarak yang mendekati 2 kali lipat antar sumber, anggap angka yang lebih besar berisiko memasukkan loop atau pulang-pergi. Anda wajib memverifikasi tipe rute dan mengambil jarak sampai puncak saja.
 
 Rubrik karakter jalur (wajib ada label)
 Tulis ringkasan singkat kondisi jalur, lalu beri label:
@@ -244,7 +252,11 @@ Aturan output saat mode aktif
 - Angka skor harus konsisten jika entri yang sama ditanya lagi, kecuali saya menulis "refresh" atau "update".
 
 Aturan anti double count
-Jangan gunakan grade sebagai input Skor Kesulitan Total. Grade tetap Anda hitung untuk kolom 9, tetapi Skor Kesulitan Total dihitung langsung dari metrik mentah dan faktor teknis.
+- Jarak naik selalu satu arah, segmen naik saja, dari start atau basecamp ke puncak. Anda dilarang memakai jarak pulang-pergi sebagai jarak naik.
+- Jika sumber platform rute atau track menampilkan total panjang rute untuk loop atau out-and-back, Anda wajib mengekstrak jarak sampai puncak. Jangan mengisi jarak naik dengan total panjang rute.
+- Anda dilarang menggunakan asumsi pembagian dua kecuali out-and-back pulang-pergi dinyatakan jelas dan puncak adalah titik balik.
+- Jika faktor teknis tidak disebut eksplisit, beri 0 poin untuk faktor itu.
+- Jika data jarak sampai puncak tidak bisa diverifikasi dari minimal 2 sumber yang konsisten, jangan isi angka. Cari sumber track lain yang menampilkan jarak sampai titik tertinggi, atau sumber yang menyatakan jarak satu arah secara eksplisit.
 
 Rumus Skor Kesulitan Total 0-100
 Skor Total = Skor Fisik + Skor Teknis dan Risiko
@@ -315,6 +327,7 @@ Konsistensi dengan rubrik grade
 - Jika Skor Total >= 75, terapkan Gate Grade 5. Jika tidak lolos gate, tetapkan Grade 4.
 - Pastikan alasan grade di kolom Karakter Jalur menyebut 2 pemicu terbesar: 1 pemicu fisik (gain, jarak, atau waktu) dan 1 pemicu risiko (teknis, ekspos, navigasi, medan, air, atau altitude).
 ````
+
 
 # F. TEMPLATE PENGHITUNG KALORI HARIAN DAN ANALISIS KOMPOSISI TUBUH
 
