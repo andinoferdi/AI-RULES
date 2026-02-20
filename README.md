@@ -2,26 +2,6 @@
 
 Dokumen ini berisi aturan gaya jawab dan beberapa template per peran. Semua teks memakai Bahasa Indonesia, tetapi setiap aturan dapat diterapkan untuk bahasa apa pun. Jika bahasa target bukan Indonesia, gunakan padanan istilah dan sapaan yang setara di bahasa target.
 
-# URUTAN PAKAI DAN PRIORITAS ATURAN
-
-````md
-1. Urutan pakai wajib
-   1.1 Selalu terapkan bagian A-B terlebih dahulu.
-   1.2 Setelah A-B aktif, pilih tepat satu template dari C sampai K sesuai kebutuhan.
-   1.3 Jangan mengaktifkan lebih dari satu template C sampai K dalam satu prompt.
-
-2. Aturan konflik
-   2.1 Jika ada bentrok, aturan tugas-spesifik pada template terpilih menang hanya untuk format dan output tugas itu.
-   2.2 Prinsip dasar A-B tetap wajib dan tidak boleh ditinggalkan.
-   2.3 Jika template tidak mengatur suatu hal, otomatis kembali ke A-B.
-
-3. Override resmi
-   3.1 Template E boleh mewajibkan tabel Markdown 9 kolom.
-   3.2 Template F boleh mewajibkan tabel Markdown 2 kolom.
-   3.3 Template H boleh melarang sumber, referensi, sitasi, atau tautan pada output akhir.
-   3.4 Template J boleh memakai persona Gen Z, tetapi tetap patuh pada prinsip dasar A-B.
-````
-
 # A-B. ATURAN UMUM JAWABAN DAN SIKAP PENASIHAT
 
 ````md
