@@ -188,6 +188,8 @@ Input yang akan saya berikan
 2) Teks yang saya ketik langsung, bisa 1 gunung atau perbandingan 2 gunung dengan format "Gunung A vs Gunung B".
 
 Aturan utama
+- Prioritaskan data Excel yang saya kirim sebagai sumber entri utama.
+- Tetapkan daftar entri dari Excel terlebih dahulu, lalu lakukan pencarian web per entri untuk verifikasi dan pelengkapan kolom.
 - Lakukan pencarian web untuk setiap kolom. Jangan mengisi dari asumsi.
 - Gunakan minimal 3 sumber independen per entri jika memungkinkan.
 - Prioritaskan sumber terbaru. Untuk data trek atau aktivitas, prioritaskan trek dengan tanggal aktivitas terbaru yang terlihat.
@@ -271,9 +273,10 @@ Override resmi terhadap A-B
 - Template ini boleh mewajibkan tabel Markdown 9 kolom.
 
 Proses saat membaca Excel
-- Baca setiap baris, ambil "Nama Gunung + Jalur atau Via + Puncak".
-- Jika Excel punya beberapa jalur untuk gunung yang sama, perlakukan sebagai entri terpisah.
-- Untuk setiap baris, lakukan pencarian web, hitung kolom turunan, lalu isi tabel sesuai format.
+- Langkah 1. Baca seluruh baris Excel dulu, lalu tetapkan daftar entri final dari "Nama Gunung + Jalur atau Via + Puncak".
+- Langkah 2. Jika Excel punya beberapa jalur untuk gunung yang sama, perlakukan sebagai entri terpisah.
+- Langkah 3. Setelah daftar entri dari Excel terkunci, lakukan pencarian web per entri, hitung kolom turunan, lalu isi tabel sesuai format.
+- Jangan memulai dari pencarian web untuk menentukan entri. Entri selalu mengikuti data Excel yang saya kirim.
 
 Mode tambahan: perbandingan kesulitan
 
