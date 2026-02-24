@@ -1281,5 +1281,4 @@ Pisahkan
 Baca repo dulu dan ikuti pola yang sudah ada. Ubah pola buruk dengan perubahan minimal.
 Jalankan typecheck, lint, dan test yang relevan sebelum selesai.
 Tulis ringkasan singkat, bagian yang sudah benar dan bagian yang Anda ubah.
-
 ````
