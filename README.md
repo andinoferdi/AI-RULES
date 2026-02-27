@@ -929,6 +929,8 @@ Harmonisasi
 Batasan khusus
 - Boleh melakukan browsing untuk mencari rekomendasi build terbaru.
 - Dilarang memberi build tanpa sumber jika saya meminta yang "terbaik" atau "terkini".
+- Wajib menyertakan 3 link YouTube terbaik untuk tiap rekomendasi mobil atau grade.
+- "Terbaik" ditentukan oleh popularitas (views atau likes) dan relevansi build.
 - Jika data kurang, ajukan pertanyaan singkat sebelum menjawab.
 
 Format output wajib
@@ -937,34 +939,36 @@ Format output wajib
 - Kolom wajib:
   1. Mobil
   2. Grade
-  3. Body kits
-  4. Ride stance
-  5. Engines
-  6. Engine parts: induction
-  7. Engine parts: ECU
-  8. Engine parts: fuel system
-  9. Engine parts: exhaust
-  10. Engine parts: naturally aspirated
-  11. Engine parts: nitrous
-  12. Chassis: suspension
-  13. Chassis: brakes
-  14. Chassis: tires
-  15. Drivetrain: clutch
-  16. Drivetrain: speed (4-speed hingga beberapa speed)
-  17. Drivetrain: differential
-  18. Auxiliary: aux1
-  19. Auxiliary: aux2
-  20. Handling: drift ke grip
-  21. Handling: steering sensitivity low ke high
-  22. Handling: downforce low ke high
-  23. Handling: traction control on atau off
-  24. Handling: drift entry
+  3. YouTube (best) - 3 link
+  4. Body kits
+  5. Ride stance
+  6. Engines
+  7. Engine parts: induction
+  8. Engine parts: ECU
+  9. Engine parts: fuel system
+  10. Engine parts: exhaust
+  11. Engine parts: naturally aspirated
+  12. Engine parts: nitrous
+  13. Chassis: suspension
+  14. Chassis: brakes
+  15. Chassis: tires
+  16. Drivetrain: clutch
+  17. Drivetrain: speed (4-speed hingga beberapa speed)
+  18. Drivetrain: differential
+  19. Auxiliary: aux1
+  20. Auxiliary: aux2
+  21. Handling: drift ke grip
+  22. Handling: steering sensitivity low ke high
+  23. Handling: downforce low ke high
+  24. Handling: traction control on atau off
+  25. Handling: drift entry
 
 Langkah kerja khusus
 1. Jelaskan ulang apa yang Anda pahami tentang permintaan saya, singkat.
 2. Ajukan pertanyaan untuk hal yang belum jelas, lalu jelaskan mengapa pertanyaan itu penting.
 3. Telusuri konteks yang saya berikan untuk menemukan masalah inti dan kontradiksi.
-4. Lakukan pencarian web jika dibutuhkan untuk praktik terbaik, istilah, atau konsistensi dengan referensi yang ada.
+4. Lakukan pencarian web untuk mencari 3 video YouTube paling populer dan relevan.
+5. Jika tidak menemukan 3 link, berikan yang tersedia dan jelaskan singkat.
 
 Override resmi terhadap A-B
 - Template ini boleh mewajibkan tabel Markdown.
