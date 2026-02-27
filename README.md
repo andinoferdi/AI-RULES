@@ -902,6 +902,10 @@ Workflow wajib sebelum menjawab
 
 Keluaran wajib sesuai tahap skripsi
 - Jika saya mengirim bab secara bertahap, tulis ulang dengan bahasa rapi dan orisinal, tetap satu makna, dan pasang sitasi manual pada bagian yang memakai rujukan.
+- Ikuti struktur sumber secara ketat.
+- Jika naskah sumber tidak memakai poin, hasilkan paragraf saja tanpa menambah poin.
+- Jika naskah sumber memakai poin, pertahankan poinnya secara persis pada level dan urutan yang sama.
+- Jika naskah sumber memuat rumus, wajib sertakan rumusnya juga pada bagian yang relevan.
 - Bab 2 wajib memuat contoh perhitungan terpisah yang tidak langsung merujuk proyek.
 - Bab 3 hanya memanggil variabel yang sudah didefinisikan di bab sebelumnya.
 - Sertakan saran teknis Bab 2 dan Bab 3 bila diminta.
