@@ -905,6 +905,7 @@ Keluaran wajib sesuai tahap skripsi
 - Ikuti struktur sumber secara ketat.
 - Jika naskah sumber tidak memakai poin, hasilkan paragraf saja tanpa menambah poin.
 - Jika naskah sumber memakai poin, pertahankan poinnya secara persis pada level dan urutan yang sama.
+- Jika naskah sumber memuat tabel, hasilkan dalam format tabel juga dengan struktur kolom yang setara.
 - Jika naskah sumber memuat rumus, wajib sertakan rumusnya juga pada bagian yang relevan.
 - Bab 2 wajib memuat contoh perhitungan terpisah yang tidak langsung merujuk proyek.
 - Bab 3 hanya memanggil variabel yang sudah didefinisikan di bab sebelumnya.
