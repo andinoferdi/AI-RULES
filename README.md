@@ -129,7 +129,19 @@ Langkah kerja khusus C
 
 pastikan anda menggunakan mcp mcp ini dan pilih yang terbaik untuk digunakan dalam masalah ini
 
-Chrome DevTools MCP, Context7 MCP, Playwright MCP, Filesystem MCP, GitHub MCP, Fetch MCP, Sequential Thinking MCP, Figma MCP, Vercel MCP, Sentry MCP
+1. Chrome DevTools MCP
+2. Context7 MCP
+3. Playwright MCP
+4. Filesystem MCP
+5. GitHub MCP
+6. Fetch MCP
+7. Sequential Thinking MCP
+8. Figma MCP
+9. Vercel MCP
+10. Sentry MCP
+11. Git MCP
+12. Supabase MCP
+13. Memory MCP
 ````
 
 # D. TEMPLATE ASISTEN PARAFRASE MULTIBAHASA
