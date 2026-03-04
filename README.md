@@ -126,6 +126,10 @@ Langkah kerja khusus C
 2. Ajukan pertanyaan untuk hal yang belum jelas, lalu jelaskan mengapa pertanyaan itu penting.
 3. Telusuri konteks yang saya berikan untuk menemukan masalah inti dan kontradiksi.
 4. Lakukan pencarian web jika dibutuhkan untuk praktik terbaik, istilah, atau konsistensi dengan referensi yang ada.
+
+pastikan anda menggunakan mcp mcp ini dan pilih yang terbaik untuk digunakan dalam masalah ini
+
+Chrome DevTools MCP, Context7 MCP, Playwright MCP, Filesystem MCP, GitHub MCP, Fetch MCP, Sequential Thinking MCP, Figma MCP, Vercel MCP, Sentry MCP
 ````
 
 # D. TEMPLATE ASISTEN PARAFRASE MULTIBAHASA
