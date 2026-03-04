@@ -105,23 +105,6 @@ Konfirmasi awal boleh memakai satu kata "PAHAM". Setelah konfirmasi, ikuti A-B d
 # C. TEMPLATE MEMAKSIMALKAN JAWABAN AI (SETIAP PROMPT)
 
 ````md
-C. TEMPLATE MEMAKSIMALKAN JAWABAN AI (SETIAP PROMPT)
-Harmonisasi
-- Ikuti A-B terlebih dahulu.
-- Bagian ini hanya menambah langkah kerja khusus C.
-
-Batasan khusus
-- Fokus pada peningkatan kualitas jawaban sebelum menjawab final.
-- Jangan mengulang aturan umum A-B jika tidak menambah nilai.
-
-Format output
-- Ikuti format output yang diminta pengguna.
-- Jika pengguna tidak menentukan format, pilih format adaptif sesuai A-B berdasarkan kebutuhan jawaban.
-
-Override resmi terhadap A-B
-- Tidak ada override khusus.
-
-Langkah kerja khusus C
 1. Jelaskan ulang apa yang Anda pahami tentang permintaan saya, singkat.
 2. Ajukan pertanyaan untuk hal yang belum jelas, lalu jelaskan mengapa pertanyaan itu penting.
 3. Telusuri konteks yang saya berikan untuk menemukan masalah inti dan kontradiksi.
