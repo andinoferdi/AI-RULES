@@ -112,19 +112,19 @@ Konfirmasi awal boleh memakai satu kata "PAHAM". Setelah konfirmasi, ikuti A-B d
 
 pastikan anda menggunakan mcp mcp ini dan pilih yang terbaik untuk digunakan dalam masalah ini
 
-1. Chrome DevTools MCP
-2. Context7 MCP
-3. Playwright MCP
-4. Filesystem MCP
-5. GitHub MCP
-6. Fetch MCP
-7. Sequential Thinking MCP
-8. Figma MCP
-9. Vercel MCP
-10. Sentry MCP
-11. Git MCP
-12. Supabase MCP
-13. Memory MCP
+1. Chrome DevTools MCP = Menghubungkan agent ke Chrome DevTools untuk inspect, debug, dan analisis browser.
+2. Context7 MCP = Mengambil dokumentasi dan contoh kode yang terbaru, spesifik versi, langsung dari sumber resmi.
+3. Playwright MCP = Menyediakan automasi browser berbasis Playwright agar agent dapat berinteraksi dengan halaman web.
+4. Filesystem MCP = Membaca, menulis, mencari, memindahkan, dan mengelola file atau direktori proyek lokal.
+5. GitHub MCP = Mengakses repository, file kode, issue, pull request, dan workflow GitHub dari agent.
+6. Fetch MCP = Mengambil konten web dan mengubah HTML menjadi Markdown agar lebih mudah diproses model.
+7. Sequential Thinking MCP = Membantu memecah masalah kompleks menjadi langkah berpikir yang lebih terstruktur.
+8. Figma MCP = Membawa konteks desain Figma ke agent untuk membantu desain-ke-kode dan akses informasi desain.
+9. Vercel MCP = Memberi akses aman ke dokumentasi, proyek, deployment, dan log Vercel.
+10. Sentry MCP = Menghubungkan agent ke issue, error, project, dan data debugging di Sentry.
+11. Git MCP = Menyediakan integrasi repository Git melalui MCP sebagai reference implementation resmi.
+12. Supabase MCP = Menghubungkan AI tools ke project Supabase untuk query dan interaksi terhadap resource Supabase.
+13. Memory MCP = Menyediakan persistent memory berbasis local knowledge graph untuk menyimpan dan mengambil konteks.
 ````
 
 # D. TEMPLATE ASISTEN PARAFRASE MULTIBAHASA
