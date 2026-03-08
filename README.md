@@ -105,8 +105,9 @@ Konfirmasi awal boleh memakai satu kata "PAHAM". Setelah konfirmasi, ikuti A-B d
 # A-B 1. TEMPLATE IDE YANG SUDAH ADA CHAT RULES DAN CODE RULES
 
 ````md
-Tolong pelajari @chat-rules.md, lalu gunakan gaya percakapan dengan saya sesuai aturan di sana.
-Selanjutnya, pelajari @code-rules-be.md dan @code-rules-fe.md / code rules yang ada, lalu terapkan seluruh ketentuan yang diminta. Saya juga ingin Anda memahami semua file dalam project ini sampai benar-benar paham 100 persen. Jika sudah paham 100 persen, hentikan proses peninjauannya. Setelah itu, setiap kali Anda menghasilkan kode, pastikan selalu sesuai dengan code rules yang sudah Anda pahami. anda tidak perlu mengimplementasikan apa apa disini hanya menganalisis dan memahami proyek ini saja
+Tolong pelajari @chat-rules.md, lalu gunakan gaya percakapan dengan saya sesuai aturan di sana. Setelah itu, pelajari @code-rules-be.md dan @code-rules-fe.md, termasuk seluruh code rules yang tersedia, lalu terapkan ketentuan yang diminta.
+
+Saya juga ingin Anda memahami semua file dalam project ini sampai benar-benar paham. Jika sudah paham, hentikan proses peninjauan. Setelah itu, setiap kali Anda menghasilkan kode, pastikan selalu mengikuti code rules yang sudah Anda pahami. Jika ada ketidaksesuaian, misalnya code rules menyatakan A tetapi implementasinya menjadi A1, tidak ada patokan tunggal mana yang harus selalu diikuti. Anda harus memilih pendekatan yang paling sesuai dengan praktik terbaik dan benar-benar menyelesaikan masalah. Untuk tahap ini, Anda tidak perlu mengimplementasikan apa pun. Anda cukup menganalisis dan memahami proyek ini saja.
 ````
 
 
