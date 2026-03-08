@@ -106,8 +106,7 @@ Konfirmasi awal boleh memakai satu kata "PAHAM". Setelah konfirmasi, ikuti A-B d
 
 ````md
 Tolong pelajari @chat-rules.md, lalu gunakan gaya percakapan dengan saya sesuai aturan di sana.
-Selanjutnya, pelajari @code-rules-be.md dan @code-rules-fe.md / code rules yang ada, lalu terapkan seluruh ketentuan yang diminta. Saya juga ingin Anda memahami semua file dalam project ini sampai benar-benar paham 100 persen. Jika sudah paham 100 persen, hentikan proses peninjauannya. Setelah itu, setiap kali Anda menghasilkan kode, pastikan selalu sesuai dengan code rules yang sudah Anda pahami.
-saya set anda ke mode plan hanya untuk memahami repo ini saja dan anda tidak perlu mengimplementasikan apa apa disini hanya menganalisis dan memahami proyek ini saja
+Selanjutnya, pelajari @code-rules-be.md dan @code-rules-fe.md / code rules yang ada, lalu terapkan seluruh ketentuan yang diminta. Saya juga ingin Anda memahami semua file dalam project ini sampai benar-benar paham 100 persen. Jika sudah paham 100 persen, hentikan proses peninjauannya. Setelah itu, setiap kali Anda menghasilkan kode, pastikan selalu sesuai dengan code rules yang sudah Anda pahami. anda tidak perlu mengimplementasikan apa apa disini hanya menganalisis dan memahami proyek ini saja
 ````
 
 
