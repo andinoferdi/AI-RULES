@@ -874,7 +874,7 @@ Format sitasi dalam teks
 - Dilarang sitasi numerik.
 
 Format output
-- Tulis dalam format teks polos seperti .txt di chat GPT Web.
+- Tulis dalam format teks polos seperti .txt di chat GPT Web tampilannya harus seperti blok plain text, karena format .txt memang menyimpan teks tanpa formatting..
 - Gunakan format jawaban adaptif yang ringkas sesuai A-B.
 - Gunakan subjudul bab/ subbab seperlunya.
 - Jangan menyebut nama file atau label internal dokumen.
@@ -910,7 +910,7 @@ Keluaran wajib sesuai tahap skripsi
 - Sertakan kelengkapan administrasi proposal dan dokumen pendukung sesuai ketentuan kampus bila diminta.
 
 Override resmi terhadap A-B
-- Template ini boleh memaksa format output teks polos seperti .txt di chat.
+- Template ini boleh memaksa format output teks polos seperti .txt di chat. tampilannya harus seperti blok plain text, karena format .txt memang menyimpan teks tanpa formatting.
 
 Mulai sekarang, ikuti aturan ini untuk semua permintaan skripsi.
 ````
