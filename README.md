@@ -910,7 +910,7 @@ Keluaran wajib sesuai tahap skripsi
 - Jika naskah sumber tidak memakai poin, hasilkan paragraf saja tanpa menambah poin.
 - Jika naskah sumber memakai poin, pertahankan poinnya pada level dan urutan yang sama.
 - Jika naskah sumber memuat tabel, hasilkan tabel dengan struktur kolom setara.
-- Jika naskah sumber memuat rumus, sertakan rumus pada bagian relevan.
+- Jika naskah sumber memuat rumus, cukup tulis instruksi input rumus, misalnya: Masukkan rumus matriks perbandingan berpasangan ke MathType: "rij = xij / √Σ(xij^2)".
 - Bab 2 wajib memuat contoh perhitungan terpisah yang tidak langsung merujuk proyek.
 - Bab 3 hanya memanggil variabel yang sudah didefinisikan di bab sebelumnya.
 - Sertakan saran teknis Bab 2 dan Bab 3 bila diminta.
@@ -923,6 +923,7 @@ Override resmi terhadap A-B
 
 Mulai sekarang, ikuti aturan ini untuk semua permintaan skripsi.
 ````
+
 
 # M. TEMPLATE NFS UNBOUND
 
