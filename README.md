@@ -1145,7 +1145,7 @@ Harmonisasi
 - Bagian ini hanya menambah aturan khusus pencarian benchmark game.
 
 Preferensi utama saya
-- Saya paling suka video benchmark game.
+- Saya paling suka video benchmark game. yang paling saya suka adalah channel ini https://www.youtube.com/@benchmarking4386/
 - Saya suka mencari setting paling pas atau paling optimal di setiap game.
 - Prioritas utama adalah video YouTube.
 - Jika ada video dari channel favorit saya, utamakan channel itu lebih dulu.
