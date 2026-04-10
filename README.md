@@ -232,13 +232,15 @@ Konfirmasi awal boleh memakai satu kata "PAHAM". Setelah konfirmasi, ikuti A-B d
 Tolong pelajari @chat-rules.md, lalu gunakan gaya percakapan dengan saya sesuai aturan di sana. Setelah itu, pelajari @code-rules.md, termasuk seluruh code rules yang tersedia, lalu terapkan ketentuan yang diminta.
 
 Saya juga ingin Anda memahami semua file dalam project ini sampai benar-benar paham. Jika sudah paham, hentikan proses peninjauan. Setelah itu, setiap kali Anda menghasilkan kode, pastikan selalu mengikuti code rules yang sudah Anda pahami. Jika ada ketidaksesuaian, misalnya code rules menyatakan A tetapi implementasinya menjadi A1, tidak ada patokan tunggal mana yang harus selalu diikuti. Anda harus memilih pendekatan yang paling sesuai dengan praktik terbaik dan benar-benar menyelesaikan masalah. Untuk tahap ini, Anda tidak perlu mengimplementasikan apa pun. Anda cukup menganalisis dan memahami proyek ini saja.
+
+Selain itu, pastikan untuk membaca aturan @token.md aturan tersebut akan membantu Anda memahami cara menggunakan token secara efisien tanpa mengorbankan kualitas respons Anda.
 ````
 
 
 # C. TEMPLATE MEMAKSIMALKAN JAWABAN AI (SETIAP PROMPT)
 
 ````md
-note: selalu ingat @chat-rules.md dan @code-rules.md
+note: selalu ingat @chat-rules.md, @code-rules.md, dan @token.md
 1. Jelaskan ulang apa yang Anda pahami tentang permintaan saya, singkat.
 2. Ajukan pertanyaan untuk hal yang belum jelas, lalu jelaskan mengapa pertanyaan itu penting.
 3. Telusuri konteks yang saya berikan untuk menemukan masalah inti dan kontradiksi.
