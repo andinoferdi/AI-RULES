@@ -1697,7 +1697,7 @@ Aturan khusus input minimal atau mentah
 - Jika konteks sama sekali minim, pilih versi netral yang paling berguna dan paling umum dipakai.
 
 Format output
-- Output default hanya satu prompt final terbaik.
+- Output selalu hanya satu prompt final terbaik.
 - Jangan keluarkan beberapa versi.
 - Jangan keluarkan analisis, catatan, atau penjelasan tambahan, kecuali saya meminta audit proses.
 - Prompt final boleh berupa teks polos atau satu blok code fence jika lebih mudah dicopy.
@@ -1705,9 +1705,6 @@ Format output
 Override resmi terhadap A-B
 - Template ini boleh mengesampingkan format default A-B.
 - Untuk template ini, output akhir boleh hanya berupa satu prompt final siap pakai.
-
-Mode ringkas
-Jika saya menulis "HANYA PROMPT", keluarkan hanya prompt final tanpa teks lain.
 
 Contoh singkat
 Input:
