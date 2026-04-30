@@ -226,23 +226,23 @@ Setiap jawaban harus terasa:
 # A-B 1. TEMPLATE IDE YANG SUDAH ADA CHAT RULES DAN CODE RULES
 
 ````md
-Tolong pelajari @chat-rules.md, lalu gunakan gaya percakapan dengan saya sesuai aturan di sana. Setelah itu, pelajari @code-rules.md, termasuk seluruh code rules yang tersedia, lalu terapkan ketentuan yang diminta.
+Tolong pelajari @chat-rules.md, lalu gunakan gaya percakapan dengan saya sesuai aturan di sana. Setelah itu, pelajari @code-rules.md, termasuk seluruh code rules yang tersedia, lalu terapkan ketentuan yang diminta. Anda juga wajib membaca dan menerapkan RTK AI atau aturan RTK yang tersedia di environment, termasuk aturan efisiensi token dan pengelolaan output command atau tool.
 
 Saya juga ingin Anda memahami semua file dalam project ini sampai benar-benar paham. Jika sudah paham, hentikan proses peninjauan. Setelah itu, setiap kali Anda menghasilkan kode, pastikan selalu mengikuti code rules yang sudah Anda pahami. Jika ada ketidaksesuaian, misalnya code rules menyatakan A tetapi implementasinya menjadi A1, tidak ada patokan tunggal mana yang harus selalu diikuti. Anda harus memilih pendekatan yang paling sesuai dengan praktik terbaik dan benar-benar menyelesaikan masalah. Untuk tahap ini, Anda tidak perlu mengimplementasikan apa pun. Anda cukup menganalisis dan memahami proyek ini saja.
 
-Selain itu, pastikan untuk membaca aturan @token.md aturan tersebut akan membantu Anda memahami cara menggunakan token secara efisien tanpa mengorbankan kualitas respons Anda.
+Selain itu, jika @token.md tersedia di project, baca aturan tersebut karena dapat membantu Anda memahami cara menggunakan token secara efisien tanpa mengorbankan kualitas respons Anda. Jika @token.md tidak tersedia, lanjutkan tanpa memaksa keberadaan file tersebut.
 ````
 
 
 # C. TEMPLATE MEMAKSIMALKAN JAWABAN AI (SETIAP PROMPT)
 
 ````md
-note: selalu ingat @chat-rules.md, @code-rules.md, dan @token.md
+note: selalu ingat @chat-rules.md, @code-rules.md, dan RTK AI atau aturan RTK yang tersedia. Jika @token.md tersedia di project, gunakan juga sebagai aturan tambahan opsional.
 1. Jelaskan ulang apa yang Anda pahami tentang permintaan saya, singkat.
 2. Ajukan pertanyaan untuk hal yang belum jelas, lalu jelaskan mengapa pertanyaan itu penting.
 3. Telusuri konteks yang saya berikan untuk menemukan masalah inti dan kontradiksi.
 4. Lakukan pencarian web jika dibutuhkan untuk praktik terbaik, istilah, atau konsistensi dengan referensi yang ada.
-5. Gunakan alat atau MCP yang benar-benar tersedia dan paling relevan untuk masalah saat ini. Jika alat tertentu tidak tersedia, abaikan tanpa memaksa. Untuk memori, tetap patuhi aturan memori di A-B dan aturan sistem yang aktif.
+5. Gunakan alat atau MCP yang benar-benar tersedia dan paling relevan untuk masalah saat ini. Jika alat tertentu tidak tersedia, abaikan tanpa memaksa.
 
 Daftar MCP atau tool preferensi, gunakan hanya jika tersedia
 1. Chrome DevTools MCP = Menghubungkan agent ke Chrome DevTools untuk inspect, debug, dan analisis browser.
@@ -258,6 +258,16 @@ Daftar MCP atau tool preferensi, gunakan hanya jika tersedia
 11. Git MCP = Menyediakan integrasi repository Git melalui MCP sebagai reference implementation resmi.
 12. Supabase MCP = Menghubungkan AI tools ke project Supabase untuk query dan interaksi terhadap resource Supabase.
 ````
+
+# C1. TEMPLATE MEMAKSIMALKAN JAWABAN AI (SETIAP PROMPT CHATBOT WEB)
+
+````md
+note: selalu ingat rules A-B terlebih dahulu. 
+1. Jelaskan ulang apa yang Anda pahami tentang permintaan saya, singkat.
+2. Ajukan pertanyaan untuk hal yang belum jelas, lalu jelaskan mengapa pertanyaan itu penting.
+3. Telusuri konteks yang saya berikan untuk menemukan masalah inti dan kontradiksi.
+4. Lakukan pencarian web jika dibutuhkan untuk praktik terbaik, istilah, atau konsistensi dengan referensi yang ada.
+
 
 # D. TEMPLATE ASISTEN PARAFRASE MULTIBAHASA
 
