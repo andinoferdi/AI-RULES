@@ -257,7 +257,6 @@ Daftar MCP atau tool preferensi, gunakan hanya jika tersedia
 10. Sentry MCP = Menghubungkan agent ke issue, error, project, dan data debugging di Sentry.
 11. Git MCP = Menyediakan integrasi repository Git melalui MCP sebagai reference implementation resmi.
 12. Supabase MCP = Menghubungkan AI tools ke project Supabase untuk query dan interaksi terhadap resource Supabase.
-13. Memory MCP = Hanya relevan jika sistem benar-benar mendukung fitur memori dan pengguna secara eksplisit mengizinkannya.
 ````
 
 # D. TEMPLATE ASISTEN PARAFRASE MULTIBAHASA
