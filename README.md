@@ -245,18 +245,32 @@ note: selalu ingat @chat-rules.md, @code-rules.md, dan RTK AI atau aturan RTK ya
 5. Gunakan alat atau MCP yang benar-benar tersedia dan paling relevan untuk masalah saat ini. Jika alat tertentu tidak tersedia, abaikan tanpa memaksa.
 
 Daftar MCP atau tool preferensi, gunakan hanya jika tersedia
-1. Chrome DevTools MCP = Menghubungkan agent ke Chrome DevTools untuk inspect, debug, dan analisis browser.
-2. Context7 MCP = Mengambil dokumentasi dan contoh kode yang terbaru, spesifik versi, langsung dari sumber resmi.
-3. Playwright MCP = Menyediakan automasi browser berbasis Playwright agar agent dapat berinteraksi dengan halaman web.
-4. Filesystem MCP = Membaca, menulis, mencari, memindahkan, dan mengelola file atau direktori proyek lokal.
-5. GitHub MCP = Mengakses repository, file kode, issue, pull request, dan workflow GitHub dari agent.
-6. Fetch MCP = Mengambil konten web dan mengubah HTML menjadi Markdown agar lebih mudah diproses model.
-7. Sequential Thinking MCP = Membantu memecah masalah kompleks menjadi langkah berpikir yang lebih terstruktur.
-8. Figma MCP = Membawa konteks desain Figma ke agent untuk membantu desain-ke-kode dan akses informasi desain.
-9. Vercel MCP = Memberi akses aman ke dokumentasi, proyek, deployment, dan log Vercel.
-10. Sentry MCP = Menghubungkan agent ke issue, error, project, dan data debugging di Sentry.
-11. Git MCP = Menyediakan integrasi repository Git melalui MCP sebagai reference implementation resmi.
-12. Supabase MCP = Menghubungkan AI tools ke project Supabase untuk query dan interaksi terhadap resource Supabase.
+1. Chrome DevTools MCP
+2. Context7 MCP
+3. Playwright MCP
+4. Browser Harness
+5. Filesystem MCP
+6. GitHub MCP
+7. Fetch MCP
+8. Sequential Thinking MCP
+9. Figma MCP
+10. Vercel MCP
+11. Sentry MCP
+12. Git MCP
+13. Supabase MCP
+
+Kombinasi MCP/tool yang disarankan
+Gunakan kombinasi hanya jika tool tersedia dan relevan; jangan memaksa memakai semua tool dalam kombinasi.
+1. Debugging browser: Chrome DevTools MCP + Playwright MCP + Browser Harness
+2. Debugging UI end-to-end: Playwright MCP + Browser Harness + Chrome DevTools MCP
+3. Debugging error produksi: Sentry MCP + GitHub MCP + Git MCP + Filesystem MCP
+4. Implementasi fitur kode: Filesystem MCP + Git MCP + Context7 MCP
+5. Riset dokumentasi teknis: Context7 MCP + Fetch MCP
+6. Issue/PR GitHub: GitHub MCP + Git MCP + Filesystem MCP
+7. Desain ke kode: Figma MCP + Filesystem MCP + Playwright MCP
+8. Deployment/Vercel: Vercel MCP + GitHub MCP + Git MCP
+9. Backend/database Supabase: Supabase MCP + Filesystem MCP + Context7 MCP
+10. Masalah kompleks multi-langkah: Sequential Thinking MCP + MCP lain yang relevan
 ````
 
 # C1. TEMPLATE MEMAKSIMALKAN JAWABAN AI (SETIAP PROMPT CHATBOT WEB)
