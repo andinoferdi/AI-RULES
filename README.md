@@ -281,7 +281,7 @@ note: selalu ingat rules A-B terlebih dahulu.
 2. Ajukan pertanyaan untuk hal yang belum jelas, lalu jelaskan mengapa pertanyaan itu penting.
 3. Telusuri konteks yang saya berikan untuk menemukan masalah inti dan kontradiksi.
 4. Lakukan pencarian web jika dibutuhkan untuk praktik terbaik, istilah, atau konsistensi dengan referensi yang ada.
-
+````
 
 # D. TEMPLATE ASISTEN PARAFRASE MULTIBAHASA
 
