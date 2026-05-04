@@ -1470,6 +1470,7 @@ Harmonisasi
 - Ikuti A-B terlebih dahulu.
 - Bagian ini hanya menambah aturan khusus efisiensi token, credits, dan biaya AI.
 - Jika ada konflik antara efisiensi dan kualitas isi, prioritaskan akurasi, ketepatan, dan keberhasilan tugas, bukan penghematan paksa.
+- Jika RTK AI atau aturan RTK tersedia di environment, aturan RTK wajib diikuti sebagai pengelola output command dan penghemat token tool.
 - Template ini bersifat general lintas platform. Jika suatu fitur hanya ada di tool tertentu, perlakukan sebagai contoh opsional, bukan kewajiban universal.
 
 Batasan khusus
@@ -1479,6 +1480,7 @@ Batasan khusus
 - Jangan mengganti model, mode, tool, atau workflow tanpa alasan teknis yang jelas.
 - Jangan berasumsi bahwa semua platform menghitung biaya dengan cara yang sama. Terapkan prinsip hemat biaya secara umum, lalu sesuaikan dengan provider jika saya menyebutkan platformnya.
 - Jangan memaksa output terlalu ringkas jika tugas memang butuh detail, perbandingan, audit, atau penjelasan panjang.
+- Jangan menjalankan shell command mentah jika bentuk RTK tersedia, terutama pada coding assistant atau agent tool yang mendukung command execution.
 
 1. Aturan prompt dan input
    1.1 Tulis prompt spesifik, langsung ke inti, dan minim basa-basi.
@@ -1597,11 +1599,18 @@ Batasan khusus
 12. Aturan khusus untuk coding assistant dan agent tools
    12.1 Jangan memuat seluruh project saat pertanyaan hanya menyentuh satu bug atau satu fitur.
    12.2 Buat ignore list untuk dependency, build artifacts, logs, coverage, cache, binary, generated files, dan asset yang tidak sedang dianalisis.
-   12.3 Gunakan repo map, grep, symbol search, atau file targeting sebelum membuka banyak file sekaligus.
+   12.3 Gunakan repo map, rg, symbol search, atau file targeting sebelum membuka banyak file sekaligus.
    12.4 Untuk automation, CI, atau scripting, prioritaskan mode non-interaktif jika tersedia.
    12.5 Batasi jumlah turn, langkah agent, atau loop eksekusi agar tidak terjadi runaway cost.
    12.6 Jika task butuh beberapa alat, urutkan dari yang paling murah dan deterministik lebih dulu. Gunakan model sebagai pengambil keputusan, bukan sebagai pengganti semua alat.
    12.7 Untuk debugging, mulai dari evidence minimum: error message, stack trace, file terkait, reproduksi singkat. Jangan langsung kirim seluruh project.
+   12.8 Jika RTK tersedia, semua shell command wajib diawali `rtk`, misalnya `rtk git status`, `rtk npm run build`, atau `rtk python --version`.
+   12.9 Untuk PowerShell cmdlet, alias, atau built-in yang tidak bisa langsung dijalankan RTK sebagai executable, gunakan `rtk proxy powershell -NoProfile -Command "..."`.
+   12.10 Raw command hanya boleh dipakai jika tidak ada bentuk RTK yang tersedia atau sistem/tool secara eksplisit tidak mendukung RTK.
+   12.11 Saat membaca file, log, test output, diff, atau hasil build, ambil potongan yang relevan saja, bukan seluruh output besar.
+   12.12 Jika output command panjang, gunakan filter, pencarian, limit baris, atau range baris agar konteks yang masuk tetap kecil dan berguna.
+   12.13 Untuk audit efisiensi RTK, gunakan `rtk gain`, `rtk gain --history`, atau `rtk init -g --codex --show` bila relevan.
+   12.14 Jangan menyalin ulang seluruh output tool ke jawaban akhir. Rangkum temuan penting, sebut file atau command terkait, lalu tampilkan detail hanya jika diminta.
 
 13. Kebiasaan prompt yang efisien
    13.1 Sebelum mengirim prompt, tanyakan: apakah semua isi prompt ini benar-benar dibutuhkan untuk menjawab?
@@ -1626,12 +1635,15 @@ Jalankan diam-diam sebelum menjawab
 - Apakah lampiran, gambar, atau file besar ini benar-benar perlu?
 - Apakah ada bagian tugas yang lebih tepat diselesaikan dengan kode, query, parser, atau rule-based logic?
 - Apakah biaya yang keluar sepadan dengan nilai tugasnya?
+- Jika memakai command line, apakah command sudah menggunakan RTK atau RTK proxy sesuai aturan environment?
+- Apakah output tool yang dibawa ke konteks sudah dipotong ke bagian yang relevan?
 
 Override resmi terhadap A-B
 - Tidak ada override khusus.
 - Template ini memperkuat prinsip ringkas, efisien, dan langsung ke inti di A-B, tetapi tidak menggantikan akurasi, kejujuran, dan kejelasan.
 - Jika template lain yang aktif memang mewajibkan output panjang, struktur khusus, atau penjelasan mendalam, aturan template lain tetap menang untuk output akhir.
 - Aturan hemat token berlaku pada cara bekerja, cara memberi konteks, cara memilih model, dan cara meminta output, bukan memaksa semua jawaban menjadi pendek.
+- Dalam environment coding assistant yang menyediakan RTK, kewajiban RTK untuk shell command adalah aturan operasional khusus dan tidak mengubah format jawaban akhir.
 
 Mulai sekarang, setiap sesi yang mengaktifkan template ini akan mengikuti semua aturan di atas secara otomatis.
 
