@@ -226,51 +226,74 @@ Setiap jawaban harus terasa:
 # A-B 1. TEMPLATE IDE YANG SUDAH ADA CHAT RULES DAN CODE RULES
 
 ````md
-Tolong pelajari @chat-rules.md, lalu gunakan gaya percakapan dengan saya sesuai aturan di sana. Setelah itu, pelajari @code-rules.md, termasuk seluruh code rules yang tersedia, lalu terapkan ketentuan yang diminta. Anda juga wajib membaca dan menerapkan RTK AI atau aturan RTK yang tersedia di environment, termasuk aturan efisiensi token dan pengelolaan output command atau tool.
+Tolong pelajari @chat-rules.md, lalu gunakan gaya percakapan dengan saya sesuai aturan di sana. Setelah itu, pelajari @code-rules.md, termasuk seluruh code rules yang tersedia, lalu terapkan ketentuan yang diminta.
 
-Saya juga ingin Anda memahami semua file dalam project ini sampai benar-benar paham. Jika sudah paham, hentikan proses peninjauan. Setelah itu, setiap kali Anda menghasilkan kode, pastikan selalu mengikuti code rules yang sudah Anda pahami. Jika ada ketidaksesuaian, misalnya code rules menyatakan A tetapi implementasinya menjadi A1, tidak ada patokan tunggal mana yang harus selalu diikuti. Anda harus memilih pendekatan yang paling sesuai dengan praktik terbaik dan benar-benar menyelesaikan masalah. Untuk tahap ini, Anda tidak perlu mengimplementasikan apa pun. Anda cukup menganalisis dan memahami proyek ini saja.
+Gunakan kombinasi efisiensi context utama berikut jika tersedia di environment:
+1. RTK AI: gunakan untuk mengelola output terminal, shell command, log, test result, grep, find, git, build, dan command lain agar hanya bagian penting yang masuk ke context.
+2. Serena MCP: gunakan untuk memahami, mencari, membaca, dan mengedit kode secara semantic atau symbol-level, agar tidak perlu membaca seluruh file jika hanya butuh fungsi, class, reference, atau bagian kode tertentu.
+3. Context7 MCP: gunakan untuk mengambil dokumentasi library, framework, API, atau contoh kode terbaru sesuai kebutuhan, terutama ketika implementasi bergantung pada versi library.
+4. Prompt Caching: gunakan jika platform atau model mendukung caching, dengan cara menjaga prefix prompt yang berulang tetap stabil, seperti chat rules, code rules, system project brief, dan instruksi global.
 
-Selain itu, jika @token.md tersedia di project, baca aturan tersebut karena dapat membantu Anda memahami cara menggunakan token secara efisien tanpa mengorbankan kualitas respons Anda. Jika @token.md tidak tersedia, lanjutkan tanpa memaksa keberadaan file tersebut.
+Prinsip penggunaan kombinasi tersebut:
+- Jangan memaksa semua tool dipakai bersamaan. Pilih tool yang paling relevan dengan tugas saat itu.
+- RTK dipakai untuk merapikan output command dan mengurangi noise terminal.
+- Serena MCP dipakai untuk membaca kode secara presisi, bukan membuka semua file besar tanpa alasan.
+- Context7 MCP dipakai saat butuh dokumentasi terbaru atau menghindari API usang.
+- Prompt Caching dipakai untuk instruksi panjang yang sering diulang, bukan untuk konteks yang selalu berubah.
+- Efisiensi token tidak boleh mengorbankan kualitas, akurasi, keamanan, atau kepatuhan terhadap code rules.
+- Jika salah satu tool tidak tersedia, abaikan tool tersebut dan lanjutkan dengan alat yang tersedia.
+- Jika @token.md tersedia di project, baca dan gunakan sebagai aturan tambahan opsional untuk strategi hemat token.
+
+Saya juga ingin Anda memahami semua file dalam project ini sampai benar-benar paham, tetapi lakukan secara efisien. Mulai dari file aturan, struktur project, dependency, entry point, dan file yang paling relevan. Jangan membaca seluruh file besar secara mentah jika Serena MCP, pencarian simbol, ringkasan struktur, atau cara lain yang lebih hemat context sudah cukup.
+
+Jika sudah paham, hentikan proses peninjauan. Setelah itu, setiap kali Anda menghasilkan kode, pastikan selalu mengikuti code rules yang sudah Anda pahami. Jika ada ketidaksesuaian, misalnya code rules menyatakan A tetapi implementasinya menjadi A1, tidak ada patokan tunggal mana yang harus selalu diikuti. Anda harus memilih pendekatan yang paling sesuai dengan praktik terbaik dan benar-benar menyelesaikan masalah. Untuk tahap ini, Anda tidak perlu mengimplementasikan apa pun. Anda cukup menganalisis dan memahami proyek ini saja.
 ````
 
 
 # C. TEMPLATE MEMAKSIMALKAN JAWABAN AI (SETIAP PROMPT)
 
 ````md
-note: selalu ingat @chat-rules.md, @code-rules.md, dan RTK AI atau aturan RTK yang tersedia. Jika @token.md tersedia di project, gunakan juga sebagai aturan tambahan opsional.
+note: selalu ingat @chat-rules.md, @code-rules.md, dan kombinasi efisiensi context RTK AI + Serena MCP + Context7 MCP + Prompt Caching jika tersedia. Jika @token.md tersedia di project, gunakan juga sebagai aturan tambahan opsional.
 1. Jelaskan ulang apa yang Anda pahami tentang permintaan saya, singkat.
-2. Ajukan pertanyaan untuk hal yang belum jelas, lalu jelaskan mengapa pertanyaan itu penting.
+2. Ajukan pertanyaan hanya untuk hal yang benar-benar belum jelas, lalu jelaskan mengapa pertanyaan itu penting.
 3. Telusuri konteks yang saya berikan untuk menemukan masalah inti dan kontradiksi.
-4. Lakukan pencarian web jika dibutuhkan untuk praktik terbaik, istilah, atau konsistensi dengan referensi yang ada.
+4. Lakukan pencarian web jika dibutuhkan untuk praktik terbaik, istilah, dokumentasi terbaru, atau konsistensi dengan referensi yang ada.
 5. Gunakan alat atau MCP yang benar-benar tersedia dan paling relevan untuk masalah saat ini. Jika alat tertentu tidak tersedia, abaikan tanpa memaksa.
+6. Hemat token tanpa mengurangi kualitas: ambil context seperlunya, ringkas noise, hindari membaca file besar mentah jika cukup dengan simbol, referensi, struktur, atau dokumentasi spesifik.
+7. Untuk instruksi yang sering berulang, jaga prefix prompt tetap stabil agar Prompt Caching bisa bekerja jika platform mendukungnya.
 
 Daftar MCP atau tool preferensi, gunakan hanya jika tersedia
-1. Chrome DevTools MCP
-2. Context7 MCP
-3. Playwright MCP
-4. Browser Harness
-5. Filesystem MCP
-6. GitHub MCP
-7. Fetch MCP
-8. Sequential Thinking MCP
-9. Figma MCP
-10. Vercel MCP
-11. Sentry MCP
-12. Git MCP
-13. Supabase MCP
+1. RTK AI
+2. Serena MCP
+3. Context7 MCP
+4. Prompt Caching
+5. Chrome DevTools MCP
+6. Playwright MCP
+7. Browser Harness
+8. Filesystem MCP
+9. GitHub MCP
+10. Fetch MCP
+11. Sequential Thinking MCP
+12. Figma MCP
+13. Vercel MCP
+14. Sentry MCP
+15. Git MCP
+16. Supabase MCP
 
 Kombinasi MCP/tool yang disarankan
 Gunakan kombinasi hanya jika tool tersedia dan relevan; jangan memaksa memakai semua tool dalam kombinasi.
-1. Debugging browser: Chrome DevTools MCP + Playwright MCP + Browser Harness
-2. Debugging UI end-to-end: Playwright MCP + Browser Harness + Chrome DevTools MCP
-3. Debugging error produksi: Sentry MCP + GitHub MCP + Git MCP + Filesystem MCP
-4. Implementasi fitur kode: Filesystem MCP + Git MCP + Context7 MCP
-5. Riset dokumentasi teknis: Context7 MCP + Fetch MCP
-6. Issue/PR GitHub: GitHub MCP + Git MCP + Filesystem MCP
-7. Desain ke kode: Figma MCP + Filesystem MCP + Playwright MCP
-8. Deployment/Vercel: Vercel MCP + GitHub MCP + Git MCP
-9. Backend/database Supabase: Supabase MCP + Filesystem MCP + Context7 MCP
-10. Masalah kompleks multi-langkah: Sequential Thinking MCP + MCP lain yang relevan
+1. Efisiensi context coding utama: RTK AI + Serena MCP + Context7 MCP + Prompt Caching
+2. Implementasi fitur kode: Serena MCP + Filesystem MCP + Git MCP + Context7 MCP + Prompt Caching
+3. Debugging terminal atau test output: RTK AI + Serena MCP + Git MCP atau Filesystem MCP
+4. Debugging browser: Chrome DevTools MCP + Playwright MCP + Browser Harness + Context7 MCP
+5. Debugging UI end-to-end: Playwright MCP + Browser Harness + Chrome DevTools MCP + Context7 MCP
+6. Debugging error produksi: Sentry MCP + GitHub MCP + Git MCP + Filesystem MCP + RTK AI
+7. Riset dokumentasi teknis: Context7 MCP + Fetch MCP + Prompt Caching
+8. Issue/PR GitHub: GitHub MCP + Git MCP + Filesystem MCP + Serena MCP
+9. Desain ke kode: Figma MCP + Filesystem MCP + Playwright MCP + Context7 MCP
+10. Deployment/Vercel: Vercel MCP + GitHub MCP + Git MCP + RTK AI
+11. Backend/database Supabase: Supabase MCP + Filesystem MCP + Context7 MCP + Serena MCP
+12. Masalah kompleks multi-langkah: Sequential Thinking MCP + Serena MCP + Context7 MCP + MCP lain yang relevan
 ````
 
 # C1. TEMPLATE MEMAKSIMALKAN JAWABAN AI (SETIAP PROMPT CHATBOT WEB)
