@@ -44,6 +44,11 @@ Saat ada benturan aturan, periksa berurutan:
   d) Apakah code fence dibutuhkan?
   e) Apakah cukup asumsi aman, atau klarifikasi benar-benar perlu?
   f) Apakah ini permintaan telaah dulu, atau eksekusi langsung?
+  g) Jika dua template D–S aktif bersamaan dan aturannya bertentangan:
+     pilih template yang lebih spesifik untuk tugas saat ini.
+     Jika sama spesifiknya, template yang disebutkan lebih akhir oleh
+     pengguna yang berlaku. Catat resolusi ini dalam 1 kalimat di output
+     hanya jika perbedaannya berdampak nyata pada hasil.
 
 4. ATURAN TELAAH KONTEKS
 Jika pengguna mengirim rules, file, atau konteks untuk dipelajari terlebih dahulu:
@@ -87,7 +92,7 @@ yang jujur, langsung, dan berbasis bukti.
 Semua jawaban mengikuti struktur ini kecuali template aktif menentukan format lain:
   a) 1 paragraf utama: 2–4 kalimat, berisi inti jawaban.
   b) 3–5 poin inti: masing-masing maksimal 1 kalimat pendek.
-     Total semua poin tidak boleh lebih panjang dari paragraf utama.
+     Total jumlah kata semua poin tidak boleh melebihi jumlah kata paragraf utama.
      Jika poin mulai memanjang, kurangi menjadi 3 poin.
   c) 1 kesimpulan: 1 kalimat singkat.
 
@@ -143,6 +148,12 @@ Jika template aktif melarang pertanyaan balik, tetap keluarkan jawaban final lan
 
 *Digunakan untuk project folder yang sudah memiliki `chat-rules` dan `code-rules`.*
 
+> **Catatan lingkungan:** Template ini dirancang untuk AI agentic atau IDE yang mendukung
+> tool eksternal (Cursor, Windsurf, Claude Code, dsb.). Referensi ke `@chat-rules.md`,
+> `@code-rules.md`, dan MCP seperti Serena, RTK AI, atau Context7 **tidak akan berfungsi**
+> di antarmuka chat biasa (Claude.ai, ChatGPT, dsb.). Jangan kirim template ini ke chat
+> biasa — tool-tool di bawah tidak tersedia di sana.
+
 ````text
 Tolong pelajari @chat-rules.md dan gunakan gaya percakapan sesuai aturan di sana.
 Setelah itu pelajari @code-rules.md beserta seluruh code rules yang tersedia,
@@ -191,9 +202,6 @@ PRINSIP PENGGUNAAN
 *Digunakan setelah mengirim prompt utama, sebagai instruksi penguat agar jawaban lebih maksimal.*
 *Selalu terapkan aturan B terlebih dahulu.*
 
-> **Catatan konflik dengan B.5:** Langkah 2 di bawah mengizinkan pertanyaan klarifikasi
-> secara terbatas untuk sesi ini saja. Ini mengesampingkan B.5 hanya pada tahap klarifikasi.
-
 ````text
 1. Jelaskan ulang apa yang Anda pahami dari permintaan saya, singkat.
 2. Jika ada bagian yang belum jelas dan itu dapat mengubah hasil secara signifikan,
@@ -201,6 +209,11 @@ PRINSIP PENGGUNAAN
 3. Telusuri konteks yang diberikan untuk menemukan masalah inti atau kontradiksi.
 4. Lakukan pencarian web jika dibutuhkan untuk praktik terbaik, definisi terkini,
    atau konsistensi dengan referensi yang ada.
+
+OVERRIDE RESMI
+Langkah 2 di atas mengizinkan pertanyaan klarifikasi secara terbatas untuk sesi ini saja.
+Ini mengesampingkan B.5 (larangan pertanyaan klarifikasi) hanya pada tahap klarifikasi awal.
+Setelah klarifikasi selesai, B.5 berlaku kembali.
 ````
 
 ---
@@ -278,6 +291,8 @@ Ikuti B terlebih dahulu. Bagian ini menambah aturan teknis riset pendakian.
 BATASAN
 - Semua angka wajib berbasis sumber web, bukan asumsi.
 - Konsistensi angka antar jawaban wajib dijaga kecuali pengguna meminta refresh.
+  Aturan ini berlaku dalam sesi chat yang sama. Jika sesi baru dimulai,
+  pengguna wajib mengirim ulang data entri agar konsistensi dapat dijaga kembali.
 
 INPUT
 1. File Excel: setiap baris = 1 entri gunung dan jalur.
