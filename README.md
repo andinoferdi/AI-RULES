@@ -194,6 +194,8 @@ PRINSIP PENGGUNAAN
 5. Gunakan tool paling relevan. Abaikan tool yang tidak tersedia.
 6. Hemat token tanpa mengurangi kualitas: ambil konteks seperlunya.
 7. Stabilkan prefix prompt berulang agar Prompt Caching bekerja jika platform mendukung.
+
+UNTUK DIFASE INI HANYA PELAJARI DAN AUDIT SAJA DAN TANPA MENGUBAH APAPUN
 ````
 
 ---
