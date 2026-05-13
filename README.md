@@ -1448,3 +1448,48 @@ OVERRIDE RESMI
 - Template ini tidak mewajibkan tabel Markdown.
 - Sanitasi moderat diprioritaskan selama tidak mengubah fakta.
 ````
+
+## Z. RESET DARURAT
+
+*Kirim prompt ini kapan saja percakapan mulai melenceng dari tujuan awal.*
+*Selalu terapkan aturan A dan B terlebih dahulu.*
+
+````text
+1. Berhenti sepenuhnya dan baca ulang seluruh riwayat percakapan dari awal.
+2. Identifikasi secara internal: tujuan awal saya, template yang aktif, dan
+   di mana jawaban pertama kali mulai menyimpang.
+3. Keluarkan laporan berikut sebelum melanjutkan apa pun:
+
+   [STATUS RESET]
+   Tujuan awal    : [1 kalimat]
+   Template aktif : [daftar]
+   Penyimpangan   : [1–2 kalimat]
+   Tindakan       : [1 kalimat]
+   Status         : SIAP DILANJUTKAN / BUTUH KONFIRMASI
+
+4. Kunci ulang semua instruksi, format, dan gaya bahasa dari template yang aktif,
+   lalu lanjutkan tugas atau pertanyaan terakhir saya.
+   Jika status BUTUH KONFIRMASI: ajukan maksimal 1 pertanyaan terlebih dahulu.
+
+OVERRIDE RESMI
+Langkah 3 mengizinkan laporan [STATUS RESET] tampil sebagai respons tunggal
+sebelum eksekusi dilanjutkan, mengesampingkan format default B untuk 1 respons.
+Setelah laporan selesai, semua template yang aktif berlaku kembali sepenuhnya.
+````
+
+---
+
+## Z1. MINI RESET
+
+*Kirim prompt ini untuk penyimpangan ringan yang tidak butuh laporan status.*
+*Gunakan Reset Z jika instruksi diabaikan, jawaban kontradiksi, atau topik sudah jauh meleset.*
+
+````text
+1. Baca ulang instruksi awal dan semua template yang aktif secara internal.
+2. Identifikasi apa yang mulai menyimpang tanpa laporan ke saya.
+3. Kunci ulang semua aturan aktif dan lanjutkan langsung dengan jawaban yang benar.
+   Tidak ada pengumuman, tidak ada penjelasan proses.
+
+OVERRIDE RESMI
+Tidak ada.
+````
