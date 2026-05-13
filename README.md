@@ -145,22 +145,65 @@ Jika template aktif melarang pertanyaan balik, tetap keluarkan jawaban final lan
 
 ---
 
-## B1. TEMPLATE PROYEK YANG SUDAH ADA
+# B1. TEMPLATE PROYEK YANG SUDAH ADA
 
-*Digunakan untuk project folder yang sudah memiliki `chat-rules` dan `code-rules`.*
+Gunakan ini hanya untuk AI agent di repo yang sudah punya `chat-rules` / `code-rules`.
 
-> **Catatan lingkungan:** Template ini dirancang untuk AI agentic atau IDE yang mendukung
-> tool eksternal (Cursor, Windsurf, Claude Code, dsb.). Referensi ke `@chat-rules.md`,
-> `@code-rules.md`, dan MCP seperti Serena, RTK AI, atau Context7 **tidak akan berfungsi**
-> di antarmuka chat biasa (Claude.ai, ChatGPT, dsb.). Jangan kirim template ini ke chat
-> biasa — tool-tool di bawah tidak tersedia di sana.
+```text
+Anda sedang berada di repo project. Fase ini hanya BOOTSTRAP, bukan pengerjaan task.
+
+TUJUAN
+Pahami konteks minimum repo agar siap menerima task berikutnya. Jangan audit seluruh repo.
+
+BATAS KERJA WAJIB
+1. Baca `chat-rules` dan `code-rules` hanya untuk aturan yang berdampak langsung.
+2. Jangan buka semua file. Gunakan repo map / file tree / search dulu.
+3. Maksimal buka 5 file pada fase bootstrap:
+   - rules utama
+   - package/config utama
+   - entry point utama jika benar-benar perlu
+4. Abaikan: node_modules, vendor, dist, build, .next, coverage, cache, lockfile besar, log, asset besar, generated file.
+5. Berhenti membaca saat sudah tahu:
+   - stack utama
+   - struktur folder inti
+   - cara menjalankan project
+   - aturan coding penting
+6. Jangan mengubah file apa pun.
+7. Jangan menjalankan command berat.
+8. Jangan membuat implementasi sebelum saya kirim task utama.
+
+OUTPUT BOOTSTRAP WAJIB RINGKAS
+Tulis maksimal 8 bullet:
+- Stack utama
+- Struktur folder inti
+- Aturan coding penting
+- Command penting jika terlihat
+- Hal yang belum jelas
+- File yang sudah dibaca
+
+SETELAH OUTPUT
+Berhenti. Tunggu task utama saya.
+Task berikutnya dari saya harus diprioritaskan dibanding eksplorasi repo tambahan.
+Saat task utama masuk, baca hanya file yang relevan dengan task tersebut.
+```
+
+
+---
+
+## C. PENGUAT PROMPT
+
+*Digunakan setelah mengirim prompt utama, sebagai instruksi penguat agar jawaban lebih maksimal.*
+*Selalu terapkan aturan B terlebih dahulu.*
 
 ````text
-Tolong pelajari @chat-rules.md dan gunakan gaya percakapan sesuai aturan di sana.
-Setelah itu pelajari @code-rules.md beserta seluruh code rules yang tersedia,
-lalu terapkan ketentuan yang diminta.
+1. Jelaskan ulang apa yang Anda pahami dari permintaan saya, singkat.
+2. Jika ada bagian yang belum jelas dan itu dapat mengubah hasil secara signifikan,
+   ajukan maksimal 5-7 pertanyaan dan jelaskan kenapa penting.
+3. Telusuri konteks yang diberikan untuk menemukan masalah inti atau kontradiksi.
+4. Lakukan pencarian web jika dibutuhkan untuk praktik terbaik, definisi terkini,
+   atau konsistensi dengan referensi yang ada.
 
-Gunakan tool dan MCP berikut jika tersedia. Jangan memaksa memakai tool yang tidak ada.
+Gunakan tool dan MCP berikut jika tersedia dan hemat token. Jangan memaksa memakai tool yang tidak ada.
 
 PRIORITAS UTAMA
 RTK AI + Serena MCP + Context7 MCP + Prompt Caching
@@ -186,39 +229,13 @@ Deployment Vercel      : Vercel MCP + GitHub MCP + Git MCP + RTK AI
 Backend Supabase       : Supabase MCP + Filesystem MCP + Context7 MCP + Serena MCP
 Masalah kompleks       : Sequential Thinking MCP + Serena MCP + Context7 MCP + MCP relevan lain
 
-PRINSIP PENGGUNAAN
-1. Sebelum membuka file besar, gunakan symbol search atau repo map terlebih dahulu.
-2. Baca file hanya jika benar-benar perlu, bukan hanya karena terlihat relevan.
-3. Jika ada lebih dari satu cara yang valid, pilih yang paling efisien untuk context window.
-4. Terapkan rules dari chat-rules dan code-rules secara konsisten tanpa diingatkan per pesan.
-5. Gunakan tool paling relevan. Abaikan tool yang tidak tersedia.
-6. Hemat token tanpa mengurangi kualitas: ambil konteks seperlunya.
-7. Stabilkan prefix prompt berulang agar Prompt Caching bekerja jika platform mendukung.
-
-UNTUK DIFASE INI HANYA PELAJARI DAN AUDIT SAJA DAN TANPA MENGUBAH APAPUN
-````
-
----
-
-## C. PENGUAT PROMPT
-
-*Digunakan setelah mengirim prompt utama, sebagai instruksi penguat agar jawaban lebih maksimal.*
-*Selalu terapkan aturan B terlebih dahulu.*
-
-````text
-1. Jelaskan ulang apa yang Anda pahami dari permintaan saya, singkat.
-2. Jika ada bagian yang belum jelas dan itu dapat mengubah hasil secara signifikan,
-   ajukan maksimal 2 pertanyaan dan jelaskan kenapa penting.
-3. Telusuri konteks yang diberikan untuk menemukan masalah inti atau kontradiksi.
-4. Lakukan pencarian web jika dibutuhkan untuk praktik terbaik, definisi terkini,
-   atau konsistensi dengan referensi yang ada.
-
 OVERRIDE RESMI
 Langkah 2 di atas mengizinkan pertanyaan klarifikasi secara terbatas untuk sesi ini saja.
 Ini mengesampingkan B.5 (larangan pertanyaan klarifikasi) hanya pada tahap klarifikasi awal.
 Klarifikasi dianggap selesai setelah pengguna menjawab pertanyaan tersebut, atau setelah
 1 putaran tanya-jawab berlalu tanpa jawaban, mana yang lebih dulu. Setelah itu, B.5
 berlaku kembali dan AI wajib langsung mengeksekusi tanpa pertanyaan tambahan.
+
 ````
 
 ---
