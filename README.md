@@ -194,6 +194,8 @@ PRINSIP PENGGUNAAN
 5. Gunakan tool paling relevan. Abaikan tool yang tidak tersedia.
 6. Hemat token tanpa mengurangi kualitas: ambil konteks seperlunya.
 7. Stabilkan prefix prompt berulang agar Prompt Caching bekerja jika platform mendukung.
+
+UNTUK DIFASE INI HANYA PELAJARI DAN AUDIT SAJA DAN TANPA MENGUBAH APAPUN
 ````
 
 ---
@@ -1475,21 +1477,4 @@ OVERRIDE RESMI
 Langkah 3 mengizinkan laporan [STATUS RESET] tampil sebagai respons tunggal
 sebelum eksekusi dilanjutkan, mengesampingkan format default B untuk 1 respons.
 Setelah laporan selesai, semua template yang aktif berlaku kembali sepenuhnya.
-````
-
----
-
-## Z1. MINI RESET
-
-*Kirim prompt ini untuk penyimpangan ringan yang tidak butuh laporan status.*
-*Gunakan Reset Z jika instruksi diabaikan, jawaban kontradiksi, atau topik sudah jauh meleset.*
-
-````text
-1. Baca ulang instruksi awal dan semua template yang aktif secara internal.
-2. Identifikasi apa yang mulai menyimpang tanpa laporan ke saya.
-3. Kunci ulang semua aturan aktif dan lanjutkan langsung dengan jawaban yang benar.
-   Tidak ada pengumuman, tidak ada penjelasan proses.
-
-OVERRIDE RESMI
-Tidak ada.
 ````
