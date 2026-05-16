@@ -196,6 +196,8 @@ Saat task utama masuk, baca hanya file yang relevan dengan task tersebut.
 *Selalu terapkan aturan B terlebih dahulu.*
 
 ````text
+reminder: selalu ingat @chat-rules.md dan @code-rules.md yang ada
+
 1. Jelaskan ulang apa yang Anda pahami dari permintaan saya, singkat.
 2. Jika ada bagian yang belum jelas dan itu dapat mengubah hasil secara signifikan,
    ajukan maksimal 5-7 pertanyaan dan jelaskan kenapa penting.
