@@ -157,6 +157,7 @@ Pahami konteks minimum repo agar siap menerima task berikutnya. Jangan audit sel
 
 BATAS KERJA WAJIB
 1. Baca `chat-rules` dan `code-rules` hanya untuk aturan yang berdampak langsung.
+1.2. Baca `token.md` dan harus satu visi dan misi dengan rtk ai
 2. Jangan buka semua file. Gunakan repo map / file tree / search dulu.
 3. Maksimal buka 5 file pada fase bootstrap:
    - rules utama
