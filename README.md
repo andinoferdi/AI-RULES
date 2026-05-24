@@ -205,7 +205,11 @@ Saat task utama masuk, baca hanya file yang relevan dengan task tersebut.
 *Selalu terapkan aturan B terlebih dahulu.*
 
 ````text
-reminder: selalu ingat @chat-rules.md, @code-rules.md, @token.md, dan template relevan lain yang tersedia
+reminder: selalu ingat file template yang relevan:
+- rules wajib: @chat-rules.md, @code-rules.md, @token.md
+- aturan teknis: @be-rules.md, @fe-rules.md
+- workflow project: @Agents.md, @git-naming.md, @git-workflow.md
+- dokumen project/task: @task.md, @prd.md, @brd.md, @srs.md
 
 1. Jelaskan ulang apa yang Anda pahami dari permintaan saya, singkat.
 2. Jika ada bagian yang belum jelas dan itu dapat mengubah hasil secara signifikan,
