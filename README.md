@@ -4,7 +4,7 @@ Dokumen ini berisi aturan gaya jawab dan template per peran. Semua teks memakai 
 
 **Cara pakai dokumen ini:**
 - **Bagian A dan B** — wajib selalu dikirimkan ke AI di setiap sesi.
-- **Bagian B1** — digunakan untuk project yang sudah memiliki `chat-rules` dan `code-rules`.
+- **Bagian B1** — digunakan untuk project yang memakai file template project.
 - **Bagian C** — digunakan sebagai penguat setelah prompt utama dikirim.
 - **Bagian D–S** — pilih satu atau beberapa sesuai kebutuhan, kirimkan bersama A dan B.
 
@@ -147,7 +147,7 @@ Jika template aktif melarang pertanyaan balik, tetap keluarkan jawaban final lan
 
 # B1. TEMPLATE PROYEK YANG SUDAH ADA
 
-Gunakan ini hanya untuk AI agent di repo yang sudah punya `chat-rules` / `code-rules`.
+Gunakan ini hanya untuk AI agent di repo yang sudah memakai file template project.
 
 ```text
 Anda sedang berada di repo project. Fase ini hanya BOOTSTRAP, bukan pengerjaan task.
@@ -156,22 +156,30 @@ TUJUAN
 Pahami konteks minimum repo agar siap menerima task berikutnya. Jangan audit seluruh repo.
 
 BATAS KERJA WAJIB
-1. Baca `chat-rules` dan `code-rules` hanya untuk aturan yang berdampak langsung.
-1.2. Baca `token.md` dan harus satu visi dan misi dengan rtk ai
-2. Jangan buka semua file. Gunakan repo map / file tree / search dulu.
-3. Maksimal buka 5 file pada fase bootstrap:
+1. Inventarisasi semua file template `.md` yang tersedia terlebih dahulu.
+2. Baca rules wajib minimal:
+   - `chat-rules.md`
+   - `code-rules.md`
+   - `token.md`
+3. Baca template tambahan hanya jika relevan dengan task, area kerja, atau workflow:
+   - aturan teknis: `be-rules.md`, `fe-rules.md`
+   - workflow project: `Agents.md`, `git-naming.md`, `git-workflow.md`
+   - dokumen project/task: `task.md`, `prd.md`, `brd.md`, `srs.md`
+4. Jangan buka semua file secara penuh jika task belum membutuhkan. Gunakan repo map / file tree / search dulu.
+5. Maksimal buka 5 file pada fase bootstrap:
    - rules utama
+   - template tambahan yang paling relevan
    - package/config utama
    - entry point utama jika benar-benar perlu
-4. Abaikan: node_modules, vendor, dist, build, .next, coverage, cache, lockfile besar, log, asset besar, generated file.
-5. Berhenti membaca saat sudah tahu:
+6. Abaikan: node_modules, vendor, dist, build, .next, coverage, cache, lockfile besar, log, asset besar, generated file.
+7. Berhenti membaca saat sudah tahu:
    - stack utama
    - struktur folder inti
    - cara menjalankan project
    - aturan coding penting
-6. Jangan mengubah file apa pun.
-7. Jangan menjalankan command berat.
-8. Jangan membuat implementasi sebelum saya kirim task utama.
+8. Jangan mengubah file apa pun.
+9. Jangan menjalankan command berat.
+10. Jangan membuat implementasi sebelum saya kirim task utama.
 
 OUTPUT BOOTSTRAP WAJIB RINGKAS
 Tulis maksimal 8 bullet:
@@ -197,7 +205,7 @@ Saat task utama masuk, baca hanya file yang relevan dengan task tersebut.
 *Selalu terapkan aturan B terlebih dahulu.*
 
 ````text
-reminder: selalu ingat @chat-rules.md dan @code-rules.md yang ada
+reminder: selalu ingat @chat-rules.md, @code-rules.md, @token.md, dan template relevan lain yang tersedia
 
 1. Jelaskan ulang apa yang Anda pahami dari permintaan saya, singkat.
 2. Jika ada bagian yang belum jelas dan itu dapat mengubah hasil secara signifikan,
