@@ -1,119 +1,75 @@
 # Naming, PR, dan Daily Report
 
-Panduan singkat untuk membuat nama branch, commit, PR title, deskripsi PR, dan daily report yang rapi, natural, serta tetap mengikuti gaya tim atau repository.
+Panduan singkat untuk nama branch, commit, PR title, deskripsi PR, dan daily report yang rapi dan konsisten dengan gaya tim `[PROJECT_NAME]`.
 
-## Branch Naming
-
-- Format branch mengikuti workflow repo: `type/deskripsi-singkat-dengan-dash`.
-- Jika tim memakai prefix nama, gunakan format: `nama/type/deskripsi-singkat`.
-- Type yang umum dipakai: `fix`, `feat`, `feature`, `hotfix`, `refactor`, `chore`, `docs`, dan `test`.
-- Gunakan huruf kecil dan dash, bukan spasi atau underscore.
-- Branch yang sudah dipakai PR tidak perlu di-rename kecuali reviewer meminta eksplisit.
-
-Contoh branch:
+## Branch
+- Format: `type/deskripsi-singkat-dengan-dash`. Untuk task personal: `[USERNAME]/type/deskripsi-singkat`.
+- Type umum: `fix`, `feat`, `feature`, `hotfix`, `refactor`, `chore`, `docs`, `test`.
+- Huruf kecil dan dash, bukan spasi atau underscore.
 
 ```text
-(nama)/fix/login-validation-error
-(nama)/feat/user-profile-page
-(nama)/refactor/order-service-layer
-(nama)/chore/update-project-dependencies
+[USERNAME]/fix/deskripsi-bug
+[USERNAME]/feat/nama-fitur
 ```
 
-## Commit Message
-
-- Format tetap mengikuti Conventional Commits: `type(domain): ringkasan perubahan`.
-- Ringkasan boleh natural seperti gaya tim, tetapi tetap jelas mencakup perubahan utama.
-- Gunakan `fix` untuk bug, `feat` untuk fitur baru, `refactor` untuk perubahan struktur tanpa ubah behavior, `chore` untuk config/dependency, `docs` untuk dokumentasi, dan `test` untuk testing.
-- Kalau commit mencakup banyak file dalam satu konteks, pakai ringkasan yang mencakup semua perubahan penting.
-
-Contoh commit:
+## Commit
+- Conventional Commits: `type(domain): ringkasan perubahan`.
+- `fix` untuk bug, `feat` untuk fitur baru, `refactor` untuk ubah struktur tanpa ubah behavior, `chore` untuk config/dependency, `docs` untuk dokumentasi, `test` untuk testing.
+- Ringkasan boleh natural, tetap jelas mencakup perubahan utama.
 
 ```text
-fix(auth): fix validation login user
-feat(profile): add halaman edit profil
-refactor(order): pisah logic order ke service
-chore(deps): update dependency minor project
+fix(domain): perbaiki flow yang bermasalah
+feat(domain): tambah filter dan widget baru
 ```
 
-Hindari commit terlalu umum:
+Hindari commit terlalu umum: `fix bug`, `update`, `wip`, `tes`.
+
+## PR Title
+- Format tim: `[TARGET] source-branch : ringkasan perubahan`.
+- Target biasanya `[STAGING]` untuk PR ke staging dan `[MAIN]` untuk PR ke main.
+- Cek contoh PR terbaru agar format konsisten dengan tim.
 
 ```text
-fix bug
-update
-wip
-tes
+[STAGING] [USERNAME]/fix/nama-fitur : ringkasan perubahan
+[MAIN] [USERNAME]/feat/nama-fitur : ringkasan perubahan
 ```
 
-## Pull Request Title
+Untuk PR rebuild/remerge karena history target berubah, pakai kata `remerge` di ringkasan.
 
-- Format title PR mengikuti pola tim. Jika belum ada pola, gunakan: `[TARGET] source-branch : ringkasan perubahan`.
-- Target bisa `[STAGING]`, `[MAIN]`, `[DEV]`, atau nama environment lain sesuai workflow repo.
-- Ringkasan PR boleh natural dan humanize, tetapi tetap menjelaskan inti perubahan.
-- Sebelum create PR, cek contoh PR terbaru agar format tetap konsisten dengan tim.
-- Jika reviewer meminta penyesuaian nama PR, cukup update title PR.
-
-Contoh PR title:
-
-```text
-[STAGING] (nama)/fix/login-validation-error : Perbaiki validasi error login
-[STAGING] (nama)/feat/user-profile-page : Tambah halaman edit profil user
-[MAIN] (nama)/refactor/order-service-layer : Rapikan logic order ke service layer
-[DEV] (nama)/chore/update-project-dependencies : Update dependency minor project
-```
-
-## Pull Request Description
-
-- Deskripsi PR dibuat singkat, natural, dan langsung menjelaskan perubahan utama.
-- Jangan terlalu kaku seperti laporan teknis panjang jika PR tim lain memakai gaya sederhana.
-- Tulis test yang benar-benar sudah dijalankan.
-- Jika tidak ada migration, tulis `Tidak ada migration`, bukan checklist rollback yang tidak relevan.
-
-Template:
+## PR Description
+Singkat, natural, langsung menjelaskan perubahan utama. Tulis test yang benar-benar dijalankan. Jika tidak ada migration, tulis "Tidak ada migration".
 
 ```markdown
 ## Apa yang berubah?
-
-Jelaskan perubahan utama secara singkat dan konkret.
+[ringkasan perubahan]
 
 ## Kenapa perlu berubah?
-
-Jelaskan masalah, kebutuhan fitur, alasan teknis, atau konteks bisnis yang membuat perubahan ini diperlukan.
+[konteks masalah]
 
 ## Cara test
-
-1. Buka halaman atau endpoint terkait.
-2. Jalankan skenario utama.
-3. Pastikan hasil sesuai ekspektasi.
+1. [langkah verifikasi]
 
 ## Checklist
-
 - [x] Sudah di-test sesuai area perubahan
-- [x] Tidak ada error console, log, atau warning tidak perlu
+- [x] Tidak ada console error atau log tak perlu
 - [x] Tidak ada hardcoded credential atau API key
-- [x] Tidak ada migration, atau migration sudah dicek bila ada
+- [x] Tidak ada migration, atau migration sudah dicek
 ```
 
-## Laporan Setelah Pull Request
-
-Setelah PR dibuat, kirim laporan singkat ke grup, mentor, reviewer, atau task tracker dengan title PR dan link PR.
-
-Contoh:
+## Laporan setelah PR
+Kirim laporan singkat ke grup/reviewer/task tracker dengan title dan link PR.
 
 ```text
-[STAGING] fix validation error login
-https://github.com/owner/repository/pull/123
+[STAGING] Ringkasan perubahan
+[URL_PR]
 ```
 
 ## Daily Report
-
-Daily report minimal 3 item atau mengikuti aturan tempat kerja. Bahasanya harus singkat, humanize, dan langsung menjelaskan pekerjaan yang dilakukan.
-
-Contoh daily report:
+Minimal 3 item atau sesuai aturan tempat kerja. Bahasa singkat, humanize, langsung menjelaskan pekerjaan.
 
 ```text
-1. fix validation error login user
-2. add handling response gagal dari API
-3. fix tampilan pesan error pada form
-4. Menjalankan test manual untuk flow login
-5. Update deskripsi PR sesuai review
+1. Perbaiki flow modal edit
+2. Perbaiki quantity yang masih 0
+3. Tambah validasi duplicate saat edit
+4. Tambah handling error validasi
 ```

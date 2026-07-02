@@ -1,45 +1,37 @@
-Anda adalah AI coding assistant yang bertugas memperbarui seluruh file Markdown di dalam folder yang saya berikan.
+Anda adalah AI coding assistant yang bertugas mengadaptasi paket template Markdown ini ke project tempat ia disalin.
 
 Konteks:
-- Folder tersebut berisi beberapa file Markdown dokumentasi proyek.
-- Sebagian isi dokumentasi sebelumnya masih menggunakan template dari proyek lama bernama “DB Klik”.
-- Saya ingin dokumentasi tetap mempertahankan struktur, layout, penamaan, alur kerja, urutan pembahasan, dan gaya dokumentasi yang sudah ada.
-- Namun, isi dokumentasi harus diselaraskan dengan kondisi proyek saat ini dan implementasi nyata yang sudah dilakukan di proyek ini.
+- Folder ini berisi template rules AI yang generic dan reusable (chat-rules, code-rules, be-rules, fe-rules, Agents, token, git-*, brd, prd, srs, task, memory).
+- Isinya memakai placeholder seperti [PROJECT_NAME], [STACK_BACKEND], [STACK_FRONTEND], [DATABASE], [MAIN_BRANCH], [STAGING_BRANCH], [MODUL_UTAMA], dan [INTEGRASI_EKSTERNAL].
+- Saya ingin template ini diselaraskan dengan kondisi nyata project saat ini tanpa mengubah struktur, layout, heading, atau gaya ringkasnya.
 
 Tugas utama:
-Periksa semua file Markdown di folder tersebut, lalu ubah isi yang masih terlalu mengarah ke proyek lama agar sesuai dengan proyek saat ini.
-
-Aturan perubahan:
-- Jangan mengubah secara besar-besaran.
-- Batasi perubahan sekitar 10–20% dari total isi setiap file.
-- Fokus perubahan pada bagian yang memang tidak sesuai dengan proyek saat ini.
-- Jangan mengganti layout, heading utama, struktur section, naming workflow, atau pola dokumentasi yang sudah ada kecuali benar-benar diperlukan.
-- Jangan mengarang fitur, proses, teknologi, endpoint, workflow, atau implementasi yang tidak terlihat di proyek.
-- Jika ada bagian yang masih relevan dari template lama, pertahankan.
-- Jika ada istilah, deskripsi, atau contoh yang masih menyebut “DB Klik” atau konteks proyek lama, ubah agar sesuai dengan proyek saat ini.
-- Selaraskan dokumentasi dengan source code, konfigurasi, struktur folder, fitur, dan implementasi aktual dalam proyek.
-- Pastikan bahasa dokumentasi tetap natural, rapi, konsisten, dan mudah dipahami.
+Isi placeholder dan sesuaikan contoh di semua file Markdown agar cocok dengan project ini, berdasarkan implementasi nyata yang terlihat di repo.
 
 Prioritas kerja:
-1. Pahami dulu struktur proyek, file konfigurasi, source code, dan implementasi yang sudah ada.
-2. Baca semua file Markdown di folder yang diberikan.
-3. Identifikasi bagian yang masih berasal dari template proyek lama.
-4. Ubah hanya bagian yang perlu agar dokumentasi sesuai dengan proyek saat ini.
-5. Pertahankan gaya, format, dan struktur dokumentasi semaksimal mungkin.
-6. Setelah selesai, pastikan tidak ada referensi lama yang keliru atau tidak relevan.
+1. Pahami dulu project: baca manifest/config (package.json, composer.json, atau sejenis), struktur folder, entry point, dan pola kode utama.
+2. Tentukan nilai nyata untuk tiap placeholder: nama project, stack backend/frontend, database, branch utama dan staging, modul utama, dan integrasi eksternal.
+3. Ganti semua placeholder di file Markdown dengan nilai nyata tersebut.
+4. Sesuaikan contoh command, path, dan istilah agar cocok dengan project ini.
+5. Pertahankan struktur, heading, urutan, dan gaya ringkas tiap file.
+
+Aturan perubahan:
+- Jangan mengubah layout, heading, struktur section, atau gaya dokumentasi. Hanya isi dan sesuaikan konten.
+- Jangan mengarang fitur, stack, endpoint, workflow, atau implementasi yang tidak terlihat di repo.
+- Jika suatu placeholder tidak bisa dipastikan dari repo, biarkan sebagai placeholder dan catat di ringkasan akhir agar saya konfirmasi.
+- Jaga bahasa tetap natural, rapi, konsisten, dan ringkas seperti aslinya.
+- Jangan mengubah file non-Markdown kecuali saya minta eksplisit.
+- Jangan menambah panjang file secara signifikan. Template ini sengaja ringkas agar AI tidak mudah lupa.
 
 Batasan penting:
 - Jangan rewrite total.
-- Jangan melakukan perubahan kosmetik yang tidak perlu.
-- Jangan membuat dokumentasi terdengar seperti proyek baru jika implementasinya belum ada.
-- Jangan menambah klaim teknis tanpa bukti dari file proyek.
-- Jangan menghapus bagian penting hanya karena belum sempurna, kecuali jelas tidak relevan.
-- Jangan mengubah file non-Markdown kecuali saya meminta secara eksplisit.
+- Jangan menambah klaim teknis tanpa bukti dari file project.
+- Jangan menghapus bagian penting hanya karena project belum memakainya, kecuali jelas tidak relevan.
 
 Output yang saya inginkan:
 - Terapkan perubahan langsung pada semua file Markdown yang relevan.
 - Setelah selesai, berikan ringkasan singkat berisi:
-  1. File Markdown yang diubah.
-  2. Jenis perubahan utama pada masing-masing file.
-  3. Bagian yang sengaja dipertahankan agar layout dan workflow tetap konsisten.
-  4. Catatan jika ada bagian dokumentasi yang masih perlu konfirmasi karena implementasinya belum jelas.
+  1. Nilai placeholder yang dipakai (project, stack, branch, integrasi, dst).
+  2. File Markdown yang diubah dan jenis perubahan utamanya.
+  3. Placeholder yang belum bisa dipastikan dan perlu konfirmasi.
+  4. Catatan bila ada bagian template yang tidak relevan dengan project ini.

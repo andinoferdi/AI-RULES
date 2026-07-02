@@ -1,39 +1,47 @@
-# Panduan AGENTS untuk Repository Ini
+# AGENTS
 
-Dokumen ini berisi aturan kerja untuk AI agent, coding assistant, atau developer yang berinteraksi langsung dengan repository. Tujuannya agar perubahan tetap aman, terarah, dan tidak merusak development workflow project.
+Aturan kerja untuk AI agent, coding assistant, dan developer di project `[PROJECT_NAME]`. Scope aktif adalah root aplikasi; folder requirements, notes, dan screenshot hanya referensi bila task memintanya.
 
-## 1. Gunakan Mode Development yang Sesuai, **bukan build production saat iterasi**
+## 1. Root project & batas kerja
+- Jalankan command dari root aplikasi kecuali task meminta file di luar project.
+- Abaikan dependency, build, cache, dan artifact (mis. `node_modules`, `vendor`, `dist`, `build`, `.next`, `coverage`, log besar, asset besar).
+- Sebelum mengubah kode, pahami file terdekat, route/endpoint terkait, request/response, dan pola modul yang ada.
+- Perubahan minimal, spesifik pada task, dan tidak merombak arsitektur tanpa instruksi eksplisit.
 
-* **Gunakan command development project** seperti `npm run dev`, `pnpm dev`, `yarn dev`, `php artisan serve`, `docker compose up`, atau command lain yang memang dipakai repository saat iterasi.
-* **Jangan menjalankan build production secara asal di tengah sesi agent.** Build production hanya dijalankan jika task memang meminta verifikasi build, release, atau deployment.
-* Jika command build dibutuhkan, cek dulu script yang tersedia di `package.json`, `composer.json`, `Makefile`, `Taskfile`, atau dokumentasi repository.
+## 2. Stack
+Project ini memakai `[STACK_BACKEND]` + `[STACK_FRONTEND]` + `[DATABASE]` (contoh: isi sesuai `package.json`/`composer.json`/manifest project). Jangan menambah framework atau library baru jika kebutuhan bisa diselesaikan dengan stack yang ada atau helper project.
 
-## 2. Jaga Dependency Tetap Sinkron
+## 3. Struktur folder
+Gunakan struktur nyata repo sebagai sumber kebenaran (baca file tree dulu). Jika nama folder domain sudah ada, tambahkan file baru sedekat mungkin dengan domain itu. Jangan buat struktur baru sebelum memeriksa pola sekitar.
 
-Jika menambah atau mengubah dependency, lakukan ini:
+## 4. Aturan coding
+- Jaga route, URL, method, middleware, permission, dan kontrak request/response yang sudah berjalan.
+- Validasi input di server. Jangan percaya role, permission, harga, stok, status, atau ownership dari client.
+- Controller/handler fokus pada request, validasi, pemanggilan service, dan response. Logic berat ikut pola layer yang ada.
+- Hindari N+1 pada listing, tabel, export, dan dashboard.
+- Hormati auth, ownership, role, permission, dan filter akses yang ada.
+- Jangan redesign UI besar bila task hanya meminta perbaikan fungsi.
+- Jangan hardcode secret, credential, URL production, token, atau API key.
 
-1. Update lockfile yang sesuai, seperti `package-lock.json`, `pnpm-lock.yaml`, `yarn.lock`, `composer.lock`, `poetry.lock`, `uv.lock`, `go.sum`, atau file lock lain.
-2. Restart development server bila dependency memengaruhi runtime.
-3. Jangan menambah dependency baru jika kebutuhan masih bisa diselesaikan dengan dependency yang sudah ada.
+## 5. Command
+Jalankan hanya command yang relevan dengan task. Jika RTK tersedia, awali dengan `rtk` (contoh):
 
-## 3. Coding Conventions
+```powershell
+rtk [PERINTAH_DEV_SERVER]
+rtk [PERINTAH_BUILD]
+rtk [PERINTAH_TEST]
+```
 
-* Ikuti bahasa, framework, folder structure, naming, linting, dan pola module yang sudah ada di repository.
-* Untuk file baru, gunakan konvensi stack aktif, misalnya TypeScript untuk project TS, PHP untuk Laravel, Python untuk FastAPI/Django, atau bahasa lain sesuai project.
-* Letakkan file baru sedekat mungkin dengan domain atau module yang relevan.
-* Hindari refactor besar jika task hanya meminta bug fix atau perubahan kecil.
+Jangan jalankan command berat (full build, full test, migration nyata, deploy) kecuali task membutuhkannya.
 
-## 4. Useful Commands Recap
+## 6. Verifikasi
+Pilih verifikasi paling relevan dengan area yang diubah: test untuk logic backend, build untuk asset frontend, cek manual route/UI untuk perubahan tampilan. Jika verifikasi tidak bisa jalan karena environment/dependency/database lokal, catat alasannya singkat di final response.
 
-| Command | Purpose |
-| --- | --- |
-| `npm run dev` / `pnpm dev` / `yarn dev` | Menjalankan dev server untuk project frontend atau full-stack JS. |
-| `npm run lint` / `pnpm lint` / `yarn lint` | Menjalankan lint bila script tersedia. |
-| `npm run test` / `pnpm test` / `yarn test` | Menjalankan test JS/TS bila tersedia. |
-| `composer test` / `php artisan test` / `vendor/bin/phpunit` | Menjalankan test PHP/Laravel bila tersedia. |
-| `docker compose up` | Menjalankan service lokal bila project memakai Docker Compose. |
-| `npm run build` / `pnpm build` / `yarn build` | Build production. Jalankan hanya jika relevan dengan task. |
+## 7. Prinsip aman (WAJIB)
+- Jangan mengubah migration lama, dump SQL, seed penting, atau data production tanpa task eksplisit.
+- Jangan menghapus permission, middleware, filter akses, atau validasi hanya untuk menyederhanakan kode.
+- Jangan mengubah file environment kecuali diminta. Dokumentasikan konfigurasi lewat file contoh bila perlu.
+- Jangan commit, push, deploy, atau menjalankan migration nyata tanpa instruksi eksplisit.
+- Jika ada perubahan user yang belum Anda buat di worktree, jangan revert. Baca dan bekerja berdampingan.
 
----
-
-Ikuti praktik ini agar workflow agent tetap cepat, aman, dan tidak membuat state development menjadi kacau. Jika ragu, baca dokumentasi repository dan cek script yang tersedia sebelum menjalankan command besar.
+Ikuti dokumen ini bersama `chat-rules.md`, `code-rules.md`, dan `token.md`. Saat aturan bertentangan: instruksi sistem/platform tertinggi dulu, lalu instruksi pengguna terbaru, lalu aturan project ini.
