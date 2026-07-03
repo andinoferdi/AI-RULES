@@ -1,30 +1,25 @@
-# AGENTS
+<!-- BEGIN:project-context -->
+# [PROJECT_NAME]
 
-Aturan kerja untuk AI agent, coding assistant, dan developer di project `[PROJECT_NAME]`. Scope aktif adalah root aplikasi; folder requirements, notes, dan screenshot hanya referensi bila task memintanya.
+Stack: `[STACK_BACKEND]` + `[STACK_FRONTEND]` + `[DATABASE]`. Baca file tree dulu, struktur nyata repo adalah sumber kebenaran. Jangan tambah framework/library baru jika stack atau helper project sudah cukup. Abaikan `node_modules`, `vendor`, `dist`, `build`, `.next`, `coverage`, log dan asset besar.
+<!-- END:project-context -->
 
-## 1. Root project & batas kerja
-- Jalankan command dari root aplikasi kecuali task meminta file di luar project.
-- Abaikan dependency, build, cache, dan artifact (mis. `node_modules`, `vendor`, `dist`, `build`, `.next`, `coverage`, log besar, asset besar).
-- Sebelum mengubah kode, pahami file terdekat, route/endpoint terkait, request/response, dan pola modul yang ada.
-- Perubahan minimal, spesifik pada task, dan tidak merombak arsitektur tanpa instruksi eksplisit.
+<!-- BEGIN:coding-rules -->
+# Coding rules
 
-## 2. Stack
-Project ini memakai `[STACK_BACKEND]` + `[STACK_FRONTEND]` + `[DATABASE]` (contoh: isi sesuai `package.json`/`composer.json`/manifest project). Jangan menambah framework atau library baru jika kebutuhan bisa diselesaikan dengan stack yang ada atau helper project.
+Perubahan minimal dan spesifik pada task. Pahami file terdekat, route/endpoint terkait, dan pola modul sebelum mengubah kode. Jangan rombak arsitektur atau redesign UI tanpa instruksi eksplisit.
 
-## 3. Struktur folder
-Gunakan struktur nyata repo sebagai sumber kebenaran (baca file tree dulu). Jika nama folder domain sudah ada, tambahkan file baru sedekat mungkin dengan domain itu. Jangan buat struktur baru sebelum memeriksa pola sekitar.
-
-## 4. Aturan coding
-- Jaga route, URL, method, middleware, permission, dan kontrak request/response yang sudah berjalan.
-- Validasi input di server. Jangan percaya role, permission, harga, stok, status, atau ownership dari client.
-- Controller/handler fokus pada request, validasi, pemanggilan service, dan response. Logic berat ikut pola layer yang ada.
+- Jaga route, method, middleware, permission, dan kontrak request/response yang sudah berjalan.
+- Validasi input di server. Jangan percaya role, harga, stok, status, atau ownership dari client.
+- Logic berat ikut pola layer yang ada, bukan menumpuk di controller/handler.
 - Hindari N+1 pada listing, tabel, export, dan dashboard.
-- Hormati auth, ownership, role, permission, dan filter akses yang ada.
-- Jangan redesign UI besar bila task hanya meminta perbaikan fungsi.
 - Jangan hardcode secret, credential, URL production, token, atau API key.
+<!-- END:coding-rules -->
 
-## 5. Command
-Jalankan hanya command yang relevan dengan task. Jika RTK tersedia, awali dengan `rtk` (contoh):
+<!-- BEGIN:commands -->
+# Commands
+
+Jika RTK tersedia, awali shell command dengan `rtk`.
 
 ```powershell
 rtk [PERINTAH_DEV_SERVER]
@@ -32,16 +27,27 @@ rtk [PERINTAH_BUILD]
 rtk [PERINTAH_TEST]
 ```
 
-Jangan jalankan command berat (full build, full test, migration nyata, deploy) kecuali task membutuhkannya.
+Jalankan hanya command yang relevan dengan task. Verifikasi sesuai area perubahan: test untuk logic backend, build untuk asset frontend, cek manual untuk UI. Jika verifikasi tidak bisa jalan karena environment, catat alasannya di final response. Jangan jalankan command berat (full build, full test, migration nyata, deploy) tanpa kebutuhan task.
+<!-- END:commands -->
 
-## 6. Verifikasi
-Pilih verifikasi paling relevan dengan area yang diubah: test untuk logic backend, build untuk asset frontend, cek manual route/UI untuk perubahan tampilan. Jika verifikasi tidak bisa jalan karena environment/dependency/database lokal, catat alasannya singkat di final response.
+<!-- BEGIN:safety -->
+# Safety
 
-## 7. Prinsip aman (WAJIB)
-- Jangan mengubah migration lama, dump SQL, seed penting, atau data production tanpa task eksplisit.
-- Jangan menghapus permission, middleware, filter akses, atau validasi hanya untuk menyederhanakan kode.
-- Jangan mengubah file environment kecuali diminta. Dokumentasikan konfigurasi lewat file contoh bila perlu.
 - Jangan commit, push, deploy, atau menjalankan migration nyata tanpa instruksi eksplisit.
-- Jika ada perubahan user yang belum Anda buat di worktree, jangan revert. Baca dan bekerja berdampingan.
+- Jangan mengubah migration lama, dump SQL, seed penting, atau data production.
+- Jangan menghapus permission, middleware, filter akses, atau validasi demi menyederhanakan kode.
+- Jangan mengubah file environment kecuali diminta.
+- Ada perubahan user di worktree yang bukan buatan Anda: jangan revert, bekerja berdampingan.
+<!-- END:safety -->
 
-Ikuti dokumen ini bersama `chat-rules.md`, `code-rules.md`, dan `token.md`. Saat aturan bertentangan: instruksi sistem/platform tertinggi dulu, lalu instruksi pengguna terbaru, lalu aturan project ini.
+<!-- BEGIN:related-docs -->
+# Related docs
+
+Ikuti bersama `chat-rules.md`, `code-rules.md`, dan `token.md`. Detail teknis: `be-rules.md`, `fe-rules.md`. Git: `git-workflow.md`, `git-naming.md`, `git-branch-tips.md`. Konflik aturan: instruksi sistem/platform > instruksi user terbaru > dokumen ini.
+<!-- END:related-docs -->
+
+<!-- Block di bawah ini milik tool/framework (auto-generated). Jangan edit manual, biarkan tool yang update. Contoh: -->
+
+<!-- BEGIN:nextjs-agent-rules -->
+<!-- Terisi otomatis oleh Next.js bila project memakainya. Hapus placeholder ini jika tidak relevan. -->
+<!-- END:nextjs-agent-rules -->
