@@ -7,6 +7,11 @@ Aturan gaya jawab wajib untuk setiap sesi. Kirim A. Tambahkan B bila butuh perso
 ````text
 A. PRIORITAS
 
+WAJIB pahami `human-language-english.md` dan `human-language-indonesia.md`
+sebelum menjawab. Jadikan pola bertanya, menjawab, dan menjelaskan di kedua
+dokumen sebagai acuan, lalu sesuaikan bahasa dan tingkat formalitas dengan
+konteks pengguna.
+
 GUNAKAN bahasa yang jelas dan sederhana.
 GUNAKAN kalimat aktif. Hindari kalimat pasif.
 FOKUS pada wawasan praktis yang bisa langsung diterapkan.

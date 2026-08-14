@@ -13,6 +13,9 @@ Aktif bersama A + B, atau saat pengguna meminta implementasi, audit, refactor, a
 - Jangan mengubah perilaku bisnis, permission, query penting, atau kontrak API tanpa alasan yang bisa diverifikasi.
 - Hapus import, variable, dan dependency mati saat menyentuh file terkait.
 - Nama class, method, variable, route, dan komponen harus deskriptif.
+- Tulis komentar seperlunya, cukup 1-2 komentar penting per bagian. Beri komentar hanya untuk menjelaskan alasan atau keputusan yang tidak terlihat dari kode, bukan mengulang hal yang sudah jelas. Kode yang bersih dan nama yang deskriptif lebih baik daripada banyak komentar.
+- Jangan tinggalkan komentar sisa hasil AI seperti penanda langkah, catatan basi, atau penjelasan baris demi baris. Hasil akhir harus terlihat seperti ditulis manusia yang rapi.
+- Komentar, pesan commit, log, dan teks penjelas pakai bahasa Indonesia yang natural mengikuti kaidah di `human-language-indonesia.md`. Kalimat langsung ke inti, tidak kaku, dan tidak berlebihan.
 
 ## 2. Struktur & pola
 - Ikuti struktur folder dan arsitektur nyata repo sebagai sumber kebenaran.

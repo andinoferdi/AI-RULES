@@ -13,6 +13,9 @@ Aktif bersama A + B, atau saat pengguna meminta audit backend, route/API, databa
 - Query efisien: hindari N+1, full scan tak perlu, dan race condition.
 - Tulis banyak data pakai transaksi, idempotency, dan rollback yang jelas.
 - Perubahan minimal dan mudah diverifikasi. Jangan solusi besar untuk masalah kecil.
+- Tulis komentar seperlunya, cukup 1-2 komentar penting per bagian. Beri komentar hanya untuk alasan atau keputusan yang tidak terlihat dari kode, bukan mengulang yang sudah jelas. Andalkan nama yang deskriptif, bukan tumpukan komentar.
+- Jangan tinggalkan komentar sisa hasil AI seperti penanda langkah atau penjelasan baris demi baris. Hasil harus terlihat seperti ditulis manusia yang rapi.
+- Komentar, pesan commit, log, dan error message pakai bahasa Indonesia yang natural mengikuti kaidah di `human-language-indonesia.md`. Kalimat langsung ke inti, tidak kaku, dan tidak berlebihan.
 
 ## API & kontrak data
 - Endpoint punya validasi request, response, status code, dan error message konsisten.

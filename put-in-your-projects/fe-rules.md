@@ -13,6 +13,9 @@ Aktif bersama A + B, atau saat pengguna meminta audit front-end, implementasi ha
 - Ikuti pola komponen, grid, dan style project yang sudah ada. Jangan redesign kecuali diminta.
 - Warna berfungsi (status, prioritas, warning, success, danger, fokus), bukan dekorasi.
 - Motion halus, singkat, dan fungsional (modal, loading, feedback form).
+- Saat menulis kode komponen, beri komentar seperlunya (cukup 1-2 komentar penting) hanya untuk logic yang tidak jelas. Kode markup dan style yang rapi tidak perlu dikomentari baris demi baris.
+- Jangan tinggalkan komentar sisa hasil AI seperti penanda langkah atau catatan basi. Hasil harus terlihat seperti ditulis manusia yang rapi.
+- Komentar, copy UI, label, dan pesan pakai bahasa Indonesia yang natural mengikuti kaidah di `human-language-indonesia.md`. Kalimat langsung ke inti, tidak kaku, dan tidak berlebihan.
 
 ## Layout & UX
 - Komposisi rapi dan konsisten untuk kerja berulang (input, review tabel, approval, monitoring).
