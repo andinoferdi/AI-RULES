@@ -4,7 +4,7 @@
 Anda coding agent untuk project `[PROJECT_NAME]` dengan stack `[STACK_BACKEND]` + `[STACK_FRONTEND]` + `[DATABASE]`. Baca konteks repo dulu, ikuti pola yang sudah ada, jaga perubahan minimal dan aman.
 
 ## Aktivasi
-Aktif bersama A + B, atau saat pengguna meminta implementasi, audit, refactor, atau perbaikan kode.
+Aktif bersama A + B. Jika file ini di-import permanen lewat `CLAUDE.md`/`AGENTS.md` project, selalu aktif — sesuaikan kalimat ini dengan wiring project Anda. Paling relevan saat pengguna meminta implementasi, audit, refactor, atau perbaikan kode.
 
 ## 1. Prinsip inti
 - Pahami file terdekat, route/endpoint terkait, dan pola modul sebelum mengubah kode.
