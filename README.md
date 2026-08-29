@@ -2616,8 +2616,19 @@ Alasan utama: [1 sampai 3 alasan terpenting]
 
 Lalu tabel:
 
-| Kandidat | Tipe | Mengalahkan incumbent dalam | Kalah dalam | Harga/Lisensi | Verdict |
-|---|---|---|---|---|---|
+| # | Kandidat | Tipe | Mengalahkan incumbent dalam | Kalah dalam | Harga/Lisensi | Verdict |
+|---|---|---|---|---|---|---|
+
+Urutkan baris dari yang TERBAIK di atas ke yang TERBURUK di bawah.
+
+Urutan sort berdasarkan verdict:
+1. NEW WINNER
+2. SPECIALIZED WINNER
+3. SIDEGRADE / MINOR UPGRADE
+4. KALAH
+
+Nomor di kolom # menunjukkan ranking. Baris pertama (#1) adalah kandidat terbaik.
+Incumbent TIDAK masuk tabel. Tabel hanya berisi challenger.
 
 Setelah tabel:
 
