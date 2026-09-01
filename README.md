@@ -208,10 +208,18 @@ DATA BODY MEASUREMENT
 
 Gunakan data mentah ini apa adanya. Jangan mengunci body fat, massa lemak, lean body mass, somatotype, atau komposisi tubuh lain sebelum menghitungnya sendiri.
 
-Tinggi badan: 170 cm
+Usia: 21 tahun.
+Jenis kelamin biologis: laki-laki.
+Tinggi badan: 170 cm.
+
+Saat membandingkan progres, selalu pakai titik acuan SEBELUM DIET vs SETELAH DIET (2,5 minggu defisit kalori) di bawah ini, bukan angka tunggal lama.
+
+SEBELUM DIET:
 Berat badan: 78–80 kg
 Lingkar leher: 40 cm
-Lingkar perut: 94 cm
+Lingkar leher di bawah jakun: 41 cm
+Lingkar perut (se pusar): 92 cm
+Lingkar perut (sabuk): 87 cm
 Lingkar perut atas: 90 cm
 Lingkar dada: 99 cm
 Lingkar paha kanan: 56 cm
@@ -222,13 +230,90 @@ Lingkar bicep kanan: 33 cm
 Lingkar bicep kiri: 33 cm
 Lingkar forearm kanan: 29 cm
 Lingkar forearm kiri: 28 cm
+Lingkar pantat: tidak diketahui.
+
+SETELAH DIET (2,5 minggu defisit kalori):
+Berat badan: 78,3 kg
+Lingkar leher di bawah jakun: 39,5 cm
+Lingkar perut (se pusar): 85,5 cm
+Lingkar perut (sabuk): 87 cm
+Lingkar perut atas: 86 cm
+Lingkar dada: 100 cm
+Lingkar paha kanan: 62 cm
+Lingkar paha kiri: 62 cm
+Lingkar betis kanan: 39,5 cm
+Lingkar betis kiri: 39,5 cm
+Lingkar bicep kanan: 35 cm
+Lingkar bicep kiri: 34 cm
+Lingkar forearm kanan: 29 cm
+Lingkar forearm kiri: 28 cm
+Lingkar pantat: 99 cm
+
+Catatan pengukuran: lingkar perut punya dua metode berbeda (se pusar vs sabuk). Jangan mencampur kedua metode ini dalam satu perhitungan waist-to-height ratio atau body fat; pilih satu metode secara konsisten dan sebutkan metode mana yang dipakai.
+
+Lonjakan besar pada lingkar paha (56 → 62 cm) dan bicep dalam 2,5 minggu tidak wajar secara fisiologis untuk pertambahan otot murni saat defisit kalori. Jangan menafsirkan ini sebagai hipertrofi otot asli. Pertimbangkan kemungkinan human error pengukuran (posisi pita ukur berbeda, alat berbeda, waktu pengukuran berbeda seperti pasca latihan vs sebelum), retensi air, atau pembengkakan otot dari latihan, dan sebutkan keterbatasan ini secara eksplisit ke saya alih-alih menyimpulkan penambahan massa otot yang besar.
+
+JADWAL LATIHAN MINGGUAN
+
+Peralatan tetap yang dipakai: dumbbell 20 kg, tiang pull-up terpasang permanen, resistance band abu-abu (berat/kuat) terpasang permanen. Semua latihan di jadwal ini disusun berdasarkan peralatan tersebut, tidak berganti-ganti alat.
+
+Senin: Push
+Selasa: Lower A
+Rabu: Pull
+Kamis: Istirahat
+Jumat: Upper
+Sabtu: Lower B
+Minggu: Istirahat
+
+SENIN — PUSH:
+Dumbbell Floor Press 4×6–15, 1–2 RIR, istirahat 2–3 menit.
+Paused Push-Up 3×8–20, 1–2 RIR, istirahat 2 menit (tahan ±1 detik di posisi bawah).
+Dumbbell Shoulder Press 3×6–15, 1–2 RIR, istirahat 2–3 menit.
+Dumbbell Upright Row 3×10–20, 0–2 RIR, istirahat 1–1,5 menit (siku memimpin ke samping, tidak perlu sampai dagu).
+Band Triceps Pushdown 3×10–20, 0–2 RIR, istirahat 1–1,5 menit.
+Hollow Body Hold 2×30–60 detik, istirahat 1 menit.
+
+SELASA — LOWER A:
+Bulgarian Split Squat 4×8–15 per kaki, 1–2 RIR, istirahat 2–3 menit.
+Dumbbell Romanian Deadlift 3×8–15, 1–2 RIR, istirahat 2–3 menit.
+Sliding Leg Curl 3×8–20, 0–2 RIR, istirahat 1,5–2 menit.
+Single-Leg Calf Raise + Dumbbell 4×12–25 per kaki, 0–2 RIR, istirahat 1–1,5 menit.
+Side Plank 2×30–60 detik per sisi, istirahat 1 menit.
+
+RABU — PULL:
+Band-Assisted Pull-Up 4×5–10, 1–2 RIR, istirahat 2–3 menit.
+One-Arm Dumbbell Row 4×8–20 per sisi, 1–2 RIR, istirahat 2–3 menit.
+One-Arm Dumbbell Rear-Delt Row 3×10–20 per sisi, 1–2 RIR, istirahat 1,5–2 menit (siku dibuka lebih lebar, tarik ke dada atas, jangan jadi shrug).
+Dumbbell Curl 3×8–20 per sisi, 0–2 RIR, istirahat 1,5 menit.
+Dead Hang 1–2×20–60 detik (opsional), istirahat 1–2 menit.
+
+KAMIS — ISTIRAHAT: tidak ada latihan beban.
+
+JUMAT — UPPER:
+Band-Assisted Chin-Up 3×5–10, 1–2 RIR, istirahat 2–3 menit.
+Dumbbell Floor Press 3×8–15, 1–2 RIR, istirahat 2–3 menit.
+One-Arm Dumbbell Row 3×10–20 per sisi, 1–2 RIR, istirahat 2–3 menit.
+Dumbbell Shoulder Press 2×8–15, 1–2 RIR, istirahat 2–3 menit.
+Dumbbell Upright Row 2×12–20, 0–2 RIR, istirahat 1–1,5 menit.
+Hammer Curl 2×10–20 per sisi, 0–2 RIR, istirahat 1–1,5 menit.
+Band Triceps Pushdown 2×10–20, 0–2 RIR, istirahat 1–1,5 menit.
+
+SABTU — LOWER B:
+1.5-Rep Goblet Squat 4×10–20, 1–2 RIR, istirahat 2–3 menit (turun penuh, naik setengah, turun lagi, naik berdiri = 1 repetisi).
+Reverse Lunge + Dumbbell 3×8–15 per kaki, 1–2 RIR, istirahat 2–3 menit.
+Single-Leg Dumbbell Romanian Deadlift 3×8–15 per kaki, 1–2 RIR, istirahat 2–3 menit.
+Sliding Leg Curl 2×10–20, 0–2 RIR, istirahat 1,5–2 menit.
+Single-Leg Calf Raise + Dumbbell 4×12–25 per kaki, 0–2 RIR, istirahat 1–1,5 menit.
+Hanging Knee Raise 3×8–15, 1–2 RIR, istirahat 1–1,5 menit.
+
+MINGGU — ISTIRAHAT: tidak ada latihan beban.
 
 AKTIVITAS SAAT INI
 
-Angkat beban ringan sekitar 5 kali per minggu.
+Angkat beban 6 hari per minggu mengikuti jadwal split Push/Lower A/Pull/Upper/Lower B di atas, dengan Kamis dan Minggu istirahat penuh.
 Di luar latihan, aktivitas dominan duduk karena bekerja sebagai programmer.
 
-Jangan menentukan faktor aktivitas hanya dari jumlah sesi latihan. Pertimbangkan juga pekerjaan duduk, durasi latihan, intensitas, langkah harian bila tersedia, dan aktivitas di luar gym.
+Jangan menentukan faktor aktivitas hanya dari jumlah sesi latihan. Pertimbangkan juga pekerjaan duduk, durasi latihan, intensitas per sesi (RIR di atas), volume mingguan, langkah harian bila tersedia, dan aktivitas di luar gym.
 
 TUGAS PERTAMA SAAT PROMPT DIAKTIFKAN
 
