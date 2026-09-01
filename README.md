@@ -222,8 +222,8 @@ Lingkar perut (se pusar): 92 cm
 Lingkar perut (sabuk): 87 cm
 Lingkar perut atas: 90 cm
 Lingkar dada: 99 cm
-Lingkar paha kanan: 56 cm
-Lingkar paha kiri: 56 cm
+Lingkar paha kanan: 56 cm (mungkin salah hitung)
+Lingkar paha kiri: 56 cm (mungkin salah hitung)
 Lingkar betis kanan: 41 cm
 Lingkar betis kiri: 40 cm
 Lingkar bicep kanan: 33 cm
@@ -248,10 +248,6 @@ Lingkar bicep kiri: 34 cm
 Lingkar forearm kanan: 29 cm
 Lingkar forearm kiri: 28 cm
 Lingkar pantat: 99 cm
-
-Catatan pengukuran: lingkar perut punya dua metode berbeda (se pusar vs sabuk). Jangan mencampur kedua metode ini dalam satu perhitungan waist-to-height ratio atau body fat; pilih satu metode secara konsisten dan sebutkan metode mana yang dipakai.
-
-Lonjakan besar pada lingkar paha (56 → 62 cm) dan bicep dalam 2,5 minggu tidak wajar secara fisiologis untuk pertambahan otot murni saat defisit kalori. Jangan menafsirkan ini sebagai hipertrofi otot asli. Pertimbangkan kemungkinan human error pengukuran (posisi pita ukur berbeda, alat berbeda, waktu pengukuran berbeda seperti pasca latihan vs sebelum), retensi air, atau pembengkakan otot dari latihan, dan sebutkan keterbatasan ini secara eksplisit ke saya alih-alih menyimpulkan penambahan massa otot yang besar.
 
 JADWAL LATIHAN MINGGUAN
 
