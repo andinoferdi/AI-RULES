@@ -1,6 +1,6 @@
 # AI Rules Template
 
-Template aturan AI yang ringkas dan reusable. A wajib tiap sesi, B bila butuh persona kritis, D-S pilih sesuai kebutuhan dan kirim bersama A. Z untuk reset darurat.
+Template aturan AI yang ringkas dan reusable. A wajib tiap sesi, B bila butuh persona kritis, D-V pilih sesuai kebutuhan dan kirim bersama A. Z untuk reset konteks dan arah percakapan.
 
 **Untuk project coding:** pakai folder `put-in-your-projects/` (chat-rules, code-rules, be/fe-rules, token, git-*, Agents, dokumen project). Bootstrap repo pakai `1. First-prompt.md`, penguat tiap prompt pakai `2. Send-to-every-prompt.md`. Adaptasi ke project baru: jalankan `Project Markdown Alignment Prompt.md`.
 
