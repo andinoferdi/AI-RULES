@@ -2,6 +2,7 @@ Capability manifest tersedia untuk dipilih sesuai kebutuhan. Jangan jalankan sem
 
 * claude-mem
 * taste-skill
+* ui-ux-pro-max
 * graphify
 * superpowers:using-superpowers
 * ponytail

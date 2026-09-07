@@ -2,6 +2,7 @@ Capability manifest tersedia untuk dipilih sesuai kebutuhan. Jangan jalankan sem
 
 * claude-mem
 * taste-skill
+* ui-ux-pro-max
 * graphify
 * superpowers:using-superpowers
 * ponytail
@@ -17,6 +18,8 @@ Jika tersedia dan relevan, gunakan claude-mem, Graphify, project memory, documen
 Untuk claude-mem, ambil hanya memory yang relevan dengan masalah. Jangan melakukan retrieval luas tanpa filtering.
 
 Untuk Graphify, gunakan graph/index yang sudah tersedia melalui query/path/explain. Jangan rebuild atau regenerate graph hanya untuk task ini kecuali memang diminta atau graph terbukti tidak valid dan rebuild menjadi bagian task.
+
+Untuk task yang menyentuh UI, frontend visual, responsive layout, atau styling, gunakan `taste-skill` dan panggil juga `/ui-ux-pro-max` (`ui-ux-pro-max`) sesuai kebutuhan visual dan UX.
 
 Pastikan instruction di `[LOKASI_SECOND_PROMPT]` berlaku untuk task ini. Jika file tersebut sudah dimuat melalui project/agent wiring dan isinya tersedia dalam context, jangan membacanya ulang hanya untuk menduplikasi context. Muat dokumentasi project tambahan hanya jika relevan.
 
