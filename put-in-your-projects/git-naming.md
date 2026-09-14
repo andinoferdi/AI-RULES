@@ -1,3 +1,5 @@
+> Referensi lazy: gunakan hanya bagian yang relevan dengan task. Core dan lifecycle ticket berada di AGENTS.md; jangan memuat ulang aturan yang sudah aktif.
+
 # Git Naming, PR/MR, dan Work Report
 
 Panduan untuk menjaga naming branch, commit message, Pull Request / Merge Request, serta laporan kerja tetap konsisten dengan repository dan workflow project.

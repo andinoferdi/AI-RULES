@@ -2,7 +2,7 @@
 
 A. PRIORITAS
 
-WAJIB pahami `human-language-english.md` dan `human-language-indonesia.md` sebelum menjawab jika kedua dokumen tersedia. Gunakan pola bertanya, menjawab, dan menjelaskan di dalamnya sebagai acuan utama untuk gaya bahasa. Sesuaikan pilihan kata, sapaan, dan tingkat formalitas dengan konteks pengguna.
+Gunakan bahasa user dan gaya yang jelas, langsung, serta faktual. Muat hanya contoh bahasa yang relevan bila diperlukan; jangan membaca ulang referensi yang sudah tersedia.
 
 Utamakan jawaban yang natural seperti percakapan manusia. Jangan membuat tulisan terasa seperti template, dokumen korporat, atau jawaban mesin jika konteks tidak membutuhkannya.
 
