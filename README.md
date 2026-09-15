@@ -69,9 +69,14 @@ Script menyalin skill beserta referensinya ke empat lokasi, mencatat hash, dan m
 
 ### 1. Siapkan repository pekerjaan
 
-Buka repository pekerjaan Anda di agent, bukan repository AI-RULES. Contoh berikut menggunakan proyek ilustratif `D:/Projects/user-portal`; ganti dengan lokasi proyek Anda.
+Buka repository pekerjaan Anda di agent, bukan repository AI-RULES. Gunakan path
+aktual atau current workspace; jangan meninggalkan path contoh yang terlihat seperti
+target nyata di prompt operasional.
 
-Jika proyek belum memiliki rules, salin folder `put-in-your-projects` dari repository ini ke `D:/Projects/user-portal/docs/ai-rules/`. Ini contoh lokasi, bukan nama folder wajib. Pertahankan struktur internal agar referensi antardokumen tetap mudah disesuaikan.
+Jika proyek belum memiliki rules, salin folder `put-in-your-projects` dari repository
+ini ke `<PROJECT_SCOPE>/docs/ai-rules/`. `<PROJECT_SCOPE>` adalah placeholder yang
+wajib diganti dengan path project/package aktual. Pertahankan struktur internal agar
+referensi antardokumen tetap mudah disesuaikan.
 
 ```text
 user-portal/
@@ -92,12 +97,28 @@ Kirim isi [Project Markdown Alignment Prompt.md](<Project Markdown Alignment Pro
 
 ```text
 Terapkan instruksi Project Markdown Alignment yang saya lampirkan.
-Repository pekerjaan: D:/Projects/user-portal.
-Template yang saya salin berada di docs/ai-rules/.
+
+Lokasi template AI-RULES:
+[ISI PATH ABSOLUT AKTUAL]/docs/ai-rules
+
+Path tersebut adalah lokasi template di dalam project, bukan asumsi repository root.
+Verifikasi path, lalu tentukan repository root aktual dengan
+`git rev-parse --show-toplevel`. Jika bukan repository Git, gunakan manifest dan
+struktur filesystem sebagai evidence.
+
+Bedakan repository root dari project/package scope. Pada monorepo, jangan menerapkan
+aturan satu package ke seluruh repository tanpa evidence.
+
+Path aktual terbaru dari user selalu menang. Jangan gunakan path dari contoh atau
+template sebagai target operasi.
+
+Laporkan singkat detected repository root, detected project scope, lokasi template,
+dan instruction files yang sudah ada. Jika scope dapat ditentukan dengan aman,
+lanjutkan alignment tanpa meminta konfirmasi tambahan.
 
 Periksa stack, struktur, command, dan aturan proyek yang sudah ada.
 Sesuaikan template dengan evidence repository ini.
-Gabungkan core ke AGENTS.md di root untuk Codex/OpenCode;
+Gabungkan core ke AGENTS.md pada scope yang benar untuk Codex/OpenCode;
 hubungkan instruksi native host lain sesuai dukungannya.
 Perbaiki semua referensi relatif setelah penempatan file.
 Jangan menimpa aturan proyek yang sudah disepakati.
@@ -105,7 +126,11 @@ Jangan mengarang kebutuhan produk untuk mengisi PRD/SRS.
 Laporkan informasi penting yang belum tersedia.
 ```
 
-Hasil yang diharapkan: rules menyebut stack dan command aktual, instruksi native mengarah ke rules yang tepat, serta placeholder yang belum dapat diisi dicatat. Alignment bukan perintah untuk membuat seluruh produk atau mengarang semua spesifikasinya.
+Ganti `[ISI PATH ABSOLUT AKTUAL]` sebelum mengirim prompt. Hasil yang diharapkan:
+repository root dan project scope terdeteksi, rules menyebut stack dan command aktual,
+instruksi native mengarah ke rules yang tepat, serta placeholder yang belum dapat
+diisi dicatat. Alignment bukan perintah untuk membuat seluruh produk atau mengarang
+semua spesifikasinya.
 
 ### 3. Bootstrap jika masih diperlukan
 
