@@ -1,5 +1,15 @@
 # Capability routing
 
+## Plan depth is not capability routing
+
+Select plan density conservatively before selecting a worker: SIMPLE normally has
+no plan and uses LITE only when a checkpoint is required; STANDARD uses STANDARD;
+COMPLEX uses STANDARD unless DEEP detail materially reduces ambiguity, risk, or
+handoff cost. File count, a long prompt, or the word "feature" does not justify DEEP.
+Escalate or de-escalate after evidence changes the real complexity, and record a
+material depth change as a plan revision. This choice does not create another
+workflow router or change worker invocation policy.
+
 Select by the current phase, not a flat manifest. Native filesystem/search/shell/Git
 and fetching are preferred when they already answer the question. Resolve installed
 names through the host catalog. If absent, apply the method directly; do not install

@@ -27,6 +27,12 @@ Repository dan konfigurasi aktual tetap menjadi sumber kebenaran. Memory, termas
 | STANDARD | Fitur lokal, bug jelas, refactor terbatas | Ambil konteks relevan, implementasi, verifikasi. Buat plan untuk ticket non-trivial atau lanjutkan plan yang ada. |
 | COMPLEX | Akar masalah belum jelas, arsitektur, migrasi, perubahan lintas sistem | Investigasi, pilih metodologi, implementasi bertahap, verifikasi, checkpoint. Plan diperlukan. |
 
+Plan memakai tiga tingkat kepadatan dalam workflow yang sama: **LITE** untuk
+checkpoint kecil yang memang memerlukan plan, **STANDARD** sebagai default ticket
+non-trivial, dan **DEEP** ketika detail tambahan benar-benar mengurangi ambiguity,
+risk, atau biaya handoff. Depth bukan router baru; prompt panjang, label “feature”,
+atau banyak file tidak otomatis membuat plan DEEP.
+
 Andino memilih satu pengelola workflow dan skill spesialis yang diperlukan. Tidak ada kewajiban melewati `using-superpowers`, memuat seluruh skill, membuat graph, atau menggunakan subagent untuk setiap task.
 
 ## Pemasangan skill
@@ -336,7 +342,7 @@ your-project/
       completed/
 ```
 
-Gunakan [template execution plan](skills/andino-workflow/references/execution-plan-template.md). Catat objective, acceptance criteria, constraints, current state, fase, keputusan, evidence, verifikasi, blocker, dan NEXT ACTION yang konkret.
+Gunakan [template execution plan](skills/andino-workflow/references/execution-plan-template.md), pilih LITE/STANDARD/DEEP secara konservatif, lalu hapus section opsional yang tidak membantu handoff. Plan aktif menyimpan snapshot, objective, acceptance, board fase, planned versus actual result, keputusan/evidence material, dan NEXT ACTION yang konkret; DEEP dapat menambah baseline, technical contract, findings, revisions, verification matrix, dan approval gate bila relevan.
 
 Perbarui checkpoint setelah temuan penting, penyelesaian fase, perubahan strategi, interupsi, atau verifikasi. Simpan hasil dan alasan keputusan secara ringkas; hindari raw reasoning transcript, seluruh log, atau salinan kode besar.
 

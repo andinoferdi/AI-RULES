@@ -1,7 +1,7 @@
 # ANDINO-002 - Documentation and acceptance hardening
 
-Status: BLOCKED (native behavioral acceptance requires host access)
-Current phase: documentation and local hardening complete; live acceptance pending
+Status: PARTIAL (Antigravity PASS; Codex smoke has a read-only skill-access gap)
+Current phase: evidence recorded; no additional hardening authorized
 
 ## Objective
 Expand the user guide with setup and practical examples. Apply the accepted final
@@ -13,12 +13,13 @@ acceptance audit from gpt batch 2 without redesign, new skills, or new MCPs.
 - Record actual worker invocation mechanisms and their limitations.
 - Attempt bounded, non-destructive native host behavior checks; distinguish results
   from static validation and record manual-only checks honestly.
-- Report active surface metrics and Context7 tradeoffs without changing Context7.
+- Apply the user's Context7 default-off decision without removing configuration.
 - AI-Rules-WebBased.md remains unchanged.
 
 ## Constraints
 Keep one source, generated installs, existing providers/credentials and accepted
-architecture. Do not install capabilities, change Context7, or inventory raw caches.
+architecture. Do not install Antigravity CLI without user authorization, add skills,
+add MCPs, or inventory raw caches.
 
 ## Current state / evidence
 README walkthrough and prompt examples added. All four global UI references now
@@ -27,17 +28,23 @@ user-only; OpenCode V1 denied through native skill permission; Antigravity soft
 description guards only. Native restrictions are not bypassed by file reads.
 Seven isolated tests and Markdown links pass; four generated installs match;
 git diff --check passes. WebBased SHA256 remains unchanged.
-Fresh catalogs: Codex 91, Claude 128, OpenCode 121; full advertised surface and
-Antigravity runtime remain only partially measured. Context7 unchanged; recommend
-on-demand based on observed two-tool exposure, not inferred token savings.
-Native probes: Codex model/CLI incompatibility (400); Claude org access denied
-(403); OpenCode provider budget exceeded (400). Antigravity CLI unavailable.
-No useful model routing output was generated; no four-host behavioral PASS claim.
+Fresh catalogs: Codex 91, Claude 128, OpenCode 121; full advertised surface remains
+partially measured. Context7 is default-off in Codex, Claude, OpenCode, and legacy
+Antigravity, with definitions/credentials preserved. Codex CLI is now 0.154.0 after
+the official updater ran through installed pwsh 7.6.5, which provides `Get-FileHash`;
+the checksum was not bypassed. `agy` 1.2.2 is installed and its User PATH is present.
+Antigravity A-E smoke PASSed. Codex A-E smoke reached the model but its read-only
+sandbox denied loading the installed Andino body; its B/C decisions followed global
+AGENTS.md instead. Codex also classified browser initial diagnostics as plan-needed,
+contrary to the expected initial no-plan route. Claude remains organization-auth
+blocked (403). OpenCode Meda remains budget blocked (400); 9router is configured but
+its local endpoint was unavailable for a non-mutating model-list check.
 See ../../acceptance-audit.md and ../../invocation-matrix.md for evidence/limits.
 
 ## NEXT ACTION
-After the user restores supported Codex CLI/model access, Claude organization/API
-access and OpenCode provider budget, rerun independent A-E fixture tasks and record
-actual routing/tool/plan behavior. Run Antigravity cases manually in its UI.
-Do not retry current deterministic access errors, change credentials/budgets, or
-declare acceptance complete based on static checks alone.
+Use the installed workflow on real tickets and collect evidence before changing the
+architecture. Keep Claude as external organization-auth blocked and Meda/OpenCode as
+provider-budget blocked. Do not switch providers, change credentials/budgets, widen
+the Codex smoke sandbox, or perform further hardening solely to improve this audit.
+Revisit the Codex skill-access gap only if dogfooding shows normal desktop sessions
+cannot load Andino or route browser diagnostics correctly.

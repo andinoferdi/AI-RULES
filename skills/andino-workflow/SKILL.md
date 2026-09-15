@@ -18,11 +18,12 @@ Antigravity and OpenCode are peers: the active host is primary for this session.
 
 | Class | Default process | Durable plan |
 | --- | --- | --- |
-| SIMPLE: typo, label, known local fix, trivial transform | understand → edit → targeted verify | only if requested or already part of a ticket plan |
-| STANDARD: clear local feature/bug/refactor | objective → targeted context → implement → verify | create for non-trivial tickets; reuse an existing plan |
-| COMPLEX: unclear root cause, architecture, migration, cross-system or high-risk work | investigate → relevant methodology → implement → verify → checkpoint | required |
+| SIMPLE: typo, label, known local fix, trivial transform | understand → edit → targeted verify | normally none; LITE only when requested or needed for continuation |
+| STANDARD: clear local feature/bug/refactor | objective → targeted context → implement → verify | STANDARD for non-trivial tickets; reuse an existing plan |
+| COMPLEX: unclear root cause, architecture, migration, cross-system or high-risk work | investigate → relevant methodology → implement → verify → checkpoint | STANDARD or DEEP according to actual ambiguity, risk and handoff cost |
 
-For plans, use [execution-plan](references/execution-plan.md) and its template.
+LITE, STANDARD and DEEP are planning density within this one workflow, not new
+routers. For plans, use [execution-plan](references/execution-plan.md) and its template.
 Ask only about ambiguity that could materially change the outcome and cannot be
 resolved from current evidence. Continue independent authorized work while waiting.
 

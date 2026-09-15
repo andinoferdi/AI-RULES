@@ -11,9 +11,9 @@ claims were checked against current native behavior/documentation rather than as
 | --- | --- | --- |
 | Runtime independence | PARTIAL | Four global UI references fixed to installed skill paths. Isolated source-unavailable reference test passes for four installs. Full live operation with the real source absent remains untested because native generation is blocked. |
 | Skill invocation | PARTIAL | Native core controls applied on Codex/Claude/OpenCode; Antigravity has only scoped descriptions. Plugin/bundled alternatives and full advertised behavior need live validation. |
-| Cross-agent behavior | FAIL / blocked | Native Codex, Claude and OpenCode probes reached host/API errors before useful routing output. Antigravity has no available CLI in PATH and no native UI automation surface in this session. |
+| Cross-agent behavior | PARTIAL | Antigravity A-E smoke PASSed. Codex reached the model after update but read-only sandbox blocked full Andino loading and over-escalated initial browser diagnostics. Claude and Meda/OpenCode remain external/provider blockers. |
 | Active surface metrics | PARTIAL | Actual discovery/catalog and user-root policy counts recorded below. Complete implicit/advertised and MCP tool counts are not exposed for every host. |
-| Context7 decision | PASS (assessment only) | Measured two exposed tools in Codex/Claude, recommend OFF/on-demand. No Context7 setting changed. |
+| Context7 decision | PASS | User selected default OFF/on-demand; Context7 was disabled in active Codex, Claude and OpenCode configs and legacy Antigravity without removing definitions or credentials. |
 
 ## Exact fixes
 
@@ -57,10 +57,10 @@ execution. No production data or actual payment was used.
 
 | Host | Actual outcome | Required manual action |
 | --- | --- | --- |
-| Codex | HTTP 400: configured gpt-6-astra requires a newer Codex CLI. Discovery itself succeeds. | Update CLI compatibly or select a supported model deliberately, then rerun native tests. No model/update was changed by this audit. |
+| Codex | CLI updated to 0.154.0 through the official updater using existing pwsh 7.6.5, where `Get-FileHash` is available. A-E probe completed without writes. A/B/C/D routing broadly matched, but read-only sandbox denied the installed Andino body and E required a plan too early. | Do not widen the sandbox merely for audit. Revisit only if real desktop use shows the same gap. |
 | Claude Code | After correcting CLI prompt delivery, HTTP 403 `oauth_org_not_allowed`: organization disables subscription access for Claude Code. | Resolve access with the organization/admin or configure an authorized API credential, then rerun. No credential was changed. |
-| OpenCode | Provider HTTP 400 `budget_exceeded`; reported current cost 10.0075 against budget 10.0. | Resolve provider budget/access, then rerun. No spending limit was changed. |
-| Antigravity | CLI unavailable in PATH; no native application automation surface here. | Run A-E manually in its UI using a disposable project and record tool traces/results. |
+| OpenCode | Meda returned HTTP 400 `budget_exceeded`; the configured 9router endpoint was unreachable for a non-mutating `/models` check. | Resolve Meda budget/access, or make 9router reachable and explicitly authorize its smoke test. No provider was switched. |
+| Antigravity | Official `agy` 1.2.2 installed through Google's PowerShell installer; User PATH contains its bin directory. A-E probe completed successfully from a disposable fixture without writes or login. | PASS. Keep only normal dogfooding evidence; no further hardening. |
 
 No useful model routing answer was produced. The initial Claude command also had a
 local argument parsing issue; stdin delivery corrected that before the final access
@@ -94,19 +94,19 @@ bundled debug/review/planning alongside optional claude-mem workflows, and manua
 router aliases. Plugin catalog presence is not evidence of implicit invocation.
 See [invocation matrix](invocation-matrix.md) for focused worker/alternative rows.
 
-## Context7 decision
+## Context7 decision and applied state
 
-Recommendation: **DEFAULT OFF / ON-DEMAND** for a mixed local engineering workflow.
-This is a recommendation, not an applied setting or a measured token-saving claim.
+Decision: **DEFAULT OFF / ON-DEMAND** for a mixed local engineering workflow.
+This is applied only to Context7; it is not a measured token-saving claim.
 
-- Codex snapshot exposes `resolve-library-id` and `query-docs`: two tools, with
+- Codex had exposed `resolve-library-id` and `query-docs`: two tools, with
   4,973 bytes of JSON tool definitions in the local RPC serialization. This is
   serialized schema size, not billed tokens or guaranteed prompt payload.
-- Claude startup exposes the same two tool names; exact schema/token size was not
-  available from that event. Context7 is connected.
-- OpenCode direct config enables Context7; its exposed schema cost was not measured.
-- Antigravity current config has no Context7. Legacy config still enables it;
-  the legacy setting was not changed.
+- Claude startup had exposed the same two tool names; exact schema/token size was not
+  available from that event. It is now disabled from the active configuration.
+- OpenCode direct config now sets Context7 `enabled: false`; its exposed schema cost
+  was not measured.
+- Antigravity current config has no Context7. Legacy Context7 is now disabled.
 
 For local label edits, business logic, SQL or regression work, native source/search
 usually suffices. On-demand Context7 avoids keeping that optional integration
@@ -121,11 +121,13 @@ idempotent hardening, unchanged MCP fixture values, local-drift protection and
 lossless MCP toggles. Source-unavailable testing moves a temporary source copy,
 not the live Downloads repository. Four installs were synchronized.
 
-After access is restored, run A-E independently on disposable projects: verify
-actual edits/regression tests, plan checkpoints and non-repeated DONE phases,
-targeted dependency lookup, and single primary browser selection. Read-only routing
-probes, config parses and frontmatter checks cannot substitute for these results.
-Overall acceptance remains PARTIAL; do not declare four-host behavioral parity proven.
+Antigravity now supplies actual routing evidence. Codex supplies partial routing
+evidence only: its read-only sandbox did not expose the installed Andino body, even
+though normal discovery/configuration is present. Keep Claude and Meda/OpenCode
+recorded as external/provider blocked until their owners restore access. Read-only
+routing probes, config parses and frontmatter checks cannot substitute for normal
+desktop behavior. Overall acceptance remains PARTIAL; do not declare four-host
+behavioral parity proven.
 
 ## Verified mechanism references
 

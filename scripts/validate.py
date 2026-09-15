@@ -4,6 +4,8 @@ import importlib.util, json, re, tempfile, tomllib, unittest, shutil
 from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
+PLAN_STATUSES = {'TODO', 'IN_PROGRESS', 'BLOCKED', 'DONE', 'SKIPPED'}
+PLAN_DEPTHS = {'LITE', 'STANDARD', 'DEEP'}
 
 def module(name, filename):
     spec = importlib.util.spec_from_file_location(name, ROOT / 'scripts' / filename)
@@ -13,6 +15,54 @@ def module(name, filename):
 sync = module('andino_sync', 'sync-workflow.py')
 mcp = module('andino_mcp', 'mcp-toggle.py')
 harden = module('andino_harden', 'harden-runtime.py')
+
+def section(text, heading):
+    match = re.search(rf'(?ms)^## {re.escape(heading)}\s*$\n(.*?)(?=^#{1,2} |\Z)', text)
+    return match.group(1).strip() if match else ''
+
+def validate_plan(path):
+    text = path.read_text(encoding='utf-8-sig')
+    errors = []
+    header = lambda name: re.search(rf'(?m)^{re.escape(name)}:\s*(.+)$', text)
+    status_match, depth_match, current_match = header('Status'), header('Plan Depth'), header('Current Phase')
+    status = status_match.group(1).strip() if status_match else ''
+    depth = depth_match.group(1).strip() if depth_match else ''
+    current = current_match.group(1).strip() if current_match else ''
+    if status not in PLAN_STATUSES: errors.append(f'invalid Status: {status or "missing"}')
+    if depth not in PLAN_DEPTHS: errors.append(f'invalid Plan Depth: {depth or "missing"}')
+    required = ['Objective', 'Acceptance Criteria', 'Execution Board', 'NEXT ACTION']
+    if depth in {'STANDARD', 'DEEP'}: required.insert(0, 'Executive Snapshot')
+    for name in required:
+        if not section(text, name): errors.append(f'missing or empty section: {name}')
+    board = section(text, 'Execution Board')
+    rows = re.findall(r'(?m)^\|\s*(Phase\s+\d+\s+[—-]\s+[^|]+?)\s*\|\s*([A-Z_]+)\s*\|', board)
+    board_status = {name.strip(): value for name, value in rows}
+    for name, value in board_status.items():
+        if value not in PLAN_STATUSES: errors.append(f'invalid phase status: {name}={value}')
+    if current and current not in board_status: errors.append('Current Phase is absent from Execution Board')
+    in_progress = sum(value == 'IN_PROGRESS' for value in board_status.values())
+    if status == 'IN_PROGRESS' and in_progress != 1:
+        errors.append(f'active plan must have exactly one IN_PROGRESS phase, found {in_progress}')
+    if status == 'TODO' and in_progress > 1:
+        errors.append(f'TODO plan may have at most one IN_PROGRESS phase, found {in_progress}')
+    details = re.findall(r'(?ms)^## (Phase\s+\d+\s+[—-]\s+[^\n]+)\n\nStatus:\s*([A-Z_]+)(.*?)(?=^## Phase\s+\d+\s+[—-]|^## [^P]|\Z)', text)
+    for name, value, body in details:
+        name = name.strip()
+        if name in board_status and board_status[name] != value:
+            errors.append(f'board/detail mismatch: {name}')
+        if value == 'DONE' and not re.search(r'(?m)^### Result / Evidence\s*$', body):
+            errors.append(f'DONE phase lacks Result / Evidence: {name}')
+        if value == 'BLOCKED' and not re.search(r'(?i)blocker', body):
+            errors.append(f'BLOCKED phase lacks blocker: {name}')
+    next_action = section(text, 'NEXT ACTION')
+    if status != 'DONE' and (not next_action or re.fullmatch(r'(?i)(pending|tbd|none)[.!]?', next_action)):
+        errors.append('active plan lacks concrete NEXT ACTION')
+    if status == 'DONE' and any(value in {'TODO', 'IN_PROGRESS', 'BLOCKED'} for value in board_status.values()):
+        errors.append('completed plan contains pending phase')
+    placeholders = re.findall(r'\[(?:TICKET|TITLE|name|goal|scope|path|Observable[^]]*)\]', text, re.I)
+    if placeholders: errors.append('mature plan contains template placeholders')
+    if errors: raise ValueError(f'{path.name}: ' + '; '.join(errors))
+    return {'depth': depth, 'phases': board_status, 'lines': len(text.splitlines())}
 
 class Adapters(unittest.TestCase):
     def test_installs_resolve_references_without_source(self):
@@ -118,6 +168,34 @@ class Adapters(unittest.TestCase):
                 sync.sync(home)
             self.assertEqual((destination / 'SKILL.md').read_text(), 'user-owned')
 
+class AdaptivePlans(unittest.TestCase):
+    FIXTURES = ROOT / 'tests/fixtures/exec-plans'
+
+    def test_standard_login_fixture_is_valid_and_bounded(self):
+        result = validate_plan(self.FIXTURES / 'login-standard.md')
+        self.assertEqual(result['depth'], 'STANDARD')
+        self.assertLess(result['lines'], 250)
+
+    def test_deep_resume_fixture_covers_handoff_contract(self):
+        path = self.FIXTURES / 'remaster-deep-resume.md'
+        result = validate_plan(path)
+        text = path.read_text(encoding='utf-8')
+        self.assertEqual(result['depth'], 'DEEP')
+        self.assertEqual(list(result['phases'].values()), ['DONE', 'DONE', 'TODO'])
+        for marker in ['Baseline / Starting Evidence', 'Architecture / Approach',
+                       'Technical Contract', 'Plan Revisions', 'Verification Matrix',
+                       'APPROVAL GATE', 'Handoff Notes', 'Do not repeat:', 'First inspect:']:
+            self.assertIn(marker, text)
+
+    def test_validator_rejects_board_detail_drift(self):
+        original = (self.FIXTURES / 'remaster-deep-resume.md').read_text(encoding='utf-8')
+        broken = original.replace('## Phase 2 — Shared weather contract\n\nStatus: DONE',
+                                  '## Phase 2 — Shared weather contract\n\nStatus: BLOCKED')
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'broken.md'; path.write_text(broken, encoding='utf-8')
+            with self.assertRaisesRegex(ValueError, 'board/detail mismatch'):
+                validate_plan(path)
+
 def check_links():
     errors = []
     for path in ROOT.rglob('*.md'):
@@ -138,6 +216,8 @@ def check_links():
 
 if __name__ == '__main__':
     check_links()
-    suite = unittest.defaultTestLoader.loadTestsFromTestCase(Adapters)
+    suite = unittest.TestSuite()
+    suite.addTests(unittest.defaultTestLoader.loadTestsFromTestCase(Adapters))
+    suite.addTests(unittest.defaultTestLoader.loadTestsFromTestCase(AdaptivePlans))
     result = unittest.TextTestRunner(verbosity=2).run(suite)
     raise SystemExit(0 if result.wasSuccessful() else 1)

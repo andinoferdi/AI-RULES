@@ -72,3 +72,15 @@ Codex Andino is additionally discovered from `~/.agents/skills/andino-workflow/S
 Claude plugin/bundled alternatives remain in the native catalogue (including claude-mem planning and bundled debug/review). Their implicit state is not inferred from presence. Codex plugin catalogs and existing-session catalogs are separate. OpenCode prefixed Superpowers variants remain installed but denied. Antigravity historical alternatives remain outside the current skill root.
 
 Native invocation restrictions must not be bypassed by reading a blocked skill through another tool. A router may recommend a user invocation. Full per-plugin advertised/implicit behavior remains PARTIAL.
+
+## Behavioral smoke evidence - 2026-09-15
+
+| Host | Result | Evidence / limitation |
+| --- | --- | --- |
+| Antigravity CLI 1.2.2 | PASS | A: SIMPLE/no plan; B: COMPLEX/plan plus systematic investigation; C: reused supplied plan and checked drift; D: source search before optional graph; E: targeted diagnostics without a second browser tool. No writes, external calls, memory retrieval, or subagents. |
+| Codex CLI 0.154.0 | PARTIAL | A: SIMPLE/no plan; B: plan plus root-cause investigation; C: reused supplied plan after drift check; D: direct source read/no graph. Read-only sandbox denied the installed Andino body, so B/C relied on AGENTS.md contract; E made an initial browser diagnostic plan-needed, differing from Andino's initial no-plan guidance. |
+| Claude Code | EXTERNAL BLOCKED | Organization rejected API access with `oauth_org_not_allowed`. |
+| OpenCode | EXTERNAL BLOCKED | Default Meda provider returned budget exceeded. 9router was configured but its local endpoint was unavailable for a read-only model-list check. |
+
+These results assess routing decisions in disposable fixtures. They do not prove
+full feature implementation, regression behavior, or parity of all host catalogs.
