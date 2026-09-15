@@ -1,5 +1,3 @@
-> Referensi lazy: gunakan hanya bagian yang relevan dengan task. Core dan lifecycle ticket berada di AGENTS.md; jangan memuat ulang aturan yang sudah aktif.
-
 # Frontend Rules
 
 ## Peran
