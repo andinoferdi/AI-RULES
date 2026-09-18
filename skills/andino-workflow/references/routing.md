@@ -15,6 +15,10 @@ and fetching are preferred when they already answer the question. Resolve instal
 names through the host catalog. If absent, apply the method directly; do not install
 alternatives simply to fill the catalog.
 
+One lifecycle owner coordinates the job; supporting disciplines may change by phase.
+Debugging, regression/TDD, review and completion verification may run in sequence when
+each is relevant. This is phase-local support, not permission to start parallel plans.
+
 Respect native invocation controls. Installed does not mean model-invokable.
 For explicit-only workers, recommend the user's native invocation when that method
 is needed; never reproduce a blocked skill through file reads or alternate tools.
@@ -42,7 +46,8 @@ Antigravity's scoped descriptions are behavioral guidance, not a native hard swi
 | Browser navigation/E2E | one native browser, Browser Harness or Playwright | DevTools for a distinct console/network/performance question |
 | Database/cloud/design/media operations | corresponding project MCP/plugin | enable only relevant service; authorization still applies |
 
-Alternative planning/debugging/TDD methods are manual; do not combine competing
-methods for the same job. Retired routers redirect to Andino without invoking a
-bootstrap chain. A specialized skill's generic boilerplate never overrides the
-user's constraints, accepted repository contract or authorization.
+Alternative planning/debugging/TDD methods remain subject to native invocation controls.
+Do not combine competing planners, routers or lifecycle owners; use only the minimum
+phase-local disciplines needed. Retired routers redirect to Andino without invoking a
+bootstrap chain. A specialized skill's generic boilerplate never overrides the user's
+constraints, accepted repository contract or authorization.

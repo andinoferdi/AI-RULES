@@ -10,6 +10,12 @@ This skill manages that state and selects relevant workers; tools are instrument
 memory and graphs are optional context accelerators. Codex, Claude Code,
 Antigravity and OpenCode are peers: the active host is primary for this session.
 
+For intent, scope, constraints and work decisions, follow the latest user instruction,
+then project/repository rules, explicit written decisions/checkpoints, AI recommendations
+and old chat memory. For factual state, current repository, config, test and system
+evidence replaces stale facts in plans, handoffs or chat; it does not silently cancel
+an explicit user or project decision.
+
 ## Enter at the current state
 
 1. Honor the user's scope and explicit skill choice. A capability list is availability, not an execution order.
@@ -27,12 +33,26 @@ routers. For plans, use [execution-plan](references/execution-plan.md) and its t
 Ask only about ambiguity that could materially change the outcome and cannot be
 resolved from current evidence. Continue independent authorized work while waiting.
 
+## Execute with disciplined scope
+
+Surface material assumptions and tradeoffs before implementation. Resolve non-material
+ambiguity with a stated safe assumption instead of creating a clarification loop.
+Choose the simplest sufficient solution: no speculative features, premature abstractions,
+unrequested configurability or ceremony without task value. Every changed line must be
+traceable to the objective, an acceptance criterion or a direct consequence of the change;
+do not perform drive-by refactors or cleanup.
+
+These execution-discipline ideas adapt the MIT-licensed upstream
+[Karpathy Guidelines](https://github.com/multica-ai/andrej-karpathy-skills); this provenance
+note does not declare a license for Andino Workflow itself.
+
 ## Route once, then work
 
 Select zero or the minimum useful process/domain skills from [routing](references/routing.md).
-Choose one default methodology per job. Invoke a relevant Superpowers skill directly;
-do not pass through `using-superpowers`, `using-agent-skills` or the retired
-`agent-skills` router. A specialist must not start a competing lifecycle.
+Keep one lifecycle owner per job and use only the minimum supporting disciplines required
+by the current phase. Invoke a relevant Superpowers skill directly; do not pass through
+`using-superpowers`, `using-agent-skills` or the retired `agent-skills` router. A
+specialist must not start a competing lifecycle.
 Retain explicit user choices; the plan's checkpoint semantics remain stable.
 
 Use current context first, then the smallest relevant source/config read.
@@ -50,7 +70,7 @@ Update the plan at material discoveries, phase completion, strategy changes,
 blockers, verification and handoff. Preserve completed history and decision reasons.
 Keep CURRENT STATE, CURRENT PHASE, EVIDENCE and a concrete NEXT ACTION current.
 
-Verify changed behavior and required project checks. Report unavailable validation
-honestly. Mark DONE only when acceptance criteria are satisfied; otherwise leave
-an actionable checkpoint. Do not commit, push, merge, publish or deploy without
-the user's authorization for that action.
+Verify changed behavior and required project checks within the anti-loop rules and the
+ticket's stop condition. Report unavailable validation honestly. Mark DONE only when
+acceptance criteria are satisfied; otherwise leave an actionable checkpoint. Do not
+commit, push, merge, publish or deploy without the user's authorization for that action.

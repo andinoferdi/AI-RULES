@@ -16,6 +16,10 @@ Behavioral rules unless a host adapter documents a supported hard limit:
   If useful and authorized, use bounded independent scopes and compact results.
 - Use one browser surface for reproduction; another only for a distinct diagnosis.
 - No broad research for a typo, no reasoning MCP stacked on native reasoning.
-- Stop verification after relevant checks pass unless new changes or evidence justify more.
+- Repeat a verification after relevant state changes, or when the next check can produce
+  materially new evidence. Rerunning the same test after a code change is valid.
+- Stop verification when acceptance/pass criteria are proven, the stop condition is
+  reached, a deterministic blocker prevents progress, or an unchanged-state repeat adds
+  no evidence.
 - If the host exposes step/output limits, checkpoint before exhausting them.
   Limits must not turn incomplete work into a DONE claim.
