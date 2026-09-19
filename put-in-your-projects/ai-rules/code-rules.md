@@ -1098,6 +1098,11 @@ Jika hook/plugin otomatis menangani RTK:
 
 jangan paksa prefix manual.
 
+Perlakukan RTK sebagai optimasi internal agent. Pada dokumentasi, tutorial, setup
+guide, dan command untuk dicopy pengguna, tampilkan command native tanpa prefix RTK.
+Jangan menjadikan instalasi atau penggunaan RTK sebagai prasyarat kecuali materi
+memang khusus membahas RTK atau pengguna memintanya.
+
 Jika RTK tidak tersedia:
 
 gunakan command native.

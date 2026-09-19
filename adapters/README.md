@@ -3,8 +3,8 @@
 The canonical Andino source is `skills/andino-workflow/`. Run from this repository:
 
 ```powershell
-rtk proxy python -X utf8 scripts/sync-workflow.py
-rtk proxy python -X utf8 scripts/sync-workflow.py --check
+python -X utf8 scripts/sync-workflow.py
+python -X utf8 scripts/sync-workflow.py --check
 ```
 
 The script derives home dynamically, generates identical copies with hash manifests,

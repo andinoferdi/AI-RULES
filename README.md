@@ -47,11 +47,9 @@ Sumber kanonis berada di [`skills/andino-workflow`](skills/andino-workflow/SKILL
 Sinkronkan dari root repository:
 
 ```powershell
-rtk proxy python -X utf8 scripts/sync-workflow.py
-rtk proxy python -X utf8 scripts/sync-workflow.py --check
+python -X utf8 scripts/sync-workflow.py
+python -X utf8 scripts/sync-workflow.py --check
 ```
-
-Jika RTK tidak digunakan, jalankan perintah `python ...` secara langsung.
 
 Script hanya menyinkronkan Andino beserta referensinya. Ia tidak memasang aplikasi agent, MCP, plugin, atau worker lain. Edit sumber kanonis, lalu sinkronkan. Jangan memelihara empat versi secara manual.
 
