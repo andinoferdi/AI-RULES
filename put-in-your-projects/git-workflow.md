@@ -31,7 +31,7 @@ sebelum memeriksa repository dan workflow yang benar-benar berlaku.
 
 ## 1. Source of Truth
 
-Untuk workflow Git gunakan prioritas:
+Untuk workflow Git, hormati keputusan eksplisit user terbaru dalam batas host dan branch/CI policy yang enforced. Gunakan sumber berikut untuk memverifikasi workflow aktual; bukan untuk membatalkan keputusan user secara diam-diam:
 
 1. repository instructions,
 2. branch protection / repository rules,
@@ -1266,13 +1266,15 @@ Jangan mengklaim semua test lolos jika tidak dijalankan.
 
 ## 79. Prioritas Konflik
 
+Untuk intent, scope dan keputusan kerja, ikuti instruksi eksplisit user terbaru, lalu aturan project yang berlaku, keputusan/checkpoint yang disepakati, dan default template. Tetap patuhi hierarchy instruksi host serta batas platform, permission, security dan kebijakan yang benar-benar enforced; jangan menonaktifkan pembatas tersebut untuk memenuhi permintaan. Untuk fakta implementasi, repository/config/test aktual mengungguli dokumentasi atau memory yang stale; fakta baru tidak otomatis membatalkan keputusan user.
+
 Urutan umum:
 
 1. system/platform/agent constraints,
-2. repository protection/rules,
-3. applicable repository instructions,
-4. explicit user instructions,
-5. CI/CD requirements,
+2. enforced repository protection and CI/CD requirements,
+3. latest explicit user instructions within those constraints,
+4. applicable repository instructions,
+5. other documented CI/CD requirements,
 6. documented team workflow,
 7. `git-workflow.md`,
 8. `git-branch-tips.md`,

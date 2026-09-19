@@ -1368,7 +1368,7 @@ Coding agent tidak boleh mengimplementasikan unresolved proposal sebagai locked 
 
 # 64. Relationship dengan BRD
 
-`brd.md` menjawab terutama:
+BRD yang dipakai project (template opsional: `optional/brd-(optional).md`) menjawab terutama:
 
 * business problem,
 * business objective,
@@ -1409,7 +1409,7 @@ Jangan menjadikan PRD sebagai implementation roadmap penuh.
 
 # 67. Relationship dengan Task
 
-`task.md` menjawab:
+Plan/checkpoint task yang aktif (execution plan Andino bila digunakan) menjawab:
 
 * apa yang dikerjakan sekarang,
 * file/area,

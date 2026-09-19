@@ -1704,11 +1704,13 @@ Jangan:
 
 # 73. Prioritas Konflik
 
+Untuk intent, scope dan keputusan kerja, ikuti instruksi eksplisit user terbaru, lalu aturan project yang berlaku, keputusan/checkpoint yang disepakati, dan default template. Tetap patuhi hierarchy instruksi host serta batas platform, permission, security dan kebijakan yang benar-benar enforced; jangan menonaktifkan pembatas tersebut untuk memenuhi permintaan. Untuk fakta implementasi, repository/config/test aktual mengungguli dokumentasi atau memory yang stale; fakta baru tidak otomatis membatalkan keputusan user.
+
 Urutan umum:
 
 1. system/platform constraint,
-2. applicable organization/repository instruction,
-3. explicit user/stakeholder decision,
+2. latest explicit user/authorized stakeholder decision within enforced constraints,
+3. applicable organization/repository instruction,
 4. approved business requirement,
 5. approved PRD/SRS downstream requirement,
 6. BRD template fallback.

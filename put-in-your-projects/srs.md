@@ -267,7 +267,7 @@ Cantumkan hanya sumber yang benar-benar memengaruhi requirement.
 
 Contoh:
 
-* `brd.md`
+* BRD project bila tersedia, misalnya `optional/brd-(optional).md`
 * `prd.md`
 * architecture decision
 * regulation
@@ -1463,7 +1463,7 @@ Gunakan requirement IDs yang tidak bentrok dengan sistem project.
 
 # 32. Relationship dengan BRD
 
-`brd.md` menjawab terutama:
+BRD yang dipakai project (template opsional: `optional/brd-(optional).md`) menjawab terutama:
 
 * mengapa bisnis membutuhkan perubahan,
 * outcome bisnis,
@@ -1486,7 +1486,7 @@ SRS menerjemahkan kebutuhan tersebut menjadi requirement system yang lebih forma
 
 # 34. Relationship dengan Task
 
-`task.md` menjelaskan:
+Plan/checkpoint task yang aktif (execution plan Andino bila digunakan) menjelaskan:
 
 * pekerjaan implementasi,
 * dependency,

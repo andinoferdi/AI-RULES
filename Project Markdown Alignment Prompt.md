@@ -767,6 +767,10 @@ selaraskan agar:
 * memilih tools/capabilities secara dinamis,
 * dan mengikuti workflow project aktual.
 
+Jika Andino aktif, pertahankan satu execution plan, checkpoint, NEXT ACTION dan acceptance owner. Jika Rescue digunakan, pertahankan metode evidence-first dan gate REMAKE; standalone memakai task context host, composed mengembalikan evidence ke Andino. Jangan membuat kedua skill wajib bagi project yang tidak menggunakannya. Selaraskan pemilihan skill, UI pairing dan accelerator berdasarkan kebutuhan, bukan ketersediaan; hormati pilihan user dan native invocation controls. Jangan mengaktifkan router lama atau bootstrap ulang ketika melanjutkan checkpoint.
+
+Untuk intent/scope, pertahankan keputusan eksplisit user terbaru dalam hierarchy dan batas enforced host. Fakta repository aktual memperbarui pengetahuan implementasi, bukan otomatis membatalkan keputusan tersebut. Resolve referensi ke file yang benar-benar ada; jangan membuat `task.md` atau `brd.md` hanya untuk memenuhi nama template lama.
+
 Jangan memaksa semua rules masuk context pada setiap task.
 
 ## AGENT INSTRUCTIONS

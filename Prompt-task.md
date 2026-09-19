@@ -4,10 +4,13 @@ Capability manifest tersedia untuk dipilih sesuai kebutuhan. Jangan jalankan sem
 * taste-skill
 * ui-ux-pro-max
 * graphify
-* superpowers:using-superpowers
+* skill Superpowers spesifik sesuai kebutuhan
 * ponytail
-* agent-skills
+* andino-workflow
+* ai-codebase-rescue
 * clone-website
+
+Manifest ini hanya daftar kemungkinan capability, bukan instruksi aktivasi. Hormati native invocation controls dan pilihan skill eksplisit user. Jangan menjalankan router `using-superpowers`, `using-agent-skills` atau `agent-skills`. Ketika Andino aktif, reuse plan/checkpoint-nya; Rescue menjadi spesialis evidence dan remediation. Tanpa Andino aktif, gunakan task context host dan jangan membuat lifecycle baru hanya karena skill terpasang.
 
 Gunakan capability di atas hanya jika tersedia pada agent/environment saat ini dan memang relevan dengan task. Gunakan mekanisme native agent untuk memanggilnya, seperti skill, slash command, MCP prompt/tool, atau capability setara. Jangan gagal hanya karena nama atau mekanisme invocation berbeda.
 
@@ -19,7 +22,7 @@ Untuk claude-mem, ambil hanya memory yang relevan dengan masalah. Jangan melakuk
 
 Untuk Graphify, gunakan graph/index yang sudah tersedia melalui query/path/explain. Jangan rebuild atau regenerate graph hanya untuk task ini kecuali memang diminta atau graph terbukti tidak valid dan rebuild menjadi bagian task.
 
-Untuk task yang menyentuh UI, frontend visual, responsive layout, atau styling, gunakan `taste-skill` dan panggil juga `/ui-ux-pro-max` (`ui-ux-pro-max`) sesuai kebutuhan visual dan UX.
+Untuk task UI/frontend visual, responsive layout atau styling, pilih Taste, `ui-ux-pro-max`, atau keduanya sesuai kebutuhan yang berbeda. Pertahankan pilihan satu skill yang eksplisit; jangan otomatis memasangkan keduanya untuk semua task frontend, termasuk rescue runtime tanpa kebutuhan redesign.
 
 Pastikan instruction di `[LOKASI_SECOND_PROMPT]` berlaku untuk task ini. Jika file tersebut sudah dimuat melalui project/agent wiring dan isinya tersedia dalam context, jangan membacanya ulang hanya untuk menduplikasi context. Muat dokumentasi project tambahan hanya jika relevan.
 

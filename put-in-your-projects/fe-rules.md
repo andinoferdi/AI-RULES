@@ -1640,11 +1640,13 @@ Jangan menambah functionality hanya karena rules membahasnya.
 
 ## Prioritas Konflik
 
+Untuk intent, scope dan keputusan kerja, ikuti instruksi eksplisit user terbaru, lalu aturan project yang berlaku, keputusan/checkpoint yang disepakati, dan default template. Tetap patuhi hierarchy instruksi host serta batas platform, permission, security dan kebijakan yang benar-benar enforced; jangan menonaktifkan pembatas tersebut untuk memenuhi permintaan. Untuk fakta implementasi, repository/config/test aktual mengungguli dokumentasi atau memory yang stale; fakta baru tidak otomatis membatalkan keputusan user.
+
 Urutan umum:
 
 1. system/platform/agent constraints,
-2. applicable repository instructions,
-3. explicit user instructions,
+2. latest explicit user instructions within those constraints,
+3. applicable repository instructions,
 4. project-specific rules,
 5. design/source specification yang berlaku,
 6. frontend rules ini,

@@ -31,7 +31,7 @@ sebelum memeriksa convention project.
 
 ## 1. Prioritas Convention
 
-Untuk naming dan format Git, gunakan prioritas:
+Untuk naming dan format Git, hormati keputusan eksplisit user terbaru dalam batas host dan tooling yang enforced. Daftar berikut membantu menemukan convention existing; bukan alasan mengalahkan keputusan user yang sah:
 
 1. repository instructions yang berlaku,
 2. contribution guide,
@@ -1277,12 +1277,14 @@ Jangan membuat metadata lebih dulu lalu lupa memperbaruinya setelah scope beruba
 
 ## 69. Prioritas Konflik
 
+Untuk intent, scope dan keputusan kerja, ikuti instruksi eksplisit user terbaru, lalu aturan project yang berlaku, keputusan/checkpoint yang disepakati, dan default template. Tetap patuhi hierarchy instruksi host serta batas platform, permission, security dan kebijakan yang benar-benar enforced; jangan menonaktifkan pembatas tersebut untuk memenuhi permintaan. Untuk fakta implementasi, repository/config/test aktual mengungguli dokumentasi atau memory yang stale; fakta baru tidak otomatis membatalkan keputusan user.
+
 Urutan umum:
 
 1. system/platform/agent constraint,
-2. repository instruction,
-3. explicit user instruction,
-4. enforced CI/hook/tooling,
+2. enforced CI/hook/tooling,
+3. latest explicit user instruction within those constraints,
+4. repository instruction,
 5. documented team convention,
 6. observed repository convention,
 7. file `git-naming.md`,

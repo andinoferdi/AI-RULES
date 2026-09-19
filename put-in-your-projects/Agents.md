@@ -14,6 +14,18 @@ File ini bersifat:
 
 Jangan mengasumsikan framework, bahasa, package manager, database, deployment provider, atau architecture sebelum memeriksa repository.
 
+## Lifecycle dan skill composition
+
+Satu lifecycle owner untuk satu task. Rules project memberi constraint; plan/checkpoint menyimpan state; skill spesialis memberi metode dan evidence.
+
+Jika `andino-workflow` aktif atau diwajibkan project, gunakan plan/checkpoint Andino yang ada. Task non-trivial memakai plan sesuai kontraknya; SIMPLE tetap langsung dikerjakan. Andino memiliki phase state, acceptance, authoritative NEXT ACTION dan DONE. Jangan membuat plan paralel melalui template atau skill lain.
+
+Jika Andino tidak aktif dan tidak diwajibkan, gunakan workflow serta task context host yang sedang berjalan. Instalasi skill saja tidak mengaktifkannya; jangan install atau bootstrap skill lain otomatis. Jika workflow yang diwajibkan tidak tersedia, laporkan gap tersebut dan lanjutkan hanya pekerjaan independen yang tetap sesuai constraint.
+
+`ai-codebase-rescue` digunakan untuk fragilitas/regresi berulang atau pemulihan subsystem berbatas yang didukung bukti. Rescue dapat standalone; ketika Andino aktif, findings, gate REMAKE dan hasil verifikasinya kembali ke plan Andino. Bug lokal, kosmetik dan dugaan AI authorship saja tidak memicu rescue atau rewrite. REMAKE memerlukan bukti Boundary, Contract, Baseline, Risk, Safety dan Scope; jangan gunakan minimal change sebagai alasan mempertahankan patch rapuh.
+
+Pilih metode langsung sesuai kebutuhan dan native invocation controls. Jangan memulai router `using-superpowers`, `using-agent-skills` atau `agent-skills`, serta jangan otomatis mengambil memory, membangun graph, mengaktifkan Ponytail, memasangkan skill UI atau melakukan subagent fan-out. Missing optional skill/tool tidak menghalangi pekerjaan biasa dan bukan alasan mengklaim skill itu telah dijalankan.
+
 ## 1. SOURCE OF TRUTH
 
 Untuk current implementation state, gunakan repository aktual sebagai source of truth.
@@ -324,9 +336,9 @@ Project dapat menyediakan rule modular seperti:
 * `git-naming.md`
 * `git-workflow.md`
 * `git-branch-tips.md`
-* `task.md`
+* plan/checkpoint task yang digunakan project
 * `prd.md`
-* `brd.md`
+* `optional/brd-(optional).md` bila dipakai project
 * `srs.md`
 
 Gunakan secara lazy.
@@ -353,12 +365,12 @@ Git operation:
 
 Planning/task:
 
-* `task.md`
+* plan/checkpoint task yang digunakan project
 
 Product requirement:
 
 * `prd.md`
-* `brd.md`
+* `optional/brd-(optional).md` bila dipakai project
 * `srs.md`
 
 Jangan memuat semua rule pada setiap task.
@@ -934,11 +946,13 @@ jelaskan conflict dan cari solusi terdekat yang mempertahankan intent.
 
 ## 38. PRIORITY
 
+Untuk intent, scope dan keputusan kerja, ikuti instruksi eksplisit user terbaru, lalu aturan project yang berlaku, keputusan/checkpoint yang disepakati, dan default template. Tetap patuhi hierarchy instruksi host serta batas platform, permission, security dan kebijakan yang benar-benar enforced; jangan menonaktifkan pembatas tersebut untuk memenuhi permintaan. Untuk fakta implementasi, repository/config/test aktual mengungguli dokumentasi atau memory yang stale; fakta baru tidak otomatis membatalkan keputusan user.
+
 Urutan umum:
 
 1. system/platform/agent constraints,
-2. applicable repository instructions,
-3. explicit user instructions,
+2. latest explicit user instructions within those constraints,
+3. applicable repository instructions,
 4. project rules,
 5. framework-specific instructions,
 6. default conventions.
