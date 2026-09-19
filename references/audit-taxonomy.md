@@ -2,7 +2,8 @@
 
 Use when a rescue needs help selecting investigation areas. This is a menu of
 evidence questions, not a mandatory checklist. Keep the target boundary and findings
-in the existing Andino plan. Domain presence alone does not justify a deep audit.
+in the active task record (the Andino plan when active). Domain presence alone does
+not justify a deep audit.
 
 ## Core triage
 

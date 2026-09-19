@@ -12,7 +12,7 @@ cleaner code or AI provenance is not a replacement rationale.
 ## Entry gates
 
 Record PASS, FAIL or UNKNOWN and the supporting evidence for each gate in the
-shared Andino plan. All material gates must PASS before replacement implementation.
+active task record. All material gates must PASS before replacement implementation.
 An unknown or failed material gate means INVESTIGATE with a specific next evidence
 action. Do not average gate scores or treat urgency as permission to skip safety.
 
@@ -54,7 +54,7 @@ independent safe work where useful; do not widen the boundary to make gates pass
 8. Remove proven obsolete paths and temporary migration machinery when no longer
    required. If coexistence must remain, record why, its risk and removal condition.
    Verify again after cleanup, then return evidence, deviations and residual risks
-   to Andino's existing checkpoint.
+   to the active task's existing checkpoint or host context.
 
 Choose the smallest sufficient sequence; these are evidence obligations, not a
 new mandatory phase system. Stop affected mutation if the boundary expands,
@@ -77,6 +77,6 @@ Do not recommend "rewrite the repository" unless all of the following hold:
 - Cross-system verification and acceptance strategy is available.
 
 Authorization to evaluate is not authorization to execute. Return bounded options
-or INVESTIGATE when this threshold is unmet; Andino and the owner govern any
-separate modernization program. Severity, frustration and code authorship do not
+or INVESTIGATE when this threshold is unmet; the user and active lifecycle owner
+govern any separate modernization program. Severity, frustration and code authorship do not
 lower the threshold.

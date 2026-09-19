@@ -41,4 +41,4 @@ action rather than asserting the migration safe.
 Return findings using the existing schema, including residual risks and deliberately
 deferred work. "No issue found in these checked paths" is narrower than "secure".
 Keep the remediation disposition independent of severity and provenance; retain
-Andino as the sole acceptance/checkpoint owner.
+one acceptance/checkpoint owner: Andino when active, otherwise the host task context.

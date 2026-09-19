@@ -10,16 +10,19 @@ and behavioral contracts; do not preserve accidental implementation complexity.
 
 ## Lifecycle boundary
 
-This is a specialist methodology inside `andino-workflow`. Andino owns task
-classification, the execution plan, phase state, checkpoint, authoritative
-`NEXT ACTION`, and completion. Consume its objective, approved scope, acceptance
-criteria, current phase, evidence and stop condition. Reuse current evidence.
-Do not create a rescue plan format, router, checkpoint store or independent DONE.
+This is a standalone specialist methodology. Use the active host's task context
+and repository conventions for scope, acceptance, evidence and completion. Reuse
+an existing plan or checkpoint; without one, record the objective, boundary,
+findings, verification and next action in the host's normal task context. Missing
+`andino-workflow` does not block authorized investigation or remediation.
 
-On direct invocation, first bind to the existing Andino plan; if none exists,
-use Andino's normal plan contract for non-trivial work. If Andino is unavailable,
-return scoped findings and the missing lifecycle context without inventing a
-replacement lifecycle. Tool or memory availability never establishes truth.
+When Andino is active or the repository requires it, bind to its existing plan
+and normal plan contract. Andino owns classification, phase state, checkpoint,
+authoritative `NEXT ACTION` and completion; return evidence to that owner. Merely
+installing Andino does not activate it or replace another active lifecycle.
+Do not create a rescue plan format, router, checkpoint store or competing DONE.
+Honor native invocation controls; do not install or activate another skill just
+to run this one. Tool or memory availability never establishes truth.
 
 ## Eligibility gate
 
@@ -38,7 +41,7 @@ code may receive KEEP; do not manufacture remediation to justify activation.
 
 1. Inspect applicable rules and current Git status, diff, branch and target.
    Protect user changes. An overlapping unknown change, wrong base or conflicting
-   instruction stops mutation of the affected area; report the conflict to Andino.
+   instruction stops mutation of the affected area; report it in the active task.
    Do not reset, stash or move user changes to make inspection convenient.
 2. Identify intended behavior using requirements, trusted tests, consumers and
    runtime evidence. Record public interfaces, data and permission invariants,
@@ -78,7 +81,7 @@ not the smallest patch when that patch would preserve the demonstrated failure.
 
 Before choosing or implementing REMAKE, read
 [bounded remake](references/bounded-remake.md). Record evidence for **Boundary,
-Contract, Baseline, Risk, Safety and Scope** gates in the shared plan. All material
+Contract, Baseline, Risk, Safety and Scope** gates in the active task record. All material
 gates must PASS before replacement begins. Failure or unknown evidence produces
 INVESTIGATE and a concrete next check, never speculative replacement.
 
@@ -102,8 +105,8 @@ Do not delete or weaken tests, suppress errors, fake success, or update snapshot
 merely to conceal a regression. Remove old implementation only with obsolescence
 proof, then verify the resulting integration again.
 
-Follow Andino's anti-loop rules: repeat a failed action only with changed state or
-new evidence. Report unavailable verification and remaining uncertainty honestly.
+Repeat a failed action only with changed state or new evidence, following any
+active lifecycle's retry limits. Report unavailable verification and remaining uncertainty honestly.
 Commit, push, publication, deployment and live-data operations require applicable
 user authorization; a rescue request alone does not grant it.
 
@@ -123,13 +126,15 @@ to read every reference. Each operational reference is available directly here:
 - [Validation scenarios](references/validation-scenarios.md): only when developing,
   reviewing or validating this skill; not automatically during rescue execution.
 
-## Return evidence to Andino
+## Return evidence to the active task
 
 Return eligibility, boundary and baseline; structured findings with severity,
 confidence and disposition; preserved contracts and intentional changes; proposed
 versus actual remediation scope; regression protection; remake gate evidence when
 relevant; changed files and actual verification outcomes; remaining risks, blockers
 and a concrete recommended next action. Distinguish implemented, verified, deferred
-and unverified results. Andino incorporates this packet into its existing plan and
-decides acceptance and authoritative NEXT ACTION. This method creates no parallel
-phase system and makes no independent lifecycle completion claim.
+and unverified results. In standalone use, the host reports completion only against
+the agreed scope and actual verification, or records an actionable checkpoint.
+With Andino active, return this packet to its existing plan; Andino decides
+acceptance and authoritative NEXT ACTION. This method creates no parallel phase
+system or competing lifecycle completion claim.

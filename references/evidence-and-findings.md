@@ -1,8 +1,8 @@
 # Evidence and findings
 
 Use when assessing a candidate finding, choosing a disposition or returning
-verification evidence to Andino. Keep findings in the existing shared plan or its
-already-established evidence artifacts, not a second rescue state store.
+verification evidence to the active task. Keep findings in its existing plan,
+host task context or established evidence artifacts, not a second rescue state store.
 
 ## Evidence quality and claim discipline
 
@@ -82,7 +82,7 @@ Verification names the observable outcome and how it will be checked, not just
 residual risk; do not silently rewrite the original observation as a success.
 For INVESTIGATE, identify the artifact or question to inspect, the concrete action,
 and the evidence needed to choose a disposition. Return that recommendation to
-Andino rather than assigning a competing authoritative NEXT ACTION.
+the active lifecycle owner; when Andino is active, it owns authoritative NEXT ACTION.
 
 ## AI provenance stays separate
 
@@ -106,4 +106,5 @@ Return only decision-relevant evidence: eligibility and scope, baseline and trus
 findings/dispositions, preserved contracts, protection and gate results, actual
 implementation and verification, deferred risks and the next evidence action.
 Link existing artifacts instead of copying full logs. This packet is a projection
-for the Andino plan, not a new plan, lifecycle or independent completion verdict.
+for the active task record, not a new plan or lifecycle. When Andino is active,
+it incorporates this evidence and owns the completion verdict.

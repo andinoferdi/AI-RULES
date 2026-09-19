@@ -68,4 +68,5 @@ Never delete, skip or weaken tests, loosen thresholds, fabricate fixtures/result
 or bless snapshots merely to obtain PASS. Repair a demonstrably incorrect test only
 against a verified contract, recording its reason and replacement protection.
 Return commands/procedures, actual outcomes, before/after comparison, residual
-failures and limits to Andino. It owns acceptance and the authoritative checkpoint.
+failures and limits to the active task. When Andino is active, it owns acceptance
+and the authoritative checkpoint; otherwise use the host's normal task context.

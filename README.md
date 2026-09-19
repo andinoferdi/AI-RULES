@@ -1,254 +1,133 @@
-# Andino-Workflow
+# AI Codebase Rescue
 
-Andino-Workflow adalah workflow router dan execution-plan manager untuk Codex, Claude Code, OpenCode, dan Antigravity.
+An evidence-first method for stabilizing fragile codebases and bounded
+subsystems. Choose KEEP, REFACTOR, REMAKE, REMOVE or INVESTIGATE from
+engineering evidence. Preserve contracts and establish regression protection;
+AI authorship alone never justifies a rewrite.
 
-Keempat agent diperlakukan sebagai **peer primary-capable agents**. Agent yang sedang dipakai menjadi primary untuk sesi tersebut. Repository dan konfigurasi aktual tetap menjadi sumber kebenaran.
+Start with [the skill](SKILL.md). Rescue works standalone using the host task
+context, and follows the existing Andino plan when Andino is active. Routine
+local bugs, cosmetic cleanup and ordinary features use the normal workflow.
+[Validation scenarios](references/validation-scenarios.md) describe expected
+behavior for reviewers; they are not automatically loaded during a rescue.
 
-## Cara kerja
+## Install
 
-| Bagian | Fungsi |
-| --- | --- |
-| Project rules | Aturan dan convention repository. |
-| Execution plan | State ticket lintas sesi: tujuan, progress, evidence, phase, dan `NEXT ACTION`. |
-| Andino-Workflow | Memilih workflow/skill minimum yang relevan dan menjaga lifecycle plan. |
-| Skills | Metodologi atau worker spesialis. |
-| Tools / MCP | Instrumen untuk menjalankan pekerjaan. |
-| Memory / graph | Accelerator konteks opsional, bukan syarat handoff. |
+Clone this branch into a directory named `ai-codebase-rescue` under your agent's skill root.
+The commands below work in PowerShell and Bash; `$HOME` is your user home.
+Use a destination that does not already contain another installation.
 
-### Workflow mengikuti ukuran task
+```sh
+git clone --depth 1 --single-branch --branch ai-codebase-rescue https://github.com/andinoferdi/AI-RULES.git "$HOME/.agents/skills/ai-codebase-rescue"
+```
 
-| Kelas | Contoh | Alur |
+That destination works globally for Codex and OpenCode. For another host or
+project scope, replace the destination using this table, appending `/ai-codebase-rescue`.
+Project paths are relative to the target project's root.
+
+| Agent | Global skill root | Project skill root |
 | --- | --- | --- |
-| **SIMPLE** | Typo, rename, edit kecil | Pahami → edit → verifikasi. Plan biasanya tidak perlu. |
-| **STANDARD** | Fitur lokal, bug jelas, refactor terbatas | Ambil konteks relevan → implementasi → verifikasi. Gunakan plan untuk ticket non-trivial. |
-| **COMPLEX** | Root cause belum jelas, migrasi, arsitektur, perubahan lintas sistem | Investigasi → plan → implementasi bertahap → verifikasi → checkpoint. |
+| Codex | `~/.agents/skills` | `.agents/skills` |
+| OpenCode | `~/.config/opencode/skills` (also reads `~/.agents/skills`) | `.opencode/skills` (also reads `.agents/skills`) |
+| Claude Code | `~/.claude/skills` | `.claude/skills` |
+| Antigravity 2.0 / IDE | `~/.gemini/config/skills` | `.agents/skills` |
+| Antigravity CLI | `~/.gemini/antigravity-cli/skills` | `.agents/skills` |
 
-Execution plan memiliki tiga tingkat detail:
+For example, Claude Code globally:
 
-- **LITE** — checkpoint kecil yang tetap membutuhkan plan.
-- **STANDARD** — default untuk ticket non-trivial.
-- **DEEP** — untuk task kompleks ketika detail tambahan benar-benar mengurangi risiko, ambiguity, atau biaya handoff.
-
-Plan depth bukan workflow baru. Task tidak otomatis menjadi DEEP hanya karena prompt panjang atau file yang disentuh banyak.
-
-Andino tidak wajib menjalankan `using-superpowers`, seluruh skill, graph, memory, MCP, atau subagent. Gunakan capability minimum yang memang membantu task.
-
-## Instalasi Andino-Workflow
-
-Sumber kanonis berada di [`skills/andino-workflow`](skills/andino-workflow/SKILL.md). Salinan terpasang dibaca dari lokasi discovery masing-masing host.
-
-| Agent | Lokasi relatif terhadap home | Pemanggilan |
-| --- | --- | --- |
-| Codex | `.agents/skills/andino-workflow/` | `$andino-workflow` |
-| Claude Code | `.claude/skills/andino-workflow/` | `/andino-workflow` |
-| OpenCode | `.config/opencode/skills/andino-workflow/` | Native skill tool / command adapter |
-| Antigravity | `.gemini/config/skills/andino-workflow/` | Gunakan skill `andino-workflow` |
-
-Sinkronkan dari root repository:
-
-```powershell
-python -X utf8 scripts/sync-workflow.py
-python -X utf8 scripts/sync-workflow.py --check
+```sh
+git clone --depth 1 --single-branch --branch ai-codebase-rescue https://github.com/andinoferdi/AI-RULES.git "$HOME/.claude/skills/ai-codebase-rescue"
 ```
 
-Script hanya menyinkronkan Andino beserta referensinya. Ia tidak memasang aplikasi agent, MCP, plugin, atau worker lain. Edit sumber kanonis, lalu sinkronkan. Jangan memelihara empat versi secara manual.
+Antigravity IDE also documents the legacy global path
+`~/.gemini/antigravity/skills`. Prefer the location for your installed surface.
+Other agents can use this directory when they support Agent Skills; use their
+documented discovery path rather than assuming every agent shares these roots.
+Keep one installation per skill visible to each host where practical. OpenCode
+also reads Claude-compatible directories, so duplicate copies can shadow updates.
 
-## Setup project baru
+Install the **whole folder**, including `references/`. No build, package manager,
+sync script, MCP service or personal host configuration is required by this skill.
+For team distribution in a project, commit the package files as ordinary files or
+use a deliberately managed submodule; a nested clone alone is not a complete
+parent-repository distribution. Do not include credentials or personal configs.
 
-### 1. Salin project rules
+## Use
 
-Salin template yang relevan dari `put-in-your-projects` ke project, misalnya:
+- Codex CLI/IDE: select the skill with `$` or `/skills`, for example
+  `$ai-codebase-rescue investigate repeated checkout regressions within the payment module`.
+- Claude Code: `/ai-codebase-rescue investigate repeated checkout regressions within the payment module`.
+- Antigravity 2.0/CLI: `/ai-codebase-rescue investigate repeated checkout regressions within the payment module`; in the IDE, check Customizations
+  and mention the skill by name.
+- OpenCode: ask the agent to use `ai-codebase-rescue` for the task; its native skill tool
+  loads the matching ID, subject to configured permissions.
 
-```text
-your-project/
-  AGENTS.md
-  docs/
-    ai-rules/
+Implicit selection depends on the task, host and invocation policy. Installation
+does not force activation or grant permission for external actions.
+
+## Combine the two skills
+
+Install the companion branch into a **separate sibling folder** under the same
+host skill root:
+
+```sh
+git clone --depth 1 --single-branch --branch andino-workflow https://github.com/andinoferdi/AI-RULES.git "$HOME/.agents/skills/andino-workflow"
 ```
 
-Project rules dan execution plan hidup di repository pekerjaan. Skill Andino tetap berada di lokasi global agent.
+Use the appropriate root from the table for Claude Code or Antigravity. The result
+is two packages: `andino-workflow/` and `ai-codebase-rescue/`.
 
-### 2. Jalankan Project Markdown Alignment
+Andino coordinates task state and may route eligible rescue work to Rescue.
+Rescue supplies diagnosis, dispositions, remediation and verification evidence.
+When Andino is active, its plan remains the single lifecycle owner. Without
+Andino, Rescue uses the host's normal task context. Merely installing both does
+not activate both. Neither package bundles or automatically installs the other.
 
-Gunakan [`Project Markdown Alignment Prompt.md`](<Project Markdown Alignment Prompt.md>) saat:
+Example request: "Use andino-workflow to coordinate this task and
+ai-codebase-rescue to investigate repeated regressions in the checkout module."
 
-- memasang rules ke project baru,
-- stack atau wiring berubah material,
-- atau alignment memang diminta.
+## Update or switch branches
 
-Alignment harus menyesuaikan **project-copy rules** berdasarkan evidence repository. Jangan mengisi PRD/SRS dengan requirement yang tidak diketahui, dan jangan mengubah master template dengan fakta project tertentu.
+For a clean clone on this branch:
 
-### 3. Bootstrap hanya jika perlu
-
-Jika agent belum memahami stack, struktur, rules, dan command utama, jalankan [`First-prompt`](<put-in-your-projects/1. First-prompt.md>).
-
-```text
-Baca dan jalankan docs/ai-rules/1. First-prompt.md.
-
-Pahami project rules, stack, struktur utama, serta command development
-Dan verification yang tersedia. Ambil konteks minimum yang diperlukan.
-Jangan mengulang alignment atau mengaudit seluruh repository.
-Belum ada permintaan implementasi fitur.
+```sh
+git -C "$HOME/.agents/skills/ai-codebase-rescue" status --short
+git -C "$HOME/.agents/skills/ai-codebase-rescue" pull --ff-only
 ```
 
-Jika alignment pada sesi yang sama sudah memberi konteks cukup, lewati bootstrap.
+Resolve or preserve local edits before updating. If an older installation is a
+copied/generated folder instead of a Git clone, preserve it outside every host's
+skill roots, then replace it with a fresh clone. Do not blindly overwrite local
+edits or leave a second discoverable backup. Old `.andino-generated.json` markers
+belong to the retired sync workflow; do not mix that workflow with these clones.
 
-Urutan normal:
+Use separate clones to run both skills together. Branch switching is for a clean
+development checkout: a single checkout exposes only one branch at a time, and a
+single-branch clone initially fetches only the selected branch. An installed
+folder must retain the name of the skill it contains.
 
-```text
-alignment sekali
-→ bootstrap bila perlu
-→ task
-→ resume dari execution plan bila terputus
-```
+## Verify your installation
 
-## Menjalankan task
+Confirm `ai-codebase-rescue/SKILL.md` and its referenced files exist. Open a fresh host
+session (or refresh its skill list), select the skill explicitly, and ask it to
+explain its scope and lifecycle without editing files. Check the loaded path if
+multiple copies exist. Then use a disposable task to test actual behavior.
 
-### Task sederhana
+Package metadata, relative links and isolated directory layouts were checked.
+That is not evidence of native selection or successful task execution in all
+four agents; those live checks remain environment-specific and unverified here.
 
-Tidak perlu memanggil Andino jika task memang kecil.
+## Package and sources
 
-```text
-Ganti teks tombol Login menjadi Masuk.
-```
+This branch contains only `SKILL.md`, `references/` and this README. The
+[WebBased branch](https://github.com/andinoferdi/AI-RULES/tree/WebBased) retains
+web/chat rules and project templates. Development plans, monorepo adapter scripts
+and historical evaluation reports are outside the runtime package. Edit this
+branch's root files as the canonical source.
 
-Expected: edit lokal dan verifikasi terarah. Tidak perlu plan, memory, graph, browser, atau subagent tanpa alasan nyata.
-
-### Ticket non-trivial
-
-Contoh di Codex:
-
-```text
-$andino-workflow
-
-Buat CRUD user mengikuti stack dan pola repository ini.
-
-Kebutuhan:
-- daftar user dengan pencarian dan pagination,
-- detail, tambah, edit, dan hapus user,
-- nama, email unik, dan status aktif,
-- hanya admin yang boleh mengelola user,
-- UI memiliki loading, empty, error, dan success state.
-
-Gunakan autentikasi dan komponen yang sudah ada.
-Buat/update docs/exec-plans/active/USER-CRUD.md.
-Implementasikan lalu verifikasi acceptance criteria dan akses non-admin.
-```
-
-Di Claude Code gunakan `/andino-workflow`. Di host lain gunakan mekanisme skill yang tersedia.
-
-## Execution plan
-
-Simpan plan di repository pekerjaan:
-
-```text
-your-project/
-  docs/
-    exec-plans/
-      active/
-        TICKET-001.md
-      completed/
-```
-
-Gunakan [`execution-plan-template.md`](skills/andino-workflow/references/execution-plan-template.md). Pilih LITE, STANDARD, atau DEEP secara konservatif.
-
-Plan aktif sebaiknya menyimpan:
-
-- objective dan acceptance criteria,
-- current state dan current phase,
-- execution board,
-- keputusan dan evidence yang material,
-- planned vs actual result,
-- blockers/unknowns,
-- `NEXT ACTION` yang konkret.
-
-Untuk DEEP plan, tambahkan baseline, technical contract, root-cause findings, plan revisions, verification matrix, atau approval gate jika memang relevan.
-
-Jangan simpan raw reasoning, seluruh log tool, full source file, atau informasi project yang sudah tersedia di rules.
-
-### Checkpoint dan resume
-
-Update checkpoint setelah:
-
-- phase selesai,
-- temuan penting,
-- perubahan strategi,
-- blocker,
-- verifikasi,
-- atau sebelum pindah sesi/agent.
-
-Resume:
-
-```text
-Gunakan andino-workflow.
-Continue @docs/exec-plans/active/USER-CRUD.md.
-Periksa drift repository lalu lanjutkan NEXT ACTION.
-Jangan ulang phase DONE tanpa evidence baru yang membatalkannya.
-```
-
-Jika host tidak mendukung `@`, berikan path atau lampirkan file plan. Plan menjaga koordinasi, tetapi tidak memindahkan working tree atau perubahan file secara otomatis.
-
-## Skill routing
-
-Andino memilih skill minimum yang relevan. Skill yang terpasang tidak berarti harus selalu dipakai.
-
-| Capability | Gunakan ketika |
-| --- | --- |
-| `systematic-debugging` | Root cause bug belum diketahui. |
-| `test-driven-development` | Perubahan perilaku membutuhkan regression/contract test. |
-| `verification-before-completion` | Klaim selesai perlu evidence yang jelas. |
-| `code-review-and-quality` | Diff membutuhkan review defect/quality. |
-| `claude-mem` | Perlu mencari keputusan atau konteks historis. |
-| `graphify` | Hubungan modul lebih mudah dipahami melalui graph. |
-| `ui-ux-pro-max` | Form, dashboard, UX, accessibility, design system. |
-| `design-taste-frontend` | Visual polish atau karakter desain dalam scope. |
-| `ponytail` | Review kompleksitas berlebih secara on-demand. |
-| `clone-website` | Replikasi website/screenshot dengan fidelity tinggi. |
-
-`using-superpowers` dan router lama tidak ditumpuk otomatis dengan Andino. Memory dan graph adalah accelerator, bukan syarat handoff.
-
-## MCP dan efisiensi konteks
-
-- Context7 dan MCP khusus digunakan **on-demand**.
-- Jangan memanggil tool yang sama pada state yang sama tanpa evidence baru.
-- Hindari tool ping-pong dan retry tanpa batas.
-- Gunakan output tool secukupnya; jangan masukkan log besar jika ringkasan atau range terarah cukup.
-- Subagent default-nya **0**. Gunakan hanya jika pekerjaan benar-benar independen atau memberi manfaat jelas.
-- SIMPLE task harus tetap simple.
-
-Lihat [`anti-loop.md`](skills/andino-workflow/references/anti-loop.md) untuk guard lengkap.
-
-## Project rules
-
-[`put-in-your-projects`](put-in-your-projects/Agents.md) berisi template untuk repository pekerjaan.
-
-Prinsipnya:
-
-1. `AGENTS.md` menjadi core/router yang ringkas.
-2. Rules frontend, backend, Git, code, token/context, dan spec tetap lazy, tetapi harus sudah disesuaikan dengan project ketika alignment dijalankan.
-3. Jangan menempelkan seluruh rules ke setiap prompt.
-4. Jangan menimpa requirement, design token, atau business rules yang sudah disepakati.
-5. Mengubah template master di repository ini tidak otomatis memperbarui project lama.
-
-## Validasi
-
-Untuk perubahan pada Andino atau script repository:
-
-```powershell
-rtk proxy python -X utf8 scripts/validate.py
-```
-
-Sebelum menyatakan task selesai, verifikasi sesuai scope task. Jangan menjalankan suite besar berulang tanpa perubahan yang membenarkannya.
-
-## Referensi
-
-- [Host adapters](adapters/README.md)
-- [Execution plan lifecycle](skills/andino-workflow/references/execution-plan.md)
-- [Handoff](skills/andino-workflow/references/handoff.md)
-- [Anti-loop](skills/andino-workflow/references/anti-loop.md)
-- [UI/UX + Taste policy](skills/andino-workflow/references/ui-coexistence.md)
-- [Invocation matrix](docs/invocation-matrix.md)
-- [Acceptance audit](docs/acceptance-audit.md)
-- [AI rules untuk chat berbasis web](AI-Rules-WebBased.md)
-
-Audit dan historical prompt library tetap tersedia sebagai referensi manual, tetapi tidak menjadi runtime context default.
+Installation guidance checked against official documentation on 2026-09-19:
+[Codex skills](https://learn.chatgpt.com/docs/build-skills),
+[OpenCode skills](https://opencode.ai/v2/docs/skills),
+[Claude Code skills](https://code.claude.com/docs/en/skills), and
+[Antigravity skills by surface](https://antigravity.google/docs/skills?tab=ide).
+These sources establish folder conventions, not identical runtime behavior.

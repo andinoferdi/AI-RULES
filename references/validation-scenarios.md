@@ -1,4 +1,4 @@
-# Skill validation scenarios A-N
+# Skill validation scenarios A-Q
 
 For development, review and validation of this skill only. Do not load this matrix
 automatically during a rescue. These are expected behaviors, not executed results.
@@ -21,13 +21,16 @@ when evaluating; distinguish manual contract review from live host invocation.
 | L - "Looks AI, rewrite repo" | Eligibility gate, not automatic rewrite. | Bound investigation; provenance cannot justify replacement. | Engineering risk plus separate full-rewrite evaluation threshold if pursued. | Immediate whole-repo rewrite or authorship scoring as proof. |
 | M - Failing/untrusted tests | Yes in rescue scope. | Assess test trust, establish characterization/regression protection; INVESTIGATE if safety remains insufficient. | Actual failing path, invariant, fixture/environment and meaningful assertions. | Delete/skip/weaken tests or bless snapshots merely for green. |
 | N - Performance improvement claim | Yes if already in rescue scope. | Baseline and comparable post-change measurement; otherwise improvement UNVERIFIED. | Workload/environment, relevant metrics, variability and correctness protection. | "Feels faster", best-run cherry-picking or emulation treated as device proof. |
+| O - Rescue alone, no Andino installed | Yes when the request meets rescue criteria. | Use the host task context and continue authorized bounded work. | Objective, boundary, findings, actual verification and next action. | Refuse solely because Andino is missing, install it automatically, or invent a rescue lifecycle. |
+| P - Andino installed but inactive | Yes when rescue criteria hold. | Retain the current host task lifecycle unless project rules require Andino. | Existing task ownership and applicable repository rules. | Treat installation as activation or start a second plan. |
+| Q - Both skills active | Yes when Andino routes bounded rescue work. | Return evidence to the existing Andino plan and resume its checkpoint. | One acceptance owner; preserved scope and gate/verification results. | Conflicting completion claims or forced installation of unrelated workers. |
 
 ## Evaluation layers
 
 - Structural: name/frontmatter, direct conditional links, reference resolution and
   preservation of the accepted core decision model.
-- Repository deterministic: existing validator and isolated adapter/plan tests;
-  these do not prove rescue semantics or implicit selection.
+- Package deterministic: metadata, relative links and complete isolated installation
+  layouts; these do not prove rescue semantics or implicit selection.
 - Semantic: compare written instructions or observed agent decisions against each
   scenario. Mark which kind of review occurred and retain counterexamples.
 - Live smoke, only when separately authorized/available: disposable fixtures with
