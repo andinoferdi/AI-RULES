@@ -1,6 +1,6 @@
 """Local artifact checks and isolated adapter behavior tests; no model/API calls."""
 from pathlib import Path
-import importlib.util, json, re, tempfile, tomllib, unittest, shutil
+import importlib.util, json, re, tempfile, tomllib, unittest, shutil, subprocess, sys
 from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -13,6 +13,7 @@ def module(name, filename):
     return result
 
 sync = module('andino_sync', 'sync-workflow.py')
+managed = module('managed_sync', 'sync-skills.py')
 mcp = module('andino_mcp', 'mcp-toggle.py')
 harden = module('andino_harden', 'harden-runtime.py')
 
@@ -168,6 +169,132 @@ class Adapters(unittest.TestCase):
                 sync.sync(home)
             self.assertEqual((destination / 'SKILL.md').read_text(), 'user-owned')
 
+class ManagedSkills(unittest.TestCase):
+    def test_legacy_marker_update_and_backup_with_source_override(self):
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory); home = base / 'home'; source = base / 'editable-source'
+            shutil.copytree(sync.SOURCE, source)
+            original = managed.hashes(source)
+            # Existing on-disk format, without using the new implementation to install it.
+            for relative in sync.DESTINATIONS:
+                target = home / relative
+                shutil.copytree(source, target)
+                (target / '.andino-generated.json').write_text(json.dumps({
+                    'source': 'previous-location/andino-workflow', 'files': original}))
+            (source / 'SKILL.md').write_text((source / 'SKILL.md').read_text() + '\nNew canonical content\n')
+            previous = sync.SOURCE
+            try:
+                sync.SOURCE = source
+                with self.assertRaisesRegex(RuntimeError, 'Drift'):
+                    sync.sync(home, check=True)
+                sync.sync(home); sync.sync(home, check=True)
+            finally:
+                sync.SOURCE = previous
+            backups = list((home / '.andino/backups/sync').glob('previous-*/andino-workflow'))
+            self.assertEqual(len(backups), 4)
+            for backup in backups:
+                self.assertEqual(managed.hashes(backup), original)
+            self.assertFalse(list(home.rglob('ai-codebase-rescue')))
+
+    def test_complete_trees_metadata_links_and_idempotence(self):
+        with tempfile.TemporaryDirectory() as directory:
+            home = Path(directory)
+            managed.sync(home)
+            before = {p.relative_to(home): (p.read_bytes(), p.stat().st_mtime_ns)
+                      for p in home.rglob('*') if p.is_file()}
+            managed.sync(home, check=True)
+            managed.sync(home)
+            self.assertEqual(before, {p.relative_to(home): (p.read_bytes(), p.stat().st_mtime_ns)
+                                     for p in home.rglob('*') if p.is_file()})
+            for name in managed.MANAGED_SKILLS:
+                source = ROOT / 'skills' / name
+                for root in managed.HOST_ROOTS:
+                    target = home / root / name
+                    self.assertEqual(managed.hashes(target), managed.hashes(source))
+                    marker = json.loads((target / '.andino-generated.json').read_text())
+                    self.assertEqual(marker, {'source': str(source), 'files': managed.hashes(source)})
+                    for path in target.rglob('*.md'):
+                        for link in re.findall(r'\]\(([^)]+)\)', path.read_text(encoding='utf-8')):
+                            if ':' not in link:
+                                self.assertTrue((path.parent / link).is_file(), (path, link))
+
+    def test_source_drift_update_backup_and_skill_isolation(self):
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory); home = base / 'home'; sources = base / 'sources'
+            for name in managed.MANAGED_SKILLS:
+                shutil.copytree(ROOT / 'skills' / name, sources / name)
+            managed.sync(home, source_root=sources)
+            andino_before = {p: p.read_bytes() for root in managed.HOST_ROOTS
+                             for p in (home / root / 'andino-workflow').rglob('*') if p.is_file()}
+            source = sources / 'ai-codebase-rescue'
+            previous = managed.hashes(source)
+            (source / 'SKILL.md').write_text((source / 'SKILL.md').read_text() + '\nFixture change\n')
+            with self.assertRaisesRegex(RuntimeError, 'Drift'):
+                managed.sync(home, check=True, source_root=sources)
+            self.assertFalse((home / '.andino/backups').exists())
+            managed.sync(home, skills=('ai-codebase-rescue',), source_root=sources)
+            managed.sync(home, check=True, source_root=sources)
+            self.assertEqual(andino_before, {p: p.read_bytes() for p in andino_before})
+            backups = list((home / '.andino/backups/sync').glob('previous-*/ai-codebase-rescue'))
+            self.assertEqual(len(backups), 4)
+            for backup in backups:
+                self.assertTrue(backup.resolve().is_relative_to(home.resolve()))
+                self.assertEqual(managed.hashes(backup), previous)
+
+    def test_refuses_unmanaged_and_local_drift_for_each_skill(self):
+        for name in managed.MANAGED_SKILLS:
+            for local in (False, True):
+                with self.subTest(name=name, local=local), tempfile.TemporaryDirectory() as directory:
+                    home = Path(directory); target = home / managed.HOST_ROOTS[0] / name
+                    if local:
+                        managed.sync(home, skills=(name,))
+                    else:
+                        target.mkdir(parents=True)
+                    file = target / 'SKILL.md'; file.write_text('Preserve local contents')
+                    with self.assertRaisesRegex(RuntimeError, 'Unmanaged or locally edited'):
+                        managed.sync(home, skills=(name,))
+                    self.assertEqual(file.read_text(), 'Preserve local contents')
+                    self.assertFalse((home / '.andino/backups').exists())
+
+    def test_identical_unmanaged_tree_is_not_adopted_or_overwritten(self):
+        with tempfile.TemporaryDirectory() as directory:
+            home = Path(directory)
+            for root in managed.HOST_ROOTS:
+                shutil.copytree(sync.SOURCE, home / root / 'andino-workflow')
+            sync.sync(home, check=True); sync.sync(home)
+            self.assertFalse(list(home.rglob('.andino-generated.json')))
+            self.assertFalse((home / '.andino').exists())
+
+    def test_explicit_selection_and_missing_source_do_not_write(self):
+        with tempfile.TemporaryDirectory() as directory:
+            home = Path(directory) / 'home'
+            for skills in ((), ('experimental',), ('../escape',)):
+                with self.assertRaises(ValueError):
+                    managed.sync(home, skills=skills)
+            with self.assertRaisesRegex(RuntimeError, 'Missing canonical'):
+                managed.sync(home, source_root=Path(directory) / 'absent')
+            self.assertFalse(home.exists())
+
+    def test_legacy_cli_and_generic_cli_check_exit_and_selection(self):
+        with tempfile.TemporaryDirectory() as directory:
+            home = Path(directory) / 'home'
+            def run(script, *args):
+                return subprocess.run([sys.executable, '-B', str(ROOT / 'scripts' / script),
+                                       '--home', str(home), *args], capture_output=True, text=True)
+            self.assertNotEqual(run('sync-workflow.py', '--check').returncode, 0)
+            self.assertFalse(home.exists())
+            self.assertEqual(run('sync-workflow.py').returncode, 0)
+            self.assertEqual(run('sync-workflow.py', '--check').returncode, 0)
+            self.assertFalse(list(home.rglob('ai-codebase-rescue')))
+            self.assertNotEqual(run('sync-skills.py', '--check').returncode, 0)
+            self.assertEqual(run('sync-skills.py', '--skill', 'ai-codebase-rescue').returncode, 0)
+            self.assertEqual(run('sync-skills.py', '--check').returncode, 0)
+            file = home / managed.HOST_ROOTS[0] / 'andino-workflow/SKILL.md'
+            file.write_text('Local edit')
+            self.assertNotEqual(run('sync-workflow.py').returncode, 0)
+            self.assertNotEqual(run('sync-workflow.py', '--check').returncode, 0)
+            self.assertEqual(file.read_text(), 'Local edit')
+
 class AdaptivePlans(unittest.TestCase):
     FIXTURES = ROOT / 'tests/fixtures/exec-plans'
 
@@ -218,6 +345,7 @@ if __name__ == '__main__':
     check_links()
     suite = unittest.TestSuite()
     suite.addTests(unittest.defaultTestLoader.loadTestsFromTestCase(Adapters))
+    suite.addTests(unittest.defaultTestLoader.loadTestsFromTestCase(ManagedSkills))
     suite.addTests(unittest.defaultTestLoader.loadTestsFromTestCase(AdaptivePlans))
     result = unittest.TextTestRunner(verbosity=2).run(suite)
     raise SystemExit(0 if result.wasSuccessful() else 1)

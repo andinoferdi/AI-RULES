@@ -11,6 +11,37 @@ The script derives home dynamically, generates identical copies with hash manife
 refuses to overwrite local drift, and backs up replaced generated installs outside Git.
 Edit the canonical source only. `--home <temporary-directory>` supports isolated tests.
 
+## Managed multi-skill sync
+
+`scripts/sync-skills.py` manages an explicit set: `andino-workflow` and
+`ai-codebase-rescue`. It copies each complete canonical tree, including references,
+to the same four host roots shown below, with the skill name as the directory leaf.
+It does not discover or install other folders under `skills/`.
+
+```powershell
+python -X utf8 scripts/sync-skills.py --home <temporary-directory>
+python -X utf8 scripts/sync-skills.py --home <temporary-directory> --check
+python -X utf8 scripts/sync-skills.py --home <temporary-directory> --skill ai-codebase-rescue
+```
+
+Repeat `--skill` to select multiple managed names; omission selects both. Omitting
+`--home` targets the current user's home, so use an explicit temporary home for
+validation. `sync-workflow.py` retains its existing Andino-only CLI and delegates
+to the same mechanics; it does not install rescue implicitly.
+
+Each tree has `.andino-generated.json` with `source` and relative file hashes.
+Check mode writes nothing and fails on missing/different content. Identical content
+is left untouched even without a marker; this does not adopt an unmanaged tree.
+Different content is replaced only if current hashes match its existing marker;
+unmanaged or locally edited trees are refused. Previous trees go to the selected
+home's `.andino/backups/sync/previous-*/<skill-name>`, not the repository. Only skill
+trees are backed up, not host/provider configurations. Processing is sequential,
+not a transaction across hosts/skills: a later refusal can follow earlier successes.
+Reconcile the refused tree before rerunning; do not discard local edits blindly.
+
+This controls repository-managed distribution only; it does not alter native host
+invocation policy or prove live/implicit skill selection.
+
 For an existing installation, `scripts/harden-runtime.py` (Python with PyYAML)
 repoints the managed global UI reference to the installed skill and applies the
 accepted core-worker controls. It backs up changes outside Git and does not modify
