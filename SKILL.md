@@ -1,76 +1,12 @@
 ---
-name: andino-workflow
-description: Route engineering tickets with the minimum useful methodology and maintain portable execution plans. Use for non-trivial task coordination or resuming a checkpoint; simple edits may proceed directly.
+name: skripsi-skill
+description: Guide thesis and research work from the user's current research state, with evidence traceability and campus-specific requirements. Use for research planning, literature work, proposal and chapter reasoning, revisions, or defense preparation.
 ---
 
-# Andino Workflow
+# Skripsi Skill
 
-Project rules constrain work. The execution plan stores durable ticket state.
-This skill manages that state and selects relevant workers; tools are instruments,
-memory and graphs are optional context accelerators. Codex, Claude Code,
-Antigravity and OpenCode are peers: the active host is primary for this session.
+This unified skill supports a thesis or research task from the user's current state. Establish the immediate objective, existing decisions, applicable campus guidance, and available evidence before selecting the next research action. Keep unverified claims explicit; do not invent sources, data, findings, or approvals.
 
-For intent, scope, constraints and work decisions, follow the latest user instruction,
-then project/repository rules, explicit written decisions/checkpoints, AI recommendations
-and old chat memory. For factual state, current repository, config, test and system
-evidence replaces stale facts in plans, handoffs or chat; it does not silently cancel
-an explicit user or project decision.
+Work standalone when no project workflow is active. When `andino-workflow` is active, follow its plan and checkpoint ownership while supplying research-method guidance and evidence for the requested task.
 
-## Enter at the current state
-
-1. Honor the user's scope and explicit skill choice. A capability list is availability, not an execution order.
-2. If a plan is supplied or the ticket has an active plan, resume it using [handoff](references/handoff.md). Do not bootstrap again.
-3. Otherwise classify by uncertainty, dependencies and risk, not file count alone:
-
-| Class | Default process | Durable plan |
-| --- | --- | --- |
-| SIMPLE: typo, label, known local fix, trivial transform | understand → edit → targeted verify | normally none; LITE only when requested or needed for continuation |
-| STANDARD: clear local feature/bug/refactor | objective → targeted context → implement → verify | STANDARD for non-trivial tickets; reuse an existing plan |
-| COMPLEX: unclear root cause, architecture, migration, cross-system or high-risk work | investigate → relevant methodology → implement → verify → checkpoint | STANDARD or DEEP according to actual ambiguity, risk and handoff cost |
-
-LITE, STANDARD and DEEP are planning density within this one workflow, not new
-routers. For plans, use [execution-plan](references/execution-plan.md) and its template.
-Ask only about ambiguity that could materially change the outcome and cannot be
-resolved from current evidence. Continue independent authorized work while waiting.
-
-## Execute with disciplined scope
-
-Surface material assumptions and tradeoffs before implementation. Resolve non-material
-ambiguity with a stated safe assumption instead of creating a clarification loop.
-Choose the simplest sufficient solution: no speculative features, premature abstractions,
-unrequested configurability or ceremony without task value. Every changed line must be
-traceable to the objective, an acceptance criterion or a direct consequence of the change;
-do not perform drive-by refactors or cleanup.
-
-These execution-discipline ideas adapt the MIT-licensed upstream
-[Karpathy Guidelines](https://github.com/multica-ai/andrej-karpathy-skills); this provenance
-note does not declare a license for Andino Workflow itself.
-
-## Route once, then work
-
-Select zero or the minimum useful process/domain skills from [routing](references/routing.md).
-Keep one lifecycle owner per job and use only the minimum supporting disciplines required
-by the current phase. Invoke a relevant Superpowers skill directly; do not pass through
-`using-superpowers`, `using-agent-skills` or the retired `agent-skills` router. A
-specialist must not start a competing lifecycle.
-Retain explicit user choices; the plan's checkpoint semantics remain stable.
-
-Use current context first, then the smallest relevant source/config read.
-Do not retrieve memory or load graph, UI, documentation or review tools merely
-because they exist. Missing accelerators do not block work or handoff.
-
-## Progress and completion
-
-Apply [anti-loop](references/anti-loop.md). A repeated call needs new evidence or
-changed state. Default subagents: zero. Delegate only bounded independent work
-when authorized and useful. Increase reasoning effort only when difficulty warrants
-it and the host supports the control; never invent runtime settings.
-
-Update the plan at material discoveries, phase completion, strategy changes,
-blockers, verification and handoff. Preserve completed history and decision reasons.
-Keep CURRENT STATE, CURRENT PHASE, EVIDENCE and a concrete NEXT ACTION current.
-
-Verify changed behavior and required project checks within the anti-loop rules and the
-ticket's stop condition. Report unavailable validation honestly. Mark DONE only when
-acceptance criteria are satisfied; otherwise leave an actionable checkpoint. Do not
-commit, push, merge, publish or deploy without the user's authorization for that action.
+This package is a minimal skeleton. Focused methodology references and reusable artifacts will be added in later implementation phases.
