@@ -38,6 +38,13 @@ Load only the reference needed for the current decision, not every resource:
 - Choose quantitative, qualitative, mixed or R&D route: [Research design](references/research-design-routing.md).
 - Outline, draft or review BAB I–III: [Proposal](references/proposal-bab-1-3.md).
 - Check contradictions or propagate changes: [Revision and consistency](references/revision-consistency.md).
+- Find and screen sources: [Literature search](references/literature-search-screening.md).
+- Read, compare and synthesize papers: [Progressive reading](references/progressive-reading-synthesis.md).
+- Plan or assess a systematic review: [Systematic-review gate](references/systematic-review.md).
+- Plan quantitative measurement, sampling and analysis: [Quantitative planning](references/quantitative-planning.md).
+- Resolve deeper methodology, ethics, data-source or venue decisions: [Advanced methodology](references/advanced-methodology-integrity.md).
+- Write or review BAB IV–V from actual evidence: [Results, discussion and conclusion](references/results-discussion-conclusion.md).
+- Prepare sempro/sidang, rehearse or capture examiner feedback: [Defense and revision](references/defense-and-revision.md).
 
 Use [core output helpers](assets/research-core-templates.md) only when the requested artifact benefits from them.
 
