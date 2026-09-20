@@ -25,7 +25,14 @@ Never fabricate or present as real an article, author, citation, DOI or URL, dat
 
 ## Route by the current need
 
-Load only the relevant focused reference once it exists. Planned destinations are `references/research-state-and-routing.md` for state and phase routing, `references/intent-and-context.md` for intent and context, `references/evidence-guidelines-integrity.md` for evidence and campus guidance, and `references/andino-integration.md` for coexistence. These paths are route contracts; their methods are not yet implemented here. Add direct links when the target files are created.
+Load only the reference needed for the current decision, not every resource:
+
+- Enter/resume or change state: [ResearchState and routing](references/research-state-and-routing.md).
+- Resolve short requests or feedback: [Intent and context](references/intent-and-context.md).
+- Check claims, sources or institutional authority: [Evidence and integrity](references/evidence-guidelines-integrity.md).
+- Work under Andino: [Lifecycle integration](references/andino-integration.md).
+
+Use [core output helpers](assets/research-core-templates.md) only when the requested artifact benefits from them.
 
 ## Lifecycle and response
 
