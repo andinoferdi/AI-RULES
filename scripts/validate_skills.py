@@ -1,4 +1,4 @@
-"""Validate the two branch-distributed skills and their review-only eval cases."""
+"""Validate branch-distributed skill packages and available review-only eval cases."""
 
 import argparse
 import json
@@ -10,7 +10,8 @@ from urllib.parse import unquote
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILLS = ("andino-workflow", "ai-codebase-rescue")
+RUNTIME_SKILLS = ("andino-workflow", "ai-codebase-rescue", "skripsi-skill")
+EVAL_SKILLS = ("andino-workflow", "ai-codebase-rescue")
 LINK = re.compile(r"(?<!!)\[[^]]*\]\(([^)]+)\)")
 FIELD = re.compile(r"^([A-Za-z][A-Za-z0-9_-]*):[ \t]+(.+)$")
 
@@ -28,7 +29,13 @@ def git(*args):
 def package_files(files, expected_name):
     errors = []
     for name in files:
-        if name not in ("README.md", "SKILL.md") and not (name.startswith("references/") and name.endswith(".md")):
+        allowed = name in ("README.md", "SKILL.md") or (
+            name.startswith("references/") and name.endswith(".md")
+        ) or (
+            expected_name == "skripsi-skill"
+            and name.startswith("assets/") and name.endswith(".md")
+        )
+        if not allowed:
             errors.append(f"{expected_name}: unexpected runtime file: {name}")
     if "SKILL.md" not in files:
         return [f"{expected_name}: missing SKILL.md"]
@@ -120,18 +127,20 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--andino-ref", default="origin/andino-workflow")
     parser.add_argument("--rescue-ref", default="origin/ai-codebase-rescue")
+    parser.add_argument("--skripsi-ref", default="origin/skripsi-skill")
     args = parser.parse_args()
     errors = []
-    for skill, ref in zip(SKILLS, (args.andino_ref, args.rescue_ref)):
+    for skill, ref in zip(RUNTIME_SKILLS, (args.andino_ref, args.rescue_ref, args.skripsi_ref)):
         try:
             errors.extend(package(ref, skill))
         except ValueError as exc:
             errors.append(str(exc))
+    for skill in EVAL_SKILLS:
         errors.extend(eval_cases(skill))
     if errors:
         print("FAIL: " + "\nFAIL: ".join(errors), file=sys.stderr)
         return 1
-    print("PASS: two skill packages, metadata, relative links, and eval schemas")
+    print(f"PASS: {len(RUNTIME_SKILLS)} skill packages, metadata, relative links, and {len(EVAL_SKILLS)} eval schemas")
     print("Live behavioral evaluation: NOT VERIFIED")
     return 0
 
