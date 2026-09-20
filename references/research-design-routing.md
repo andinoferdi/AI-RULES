@@ -4,7 +4,7 @@ Use RQ/objective, needed evidence, data properties, intended inference, domain/g
 
 ## Quantitative
 
-Use when measurement, distributions, comparisons, association, estimation or a justified causal/evaluation question fits the evidence need. Determine whether intervention/assignment exists and what inference is supportable before selecting tests. Include constructs, operationalization, population/frame/sample, measurement and assumptions only where relevant. A descriptive study need not have X/Y or hypotheses. Load quantitative planning for the deeper design-to-analysis chain.
+Use when measurement, distributions, comparisons, association, estimation or a justified causal/evaluation question fits the evidence need. Determine whether intervention/assignment exists and what inference is supportable before selecting tests. Include constructs, operationalization, population/frame/sample, measurement and assumptions only where relevant. A descriptive study need not have X/Y or hypotheses. A pre/post (before/after) comparison alone does not establish an experimental design, random assignment, control or causal identification without explicit assignment, comparator and counterfactual reasoning. Load quantitative planning for the deeper design-to-analysis chain.
 
 ## Qualitative
 
@@ -16,7 +16,7 @@ State why either strand alone is insufficient, which question each answers, stra
 
 ## R&D
 
-Connect evidenced need → intended product/intervention/model → stakeholders/requirements → justified development model → prototype/development → appropriate validation/testing/evaluation → revision → final artifact and bounded contribution. Select ADDIE, 4D, Borg & Gall, Design Science or another model only with domain/guideline/need rationale; verify exact source-dependent procedures before attributing them. R&D is not automatically a quantitative experiment. Distinguish feasibility/usability, expert appraisal and effectiveness evidence; an operational product does not prove learning effectiveness.
+Connect evidenced need → intended product/intervention/model → stakeholders/requirements → justified development model → prototype/development → appropriate validation/testing/evaluation → revision → final artifact and bounded contribution. Developing software, applications or instructional media is primarily an R&D or design-science lifecycle, not automatically a quantitative experiment. Do not classify development work as an experiment merely because user testing or evaluation occurs; add an experimental or quasi-experimental strand only when an explicit intervention, comparator/control and causal hypothesis are justified. Select ADDIE, 4D, Borg & Gall, Design Science or another model only with domain/guideline/need rationale; verify exact source-dependent procedures before attributing them. Distinguish feasibility/usability, expert appraisal and effectiveness evidence; an operational product does not prove learning effectiveness.
 
 ## Sampling and participant decisions
 
