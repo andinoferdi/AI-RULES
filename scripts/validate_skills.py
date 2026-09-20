@@ -11,7 +11,7 @@ from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNTIME_SKILLS = ("andino-workflow", "ai-codebase-rescue", "skripsi-skill")
-EVAL_SKILLS = ("andino-workflow", "ai-codebase-rescue")
+EVAL_SKILLS = ("andino-workflow", "ai-codebase-rescue", "skripsi-skill")
 LINK = re.compile(r"(?<!!)\[[^]]*\]\(([^)]+)\)")
 FIELD = re.compile(r"^([A-Za-z][A-Za-z0-9_-]*):[ \t]+(.+)$")
 

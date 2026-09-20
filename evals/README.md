@@ -4,7 +4,7 @@ Each JSON file contains prompts with an expected decision and a forbidden failur
 
 For a live evaluation, give a coding agent the relevant skill and one prompt at a time in a disposable repository. Keep the expected and forbidden fields hidden from that agent. Record the host, skill commit, prompt, relevant fixture state, observed action/output, and reviewer verdict. Compare actual behavior with both fields; do not score wording alone. For negative cases, check whether the skill was invoked unnecessarily. Live execution requires host-specific access and is currently **NOT VERIFIED**.
 
-Run the deterministic check from `main` after fetching the two skill branch refs:
+The eval files cover `andino-workflow`, `ai-codebase-rescue`, and `skripsi-skill`. Run the deterministic check from `main` after fetching the three skill branch refs:
 
 ```sh
 python3 scripts/validate_skills.py

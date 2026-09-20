@@ -1,6 +1,6 @@
 # AI-RULES development
 
-This branch (`main`) is the repository control plane for validation, evaluation cases, CI, and development notes. It shares Git history with `WebBased` but does not distribute the Web/chat rules or either Agent Skill.
+This branch (`main`) is the repository control plane for validation, evaluation cases, CI, and development notes. It shares Git history with `WebBased` but does not distribute the Web/chat rules or the Agent Skills.
 
 ## Distribution branches
 
@@ -9,12 +9,13 @@ This branch (`main`) is the repository control plane for validation, evaluation 
 | [`WebBased`](https://github.com/andinoferdi/AI-RULES/tree/WebBased) | Web/chat rules and project templates |
 | [`andino-workflow`](https://github.com/andinoferdi/AI-RULES/tree/andino-workflow) | Andino Workflow runtime skill |
 | [`ai-codebase-rescue`](https://github.com/andinoferdi/AI-RULES/tree/ai-codebase-rescue) | AI Codebase Rescue runtime skill |
+| [`skripsi-skill`](https://github.com/andinoferdi/AI-RULES/tree/skripsi-skill) | Thesis and research runtime skill |
 
 Install or use a distribution from its own branch. `main` deliberately contains no copy of those runtime packages.
 
 ## Quality checks
 
-The [evaluation cases](evals/README.md) cover expected behavior and cases that should not trigger either skill. The validator reads the two skill branches through Git refs, so fetch those branches before running:
+The [evaluation cases](evals/README.md) cover expected behavior and cases that should not trigger a skill. The validator reads the three skill branches through Git refs, so fetch those branches before running:
 
 ```sh
 python3 scripts/validate_skills.py

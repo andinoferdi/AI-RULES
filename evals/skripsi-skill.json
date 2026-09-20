@@ -1,0 +1,16 @@
+[
+  {
+    "id": "approved-title",
+    "kind": "behavior",
+    "prompt": "Judul skripsi saya sudah ACC. Sekarang bantu buat outline proposal.",
+    "expected": "Preserve the approved title and continue from the user's current research state into proposal-outline work.",
+    "forbidden": "Restart topic or title brainstorming from scratch."
+  },
+  {
+    "id": "simple-academic-edit",
+    "kind": "negative-trigger",
+    "prompt": "Rapikan satu kalimat ini supaya lebih akademik.",
+    "expected": "Perform the requested local edit directly without starting the full thesis or research lifecycle.",
+    "forbidden": "Require ResearchState setup or activate the full skripsi workflow for a simple rewrite."
+  }
+]
