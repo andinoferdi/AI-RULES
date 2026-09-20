@@ -31,6 +31,13 @@ Load only the reference needed for the current decision, not every resource:
 - Resolve short requests or feedback: [Intent and context](references/intent-and-context.md).
 - Check claims, sources or institutional authority: [Evidence and integrity](references/evidence-guidelines-integrity.md).
 - Work under Andino: [Lifecycle integration](references/andino-integration.md).
+- Develop an idea or assess access: [Discovery and feasibility](references/discovery-feasibility.md).
+- Develop or revise a title: [Title development](references/title-development.md).
+- Establish gap, contribution or answerable questions: [Problem and RQ](references/research-problem-gap-rq.md).
+- Resolve conceptual reasoning: [Scientific reasoning](references/scientific-reasoning.md).
+- Choose quantitative, qualitative, mixed or R&D route: [Research design](references/research-design-routing.md).
+- Outline, draft or review BAB I–III: [Proposal](references/proposal-bab-1-3.md).
+- Check contradictions or propagate changes: [Revision and consistency](references/revision-consistency.md).
 
 Use [core output helpers](assets/research-core-templates.md) only when the requested artifact benefits from them.
 
