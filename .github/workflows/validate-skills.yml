@@ -1,0 +1,22 @@
+name: Validate skills
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '17 3 * * *'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch skill branches
+        run: git fetch --no-tags origin andino-workflow:refs/remotes/origin/andino-workflow ai-codebase-rescue:refs/remotes/origin/ai-codebase-rescue
+      - name: Validate
+        run: python3 scripts/validate_skills.py
+      - name: Test validator failure cases
+        run: python3 -m unittest discover -s tests
