@@ -20,6 +20,9 @@ The [evaluation cases](evals/README.md) cover expected behavior and cases that s
 ```sh
 python3 scripts/validate_skills.py
 python3 -m unittest discover -s tests
+python3 scripts/validate_skripsi_traceability.py
 ```
 
 These commands check package structure and evaluation-case format. They do not run live agent behavior. CI runs on pushes and pull requests targeting `main`, manual dispatch, and a daily schedule. Because `main` is the repository default branch, scheduled runs use the latest commit on `main`.
+
+The [skripsi v0.9 audit](docs/validation/skripsi-skill/contract-review.md) and [requirement inventory](docs/validation/skripsi-skill/traceability.json) distinguish implementation ownership from live behavioral evidence. The [evaluation guide](evals/README.md) describes opt-in isolated execution; CI never invokes a model or incurs live evaluation usage.

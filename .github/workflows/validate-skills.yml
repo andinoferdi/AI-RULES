@@ -20,3 +20,5 @@ jobs:
         run: python3 scripts/validate_skills.py
       - name: Test validator failure cases
         run: python3 -m unittest discover -s tests
+      - name: Audit skripsi requirement ownership
+        run: python3 scripts/validate_skripsi_traceability.py

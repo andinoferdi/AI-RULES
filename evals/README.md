@@ -12,3 +12,16 @@ python3 scripts/validate_skills.py
 
 No model provider or third-party Python package is required. The skill branches remain the installed runtime packages; these cases and checks live on `main`.
 The metadata checker intentionally supports the current plain-scalar YAML subset; new YAML structures require extending the checker or adding a parser dependency with justification.
+
+## Skripsi v0.9
+
+`skripsi-skill.json` includes all 110 SRS initial cases and six supplemental activation/coexistence/integrity cases. `skripsi-fixtures.json` supplies explicitly synthetic context, not real research evidence. The separate supplemental source lets source-case imports preserve the SRS wording.
+
+Optional live execution requires an installed, authenticated Codex CLI. It runs an ephemeral read-only context with only a disposable runtime copy and scenario context; expected/forbidden are not included in its prompt. This is an opt-in host adapter, not a runtime dependency:
+
+```sh
+python scripts/run_skripsi_smoke.py --runtime /path/to/skripsi-runtime --case EVAL-035 --output /path/to/result.json
+python scripts/run_skripsi_suite.py --runtime /path/to/skripsi-runtime
+```
+
+Execution success initially records NOT_VERIFIED, never automatic PASS. Review actual output, relevant tool actions and fixture adequacy against expected and forbidden. One-turn cases cannot alone prove multi-turn follow-up; record that limit and exercise a follow-up separately. Source access is deliberately unavailable in these isolated fixtures, so real database retrieval, institutional compliance and actual empirical analysis remain outside their proof.
