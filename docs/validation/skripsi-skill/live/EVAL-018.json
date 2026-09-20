@@ -1,0 +1,18 @@
+{
+  "case": "EVAL-018",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Proposal v1, approved title: Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P. RQ: Bagaimana hubungan frekuensi penggunaan AI dengan skor regulasi belajar mahasiswa Program P semester 4? Objective: estimate that association. One-time observational survey, voluntary convenience sample from accessible classes, no intervention. Planned instrument: source/adaptation and measurement validation unresolved; pilot not done. Data access to classes reported by user, participant consent/ethics status unknown. Planned association analysis depends on measurement and data properties. No data collected. Literature citations/gap evidence not supplied. Supervisor has approved topic/title and instructed scope remain Program P, not all universities.\nPrior conversation: We just drafted BAB III 3.2 participant recruitment and agreed to continue 3.3 measurement/adaptation; title is locked.",
+  "prompt": "\"lanjut yang bagian metode tadi\"\n\nFixture:\nThe active conversation and ResearchState clearly identify the methodology section.",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T14:57:52.131630+00:00",
+  "model_selection": "CLI default; no model override",
+  "exit_code": 0,
+  "observed_output": "### 3.3 Pengukuran dan Adaptasi Instrumen\n\nPenelitian ini merencanakan pengukuran dua variabel melalui survei satu kali pada mahasiswa semester 4 Program P. Frekuensi penggunaan asisten AI akan diukur berdasarkan periode penggunaan yang ditetapkan secara jelas dalam kuesioner. Regulasi belajar akan diukur menggunakan skor dari instrumen yang sumber, kesesuaian konstruk, dan cara penskorannya masih perlu ditetapkan.\n\nSebelum pengumpulan data utama, peneliti akan memilih instrumen regulasi belajar yang relevan dengan tujuan penelitian dan menelaah bukti penggunaan sebelumnya. Jika instrumen perlu diadaptasi, peneliti akan mendokumentasikan perubahan bahasa atau konteks, meminta penilaian atas kejelasan dan kesesuaian butir, lalu melakukan uji coba pada responden yang sesuai. Hasil uji coba akan digunakan untuk meninjau pemahaman butir dan kualitas pengukuran sebelum versi akhir serta aturan penskoran ditetapkan.\n\nDefinisi operasional frekuensi penggunaan AI, nama dan sumber instrumen regulasi belajar, jumlah butir, pilihan respons, periode rujukan, serta prosedur pemeriksaan kualitas instrumen **belum dapat diisi sebagai keputusan final**. Bagian ini perlu diperbarui setelah instrumen dipilih dan uji coba selesai. Analisis hubungan kedua variabel kemudian ditentukan berdasarkan bentuk skor dan sifat data yang diperoleh; hasilnya akan ditafsirkan sebagai asosiasi pada sampel mahasiswa semester 4 Program P, bukan hubungan sebab akibat.\n\nSaya tidak dapat membaca `skripsi-skill/SKILL.md` karena akses baca melalui alat ditolak oleh lingkungan evaluasi, sehingga draf ini hanya menggunakan konteks yang Anda berikan.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [],
+  "finished_at_utc": "2026-09-20T14:58:16.513080+00:00"
+}

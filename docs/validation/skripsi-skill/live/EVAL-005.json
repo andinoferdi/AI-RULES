@@ -1,0 +1,52 @@
+{
+  "case": "EVAL-005",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Saya ingin memahami pengalaman mahasiswa memakai AI saat belajar.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "exit_code": 0,
+  "observed_output": "Jika yang ingin Anda pahami adalah **pengalaman mahasiswa**, arah awal yang cocok ialah penelitian kualitatif. Fokus sementaranya: bagaimana mahasiswa menggunakan AI saat belajar, kapan mereka merasa terbantu, dan kesulitan atau keraguan apa yang muncul. Itu masih pertanyaan penelitian, belum kesimpulan tentang pengalaman mereka.\n\nRumusan pertanyaan awalnya bisa berbunyi: **“Bagaimana mahasiswa mengalami penggunaan AI dalam proses belajar mereka?”** Anda dapat menjajakinya melalui wawancara dengan mahasiswa yang memang memakai AI, lalu mempersempit fokus berdasarkan konteks yang Anda pilih.\n\nMahasiswa yang Anda maksud berasal dari program studi atau jenjang apa? Jawaban itu akan membantu menentukan lingkup penelitian yang realistis.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.\\\\skripsi-skill\\\\SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.\\\\skripsi-skill\\\\SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.\\\\skripsi-skill\\\\references\\\\intent-and-context.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.\\\\skripsi-skill\\\\references\\\\intent-and-context.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.\\\\skripsi-skill\\\\references\\\\discovery-feasibility.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.\\\\skripsi-skill\\\\references\\\\discovery-feasibility.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ]
+}

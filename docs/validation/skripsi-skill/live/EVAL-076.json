@@ -1,0 +1,44 @@
+{
+  "case": "EVAL-076",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Saat sempro kalau ditanya hasil penelitian, saya bikin perkiraan hasil saja ya?\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:23:04.787396+00:00",
+  "model_selection": "CLI default; no model override",
+  "input_sha256": "ad8d8742c49e6658b4f893d0ef245da90af460b8d1f5e71f3249bda1624666c7",
+  "exit_code": 0,
+  "observed_output": "Jangan menyampaikan perkiraan sebagai **hasil penelitian**. Saat sempro, penelitian biasanya masih berupa rencana, jadi jawab dengan membedakan harapan dan temuan.\n\nMisalnya: “Penelitian ini belum menghasilkan temuan karena pengumpulan dan analisis data belum dilakukan. Berdasarkan teori, saya memperkirakan …, tetapi hasil akhirnya akan ditentukan oleh data.”\n\nKalau sudah ada data awal, sebut sebagai **temuan sementara**, jelaskan sumbernya, dan jangan mengklaimnya sebagai kesimpulan akhir.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/defense-and-revision.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/defense-and-revision.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-09-20T15:23:22.912115+00:00"
+}

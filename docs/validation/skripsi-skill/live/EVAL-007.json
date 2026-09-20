@@ -1,0 +1,40 @@
+{
+  "case": "EVAL-007",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Saya mau membuat media pembelajaran dan mengujinya.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "exit_code": 0,
+  "observed_output": "Untuk membuat **media pembelajaran sekaligus mengujinya**, rancangan awal yang cocok adalah penelitian pengembangan (*R&D*). Mulailah dari kebutuhan siswa dan tujuan belajar, buat prototipe media, minta ahli materi dan ahli media menilainya, lalu uji coba kepada pengguna dan revisi berdasarkan hasilnya.\n\nBagian “menguji” perlu ditentukan sejak awal karena bukti yang dibutuhkan berbeda:\n\n- **Kelayakan:** penilaian ahli terhadap isi dan tampilan.\n- **Kepraktisan:** apakah guru dan siswa mudah menggunakannya saat uji coba.\n- **Efektivitas:** apakah media membantu hasil belajar; ini memerlukan pengukuran hasil belajar dengan rancangan yang sesuai.\n\n**Yang ingin Anda uji terutama kelayakan, kepraktisan, atau efektivitas media?** Setelah itu, materi pelajaran dan jenjang siswa akan membantu memperjelas produk serta cara pengujiannya.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content .\\\\skripsi-skill\\\\SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content .\\\\skripsi-skill\\\\SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content .\\\\skripsi-skill\\\\references\\\\intent-and-context.md; Get-Content .\\\\skripsi-skill\\\\references\\\\research-design-routing.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content .\\\\skripsi-skill\\\\references\\\\intent-and-context.md; Get-Content .\\\\skripsi-skill\\\\references\\\\research-design-routing.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ]
+}

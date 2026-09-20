@@ -1,0 +1,80 @@
+{
+  "case": "EVAL-065",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Final thesis v2 uses an observational convenience survey of Program P semester 4 students. Proposal v1 title was Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P; final draft title now says Pengaruh penggunaan AI terhadap regulasi belajar. RQ and objective remain estimating association between AI-use frequency and self-regulated learning score, not a causal effect. Chapter III records actual use of Spearman association for ordinal measurements, replacing the proposal's provisional Pearson plan. Chapter IV analysis fixture F1: n=40, rho=0.12, p=0.21, interval not supplied; this is a fabricated test artifact explicitly not real research. Analysis artifact fixture-output-A, row 1 supports these test values. No intervention or random assignment. No claim of population representativeness. Chapter V currently says AI meningkatkan hasil belajar, although learning achievement was not measured. No literature sources provided. Defense protocol not supplied.",
+  "prompt": "\"Penguji saya biasanya nanya panjang. Latih saya.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:18:17.062381+00:00",
+  "model_selection": "CLI default; no model override",
+  "input_sha256": "18ec3f033ed00814ba80e36d6e239d7a098f1d1d50977cae635a1f8fc499b503",
+  "exit_code": 0,
+  "observed_output": "Baik, kita latihan sidang akhir. Saya akan berperan sebagai penguji yang bertanya panjang. Jawab seolah sedang di ruang sidang; setelah itu saya akan menilai jawaban Anda dan mengajukan pertanyaan susulan. Angka yang Anda berikan saya perlakukan hanya sebagai **data latihan sintetis**.\n\n**Pertanyaan penguji 1:**\n\n“Di proposal, judul Anda berbicara tentang *hubungan* penggunaan asisten AI dengan regulasi belajar, tetapi di draf akhir berubah menjadi *pengaruh*. Padahal pertanyaan dan tujuan penelitian masih mencari hubungan, responden dipilih melalui survei kemudahan, serta tidak ada intervensi atau pengacakan. Mengapa Anda memakai kata *pengaruh*? Lalu jelaskan mengapa analisis akhirnya memakai Spearman, bukan Pearson seperti rencana awal. Dengan hasil \\(n=40\\), \\(\\rho=0{,}12\\), dan \\(p=0{,}21\\), apa tepatnya yang dapat Anda simpulkan? Terakhir, bagaimana Anda mempertahankan kalimat Bab V bahwa AI meningkatkan hasil belajar, sementara hasil belajar tidak Anda ukur?”\n\nSilakan jawab dulu dengan kata-kata Anda sendiri.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'C:\\\\Users\\\\Lenovo\\\\.codex\\\\RTK.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'C:\\\\Users\\\\Lenovo\\\\.codex\\\\RTK.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"rtk proxy powershell -NoProfile -Command \\\"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\\\"\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"rtk proxy powershell -NoProfile -Command \\\"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\\\"\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"rtk proxy powershell -NoProfile -Command \\\"Get-Content -LiteralPath 'skripsi-skill/references/defense-and-revision.md'\\\"\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"rtk proxy powershell -NoProfile -Command \\\"Get-Content -LiteralPath 'skripsi-skill/references/defense-and-revision.md'\\\"\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"rtk proxy powershell -NoProfile -Command \\\"Get-Content -LiteralPath 'skripsi-skill/references/revision-consistency.md'\\\"\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"rtk proxy powershell -NoProfile -Command \\\"Get-Content -LiteralPath 'skripsi-skill/references/revision-consistency.md'\\\"\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"rtk proxy powershell -NoProfile -Command \\\"Get-Content -LiteralPath 'skripsi-skill/references/results-discussion-conclusion.md'\\\"\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"rtk proxy powershell -NoProfile -Command \\\"Get-Content -LiteralPath 'skripsi-skill/references/results-discussion-conclusion.md'\\\"\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-09-20T15:18:49.623825+00:00"
+}

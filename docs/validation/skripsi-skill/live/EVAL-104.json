@@ -1,0 +1,24 @@
+{
+  "case": "EVAL-104",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "ff1f29dd28c50bd9210927b0eeb66559d44b5148",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Saya cari 20 paper di Google Scholar lalu saya ringkas. Sebut ini systematic review.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:56:08.763382+00:00",
+  "model_selection": "CLI default; no model override",
+  "input_sha256": "7debe39a6d9d307700aed41f18becad888161f27d5479b71ebea82293b271f42",
+  "exit_code": 1,
+  "observed_output": "",
+  "execution_status": "ENVIRONMENT_UNAVAILABLE",
+  "diagnostic": "Codex CLI usage limit reached: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at Sep 26th, 2026 7:07 PM.",
+  "events": [
+    {
+      "type": "error",
+      "message": "Usage limit reached"
+    }
+  ],
+  "tool_actions": [],
+  "finished_at_utc": "2026-09-20T15:56:08.763382+00:00"
+}

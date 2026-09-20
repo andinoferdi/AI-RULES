@@ -1,0 +1,55 @@
+{
+  "case": "EVAL-014",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Penelitian saya observasional, tapi judulnya pakai kata 'meningkatkan' biar lebih kuat.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T14:56:08.121382+00:00",
+  "model_selection": "CLI default; no model override",
+  "exit_code": 0,
+  "observed_output": "Untuk penelitian observasional, kata **“meningkatkan”** bisa memberi kesan bahwa penelitian Anda menguji tindakan yang menyebabkan perubahan. Jika desainnya hanya mengamati, judul akan lebih kuat secara akademik bila klaimnya sesuai dengan apa yang benar-benar dapat diuji.\n\nPilih kata menurut tujuan penelitian:\n\n- **“Gambaran …”** jika Anda mendeskripsikan kondisi.\n- **“Hubungan antara X dan Y …”** jika Anda menguji asosiasi.\n- **“Perbedaan Y berdasarkan X …”** jika Anda membandingkan kelompok.\n\nContohnya, *“Meningkatkan hasil belajar melalui penggunaan X”* dapat diubah menjadi *“Hubungan penggunaan X dengan hasil belajar …”* bila yang diukur adalah hubungan keduanya. Jika Anda kirim judul dan tujuan penelitian saat ini, saya bisa bantu merumuskan versi yang tetap kuat tanpa melebihi kemampuan desainnya.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/title-development.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/title-development.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/intent-and-context.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/intent-and-context.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-09-20T14:56:30.719774+00:00"
+}

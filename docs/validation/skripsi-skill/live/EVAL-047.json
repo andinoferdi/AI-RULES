@@ -1,0 +1,56 @@
+{
+  "case": "EVAL-047",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC mixed convergent design: survey strand describes reported AI frequency; interview strand describes dependence and verification habits. Integration plan originally specified comparing convergent and divergent patterns by case. No actual numeric results or quotes supplied.",
+  "prompt": "\"Saya sudah punya hasil survei dan wawancara. Tulis dua-duanya terpisah, nggak usah\ndihubungkan.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:10:05.554894+00:00",
+  "model_selection": "CLI default; no model override",
+  "input_sha256": "d81ac839f8bd83f1fadbe1b02b6c444a0a29aaddc873ca0c3ef1688918a9b9cd",
+  "exit_code": 0,
+  "observed_output": "Bisa saya susun hasil survei dan wawancara dalam dua subbab terpisah. Namun, rancangan *mixed convergent* yang Anda berikan semula menetapkan perbandingan pola yang sejalan dan berbeda pada tiap kasus. Jika keduanya sama sekali tidak dihubungkan, bagian hasil tidak menjalankan rencana integrasi itu. Saya tidak akan menambahkan penghubung yang tidak Anda inginkan; perubahan ini perlu dicatat sebagai revisi cara pelaporan atau rancangan analisis.\n\nData angka, keluaran analisis, dan kutipan wawancara belum disertakan, jadi saya belum bisa menulis temuan faktual. Kirimkan hasil survei dan ringkasan tema atau kutipan wawancara yang boleh dipakai; saya akan menulis kedua subbab secara terpisah tanpa mengarang hasil.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/intent-and-context.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/intent-and-context.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/results-discussion-conclusion.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/results-discussion-conclusion.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-09-20T15:10:31.309082+00:00"
+}

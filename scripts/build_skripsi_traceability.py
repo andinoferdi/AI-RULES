@@ -22,6 +22,21 @@ REFS = {
  'results': 'results-discussion-conclusion', 'defense': 'defense-and-revision',
 }
 
+# Owning implementation tasks (not an assertion that every scenario proves each task).
+OWNER_TASKS = {
+ 'SKILL':['P2-T01','P11-T01'], 'control':['P1-T02','P1-T03','P1-T04','P11-T02'],
+ 'state':['P2-T02'], 'intent':['P2-T03'], 'evidence':['P2-T04'],
+ 'integration':['P2-T05','P10-T01','P10-T02'], 'discovery':['P3-T01'],
+ 'title':['P3-T02'], 'revision':['P3-T03','P8-T05'],
+ 'proposal':['P3-T04','P4-T04','P4-T05'], 'problem':['P4-T01','P7-T02'],
+ 'reasoning':['P4-T02'], 'design':['P4-T03','P4-T04'],
+ 'search':['P5-T01','P5-T02','P5-T04'], 'reading':['P5-T03','P5-T05'],
+ 'systematic':['P5-T06'], 'quant':[f'P6-T{i:02}' for i in range(1,7)],
+ 'advanced':[f'P7-T{i:02}' for i in range(1,7)],
+ 'results':[f'P8-T{i:02}' for i in range(1,5)],
+ 'defense':[f'P9-T{i:02}' for i in range(1,6)],
+}
+
 
 def group(mapping, owner, numbers):
     for number in numbers:
@@ -110,7 +125,11 @@ def main():
                                 implementation=location(owner), contract_review='REVIEWED',
                                 behavioral_verdict='NOT_VERIFIED',
                                 evidence='contract-review.md',
-                                eval_ids=[f'EVAL-{i:03}' for i in range(1,111) if eval_owner(i)==owner]))
+                                eval_ids=[f'EVAL-{i:03}' for i in range(1,111) if eval_owner(i)==owner]
+                                + {'integration':['SUP-ANDINO','SUP-STANDALONE'],
+                                   'SKILL':['SUP-CODING','SUP-UNRELATED'],
+                                   'evidence':['SUP-NO-TOOLS','SUP-GUIDELINE-SCOPE'],
+                                   'defense':['SUP-MOCK-FOLLOWUP']}.get(owner,[])))
     acs = re.findall(r'(?m)^\[ \] (.+)$', text.split('AN. ACCEPTANCE CRITERIA',1)[1].split('AO. INITIAL EVALUATION CASES',1)[0])
     if len(acs) != 142 or len(AC_FR) != 142:
         raise ValueError(f'AC count drift: source={len(acs)}, mapping={len(AC_FR)}')
@@ -127,6 +146,18 @@ def main():
     if len(caps)!=32:
         raise ValueError('Capability inventory drift')
     capabilities=[dict(id=f'CAP-{int(n):02}',name=name,implementation=location(owner)) for (n,name),owner in zip(caps,cap_owners)]
+    output_rows=re.findall(r'(?m)^(\d+)\. (.+)$',text.split('AJ. CORE OUTPUTS V0.9',1)[1].split('AK. END-TO-END EXAMPLE',1)[0])
+    output_owners={}
+    for owner,numbers in {'state':[1],'discovery':[2,3],'revision':[4,5,42,61],
+                          'title':[6,7,8],'proposal':[9,10,11,15,16],'problem':[12,13,28],
+                          'design':[14],'results':list(range(17,25)),'advanced':[25,30,31,32,33,34],
+                          'reading':[26,27,56,57,58],'quant':[29,*range(43,51)],
+                          'defense':list(range(35,42)),'search':list(range(51,56)),
+                          'systematic':[59,60]}.items():
+        group(output_owners,owner,numbers)
+    if len(output_rows)!=61 or len(output_owners)!=61:
+        raise ValueError('Core output inventory drift')
+    core_outputs=[dict(id=f'OUTPUT-{int(n):03}',name=name,implementation=location(output_owners[int(n)])) for n,name in output_rows]
     tasks=[]
     for line in plan.splitlines():
         if re.match(r'^\| P\d+-T\d+ \|',line):
@@ -141,11 +172,14 @@ def main():
     evals=[dict(id=f'EVAL-{i:03}',implementation=location(eval_owner(i)),
                 contract_review='REVIEWED', behavioral_verdict='NOT_VERIFIED',
                 evidence='contract-review.md') for i in range(1,111)]
+    task_by_path={location(owner)['path']:ids for owner,ids in OWNER_TASKS.items()}
+    for row in [*records,*capabilities,*core_outputs,*evals]:
+        row['task_ids']=task_by_path[row['implementation']['path']]
     output=dict(srs_sha256=hashlib.sha256(a.srs.read_bytes()).hexdigest(),
                 plan_sha256=hashlib.sha256(a.plan.read_bytes()).hexdigest(),
-                counts=dict(FR=146,NFR=47,AC=142,capabilities=32,initial_evals=110,tasks=len(tasks)),
+                counts=dict(FR=146,NFR=47,AC=142,capabilities=32,core_outputs=61,initial_evals=110,tasks=len(tasks)),
                 scope='Implementation ownership and written-contract review; not live behavioral proof.',
-                requirements=records,capabilities=capabilities,evals=evals,tasks=tasks)
+                requirements=records,capabilities=capabilities,core_outputs=core_outputs,evals=evals,tasks=tasks)
     a.output.parent.mkdir(parents=True,exist_ok=True)
     a.output.write_text(json.dumps(output,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(output['counts']))

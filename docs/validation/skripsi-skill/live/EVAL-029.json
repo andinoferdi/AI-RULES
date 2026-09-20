@@ -1,0 +1,55 @@
+{
+  "case": "EVAL-029",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Saya pakai purposive sampling saja karena paling gampang.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:02:52.045175+00:00",
+  "model_selection": "CLI default; no model override",
+  "exit_code": 0,
+  "observed_output": "Purposive sampling boleh dipilih, tetapi “paling gampang” belum cukup sebagai alasan metodologis. Teknik ini tepat jika penelitian memang membutuhkan partisipan dengan karakteristik tertentu yang relevan dengan pertanyaan penelitian.\n\nDi metode, jelaskan **siapa yang dibutuhkan, kriteria pemilihannya, dan mengapa kriteria itu membantu menjawab pertanyaan penelitian**. Jika Anda hanya mengambil orang yang mudah dijangkau, itu lebih dekat ke *convenience sampling*. Hasil dari purposive sampling juga perlu ditafsirkan sesuai kelompok yang dipilih; jangan langsung mengklaim mewakili seluruh populasi.\n\nApa tujuan penelitian Anda dan karakteristik apa yang harus dimiliki respondennya? Dari situ kita bisa menilai apakah purposive sampling memang cocok dan merumuskan alasannya untuk BAB III.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/intent-and-context.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/intent-and-context.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/quantitative-planning.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/quantitative-planning.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-09-20T15:03:17.495603+00:00"
+}

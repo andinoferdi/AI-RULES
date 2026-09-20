@@ -15,7 +15,7 @@ The metadata checker intentionally supports the current plain-scalar YAML subset
 
 ## Skripsi v0.9
 
-`skripsi-skill.json` includes all 110 SRS initial cases and six supplemental activation/coexistence/integrity cases. `skripsi-fixtures.json` supplies explicitly synthetic context, not real research evidence. The separate supplemental source lets source-case imports preserve the SRS wording.
+`skripsi-skill.json` includes all 110 SRS initial cases and seven supplemental activation/coexistence/integrity/follow-up cases. `skripsi-fixtures.json` supplies explicitly synthetic context, not real research evidence. The separate supplemental source lets source-case imports preserve the SRS wording.
 
 Optional live execution requires an installed, authenticated Codex CLI. It runs an ephemeral read-only context with only a disposable runtime copy and scenario context; expected/forbidden are not included in its prompt. This is an opt-in host adapter, not a runtime dependency:
 

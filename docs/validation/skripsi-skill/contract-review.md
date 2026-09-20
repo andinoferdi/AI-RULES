@@ -5,7 +5,7 @@ Scope: implementation ownership, semantic comparison and deterministic evidence.
 
 ## Inventory reconciliation
 
-The actual supplied SRS has 146 FR, 47 NFR, 142 ordered acceptance checkboxes, 32 capabilities and 110 initial cases. The supplied GRAND-PLAN has 75 task rows. No count drift was found. Source SHA-256 values and exact requirement text are retained in [traceability](traceability.json); the original planning inputs remain untracked and unmodified outside this worktree. Acceptance IDs AC-001–142 are stable source-order identifiers assigned for this audit, not IDs originally printed in the SRS.
+The actual supplied SRS has 146 FR, 47 NFR, 142 ordered acceptance checkboxes, 32 capabilities, 61 core outputs and 110 initial cases. The supplied GRAND-PLAN has 75 task rows. No count drift was found. Source SHA-256 values and exact requirement text are retained in [traceability](traceability.json); the original planning inputs remain untracked and unmodified outside this worktree. Acceptance IDs AC-001–142 are stable source-order identifiers assigned for this audit, not IDs originally printed in the SRS.
 
 The ownership map is curated by requirement meaning, not keyword scoring. Every requirement has an actual runtime/control-plane target. AC entries map to a related FR; this is an ownership link rather than a claim that one test proves an entire requirement. Behavioral verdict remains NOT_VERIFIED until observed evidence is reviewed.
 
@@ -42,8 +42,8 @@ Compared with actual andino-workflow SKILL.md, references/routing.md and referen
 
 ## External source checks
 
-Primary current references checked during implementation: [Agent Skills specification source](https://github.com/agentskills/agentskills/blob/main/docs/specification.mdx), [PRISMA 2020](https://www.prisma-statement.org/prisma-2020), [PRISMA search extension](https://www.prisma-statement.org/prisma-search), and [ASA p-value statement](https://www.amstat.org/docs/default-source/amstat-documents/p-valuestatement.pdf). They support package disclosure, reporting-versus-method boundaries and statistical interpretation cautions respectively. SRS remains product truth; external documentation does not override it. Runtime designs are original, not reconstructed paid TutorialSkripsi materials.
+Primary current references checked during implementation: [Agent Skills specification source](https://agentskills.io/specification), [PRISMA 2020](https://www.prisma-statement.org/prisma-2020), [PRISMA search extension](https://www.prisma-statement.org/prisma-search), and [ASA p-value statement](https://www.amstat.org/docs/default-source/amstat-documents/p-valuestatement.pdf). They support package disclosure, reporting-versus-method boundaries and statistical interpretation cautions respectively. SRS remains product truth; external documentation does not override it. Runtime designs are original, not reconstructed paid TutorialSkripsi materials.
 
 ## Validation scope
 
-23 unit tests passed, including import drift/missing oracle, missing or duplicate ownership, nonexistent target, unsupported behavioral PASS and missing eval. Repository validator passes all three runtime packages and all three eval schemas. Traceability validator checks all required IDs and target files. git diff --check passes for runtime. Remote CI is intentionally not run before user publication. Live outputs require separate review; the deterministic validators never mark behavior as passed.
+24 unit tests passed, including import drift/missing oracle, missing or duplicate ownership, nonexistent target, unsupported behavioral PASS and missing eval. Repository validator passes all three runtime packages and all three eval schemas. Traceability validator checks all required IDs and target files. git diff --check passes for runtime. Remote CI is intentionally not run before user publication. Live outputs require separate review; the deterministic validators never mark behavior as passed.

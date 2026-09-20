@@ -1,0 +1,43 @@
+{
+  "case": "EVAL-028",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Di modul disebut Focus, Locus, Tempus, Lotus. Jelaskan Lotus dari modul itu.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:02:18.054697+00:00",
+  "model_selection": "CLI default; no model override",
+  "exit_code": 0,
+  "observed_output": "Saya belum bisa menjelaskan **Lotus menurut modul itu** karena modulnya tidak disertakan; yang tersedia hanya panduan skripsi, tanpa definisi Lotus. Mohon kirim halaman atau kutipan modul yang memuat “Focus, Locus, Tempus, Lotus” agar saya bisa menjelaskannya sesuai maksud penulis.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -NoProfile -Command \"Get-Content -LiteralPath .\\\\skripsi-skill\\\\SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -NoProfile -Command \"Get-Content -LiteralPath .\\\\skripsi-skill\\\\SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -NoProfile -Command \"Get-Content -LiteralPath .\\\\skripsi-skill\\\\references\\\\intent-and-context.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -NoProfile -Command \"Get-Content -LiteralPath .\\\\skripsi-skill\\\\references\\\\intent-and-context.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-09-20T15:02:51.854609+00:00"
+}

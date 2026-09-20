@@ -1,0 +1,44 @@
+{
+  "case": "EVAL-045",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Final thesis v2 uses the same observational convenience survey scope as proposal v1. Chapter III records actual use of Spearman association for ordinal measurements, replacing the proposal's provisional Pearson plan. Chapter IV analysis fixture F1: n=40, rho=0.12, p=0.21, interval not supplied; this is a fabricated test artifact explicitly not real research. Analysis artifact fixture-output-A, row 1 supports these test values. No intervention or random assignment. RQ concerns association in Program P; no claim of population representativeness. Chapter V currently says AI meningkatkan hasil belajar, although learning achievement was not measured. No literature sources provided. Defense protocol not supplied.",
+  "prompt": "\"Buat kesimpulan yang keren dan umum saja, nggak perlu per rumusan masalah.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:09:12.843400+00:00",
+  "model_selection": "CLI default; no model override",
+  "input_sha256": "66cb9ed06964f9b1bd229dad2613a620e0ff101be0f97acb103e0cd3ef3ad5fe",
+  "exit_code": 0,
+  "observed_output": "**Draf kesimpulan umum**\n\nBerdasarkan data uji pada responden Program P, hubungan antara penggunaan AI dan variabel yang diteliti menunjukkan arah positif yang lemah (Spearman ρ = 0,12; n = 40). Namun, hasilnya belum memberikan bukti statistik yang cukup untuk menyimpulkan adanya hubungan (p = 0,21). Temuan ini terbatas pada survei yang dilakukan dan tidak dapat digunakan untuk menyatakan bahwa AI meningkatkan hasil belajar, karena hasil belajar tidak diukur.\n\nAngka tersebut berasal dari *fixture sintetis*, bukan hasil penelitian nyata. Kalimat “AI meningkatkan hasil belajar” di Bab V perlu diganti agar sesuai dengan variabel yang benar-benar diukur.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/results-discussion-conclusion.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/results-discussion-conclusion.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-09-20T15:09:39.900203+00:00"
+}

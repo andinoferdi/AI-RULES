@@ -8,9 +8,18 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 from import_skripsi_evals import parse_cases
 from validate_skripsi_traceability import audit
+from run_skripsi_smoke import make_prompt
 
 
 class SRSImportTest(unittest.TestCase):
+    def test_live_actor_does_not_receive_oracle(self):
+        case={'prompt':'Actual user request','expected':'SECRET_EXPECTED_SENTINEL','forbidden':'SECRET_FORBIDDEN_SENTINEL'}
+        prompt=make_prompt(case,'Synthetic raw context')
+        self.assertIn('Actual user request',prompt)
+        self.assertIn('Synthetic raw context',prompt)
+        self.assertNotIn('SECRET_EXPECTED_SENTINEL',prompt)
+        self.assertNotIn('SECRET_FORBIDDEN_SENTINEL',prompt)
+
     def source(self):
         return 'AO. INITIAL EVALUATION CASES\n'+'\n'.join(
             f'Case {n} — Example {n}\nPrompt:\nRequest {n}\nExpected:\nExpected {n}\nForbidden:\nForbidden {n}\n----------\n'
@@ -36,7 +45,7 @@ class TraceabilityTest(unittest.TestCase):
         rows=self.report['requirements']+self.report['capabilities']+self.report['evals']
         self.runtime={r['implementation']['path'] for r in rows if r['implementation']['branch']=='skripsi-skill'}
         self.main={r['implementation']['path'] for r in rows if r['implementation']['branch']=='main'}
-        self.cases={f'EVAL-{n:03}' for n in range(1,111)}
+        self.cases={c['id'] for c in json.loads((ROOT/'evals/skripsi-skill.json').read_text(encoding='utf-8'))}
 
     def check(self,report=None):
         return audit(report or self.report,self.runtime,self.main,self.cases)

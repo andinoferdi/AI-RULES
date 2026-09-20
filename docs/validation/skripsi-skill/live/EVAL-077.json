@@ -1,0 +1,68 @@
+{
+  "case": "EVAL-077",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Final thesis v2 uses an observational convenience survey of Program P semester 4 students. Proposal v1 title was Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P; final draft title now says Pengaruh penggunaan AI terhadap regulasi belajar. RQ and objective remain estimating association between AI-use frequency and self-regulated learning score, not a causal effect. Chapter III records actual use of Spearman association for ordinal measurements, replacing the proposal's provisional Pearson plan. Chapter IV analysis fixture F1: n=40, rho=0.12, p=0.21, interval not supplied; this is a fabricated test artifact explicitly not real research. Analysis artifact fixture-output-A, row 1 supports these test values. No intervention or random assignment. No claim of population representativeness. Chapter V currently says AI meningkatkan hasil belajar, although learning achievement was not measured. No literature sources provided. Defense protocol not supplied.\nNo rehearsal answers have yet been observed.",
+  "prompt": "\"Cek apakah saya siap sidang.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:23:24.130246+00:00",
+  "model_selection": "CLI default; no model override",
+  "input_sha256": "d525ebf87d94d56e9ce25ef0aa011512f5df5c46fb50bedaa7c74365745f0bfe",
+  "exit_code": 0,
+  "observed_output": "**Belum siap dinyatakan siap sidang.** Berdasarkan fixture sintetis ini, status yang paling tepat adalah **naskah perlu diperbaiki, lalu jawaban sidang perlu diuji lewat latihan**. Belum ada jawaban latihan yang bisa dinilai, dan protokol sidang belum diberikan.\n\nDua perbaikan naskah paling mendesak:\n\n1. **Judul final “Pengaruh penggunaan AI…” melampaui desain penelitian.** Survei observasional tanpa intervensi atau pengacakan, dengan RQ yang menanyakan asosiasi, tidak mendukung klaim sebab-akibat. Selaraskan judul dengan fokus yang benar, misalnya kembali memakai **“Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P.”**\n2. **Kesimpulan Bab V “AI meningkatkan hasil belajar” tidak didukung.** Hasil belajar tidak diukur. Kesimpulan harus menjawab hubungan frekuensi penggunaan AI dengan skor regulasi belajar, dalam lingkup sampel yang diteliti.\n\nUntuk menjelaskan hasil, Anda dapat mengatakan: *“Pada fixture analisis ini, hubungan yang teramati sangat lemah (Spearman ρ = 0,12; n = 40) dan nilai p = 0,21. Hasil ini belum memberi bukti statistik yang cukup untuk menyimpulkan adanya hubungan; hasil tersebut juga tidak membuktikan bahwa hubungan pasti tidak ada.”* Interval ketidakpastian tidak tersedia, jadi jangan mengarangnya. Jelaskan pula bahwa **Spearman adalah analisis yang benar-benar digunakan di Bab III**, sedangkan Pearson hanya rencana sementara di proposal. Sampel kemudahan tidak mendukung klaim mewakili seluruh mahasiswa Program P.\n\nSetelah naskah diperbaiki, uji kesiapan lisan dengan pertanyaan ini: **“Mengapa Anda mengubah Pearson menjadi Spearman, dan apa tepatnya yang dapat serta tidak dapat disimpulkan dari ρ = 0,12 dan p = 0,21?”** Jawaban Anda atas pertanyaan itu belum teramati, sehingga kesiapan menjawab penguji masih terbuka.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/results-discussion-conclusion.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/results-discussion-conclusion.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/defense-and-revision.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/defense-and-revision.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/revision-consistency.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/revision-consistency.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-09-20T15:24:05.044538+00:00"
+}

@@ -1,0 +1,44 @@
+{
+  "case": "EVAL-073",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Kalau ditanya kenapa hasil saya signifikan, padahal p-value saya 0.21, saya jawab apa?\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:21:44.786260+00:00",
+  "model_selection": "CLI default; no model override",
+  "input_sha256": "2714a01fc91e255a4d0899b9c281def5651d3c42f250aca3a127bfe89574a547",
+  "exit_code": 0,
+  "observed_output": "Kalau **p-value = 0,21** dan batas signifikansi yang ditetapkan **α = 0,05**, hasilnya **tidak signifikan secara statistik**. Jangan mempertahankan klaim “signifikan” untuk uji tersebut.\n\nJawaban saat ditanya bisa begini:\n\n> “Terima kasih, pernyataan saya bahwa hasil ini signifikan kurang tepat. Karena p-value 0,21 lebih besar dari 0,05, saya belum memiliki bukti statistik yang cukup untuk menyatakan adanya pengaruh atau hubungan pada uji ini. Saya akan memperbaiki interpretasi di bagian hasil dan kesimpulan.”\n\nNilai p tersebut juga **tidak membuktikan bahwa pengaruhnya pasti tidak ada**. Jika di naskah Anda tertulis “signifikan”, periksa kembali apakah angka 0,21 berasal dari uji yang sama, serta apakah ada salah ketik pada tabel atau narasinya.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/results-discussion-conclusion.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/results-discussion-conclusion.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-09-20T15:22:06.660261+00:00"
+}

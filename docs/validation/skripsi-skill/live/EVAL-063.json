@@ -1,0 +1,44 @@
+{
+  "case": "EVAL-063",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Proposal v1, approved title: Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P. RQ: Bagaimana hubungan frekuensi penggunaan AI dengan skor regulasi belajar mahasiswa Program P semester 4? Objective: estimate that association. One-time observational survey, voluntary convenience sample from accessible classes, no intervention. Planned instrument: source/adaptation and measurement validation unresolved; pilot not done. Data access to classes reported by user, participant consent/ethics status unknown. Planned association analysis depends on measurement and data properties. No data collected. Literature citations/gap evidence not supplied. Supervisor has approved topic/title and instructed scope remain Program P, not all universities.\nThis proposal is complete as a draft artifact, with explicit gaps above; no institution protocol. Generate original practice questions, not fabricated findings.",
+  "prompt": "\"Minggu depan sempro. Buat 50 pertanyaan yang mungkin keluar.\"\n\nFixture:\nA complete proposal is available.",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:16:56.559798+00:00",
+  "model_selection": "CLI default; no model override",
+  "input_sha256": "73671dd0eab12dec0f64391f9402650b9a8318d6fe5bef16ea2a7d296e1c6586",
+  "exit_code": 0,
+  "observed_output": "Berikut **50 pertanyaan latihan sempro** yang disesuaikan dengan proposal Anda. Tanda ★ menandai bagian yang paling perlu disiapkan karena masih ada keputusan atau bukti yang belum lengkap. Ini pertanyaan latihan, bukan prediksi pasti dari penguji.\n\n### Masalah dan kontribusi\n\n1. Mengapa hubungan penggunaan asisten AI dan regulasi belajar mahasiswa penting diteliti?\n2. Masalah spesifik apa yang Anda amati pada mahasiswa Program P semester 4?\n3. ★ Bukti apa yang mendukung bahwa masalah tersebut memang ada, bukan hanya dugaan?\n4. ★ Apa celah penelitian yang hendak dijawab, dan literatur apa yang mendukung klaim celah itu?\n5. Apa kontribusi penelitian ini jika ternyata penelitian serupa sudah pernah dilakukan?\n\n### Fokus, konsep, dan teori\n\n6. Apa yang Anda maksud dengan “asisten AI” dalam penelitian ini?\n7. Aktivitas seperti apa yang dihitung sebagai penggunaan asisten AI?\n8. Apa definisi konseptual regulasi belajar yang Anda gunakan?\n9. Mengapa frekuensi penggunaan AI dipilih sebagai variabel, bukan durasi atau tujuan penggunaannya?\n10. ★ Kerangka teori apa yang menjelaskan kemungkinan hubungan kedua variabel itu?\n\n### Rumusan masalah dan batasan\n\n11. Bagaimana rumusan masalah diturunkan dari latar belakang penelitian?\n12. Apakah tujuan penelitian sudah tepat untuk menjawab rumusan masalah?\n13. Mengapa subjek dibatasi pada mahasiswa Program P semester 4?\n14. Apakah judul “penggunaan asisten AI” sudah cukup selaras dengan pengukuran yang berfokus pada frekuensi?\n15. Jika ditemukan hubungan, apa yang boleh dan tidak boleh Anda simpulkan dari penelitian ini?\n\n### Desain penelitian\n\n16. Mengapa Anda memilih survei observasional satu kali pengukuran?\n17. Mengapa desain tersebut sesuai untuk memperkirakan hubungan antarvariabel?\n18. Mengapa desain ini tidak dapat memastikan bahwa penggunaan AI menyebabkan perubahan regulasi belajar?\n19. Faktor lain apa yang mungkin berkaitan dengan penggunaan AI sekaligus regulasi belajar?\n20. Bagaimana Anda akan menjelaskan keterbatasan pengukuran yang dilakukan hanya pada satu waktu?\n\n### Populasi dan sampel\n\n21. Siapa tepatnya populasi sasaran dan siapa yang memenuhi syarat menjadi responden?\n22. Apa alasan memilih kelas yang dapat Anda akses sebagai sumber responden?\n23. ★ Bagaimana *convenience sampling* memengaruhi keterwakilan sampel?\n24. Bagaimana Anda akan menentukan target jumlah responden secara masuk akal?\n25. Jika respons yang terkumpul sedikit atau hanya berasal dari beberapa kelas, bagaimana Anda membatasi kesimpulan?\n\n### Rekrutmen dan etika\n\n26. Bagaimana Anda akan mengundang mahasiswa agar partisipasi benar-benar sukarela?\n27. ★ Apa status persetujuan partisipan dan prosedur etik yang perlu dipastikan sebelum pengumpulan data?\n28. Bagaimana Anda akan menjelaskan tujuan, risiko, dan penggunaan data kepada calon responden?\n29. Bagaimana Anda akan menjaga kerahasiaan jawaban mahasiswa?\n30. Jika dosen memberi akses ke kelas, bagaimana Anda mencegah mahasiswa merasa wajib ikut?\n\n### Instrumen dan pengukuran\n\n31. ★ Dari mana instrumen regulasi belajar akan diperoleh?\n32. Jika instrumen diadaptasi, bagian apa yang perlu diperiksa agar maknanya tetap sesuai?\n33. Bagaimana Anda akan mengoperasionalkan “frekuensi penggunaan AI” dalam pertanyaan survei?\n34. Periode ingatan apa yang akan digunakan saat menanyakan frekuensi, dan mengapa?\n35. ★ Bagaimana rencana uji coba serta pemeriksaan validitas dan reliabilitas instrumen sebelum analisis utama?\n\n### Rencana analisis\n\n36. Data seperti apa yang akan dihasilkan oleh masing-masing variabel?\n37. ★ Berdasarkan sifat data apa Anda akan memilih teknik analisis hubungan?\n38. Pemeriksaan data apa yang perlu dilakukan sebelum analisis?\n39. Bagaimana Anda akan menangani jawaban yang tidak lengkap atau tidak wajar?\n40. Apa arti arah dan kekuatan hubungan dalam konteks penelitian ini?\n\n### Interpretasi kemungkinan hasil\n\n41. Jika hubungan yang teramati lemah, bagaimana Anda akan menjelaskannya secara proporsional?\n42. Jika tidak ditemukan hubungan yang jelas, apakah penelitian ini tetap dapat menjawab rumusan masalah?\n43. Jika hubungan yang teramati berlawanan dengan dugaan awal, apa yang akan Anda periksa terlebih dahulu?\n44. Bagaimana Anda membedakan makna statistik dari makna praktis hasil penelitian?\n45. Mengapa hasil dari sampel kelas yang mudah diakses tidak otomatis berlaku untuk semua mahasiswa atau universitas?\n\n### Konsistensi dan kesiapan proposal\n\n46. Bagaimana setiap pertanyaan dalam instrumen akan terhubung dengan definisi variabel dan rencana analisis?\n47. ★ Bagian mana dari proposal yang masih harus diputuskan sebelum pengumpulan data dimulai?\n48. Jika instrumen yang dipilih ternyata kurang sesuai, bagian proposal mana yang perlu direvisi?\n49. Jika akses ke sebagian kelas berubah, bagaimana rencana pengambilan sampel dan batasan penelitian akan disesuaikan?\n50. Dalam satu menit, bagaimana Anda menjelaskan masalah, tujuan, metode, dan batas kesimpulan penelitian ini?\n\nUntuk latihan minggu ini, dahulukan pertanyaan bertanda ★. Siapkan jawaban yang jujur tentang hal yang **sudah diputuskan**, hal yang **masih direncanakan**, dan bukti atau persetujuan yang **masih perlu diperoleh**.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/defense-and-revision.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/defense-and-revision.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-09-20T15:17:37.237420+00:00"
+}

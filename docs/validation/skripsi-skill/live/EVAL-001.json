@@ -1,0 +1,30 @@
+{
+  "case": "EVAL-001",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "ff1f29dd28c50bd9210927b0eeb66559d44b5148",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Saya tertarik meneliti AI di pendidikan. Buatkan judul skripsi.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:49:05.064140+00:00",
+  "model_selection": "CLI default; no model override",
+  "input_sha256": "6ffd6c78d2d122e246bf019c30d9d4ece18788d262541cec0b2df899e47b9dcd",
+  "exit_code": 1,
+  "observed_output": "",
+  "execution_status": "ENVIRONMENT_UNAVAILABLE",
+  "diagnostic": "",
+  "events": [
+    {
+      "type": "error",
+      "message": "You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at Sep 26th, 2026 7:07 PM."
+    },
+    {
+      "type": "turn.failed",
+      "error": {
+        "message": "You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at Sep 26th, 2026 7:07 PM."
+      }
+    }
+  ],
+  "tool_actions": [],
+  "finished_at_utc": "2026-09-20T15:49:11.316257+00:00"
+}

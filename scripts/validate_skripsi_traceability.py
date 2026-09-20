@@ -15,13 +15,13 @@ def audit(report, runtime_paths, main_paths, case_ids):
     ids=[row.get('id') for row in rows]
     if len(ids)!=len(set(ids)) or set(ids)!=required:
         errors.append('Requirement inventory must contain exactly 146 FR, 47 NFR and 142 AC without duplicates')
-    for group_name, count, prefix in [('capabilities',32,'CAP'),('evals',110,'EVAL')]:
+    for group_name, count, prefix in [('capabilities',32,'CAP'),('evals',110,'EVAL'),('core_outputs',61,'OUTPUT')]:
         found=[row.get('id') for row in report.get(group_name,[])]
         width=2 if prefix=='CAP' else 3
         expected={f'{prefix}-{n:0{width}}' for n in range(1,count+1)}
         if len(found)!=len(set(found)) or set(found)!=expected:
             errors.append(f'{group_name}: incomplete or duplicated inventory')
-    for row in [*rows,*report.get('capabilities',[]),*report.get('evals',[])]:
+    for row in [*rows,*report.get('capabilities',[]),*report.get('evals',[]),*report.get('core_outputs',[])]:
         target=row.get('implementation',{})
         paths=runtime_paths if target.get('branch')=='skripsi-skill' else main_paths if target.get('branch')=='main' else set()
         if target.get('path') not in paths:

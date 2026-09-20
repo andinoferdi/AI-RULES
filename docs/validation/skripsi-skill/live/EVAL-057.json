@@ -1,0 +1,44 @@
+{
+  "case": "EVAL-057",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Datanya postingan publik media sosial, berarti nggak ada masalah etika kan?\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:14:29.269950+00:00",
+  "model_selection": "CLI default; no model override",
+  "input_sha256": "d756c7d3187a66362b743fbe32b58d17d2ecdbdaf7b612632718a0572ed6de16",
+  "exit_code": 0,
+  "observed_output": "Belum tentu. **Postingan yang bisa dilihat publik tetap dapat menimbulkan persoalan etika penelitian.** Misalnya, kutipan persis bisa dicari kembali dan mengungkap identitas pemilik akun; topik sensitif atau penggabungan beberapa data juga dapat meningkatkan risiko bagi mereka.\n\nSebelum memakai datanya, periksa ketentuan platform dan aturan etik kampus, lalu tentukan cara mengambil data, membatasi informasi pribadi, menyimpan data, serta menyajikan kutipan. Saya tidak bisa menyimpulkan bahwa persetujuan atau kaji etik tidak diperlukan tanpa mengetahui platform, topik, dan cara datanya akan digunakan.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/advanced-methodology-integrity.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/advanced-methodology-integrity.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-09-20T15:14:50.547918+00:00"
+}

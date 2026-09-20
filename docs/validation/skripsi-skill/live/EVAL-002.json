@@ -1,0 +1,40 @@
+{
+  "case": "EVAL-002",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Proposal v1, approved title: Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P. RQ: Bagaimana hubungan frekuensi penggunaan AI dengan skor regulasi belajar mahasiswa Program P semester 4? Objective: estimate that association. One-time observational survey, voluntary convenience sample from accessible classes, no intervention. Planned instrument: source/adaptation and measurement validation unresolved; pilot not done. Data access to classes reported by user, participant consent/ethics status unknown. Planned association analysis depends on measurement and data properties. No data collected. Literature citations/gap evidence not supplied. Supervisor has approved topic/title and instructed scope remain Program P, not all universities.",
+  "prompt": "\"Judul saya sudah ACC. Sekarang bantu buat outline proposal.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "exit_code": 0,
+  "observed_output": "Berikut outline proposal untuk judul yang sudah ACC: **“Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P.”** Susunan BAB I–III ini bersifat sementara karena pedoman penulisan kampus belum diberikan. Fokus pertanyaan penelitian tetap pada **frekuensi penggunaan AI dan skor regulasi belajar mahasiswa Program P semester 4**.\n\n## BAB I — Pendahuluan\n\n1. **Latar belakang:** jelaskan konteks penggunaan asisten AI dalam belajar, pentingnya regulasi belajar, dan alasan hubungan keduanya perlu diteliti pada mahasiswa Program P semester 4. Lengkapi dengan literatur dan bukti kesenjangan penelitian yang benar-benar ditemukan; keduanya belum tersedia saat ini.\n2. **Rumusan masalah:** “Bagaimana hubungan frekuensi penggunaan asisten AI dengan skor regulasi belajar mahasiswa Program P semester 4?”\n3. **Tujuan penelitian:** mengestimasi hubungan tersebut.\n4. **Manfaat penelitian:** uraikan manfaat teoretis dan praktis sebagai potensi, tanpa menjanjikan hasil tertentu.\n5. **Batasan penelitian:** Program P semester 4; survei satu kali; hubungan statistik, bukan pengaruh sebab-akibat atau gambaran seluruh universitas.\n\n## BAB II — Kajian Pustaka\n\n1. **Penggunaan asisten AI dalam belajar:** definisi dan batas jenis penggunaan yang akan dihitung.\n2. **Regulasi belajar:** definisi, dimensi, dan dasar pemilihan ukuran atau skala.\n3. **Penelitian terdahulu:** sintesis temuan yang relevan, perbedaan hasil atau keterbatasannya, lalu rumuskan celah penelitian berdasarkan sumber yang terverifikasi.\n4. **Kerangka berpikir:** jelaskan alasan teoretis mengapa frekuensi penggunaan AI mungkin berkaitan dengan skor regulasi belajar, tanpa menganggap arah hubungannya sudah terbukti.\n5. **Hipotesis:** cantumkan bila diwajibkan pedoman kampus atau sesuai rancangan analisis; rumuskan setelah landasan teori dan ukuran variabel jelas.\n\n## BAB III — Metode Penelitian\n\n1. **Desain:** penelitian kuantitatif observasional dengan survei satu kali.\n2. **Populasi dan sampel:** mahasiswa Program P semester 4; rekrutmen sukarela dari kelas yang dapat diakses (*convenience sampling*). Jelaskan kriteria peserta, rencana jumlah sampel beserta alasannya, dan keterbatasan generalisasi.\n3. **Variabel dan definisi operasional:** tetapkan periode serta satuan pengukuran frekuensi penggunaan AI, dan cara menghitung skor regulasi belajar.\n4. **Instrumen:** tentukan sumber atau dasar adaptasi skala, prosedur adaptasi, uji coba, serta pemeriksaan kualitas pengukuran. Bagian ini masih terbuka; jangan menuliskan instrumen seolah sudah tervalidasi.\n5. **Pengumpulan data dan etika:** rencanakan izin akses kelas, informasi bagi calon peserta, persetujuan sukarela, dan perlindungan data. Status persetujuan etik atau izin yang diperlukan masih perlu diperiksa.\n6. **Analisis data:** rencanakan pemeriksaan kelengkapan dan sifat data, statistik deskriptif, lalu pilih uji hubungan yang sesuai dengan skala pengukuran dan kondisi data. Laporkan ukuran hubungan serta ketidakpastiannya; jangan menetapkan hasil atau menyimpulkan sebab-akibat.\n\n**Langkah terdekat:** kumpulkan pedoman proposal kampus dan sumber instrumen regulasi belajar yang akan dipakai. Keduanya menentukan format subbab serta definisi operasional dan analisis yang dapat ditulis secara pasti.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/proposal-bab-1-3.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/proposal-bab-1-3.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ]
+}

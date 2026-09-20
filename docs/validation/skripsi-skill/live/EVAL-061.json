@@ -1,0 +1,19 @@
+{
+  "case": "EVAL-061",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Jurnal ini ada di satu blacklist. Berarti pasti predator.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:16:09.921507+00:00",
+  "model_selection": "CLI default; no model override",
+  "input_sha256": "3c92ceaa830f24b6de6f5b944fb2a3307131bb20ff6afa96f9eb6603177c037c",
+  "exit_code": 0,
+  "observed_output": "Belum tentu. Masuk satu blacklist adalah **alasan untuk memeriksa jurnal lebih lanjut**, bukan bukti pasti bahwa jurnal itu predator. Penilaiannya perlu melihat siapa yang membuat daftar itu, alasan pencantumannya, kapan diperbarui, serta praktik jurnalnya—misalnya proses telaah sejawat, susunan editor, dan transparansi biaya.\n\nKalau Anda kirim nama jurnal dan blacklist yang dimaksud, saya bisa bantu menyusun penilaian yang lebih spesifik. Saya belum dapat membaca `skripsi-skill/SKILL.md` karena akses baca lokal ditolak oleh lingkungan evaluasi ini.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [],
+  "finished_at_utc": "2026-09-20T15:16:28.370348+00:00"
+}

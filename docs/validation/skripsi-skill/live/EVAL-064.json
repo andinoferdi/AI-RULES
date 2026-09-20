@@ -1,0 +1,68 @@
+{
+  "case": "EVAL-064",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Final thesis v2 uses an observational convenience survey of Program P semester 4 students. Proposal v1 title was Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P; final draft title now says Pengaruh penggunaan AI terhadap regulasi belajar. RQ and objective remain estimating association between AI-use frequency and self-regulated learning score, not a causal effect. Chapter III records actual use of Spearman association for ordinal measurements, replacing the proposal's provisional Pearson plan. Chapter IV analysis fixture F1: n=40, rho=0.12, p=0.21, interval not supplied; this is a fabricated test artifact explicitly not real research. Analysis artifact fixture-output-A, row 1 supports these test values. No intervention or random assignment. No claim of population representativeness. Chapter V currently says AI meningkatkan hasil belajar, although learning achievement was not measured. No literature sources provided. Defense protocol not supplied.",
+  "prompt": "\"Latih saya sidang. Pakai BAB III proposal saya.\"\n\nFixture:\nFinal thesis shows that the actual analysis changed after proposal approval.",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:17:38.274945+00:00",
+  "model_selection": "CLI default; no model override",
+  "input_sha256": "9c0c6e4b130e4e02cb091fe206fc2c068e26edeaec3c01b8af58e3396aff5fa5",
+  "exit_code": 0,
+  "observed_output": "Baik, kita latihan sidang satu pertanyaan setiap giliran. Saya memakai informasi BAB III proposal yang Anda berikan: survei observasional dengan rencana analisis Pearson. Karena naskah akhir mencatat penggunaan Spearman, latihan ini juga akan menguji cara Anda menjelaskan perubahan tersebut. Teks BAB III proposal tidak disertakan, jadi saya tidak akan mengasumsikan rincian instrumen atau prosedur yang belum tersedia.\n\n**Pertanyaan penguji:** “Di proposal Anda merencanakan korelasi Pearson, tetapi di penelitian akhir memakai Spearman. Mengapa analisisnya berubah, dan apakah perubahan itu memengaruhi jawaban atas rumusan masalah?”\n\nJawab seperti saat sidang, sekitar 1 menit. Setelah itu saya beri umpan balik dan pertanyaan lanjutan.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.\\\\skripsi-skill\\\\SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.\\\\skripsi-skill\\\\SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.\\\\skripsi-skill\\\\references\\\\defense-and-revision.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.\\\\skripsi-skill\\\\references\\\\defense-and-revision.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.\\\\skripsi-skill\\\\references\\\\revision-consistency.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.\\\\skripsi-skill\\\\references\\\\revision-consistency.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.\\\\skripsi-skill\\\\references\\\\intent-and-context.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.\\\\skripsi-skill\\\\references\\\\intent-and-context.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-09-20T15:18:15.843763+00:00"
+}

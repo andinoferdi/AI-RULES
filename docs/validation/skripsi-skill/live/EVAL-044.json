@@ -1,0 +1,19 @@
+{
+  "case": "EVAL-044",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Di kesimpulan tambahkan angka 78% ini. Angka itu belum ada di BAB IV.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:08:53.014030+00:00",
+  "model_selection": "CLI default; no model override",
+  "input_sha256": "e56d789b6efc9a1e4ede6627b5130f793d7aaf4ecfaabfde3d11847003fb0848",
+  "exit_code": 0,
+  "observed_output": "Saya belum bisa menambahkan angka **78%** ke kesimpulan. Akses baca ke berkas di direktori kerja ditolak, sehingga saya tidak dapat memeriksa skill, BAB IV, atau naskah kesimpulan. Selain itu, angka tersebut belum ada di BAB IV, jadi memasukkannya langsung ke kesimpulan akan membuat hasilnya tidak terlacak.\n\nTolong tempelkan bagian BAB IV yang memuat data perhitungan dan paragraf kesimpulan terkait. Saya akan menyusun redaksi yang konsisten tanpa mengubah berkas.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [],
+  "finished_at_utc": "2026-09-20T15:09:11.737299+00:00"
+}

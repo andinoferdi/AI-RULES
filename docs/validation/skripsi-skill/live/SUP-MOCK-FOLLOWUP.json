@@ -1,0 +1,24 @@
+{
+  "case": "SUP-MOCK-FOLLOWUP",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "ff1f29dd28c50bd9210927b0eeb66559d44b5148",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "Lanjutkan mock sidang dari pertanyaan sebelumnya. Jawaban saya: Metode itu saya pilih karena paling sesuai dan disarankan dosen. Jangan berikan jawaban ideal dulu.",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:56:08.763382+00:00",
+  "model_selection": "CLI default; no model override",
+  "input_sha256": "88ea8daa46de5b2b85fa32686044b58a1040c78b559fe10eb72902b9f2f19f7f",
+  "exit_code": 1,
+  "observed_output": "",
+  "execution_status": "ENVIRONMENT_UNAVAILABLE",
+  "diagnostic": "Codex CLI usage limit reached: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at Sep 26th, 2026 7:07 PM.",
+  "events": [
+    {
+      "type": "error",
+      "message": "Usage limit reached"
+    }
+  ],
+  "tool_actions": [],
+  "finished_at_utc": "2026-09-20T15:56:08.763382+00:00"
+}

@@ -1,0 +1,55 @@
+{
+  "case": "EVAL-022",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Buatkan reusable prompt untuk bantu saya review BAB I setiap kali selesai revisi.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T14:59:29.339732+00:00",
+  "model_selection": "CLI default; no model override",
+  "exit_code": 0,
+  "observed_output": "Berikut prompt yang bisa Anda salin setiap kali selesai merevisi BAB I. Isi bagian dalam tanda kurung siku sesuai bahan yang tersedia.\n\n```text\nBertindaklah sebagai penelaah akademik untuk BAB I skripsi saya. Tinjau naskah yang saya berikan berdasarkan pedoman kampus dan arahan dosen pembimbing yang saya lampirkan. Jika keduanya tidak tersedia, gunakan kaidah akademik umum dan tandai bahwa penilaian struktur BAB I masih bersifat sementara.\n\nKonteks penelitian:\n- Judul saat ini: [isi]\n- Pendekatan atau metode yang direncanakan: [isi jika sudah diputuskan]\n- Pedoman kampus: [tempelkan atau tulis “belum tersedia”]\n- Arahan dosen pembimbing yang sudah dikonfirmasi: [isi atau “belum tersedia”]\n- Fokus revisi kali ini: [isi]\n- Versi BAB I sebelumnya: [tempelkan jika ingin perbandingan; jika tidak ada, tulis “tidak tersedia”]\n\nBAB I terbaru:\n[tempelkan naskah lengkap]\n\nTugas Anda:\n1. Periksa alur latar belakang: konteks, bukti fenomena, masalah, dampaknya, pengetahuan yang sudah ada, celah yang belum terjawab, dan alasan penelitian ini perlu dilakukan.\n2. Periksa apakah rumusan masalah, tujuan, manfaat, batasan/ruang lingkup, dan judul saling konsisten serta cukup spesifik dan dapat diteliti. Sesuaikan pemeriksaan subbab dengan pedoman yang saya berikan.\n3. Tandai klaim, angka, kutipan, atau pernyataan tentang penelitian terdahulu yang belum memiliki dukungan sumber yang jelas. Jangan membuat referensi, data, atau arahan dosen yang tidak saya berikan.\n4. Jika ada versi sebelumnya, jelaskan perubahan penting dan apakah revisi tersebut menimbulkan ketidaksesuaian di bagian lain. Jika perubahan memengaruhi teori, data, atau metode di bab berikutnya, sebutkan bagian yang perlu saya periksa; jangan menyatakan bab itu sudah konsisten tanpa melihatnya.\n5. Laporkan temuan dalam tabel: lokasi teks, masalah, alasan, tingkat prioritas (tinggi/sedang/rendah), dan tindakan revisi yang spesifik. Kutip hanya potongan teks seperlunya agar lokasi mudah ditemukan.\n6. Setelah tabel, berikan tiga tindakan revisi paling penting dalam urutan pengerjaan. Untuk masalah yang sulit, berikan contoh perbaikan singkat dengan tetap mempertahankan maksud penelitian saya.\n\nBedakan masalah yang terbukti dari hal yang masih perlu dikonfirmasi. Jangan memberi nilai atau menjanjikan persetujuan dosen. Jika informasi penting belum tersedia, nyatakan tepatnya informasi apa yang diperlukan.\n```\n\nUntuk pemakaian rutin, cukup ganti konteks, fokus revisi, dan naskah terbaru. Sertakan versi sebelumnya bila Anda ingin memeriksa dampak perubahan antarversi.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath .\\\\skripsi-skill\\\\SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath .\\\\skripsi-skill\\\\SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath .\\\\skripsi-skill\\\\references\\\\proposal-bab-1-3.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath .\\\\skripsi-skill\\\\references\\\\proposal-bab-1-3.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath .\\\\skripsi-skill\\\\references\\\\revision-consistency.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath .\\\\skripsi-skill\\\\references\\\\revision-consistency.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-09-20T15:00:07.596609+00:00"
+}

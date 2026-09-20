@@ -6,6 +6,7 @@
     "NFR": 47,
     "AC": 142,
     "capabilities": 32,
+    "core_outputs": 61,
     "initial_evals": 110,
     "tasks": 75
   },
@@ -23,6 +24,9 @@
       "evidence": "contract-review.md",
       "eval_ids": [
         "EVAL-002"
+      ],
+      "task_ids": [
+        "P2-T02"
       ]
     },
     {
@@ -37,6 +41,9 @@
       "evidence": "contract-review.md",
       "eval_ids": [
         "EVAL-002"
+      ],
+      "task_ids": [
+        "P2-T02"
       ]
     },
     {
@@ -51,6 +58,9 @@
       "evidence": "contract-review.md",
       "eval_ids": [
         "EVAL-002"
+      ],
+      "task_ids": [
+        "P2-T02"
       ]
     },
     {
@@ -65,6 +75,9 @@
       "evidence": "contract-review.md",
       "eval_ids": [
         "EVAL-001"
+      ],
+      "task_ids": [
+        "P3-T01"
       ]
     },
     {
@@ -79,7 +92,12 @@
       "evidence": "contract-review.md",
       "eval_ids": [
         "EVAL-003",
-        "EVAL-004"
+        "EVAL-004",
+        "SUP-NO-TOOLS",
+        "SUP-GUIDELINE-SCOPE"
+      ],
+      "task_ids": [
+        "P2-T04"
       ]
     },
     {
@@ -94,7 +112,12 @@
       "evidence": "contract-review.md",
       "eval_ids": [
         "EVAL-003",
-        "EVAL-004"
+        "EVAL-004",
+        "SUP-NO-TOOLS",
+        "SUP-GUIDELINE-SCOPE"
+      ],
+      "task_ids": [
+        "P2-T04"
       ]
     },
     {
@@ -109,6 +132,9 @@
       "evidence": "contract-review.md",
       "eval_ids": [
         "EVAL-001"
+      ],
+      "task_ids": [
+        "P3-T01"
       ]
     },
     {
@@ -128,6 +154,9 @@
         "EVAL-014",
         "EVAL-015",
         "EVAL-016"
+      ],
+      "task_ids": [
+        "P3-T02"
       ]
     },
     {
@@ -147,6 +176,9 @@
         "EVAL-014",
         "EVAL-015",
         "EVAL-016"
+      ],
+      "task_ids": [
+        "P3-T02"
       ]
     },
     {
@@ -166,6 +198,10 @@
         "EVAL-029",
         "EVAL-030",
         "EVAL-031"
+      ],
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
       ]
     },
     {
@@ -183,6 +219,10 @@
         "EVAL-009",
         "EVAL-049",
         "EVAL-074"
+      ],
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
       ]
     },
     {
@@ -197,7 +237,12 @@
       "evidence": "contract-review.md",
       "eval_ids": [
         "EVAL-003",
-        "EVAL-004"
+        "EVAL-004",
+        "SUP-NO-TOOLS",
+        "SUP-GUIDELINE-SCOPE"
+      ],
+      "task_ids": [
+        "P2-T04"
       ]
     },
     {
@@ -213,6 +258,11 @@
       "eval_ids": [
         "EVAL-032",
         "EVAL-034"
+      ],
+      "task_ids": [
+        "P3-T04",
+        "P4-T04",
+        "P4-T05"
       ]
     },
     {
@@ -228,6 +278,11 @@
       "eval_ids": [
         "EVAL-032",
         "EVAL-034"
+      ],
+      "task_ids": [
+        "P3-T04",
+        "P4-T04",
+        "P4-T05"
       ]
     },
     {
@@ -245,6 +300,10 @@
         "EVAL-009",
         "EVAL-049",
         "EVAL-074"
+      ],
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
       ]
     },
     {
@@ -262,6 +321,10 @@
         "EVAL-009",
         "EVAL-049",
         "EVAL-074"
+      ],
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
       ]
     },
     {
@@ -279,6 +342,10 @@
         "EVAL-009",
         "EVAL-049",
         "EVAL-074"
+      ],
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
       ]
     },
     {
@@ -296,6 +363,10 @@
         "EVAL-009",
         "EVAL-049",
         "EVAL-074"
+      ],
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
       ]
     },
     {
@@ -308,7 +379,15 @@
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
       "evidence": "contract-review.md",
-      "eval_ids": []
+      "eval_ids": [
+        "SUP-ANDINO",
+        "SUP-STANDALONE"
+      ],
+      "task_ids": [
+        "P2-T05",
+        "P10-T01",
+        "P10-T02"
+      ]
     },
     {
       "id": "FR-020",
@@ -320,7 +399,15 @@
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
       "evidence": "contract-review.md",
-      "eval_ids": []
+      "eval_ids": [
+        "SUP-ANDINO",
+        "SUP-STANDALONE"
+      ],
+      "task_ids": [
+        "P2-T05",
+        "P10-T01",
+        "P10-T02"
+      ]
     },
     {
       "id": "FR-021",
@@ -333,7 +420,13 @@
       "behavioral_verdict": "NOT_VERIFIED",
       "evidence": "contract-review.md",
       "eval_ids": [
-        "EVAL-010"
+        "EVAL-010",
+        "SUP-CODING",
+        "SUP-UNRELATED"
+      ],
+      "task_ids": [
+        "P2-T01",
+        "P11-T01"
       ]
     },
     {
@@ -348,7 +441,12 @@
       "evidence": "contract-review.md",
       "eval_ids": [
         "EVAL-003",
-        "EVAL-004"
+        "EVAL-004",
+        "SUP-NO-TOOLS",
+        "SUP-GUIDELINE-SCOPE"
+      ],
+      "task_ids": [
+        "P2-T04"
       ]
     },
     {
@@ -368,6 +466,9 @@
         "EVAL-014",
         "EVAL-015",
         "EVAL-016"
+      ],
+      "task_ids": [
+        "P3-T02"
       ]
     },
     {
@@ -387,6 +488,9 @@
         "EVAL-014",
         "EVAL-015",
         "EVAL-016"
+      ],
+      "task_ids": [
+        "P3-T02"
       ]
     },
     {
@@ -406,6 +510,9 @@
         "EVAL-014",
         "EVAL-015",
         "EVAL-016"
+      ],
+      "task_ids": [
+        "P3-T02"
       ]
     },
     {
@@ -425,6 +532,9 @@
         "EVAL-014",
         "EVAL-015",
         "EVAL-016"
+      ],
+      "task_ids": [
+        "P3-T02"
       ]
     },
     {
@@ -444,6 +554,9 @@
         "EVAL-014",
         "EVAL-015",
         "EVAL-016"
+      ],
+      "task_ids": [
+        "P3-T02"
       ]
     },
     {
@@ -463,6 +576,9 @@
         "EVAL-014",
         "EVAL-015",
         "EVAL-016"
+      ],
+      "task_ids": [
+        "P3-T02"
       ]
     },
     {
@@ -482,6 +598,9 @@
         "EVAL-014",
         "EVAL-015",
         "EVAL-016"
+      ],
+      "task_ids": [
+        "P3-T02"
       ]
     },
     {
@@ -501,6 +620,9 @@
         "EVAL-014",
         "EVAL-015",
         "EVAL-016"
+      ],
+      "task_ids": [
+        "P3-T02"
       ]
     },
     {
@@ -521,6 +643,9 @@
         "EVAL-021",
         "EVAL-022",
         "EVAL-023"
+      ],
+      "task_ids": [
+        "P2-T03"
       ]
     },
     {
@@ -541,6 +666,9 @@
         "EVAL-021",
         "EVAL-022",
         "EVAL-023"
+      ],
+      "task_ids": [
+        "P2-T03"
       ]
     },
     {
@@ -561,6 +689,9 @@
         "EVAL-021",
         "EVAL-022",
         "EVAL-023"
+      ],
+      "task_ids": [
+        "P2-T03"
       ]
     },
     {
@@ -581,6 +712,9 @@
         "EVAL-021",
         "EVAL-022",
         "EVAL-023"
+      ],
+      "task_ids": [
+        "P2-T03"
       ]
     },
     {
@@ -601,6 +735,9 @@
         "EVAL-021",
         "EVAL-022",
         "EVAL-023"
+      ],
+      "task_ids": [
+        "P2-T03"
       ]
     },
     {
@@ -621,6 +758,9 @@
         "EVAL-021",
         "EVAL-022",
         "EVAL-023"
+      ],
+      "task_ids": [
+        "P2-T03"
       ]
     },
     {
@@ -641,6 +781,9 @@
         "EVAL-021",
         "EVAL-022",
         "EVAL-023"
+      ],
+      "task_ids": [
+        "P2-T03"
       ]
     },
     {
@@ -661,6 +804,9 @@
         "EVAL-021",
         "EVAL-022",
         "EVAL-023"
+      ],
+      "task_ids": [
+        "P2-T03"
       ]
     },
     {
@@ -676,6 +822,11 @@
       "eval_ids": [
         "EVAL-032",
         "EVAL-034"
+      ],
+      "task_ids": [
+        "P3-T04",
+        "P4-T04",
+        "P4-T05"
       ]
     },
     {
@@ -691,6 +842,9 @@
       "eval_ids": [
         "EVAL-027",
         "EVAL-033"
+      ],
+      "task_ids": [
+        "P4-T02"
       ]
     },
     {
@@ -708,6 +862,10 @@
         "EVAL-025",
         "EVAL-026",
         "EVAL-028"
+      ],
+      "task_ids": [
+        "P4-T01",
+        "P7-T02"
       ]
     },
     {
@@ -725,6 +883,10 @@
         "EVAL-025",
         "EVAL-026",
         "EVAL-028"
+      ],
+      "task_ids": [
+        "P4-T01",
+        "P7-T02"
       ]
     },
     {
@@ -742,6 +904,10 @@
         "EVAL-025",
         "EVAL-026",
         "EVAL-028"
+      ],
+      "task_ids": [
+        "P4-T01",
+        "P7-T02"
       ]
     },
     {
@@ -757,6 +923,9 @@
       "eval_ids": [
         "EVAL-027",
         "EVAL-033"
+      ],
+      "task_ids": [
+        "P4-T02"
       ]
     },
     {
@@ -774,6 +943,10 @@
         "EVAL-025",
         "EVAL-026",
         "EVAL-028"
+      ],
+      "task_ids": [
+        "P4-T01",
+        "P7-T02"
       ]
     },
     {
@@ -789,6 +962,9 @@
       "eval_ids": [
         "EVAL-027",
         "EVAL-033"
+      ],
+      "task_ids": [
+        "P4-T02"
       ]
     },
     {
@@ -811,6 +987,10 @@
         "EVAL-108",
         "EVAL-109",
         "EVAL-110"
+      ],
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
       ]
     },
     {
@@ -826,6 +1006,9 @@
       "eval_ids": [
         "EVAL-027",
         "EVAL-033"
+      ],
+      "task_ids": [
+        "P4-T02"
       ]
     },
     {
@@ -841,6 +1024,9 @@
       "eval_ids": [
         "EVAL-027",
         "EVAL-033"
+      ],
+      "task_ids": [
+        "P4-T02"
       ]
     },
     {
@@ -860,6 +1046,10 @@
         "EVAL-029",
         "EVAL-030",
         "EVAL-031"
+      ],
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
       ]
     },
     {
@@ -879,6 +1069,10 @@
         "EVAL-029",
         "EVAL-030",
         "EVAL-031"
+      ],
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
       ]
     },
     {
@@ -898,6 +1092,10 @@
         "EVAL-029",
         "EVAL-030",
         "EVAL-031"
+      ],
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
       ]
     },
     {
@@ -917,6 +1115,10 @@
         "EVAL-029",
         "EVAL-030",
         "EVAL-031"
+      ],
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
       ]
     },
     {
@@ -932,6 +1134,11 @@
       "eval_ids": [
         "EVAL-032",
         "EVAL-034"
+      ],
+      "task_ids": [
+        "P3-T04",
+        "P4-T04",
+        "P4-T05"
       ]
     },
     {
@@ -947,6 +1154,11 @@
       "eval_ids": [
         "EVAL-032",
         "EVAL-034"
+      ],
+      "task_ids": [
+        "P3-T04",
+        "P4-T04",
+        "P4-T05"
       ]
     },
     {
@@ -974,6 +1186,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -1001,6 +1219,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -1028,6 +1252,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -1055,6 +1285,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -1082,6 +1318,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -1109,6 +1351,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -1136,6 +1384,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -1163,6 +1417,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -1190,6 +1450,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -1217,6 +1483,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -1244,6 +1516,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -1271,6 +1549,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -1298,6 +1582,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -1325,6 +1615,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -1352,6 +1648,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -1369,6 +1671,10 @@
         "EVAL-009",
         "EVAL-049",
         "EVAL-074"
+      ],
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
       ]
     },
     {
@@ -1396,6 +1702,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -1419,6 +1731,14 @@
         "EVAL-060",
         "EVAL-061",
         "EVAL-062"
+      ],
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
       ]
     },
     {
@@ -1442,6 +1762,14 @@
         "EVAL-060",
         "EVAL-061",
         "EVAL-062"
+      ],
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
       ]
     },
     {
@@ -1465,6 +1793,14 @@
         "EVAL-060",
         "EVAL-061",
         "EVAL-062"
+      ],
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
       ]
     },
     {
@@ -1487,6 +1823,10 @@
         "EVAL-108",
         "EVAL-109",
         "EVAL-110"
+      ],
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
       ]
     },
     {
@@ -1509,6 +1849,10 @@
         "EVAL-108",
         "EVAL-109",
         "EVAL-110"
+      ],
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
       ]
     },
     {
@@ -1540,6 +1884,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -1563,6 +1915,14 @@
         "EVAL-060",
         "EVAL-061",
         "EVAL-062"
+      ],
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
       ]
     },
     {
@@ -1586,6 +1946,14 @@
         "EVAL-060",
         "EVAL-061",
         "EVAL-062"
+      ],
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
       ]
     },
     {
@@ -1609,6 +1977,14 @@
         "EVAL-060",
         "EVAL-061",
         "EVAL-062"
+      ],
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
       ]
     },
     {
@@ -1632,6 +2008,14 @@
         "EVAL-060",
         "EVAL-061",
         "EVAL-062"
+      ],
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
       ]
     },
     {
@@ -1655,6 +2039,14 @@
         "EVAL-060",
         "EVAL-061",
         "EVAL-062"
+      ],
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
       ]
     },
     {
@@ -1678,6 +2070,14 @@
         "EVAL-060",
         "EVAL-061",
         "EVAL-062"
+      ],
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
       ]
     },
     {
@@ -1701,6 +2101,14 @@
         "EVAL-060",
         "EVAL-061",
         "EVAL-062"
+      ],
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
       ]
     },
     {
@@ -1724,6 +2132,14 @@
         "EVAL-060",
         "EVAL-061",
         "EVAL-062"
+      ],
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
       ]
     },
     {
@@ -1747,6 +2163,14 @@
         "EVAL-060",
         "EVAL-061",
         "EVAL-062"
+      ],
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
       ]
     },
     {
@@ -1770,6 +2194,14 @@
         "EVAL-060",
         "EVAL-061",
         "EVAL-062"
+      ],
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
       ]
     },
     {
@@ -1796,7 +2228,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -1823,7 +2263,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -1850,7 +2298,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -1877,7 +2333,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -1904,7 +2368,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -1931,7 +2403,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -1958,7 +2438,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -1985,7 +2473,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -2012,7 +2508,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -2039,7 +2543,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -2066,7 +2578,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -2093,7 +2613,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -2120,7 +2648,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -2147,7 +2683,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -2174,7 +2718,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -2201,7 +2753,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -2228,7 +2788,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -2255,7 +2823,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -2287,6 +2863,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -2318,6 +2902,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -2349,6 +2941,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -2380,6 +2980,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -2411,6 +3019,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -2442,6 +3058,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -2473,6 +3097,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -2504,6 +3136,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -2535,6 +3175,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -2566,6 +3214,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -2597,6 +3253,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -2628,6 +3292,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -2659,6 +3331,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -2690,6 +3370,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -2721,6 +3409,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -2752,6 +3448,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -2783,6 +3487,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -2814,6 +3526,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -2832,6 +3552,11 @@
         "EVAL-096",
         "EVAL-101",
         "EVAL-102"
+      ],
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
       ]
     },
     {
@@ -2850,6 +3575,11 @@
         "EVAL-096",
         "EVAL-101",
         "EVAL-102"
+      ],
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
       ]
     },
     {
@@ -2868,6 +3598,11 @@
         "EVAL-096",
         "EVAL-101",
         "EVAL-102"
+      ],
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
       ]
     },
     {
@@ -2886,6 +3621,11 @@
         "EVAL-096",
         "EVAL-101",
         "EVAL-102"
+      ],
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
       ]
     },
     {
@@ -2904,6 +3644,11 @@
         "EVAL-096",
         "EVAL-101",
         "EVAL-102"
+      ],
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
       ]
     },
     {
@@ -2922,6 +3667,11 @@
         "EVAL-096",
         "EVAL-101",
         "EVAL-102"
+      ],
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
       ]
     },
     {
@@ -2940,6 +3690,11 @@
         "EVAL-096",
         "EVAL-101",
         "EVAL-102"
+      ],
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
       ]
     },
     {
@@ -2958,6 +3713,11 @@
         "EVAL-096",
         "EVAL-101",
         "EVAL-102"
+      ],
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
       ]
     },
     {
@@ -2976,6 +3736,11 @@
         "EVAL-096",
         "EVAL-101",
         "EVAL-102"
+      ],
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
       ]
     },
     {
@@ -2998,6 +3763,10 @@
         "EVAL-108",
         "EVAL-109",
         "EVAL-110"
+      ],
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
       ]
     },
     {
@@ -3020,6 +3789,10 @@
         "EVAL-108",
         "EVAL-109",
         "EVAL-110"
+      ],
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
       ]
     },
     {
@@ -3042,6 +3815,10 @@
         "EVAL-108",
         "EVAL-109",
         "EVAL-110"
+      ],
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
       ]
     },
     {
@@ -3064,6 +3841,10 @@
         "EVAL-108",
         "EVAL-109",
         "EVAL-110"
+      ],
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
       ]
     },
     {
@@ -3086,6 +3867,10 @@
         "EVAL-108",
         "EVAL-109",
         "EVAL-110"
+      ],
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
       ]
     },
     {
@@ -3108,6 +3893,10 @@
         "EVAL-108",
         "EVAL-109",
         "EVAL-110"
+      ],
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
       ]
     },
     {
@@ -3125,6 +3914,9 @@
         "EVAL-105",
         "EVAL-106",
         "EVAL-107"
+      ],
+      "task_ids": [
+        "P5-T06"
       ]
     },
     {
@@ -3142,6 +3934,9 @@
         "EVAL-105",
         "EVAL-106",
         "EVAL-107"
+      ],
+      "task_ids": [
+        "P5-T06"
       ]
     },
     {
@@ -3159,6 +3954,9 @@
         "EVAL-105",
         "EVAL-106",
         "EVAL-107"
+      ],
+      "task_ids": [
+        "P5-T06"
       ]
     },
     {
@@ -3176,6 +3974,9 @@
         "EVAL-105",
         "EVAL-106",
         "EVAL-107"
+      ],
+      "task_ids": [
+        "P5-T06"
       ]
     },
     {
@@ -3193,6 +3994,9 @@
         "EVAL-105",
         "EVAL-106",
         "EVAL-107"
+      ],
+      "task_ids": [
+        "P5-T06"
       ]
     },
     {
@@ -3215,6 +4019,10 @@
         "EVAL-108",
         "EVAL-109",
         "EVAL-110"
+      ],
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
       ]
     },
     {
@@ -3237,6 +4045,10 @@
         "EVAL-108",
         "EVAL-109",
         "EVAL-110"
+      ],
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
       ]
     },
     {
@@ -3250,7 +4062,13 @@
       "behavioral_verdict": "NOT_VERIFIED",
       "evidence": "contract-review.md",
       "eval_ids": [
-        "EVAL-010"
+        "EVAL-010",
+        "SUP-CODING",
+        "SUP-UNRELATED"
+      ],
+      "task_ids": [
+        "P2-T01",
+        "P11-T01"
       ]
     },
     {
@@ -3264,7 +4082,13 @@
       "behavioral_verdict": "NOT_VERIFIED",
       "evidence": "contract-review.md",
       "eval_ids": [
-        "EVAL-010"
+        "EVAL-010",
+        "SUP-CODING",
+        "SUP-UNRELATED"
+      ],
+      "task_ids": [
+        "P2-T01",
+        "P11-T01"
       ]
     },
     {
@@ -3278,7 +4102,13 @@
       "behavioral_verdict": "NOT_VERIFIED",
       "evidence": "contract-review.md",
       "eval_ids": [
-        "EVAL-010"
+        "EVAL-010",
+        "SUP-CODING",
+        "SUP-UNRELATED"
+      ],
+      "task_ids": [
+        "P2-T01",
+        "P11-T01"
       ]
     },
     {
@@ -3293,6 +4123,9 @@
       "evidence": "contract-review.md",
       "eval_ids": [
         "EVAL-002"
+      ],
+      "task_ids": [
+        "P2-T02"
       ]
     },
     {
@@ -3307,7 +4140,12 @@
       "evidence": "contract-review.md",
       "eval_ids": [
         "EVAL-003",
-        "EVAL-004"
+        "EVAL-004",
+        "SUP-NO-TOOLS",
+        "SUP-GUIDELINE-SCOPE"
+      ],
+      "task_ids": [
+        "P2-T04"
       ]
     },
     {
@@ -3321,7 +4159,13 @@
       "behavioral_verdict": "NOT_VERIFIED",
       "evidence": "contract-review.md",
       "eval_ids": [
-        "EVAL-010"
+        "EVAL-010",
+        "SUP-CODING",
+        "SUP-UNRELATED"
+      ],
+      "task_ids": [
+        "P2-T01",
+        "P11-T01"
       ]
     },
     {
@@ -3334,7 +4178,13 @@
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
       "evidence": "contract-review.md",
-      "eval_ids": []
+      "eval_ids": [],
+      "task_ids": [
+        "P1-T02",
+        "P1-T03",
+        "P1-T04",
+        "P11-T02"
+      ]
     },
     {
       "id": "NFR-008",
@@ -3348,7 +4198,12 @@
       "evidence": "contract-review.md",
       "eval_ids": [
         "EVAL-003",
-        "EVAL-004"
+        "EVAL-004",
+        "SUP-NO-TOOLS",
+        "SUP-GUIDELINE-SCOPE"
+      ],
+      "task_ids": [
+        "P2-T04"
       ]
     },
     {
@@ -3362,7 +4217,13 @@
       "behavioral_verdict": "NOT_VERIFIED",
       "evidence": "contract-review.md",
       "eval_ids": [
-        "EVAL-010"
+        "EVAL-010",
+        "SUP-CODING",
+        "SUP-UNRELATED"
+      ],
+      "task_ids": [
+        "P2-T01",
+        "P11-T01"
       ]
     },
     {
@@ -3377,6 +4238,9 @@
       "evidence": "contract-review.md",
       "eval_ids": [
         "EVAL-002"
+      ],
+      "task_ids": [
+        "P2-T02"
       ]
     },
     {
@@ -3397,6 +4261,9 @@
         "EVAL-021",
         "EVAL-022",
         "EVAL-023"
+      ],
+      "task_ids": [
+        "P2-T03"
       ]
     },
     {
@@ -3417,6 +4284,9 @@
         "EVAL-021",
         "EVAL-022",
         "EVAL-023"
+      ],
+      "task_ids": [
+        "P2-T03"
       ]
     },
     {
@@ -3437,6 +4307,9 @@
         "EVAL-021",
         "EVAL-022",
         "EVAL-023"
+      ],
+      "task_ids": [
+        "P2-T03"
       ]
     },
     {
@@ -3457,6 +4330,9 @@
         "EVAL-021",
         "EVAL-022",
         "EVAL-023"
+      ],
+      "task_ids": [
+        "P2-T03"
       ]
     },
     {
@@ -3476,6 +4352,10 @@
         "EVAL-029",
         "EVAL-030",
         "EVAL-031"
+      ],
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
       ]
     },
     {
@@ -3493,6 +4373,10 @@
         "EVAL-025",
         "EVAL-026",
         "EVAL-028"
+      ],
+      "task_ids": [
+        "P4-T01",
+        "P7-T02"
       ]
     },
     {
@@ -3510,6 +4394,10 @@
         "EVAL-009",
         "EVAL-049",
         "EVAL-074"
+      ],
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
       ]
     },
     {
@@ -3524,7 +4412,12 @@
       "evidence": "contract-review.md",
       "eval_ids": [
         "EVAL-003",
-        "EVAL-004"
+        "EVAL-004",
+        "SUP-NO-TOOLS",
+        "SUP-GUIDELINE-SCOPE"
+      ],
+      "task_ids": [
+        "P2-T04"
       ]
     },
     {
@@ -3552,6 +4445,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -3579,6 +4478,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -3606,6 +4511,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -3633,6 +4544,12 @@
         "EVAL-046",
         "EVAL-047",
         "EVAL-048"
+      ],
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
       ]
     },
     {
@@ -3650,6 +4567,10 @@
         "EVAL-009",
         "EVAL-049",
         "EVAL-074"
+      ],
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
       ]
     },
     {
@@ -3673,6 +4594,14 @@
         "EVAL-060",
         "EVAL-061",
         "EVAL-062"
+      ],
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
       ]
     },
     {
@@ -3695,6 +4624,10 @@
         "EVAL-108",
         "EVAL-109",
         "EVAL-110"
+      ],
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
       ]
     },
     {
@@ -3726,6 +4659,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -3749,6 +4690,14 @@
         "EVAL-060",
         "EVAL-061",
         "EVAL-062"
+      ],
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
       ]
     },
     {
@@ -3772,6 +4721,14 @@
         "EVAL-060",
         "EVAL-061",
         "EVAL-062"
+      ],
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
       ]
     },
     {
@@ -3795,6 +4752,14 @@
         "EVAL-060",
         "EVAL-061",
         "EVAL-062"
+      ],
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
       ]
     },
     {
@@ -3821,7 +4786,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -3848,7 +4821,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -3875,7 +4856,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -3902,7 +4891,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -3929,7 +4926,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -3956,7 +4961,15 @@
         "EVAL-073",
         "EVAL-075",
         "EVAL-076",
-        "EVAL-077"
+        "EVAL-077",
+        "SUP-MOCK-FOLLOWUP"
+      ],
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
       ]
     },
     {
@@ -3988,6 +5001,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -4019,6 +5040,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -4050,6 +5079,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -4081,6 +5118,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -4112,6 +5157,14 @@
         "EVAL-091",
         "EVAL-092",
         "EVAL-093"
+      ],
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
       ]
     },
     {
@@ -4130,6 +5183,11 @@
         "EVAL-096",
         "EVAL-101",
         "EVAL-102"
+      ],
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
       ]
     },
     {
@@ -4152,6 +5210,10 @@
         "EVAL-108",
         "EVAL-109",
         "EVAL-110"
+      ],
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
       ]
     },
     {
@@ -4174,6 +5236,10 @@
         "EVAL-108",
         "EVAL-109",
         "EVAL-110"
+      ],
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
       ]
     },
     {
@@ -4196,6 +5262,10 @@
         "EVAL-108",
         "EVAL-109",
         "EVAL-110"
+      ],
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
       ]
     },
     {
@@ -4218,6 +5288,10 @@
         "EVAL-108",
         "EVAL-109",
         "EVAL-110"
+      ],
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
       ]
     },
     {
@@ -4235,6 +5309,9 @@
         "EVAL-105",
         "EVAL-106",
         "EVAL-107"
+      ],
+      "task_ids": [
+        "P5-T06"
       ]
     },
     {
@@ -4253,6 +5330,11 @@
         "EVAL-096",
         "EVAL-101",
         "EVAL-102"
+      ],
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
       ]
     },
     {
@@ -4265,7 +5347,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T02"
+      ]
     },
     {
       "id": "AC-002",
@@ -4277,7 +5362,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T02"
+      ]
     },
     {
       "id": "AC-003",
@@ -4289,7 +5377,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T01"
+      ]
     },
     {
       "id": "AC-004",
@@ -4301,7 +5392,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T04"
+      ]
     },
     {
       "id": "AC-005",
@@ -4313,7 +5407,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T04"
+      ]
     },
     {
       "id": "AC-006",
@@ -4325,7 +5422,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T04"
+      ]
     },
     {
       "id": "AC-007",
@@ -4337,7 +5437,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T01"
+      ]
     },
     {
       "id": "AC-008",
@@ -4349,7 +5452,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T02"
+      ]
     },
     {
       "id": "AC-009",
@@ -4361,7 +5467,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T02"
+      ]
     },
     {
       "id": "AC-010",
@@ -4373,7 +5482,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T02"
+      ]
     },
     {
       "id": "AC-011",
@@ -4385,7 +5497,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T02"
+      ]
     },
     {
       "id": "AC-012",
@@ -4397,7 +5512,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T02"
+      ]
     },
     {
       "id": "AC-013",
@@ -4409,7 +5527,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T02"
+      ]
     },
     {
       "id": "AC-014",
@@ -4421,7 +5542,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T02"
+      ]
     },
     {
       "id": "AC-015",
@@ -4433,7 +5557,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T02"
+      ]
     },
     {
       "id": "AC-016",
@@ -4445,7 +5572,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T03"
+      ]
     },
     {
       "id": "AC-017",
@@ -4457,7 +5587,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T03"
+      ]
     },
     {
       "id": "AC-018",
@@ -4469,7 +5602,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T03"
+      ]
     },
     {
       "id": "AC-019",
@@ -4481,7 +5617,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T03"
+      ]
     },
     {
       "id": "AC-020",
@@ -4493,7 +5632,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T03"
+      ]
     },
     {
       "id": "AC-021",
@@ -4505,7 +5647,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T03"
+      ]
     },
     {
       "id": "AC-022",
@@ -4517,7 +5662,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T03"
+      ]
     },
     {
       "id": "AC-023",
@@ -4529,7 +5677,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T02"
+      ]
     },
     {
       "id": "AC-024",
@@ -4541,7 +5692,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T01",
+        "P7-T02"
+      ]
     },
     {
       "id": "AC-025",
@@ -4553,7 +5708,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T01",
+        "P7-T02"
+      ]
     },
     {
       "id": "AC-026",
@@ -4565,7 +5724,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T01",
+        "P7-T02"
+      ]
     },
     {
       "id": "AC-027",
@@ -4577,7 +5740,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T01",
+        "P7-T02"
+      ]
     },
     {
       "id": "AC-028",
@@ -4589,7 +5756,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T02"
+      ]
     },
     {
       "id": "AC-029",
@@ -4601,7 +5771,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "AC-030",
@@ -4613,7 +5787,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T02"
+      ]
     },
     {
       "id": "AC-031",
@@ -4625,7 +5802,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T02"
+      ]
     },
     {
       "id": "AC-032",
@@ -4637,7 +5817,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
     },
     {
       "id": "AC-033",
@@ -4649,7 +5833,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
     },
     {
       "id": "AC-034",
@@ -4661,7 +5849,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
     },
     {
       "id": "AC-035",
@@ -4673,7 +5865,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
     },
     {
       "id": "AC-036",
@@ -4685,7 +5881,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T04",
+        "P4-T04",
+        "P4-T05"
+      ]
     },
     {
       "id": "AC-037",
@@ -4697,7 +5898,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T04",
+        "P4-T04",
+        "P4-T05"
+      ]
     },
     {
       "id": "AC-038",
@@ -4709,7 +5915,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "AC-039",
@@ -4721,7 +5933,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "AC-040",
@@ -4733,7 +5951,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "AC-041",
@@ -4745,7 +5969,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "AC-042",
@@ -4757,7 +5987,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "AC-043",
@@ -4769,7 +6005,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "AC-044",
@@ -4781,7 +6023,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "AC-045",
@@ -4793,7 +6041,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "AC-046",
@@ -4805,7 +6059,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "AC-047",
@@ -4817,7 +6077,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "AC-048",
@@ -4829,7 +6095,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "AC-049",
@@ -4841,7 +6113,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "AC-050",
@@ -4853,7 +6131,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "AC-051",
@@ -4865,7 +6149,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "AC-052",
@@ -4877,7 +6167,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "AC-053",
@@ -4889,7 +6185,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "AC-054",
@@ -4901,7 +6203,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
+      ]
     },
     {
       "id": "AC-055",
@@ -4913,7 +6219,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "AC-056",
@@ -4925,7 +6239,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "AC-057",
@@ -4937,7 +6259,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "AC-058",
@@ -4949,7 +6279,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "AC-059",
@@ -4961,7 +6295,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "AC-060",
@@ -4973,7 +6311,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-061",
@@ -4985,7 +6331,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-062",
@@ -4997,7 +6351,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "AC-063",
@@ -5009,7 +6371,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "AC-064",
@@ -5021,7 +6391,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "AC-065",
@@ -5033,7 +6411,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "AC-066",
@@ -5045,7 +6431,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "AC-067",
@@ -5057,7 +6451,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "AC-068",
@@ -5069,7 +6471,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "AC-069",
@@ -5081,7 +6491,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "AC-070",
@@ -5093,7 +6511,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "AC-071",
@@ -5105,7 +6531,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "AC-072",
@@ -5117,7 +6550,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "AC-073",
@@ -5129,7 +6569,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "AC-074",
@@ -5141,7 +6588,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "AC-075",
@@ -5153,7 +6607,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "AC-076",
@@ -5165,7 +6626,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "AC-077",
@@ -5177,7 +6645,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "AC-078",
@@ -5189,7 +6664,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "AC-079",
@@ -5201,7 +6683,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "AC-080",
@@ -5213,7 +6702,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "AC-081",
@@ -5225,7 +6721,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "AC-082",
@@ -5237,7 +6740,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "AC-083",
@@ -5249,7 +6759,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "AC-084",
@@ -5261,7 +6778,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "AC-085",
@@ -5273,7 +6797,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "AC-086",
@@ -5285,7 +6816,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "AC-087",
@@ -5297,7 +6835,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "AC-088",
@@ -5309,7 +6854,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "AC-089",
@@ -5321,7 +6873,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-090",
@@ -5333,7 +6893,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-091",
@@ -5345,7 +6913,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-092",
@@ -5357,7 +6933,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-093",
@@ -5369,7 +6953,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-094",
@@ -5381,7 +6973,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-095",
@@ -5393,7 +6993,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-096",
@@ -5405,7 +7013,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-097",
@@ -5417,7 +7033,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-098",
@@ -5429,7 +7053,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-099",
@@ -5441,7 +7073,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-100",
@@ -5453,7 +7093,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-101",
@@ -5465,7 +7113,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-102",
@@ -5477,7 +7133,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-103",
@@ -5489,7 +7153,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-104",
@@ -5501,7 +7173,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-105",
@@ -5513,7 +7193,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-106",
@@ -5525,7 +7213,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-107",
@@ -5537,7 +7233,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-108",
@@ -5549,7 +7253,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "AC-109",
@@ -5561,7 +7273,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
     },
     {
       "id": "AC-110",
@@ -5573,7 +7290,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
     },
     {
       "id": "AC-111",
@@ -5585,7 +7307,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
     },
     {
       "id": "AC-112",
@@ -5597,7 +7324,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
     },
     {
       "id": "AC-113",
@@ -5609,7 +7341,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
     },
     {
       "id": "AC-114",
@@ -5621,7 +7358,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
     },
     {
       "id": "AC-115",
@@ -5633,7 +7375,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
     },
     {
       "id": "AC-116",
@@ -5645,7 +7392,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "AC-117",
@@ -5657,7 +7408,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "AC-118",
@@ -5669,7 +7424,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "AC-119",
@@ -5681,7 +7440,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "AC-120",
@@ -5693,7 +7456,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "AC-121",
@@ -5705,7 +7472,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "AC-122",
@@ -5717,7 +7488,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "AC-123",
@@ -5729,7 +7504,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T06"
+      ]
     },
     {
       "id": "AC-124",
@@ -5741,7 +7519,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T06"
+      ]
     },
     {
       "id": "AC-125",
@@ -5753,7 +7534,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T06"
+      ]
     },
     {
       "id": "AC-126",
@@ -5765,7 +7549,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T06"
+      ]
     },
     {
       "id": "AC-127",
@@ -5777,7 +7564,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T06"
+      ]
     },
     {
       "id": "AC-128",
@@ -5789,7 +7579,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "AC-129",
@@ -5801,7 +7595,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
     },
     {
       "id": "AC-130",
@@ -5813,7 +7611,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
     },
     {
       "id": "AC-131",
@@ -5825,7 +7627,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
     },
     {
       "id": "AC-132",
@@ -5837,7 +7643,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
     },
     {
       "id": "AC-133",
@@ -5849,7 +7659,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
+      ]
     },
     {
       "id": "AC-134",
@@ -5861,7 +7675,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T04"
+      ]
     },
     {
       "id": "AC-135",
@@ -5873,7 +7690,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T04",
+        "P4-T04",
+        "P4-T05"
+      ]
     },
     {
       "id": "AC-136",
@@ -5885,7 +7707,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T04",
+        "P4-T04",
+        "P4-T05"
+      ]
     },
     {
       "id": "AC-137",
@@ -5897,7 +7724,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
+      ]
     },
     {
       "id": "AC-138",
@@ -5909,7 +7740,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
+      ]
     },
     {
       "id": "AC-139",
@@ -5921,7 +7756,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T05",
+        "P10-T01",
+        "P10-T02"
+      ]
     },
     {
       "id": "AC-140",
@@ -5933,7 +7773,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T05",
+        "P10-T01",
+        "P10-T02"
+      ]
     },
     {
       "id": "AC-141",
@@ -5945,7 +7790,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T01",
+        "P11-T01"
+      ]
     },
     {
       "id": "AC-142",
@@ -5957,7 +7806,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P1-T02",
+        "P1-T03",
+        "P1-T04",
+        "P11-T02"
+      ]
     }
   ],
   "capabilities": [
@@ -5967,7 +7822,10 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/discovery-feasibility.md"
-      }
+      },
+      "task_ids": [
+        "P3-T01"
+      ]
     },
     {
       "id": "CAP-02",
@@ -5975,7 +7833,10 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/research-state-and-routing.md"
-      }
+      },
+      "task_ids": [
+        "P2-T02"
+      ]
     },
     {
       "id": "CAP-03",
@@ -5983,7 +7844,10 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/discovery-feasibility.md"
-      }
+      },
+      "task_ids": [
+        "P3-T01"
+      ]
     },
     {
       "id": "CAP-04",
@@ -5991,7 +7855,11 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/revision-consistency.md"
-      }
+      },
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
+      ]
     },
     {
       "id": "CAP-05",
@@ -5999,7 +7867,10 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/title-development.md"
-      }
+      },
+      "task_ids": [
+        "P3-T02"
+      ]
     },
     {
       "id": "CAP-06",
@@ -6007,7 +7878,11 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/revision-consistency.md"
-      }
+      },
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
+      ]
     },
     {
       "id": "CAP-07",
@@ -6015,7 +7890,12 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/proposal-bab-1-3.md"
-      }
+      },
+      "task_ids": [
+        "P3-T04",
+        "P4-T04",
+        "P4-T05"
+      ]
     },
     {
       "id": "CAP-08",
@@ -6023,7 +7903,12 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/proposal-bab-1-3.md"
-      }
+      },
+      "task_ids": [
+        "P3-T04",
+        "P4-T04",
+        "P4-T05"
+      ]
     },
     {
       "id": "CAP-09",
@@ -6031,7 +7916,11 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/research-design-routing.md"
-      }
+      },
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
     },
     {
       "id": "CAP-10",
@@ -6039,7 +7928,11 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/research-design-routing.md"
-      }
+      },
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
     },
     {
       "id": "CAP-11",
@@ -6047,7 +7940,11 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/research-design-routing.md"
-      }
+      },
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
     },
     {
       "id": "CAP-12",
@@ -6055,7 +7952,11 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/research-design-routing.md"
-      }
+      },
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
     },
     {
       "id": "CAP-13",
@@ -6063,7 +7964,10 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/evidence-guidelines-integrity.md"
-      }
+      },
+      "task_ids": [
+        "P2-T04"
+      ]
     },
     {
       "id": "CAP-14",
@@ -6071,7 +7975,11 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/revision-consistency.md"
-      }
+      },
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
+      ]
     },
     {
       "id": "CAP-15",
@@ -6079,7 +7987,12 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/andino-integration.md"
-      }
+      },
+      "task_ids": [
+        "P2-T05",
+        "P10-T01",
+        "P10-T02"
+      ]
     },
     {
       "id": "CAP-16",
@@ -6087,7 +8000,14 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/defense-and-revision.md"
-      }
+      },
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "CAP-17",
@@ -6095,7 +8015,14 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/defense-and-revision.md"
-      }
+      },
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "CAP-18",
@@ -6103,7 +8030,14 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/defense-and-revision.md"
-      }
+      },
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "CAP-19",
@@ -6111,7 +8045,14 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/defense-and-revision.md"
-      }
+      },
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "CAP-20",
@@ -6119,7 +8060,14 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/defense-and-revision.md"
-      }
+      },
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "CAP-21",
@@ -6127,7 +8075,14 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/defense-and-revision.md"
-      }
+      },
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "CAP-22",
@@ -6135,7 +8090,14 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/defense-and-revision.md"
-      }
+      },
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "CAP-23",
@@ -6143,7 +8105,14 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/defense-and-revision.md"
-      }
+      },
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "CAP-24",
@@ -6151,7 +8120,15 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/quantitative-planning.md"
-      }
+      },
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "CAP-25",
@@ -6159,7 +8136,12 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/literature-search-screening.md"
-      }
+      },
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
     },
     {
       "id": "CAP-26",
@@ -6167,7 +8149,12 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/literature-search-screening.md"
-      }
+      },
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
     },
     {
       "id": "CAP-27",
@@ -6175,7 +8162,12 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/literature-search-screening.md"
-      }
+      },
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
     },
     {
       "id": "CAP-28",
@@ -6183,7 +8175,11 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/progressive-reading-synthesis.md"
-      }
+      },
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "CAP-29",
@@ -6191,7 +8187,11 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/progressive-reading-synthesis.md"
-      }
+      },
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "CAP-30",
@@ -6199,7 +8199,11 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/progressive-reading-synthesis.md"
-      }
+      },
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "CAP-31",
@@ -6207,7 +8211,11 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/progressive-reading-synthesis.md"
-      }
+      },
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "CAP-32",
@@ -6215,7 +8223,843 @@
       "implementation": {
         "branch": "skripsi-skill",
         "path": "references/systematic-review.md"
-      }
+      },
+      "task_ids": [
+        "P5-T06"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "id": "OUTPUT-001",
+      "name": "Research State",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/research-state-and-routing.md"
+      },
+      "task_ids": [
+        "P2-T02"
+      ]
+    },
+    {
+      "id": "OUTPUT-002",
+      "name": "Research Mind-map",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/discovery-feasibility.md"
+      },
+      "task_ids": [
+        "P3-T01"
+      ]
+    },
+    {
+      "id": "OUTPUT-003",
+      "name": "Research Feasibility Notes",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/discovery-feasibility.md"
+      },
+      "task_ids": [
+        "P3-T01"
+      ]
+    },
+    {
+      "id": "OUTPUT-004",
+      "name": "Research Consistency Matrix",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/revision-consistency.md"
+      },
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-005",
+      "name": "Research Checklist",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/revision-consistency.md"
+      },
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-006",
+      "name": "Title Anatomy / Title Component Map",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/title-development.md"
+      },
+      "task_ids": [
+        "P3-T02"
+      ]
+    },
+    {
+      "id": "OUTPUT-007",
+      "name": "Title Candidate(s) jika dibutuhkan",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/title-development.md"
+      },
+      "task_ids": [
+        "P3-T02"
+      ]
+    },
+    {
+      "id": "OUTPUT-008",
+      "name": "Title Candidate Comparison",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/title-development.md"
+      },
+      "task_ids": [
+        "P3-T02"
+      ]
+    },
+    {
+      "id": "OUTPUT-009",
+      "name": "Proposal Outline",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/proposal-bab-1-3.md"
+      },
+      "task_ids": [
+        "P3-T04",
+        "P4-T04",
+        "P4-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-010",
+      "name": "Proposal Section Guidance",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/proposal-bab-1-3.md"
+      },
+      "task_ids": [
+        "P3-T04",
+        "P4-T04",
+        "P4-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-011",
+      "name": "BAB I–III Dependency Map",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/proposal-bab-1-3.md"
+      },
+      "task_ids": [
+        "P3-T04",
+        "P4-T04",
+        "P4-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-012",
+      "name": "Research Gap / Novelty Evidence Map",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/research-problem-gap-rq.md"
+      },
+      "task_ids": [
+        "P4-T01",
+        "P7-T02"
+      ]
+    },
+    {
+      "id": "OUTPUT-013",
+      "name": "Research Question Quality Check",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/research-problem-gap-rq.md"
+      },
+      "task_ids": [
+        "P4-T01",
+        "P7-T02"
+      ]
+    },
+    {
+      "id": "OUTPUT-014",
+      "name": "Sampling / Participant Rationale",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/research-design-routing.md"
+      },
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
+    },
+    {
+      "id": "OUTPUT-015",
+      "name": "Proposal Self-Assessment",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/proposal-bab-1-3.md"
+      },
+      "task_ids": [
+        "P3-T04",
+        "P4-T04",
+        "P4-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-016",
+      "name": "Supervisor Expectation State",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/proposal-bab-1-3.md"
+      },
+      "task_ids": [
+        "P3-T04",
+        "P4-T04",
+        "P4-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-017",
+      "name": "Finding Registry",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/results-discussion-conclusion.md"
+      },
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
+    },
+    {
+      "id": "OUTPUT-018",
+      "name": "Results / Findings Draft",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/results-discussion-conclusion.md"
+      },
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
+    },
+    {
+      "id": "OUTPUT-019",
+      "name": "Result-to-RQ Matrix",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/results-discussion-conclusion.md"
+      },
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
+    },
+    {
+      "id": "OUTPUT-020",
+      "name": "Discussion Claim Matrix",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/results-discussion-conclusion.md"
+      },
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
+    },
+    {
+      "id": "OUTPUT-021",
+      "name": "Literature Comparison Matrix",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/results-discussion-conclusion.md"
+      },
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
+    },
+    {
+      "id": "OUTPUT-022",
+      "name": "Limitation / Uncertainty Map",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/results-discussion-conclusion.md"
+      },
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
+    },
+    {
+      "id": "OUTPUT-023",
+      "name": "Conclusion Traceability Matrix",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/results-discussion-conclusion.md"
+      },
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
+    },
+    {
+      "id": "OUTPUT-024",
+      "name": "BAB I–V Consistency Map",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/results-discussion-conclusion.md"
+      },
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
+    },
+    {
+      "id": "OUTPUT-025",
+      "name": "Methodology Decision Stack",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/advanced-methodology-integrity.md"
+      },
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
+    },
+    {
+      "id": "OUTPUT-026",
+      "name": "Literature Synthesis Matrix",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/progressive-reading-synthesis.md"
+      },
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-027",
+      "name": "State-of-the-Art Map",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/progressive-reading-synthesis.md"
+      },
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-028",
+      "name": "Gap Spotting / Problematization Decision",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/research-problem-gap-rq.md"
+      },
+      "task_ids": [
+        "P4-T01",
+        "P7-T02"
+      ]
+    },
+    {
+      "id": "OUTPUT-029",
+      "name": "Analysis Sequence Plan",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/quantitative-planning.md"
+      },
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
+    },
+    {
+      "id": "OUTPUT-030",
+      "name": "Data Source Decision",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/advanced-methodology-integrity.md"
+      },
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
+    },
+    {
+      "id": "OUTPUT-031",
+      "name": "Conceptual Framework Traceability",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/advanced-methodology-integrity.md"
+      },
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
+    },
+    {
+      "id": "OUTPUT-032",
+      "name": "Hypothesis Registry",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/advanced-methodology-integrity.md"
+      },
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
+    },
+    {
+      "id": "OUTPUT-033",
+      "name": "Research Ethics Checklist",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/advanced-methodology-integrity.md"
+      },
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
+    },
+    {
+      "id": "OUTPUT-034",
+      "name": "Journal Due-Diligence Report",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/advanced-methodology-integrity.md"
+      },
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
+    },
+    {
+      "id": "OUTPUT-035",
+      "name": "Defense Brief",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/defense-and-revision.md"
+      },
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-036",
+      "name": "Dynamic Defense Question Bank",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/defense-and-revision.md"
+      },
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-037",
+      "name": "High-Risk Question Radar",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/defense-and-revision.md"
+      },
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-038",
+      "name": "Defense Answer Cards",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/defense-and-revision.md"
+      },
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-039",
+      "name": "Mock Defense Feedback",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/defense-and-revision.md"
+      },
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-040",
+      "name": "Defense Readiness Report",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/defense-and-revision.md"
+      },
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-041",
+      "name": "Examiner Feedback Log",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/defense-and-revision.md"
+      },
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-042",
+      "name": "Post-Defense Revision Impact Map",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/revision-consistency.md"
+      },
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-043",
+      "name": "Quantitative Research Plan",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/quantitative-planning.md"
+      },
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
+    },
+    {
+      "id": "OUTPUT-044",
+      "name": "Construct-to-Variable Map",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/quantitative-planning.md"
+      },
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
+    },
+    {
+      "id": "OUTPUT-045",
+      "name": "Variable Dictionary",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/quantitative-planning.md"
+      },
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
+    },
+    {
+      "id": "OUTPUT-046",
+      "name": "Survey Design Plan",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/quantitative-planning.md"
+      },
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
+    },
+    {
+      "id": "OUTPUT-047",
+      "name": "Experiment / Quasi-Experiment Plan",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/quantitative-planning.md"
+      },
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
+    },
+    {
+      "id": "OUTPUT-048",
+      "name": "Sampling & Sample-Size Rationale",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/quantitative-planning.md"
+      },
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
+    },
+    {
+      "id": "OUTPUT-049",
+      "name": "Quantitative Analysis Plan",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/quantitative-planning.md"
+      },
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
+    },
+    {
+      "id": "OUTPUT-050",
+      "name": "Quantitative Research Planning Gate Report",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/quantitative-planning.md"
+      },
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
+    },
+    {
+      "id": "OUTPUT-051",
+      "name": "Literature Search Concept Map",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/literature-search-screening.md"
+      },
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
+    },
+    {
+      "id": "OUTPUT-052",
+      "name": "Database-Specific Search Strategy",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/literature-search-screening.md"
+      },
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
+    },
+    {
+      "id": "OUTPUT-053",
+      "name": "Literature Search Log",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/literature-search-screening.md"
+      },
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
+    },
+    {
+      "id": "OUTPUT-054",
+      "name": "Paper Screening Registry",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/literature-search-screening.md"
+      },
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
+    },
+    {
+      "id": "OUTPUT-055",
+      "name": "Literature Reading Queue",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/literature-search-screening.md"
+      },
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
+    },
+    {
+      "id": "OUTPUT-056",
+      "name": "Paper Reading Cards",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/progressive-reading-synthesis.md"
+      },
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-057",
+      "name": "Citation Chaining Log",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/progressive-reading-synthesis.md"
+      },
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-058",
+      "name": "Literature Evidence Extraction Matrix",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/progressive-reading-synthesis.md"
+      },
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
+    },
+    {
+      "id": "OUTPUT-059",
+      "name": "Systematic Review Readiness Report",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/systematic-review.md"
+      },
+      "task_ids": [
+        "P5-T06"
+      ]
+    },
+    {
+      "id": "OUTPUT-060",
+      "name": "Systematic Review Selection Flow State",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/systematic-review.md"
+      },
+      "task_ids": [
+        "P5-T06"
+      ]
+    },
+    {
+      "id": "OUTPUT-061",
+      "name": "Revision Impact Map",
+      "implementation": {
+        "branch": "skripsi-skill",
+        "path": "references/revision-consistency.md"
+      },
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
+      ]
     }
   ],
   "evals": [
@@ -6227,7 +9071,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T01"
+      ]
     },
     {
       "id": "EVAL-002",
@@ -6237,7 +9084,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T02"
+      ]
     },
     {
       "id": "EVAL-003",
@@ -6247,7 +9097,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T04"
+      ]
     },
     {
       "id": "EVAL-004",
@@ -6257,7 +9110,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T04"
+      ]
     },
     {
       "id": "EVAL-005",
@@ -6267,7 +9123,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
     },
     {
       "id": "EVAL-006",
@@ -6277,7 +9137,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
     },
     {
       "id": "EVAL-007",
@@ -6287,7 +9151,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
     },
     {
       "id": "EVAL-008",
@@ -6297,7 +9165,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
+      ]
     },
     {
       "id": "EVAL-009",
@@ -6307,7 +9179,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
+      ]
     },
     {
       "id": "EVAL-010",
@@ -6317,7 +9193,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T01",
+        "P11-T01"
+      ]
     },
     {
       "id": "EVAL-011",
@@ -6327,7 +9207,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T02"
+      ]
     },
     {
       "id": "EVAL-012",
@@ -6337,7 +9220,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T02"
+      ]
     },
     {
       "id": "EVAL-013",
@@ -6347,7 +9233,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T02"
+      ]
     },
     {
       "id": "EVAL-014",
@@ -6357,7 +9246,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T02"
+      ]
     },
     {
       "id": "EVAL-015",
@@ -6367,7 +9259,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T02"
+      ]
     },
     {
       "id": "EVAL-016",
@@ -6377,7 +9272,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T02"
+      ]
     },
     {
       "id": "EVAL-017",
@@ -6387,7 +9285,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T03"
+      ]
     },
     {
       "id": "EVAL-018",
@@ -6397,7 +9298,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T03"
+      ]
     },
     {
       "id": "EVAL-019",
@@ -6407,7 +9311,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T03"
+      ]
     },
     {
       "id": "EVAL-020",
@@ -6417,7 +9324,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T03"
+      ]
     },
     {
       "id": "EVAL-021",
@@ -6427,7 +9337,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T03"
+      ]
     },
     {
       "id": "EVAL-022",
@@ -6437,7 +9350,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T03"
+      ]
     },
     {
       "id": "EVAL-023",
@@ -6447,7 +9363,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P2-T03"
+      ]
     },
     {
       "id": "EVAL-024",
@@ -6457,7 +9376,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T01",
+        "P7-T02"
+      ]
     },
     {
       "id": "EVAL-025",
@@ -6467,7 +9390,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T01",
+        "P7-T02"
+      ]
     },
     {
       "id": "EVAL-026",
@@ -6477,7 +9404,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T01",
+        "P7-T02"
+      ]
     },
     {
       "id": "EVAL-027",
@@ -6487,7 +9418,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T02"
+      ]
     },
     {
       "id": "EVAL-028",
@@ -6497,7 +9431,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T01",
+        "P7-T02"
+      ]
     },
     {
       "id": "EVAL-029",
@@ -6507,7 +9445,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
     },
     {
       "id": "EVAL-030",
@@ -6517,7 +9459,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
     },
     {
       "id": "EVAL-031",
@@ -6527,7 +9473,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T03",
+        "P4-T04"
+      ]
     },
     {
       "id": "EVAL-032",
@@ -6537,7 +9487,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T04",
+        "P4-T04",
+        "P4-T05"
+      ]
     },
     {
       "id": "EVAL-033",
@@ -6547,7 +9502,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P4-T02"
+      ]
     },
     {
       "id": "EVAL-034",
@@ -6557,7 +9515,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T04",
+        "P4-T04",
+        "P4-T05"
+      ]
     },
     {
       "id": "EVAL-035",
@@ -6567,7 +9530,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "EVAL-036",
@@ -6577,7 +9546,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "EVAL-037",
@@ -6587,7 +9562,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "EVAL-038",
@@ -6597,7 +9578,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "EVAL-039",
@@ -6607,7 +9594,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "EVAL-040",
@@ -6617,7 +9610,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "EVAL-041",
@@ -6627,7 +9626,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "EVAL-042",
@@ -6637,7 +9642,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "EVAL-043",
@@ -6647,7 +9658,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "EVAL-044",
@@ -6657,7 +9674,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "EVAL-045",
@@ -6667,7 +9690,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "EVAL-046",
@@ -6677,7 +9706,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "EVAL-047",
@@ -6687,7 +9722,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "EVAL-048",
@@ -6697,7 +9738,13 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P8-T01",
+        "P8-T02",
+        "P8-T03",
+        "P8-T04"
+      ]
     },
     {
       "id": "EVAL-049",
@@ -6707,7 +9754,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
+      ]
     },
     {
       "id": "EVAL-050",
@@ -6717,7 +9768,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "EVAL-051",
@@ -6727,7 +9786,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "EVAL-052",
@@ -6737,7 +9804,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "EVAL-053",
@@ -6747,7 +9818,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "EVAL-054",
@@ -6757,7 +9836,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "EVAL-055",
@@ -6767,7 +9854,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "EVAL-056",
@@ -6777,7 +9872,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "EVAL-057",
@@ -6787,7 +9890,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "EVAL-058",
@@ -6797,7 +9908,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "EVAL-059",
@@ -6807,7 +9926,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "EVAL-060",
@@ -6817,7 +9944,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "EVAL-061",
@@ -6827,7 +9962,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "EVAL-062",
@@ -6837,7 +9980,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P7-T01",
+        "P7-T02",
+        "P7-T03",
+        "P7-T04",
+        "P7-T05",
+        "P7-T06"
+      ]
     },
     {
       "id": "EVAL-063",
@@ -6847,7 +9998,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "EVAL-064",
@@ -6857,7 +10015,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "EVAL-065",
@@ -6867,7 +10032,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "EVAL-066",
@@ -6877,7 +10049,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "EVAL-067",
@@ -6887,7 +10066,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "EVAL-068",
@@ -6897,7 +10083,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "EVAL-069",
@@ -6907,7 +10100,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "EVAL-070",
@@ -6917,7 +10117,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "EVAL-071",
@@ -6927,7 +10134,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "EVAL-072",
@@ -6937,7 +10151,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "EVAL-073",
@@ -6947,7 +10168,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "EVAL-074",
@@ -6957,7 +10185,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P3-T03",
+        "P8-T05"
+      ]
     },
     {
       "id": "EVAL-075",
@@ -6967,7 +10199,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "EVAL-076",
@@ -6977,7 +10216,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "EVAL-077",
@@ -6987,7 +10233,14 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P9-T01",
+        "P9-T02",
+        "P9-T03",
+        "P9-T04",
+        "P9-T05"
+      ]
     },
     {
       "id": "EVAL-078",
@@ -6997,7 +10250,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "EVAL-079",
@@ -7007,7 +10268,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "EVAL-080",
@@ -7017,7 +10286,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "EVAL-081",
@@ -7027,7 +10304,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "EVAL-082",
@@ -7037,7 +10322,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "EVAL-083",
@@ -7047,7 +10340,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "EVAL-084",
@@ -7057,7 +10358,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "EVAL-085",
@@ -7067,7 +10376,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "EVAL-086",
@@ -7077,7 +10394,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "EVAL-087",
@@ -7087,7 +10412,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "EVAL-088",
@@ -7097,7 +10430,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "EVAL-089",
@@ -7107,7 +10448,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "EVAL-090",
@@ -7117,7 +10466,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "EVAL-091",
@@ -7127,7 +10484,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "EVAL-092",
@@ -7137,7 +10502,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "EVAL-093",
@@ -7147,7 +10520,15 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P6-T01",
+        "P6-T02",
+        "P6-T03",
+        "P6-T04",
+        "P6-T05",
+        "P6-T06"
+      ]
     },
     {
       "id": "EVAL-094",
@@ -7157,7 +10538,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
     },
     {
       "id": "EVAL-095",
@@ -7167,7 +10553,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
     },
     {
       "id": "EVAL-096",
@@ -7177,7 +10568,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
     },
     {
       "id": "EVAL-097",
@@ -7187,7 +10583,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "EVAL-098",
@@ -7197,7 +10597,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "EVAL-099",
@@ -7207,7 +10611,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "EVAL-100",
@@ -7217,7 +10625,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "EVAL-101",
@@ -7227,7 +10639,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
     },
     {
       "id": "EVAL-102",
@@ -7237,7 +10654,12 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T01",
+        "P5-T02",
+        "P5-T04"
+      ]
     },
     {
       "id": "EVAL-103",
@@ -7247,7 +10669,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "EVAL-104",
@@ -7257,7 +10683,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T06"
+      ]
     },
     {
       "id": "EVAL-105",
@@ -7267,7 +10696,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T06"
+      ]
     },
     {
       "id": "EVAL-106",
@@ -7277,7 +10709,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T06"
+      ]
     },
     {
       "id": "EVAL-107",
@@ -7287,7 +10722,10 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T06"
+      ]
     },
     {
       "id": "EVAL-108",
@@ -7297,7 +10735,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "EVAL-109",
@@ -7307,7 +10749,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     },
     {
       "id": "EVAL-110",
@@ -7317,7 +10763,11 @@
       },
       "contract_review": "REVIEWED",
       "behavioral_verdict": "NOT_VERIFIED",
-      "evidence": "contract-review.md"
+      "evidence": "contract-review.md",
+      "task_ids": [
+        "P5-T03",
+        "P5-T05"
+      ]
     }
   ],
   "tasks": [

@@ -1,0 +1,43 @@
+{
+  "case": "EVAL-037",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Hipotesis saya tidak signifikan. Mending hasil itu nggak usah ditulis ya?\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:05:49.106083+00:00",
+  "model_selection": "CLI default; no model override",
+  "exit_code": 0,
+  "observed_output": "Sebaiknya tetap ditulis, terutama jika hipotesis itu bagian dari pertanyaan penelitian atau analisis yang sudah direncanakan. Menghilangkannya karena hasilnya tidak signifikan akan membuat laporan penelitian tidak utuh.\n\nDi bagian hasil, laporkan angka dari output analisis apa adanya. Di pembahasan, jelaskan bahwa **data belum memberi bukti yang cukup untuk mendukung hipotesis**—bukan bahwa pengaruhnya pasti tidak ada. Besar estimasi, ketidakpastian, ukuran sampel, dan keterbatasan penelitian membantu menafsirkan hasil tersebut.\n\nKalau kamu kirim rumusan hipotesis dan output uji yang sebenarnya, saya bisa bantu menyusun kalimat hasil dan pembahasannya tanpa mengarang angka.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/results-discussion-conclusion.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/results-discussion-conclusion.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-09-20T15:06:09.334619+00:00"
+}

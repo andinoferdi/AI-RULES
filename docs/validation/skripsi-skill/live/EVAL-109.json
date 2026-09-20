@@ -1,0 +1,24 @@
+{
+  "case": "EVAL-109",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "ff1f29dd28c50bd9210927b0eeb66559d44b5148",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Proposal v1, approved title: Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P. RQ: Bagaimana hubungan frekuensi penggunaan AI dengan skor regulasi belajar mahasiswa Program P semester 4? Objective: estimate that association. One-time observational survey, voluntary convenience sample from accessible classes, no intervention. Planned instrument: source/adaptation and measurement validation unresolved; pilot not done. Data access to classes reported by user, participant consent/ethics status unknown. Planned association analysis depends on measurement and data properties. No data collected. Literature citations/gap evidence not supplied. Supervisor has approved topic/title and instructed scope remain Program P, not all universities.\nSYNTHETIC paper artifact P1, not a real publication: question is association of digital tool use and study planning among 25 volunteer undergraduates. Method: one-time self-report survey; no assignment. Reported result: positive observed association, exact coefficient and uncertainty not supplied. Authors interpret this as compatible with study support, note selection and self-report limitations. Sections available: abstract, method, result, limitation. Bibliographic DOI/author unknown. Relevant construct is study planning; relation to broader self-regulation needs justification.",
+  "prompt": "\"Baca paper ini dan bilang apakah cocok untuk BAB II.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:56:08.763382+00:00",
+  "model_selection": "CLI default; no model override",
+  "input_sha256": "04790c4b0f1d233b62dcc04aa25b63af9631d24031986f22be01e3e4b7f82512",
+  "exit_code": 1,
+  "observed_output": "",
+  "execution_status": "ENVIRONMENT_UNAVAILABLE",
+  "diagnostic": "Codex CLI usage limit reached: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at Sep 26th, 2026 7:07 PM.",
+  "events": [
+    {
+      "type": "error",
+      "message": "Usage limit reached"
+    }
+  ],
+  "tool_actions": [],
+  "finished_at_utc": "2026-09-20T15:56:08.763382+00:00"
+}

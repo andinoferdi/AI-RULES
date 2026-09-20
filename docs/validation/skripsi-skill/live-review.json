@@ -1,0 +1,477 @@
+{
+  "scope": "Manual review of actual isolated CLI outputs against source oracle and SRS. Runtime is frozen at d7490cd during the initial suite. PASS is scenario-bounded, not global requirement proof.",
+  "host": "Windows Codex CLI 0.154.0, default model, ephemeral read-only, no network/connectors, oracle hidden",
+  "reviews": {
+    "EVAL-001": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Remediated in title-development.md: raw-topic entry routes to discovery-feasibility.md to establish direction before title candidates. Live re-run pending Codex host availability."
+    },
+    "EVAL-002": {
+      "verdict": "PASS",
+      "reason": "Preserves approved title, provisional guideline-free outline, evidence/instrument/ethics gaps visible."
+    },
+    "EVAL-003": {
+      "verdict": "PASS",
+      "reason": "Uses supplied synthetic A/B/C campus structure and consent scope, no substituted BAB structure or fabricated literature."
+    },
+    "EVAL-004": {
+      "verdict": "PASS",
+      "reason": "No invented statistics/citations; requests actual topic/source evidence."
+    },
+    "EVAL-005": {
+      "verdict": "PASS",
+      "reason": "Experience question routes to qualitative interview direction without forced variables/regression."
+    },
+    "EVAL-006": {
+      "verdict": "PASS",
+      "reason": "Rejects prestige rationale and requires need/integration rather than two collection methods alone."
+    },
+    "EVAL-007": {
+      "verdict": "PASS",
+      "reason": "Maps development/validation/revision and distinguishes feasibility/usability/effectiveness; no arbitrary named model."
+    },
+    "EVAL-008": {
+      "verdict": "PASS",
+      "reason": "Maps removal to descriptive RQ/title/objective/framework/instrument/analysis; preserves scope and approval distinction."
+    },
+    "EVAL-009": {
+      "verdict": "PASS",
+      "reason": "Explains experience-versus-regression mismatch and offers an explicitly changed associational RQ with measurement requirements; does not approve original mismatch."
+    },
+    "EVAL-010": {
+      "verdict": "PASS",
+      "reason": "Direct single-sentence edit, no ResearchState ceremony."
+    },
+    "EVAL-011": {
+      "verdict": "PASS",
+      "reason": "States focus and title anatomy grounded in fixture; preserves approved title and method/inference boundary."
+    },
+    "EVAL-012": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Remediated in title-development.md: explicit inclusion gate prevents adding method/location purely for cosmetic completeness. Live re-run pending Codex host availability."
+    },
+    "EVAL-013": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Remediated in title-development.md: title styles must produce usable title formulations, preserving study design without unsupported causal assertions. Live re-run pending Codex host availability."
+    },
+    "EVAL-014": {
+      "verdict": "PASS",
+      "reason": "Rejects unsupported meningkatkan and offers design-matched noncausal formulations."
+    },
+    "EVAL-015": {
+      "verdict": "PASS",
+      "reason": "Narrows actual scope with RQ and observational design preserved, explains rationale."
+    },
+    "EVAL-016": {
+      "verdict": "PASS",
+      "reason": "Explicitly refuses ACC guarantee and asks minimal research context."
+    },
+    "EVAL-017": {
+      "verdict": "PASS",
+      "reason": "Narrows to Program P semester 4 while preserving observational method and student object."
+    },
+    "EVAL-018": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Output reuses context appropriately, but actor reports tool-denied SKILL read and no successful read action is recorded. Do not attribute generic response to skill execution; retry isolated access once."
+    },
+    "EVAL-019": {
+      "verdict": "PASS",
+      "reason": "Asks which of two materially different sections to delete instead of guessing."
+    },
+    "EVAL-020": {
+      "verdict": "PASS",
+      "reason": "Applies removal of X as a delta, preserves scope and flags dependent title/method alignment."
+    },
+    "EVAL-021": {
+      "verdict": "PASS",
+      "reason": "Separates desired popularity premise from evidence, offers marked placeholders and specifies comparative population/time evidence needed."
+    },
+    "EVAL-022": {
+      "verdict": "PASS",
+      "reason": "Provides reusable prompt on explicit request, preserves source/guideline/integrity and revision context without claiming checks ran."
+    },
+    "EVAL-023": {
+      "verdict": "PASS",
+      "reason": "Directly identifies RQ/objective/interview causal mismatch and offers a bounded alignment choice without prompt ceremony."
+    },
+    "EVAL-024": {
+      "verdict": "PASS",
+      "reason": "Separates practical delay problem from literature-backed knowledge gap; hypothetical example remains conditional."
+    },
+    "EVAL-025": {
+      "verdict": "PASS",
+      "reason": "Location alone rejected as novelty; proposed wording has explicit unverified placeholders and comparative evidence need."
+    },
+    "EVAL-026": {
+      "verdict": "PASS",
+      "reason": "Rejects embedded all-students premise and inadequate causal design, proposes sample-bounded exploratory question."
+    },
+    "EVAL-027": {
+      "verdict": "PASS",
+      "reason": "Preserves campus BAB structure; IMRaD used only as reasoning and no fictitious results."
+    },
+    "EVAL-028": {
+      "verdict": "PASS",
+      "reason": "Does not invent proprietary Lotus meaning; asks for source definition."
+    },
+    "EVAL-029": {
+      "verdict": "PASS",
+      "reason": "Distinguishes purposive criteria from convenience and explains inference limits."
+    },
+    "EVAL-030": {
+      "verdict": "PASS",
+      "reason": "Explains two methods alone are insufficient and identifies explicit integration/timing need."
+    },
+    "EVAL-031": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Remediated in research-design-routing.md: R&D development lifecycle is not automatically a quantitative experiment; pre/post comparison alone does not establish causal experiment. Live re-run pending Codex host availability."
+    },
+    "EVAL-032": {
+      "verdict": "PASS",
+      "reason": "No guessed supervisor preference; uses actual feedback/guideline as basis."
+    },
+    "EVAL-033": {
+      "verdict": "PASS",
+      "reason": "Keeps hypothesis as a proposition to investigate, refuses empirical fact wording without sources."
+    },
+    "EVAL-034": {
+      "verdict": "PASS",
+      "reason": "Concrete readiness gaps across literature, measurement, recruitment/ethics and analysis; distinguishes draft-for-feedback from complete proposal."
+    },
+    "EVAL-035": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Observed refusal and evidence plan satisfy output oracle, but initial smoke predates tool-action capture. Rerun for auditable skill invocation."
+    },
+    "EVAL-036": {
+      "verdict": "PASS",
+      "reason": "Respects separate Results/Discussion, uses only explicit synthetic values, no invented interval, and flags conclusion overclaim."
+    },
+    "EVAL-037": {
+      "verdict": "PASS",
+      "reason": "Retains material null finding and refuses absence-of-effect inference from non-significance alone."
+    },
+    "EVAL-038": {
+      "verdict": "PASS",
+      "reason": "Separates p-value from magnitude and practical importance; asks for effect estimate/interval."
+    },
+    "EVAL-039": {
+      "verdict": "PASS",
+      "reason": "Rejects causal upgrade of correlation and requests design evidence."
+    },
+    "EVAL-040": {
+      "verdict": "PASS",
+      "reason": "Will use only available transcript material, refuses invented participant quotation."
+    },
+    "EVAL-041": {
+      "verdict": "PASS",
+      "reason": "Discussion centered on actual fixture finding and contrasting literature, with inference and unmeasured-outcome limits."
+    },
+    "EVAL-042": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Output labels explanations as possibilities, but reports denied SKILL access; no auditable invocation. Retry environment once."
+    },
+    "EVAL-043": {
+      "verdict": "PASS",
+      "reason": "Refuses supportive-only source selection, discloses no retrieval and preserves inference boundary."
+    },
+    "EVAL-044": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Rejects unsupported new conclusion value but reports denied skill/file access; retry invocation once."
+    },
+    "EVAL-045": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Remediated in results-discussion-conclusion.md: conclusions must explicitly map to and address each stated RQ. Fixture updated. Live re-run pending Codex host availability."
+    },
+    "EVAL-046": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Remediated in results-discussion-conclusion.md: generic recommendations prohibited without empirical findings/limitations; returns conditional scaffold only. Live re-run pending Codex host availability."
+    },
+    "EVAL-047": {
+      "verdict": "PASS",
+      "reason": "Identifies the actual convergent integration requirement and flags removal as a design/reporting change rather than sufficient mixed-method completion; no missing findings invented."
+    },
+    "EVAL-048": {
+      "verdict": "PASS",
+      "reason": "Separates functional success from effectiveness and requires actual outcome data plus appropriate design/analysis; does not claim proven improvement."
+    },
+    "EVAL-049": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Correct cross-chapter boundary explanation, but actor reports unavailable SKILL read; retry invocation once."
+    },
+    "EVAL-050": {
+      "verdict": "PASS",
+      "reason": "Identifies cross-sectional/time-change mismatch before provisional stack and gives design/RQ alternatives with recall limits."
+    },
+    "EVAL-051": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Remediated in research-problem-gap-rq.md: negative literature claims require verified search log; no unverified negative claims. Live re-run pending Codex host availability."
+    },
+    "EVAL-052": {
+      "verdict": "PASS",
+      "reason": "Requests missing papers, requires cross-paper comparison before SOTA, invents no study findings."
+    },
+    "EVAL-053": {
+      "verdict": "PASS",
+      "reason": "Rejects irrelevant regression assumptions for thematic analysis."
+    },
+    "EVAL-054": {
+      "verdict": "PASS",
+      "reason": "Rejects universal alpha and differentiates measurement types."
+    },
+    "EVAL-055": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Correct inference advice but reports denied local skill read and no tool actions; retry once."
+    },
+    "EVAL-056": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Remediated in advanced-methodology-integrity.md: secondary-data fitness gate covers licensing, data quality, construct fit, and ethical constraints. Live re-run pending Codex host availability."
+    },
+    "EVAL-057": {
+      "verdict": "PASS",
+      "reason": "Identifies re-identification and quotation risks, sensitivity, platform and institutional rules, and data minimization."
+    },
+    "EVAL-058": {
+      "verdict": "PASS",
+      "reason": "Rejects fixed hypothesis count; requires actual theory, relationships and testability."
+    },
+    "EVAL-059": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Remediated in advanced-methodology-integrity.md: theoretical framework requires explanatory mechanism and theoretical rationale before drawing arrows. Live re-run pending Codex host availability."
+    },
+    "EVAL-060": {
+      "verdict": "PASS",
+      "reason": "Treats quick-publication invitation as red flag, checks multiple signals and authoritative indexing, discloses not verified."
+    },
+    "EVAL-061": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Appropriate multi-signal uncertainty but denied local read without invocation evidence; retry once."
+    },
+    "EVAL-062": {
+      "verdict": "PASS",
+      "reason": "Requires institution/risk/consent/data review, no automatic ethics exemption."
+    },
+    "EVAL-063": {
+      "verdict": "PASS",
+      "reason": "Fifty original proposal-specific questions, grouped by research components with actual weaknesses prioritized and no certainty claim."
+    },
+    "EVAL-064": {
+      "verdict": "PASS",
+      "reason": "Uses actual Spearman versus proposed Pearson and asks rationale for deviation; does not rehearse obsolete plan as completed method."
+    },
+    "EVAL-065": {
+      "verdict": "PASS",
+      "reason": "First-turn compound question targets actual title, method and inference contradictions; response decomposition remains part of subsequent coaching contract."
+    },
+    "EVAL-066": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Sound authority-versus-rationale distinction, but reports denied skill read; retry once."
+    },
+    "EVAL-067": {
+      "verdict": "PASS",
+      "reason": "Offers honest unknown template grounded in actual evidence and refuses invented confidence."
+    },
+    "EVAL-068": {
+      "verdict": "PASS",
+      "reason": "Respectfully corrects false experimental premise using actual procedures and checks misleading causal wording."
+    },
+    "EVAL-069": {
+      "verdict": "PASS",
+      "reason": "One relevant opening question, waits for student response and withholds ideal answer; continuation separately tested by SUP-MOCK-FOLLOWUP."
+    },
+    "EVAL-070": {
+      "verdict": "PASS",
+      "reason": "Prioritizes actual title/RQ/design and unmeasured-outcome contradictions while covering common categories."
+    },
+    "EVAL-071": {
+      "verdict": "PASS",
+      "reason": "Degree is no universal length rule; program rubric and depth/evidence guide adaptation."
+    },
+    "EVAL-072": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Remediated in defense-and-revision.md: refuses rigid word-for-word memorization scripts; provides flexible defense cards with anticipated follow-ups. Live re-run pending Codex host availability."
+    },
+    "EVAL-073": {
+      "verdict": "PASS",
+      "reason": "Corrects significance premise conditionally on alpha and preserves null/absence distinction."
+    },
+    "EVAL-074": {
+      "verdict": "PASS",
+      "reason": "Mapped all 3 examiner criticisms (gap, sampling, title) to affected BAB/ResearchState, prioritized without changing approved observational focus."
+    },
+    "EVAL-075": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Output gives sound guidance but actor reports no tool actions / unconfirmed skill read. Retry isolated access once."
+    },
+    "EVAL-076": {
+      "verdict": "PASS",
+      "reason": "Explicitly refuses to fabricate research results for sempro; distinguishes expected outcome from actual findings."
+    },
+    "EVAL-077": {
+      "verdict": "PASS",
+      "reason": "Runs Defense Readiness Gate, correctly determines thesis needs fixes before defense, and identifies missing rehearsal."
+    },
+    "EVAL-078": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Quantitative fit contract implemented in runtime."
+    },
+    "EVAL-079": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-080": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-081": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-082": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-083": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-084": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-085": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-086": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-087": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-088": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-089": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-090": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-091": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-092": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-093": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-094": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-095": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-096": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-097": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-098": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-099": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-100": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-101": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-102": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-103": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-104": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-105": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-106": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-107": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-108": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-109": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "EVAL-110": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "SUP-ANDINO": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "SUP-STANDALONE": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "SUP-CODING": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "SUP-UNRELATED": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "SUP-NO-TOOLS": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "SUP-GUIDELINE-SCOPE": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "SUP-MOCK-FOLLOWUP": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    }
+  },
+  "pending_runtime_fixes": [
+    "ALL 10 PENDING RUNTIME FIXES IMPLEMENTED in runtime commit ff1f29d (title-development, research-design-routing, results-discussion-conclusion, research-problem-gap-rq, advanced-methodology-integrity, defense-and-revision, progressive-reading-synthesis)."
+  ]
+}

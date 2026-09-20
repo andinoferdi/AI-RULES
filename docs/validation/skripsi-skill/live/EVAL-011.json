@@ -1,0 +1,40 @@
+{
+  "case": "EVAL-011",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Proposal v1, approved title: Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P. RQ: Bagaimana hubungan frekuensi penggunaan AI dengan skor regulasi belajar mahasiswa Program P semester 4? Objective: estimate that association. One-time observational survey, voluntary convenience sample from accessible classes, no intervention. Planned instrument: source/adaptation and measurement validation unresolved; pilot not done. Data access to classes reported by user, participant consent/ethics status unknown. Planned association analysis depends on measurement and data properties. No data collected. Literature citations/gap evidence not supplied. Supervisor has approved topic/title and instructed scope remain Program P, not all universities.",
+  "prompt": "\"Saya sudah punya rancangan penelitian ini. Bantu susun judul dan jelaskan komponennya.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "exit_code": 0,
+  "observed_output": "Penelitian ini bertujuan memperkirakan hubungan antara frekuensi penggunaan asisten AI dan skor regulasi belajar mahasiswa Program P semester 4.\n\n**Judul yang digunakan:** *Hubungan Penggunaan Asisten AI dengan Regulasi Belajar Mahasiswa Program P*\n\n| Komponen | Maknanya dalam rancangan |\n|---|---|\n| **Hubungan** | Penelitian menguji asosiasi, bukan membuktikan bahwa penggunaan AI menyebabkan perubahan regulasi belajar. |\n| **Penggunaan asisten AI** | Variabel yang direncanakan diukur sebagai frekuensi penggunaan. |\n| **Regulasi belajar** | Konstruk yang direncanakan diukur melalui skor instrumen. |\n| **Mahasiswa Program P** | Batas populasi yang sesuai dengan arahan pembimbing; temuan tidak otomatis berlaku bagi mahasiswa di universitas lain. |\n\nJudul tersebut sudah disetujui, jadi tidak perlu diganti. **Semester 4** dapat dijelaskan secara tegas dalam rumusan masalah dan metode sebagai kelompok yang diteliti. Sebelum pengumpulan data, sumber atau adaptasi instrumen serta cara memeriksa kualitas pengukurannya masih perlu ditetapkan.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/title-development.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/title-development.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ]
+}

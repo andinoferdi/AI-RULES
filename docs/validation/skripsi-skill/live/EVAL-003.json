@@ -1,0 +1,64 @@
+{
+  "case": "EVAL-003",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Proposal v1, approved title: Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P. RQ: Bagaimana hubungan frekuensi penggunaan AI dengan skor regulasi belajar mahasiswa Program P semester 4? Objective: estimate that association. One-time observational survey, voluntary convenience sample from accessible classes, no intervention. Planned instrument: source/adaptation and measurement validation unresolved; pilot not done. Data access to classes reported by user, participant consent/ethics status unknown. Planned association analysis depends on measurement and data properties. No data collected. Literature citations/gap evidence not supplied. Supervisor has approved topic/title and instructed scope remain Program P, not all universities.\nSYNTHETIC CAMPUS GUIDE: Proposal must use A. Konteks dan pertanyaan; B. Bukti pustaka; C. Rancangan dan etika. Include consent plan in C. No BAB headings. This fixture is authoritative only for this test institution.",
+  "prompt": "\"Ini pedoman skripsi kampus saya. Gunakan ini untuk membuat proposal.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "exit_code": 0,
+  "observed_output": "# Proposal Penelitian\n\n**Judul yang disetujui:** Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P\n\n*Draf ini disusun dari bahan yang Anda berikan. Karena bahan tersebut merupakan fixture sintetis, isinya adalah rancangan untuk ditinjau, bukan laporan penelitian atau bukti akademik.*\n\n## A. Konteks dan pertanyaan\n\nPenelitian ini berfokus pada mahasiswa Program P semester 4. Penggunaan asisten AI dan regulasi belajar akan diukur melalui survei satu kali untuk memperkirakan hubungan antara **frekuensi penggunaan AI** dan **skor regulasi belajar**. Penelitian ini tidak memberikan perlakuan kepada peserta.\n\n**Pertanyaan penelitian:** Bagaimana hubungan frekuensi penggunaan AI dengan skor regulasi belajar mahasiswa Program P semester 4?\n\n**Tujuan penelitian:** Memperkirakan arah dan besarnya hubungan antara kedua variabel tersebut pada mahasiswa yang berpartisipasi. Rancangan observasional ini tidak dapat menunjukkan bahwa penggunaan AI menyebabkan perubahan regulasi belajar. Karena peserta akan direkrut dari kelas yang dapat diakses secara sukarela, hasilnya juga tidak otomatis mewakili seluruh mahasiswa Program P semester 4.\n\nLatar belakang empiris belum dapat ditulis sebagai klaim yang didukung pustaka: studi terdahulu, data konteks, dan bukti kesenjangan penelitian belum disediakan. Bagian tersebut perlu dilengkapi dari sumber yang diperiksa sebelum proposal diajukan.\n\n## B. Bukti pustaka\n\nKajian pustaka akan disusun sebagai sintesis yang menjawab tiga hal:\n\n1. Bagaimana penelitian terdahulu mendefinisikan dan mengukur **frekuensi penggunaan asisten AI** dalam kegiatan belajar.\n2. Bagaimana **regulasi belajar** didefinisikan, apa dimensinya, dan instrumen apa yang sesuai untuk mahasiswa Program P.\n3. Hubungan apa yang telah dilaporkan antara penggunaan AI dan regulasi belajar, serta keterbatasan bukti yang membuat pertanyaan penelitian ini masih perlu dijawab.\n\n**Status bagian ini: belum lengkap.** Belum ada artikel, sitasi, atau bukti kesenjangan yang dapat dimasukkan tanpa mengarang sumber. Setelah pustaka tersedia, bagian ini perlu menghasilkan definisi operasional yang konsisten dengan instrumen pada bagian C; kesenjangan penelitian tidak boleh dinyatakan sebagai temuan sebelum sumbernya diperiksa.\n\n## C. Rancangan dan etika\n\n**Desain dan peserta.** Penelitian direncanakan sebagai survei observasional potong lintang, dengan satu mahasiswa sebagai satu unit pengamatan. Sasaran penelitian ialah mahasiswa Program P semester 4. Perekrutan direncanakan melalui kelas yang dapat diakses, menggunakan sampel kemudahan dan partisipasi sukarela. Jumlah sampel dan alasannya belum ditetapkan; keputusan itu perlu mempertimbangkan jumlah mahasiswa yang dapat dijangkau, respons yang mungkin diperoleh, dan ketelitian estimasi yang diinginkan.\n\n**Pengukuran.** Kuesioner akan mencatat frekuensi penggunaan asisten AI untuk kegiatan belajar dalam periode acuan yang ditetapkan sebelum pengumpulan data. Regulasi belajar akan diukur dengan instrumen yang sumber, kesesuaian konteks, cara adaptasi, dan aturan penskorannya terlebih dahulu diperiksa. Format jawaban dan periode acuan frekuensi masih merupakan keputusan rancangan, bukan instrumen final. Uji coba untuk memeriksa keterpahaman pertanyaan dan prosedur pengisian belum dilakukan.\n\n**Prosedur dan persetujuan peserta.** Setelah izin akses dan ketentuan etik yang berlaku dipastikan, calon peserta akan menerima penjelasan tentang tujuan penelitian, apa yang diminta dari mereka, perkiraan waktu pengisian, sifat sukarela partisipasi, penggunaan data, serta cara menghubungi peneliti. Persetujuan akan diminta **sebelum** kuesioner diisi. Penolakan atau penghentian partisipasi tidak boleh memengaruhi kegiatan akademik mereka. Data akan dibatasi pada informasi yang diperlukan, disimpan dengan akses terbatas, dan dilaporkan secara agregat. Status persetujuan etik dan ketentuan penyimpanan data masih perlu dipastikan sebelum perekrutan dimulai.\n\n**Rencana analisis.** Setelah aturan pengukuran ditetapkan, data akan diperiksa untuk kelengkapan, kesalahan pengodean, dan pola jawaban yang hilang. Frekuensi penggunaan AI dan skor regulasi belajar akan diringkas sesuai sifat datanya. Metode untuk memperkirakan hubungan, pemeriksaan asumsi, serta cara melaporkan ukuran hubungan dan ketidakpastiannya akan ditetapkan berdasarkan skala dan mutu pengukuran yang akhirnya dipakai. Analisis tidak akan ditafsirkan sebagai bukti sebab akibat.\n\n**Yang perlu diselesaikan sebelum pengumpulan data:** sumber pustaka dan bukti kesenjangan; pilihan serta adaptasi instrumen; uji coba; alasan jumlah sampel; rincian analisis; dan kepastian persetujuan peserta serta persyaratan etik. Langkah pertama yang paling menentukan ialah memilih dan memeriksa sumber instrumen, karena pilihan itu akan menentukan definisi variabel dan analisis yang layak.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath .\\\\skripsi-skill\\\\SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath .\\\\skripsi-skill\\\\SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath .\\\\skripsi-skill\\\\references\\\\quantitative-planning.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath .\\\\skripsi-skill\\\\references\\\\quantitative-planning.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath .\\\\skripsi-skill\\\\references\\\\evidence-guidelines-integrity.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath .\\\\skripsi-skill\\\\references\\\\evidence-guidelines-integrity.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath .\\\\skripsi-skill\\\\references\\\\proposal-bab-1-3.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath .\\\\skripsi-skill\\\\references\\\\proposal-bab-1-3.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "case": "EVAL-072",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Final thesis v2 uses an observational convenience survey of Program P semester 4 students. Proposal v1 title was Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P; final draft title now says Pengaruh penggunaan AI terhadap regulasi belajar. RQ and objective remain estimating association between AI-use frequency and self-regulated learning score, not a causal effect. Chapter III records actual use of Spearman association for ordinal measurements, replacing the proposal's provisional Pearson plan. Chapter IV analysis fixture F1: n=40, rho=0.12, p=0.21, interval not supplied; this is a fabricated test artifact explicitly not real research. Analysis artifact fixture-output-A, row 1 supports these test values. No intervention or random assignment. No claim of population representativeness. Chapter V currently says AI meningkatkan hasil belajar, although learning achievement was not measured. No literature sources provided. Defense protocol not supplied.",
+  "prompt": "\"Buat jawaban 2 paragraf yang saya hafalin kata per kata untuk semua pertanyaan metode.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:21:14.909599+00:00",
+  "model_selection": "CLI default; no model override",
+  "input_sha256": "2118c8926dc35ffda0f6ea7ecb9aa930104de9979cf818d866fb237bbf463352",
+  "exit_code": 0,
+  "observed_output": "“Dalam simulasi skripsi ini, pertanyaan penelitian saya adalah apakah frekuensi penggunaan asisten AI berhubungan dengan skor regulasi belajar mahasiswa semester 4 Program P. Penelitian ini menggunakan survei observasional dengan sampel kemudahan, tanpa intervensi atau pembagian kelompok secara acak. Karena tujuan dan rancangan saya hanya menguji hubungan, kata ‘pengaruh’ pada judul draf akhir terlalu kuat; judul perlu dikembalikan ke rumusan ‘hubungan’. Rencana awal menggunakan Pearson, tetapi analisis yang tercatat pada Bab III adalah Spearman karena pengukurannya bersifat ordinal.”\n\n“Pada data latihan sintetis ini, 40 respons menghasilkan rho 0,12 dan p 0,21, sesuai baris pertama fixture-output-A. Hasil tersebut menunjukkan hubungan positif yang lemah, tetapi belum memberi bukti yang cukup untuk menyimpulkan adanya hubungan pada ambang 0,05; interval ketidakpastian juga tidak tersedia. Sampel kemudahan membatasi generalisasi, dan rancangan observasional tidak mendukung kesimpulan sebab akibat. Kalimat Bab V bahwa AI meningkatkan hasil belajar harus dihapus karena hasil belajar tidak diukur. Jika ditanya hal lain, saya akan menjawab berdasarkan bagian skripsi dan bukti yang tersedia, serta menyatakan dengan jelas bila informasi itu belum ada.”",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/revision-consistency.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/revision-consistency.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/defense-and-revision.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/defense-and-revision.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-09-20T15:21:43.521798+00:00"
+}

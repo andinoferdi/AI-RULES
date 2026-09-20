@@ -1,0 +1,55 @@
+{
+  "case": "EVAL-034",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Proposal v1, approved title: Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P. RQ: Bagaimana hubungan frekuensi penggunaan AI dengan skor regulasi belajar mahasiswa Program P semester 4? Objective: estimate that association. One-time observational survey, voluntary convenience sample from accessible classes, no intervention. Planned instrument: source/adaptation and measurement validation unresolved; pilot not done. Data access to classes reported by user, participant consent/ethics status unknown. Planned association analysis depends on measurement and data properties. No data collected. Literature citations/gap evidence not supplied. Supervisor has approved topic/title and instructed scope remain Program P, not all universities.",
+  "prompt": "\"Cek apakah proposal saya sudah siap dikirim ke dosen.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-09-20T15:04:50.115365+00:00",
+  "model_selection": "CLI default; no model override",
+  "exit_code": 0,
+  "observed_output": "**Belum bisa dinyatakan siap sebagai proposal lengkap untuk dinilai**, karena naskah proposal dan pedoman kampus belum disertakan. Dari ringkasan yang Anda berikan, topik, judul, pertanyaan penelitian, dan rancangan survei satu kali sudah searah. Persetujuan dosen atas judul juga jelas, dengan cakupan tetap pada mahasiswa Program P semester 4.\n\nSebelum mengirim versi yang dimaksudkan sebagai proposal siap dinilai, lengkapi bagian berikut:\n\n- **BAB I–II:** sertakan sumber yang mendukung latar masalah, penelitian terdahulu, dan celah penelitian. Bukti literatur belum tersedia dalam materi ini.\n- **BAB III—pengukuran:** tetapkan definisi “frekuensi penggunaan AI” dan “regulasi belajar”, sumber atau adaptasi instrumen, cara menghitung skor, serta rencana uji coba dan pemeriksaan kualitas pengukuran.\n- **BAB III—pelaksanaan:** jelaskan kriteria peserta, cara merekrut dari kelas yang dapat diakses, alasan jumlah sampel, persetujuan peserta, serta penanganan data. Akses kelas belum memastikan izin dan persetujuan peserta.\n- **BAB III—analisis:** nyatakan ukuran hubungan yang hendak diestimasi dan cara memilih analisis setelah sifat skor dan data jelas. Dengan sampel sukarela dari kelas yang terjangkau, batasi kesimpulan pada cakupan yang didukung data; survei ini tidak membuktikan sebab akibat.\n\n**Jika tujuan pengiriman adalah meminta masukan dosen atas draf awal**, Anda dapat mengirimnya dengan empat hal tersebut ditandai terang sebagai pekerjaan yang belum selesai. Jika tujuannya meminta penilaian proposal yang sudah siap, selesaikan dahulu bagian itu dan periksa kesesuaiannya dengan pedoman kampus.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/proposal-bab-1-3.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/proposal-bab-1-3.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/quantitative-planning.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/quantitative-planning.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-09-20T15:05:19.434108+00:00"
+}
