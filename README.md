@@ -21,4 +21,4 @@ python3 scripts/validate_skills.py
 python3 -m unittest discover -s tests
 ```
 
-These commands check package structure and evaluation-case format. They do not run live agent behavior. CI is configured for pushes and pull requests targeting `main`, manual dispatch, and a daily schedule. GitHub runs scheduled workflows from the latest commit on the **default branch**; while `WebBased` remains default, the schedule on `main` will not run. Changing the default branch is a separate repository decision.
+These commands check package structure and evaluation-case format. They do not run live agent behavior. CI runs on pushes and pull requests targeting `main`, manual dispatch, and a daily schedule. Because `main` is the repository default branch, scheduled runs use the latest commit on `main`.
