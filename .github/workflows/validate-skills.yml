@@ -16,6 +16,8 @@ jobs:
           fetch-depth: 0
       - name: Fetch skill branches
         run: git fetch --no-tags origin andino-workflow:refs/remotes/origin/andino-workflow ai-codebase-rescue:refs/remotes/origin/ai-codebase-rescue skripsi-skill:refs/remotes/origin/skripsi-skill
+      - name: Install AI-RULES package
+        run: python3 -m pip install --editable .
       - name: Validate
         run: python3 scripts/validate_skills.py
       - name: Test validator failure cases

@@ -30,6 +30,10 @@ def doctor_from_plan(plan: InstallationPlan) -> DoctorReport:
         status = target.status
         if target.action == ReconciliationAction.NO_OP:
             status = TargetStatus.VERIFIED
+        elif target.actual.exists and target.actual.artifact_drift:
+            status = TargetStatus.FAILED
+        elif target.actual.exists and target.actual.config_drift:
+            status = TargetStatus.PARTIALLY_VERIFIED
         elif target.action == ReconciliationAction.MANUAL_ACTION:
             status = TargetStatus.MANUAL_ACTION_REQUIRED
         elif target.action == ReconciliationAction.BLOCK:

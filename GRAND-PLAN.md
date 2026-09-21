@@ -2556,7 +2556,7 @@ MVP capability records:
 
 ### P1-T01 — Build environment and host detection layer
 
-**Status:** PENDING
+**Status:** IMPLEMENTED, NOT VERIFIED
 
 **Objective:** Normalize OS, architecture, command availability, host presence/version, and relevant paths.
 
@@ -2577,7 +2577,7 @@ MVP capability records:
 
 ### P1-T02 — Implement first-party bundle acquisition
 
-**Status:** PENDING
+**Status:** IN PROGRESS
 
 **Objective:** Install validated first-party runtime files without cross-host junction dependency.
 
@@ -2606,7 +2606,7 @@ MVP capability records:
 
 ### P1-T03 — Implement Codex host adapter vertical slice
 
-**Status:** PENDING
+**Status:** IN PROGRESS
 
 **Objective:** Prove end-to-end first-party installation and verification on one host.
 
@@ -3219,10 +3219,11 @@ Evidence as of this checkpoint:
 - `src/ai_rules/release/data/release_manifest.json` records stable first-party runtime branch commits from `origin/andino-workflow`, `origin/ai-codebase-rescue`, and `origin/skripsi-skill`.
 - `tests/installer/` covers catalog/profile validation, secret rejection, resolver reconciliation actions, no silent downgrade, unmanaged install preservation, manual Superpowers path, dry-run no-write behavior, doctor repair != update messaging, snapshot secrecy, first-party branch export/install into a disposable target, and CLI dry-run smoke.
 - Validation run on 2026-09-21: `python -m unittest discover -s tests/installer -v` passed 20 tests; `python -m unittest discover -s tests -v` passed 59 combined tests after installer discovery was added; `python scripts/validate_skills.py` passed; `python scripts/validate_skripsi_traceability.py` passed; `python scripts/audit_skripsi_live.py` reported `{"PASS": 58, "FAIL": 0, "NOT_VERIFIED": 60}`; `python -m compileall -q src` passed.
+- Resume evidence on 2026-09-21: CI now installs the editable `ai-rules` package before unittest discovery, removing the prior `ModuleNotFoundError: ai_rules` mismatch. Disposable project smoke invokes `python -m ai_rules setup --yes --scope project --project-root <temp>` and proves the pinned `andino-workflow` commit is exported and atomically copied to `<temp>/.agents/skills/andino-workflow/SKILL.md`; a second invocation reads secret-free managed provenance and returns `VERIFIED NO_OP`. A no-`--yes` invocation writes neither desired profile nor managed state. The disposable suite also proves `APPLIED UPDATE` from an older managed first-party version, `APPLIED REPAIR` after a managed `SKILL.md` is removed, doctor reports that observed drift as `FAILED`, and `doctor --repair --yes` restores it without executing update actions. This remains source-mode/disposable evidence only; it does not establish host runtime discovery.
 
 Remaining before claiming MVP Definition of Done:
 
-- real first-party install into actual host roots after preview/consent;
+- host runtime discovery/verification for advertised first-party paths beyond filesystem placement;
 - structured host config patching for Context7 with duplicate-prevention fixtures;
 - Superpowers automatable upstream path smoke for at least one host or explicit manual limitation;
 - live or disposable host verification for advertised host paths;

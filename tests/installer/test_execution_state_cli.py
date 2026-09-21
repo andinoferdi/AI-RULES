@@ -7,6 +7,8 @@ from pathlib import Path
 
 from ai_rules.capabilities.adapters import StaticCapabilityAdapter
 from ai_rules.catalog import load_catalog
+from ai_rules.domain.models import ActualState, InstallationPlan, Operation, PlanTarget
+from ai_rules.domain.statuses import ReconciliationAction, ReconciliationAssessment, Scope, TargetStatus
 from ai_rules.execution import Executor
 from ai_rules.profiles import load_profiles
 from ai_rules.resolver import ResolveRequest, build_resolver
@@ -15,6 +17,50 @@ from ai_rules.verification import doctor_from_plan
 
 
 class ExecutionStateCliTests(unittest.TestCase):
+    def test_executor_installs_first_party_bundle_into_disposable_host_root(self):
+        """Fails if the executor records an operation without installing its skill artifact."""
+        operation = Operation(
+            kind="capability_operation",
+            capability_id="andino-workflow",
+            host_id="codex",
+            scope=Scope.GLOBAL,
+            action=ReconciliationAction.INSTALL,
+            source="first-party",
+            target="codex:global:andino-workflow",
+            reason="test",
+        )
+        plan = InstallationPlan(
+            schema_version=1,
+            profile_id="minimal",
+            targets=(
+                PlanTarget(
+                    capability_id="andino-workflow",
+                    host_id="codex",
+                    scope=Scope.GLOBAL,
+                    action=ReconciliationAction.INSTALL,
+                    assessment=ReconciliationAssessment.VERSION_UNKNOWN,
+                    status=TargetStatus.PLANNED,
+                    strategy_id="first-party-file",
+                    reason="test",
+                    operations=(operation,),
+                    actual=ActualState(),
+                ),
+            ),
+        )
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            bundle = root / "bundle"
+            bundle.mkdir()
+            (bundle / "SKILL.md").write_text("# Andino Workflow\n", encoding="utf-8")
+            result = Executor(
+                root / "state",
+                first_party_bundles={"andino-workflow": bundle},
+                host_skill_roots={"codex": root / "codex-skills"},
+            ).execute(plan, dry_run=False, yes=True)
+
+            self.assertTrue((root / "codex-skills" / "andino-workflow" / "SKILL.md").exists())
+            self.assertEqual("APPLIED", result.results[0].status)
+
     def test_dry_run_does_not_write_state(self):
         catalog = load_catalog()
         profiles = load_profiles(catalog)
@@ -79,6 +125,159 @@ class ExecutionStateCliTests(unittest.TestCase):
         )
         self.assertEqual(0, completed.returncode, completed.stderr)
         self.assertIn("INSTALL", completed.stdout)
+
+    def test_cli_setup_yes_installs_first_party_skill_in_disposable_project(self):
+        """Fails if CLI setup does not wire its approved plan to a real skill installation."""
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "ai_rules",
+                    "setup",
+                    "--profile",
+                    "minimal",
+                    "--host",
+                    "codex",
+                    "--scope",
+                    "project",
+                    "--project-root",
+                    str(root / "project"),
+                    "--state-dir",
+                    str(root / "state"),
+                    "--yes",
+                    "--non-interactive",
+                ],
+                check=False,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+            )
+            self.assertEqual(0, completed.returncode, completed.stderr)
+            self.assertTrue((root / "project" / ".agents" / "skills" / "andino-workflow" / "SKILL.md").exists())
+
+            repeated = subprocess.run(
+                completed.args,
+                check=False,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+            )
+            self.assertEqual(0, repeated.returncode, repeated.stderr)
+            self.assertIn("VERIFIED NO_OP", repeated.stdout)
+
+    def test_cli_setup_without_yes_does_not_write_profile_or_managed_state(self):
+        """Fails if the CLI persists desired or managed state before the required confirmation."""
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "ai_rules",
+                    "setup",
+                    "--profile",
+                    "minimal",
+                    "--host",
+                    "codex",
+                    "--scope",
+                    "project",
+                    "--project-root",
+                    str(root / "project"),
+                    "--state-dir",
+                    str(root / "state"),
+                    "--non-interactive",
+                ],
+                check=False,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+            )
+            self.assertEqual(0, completed.returncode, completed.stderr)
+            self.assertFalse((root / "state" / "profile.json").exists())
+            self.assertFalse((root / "state" / "managed-installations.json").exists())
+
+    def test_cli_setup_updates_older_managed_first_party_installation(self):
+        """Fails if a managed installation below the release target is reclassified as install or no-op."""
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            command = [
+                sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "codex",
+                "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
+                "--yes", "--non-interactive",
+            ]
+            first = subprocess.run(command, check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            self.assertEqual(0, first.returncode, first.stderr)
+            state_path = root / "state" / "managed-installations.json"
+            state = read_json(state_path)
+            state["installations"]["andino-workflow:codex:project"]["version"] = "release-manifest:andino-workflow@0000000"
+            state_path.write_text(json.dumps(state), encoding="utf-8")
+
+            updated = subprocess.run(command, check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            self.assertEqual(0, updated.returncode, updated.stderr)
+            self.assertIn("APPLIED UPDATE", updated.stdout)
+
+    def test_cli_setup_repairs_missing_managed_skill_artifact_without_upgrade(self):
+        """Fails if a managed artifact with a missing SKILL.md is not repaired in place."""
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            command = [
+                sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "codex",
+                "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
+                "--yes", "--non-interactive",
+            ]
+            first = subprocess.run(command, check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            self.assertEqual(0, first.returncode, first.stderr)
+            skill_file = root / "project" / ".agents" / "skills" / "andino-workflow" / "SKILL.md"
+            skill_file.unlink()
+
+            repaired = subprocess.run(command, check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            self.assertEqual(0, repaired.returncode, repaired.stderr)
+            self.assertIn("APPLIED REPAIR", repaired.stdout)
+            self.assertTrue(skill_file.exists())
+
+    def test_cli_doctor_reports_missing_managed_skill_artifact_as_failed(self):
+        """Fails if doctor reports a repair plan instead of the observed broken artifact."""
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            setup = [
+                sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "codex",
+                "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
+                "--yes", "--non-interactive",
+            ]
+            first = subprocess.run(setup, check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            self.assertEqual(0, first.returncode, first.stderr)
+            (root / "project" / ".agents" / "skills" / "andino-workflow" / "SKILL.md").unlink()
+
+            doctor = subprocess.run(
+                [sys.executable, "-m", "ai_rules", "doctor", *setup[4:-2]],
+                check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            )
+            self.assertEqual(0, doctor.returncode, doctor.stderr)
+            self.assertIn("FAILED", doctor.stdout)
+
+    def test_cli_doctor_repair_restores_missing_managed_skill_artifact(self):
+        """Fails if doctor --repair acknowledges drift without applying the repair operation."""
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            setup = [
+                sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "codex",
+                "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
+                "--yes", "--non-interactive",
+            ]
+            first = subprocess.run(setup, check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            self.assertEqual(0, first.returncode, first.stderr)
+            skill_file = root / "project" / ".agents" / "skills" / "andino-workflow" / "SKILL.md"
+            skill_file.unlink()
+
+            repaired = subprocess.run(
+                [sys.executable, "-m", "ai_rules", "doctor", *setup[4:-2], "--repair", "--yes"],
+                check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            )
+            self.assertEqual(0, repaired.returncode, repaired.stderr)
+            self.assertIn("APPLIED REPAIR", repaired.stdout)
+            self.assertTrue(skill_file.exists())
 
     def test_cli_doctor_repair_preview_mentions_no_upgrade(self):
         completed = subprocess.run(
