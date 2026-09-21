@@ -38,6 +38,11 @@ def audit(report, runtime_paths, main_paths, case_ids):
     tids=[row.get('id') for row in tasks]
     if len(tids)!=75 or len(tids)!=len(set(tids)) or not all(re.fullmatch(r'P\d+-T\d{2}',str(t)) for t in tids):
         errors.append('Expected 75 unique GRAND-PLAN task IDs')
+    for row in tasks:
+        if row.get('status') not in ('COMPLETE','NOT_VERIFIED'):
+            errors.append(f"{row.get('id')}: invalid final task status {row.get('status')}")
+        if row.get('status')=='NOT_VERIFIED' and not row.get('evidence'):
+            errors.append(f"{row.get('id')}: NOT_VERIFIED requires evidence")
     return errors
 
 

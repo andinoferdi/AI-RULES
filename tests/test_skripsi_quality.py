@@ -69,6 +69,15 @@ class TraceabilityTest(unittest.TestCase):
         self.cases.remove('EVAL-110')
         self.assertTrue(self.check())
 
+    def test_pending_final_task_status_rejected(self):
+        self.report['tasks'][0]['status']='IMPLEMENTED_REVIEW_PENDING'
+        self.assertTrue(self.check())
+
+    def test_not_verified_task_requires_evidence(self):
+        self.report['tasks'][0]['status']='NOT_VERIFIED'
+        self.report['tasks'][0]['evidence']=''
+        self.assertTrue(self.check())
+
 
 if __name__=='__main__':
     unittest.main()

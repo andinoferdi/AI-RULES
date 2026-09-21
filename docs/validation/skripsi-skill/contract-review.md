@@ -1,6 +1,6 @@
 # Skripsi v0.9 written-contract review
 
-Runtime reviewed: d7490cd1d57cddc449ecc8ce7fed8abcb8b68c49.
+Runtime reviewed: 22d780162ab686240961e86300729b462b6578f7.
 Scope: implementation ownership, semantic comparison and deterministic evidence. This is not a human academic review or proof of universal model behavior.
 
 ## Inventory reconciliation
@@ -46,4 +46,4 @@ Primary current references checked during implementation: [Agent Skills specific
 
 ## Validation scope
 
-24 unit tests passed, including import drift/missing oracle, missing or duplicate ownership, nonexistent target, unsupported behavioral PASS and missing eval. Repository validator passes all three runtime packages and all three eval schemas. Traceability validator checks all required IDs and target files. git diff --check passes for runtime. Remote CI is intentionally not run before user publication. Live outputs require separate review; the deterministic validators never mark behavior as passed.
+32 unit tests passed, including import drift/missing oracle, missing or duplicate ownership, nonexistent target, unsupported behavioral PASS, missing eval, final task disposition and live-evidence fail-closed cases. Repository validator passes all three runtime packages and all three eval schemas. Traceability validator checks all required IDs, target files and final task dispositions. `git diff --check` passes for runtime. Remote [Validate skills run 35522527189](https://github.com/andinoferdi/AI-RULES/actions/runs/35522527189) passed on main `729f10e` while fetching the published runtime branch. The reviewed live evidence remains scenario-bounded: 58 PASS, 0 FAIL and 59 NOT_VERIFIED because host limits prevented execution or remediation reruns. Deterministic validators never promote those unavailable checks to behavioral PASS.

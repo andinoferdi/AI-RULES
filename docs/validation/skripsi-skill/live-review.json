@@ -472,6 +472,6 @@
     }
   },
   "pending_runtime_fixes": [
-    "ALL 10 PENDING RUNTIME FIXES IMPLEMENTED in runtime commit ff1f29d (title-development, research-design-routing, results-discussion-conclusion, research-problem-gap-rq, advanced-methodology-integrity, defense-and-revision, progressive-reading-synthesis)."
+    "ALL 10 PENDING RUNTIME FIXES IMPLEMENTED. Original commit ff1f29d was rewritten as equivalent commit 97b5207 during the authorized planning-file history purge (title-development, research-design-routing, results-discussion-conclusion, research-problem-gap-rq, advanced-methodology-integrity, defense-and-revision, progressive-reading-synthesis)."
   ]
 }

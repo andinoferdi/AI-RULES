@@ -1,6 +1,6 @@
-# Pending evidence-driven runtime adjustments
+# Applied runtime remediations and remaining live verification
 
-Initial suite is frozen at d7490cd; apply after all current cases finish, so copied packages and recorded revisions stay aligned.
+The initial suite remains attributable to frozen runtime d7490cd. All ten identified runtime adjustments were applied in rewritten-history commit 97b5207; current published runtime is 22d7801. The items below preserve why each change was made rather than implying that implementation is pending.
 
 1. EVAL-001 / SRS AK: title route must route topic-only input to discovery before offering a title list. State known/unknown context, offer direction questions/plain research goals if useful, and ask the minimal context/access question. Provisional label alone does not justify random title candidates.
 2. EVAL-012: apply explicit inclusion decision before adding method/location. Explain whether the component changes scope/meaning or is institutionally required. If only 'looks complete' motivates it, keep the existing title and explain omission. Offer an explicitly labeled optional variant only after a defensible reason exists.
@@ -10,4 +10,4 @@ Initial suite is frozen at d7490cd; apply after all current cases finish, so cop
 6. EVAL-046: when no finding/limitation supports a recommendation, do not supply polished generic recommendation prose with a caveat after it. Request the missing basis or return a visibly conditional trigger→action scaffold. Rerun EVAL-045/046 with the corrected explicit-RQ final fixture.
 7. EVAL-051: a negative literature claim such as 'not found in preliminary searching' implies an actual search. Without a search log or supplied source, state that coverage is not yet checked; do not offer completed-search prose as a more honest replacement. Tighten the problem/advanced gap boundary and rerun EVAL-024/025/051/052.
 
-Revalidation: title EVAL-001,011–017, baseline designs EVAL-005–007,029–031/091 and literature EVAL-110; rerun only further cases implicated by new evidence. Preserve initial failed outputs in an initial-revision subdirectory before retries. EVAL-018 needs one isolated-access retry because its answer reports failed SKILL read; EVAL-035 needs invocation capture. Do not label generic behavior a skill PASS without invocation evidence.
+Remaining live verification: title EVAL-001,011–017, baseline designs EVAL-005–007,029–031/091 and literature EVAL-110 should be rerun when a live host is available. EVAL-018 needs one isolated-access retry because its answer reports failed SKILL read; EVAL-035 needs invocation capture. These cases remain NOT_VERIFIED rather than being promoted from implementation evidence. Preserve the initial records and never label generic behavior a skill PASS without invocation evidence.

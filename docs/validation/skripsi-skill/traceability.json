@@ -10777,7 +10777,7 @@
       "dependencies": "None.",
       "acceptance": "Repository baseline contains exact SHAs/status and identifies any drift affecting this plan.",
       "validation": "Git status/branch/tree inspection; repository instruction scan.",
-      "status": "PREVIOUSLY_ACCEPTED",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10786,7 +10786,7 @@
       "dependencies": "P0-T01.",
       "acceptance": "Current architecture either matches this plan or a concrete drift item is recorded before mutation.",
       "validation": "Tree comparison and targeted file reads.",
-      "status": "PREVIOUSLY_ACCEPTED",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10795,7 +10795,7 @@
       "dependencies": "P0-T01.",
       "acceptance": "Counts and IDs match this plan or drift is explicitly reported.",
       "validation": "Scripted/text comparison or manual index check.",
-      "status": "PREVIOUSLY_ACCEPTED",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10804,7 +10804,7 @@
       "dependencies": "P0-T01,P0-T02.",
       "acceptance": "Package has valid `name: skripsi-skill`, nonempty specific description, README, and no ceremonial empty directories/files.",
       "validation": "Repository validator after P1-T02; manual Agent Skills spec check.",
-      "status": "PREVIOUSLY_ACCEPTED",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10813,7 +10813,7 @@
       "dependencies": "P1-T01 local ref available.",
       "acceptance": "Validator can target three refs; existing two packages still pass unchanged; `skripsi-skill` allows intended references/assets and still rejects unexpected paths/broken links/invalid frontmatter.",
       "validation": "Unit tests plus local validator against all three refs.",
-      "status": "PREVIOUSLY_ACCEPTED",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10822,7 +10822,7 @@
       "dependencies": "P1-T02.",
       "acceptance": "New tests fail before/fix after as applicable; all pre-existing tests remain green.",
       "validation": "`python3 -m unittest discover -s tests` or current repo command.",
-      "status": "PREVIOUSLY_ACCEPTED",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10831,7 +10831,7 @@
       "dependencies": "P1-T01,P1-T02.",
       "acceptance": "Main quality layer names all three skills; workflow fetch command/ref list includes `skripsi-skill`; eval schema remains compatible.",
       "validation": "YAML review, local validator/tests; remote run only after authorization.",
-      "status": "PREVIOUSLY_ACCEPTED",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10840,7 +10840,7 @@
       "dependencies": "P1-T01–P1-T04.",
       "acceptance": "All executed deterministic checks pass or failures are triaged as pre-existing/new; no live behavior claim is made.",
       "validation": "Repo validator; unit tests; `git diff --check` or verified equivalent.",
-      "status": "PREVIOUSLY_ACCEPTED",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10849,7 +10849,7 @@
       "dependencies": "P1-T05.",
       "acceptance": "SKILL identifies when to activate/not activate, how to enter current state, what is authoritative, and which references to load for each route.",
       "validation": "Repo validator; manual routing review; line/token-size review.",
-      "status": "PREVIOUSLY_ACCEPTED",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10858,7 +10858,7 @@
       "dependencies": "P2-T01.",
       "acceptance": "Agent can reconstruct/update only relevant state, preserve approved decisions, and identify current phase without restarting.",
       "validation": "Manual contract review; EVAL-001,002 and related state scenarios.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10867,7 +10867,7 @@
       "dependencies": "P2-T01,P2-T02.",
       "acceptance": "Short/natural requests route correctly; hard constraints persist; material ambiguity triggers focused clarification; harmless ambiguity does not block.",
       "validation": "EVAL-017–023 plus context-reuse scenarios.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10876,7 +10876,7 @@
       "dependencies": "P2-T01,P2-T02.",
       "acceptance": "Unsupported claims are labeled; campus guideline overrides internal generic structure within its scope; missing evidence remains visible.",
       "validation": "EVAL-003,004 plus fabrication cases; manual source-hierarchy conflict review.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10885,7 +10885,7 @@
       "dependencies": "P2-T01.",
       "acceptance": "Standalone use is not blocked by missing Andino; active Andino retains plan/checkpoint/completion ownership.",
       "validation": "Supplemental Andino behavior eval + manual comparison with current Andino routing/handoff docs.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10894,7 +10894,7 @@
       "dependencies": "P2-T02–P2-T05.",
       "acceptance": "Eval file passes schema and covers both behavior and negative-trigger kinds.",
       "validation": "Repo validator + semantic review; selected live smoke if environment available.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10903,7 +10903,7 @@
       "dependencies": "P2-T01–P2-T06.",
       "acceptance": "Core path produces traceable state and no fabricated evidence; negative triggers do not over-activate.",
       "validation": "Manual/live agent smoke in disposable context where available; otherwise mark UNVERIFIED.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10912,7 +10912,7 @@
       "dependencies": "P2-T02,P2-T04.",
       "acceptance": "Mind-map distinguishes unknown/evidence states and feasibility exposes material risks before a direction is treated as mature.",
       "validation": "EVAL-001 plus feasibility-specific SRS acceptance checks; manual examples across research types.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10921,7 +10921,7 @@
       "dependencies": "P3-T01.",
       "acceptance": "Candidate titles trace to problem/RQ/object/method/scope; unsupported causal terms are rejected or reframed.",
       "validation": "EVAL-011–016; title acceptance criteria.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10930,7 +10930,7 @@
       "dependencies": "P2-T02,P3-T01.",
       "acceptance": "Completed/pending/blocked items reflect actual state; contradictions are surfaced with affected elements.",
       "validation": "EVAL-009 and relevant acceptance checks; manual matrix review.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10939,7 +10939,7 @@
       "dependencies": "P2-T04,P3-T03.",
       "acceptance": "Outline follows supplied guideline when present and identifies unsupported sections/evidence gaps before drafting.",
       "validation": "EVAL-003,034 and proposal-outline acceptance checks.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10948,7 +10948,7 @@
       "dependencies": "P3-T01–P3-T04.",
       "acceptance": "All relevant cases present, schema-valid, and mapped to implementation owners.",
       "validation": "Validator + semantic review + selected live evaluation.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10957,7 +10957,7 @@
       "dependencies": "P3-T05.",
       "acceptance": "Slice is useful, state-preserving, evidence-safe, and routes only required references.",
       "validation": "Live/manual scenario review with context-load observation.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10966,7 +10966,7 @@
       "dependencies": "P3-T01,P2-T04.",
       "acceptance": "RQ/gap/novelty statements expose evidence basis and method/data answerability.",
       "validation": "EVAL-024–028,032–034 as applicable.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10975,7 +10975,7 @@
       "dependencies": "P4-T01.",
       "acceptance": "Reasoning choices have explicit purpose; IMRaD never overrides campus structure.",
       "validation": "EVAL-027,028,033 plus manual edge cases.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10984,7 +10984,7 @@
       "dependencies": "P4-T01.",
       "acceptance": "Each route states applicability, incompatible assumptions, required evidence/data, and integration logic.",
       "validation": "EVAL-005–007,029–031; cross-route scenarios.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -10993,7 +10993,7 @@
       "dependencies": "P4-T03,P2-T04.",
       "acceptance": "Selection strategy is justified by design/inference; supervisor preference is never guessed from identity/stereotype.",
       "validation": "EVAL-029,032 and related acceptance checks.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11002,7 +11002,7 @@
       "dependencies": "P4-T01–P4-T04.",
       "acceptance": "Proposal readiness has concrete missing/contradictory items and next action.",
       "validation": "EVAL-034 plus SRS proposal acceptance criteria.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11011,7 +11011,7 @@
       "dependencies": "P4-T01–P4-T05.",
       "acceptance": "Cluster covers unsupported novelty, RQ mismatch, guideline conflict, unknown proprietary term, sampling, mixed/R&D routing, supervisor expectations, fact/hypothesis, readiness.",
       "validation": "Validator + semantic review + representative live cases.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11020,7 +11020,7 @@
       "dependencies": "P4-T06.",
       "acceptance": "All four routes preserve shared core contracts without forcing irrelevant fields.",
       "validation": "Live/manual scenario suite; context/routing review.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11029,7 +11029,7 @@
       "dependencies": "P4-T01,P2-T04.",
       "acceptance": "Search plan records concepts, source/interface, exact query, date, filters, result count when available, and iteration rationale.",
       "validation": "EVAL-094–096,107; manual database-syntax examples.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11038,7 +11038,7 @@
       "dependencies": "P5-T01.",
       "acceptance": "Screening state is traceable and ambiguous cases are escalated to deeper review rather than silently excluded.",
       "validation": "EVAL-097,101,102 plus screening acceptance criteria.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11047,7 +11047,7 @@
       "dependencies": "P5-T02.",
       "acceptance": "Reading depth matches task; important papers have traceable cards and material claims show verification depth.",
       "validation": "EVAL-098–100,109; manual card review.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11056,7 +11056,7 @@
       "dependencies": "P5-T03.",
       "acceptance": "Chained papers are tagged with discovery route and screened through normal criteria.",
       "validation": "EVAL-103 plus acceptance checks.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11065,7 +11065,7 @@
       "dependencies": "P5-T03,P5-T04.",
       "acceptance": "Synthesis claims cite multiple extracted evidence units where appropriate and distinguish disagreement/limitations.",
       "validation": "EVAL-110 plus advanced synthesis cases reused in P7.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11074,7 +11074,7 @@
       "dependencies": "P5-T01–P5-T05.",
       "acceptance": "Systematic mode only activates when prerequisites are met; counts derive from actual registry; limitations/tool access are explicit.",
       "validation": "EVAL-104–108,110; manual PRISMA/PRISMA-S contract review.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11083,7 +11083,7 @@
       "dependencies": "P5-T01–P5-T06.",
       "acceptance": "All 17 cases schema-valid and owned by a concrete reference/asset behavior.",
       "validation": "Validator + semantic review + live representative cases.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11092,7 +11092,7 @@
       "dependencies": "P5-T07.",
       "acceptance": "End-to-end artifacts are traceable and mode labels are honest.",
       "validation": "Live/manual fixture evaluation; source/provenance review.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11101,7 +11101,7 @@
       "dependencies": "P4-T03.",
       "acceptance": "Design family rationale identifies target inference and limitations; causal language matches design.",
       "validation": "EVAL-078–080,089,091,093.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11110,7 +11110,7 @@
       "dependencies": "P6-T01,P5 literature as needed.",
       "acceptance": "Each measured construct has rationale, operationalization, scale/data properties, source/adaptation status, and unresolved validity concerns.",
       "validation": "EVAL-079,083,084 plus acceptance checks.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11119,7 +11119,7 @@
       "dependencies": "P6-T01,P6-T02.",
       "acceptance": "Plan records population, frame/access, strategy, rationale, limitations, and sample-size basis appropriate to design.",
       "validation": "EVAL-081,082,091.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11128,7 +11128,7 @@
       "dependencies": "P6-T01,P6-T02.",
       "acceptance": "Experiment label and causal ambition match actual assignment/control structure; limitations explicit.",
       "validation": "EVAL-091 plus design acceptance criteria.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11137,7 +11137,7 @@
       "dependencies": "P6-T01–P6-T04.",
       "acceptance": "Analysis choice traces to RQ/design/data/estimand/assumptions; interpretation avoids probability-of-hypothesis errors and overclaim.",
       "validation": "EVAL-085–090,092,093; later BAB IV cases.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11146,7 +11146,7 @@
       "dependencies": "P6-T02–P6-T05,P7 ethics once available; initial gate may link forward.",
       "acceptance": "Gate outputs READY/conditional/not-ready with concrete dependencies and no cosmetic score.",
       "validation": "EVAL-093 and SRS quantitative acceptance criteria.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11155,7 +11155,7 @@
       "dependencies": "P6-T01–P6-T06.",
       "acceptance": "All 16 cases have owners and expected/forbidden behavior; critical overclaim cases pass live where possible.",
       "validation": "Validator + semantic review + live/manual evals.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11164,7 +11164,7 @@
       "dependencies": "P4,P6.",
       "acceptance": "Every included layer has a decision effect and conflicts are surfaced.",
       "validation": "EVAL-050 plus acceptance criteria.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11173,7 +11173,7 @@
       "dependencies": "P5-T05,P4-T01.",
       "acceptance": "Gap/problematisation/SOTA claims show evidence chain and limitation.",
       "validation": "EVAL-051,052.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11182,7 +11182,7 @@
       "dependencies": "P4-T03,P2-T04.",
       "acceptance": "Decision tree records alternatives/rationale and known limitations.",
       "validation": "EVAL-055–057.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11191,7 +11191,7 @@
       "dependencies": "P4-T02,P6-T02.",
       "acceptance": "Framework elements trace to theory/evidence and RQ; arrows/relationships have mechanism/rationale.",
       "validation": "EVAL-058,059.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11200,7 +11200,7 @@
       "dependencies": "P7-T03.",
       "acceptance": "Material ethics obligations/unknowns are surfaced and linked to design/data handling.",
       "validation": "EVAL-057,062 and SRS ethics criteria.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11209,7 +11209,7 @@
       "dependencies": "P2-T04.",
       "acceptance": "Due-diligence report lists checked signals/sources and bounded conclusion.",
       "validation": "EVAL-060,061.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11218,7 +11218,7 @@
       "dependencies": "P7-T01–P7-T06.",
       "acceptance": "13 cases covered; forbidden methodological rituals/authority claims are rejected.",
       "validation": "Validator + semantic review + live/manual evals.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11227,7 +11227,7 @@
       "dependencies": "P4,P2-T04.",
       "acceptance": "Results drafting is blocked/partial when evidence missing; each finding identifies source and analysis status.",
       "validation": "EVAL-035,040; result-provenance criteria.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11236,7 +11236,7 @@
       "dependencies": "P8-T01,P4-T03.",
       "acceptance": "Output identifies finding vs interpretation and maps each to RQ/objective.",
       "validation": "EVAL-036,047,048.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11245,7 +11245,7 @@
       "dependencies": "P8-T01,P5,P6 as relevant.",
       "acceptance": "Discussion claims trace to finding + relevant literature/theory + design boundary.",
       "validation": "EVAL-037–043.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11254,7 +11254,7 @@
       "dependencies": "P8-T03.",
       "acceptance": "Each RQ/objective has a conclusion path; no conclusion claim lacks earlier support.",
       "validation": "EVAL-044–046.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11263,7 +11263,7 @@
       "dependencies": "P3-T03,P8-T04.",
       "acceptance": "Material revisions create impact map and invalidate/recheck dependent state as necessary.",
       "validation": "EVAL-008,009,049 plus revision acceptance criteria.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11272,7 +11272,7 @@
       "dependencies": "P8-T01–P8-T05.",
       "acceptance": "Cases have owners and forbidden behaviors observable.",
       "validation": "Validator + semantic review + live/manual fixture cases.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11281,7 +11281,7 @@
       "dependencies": "P8.",
       "acceptance": "Brief reflects actual current execution state and labels protocol unknowns.",
       "validation": "EVAL-063,064,071,076.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11290,7 +11290,7 @@
       "dependencies": "P9-T01.",
       "acceptance": "Questions trace to thesis area/concern and include why they matter.",
       "validation": "EVAL-063,070.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11299,7 +11299,7 @@
       "dependencies": "P9-T01.",
       "acceptance": "Answer cards cite thesis evidence or explicitly identify unknown/out-of-scope.",
       "validation": "EVAL-065–068,073.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11308,7 +11308,7 @@
       "dependencies": "P9-T02,P9-T03.",
       "acceptance": "Follow-up changes based on previous answer; feedback cites observable response quality.",
       "validation": "EVAL-069,072,075.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11317,7 +11317,7 @@
       "dependencies": "P9-T04,P8-T05.",
       "acceptance": "Readiness reports blockers/risks; post-defense comments propagate through dependencies.",
       "validation": "EVAL-074,077.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11326,7 +11326,7 @@
       "dependencies": "P9-T01–P9-T05.",
       "acceptance": "All 15 cases covered and critical no-bluff/current-state behaviors demonstrated.",
       "validation": "Validator + semantic + live mock.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11335,7 +11335,7 @@
       "dependencies": "P2–P9.",
       "acceptance": "Standalone scenarios complete or checkpoint using host context and preserve ResearchState.",
       "validation": "Manual cross-reference review + standalone live scenarios.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11344,7 +11344,7 @@
       "dependencies": "P10-T01.",
       "acceptance": "Handoff packet can be incorporated by Andino without lifecycle conflict.",
       "validation": "Compare against current Andino routing/handoff; live combined scenario if available.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11353,7 +11353,7 @@
       "dependencies": "P10-T01,P10-T02.",
       "acceptance": "Negative triggers do not activate full methodology; Andino case shows single owner; unavailable tools remain UNVERIFIED/needs action.",
       "validation": "Validator + semantic/live scenarios.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11362,7 +11362,7 @@
       "dependencies": "P1,P10-T03.",
       "acceptance": "Existing validator/unit/eval schema checks remain green; package trees unchanged.",
       "validation": "Repo validator/tests/tree diff.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11371,7 +11371,7 @@
       "dependencies": "P2–P10.",
       "acceptance": "No broken links, no duplicated methodology ownership, no reference chain requiring bulk-load, no orphan required component.",
       "validation": "Repo link validator + manual routing/context review; Agent Skills spec checklist.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11380,7 +11380,7 @@
       "dependencies": "P11-T01.",
       "acceptance": "No in-scope item lacks an implementation owner/evidence path; no out-of-scope item is promoted.",
       "validation": "Automated ID/count check plus manual requirement review.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11389,7 +11389,7 @@
       "dependencies": "P11-T01,P11-T02.",
       "acceptance": "All mandatory deterministic checks pass; unrun optional cross-check is labeled UNVERIFIED, not PASS.",
       "validation": "Repo commands + optional isolated spec validator.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11398,7 +11398,7 @@
       "dependencies": "P11-T02.",
       "acceptance": "Every case has a clear owner and no contradictory oracle; negative-trigger coverage is explicit.",
       "validation": "Structured reviewer pass/fail with counterexamples.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     },
     {
@@ -11407,8 +11407,8 @@
       "dependencies": "P11-T04.",
       "acceptance": "Every executed case has PASS/FAIL with evidence. Any unexecutable case is UNVERIFIED with blocker/next action. Full v0.9 VERIFIED requires no unresolved must-have behavioral case.",
       "validation": "Live host evaluation/manual reviewer protocol based on repository eval README.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
-      "evidence": "contract-review.md"
+      "status": "NOT_VERIFIED",
+      "evidence": "live-review.json"
     },
     {
       "id": "P11-T06",
@@ -11416,8 +11416,8 @@
       "dependencies": "P11-T05.",
       "acceptance": "Skill activates when useful, avoids over-activation, and does not bulk-load unrelated methodology.",
       "validation": "Live/manual activation matrix.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
-      "evidence": "contract-review.md"
+      "status": "NOT_VERIFIED",
+      "evidence": "live-review.json"
     },
     {
       "id": "P11-T07",
@@ -11425,8 +11425,8 @@
       "dependencies": "P10,P11-T03–P11-T06.",
       "acceptance": "Andino retains authoritative state; all three package checks green; existing skill refs unchanged unless separately authorized.",
       "validation": "Combined live scenario + validator/tests/tree comparison.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
-      "evidence": "contract-review.md"
+      "status": "NOT_VERIFIED",
+      "evidence": "live-review.json"
     },
     {
       "id": "P11-T08",
@@ -11434,8 +11434,8 @@
       "dependencies": "All local P11 checks pass + explicit authorization.",
       "acceptance": "Remote workflow executes validator/tests against intended refs and passes.",
       "validation": "Inspect the actual GitHub Actions run, checked-out refs, job results, and failures.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
-      "evidence": "contract-review.md"
+      "status": "COMPLETE",
+      "evidence": "https://github.com/andinoferdi/AI-RULES/actions/runs/35522527189"
     },
     {
       "id": "P11-T09",
@@ -11443,7 +11443,7 @@
       "dependencies": "P11-T02–P11-T08.",
       "acceptance": "Packet demonstrates every DoD item or names its blocker.",
       "validation": "Traceability reconciliation.",
-      "status": "IMPLEMENTED_REVIEW_PENDING",
+      "status": "COMPLETE",
       "evidence": "contract-review.md"
     }
   ]

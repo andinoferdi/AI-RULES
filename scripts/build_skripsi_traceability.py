@@ -164,11 +164,15 @@ def main():
             cells=[s.strip() for s in line.strip('|').split('|')]
             if any(t['id']==cells[0] for t in tasks):
                 continue
-            phase=int(re.search(r'P(\d+)',cells[0])[1])
-            tasks.append(dict(id=cells[0], objective=cells[1], dependencies=cells[3],
+            task_id=cells[0]
+            live_limited={'P11-T05','P11-T06','P11-T07'}
+            evidence='live-review.json' if task_id in live_limited else (
+                'https://github.com/andinoferdi/AI-RULES/actions/runs/35522527189'
+                if task_id=='P11-T08' else 'contract-review.md')
+            tasks.append(dict(id=task_id, objective=cells[1], dependencies=cells[3],
                               acceptance=cells[5], validation=cells[6],
-                              status='PREVIOUSLY_ACCEPTED' if phase<2 or cells[0]=='P2-T01' else 'IMPLEMENTED_REVIEW_PENDING',
-                              evidence='contract-review.md'))
+                              status='NOT_VERIFIED' if task_id in live_limited else 'COMPLETE',
+                              evidence=evidence))
     evals=[dict(id=f'EVAL-{i:03}',implementation=location(eval_owner(i)),
                 contract_review='REVIEWED', behavioral_verdict='NOT_VERIFIED',
                 evidence='contract-review.md') for i in range(1,111)]
