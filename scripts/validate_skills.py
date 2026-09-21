@@ -14,6 +14,7 @@ RUNTIME_SKILLS = ("andino-workflow", "ai-codebase-rescue", "skripsi-skill")
 EVAL_SKILLS = ("andino-workflow", "ai-codebase-rescue", "skripsi-skill")
 LINK = re.compile(r"(?<!!)\[[^]]*\]\(([^)]+)\)")
 FIELD = re.compile(r"^([A-Za-z][A-Za-z0-9_-]*):[ \t]+(.+)$")
+NAME = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
 
 
 def git(*args):
@@ -26,19 +27,26 @@ def git(*args):
     return result.stdout
 
 
-def package_files(files, expected_name):
+def package_files(files, expected_name, modes=None):
     errors = []
+    if "README.md" not in files:
+        errors.append(f"{expected_name}: missing README.md")
     for name in files:
-        allowed = name in ("README.md", "SKILL.md") or (
+        portable_path = "\\" not in name and all(
+            part and not part.startswith(".") for part in name.split("/")
+        )
+        allowed = portable_path and (name in ("README.md", "SKILL.md") or (
             name.startswith("references/") and name.endswith(".md")
         ) or (
             expected_name == "skripsi-skill"
             and name.startswith("assets/") and name.endswith(".md")
-        )
+        ))
         if not allowed:
             errors.append(f"{expected_name}: unexpected runtime file: {name}")
+        if modes and modes.get(name, "100644") not in ("100644", "100755"):
+            errors.append(f"{expected_name}: non-regular runtime file: {name}")
     if "SKILL.md" not in files:
-        return [f"{expected_name}: missing SKILL.md"]
+        return errors + [f"{expected_name}: missing SKILL.md"]
     body = files["SKILL.md"]
     if not body.startswith("---\n"):
         errors.append(f"{expected_name}: missing YAML frontmatter")
@@ -56,14 +64,22 @@ def package_files(files, expected_name):
                 # Runtime packages use plain scalar YAML only. Reject syntax this
                 # dependency-free parser cannot validate instead of accepting it.
                 value = match[2].strip()
-                if value.startswith(("[", "{", "'", '"', "|", ">", "&", "*", "!")) or ": " in value or "\t" in value:
+                if (value.startswith(("[", "{", "'", '"', "|", ">", "&", "*", "!", "#"))
+                        or ": " in value or "\t" in value or " #" in value
+                        or value.lower() in ("null", "~", "true", "false", "yes", "no", "on", "off")
+                        or re.fullmatch(r"[+-]?(?:[0-9][0-9._eE+-]*|\.(?:inf|nan))", value, re.I)):
                     errors.append(f"{expected_name}: unsupported frontmatter scalar: {line}")
                     continue
                 fields[match[1]] = value
             if fields.get("name") != expected_name:
                 errors.append(f"{expected_name}: wrong or missing name")
+            name = fields.get("name", "")
+            if not 1 <= len(name) <= 64 or not NAME.fullmatch(name):
+                errors.append(f"{expected_name}: invalid portable name (1-64 lowercase alphanumeric/hyphens)")
             if not fields.get("description"):
                 errors.append(f"{expected_name}: missing description")
+            elif len(fields["description"]) > 1024:
+                errors.append(f"{expected_name}: description exceeds 1024 characters")
     for name, content in files.items():
         if not name.endswith(".md"):
             continue
@@ -89,9 +105,15 @@ def package_files(files, expected_name):
 
 
 def package(ref, expected_name):
-    names = git("ls-tree", "-r", "--name-only", ref).splitlines()
-    files = {name: git("show", f"{ref}:{name}") for name in names}
-    return package_files(files, expected_name)
+    modes = {}
+    for entry in git("ls-tree", "-rz", ref).split("\0"):
+        if entry:
+            metadata, name = entry.split("\t", 1)
+            modes[name] = metadata.split()[0]
+    # Never follow runtime symlinks or treat submodules as installed resources.
+    files = {name: git("show", f"{ref}:{name}") if mode in ("100644", "100755") else ""
+             for name, mode in modes.items()}
+    return package_files(files, expected_name, modes)
 
 
 def eval_cases(skill):
@@ -112,10 +134,12 @@ def eval_cases(skill):
         for key in ("id", "kind", "prompt", "expected", "forbidden"):
             if not isinstance(case.get(key), str) or not case[key].strip():
                 errors.append(f"{path}:{index}: missing {key}")
-        if case.get("id") in ids:
-            errors.append(f"{path}:{index}: duplicate id")
-        ids.add(case.get("id"))
-        types.add(case.get("kind"))
+        if isinstance(case.get("id"), str):
+            if case["id"] in ids:
+                errors.append(f"{path}:{index}: duplicate id")
+            ids.add(case["id"])
+        if isinstance(case.get("kind"), str):
+            types.add(case["kind"])
         if case.get("kind") not in ("behavior", "negative-trigger"):
             errors.append(f"{path}:{index}: invalid kind")
     if not {"behavior", "negative-trigger"}.issubset(types):

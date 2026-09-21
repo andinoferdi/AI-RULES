@@ -469,6 +469,10 @@
     "SUP-MOCK-FOLLOWUP": {
       "verdict": "NOT_VERIFIED",
       "reason": "Codex CLI host usage limit reached; live behavioral execution pending environment reset. Structural and semantic contracts implemented."
+    },
+    "SUP-ACTION-BOUNDARY": {
+      "verdict": "NOT_VERIFIED",
+      "reason": "New family authorization regression case added 2026-09-21; no behavioral execution or PASS inferred from written contract. See the family audit for revision and verification scope."
     }
   },
   "pending_runtime_fixes": [
