@@ -35,6 +35,38 @@
     },
     {
       "schema_version": 1,
+      "id": "web-development",
+      "display_name": "Web Development",
+      "default": false,
+      "capabilities": ["andino-workflow", "context7"],
+      "suggested": []
+    },
+    {
+      "schema_version": 1,
+      "id": "design",
+      "display_name": "Design",
+      "default": false,
+      "capabilities": ["andino-workflow"],
+      "suggested": ["context7"]
+    },
+    {
+      "schema_version": 1,
+      "id": "media",
+      "display_name": "Media",
+      "default": false,
+      "capabilities": ["andino-workflow"],
+      "suggested": []
+    },
+    {
+      "schema_version": 1,
+      "id": "reverse-engineering",
+      "display_name": "Reverse Engineering",
+      "default": false,
+      "capabilities": ["andino-workflow"],
+      "suggested": []
+    },
+    {
+      "schema_version": 1,
       "id": "everything",
       "display_name": "Everything",
       "default": false,

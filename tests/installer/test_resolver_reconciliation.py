@@ -26,7 +26,7 @@ class ResolverReconciliationTests(unittest.TestCase):
         self.assertEqual(ReconciliationAction.INSTALL, target.action)
 
     def test_identical_managed_healthy_is_noop(self):
-        version = "release-manifest:andino-workflow@9172810d1223cf441cf8637d63729aedad1e4ba5"
+        version = "release-manifest:andino-workflow@9172810d1223cf441cf8637d63729aedad1e4ba5#1"
         target = self.resolve_one(
             state={("andino-workflow", "codex", "global"): managed_state(version)},
             targets={"andino-workflow": version},
@@ -35,13 +35,13 @@ class ResolverReconciliationTests(unittest.TestCase):
 
     def test_older_managed_target_updates(self):
         target = self.resolve_one(
-            state={("andino-workflow", "codex", "global"): managed_state("old")},
-            targets={"andino-workflow": "release-manifest:andino-workflow@stable"},
+            state={("andino-workflow", "codex", "global"): managed_state("release-manifest:andino-workflow@old#0")},
+            targets={"andino-workflow": "release-manifest:andino-workflow@new#1"},
         )
         self.assertEqual(ReconciliationAction.UPDATE, target.action)
 
     def test_managed_drift_repairs_without_update(self):
-        version = "release-manifest:andino-workflow@9172810d1223cf441cf8637d63729aedad1e4ba5"
+        version = "release-manifest:andino-workflow@9172810d1223cf441cf8637d63729aedad1e4ba5#1"
         target = self.resolve_one(
             state={("andino-workflow", "codex", "global"): managed_state(version, artifact_drift=True)},
             targets={"andino-workflow": version},
@@ -65,6 +65,14 @@ class ResolverReconciliationTests(unittest.TestCase):
         target = self.resolve_one(
             state={("andino-workflow", "codex", "global"): managed_state("future:andino-workflow@edge")},
             targets={"andino-workflow": "release-manifest:andino-workflow@stable"},
+        )
+        self.assertEqual(ReconciliationAction.BLOCK, target.action)
+
+    def test_opaque_commit_hashes_do_not_determine_update_direction(self):
+        """Fails if changing hexadecimal SHA text alone causes an update or downgrade decision."""
+        target = self.resolve_one(
+            state={("andino-workflow", "codex", "global"): managed_state("release-manifest:andino-workflow@ffff")},
+            targets={"andino-workflow": "release-manifest:andino-workflow@0000"},
         )
         self.assertEqual(ReconciliationAction.BLOCK, target.action)
 

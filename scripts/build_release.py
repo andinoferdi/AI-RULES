@@ -5,6 +5,8 @@ import hashlib
 import json
 import platform
 import subprocess
+import shutil
+import zipfile
 from pathlib import Path
 
 
@@ -25,12 +27,34 @@ def main() -> int:
     root = Path(__file__).resolve().parents[1]
     output = (root / args.output).resolve()
     output.mkdir(parents=True, exist_ok=True)
-    if not args.skip_build:
+    staged_bundles = root / "src" / "ai_rules" / "release" / "data" / "bundles"
+    manifest_path = root / "src" / "ai_rules" / "release" / "data" / "release_manifest.json"
+    release_targets = json.loads(manifest_path.read_text(encoding="utf-8")).get("first_party", {})
+    if staged_bundles.exists():
+        shutil.rmtree(staged_bundles)
+    for capability_id, target in release_targets.items():
+        destination = staged_bundles / capability_id
+        destination.mkdir(parents=True, exist_ok=True)
+        archive = destination.with_suffix(".zip")
         subprocess.run(
-            ["python", "-m", "PyInstaller", "packaging/ai_rules.spec", "--noconfirm", "--clean", "--distpath", str(output)],
+            ["git", "archive", "--format=zip", f"--output={archive}", target["commit"]],
             cwd=root,
             check=True,
         )
+        with zipfile.ZipFile(archive) as contents:
+            contents.extractall(destination)
+        archive.unlink()
+        if not (destination / "SKILL.md").is_file():
+            raise SystemExit(f"release bundle has no SKILL.md: {capability_id}")
+    try:
+        if not args.skip_build:
+            subprocess.run(
+                ["python", "-m", "PyInstaller", "packaging/ai_rules.spec", "--noconfirm", "--clean", "--distpath", str(output)],
+                cwd=root,
+                check=True,
+            )
+    finally:
+        shutil.rmtree(staged_bundles, ignore_errors=True)
     built = output / ("ai-rules.exe" if platform.system().lower() == "windows" else "ai-rules")
     if args.asset_name and built.exists() and built.name != args.asset_name:
         built.rename(output / args.asset_name)

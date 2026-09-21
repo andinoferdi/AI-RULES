@@ -143,6 +143,24 @@ class ExternalIntegrationTests(unittest.TestCase):
             self.assertEqual(InstalledOwnership.MANAGED_BY_AI_RULES, actual.ownership)
             self.assertTrue(actual.healthy)
 
+    def test_context7_registration_without_runtime_health_is_not_healthy(self):
+        """Fails if a Context7 mcp-list presence is mistaken for authenticated runtime health."""
+        catalog = load_catalog()
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            args = Namespace(state_dir=root / "state", project_root=None, hosts=["codex"], scope="global")
+            args.state_dir.mkdir()
+            (args.state_dir / "managed-installations.json").write_text(
+                '{"schema_version":1,"installations":{"context7:codex:global":'
+                '{"capability":"context7","host":"codex","scope":"global",'
+                '"version":"upstream-managed:remote-service","kind":"external-operation"}}}',
+                encoding="utf-8",
+            )
+
+            actual = _actual_state(catalog, args, external_probe=lambda *_: True)[("context7", "codex", "global")]
+
+            self.assertFalse(actual.healthy)
+
 
 if __name__ == "__main__":
     unittest.main()

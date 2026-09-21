@@ -152,7 +152,22 @@ class Resolver:
         if actual.artifact_drift:
             return ReconciliationAction.REPAIR, ReconciliationAssessment.DRIFTED, TargetStatus.PLANNED, "managed artifact drift detected"
         if actual.installed_version and target_version and actual.installed_version != target_version:
-            if _version_rank(actual.installed_version) > _version_rank(target_version):
+            if actual.installed_version.startswith("marketplace:") and target_version.startswith("marketplace:"):
+                return (
+                    ReconciliationAction.UPDATE,
+                    ReconciliationAssessment.VERSION_UNKNOWN,
+                    TargetStatus.PARTIALLY_VERIFIED,
+                    "marketplace version is only partially observable; run the official refresh and reverify",
+                )
+            relation = _version_relation(actual.installed_version, target_version)
+            if relation is None:
+                return (
+                    ReconciliationAction.BLOCK,
+                    ReconciliationAssessment.VERSION_UNKNOWN,
+                    TargetStatus.BLOCKED,
+                    "immutable versions differ but release sequence is unavailable; refusing a silent direction change",
+                )
+            if relation > 0:
                 return (
                     ReconciliationAction.BLOCK,
                     ReconciliationAssessment.PINNED,
@@ -212,12 +227,21 @@ class Resolver:
         )
 
 
-def _version_rank(version: str) -> tuple[int, str]:
-    if version.startswith("release-manifest:"):
-        return (1, version)
-    if version.startswith("future:"):
-        return (2, version)
-    return (0, version)
+def _version_relation(installed: str, target: str) -> int | None:
+    """Compare only explicit release sequences, never opaque commit hashes."""
+    if installed.startswith("future:"):
+        return 1
+    if not (installed.startswith("release-manifest:") and target.startswith("release-manifest:")):
+        return None
+    def sequence(value: str) -> int | None:
+        try:
+            return int(value.rsplit("#", 1)[1])
+        except (IndexError, ValueError):
+            return None
+    installed_sequence, target_sequence = sequence(installed), sequence(target)
+    if installed_sequence is None or target_sequence is None:
+        return None
+    return (installed_sequence > target_sequence) - (installed_sequence < target_sequence)
 
 
 def build_resolver(catalog: Catalog, profiles: ProfileSet, capability_adapter: CapabilityAdapter) -> Resolver:

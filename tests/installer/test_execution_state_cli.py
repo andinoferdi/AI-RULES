@@ -249,7 +249,7 @@ class ExecutionStateCliTests(unittest.TestCase):
             self.assertEqual(0, first.returncode, first.stderr)
             state_path = root / "state" / "managed-installations.json"
             state = read_json(state_path)
-            state["installations"]["andino-workflow:codex:project"]["version"] = "release-manifest:andino-workflow@0000000"
+            state["installations"]["andino-workflow:codex:project"]["version"] = "release-manifest:andino-workflow@0000000#0"
             state_path.write_text(json.dumps(state), encoding="utf-8")
 
             updated = subprocess.run(command, check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)

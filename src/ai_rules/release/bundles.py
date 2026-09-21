@@ -2,10 +2,26 @@ from __future__ import annotations
 
 import subprocess
 import zipfile
+from importlib import resources
 from pathlib import Path
 
 from ai_rules.domain.errors import ValidationError
 from ai_rules.execution import copy_tree_atomic
+
+
+def packaged_bundle(capability_id: str) -> Path | None:
+    """Return an embedded release bundle when the executable ships one.
+
+    Source-mode intentionally returns ``None`` until the release builder stages
+    bundles.  That keeps Git acquisition a developer-mode fallback rather than
+    a fresh-machine runtime dependency.
+    """
+    candidate = resources.files("ai_rules.release.data").joinpath("bundles", capability_id)
+    try:
+        path = Path(str(candidate))
+    except TypeError:
+        return None
+    return path if (path / "SKILL.md").is_file() else None
 
 
 def export_git_ref(ref: str, destination: Path, repo_root: Path | None = None) -> None:

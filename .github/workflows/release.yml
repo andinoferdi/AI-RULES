@@ -13,7 +13,7 @@ jobs:
           - os: windows-latest
             asset: ai-rules-windows-x64.exe
           - os: macos-latest
-            asset: ai-rules-macos-x64
+            asset: ai-rules-macos-arm64
           - os: ubuntu-latest
             asset: ai-rules-linux-x64
     runs-on: ${{ matrix.os }}
@@ -34,3 +34,26 @@ jobs:
         with:
           name: ${{ matrix.asset }}
           path: release/
+
+  publish:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: release-input
+          merge-multiple: true
+      - name: Aggregate checksums
+        shell: bash
+        run: |
+          mkdir release
+          find release-input -type f -name 'ai-rules*' -exec cp {} release/ \;
+          cd release
+          sha256sum ai-rules* > SHA256SUMS
+          python -c 'import hashlib,json,pathlib; p=pathlib.Path("."); a=[{"name":x.name,"sha256":hashlib.sha256(x.read_bytes()).hexdigest(),"size":x.stat().st_size} for x in sorted(p.glob("ai-rules*"))]; pathlib.Path("release-manifest.json").write_text(json.dumps({"schema_version":1,"artifacts":a},indent=2)+"\\n")'
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: release/*

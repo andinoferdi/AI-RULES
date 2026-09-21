@@ -20,4 +20,4 @@ ai-rules = "ai_rules.cli:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-ai_rules = ["catalog/data/*.json", "profiles/data/*.json", "release/data/*.json"]
+ai_rules = ["catalog/data/*.json", "profiles/data/*.json", "release/data/*.json", "release/data/bundles/**/*"]

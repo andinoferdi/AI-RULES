@@ -30,7 +30,8 @@ class StaticCapabilityAdapter:
             target = manifest.get("first_party", {}).get(capability.id, {})
             commit = target.get("commit")
             if commit:
-                return f"release-manifest:{capability.id}@{commit}"
+                sequence = int(target.get("release_sequence", manifest.get("release_sequence", 0)))
+                return f"release-manifest:{capability.id}@{commit}#{sequence}"
             branch = capability.source.get("branch", capability.id)
             return f"release-manifest:{branch}@stable"
         if capability.id == "context7" and capability.update_policy.model.value == "remote_service":

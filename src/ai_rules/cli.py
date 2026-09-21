@@ -11,14 +11,14 @@ from typing import Callable
 from ai_rules.capabilities.adapters import StaticCapabilityAdapter
 from ai_rules.catalog import load_catalog
 from ai_rules.domain.models import ActualState, InstallationPlan
-from ai_rules.domain.statuses import InstalledOwnership, ReconciliationAction, Scope
+from ai_rules.domain.statuses import InstalledOwnership, ReconciliationAction, Scope, TargetStatus
 from ai_rules.execution import Executor
 from ai_rules.hosts.adapters import build_host_adapters
 from ai_rules.interactive import prompt_confirmation, prompt_selection
 from ai_rules.planning import render_plan
 from ai_rules.platform import detect_environment, state_root
 from ai_rules.profiles import load_profiles
-from ai_rules.release import export_git_ref
+from ai_rules.release import export_git_ref, packaged_bundle
 from ai_rules.resolver import ResolveRequest, build_resolver
 from ai_rules.state import atomic_write_json, create_snapshot, read_json, read_snapshot, write_profile
 from ai_rules.verification import doctor_from_plan, render_doctor
@@ -42,6 +42,14 @@ def build_parser() -> argparse.ArgumentParser:
     add_common_setup_flags(setup)
     setup.set_defaults(func=cmd_setup)
 
+    add = sub.add_parser("add")
+    add_common_setup_flags(add)
+    add.set_defaults(func=cmd_add)
+
+    remove = sub.add_parser("remove")
+    add_common_setup_flags(remove)
+    remove.set_defaults(func=cmd_remove)
+
     doctor = sub.add_parser("doctor")
     add_common_setup_flags(doctor)
     doctor.add_argument("--repair", action="store_true")
@@ -60,7 +68,10 @@ def build_parser() -> argparse.ArgumentParser:
 
     restore = sub.add_parser("restore")
     restore.add_argument("snapshot", type=Path)
-    restore.add_argument("--dry-run", action="store_true", default=True)
+    restore.add_argument("--dry-run", action="store_true")
+    restore.add_argument("--yes", action="store_true")
+    restore.add_argument("--state-dir", type=Path, default=state_root())
+    restore.add_argument("--project-root", type=Path)
     restore.set_defaults(func=cmd_restore)
     return parser
 
@@ -116,6 +127,56 @@ def cmd_setup(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_add(args: argparse.Namespace) -> int:
+    """Reconcile explicitly selected capabilities and merge them into desired state."""
+    if not args.capabilities:
+        raise ValueError("add requires at least one --capability")
+    result = cmd_setup(args)
+    if result:
+        return result
+    profile_path = args.state_dir / "profile.json"
+    profile = read_json(profile_path)
+    merged = tuple(dict.fromkeys((*profile.get("capabilities", ()), *args.capabilities)))
+    write_profile(profile_path, profile.get("profile", "custom"), tuple(profile.get("hosts", _hosts(args.hosts))), merged, profile.get("scope", args.scope))
+    return 0
+
+
+def cmd_remove(args: argparse.Namespace) -> int:
+    """Remove only installer-managed first-party targets, preserving unmanaged paths."""
+    if not args.capabilities:
+        raise ValueError("remove requires at least one --capability")
+    records = _managed_installation_records(args.state_dir)
+    catalog = load_catalog()
+    adapters = build_host_adapters(catalog.hosts)
+    removed = 0
+    for host_id in _hosts(args.hosts):
+        root = adapters[host_id].skill_target(Scope(args.scope), args.project_root)
+        for capability_id in args.capabilities:
+            key = _installation_key(capability_id, host_id, Scope(args.scope))
+            record = records.get(key)
+            if record is None:
+                print(f"{capability_id} -> {host_id}: BLOCKED unmanaged target is preserved")
+                continue
+            if args.dry_run or not args.yes:
+                print(f"{capability_id} -> {host_id}: PREVIEW REMOVE {record.get('path', '')}")
+                continue
+            path = Path(record["path"]) if record.get("path") else (root / capability_id if root else None)
+            if path is not None and path.exists():
+                import shutil
+                shutil.rmtree(path)
+            records.pop(key, None)
+            removed += 1
+            print(f"{capability_id} -> {host_id}: APPLIED REMOVE")
+    atomic_write_json(args.state_dir / "managed-installations.json", {"schema_version": 1, "installations": records})
+    if removed:
+        profile_path = args.state_dir / "profile.json"
+        if profile_path.exists():
+            profile = read_json(profile_path)
+            remaining = tuple(item for item in profile.get("capabilities", ()) if item not in set(args.capabilities))
+            write_profile(profile_path, profile.get("profile", "custom"), tuple(profile.get("hosts", ())), remaining, profile.get("scope", args.scope))
+    return 0 if removed or args.dry_run or not args.yes else 1
+
+
 def cmd_doctor(args: argparse.Namespace) -> int:
     plan = _resolve_from_args(args)
     report = doctor_from_plan(plan)
@@ -156,7 +217,7 @@ def cmd_snapshot(args: argparse.Namespace) -> int:
 def cmd_restore(args: argparse.Namespace) -> int:
     snapshot = read_snapshot(args.snapshot)
     profile = snapshot.get("profile", {})
-    print("AI-RULES restore dry-run")
+    print("AI-RULES restore preview")
     print(f"profile={profile.get('profile')} hosts={profile.get('hosts', [])} capabilities={profile.get('capabilities', [])}")
     catalog = load_catalog()
     for host_id in profile.get("hosts", []):
@@ -165,8 +226,26 @@ def cmd_restore(args: argparse.Namespace) -> int:
     for capability_id in profile.get("capabilities", []):
         if capability_id not in catalog.capabilities:
             print(f"incompatible capability: {capability_id}")
-    print("restore requires setup confirmation before mutation")
-    return 0
+    incompatible = any(host_id not in catalog.hosts for host_id in profile.get("hosts", ())) or any(
+        capability_id not in catalog.capabilities for capability_id in profile.get("capabilities", ())
+    )
+    if incompatible:
+        return 1 if args.yes and not args.dry_run else 0
+    if args.dry_run or not args.yes:
+        print("restore preview only; pass --yes without --dry-run to reconcile the snapshot")
+        return 0
+    restore_args = argparse.Namespace(
+        hosts=list(profile.get("hosts", ())),
+        profile=profile.get("profile", "custom"),
+        capabilities=list(profile.get("capabilities", ())),
+        scope=profile.get("scope", Scope.GLOBAL.value),
+        project_root=args.project_root,
+        dry_run=False,
+        yes=True,
+        non_interactive=True,
+        state_dir=args.state_dir,
+    )
+    return cmd_setup(restore_args)
 
 
 def _resolve_from_args(args: argparse.Namespace):
@@ -209,8 +288,10 @@ def _executor_for_plan(plan, args: argparse.Namespace) -> Executor:
         release = manifest.get("first_party", {}).get(capability.id)
         if release is None:
             continue
-        bundle = args.state_dir / "bundles" / capability.id
-        export_git_ref(release["commit"], bundle, repo_root=Path.cwd())
+        bundle = packaged_bundle(capability.id)
+        if bundle is None:
+            bundle = args.state_dir / "bundles" / capability.id
+            export_git_ref(release["commit"], bundle, repo_root=Path.cwd())
         bundles[capability.id] = bundle
     return Executor(args.state_dir, first_party_bundles=bundles, host_skill_roots=roots)
 
@@ -241,7 +322,7 @@ def _actual_state(
                         exists=True,
                         ownership=(InstalledOwnership.MANAGED_BY_AI_RULES if record else InstalledOwnership.EXTERNAL_EXISTING),
                         installed_version=record.get("version") if record else None,
-                        healthy=record is not None,
+                        healthy=record is not None and capability_id != "context7",
                     )
                 elif record:
                     result[(capability_id, host_id, scope.value)] = ActualState(
@@ -342,14 +423,42 @@ def _managed_installation_records(state_dir: Path) -> dict[str, dict]:
 
 
 def _write_verified_lock(plan, result, args: argparse.Namespace) -> None:
-    if not result.results or any(item.status not in {"APPLIED", "VERIFIED"} for item in result.results):
+    """Persist per-target post-execution evidence, never equating APPLIED with verified."""
+    if not result.results:
         return
     result_by_key = {(item.capability_id, item.host_id, item.action): item for item in result.results}
+    catalog = load_catalog()
+    adapters = build_host_adapters(catalog.hosts)
     targets = []
     for target in plan.targets:
         item = result_by_key.get((target.capability_id, target.host_id, target.action.value))
         if item is None:
+            targets.append({
+                "capability": target.capability_id,
+                "host": target.host_id,
+                "scope": target.scope.value,
+                "status": "SKIPPED",
+                "assessment": target.assessment.value,
+                "verification": {"outcome": "NOT_RUN", "reason": "operation was not executed"},
+            })
             continue
+        capability = catalog.require_capability(target.capability_id)
+        verification: dict[str, str]
+        status = item.status
+        if item.status == "APPLIED" and capability.ownership.value == "FIRST_PARTY":
+            root = adapters[target.host_id].skill_target(target.scope, args.project_root)
+            skill_file = root / target.capability_id / "SKILL.md" if root is not None else None
+            if skill_file is not None and skill_file.is_file():
+                status = TargetStatus.VERIFIED.value
+                verification = {"outcome": "PASS", "check": "artifact", "path": str(skill_file)}
+            else:
+                status = TargetStatus.FAILED.value
+                verification = {"outcome": "FAIL", "check": "artifact", "reason": "installed skill artifact is absent"}
+        elif item.status == "APPLIED":
+            status = TargetStatus.PARTIALLY_VERIFIED.value
+            verification = {"outcome": "NOT_RUN", "reason": "external configuration applied; runtime health requires a separate check"}
+        else:
+            verification = {"outcome": "NOT_RUN", "reason": item.message}
         targets.append(
             {
                 "capability": target.capability_id,
@@ -358,14 +467,19 @@ def _write_verified_lock(plan, result, args: argparse.Namespace) -> None:
                 "action": target.action.value,
                 "target_version": target.target_version,
                 "assessment": target.assessment.value,
-                "status": item.status,
+                "status": status,
+                "strategy": target.strategy_id,
+                "source": next((operation.source for operation in target.operations), None),
+                "update_policy": capability.update_policy.model.value,
+                "version_observability": capability.update_policy.version_observability.value,
+                "exact_replay_supported": capability.update_policy.exact_pin_supported,
+                "verification": verification,
             }
         )
-    if len(targets) != len(plan.targets):
-        return
+    overall = "verified" if targets and all(target["status"] == TargetStatus.VERIFIED.value for target in targets) else "partially_verified"
     atomic_write_json(
         args.state_dir / "lock.json",
-        {"schema_version": 1, "status": "verified", "profile": plan.profile_id, "targets": targets},
+        {"schema_version": 2, "status": overall, "profile": plan.profile_id, "targets": targets},
     )
 
 

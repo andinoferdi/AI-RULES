@@ -1,12 +1,10 @@
 param(
-    [string]$ReleaseBaseUrl = $env:AI_RULES_RELEASE_BASE_URL,
+    [string]$ReleaseBaseUrl = $(if ($env:AI_RULES_RELEASE_BASE_URL) { $env:AI_RULES_RELEASE_BASE_URL } else { "https://github.com/andinoferdi/AI-RULES/releases/latest/download" }),
     [string]$InstallDir = "$env:LOCALAPPDATA\AI-RULES\bin"
 )
 $ErrorActionPreference = "Stop"
-if ([string]::IsNullOrWhiteSpace($ReleaseBaseUrl)) {
-    throw "Set AI_RULES_RELEASE_BASE_URL to the release directory before bootstrapping."
-}
 $arch = if ([Environment]::Is64BitOperatingSystem) { "x64" } else { "x86" }
+$arch = if ([Environment]::Is64BitOperatingSystem) { "x64" } else { throw "unsupported Windows architecture: x86" }
 $asset = "ai-rules-windows-$arch.exe"
 $target = Join-Path $InstallDir "ai-rules.exe"
 $manifestUrl = "$ReleaseBaseUrl/release-manifest.json"

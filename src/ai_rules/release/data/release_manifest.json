@@ -1,22 +1,26 @@
 {
   "schema_version": 1,
   "channel": "stable",
+  "release_sequence": 1,
   "verified_at": "2026-09-21",
   "first_party": {
     "andino-workflow": {
       "branch": "andino-workflow",
       "ref": "origin/andino-workflow",
-      "commit": "9172810d1223cf441cf8637d63729aedad1e4ba5"
+      "commit": "9172810d1223cf441cf8637d63729aedad1e4ba5",
+      "release_sequence": 1
     },
     "ai-codebase-rescue": {
       "branch": "ai-codebase-rescue",
       "ref": "origin/ai-codebase-rescue",
-      "commit": "b34f4d792420039cbb52bceee76dc0240846b5f2"
+      "commit": "b34f4d792420039cbb52bceee76dc0240846b5f2",
+      "release_sequence": 1
     },
     "skripsi-skill": {
       "branch": "skripsi-skill",
       "ref": "origin/skripsi-skill",
-      "commit": "6f7c57c8a2d600f092c6a31937d4ec218d9888b6"
+      "commit": "6f7c57c8a2d600f092c6a31937d4ec218d9888b6",
+      "release_sequence": 1
     }
   }
 }
