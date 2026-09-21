@@ -1,6 +1,6 @@
 ---
 name: skripsi-skill
-description: Guide thesis and research work from the user's current research state, with evidence traceability and campus-specific requirements. Use for research planning, literature work, proposal and chapter reasoning, revisions, or defense preparation.
+description: Guide thesis and research work from the user's current research state, with evidence traceability and campus-specific requirements. Use for research planning, literature work, proposal and chapter reasoning, revisions, or defense preparation. Simple sentence polishing, unrelated coding and ordinary conversation do not require this workflow.
 ---
 
 # Skripsi Skill
@@ -53,3 +53,5 @@ Use [core output helpers](assets/research-core-templates.md) only when the reque
 Standalone, guide the research interaction from the current request. When `andino-workflow` owns the project lifecycle, act as its research specialist: return relevant research state, evidence, limitations, and a recommended next research action without creating a competing plan, checkpoint, or completion claim.
 
 Answer the user's present need first. State any material missing evidence or decision and the next useful research action without imposing a fixed response template or unnecessary process.
+
+Skill activation does not authorize commits, pushes, merges, publication, deployment, live-data changes or unrelated external actions. Use applicable user authorization and retain all research ethics, access and evidence gates.
