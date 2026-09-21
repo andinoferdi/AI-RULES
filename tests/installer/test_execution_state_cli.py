@@ -105,26 +105,18 @@ class ExecutionStateCliTests(unittest.TestCase):
         self.assertEqual("MANUAL_ACTION_REQUIRED", statuses["superpowers"])
 
     def test_cli_setup_dry_run_smoke(self):
-        completed = subprocess.run(
-            [
-                sys.executable,
-                "-m",
-                "ai_rules",
-                "setup",
-                "--profile",
-                "minimal",
-                "--host",
-                "codex",
-                "--dry-run",
-                "--non-interactive",
-            ],
-            check=False,
-            text=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-        )
-        self.assertEqual(0, completed.returncode, completed.stderr)
-        self.assertIn("INSTALL", completed.stdout)
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            completed = subprocess.run(
+                [
+                    sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "codex",
+                    "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
+                    "--dry-run", "--non-interactive",
+                ],
+                check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            )
+            self.assertEqual(0, completed.returncode, completed.stderr)
+            self.assertIn("INSTALL", completed.stdout)
 
     def test_cli_setup_yes_installs_first_party_skill_in_disposable_project(self):
         """Fails if CLI setup does not wire its approved plan to a real skill installation."""
@@ -280,26 +272,18 @@ class ExecutionStateCliTests(unittest.TestCase):
             self.assertTrue(skill_file.exists())
 
     def test_cli_doctor_repair_preview_mentions_no_upgrade(self):
-        completed = subprocess.run(
-            [
-                sys.executable,
-                "-m",
-                "ai_rules",
-                "doctor",
-                "--profile",
-                "minimal",
-                "--host",
-                "codex",
-                "--repair",
-                "--dry-run",
-            ],
-            check=False,
-            text=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-        )
-        self.assertEqual(0, completed.returncode, completed.stderr)
-        self.assertIn("does not upgrade versions", completed.stdout)
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            completed = subprocess.run(
+                [
+                    sys.executable, "-m", "ai_rules", "doctor", "--profile", "minimal", "--host", "codex",
+                    "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
+                    "--repair", "--dry-run",
+                ],
+                check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            )
+            self.assertEqual(0, completed.returncode, completed.stderr)
+            self.assertIn("does not upgrade versions", completed.stdout)
 
 
 if __name__ == "__main__":

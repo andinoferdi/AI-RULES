@@ -7,7 +7,7 @@
       "display_name": "Codex",
       "scopes": ["global", "project"],
       "mechanisms": ["SKILL_DIRECTORY", "PLUGIN_MARKETPLACE", "MCP_HTTP", "MCP_STDIO", "MCP_OAUTH", "GLOBAL_SKILL_SCOPE", "PROJECT_SKILL_SCOPE"],
-      "global_skill_path": "~/.codex/skills",
+      "global_skill_path": "~/.agents/skills",
       "project_skill_path": ".agents/skills",
       "mcp_config_hint": "codex mcp"
     },
@@ -33,13 +33,23 @@
     },
     {
       "schema_version": 1,
-      "id": "antigravity",
-      "display_name": "Antigravity",
+      "id": "antigravity-cli",
+      "display_name": "Antigravity CLI",
       "scopes": ["global", "project"],
       "mechanisms": ["SKILL_DIRECTORY", "PLUGIN_REPOSITORY", "MCP_STDIO", "MCP_HTTP", "GLOBAL_SKILL_SCOPE", "PROJECT_SKILL_SCOPE"],
       "global_skill_path": "~/.gemini/antigravity-cli/skills",
       "project_skill_path": ".agents/skills",
       "mcp_config_hint": "Antigravity MCP config"
+    },
+    {
+      "schema_version": 1,
+      "id": "antigravity-ide",
+      "display_name": "Antigravity IDE / 2.0",
+      "scopes": ["global", "project"],
+      "mechanisms": ["SKILL_DIRECTORY", "PLUGIN_REPOSITORY", "MCP_STDIO", "MCP_HTTP", "GLOBAL_SKILL_SCOPE", "PROJECT_SKILL_SCOPE"],
+      "global_skill_path": "~/.gemini/config/skills",
+      "project_skill_path": ".agents/skills",
+      "mcp_config_hint": "Antigravity IDE MCP config"
     }
   ]
 }

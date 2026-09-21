@@ -22,7 +22,7 @@ class StaticHostAdapter:
             "codex": "codex",
             "claude-code": "claude",
             "opencode": "opencode",
-            "antigravity": "antigravity",
+            "antigravity-cli": "agy",
         }.get(self.host.id)
         path = shutil.which(command) if command else None
         status = DetectionStatus.PRESENT if path else DetectionStatus.UNKNOWN
