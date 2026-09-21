@@ -28,9 +28,10 @@ Project paths are relative to the target project's root.
 | Agent | Global skill root | Project skill root |
 | --- | --- | --- |
 | Codex | `~/.agents/skills` | `.agents/skills` |
-| OpenCode | `~/.config/opencode/skills` (also reads `~/.agents/skills`) | `.opencode/skills` (also reads `.agents/skills`) |
+| OpenCode | `~/.config/opencode/skills`; compatible `~/.agents/skills`, `~/.claude/skills` | `.opencode/skills`; compatible `.agents/skills`, `.claude/skills` |
 | Claude Code | `~/.claude/skills` | `.claude/skills` |
-| Antigravity 2.0 / IDE | `~/.gemini/config/skills` | `.agents/skills` |
+| Antigravity 2.0 | `~/.gemini/config/skills` | `.agents/skills` |
+| Antigravity IDE | `~/.gemini/config/skills` | `.agents/skills` |
 | Antigravity CLI | `~/.gemini/antigravity-cli/skills` | `.agents/skills` |
 
 For example, Claude Code globally:
@@ -43,8 +44,12 @@ Antigravity IDE also documents the legacy global path
 `~/.gemini/antigravity/skills`. Prefer the location for your installed surface.
 Other agents can use this directory when they support Agent Skills; use their
 documented discovery path rather than assuming every agent shares these roots.
-Keep one installation per skill visible to each host where practical. OpenCode
-also reads Claude-compatible directories, so duplicate copies can shadow updates.
+Keep one discoverable copy per skill unless an override is intentional. OpenCode
+V2 uses path-derived IDs and later-source precedence; Claude has scope precedence;
+Codex can show both same-name skills. Check the loaded path rather than assuming
+the newest copy wins. These are different host rules; see the linked sources below.
+Use ordinary directories for portable installation; Windows junction behavior
+has not been verified across these hosts.
 
 Install the **whole folder**, including `references/`. No build, package manager,
 sync script, MCP service or personal host configuration is required by this skill.
@@ -63,7 +68,8 @@ parent-repository distribution. Do not include credentials or personal configs.
   loads the matching ID, subject to configured permissions.
 
 Implicit selection depends on the task, host and invocation policy. Installation
-does not force activation or grant permission for external actions.
+does not force activation or authorize commits, pushes, merges, publication,
+deployment, live-data changes or unrelated external actions.
 
 ## Combine the two skills
 
@@ -108,14 +114,26 @@ folder must retain the name of the skill it contains.
 
 ## Verify your installation
 
-Confirm `ai-codebase-rescue/SKILL.md` and its referenced files exist. Open a fresh host
-session (or refresh its skill list), select the skill explicitly, and ask it to
-explain its scope and lifecycle without editing files. Check the loaded path if
-multiple copies exist. Then use a disposable task to test actual behavior.
+Confirm `ai-codebase-rescue/SKILL.md` and every linked file in `references/`
+exist. Check the actual loaded path and use the host's documented invocation above.
+Codex detects updates automatically (restart if missing); Claude watches SKILL.md
+in existing roots (restart for a newly created root). Antigravity documents discovery
+at conversation start. No universal hot-refresh promise is made for OpenCode or IDEs.
 
-Package metadata, relative links and isolated directory layouts were checked.
-That is not evidence of native selection or successful task execution in all
-four agents; those live checks remain environment-specific and unverified here.
+Manual smoke cases, in a disposable context:
+
+| Case | Request | Expected decision |
+| --- | --- | --- |
+| Positive | Investigate reproduced repeated regressions in a bounded subsystem. | Establish contracts and evidence before selecting a disposition. |
+| Negative | Fix one isolated bug, or assess healthy code described only as AI-written. | Use ordinary local work; authorship alone must not trigger rescue or REMAKE. |
+
+For selection checks, present the request without explicitly forcing the skill.
+For instruction checks, explicitly invoke it and inspect its actual decisions.
+Record host/version, skill commit, loaded path, input, observed actions and limits.
+These are proposed checks, not cross-host PASS claims. Package validation is
+STRUCTURAL VERIFIED only for the tested revision; documented host features are
+DOCUMENTATION VERIFIED. LIVE HOST VERIFIED requires observed host execution;
+unrun checks remain NOT VERIFIED. Historical evidence lives on main.
 
 ## Package and sources
 
@@ -123,11 +141,15 @@ This branch contains only `SKILL.md`, `references/` and this README. The
 [WebBased branch](https://github.com/andinoferdi/AI-RULES/tree/WebBased) retains
 web/chat rules and project templates. Development plans, monorepo adapter scripts
 and historical evaluation reports are outside the runtime package. Edit this
-branch's root files as the canonical source.
+branch's root files as the canonical source. The
+[main quality plane](https://github.com/andinoferdi/AI-RULES/tree/main) owns
+validators, tests, evaluation cases, CI and family audit evidence; none is installed
+as runtime methodology.
 
-Installation guidance checked against official documentation on 2026-09-19:
+Installation and discovery guidance checked against official documentation on 2026-09-21:
 [Codex skills](https://learn.chatgpt.com/docs/build-skills),
-[OpenCode skills](https://opencode.ai/v2/docs/skills),
+[OpenCode V2 skills](https://opencode.ai/v2/docs/skills)
+([V1 differences](https://opencode.ai/docs/skills/)),
 [Claude Code skills](https://code.claude.com/docs/en/skills), and
 [Antigravity skills by surface](https://antigravity.google/docs/skills?tab=ide).
 These sources establish folder conventions, not identical runtime behavior.
