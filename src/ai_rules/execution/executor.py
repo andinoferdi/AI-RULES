@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import shutil
+import subprocess
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
@@ -53,7 +54,18 @@ class Executor:
                 )
                 continue
             for operation in target.operations:
-                results.append(self._execute_operation(operation, dry_run=dry_run, yes=yes))
+                try:
+                    results.append(self._execute_operation(operation, dry_run=dry_run, yes=yes))
+                except Exception as exc:
+                    results.append(
+                        OperationResult(
+                            operation.capability_id,
+                            operation.host_id,
+                            operation.action.value,
+                            "FAILED",
+                            str(exc),
+                        )
+                    )
         return ExecutionResult(dry_run=dry_run, results=tuple(results))
 
     def _execute_operation(self, operation: Operation, dry_run: bool, yes: bool) -> OperationResult:
@@ -61,6 +73,13 @@ class Executor:
             return OperationResult(operation.capability_id, operation.host_id, operation.action.value, "PLANNED", operation.reason)
         if not yes:
             return OperationResult(operation.capability_id, operation.host_id, operation.action.value, "BLOCKED", "confirmation required")
+        if operation.kind == "run_command":
+            if not operation.argv:
+                raise ValueError("external command operation is missing argv")
+            completed = subprocess.run(operation.argv, check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            if completed.returncode:
+                detail = (completed.stderr or completed.stdout).strip()
+                raise RuntimeError(f"command exited {completed.returncode}: {detail}")
         installed_path = self._install_first_party_bundle(operation)
         self.state_dir.mkdir(parents=True, exist_ok=True)
         evidence_path = self.state_dir / "last-operation.json"

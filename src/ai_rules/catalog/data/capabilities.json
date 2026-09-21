@@ -69,8 +69,9 @@
       "delivery": [
         {"id": "superpowers-codex-marketplace", "mechanism": "PLUGIN_MARKETPLACE", "hosts": ["codex"], "preference": 20, "automated": false, "finalization": "Install Superpowers from Codex plugin marketplace", "target_hint": "Codex plugin marketplace"},
         {"id": "superpowers-claude-marketplace", "mechanism": "PLUGIN_MARKETPLACE", "hosts": ["claude-code"], "preference": 20, "automated": false, "finalization": "Register and install Superpowers through Claude Code plugin marketplace", "target_hint": "Claude Code plugin marketplace"},
-        {"id": "superpowers-opencode-plugin", "mechanism": "HOST_PLUGIN_CONFIG", "hosts": ["opencode"], "preference": 10, "automated": true, "argv": ["opencode", "plugin", "install", "superpowers"], "target_hint": "OpenCode plugin manager"},
-        {"id": "superpowers-antigravity-repository", "mechanism": "PLUGIN_REPOSITORY", "hosts": ["antigravity-cli", "antigravity-ide"], "preference": 30, "automated": false, "finalization": "Install the current Antigravity-supported Superpowers repository/plugin path", "target_hint": "Antigravity plugin repository"}
+        {"id": "superpowers-opencode-plugin", "mechanism": "HOST_PLUGIN_CONFIG", "hosts": ["opencode"], "preference": 10, "automated": false, "finalization": "Ask OpenCode to fetch and follow https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.opencode/INSTALL.md", "target_hint": "OpenCode plugin manager"},
+        {"id": "superpowers-antigravity-cli-repository", "mechanism": "PLUGIN_REPOSITORY", "hosts": ["antigravity-cli"], "preference": 10, "automated": true, "argv": ["agy", "plugin", "install", "https://github.com/obra/superpowers"], "target_hint": "Antigravity plugin repository"},
+        {"id": "superpowers-antigravity-ide-repository", "mechanism": "PLUGIN_REPOSITORY", "hosts": ["antigravity-ide"], "preference": 30, "automated": false, "finalization": "Install Superpowers from Antigravity IDE's supported plugin interface", "target_hint": "Antigravity IDE plugin repository"}
       ],
       "verification": ["host_discovery", "runtime_health"],
       "secret_policy": {"persist_values": false},

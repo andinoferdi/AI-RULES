@@ -139,6 +139,7 @@ class Host:
     mechanisms: tuple[Mechanism, ...]
     global_skill_path: str | None = None
     project_skill_path: str = ".agents/skills"
+    project_skill_aliases: tuple[str, ...] = ()
     mcp_config_hint: str | None = None
 
     @classmethod
@@ -153,6 +154,7 @@ class Host:
             mechanisms=tuple(Mechanism(item) for item in data.get("mechanisms", ())),
             global_skill_path=data.get("global_skill_path"),
             project_skill_path=data.get("project_skill_path", ".agents/skills"),
+            project_skill_aliases=tuple(str(item) for item in data.get("project_skill_aliases", ())),
             mcp_config_hint=data.get("mcp_config_hint"),
         )
 

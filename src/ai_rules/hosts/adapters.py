@@ -44,6 +44,15 @@ class StaticHostAdapter:
             return None
         return Path(self.host.global_skill_path.replace("~", str(self.home), 1))
 
+    def skill_discovery_roots(self, scope: Scope, project_root: Path | None = None) -> tuple[Path, ...]:
+        primary = self.skill_target(scope, project_root)
+        if primary is None:
+            return ()
+        if scope != Scope.PROJECT or project_root is None:
+            return (primary,)
+        aliases = tuple(project_root / path for path in self.host.project_skill_aliases)
+        return tuple(dict.fromkeys((primary, *aliases)))
+
     def plan_mcp_registration(self, capability_id: str, scope: Scope) -> tuple[Operation, ...]:
         return (
             Operation(

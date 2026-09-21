@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 from ai_rules.capabilities.base import CapabilityAdapter
 from ai_rules.catalog.loader import Catalog
@@ -64,8 +64,16 @@ class Resolver:
                     target_version = self.capability_adapter.resolve_target(capability)
                 action, assessment, status, reason = self._reconcile(actual, target_version, strategy.automated)
                 operations = self._operations_for(action, capability_id, host_id, request.scope, strategy.id, reason, target_version)
-                if action == ReconciliationAction.INSTALL:
-                    operations = self.capability_adapter.plan_operations(capability, host_id, request.scope)
+                if action in {
+                    ReconciliationAction.INSTALL,
+                    ReconciliationAction.UPDATE,
+                    ReconciliationAction.REPAIR,
+                    ReconciliationAction.RECONFIGURE,
+                }:
+                    operations = tuple(
+                        replace(operation, action=action, reason=reason)
+                        for operation in self.capability_adapter.plan_operations(capability, host_id, request.scope)
+                    )
                 if action == ReconciliationAction.MANUAL_ACTION:
                     operations = (
                         Operation(

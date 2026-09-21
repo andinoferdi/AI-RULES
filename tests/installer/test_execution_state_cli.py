@@ -83,6 +83,34 @@ class ExecutionStateCliTests(unittest.TestCase):
             result = Executor(Path(temp)).execute(plan, dry_run=False, yes=False)
             self.assertEqual("BLOCKED", result.results[0].status)
 
+    def test_executor_continues_independent_target_after_failed_operation(self):
+        """Fails if one invalid bundle aborts later independent target operations."""
+        def target(capability_id: str) -> PlanTarget:
+            operation = Operation(
+                kind="capability_operation", capability_id=capability_id, host_id="codex", scope=Scope.GLOBAL,
+                action=ReconciliationAction.INSTALL, source="first-party", target=capability_id, reason="test",
+            )
+            return PlanTarget(
+                capability_id=capability_id, host_id="codex", scope=Scope.GLOBAL, action=ReconciliationAction.INSTALL,
+                assessment=ReconciliationAssessment.VERSION_UNKNOWN, status=TargetStatus.PLANNED,
+                strategy_id="first-party-file", reason="test", operations=(operation,), actual=ActualState(),
+            )
+
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            valid = root / "valid"
+            valid.mkdir()
+            (valid / "SKILL.md").write_text("# Valid\n", encoding="utf-8")
+            invalid = root / "invalid"
+            invalid.mkdir()
+            plan = InstallationPlan(schema_version=1, profile_id=None, targets=(target("broken"), target("valid")))
+            result = Executor(
+                root / "state", first_party_bundles={"broken": invalid, "valid": valid},
+                host_skill_roots={"codex": root / "skills"},
+            ).execute(plan, dry_run=False, yes=True)
+            self.assertEqual(["FAILED", "APPLIED"], [item.status for item in result.results])
+            self.assertTrue((root / "skills" / "valid" / "SKILL.md").exists())
+
     def test_profile_and_snapshot_are_secret_free(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -189,6 +217,24 @@ class ExecutionStateCliTests(unittest.TestCase):
             self.assertEqual(0, completed.returncode, completed.stderr)
             self.assertFalse((root / "state" / "profile.json").exists())
             self.assertFalse((root / "state" / "managed-installations.json").exists())
+
+    def test_cli_blocks_opencode_install_when_discovery_alias_already_has_skill(self):
+        """Fails if OpenCode receives a duplicate skill through its .claude discovery alias."""
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            duplicate = root / "project" / ".claude" / "skills" / "andino-workflow"
+            duplicate.mkdir(parents=True)
+            (duplicate / "SKILL.md").write_text("# Existing skill\n", encoding="utf-8")
+            completed = subprocess.run(
+                [
+                    sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "opencode",
+                    "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
+                    "--dry-run", "--non-interactive",
+                ],
+                check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            )
+            self.assertEqual(1, completed.returncode, completed.stderr)
+            self.assertIn("BLOCK", completed.stdout)
 
     def test_cli_setup_updates_older_managed_first_party_installation(self):
         """Fails if a managed installation below the release target is reclassified as install or no-op."""

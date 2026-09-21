@@ -42,7 +42,7 @@ run it locally in addition to CI's package, unit-test and traceability checks.
 
 The [skripsi v0.9 audit](docs/validation/skripsi-skill/contract-review.md) and [requirement inventory](docs/validation/skripsi-skill/traceability.json) distinguish implementation ownership from live behavioral evidence. The [evaluation guide](evals/README.md) describes opt-in isolated execution; CI never invokes a model or incurs live evaluation usage.
 
-## AI-RULES installer/orchestrator source mode
+## AI-RULES installer/orchestrator
 
 The installer control plane is being introduced on `main` without changing runtime skill branch behavior. In source mode, set `PYTHONPATH=src` and run:
 
@@ -51,4 +51,13 @@ python -m ai_rules setup --profile minimal --host codex --dry-run --non-interact
 python -m ai_rules doctor --profile minimal --host codex --dry-run
 ```
 
-Current source-mode support covers catalog/profile validation, deterministic plan rendering, reconciliation actions, doctor previews, secret-free state helpers, and snapshot dry-runs. Live host mutation, external upstream installation, and standalone release/bootstrap claims require the additional evidence tracked in `GRAND-PLAN.md`.
+For development or an environment with Python 3.11+, use source mode:
+
+```sh
+python -m pip install --editable .
+python -m ai_rules setup --profile minimal --host codex --dry-run --non-interactive
+```
+
+Release artifacts are built per operating system with `python scripts/build_release.py`; the command emits `release-manifest.json` and `SHA256SUMS`. On a fresh machine, set `AI_RULES_RELEASE_BASE_URL` to that release directory and run `scripts/bootstrap.ps1` (Windows) or `scripts/bootstrap.sh` (macOS/Linux). The bootstrap verifies the checksum before installing the executable and delegates all setup behavior to `ai-rules setup`.
+
+Manual host installation remains a supported fallback when a host requires its own marketplace or OAuth flow. The installer reports those paths as manual or partially verified and never stores API keys, bearer tokens, or OAuth credentials in AI-RULES state. See `GRAND-PLAN.md` for current host-specific verification evidence.

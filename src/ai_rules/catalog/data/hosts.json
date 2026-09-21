@@ -29,6 +29,7 @@
       "mechanisms": ["SKILL_DIRECTORY", "HOST_PLUGIN_CONFIG", "MCP_STDIO", "MCP_HTTP", "GLOBAL_SKILL_SCOPE", "PROJECT_SKILL_SCOPE"],
       "global_skill_path": "~/.config/opencode/skills",
       "project_skill_path": ".agents/skills",
+      "project_skill_aliases": [".claude/skills"],
       "mcp_config_hint": "~/.config/opencode/opencode.json"
     },
     {

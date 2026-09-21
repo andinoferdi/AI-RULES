@@ -38,6 +38,14 @@ class CatalogProfileTests(unittest.TestCase):
             Path("/workspace/.agents/skills"),
             adapters["antigravity-cli"].skill_target(Scope.PROJECT, Path("/workspace")),
         )
+        self.assertEqual(Path("/home/andino/.claude/skills"), adapters["claude-code"].skill_target(Scope.GLOBAL))
+        self.assertEqual(Path("/workspace/.claude/skills"), adapters["claude-code"].skill_target(Scope.PROJECT, Path("/workspace")))
+        self.assertEqual(Path("/home/andino/.config/opencode/skills"), adapters["opencode"].skill_target(Scope.GLOBAL))
+        self.assertEqual(Path("/workspace/.agents/skills"), adapters["opencode"].skill_target(Scope.PROJECT, Path("/workspace")))
+        self.assertEqual(
+            (Path("/workspace/.agents/skills"), Path("/workspace/.claude/skills")),
+            adapters["opencode"].skill_discovery_roots(Scope.PROJECT, Path("/workspace")),
+        )
 
     def test_antigravity_cli_detection_uses_agy_binary(self):
         """Fails if a present official Antigravity CLI is checked under its obsolete executable name."""
@@ -47,6 +55,17 @@ class CatalogProfileTests(unittest.TestCase):
             detection = adapter.detect()
         which.assert_called_once_with("agy")
         self.assertEqual(DetectionStatus.PRESENT, detection.status)
+
+    def test_claude_and_opencode_detection_use_their_cli_binaries(self):
+        """Fails if a detected host is checked under a different executable than its adapter contract."""
+        catalog = load_catalog()
+        adapters = build_host_adapters(catalog.hosts)
+        with patch("ai_rules.hosts.adapters.shutil.which", side_effect=["/bin/claude", "/bin/opencode"]) as which:
+            claude = adapters["claude-code"].detect()
+            opencode = adapters["opencode"].detect()
+        self.assertEqual(DetectionStatus.PRESENT, claude.status)
+        self.assertEqual(DetectionStatus.PRESENT, opencode.status)
+        self.assertEqual(["claude", "opencode"], [call.args[0] for call in which.call_args_list])
 
     def test_profiles_validate_and_everything_is_not_default(self):
         catalog = load_catalog()

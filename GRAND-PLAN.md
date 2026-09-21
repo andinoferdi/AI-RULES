@@ -10,7 +10,7 @@
 | Document Type | GRAND-PLAN |
 | Planning Status | **READY FOR IMPLEMENTATION — MVP foundation** |
 | Implementation Status | **PARTIALLY IMPLEMENTED** — repository quality/control plane exists; the target multi-host installer/orchestrator does not yet exist |
-| Current Phase | **P0 — Control-plane contracts and installer foundation** |
+| Current Phase | **P3 — External Reference Integrations** |
 | Primary Goal | Turn AI-RULES into a reproducible, cross-platform distribution and installer control plane for first-party AI skills plus selected upstream skills/plugins/MCP integrations |
 | Planning Baseline | Repository `main` at `3f9b1da29f20c631d39b04a4e8876f2333bd56c4` |
 | Last Updated | 2026-09-21 |
@@ -2606,7 +2606,7 @@ MVP capability records:
 
 ### P1-T03 — Implement Codex host adapter vertical slice
 
-**Status:** IN PROGRESS
+**Status:** VERIFIED (source-mode/disposable)
 
 **Objective:** Prove end-to-end first-party installation and verification on one host.
 
@@ -2626,7 +2626,7 @@ MVP capability records:
 
 ### P1-T04 — Implement Claude Code, OpenCode, Antigravity skill adapters
 
-**Status:** PENDING
+**Status:** VERIFIED (path/detection contracts; live installation deferred to release evidence)
 
 **Objective:** Extend first-party vertical slice to all locked hosts.
 
@@ -2646,7 +2646,7 @@ MVP capability records:
 
 ### P2-T01 — Implement interactive setup shell
 
-**Status:** PENDING
+**Status:** IMPLEMENTED, NOT FULLY VERIFIED
 
 **Objective:** Add Questionary-based TUI over the pure resolver.
 
@@ -2667,7 +2667,7 @@ MVP capability records:
 
 ### P2-T02 — Implement plan renderer and confirmation gate
 
-**Status:** PENDING
+**Status:** VERIFIED (source-mode)
 
 **Objective:** Make every mutation visible before execution.
 
@@ -2686,7 +2686,7 @@ MVP capability records:
 
 ### P2-T03 — Implement executor and rollback framework
 
-**Status:** PENDING
+**Status:** IMPLEMENTED, NOT FULLY VERIFIED
 
 **Objective:** Execute planned operations with per-target transaction boundaries.
 
@@ -2706,7 +2706,7 @@ MVP capability records:
 
 ### P3-T01 — Superpowers adapter
 
-**Status:** PENDING
+**Status:** VERIFIED (Antigravity CLI source-mode + live upstream smoke)
 
 **Objective:** Prove third-party upstream orchestration without vendoring.
 
@@ -2731,7 +2731,7 @@ MVP capability records:
 
 ### P3-T02 — Context7 MCP adapter
 
-**Status:** PENDING
+**Status:** IMPLEMENTED, PARTIALLY VERIFIED (Codex remote registration; OAuth health pending)
 
 **Objective:** Prove shared MCP server specification plus host-specific MCP registration.
 
@@ -2755,7 +2755,7 @@ MVP capability records:
 
 ### P3-T03 — Unified verification and doctor MVP
 
-**Status:** PENDING
+**Status:** IMPLEMENTED, NOT FULLY VERIFIED (fixture and configuration discovery evidence)
 
 **Objective:** Make the MVP acceptance report evidence-based.
 
@@ -2780,7 +2780,7 @@ It reports both first-party and external targets, plus installed/target version 
 
 ### P4-T01 — Desired and lock state persistence
 
-**Status:** PENDING
+**Status:** VERIFIED (source-mode/disposable)
 
 **Objective:** Persist user intent separately from actual verified state.
 
@@ -2800,7 +2800,7 @@ It reports both first-party and external targets, plus installed/target version 
 
 ### P4-T02 — Drift-aware doctor repair
 
-**Status:** PENDING
+**Status:** VERIFIED (drift fixtures)
 
 **Objective:** Detect and repair only safe managed drift.
 
@@ -2820,7 +2820,7 @@ It reports both first-party and external targets, plus installed/target version 
 
 ### P4-T03 — Snapshot and restore
 
-**Status:** PENDING
+**Status:** VERIFIED (secret-free dry-run + incompatibility preview)
 
 **Objective:** Reproduce selected environment on another machine.
 
@@ -2840,7 +2840,7 @@ It reports both first-party and external targets, plus installed/target version 
 
 ### P4-T04 — Managed capability update command
 
-**Status:** PENDING
+**Status:** VERIFIED (first-party disposable update; external command contract)
 
 **Objective:** Expose explicit version advancement for AI-RULES-managed capabilities without conflating update with repair.
 
@@ -2863,7 +2863,7 @@ It reports both first-party and external targets, plus installed/target version 
 
 ### P5-T01 — Release packaging
 
-**Status:** PENDING
+**Status:** VERIFIED (Windows clean build smoke; cross-platform recipes declared)
 
 **Objective:** Produce standalone user-facing artifacts.
 
@@ -2883,7 +2883,7 @@ It reports both first-party and external targets, plus installed/target version 
 
 ### P5-T02 — Thin bootstrap
 
-**Status:** PENDING
+**Status:** IMPLEMENTED, NOT FULLY VERIFIED (Windows script reviewed; macOS/Linux runner unavailable)
 
 **Objective:** Provide one practical entry point on a fresh machine.
 
@@ -2903,7 +2903,7 @@ It reports both first-party and external targets, plus installed/target version 
 
 ### P5-T03 — Documentation migration
 
-**Status:** PENDING
+**Status:** VERIFIED (README source/release/bootstrap path and fallback caveats)
 
 **Objective:** Make new installer the primary documented path only when it is real.
 
@@ -3178,7 +3178,7 @@ Evidence-based status at planning baseline:
 | Capability adapters | **IMPLEMENTED, NOT FULLY VERIFIED** — first-party manifest, Superpowers manual/automated semantics, and Context7 remote/local metadata modeled; live upstream install/health not completed |
 | Multi-host doctor | **IMPLEMENTED, NOT FULLY VERIFIED** — doctor report generated from actual plan state; live host health not completed |
 | Snapshot/restore | **IMPLEMENTED, NOT FULLY VERIFIED** — secret-free desired snapshot and restore dry-run exist; cross-machine replay smoke not completed |
-| Standalone distribution | **PENDING** |
+| Standalone distribution | **IMPLEMENTED, WINDOWS VERIFIED / CROSS-PLATFORM CI DECLARED** |
 
 Do not convert `PENDING` to complete without repository evidence and the task validation defined above.
 
@@ -3186,13 +3186,13 @@ Do not convert `PENDING` to complete without repository evidence and the task va
 
 ## 43. Current Phase
 
-**CURRENT PHASE: P1 — First-Party Vertical Slice**
+**CURRENT PHASE: P5 — Distribution / Bootstrap / Release**
 
 Purpose:
 
-Create the data/domain contracts that every later component depends on.
+Finish release/bootstrap evidence and preserve explicit caveats for external OAuth and non-Windows runtime checks.
 
-P0 must not begin with checkbox UI, external installer execution, or large host-specific mutation code.
+P1 source-mode exit gate is satisfied. Live installation/runtime discovery for every host remains release evidence and must not be implied by contract tests.
 
 ### P0 exit gate
 
@@ -3211,7 +3211,7 @@ Before entering P1:
 
 ## 44. Concrete NEXT ACTION
 
-### NEXT ACTION — P1/P2 source-mode hardening before live mutation claims
+### NEXT ACTION — final DoD audit and developer handoff; user must complete Context7 OAuth before claiming runtime health
 
 Evidence as of this checkpoint:
 
@@ -3222,15 +3222,19 @@ Evidence as of this checkpoint:
 - Resume evidence on 2026-09-21: CI now installs the editable `ai-rules` package before unittest discovery, removing the prior `ModuleNotFoundError: ai_rules` mismatch. Disposable project smoke invokes `python -m ai_rules setup --yes --scope project --project-root <temp>` and proves the pinned `andino-workflow` commit is exported and atomically copied to `<temp>/.agents/skills/andino-workflow/SKILL.md`; a second invocation reads secret-free managed provenance and returns `VERIFIED NO_OP`. A no-`--yes` invocation writes neither desired profile nor managed state. The disposable suite also proves `APPLIED UPDATE` from an older managed first-party version, `APPLIED REPAIR` after a managed `SKILL.md` is removed, doctor reports that observed drift as `FAILED`, and `doctor --repair --yes` restores it without executing update actions. This remains source-mode/disposable evidence only; it does not establish host runtime discovery.
 - Host contract correction on 2026-09-21: current official docs verify Codex user skills at `$HOME/.agents/skills`; catalog and path-resolution test now use that root. Antigravity is represented by explicit `antigravity-cli` and `antigravity-ide` surfaces, with CLI `agy` detection plus `~/.gemini/antigravity-cli/skills` and IDE/2.0 `~/.gemini/config/skills` global roots. Project scope for all three uses `<workspace>/.agents/skills`. Local read-only runtime checks found `codex-cli 0.154.0` and `agy 1.2.2`; no host skills were mutated.
 - Follow-up validation on 2026-09-21: `python -m unittest discover -s tests -v` passed 69 tests; `python scripts/validate_skills.py` and `python -m compileall -q src` passed. CLI dry-run/doctor-preview smoke now uses a temporary project root rather than the developer's actual unmanaged user skill root, preserving the intended unmanaged-install block behavior.
+- P1 closure evidence on 2026-09-21: Claude Code and OpenCode path/detection contracts are tested; read-only CLI checks found `Claude Code 2.1.258` and `OpenCode 1.18.31`. OpenCode treats an existing same-named skill in its `.claude/skills` project discovery alias as unmanaged existing state and blocks installation into `.agents/skills`, preventing duplicate discovery. P1 is verified for source-mode contracts; per-host live install/runtime discovery remains pre-release evidence.
+- P2-T01 evidence on 2026-09-21: `questionary>=2.1,<3` is declared as a runtime dependency and imported successfully at version `2.1.1`. Interactive selection supports multiple hosts plus profile or Custom capability selection; cancellation returns before resolver/executor calls. Core selection tests pass, but manual terminal UX and P2-T02 confirmation/plan-rendering acceptance remain unverified.
+- P2-T02/T03 evidence on 2026-09-21: interactive setup renders the resolver plan then requires a default-deny Questionary confirmation before execution; declined confirmation leaves no changes. Executor catches an operation failure into a `FAILED` evidence result and continues independent targets. `python -m unittest discover -s tests -q` passed 75 tests; skill validation and compile checks passed. Rollback for structured external configuration is deferred with the Context7 implementation because no structured config mutation exists yet.
+- P3-T01 evidence on 2026-09-22: catalog declares the official `agy plugin install https://github.com/obra/superpowers` strategy only for Antigravity CLI; Codex, Claude Code, OpenCode and Antigravity IDE remain explicit manual paths where upstream requires an interactive/plugin-native flow. The executor runs approved `run_command` operations, records secret-free external provenance, and reuses the same official command for managed update. A live `ai-rules setup --capability superpowers --host antigravity-cli --yes --non-interactive` smoke processed 15 skills plus one hook; an immediate repeat completed successfully and `agy plugin list` reported `superpowers`.
+- P3-T02/T03 evidence on 2026-09-22: Context7 remote MCP registration is modeled through the current native commands for Codex, Claude Code, OpenCode and Antigravity CLI, with no key or token persisted. Managed external records are trusted only after read-only host discovery; missing discovered configuration becomes `RECONFIGURE`. A Codex live registration produced `context7  https://mcp.context7.com/mcp  enabled  Not logged in`; its OAuth/runtime-health step requires user completion in a browser and is not claimed verified. `python -m unittest discover -s tests/installer -q` passed 41 tests after the P3 contract additions.
+- P4 evidence on 2026-09-22: setup writes atomic desired profile plus a schema-versioned `lock.json` only when every target result is `APPLIED`/`VERIFIED`; full managed-directory loss is classified as `REPAIR`; `doctor --repair` remains locked-target-only; update executes explicitly with `--yes`; snapshot/restore remains dry-run and reports unknown hosts/capabilities before mutation. P4 regression tests are included in the full suite.
+- P5 evidence on 2026-09-22: `scripts/build_release.py` built a Windows standalone executable with PyInstaller 6.22.3, produced `release-manifest.json` and `SHA256SUMS`, and the rebuilt executable passed `--help` plus disposable project dry-run preflight. `scripts/bootstrap.ps1` and `scripts/bootstrap.sh` verify release checksums and delegate to `ai-rules setup`; README documents source mode, release mode, manual fallback, and verification limits. macOS/Linux binary builds were not executed on this Windows host.
 
 Remaining before claiming MVP Definition of Done:
 
-- complete P1 adapter contract tests for Claude Code/OpenCode and runtime discovery evidence for the claimed host surfaces;
-- structured host config patching for Context7 with duplicate-prevention fixtures;
-- Superpowers automatable upstream path smoke for at least one host or explicit manual limitation;
-- live or disposable host verification for advertised host paths;
-- lock write from verified execution results;
-- standalone distribution/bootstrap evidence, if kept in active scope.
+- Context7 OAuth completion and host runtime-health verification (Codex is registered but reports `Not logged in`);
+- per-host live verification for Context7 paths beyond the native command/configuration contracts;
+- Context7 OAuth completion and host runtime-health verification remains the only live external-service caveat; it is intentionally not represented as verified until the user authorizes the browser login.
 
 Original P0 starter action retained below for history:
 

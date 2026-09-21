@@ -2,9 +2,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import subprocess
 import sys
 from importlib import resources
 from pathlib import Path
+from typing import Callable
 
 from ai_rules.capabilities.adapters import StaticCapabilityAdapter
 from ai_rules.catalog import load_catalog
@@ -12,6 +14,7 @@ from ai_rules.domain.models import ActualState, InstallationPlan
 from ai_rules.domain.statuses import InstalledOwnership, ReconciliationAction, Scope
 from ai_rules.execution import Executor
 from ai_rules.hosts.adapters import build_host_adapters
+from ai_rules.interactive import prompt_confirmation, prompt_selection
 from ai_rules.planning import render_plan
 from ai_rules.platform import detect_environment, state_root
 from ai_rules.profiles import load_profiles
@@ -75,19 +78,41 @@ def add_common_setup_flags(parser: argparse.ArgumentParser) -> None:
 
 
 def cmd_setup(args: argparse.Namespace) -> int:
+    interactive = False
+    if not args.non_interactive and not args.hosts and not args.capabilities and args.profile == "minimal":
+        catalog = load_catalog()
+        profiles = load_profiles(catalog)
+        selection = prompt_selection(
+            host_ids=tuple(catalog.hosts),
+            profile_ids=tuple(profiles.profiles),
+            capability_ids=tuple(catalog.capabilities),
+        )
+        if selection is None:
+            print("setup cancelled; no changes made")
+            return 0
+        args.hosts = list(selection.hosts)
+        args.profile = selection.profile_id or "custom"
+        args.capabilities = list(selection.capabilities)
+        interactive = True
     plan = _resolve_from_args(args)
     print(_preflight_text())
     print(render_plan(plan))
     if args.dry_run:
         return 1 if plan.blocked else 0
+    if interactive and not args.yes and not prompt_confirmation():
+        print("setup cancelled; no changes made")
+        return 0
+    if interactive:
+        args.yes = True
     result = _executor_for_plan(plan, args).execute(plan, dry_run=False, yes=args.yes)
     for item in result.results:
         print(f"{item.capability_id} -> {item.host_id}: {item.status} {item.action} - {item.message}")
     if not args.yes:
         return 0
-    _record_managed_first_party_installations(plan, result, args)
+    _record_managed_installations(plan, result, args)
     capabilities = tuple(args.capabilities) if args.capabilities else tuple(_profile_capabilities(args.profile))
     write_profile(args.state_dir / "profile.json", args.profile, tuple(_hosts(args.hosts)), capabilities, args.scope)
+    _write_verified_lock(plan, result, args)
     return 0
 
 
@@ -104,7 +129,7 @@ def cmd_doctor(args: argparse.Namespace) -> int:
             result = _executor_for_plan(repair_plan, args).execute(repair_plan, dry_run=False, yes=True)
             for item in result.results:
                 print(f"{item.capability_id} -> {item.host_id}: {item.status} {item.action} - {item.message}")
-            _record_managed_first_party_installations(repair_plan, result, args)
+            _record_managed_installations(repair_plan, result, args)
     return 0 if not plan.blocked else 1
 
 
@@ -112,7 +137,14 @@ def cmd_update(args: argparse.Namespace) -> int:
     plan = _resolve_from_args(args)
     print("AI-RULES update preview")
     print(render_plan(plan))
-    return 1 if plan.blocked else 0
+    if args.dry_run or not args.yes:
+        return 1 if plan.blocked else 0
+    result = _executor_for_plan(plan, args).execute(plan, dry_run=False, yes=True)
+    for item in result.results:
+        print(f"{item.capability_id} -> {item.host_id}: {item.status} {item.action} - {item.message}")
+    _record_managed_installations(plan, result, args)
+    _write_verified_lock(plan, result, args)
+    return 1 if any(item.status in {"FAILED", "SKIPPED", "BLOCKED"} for item in result.results) else 0
 
 
 def cmd_snapshot(args: argparse.Namespace) -> int:
@@ -126,6 +158,13 @@ def cmd_restore(args: argparse.Namespace) -> int:
     profile = snapshot.get("profile", {})
     print("AI-RULES restore dry-run")
     print(f"profile={profile.get('profile')} hosts={profile.get('hosts', [])} capabilities={profile.get('capabilities', [])}")
+    catalog = load_catalog()
+    for host_id in profile.get("hosts", []):
+        if host_id not in catalog.hosts:
+            print(f"incompatible host: {host_id}")
+    for capability_id in profile.get("capabilities", []):
+        if capability_id not in catalog.capabilities:
+            print(f"incompatible capability: {capability_id}")
     print("restore requires setup confirmation before mutation")
     return 0
 
@@ -176,19 +215,57 @@ def _executor_for_plan(plan, args: argparse.Namespace) -> Executor:
     return Executor(args.state_dir, first_party_bundles=bundles, host_skill_roots=roots)
 
 
-def _actual_state(catalog, args: argparse.Namespace) -> dict[tuple[str, str, str], ActualState]:
+def _actual_state(
+    catalog,
+    args: argparse.Namespace,
+    external_probe: Callable[[str, str], bool] | None = None,
+) -> dict[tuple[str, str, str], ActualState]:
     records = _managed_installation_records(args.state_dir)
     adapters = build_host_adapters(catalog.hosts)
     result: dict[tuple[str, str, str], ActualState] = {}
     scope = Scope(args.scope)
+    probe = external_probe or _external_config_present
     for host_id in _hosts(args.hosts):
-        root = adapters[host_id].skill_target(scope, args.project_root)
+        adapter = adapters[host_id]
+        root = adapter.skill_target(scope, args.project_root)
         if root is None:
             continue
         for capability_id in catalog.capabilities:
-            target = root / capability_id
+            capability = catalog.require_capability(capability_id)
             key = _installation_key(capability_id, host_id, scope)
+            if capability.ownership.value == "EXTERNAL":
+                record = records.get(key)
+                present = probe(capability_id, host_id)
+                if present:
+                    result[(capability_id, host_id, scope.value)] = ActualState(
+                        exists=True,
+                        ownership=(InstalledOwnership.MANAGED_BY_AI_RULES if record else InstalledOwnership.EXTERNAL_EXISTING),
+                        installed_version=record.get("version") if record else None,
+                        healthy=record is not None,
+                    )
+                elif record:
+                    result[(capability_id, host_id, scope.value)] = ActualState(
+                        exists=True,
+                        ownership=InstalledOwnership.MANAGED_BY_AI_RULES,
+                        installed_version=record.get("version"),
+                        config_drift=True,
+                    )
+                continue
+            target = root / capability_id
             if not target.exists():
+                aliases = adapter.skill_discovery_roots(scope, args.project_root)[1:]
+                if any((alias / capability_id).exists() for alias in aliases):
+                    result[(capability_id, host_id, scope.value)] = ActualState(
+                        exists=True, ownership=InstalledOwnership.EXTERNAL_EXISTING
+                    )
+                elif record := records.get(key):
+                    result[(capability_id, host_id, scope.value)] = ActualState(
+                        exists=True,
+                        ownership=InstalledOwnership.MANAGED_BY_AI_RULES,
+                        installed_version=record.get("version"),
+                        healthy=False,
+                        artifact_drift=True,
+                    )
                 continue
             record = records.get(key)
             if record is None:
@@ -206,7 +283,25 @@ def _actual_state(catalog, args: argparse.Namespace) -> dict[tuple[str, str, str
     return result
 
 
-def _record_managed_first_party_installations(plan, result, args: argparse.Namespace) -> None:
+def _external_config_present(capability_id: str, host_id: str) -> bool:
+    commands = {
+        ("superpowers", "antigravity-cli"): ("agy", "plugin", "list"),
+        ("context7", "codex"): ("codex", "mcp", "list"),
+        ("context7", "claude-code"): ("claude", "mcp", "list"),
+        ("context7", "opencode"): ("opencode", "mcp", "list"),
+        ("context7", "antigravity-cli"): ("agy", "mcp", "list"),
+    }
+    command = commands.get((capability_id, host_id))
+    if command is None:
+        return False
+    try:
+        completed = subprocess.run(command, check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=15)
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+    return completed.returncode == 0 and capability_id.lower() in completed.stdout.lower()
+
+
+def _record_managed_installations(plan, result, args: argparse.Namespace) -> None:
     records = _managed_installation_records(args.state_dir)
     applied = {(item.capability_id, item.host_id, item.action) for item in result.results if item.status == "APPLIED"}
     catalog = load_catalog()
@@ -214,18 +309,28 @@ def _record_managed_first_party_installations(plan, result, args: argparse.Names
     for target in plan.targets:
         if (target.capability_id, target.host_id, target.action.value) not in applied:
             continue
-        if target.capability_id not in _release_manifest().get("first_party", {}):
-            continue
-        root = adapters[target.host_id].skill_target(target.scope, args.project_root)
-        if root is None:
-            continue
-        records[_installation_key(target.capability_id, target.host_id, target.scope)] = {
-            "capability": target.capability_id,
-            "host": target.host_id,
-            "scope": target.scope.value,
-            "version": target.target_version,
-            "path": str(root / target.capability_id),
-        }
+        key = _installation_key(target.capability_id, target.host_id, target.scope)
+        if target.capability_id in _release_manifest().get("first_party", {}):
+            root = adapters[target.host_id].skill_target(target.scope, args.project_root)
+            if root is None:
+                continue
+            records[key] = {
+                "capability": target.capability_id,
+                "host": target.host_id,
+                "scope": target.scope.value,
+                "version": target.target_version,
+                "path": str(root / target.capability_id),
+                "kind": "first-party-skill",
+            }
+        else:
+            records[key] = {
+                "capability": target.capability_id,
+                "host": target.host_id,
+                "scope": target.scope.value,
+                "version": target.target_version,
+                "kind": "external-operation",
+                "target": next((operation.target for operation in target.operations), target.strategy_id),
+            }
     atomic_write_json(args.state_dir / "managed-installations.json", {"schema_version": 1, "installations": records})
 
 
@@ -234,6 +339,34 @@ def _managed_installation_records(state_dir: Path) -> dict[str, dict]:
     if not path.exists():
         return {}
     return dict(read_json(path).get("installations", {}))
+
+
+def _write_verified_lock(plan, result, args: argparse.Namespace) -> None:
+    if not result.results or any(item.status not in {"APPLIED", "VERIFIED"} for item in result.results):
+        return
+    result_by_key = {(item.capability_id, item.host_id, item.action): item for item in result.results}
+    targets = []
+    for target in plan.targets:
+        item = result_by_key.get((target.capability_id, target.host_id, target.action.value))
+        if item is None:
+            continue
+        targets.append(
+            {
+                "capability": target.capability_id,
+                "host": target.host_id,
+                "scope": target.scope.value,
+                "action": target.action.value,
+                "target_version": target.target_version,
+                "assessment": target.assessment.value,
+                "status": item.status,
+            }
+        )
+    if len(targets) != len(plan.targets):
+        return
+    atomic_write_json(
+        args.state_dir / "lock.json",
+        {"schema_version": 1, "status": "verified", "profile": plan.profile_id, "targets": targets},
+    )
 
 
 def _installation_key(capability_id: str, host_id: str, scope: Scope) -> str:
