@@ -73,4 +73,5 @@ Keep CURRENT STATE, CURRENT PHASE, EVIDENCE and a concrete NEXT ACTION current.
 Verify changed behavior and required project checks within the anti-loop rules and the
 ticket's stop condition. Report unavailable validation honestly. Mark DONE only when
 acceptance criteria are satisfied; otherwise leave an actionable checkpoint. Do not
-commit, push, merge, publish or deploy without the user's authorization for that action.
+commit, push, merge, publish, deploy or modify live data without the user's
+authorization for that action. Skill activation alone grants no additional permission.
