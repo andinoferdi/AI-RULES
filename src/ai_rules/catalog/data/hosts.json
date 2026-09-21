@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "hosts": [
+    {
+      "schema_version": 1,
+      "id": "codex",
+      "display_name": "Codex",
+      "scopes": ["global", "project"],
+      "mechanisms": ["SKILL_DIRECTORY", "PLUGIN_MARKETPLACE", "MCP_HTTP", "MCP_STDIO", "MCP_OAUTH", "GLOBAL_SKILL_SCOPE", "PROJECT_SKILL_SCOPE"],
+      "global_skill_path": "~/.codex/skills",
+      "project_skill_path": ".agents/skills",
+      "mcp_config_hint": "codex mcp"
+    },
+    {
+      "schema_version": 1,
+      "id": "claude-code",
+      "display_name": "Claude Code",
+      "scopes": ["global", "project"],
+      "mechanisms": ["SKILL_DIRECTORY", "PLUGIN_MARKETPLACE", "MCP_HTTP", "MCP_STDIO", "MCP_OAUTH", "GLOBAL_SKILL_SCOPE", "PROJECT_SKILL_SCOPE"],
+      "global_skill_path": "~/.claude/skills",
+      "project_skill_path": ".claude/skills",
+      "mcp_config_hint": "claude mcp"
+    },
+    {
+      "schema_version": 1,
+      "id": "opencode",
+      "display_name": "OpenCode",
+      "scopes": ["global", "project"],
+      "mechanisms": ["SKILL_DIRECTORY", "HOST_PLUGIN_CONFIG", "MCP_STDIO", "MCP_HTTP", "GLOBAL_SKILL_SCOPE", "PROJECT_SKILL_SCOPE"],
+      "global_skill_path": "~/.config/opencode/skills",
+      "project_skill_path": ".agents/skills",
+      "mcp_config_hint": "~/.config/opencode/opencode.json"
+    },
+    {
+      "schema_version": 1,
+      "id": "antigravity",
+      "display_name": "Antigravity",
+      "scopes": ["global", "project"],
+      "mechanisms": ["SKILL_DIRECTORY", "PLUGIN_REPOSITORY", "MCP_STDIO", "MCP_HTTP", "GLOBAL_SKILL_SCOPE", "PROJECT_SKILL_SCOPE"],
+      "global_skill_path": "~/.gemini/antigravity-cli/skills",
+      "project_skill_path": ".agents/skills",
+      "mcp_config_hint": "Antigravity MCP config"
+    }
+  ]
+}

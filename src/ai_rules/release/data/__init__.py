@@ -1,0 +1,1 @@
+"""Packaged release manifest data."""

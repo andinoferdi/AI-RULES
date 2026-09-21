@@ -41,3 +41,14 @@ The live-audit command checks saved evidence consistency without executing a mod
 run it locally in addition to CI's package, unit-test and traceability checks.
 
 The [skripsi v0.9 audit](docs/validation/skripsi-skill/contract-review.md) and [requirement inventory](docs/validation/skripsi-skill/traceability.json) distinguish implementation ownership from live behavioral evidence. The [evaluation guide](evals/README.md) describes opt-in isolated execution; CI never invokes a model or incurs live evaluation usage.
+
+## AI-RULES installer/orchestrator source mode
+
+The installer control plane is being introduced on `main` without changing runtime skill branch behavior. In source mode, set `PYTHONPATH=src` and run:
+
+```sh
+python -m ai_rules setup --profile minimal --host codex --dry-run --non-interactive
+python -m ai_rules doctor --profile minimal --host codex --dry-run
+```
+
+Current source-mode support covers catalog/profile validation, deterministic plan rendering, reconciliation actions, doctor previews, secret-free state helpers, and snapshot dry-runs. Live host mutation, external upstream installation, and standalone release/bootstrap claims require the additional evidence tracked in `GRAND-PLAN.md`.

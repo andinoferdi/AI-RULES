@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "capabilities": [
+    {
+      "schema_version": 1,
+      "id": "andino-workflow",
+      "display_name": "Andino Workflow",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "REQUIRED",
+      "source": {"repository": "https://github.com/andinoferdi/AI-RULES", "branch": "andino-workflow", "trust": "first_party", "verified_at": "2026-09-21"},
+      "provides": ["workflow-lifecycle"],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {"id": "first-party-skill-directory", "mechanism": "SKILL_DIRECTORY", "hosts": ["codex", "claude-code", "opencode", "antigravity"], "preference": 10, "automated": true, "target_hint": "skill directory"}
+      ],
+      "verification": ["artifact", "host_discovery"],
+      "secret_policy": {"persist_values": false},
+      "update_policy": {"model": "release_manifest", "default_channel": "stable", "version_observability": "full", "exact_pin_supported": true}
+    },
+    {
+      "schema_version": 1,
+      "id": "ai-codebase-rescue",
+      "display_name": "AI Codebase Rescue",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {"repository": "https://github.com/andinoferdi/AI-RULES", "branch": "ai-codebase-rescue", "trust": "first_party", "verified_at": "2026-09-21"},
+      "provides": ["codebase-stabilization"],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {"id": "first-party-skill-directory", "mechanism": "SKILL_DIRECTORY", "hosts": ["codex", "claude-code", "opencode", "antigravity"], "preference": 10, "automated": true, "target_hint": "skill directory"}
+      ],
+      "verification": ["artifact", "host_discovery"],
+      "secret_policy": {"persist_values": false},
+      "update_policy": {"model": "release_manifest", "default_channel": "stable", "version_observability": "full", "exact_pin_supported": true}
+    },
+    {
+      "schema_version": 1,
+      "id": "skripsi-skill",
+      "display_name": "Skripsi Skill",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {"repository": "https://github.com/andinoferdi/AI-RULES", "branch": "skripsi-skill", "trust": "first_party", "verified_at": "2026-09-21"},
+      "provides": ["thesis-research-guidance"],
+      "requires": [],
+      "recommends": ["context7"],
+      "delivery": [
+        {"id": "first-party-skill-directory", "mechanism": "SKILL_DIRECTORY", "hosts": ["codex", "claude-code", "opencode", "antigravity"], "preference": 10, "automated": true, "target_hint": "skill directory"}
+      ],
+      "verification": ["artifact", "host_discovery"],
+      "secret_policy": {"persist_values": false},
+      "update_policy": {"model": "release_manifest", "default_channel": "stable", "version_observability": "full", "exact_pin_supported": true}
+    },
+    {
+      "schema_version": 1,
+      "id": "superpowers",
+      "display_name": "Superpowers",
+      "ownership": "EXTERNAL",
+      "kind": "plugin",
+      "importance": "RECOMMENDED",
+      "source": {"repository": "https://github.com/obra/superpowers", "trust": "official_upstream", "verified_at": "2026-09-21"},
+      "provides": ["agentic-workflow-skills"],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {"id": "superpowers-codex-marketplace", "mechanism": "PLUGIN_MARKETPLACE", "hosts": ["codex"], "preference": 20, "automated": false, "finalization": "Install Superpowers from Codex plugin marketplace", "target_hint": "Codex plugin marketplace"},
+        {"id": "superpowers-claude-marketplace", "mechanism": "PLUGIN_MARKETPLACE", "hosts": ["claude-code"], "preference": 20, "automated": false, "finalization": "Register and install Superpowers through Claude Code plugin marketplace", "target_hint": "Claude Code plugin marketplace"},
+        {"id": "superpowers-opencode-plugin", "mechanism": "HOST_PLUGIN_CONFIG", "hosts": ["opencode"], "preference": 10, "automated": true, "argv": ["opencode", "plugin", "install", "superpowers"], "target_hint": "OpenCode plugin manager"},
+        {"id": "superpowers-antigravity-repository", "mechanism": "PLUGIN_REPOSITORY", "hosts": ["antigravity"], "preference": 30, "automated": false, "finalization": "Install the current Antigravity-supported Superpowers repository/plugin path", "target_hint": "Antigravity plugin repository"}
+      ],
+      "verification": ["host_discovery", "runtime_health"],
+      "secret_policy": {"persist_values": false},
+      "update_policy": {"model": "marketplace", "default_channel": "stable", "version_observability": "partial", "exact_pin_supported": false}
+    },
+    {
+      "schema_version": 1,
+      "id": "context7",
+      "display_name": "Context7",
+      "ownership": "EXTERNAL",
+      "kind": "mcp",
+      "importance": "RECOMMENDED",
+      "source": {"repository": "https://github.com/upstash/context7", "trust": "official_upstream", "verified_at": "2026-09-21"},
+      "provides": ["current-library-documentation"],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {"id": "context7-remote-mcp", "mechanism": "MCP_HTTP", "hosts": ["codex", "claude-code", "opencode", "antigravity"], "preference": 10, "automated": true, "target_hint": "remote MCP registration"},
+        {"id": "context7-local-stdio", "mechanism": "MCP_STDIO", "hosts": ["codex", "claude-code", "opencode", "antigravity"], "preference": 20, "automated": true, "argv": ["npx", "ctx7", "setup"], "target_hint": "local stdio MCP via ctx7"}
+      ],
+      "verification": ["configuration", "host_discovery", "runtime_health"],
+      "secret_policy": {"persist_values": false, "auth": "oauth_managed_by_host"},
+      "update_policy": {"model": "remote_service", "default_channel": "stable", "version_observability": "partial", "exact_pin_supported": false}
+    }
+  ]
+}

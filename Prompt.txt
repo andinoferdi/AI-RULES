@@ -1,0 +1,32 @@
+Saya memiliki Repo yang dimana repo ini adalah skills personal untuk ai agent saya , nahh di skill skill ini itu mencantumkan skill lain seperti superpower, pony tail dll nahh disini apa nggak sebaiknya skill ini juga ada rekomendasi untuk menginstall skill lain dan mcp yang diperlukan dulu ya? atau skill lain dan mcp yang dibutuhkan itu ditaruh di repo saya juga?? enaknya gimana
+
+Repo saya : 
+- https://github.com/andinoferdi/AI-RULES 
+- https://github.com/andinoferdi/AI-RULES/tree/WebBased
+- https://github.com/andinoferdi/AI-RULES/tree/andino-workflow
+- https://github.com/andinoferdi/AI-RULES/tree/ai-codebase-rescue
+- https://github.com/andinoferdi/AI-RULES/tree/skripsi-skill
+
+skill dan mcp yang dibutuhkan , dokumentasi dan reponya:
+
+Skills / Plugin Families
+- superpower: https://github.com/obra/superpowers
+- ponytail: https://github.com/dietrichgebert/ponytail
+- claude-mem: https://cmem.ai/, https://github.com/thedotmack/claude-mem
+- andino-workflow: https://github.com/andinoferdi/AI-RULES/tree/andino-workflow
+- ui-ux-pro-max: https://uupm.cc/, https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+- skripsi-skill: https://github.com/andinoferdi/AI-RULES/tree/skripsi-skill
+- taste-skill: https://www.tasteskill.dev/, https://github.com/Leonxlnx/taste-skill
+- clone-website: https://github.com/JCodesMore/ai-website-cloner-template
+- graphify: https://graphify.net/, https://github.com/Graphify-Labs/graphify
+- agent-skills: https://github.com/addyosmani/agent-skills
+
+MCP
+- context7: https://github.com/upstash/context7
+- playwright MCP: https://github.com/microsoft/playwright-mcp
+- chrome-devtools MCP: https://github.com/ChromeDevTools/chrome-devtools-mcp
+- git MCP: https://github.com/modelcontextprotocol/servers/tree/main/src/git
+- draw.io MCP: https://www.npmjs.com/package/@drawio/mcp
+- StarUML MCP: https://www.npmjs.com/package/staruml-mcp-server
+- Premiere Pro MCP: https://github.com/hetpatel-11/adobe_premiere_pro_mcp
+- Cheat Engine MCP bridge: https://github.com/miscusi-peek/cheatengine-mcp-bridge

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "profiles": [
+    {
+      "schema_version": 1,
+      "id": "minimal",
+      "display_name": "Minimal",
+      "default": true,
+      "capabilities": ["andino-workflow"],
+      "suggested": []
+    },
+    {
+      "schema_version": 1,
+      "id": "recommended",
+      "display_name": "Recommended",
+      "default": false,
+      "capabilities": ["andino-workflow", "ai-codebase-rescue", "superpowers", "context7"],
+      "suggested": []
+    },
+    {
+      "schema_version": 1,
+      "id": "engineering",
+      "display_name": "Engineering",
+      "default": false,
+      "capabilities": ["andino-workflow", "ai-codebase-rescue", "superpowers", "context7"],
+      "suggested": []
+    },
+    {
+      "schema_version": 1,
+      "id": "research-skripsi",
+      "display_name": "Research / Skripsi",
+      "default": false,
+      "capabilities": ["andino-workflow", "skripsi-skill", "context7"],
+      "suggested": []
+    },
+    {
+      "schema_version": 1,
+      "id": "everything",
+      "display_name": "Everything",
+      "default": false,
+      "capabilities": ["andino-workflow", "ai-codebase-rescue", "skripsi-skill", "superpowers", "context7"],
+      "suggested": []
+    }
+  ]
+}
