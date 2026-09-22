@@ -1,6 +1,6 @@
-# AI-RULES development
+# AI-RULES
 
-This branch (`main`) is the repository control plane for validation, evaluation cases, CI, and development notes. It shares Git history with `WebBased` but does not distribute the Web/chat rules or the Agent Skills.
+This branch (`main`) is the AI-RULES installer and control plane: source code, tests, release tooling, CI, evaluation cases, and active validation evidence. It shares Git history with `WebBased` but does not distribute Web/chat rules or runtime skill packages.
 
 ## Distribution branches
 
@@ -13,13 +13,8 @@ This branch (`main`) is the repository control plane for validation, evaluation 
 
 Install or use a distribution from its own branch. `main` deliberately contains no copy of those runtime packages.
 
-Andino owns lifecycle, execution plans and checkpoints when active. Rescue supplies
-engineering rescue methods; Skripsi supplies research methods. Both specialists
-work standalone, and installation does not activate Andino or each other. The
-[family standard](docs/agent-skill-family-standard.md) defines shared requirements
-while preserving their methods. The [initial family audit](docs/validation/agent-skill-family/initial-matrix.md)
-and [host evidence](docs/validation/agent-skill-family/host-documentation.md) record
-the reviewed baseline and documented host claims.
+The runtime skills are standalone. The [family standard](docs/agent-skill-family-standard.md)
+defines their shared package and release requirements without changing their distinct methods.
 
 ## Quality checks
 
@@ -40,11 +35,11 @@ and `python scripts/validate_skripsi_traceability.py --runtime-ref skripsi-skill
 The live-audit command checks saved evidence consistency without executing a model;
 run it locally in addition to CI's package, unit-test and traceability checks.
 
-The [skripsi v0.9 audit](docs/validation/skripsi-skill/contract-review.md) and [requirement inventory](docs/validation/skripsi-skill/traceability.json) distinguish implementation ownership from live behavioral evidence. The [evaluation guide](evals/README.md) describes opt-in isolated execution; CI never invokes a model or incurs live evaluation usage.
+The [Skripsi contract review](docs/validation/skripsi-skill/contract-review.md), [requirement inventory](docs/validation/skripsi-skill/traceability.json), and [live-evidence review](docs/validation/skripsi-skill/live-review.json) distinguish implementation ownership from observed behavior. The [evaluation guide](evals/README.md) describes opt-in isolated execution; CI never invokes a model or incurs live evaluation usage.
 
 ## AI-RULES installer/orchestrator
 
-The installer control plane is being introduced on `main` without changing runtime skill branch behavior. In source mode, set `PYTHONPATH=src` and run:
+The installer control plane runs on `main` without changing runtime skill branch behavior. In source mode, set `PYTHONPATH=src` and run:
 
 ```sh
 python -m ai_rules setup --profile minimal --host codex --dry-run --non-interactive
@@ -60,4 +55,4 @@ python -m ai_rules setup --profile minimal --host codex --dry-run --non-interact
 
 Release artifacts are built per operating system with `python scripts/build_release.py`; the command emits `release-manifest.json` and `SHA256SUMS`. On a fresh machine, set `AI_RULES_RELEASE_BASE_URL` to that release directory and run `scripts/bootstrap.ps1` (Windows) or `scripts/bootstrap.sh` (macOS/Linux). The bootstrap verifies the checksum before installing the executable and delegates all setup behavior to `ai-rules setup`.
 
-Manual host installation remains a supported fallback when a host requires its own marketplace or OAuth flow. The installer reports those paths as manual or partially verified and never stores API keys, bearer tokens, or OAuth credentials in AI-RULES state. See `GRAND-PLAN.md` for current host-specific verification evidence.
+Manual host installation remains a supported fallback when a host requires its own marketplace or OAuth flow. The installer reports those paths as manual or partially verified and never stores API keys, bearer tokens, or OAuth credentials in AI-RULES state.

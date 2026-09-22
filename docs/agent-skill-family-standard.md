@@ -80,5 +80,3 @@ commits. CI reads fetched remote refs and must not silently execute paid models.
 Create logical commits by branch; publish runtimes before dependent main changes
 only when authorized. A successful subset is not universal behavioral proof.
 
-See the [initial audit](validation/agent-skill-family/initial-matrix.md) and
-[host evidence](validation/agent-skill-family/host-documentation.md).

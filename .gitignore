@@ -1,2 +1,16 @@
 __pycache__/
-*.pyc
+*.py[cod]
+build/
+dist/
+release/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+.ai-rules/
+.vscode/
+.idea/
+Braintorming Dengan Gpt.txt
+Prompt.txt
+GRAND-PLAN.md
