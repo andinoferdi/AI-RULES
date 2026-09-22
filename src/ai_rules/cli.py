@@ -4,13 +4,14 @@ import argparse
 import json
 import subprocess
 import sys
+from dataclasses import replace
 from importlib import resources
 from pathlib import Path
 from typing import Callable
 
 from ai_rules.capabilities.adapters import StaticCapabilityAdapter
 from ai_rules.catalog import load_catalog
-from ai_rules.domain.models import ActualState, InstallationPlan
+from ai_rules.domain.models import ActualState, InstallationPlan, Operation
 from ai_rules.domain.statuses import InstalledOwnership, ReconciliationAction, Scope, TargetStatus
 from ai_rules.execution import Executor
 from ai_rules.hosts.adapters import build_host_adapters
@@ -58,6 +59,11 @@ def build_parser() -> argparse.ArgumentParser:
     update = sub.add_parser("update")
     add_common_setup_flags(update)
     update.set_defaults(func=cmd_update)
+
+    repair = sub.add_parser("repair")
+    add_common_setup_flags(repair)
+    repair.add_argument("--replace-existing", action="store_true")
+    repair.set_defaults(func=cmd_repair)
 
     snapshot = sub.add_parser("snapshot")
     snapshot.add_argument("--profile-path", type=Path, default=state_root() / "profile.json")
@@ -107,10 +113,21 @@ def cmd_setup(args: argparse.Namespace) -> int:
         args.capabilities = list(selection.capabilities)
         interactive = True
     plan = _resolve_from_args(args)
+    setup_summary = None
     if interactive:
         catalog = load_catalog()
         profiles = load_profiles(catalog)
         capabilities = tuple(args.capabilities) if args.capabilities else profiles.require(args.profile).capabilities
+        setup_summary = (catalog, capabilities, profiles)
+    if interactive and plan.targets and all(target.action == ReconciliationAction.NO_OP for target in plan.targets):
+        catalog, capabilities, _profiles = setup_summary
+        print("AI-RULES Setup\n")
+        for target in plan.targets:
+            print(f"✓ {catalog.require_capability(target.capability_id).display_name}  Already installed")
+        print("\nAll selected skills are ready.\nNo changes were needed.")
+        return 0
+    if setup_summary is not None:
+        catalog, capabilities, profiles = setup_summary
         print(render_setup_summary(tuple(args.hosts), args.profile if not args.capabilities else None, capabilities, args.scope, catalog, profiles.profiles))
     print(_preflight_text())
     print(render_plan(plan))
@@ -224,6 +241,24 @@ def cmd_update(args: argparse.Namespace) -> int:
         print(f"{item.capability_id} -> {item.host_id}: {item.status} {item.action} - {item.message}")
     _record_managed_installations(plan, result, args)
     _write_verified_lock(plan, result, args)
+    return 1 if any(item.status in {"FAILED", "SKIPPED", "BLOCKED"} for item in result.results) else 0
+
+
+def cmd_repair(args: argparse.Namespace) -> int:
+    """Explicitly restore selected first-party skills from the stable manifest."""
+    _prepare_args(args)
+    plan = _resolve_from_args(args)
+    repair_plan = _explicit_repair_plan(plan, allow_replace=args.replace_existing)
+    print("AI-RULES Repair")
+    print(render_plan(repair_plan))
+    if args.dry_run or not args.yes:
+        print("repair preview only; pass --yes to apply the official stable release")
+        return 1 if repair_plan.blocked else 0
+    result = _executor_for_plan(repair_plan, args).execute(repair_plan, dry_run=False, yes=True)
+    for item in result.results:
+        print(f"{item.capability_id} -> {item.host_id}: {item.status} {item.action} - {item.message}")
+    _record_managed_installations(repair_plan, result, args)
+    _write_verified_lock(repair_plan, result, args)
     return 1 if any(item.status in {"FAILED", "SKIPPED", "BLOCKED"} for item in result.results) else 0
 
 
@@ -485,6 +520,45 @@ def _repair_only_plan(plan: InstallationPlan) -> InstallationPlan:
         profile_id=plan.profile_id,
         targets=tuple(target for target in plan.targets if target.action == ReconciliationAction.REPAIR),
     )
+
+
+def _explicit_repair_plan(plan: InstallationPlan, *, allow_replace: bool) -> InstallationPlan:
+    """Force an explicit repair even for a healthy managed target.
+
+    Unmanaged targets remain protected unless the caller explicitly opts into
+    replacement with ``--replace-existing``.
+    """
+    targets = []
+    for target in plan.targets:
+        # Unsupported targets have no delivery strategy and cannot be repaired.
+        if target.action == ReconciliationAction.BLOCK and target.strategy_id is None:
+            targets.append(target)
+            continue
+        ownership = target.actual.ownership
+        unmanaged = ownership in {
+            InstalledOwnership.UNKNOWN_ORIGIN,
+            InstalledOwnership.EXTERNAL_EXISTING,
+            InstalledOwnership.CONFLICTING,
+        }
+        if unmanaged and not allow_replace:
+            targets.append(replace(target, action=ReconciliationAction.BLOCK,
+                                   status=TargetStatus.BLOCKED,
+                                   reason="unmanaged target requires --replace-existing for explicit repair",
+                                   operations=()))
+            continue
+        action = ReconciliationAction.REPLACE if unmanaged else ReconciliationAction.REPAIR
+        operations = tuple(replace(operation, action=action, kind=action.value.lower()) for operation in target.operations)
+        if not operations:
+            operations = (Operation(
+                kind=action.value.lower(), capability_id=target.capability_id,
+                host_id=target.host_id, scope=target.scope, action=action,
+                source=target.strategy_id or target.capability_id,
+                target=target.target_version or f"{target.host_id}:{target.capability_id}",
+                reason="explicit repair requested", backup=True, reversible=True,
+            ),)
+        targets.append(replace(target, action=action, status=TargetStatus.PLANNED,
+                               reason="explicit repair requested", operations=operations))
+    return InstallationPlan(schema_version=plan.schema_version, profile_id=plan.profile_id, targets=tuple(targets))
 
 
 def _release_manifest() -> dict:

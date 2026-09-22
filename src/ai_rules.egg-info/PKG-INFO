@@ -49,6 +49,33 @@ The [Skripsi contract review](docs/validation/skripsi-skill/contract-review.md),
 
 ## AI-RULES installer/orchestrator
 
+AI-RULES installs and manages only Andino's first-party skills: **Andino
+Workflow**, **AI Codebase Rescue**, and **Skripsi Skill**. Third-party skills,
+plugins, MCP servers, runtimes, and services are never installed, configured,
+updated, or health-checked by AI-RULES. Follow each upstream project's current
+documentation for installation, authentication, updates, and compatibility.
+
+Profiles are `minimal` (Andino Workflow), `engineering` (Andino Workflow + AI
+Codebase Rescue), `research-skripsi` (Andino Workflow + Skripsi Skill), and
+`everything` (all three). Existing valid skill directories are preserved.
+
+### External resources — manual installation
+
+Skills and plugin families: [Superpowers](https://github.com/obra/superpowers),
+[Ponytail](https://github.com/DietrichGebert/ponytail), [Claude-Mem](https://cmem.ai/),
+[UI/UX Pro Max](https://uupm.cc/), [Taste Skill](https://www.tasteskill.dev/),
+[AI Website Cloner](https://github.com/JCodesMore/ai-website-cloner-template),
+[Graphify](https://graphify.net/), and [Agent Skills](https://github.com/addyosmani/agent-skills).
+
+MCP servers: [Context7](https://github.com/upstash/context7),
+[Playwright MCP](https://github.com/microsoft/playwright-mcp),
+[Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp),
+[Git MCP](https://github.com/modelcontextprotocol/servers/tree/main/src/git),
+[Draw.io MCP](https://www.npmjs.com/package/@drawio/mcp),
+[StarUML MCP](https://www.npmjs.com/package/staruml-mcp-server), and specialized/on-demand
+[Premiere Pro MCP](https://github.com/hetpatel-11/Adobe_Premiere_Pro_MCP) and
+[Cheat Engine MCP bridge](https://github.com/miscusi-peek/cheatengine-mcp-bridge).
+
 The installer control plane runs on `main` without changing runtime skill branch behavior. In source mode, set `PYTHONPATH=src` and run:
 
 ```sh
@@ -62,6 +89,27 @@ For development or an environment with Python 3.11+, use source mode:
 python -m pip install --editable .
 python -m ai_rules setup --profile minimal --host codex --dry-run --non-interactive
 ```
+
+### Refreshing a local development install
+
+If `ai-rules setup` still shows an older prompt or does not recognize a recently
+added option, the `ai-rules` executable may still point at an older installed
+package. From the repository root, refresh the editable installation:
+
+```powershell
+python -m pip install --editable .
+ai-rules setup --help
+```
+
+The help output should include the newly added flags. To confirm which executable
+PowerShell will run, use:
+
+```powershell
+Get-Command ai-rules -All
+```
+
+This refreshes the local Python installation without installing skills or changing
+any existing AI-RULES-managed targets. Then run `ai-rules setup` again normally.
 
 Release artifacts are built per operating system with `python scripts/build_release.py`; the command emits `release-manifest.json` and `SHA256SUMS`. On a fresh machine, set `AI_RULES_RELEASE_BASE_URL` to that release directory and run `scripts/bootstrap.ps1` (Windows) or `scripts/bootstrap.sh` (macOS/Linux). The bootstrap verifies the checksum before installing the executable and delegates all setup behavior to `ai-rules setup`.
 

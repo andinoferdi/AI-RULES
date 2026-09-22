@@ -49,13 +49,24 @@ Profiles are `minimal` (Andino Workflow), `engineering` (Andino Workflow + AI
 Codebase Rescue), `research-skripsi` (Andino Workflow + Skripsi Skill), and
 `everything` (all three). Existing valid skill directories are preserved.
 
+### Setup
+
+To set up AI-RULES locally:
+
+```sh
+git clone https://github.com/andinoferdi/AI-RULES.git
+cd AI-RULES
+python -m pip install .
+ai-rules setup 4
+```
+
 ### External resources — manual installation
 
 Skills and plugin families: [Superpowers](https://github.com/obra/superpowers),
 [Ponytail](https://github.com/DietrichGebert/ponytail), [Claude-Mem](https://cmem.ai/),
 [UI/UX Pro Max](https://uupm.cc/), [Taste Skill](https://www.tasteskill.dev/),
 [AI Website Cloner](https://github.com/JCodesMore/ai-website-cloner-template),
-[Graphify](https://graphify.net/), and [Agent Skills](https://github.com/addyosmani/agent-skills).
+[Graphify](https://graphify.net/), [Anti-Slop](https://github.com/miqdadbadjuber/anti-slop), and [Agent Skills](https://github.com/addyosmani/agent-skills).
 
 MCP servers: [Context7](https://github.com/upstash/context7),
 [Playwright MCP](https://github.com/microsoft/playwright-mcp),
