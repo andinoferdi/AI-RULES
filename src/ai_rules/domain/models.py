@@ -93,6 +93,7 @@ class Capability:
     schema_version: int
     id: str
     display_name: str
+    description: str
     ownership: Ownership
     kind: CapabilityKind
     importance: Importance
@@ -115,6 +116,7 @@ class Capability:
             schema_version=int(data["schema_version"]),
             id=require_id(data["id"]),
             display_name=str(data["display_name"]),
+            description=str(data.get("description", "")),
             ownership=Ownership(data["ownership"]),
             kind=CapabilityKind(data["kind"]),
             importance=Importance(data["importance"]),
@@ -164,6 +166,7 @@ class Profile:
     schema_version: int
     id: str
     display_name: str
+    description: str
     default: bool
     capabilities: tuple[str, ...]
     suggested: tuple[str, ...] = ()
@@ -177,6 +180,7 @@ class Profile:
             schema_version=int(data["schema_version"]),
             id=require_id(data["id"], "profile.id"),
             display_name=str(data["display_name"]),
+            description=str(data.get("description", "")),
             default=bool(data.get("default", False)),
             capabilities=tuple(require_id(item, "profile.capabilities") for item in data.get("capabilities", ())),
             suggested=tuple(require_id(item, "profile.suggested") for item in data.get("suggested", ())),
@@ -192,6 +196,7 @@ class ActualState:
     healthy: bool = False
     config_drift: bool = False
     artifact_drift: bool = False
+    content_matches: bool | None = None
     version_observability: VersionObservability = VersionObservability.NONE
 
 

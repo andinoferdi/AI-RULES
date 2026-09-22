@@ -1,14 +1,67 @@
 import unittest
 
-from ai_rules.interactive import InteractiveSelection, collect_selection, confirm_execution
+from ai_rules.catalog import load_catalog
+from ai_rules.interactive import (
+    InteractiveSelection,
+    build_capability_choices,
+    build_host_choices,
+    build_profile_choices,
+    collect_selection,
+    confirm_execution,
+    render_setup_summary,
+)
+from ai_rules.profiles import load_profiles
 
 
 class InteractiveSetupTests(unittest.TestCase):
+    def test_display_choices_keep_stable_ids_and_explain_selection(self):
+        """Fails if a presentation change makes Questionary return labels instead of IDs."""
+        catalog = load_catalog()
+        profiles = load_profiles(catalog)
+
+        host = build_host_choices(catalog.hosts)[0]
+        recommended = next(choice for choice in build_profile_choices(profiles.profiles, catalog.capabilities) if choice.value == "recommended")
+        context7 = next(choice for choice in build_capability_choices(catalog.capabilities) if choice.value == "context7")
+
+        self.assertEqual("codex", host.value)
+        self.assertEqual("Codex", host.title)
+        self.assertIn("Skills: ~/.agents/skills", host.description)
+        self.assertEqual("recommended", recommended.value)
+        self.assertEqual("Recommended", recommended.title)
+        self.assertIn("Best default for most users", recommended.description)
+        self.assertIn("Includes: Andino Workflow, AI Codebase Rescue, Superpowers, Context7", recommended.description)
+        self.assertEqual("context7", context7.value)
+        self.assertEqual("Context7", context7.title)
+        self.assertIn("Current library documentation", context7.description)
+
+    def test_setup_summary_uses_human_names_and_types(self):
+        """Fails if the pre-confirmation summary exposes internal IDs instead of readable setup details."""
+        catalog = load_catalog()
+        profiles = load_profiles(catalog)
+
+        summary = render_setup_summary(
+            host_ids=("codex",),
+            profile_id="recommended",
+            capabilities=profiles.require("recommended").capabilities,
+            scope="global",
+            catalog=catalog,
+        )
+
+        self.assertIn("AI-RULES Setup", summary)
+        self.assertIn("Codex", summary)
+        self.assertIn("Recommended", summary)
+        self.assertIn("Andino Workflow - first-party skill", summary)
+        self.assertIn("Context7 - MCP integration", summary)
+        self.assertNotIn("andino-workflow", summary)
+
     def test_custom_selection_collects_multiple_hosts_and_capabilities(self):
         """Fails if custom interactive setup cannot carry multi-host and multi-capability intent to the resolver."""
         selection = collect_selection(
             choose=lambda _message, _choices: "custom",
-            checkbox=lambda _message, _choices: ["codex", "opencode"] if "host" in _message.lower() else ["andino-workflow", "context7"],
+            checkbox=lambda message, _choices: ["codex", "opencode"] if "agent" in message.lower() else ["andino-workflow", "context7"],
+            host_choices=("codex", "opencode"),
+            profile_choices=("minimal", "custom"),
+            capability_choices=("andino-workflow", "context7"),
         )
         self.assertEqual(
             InteractiveSelection(hosts=("codex", "opencode"), profile_id=None, capabilities=("andino-workflow", "context7")),
@@ -20,6 +73,9 @@ class InteractiveSetupTests(unittest.TestCase):
         selection = collect_selection(
             choose=lambda _message, _choices: None,
             checkbox=lambda _message, _choices: [],
+            host_choices=("codex",),
+            profile_choices=("minimal", "custom"),
+            capability_choices=("andino-workflow",),
         )
         self.assertIsNone(selection)
 

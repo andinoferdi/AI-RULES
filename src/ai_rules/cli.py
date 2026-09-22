@@ -4,6 +4,8 @@ import argparse
 import json
 import subprocess
 import sys
+import tempfile
+from functools import lru_cache
 from importlib import resources
 from pathlib import Path
 from typing import Callable
@@ -12,9 +14,9 @@ from ai_rules.capabilities.adapters import StaticCapabilityAdapter
 from ai_rules.catalog import load_catalog
 from ai_rules.domain.models import ActualState, InstallationPlan
 from ai_rules.domain.statuses import InstalledOwnership, ReconciliationAction, Scope, TargetStatus
-from ai_rules.execution import Executor
+from ai_rules.execution import Executor, tree_identity
 from ai_rules.hosts.adapters import build_host_adapters
-from ai_rules.interactive import prompt_confirmation, prompt_selection
+from ai_rules.interactive import prompt_confirmation, prompt_existing_migration, prompt_selection, render_setup_summary
 from ai_rules.planning import render_plan
 from ai_rules.platform import detect_environment, project_state_root, state_root
 from ai_rules.profiles import load_profiles
@@ -85,6 +87,8 @@ def add_common_setup_flags(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--yes", action="store_true")
     parser.add_argument("--non-interactive", action="store_true")
+    parser.add_argument("--adopt-existing", action="store_true", help="adopt an exact matching unmanaged first-party installation")
+    parser.add_argument("--replace-existing", action="store_true", help="back up and replace a differing unmanaged first-party installation")
     parser.add_argument("--state-dir", type=Path)
 
 
@@ -95,9 +99,9 @@ def cmd_setup(args: argparse.Namespace) -> int:
         catalog = load_catalog()
         profiles = load_profiles(catalog)
         selection = prompt_selection(
-            host_ids=tuple(catalog.hosts),
-            profile_ids=tuple(profiles.profiles),
-            capability_ids=tuple(catalog.capabilities),
+            hosts=catalog.hosts,
+            profiles=profiles.profiles,
+            capabilities=catalog.capabilities,
         )
         if selection is None:
             print("setup cancelled; no changes made")
@@ -107,6 +111,18 @@ def cmd_setup(args: argparse.Namespace) -> int:
         args.capabilities = list(selection.capabilities)
         interactive = True
     plan = _resolve_from_args(args)
+    if interactive:
+        migration = prompt_existing_migration(plan)
+        if migration is None:
+            print("setup cancelled; no changes made")
+            return 0
+        args.adopt_existing, args.replace_existing = migration
+        plan = _resolve_from_args(args)
+    if interactive:
+        catalog = load_catalog()
+        profiles = load_profiles(catalog)
+        capabilities = tuple(args.capabilities) if args.capabilities else profiles.require(args.profile).capabilities
+        print(render_setup_summary(tuple(args.hosts), args.profile if not args.capabilities else None, capabilities, args.scope, catalog, profiles.profiles))
     print(_preflight_text())
     print(render_plan(plan))
     if args.dry_run:
@@ -257,6 +273,8 @@ def cmd_restore(args: argparse.Namespace) -> int:
         dry_run=False,
         yes=True,
         non_interactive=True,
+        adopt_existing=False,
+        replace_existing=False,
         state_dir=args.state_dir,
     )
     return cmd_setup(restore_args)
@@ -274,6 +292,8 @@ def _resolve_from_args(args: argparse.Namespace):
             scope=Scope(args.scope),
             profile_id=profile_id,
             capabilities=tuple(args.capabilities),
+            allow_adopt=getattr(args, "adopt_existing", False),
+            allow_replace=getattr(args, "replace_existing", False),
         )
     )
 
@@ -340,12 +360,14 @@ def _actual_state(
             if capability.ownership.value == "EXTERNAL":
                 record = records.get(key)
                 present = probe(capability_id, host_id)
+                compatible = _external_config_matches(capability_id, host_id) if external_probe is None else None
                 if present:
                     result[(capability_id, host_id, scope.value)] = ActualState(
                         exists=True,
                         ownership=(InstalledOwnership.MANAGED_BY_AI_RULES if record else InstalledOwnership.EXTERNAL_EXISTING),
                         installed_version=record.get("version") if record else None,
                         healthy=record is not None and capability_id != "context7",
+                        content_matches=compatible,
                     )
                 elif record:
                     result[(capability_id, host_id, scope.value)] = ActualState(
@@ -372,17 +394,21 @@ def _actual_state(
                     )
                 continue
             record = records.get(key)
+            expected_identity = _first_party_bundle_identity(capability_id)
+            content_matches = _target_matches_identity(target, expected_identity)
             if record is None:
                 result[(capability_id, host_id, scope.value)] = ActualState(
-                    exists=True, ownership=InstalledOwnership.UNKNOWN_ORIGIN
+                    exists=True,
+                    ownership=InstalledOwnership.UNKNOWN_ORIGIN,
+                    content_matches=content_matches,
                 )
                 continue
             result[(capability_id, host_id, scope.value)] = ActualState(
                 exists=True,
                 ownership=InstalledOwnership.MANAGED_BY_AI_RULES,
                 installed_version=record.get("version"),
-                healthy=(target / "SKILL.md").is_file(),
-                artifact_drift=not (target / "SKILL.md").is_file(),
+                healthy=(target / "SKILL.md").is_file() and content_matches is not False,
+                artifact_drift=not (target / "SKILL.md").is_file() or content_matches is False,
             )
     return result
 
@@ -403,6 +429,47 @@ def _external_config_present(capability_id: str, host_id: str) -> bool:
     except (OSError, subprocess.TimeoutExpired):
         return False
     return completed.returncode == 0 and capability_id.lower() in completed.stdout.lower()
+
+
+def _external_config_matches(capability_id: str, host_id: str) -> bool:
+    """Verify only configurations whose safe, credential-free identity is observable."""
+    if (capability_id, host_id) != ("context7", "codex"):
+        return False
+    try:
+        completed = subprocess.run(
+            ("codex", "mcp", "list"), check=False, text=True,
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=15,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+    return (
+        completed.returncode == 0
+        and "context7" in completed.stdout.lower()
+        and "https://mcp.context7.com/mcp" in completed.stdout.lower()
+    )
+
+
+@lru_cache(maxsize=None)
+def _first_party_bundle_identity(capability_id: str) -> str | None:
+    bundle = packaged_bundle(capability_id)
+    if bundle is not None:
+        return tree_identity(bundle)
+    release = _release_manifest().get("first_party", {}).get(capability_id)
+    if release is None:
+        return None
+    with tempfile.TemporaryDirectory() as temp:
+        exported = Path(temp) / capability_id
+        export_git_ref(release["commit"], exported, repo_root=Path.cwd())
+        return tree_identity(exported)
+
+
+def _target_matches_identity(target: Path, expected_identity: str | None) -> bool | None:
+    if expected_identity is None:
+        return None
+    try:
+        return tree_identity(target) == expected_identity
+    except ValueError:
+        return None
 
 
 def _record_managed_installations(plan, result, args: argparse.Namespace) -> None:

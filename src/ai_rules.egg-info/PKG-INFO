@@ -1,3 +1,13 @@
+Metadata-Version: 2.4
+Name: ai-rules
+Version: 0.1.0
+Summary: AI-RULES installer/orchestrator control plane
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: questionary<3,>=2.1
+Provides-Extra: build
+Requires-Dist: pyinstaller>=6.9; extra == "build"
+
 # AI-RULES
 
 This branch (`main`) is the AI-RULES installer and control plane: source code, tests, release tooling, CI, evaluation cases, and active validation evidence. It shares Git history with `WebBased` but does not distribute Web/chat rules or runtime skill packages.
@@ -52,27 +62,6 @@ For development or an environment with Python 3.11+, use source mode:
 python -m pip install --editable .
 python -m ai_rules setup --profile minimal --host codex --dry-run --non-interactive
 ```
-
-### Refreshing a local development install
-
-If `ai-rules setup` still shows an older prompt or does not recognize a recently
-added option, the `ai-rules` executable may still point at an older installed
-package. From the repository root, refresh the editable installation:
-
-```powershell
-python -m pip install --editable .
-ai-rules setup --help
-```
-
-The help output should include the newly added flags. To confirm which executable
-PowerShell will run, use:
-
-```powershell
-Get-Command ai-rules -All
-```
-
-This refreshes the local Python installation without installing skills or changing
-any existing AI-RULES-managed targets. Then run `ai-rules setup` again normally.
 
 Release artifacts are built per operating system with `python scripts/build_release.py`; the command emits `release-manifest.json` and `SHA256SUMS`. On a fresh machine, set `AI_RULES_RELEASE_BASE_URL` to that release directory and run `scripts/bootstrap.ps1` (Windows) or `scripts/bootstrap.sh` (macOS/Linux). The bootstrap verifies the checksum before installing the executable and delegates all setup behavior to `ai-rules setup`.
 

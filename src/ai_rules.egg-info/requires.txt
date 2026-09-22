@@ -1,0 +1,4 @@
+questionary<3,>=2.1
+
+[build]
+pyinstaller>=6.9
