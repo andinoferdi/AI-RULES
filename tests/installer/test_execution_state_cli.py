@@ -265,6 +265,25 @@ class ExecutionStateCliTests(unittest.TestCase):
             self.assertIn("APPLIED REPAIR", repaired.stdout)
             self.assertTrue(skill_file.exists())
 
+    def test_cli_preserves_existing_unmanaged_git_skill(self):
+        """A valid manual checkout must be present, never renamed or deleted."""
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            skill = root / "project" / ".agents" / "skills" / "andino-workflow"
+            (skill / ".git" / "objects").mkdir(parents=True)
+            (skill / "SKILL.md").write_text("# Manual checkout\n", encoding="utf-8")
+            marker = skill / ".git" / "objects" / "read-only-object"
+            marker.write_text("preserve\n", encoding="utf-8")
+            completed = subprocess.run(
+                [sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "codex",
+                 "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
+                 "--yes", "--non-interactive"],
+                check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            )
+            self.assertEqual(0, completed.returncode, completed.stderr)
+            self.assertIn("VERIFIED NO_OP", completed.stdout)
+            self.assertTrue(marker.exists())
+
     def test_cli_doctor_reports_missing_managed_skill_artifact_as_failed(self):
         """Fails if doctor reports a repair plan instead of the observed broken artifact."""
         with tempfile.TemporaryDirectory() as temp:
