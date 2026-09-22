@@ -16,7 +16,7 @@ from ai_rules.execution import Executor
 from ai_rules.hosts.adapters import build_host_adapters
 from ai_rules.interactive import prompt_confirmation, prompt_selection
 from ai_rules.planning import render_plan
-from ai_rules.platform import detect_environment, state_root
+from ai_rules.platform import detect_environment, project_state_root, state_root
 from ai_rules.profiles import load_profiles
 from ai_rules.release import export_git_ref, packaged_bundle
 from ai_rules.resolver import ResolveRequest, build_resolver
@@ -85,10 +85,11 @@ def add_common_setup_flags(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--yes", action="store_true")
     parser.add_argument("--non-interactive", action="store_true")
-    parser.add_argument("--state-dir", type=Path, default=state_root())
+    parser.add_argument("--state-dir", type=Path)
 
 
 def cmd_setup(args: argparse.Namespace) -> int:
+    _prepare_args(args)
     interactive = False
     if not args.non_interactive and not args.hosts and not args.capabilities and args.profile == "minimal":
         catalog = load_catalog()
@@ -124,25 +125,30 @@ def cmd_setup(args: argparse.Namespace) -> int:
     capabilities = tuple(args.capabilities) if args.capabilities else tuple(_profile_capabilities(args.profile))
     write_profile(args.state_dir / "profile.json", args.profile, tuple(_hosts(args.hosts)), capabilities, args.scope)
     _write_verified_lock(plan, result, args)
-    return 0
+    return 1 if any(item.status in {"FAILED", "SKIPPED", "BLOCKED"} for item in result.results) else 0
 
 
 def cmd_add(args: argparse.Namespace) -> int:
     """Reconcile explicitly selected capabilities and merge them into desired state."""
+    _prepare_args(args)
     if not args.capabilities:
         raise ValueError("add requires at least one --capability")
-    result = cmd_setup(args)
-    if result:
-        return result
     profile_path = args.state_dir / "profile.json"
-    profile = read_json(profile_path)
-    merged = tuple(dict.fromkeys((*profile.get("capabilities", ()), *args.capabilities)))
-    write_profile(profile_path, profile.get("profile", "custom"), tuple(profile.get("hosts", _hosts(args.hosts))), merged, profile.get("scope", args.scope))
+    existing = read_json(profile_path) if profile_path.exists() else {}
+    merged = tuple(dict.fromkeys((*existing.get("capabilities", ()), *args.capabilities)))
+    args.capabilities = list(merged)
+    if not args.hosts:
+        args.hosts = list(existing.get("hosts", ()))
+    args.profile = "custom"
+    result = cmd_setup(args)
+    if result or args.dry_run or not args.yes:
+        return result
     return 0
 
 
 def cmd_remove(args: argparse.Namespace) -> int:
     """Remove only installer-managed first-party targets, preserving unmanaged paths."""
+    _prepare_args(args)
     if not args.capabilities:
         raise ValueError("remove requires at least one --capability")
     records = _managed_installation_records(args.state_dir)
@@ -167,6 +173,8 @@ def cmd_remove(args: argparse.Namespace) -> int:
             records.pop(key, None)
             removed += 1
             print(f"{capability_id} -> {host_id}: APPLIED REMOVE")
+    if args.dry_run or not args.yes:
+        return 0
     atomic_write_json(args.state_dir / "managed-installations.json", {"schema_version": 1, "installations": records})
     if removed:
         profile_path = args.state_dir / "profile.json"
@@ -178,6 +186,7 @@ def cmd_remove(args: argparse.Namespace) -> int:
 
 
 def cmd_doctor(args: argparse.Namespace) -> int:
+    _prepare_args(args)
     plan = _resolve_from_args(args)
     report = doctor_from_plan(plan)
     print(render_doctor(report))
@@ -191,10 +200,11 @@ def cmd_doctor(args: argparse.Namespace) -> int:
             for item in result.results:
                 print(f"{item.capability_id} -> {item.host_id}: {item.status} {item.action} - {item.message}")
             _record_managed_installations(repair_plan, result, args)
-    return 0 if not plan.blocked else 1
+    return 0 if report.healthy and not plan.blocked else 1
 
 
 def cmd_update(args: argparse.Namespace) -> int:
+    _prepare_args(args)
     plan = _resolve_from_args(args)
     print("AI-RULES update preview")
     print(render_plan(plan))
@@ -262,6 +272,15 @@ def _resolve_from_args(args: argparse.Namespace):
             capabilities=tuple(args.capabilities),
         )
     )
+
+
+def _prepare_args(args: argparse.Namespace) -> None:
+    """Resolve state location and reject a project mutation without its root."""
+    scope = Scope(args.scope)
+    if scope == Scope.PROJECT and args.project_root is None:
+        raise ValueError("--project-root is required for project scope")
+    if args.state_dir is None:
+        args.state_dir = project_state_root(args.project_root) if scope == Scope.PROJECT else state_root()
 
 
 def _hosts(hosts: list[str]) -> list[str]:
