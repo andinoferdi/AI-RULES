@@ -76,10 +76,6 @@ class ResolverReconciliationTests(unittest.TestCase):
         )
         self.assertEqual(ReconciliationAction.BLOCK, target.action)
 
-    def test_marketplace_manual_path_is_manual_action_not_fake_current(self):
-        target = self.resolve_one(capability="superpowers")
-        self.assertEqual(ReconciliationAction.MANUAL_ACTION, target.action)
-
     def test_multi_host_plan_is_supported(self):
         resolver = build_resolver(self.catalog, self.profiles, StaticCapabilityAdapter())
         plan = resolver.resolve(ResolveRequest(hosts=("codex", "opencode"), profile_id="minimal"))

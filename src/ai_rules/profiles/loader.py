@@ -15,6 +15,10 @@ class ProfileSet:
     profiles: dict[str, Profile]
 
     def require(self, profile_id: str) -> Profile:
+        profile_id = {
+            "recommended": "engineering", "web-development": "minimal", "design": "minimal",
+            "media": "minimal", "reverse-engineering": "minimal",
+        }.get(profile_id, profile_id)
         try:
             return self.profiles[profile_id]
         except KeyError as exc:

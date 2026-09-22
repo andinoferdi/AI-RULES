@@ -62,16 +62,13 @@ class Resolver:
                 target_version = self._target_version(capability_id, request)
                 if target_version is None:
                     target_version = self.capability_adapter.resolve_target(capability)
-                action, assessment, status, reason = self._reconcile(
-                    actual, target_version, strategy.automated, request.allow_adopt, request.allow_replace
-                )
+                action, assessment, status, reason = self._reconcile(actual, target_version, strategy.automated)
                 operations = self._operations_for(action, capability_id, host_id, request.scope, strategy.id, reason, target_version)
                 if action in {
                     ReconciliationAction.INSTALL,
                     ReconciliationAction.UPDATE,
                     ReconciliationAction.REPAIR,
                     ReconciliationAction.RECONFIGURE,
-                    ReconciliationAction.REPLACE,
                 }:
                     operations = tuple(
                         replace(operation, action=action, reason=reason)
@@ -127,7 +124,7 @@ class Resolver:
         return None
 
     def _reconcile(
-        self, actual: ActualState, target_version: str | None, automated: bool, allow_adopt: bool, allow_replace: bool
+        self, actual: ActualState, target_version: str | None, automated: bool
     ) -> tuple[ReconciliationAction, ReconciliationAssessment, TargetStatus, str]:
         if not automated:
             return (
@@ -139,32 +136,18 @@ class Resolver:
         if not actual.exists:
             return ReconciliationAction.INSTALL, ReconciliationAssessment.VERSION_UNKNOWN, TargetStatus.PLANNED, "target is absent"
         if actual.ownership == InstalledOwnership.UNKNOWN_ORIGIN:
-            if actual.content_matches is True and allow_adopt:
+            if actual.healthy:
                 return (
-                    ReconciliationAction.ADOPT,
+                    ReconciliationAction.NO_OP,
                     ReconciliationAssessment.CURRENT,
-                    TargetStatus.PLANNED,
-                    "existing unmanaged target matches the selected release and will be adopted",
-                )
-            if actual.content_matches is False and allow_replace:
-                return (
-                    ReconciliationAction.REPLACE,
-                    ReconciliationAssessment.UNMANAGED_EXISTING,
-                    TargetStatus.PLANNED,
-                    "existing unmanaged target differs from the selected release and will be replaced safely",
+                    TargetStatus.VERIFIED,
+                    "existing valid skill installation is preserved",
                 )
             return (
                 ReconciliationAction.BLOCK,
                 ReconciliationAssessment.UNMANAGED_EXISTING,
                 TargetStatus.BLOCKED,
-                "existing unmanaged target is preserved; use --adopt-existing for a verified match or --replace-existing for a safe replacement",
-            )
-        if actual.ownership == InstalledOwnership.EXTERNAL_EXISTING and actual.content_matches is True and allow_adopt:
-            return (
-                ReconciliationAction.ADOPT,
-                ReconciliationAssessment.CURRENT,
-                TargetStatus.PLANNED,
-                "existing external configuration matches the selected integration and will be adopted",
+                "existing target is invalid and is preserved",
             )
         if actual.ownership in (InstalledOwnership.EXTERNAL_EXISTING, InstalledOwnership.CONFLICTING):
             return (

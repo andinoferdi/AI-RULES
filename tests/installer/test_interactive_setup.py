@@ -20,19 +20,16 @@ class InteractiveSetupTests(unittest.TestCase):
         profiles = load_profiles(catalog)
 
         host = build_host_choices(catalog.hosts)[0]
-        recommended = next(choice for choice in build_profile_choices(profiles.profiles, catalog.capabilities) if choice.value == "recommended")
-        context7 = next(choice for choice in build_capability_choices(catalog.capabilities) if choice.value == "context7")
+        engineering = next(choice for choice in build_profile_choices(profiles.profiles, catalog.capabilities) if choice.value == "engineering")
+        rescue = next(choice for choice in build_capability_choices(catalog.capabilities) if choice.value == "ai-codebase-rescue")
 
         self.assertEqual("codex", host.value)
         self.assertEqual("Codex", host.title)
         self.assertIn("Skills: ~/.agents/skills", host.description)
-        self.assertEqual("recommended", recommended.value)
-        self.assertEqual("Recommended", recommended.title)
-        self.assertIn("Best default for most users", recommended.description)
-        self.assertIn("Includes: Andino Workflow, AI Codebase Rescue, Superpowers, Context7", recommended.description)
-        self.assertEqual("context7", context7.value)
-        self.assertEqual("Context7", context7.title)
-        self.assertIn("Current library documentation", context7.description)
+        self.assertEqual("engineering", engineering.value)
+        self.assertEqual("Engineering", engineering.title)
+        self.assertIn("Includes: Andino Workflow, AI Codebase Rescue", engineering.description)
+        self.assertEqual("ai-codebase-rescue", rescue.value)
 
     def test_setup_summary_uses_human_names_and_types(self):
         """Fails if the pre-confirmation summary exposes internal IDs instead of readable setup details."""
@@ -41,17 +38,17 @@ class InteractiveSetupTests(unittest.TestCase):
 
         summary = render_setup_summary(
             host_ids=("codex",),
-            profile_id="recommended",
-            capabilities=profiles.require("recommended").capabilities,
+            profile_id="engineering",
+            capabilities=profiles.require("engineering").capabilities,
             scope="global",
             catalog=catalog,
         )
 
         self.assertIn("AI-RULES Setup", summary)
         self.assertIn("Codex", summary)
-        self.assertIn("Recommended", summary)
+        self.assertIn("Engineering", summary)
         self.assertIn("Andino Workflow - first-party skill", summary)
-        self.assertIn("Context7 - MCP integration", summary)
+        self.assertIn("AI Codebase Rescue - first-party skill", summary)
         self.assertNotIn("andino-workflow", summary)
 
     def test_custom_selection_collects_multiple_hosts_and_capabilities(self):

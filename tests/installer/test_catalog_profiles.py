@@ -16,7 +16,7 @@ class CatalogProfileTests(unittest.TestCase):
             {"codex", "claude-code", "opencode", "antigravity-cli", "antigravity-ide"},
             set(catalog.hosts),
         )
-        for capability_id in ["andino-workflow", "ai-codebase-rescue", "skripsi-skill", "superpowers", "context7"]:
+        for capability_id in ["andino-workflow", "ai-codebase-rescue", "skripsi-skill"]:
             self.assertIn(capability_id, catalog.capabilities)
 
     def test_skill_roots_distinguish_codex_and_antigravity_surfaces(self):

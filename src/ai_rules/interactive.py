@@ -5,7 +5,6 @@ from typing import Callable, Mapping, Sequence
 
 from ai_rules.catalog.loader import Catalog
 from ai_rules.domain.models import Capability, Host, Profile
-from ai_rules.domain.statuses import InstalledOwnership, ReconciliationAction
 
 
 @dataclass(frozen=True)
@@ -146,37 +145,3 @@ def prompt_confirmation() -> bool:
 
     return confirm_execution(lambda message: questionary.confirm(message, default=False).ask())
 
-
-def prompt_existing_migration(plan) -> tuple[bool, bool] | None:
-    """Ask for the smallest explicit migration decision needed by an interactive plan."""
-    import questionary
-
-    matching = [
-        target for target in plan.targets
-        if target.action == ReconciliationAction.BLOCK
-        and target.actual.content_matches is True
-        and target.actual.ownership in (InstalledOwnership.UNKNOWN_ORIGIN, InstalledOwnership.EXTERNAL_EXISTING)
-    ]
-    differing = [
-        target for target in plan.targets
-        if target.action == ReconciliationAction.BLOCK
-        and target.actual.ownership == InstalledOwnership.UNKNOWN_ORIGIN
-        and target.actual.content_matches is False
-    ]
-    adopt = bool(matching) and questionary.confirm(
-        "Adopt verified matching existing installation(s)?", default=True
-    ).ask() is True
-    if not differing:
-        return adopt, False
-    decision = questionary.select(
-        "Existing installation(s) differ from the selected release",
-        choices=[
-            questionary.Choice("Replace safely", value="replace", description="Back up existing files, stage and verify the selected release, then replace."),
-            questionary.Choice("Keep existing", value="keep", description="Leave differing local files untouched."),
-            questionary.Choice("Cancel setup", value="cancel", description="Make no changes."),
-        ],
-        default="keep",
-    ).ask()
-    if decision == "cancel":
-        return None
-    return adopt, decision == "replace"

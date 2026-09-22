@@ -39,6 +39,33 @@ The [Skripsi contract review](docs/validation/skripsi-skill/contract-review.md),
 
 ## AI-RULES installer/orchestrator
 
+AI-RULES installs and manages only Andino's first-party skills: **Andino
+Workflow**, **AI Codebase Rescue**, and **Skripsi Skill**. Third-party skills,
+plugins, MCP servers, runtimes, and services are never installed, configured,
+updated, or health-checked by AI-RULES. Follow each upstream project's current
+documentation for installation, authentication, updates, and compatibility.
+
+Profiles are `minimal` (Andino Workflow), `engineering` (Andino Workflow + AI
+Codebase Rescue), `research-skripsi` (Andino Workflow + Skripsi Skill), and
+`everything` (all three). Existing valid skill directories are preserved.
+
+### External resources — manual installation
+
+Skills and plugin families: [Superpowers](https://github.com/obra/superpowers),
+[Ponytail](https://github.com/DietrichGebert/ponytail), [Claude-Mem](https://cmem.ai/),
+[UI/UX Pro Max](https://uupm.cc/), [Taste Skill](https://www.tasteskill.dev/),
+[AI Website Cloner](https://github.com/JCodesMore/ai-website-cloner-template),
+[Graphify](https://graphify.net/), and [Agent Skills](https://github.com/addyosmani/agent-skills).
+
+MCP servers: [Context7](https://github.com/upstash/context7),
+[Playwright MCP](https://github.com/microsoft/playwright-mcp),
+[Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp),
+[Git MCP](https://github.com/modelcontextprotocol/servers/tree/main/src/git),
+[Draw.io MCP](https://www.npmjs.com/package/@drawio/mcp),
+[StarUML MCP](https://www.npmjs.com/package/staruml-mcp-server), and specialized/on-demand
+[Premiere Pro MCP](https://github.com/hetpatel-11/Adobe_Premiere_Pro_MCP) and
+[Cheat Engine MCP bridge](https://github.com/miscusi-peek/cheatengine-mcp-bridge).
+
 The installer control plane runs on `main` without changing runtime skill branch behavior. In source mode, set `PYTHONPATH=src` and run:
 
 ```sh

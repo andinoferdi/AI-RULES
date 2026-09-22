@@ -34,51 +34,9 @@ class StaticCapabilityAdapter:
                 return f"release-manifest:{capability.id}@{commit}#{sequence}"
             branch = capability.source.get("branch", capability.id)
             return f"release-manifest:{branch}@stable"
-        if capability.id == "context7" and capability.update_policy.model.value == "remote_service":
-            return "upstream-managed:remote-service"
         return f"{capability.update_policy.model.value}:{channel}"
 
     def plan_operations(self, capability: Capability, host_id: str, scope: Scope) -> tuple[Operation, ...]:
-        if capability.id == "superpowers" and host_id == "antigravity-cli":
-            return (
-                Operation(
-                    kind="run_command",
-                    capability_id=capability.id,
-                    host_id=host_id,
-                    scope=scope,
-                    action=ReconciliationAction.INSTALL,
-                    source="https://github.com/obra/superpowers",
-                    target="Antigravity plugin repository",
-                    reason="official upstream install/update command",
-                    argv=("agy", "plugin", "install", "https://github.com/obra/superpowers"),
-                    network=True,
-                ),
-            )
-        if capability.id == "context7":
-            argv_by_host = {
-                "codex": ("codex", "mcp", "add", "context7", "--url", "https://mcp.context7.com/mcp"),
-                "claude-code": ("claude", "mcp", "add", "--scope", "user" if scope == Scope.GLOBAL else "project", "--transport", "http", "context7", "https://mcp.context7.com/mcp"),
-                "opencode": ("opencode", "mcp", "add", "context7", "--url", "https://mcp.context7.com/mcp"),
-                "antigravity-cli": ("agy", "mcp", "add", "context7", "https://mcp.context7.com/mcp"),
-            }
-            argv = argv_by_host.get(host_id)
-            if argv:
-                return (
-                    Operation(
-                        kind="run_command",
-                        capability_id=capability.id,
-                        host_id=host_id,
-                        scope=scope,
-                        action=ReconciliationAction.INSTALL,
-                        source="https://mcp.context7.com/mcp",
-                        target=f"{host_id} MCP configuration",
-                        reason="register remote Context7 MCP without persisting credentials",
-                        argv=argv,
-                        network=True,
-                        backup=True,
-                        reversible=True,
-                    ),
-                )
         return (
             Operation(
                 kind="capability_operation",
@@ -95,8 +53,6 @@ class StaticCapabilityAdapter:
         )
 
     def verify(self, capability: Capability, host_id: str, scope: Scope) -> tuple[VerificationCheck, ...]:
-        if capability.ownership == Ownership.EXTERNAL:
-            return (VerificationCheck("external runtime", VerificationOutcome.NOT_RUN, "live upstream check not run in static adapter"),)
         return (VerificationCheck("first-party metadata", VerificationOutcome.PASS, "first-party target resolved"),)
 
 

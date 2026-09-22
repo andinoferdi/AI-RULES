@@ -122,16 +122,6 @@ class ExecutionStateCliTests(unittest.TestCase):
             self.assertEqual("desired", data["mode"])
             self.assertNotIn("secret", json.dumps(data).lower())
 
-    def test_doctor_reports_blocked_unmanaged_state(self):
-        catalog = load_catalog()
-        profiles = load_profiles(catalog)
-        plan = build_resolver(catalog, profiles, StaticCapabilityAdapter()).resolve(
-            ResolveRequest(hosts=("codex",), profile_id="recommended")
-        )
-        report = doctor_from_plan(plan)
-        statuses = {target.capability_id: target.status.value for target in report.targets}
-        self.assertEqual("MANUAL_ACTION_REQUIRED", statuses["superpowers"])
-
     def test_cli_setup_dry_run_smoke(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
