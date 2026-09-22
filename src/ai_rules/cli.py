@@ -194,12 +194,16 @@ def cmd_doctor(args: argparse.Namespace) -> int:
         print("doctor --repair uses the same locked target and does not upgrade versions")
         if args.dry_run or not args.yes:
             print("repair dry-run/preview only; pass --yes without --dry-run to apply safe repairs")
+            return 1 if plan.blocked else 0
         else:
             repair_plan = _repair_only_plan(plan)
             result = _executor_for_plan(repair_plan, args).execute(repair_plan, dry_run=False, yes=True)
             for item in result.results:
                 print(f"{item.capability_id} -> {item.host_id}: {item.status} {item.action} - {item.message}")
             _record_managed_installations(repair_plan, result, args)
+            plan = _resolve_from_args(args)
+            report = doctor_from_plan(plan)
+            print(render_doctor(report))
     return 0 if report.healthy and not plan.blocked else 1
 
 

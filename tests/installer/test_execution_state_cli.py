@@ -292,7 +292,7 @@ class ExecutionStateCliTests(unittest.TestCase):
                 [sys.executable, "-m", "ai_rules", "doctor", *setup[4:-2]],
                 check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
             )
-            self.assertEqual(0, doctor.returncode, doctor.stderr)
+            self.assertEqual(1, doctor.returncode, doctor.stderr)
             self.assertIn("FAILED", doctor.stdout)
 
     def test_cli_doctor_repair_restores_missing_managed_skill_artifact(self):
@@ -315,6 +315,7 @@ class ExecutionStateCliTests(unittest.TestCase):
             )
             self.assertEqual(0, repaired.returncode, repaired.stderr)
             self.assertIn("APPLIED REPAIR", repaired.stdout)
+            self.assertIn("VERIFIED", repaired.stdout)
             self.assertTrue(skill_file.exists())
 
     def test_cli_doctor_repair_preview_mentions_no_upgrade(self):
