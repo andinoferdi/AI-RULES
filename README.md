@@ -52,7 +52,54 @@ documentation for installation, authentication, updates, and compatibility.
 
 Profiles are `minimal` (Andino Workflow), `engineering` (Andino Workflow + AI
 Codebase Rescue), `research-skripsi` (Andino Workflow + Skripsi Skill), and
-`everything` (all three). Existing valid skill directories are preserved.
+`everything` (all three). `setup`, `add`, `update` and `doctor` check the latest
+configured source branches by default. A folder containing SKILL.md alone is not
+evidence that a skill is current.
+
+### Keeping skills current
+
+Run `ai-rules setup` again and select the agents/profile you want to reconcile.
+Each selected skill's configured remote branch is fetched once per invocation;
+the exact commit and full installed content are checked before reporting current.
+Skill updates do not require a new CLI release or edits to the packaged manifest.
+This applies to all registered first-party skills and their configured branches;
+it does not automatically install unrelated third-party skills or arbitrary branches.
+
+For explicit selections:
+
+```sh
+ai-rules setup --profile everything --host codex --host claude-code --host opencode --host antigravity-cli --host antigravity-ide --yes --non-interactive
+ai-rules update --profile everything --host codex --dry-run
+```
+
+Latest mode requires Git and source access, but works from outside a Git checkout.
+A failed fetch, missing branch or invalid skill returns an error, never a stale
+"up to date" result. Read-only previews use temporary source downloads and do not
+persist installation state. Commands resolve a fixed SHA before mutation, so a
+branch moving during the run does not change the approved payload.
+
+Clean official Git installations fast-forward without replacing .git or changing
+their branch/origin. Copies matching the current source or one of its latest 256
+revisions can be recognized; older/unrecognized copies and local modifications are
+preserved with a blocking explanation. Updates retain backups under the selected
+state directory. Shared directories and symlink/junction targets are respected.
+Concurrent changes detected after planning stop replacement. Restart the agent's
+session as required by its skill loader after an update.
+
+Use `--source bundled` explicitly for the CLI's frozen release manifest instead
+of checking online freshness. This mode does not mean latest; a packaged executable
+uses embedded bundles, while a source installation needs the pinned Git objects in
+its working repository. `repair` defaults to this mode and remains an explicit
+replacement/repair operation. Do not use repair as a routine updater.
+
+Latest-mode locks record source provenance and file verification. Exact replay of
+a branch-tracked locked snapshot is not implemented; restore rejects it instead
+of silently installing a different revision.
+
+Skill content updates and CLI program updates are separate. Existing installations
+of the old CLI need a one-time refresh using the instructions below to gain this
+behavior. The [dynamic-update checkpoint](docs/exec-plans/completed/dynamic-skill-updates.md)
+records the regression evidence and implementation decisions.
 
 ### Setup
 

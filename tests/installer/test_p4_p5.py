@@ -44,7 +44,7 @@ class StateAndReleaseTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             command = [
-                sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "codex",
+                sys.executable, "-m", "ai_rules", "setup", "--source", "bundled", "--profile", "minimal", "--host", "codex",
                 "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
                 "--yes", "--non-interactive",
             ]
@@ -61,7 +61,7 @@ class StateAndReleaseTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             command = [
-                sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "codex",
+                sys.executable, "-m", "ai_rules", "setup", "--source", "bundled", "--profile", "minimal", "--host", "codex",
                 "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
                 "--yes", "--non-interactive",
             ]
@@ -84,7 +84,7 @@ class StateAndReleaseTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             setup = [
-                sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "codex",
+                sys.executable, "-m", "ai_rules", "setup", "--source", "bundled", "--profile", "minimal", "--host", "codex",
                 "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
                 "--yes", "--non-interactive",
             ]
@@ -94,7 +94,7 @@ class StateAndReleaseTests(unittest.TestCase):
             state["installations"]["andino-workflow:codex:project"]["version"] = "release-manifest:andino-workflow@0000000#0"
             state_path.write_text(json.dumps(state), encoding="utf-8")
             updated = subprocess.run(
-                [sys.executable, "-m", "ai_rules", "update", "--profile", "minimal", "--host", "codex",
+                [sys.executable, "-m", "ai_rules", "update", "--source", "bundled", "--profile", "minimal", "--host", "codex",
                  "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"), "--yes"],
                 check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
             )
@@ -143,7 +143,7 @@ class StateAndReleaseTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             setup = [
-                sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "codex",
+                sys.executable, "-m", "ai_rules", "setup", "--source", "bundled", "--profile", "minimal", "--host", "codex",
                 "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
                 "--yes", "--non-interactive",
             ]
@@ -161,7 +161,7 @@ class StateAndReleaseTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             command = [
-                sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "codex",
+                sys.executable, "-m", "ai_rules", "setup", "--source", "bundled", "--profile", "minimal", "--host", "codex",
                 "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
                 "--yes", "--non-interactive",
             ]

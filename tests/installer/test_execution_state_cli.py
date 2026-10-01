@@ -127,7 +127,7 @@ class ExecutionStateCliTests(unittest.TestCase):
             root = Path(temp)
             completed = subprocess.run(
                 [
-                    sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "codex",
+                    sys.executable, "-m", "ai_rules", "setup", "--source", "bundled", "--profile", "minimal", "--host", "codex",
                     "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
                     "--dry-run", "--non-interactive",
                 ],
@@ -145,7 +145,7 @@ class ExecutionStateCliTests(unittest.TestCase):
                     sys.executable,
                     "-m",
                     "ai_rules",
-                    "setup",
+                    "setup", "--source", "bundled",
                     "--profile",
                     "minimal",
                     "--host",
@@ -186,7 +186,7 @@ class ExecutionStateCliTests(unittest.TestCase):
                     sys.executable,
                     "-m",
                     "ai_rules",
-                    "setup",
+                    "setup", "--source", "bundled",
                     "--profile",
                     "minimal",
                     "--host",
@@ -217,7 +217,7 @@ class ExecutionStateCliTests(unittest.TestCase):
             (duplicate / "SKILL.md").write_text("# Existing skill\n", encoding="utf-8")
             completed = subprocess.run(
                 [
-                    sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "opencode",
+                    sys.executable, "-m", "ai_rules", "setup", "--source", "bundled", "--profile", "minimal", "--host", "opencode",
                     "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
                     "--dry-run", "--non-interactive",
                 ],
@@ -231,7 +231,7 @@ class ExecutionStateCliTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             command = [
-                sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "codex",
+                sys.executable, "-m", "ai_rules", "setup", "--source", "bundled", "--profile", "minimal", "--host", "codex",
                 "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
                 "--yes", "--non-interactive",
             ]
@@ -251,7 +251,7 @@ class ExecutionStateCliTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             command = [
-                sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "codex",
+                sys.executable, "-m", "ai_rules", "setup", "--source", "bundled", "--profile", "minimal", "--host", "codex",
                 "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
                 "--yes", "--non-interactive",
             ]
@@ -275,7 +275,7 @@ class ExecutionStateCliTests(unittest.TestCase):
             marker = skill / ".git" / "objects" / "read-only-object"
             marker.write_text("preserve\n", encoding="utf-8")
             completed = subprocess.run(
-                [sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "codex",
+                [sys.executable, "-m", "ai_rules", "setup", "--source", "bundled", "--profile", "minimal", "--host", "codex",
                  "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
                  "--yes", "--non-interactive"],
                 check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
@@ -289,7 +289,7 @@ class ExecutionStateCliTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             setup = [
-                sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "codex",
+                sys.executable, "-m", "ai_rules", "setup", "--source", "bundled", "--profile", "minimal", "--host", "codex",
                 "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
                 "--yes", "--non-interactive",
             ]
@@ -309,7 +309,7 @@ class ExecutionStateCliTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             setup = [
-                sys.executable, "-m", "ai_rules", "setup", "--profile", "minimal", "--host", "codex",
+                sys.executable, "-m", "ai_rules", "setup", "--source", "bundled", "--profile", "minimal", "--host", "codex",
                 "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
                 "--yes", "--non-interactive",
             ]
@@ -332,7 +332,7 @@ class ExecutionStateCliTests(unittest.TestCase):
             root = Path(temp)
             completed = subprocess.run(
                 [
-                    sys.executable, "-m", "ai_rules", "doctor", "--profile", "minimal", "--host", "codex",
+                    sys.executable, "-m", "ai_rules", "doctor", "--source", "bundled", "--profile", "minimal", "--host", "codex",
                     "--scope", "project", "--project-root", str(root / "project"), "--state-dir", str(root / "state"),
                     "--repair", "--dry-run",
                 ],

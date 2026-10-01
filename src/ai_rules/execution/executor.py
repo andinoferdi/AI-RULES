@@ -36,10 +36,12 @@ class Executor:
         state_dir: Path,
         first_party_bundles: dict[str, Path] | None = None,
         host_skill_roots: dict[str, Path] | None = None,
+        first_party_installers: dict[tuple[str, str], Callable[[], Path]] | None = None,
     ):
         self.state_dir = state_dir
         self.first_party_bundles = first_party_bundles or {}
         self.host_skill_roots = host_skill_roots or {}
+        self.first_party_installers = first_party_installers or {}
 
     def execute(self, plan: InstallationPlan, dry_run: bool = True, yes: bool = False) -> ExecutionResult:
         results: list[OperationResult] = []
@@ -50,6 +52,12 @@ class Executor:
                 )
                 continue
             if target.action == ReconciliationAction.NO_OP:
+                if verify := self.first_party_installers.get((target.capability_id, target.host_id)):
+                    try:
+                        verify()
+                    except Exception as exc:
+                        results.append(OperationResult(target.capability_id, target.host_id, target.action.value, "FAILED", str(exc)))
+                        continue
                 results.append(OperationResult(target.capability_id, target.host_id, target.action.value, "VERIFIED", target.reason))
                 continue
             if target.action == ReconciliationAction.MANUAL_ACTION:
@@ -95,6 +103,8 @@ class Executor:
         return OperationResult(operation.capability_id, operation.host_id, operation.action.value, "APPLIED", message)
 
     def _install_first_party_bundle(self, operation: Operation) -> Path | None:
+        if install := self.first_party_installers.get((operation.capability_id, operation.host_id)):
+            return install()
         bundle = self.first_party_bundles.get(operation.capability_id)
         skill_root = self.host_skill_roots.get(operation.host_id)
         if bundle is None or skill_root is None:

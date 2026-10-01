@@ -20,6 +20,7 @@ from ai_rules.planning import render_plan
 from ai_rules.platform import detect_environment, project_state_root, state_root
 from ai_rules.profiles import load_profiles
 from ai_rules.release import export_git_ref, packaged_bundle
+from ai_rules.release.latest import LatestSources, contents
 from ai_rules.resolver import ResolveRequest, build_resolver
 from ai_rules.state import atomic_write_json, create_snapshot, read_json, read_snapshot, write_profile
 from ai_rules.verification import doctor_from_plan, render_doctor
@@ -33,6 +34,9 @@ def main(argv: list[str] | None = None) -> int:
     except Exception as exc:  # pragma: no cover - CLI boundary
         print(f"ai-rules: {exc}", file=sys.stderr)
         return 2
+    finally:
+        if latest := getattr(args, "_latest", None):
+            latest.close()
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -63,7 +67,7 @@ def build_parser() -> argparse.ArgumentParser:
     repair = sub.add_parser("repair")
     add_common_setup_flags(repair)
     repair.add_argument("--replace-existing", action="store_true")
-    repair.set_defaults(func=cmd_repair)
+    repair.set_defaults(func=cmd_repair, source="bundled")
 
     snapshot = sub.add_parser("snapshot")
     snapshot.add_argument("--profile-path", type=Path, default=state_root() / "profile.json")
@@ -92,6 +96,8 @@ def add_common_setup_flags(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--yes", action="store_true")
     parser.add_argument("--non-interactive", action="store_true")
     parser.add_argument("--state-dir", type=Path)
+    parser.add_argument("--source", choices=("latest", "bundled"), default="latest",
+                        help="latest checks configured remote branches; bundled uses this CLI's frozen manifest without checking freshness")
 
 
 def cmd_setup(args: argparse.Namespace) -> int:
@@ -119,18 +125,15 @@ def cmd_setup(args: argparse.Namespace) -> int:
         profiles = load_profiles(catalog)
         capabilities = tuple(args.capabilities) if args.capabilities else profiles.require(args.profile).capabilities
         setup_summary = (catalog, capabilities, profiles)
-    if interactive and plan.targets and all(target.action == ReconciliationAction.NO_OP for target in plan.targets):
-        catalog, capabilities, _profiles = setup_summary
-        print("AI-RULES Setup\n")
-        for target in plan.targets:
-            print(f"✓ {catalog.require_capability(target.capability_id).display_name}  Already installed")
-        print("\nAll selected skills are ready.\nNo changes were needed.")
-        return 0
-    if setup_summary is not None:
+    all_current = interactive and plan.targets and all(target.action == ReconciliationAction.NO_OP for target in plan.targets)
+    if all_current:
+        args.yes = True
+    if setup_summary is not None and not all_current:
         catalog, capabilities, profiles = setup_summary
         print(render_setup_summary(tuple(args.hosts), args.profile if not args.capabilities else None, capabilities, args.scope, catalog, profiles.profiles))
-    print(_preflight_text())
-    print(render_plan(plan))
+    if not all_current or args.dry_run:
+        print(_preflight_text())
+        print(render_plan(plan))
     if args.dry_run:
         return 1 if plan.blocked else 0
     if interactive and not args.yes and not prompt_confirmation():
@@ -140,14 +143,20 @@ def cmd_setup(args: argparse.Namespace) -> int:
         args.yes = True
     result = _executor_for_plan(plan, args).execute(plan, dry_run=False, yes=args.yes)
     for item in result.results:
-        print(f"{item.capability_id} -> {item.host_id}: {item.status} {item.action} - {item.message}")
+        if all_current and item.status == "VERIFIED":
+            label = "Up to date" if getattr(args, "_latest", None) else "Already installed (latest not checked)"
+            print(f"✓ {catalog.hosts[item.host_id].display_name}: {catalog.require_capability(item.capability_id).display_name}  {label}")
+        else:
+            print(f"{item.capability_id} -> {item.host_id}: {item.status} {item.action} - {item.message}")
     if not args.yes:
         return 0
     _record_managed_installations(plan, result, args)
     capabilities = tuple(args.capabilities) if args.capabilities else tuple(_profile_capabilities(args.profile))
     write_profile(args.state_dir / "profile.json", args.profile, tuple(_hosts(args.hosts)), capabilities, args.scope)
-    _write_verified_lock(plan, result, args)
-    return 1 if any(item.status in {"FAILED", "SKIPPED", "BLOCKED"} for item in result.results) else 0
+    verified = _write_verified_lock(plan, result, args)
+    if all_current and verified:
+        print("\nNo changes were needed.")
+    return 1 if verified is False or any(item.status in {"FAILED", "SKIPPED", "BLOCKED"} for item in result.results) else 0
 
 
 def cmd_add(args: argparse.Namespace) -> int:
@@ -240,13 +249,15 @@ def cmd_update(args: argparse.Namespace) -> int:
     for item in result.results:
         print(f"{item.capability_id} -> {item.host_id}: {item.status} {item.action} - {item.message}")
     _record_managed_installations(plan, result, args)
-    _write_verified_lock(plan, result, args)
-    return 1 if any(item.status in {"FAILED", "SKIPPED", "BLOCKED"} for item in result.results) else 0
+    verified = _write_verified_lock(plan, result, args)
+    return 1 if verified is False or any(item.status in {"FAILED", "SKIPPED", "BLOCKED"} for item in result.results) else 0
 
 
 def cmd_repair(args: argparse.Namespace) -> int:
     """Explicitly restore selected first-party skills from the stable manifest."""
     _prepare_args(args)
+    if getattr(args, "source", "bundled") != "bundled":
+        raise ValueError("repair restores the bundled release; use setup/update for latest source reconciliation")
     plan = _resolve_from_args(args)
     repair_plan = _explicit_repair_plan(plan, allow_replace=args.replace_existing)
     print("AI-RULES Repair")
@@ -270,6 +281,10 @@ def cmd_snapshot(args: argparse.Namespace) -> int:
 
 def cmd_restore(args: argparse.Namespace) -> int:
     snapshot = read_snapshot(args.snapshot)
+    if snapshot.get("mode") == "locked" and any(
+        target.get("update_policy") == "git" for target in snapshot.get("lock", {}).get("targets", ())
+    ):
+        raise ValueError("Exact replay of branch-tracked snapshots is not implemented; refusing to substitute a bundled or latest revision")
     profile = snapshot.get("profile", {})
     print("AI-RULES restore preview")
     print(f"profile={profile.get('profile')} hosts={profile.get('hosts', [])} capabilities={profile.get('capabilities', [])}")
@@ -308,7 +323,7 @@ def _resolve_from_args(args: argparse.Namespace):
     resolver = build_resolver(catalog, profiles, StaticCapabilityAdapter(state=_actual_state(catalog, args)))
     hosts = tuple(_hosts(args.hosts))
     profile_id = None if args.capabilities else args.profile
-    return resolver.resolve(
+    plan = resolver.resolve(
         ResolveRequest(
             hosts=hosts,
             scope=Scope(args.scope),
@@ -316,6 +331,11 @@ def _resolve_from_args(args: argparse.Namespace):
             capabilities=tuple(args.capabilities),
         )
     )
+    if getattr(args, "source", "bundled") == "latest":
+        if not getattr(args, "_latest", None):
+            args._latest = LatestSources(catalog, [target.capability_id for target in plan.targets if target.strategy_id])
+        plan = args._latest.reconcile(plan, catalog, args)
+    return plan
 
 
 def _prepare_args(args: argparse.Namespace) -> None:
@@ -338,6 +358,8 @@ def _profile_capabilities(profile_id: str) -> list[str]:
 
 
 def _executor_for_plan(plan, args: argparse.Namespace) -> Executor:
+    if latest := getattr(args, "_latest", None):
+        return Executor(args.state_dir, first_party_installers=latest.installers)
     catalog = load_catalog()
     adapters = build_host_adapters(catalog.hosts)
     roots: dict[str, Path] = {}
@@ -411,14 +433,16 @@ def _actual_state(
 
 def _record_managed_installations(plan, result, args: argparse.Namespace) -> None:
     records = _managed_installation_records(args.state_dir)
-    applied = {(item.capability_id, item.host_id, item.action) for item in result.results if item.status == "APPLIED"}
+    latest = getattr(args, "_latest", None)
+    applied = {(item.capability_id, item.host_id, item.action) for item in result.results
+               if item.status == "APPLIED" or (latest and item.status == "VERIFIED")}
     catalog = load_catalog()
     adapters = build_host_adapters(catalog.hosts)
     for target in plan.targets:
         if (target.capability_id, target.host_id, target.action.value) not in applied:
             continue
         key = _installation_key(target.capability_id, target.host_id, target.scope)
-        if target.capability_id in _release_manifest().get("first_party", {}):
+        if latest or target.capability_id in _release_manifest().get("first_party", {}):
             root = adapters[target.host_id].skill_target(target.scope, args.project_root)
             if root is None:
                 continue
@@ -430,6 +454,11 @@ def _record_managed_installations(plan, result, args: argparse.Namespace) -> Non
                 "path": str(root / target.capability_id),
                 "kind": "first-party-skill",
             }
+            if latest:
+                records[key]["source"] = {"repository": latest.entries[target.capability_id][1],
+                                           "branch": latest.entries[target.capability_id][2],
+                                           "commit": latest.entries[target.capability_id][3]}
+                records[key]["files"] = contents((root / target.capability_id).resolve())
         else:
             records[key] = {
                 "capability": target.capability_id,
@@ -449,7 +478,7 @@ def _managed_installation_records(state_dir: Path) -> dict[str, dict]:
     return dict(read_json(path).get("installations", {}))
 
 
-def _write_verified_lock(plan, result, args: argparse.Namespace) -> None:
+def _write_verified_lock(plan, result, args: argparse.Namespace) -> bool | None:
     """Persist per-target post-execution evidence, never equating APPLIED with verified."""
     if not result.results:
         return
@@ -472,7 +501,12 @@ def _write_verified_lock(plan, result, args: argparse.Namespace) -> None:
         capability = catalog.require_capability(target.capability_id)
         verification: dict[str, str]
         status = item.status
-        if item.status == "APPLIED" and capability.ownership.value == "FIRST_PARTY":
+        if getattr(args, "_latest", None) and item.status in {"APPLIED", "VERIFIED"}:
+            root = adapters[target.host_id].skill_target(target.scope, args.project_root)
+            matches = root is not None and contents((root / target.capability_id).resolve()) == args._latest.expected[(target.capability_id, target.host_id)]
+            status = TargetStatus.VERIFIED.value if matches else TargetStatus.FAILED.value
+            verification = {"outcome": "PASS" if matches else "FAIL", "check": "full-source-content"}
+        elif item.status == "APPLIED" and capability.ownership.value == "FIRST_PARTY":
             root = adapters[target.host_id].skill_target(target.scope, args.project_root)
             skill_file = root / target.capability_id / "SKILL.md" if root is not None else None
             if skill_file is not None and skill_file.is_file():
@@ -496,10 +530,10 @@ def _write_verified_lock(plan, result, args: argparse.Namespace) -> None:
                 "assessment": target.assessment.value,
                 "status": status,
                 "strategy": target.strategy_id,
-                "source": next((operation.source for operation in target.operations), None),
-                "update_policy": capability.update_policy.model.value,
+                "source": args._latest.entries[target.capability_id][1] if getattr(args, "_latest", None) else next((operation.source for operation in target.operations), None),
+                "update_policy": "git" if getattr(args, "_latest", None) else capability.update_policy.model.value,
                 "version_observability": capability.update_policy.version_observability.value,
-                "exact_replay_supported": capability.update_policy.exact_pin_supported,
+                "exact_replay_supported": False if getattr(args, "_latest", None) else capability.update_policy.exact_pin_supported,
                 "verification": verification,
             }
         )
@@ -508,6 +542,7 @@ def _write_verified_lock(plan, result, args: argparse.Namespace) -> None:
         args.state_dir / "lock.json",
         {"schema_version": 2, "status": overall, "profile": plan.profile_id, "targets": targets},
     )
+    return overall == "verified"
 
 
 def _installation_key(capability_id: str, host_id: str, scope: Scope) -> str:
