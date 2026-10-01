@@ -9,6 +9,7 @@ from importlib import resources
 from pathlib import Path
 from typing import Callable
 
+from ai_rules.banner import print_setup_banner
 from ai_rules.capabilities.adapters import StaticCapabilityAdapter
 from ai_rules.catalog import load_catalog
 from ai_rules.domain.models import ActualState, InstallationPlan, Operation
@@ -102,6 +103,8 @@ def add_common_setup_flags(parser: argparse.ArgumentParser) -> None:
 
 def cmd_setup(args: argparse.Namespace) -> int:
     _prepare_args(args)
+    if not args.non_interactive:
+        print_setup_banner()
     interactive = False
     if not args.non_interactive and not args.hosts and not args.capabilities and args.profile == "minimal":
         catalog = load_catalog()
