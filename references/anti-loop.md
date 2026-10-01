@@ -16,6 +16,10 @@ Behavioral rules unless a host adapter documents a supported hard limit:
   If useful and authorized, use bounded independent scopes and compact results.
 - Use one browser surface for reproduction; another only for a distinct diagnosis.
 - No broad research for a typo, no reasoning MCP stacked on native reasoning.
+- Stop acquiring context when the next decision is sufficiently grounded, unless
+  risk, acceptance criteria or a live contradiction requires more evidence. Name
+  the unresolved decision before expanding a search; available tools alone do not
+  justify another investigation. Resume investigation when new evidence warrants it.
 - Repeat a verification after relevant state changes, or when the next check can produce
   materially new evidence. Rerunning the same test after a code change is valid.
 - Stop verification when acceptance/pass criteria are proven, the stop condition is

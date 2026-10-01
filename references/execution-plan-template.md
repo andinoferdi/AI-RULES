@@ -1,10 +1,14 @@
-# [TICKET] — [TITLE]
+# [TASK / OUTCOME TITLE]
 
 Status: TODO
 Plan Depth: LITE / STANDARD / DEEP
 Current Phase: Phase 1 — [name]
 Last Updated: YYYY-MM-DD
 Active Agent: [optional context only; never an ownership lock]
+
+<!-- Only for CHECKPOINTED work. Keep the minimum fields required by the selected
+plan density in execution-plan.md; remove optional sections that do not help this
+task. Research, daily work and decisions do not require code or file-edit phases. -->
 
 ## Executive Snapshot
 
@@ -31,25 +35,25 @@ LITE may use a compact Current State instead.]
 
 ## User Decisions / Clarifications
 
-- [Only decisions that change implementation.]
+- [Only decisions that materially constrain the outcome or approach.]
 
-## Current Technical Context
+## Current Context
 
-[Relevant stack, architecture, implementation, environment or repository state.]
+[Relevant artifacts, sources, environment, data or project state; technical details only when applicable.]
 
 ## Baseline / Starting Evidence
 
-- [Reproduction, failing test, metric, current behavior, or Git state needed to prove change.]
+- [Relevant observation, source/date, reproduction, metric or starting state needed to assess the outcome.]
 
 ## Constraints & Invariants
 
-- [Ticket-specific compatibility, behavior, safety, security, or referenced project rule.]
+- [Task-specific compatibility, behavior, safety, security, or referenced project rule.]
 
 ## Architecture / Approach
 
-[Concise boundaries, control/data flow, stable contracts, and why this fits.]
+[Approach and why it fits; relevant sources, decision criteria or system contracts.]
 
-## File Impact Map
+## Artifact / System Impact Map
 
 ### Create
 
@@ -73,7 +77,7 @@ Use `UNKNOWN — update after investigation` instead of inventing paths. Remove 
 
 | Phase | Status | Goal | Scope | Evidence / Result |
 | --- | --- | --- | --- | --- |
-| Phase 1 — [name] | IN_PROGRESS | [goal] | [verified paths/symbols or UNKNOWN] | [actual result when known] |
+| Phase 1 — [name] | IN_PROGRESS | [goal] | [verified artifacts/sources/areas or UNKNOWN] | [actual result when known] |
 | Phase 2 — [name] | TODO | [goal] | [scope] | Pending. |
 
 # Detailed Execution
@@ -83,16 +87,16 @@ Use `UNKNOWN — update after investigation` instead of inventing paths. Remove 
 Status: IN_PROGRESS
 Goal: [Outcome.]
 Why: [Only when ordering is not obvious.]
-Relevant Scope: [Paths/symbols/systems.]
+Relevant Scope: [Artifacts/sources/systems; paths/symbols when applicable.]
 
-### Files
+### Artifacts / Areas (when applicable)
 
 - Create: [path and purpose]
 - Modify: [path and purpose]
 - Delete: [path and reason]
 - Temporary: [path and lifecycle]
 
-### Technical Contract
+### Outcome Contract
 
 Input: [input/state]
 Output: [observable output]
@@ -103,7 +107,7 @@ Postconditions / invariants: [what remains true]
 
 - [Confirmed behavior or prior result required for correct execution.]
 
-### Implementation Steps
+### Action Steps
 
 1. [Concrete evidence-backed step.]
 
@@ -178,16 +182,17 @@ Status: WAITING / APPROVED
 ## Handoff Notes
 
 - Do not repeat: [completed work with valid evidence.]
-- First inspect: `path` / `symbol`.
+- First inspect: [relevant source/artifact/state; path/symbol when applicable].
 - Then: [specific action and check.]
 
 ## NEXT ACTION
 
-[First file/symbol or question; exact action; next verification.]
+[First source/artifact/state or material question; exact action; next verification.]
 
 <!--
-Adapt before use. LITE keeps the minimum checkpoint fields. STANDARD is the default
-non-trivial form. DEEP expands only evidence-backed contracts, dependencies,
+Use only for CHECKPOINTED work. Reasoning depth does not select plan density.
+Adapt before use. LITE keeps the minimum checkpoint fields. STANDARD adds useful
+coordination detail. DEEP expands only evidence-backed contracts, dependencies,
 findings, revisions and gates. Delete every optional section or field that does not
 reduce ambiguity, rework, risk or handoff cost. Never leave placeholders in a mature plan.
 -->
