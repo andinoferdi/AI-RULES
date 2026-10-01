@@ -9,8 +9,9 @@ Runtime skills ship on separate branches; WebBased retains web/chat rules and
 project templates. Never copy runtime packages into main or quality artifacts into
 runtime branches. Each runtime has README.md, SKILL.md and useful supporting files.
 
-Andino owns lifecycle, plan, checkpoint, authoritative NEXT ACTION and completion
-when active. Specialists return domain results, evidence, limitations and recommended
+Andino owns lifecycle and completion when active. For CHECKPOINTED work its plan
+owns checkpoints and authoritative NEXT ACTION; EPHEMERAL work requires no durable
+plan. Specialists return domain results, evidence, limitations and recommended
 actions. Without Andino they use normal host task context. Installation is not
 activation. Neither specialist requires the other; no meta-router is needed.
 
@@ -24,7 +25,12 @@ need not be enforced identically by every host. The dependency-free validator
 supports plain string scalars, not general YAML. Add optional fields only for a
 truthful, useful and supported purpose; no license or permission fields for symmetry.
 
-Andino coordinates substantive work; Rescue investigates engineering fragility;
+Andino supports adaptive problem solving across development, troubleshooting,
+research, decisions, daily tasks and conversation. DIRECT/GROUNDED/INVESTIGATIVE
+reasoning depth is independent of EPHEMERAL/CHECKPOINTED persistence; LITE/STANDARD/DEEP
+describe only plan density. Explicit simple or conversational invocation remains
+natural, while implicit activation avoids routine questions and trivial edits.
+Rescue investigates engineering fragility;
 Skripsi handles substantive research. Simple edits normally need no lifecycle;
 AI authorship alone is not rescue evidence; sentence polish needs no research
 orchestration. Honor explicit scope and native host invocation controls.

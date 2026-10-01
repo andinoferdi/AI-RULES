@@ -2,7 +2,7 @@
 
 Each JSON file contains prompts with an expected decision and a forbidden failure signal. `behavior` cases exercise core rules; `negative-trigger` cases probe over-activation. The validator checks case shape and package structure only.
 
-For a live evaluation, give a coding agent the relevant skill and one prompt at a time in a disposable repository. Keep the expected and forbidden fields hidden from that agent. Record the host, skill commit, prompt, relevant fixture state, observed action/output, and reviewer verdict. Compare actual behavior with both fields; do not score wording alone. For negative cases, check whether the skill was invoked unnecessarily. Live execution requires host-specific access. Andino and Rescue have no recorded behavioral runs here; Skripsi has historical revision-scoped records. No cross-host behavioral parity is claimed.
+For a live evaluation, give the tested agent the relevant skill and one prompt at a time in an isolated context. Use a disposable repository only when the scenario requires one. Keep expected, forbidden and evaluator conclusions hidden. Materialize scenario fixture facts as raw artifacts/tool evidence; do not give the actor an evaluator's root-cause summary. Record model and host, loaded skill path and commit, prompt, fixture state, observable inspection sequence, questions, changes, verification, output and reviewer verdict. Compare actual behavior with both oracle fields; do not score wording alone. For negative cases, check whether the skill was invoked unnecessarily. Live execution requires host-specific access. Andino and Rescue have no recorded behavioral runs here; Skripsi has historical revision-scoped records. No cross-host behavioral parity is claimed.
 
 The eval files cover `andino-workflow`, `ai-codebase-rescue`, and `skripsi-skill`. Run the deterministic check from `main` after fetching the three skill branch refs:
 
@@ -12,6 +12,23 @@ python3 scripts/validate_skills.py
 
 No model provider or third-party Python package is required. The skill branches remain the installed runtime packages; these cases and checks live on `main`.
 The metadata checker supports a plain-string YAML subset; new structures require extending it or justifying a parser dependency. It enforces portable name/description bounds, required README/SKILL files, allowed paths and regular Git file modes. Links are checked, not the truth of prose or live host behavior. The [family standard](../docs/agent-skill-family-standard.md) defines the minimum contract. Andino and Rescue include lifecycle/coexistence regression expectations.
+
+## Andino adaptive problem solving
+
+`andino-workflow.json` contains 28 specifications: 13 existing IDs and 15 additions.
+The existing `standard-plan` case now explicitly needs cross-session handoff;
+non-trivial reasoning alone does not require persistence. New cases cover diagnosis
+contradictions, runtime failures, repository-answerable questions, existing features,
+material clarification, daily/casual use, current research, existing capabilities,
+cross-feature impact, sufficient-evidence stopping, non-code resume, ephemeral
+investigation and limits of a passing local reproduction attempt.
+
+The optional `fixture` field describes scenario setup, not an executed environment.
+Prioritize false-user-diagnosis, repository-answerable-question,
+material-question-only, explicit-casual-use and explicit-daily-use. Then expand
+proportionally if no failure appears. Classify failures as implementation, model,
+host, fixture, environment or unknown before changing accepted instructions.
+See [integration evidence and next action](../docs/validation/andino-workflow/integration-review.md).
 
 ## Skripsi v0.9
 

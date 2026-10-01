@@ -3,7 +3,8 @@ __pycache__/
 *.egg-info/
 build/
 dist/
-release/
+/release/
+/src/ai_rules/release/data/bundles/
 .venv/
 venv/
 .env

@@ -7,7 +7,7 @@ This branch (`main`) is the AI-RULES installer and control plane: source code, t
 | Branch | Contents |
 | --- | --- |
 | [`WebBased`](https://github.com/andinoferdi/AI-RULES/tree/WebBased) | Web/chat rules and project templates |
-| [`andino-workflow`](https://github.com/andinoferdi/AI-RULES/tree/andino-workflow) | Andino Workflow runtime skill |
+| [`andino-workflow`](https://github.com/andinoferdi/AI-RULES/tree/andino-workflow) | Adaptive problem solving, proportional investigation and optional checkpoints |
 | [`ai-codebase-rescue`](https://github.com/andinoferdi/AI-RULES/tree/ai-codebase-rescue) | AI Codebase Rescue runtime skill |
 | [`skripsi-skill`](https://github.com/andinoferdi/AI-RULES/tree/skripsi-skill) | Thesis and research runtime skill |
 
@@ -37,6 +37,11 @@ run it locally in addition to CI's package, unit-test and traceability checks.
 
 The [Skripsi contract review](docs/validation/skripsi-skill/contract-review.md), [requirement inventory](docs/validation/skripsi-skill/traceability.json), and [live-evidence review](docs/validation/skripsi-skill/live-review.json) distinguish implementation ownership from observed behavior. The [evaluation guide](evals/README.md) describes opt-in isolated execution; CI never invokes a model or incurs live evaluation usage.
 
+The [Andino integration review](docs/validation/andino-workflow/integration-review.md)
+records the adaptive workflow revision, 28 evaluation specifications, structural
+verification and remaining live validation. Reasoning depth and checkpoint persistence
+are independent; explicit daily and conversational use does not require a plan.
+
 ## AI-RULES installer/orchestrator
 
 AI-RULES installs and manages only Andino's first-party skills: **Andino
@@ -57,7 +62,7 @@ To set up AI-RULES locally:
 git clone https://github.com/andinoferdi/AI-RULES.git
 cd AI-RULES
 python -m pip install .
-ai-rules setup 4
+ai-rules setup 
 ```
 
 ### External resources — manual installation
