@@ -1,0 +1,42 @@
+{
+  "case": "staruml-mcp",
+  "scope": "smoke",
+  "host": "Codex desktop Windows",
+  "model": "UNKNOWN",
+  "runtime_hash": "75607e6fa1b4bf0b227ad677c5e42219cc62d8d3e68970fdb4dec9107ac2a8c7",
+  "discovered": [
+    {
+      "id": "staruml-mcp",
+      "provider": "staruml"
+    }
+  ],
+  "selected": [
+    {
+      "id": "staruml-mcp",
+      "provider": "staruml"
+    }
+  ],
+  "invocations": [
+    {
+      "tool": "mcp__staruml__get_current_diagram_info",
+      "arguments": {},
+      "response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Failed to get current diagram info: request to http://localhost:58321/get_current_diagram_info failed, reason: "
+          }
+        ],
+        "isError": true
+      }
+    }
+  ],
+  "fallback": [],
+  "resulting_evidence": "{\"content\":[{\"type\":\"text\",\"text\":\"Failed to get current diagram info: request to http://localhost:58321/get_current_diagram_info failed, reason: \"}],\"isError\":true}",
+  "verdict": "NOT_VERIFIED",
+  "routing_verified": false,
+  "review": {
+    "reviewer": "Primary Codex agent",
+    "reason": "Actual tool returned connection/readiness error; no retry or mutation. Application outcome and autonomous routing are unverified."
+  }
+}

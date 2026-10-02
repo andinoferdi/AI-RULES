@@ -1,0 +1,109 @@
+{
+  "case": "playwright-route",
+  "scope": "behavioral",
+  "host": "Windows Codex CLI",
+  "model": "UNKNOWN",
+  "runtime_hash": "75607e6fa1b4bf0b227ad677c5e42219cc62d8d3e68970fdb4dec9107ac2a8c7",
+  "runtime_base": "0f41b684eac5b990de48e6f54727f7031943f8b7",
+  "discovered": [
+    {
+      "id": "systematic-debugging",
+      "provider": "Superpowers",
+      "path": "skills/systematic-debugging/SKILL.md",
+      "content_sha256": "6ca725b4246a74b6a3e208f1521bab61966d1fb221806ad10225c4d428803d41"
+    },
+    {
+      "id": "test-driven-development",
+      "provider": "Superpowers",
+      "path": "skills/test-driven-development/SKILL.md",
+      "content_sha256": "8e8772822d25e4dfc9295cf4526c6251a10458c7417ac50c4b42e5d9fc91e0b0"
+    },
+    {
+      "id": "agent-skills-test-driven-development",
+      "provider": "Agent Skills",
+      "path": "skills/agent-skills-test-driven-development/SKILL.md",
+      "content_sha256": "c5a63119fcaa358912505df766721670aba65e6c6689900a836ed8d48e67143f"
+    },
+    {
+      "id": "code-review-and-quality",
+      "provider": "Agent Skills",
+      "path": "skills/code-review-and-quality/SKILL.md",
+      "content_sha256": "76e85d3922a799e05dd45c69db04407cc3dc19aa43ea4b9e998efb4426b1a71e"
+    },
+    {
+      "id": "ponytail",
+      "provider": "Ponytail",
+      "path": "skills/ponytail/SKILL.md",
+      "content_sha256": "f5272ebea7b1a622021c26368a9ea4263ea4cc0d11266beeb2d2ef7a33389814"
+    },
+    {
+      "id": "ui-ux-pro-max",
+      "provider": "UI/UX Pro Max",
+      "path": "skills/ui-ux-pro-max/SKILL.md",
+      "content_sha256": "1a3c885fdec745c84502abc4e5fe0829c91776b7459e3b363c94c7f26415cf11"
+    },
+    {
+      "id": "design-taste-frontend",
+      "provider": "Taste Skill",
+      "path": "skills/design-taste-frontend/SKILL.md",
+      "content_sha256": "694ba72256dcfe50bce53773925d0dfa69ae3959754f92d688b9b47db28ac743"
+    },
+    {
+      "id": "clone-website",
+      "provider": "AI Website Cloner",
+      "path": "skills/clone-website/SKILL.md",
+      "content_sha256": "5f8f338b885261ca5c2a902b2e4d98321e533d554b5e64a09951155081a06438"
+    },
+    {
+      "id": "antislop",
+      "provider": "Anti-Slop",
+      "path": "skills/antislop/SKILL.md",
+      "content_sha256": "07d226d891e89fdd1c6888df47efeeb214f49cacaf3af5d3e4b015cc8be15745"
+    },
+    {
+      "id": "antislop-ui",
+      "provider": "Anti-Slop",
+      "path": "skills/antislop-ui/SKILL.md",
+      "content_sha256": "744c5cfa282e033af0b827d8faba8b3a914d2bc61ac3733c275914671bb875ff"
+    },
+    {
+      "id": "antislop-copywriting",
+      "provider": "Anti-Slop",
+      "path": "skills/antislop-copywriting/SKILL.md",
+      "content_sha256": "4ef6b94e9a285b6762dc3ba50ea43f628927b19cbeba0f22c7412ee1aafabb26"
+    }
+  ],
+  "selected": [],
+  "invocations": [],
+  "fallback": [
+    {
+      "id": "native local reasoning",
+      "reason": "External instrument/read access unavailable"
+    }
+  ],
+  "resulting_evidence": "State preservation is **unverified**. Host policy blocked reading `andino-workflow/SKILL.md` and listing the supplied files. No browser interaction or accessibility-tree tool is exposed, so I couldn’t load Andino or explore the form.\n\nThe local verification procedure is:\n\n1. Enter `Ada Test` in the step-one name field.\n2. Select **Next**; confirm step two appears.\n3. Select **Back**; assert the name remains exactly `Ada Test`.\n4. Change it to `Ada Updated`, then repeat **Next → Back** and assert the updated value remains.\n\nUse the same browser session throughout, locating the field and controls by accessible role/name. Record field values after each return. This procedure has not been executed.\n\nIf values reset, keep form state in a parent that survives step navigation and bind the name input to it; verify with the same sequence.\n\nNothing was changed. The host’s policy rejection prevented local inspection; I did not attempt to bypass it.",
+  "verdict": "NOT_VERIFIED",
+  "oracle_hidden": true,
+  "execution_status": "EXECUTED",
+  "started_at_utc": "2026-10-02T03:20:33.487328+00:00",
+  "limitations": [
+    "Read-only actor; no external MCP exposed by this adapter. Tests selection/loading and local reasoning, not application mutations or cross-host parity.",
+    "Existing account authentication is used without reading credentials; user config ignored. Host may still advertise global skill metadata; actor scope restricts use to supplied copies."
+  ],
+  "input_sha256": "aea6aec805e6574dfa4752257daabfccea6e2c745e7241946152463c5186f974",
+  "fixture_files": {},
+  "exit_code": 0,
+  "diagnostic": "2026-10-02T03:20:35.625955Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell\n2026-10-02T03:20:43.708550Z ERROR codex_core::tools::router: error=exec_command failed: CreateProcess { message: \"Rejected(\\\"`\\\\\\\"C:\\\\\\\\\\\\\\\\Users\\\\\\\\\\\\\\\\Lenovo\\\\\\\\\\\\\\\\.cache\\\\\\\\\\\\\\\\codex-runtimes\\\\\\\\\\\\\\\\codex-primary-runtime\\\\\\\\\\\\\\\\dependencies\\\\\\\\\\\\\\\\native\\\\\\\\\\\\\\\\powershell\\\\\\\\\\\\\\\\pwsh.exe\\\\\\\" -Command \\\\\\\"Get-Content -LiteralPath 'andino-workflow/SKILL.md'; rg --files\\\\\\\"` rejected: blocked by policy\\\")\" }\n",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id": "01a0faa0-c628-7292-ad71-ed89a507c29d"
+    }
+  ],
+  "finished_at_utc": "2026-10-02T03:21:08.150429+00:00",
+  "review": {
+    "reviewer": "Primary Codex agent; explicit oracle/action review",
+    "reason": "No successful captured local load/call; observed output reports native host read denial or missing tools. Does not prove Andino/external capability use.",
+    "scope": "Revision-scoped capability selection/loading and applied local reasoning. No external application mutation/browser verification or cross-host parity implied."
+  }
+}

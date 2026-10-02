@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-02",
+  "runtime_commit": "effc3b8d7326d121317da86aff205de7c0bb0e80",
+  "runtime_hash": "dc9916a964011c8c7d16c977f614616db949e0643d5b0efa0aa3b47edb7f8447",
+  "unit_tests": {
+    "command": "python -m unittest discover -s tests",
+    "tests": 117,
+    "result": "PASS",
+    "seconds": 35.186
+  },
+  "packages": {
+    "command": "python scripts/validate_skills.py",
+    "packages": 3,
+    "eval_schemas": 3,
+    "result": "PASS"
+  },
+  "capability_structure": {
+    "contracts": 55,
+    "capability_schemas": 34,
+    "total_eval_specs": 62,
+    "result": "PASS"
+  },
+  "current_record_audit": {
+    "recorded": 6,
+    "PASS": 4,
+    "NOT_VERIFIED": 2,
+    "result": "PASS",
+    "full_coverage": false
+  },
+  "historical_record_audit": {
+    "recorded": 32,
+    "PASS": 9,
+    "NOT_VERIFIED": 23,
+    "allow_historical": true,
+    "result": "PASS"
+  },
+  "skripsi_traceability": {
+    "owners": 335,
+    "capabilities": 32,
+    "initial_eval_owners": 110,
+    "task_records": 75,
+    "result": "PASS"
+  },
+  "skripsi_existing_record_audit": {
+    "PASS": 58,
+    "FAIL": 0,
+    "NOT_VERIFIED": 60,
+    "new_actor_execution": false,
+    "result": "PASS"
+  },
+  "remote_setup_proof": "setup-publication-proof.json",
+  "runtime_whitespace": {
+    "result": "PASS with explicit format exception",
+    "configuration": "core.whitespace=-blank-at-eof",
+    "default_check": "Registry has one terminal blank separator; bytes retained to preserve accepted evaluated hash."
+  },
+  "cross_host_acceptance": "NOT_VERIFIED",
+  "cleanup": {
+    "owned_helpers_archived": 12,
+    "review_packet_status": "ABSENT at final cleanup; no recreation or deletion performed",
+    "precise_ignore": "/kirim gpt/",
+    "original_28_evals_preserved": true,
+    "sibling_release_pins_preserved": true,
+    "document_links": "PASS",
+    "credential_pattern_scan": "PASS"
+  }
+}

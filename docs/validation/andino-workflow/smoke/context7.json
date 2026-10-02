@@ -1,0 +1,44 @@
+{
+  "case": "context7",
+  "scope": "smoke",
+  "host": "Codex desktop Windows",
+  "model": "UNKNOWN",
+  "runtime_hash": "75607e6fa1b4bf0b227ad677c5e42219cc62d8d3e68970fdb4dec9107ac2a8c7",
+  "discovered": [
+    {
+      "id": "context7",
+      "provider": "context7"
+    }
+  ],
+  "selected": [
+    {
+      "id": "context7",
+      "provider": "context7"
+    }
+  ],
+  "invocations": [
+    {
+      "tool": "mcp__context7__resolve_library_id",
+      "arguments": {
+        "libraryName": "Playwright",
+        "query": "Document Playwright MCP versus CLI usage for persistent exploratory browser interactions."
+      },
+      "response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Available Libraries:\n\n- Title: Playwright MCP\n- Context7-compatible library ID: /microsoft/playwright-mcp\n- Description: A Model Context Protocol (MCP) server that provides browser automation capabilities using Playwright, enabling LLMs to interact with web pages through structured accessibility snapshots without needing vision models.\n- Code Snippets: 651\n- Source Reputation: High\n- Benchmark Score: 85.57\n- Versions: v0.0.80\n----------\n- Title: Playwright CLI\n- Context7-compatible library ID: /microsoft/playwright-cli\n- Description: Playwright CLI provides a token-efficient command-line interface for Playwright, specifically designed for coding agents to automate browser interactions without loading large tool schemas into the model context.\n- Code Snippets: 359\n- Source Reputation: High\n- Benchmark Score: 85.58\n----------\n- Title: Playwright\n- Context7-compatible library ID: /microsoft/playwright\n- Description: Playwright is a framework for Web Testing and Automation, enabling cross-browser testing of Chromium, Firefox, and WebKit with a single API.\n- Code Snippets: 8041\n- Source Reputation: High\n- Benchmark Score: 81.28\n- Versions: v1.51.0, v1.58.2, v1.61.0, v1.63.0\n----------\n- Title: Playwright\n- Context7-compatible library ID: /microsoft/playwright.dev\n- Description: Playwright is a cross-browser automation library that enables reliable end-to-end testing for web applications across Chromium, Firefox, and WebKit.\n- Code Snippets: 450\n- Source Reputation: High\n- Benchmark Score: 57.77\n----------\n- Title: Playwright\n- Context7-compatible library ID: /websites/devdocs_io_playwright\n- Description: Playwright is a Node.js library for reliable end-to-end testing and web automation across Chromium, Firefox, and WebKit browsers.\n- Code Snippets: 3353\n- Source Reputation: High\n- Benchmark Score: 79.99"
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": [],
+  "resulting_evidence": "{\"content\":[{\"type\":\"text\",\"text\":\"Available Libraries:\\n\\n- Title: Playwright MCP\\n- Context7-compatible library ID: /microsoft/playwright-mcp\\n- Description: A Model Context Protocol (MCP) server that provides browser automation capabilities using Playwright, enabling LLMs to interact with web pages through structured accessibility snapshots without needing vision models.\\n- Code Snippets: 651\\n- Source Reputation: High\\n- Benchmark Score: 85.57\\n- Versions: v0.0.80\\n----------\\n- Title: Playwright CLI\\n- Context7-compatible library ID: /microsoft/playwright-cli\\n- Description: Playwright CLI provides a token-efficient command-line interface for Playwright, specifically designed for coding agents to automate browser interactions without loading large tool schemas into the model context.\\n- Code Snippets: 359\\n- Source Reputation: High\\n- Benchmark Score: 85.58\\n----------\\n- Title: Playwright\\n- Context7-compatible library ID: /microsoft/playwright\\n- Description: Playwright is a framework for Web Testing and Automation, enabling cross-browser testing of Chromium, Firefox, and WebKit with a single API.\\n- Code Snippets: 8041\\n- Source Reputation: High\\n- Benchmark Score: 81.28\\n- Versions: v1.51.0, v1.58.2, v1.61.0, v1.63.0\\n----------\\n- Title: Playwright\\n- Context7-compatible library ID: /microsoft/playwright.dev\\n- Description: Playwright is a cross-browser automation library that enables reliable end-to-end testing for web applications across Chromium, Firefox, and WebKit.\\n- Code Snippets: 450\\n- Source Reputation: High\\n- Benchmark Score: 57.77\\n----------\\n- Title: Playwright\\n- Context7-compatible library ID: /websites/devdocs_io_playwright\\n- Description: Playwright is a Node.js library for reliable end-to-end testing and web automation across Chromium, Firefox, and WebKit browsers.\\n- Code Snippets: 3353\\n- Source Reputation: High\\n- Benchmark Score: 79.99\"}]}",
+  "verdict": "PASS",
+  "routing_verified": false,
+  "review": {
+    "reviewer": "Primary Codex agent",
+    "reason": "Actual read/preflight returned successfully. Proves only this smoke operation; autonomous routing and requested application outcome remain unverified."
+  }
+}

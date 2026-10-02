@@ -1,0 +1,17 @@
+{
+  "scope": "Remote-backed default latest setup; disposable Codex project only",
+  "source_override": false,
+  "repository": "https://github.com/andinoferdi/AI-RULES.git",
+  "previous_commit": "0f41b684eac5b990de48e6f54727f7031943f8b7",
+  "published_commit": "effc3b8d7326d121317da86aff205de7c0bb0e80",
+  "installed_runtime_hash": "dc9916a964011c8c7d16c977f614616db949e0643d5b0efa0aa3b47edb7f8447",
+  "upgrade": "PASS",
+  "backup_preserved": true,
+  "repeat_setup": "NO_OP",
+  "lock_status": "verified",
+  "outputs": [
+    "Preflight os=windows arch=amd64 python=3.12.10 commands=[git=yes, npx=yes, node=yes, codex=yes, claude=yes, opencode=yes, antigravity=yes]\nAI-RULES plan schema=1 profile=minimal\n- andino-workflow -> codex/project: UPDATE (UPDATE_AVAILABLE) - clean official installation is behind the source branch\n  * capability_operation: source=https://github.com/andinoferdi/AI-RULES target=<disposable-root>\\project\\.agents\\skills\\andino-workflow backup=True reversible=True\nandino-workflow -> codex: APPLIED UPDATE - installed <disposable-root>\\project\\.agents\\skills\\andino-workflow; recorded <disposable-root>\\state\\last-operation.json\n",
+    "Preflight os=windows arch=amd64 python=3.12.10 commands=[git=yes, npx=yes, node=yes, codex=yes, claude=yes, opencode=yes, antigravity=yes]\nAI-RULES plan schema=1 profile=minimal\n- andino-workflow -> codex/project: NO_OP (CURRENT) - full content matches the freshly fetched branch\nandino-workflow -> codex: VERIFIED NO_OP - full content matches the freshly fetched branch\n"
+  ],
+  "global_installation_modified": false
+}

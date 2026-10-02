@@ -1,0 +1,43 @@
+{
+  "case": "playwright-mcp",
+  "scope": "smoke",
+  "host": "Codex desktop Windows",
+  "model": "UNKNOWN",
+  "runtime_hash": "75607e6fa1b4bf0b227ad677c5e42219cc62d8d3e68970fdb4dec9107ac2a8c7",
+  "discovered": [
+    {
+      "id": "playwright-mcp",
+      "provider": "playwright"
+    }
+  ],
+  "selected": [
+    {
+      "id": "playwright-mcp",
+      "provider": "playwright"
+    }
+  ],
+  "invocations": [
+    {
+      "tool": "mcp__playwright__browser_tabs",
+      "arguments": {
+        "action": "list"
+      },
+      "response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "### Result\n- 0: (current) [](about:blank)"
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": [],
+  "resulting_evidence": "{\"content\":[{\"type\":\"text\",\"text\":\"### Result\\n- 0: (current) [](about:blank)\"}]}",
+  "verdict": "PASS",
+  "routing_verified": false,
+  "review": {
+    "reviewer": "Primary Codex agent",
+    "reason": "Actual read/preflight returned successfully. Proves only this smoke operation; autonomous routing and requested application outcome remain unverified."
+  }
+}

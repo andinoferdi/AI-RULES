@@ -11,6 +11,7 @@ venv/
 .env.*
 !.env.example
 .ai-rules/
+/kirim gpt/
 .vscode/
 .idea/
 Braintorming Dengan Gpt.txt

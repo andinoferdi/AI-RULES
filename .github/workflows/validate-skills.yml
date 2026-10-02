@@ -20,6 +20,8 @@ jobs:
         run: python3 -m pip install --editable .
       - name: Validate
         run: python3 scripts/validate_skills.py
+      - name: Validate capability evaluation schemas
+        run: python3 scripts/validate_andino_capabilities.py --cases-only
       - name: Test validator failure cases
         run: python3 -m unittest discover -s tests
       - name: Audit skripsi requirement ownership

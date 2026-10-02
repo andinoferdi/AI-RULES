@@ -1,0 +1,42 @@
+{
+  "case": "cheatengine-mcp",
+  "scope": "smoke",
+  "host": "Codex desktop Windows",
+  "model": "UNKNOWN",
+  "runtime_hash": "75607e6fa1b4bf0b227ad677c5e42219cc62d8d3e68970fdb4dec9107ac2a8c7",
+  "discovered": [
+    {
+      "id": "cheatengine-mcp",
+      "provider": "cheatengine"
+    }
+  ],
+  "selected": [
+    {
+      "id": "cheatengine-mcp",
+      "provider": "cheatengine"
+    }
+  ],
+  "invocations": [
+    {
+      "tool": "mcp__cheatengine__ping",
+      "arguments": {},
+      "response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Error executing tool ping: Cheat Engine Bridge (v12/v99 pipe) is not reachable."
+          }
+        ],
+        "isError": true
+      }
+    }
+  ],
+  "fallback": [],
+  "resulting_evidence": "{\"content\":[{\"type\":\"text\",\"text\":\"Error executing tool ping: Cheat Engine Bridge (v12/v99 pipe) is not reachable.\"}],\"isError\":true}",
+  "verdict": "NOT_VERIFIED",
+  "routing_verified": false,
+  "review": {
+    "reviewer": "Primary Codex agent",
+    "reason": "Actual tool returned connection/readiness error; no retry or mutation. Application outcome and autonomous routing are unverified."
+  }
+}

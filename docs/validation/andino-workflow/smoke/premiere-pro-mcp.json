@@ -1,0 +1,56 @@
+{
+  "case": "premiere-pro-mcp",
+  "scope": "smoke",
+  "host": "Codex desktop Windows",
+  "model": "UNKNOWN",
+  "runtime_hash": "75607e6fa1b4bf0b227ad677c5e42219cc62d8d3e68970fdb4dec9107ac2a8c7",
+  "discovered": [
+    {
+      "id": "premiere-pro-mcp",
+      "provider": "premiere_pro"
+    }
+  ],
+  "selected": [
+    {
+      "id": "premiere-pro-mcp",
+      "provider": "premiere_pro"
+    }
+  ],
+  "invocations": [
+    {
+      "tool": "mcp__premiere_pro__verify_premiere_connection",
+      "arguments": {
+        "launchIfNeeded": false
+      },
+      "response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"ready\": false,\n  \"success\": false,\n  \"status\": \"premiere_not_running\",\n  \"retry\": false,\n  \"userActionRequired\": true,\n  \"agentAction\": \"tell_user\",\n  \"nextStep\": \"Adobe Premiere Pro is installed but could not be launched from this environment. Open Premiere yourself. The MCP Bridge panel auto-starts. Then run verify_premiere_connection once.\",\n  \"error\": \"Adobe Premiere Pro is installed but could not be launched from this environment. Open Premiere yourself. The MCP Bridge panel auto-starts. Then run verify_premiere_connection once.\",\n  \"tool\": \"verify_premiere_connection\",\n  \"installPath\": \"C:\\\\Program Files\\\\Adobe\\\\Adobe Premiere Pro 2026\"\n}"
+          }
+        ],
+        "structuredContent": {
+          "ready": false,
+          "success": false,
+          "status": "premiere_not_running",
+          "retry": false,
+          "userActionRequired": true,
+          "agentAction": "tell_user",
+          "nextStep": "Adobe Premiere Pro is installed but could not be launched from this environment. Open Premiere yourself. The MCP Bridge panel auto-starts. Then run verify_premiere_connection once.",
+          "error": "Adobe Premiere Pro is installed but could not be launched from this environment. Open Premiere yourself. The MCP Bridge panel auto-starts. Then run verify_premiere_connection once.",
+          "tool": "verify_premiere_connection",
+          "installPath": "C:\\Program Files\\Adobe\\Adobe Premiere Pro 2026"
+        },
+        "isError": true
+      }
+    }
+  ],
+  "fallback": [],
+  "resulting_evidence": "{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"ready\\\": false,\\n  \\\"success\\\": false,\\n  \\\"status\\\": \\\"premiere_not_running\\\",\\n  \\\"retry\\\": false,\\n  \\\"userActionRequired\\\": true,\\n  \\\"agentAction\\\": \\\"tell_user\\\",\\n  \\\"nextStep\\\": \\\"Adobe Premiere Pro is installed but could not be launched from this environment. Open Premiere yourself. The MCP Bridge panel auto-starts. Then run verify_premiere_connection once.\\\",\\n  \\\"error\\\": \\\"Adobe Premiere Pro is installed but could not be launched from this environment. Open Premiere yourself. The MCP Bridge panel auto-starts. Then run verify_premiere_connection once.\\\",\\n  \\\"tool\\\": \\\"verify_premiere_connection\\\",\\n  \\\"installPath\\\": \\\"C:\\\\\\\\Program Files\\\\\\\\Adobe\\\\\\\\Adobe Premiere Pro 2026\\\"\\n}\"}],\"structuredContent\":{\"ready\":false,\"success\":false,\"status\":\"premiere_not_running\",\"retry\":false,\"userActionRequired\":true,\"agentAction\":\"tell_user\",\"nextStep\":\"Adobe Premiere Pro is installed but could not be launched from this environment. Open Premiere yourself. The MCP Bridge panel auto-starts. Then run verify_premiere_connection once.\",\"error\":\"Adobe Premiere Pro is installed but could not be launched from this environment. Open Premiere yourself. The MCP Bridge panel auto-starts. Then run verify_premiere_connection once.\",\"tool\":\"verify_premiere_connection\",\"installPath\":\"C:\\\\Program Files\\\\Adobe\\\\Adobe Premiere Pro 2026\"},\"isError\":true}",
+  "verdict": "NOT_VERIFIED",
+  "routing_verified": false,
+  "review": {
+    "reviewer": "Primary Codex agent",
+    "reason": "Actual tool returned connection/readiness error; no retry or mutation. Application outcome and autonomous routing are unverified."
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "case": "claude-mem",
+  "scope": "smoke",
+  "host": "Codex desktop Windows",
+  "model": "UNKNOWN",
+  "runtime_hash": "75607e6fa1b4bf0b227ad677c5e42219cc62d8d3e68970fdb4dec9107ac2a8c7",
+  "discovered": [
+    {
+      "id": "claude-mem",
+      "provider": "claude_mem"
+    }
+  ],
+  "selected": [
+    {
+      "id": "claude-mem",
+      "provider": "claude_mem"
+    }
+  ],
+  "invocations": [
+    {
+      "tool": "mcp__claude_mem__search",
+      "arguments": {
+        "query": "andino-isolated-connectivity-fixture-20261002-no-historical-content",
+        "project": "andino-capability-evaluation-disposable",
+        "limit": 1
+      },
+      "response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Error calling Worker API: Request timed out after 45000ms"
+          }
+        ],
+        "isError": true
+      }
+    }
+  ],
+  "fallback": [],
+  "resulting_evidence": "{\"content\":[{\"type\":\"text\",\"text\":\"Error calling Worker API: Request timed out after 45000ms\"}],\"isError\":true}",
+  "verdict": "NOT_VERIFIED",
+  "routing_verified": false,
+  "review": {
+    "reviewer": "Primary Codex agent",
+    "reason": "Actual tool returned connection/readiness error; no retry or mutation. Application outcome and autonomous routing are unverified."
+  }
+}

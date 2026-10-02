@@ -1,0 +1,1546 @@
+{
+  "schema_version": 1,
+  "source_document_sha256": "22d8b385e9c6930cdd3a2073563ec5d83c2cc7e17aff1dea5c5ad37881928c41",
+  "runtime_base": "0f41b684eac5b990de48e6f54727f7031943f8b7",
+  "runtime_hash": "dc9916a964011c8c7d16c977f614616db949e0643d5b0efa0aa3b47edb7f8447",
+  "status": "IMPLEMENTED; PARTIALLY LIVE VERIFIED; OVERALL ACCEPTANCE OPEN",
+  "note": "Policy PASS means explicit contract present and structurally checked, not successful behavioral invocation. Generic registry provider labels are intended families; actual provider evidence is recorded on observed isolated loads. No isolated MCP exposure or cross-host parity is implied.",
+  "requirements": [
+    {
+      "id": "adaptive-core-locked",
+      "requirement": "Adaptive core preserved; no rewrite",
+      "evidence": "SKILL.md additive route paragraph; core comparison passed",
+      "status": "PASS"
+    },
+    {
+      "id": "single-owner",
+      "requirement": "Andino retains selection/lifecycle ownership",
+      "evidence": "references/capability-coexistence.md; references/routing.md",
+      "status": "PASS"
+    },
+    {
+      "id": "need-driven",
+      "requirement": "Intent + evidence + unresolved need + phase + risk + availability, not keywords",
+      "evidence": "SKILL.md; references/routing.md",
+      "status": "PASS"
+    },
+    {
+      "id": "registry-coverage",
+      "requirement": "All nine requested skill families, 22 minimum Agent Skills categories plus two installed extras and eight MCPs",
+      "evidence": "55 explicit registry contracts; 25 installed Agent Skills folders inspected including excluded router",
+      "status": "PASS"
+    },
+    {
+      "id": "registry-fields",
+      "requirement": "All 15 metadata fields per capability, on-demand rather than full schema loading",
+      "evidence": "validate_andino_capabilities.validate_registry",
+      "status": "PASS"
+    },
+    {
+      "id": "invocation-states",
+      "requirement": "DISCOVERED AVAILABLE INVOKABLE ACTIVE USED UNAVAILABLE NOT_NEEDED",
+      "evidence": "references/invocation-adapter.md",
+      "status": "PASS"
+    },
+    {
+      "id": "three-policies",
+      "requirement": "AUTO CONDITIONAL_AUTO PERMISSION_GATED",
+      "evidence": "registry activation policy for every entry",
+      "status": "PASS"
+    },
+    {
+      "id": "methods-instruments",
+      "requirement": "Separate skill methodology, MCP instrument and native capability",
+      "evidence": "references/invocation-adapter.md; typed contracts",
+      "status": "PASS"
+    },
+    {
+      "id": "provider-collisions",
+      "requirement": "Configured choice then deterministic identified provider precedence; no double TDD",
+      "evidence": "references/capability-coexistence.md; duplicate-tdd-provider eval",
+      "status": "PASS"
+    },
+    {
+      "id": "no-meta-bootstrap",
+      "requirement": "No using-superpowers or using-agent-skills second router",
+      "evidence": "registry explicit exclusions; coexistence; negative evals",
+      "status": "PASS"
+    },
+    {
+      "id": "ponytail-scope",
+      "requirement": "Only actual complexity risk, never at expense of correctness/security/accessibility",
+      "evidence": "ponytail contract; needed/not-needed evals",
+      "status": "PASS"
+    },
+    {
+      "id": "memory-targeted",
+      "requirement": "Targeted search, optional timeline, selected detail; current source wins",
+      "evidence": "claude-mem contract; actual smoke timeout recorded",
+      "status": "PASS"
+    },
+    {
+      "id": "ui-policy",
+      "requirement": "Preserve existing explicit single choice and UI coexistence",
+      "evidence": "ui-coexistence.md unchanged; UI contracts and evals",
+      "status": "PASS"
+    },
+    {
+      "id": "fidelity",
+      "requirement": "clone-website for fidelity, preserve reference unless redesign requested",
+      "evidence": "clone-website contract; clone-fidelity eval",
+      "status": "PASS"
+    },
+    {
+      "id": "graph-semantics",
+      "requirement": "Complex query/callers/impact/trace, actual names and freshness, bounded native preferred",
+      "evidence": "graphify contract; impact/not-needed/unavailable evals",
+      "status": "PASS"
+    },
+    {
+      "id": "antislop",
+      "requirement": "Six explicit core/UI/copy/human/mobile/code entries; no automatic whole family",
+      "evidence": "registry six entries; UI/copy evals",
+      "status": "PASS"
+    },
+    {
+      "id": "version-docs",
+      "requirement": "Read dependency version before Context7/official docs; no reliable-local duplication",
+      "evidence": "context7 contract and version eval; actual lookup smoke",
+      "status": "PASS"
+    },
+    {
+      "id": "browser-boundaries",
+      "requirement": "Playwright persistent/exploratory state vs CLI/native; distinct DevTools diagnostic",
+      "evidence": "browser contracts and three evals; official docs checked",
+      "status": "PASS"
+    },
+    {
+      "id": "git-boundaries",
+      "requirement": "Native Git preferred, MCP fallback/host-normal; mutations follow authority",
+      "evidence": "git-mcp contract and two evals",
+      "status": "PASS"
+    },
+    {
+      "id": "diagram-boundaries",
+      "requirement": "Draw.io general editable artifact vs StarUML formal model",
+      "evidence": "two registry contracts; three evals",
+      "status": "PASS"
+    },
+    {
+      "id": "premiere-preflight",
+      "requirement": "Connection then inspect/discover/mutate/readback; how-to no mutation; stop on userActionRequired",
+      "evidence": "Premiere contract; actual no-launch readiness failure recorded",
+      "status": "PASS"
+    },
+    {
+      "id": "cheatengine-boundary",
+      "requirement": "Actual connectivity and target reads before explicitly authorized mutation; no implicit dangerous shell",
+      "evidence": "Cheat Engine contract; actual unreachable pipe recorded",
+      "status": "PASS"
+    },
+    {
+      "id": "fallback",
+      "requirement": "Safe sufficient local alternative, explicit material gap; no use claim or dependency auto-install",
+      "evidence": "invocation adapter; unavailable-capability eval",
+      "status": "PASS"
+    },
+    {
+      "id": "reroute-release",
+      "requirement": "Reassess keep/replace/release; stop after sufficiently proven need",
+      "evidence": "SKILL.md/routing; rerouting/stop evals",
+      "status": "PASS"
+    },
+    {
+      "id": "simple-direct",
+      "requirement": "Zero unnecessary specialist/tool/plan for simple request",
+      "evidence": "simple-task-zero-capability eval; initial Andino load is harness setup",
+      "status": "PASS"
+    },
+    {
+      "id": "host-native",
+      "requirement": "Native host controls respected, no universal invocation syntax or explicit-only bypass",
+      "evidence": "host contract and actual denied actor actions recorded",
+      "status": "PASS"
+    },
+    {
+      "id": "eval-minimum",
+      "requirement": "All 32 requested scenarios; original 28 preserved",
+      "evidence": "evals/andino-workflow.json; baseline object comparison",
+      "status": "PASS"
+    },
+    {
+      "id": "oracle-hidden",
+      "requirement": "Expected/forbidden/capabilities omitted from actor request; real fixture resources",
+      "evidence": "runner + unit oracle-hiding test",
+      "status": "PASS"
+    },
+    {
+      "id": "live-evidence",
+      "requirement": "Record host/model/hash/catalog/provider/selection/invocation/fallback/result/verdict",
+      "evidence": "record schema + raw action records; model UNKNOWN when not exposed",
+      "status": "PASS"
+    },
+    {
+      "id": "structural",
+      "requirement": "Edited runtime package/links/contracts and eval schemas validated",
+      "evidence": "validator actual commands in handoff",
+      "status": "PASS"
+    },
+    {
+      "id": "all-live-use",
+      "requirement": "Every recommended capability actually selected/invoked in live actor",
+      "evidence": "Per-capability statuses below; several tools/hosts unavailable",
+      "status": "NOT_VERIFIED"
+    },
+    {
+      "id": "cross-host",
+      "requirement": "Automatic invocation parity on all four hosts",
+      "evidence": "Only Codex desktop smoke and Codex CLI isolated evaluations run",
+      "status": "NOT_VERIFIED"
+    },
+    {
+      "id": "external-scope",
+      "requirement": "No commit/push/merge/publish/global installed skill changes or live application mutations",
+      "evidence": "Git diff/status and no-mutation tool arguments",
+      "status": "PASS"
+    },
+    {
+      "id": "handoff",
+      "requirement": "13 requested developer handoff fields, evidence and next validation step",
+      "evidence": "capability-handoff.md",
+      "status": "PASS"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "systematic-debugging",
+      "type": "skill",
+      "provider": "Superpowers",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#systematic-debugging",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "PASS",
+      "current_runtime_live_use": "PASS",
+      "live_use_revision": "75607e6fa1b4bf0b227ad677c5e42219cc62d8d3e68970fdb4dec9107ac2a8c7",
+      "behavioral_evidence": [
+        "debugging-superpowers-route"
+      ],
+      "eval_cases": [
+        "debugging-superpowers-route",
+        "no-full-superpowers-bootstrap",
+        "capability-rerouting"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Cause is unresolved or evidence contradicts the diagnosis.",
+      "boundary": "Cause already established; do not repeat investigation.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded.",
+      "current_runtime_evidence": [
+        "live-current/debugging-superpowers-route.json"
+      ],
+      "current_runtime_evidence_scope": "Actual skill load and applied local reasoning only; explicit selection where requested. No MCP, implemented outcome or cross-host parity.",
+      "current_runtime_revision": "dc9916a964011c8c7d16c977f614616db949e0643d5b0efa0aa3b47edb7f8447"
+    },
+    {
+      "id": "test-driven-development",
+      "type": "skill",
+      "provider": "Superpowers",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#test-driven-development",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [
+        "duplicate-tdd-provider"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Behavior change needs a failing regression or executable contract.",
+      "boundary": "Text-only edits and already-verified unchanged behavior.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "verification-before-completion",
+      "type": "skill",
+      "provider": "Superpowers",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#verification-before-completion",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "A consequential completion claim needs validation.",
+      "boundary": "Repeating unchanged passing suites without new evidence.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "brainstorming",
+      "type": "skill",
+      "provider": "Superpowers",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#brainstorming",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Material requirement remains unclear after inspecting existing project behavior.",
+      "boundary": "Repository-answerable details or locked requirements.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "writing-plans",
+      "type": "skill",
+      "provider": "Superpowers",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#writing-plans",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Implementation sequencing is materially useful.",
+      "boundary": "Simple tasks or creating a competing plan.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "requesting-code-review",
+      "type": "skill",
+      "provider": "Superpowers",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#requesting-code-review",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Implemented scope warrants reviewer evidence.",
+      "boundary": "Automatic agent fan-out or a review of unrelated code.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "receiving-code-review",
+      "type": "skill",
+      "provider": "Superpowers",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#receiving-code-review",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Received feedback needs technical assessment.",
+      "boundary": "Blind agreement or optional preferences treated as blockers.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "dispatching-parallel-agents",
+      "type": "skill",
+      "provider": "Superpowers",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#dispatching-parallel-agents",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Independent tasks justify concurrency AND user/host authorizes delegation.",
+      "boundary": "Default fan-out, shared mutable scopes or absent authorization.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "using-git-worktrees",
+      "type": "skill",
+      "provider": "Superpowers",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#using-git-worktrees",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Isolation is needed and existing checkout/worktree is unsuitable.",
+      "boundary": "Unnecessary new checkout or contradicting project/user choice.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "finishing-a-development-branch",
+      "type": "skill",
+      "provider": "Superpowers",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#finishing-a-development-branch",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Validated implementation enters branch completion workflow.",
+      "boundary": "Assuming commit/push/merge authorization from a review GO.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "idea-refine",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#idea-refine",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [
+        "idea-refine-route"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "A vague idea needs evidence-backed alternatives before choosing an approach.",
+      "boundary": "Reopening locked decisions, forcing ideation on mechanical work or writing a one-pager outside authorized scope.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "interview-me",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#interview-me",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "PASS",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [
+        "interview-material-only"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Targeted project inspection leaves material who/why/success/constraint choices unresolved.",
+      "boundary": "Repository-answerable questions, already clear intent, mandatory confidence ceremony or a second plan.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded.",
+      "current_runtime_evidence": [
+        "live-current/interview-material-only.json"
+      ],
+      "current_runtime_evidence_scope": "Actual skill load and applied local reasoning only; explicit selection where requested. No MCP, implemented outcome or cross-host parity.",
+      "current_runtime_revision": "dc9916a964011c8c7d16c977f614616db949e0643d5b0efa0aa3b47edb7f8447"
+    },
+    {
+      "id": "api-and-interface-design",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#api-and-interface-design",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Public interface or consumer compatibility needs design.",
+      "boundary": "Internal detail with no meaningful contract change.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "browser-testing-with-devtools",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#browser-testing-with-devtools",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Browser behavior needs observable functional/diagnostic checks.",
+      "boundary": "No browser outcome involved; method is not a connected MCP.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "ci-cd-and-automation",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#ci-cd-and-automation",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Task changes pipelines or build automation.",
+      "boundary": "Starting deploys or schedules without applicable authorization.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "code-review-and-quality",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#code-review-and-quality",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "PASS",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": "75607e6fa1b4bf0b227ad677c5e42219cc62d8d3e68970fdb4dec9107ac2a8c7",
+      "behavioral_evidence": [
+        "agent-skills-no-double-router"
+      ],
+      "eval_cases": [
+        "agent-skills-no-double-router"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Bounded diff needs correctness/quality review.",
+      "boundary": "Unsolicited whole-repository rewrite.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "code-simplification",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#code-simplification",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Existing code has avoidable complexity.",
+      "boundary": "Already minimal changes or replacing accepted architecture.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "constraint-driven-development",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#constraint-driven-development",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Implementation lacks material written constraints.",
+      "boundary": "Inventing a new quality bar for a routine edit.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "context-engineering",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#context-engineering",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Context selection or drift prevents reliable execution.",
+      "boundary": "Full repository loading by default.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "debugging-and-error-recovery",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#debugging-and-error-recovery",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "A tool/test/runtime failure needs diagnosis or recovery.",
+      "boundary": "Retrying identical schema/permission/credential errors.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "deprecation-and-migration",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#deprecation-and-migration",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Deprecation or data/contract migration is in scope.",
+      "boundary": "Unrequested irreversible/live migration.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "documentation-and-adrs",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#documentation-and-adrs",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Material decisions or usage changes need durable documentation.",
+      "boundary": "Placeholder docs or duplicating the active plan.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "doubt-driven-development",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#doubt-driven-development",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "A consequential uncertain choice warrants independent evidence.",
+      "boundary": "Generic skepticism or unnecessary delegation.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "frontend-ui-engineering",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#frontend-ui-engineering",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Accessible responsive frontend behavior is in scope.",
+      "boundary": "Changing design direction or stack without requirement.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "git-workflow-and-versioning",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#git-workflow-and-versioning",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Requested work changes branch/release/version workflow.",
+      "boundary": "Skill as consent to commit/push/merge.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "incremental-implementation",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#incremental-implementation",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Coupled implementation benefits from thin verifiable slices.",
+      "boundary": "Rigid phases for a one-line edit.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "observability-and-instrumentation",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#observability-and-instrumentation",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Missing logs/metrics/traces obstruct a required outcome.",
+      "boundary": "Collecting sensitive data or instrumenting unrelated systems.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "performance-optimization",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#performance-optimization",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "A measured bottleneck or performance requirement exists.",
+      "boundary": "Speculative micro-optimization.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "planning-and-task-breakdown",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#planning-and-task-breakdown",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Dependencies or milestones need task decomposition.",
+      "boundary": "Second lifecycle/plan owner.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "security-and-hardening",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#security-and-hardening",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Scope exposes a vulnerability or explicit security requirement.",
+      "boundary": "Unsolicited hypothetical compliance ceremony.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "shipping-and-launch",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#shipping-and-launch",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Actual release/launch readiness is requested.",
+      "boundary": "Assuming deploy or publication consent.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "source-driven-development",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#source-driven-development",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Version-sensitive implementation contract needs primary documentation.",
+      "boundary": "Research for reliable local trivial facts.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "spec-driven-development",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#spec-driven-development",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "A new/material feature needs an observable contract.",
+      "boundary": "Mandatory spec ceremony for simple edits.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "agent-skills-test-driven-development",
+      "type": "skill",
+      "provider": "Agent Skills",
+      "aliases": "test-driven-development (Agent Skills provider only)",
+      "contract": "references/capability-registry.md#agent-skills-test-driven-development",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [
+        "duplicate-tdd-provider"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Behavior change needs failing regression/executable contract.",
+      "boundary": "Double-loading a competing TDD provider or text-only edits.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "ponytail",
+      "type": "skill",
+      "provider": "Ponytail",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#ponytail",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "PASS",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": "75607e6fa1b4bf0b227ad677c5e42219cc62d8d3e68970fdb4dec9107ac2a8c7",
+      "behavioral_evidence": [
+        "ponytail-needed"
+      ],
+      "eval_cases": [
+        "ponytail-needed"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Unnecessary dependency, excessive abstraction/LOC, needless wrapper, custom replacement for platform facility or inflated solution is evidenced.",
+      "boundary": "Automatic activation for every one-line change; sacrificing correctness/security/accessibility/readability.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "claude-mem",
+      "type": "skill",
+      "provider": "Claude-Mem",
+      "aliases": "claude-mem:mem-search; mem-search (verify provider)",
+      "contract": "references/capability-registry.md#claude-mem",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [
+        "claude-mem-history"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": "smoke/claude-mem.json",
+      "trigger": "A previous decision or implementation reason is material and absent from current artifacts.",
+      "boundary": "Automatic per-prompt retrieval; treating memory as current repository evidence.",
+      "fallback": "Read existing project decision/checkpoint/Git artifacts; state a historical gap if still material."
+    },
+    {
+      "id": "ui-ux-pro-max",
+      "type": "skill",
+      "provider": "UI/UX Pro Max",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#ui-ux-pro-max",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "PASS",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": "75607e6fa1b4bf0b227ad677c5e42219cc62d8d3e68970fdb4dec9107ac2a8c7",
+      "behavioral_evidence": [
+        "ui-taste-coexistence"
+      ],
+      "eval_cases": [
+        "ui-ux-route",
+        "ui-taste-coexistence"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Product UI, dashboard, complex forms, accessibility, responsive behavior, design-system or UX evaluation needs expertise.",
+      "boundary": "Automatically pairing Taste or overwriting accepted tokens.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "design-taste-frontend",
+      "type": "skill",
+      "provider": "Taste Skill",
+      "aliases": "taste-skill (if catalog alias exists)",
+      "contract": "references/capability-registry.md#design-taste-frontend",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "PASS",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": "75607e6fa1b4bf0b227ad677c5e42219cc62d8d3e68970fdb4dec9107ac2a8c7",
+      "behavioral_evidence": [
+        "ui-taste-coexistence"
+      ],
+      "eval_cases": [
+        "taste-route",
+        "ui-taste-coexistence"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Landing/portfolio/redesign typography, composition or motion direction is required.",
+      "boundary": "Fidelity clone redesigned by default; automatic use for complex product dashboards.",
+      "fallback": "Use the relevant local discipline without claiming this external skill was loaded."
+    },
+    {
+      "id": "clone-website",
+      "type": "skill",
+      "provider": "AI Website Cloner",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#clone-website",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "PASS",
+      "current_runtime_live_use": "PASS",
+      "live_use_revision": "75607e6fa1b4bf0b227ad677c5e42219cc62d8d3e68970fdb4dec9107ac2a8c7",
+      "behavioral_evidence": [
+        "clone-fidelity"
+      ],
+      "eval_cases": [
+        "clone-fidelity"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "User requests reconstruction of a concrete website reference.",
+      "boundary": "Generic redesign or silently reinterpreting the reference.",
+      "fallback": "Use accessible reference and existing browser/local frontend tools; report any fidelity evidence unavailable.",
+      "current_runtime_evidence": [
+        "live-current/clone-fidelity.json"
+      ],
+      "current_runtime_evidence_scope": "Actual skill load and applied local reasoning only; explicit selection where requested. No MCP, implemented outcome or cross-host parity.",
+      "current_runtime_revision": "dc9916a964011c8c7d16c977f614616db949e0643d5b0efa0aa3b47edb7f8447"
+    },
+    {
+      "id": "graphify",
+      "type": "skill",
+      "provider": "Graphify",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#graphify",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [
+        "graphify-impact",
+        "unavailable-capability"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Cross-module dependency, callers/callees, change propagation or structural trace makes bounded native search insufficient.",
+      "boundary": "Building a graph for every coding task; simple direct reference; stale inferred edges treated as facts.",
+      "fallback": "Bounded symbol/reference search and current source inspection; state remaining impact coverage gap if insufficient."
+    },
+    {
+      "id": "antislop",
+      "type": "skill",
+      "provider": "Anti-Slop",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#antislop",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [
+        "antislop-ui"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Concrete generated-output quality concerns need the family core filter.",
+      "boundary": "Automatic loading of every family subskill.",
+      "fallback": "Apply existing Andino/project quality rules to the relevant output without claiming external Anti-Slop use."
+    },
+    {
+      "id": "antislop-ui",
+      "type": "skill",
+      "provider": "Anti-Slop",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#antislop-ui",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [
+        "antislop-ui"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Generated UI shows generic/incoherent patterns within scope.",
+      "boundary": "Replacing user design direction or invoking all subskills.",
+      "fallback": "Apply existing Andino/project quality rules to the relevant output without claiming external Anti-Slop use."
+    },
+    {
+      "id": "antislop-copywriting",
+      "type": "skill",
+      "provider": "Anti-Slop",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#antislop-copywriting",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [
+        "antislop-copy"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Writing/editing copy needs relevance and natural language.",
+      "boundary": "Loading unrelated UI/code concerns.",
+      "fallback": "Apply existing Andino/project quality rules to the relevant output without claiming external Anti-Slop use."
+    },
+    {
+      "id": "antislop-human",
+      "type": "skill",
+      "provider": "Anti-Slop",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#antislop-human",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Human usability/accessibility concerns are part of generated output.",
+      "boundary": "Treating stylistic preference as a blocker.",
+      "fallback": "Apply existing Andino/project quality rules to the relevant output without claiming external Anti-Slop use."
+    },
+    {
+      "id": "antislop-layoutmobile",
+      "type": "skill",
+      "provider": "Anti-Slop",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#antislop-layoutmobile",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Mobile/responsive generated layout is in scope.",
+      "boundary": "Irrelevant mobile audit of a non-UI task.",
+      "fallback": "Apply existing Andino/project quality rules to the relevant output without claiming external Anti-Slop use."
+    },
+    {
+      "id": "antislop-code",
+      "type": "skill",
+      "provider": "Anti-Slop",
+      "aliases": "none",
+      "contract": "references/capability-registry.md#antislop-code",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Generated comments or code clutter need cleanup.",
+      "boundary": "Unrelated code cleanup or unproved behavior changes.",
+      "fallback": "Apply existing Andino/project quality rules to the relevant output without claiming external Anti-Slop use."
+    },
+    {
+      "id": "context7",
+      "type": "MCP",
+      "provider": "Upstash Context7",
+      "aliases": "Context7; context7 MCP",
+      "contract": "references/capability-registry.md#context7",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [
+        "context7-version",
+        "capability-rerouting"
+      ],
+      "smoke_verdict": "PASS",
+      "smoke_evidence": "smoke/context7.json",
+      "trigger": "Unresolved version-sensitive library/framework/API behavior.",
+      "boundary": "Repeated queries for reliably known local facts without freshness need.",
+      "fallback": "Current official docs or locally bundled version docs; disclose remaining freshness gap."
+    },
+    {
+      "id": "playwright-mcp",
+      "type": "MCP",
+      "provider": "Microsoft Playwright MCP",
+      "aliases": "Playwright MCP; playwright",
+      "contract": "references/capability-registry.md#playwright-mcp",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [
+        "playwright-route",
+        "playwright-devtools-coexistence"
+      ],
+      "smoke_verdict": "PASS",
+      "smoke_evidence": "smoke/playwright-mcp.json",
+      "trigger": "A browser workflow needs persistent state, accessibility-tree inspection or iterative interaction.",
+      "boundary": "Forcing MCP when existing CLI/native browser suffices for throughput.",
+      "fallback": "Existing Playwright CLI/test suite or native browser; report if actual browser outcome remains unverified."
+    },
+    {
+      "id": "chrome-devtools",
+      "type": "MCP",
+      "provider": "Chrome DevTools MCP",
+      "aliases": "Chrome DevTools MCP; chrome_devtools",
+      "contract": "references/capability-registry.md#chrome-devtools",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [
+        "devtools-route",
+        "playwright-devtools-coexistence"
+      ],
+      "smoke_verdict": "PASS",
+      "smoke_evidence": "smoke/chrome-devtools.json",
+      "trigger": "Console/network/performance/trace/runtime evidence is missing.",
+      "boundary": "Basic navigation already covered by another sufficient surface.",
+      "fallback": "Native browser DevTools, existing trace/logs or browser test instrumentation; disclose diagnostic gap."
+    },
+    {
+      "id": "git-mcp",
+      "type": "MCP",
+      "provider": "MCP Git server",
+      "aliases": "Git MCP; mcp-server-git",
+      "contract": "references/capability-registry.md#git-mcp",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [
+        "git-mcp-fallback"
+      ],
+      "smoke_verdict": "PASS",
+      "smoke_evidence": "smoke/git-mcp.json",
+      "trigger": "Native Git is unavailable/inadequate, or host policy makes MCP the repository interface.",
+      "boundary": "Redundant MCP when native Git already suffices.",
+      "fallback": "Native Git or supplied status/diff artifacts; state inability to verify current state."
+    },
+    {
+      "id": "drawio-mcp",
+      "type": "MCP",
+      "provider": "Draw.io MCP",
+      "aliases": "Draw.io; @drawio/mcp",
+      "contract": "references/capability-registry.md#drawio-mcp",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [
+        "drawio-diagram"
+      ],
+      "smoke_verdict": "PASS",
+      "smoke_evidence": "smoke/drawio-mcp.json",
+      "trigger": "Requested editable architecture/process/flow/sequence artifact suits Draw.io.",
+      "boundary": "Simple prose explanation or formal model semantics requiring StarUML.",
+      "fallback": "Local editable .drawio XML or agreed Mermaid artifact; disclose editor/opening limits."
+    },
+    {
+      "id": "staruml-mcp",
+      "type": "MCP",
+      "provider": "StarUML MCP",
+      "aliases": "StarUML; staruml-mcp-server",
+      "contract": "references/capability-registry.md#staruml-mcp",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [
+        "staruml-model"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": "smoke/staruml-mcp.json",
+      "trigger": "Formal UML, model inspection or supported code/model synchronization is required.",
+      "boundary": "General picture suitable for Draw.io or unsupported model-to-code features.",
+      "fallback": "Local UML model specification or agreed UML text; disclose missing native model verification."
+    },
+    {
+      "id": "premiere-pro-mcp",
+      "type": "MCP",
+      "provider": "Adobe Premiere Pro MCP",
+      "aliases": "Premiere Pro; premiere_pro",
+      "contract": "references/capability-registry.md#premiere-pro-mcp",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [
+        "premiere-preflight"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": "smoke/premiere-pro-mcp.json",
+      "trigger": "Actual Premiere project/media/timeline work or readiness testing is requested.",
+      "boundary": "Explanation/how-to request; unrelated media operations.",
+      "fallback": "Give local procedure/project evidence requirements; checkpoint unavailable bridge instead of issuing edits."
+    },
+    {
+      "id": "cheatengine-mcp",
+      "type": "MCP",
+      "provider": "Cheat Engine MCP bridge",
+      "aliases": "Cheat Engine; cheatengine-mcp-bridge",
+      "contract": "references/capability-registry.md#cheatengine-mcp",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [
+        "cheatengine-read-first",
+        "cheatengine-permission"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": "smoke/cheatengine-mcp.json",
+      "trigger": "Authorized local debugging/reverse engineering/trainer or memory research needs the bridge.",
+      "boundary": "Unrelated application debugging with sufficient ordinary tools.",
+      "fallback": "Ordinary debugger or supplied dump/log; state missing live memory evidence."
+    },
+    {
+      "id": "native-capabilities",
+      "type": "native",
+      "provider": "Active host/project",
+      "aliases": "filesystem; search; shell; Git; browser; tests",
+      "contract": "references/capability-registry.md#native-capabilities",
+      "policy": "PASS",
+      "runtime_available": "NOT_VERIFIED",
+      "live_use": "NOT_VERIFIED",
+      "current_runtime_live_use": "NOT_VERIFIED",
+      "live_use_revision": null,
+      "behavioral_evidence": [],
+      "eval_cases": [
+        "git-native-preferred"
+      ],
+      "smoke_verdict": "NOT_VERIFIED",
+      "smoke_evidence": null,
+      "trigger": "Native facilities already satisfy the unresolved need.",
+      "boundary": "Native interface lacks required access or trustworthy evidence.",
+      "fallback": "Select relevant invokable instrument; if none, identify minimum missing access."
+    }
+  ],
+  "eval_coverage": [
+    {
+      "id": "agent-skills-no-double-router",
+      "record": "live/agent-skills-no-double-router.json",
+      "verdict": "PASS"
+    },
+    {
+      "id": "antislop-copy",
+      "record": "live/antislop-copy.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "antislop-ui",
+      "record": "live/antislop-ui.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "capability-rerouting",
+      "record": "live/capability-rerouting.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "capability-stop",
+      "record": "live/capability-stop.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "cheatengine-permission",
+      "record": "live/cheatengine-permission.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "cheatengine-read-first",
+      "record": "live/cheatengine-read-first.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "claude-mem-history",
+      "record": "live/claude-mem-history.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "clone-fidelity",
+      "record": "live/clone-fidelity.json",
+      "verdict": "PASS"
+    },
+    {
+      "id": "context7-version",
+      "record": "live/context7-version.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "debugging-superpowers-route",
+      "record": "live/debugging-superpowers-route.json",
+      "verdict": "PASS"
+    },
+    {
+      "id": "devtools-route",
+      "record": "live/devtools-route.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "diagram-tool-choice",
+      "record": "live/diagram-tool-choice.json",
+      "verdict": "PASS"
+    },
+    {
+      "id": "drawio-diagram",
+      "record": "live/drawio-diagram.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "duplicate-tdd-provider",
+      "record": "live/duplicate-tdd-provider.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "git-mcp-fallback",
+      "record": "live/git-mcp-fallback.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "git-native-preferred",
+      "record": "live/git-native-preferred.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "graphify-impact",
+      "record": "live/graphify-impact.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "graphify-not-needed",
+      "record": "live/graphify-not-needed.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "no-full-superpowers-bootstrap",
+      "record": "live/no-full-superpowers-bootstrap.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "playwright-devtools-coexistence",
+      "record": "live/playwright-devtools-coexistence.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "playwright-route",
+      "record": "live/playwright-route.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "ponytail-needed",
+      "record": "live/ponytail-needed.json",
+      "verdict": "PASS"
+    },
+    {
+      "id": "ponytail-not-needed",
+      "record": "live/ponytail-not-needed.json",
+      "verdict": "PASS"
+    },
+    {
+      "id": "premiere-howto-no-mutation",
+      "record": "live/premiere-howto-no-mutation.json",
+      "verdict": "PASS"
+    },
+    {
+      "id": "premiere-preflight",
+      "record": "live/premiere-preflight.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "simple-task-zero-capability",
+      "record": "live/simple-task-zero-capability.json",
+      "verdict": "PASS"
+    },
+    {
+      "id": "staruml-model",
+      "record": "live/staruml-model.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "taste-route",
+      "record": "live/taste-route.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "ui-taste-coexistence",
+      "record": "live/ui-taste-coexistence.json",
+      "verdict": "PASS"
+    },
+    {
+      "id": "ui-ux-route",
+      "record": "live/ui-ux-route.json",
+      "verdict": "NOT_VERIFIED"
+    },
+    {
+      "id": "unavailable-capability",
+      "record": "live/unavailable-capability.json",
+      "verdict": "NOT_VERIFIED"
+    }
+  ],
+  "published_runtime_commit": "effc3b8d7326d121317da86aff205de7c0bb0e80",
+  "current_eval_coverage": [
+    {
+      "id": "agent-skills-no-double-router",
+      "record": "live-current/agent-skills-no-double-router.json",
+      "verdict": "NOT_VERIFIED",
+      "runtime_hash": "dc9916a964011c8c7d16c977f614616db949e0643d5b0efa0aa3b47edb7f8447"
+    },
+    {
+      "id": "clone-fidelity",
+      "record": "live-current/clone-fidelity.json",
+      "verdict": "PASS",
+      "runtime_hash": "dc9916a964011c8c7d16c977f614616db949e0643d5b0efa0aa3b47edb7f8447"
+    },
+    {
+      "id": "debugging-superpowers-route",
+      "record": "live-current/debugging-superpowers-route.json",
+      "verdict": "PASS",
+      "runtime_hash": "dc9916a964011c8c7d16c977f614616db949e0643d5b0efa0aa3b47edb7f8447"
+    },
+    {
+      "id": "idea-refine-route",
+      "record": "live-current/idea-refine-route.json",
+      "verdict": "NOT_VERIFIED",
+      "runtime_hash": "dc9916a964011c8c7d16c977f614616db949e0643d5b0efa0aa3b47edb7f8447"
+    },
+    {
+      "id": "interview-material-only",
+      "record": "live-current/interview-material-only.json",
+      "verdict": "PASS",
+      "runtime_hash": "dc9916a964011c8c7d16c977f614616db949e0643d5b0efa0aa3b47edb7f8447"
+    },
+    {
+      "id": "simple-task-zero-capability",
+      "record": "live-current/simple-task-zero-capability.json",
+      "verdict": "PASS",
+      "runtime_hash": "dc9916a964011c8c7d16c977f614616db949e0643d5b0efa0aa3b47edb7f8447"
+    }
+  ]
+}

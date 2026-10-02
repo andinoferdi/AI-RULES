@@ -38,9 +38,22 @@ run it locally in addition to CI's package, unit-test and traceability checks.
 The [Skripsi contract review](docs/validation/skripsi-skill/contract-review.md), [requirement inventory](docs/validation/skripsi-skill/traceability.json), and [live-evidence review](docs/validation/skripsi-skill/live-review.json) distinguish implementation ownership from observed behavior. The [evaluation guide](evals/README.md) describes opt-in isolated execution; CI never invokes a model or incurs live evaluation usage.
 
 The [Andino integration review](docs/validation/andino-workflow/integration-review.md)
-records the adaptive workflow revision, 28 evaluation specifications, structural
+records the adaptive workflow revision and original 28 evaluation specifications, structural
 verification and remaining live validation. Reasoning depth and checkpoint persistence
 are independent; explicit daily and conversational use does not require a plan.
+
+The [capability integration handoff](docs/validation/andino-workflow/capability-handoff.md)
+tracks the subsequent runtime integration layer, 32 required capability scenarios
+and two supplemental routes. The [publication review](docs/validation/andino-workflow/publication-review.md)
+records the published runtime, default setup upgrade proof and current validation scope.
+Andino selects minimum useful methods/instruments just-in-time from
+actual need and evidence. Installed, active and used are separate, provider
+collisions are resolved explicitly, and invocation depends on host permissions
+and connected services. This does not expand the first-party installer catalog.
+Validate an edited runtime worktree with
+`python scripts/validate_andino_capabilities.py --runtime /path/to/andino-worktree`.
+The [evaluation guide](evals/README.md) separates structural checks, isolated
+selection/loading tests, read-only service smoke tests and unverified host coverage.
 
 ## AI-RULES installer/orchestrator
 

@@ -1,0 +1,43 @@
+{
+  "case": "drawio-mcp",
+  "scope": "smoke",
+  "host": "Codex desktop Windows",
+  "model": "UNKNOWN",
+  "runtime_hash": "75607e6fa1b4bf0b227ad677c5e42219cc62d8d3e68970fdb4dec9107ac2a8c7",
+  "discovered": [
+    {
+      "id": "drawio-mcp",
+      "provider": "drawio"
+    }
+  ],
+  "selected": [
+    {
+      "id": "drawio-mcp",
+      "provider": "drawio"
+    }
+  ],
+  "invocations": [
+    {
+      "tool": "mcp__drawio__list_pages",
+      "arguments": {
+        "path": "C:/Users/Lenovo/Downloads/AI-RULES/.ai-rules/smoke.drawio"
+      },
+      "response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "[\n  {\n    \"index\": 0,\n    \"id\": \"andino-smoke\",\n    \"name\": \"Disposable fixture\",\n    \"approxSizeBytes\": 208\n  }\n]"
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": [],
+  "resulting_evidence": "{\"content\":[{\"type\":\"text\",\"text\":\"[\\n  {\\n    \\\"index\\\": 0,\\n    \\\"id\\\": \\\"andino-smoke\\\",\\n    \\\"name\\\": \\\"Disposable fixture\\\",\\n    \\\"approxSizeBytes\\\": 208\\n  }\\n]\"}]}",
+  "verdict": "PASS",
+  "routing_verified": false,
+  "review": {
+    "reviewer": "Primary Codex agent",
+    "reason": "Actual read/preflight returned successfully. Proves only this smoke operation; autonomous routing and requested application outcome remain unverified."
+  }
+}

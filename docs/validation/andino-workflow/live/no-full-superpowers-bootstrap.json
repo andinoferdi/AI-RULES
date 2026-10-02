@@ -1,0 +1,114 @@
+{
+  "case": "no-full-superpowers-bootstrap",
+  "scope": "behavioral",
+  "host": "Windows Codex CLI",
+  "model": "UNKNOWN",
+  "runtime_hash": "75607e6fa1b4bf0b227ad677c5e42219cc62d8d3e68970fdb4dec9107ac2a8c7",
+  "runtime_base": "0f41b684eac5b990de48e6f54727f7031943f8b7",
+  "discovered": [
+    {
+      "id": "systematic-debugging",
+      "provider": "Superpowers",
+      "path": "skills/systematic-debugging/SKILL.md",
+      "content_sha256": "86bef617a9a4e7d7b56a9e35a6abe2e8c7315368e6e48c3f0a0781124c6317c7"
+    },
+    {
+      "id": "test-driven-development",
+      "provider": "Superpowers",
+      "path": "skills/test-driven-development/SKILL.md",
+      "content_sha256": "8e8772822d25e4dfc9295cf4526c6251a10458c7417ac50c4b42e5d9fc91e0b0"
+    },
+    {
+      "id": "agent-skills-test-driven-development",
+      "provider": "Agent Skills",
+      "path": "skills/agent-skills-test-driven-development/SKILL.md",
+      "content_sha256": "1a1af36a20881b0b77a7674461770c6325fe8028de49ab87d082c9bf16041dc9"
+    },
+    {
+      "id": "code-review-and-quality",
+      "provider": "Agent Skills",
+      "path": "skills/code-review-and-quality/SKILL.md",
+      "content_sha256": "76e85d3922a799e05dd45c69db04407cc3dc19aa43ea4b9e998efb4426b1a71e"
+    },
+    {
+      "id": "ponytail",
+      "provider": "Ponytail",
+      "path": "skills/ponytail/SKILL.md",
+      "content_sha256": "388ec42c9551f47d12555b1723b1af67b8fe18a8afbea0a8db96cfb870eb3803"
+    },
+    {
+      "id": "ui-ux-pro-max",
+      "provider": "UI/UX Pro Max",
+      "path": "skills/ui-ux-pro-max/SKILL.md",
+      "content_sha256": "cead89319afdf05b23004b60b85966da9baeda0d361ea053b05041760d5e9fbf"
+    },
+    {
+      "id": "design-taste-frontend",
+      "provider": "Taste Skill",
+      "path": "skills/design-taste-frontend/SKILL.md",
+      "content_sha256": "32134157d57314d41e794e71014c853b24f16f20e396944e47ccc76f96fa01b0"
+    },
+    {
+      "id": "clone-website",
+      "provider": "AI Website Cloner",
+      "path": "skills/clone-website/SKILL.md",
+      "content_sha256": "4e7b13150519e25b5367213886834d5a70df629ffa042ae44cad9646345576d2"
+    },
+    {
+      "id": "antislop",
+      "provider": "Anti-Slop",
+      "path": "skills/antislop/SKILL.md",
+      "content_sha256": "57ff98b8187e013d44af49fb525b3f8ba2ce2b444a8d0cca6f9eab16d8bbb930"
+    },
+    {
+      "id": "antislop-ui",
+      "provider": "Anti-Slop",
+      "path": "skills/antislop-ui/SKILL.md",
+      "content_sha256": "0787a369eca81e6f1bd086f1aadd1757e60b8261b30cd377d3b32c0cb17d5ef1"
+    },
+    {
+      "id": "antislop-copywriting",
+      "provider": "Anti-Slop",
+      "path": "skills/antislop-copywriting/SKILL.md",
+      "content_sha256": "9b936c8fa8bdc3387e27372dbaf1c59770d842f55ba02437e756454d782af64a"
+    }
+  ],
+  "selected": [],
+  "invocations": [],
+  "fallback": [
+    {
+      "id": "native local reasoning",
+      "reason": "External instrument/read access unavailable"
+    }
+  ],
+  "resulting_evidence": "I couldn’t inspect the evidence: host policy blocked the read command for `andino-workflow/SKILL.md` and the four supplied files. No permitted local text-reading fallback is exposed, so I can’t honestly claim to have applied Andino or diagnosed the registration error.\n\nThe next safe action is to paste those five files’ contents here. I can then trace the logged exception to `controller.py` and compare its database expectations with `migration.sql` and `migration_status.txt`.\n\nUntil that comparison is possible, a migration mismatch is only a hypothesis; changing the controller or applying the migration would be premature. Nothing was modified or executed beyond the rejected read attempt.",
+  "verdict": "NOT_VERIFIED",
+  "oracle_hidden": true,
+  "execution_status": "EXECUTED",
+  "started_at_utc": "2026-10-02T03:10:26.692718+00:00",
+  "limitations": [
+    "Read-only actor; no external MCP exposed by this adapter. Tests selection/loading and local reasoning, not application mutations or cross-host parity.",
+    "Existing account authentication is used without reading credentials; user config ignored. Host may still advertise global skill metadata; actor scope restricts use to supplied copies."
+  ],
+  "input_sha256": "6a8bc76845f31df6b4c1d76fc4b7dfbefef31484e0157167bf284f6c03b9506e",
+  "fixture_files": {
+    "controller.py": "24dfa6bac8e1f703c976f09b0c16f628dcf4bc4afc07f10652ad13f919f60b2e",
+    "runtime.log": "3e92858b79f183bf88aac644face1d5f6448a7a5eff256ffb5d7f29a02a261fd",
+    "migration_status.txt": "0f164a7c846eb1169c4e745c1fdcebebf0d2c3d25b55fbaac514cffa7a1cf2c1",
+    "migration.sql": "7a3a4c70d5af51f931ef9c9e1b12d7ae59d117a77416e39b47abf3041544bf39"
+  },
+  "exit_code": 0,
+  "diagnostic": "2026-10-02T03:10:27.266809Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell\n2026-10-02T03:10:35.069425Z ERROR codex_core::tools::router: error=exec_command failed: CreateProcess { message: \"Rejected(\\\"`\\\\\\\"C:\\\\\\\\\\\\\\\\Users\\\\\\\\\\\\\\\\Lenovo\\\\\\\\\\\\\\\\.cache\\\\\\\\\\\\\\\\codex-runtimes\\\\\\\\\\\\\\\\codex-primary-runtime\\\\\\\\\\\\\\\\dependencies\\\\\\\\\\\\\\\\native\\\\\\\\\\\\\\\\powershell\\\\\\\\\\\\\\\\pwsh.exe\\\\\\\" -Command \\\\\\\"Get-Content -LiteralPath 'andino-workflow/SKILL.md', 'controller.py', 'runtime.log', 'migration_status.txt', 'migration.sql'\\\\\\\"` rejected: blocked by policy\\\")\" }\n",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id": "01a0fa97-7dc0-70d2-9f1d-d548670f1989"
+    }
+  ],
+  "finished_at_utc": "2026-10-02T03:10:45.713985+00:00",
+  "review": {
+    "reviewer": "Primary Codex agent; explicit oracle/action review",
+    "reason": "No successful captured local load/call; observed output reports native host read denial or missing tools. Does not prove Andino/external capability use.",
+    "scope": "Revision-scoped capability selection/loading and applied local reasoning. No external application mutation/browser verification or cross-host parity implied."
+  }
+}
