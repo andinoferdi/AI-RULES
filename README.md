@@ -186,6 +186,52 @@ environment.
 Implementation decisions and verification limits are recorded in the
 [completed setup checkpoint](docs/exec-plans/completed/skill-invocation-setup.md).
 
+### Example prompt
+
+After setup, replace `[PROMPT]` with your task. This example makes Andino Workflow
+the required primary workflow while keeping supporting capabilities optional:
+
+```text
+Gunakan "andino-workflow" sebagai workflow utama yang wajib
+untuk menangani tugas berikut.
+
+Jika diperlukan, gunakan kemampuan pendukung yang tersedia:
+
+Skills/plugin:
+- ai-codebase-rescue
+- superpowers
+- ponytail
+- claude-mem
+- UI/UX Pro Max
+- agent-skills
+- taste-skill
+- AI Website Cloner
+- graphify
+
+Tools/MCP:
+- Context7
+- Playwright MCP
+- Chrome DevTools MCP
+- Git MCP
+- Draw.io MCP
+- StarUML MCP
+- Premiere Pro MCP
+- Cheat Engine MCP bridge
+
+Pilih hanya kemampuan yang relevan dengan kebutuhan tugas.
+Jangan mengaktifkan semuanya sekaligus.
+Ikuti instruksi skill yang dipilih dan gunakan tools yang
+benar-benar tersedia. Jika tidak tersedia, jelaskan keterbatasannya
+dan lanjutkan dengan alternatif yang sesuai.
+
+Tugas:
+[PROMPT]
+```
+
+This prompt does not install capabilities. `ai-rules setup` installs the three
+first-party skills; third-party skills/plugins and MCP servers must be installed
+or connected separately using their own setup instructions below.
+
 ### External resources — manual installation
 
 Skills and plugin families: [Superpowers](https://github.com/obra/superpowers),
