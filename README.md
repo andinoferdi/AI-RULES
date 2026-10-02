@@ -15,6 +15,19 @@ Start with [the skill](SKILL.md). Planning, handoff, anti-loop and routing
 references are included. Specialist skills and memory/graph services are
 optional; use available methods within native invocation permissions.
 
+Andino knows a broad [capability registry](references/capability-registry.md), but
+selects and loads only the minimum useful methods/instruments for the current
+unresolved need. Evidence and task context guide selection, not keyword matching.
+The registry covers individual Superpowers/Agent Skills, Ponytail, Claude-Mem,
+UI/UX Pro Max, Taste, Cloner, Graphify, Anti-Slop and eight recommended MCP families.
+It contains short contracts, not bundled third-party implementations or automatic
+installation. [Coexistence](references/capability-coexistence.md) resolves competing
+providers; [host invocation](references/invocation-adapter.md) separates discovered,
+available, invokable, active and used capabilities. Installed does not mean used.
+New evidence may change selection; stop calling a capability when its need ends.
+Invocation depends on the actual host catalog, permissions and connected service.
+Documentation or transport checks do not prove autonomous or cross-host use.
+
 ## Install
 
 Clone this branch into a directory named `andino-workflow` under your agent's skill root.

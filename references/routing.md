@@ -8,10 +8,29 @@ INVESTIGATIVE may need hypothesis testing. Independently choose EPHEMERAL or
 CHECKPOINTED persistence. Only the latter needs LITE/STANDARD/DEEP plan density;
 record material density changes in an existing plan. This creates no second router.
 
-Select by the current phase, not a flat manifest. Native filesystem/search/shell/Git
-and fetching are preferred when they already answer the question. Resolve installed
-names through the host catalog. If absent, apply the method directly; do not install
-alternatives simply to fill the catalog.
+Select from task intent, current evidence, unresolved need, phase, consequence and
+actual host availability, not keywords or an unverified diagnosis. Native
+filesystem/search/shell/Git and fetching are preferred when sufficient. Consult
+only matching entries in [the capability registry](capability-registry.md), resolve
+actual provider/ID using [coexistence](capability-coexistence.md), then obey
+[the host invocation contract](invocation-adapter.md). Registry metadata is not
+full skill/schema loading, installation or successful invocation.
+
+Skill = methodology; MCP = instrument; native = existing host facility. Select the
+minimum useful combination only when each addresses a distinct need. Read relevant
+instructions/schema just-in-time, perform required preflight and use observed
+results as evidence. Reassess after new facts: keep, replace or release a capability.
+Release means stop unnecessary calls/defaults, not uninstall. Stop when acceptance
+is sufficiently grounded. Simple tasks may remain DIRECT with zero specialists.
+
+AUTO supports relevant read-oriented lookup/normal skill loading. CONDITIONAL_AUTO
+waits for the actual regression/review/quality/simplification/browser phase.
+PERMISSION_GATED selects a candidate but does not authorize live/destructive
+mutation. DISCOVERED, AVAILABLE, INVOKABLE, ACTIVE, USED, UNAVAILABLE and NOT_NEEDED
+remain distinct; installation != activation != use. If unavailable, use a safe
+sufficient native/local fallback and record it without claiming external use. If
+no sufficient fallback exists, name the material gap and minimum required access.
+Never install alternatives merely to satisfy registry completeness.
 
 One lifecycle owner coordinates the job; supporting disciplines may change by phase.
 Debugging, regression/TDD, review and completion verification may run in sequence when
@@ -47,9 +66,25 @@ Antigravity's scoped descriptions are behavioral guidance, not a native hard swi
 | Both visual character and deeper UX/system work | both UI skills | use [UI coexistence](ui-coexistence.md); one direction, no duplicate workflow |
 | Fidelity clone | clone-website | preserve reference; redesign only when requested |
 | Over-engineering | Ponytail or code-simplification on demand | minimum correct change; no automatic family activation |
+| Generated UI/copy/code quality concerns | selected Anti-Slop core/subskill | only actual concern, accepted user direction wins; no family-wide load |
 | Version-sensitive library behavior | current official docs or Context7 | inspect dependency version first |
-| Browser navigation/E2E | one native browser, Browser Harness or Playwright | DevTools for a distinct console/network/performance question |
+| Persistent/exploratory browser workflow | Playwright MCP when its state/tree loop helps | existing CLI/native browser for sufficient throughput; one browser surface |
+| Browser console/network/performance evidence | Chrome DevTools MCP | a distinct diagnostic question, not redundant navigation |
+| Repository state where native Git unavailable/inadequate | Git MCP | native Git preferred; MCP mutations still need applicable authorization |
+| Editable general diagram | Draw.io MCP | requested artifact/format; local diagram fallback if sufficient |
+| Formal UML/model inspection or generation | StarUML MCP | model semantics; do not automatically invoke both diagram systems |
+| Actual Premiere project operation | Premiere Pro MCP | connection -> inspect project/sequence -> discover exact tool -> authorized mutation -> read-back |
+| Authorized local memory/process investigation | Cheat Engine MCP bridge | actual connectivity/target evidence and reads first; mutation/injection/shell require explicit applicable authority |
 | Database/cloud/design/media operations | corresponding project MCP/plugin | enable only relevant service; authorization still applies |
+
+Individual Superpowers and all registered Agent Skills categories are available
+as candidate disciplines; no full-family pipeline. Agent Skills API, frontend,
+CI/CD, security, performance, migration, observability, specs and shipping routes
+use their specific current-need contracts, not a second meta-router. Ponytail is
+useful for evidenced over-build risk, not automatic one-line ceremony. Graphify
+query/callers/impact/trace semantics are resolved against installed version and
+index freshness; native references remain preferred for simple relationships.
+External Anti-Slop availability does not replace existing internal quality rules.
 
 For rescue, ordinary local bugs remain on the ordinary workflow. Vague requests
 such as "AI wrote this" or "clean this" warrant only targeted eligibility inspection,

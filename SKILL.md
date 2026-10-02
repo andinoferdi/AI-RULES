@@ -138,6 +138,17 @@ optional accelerators, never prerequisites. Default subagents: zero; delegate on
 authorized, useful, bounded independent work. Increase reasoning effort only when
 difficulty warrants it and the host supports the control; never invent settings.
 
+Know the available capability catalog broadly, select narrowly, load just-in-time,
+verify actual use and release when done. Route from task intent, current evidence,
+the unresolved need, phase, consequence and actual host availability; never merely
+from keywords or a user's proposed diagnosis. Consult only relevant entries in
+[the capability registry](references/capability-registry.md), resolving provider
+collisions and native invocation through [the host contract](references/invocation-adapter.md).
+Skills are methods and MCP tools are instruments; combine only when complementary.
+Installed is not active, and active is not used. Reassess selection after new
+evidence; use an honest sufficient fallback when unavailable and stop invoking
+capabilities when their need ends. Do not activate all available capabilities.
+
 Verify claims and changed outcomes proportionally, including required project
 checks. Separate structural validation from observed behavior; report unavailable
 validation honestly. Mark DONE only when acceptance is supported; otherwise leave
