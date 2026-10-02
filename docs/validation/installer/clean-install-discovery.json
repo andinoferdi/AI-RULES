@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-02",
+  "scenario": "built wheel, empty home, actual remote skill branches",
+  "model_turns_sent": 0,
+  "fresh_install": {
+    "targets": 15,
+    "all_install": true,
+    "lock_status": "verified",
+    "installed_from_wheel": true,
+    "preinstalled_first_party_skills": 0
+  },
+  "second_setup": {
+    "targets": 15,
+    "all_no_op": true
+  },
+  "codex": {
+    "native_discovery": "PASS (fresh project scope)",
+    "skills": [
+      "ai-codebase-rescue",
+      "andino-workflow",
+      "skripsi-skill"
+    ],
+    "enabled": true,
+    "all_paths_in_isolated_project": true,
+    "isolated_global_discovery": "NOT_RUN (Windows native loader uses OS profile)"
+  },
+  "claude-code": {
+    "native_command_discovery": "PASS",
+    "commands": [
+      "ai-codebase-rescue",
+      "andino-workflow",
+      "skripsi-skill"
+    ]
+  },
+  "opencode": {
+    "native_command_discovery": "PASS",
+    "commands": [
+      "ai-codebase-rescue",
+      "andino-workflow",
+      "skripsi-skill"
+    ],
+    "templates_reference_isolated_home": true
+  },
+  "antigravity-cli": {
+    "skill_artifacts": "PASS",
+    "live_ui_autocomplete": "NOT_RUN"
+  },
+  "antigravity-ide": {
+    "skill_artifacts": "PASS",
+    "live_ui_autocomplete": "NOT_RUN",
+    "workflow_artifacts": "PASS (modern and legacy)"
+  },
+  "limitations": [
+    "Antigravity live UI autocomplete not observed",
+    "Codex native global home could not be isolated through HOME/USERPROFILE; project scope verified instead",
+    "No agent model turn executed"
+  ]
+}

@@ -81,6 +81,51 @@ class LiveUpdateTests(unittest.TestCase):
         self.assertEqual("verified", lock["status"])
         self.assertIn(self.git(self.remote, "rev-parse", "HEAD").strip(), lock["targets"][0]["target_version"])
 
+    def test_current_skill_gets_missing_command_and_setup_repairs_deleted_command(self):
+        self.copy_old()
+        command = self.project / ".opencode/commands/andino-workflow.md"
+        result, output = self.run_cli("--host", "opencode")
+        self.assertEqual(0, result, output)
+        self.assertIn("RECONFIGURE", output)
+        self.assertIn("$ARGUMENTS", command.read_text())
+        self.assertIn(self.target.joinpath("SKILL.md").as_posix(), command.read_text())
+        command.unlink()
+        result, output = self.run_cli("--host", "opencode", "--dry-run")
+        self.assertEqual(0, result, output)
+        self.assertFalse(command.exists())
+        result, output = self.run_cli("--host", "opencode")
+        self.assertEqual(0, result, output)
+        self.assertTrue(command.exists())
+        result, output = self.run_cli("--host", "opencode")
+        self.assertEqual(0, result, output)
+        self.assertNotIn("RECONFIGURE", output)
+
+    def test_existing_user_command_is_preserved(self):
+        command = self.project / ".opencode/commands/andino-workflow.md"
+        command.parent.mkdir(parents=True)
+        body = "---\ndescription: Personal workflow\n---\n\nUse my preferred workflow.\n"
+        command.write_text(body)
+        result, output = self.run_cli("--host", "opencode")
+        self.assertEqual(0, result, output)
+        self.assertEqual(body, command.read_text())
+
+    def test_invalid_command_blocks_without_overwriting(self):
+        command = self.project / ".opencode/commands/andino-workflow.md"
+        command.parent.mkdir(parents=True)
+        command.write_text("personal notes\n")
+        result, output = self.run_cli("--host", "opencode")
+        self.assertNotEqual(0, result, output)
+        self.assertEqual("personal notes\n", command.read_text())
+        lock = json.loads((self.state / "lock.json").read_text())
+        self.assertEqual("SKIPPED", next(t["status"] for t in lock["targets"] if t["host"] == "opencode"))
+
+    def test_ide_workflow_loads_skill_without_copying_body(self):
+        result, output = self.run_cli("--host", "antigravity-ide")
+        self.assertEqual(0, result, output)
+        command = self.project / ".agents/workflows/andino-workflow.md"
+        self.assertIn(self.target.joinpath("SKILL.md").as_posix(), command.read_text())
+        self.assertNotIn("$ARGUMENTS", command.read_text())
+
     def test_clean_clone_fast_forwards_without_replacing_git_metadata(self):
         self.target.parent.mkdir(parents=True)
         self.git(self.root, "clone", str(self.remote), str(self.target))
@@ -306,6 +351,45 @@ class LiveUpdateTests(unittest.TestCase):
             self.assertEqual(1, confirm.call_count)
             self.assertIn("Up to date", output.getvalue())
             self.assertNotIn("Already installed", output.getvalue())
+
+    def test_novice_setup_from_empty_home_installs_and_registers_all_hosts(self):
+        for identifier in ("ai-codebase-rescue", "skripsi-skill"):
+            self.git(self.remote, "checkout", "-b", identifier)
+            (self.remote / "SKILL.md").write_text(
+                f"---\nname: {identifier}\ndescription: Fixture {identifier}\n---\nInstructions\n")
+            self.git(self.remote, "add", ".")
+            self.git(self.remote, "commit", "-m", identifier)
+            self.catalog.require_capability(identifier).source["repository"] = str(self.remote)
+        home = self.root / "empty-home"
+        home.mkdir()
+        hosts = tuple(self.catalog.hosts)
+        selection = InteractiveSelection(hosts, "everything", ())
+        output = io.StringIO()
+        original = Path.cwd()
+        try:
+            os.chdir(home)
+            with patch.object(Path, "home", return_value=home), \
+                 patch.object(cli, "prompt_selection", return_value=selection), \
+                 patch.object(cli, "prompt_confirmation", return_value=True), \
+                 contextlib.redirect_stdout(output):
+                self.assertEqual(0, cli.main(["setup"]), output.getvalue())
+                adapters = cli.build_host_adapters(self.catalog.hosts)
+                from ai_rules.hosts.invocation import invocation_paths, invocation_ready
+                from ai_rules.domain.statuses import Scope
+                for adapter in adapters.values():
+                    for identifier in ("andino-workflow", "ai-codebase-rescue", "skripsi-skill"):
+                        skill = adapter.skill_target(Scope.GLOBAL) / identifier / "SKILL.md"
+                        self.assertTrue(skill.is_file(), str(skill))
+                        self.assertTrue(all(invocation_ready(p) for p in invocation_paths(adapter, Scope.GLOBAL, identifier)))
+                lock = json.loads((home / ".ai-rules/lock.json").read_text())
+                self.assertEqual("verified", lock["status"])
+                self.assertEqual(15, len(lock["targets"]))
+                self.assertTrue(all(t["action"] == "INSTALL" for t in lock["targets"]))
+                self.assertIn("Codex: $andino-workflow", output.getvalue())
+                self.assertIn("Claude Code: /andino-workflow", output.getvalue())
+                self.assertIn("OpenCode: /andino-workflow", output.getvalue())
+        finally:
+            os.chdir(original)
 
 
 if __name__ == "__main__":

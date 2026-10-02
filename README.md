@@ -57,6 +57,37 @@ selection/loading tests, read-only service smoke tests and unverified host cover
 
 ## AI-RULES installer/orchestrator
 
+### Manual skill invocation
+
+Setup installs each skill's directory and registers manual invocation for hosts
+that need a separate entry point. OpenCode receives Markdown commands in
+`~/.config/opencode/commands/` (project scope: `.opencode/commands/`). Antigravity
+IDE receives workflows in `~/.gemini/config/workflows/` and the older IDE's
+`~/.gemini/antigravity/global_workflows/` (project scope: `.agents/workflows/`).
+These small entry points read the installed `SKILL.md`; they do not duplicate
+the skill's instructions. Codex, Claude Code and Antigravity CLI use their native
+skill discovery.
+
+After setup, start a new host session or reload the app's window. Use
+`/andino-workflow`, `/ai-codebase-rescue`, or `/skripsi-skill` in OpenCode and
+Antigravity. In Codex, use `$andino-workflow`, `$ai-codebase-rescue`, or
+`$skripsi-skill`; Claude Code supports the corresponding slash names.
+Autonomous skill selection remains the host's decision based on the skill's
+description and request.
+
+Repeated setup repairs missing command/workflow files even when the skill's
+contents are current. Existing valid commands are preserved, including custom
+commands with the same name; invalid existing files are reported for review.
+`--dry-run` previews registrations without writing them. Installer verification
+checks artifacts; it does not claim to have observed autocomplete in a running UI.
+
+Host references: [OpenCode commands](https://opencode.ai/docs/commands/),
+[Antigravity skills](https://antigravity.google/docs/skills), and
+[IDE workflows and migration](https://antigravity.google/docs/migration/workflows-to-skills).
+The old IDE path is also confirmed by the installed IDE's
+`globalWorkflowsPathSegments` configuration. Antigravity is migrating workflows
+to native skills; its modern native skills remain installed as the canonical source.
+
 AI-RULES installs and manages only Andino's first-party skills: **Andino
 Workflow**, **AI Codebase Rescue**, and **Skripsi Skill**. Third-party skills,
 plugins, MCP servers, runtimes, and services are never installed, configured,
@@ -118,12 +149,42 @@ records the regression evidence and implementation decisions.
 
 To set up AI-RULES locally:
 
+You do not need to install any of the three skills beforehand. With Python
+3.11+, Git, and your chosen AI agents already installed, run:
+
 ```sh
 git clone https://github.com/andinoferdi/AI-RULES.git
 cd AI-RULES
 python -m pip install .
 ai-rules setup 
 ```
+
+Select your agents, choose **Everything** to install all three skills, and
+accept the installation plan. Setup downloads the skills from their source
+branches, places them in each selected agent's discovery directory, and creates
+the command/workflow entry points where the host needs them. It also works when
+those directories do not exist yet; no manual copying or per-agent skill setup
+is needed.
+
+Then open a new agent session or reload its window. Setup prints the invocation
+names for every selected agent: `$skripsi-skill` in Codex and `/skripsi-skill` in
+Claude Code, OpenCode and Antigravity, with corresponding names for the other
+two skills. The agent application must support the documented skill mechanism;
+setup cannot make an older unsupported host provide autocomplete.
+
+The clean-install regression exercises interactive `ai-rules setup` from an
+empty home outside the repository for all five agents. The opt-in
+[clean-install discovery evidence](docs/validation/installer/clean-install-discovery.json)
+records a built-wheel installation using actual remote skill branches and
+Claude Code and OpenCode runtime discovery from that isolated installation.
+Codex runtime discovery is checked against a separate fresh project installation:
+its Windows native global loader still reads the operating system's user profile
+when HOME/USERPROFILE are overridden. Antigravity checks are
+artifact checks; its live UI autocomplete has not been observed in that isolated
+environment.
+
+Implementation decisions and verification limits are recorded in the
+[completed setup checkpoint](docs/exec-plans/completed/skill-invocation-setup.md).
 
 ### External resources — manual installation
 

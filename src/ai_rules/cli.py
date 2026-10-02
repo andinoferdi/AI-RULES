@@ -16,6 +16,7 @@ from ai_rules.domain.models import ActualState, InstallationPlan, Operation
 from ai_rules.domain.statuses import InstalledOwnership, ReconciliationAction, Scope, TargetStatus
 from ai_rules.execution import Executor
 from ai_rules.hosts.adapters import build_host_adapters
+from ai_rules.hosts.invocation import install_invocation, invocation_paths, invocation_ready, reconcile_invocations
 from ai_rules.interactive import prompt_confirmation, prompt_selection, render_setup_summary
 from ai_rules.planning import render_plan
 from ai_rules.platform import detect_environment, project_state_root, state_root
@@ -159,6 +160,15 @@ def cmd_setup(args: argparse.Namespace) -> int:
     verified = _write_verified_lock(plan, result, args)
     if all_current and verified:
         print("\nNo changes were needed.")
+    if verified:
+        print("\nManual invocation: start a new agent session or reload its window.")
+        catalog = load_catalog()
+        for host_id in dict.fromkeys(target.host_id for target in plan.targets):
+            prefix = "$" if host_id == "codex" else "/"
+            names = [prefix + target.capability_id for target in plan.targets
+                     if target.host_id == host_id and catalog.require_capability(target.capability_id).ownership.value == "FIRST_PARTY"]
+            if names:
+                print(f"  {catalog.require_host(host_id).display_name}: " + ", ".join(names))
     return 1 if verified is False or any(item.status in {"FAILED", "SKIPPED", "BLOCKED"} for item in result.results) else 0
 
 
@@ -338,7 +348,7 @@ def _resolve_from_args(args: argparse.Namespace):
         if not getattr(args, "_latest", None):
             args._latest = LatestSources(catalog, [target.capability_id for target in plan.targets if target.strategy_id])
         plan = args._latest.reconcile(plan, catalog, args)
-    return plan
+    return reconcile_invocations(plan, catalog, build_host_adapters(catalog.hosts), args.project_root)
 
 
 def _prepare_args(args: argparse.Namespace) -> None:
@@ -361,10 +371,15 @@ def _profile_capabilities(profile_id: str) -> list[str]:
 
 
 def _executor_for_plan(plan, args: argparse.Namespace) -> Executor:
-    if latest := getattr(args, "_latest", None):
-        return Executor(args.state_dir, first_party_installers=latest.installers)
     catalog = load_catalog()
     adapters = build_host_adapters(catalog.hosts)
+    registrations = {
+        (target.capability_id, target.host_id):
+        (lambda target=target: install_invocation(adapters[target.host_id], target.scope, target.capability_id, args.project_root))
+        for target in plan.targets if catalog.require_capability(target.capability_id).ownership.value == "FIRST_PARTY"
+    }
+    if latest := getattr(args, "_latest", None):
+        return Executor(args.state_dir, first_party_installers=latest.installers, invocation_installers=registrations)
     roots: dict[str, Path] = {}
     bundles: dict[str, Path] = {}
     manifest = _release_manifest()
@@ -381,7 +396,7 @@ def _executor_for_plan(plan, args: argparse.Namespace) -> Executor:
             bundle = args.state_dir / "bundles" / capability.id
             export_git_ref(release["commit"], bundle, repo_root=Path.cwd())
         bundles[capability.id] = bundle
-    return Executor(args.state_dir, first_party_bundles=bundles, host_skill_roots=roots)
+    return Executor(args.state_dir, first_party_bundles=bundles, host_skill_roots=roots, invocation_installers=registrations)
 
 
 def _actual_state(
@@ -523,6 +538,14 @@ def _write_verified_lock(plan, result, args: argparse.Namespace) -> bool | None:
             verification = {"outcome": "NOT_RUN", "reason": "external configuration applied; runtime health requires a separate check"}
         else:
             verification = {"outcome": "NOT_RUN", "reason": item.message}
+        if capability.ownership.value == "FIRST_PARTY" and status == TargetStatus.VERIFIED.value:
+            paths = invocation_paths(adapters[target.host_id], target.scope, target.capability_id, args.project_root)
+            if any(not invocation_ready(path) for path in paths):
+                status = TargetStatus.FAILED.value
+                verification = {"outcome": "FAIL", "check": "manual-invocation"}
+            elif paths:
+                verification["invocation_paths"] = [str(path) for path in paths]
+                verification["runtime_discovery"] = "NOT_RUN"
         targets.append(
             {
                 "capability": target.capability_id,
@@ -556,7 +579,7 @@ def _repair_only_plan(plan: InstallationPlan) -> InstallationPlan:
     return InstallationPlan(
         schema_version=plan.schema_version,
         profile_id=plan.profile_id,
-        targets=tuple(target for target in plan.targets if target.action == ReconciliationAction.REPAIR),
+        targets=tuple(target for target in plan.targets if target.action in {ReconciliationAction.REPAIR, ReconciliationAction.RECONFIGURE}),
     )
 
 

@@ -37,11 +37,13 @@ class Executor:
         first_party_bundles: dict[str, Path] | None = None,
         host_skill_roots: dict[str, Path] | None = None,
         first_party_installers: dict[tuple[str, str], Callable[[], Path]] | None = None,
+        invocation_installers: dict[tuple[str, str], Callable] | None = None,
     ):
         self.state_dir = state_dir
         self.first_party_bundles = first_party_bundles or {}
         self.host_skill_roots = host_skill_roots or {}
         self.first_party_installers = first_party_installers or {}
+        self.invocation_installers = invocation_installers or {}
 
     def execute(self, plan: InstallationPlan, dry_run: bool = True, yes: bool = False) -> ExecutionResult:
         results: list[OperationResult] = []
@@ -52,7 +54,7 @@ class Executor:
                 )
                 continue
             if target.action == ReconciliationAction.NO_OP:
-                if verify := self.first_party_installers.get((target.capability_id, target.host_id)):
+                if not dry_run and yes and (verify := self.first_party_installers.get((target.capability_id, target.host_id))):
                     try:
                         verify()
                     except Exception as exc:
@@ -93,6 +95,8 @@ class Executor:
                 detail = (completed.stderr or completed.stdout).strip()
                 raise RuntimeError(f"command exited {completed.returncode}: {detail}")
         installed_path = None if operation.action == ReconciliationAction.ADOPT else self._install_first_party_bundle(operation)
+        if register := self.invocation_installers.get((operation.capability_id, operation.host_id)):
+            register()
         self.state_dir.mkdir(parents=True, exist_ok=True)
         evidence_path = self.state_dir / "last-operation.json"
         payload = asdict(operation)
@@ -103,6 +107,8 @@ class Executor:
         return OperationResult(operation.capability_id, operation.host_id, operation.action.value, "APPLIED", message)
 
     def _install_first_party_bundle(self, operation: Operation) -> Path | None:
+        if operation.kind == "register_skill_invocation":
+            return None
         if install := self.first_party_installers.get((operation.capability_id, operation.host_id)):
             return install()
         bundle = self.first_party_bundles.get(operation.capability_id)
