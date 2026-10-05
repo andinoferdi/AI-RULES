@@ -201,10 +201,9 @@ Skills/plugin:
 - ai-codebase-rescue
 - superpowers
 - ponytail
-- claude-mem
 - UI/UX Pro Max
 - agent-skills
-- taste-skill
+- design-taste-frontend
 - AI Website Cloner
 - graphify
 
@@ -235,7 +234,7 @@ or connected separately using their own setup instructions below.
 ### External resources — manual installation
 
 Skills and plugin families: [Superpowers](https://github.com/obra/superpowers),
-[Ponytail](https://github.com/DietrichGebert/ponytail), [Claude-Mem](https://cmem.ai/),
+[Ponytail](https://github.com/DietrichGebert/ponytail),
 [UI/UX Pro Max](https://uupm.cc/), [Taste Skill](https://www.tasteskill.dev/),
 [AI Website Cloner](https://github.com/JCodesMore/ai-website-cloner-template),
 [Graphify](https://graphify.net/), [Anti-Slop](https://github.com/miqdadbadjuber/anti-slop), and [Agent Skills](https://github.com/addyosmani/agent-skills).
