@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "scope": "local implementation; no push",
+  "scope": "published implementation; local and GitHub CI validation",
   "runtime_commits": {
     "focus": "4dc2ba2a7f50ed35524820586b6df520ca39fbf3",
     "andino-workflow": "f47eac451ab50b6bfc41908f4a4793b79daf78e4",
@@ -75,8 +75,19 @@
       "reason": "No fresh Codex/Claude/OpenCode/Antigravity session or web-chatbot behavioral run was performed; source instructions and installation do not prove autonomous use."
     },
     "publication": {
-      "status": "NOT_RUN",
-      "reason": "User explicitly authorized local commits only, no push."
+      "status": "PASS",
+      "implementation_commit": "255364556e20907881412924b22dbefb16d85ed7",
+      "branches": [
+        "main",
+        "focus",
+        "andino-workflow",
+        "WebBased"
+      ],
+      "github_ci": "https://github.com/andinoferdi/AI-RULES/actions/runs/37753802013",
+      "remote_setup_evidence": "remote-setup.json",
+      "unit_tests": 132,
+      "unit_test_evidence": "publication-tests.txt",
+      "note": "Earlier unit_suite record is the pre-publication snapshot."
     }
   }
 }

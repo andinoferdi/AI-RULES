@@ -6,11 +6,11 @@ Andino, expose standalone invocation, add copyable `X. Focus` to WebBased, and
 verify setup/install/update plus communication cases without losing accuracy.
 
 ## CURRENT STATE
-Publication authorized on 2026-10-08; CI repair and release verification in progress. Live host behavior is not claimed. Main initially cb5e2e1; andino-workflow 52ceaae;
+Published on 2026-10-08. Runtime branches and main are on origin; implementation commit 2553645 passed GitHub Actions run 37753802013. Live host behavior is not claimed. Main initially cb5e2e1; andino-workflow 52ceaae;
 WebBased 89c8ffc. Existing untracked i-have-adhd/ and tests/images/ are preserved.
 
 ## CURRENT PHASE
-Publishing — repair Linux CI, verify, commit main and push runtime branches before main.
+DONE — runtime, installer, README and Linux CI fix published and verified.
 
 ## Decisions
 - Follow branch-per-skill distribution; no second installer or routing system.
@@ -43,8 +43,8 @@ Behavior: short answer, debugging uncertainty, coding completion, long explanati
 distinguish manual review from live fresh-host evidence.
 
 ## NEXT ACTION
-Run regression and full suite, then push focus, andino-workflow, WebBased and main.
-Verify remote commit IDs and the GitHub Actions run for the published main commit.
+No required implementation or publication work remains. A fresh-host behavioral
+check is optional follow-up; installation evidence is not autonomous-use evidence.
 
 ## Progress
 - Added Focus runtime and MIT notice, obligatory Andino entry activation, routing
@@ -101,4 +101,7 @@ Verify remote commit IDs and the GitHub Actions run for the published main commi
 - Runtime branches focus, andino-workflow and WebBased pushed atomically.
 - Actual GitHub-source setup of Minimal and standalone Focus passed in disposable
   projects; second installs were NO_OP. See remote-setup.json.
-- Main publication is prepared; next action is push main and observe its CI run.
+- Main implementation commit 2553645 is published. GitHub Actions run 37753802013
+  passed on Linux: https://github.com/andinoferdi/AI-RULES/actions/runs/37753802013.
+- Remote heads for focus, andino-workflow, WebBased and main were read back and
+  matched the intended local commits. No force push was used.
