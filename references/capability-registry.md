@@ -1062,12 +1062,18 @@ Contracts use inspected installed skill IDs and actual host tool metadata. Upstr
 
 ## focus
 
-- Type/provider: skill / AI-RULES first-party distribution `focus`.
-- Need: default communication on every Andino invocation, including DIRECT work;
-  also independently invokable through the host's normal skill entry point.
-- Mode: AUTO for permitted skill activation, subject to the host contract and
-  explicit user overrides. Missing or denied activation is UNAVAILABLE, not USED.
-- Use: load the actual installed SKILL.md once per valid context and apply it to
-  communication. Do not repeat its body or start another lifecycle.
-- Boundary: presentation only; retain task scope, evidence, verification, safety,
-  requested depth and output formats. No new mutation authority.
+- Type: skill
+- Family/provider: AI-RULES
+- Aliases: none
+- Primary purpose: Clear, concise, actionable communication without losing important information.
+- Trigger: Every Andino invocation, including DIRECT and EPHEMERAL work.
+- Preferred when: Andino is active or the user requests Focus independently.
+- Avoid when: The user explicitly overrides the preference; never override higher instructions or output requirements.
+- Availability check: Resolve the actual installed focus entry and native invocation permissions; setup supplies the dependency.
+- Invocation method: Activate the actual SKILL.md through the host contract; reuse valid activation evidence.
+- First-call/preflight: Check whether the current Focus instructions are already loaded; load once if permitted and needed.
+- Fallback: Report missing or denied activation briefly and continue authorized work without claiming Focus use.
+- Coexistence/conflicts: Complements A. PRIORITAS; Andino remains lifecycle owner. Do not duplicate the prompt body.
+- Mutation/permission boundary: Communication only; no new authority or limits on task execution.
+- Verification requirement: Distinguish actual loading and applied output from a name mention or installation record.
+- Activation policy: AUTO
