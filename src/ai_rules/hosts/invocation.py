@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import re
+import stat
 from dataclasses import replace
 from pathlib import Path
 
@@ -79,6 +80,16 @@ def reconcile_invocations(plan, catalog, adapters, project_root=None):
         if (catalog.require_capability(target.capability_id).ownership.value != "FIRST_PARTY"
                 or target.action in {ReconciliationAction.BLOCK, ReconciliationAction.MANUAL_ACTION}):
             targets.append(target)
+            continue
+        root = adapters[target.host_id].skill_target(target.scope, project_root)
+        skill = root / target.capability_id if root is not None else None
+        if (target.host_id in {"antigravity-cli", "antigravity-ide"} and skill is not None
+                and skill.is_dir()
+                and getattr(skill.lstat(), "st_reparse_tag", None) == stat.IO_REPARSE_TAG_MOUNT_POINT):
+            targets.append(replace(target, action=ReconciliationAction.BLOCK, status=TargetStatus.BLOCKED,
+                                   reason=f"Antigravity skill discovery skips this Windows junction: {skill}. "
+                                          "Back up the link and replace it with a regular skill directory; "
+                                          "preserve its shared source, then rerun setup.", operations=()))
             continue
         paths = invocation_paths(adapters[target.host_id], target.scope, target.capability_id, project_root)
         invalid = next((path for path in paths if path.exists() and not invocation_ready(path)), None)

@@ -161,6 +161,7 @@ def cmd_setup(args: argparse.Namespace) -> int:
     if all_current and verified:
         print("\nNo changes were needed.")
     if verified:
+        print("\nFile verification only; native session discovery and skill use are not verified by setup.")
         print("\nManual invocation: start a new agent session or reload its window.")
         catalog = load_catalog()
         for host_id in dict.fromkeys(target.host_id for target in plan.targets):

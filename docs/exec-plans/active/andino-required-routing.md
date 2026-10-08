@@ -15,7 +15,7 @@ User explicitly authorized commit/push in the final instruction; no force push.
 
 ## Current state
 
-CURRENT PHASE: implementation/publication delivered; behavioral acceptance remains partial.
+CURRENT PHASE: discovery follow-up delivered; behavioral acceptance remains partial.
 Runtime baseline: effc3b8d7326d121317da86aff205de7c0bb0e80.
 Main baseline: 20b840f059a6c6c25b41dfe498119735caa30c9f.
 WebBased checkout remains untouched and clean. Separate managed worktrees:
@@ -40,9 +40,26 @@ Live actor processes are isolated test executions, not implementation delegation
 
 ## NEXT ACTION
 
-Behavioral follow-up: on an authenticated host permitting fixture reads/writes,
-rerun the two activation-order failures and four NOT_VERIFIED cases from
-evals/andino-required-routing.json with hidden oracles. Compare native activation
-events against the current commit and retain failures. See
-docs/validation/andino-workflow/required-routing-review.md. No implementation,
-publication or local setup action remains; do not claim all-host behavioral PASS.
+Restart/reload the affected IDE session and check its actual skill activation.
+Authenticate Claude before replaying the reported status request. The ten prior
+cases retain their original revision/results; rerun them on an authenticated host
+permitting fixture reads/writes before expanding behavioral acceptance.
+
+## Discovery follow-up, 2026-10-08
+
+Repository drift: primary checkout is now clean main at 30b3675 (user change),
+not WebBased. Reused the two managed worktrees; no unrelated checkout edits.
+User screenshots show Claude selected Skripsi but skipped routing references;
+native slash injection explains why Andino need not have another Skill tool row.
+Antigravity CLI /skills reproduced missing Skripsi for a Windows junction and
+found identical content in a regular directory. KEEP host roots (official docs
+confirm them); replace only selected local junctions, with backups and shared
+sources preserved. Installer now blocks this unsupported layout instead of
+reporting current; ordinary setup distinguishes file checks from runtime discovery.
+Andino entry now explicitly reads routing; other references stay conditional.
+Runtime: 52ceaaedc42fae86d7aeb550dd4b799264552725.
+Evidence: discovery-followup.json; 125 tests PASS; native CLI activation order
+PASS, final task NOT_VERIFIED because headless command permission was denied.
+Claude loggedIn=false; IDE conversation replay NOT_VERIFIED.
+Local setup Everything/all five hosts updated Andino and checked all 15 artifacts.
+Backups: ~/.andino/backups/routing-discovery-20261008/.

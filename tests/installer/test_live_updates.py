@@ -271,6 +271,25 @@ class LiveUpdateTests(unittest.TestCase):
         lock = json.loads((self.state / "lock.json").read_text())
         self.assertNotEqual("verified", lock["status"])
 
+    @unittest.skipUnless(os.name == "nt", "Windows junction discovery regression")
+    def test_antigravity_junction_is_not_reported_current(self):
+        self.copy_old()
+        linked = self.root / "shared-skill"
+        self.target.rename(linked)
+        subprocess.run(["powershell", "-NoProfile", "-Command",
+                        "New-Item -ItemType Junction -Path $env:TEST_SKILL_LINK -Target $env:TEST_SKILL_TARGET"],
+                       env=dict(os.environ, TEST_SKILL_LINK=str(self.target), TEST_SKILL_TARGET=str(linked)),
+                       check=True, stdout=subprocess.PIPE)
+        for host in ("antigravity-cli", "antigravity-ide"):
+            with self.subTest(host=host):
+                result, output = self.run_cli("--host", host)
+                self.assertNotEqual(0, result, output)
+                self.assertIn("junction", output)
+                self.assertEqual(linked, self.target.resolve())
+                self.assertIn("old", (linked / "SKILL.md").read_text())
+        lock = json.loads((self.state / "lock.json").read_text())
+        self.assertNotEqual("verified", lock["status"])
+
     def test_git_branch_advances_even_when_commit_does_not_change_files(self):
         self.target.parent.mkdir(parents=True)
         self.git(self.root, "clone", str(self.remote), str(self.target))

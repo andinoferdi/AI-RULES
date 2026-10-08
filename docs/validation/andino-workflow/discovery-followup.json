@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-08",
+  "runtime_commit": "52ceaaedc42fae86d7aeb550dd4b799264552725",
+  "model": "UNKNOWN",
+  "runtime_sha256": "650587b3c710d2b22e1f8344239b368e5fe68ab3f7c444b57b49626025b4d5d0",
+  "fixture_discovery": [
+    {
+      "status": "SUCCESS",
+      "skills": [
+        {
+          "name": "skripsi-skill",
+          "description": "Guide thesis and research work from the user's current research state, with evidence traceability and campus-specific requirements. Use for research planning, literature work, proposal and chapter reasoning, revisions, or defense preparation. Simple sentence polishing, unrelated coding and ordinary conversation do not require this workflow.",
+          "path": "C:\\Users\\Lenovo\\.andino\\backups\\routing-discovery-20261008\\plain\\.agents\\skills\\skripsi-skill\\SKILL.md",
+          "builtin": false,
+          "model_invocable": true
+        }
+      ],
+      "mode": "plain"
+    },
+    {
+      "status": "SUCCESS",
+      "skills": [],
+      "mode": "junction"
+    }
+  ],
+  "global_after": {
+    "status": "SUCCESS",
+    "skills": [
+      {
+        "name": "andino-workflow",
+        "description": "Adaptive problem solving with proportional investigation, evidence-based decisions and portable checkpoints. Use when explicitly requested, for uncertain problems, multi-step coordination, resuming work, thesis/research status or next steps, unknown-cause bugs, and UI/UX design or evaluation. Routine conversation and trivial mechanical edits outside mapped needs do not auto-activate it.",
+        "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-workflow\\SKILL.md",
+        "builtin": false,
+        "model_invocable": true
+      },
+      {
+        "name": "skripsi-skill",
+        "description": "Guide thesis and research work from the user's current research state, with evidence traceability and campus-specific requirements. Use for research planning, literature work, proposal and chapter reasoning, revisions, or defense preparation. Simple sentence polishing, unrelated coding and ordinary conversation do not require this workflow.",
+        "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\skripsi-skill\\SKILL.md",
+        "builtin": false,
+        "model_invocable": true
+      }
+    ]
+  },
+  "native_calls": [
+    {
+      "step_index": 2,
+      "state": "DONE",
+      "tool_info": {
+        "name": "view_file",
+        "parameters": {
+          "AbsolutePath": "C:\\Users\\Lenovo\\.andino\\backups\\routing-discovery-20261008\\plain\\.agents\\skills\\andino-workflow\\references\\routing.md"
+        },
+        "output": "124 lines, 11907 bytes"
+      }
+    },
+    {
+      "step_index": 4,
+      "state": "DONE",
+      "tool_info": {
+        "name": "view_file",
+        "parameters": {
+          "AbsolutePath": "C:\\Users\\Lenovo\\.andino\\backups\\routing-discovery-20261008\\plain\\.agents\\skills\\skripsi-skill\\SKILL.md"
+        },
+        "output": "58 lines, 5513 bytes"
+      }
+    },
+    {
+      "step_index": 6,
+      "state": "DONE",
+      "tool_info": {
+        "name": "view_file",
+        "parameters": {
+          "AbsolutePath": "C:\\Users\\Lenovo\\.andino\\backups\\routing-discovery-20261008\\plain\\.agents\\skills\\skripsi-skill\\references\\andino-integration.md"
+        },
+        "output": "20 lines, 1997 bytes"
+      }
+    },
+    {
+      "step_index": 8,
+      "state": "DONE",
+      "tool_info": {
+        "name": "view_file",
+        "parameters": {
+          "AbsolutePath": "C:\\Users\\Lenovo\\.andino\\backups\\routing-discovery-20261008\\plain\\.agents\\skills\\skripsi-skill\\references\\research-state-and-routing.md"
+        },
+        "output": "57 lines, 6202 bytes"
+      }
+    },
+    {
+      "step_index": 10,
+      "state": "ERROR",
+      "tool_info": {
+        "name": "run_command",
+        "parameters": {
+          "CommandLine": "Get-ChildItem -Force"
+        },
+        "error": {
+          "type": "TOOL_ERROR",
+          "message": "permission check failed for command \"Get-ChildItem -Force\": user denied permission to run command:\nGet-ChildItem -Force\nDo not attempt to circumvent this denial by rephrasing the command, using alternative tools/scripts (e.g. python, sh, curl), or accessing the same target resource. Proceed without performing this action."
+        }
+      }
+    }
+  ],
+  "activation_order": "PASS (Antigravity CLI only)",
+  "task_completion": "NOT_VERIFIED: command permission denied; no bypass",
+  "claude": "NOT_VERIFIED: auth status loggedIn=false",
+  "antigravity_ide": "NOT_VERIFIED: files repaired; no IDE conversation replay",
+  "unit_tests": "PASS: 125",
+  "previous_ten_cases": "Not rerun against this revision; earlier results retain their original hash"
+}
