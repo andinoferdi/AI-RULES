@@ -1,4 +1,5 @@
 import copy
+import json
 import sys
 import tempfile
 import unittest
@@ -6,11 +7,20 @@ from unittest.mock import patch
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from validate_andino_capabilities import validate_registry, validate_cases, validate_record, case_prompt, runtime_files, historical_hashes
+from validate_andino_capabilities import CAPABILITIES, validate_registry, validate_cases, validate_record, case_prompt, runtime_files, historical_hashes
 from run_andino_capability_eval import skill_resource_hash, fixture_contents
 
 
 class CapabilityValidationTest(unittest.TestCase):
+    def test_required_route_fixtures_are_valid_and_hide_oracles(self):
+        cases = json.loads((Path(__file__).resolve().parents[1] / 'evals/andino-required-routing.json').read_text(encoding='utf-8'))
+        self.assertEqual(len(cases), 10)
+        self.assertEqual(validate_cases(cases, CAPABILITIES | {'skripsi-skill'}), [])
+        for case in cases:
+            prompt = case_prompt(case, 'Runtime metadata', 'Catalog metadata')
+            self.assertNotIn(case['expected'], prompt)
+            self.assertNotIn(case['forbidden'], prompt)
+
     def test_registry_rejects_duplicate_and_incomplete_contract(self):
         text = '## context7\n- Type: MCP\n## context7\n- Type: skill\n'
         errors = validate_registry(text)
