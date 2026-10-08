@@ -1,6 +1,6 @@
 ---
 name: andino-workflow
-description: Adaptive problem solving with proportional investigation, evidence-based decisions and portable checkpoints. Use for uncertain problems, multi-step coordination or resuming work. Explicit invocation also supports daily tasks and conversation without planning ceremony; do not auto-activate for routine questions or trivial edits.
+description: Adaptive problem solving with proportional investigation, evidence-based decisions and portable checkpoints. Use when explicitly requested, for uncertain problems, multi-step coordination, resuming work, thesis/research status or next steps, unknown-cause bugs, and UI/UX design or evaluation. Routine conversation and trivial mechanical edits outside mapped needs do not auto-activate it.
 ---
 
 # Andino Workflow
@@ -71,7 +71,8 @@ from elapsed time or silence.
 For "How do I install PostgreSQL on Windows 11?", give useful guidance with current
 official instructions where needed. Ask about a project only if an actual
 compatibility or setup choice depends on it. Explicit invocation does not force
-engineering questions, durable planning or specialist routing.
+engineering questions, durable planning or unmatched specialists. Matching required
+routes still apply, including brief thesis status questions.
 
 ## Apply domain context proportionally
 
@@ -129,9 +130,15 @@ history; keep CURRENT STATE, CURRENT PHASE, EVIDENCE and concrete NEXT ACTION cu
 
 ## Route and finish
 
-Select zero or the minimum useful supporting capabilities from
-[routing](references/routing.md) only when needed. Honor explicit skill choices and
-native invocation permissions. One lifecycle owner coordinates the work; specialists
+Evaluate [routing](references/routing.md) before substantive task work. Apply matching
+required routes before DIRECT/SIMPLE shortcuts; add conditional capabilities only
+for evidenced needs in the current phase. Zero specialists is valid when no required
+route or explicit specialist choice applies. Honor explicit skill choices and native
+invocation permissions; report blocked required routes instead of silently skipping.
+When the request already establishes a required need, activate that skill before
+inspecting task artifacts. Do not batch-load diagnosis, regression and completion
+skills: activate each only when entering its work, never for an anticipated phase.
+One lifecycle owner coordinates the work; specialists
 do not start competing plans. No automatic bootstrap via `using-superpowers`,
 `using-agent-skills` or the retired `agent-skills` router. Memory and graphs are
 optional accelerators, never prerequisites. Default subagents: zero; delegate only

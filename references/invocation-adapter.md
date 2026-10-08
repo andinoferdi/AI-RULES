@@ -12,8 +12,8 @@ together only for distinct current needs.
 | DISCOVERED | Identity/contract is known from registry/catalog. |
 | AVAILABLE | The host exposes the actual skill/tool/path for this session. |
 | INVOKABLE | Native controls allow this agent to load/call it for the task. |
-| ACTIVE | Actual instructions/schema were loaded or the capability was invoked. |
-| USED | An observed invocation produced evidence/result used in the task. |
+| ACTIVE | Skill instructions were loaded through the permitted host mechanism, or the actual instrument/schema was loaded; retain load evidence. |
+| USED | A skill has ACTIVE evidence plus an identifiable task action/result applying its instructions; an instrument has an observed call/result used in the task. |
 | UNAVAILABLE | Needed capability is missing, denied, disconnected or otherwise unusable; record the specific boundary. |
 | NOT_NEEDED | Known capability adds no value to the current unresolved need. |
 
@@ -47,6 +47,29 @@ work, and do not claim external worker use.
 
 ## Activate, use, reroute, release
 
+Before work governed by a selected skill, activate it through the actual permitted
+host mechanism. Claude Code uses the Skill tool for model-initiated activation;
+OpenCode uses its exposed skill tool. On hosts whose supported mechanism is reading
+the selected SKILL.md, that read can establish ACTIVE, but never USED by itself.
+Name mentions, remembered instructions, registry reads and source inspection solely
+for audit do not establish skill use. File reads must never bypass invocation controls.
+
+A single user invocation of Andino is sufficient entry: after loading, the agent
+must activate the selected supporting skills itself when native controls allow it.
+Do not require multiple slash commands in one message or invoke Andino recursively.
+If a supporting skill is manual-only, denied or absent, record UNAVAILABLE and the
+specific boundary; request the smallest separate native user action only if needed.
+Parent invocation does not grant permission to invoke restricted children.
+
+Reuse valid activation evidence while the same instructions remain available in
+context; do not repeat calls for ceremony. Reload through the permitted mechanism
+when content/context changed or activation can no longer be established.
+For each required or selected skill, retain actual ID/provider/path, activation
+event or tool call, and the task action/result applying it. Use the existing plan
+or evaluation record; do not create a second ledger. A self-reported skill list
+alone is insufficient. Report an unmet required route even when fallback work
+succeeds; never relabel fallback work as use of that skill.
+
 AUTO means clearly relevant read-oriented lookup/normal skill loading can proceed
 within existing permission. CONDITIONAL_AUTO means wait for the actual task phase
 and evidenced concern (regression, review, simplification, output quality or browser
@@ -58,7 +81,8 @@ After loading/calling, use its result as evidence, reassess the unresolved need,
 then keep, replace or release the capability. New facts can justify a different
 method/instrument. Release means stop calling it and applying irrelevant defaults;
 it does not mean uninstalling or pretending the host removed loaded context. Stop
-when acceptance is sufficiently grounded; simple tasks can use zero specialists.
+when acceptance is sufficiently grounded; simple tasks with no required route or
+explicit specialist choice can use zero specialists.
 
 When unavailable: determine whether a native/local alternative can satisfy the
 same need safely, use it and name the fallback, or report the precise remaining

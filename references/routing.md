@@ -21,7 +21,23 @@ minimum useful combination only when each addresses a distinct need. Read releva
 instructions/schema just-in-time, perform required preflight and use observed
 results as evidence. Reassess after new facts: keep, replace or release a capability.
 Release means stop unnecessary calls/defaults, not uninstall. Stop when acceptance
-is sufficiently grounded. Simple tasks may remain DIRECT with zero specialists.
+is sufficiently grounded. Simple tasks may remain DIRECT with zero specialists
+only when no required route or explicit specialist choice applies.
+
+REQUIRED means select and activate the matching skill before its relevant work,
+subject to native invocation controls. CONDITIONAL means select only when the
+stated need is evidenced; once selected, activation is required before use.
+Unmarked rows remain conditional on their stated need and boundary.
+These labels govern selection, not permission, persistence or registry AUTO modes.
+
+Apply explicit user choices and exclusions first, then matching REQUIRED routes,
+then distinct CONDITIONAL needs. Match the requested outcome, not names appearing
+in quoted examples, filenames or an inventory. Diagnose an unknown cause before
+choosing a repair; load regression support before behavior changes and completion
+support before consequential acceptance claims. Reassess each phase; do not load
+future phases in advance. Domain and phase routes may both apply without creating
+another owner. Resolve selected skills absent from the registry through the host
+catalog using the same invocation and coexistence contracts.
 
 AUTO supports relevant read-oriented lookup/normal skill loading. CONDITIONAL_AUTO
 waits for the actual regression/review/quality/simplification/browser phase.
@@ -50,26 +66,26 @@ Antigravity's scoped descriptions are behavioral guidance, not a native hard swi
 | Daily task or installation guidance | Relevant context and official instructions when needed | answer useful defaults; inspect or ask only about material environment differences |
 | Current research or factual comparison | Authoritative current sources and supplied artifacts | distinguish source findings, inference and unknowns; cite evidence; no invented freshness |
 | Decision support | Existing constraints, options and consequence comparison | inspect available evidence; ask only for unresolved material human preferences |
-| Research milestone or thesis work | Relevant research specialist, such as skripsi-skill, when useful | preserve Andino ownership; no forced engineering phases or second plan |
+| Thesis/research status, next steps, milestones or substantive research work | REQUIRED: skripsi-skill | activate before interpreting progress or giving research advice; preserve Andino ownership; no second plan |
 | Runtime/configuration failure | Relevant logs, service/config/schema status | test environment hypotheses before assuming a source-code defect; read-only evidence does not authorize live mutation |
-| Unknown bug root cause | systematic-debugging | reproduce/trace first; regression evidence |
+| Unknown bug root cause | REQUIRED: systematic-debugging | activate before investigation/repair; reproduce or trace; distinguish observed cause from proposed diagnosis |
 | Serious stabilization of a fragile/patch-heavy bounded subsystem, repeated regressions, production hardening of a fragile prototype, bounded remake candidate, or material contract/ownership/architecture drift | ai-codebase-rescue after eligibility inspection | evidence-first; smallest justified surface; AI provenance alone never justifies remediation; shared Andino plan remains lifecycle state |
-| Behavior needing a regression or executable contract | test-driven-development | use project tests; skip test ceremony for text-only edits |
-| Completion claim | verification-before-completion | actual relevant evidence, no repeated full suites |
+| Behavior change needing a regression or executable contract | CONDITIONAL: test-driven-development | activate before implementation when an executable check can distinguish the required behavior; skip text-only edits |
+| Consequential claim that implementation, repair or a mapped deliverable meets acceptance | REQUIRED: verification-before-completion | activate before the claim; use actual relevant evidence; excludes ordinary replies and trivial mechanical edits; no repeated full suites |
 | Review | code-review-and-quality | targeted diff and actionable defects; no unsolicited rewrite |
 | Unclear product requirements | targeted project inspection, then brainstorming if useful | inspect existing behavior first; ask only unresolved product/design choices |
 | Large implementation ordering | writing-plans if useful | existing plan remains durable state; no second mandatory plan lifecycle |
 | Structural relationship | existing Graphify or symbol/reference search | verify current source; no automatic graph generation |
 | Historical decisions | claude-mem targeted search → timeline → selected detail | any working host integration; no automatic per-prompt retrieval |
-| Visual character | design-taste-frontend (`taste-skill` alias) | landing/portfolio/redesign scope |
-| UX, accessibility, dashboard, design system | ui-ux-pro-max | project stack and accepted design win |
-| Both visual character and deeper UX/system work | both UI skills | use [UI coexistence](ui-coexistence.md); one direction, no duplicate workflow |
+| Visual character only | REQUIRED: design-taste-frontend (`taste-skill` alias) | landing/portfolio/redesign scope; no automatic product-UX pairing |
+| UI/UX design or evaluation, accessibility, dashboard, design system | REQUIRED: ui-ux-pro-max | excludes mechanical text edits and bugs requiring no UX decision; project stack and accepted design win |
+| Both visual character and distinct UX/system work | REQUIRED: both UI skills unless explicitly restricted to one | use [UI coexistence](ui-coexistence.md); one direction; each must address a distinct need |
 | Fidelity clone | clone-website | preserve reference; redesign only when requested |
-| Over-engineering | Ponytail or code-simplification on demand | minimum correct change; no automatic family activation |
-| Generated UI/copy/code quality concerns | selected Anti-Slop core/subskill | only actual concern, accepted user direction wins; no family-wide load |
-| Version-sensitive library behavior | current official docs or Context7 | inspect dependency version first |
-| Persistent/exploratory browser workflow | Playwright MCP when its state/tree loop helps | existing CLI/native browser for sufficient throughput; one browser surface |
-| Browser console/network/performance evidence | Chrome DevTools MCP | a distinct diagnostic question, not redundant navigation |
+| Evidenced unnecessary dependency/abstraction, or existing avoidable complexity | CONDITIONAL: ponytail for proposed over-building; code-simplification for existing-code cleanup | choose one for the same concern; no activation merely because coding is involved |
+| Concrete generated UI/copy/code quality defect | CONDITIONAL: matching Anti-Slop core/subskill | select only the uncovered concern; accepted direction wins; no family-wide load |
+| Unresolved version-sensitive library behavior | REQUIRED evidence: version-matched official docs; CONDITIONAL instrument: Context7 | inspect dependency version first; use Context7 when available and useful, otherwise official documentation directly; no mandatory extra skill |
+| Acceptance needs browser interaction, rendered layout or responsive evidence | CONDITIONAL: sufficient native/CLI browser, otherwise Playwright MCP for persistent exploration | actual browser checks when required by acceptance; one surface; unavailable checks remain NOT_VERIFIED |
+| Missing console/network/performance evidence not supplied by the current surface | CONDITIONAL: Chrome DevTools MCP | add only for the distinct diagnostic gap, not redundant navigation |
 | Repository state where native Git unavailable/inadequate | Git MCP | native Git preferred; MCP mutations still need applicable authorization |
 | Editable general diagram | Draw.io MCP | requested artifact/format; local diagram fallback if sufficient |
 | Formal UML/model inspection or generation | StarUML MCP | model semantics; do not automatically invoke both diagram systems |
