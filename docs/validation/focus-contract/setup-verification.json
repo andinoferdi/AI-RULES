@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-08",
+  "focus_commit": "9eb6081aa1ae26a4bb81a38eb49e4b1f9b9c3da3",
+  "web_commit": "bfc704e8db939bfcfc3e05eb145d9922ccc9e76a",
+  "hosts": [
+    {
+      "host": "codex",
+      "full_content_match": true,
+      "entrypoints_ready": true,
+      "revision": "9eb6081aa1ae26a4bb81a38eb49e4b1f9b9c3da3",
+      "files": 3
+    },
+    {
+      "host": "claude-code",
+      "full_content_match": true,
+      "entrypoints_ready": true,
+      "revision": "9eb6081aa1ae26a4bb81a38eb49e4b1f9b9c3da3",
+      "files": 3
+    },
+    {
+      "host": "opencode",
+      "full_content_match": true,
+      "entrypoints_ready": true,
+      "revision": "9eb6081aa1ae26a4bb81a38eb49e4b1f9b9c3da3",
+      "files": 3
+    },
+    {
+      "host": "antigravity-cli",
+      "full_content_match": true,
+      "entrypoints_ready": true,
+      "revision": "9eb6081aa1ae26a4bb81a38eb49e4b1f9b9c3da3",
+      "files": 3
+    },
+    {
+      "host": "antigravity-ide",
+      "full_content_match": true,
+      "entrypoints_ready": true,
+      "revision": "9eb6081aa1ae26a4bb81a38eb49e4b1f9b9c3da3",
+      "files": 3
+    }
+  ],
+  "profile_preserved": true,
+  "lock_targets_verified": 20,
+  "scope": "Full installed file content and entrypoints; active-session behavior not verified",
+  "bundled_fresh_install_full_content_match": true,
+  "repeat_latest_setup": "NO_OP for all 20 targets"
+}

@@ -1,0 +1,2142 @@
+[
+  {
+    "phase": "before",
+    "variant": "skill",
+    "case": "simple",
+    "prompt": "Apa command Git untuk melihat branch aktif?",
+    "system_sha256": "3e3e4c51e3b5926ac8e50f4df7f0038089d4cdb5769327bdddf7b6d885b9dc17",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 3101,
+      "stop_reason": "end_turn",
+      "session_id": "9636f3ae-1520-470f-9f2b-bead13603e2e",
+      "total_cost_usd": 0.067386,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 16313,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 213,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 16313,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 213,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 16313,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 16313
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 213,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 16313,
+          "webSearchRequests": 0,
+          "costUSD": 0.067386,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "Pakai:\n\n```\ngit branch --show-current\n```\n\nPerintah ini langsung menampilkan nama branch aktif saja. Alternatifnya `git branch`, yang menampilkan semua branch lokal dengan tanda `*` di depan branch yang sedang aktif, atau `git status`, yang juga menyebutkan branch aktif di baris pertama.\n\nPerlu diingat, direktori kerja saat ini (`C:\\Users\\Lenovo\\AppData\\Local\\Temp`) bukan repositori Git, jadi perintah ini harus dijalankan dari dalam folder proyek yang sudah berisi repo.",
+      "ttft_ms": 3122,
+      "type": "result",
+      "duration_ms": 3162,
+      "uuid": "be6eeba9-02a6-458b-8ab9-cf7bb232963e",
+      "ttft_stream_ms": 1253,
+      "time_to_request_ms": 58,
+      "first_content_frame_ms": 1253,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "skill",
+    "case": "coding",
+    "prompt": "Saya akan mengedit sendiri. Proyek Python punya src/parser.py dengan parse(text) yang memakai text.split(','). Bug: input kosong menghasilkan [''], seharusnya []. tests/test_parser.py memakai pytest. Berikan perubahan kode dan cara memverifikasinya.",
+    "system_sha256": "3e3e4c51e3b5926ac8e50f4df7f0038089d4cdb5769327bdddf7b6d885b9dc17",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 7062,
+      "stop_reason": "end_turn",
+      "session_id": "2c0535c7-8bf7-4ef5-81dd-4cb482d02d36",
+      "total_cost_usd": 0.07379,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 16404,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 817,
+        "output_tokens_details": {
+          "thinking_tokens": 301
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 16404,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 817,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 16404,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 16404
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 817,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 16404,
+          "webSearchRequests": 0,
+          "costUSD": 0.07379,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 301,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "Tambahkan pengecekan input kosong di awal `parse` pada `src/parser.py`:\n\n```python\ndef parse(text):\n    if not text:\n        return []\n    return text.split(',')\n```\n\nBagian lain dari fungsi tidak perlu diubah. Kalau fungsi Anda punya logika tambahan setelah `split` (misalnya `strip` per item), taruh pengecekan ini sebelum logika itu.\n\nTambahkan tes di `tests/test_parser.py`:\n\n```python\ndef test_parse_empty_string_returns_empty_list():\n    assert parse(\"\") == []\n```\n\nSesuaikan baris `import` dengan yang sudah dipakai di file tes Anda.\n\nCara memverifikasi, dari root proyek di PowerShell:\n\n```powershell\npython -m pytest tests/test_parser.py -v\n```\n\nSupaya yakin tes baru memang menangkap bug, jalankan dulu sebelum mengubah `parse`. Tes harus gagal dengan pesan seperti `assert [''] == []`. Setelah perubahan kode, tes yang sama harus lulus. Terakhir, jalankan seluruh suite untuk memastikan tidak ada yang rusak:\n\n```powershell\npython -m pytest\n```\n\nKalau input yang hanya berisi spasi (`\"   \"`) juga harus menghasilkan `[]`, ganti kondisinya menjadi `if not text.strip():`. Saya tidak mengubahnya karena yang Anda sebutkan hanya input kosong.",
+      "ttft_ms": 3632,
+      "type": "result",
+      "duration_ms": 7122,
+      "uuid": "6e089b80-46ea-436d-8179-ff171c6b0319",
+      "ttft_stream_ms": 1218,
+      "time_to_request_ms": 59,
+      "first_content_frame_ms": 1218,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "skill",
+    "case": "debug",
+    "prompt": "Login mengembalikan HTTP 401. Satu-satunya bukti adalah log 'POST /login 401'. Apakah database rusak? Saya tidak bisa memberi akses server; apa yang perlu saya cek?",
+    "system_sha256": "3e3e4c51e3b5926ac8e50f4df7f0038089d4cdb5769327bdddf7b6d885b9dc17",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 8531,
+      "stop_reason": "end_turn",
+      "session_id": "bc3466d2-2334-4777-90f4-28adb52ca241",
+      "total_cost_usd": 0.015244800000000001,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 657,
+        "cache_read_input_tokens": 15714,
+        "output_tokens": 947,
+        "output_tokens_details": {
+          "thinking_tokens": 142
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 657,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 947,
+            "cache_read_input_tokens": 15714,
+            "cache_creation_input_tokens": 657,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 657
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 947,
+          "cacheReadInputTokens": 15714,
+          "cacheCreationInputTokens": 657,
+          "webSearchRequests": 0,
+          "costUSD": 0.015244800000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 142,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "Kemungkinan besar bukan database yang rusak. 401 berarti server menerima request dan menolak kredensialnya. Kalau database mati, biasanya yang muncul 500 atau 503. Pengecualian: beberapa aplikasi menangkap semua error saat login lalu mengembalikan 401, jadi ini belum bisa dipastikan hanya dari satu baris log.\n\nYang bisa Anda cek tanpa akses server:\n\n1. **Coba beberapa akun.** Kalau semua akun gagal, curigai masalah di sisi sistem (konfigurasi, secret, atau database). Kalau hanya satu akun yang gagal, kemungkinan besar password salah, akun terkunci, atau akun dinonaktifkan.\n2. **Lihat body response 401.** Buka tab Network di browser (F12), klik request `/login`, lalu baca response-nya. Pesan seperti \"invalid credentials\", \"token expired\", atau \"account locked\" biasanya langsung menunjuk penyebabnya.\n3. **Cek request yang dikirim.** Pastikan field dan format payload-nya benar (misalnya `email` vs `username`), Content-Type sesuai, dan tidak ada spasi atau karakter tersembunyi di password.\n4. **Periksa endpoint lain.** Kalau halaman atau endpoint publik yang membaca data (bukan login) masih jalan normal, database kemungkinan hidup. Kalau semuanya error, database lebih patut dicurigai.\n5. **Cari perubahan terbaru.** Apakah ada deploy, ganti environment variable, rotasi secret (seperti JWT secret), atau perubahan hashing password sebelum error mulai muncul? Ini penyebab 401 massal yang paling sering.\n6. **Cek status service.** Kalau memakai hosting, auth provider, atau database terkelola, lihat halaman status atau dashboard-nya.\n\nKalau semua langkah di atas tidak memberi jawaban, minta orang yang punya akses server untuk membaca log aplikasi di sekitar waktu request itu. Log tersebut biasanya memuat alasan penolakan yang tidak tampak di baris `POST /login 401`. Kalau Anda kirim body response atau hasil langkah 1 dan 2, saya bisa bantu menyempitkan penyebabnya.",
+      "ttft_ms": 2851,
+      "type": "result",
+      "duration_ms": 8575,
+      "uuid": "c4b80ddc-d8a3-454d-a7bf-7599f4c233a6",
+      "ttft_stream_ms": 1349,
+      "time_to_request_ms": 38,
+      "first_content_frame_ms": 1349,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "skill",
+    "case": "complete",
+    "prompt": "Buat laporan hasil pekerjaan dari bukti ini: src/parser.py sekarang mengembalikan [] untuk input kosong; pytest tests/test_parser.py lulus 6 test; integration test tidak dijalankan. Pekerjaan yang diminta sudah selesai.",
+    "system_sha256": "3e3e4c51e3b5926ac8e50f4df7f0038089d4cdb5769327bdddf7b6d885b9dc17",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 3401,
+      "stop_reason": "end_turn",
+      "session_id": "7382ef59-29bf-4dd4-96e4-f6260f2d9e19",
+      "total_cost_usd": 0.007830799999999999,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 681,
+        "cache_read_input_tokens": 15714,
+        "output_tokens": 196,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 681,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 196,
+            "cache_read_input_tokens": 15714,
+            "cache_creation_input_tokens": 681,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 681
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 196,
+          "cacheReadInputTokens": 15714,
+          "cacheCreationInputTokens": 681,
+          "webSearchRequests": 0,
+          "costUSD": 0.007830799999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "Pekerjaan selesai: `src/parser.py` sekarang mengembalikan `[]` saat inputnya kosong.\n\n**Verifikasi:** `pytest tests/test_parser.py` dijalankan dan lulus 6 test.\n\n**Belum diuji:** Integration test tidak dijalankan, jadi belum ada bukti bahwa perubahan ini aman di bagian lain yang memakai parser. Kalau ada kode yang mengandalkan perilaku lama untuk input kosong, hal itu baru ketahuan setelah integration test dijalankan.",
+      "ttft_ms": 3479,
+      "type": "result",
+      "duration_ms": 3515,
+      "uuid": "0503601b-5d80-4be4-a83e-cc955e62b6f0",
+      "ttft_stream_ms": 1741,
+      "time_to_request_ms": 103,
+      "first_content_frame_ms": 1741,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "skill",
+    "case": "resume",
+    "prompt": "Lanjut dari checkpoint: perubahan schema lokal dan test unit selesai. Saat ini menunggu sampel CSV asli dari saya untuk memeriksa mapping import. CSV belum tersedia dan kamu tidak punya akses file atau tools. Apa posisi kita sekarang?",
+    "system_sha256": "3e3e4c51e3b5926ac8e50f4df7f0038089d4cdb5769327bdddf7b6d885b9dc17",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 8154,
+      "stop_reason": "end_turn",
+      "session_id": "3d6de0d5-a1dc-404f-93d1-df3b329f3eb9",
+      "total_cost_usd": 0.012260799999999999,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 686,
+        "cache_read_input_tokens": 15714,
+        "output_tokens": 637,
+        "output_tokens_details": {
+          "thinking_tokens": 229
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 686,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 637,
+            "cache_read_input_tokens": 15714,
+            "cache_creation_input_tokens": 686,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 686
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 637,
+          "cacheReadInputTokens": 15714,
+          "cacheCreationInputTokens": 686,
+          "webSearchRequests": 0,
+          "costUSD": 0.012260799999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 229,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "Posisi kita: schema lokal dan test unit sudah selesai, tapi mapping import belum bisa dicek karena kita masih menunggu sampel CSV asli darimu. Info ini dari checkpoint yang kamu sebut; aku tidak bisa memverifikasi ulang karena tidak punya akses file atau tools sekarang.\n\nTest unit yang lulus belum membuktikan mapping import benar terhadap data asli. Yang belum terbukti adalah kecocokan nama kolom, tipe data, format tanggal dan angka, serta penanganan nilai kosong.\n\nLangkah berikutnya ada di kamu: kirim sampel CSV, cukup header plus 5 sampai 10 baris yang mewakili variasi data. Kalau ada data sensitif, samarkan dulu nilainya tapi pertahankan formatnya. Info delimiter dan encoding file juga membantu.\n\nSetelah sampel masuk, aku bandingkan header dan tiap kolom dengan mapping di schema, lalu daftar yang tidak cocok atau berisiko. Setelah itu kita putuskan perbaikannya, lalu jalankan ulang test atau import di sisimu.",
+      "ttft_ms": 5151,
+      "type": "result",
+      "duration_ms": 8206,
+      "uuid": "4c172a6d-69a7-4fbb-a4ba-379b22611059",
+      "ttft_stream_ms": 2995,
+      "time_to_request_ms": 40,
+      "first_content_frame_ms": 2995,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "skill",
+    "case": "list",
+    "prompt": "Berikan daftar lengkap 12 pemeriksaan sebelum merilis aplikasi web kecil. Urutkan menurut relevansi. Jangan hilangkan pemeriksaan penting.",
+    "system_sha256": "3e3e4c51e3b5926ac8e50f4df7f0038089d4cdb5769327bdddf7b6d885b9dc17",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 13919,
+      "stop_reason": "end_turn",
+      "session_id": "f21add42-e28b-4409-a44f-5dd5c62a9c76",
+      "total_cost_usd": 0.020690800000000002,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 651,
+        "cache_read_input_tokens": 15714,
+        "output_tokens": 1494,
+        "output_tokens_details": {
+          "thinking_tokens": 423
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 651,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 1494,
+            "cache_read_input_tokens": 15714,
+            "cache_creation_input_tokens": 651,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 651
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 1494,
+          "cacheReadInputTokens": 15714,
+          "cacheCreationInputTokens": 651,
+          "webSearchRequests": 0,
+          "costUSD": 0.020690800000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 423,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "Berikut 12 pemeriksaan, dari yang paling kritis ke yang paling bisa menyusul.\n\n1. **Alur inti berfungsi dari awal sampai akhir.** Uji di lingkungan yang menyerupai produksi: daftar, login, aksi utama, simpan data, lalu cek hasilnya.\n2. **Tidak ada rahasia yang bocor.** Pastikan API key, password, dan file `.env` tidak masuk repositori, kode frontend, atau log. Kalau pernah ter-commit, ganti kuncinya.\n3. **Autentikasi dan otorisasi.** Pengguna biasa tidak boleh bisa membuka halaman admin atau data pengguna lain, termasuk lewat tebak URL atau ID.\n4. **Validasi input dan perlindungan serangan umum.** Cek XSS, SQL injection, CSRF, dan batas ukuran upload. Validasi harus ada di server, bukan hanya di browser.\n5. **Konfigurasi produksi.** Mode debug mati, variabel lingkungan terisi benar, HTTPS aktif, dan pesan error tidak menampilkan detail internal.\n6. **Backup dan rencana rollback.** Pastikan ada cadangan database dan cara kembali ke versi sebelumnya jika rilis bermasalah. Coba restore minimal sekali.\n7. **Database dan migrasi.** Jalankan migrasi di salinan data dulu, cek indeks pada query yang sering dipakai, dan pastikan data awal (seed) benar.\n8. **Penanganan error, logging, dan monitoring.** Error harus tercatat, pengguna melihat pesan yang jelas, dan ada cara tahu kalau situs mati (misalnya uptime monitor).\n9. **Dependensi.** Jalankan audit kerentanan (`npm audit`, `pip-audit`, atau sejenisnya), hapus paket yang tidak terpakai, dan kunci versi lewat lockfile.\n10. **Tampilan di berbagai perangkat dan browser.** Cek layar ponsel, Chrome, Safari, dan Firefox, terutama form dan navigasi.\n11. **Performa dasar.** Ukur kecepatan muat dengan Lighthouse, kompres gambar, dan pastikan tidak ada request yang lambat atau gagal di tab Network.\n12. **Kelengkapan publik.** Domain dan DNS benar, sertifikat SSL valid, judul dan meta tag terisi, halaman 404 ada, serta kebijakan privasi jika mengumpulkan data pengguna. Aksesibilitas dasar seperti kontras warna, label form, dan navigasi keyboard juga masuk di sini.\n\nKalau waktu terbatas, nomor 1 sampai 6 sebaiknya tidak dilewati. Nomor 7 sampai 12 bisa diperbaiki setelah rilis, kecuali aplikasi menyimpan data sensitif atau menerima pembayaran. Dalam kasus itu, keamanan naik ke prioritas tertinggi.",
+      "ttft_ms": 6344,
+      "type": "result",
+      "duration_ms": 13962,
+      "uuid": "7e2abd6b-4bd0-4387-9ba3-ca8403a83699",
+      "ttft_stream_ms": 3120,
+      "time_to_request_ms": 37,
+      "first_content_frame_ms": 3120,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "skill",
+    "case": "long",
+    "prompt": "Jelaskan optimistic dan pessimistic locking secara rinci untuk developer backend. Sertakan lost update, contoh SQL dengan version dan SELECT FOR UPDATE, pemeriksaan row count, deadlock, retry, idempotensi, isolation level, serta trade-off. Saya membutuhkan penjelasan panjang, bukan ringkasan.",
+    "system_sha256": "3e3e4c51e3b5926ac8e50f4df7f0038089d4cdb5769327bdddf7b6d885b9dc17",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 77076,
+      "stop_reason": "end_turn",
+      "session_id": "5849094b-7a85-4875-b43a-3c2cd8491654",
+      "total_cost_usd": 0.11765679999999999,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 710,
+        "cache_read_input_tokens": 15714,
+        "output_tokens": 11167,
+        "output_tokens_details": {
+          "thinking_tokens": 2666
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 710,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 11167,
+            "cache_read_input_tokens": 15714,
+            "cache_creation_input_tokens": 710,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 710
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 11167,
+          "cacheReadInputTokens": 15714,
+          "cacheCreationInputTokens": 710,
+          "webSearchRequests": 0,
+          "costUSD": 0.11765679999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2666,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "# Optimistic dan Pessimistic Locking untuk Backend\n\nKeduanya menjawab masalah yang sama: dua proses mengubah baris data yang sama pada waktu yang hampir bersamaan, dan salah satu perubahan hilang tanpa ada yang tahu. Pessimistic locking mencegah konflik dengan mengunci baris di awal, sehingga proses lain menunggu. Optimistic locking membiarkan semua proses berjalan, lalu mendeteksi konflik saat menulis dan menggagalkan salah satunya. Pilihan di antara keduanya sebagian besar bergantung pada seberapa sering konflik terjadi dan seberapa mahal biaya menunggu atau mengulang.\n\nContoh SQL di bawah memakai sintaks PostgreSQL. Perbedaan penting dengan MySQL (InnoDB) saya tandai di tempatnya.\n\n## Lost update\n\nLost update terjadi pada pola read-modify-write: aplikasi membaca nilai, menghitung nilai baru di memori, lalu menulis hasilnya. Jika dua transaksi melakukan ini bersamaan, transaksi yang menulis belakangan menimpa hasil transaksi pertama.\n\nSkema yang dipakai di seluruh contoh:\n\n```sql\nCREATE TABLE accounts (\n    id      bigint PRIMARY KEY,\n    balance numeric(18,2) NOT NULL CHECK (balance >= 0),\n    version integer NOT NULL DEFAULT 0\n);\n\nINSERT INTO accounts (id, balance) VALUES (1, 1000.00);\n```\n\nDua request menarik uang 100 dari akun 1 pada saat yang sama:\n\n| Waktu | Transaksi A | Transaksi B |\n|-------|-------------|-------------|\n| t1 | `SELECT balance` → 1000 | |\n| t2 | | `SELECT balance` → 1000 |\n| t3 | hitung 1000 − 100 = 900 | hitung 1000 − 100 = 900 |\n| t4 | `UPDATE SET balance = 900`, commit | |\n| t5 | | `UPDATE SET balance = 900`, commit |\n\nSaldo akhir 900, padahal seharusnya 800. Tidak ada error dan tidak ada deadlock, sehingga bug ini sulit ditemukan lewat log. Pada default isolation level hampir semua database (READ COMMITTED di PostgreSQL, REPEATABLE READ di MySQL), pola ini tetap bocor. Bagian isolation level di bawah menjelaskan kapan database membantu dan kapan tidak.\n\n### Cara paling sederhana: update atomik\n\nSebelum memilih salah satu locking, cek dulu apakah logikanya bisa dipindahkan ke satu statement SQL:\n\n```sql\nUPDATE accounts\nSET balance = balance - 100\nWHERE id = 1 AND balance >= 100;\n```\n\nDatabase mengunci baris selama statement ini berjalan, jadi tidak ada lost update, dan pengecekan saldo ikut atomik lewat klausa `WHERE`. Jika row count 0, saldo tidak cukup (atau akun tidak ada). Cara ini tidak butuh kolom version dan tidak butuh `SELECT FOR UPDATE`. Locking eksplisit baru perlu ketika keputusan bisnisnya terlalu rumit untuk satu statement, misalnya melibatkan beberapa tabel, panggilan ke logika aplikasi, atau data yang dibaca dulu lalu divalidasi.\n\n## Optimistic locking\n\nAsumsinya konflik jarang terjadi. Tidak ada kunci yang ditahan saat aplikasi membaca atau menghitung. Setiap baris punya kolom `version` (atau penanda lain), dan saat menulis, aplikasi memastikan versinya masih sama dengan yang dibaca.\n\n```sql\n-- 1. Baca, simpan version-nya\nSELECT id, balance, version FROM accounts WHERE id = 1;\n-- hasil: balance = 1000.00, version = 7\n\n-- 2. Tulis hanya jika version belum berubah\nUPDATE accounts\nSET balance = 900.00,\n    version = version + 1\nWHERE id = 1\n  AND version = 7;\n```\n\nKuncinya ada di row count hasil `UPDATE`:\n\n- **1 baris**: tidak ada yang mengubah baris itu sejak dibaca. Update berhasil.\n- **0 baris**: version sudah berbeda (atau baris sudah dihapus). Update tidak terjadi dan ini harus diperlakukan sebagai konflik.\n\nDua transaksi yang berlomba tetap aman. Keduanya bisa membaca `version = 7`, tetapi hanya satu `UPDATE` yang menemukan baris dengan `version = 7`. Ketika yang pertama commit, version menjadi 8, sehingga `UPDATE` kedua mencocokkan 0 baris. Pada READ COMMITTED, `UPDATE` kedua menunggu kunci baris dari yang pertama, lalu mengevaluasi ulang `WHERE` terhadap baris yang sudah di-commit, dan hasilnya tidak cocok lagi.\n\n### Memeriksa row count dengan benar\n\nIni bagian yang paling sering salah. Mengirim `UPDATE` tanpa memeriksa row count sama saja dengan tidak punya optimistic locking.\n\n```python\ndef withdraw(conn, account_id, amount):\n    with conn.transaction():\n        row = conn.execute(\n            \"SELECT balance, version FROM accounts WHERE id = %s\",\n            (account_id,),\n        ).fetchone()\n        if row is None:\n            raise NotFound()\n\n        balance, version = row\n        if balance < amount:\n            raise InsufficientFunds()\n\n        cur = conn.execute(\n            \"\"\"\n            UPDATE accounts\n            SET balance = %s, version = version + 1\n            WHERE id = %s AND version = %s\n            \"\"\",\n            (balance - amount, account_id, version),\n        )\n        if cur.rowcount != 1:\n            raise OptimisticLockConflict()\n```\n\nBeberapa catatan:\n\n- Periksa `rowcount != 1`, bukan hanya `== 0`. Untuk primary key keduanya setara, tetapi pemeriksaan yang ketat menangkap kesalahan `WHERE` lebih awal.\n- Naikkan `version` di setiap update, tanpa kecuali. Ini juga membuat baris selalu berubah, yang penting untuk poin berikutnya.\n- Di MySQL, row count default bisa berarti baris yang benar-benar berubah, bukan baris yang cocok, tergantung driver (misalnya flag `CLIENT_FOUND_ROWS` atau opsi `useAffectedRows` di Connector/J). Karena `version = version + 1` selalu mengubah baris, ini aman untuk pola di atas. Masalah muncul jika Anda memakai versi tanpa increment dan nilainya kebetulan sama. Cek perilaku driver Anda.\n- Di PostgreSQL Anda bisa memakai `RETURNING version` untuk mendapat versi baru tanpa query tambahan. Jika tidak ada baris yang dikembalikan, itu berarti konflik.\n- Timestamp `updated_at` sebagai pengganti version kurang aman. Dua update dalam resolusi waktu yang sama bisa menghasilkan nilai identik, dan kesalahan pembulatan antara aplikasi dan database sering membuat perbandingan gagal secara keliru. Integer yang naik monoton lebih andal.\n\n### Di level API\n\nPola yang sama berlaku lintas request HTTP. Server mengirim version sebagai `ETag`, klien mengirimnya kembali lewat `If-Match` saat update, dan server menolak dengan `412 Precondition Failed` jika tidak cocok (atau `409 Conflict` bila kontrak API Anda memilih itu). Dengan cara ini pengguna yang membuka form selama sepuluh menit tidak menimpa perubahan orang lain, tanpa menahan kunci database selama sepuluh menit itu. ORM seperti JPA/Hibernate (`@Version`), Rails (`lock_version`), dan banyak lainnya menyediakan mekanisme yang sama, dengan exception khusus saat row count tidak sesuai.\n\n## Pessimistic locking\n\nAsumsinya konflik sering terjadi atau akibatnya mahal, jadi baris dikunci sejak dibaca. Proses lain yang ingin mengubah baris itu harus menunggu sampai transaksi pemegang kunci selesai.\n\n```sql\nBEGIN;\n\nSELECT balance\nFROM accounts\nWHERE id = 1\nFOR UPDATE;          -- baris terkunci sampai COMMIT/ROLLBACK\n\n-- aplikasi memeriksa saldo, menjalankan logika bisnis\n\nUPDATE accounts\nSET balance = balance - 100\nWHERE id = 1;\n\nCOMMIT;\n```\n\nTransaksi B yang menjalankan `SELECT ... FOR UPDATE` pada baris yang sama akan berhenti di statement itu sampai A selesai. Setelah A commit, B melanjutkan dan membaca nilai terbaru (800, bukan 1000). Karena pembacaan dan penulisan terjadi di dalam kunci yang sama, tidak ada lost update.\n\nBeberapa varian yang berguna:\n\n```sql\n-- Gagal langsung jika baris sedang terkunci, tanpa menunggu\nSELECT * FROM accounts WHERE id = 1 FOR UPDATE NOWAIT;\n\n-- Lewati baris yang sedang dikunci proses lain (cocok untuk job queue)\nSELECT * FROM jobs\nWHERE status = 'pending'\nORDER BY id\nLIMIT 10\nFOR UPDATE SKIP LOCKED;\n\n-- Batas waktu tunggu (PostgreSQL)\nSET LOCAL lock_timeout = '2s';\n```\n\n`NOWAIT` dan `lock_timeout` di PostgreSQL menghasilkan SQLSTATE `55P03`. Di MySQL, kunci yang menunggu terlalu lama menghasilkan error 1205 (`Lock wait timeout exceeded`), diatur lewat `innodb_lock_wait_timeout`. `SKIP LOCKED` tersedia di PostgreSQL 9.5+ dan MySQL 8.0+, dan ini cara standar membuat banyak worker mengambil pekerjaan berbeda tanpa saling menunggu.\n\n### Hal yang perlu diwaspadai\n\n**Jangan menahan kunci saat menunggu hal lambat.** Memanggil API eksternal, menunggu input pengguna, atau mengirim email di dalam transaksi yang memegang kunci akan menahan semua proses lain yang butuh baris itu, dan juga menahan koneksi dari pool. Kerjakan bagian lambat di luar transaksi.\n\n**Kunci hanya berlaku untuk baris yang ada.** `SELECT ... FOR UPDATE` pada baris yang belum ada tidak mengunci apa pun di PostgreSQL, sehingga dua transaksi bisa sama-sama melihat \"belum ada\" lalu sama-sama insert. Untuk kasus ini gunakan unique constraint dengan `INSERT ... ON CONFLICT`. Di MySQL pada REPEATABLE READ, `FOR UPDATE` bisa mengambil gap lock di rentang indeks, yang mencegah insert tetapi juga memperbesar peluang saling blokir dan deadlock.\n\n**Pastikan query memakai indeks.** Di InnoDB, `FOR UPDATE` dengan `WHERE` yang tidak memakai indeks dapat mengunci jauh lebih banyak baris daripada yang diperlukan.\n\n## Deadlock\n\nDeadlock terjadi ketika dua transaksi saling menunggu kunci yang dipegang lawannya. Contoh klasik adalah transfer antar akun:\n\n| Waktu | Transaksi A (1 → 2) | Transaksi B (2 → 1) |\n|-------|---------------------|---------------------|\n| t1 | kunci akun 1 | |\n| t2 | | kunci akun 2 |\n| t3 | minta kunci akun 2 (menunggu B) | |\n| t4 | | minta kunci akun 1 (menunggu A) |\n\nTidak ada yang bisa maju. Database mendeteksinya dan membatalkan salah satu transaksi. PostgreSQL melaporkan SQLSTATE `40P01` (`deadlock_detected`), sedangkan MySQL melaporkan error 1213 dengan SQLSTATE `40001`. Transaksi yang dibatalkan sudah di-rollback seluruhnya.\n\nDeadlock tidak bisa dihilangkan sepenuhnya, tetapi bisa ditekan:\n\n1. **Kunci dalam urutan yang konsisten.** Ini cara paling efektif. Untuk transfer, selalu kunci akun dengan id lebih kecil dulu:\n\n   ```sql\n   SELECT id, balance\n   FROM accounts\n   WHERE id IN (1, 2)\n   ORDER BY id\n   FOR UPDATE;\n   ```\n\n2. **Buat transaksi sependek mungkin.** Semakin singkat kunci ditahan, semakin kecil peluang tumpang tindih.\n3. **Ambil semua kunci di awal**, bukan sedikit demi sedikit di sepanjang logika.\n4. **Pakai indeks yang tepat** agar jumlah baris yang terkunci tidak membengkak.\n\nOptimistic locking tidak kebal terhadap deadlock. Jika satu transaksi memperbarui beberapa baris dengan `UPDATE` biasa, kunci baris tetap diambil secara implisit, dan urutan yang berbeda antar transaksi tetap bisa memicu deadlock. Bedanya, jendela waktu penahanan kunci jauh lebih pendek karena kunci hanya diambil pada saat `UPDATE`.\n\n## Retry\n\nAda tiga jenis kegagalan yang umumnya aman di-retry, dan semuanya berarti \"transaksi ini dibatalkan, coba lagi dari awal\":\n\n- Konflik optimistic lock (row count 0).\n- Deadlock (`40P01` di PostgreSQL, 1213 di MySQL).\n- Serialization failure (`40001`), terutama pada REPEATABLE READ atau SERIALIZABLE di PostgreSQL.\n\nAturan retry yang benar:\n\n- **Ulangi seluruh transaksi**, termasuk pembacaan awal. Mengulang hanya `UPDATE` dengan version lama akan gagal terus, dan mengulang dengan data basi mengalahkan tujuan locking.\n- **Batasi jumlah percobaan**, misalnya 3 sampai 5. Setelah itu kembalikan error (misalnya 409 atau 503) agar masalah terlihat.\n- **Pakai exponential backoff dengan jitter**, supaya dua pihak yang bentrok tidak mencoba ulang di detik yang sama dan bentrok lagi.\n- **Retry hanya error yang memang bisa dicoba ulang.** Error constraint, saldo tidak cukup, atau validasi bisnis tidak akan berubah hasilnya.\n- **Jangan taruh efek samping di dalam blok yang di-retry**, seperti kirim email, publish event, atau charge ke payment gateway. Transaksi yang di-retry akan menjalankannya berkali-kali. Lakukan efek samping setelah commit sukses, atau pakai outbox pattern.\n\n```python\nimport random, time\n\nRETRYABLE = (OptimisticLockConflict, DeadlockDetected, SerializationFailure)\n\ndef with_retry(fn, attempts=4, base=0.05):\n    for i in range(attempts):\n        try:\n            return fn()\n        except RETRYABLE:\n            if i == attempts - 1:\n                raise\n            time.sleep(base * (2 ** i) * random.uniform(0.5, 1.5))\n```\n\n## Idempotensi\n\nRetry membawa masalah lain: jika klien mengirim ulang request karena timeout, atau lapisan jaringan mengulang panggilan, operasinya bisa dieksekusi dua kali. Skenario yang berbahaya adalah ketika commit sebenarnya berhasil tetapi respons hilang di jalan. Klien tidak tahu itu berhasil, lalu mengirim ulang, dan uang ditarik dua kali.\n\nOptimistic locking tidak menyelesaikan ini. Request kedua membaca version terbaru dan berhasil sebagai operasi baru yang sah menurut database. Idempotensi perlu mekanisme tersendiri, biasanya idempotency key yang dikirim klien dan dijaga dengan unique constraint:\n\n```sql\nCREATE TABLE transfers (\n    id              bigserial PRIMARY KEY,\n    idempotency_key text NOT NULL UNIQUE,\n    from_id         bigint NOT NULL,\n    to_id           bigint NOT NULL,\n    amount          numeric(18,2) NOT NULL,\n    created_at      timestamptz NOT NULL DEFAULT now()\n);\n```\n\n```sql\nBEGIN;\n\nINSERT INTO transfers (idempotency_key, from_id, to_id, amount)\nVALUES ('req-8f2c...', 1, 2, 100.00)\nON CONFLICT (idempotency_key) DO NOTHING;\n-- rowcount = 0 → request ini sudah pernah diproses:\n--   ROLLBACK, lalu kembalikan hasil yang tersimpan.\n-- rowcount = 1 → request baru, lanjutkan:\n\nSELECT id, balance FROM accounts\nWHERE id IN (1, 2) ORDER BY id FOR UPDATE;\n\nUPDATE accounts SET balance = balance - 100 WHERE id = 1;\nUPDATE accounts SET balance = balance + 100 WHERE id = 2;\n\nCOMMIT;\n```\n\nKarena `INSERT` pertama dan perubahan saldo berada dalam satu transaksi, keduanya berhasil atau gagal bersama. Jika dua request dengan key yang sama datang bersamaan, insert kedua menunggu di unique index sampai transaksi pertama selesai, lalu mendapat row count 0. Kalau transaksi pertama rollback, insert kedua yang jadi pemenang.\n\nPraktik tambahan: simpan hash dari payload bersama key, supaya key yang sama dengan isi berbeda ditolak sebagai kesalahan klien. Beri masa kedaluwarsa pada key lama agar tabel tidak membengkak.\n\n## Isolation level\n\nIsolation level menentukan apa yang dijamin database tanpa kunci eksplisit. Lost update sangat bergantung pada ini, dan perilakunya berbeda antar database.\n\n**PostgreSQL**\n\n| Level | Read-modify-write biasa | Perilaku |\n|-------|------------------------|----------|\n| READ COMMITTED (default) | Lost update bisa terjadi | Tiap statement melihat data terbaru yang sudah di-commit. |\n| REPEATABLE READ | Transaksi kedua gagal dengan `40001` | Memakai snapshot tetap. Jika baris yang akan di-update sudah diubah transaksi lain yang commit, muncul `could not serialize access due to concurrent update`. |\n| SERIALIZABLE | Dicegah, dengan `40001` jika terdeteksi pola berbahaya | Memakai serializable snapshot isolation (SSI). Bisa membatalkan transaksi yang secara praktis tidak berkonflik (false positive). |\n\n**MySQL (InnoDB)**\n\n| Level | Read-modify-write biasa | Perilaku |\n|-------|------------------------|----------|\n| READ COMMITTED | Lost update bisa terjadi | Tiap `SELECT` biasa melihat data terbaru yang di-commit. |\n| REPEATABLE READ (default) | Lost update tetap bisa terjadi | `SELECT` biasa membaca snapshot lama, sedangkan `UPDATE` dan `FOR UPDATE` membaca data terbaru (current read). Tidak ada error otomatis seperti di PostgreSQL. |\n| SERIALIZABLE | Dicegah lewat penguncian | `SELECT` biasa diperlakukan seperti `SELECT ... FOR SHARE` saat autocommit mati. Aman, tetapi rawan deadlock. |\n\nPoin penting dari tabel ini: di MySQL pada default-nya, `SELECT` lalu `UPDATE balance = 900` tetap menghilangkan update, sehingga Anda tetap butuh version check atau `FOR UPDATE`. Di PostgreSQL, menaikkan isolation ke REPEATABLE READ mengubah lost update senyap menjadi error eksplisit, tetapi Anda harus siap menangkap `40001` dan me-retry. Dengan SERIALIZABLE, aplikasi **harus** punya logika retry, karena kegagalan serialisasi adalah perilaku normal, bukan kondisi luar biasa.\n\nPendekatan yang umum dan mudah dipahami tim: tetap di READ COMMITTED, lalu pilih secara eksplisit per kasus antara update atomik, version check, atau `FOR UPDATE`. Mengandalkan isolation level yang lebih tinggi membuat kebenaran bergantung pada konfigurasi yang mudah terlewat dan berbeda antar database.\n\n## Trade-off\n\n| Aspek | Optimistic | Pessimistic |\n|-------|-----------|-------------|\n| Cara kerja | Deteksi konflik saat menulis | Cegah konflik dengan mengunci di awal |\n| Biaya saat konflik jarang | Sangat rendah, tanpa kunci | Ada overhead kunci yang sebenarnya tidak perlu |\n| Biaya saat konflik sering | Banyak retry, kerja terbuang, bisa livelock | Antrian menunggu, tetapi tiap transaksi hampir pasti berhasil |\n| Throughput | Tinggi jika kontensi rendah | Turun oleh waktu tunggu pada baris panas |\n| Deadlock | Jarang | Risiko nyata, perlu urutan kunci yang konsisten |\n| Koneksi database | Dilepas cepat, cocok untuk alur panjang | Tertahan selama kunci dipegang |\n| Alur dengan jeda (user think-time, HTTP lintas request) | Cocok | Tidak cocok |\n| Kompleksitas aplikasi | Perlu kolom version, pemeriksaan row count, dan retry | Perlu urutan kunci dan timeout; kode lebih lurus |\n| Pengalaman pengguna saat konflik | Pengguna melihat error konflik dan mungkin harus mengulang | Pengguna menunggu, tetapi biasanya tidak melihat error |\n\nPanduan memilih:\n\n- **Update atomik dalam satu statement** adalah pilihan pertama bila logikanya muat di sana (counter, saldo dengan batas, stok).\n- **Optimistic locking** cocok untuk data yang jarang diedit bersamaan, form edit di web, API publik dengan `ETag`, dan alur yang melewati beberapa request.\n- **Pessimistic locking** cocok untuk baris panas yang sering diperebutkan (stok barang flash sale, saldo akun yang aktif), operasi yang mahal bila harus diulang, dan job queue dengan `SKIP LOCKED`.\n- Keduanya bisa digabung. Misalnya, form edit memakai optimistic locking, sementara proses batch yang menyentuh baris yang sama memakai `FOR UPDATE` dengan `NOWAIT`.\n\nTerlepas dari pilihan, tiga hal berlaku untuk semuanya: transaksi harus pendek, setiap operasi yang bisa di-retry harus idempoten, dan semua kegagalan konkurensi (konflik, deadlock, timeout) harus tertangkap dan ditangani secara eksplisit, bukan dibiarkan menjadi error 500 yang tidak jelas.",
+      "ttft_ms": 20770,
+      "type": "result",
+      "duration_ms": 77128,
+      "uuid": "a5657bf8-88f5-4404-ada2-f39bcd915941",
+      "ttft_stream_ms": 1084,
+      "time_to_request_ms": 43,
+      "first_content_frame_ms": 1084,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "skill",
+    "case": "json",
+    "prompt": "Output hanya JSON valid dengan keys status, passed, unverified. Data: unit test lulus 6, integration belum diuji. Jangan tambahkan Markdown atau teks di luar JSON.",
+    "system_sha256": "3e3e4c51e3b5926ac8e50f4df7f0038089d4cdb5769327bdddf7b6d885b9dc17",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 1894,
+      "stop_reason": "end_turn",
+      "session_id": "787e1608-d946-47c8-94fe-68f43d81ab42",
+      "total_cost_usd": 0.006262799999999999,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 649,
+        "cache_read_input_tokens": 15714,
+        "output_tokens": 52,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 649,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 52,
+            "cache_read_input_tokens": 15714,
+            "cache_creation_input_tokens": 649,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 649
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 52,
+          "cacheReadInputTokens": 15714,
+          "cacheCreationInputTokens": 649,
+          "webSearchRequests": 0,
+          "costUSD": 0.006262799999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "{\"status\":\"sebagian terverifikasi\",\"passed\":[\"unit test: 6 lulus\"],\"unverified\":[\"integration test: belum diuji\"]}",
+      "ttft_ms": 1911,
+      "type": "result",
+      "duration_ms": 1934,
+      "uuid": "aea93cf0-b6c4-4a1a-ab52-659705746497",
+      "ttft_stream_ms": 1257,
+      "time_to_request_ms": 41,
+      "first_content_frame_ms": 1258,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "skill",
+    "case": "code",
+    "prompt": "Give only a Python function parse(text) returning [] for empty input, otherwise text.split(','). No Markdown fences or explanation.",
+    "system_sha256": "3e3e4c51e3b5926ac8e50f4df7f0038089d4cdb5769327bdddf7b6d885b9dc17",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 1696,
+      "stop_reason": "end_turn",
+      "session_id": "ee41dd03-fecd-490b-9d92-fdc0c530e447",
+      "total_cost_usd": 0.005912799999999999,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 624,
+        "cache_read_input_tokens": 15714,
+        "output_tokens": 27,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 624,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 27,
+            "cache_read_input_tokens": 15714,
+            "cache_creation_input_tokens": 624,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 624
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 27,
+          "cacheReadInputTokens": 15714,
+          "cacheCreationInputTokens": 624,
+          "webSearchRequests": 0,
+          "costUSD": 0.005912799999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "def parse(text):\n    if not text:\n        return []\n    return text.split(',')",
+      "ttft_ms": 1706,
+      "type": "result",
+      "duration_ms": 1736,
+      "uuid": "bb122a9a-4981-4eee-b2f5-84ed3261ea6e",
+      "ttft_stream_ms": 1190,
+      "time_to_request_ms": 39,
+      "first_content_frame_ms": 1191,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "skill",
+    "case": "override",
+    "prompt": "Untuk jawaban ini, saya ingin satu paragraf yang rinci tanpa daftar. Jelaskan urutan mengganti parse(text) agar input kosong menghasilkan [], menambahkan test pytest, lalu menjalankan pytest tests/test_parser.py. Saya yang mengedit sendiri.",
+    "system_sha256": "3e3e4c51e3b5926ac8e50f4df7f0038089d4cdb5769327bdddf7b6d885b9dc17",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 8263,
+      "stop_reason": "end_turn",
+      "session_id": "e1686067-52dc-410e-bed8-50510888a4ed",
+      "total_cost_usd": 0.015898799999999998,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 693,
+        "cache_read_input_tokens": 15714,
+        "output_tokens": 998,
+        "output_tokens_details": {
+          "thinking_tokens": 343
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 693,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 998,
+            "cache_read_input_tokens": 15714,
+            "cache_creation_input_tokens": 693,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 693
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 998,
+          "cacheReadInputTokens": 15714,
+          "cacheCreationInputTokens": 693,
+          "webSearchRequests": 0,
+          "costUSD": 0.015898799999999998,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 343,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "Mulailah dari file tempat `parse(text)` didefinisikan, lalu tambahkan pengecekan di baris paling awal fungsi sebelum logika parsing berjalan, misalnya `if not text or not text.strip(): return []`. Kondisi `not text` menangani string kosong dan `None`, sedangkan `text.strip()` ikut menangkap input yang hanya berisi spasi atau baris baru. Kalau Anda hanya ingin string kosong murni yang menghasilkan `[]`, cukup pakai `if not text:`. Pastikan juga bagian lain fungsi tidak berubah, terutama tipe kembaliannya yang tetap list. Setelah itu buka `tests/test_parser.py`, pastikan `parse` sudah di-import dari modul Anda, lalu tambahkan fungsi baru seperti `def test_parse_empty_input_returns_empty_list(): assert parse(\"\") == []`. Jika Anda memakai pengecekan spasi, tambahkan satu assert lagi untuk `parse(\"   \")`, atau gabungkan keduanya dengan `@pytest.mark.parametrize(\"text\", [\"\", \"   \", \"\\n\"])` supaya tiap kasus dilaporkan terpisah saat gagal. Terakhir, dari direktori root proyek di PowerShell, jalankan `pytest tests/test_parser.py`; kalau perintah `pytest` tidak dikenali, pakai `python -m pytest tests/test_parser.py`. Test baru harus lolos bersama test lama di file itu. Jika ada test lama yang gagal, periksa dulu apakah pengecekan awal tadi ikut menangkap input yang sebelumnya dianggap valid. Agar yakin test baru benar-benar menguji perubahan, Anda bisa menjalankannya sekali sebelum mengedit `parse`, dan hasilnya seharusnya gagal.",
+      "ttft_ms": 3447,
+      "type": "result",
+      "duration_ms": 8309,
+      "uuid": "52073529-ebe9-485a-ab88-f739434bff93",
+      "ttft_stream_ms": 1001,
+      "time_to_request_ms": 38,
+      "first_content_frame_ms": 1001,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "web",
+    "case": "simple",
+    "prompt": "Apa command Git untuk melihat branch aktif?",
+    "system_sha256": "373c9e47e68606df1b753772285104927157016c1e89853ee44b9a40817a5765",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 2793,
+      "stop_reason": "end_turn",
+      "session_id": "a2f674b3-0032-4a34-a948-7d42f82f5792",
+      "total_cost_usd": 0.070846,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 17378,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 133,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 17378,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 133,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 17378,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 17378
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 133,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 17378,
+          "webSearchRequests": 0,
+          "costUSD": 0.070846,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "Pakai:\n\n```\ngit branch --show-current\n```\n\nPerintah ini menampilkan nama branch aktif saja. Kalau kamu mau lihat semua branch lokal dengan tanda `*` di branch yang sedang aktif, pakai `git branch`. Alternatif lain yang juga sering dipakai adalah `git status`, yang menampilkan nama branch di baris pertama.",
+      "ttft_ms": 2823,
+      "type": "result",
+      "duration_ms": 2846,
+      "uuid": "d4130420-5d08-447a-8432-1a2c0a2274d4",
+      "ttft_stream_ms": 1527,
+      "time_to_request_ms": 45,
+      "first_content_frame_ms": 1527,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "web",
+    "case": "coding",
+    "prompt": "Saya akan mengedit sendiri. Proyek Python punya src/parser.py dengan parse(text) yang memakai text.split(','). Bug: input kosong menghasilkan [''], seharusnya []. tests/test_parser.py memakai pytest. Berikan perubahan kode dan cara memverifikasinya.",
+    "system_sha256": "373c9e47e68606df1b753772285104927157016c1e89853ee44b9a40817a5765",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 8474,
+      "stop_reason": "end_turn",
+      "session_id": "d311aea8-eba9-465c-8359-e8bcc2a9c9a0",
+      "total_cost_usd": 0.0150598,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 690,
+        "cache_read_input_tokens": 16779,
+        "output_tokens": 894,
+        "output_tokens_details": {
+          "thinking_tokens": 293
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 690,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 894,
+            "cache_read_input_tokens": 16779,
+            "cache_creation_input_tokens": 690,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 690
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 894,
+          "cacheReadInputTokens": 16779,
+          "cacheCreationInputTokens": 690,
+          "webSearchRequests": 0,
+          "costUSD": 0.0150598,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 293,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "Tambahkan pengecekan input kosong di awal `parse`, sebelum `split`.\n\n**src/parser.py**\n\n```python\ndef parse(text):\n    if not text:\n        return []\n    return text.split(',')\n```\n\nSisa isi fungsi tetap seperti sekarang. Saya tidak melihat file aslinya, jadi sesuaikan kalau ada logika lain di dalam `parse` (misalnya `strip` atau konversi tipe). Pengecekan ini harus tetap berada di bagian paling atas.\n\n**tests/test_parser.py**\n\n```python\ndef test_parse_empty_string_returns_empty_list():\n    assert parse(\"\") == []\n```\n\nPakai import `parse` yang sudah ada di file test itu.\n\n**Cara verifikasi**\n\n1. Tambahkan test dulu, lalu jalankan sebelum mengubah `parser.py`. Test ini harus gagal dengan `assert [''] == []`.\n\n```powershell\npython -m pytest tests/test_parser.py -v\n```\n\n2. Ubah `parser.py`, lalu jalankan perintah yang sama. Test baru harus lulus, dan test lama juga tetap lulus.\n\n3. Jalankan seluruh test untuk memastikan tidak ada pemanggil lain yang bergantung pada hasil `['']`:\n\n```powershell\npython -m pytest\n```\n\nDua hal yang perlu Anda putuskan. Input seperti `\"   \"` (hanya spasi) tetap menghasilkan `['   ']` dengan kode di atas. Kalau itu juga harus `[]`, ganti kondisinya menjadi `if not text.strip():`. Lalu input `\",\"` tetap menghasilkan `['', '']`, dan itu masuk akal karena memang ada dua field kosong.",
+      "ttft_ms": 4591,
+      "type": "result",
+      "duration_ms": 8550,
+      "uuid": "ebf63df6-647e-4caa-9412-4f4b19c792a7",
+      "ttft_stream_ms": 2192,
+      "time_to_request_ms": 74,
+      "first_content_frame_ms": 2192,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "web",
+    "case": "debug",
+    "prompt": "Login mengembalikan HTTP 401. Satu-satunya bukti adalah log 'POST /login 401'. Apakah database rusak? Saya tidak bisa memberi akses server; apa yang perlu saya cek?",
+    "system_sha256": "373c9e47e68606df1b753772285104927157016c1e89853ee44b9a40817a5765",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 12379,
+      "stop_reason": "end_turn",
+      "session_id": "063a933c-ac3e-4a68-9df3-ebfe748c61df",
+      "total_cost_usd": 0.018407800000000002,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 657,
+        "cache_read_input_tokens": 16779,
+        "output_tokens": 1242,
+        "output_tokens_details": {
+          "thinking_tokens": 334
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 657,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 1242,
+            "cache_read_input_tokens": 16779,
+            "cache_creation_input_tokens": 657,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 657
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 1242,
+          "cacheReadInputTokens": 16779,
+          "cacheCreationInputTokens": 657,
+          "webSearchRequests": 0,
+          "costUSD": 0.018407800000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 334,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "Kemungkinan besar bukan database rusak. 401 berarti server berhasil menerima dan memproses request, lalu menolak kredensialnya. Kalau database mati, biasanya yang muncul 500 atau 503. Pengecualian: beberapa aplikasi menangkap semua error saat login dan mengembalikannya sebagai 401, jadi kemungkinan itu belum bisa dicoret sepenuhnya dari log satu baris saja.\n\nYang bisa Anda cek tanpa akses server:\n\n1. **Body response 401.** Buka tab Network di browser (atau pakai Postman/curl) dan lihat isi responsnya, bukan hanya status code. Pesan seperti \"invalid credentials\", \"token expired\", atau \"account locked\" langsung menunjuk penyebabnya.\n2. **Request yang dikirim.** Pastikan endpoint, `Content-Type` (JSON vs form), nama field (`email` vs `username`), dan isi payload benar. Salah format sering berujung 401 atau 400.\n3. **Akun lain.** Coba login dengan akun yang pasti valid. Kalau semua akun gagal, masalahnya kemungkinan di sistem (konfigurasi, secret, atau database). Kalau hanya satu akun, masalahnya di akun itu: password salah, akun dikunci, atau belum diverifikasi.\n4. **Fitur lain yang butuh database.** Buka halaman atau endpoint publik yang membaca data, misalnya daftar produk. Kalau itu jalan normal, database kemungkinan sehat.\n5. **Perubahan terbaru.** Tanyakan apakah ada deploy, pergantian environment variable, secret/JWT key, atau migrasi password hash sebelum error mulai muncul. Ini penyebab umum login mendadak gagal untuk semua orang.\n6. **Gejala di sisi klien.** Cek cookie atau token lama yang tersimpan, jam perangkat yang melenceng (memengaruhi token), dan CORS atau pengaturan cookie `Secure`/`SameSite` kalau frontend dan backend beda domain.\n7. **Rate limiting.** Kalau sudah banyak percobaan gagal, akun atau IP bisa diblokir sementara.\n\nKalau semua cek di atas buntu, minta orang yang punya akses server melihat log aplikasi (bukan hanya access log) di sekitar waktu request. Di situ biasanya tertulis alasan penolakannya.\n\nKalau Anda bisa membagikan isi body response atau hasil tes dengan akun lain, saya bisa bantu mempersempit penyebabnya.",
+      "ttft_ms": 5305,
+      "type": "result",
+      "duration_ms": 12452,
+      "uuid": "a74089e7-9399-4633-afd0-dad60651cfcf",
+      "ttft_stream_ms": 2150,
+      "time_to_request_ms": 74,
+      "first_content_frame_ms": 2151,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "web",
+    "case": "complete",
+    "prompt": "Buat laporan hasil pekerjaan dari bukti ini: src/parser.py sekarang mengembalikan [] untuk input kosong; pytest tests/test_parser.py lulus 6 test; integration test tidak dijalankan. Pekerjaan yang diminta sudah selesai.",
+    "system_sha256": "373c9e47e68606df1b753772285104927157016c1e89853ee44b9a40817a5765",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 2617,
+      "stop_reason": "end_turn",
+      "session_id": "11b9b04f-9aef-4f57-8a2b-94fb2db0da3c",
+      "total_cost_usd": 0.0084938,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 681,
+        "cache_read_input_tokens": 16779,
+        "output_tokens": 241,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 681,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 241,
+            "cache_read_input_tokens": 16779,
+            "cache_creation_input_tokens": 681,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 681
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 241,
+          "cacheReadInputTokens": 16779,
+          "cacheCreationInputTokens": 681,
+          "webSearchRequests": 0,
+          "costUSD": 0.0084938,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "**Laporan Hasil Pekerjaan**\n\nPekerjaan yang diminta sudah selesai. `src/parser.py` sekarang mengembalikan `[]` untuk input kosong.\n\n**Verifikasi**\n- `pytest tests/test_parser.py`: 6 test lulus.\n- Integration test: tidak dijalankan, jadi dampak perubahan ini pada alur yang lebih luas belum terverifikasi.\n\n**Tindakan yang masih perlu**\nJalankan integration test sebelum merge, terutama jika ada kode lain yang memanggil parser dan sebelumnya mengharapkan hasil berbeda untuk input kosong (misalnya `None` atau error).",
+      "ttft_ms": 2634,
+      "type": "result",
+      "duration_ms": 2660,
+      "uuid": "4030c922-9699-430e-9771-86c200f5fa96",
+      "ttft_stream_ms": 960,
+      "time_to_request_ms": 44,
+      "first_content_frame_ms": 960,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "web",
+    "case": "resume",
+    "prompt": "Lanjut dari checkpoint: perubahan schema lokal dan test unit selesai. Saat ini menunggu sampel CSV asli dari saya untuk memeriksa mapping import. CSV belum tersedia dan kamu tidak punya akses file atau tools. Apa posisi kita sekarang?",
+    "system_sha256": "373c9e47e68606df1b753772285104927157016c1e89853ee44b9a40817a5765",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 7539,
+      "stop_reason": "end_turn",
+      "session_id": "348f98be-731c-4ba7-82ce-237a341b6d46",
+      "total_cost_usd": 0.0139338,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 686,
+        "cache_read_input_tokens": 16779,
+        "output_tokens": 783,
+        "output_tokens_details": {
+          "thinking_tokens": 349
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 686,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 783,
+            "cache_read_input_tokens": 16779,
+            "cache_creation_input_tokens": 686,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 686
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 783,
+          "cacheReadInputTokens": 16779,
+          "cacheCreationInputTokens": 686,
+          "webSearchRequests": 0,
+          "costUSD": 0.0139338,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 349,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "Posisi kita: perubahan schema lokal dan test unit sudah selesai (berdasarkan checkpoint kamu, saya tidak bisa memverifikasinya dari sini). Yang tersisa adalah memeriksa mapping import, dan itu terblokir sampai sampel CSV asli ada.\n\nTest unit yang lulus belum membuktikan mapping cocok dengan data asli, karena test hanya menguji terhadap data yang kita asumsikan. Hal yang biasanya baru ketahuan dari CSV asli: nama header yang beda, format tanggal atau angka, kolom kosong, delimiter, dan encoding.\n\nLangkah berikutnya ada di kamu: tempel header plus 5 sampai 10 baris sampel ke chat, termasuk satu atau dua baris yang kamu anggap aneh. Samarkan data sensitif seperti nama, email, atau nomor telepon. Setelah itu saya cocokkan dengan mapping dan tandai kolom yang tidak cocok.\n\nKalau mau memanfaatkan waktu tunggu, tempel juga schema dan definisi mapping yang sekarang. Saya bisa mereviu dan menyiapkan daftar hal yang perlu dicek begitu CSV datang.",
+      "ttft_ms": 4480,
+      "type": "result",
+      "duration_ms": 7601,
+      "uuid": "36b38dd7-28d1-4a70-b033-81efbe70d7ff",
+      "ttft_stream_ms": 1285,
+      "time_to_request_ms": 56,
+      "first_content_frame_ms": 1286,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "web",
+    "case": "list",
+    "prompt": "Berikan daftar lengkap 12 pemeriksaan sebelum merilis aplikasi web kecil. Urutkan menurut relevansi. Jangan hilangkan pemeriksaan penting.",
+    "system_sha256": "373c9e47e68606df1b753772285104927157016c1e89853ee44b9a40817a5765",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 13967,
+      "stop_reason": "end_turn",
+      "session_id": "ec819bb2-5714-4856-8d44-f9c720c087d1",
+      "total_cost_usd": 0.024223799999999997,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 651,
+        "cache_read_input_tokens": 16779,
+        "output_tokens": 1826,
+        "output_tokens_details": {
+          "thinking_tokens": 690
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 651,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 1826,
+            "cache_read_input_tokens": 16779,
+            "cache_creation_input_tokens": 651,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 651
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 1826,
+          "cacheReadInputTokens": 16779,
+          "cacheCreationInputTokens": 651,
+          "webSearchRequests": 0,
+          "costUSD": 0.024223799999999997,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 690,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "Berikut 12 pemeriksaan, dari yang paling krusial sampai yang paling bisa menyusul:\n\n1. **Alur utama jalan di lingkungan produksi atau staging.** Coba sendiri dari awal sampai akhir: daftar, login, isi form, bayar, atau apa pun fungsi inti aplikasimu. Jangan cuma diuji di komputer lokal.\n2. **Keamanan dasar.** Pastikan tidak ada API key, password, atau file `.env` yang ikut ter-commit. Cek juga validasi input (XSS, SQL injection), hak akses per pengguna, dan jalankan `npm audit` atau yang setara untuk dependensi yang rentan.\n3. **Konfigurasi produksi.** Mode debug mati, environment variable terisi dengan nilai produksi, dan URL API, database, serta layanan pihak ketiga tidak masih menunjuk ke versi pengembangan.\n4. **Data dan migrasi.** Migrasi database sudah dicoba dan tidak merusak data yang ada. Backup terbaru sudah dibuat sebelum rilis.\n5. **Rencana rollback.** Tahu persis cara kembali ke versi sebelumnya kalau ada masalah, dan sudah memastikan cara itu bisa dijalankan dengan cepat.\n6. **Penanganan error dan monitoring.** Halaman 404 dan 500 sudah ada, error tercatat di log, dan ada pemantau uptime atau notifikasi sederhana supaya kamu tahu kalau aplikasi mati.\n7. **Build bersih dan dependensi terkunci.** Build produksi selesai tanpa error, lockfile ikut ter-commit, dan tidak ada paket atau kode yang tertinggal hanya untuk pengembangan.\n8. **Domain, DNS, dan HTTPS.** Domain mengarah ke server yang benar, sertifikat SSL aktif dan tidak akan kedaluwarsa dalam waktu dekat, dan HTTP dialihkan ke HTTPS.\n9. **Responsif dan kompatibilitas browser.** Tampilan dan fungsi dicek di ponsel, tablet, dan desktop, minimal di Chrome, Safari, dan Firefox.\n10. **Performa.** Ukuran gambar dan bundle wajar, waktu muat halaman utama dicek (misalnya dengan Lighthouse), dan koneksi lambat tidak membuat aplikasi tidak bisa dipakai.\n11. **Privasi dan aspek legal.** Kebijakan privasi dan syarat penggunaan tersedia kalau kamu mengumpulkan data pengguna. Tambahkan persetujuan cookie jika memakai analitik atau pelacak.\n12. **Aksesibilitas, SEO, dan metadata.** Judul halaman, deskripsi, favicon, dan pratinjau saat dibagikan (Open Graph) sudah terisi. Gambar punya teks alternatif, kontras warna cukup, dan form bisa dipakai dengan keyboard.\n\nKalau waktumu terbatas, nomor 1 sampai 6 tidak boleh dilewati. Sisanya bisa dirapikan setelah rilis tanpa risiko besar.",
+      "ttft_ms": 6466,
+      "type": "result",
+      "duration_ms": 14022,
+      "uuid": "d8434a8a-25ff-447a-9428-2de7cd54bc3c",
+      "ttft_stream_ms": 1198,
+      "time_to_request_ms": 46,
+      "first_content_frame_ms": 1198,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "web",
+    "case": "long",
+    "prompt": "Jelaskan optimistic dan pessimistic locking secara rinci untuk developer backend. Sertakan lost update, contoh SQL dengan version dan SELECT FOR UPDATE, pemeriksaan row count, deadlock, retry, idempotensi, isolation level, serta trade-off. Saya membutuhkan penjelasan panjang, bukan ringkasan.",
+    "system_sha256": "373c9e47e68606df1b753772285104927157016c1e89853ee44b9a40817a5765",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 92284,
+      "stop_reason": "end_turn",
+      "session_id": "f99569b0-ac22-4602-9f8e-ded5bead1e05",
+      "total_cost_usd": 0.1397898,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 710,
+        "cache_read_input_tokens": 16779,
+        "output_tokens": 13359,
+        "output_tokens_details": {
+          "thinking_tokens": 4506
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 710,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 13359,
+            "cache_read_input_tokens": 16779,
+            "cache_creation_input_tokens": 710,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 710
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 13359,
+          "cacheReadInputTokens": 16779,
+          "cacheCreationInputTokens": 710,
+          "webSearchRequests": 0,
+          "costUSD": 0.1397898,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 4506,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "Optimistic locking tidak mengunci apa pun saat membaca. Konflik baru dideteksi saat menulis, biasanya lewat kolom `version`, dan transaksi yang kalah harus mengulang atau ditolak. Pessimistic locking mengunci baris sejak dibaca (`SELECT ... FOR UPDATE`), sehingga transaksi lain menunggu sampai kunci dilepas. Optimistic cocok kalau konflik jarang. Pessimistic cocok kalau konflik sering atau akibat konflik mahal. Keduanya menyelesaikan masalah yang sama, yaitu lost update.\n\n## Lost update\n\nLost update terjadi ketika dua transaksi membaca nilai yang sama, masing-masing menghitung nilai baru di aplikasi, lalu menulis. Tulisan yang terakhir menimpa yang pertama tanpa tahu bahwa nilainya sudah berubah.\n\nMisalkan saldo 1000. Request A menarik 100 dan request B menarik 200. Hasil yang benar adalah 700.\n\n| Waktu | Request A | Request B |\n|---|---|---|\n| t1 | `SELECT balance` → 1000 | |\n| t2 | | `SELECT balance` → 1000 |\n| t3 | `UPDATE SET balance = 900` | |\n| t4 | | `UPDATE SET balance = 800` |\n\nSaldo akhir 800, dan penarikan 100 milik A hilang. Tidak ada error, dan kedua transaksi berhasil commit. Itu yang membuat bug ini berbahaya.\n\nLost update muncul pada pola read-modify-write di level aplikasi. Kalau perhitungan bisa dipindahkan ke dalam satu statement, masalahnya hilang tanpa lock tambahan:\n\n```sql\nUPDATE accounts\nSET balance = balance - 100\nWHERE id = 1 AND balance >= 100;\n```\n\nStatement ini atomik. Database mengunci baris selama update, dan transaksi lain yang datang belakangan membaca nilai terbaru. Jika row count 0, saldo tidak cukup atau akun tidak ada. Untuk kasus sederhana seperti counter, stok, dan saldo, ini sering pilihan terbaik. Optimistic dan pessimistic locking dibutuhkan ketika logika bisnisnya tidak bisa dijadikan satu statement, misalnya ada validasi kompleks, pemanggilan service lain, atau pengguna mengedit form lalu menyimpan beberapa menit kemudian.\n\nSkema yang dipakai di contoh berikut:\n\n```sql\nCREATE TABLE accounts (\n    id      BIGINT PRIMARY KEY,\n    owner   TEXT NOT NULL,\n    balance NUMERIC(14,2) NOT NULL CHECK (balance >= 0),\n    version INT NOT NULL DEFAULT 0\n);\n\nINSERT INTO accounts (id, owner, balance) VALUES (1, 'Rani', 1000);\n```\n\n## Optimistic locking\n\nAsumsinya konflik jarang terjadi, jadi tidak ada yang dikunci. Setiap baris punya kolom `version`. Saat menulis, Anda menyertakan versi yang dulu dibaca sebagai syarat.\n\n```sql\n-- 1. Baca\nSELECT balance, version FROM accounts WHERE id = 1;\n-- balance = 1000, version = 0\n\n-- 2. Tulis dengan syarat versi\nUPDATE accounts\nSET balance = 900,\n    version = version + 1\nWHERE id = 1\n  AND version = 0;\n```\n\nKalau tidak ada yang mengubah baris itu, `WHERE` cocok dan satu baris terupdate. Kalau transaksi lain sudah menaikkan versi menjadi 1, `WHERE` tidak cocok dan nol baris terupdate. Jumlah baris yang terpengaruh (row count) itulah sinyal konfliknya.\n\n### Pemeriksaan row count\n\nPemeriksaan ini bagian inti dari pola ini. Tanpa pemeriksaan, UPDATE yang gagal cocok akan lolos diam-diam dan lost update tetap terjadi.\n\n```python\ndef withdraw(conn, account_id, amount):\n    with conn.cursor() as cur:\n        cur.execute(\n            \"SELECT balance, version FROM accounts WHERE id = %s\",\n            (account_id,),\n        )\n        row = cur.fetchone()\n        if row is None:\n            raise AccountNotFound(account_id)\n\n        balance, version = row\n        if balance < amount:\n            raise InsufficientFunds()\n\n        cur.execute(\n            \"\"\"\n            UPDATE accounts\n            SET balance = %s, version = version + 1\n            WHERE id = %s AND version = %s\n            \"\"\",\n            (balance - amount, account_id, version),\n        )\n        if cur.rowcount != 1:\n            raise OptimisticLockError(account_id, version)\n```\n\nBeberapa hal yang perlu diperhatikan:\n\n- Row count 0 punya dua kemungkinan penyebab: versi tidak cocok, atau baris sudah dihapus. Kalau perbedaannya penting, lakukan `SELECT` ulang setelah gagal.\n- Pastikan driver mengembalikan jumlah baris yang cocok dengan `WHERE`. Di MySQL, row count default bisa berarti baris yang benar-benar berubah, bukan yang cocok. Karena `version` selalu bertambah, nilainya tetap benar di pola ini. Tetapi kalau Anda tidak menaikkan `version`, `UPDATE` yang nilainya sama bisa terbaca 0 baris.\n- Semua jalur yang menulis ke tabel harus menaikkan `version`, termasuk batch job, skrip migrasi, dan SQL manual. Satu jalur yang lupa sudah cukup untuk merusak jaminannya. Trigger bisa menjadi pengaman, tetapi menambah kompleksitas.\n- Alternatif kolom `version` adalah `updated_at`. Ini lebih rentan karena resolusi timestamp bisa terlalu kasar dan dua update dalam satu tick bisa memiliki nilai yang sama. Integer yang naik satu per update lebih aman.\n\n### Optimistic locking lintas request HTTP\n\nKelebihan terbesar pola ini adalah tahan terhadap jeda panjang. Di aplikasi web, pengguna membuka form (request 1), mengedit selama beberapa menit, lalu menyimpan (request 2). Menahan lock database selama itu tidak realistis, tetapi versi bisa ikut dikirim bersama data.\n\nServer mengirim versi lewat header `ETag` atau field di body. Klien mengembalikannya lewat `If-Match` atau field yang sama. Jika versinya tidak cocok, server membalas `412 Precondition Failed` (bila memakai `If-Match`) atau `409 Conflict`. Di ORM, mekanisme serupa biasanya sudah tersedia: `@Version` di JPA/Hibernate akan melempar `OptimisticLockException`, dan Rails memakai kolom `lock_version`.\n\nRespons terhadap konflik tergantung kasusnya. Untuk edit manual oleh pengguna, tampilkan pesan bahwa data sudah berubah dan biarkan mereka memuat ulang atau menggabungkan perubahan. Untuk proses otomatis, ulangi seluruh logika dari pembacaan data (dibahas di bagian retry).\n\n## Pessimistic locking\n\nAsumsinya konflik sering atau mahal, jadi lebih baik transaksi lain menunggu daripada gagal belakangan. Lock diambil saat membaca dan dilepas saat commit atau rollback.\n\n```sql\nBEGIN;\n\nSELECT balance\nFROM accounts\nWHERE id = 1\nFOR UPDATE;          -- baris terkunci sampai COMMIT/ROLLBACK\n\n-- cek aturan bisnis di aplikasi, lalu:\nUPDATE accounts\nSET balance = balance - 100,\n    version = version + 1\nWHERE id = 1;\n\nCOMMIT;\n```\n\nJika request B menjalankan `SELECT ... FOR UPDATE` pada baris yang sama saat A belum commit, B berhenti dan menunggu. Setelah A commit, B melanjutkan dan membaca nilai terbaru. Tidak ada lost update, karena pembacaan dan penulisan terjadi di dalam jendela yang sama.\n\nRow count tetap perlu diperiksa:\n\n- `SELECT ... FOR UPDATE` yang mengembalikan nol baris berarti baris tidak ada, jadi tidak ada yang terkunci. Tangani sebagai `NotFound`.\n- Setelah lock diambil, `UPDATE` berdasarkan primary key seharusnya selalu mengenai satu baris. Memeriksa `rowcount == 1` tetap murah dan menangkap bug, misalnya salah kondisi `WHERE`.\n\n### Varian yang berguna\n\n```sql\n-- Gagal langsung kalau baris sedang dikunci, tanpa menunggu\nSELECT * FROM accounts WHERE id = 1 FOR UPDATE NOWAIT;\n\n-- Lewati baris yang sedang dikunci (cocok untuk antrean job)\nSELECT id FROM jobs\nWHERE status = 'pending'\nORDER BY id\nLIMIT 10\nFOR UPDATE SKIP LOCKED;\n```\n\n`NOWAIT` dan `SKIP LOCKED` tersedia di PostgreSQL, MySQL 8, dan Oracle. SQL Server tidak memakai sintaks itu. Padanannya adalah hint tabel seperti `WITH (UPDLOCK, ROWLOCK)` dan `READPAST`. `SKIP LOCKED` membuat banyak worker bisa mengambil job berbeda dari tabel yang sama tanpa saling menunggu.\n\nPostgreSQL juga punya `FOR NO KEY UPDATE` dan `FOR SHARE`. `FOR NO KEY UPDATE` tidak memblokir insert ke tabel anak yang punya foreign key ke baris ini, sehingga lebih ringan bila Anda tidak mengubah kunci.\n\n### Hal yang sering salah\n\n- **Lock yang terlalu lama.** Jangan memanggil API eksternal, mengirim email, atau menunggu input pengguna saat memegang lock. Selama itu, semua transaksi lain pada baris yang sama menumpuk. Ambil lock sedekat mungkin dengan penulisan, dan commit secepatnya.\n- **Timeout.** Tanpa batas waktu, request bisa menunggu sangat lama. Atur `lock_timeout` di PostgreSQL, `innodb_lock_wait_timeout` di MySQL (default 50 detik), atau `SET LOCK_TIMEOUT` di SQL Server.\n- **Indeks.** Di InnoDB, `FOR UPDATE` dengan kondisi yang tidak memakai indeks bisa mengunci banyak baris, bahkan seluruh tabel. Pastikan kondisi `WHERE` memakai indeks.\n- **Baris yang belum ada.** `FOR UPDATE` hanya mengunci baris yang ada. Kalau tujuannya mencegah dua transaksi sama-sama memasukkan baris yang sama, gunakan unique constraint. Di InnoDB `REPEATABLE READ`, locking read memakai gap/next-key lock yang bisa menahan insert di rentang tertentu, tetapi itu perilaku spesifik MySQL.\n\n## Deadlock\n\nPessimistic locking membuka risiko deadlock: dua transaksi saling menunggu lock yang dipegang pihak lain.\n\n| Waktu | Transfer A→B | Transfer B→A |\n|---|---|---|\n| t1 | `FOR UPDATE` akun 1 (dapat) | |\n| t2 | | `FOR UPDATE` akun 2 (dapat) |\n| t3 | `FOR UPDATE` akun 2 (menunggu B) | |\n| t4 | | `FOR UPDATE` akun 1 (menunggu A) |\n\nKeduanya menunggu selamanya kalau dibiarkan. Database mendeteksi siklus ini, memilih satu transaksi sebagai korban, dan membatalkannya dengan error. Di PostgreSQL error-nya SQLSTATE `40P01`, di MySQL error 1213 (SQLSTATE `40001`), dan di SQL Server error 1205. Di PostgreSQL deteksi dimulai setelah menunggu selama `deadlock_timeout` (default 1 detik).\n\nCara mencegahnya:\n\n1. **Urutan lock yang konsisten.** Kunci baris selalu dengan urutan yang sama, misalnya berdasarkan `id` naik.\n\n```sql\nBEGIN;\nSELECT id, balance FROM accounts\nWHERE id IN (1, 2)\nORDER BY id\nFOR UPDATE;\n-- update keduanya\nCOMMIT;\n```\n\n2. **Transaksi pendek.** Semakin singkat lock dipegang, semakin kecil peluang bertabrakan.\n3. **Kunci semuanya di awal**, bukan satu per satu di tengah logika.\n4. **Indeks yang tepat**, supaya query tidak mengunci lebih banyak baris dari yang dibutuhkan.\n\nPencegahan tidak pernah menjamin nol deadlock, jadi aplikasi tetap harus siap menanganinya lewat retry. Optimistic locking juga tidak sepenuhnya bebas deadlock. `UPDATE` tetap mengambil lock baris sebentar, dan update banyak baris dalam urutan berbeda tetap bisa saling mengunci. Risikonya jauh lebih kecil karena lock hanya dipegang sepanjang statement dan commit.\n\n## Retry\n\nError yang layak diulang adalah yang sifatnya sementara dan akibat persaingan:\n\n- deadlock (`40P01` di PostgreSQL, 1213 di MySQL, 1205 di SQL Server),\n- serialization failure (`40001`),\n- konflik versi pada optimistic locking,\n- lock timeout, bila Anda memang ingin mencoba lagi.\n\nError bisnis seperti saldo tidak cukup, data tidak valid, atau pelanggaran constraint tidak boleh diulang, karena hasilnya akan sama.\n\nAda tiga aturan penting:\n\n1. **Ulangi seluruh transaksi dari awal**, termasuk pembacaan data. Setelah deadlock atau serialization failure, transaksi sudah di-rollback. Untuk konflik versi, data lama sudah usang, jadi Anda harus membaca ulang dan menghitung ulang. Mengirim ulang UPDATE dengan nilai hasil hitungan lama sama dengan membuang proteksinya.\n2. **Batasi jumlah percobaan** dan beri jeda dengan exponential backoff plus jitter (acak), supaya transaksi yang bertabrakan tidak mengulang bersamaan terus-menerus.\n3. **Jangan ada efek samping di dalam blok yang diulang** (kirim email, publish event, panggil API). Lakukan itu setelah commit berhasil.\n\n```python\nimport random, time\nimport psycopg2\n\nRETRYABLE = {\"40001\", \"40P01\"}   # serialization failure, deadlock\n\ndef run_with_retry(pool, work, max_attempts=4):\n    for attempt in range(1, max_attempts + 1):\n        conn = pool.getconn()\n        try:\n            result = work(conn)      # seluruh transaksi, termasuk SELECT\n            conn.commit()\n            return result\n        except (OptimisticLockError, psycopg2.Error) as e:\n            conn.rollback()\n            retryable = isinstance(e, OptimisticLockError) or e.pgcode in RETRYABLE\n            if not retryable or attempt == max_attempts:\n                raise\n            time.sleep(random.uniform(0, min(1.0, 0.05 * 2 ** attempt)))\n        except Exception:\n            conn.rollback()\n            raise\n        finally:\n            pool.putconn(conn)\n```\n\nKode ini memakai psycopg2 sebagai contoh. Nama atribut error berbeda di tiap driver, tetapi SQLSTATE-nya sama. Pada request yang dipicu pengguna, sering lebih baik mengembalikan `409` dan membiarkan klien memutuskan, daripada mengulang diam-diam tanpa batas.\n\n## Idempotensi\n\nRetry menimbulkan masalah baru. Bayangkan transaksi berhasil commit, tetapi koneksi putus sebelum respons sampai ke klien. Klien melihat timeout dan mengirim ulang. Tanpa perlindungan, penarikan 100 terjadi dua kali.\n\nKolom `version` tidak menyelesaikan ini. Request yang dikirim ulang membawa versi lama, sehingga ditolak sebagai konflik, padahal operasinya sudah berhasil. Klien jadi melihat error untuk sesuatu yang sebenarnya sukses.\n\nSolusinya adalah idempotency key: klien membuat ID unik per operasi dan mengirimkannya di setiap percobaan. Server mencatatnya dalam transaksi yang sama dengan perubahan datanya, dengan unique constraint sebagai penjaga.\n\n```sql\nCREATE TABLE payments (\n    id              BIGSERIAL PRIMARY KEY,\n    idempotency_key TEXT NOT NULL UNIQUE,\n    account_id      BIGINT NOT NULL REFERENCES accounts(id),\n    amount          NUMERIC(14,2) NOT NULL,\n    created_at      TIMESTAMPTZ NOT NULL DEFAULT now()\n);\n\nBEGIN;\n\nINSERT INTO payments (idempotency_key, account_id, amount)\nVALUES ('req-7f3a9c', 1, 100)\nON CONFLICT (idempotency_key) DO NOTHING;\n-- row count 0 → key sudah pernah diproses: ROLLBACK dan kembalikan hasil lama\n\nUPDATE accounts\nSET balance = balance - 100, version = version + 1\nWHERE id = 1 AND balance >= 100;\n-- row count 0 → saldo tidak cukup: ROLLBACK\n\nCOMMIT;\n```\n\n`ON CONFLICT` adalah sintaks PostgreSQL. Di MySQL gunakan `INSERT IGNORE` atau `ON DUPLICATE KEY UPDATE`. Karena pencatatan key dan perubahan saldo berada dalam satu transaksi, keduanya berhasil atau gagal bersama. Jika dua request dengan key sama datang bersamaan, insert kedua menunggu di unique index sampai yang pertama commit atau rollback, lalu `DO NOTHING` berlaku. Sebaiknya simpan juga hasil operasi (atau cukup ID payment-nya) supaya request ulang bisa mengembalikan respons yang sama.\n\nBeberapa operasi idempotent secara alami, misalnya `SET status = 'paid'`. Operasi inkremental seperti `balance = balance - 100` tidak, sehingga butuh key.\n\n## Isolation level\n\nIsolation level menentukan apa yang terlihat oleh transaksi dan kapan database sendiri menolak konflik. Perilakunya berbeda antar database, jadi jangan berasumsi sama.\n\n**READ COMMITTED** (default PostgreSQL, Oracle, dan SQL Server). Setiap statement melihat data yang sudah di-commit saat statement itu mulai. Pola read-modify-write biasa mengalami lost update di sini. Dua pengaman tetap bekerja:\n\n- `UPDATE ... WHERE version = ?` tetap benar. Jika baris sedang dikunci transaksi lain, UPDATE menunggu, lalu setelah commit mengevaluasi ulang `WHERE` terhadap baris terbaru. Hasilnya nol baris, dan Anda mendeteksi konflik.\n- `SELECT ... FOR UPDATE` juga mengambil versi terbaru setelah menunggu.\n\n**REPEATABLE READ.** Perilakunya paling berbeda antar database:\n\n- **PostgreSQL:** transaksi bekerja dengan snapshot. Jika Anda mencoba meng-update (atau `FOR UPDATE`) baris yang sudah diubah dan di-commit transaksi lain setelah snapshot Anda, PostgreSQL membatalkan dengan error `40001` (\"could not serialize access due to concurrent update\"). Ini berarti lost update dicegah otomatis, dan yang Anda terima adalah error, bukan row count 0. Kode retry harus menangani `40001`.\n- **MySQL/InnoDB (default):** `SELECT` biasa membaca snapshot, tetapi `UPDATE` dan locking read membaca versi terbaru yang sudah di-commit. Read-modify-write dengan nilai hasil hitungan dari snapshot tetap bisa menimpa perubahan orang lain. `UPDATE ... WHERE version = ?` dan `FOR UPDATE` tetap aman.\n\n**SERIALIZABLE.** Hasilnya setara dengan eksekusi satu per satu. PostgreSQL mencapainya dengan deteksi konflik (SSI) tanpa memblokir, dan transaksi yang melanggar dibatalkan dengan `40001`. MySQL mengubah `SELECT` biasa menjadi locking read, sehingga lebih banyak blocking dan deadlock. SQL Server memakai range lock. Di semua kasus, aplikasi harus siap mengulang. Level ini paling mudah dipikirkan secara logika, tetapi paling mahal.\n\n**SQL Server SNAPSHOT.** Jika dua transaksi snapshot meng-update baris yang sama, yang kedua gagal dengan error 3960 (update conflict). Ini mirip perilaku `REPEATABLE READ` di PostgreSQL.\n\nKesimpulan praktisnya: pola `version` dan `FOR UPDATE` bekerja benar di level isolation apa pun, selama Anda memeriksa row count dan siap menangani error serialisasi. Jangan mengandalkan isolation level tinggi sebagai pengganti kode yang benar, karena perilakunya bergantung pada database dan sulit diuji.\n\n## Trade-off\n\n| Aspek | Optimistic | Pessimistic |\n|---|---|---|\n| Lock saat membaca | Tidak ada | Ada, sampai commit |\n| Konflik jarang | Sangat baik, nyaris tanpa overhead | Overhead lock tidak perlu |\n| Konflik sering | Banyak retry, kerja terbuang, bisa starvation | Antrean teratur, tidak ada kerja terbuang |\n| Deadlock | Risiko kecil | Risiko nyata, perlu urutan lock dan retry |\n| Jeda panjang (form, multi-request) | Cocok, versi dibawa klien | Tidak cocok, lock tertahan |\n| Throughput | Tinggi bila konflik rendah | Dibatasi lama lock |\n| Kompleksitas aplikasi | Perlu kolom versi, cek row count, logika retry | Perlu kelola transaksi, timeout, urutan lock |\n| Pengguna melihat konflik | Ya, saat menyimpan | Tidak, hanya menunggu |\n| Bergantung pada konsistensi semua penulis | Ya, semua harus menaikkan versi | Ya, semua harus ikut mengunci |\n\nBeberapa contoh pemilihan:\n\n- Edit profil, pengaturan, atau dokumen oleh pengguna: optimistic. Konflik jarang, dan jeda antara baca dan simpan panjang.\n- Saldo, stok, atau kuota yang diperebutkan banyak request: pertama coba atomic update. Jika logikanya terlalu kompleks, pessimistic dengan transaksi pendek.\n- Worker yang mengambil job dari antrean tabel: `FOR UPDATE SKIP LOCKED`.\n- Hot row yang sangat diperebutkan (misalnya counter global): optimistic akan banyak gagal dan pessimistic akan membuat antrean panjang. Pertimbangkan mendesain ulang, misalnya membagi counter menjadi beberapa baris atau memakai atomic increment.\n- Lintas banyak service atau banyak database: lock database tidak menjangkau. Lock terdistribusi (Redis, ZooKeeper) atau saga punya jebakan sendiri, dan jangan dianggap pengganti constraint di database.\n\nSebagai pegangan praktis, mulai dari yang paling sederhana. Pakai atomic update jika bisa. Jika tidak, pakai optimistic locking sebagai default, dan pindah ke pessimistic ketika Anda mengukur bahwa tingkat konflik tinggi atau retry terlalu mahal. Apa pun pilihannya, tiga hal selalu wajib: periksa row count, bungkus dalam retry yang mengulang seluruh transaksi, dan lindungi operasi yang berefek dengan idempotency key.",
+      "ttft_ms": 34081,
+      "type": "result",
+      "duration_ms": 92362,
+      "uuid": "73363296-9e3e-4abc-b2ef-377a3663a8c6",
+      "ttft_stream_ms": 959,
+      "time_to_request_ms": 65,
+      "first_content_frame_ms": 959,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "web",
+    "case": "json",
+    "prompt": "Output hanya JSON valid dengan keys status, passed, unverified. Data: unit test lulus 6, integration belum diuji. Jangan tambahkan Markdown atau teks di luar JSON.",
+    "system_sha256": "373c9e47e68606df1b753772285104927157016c1e89853ee44b9a40817a5765",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 3304,
+      "stop_reason": "end_turn",
+      "session_id": "823a6433-9fe1-4ba3-a7fb-f832c0e39c92",
+      "total_cost_usd": 0.0064758,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 649,
+        "cache_read_input_tokens": 16779,
+        "output_tokens": 52,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 649,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 52,
+            "cache_read_input_tokens": 16779,
+            "cache_creation_input_tokens": 649,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 649
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 52,
+          "cacheReadInputTokens": 16779,
+          "cacheCreationInputTokens": 649,
+          "webSearchRequests": 0,
+          "costUSD": 0.0064758,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "{\"status\":\"sebagian terverifikasi\",\"passed\":[\"unit test: 6 lulus\"],\"unverified\":[\"integration test: belum diuji\"]}",
+      "ttft_ms": 3322,
+      "type": "result",
+      "duration_ms": 3352,
+      "uuid": "c7f94661-45af-497c-8202-306177ae0aff",
+      "ttft_stream_ms": 2636,
+      "time_to_request_ms": 45,
+      "first_content_frame_ms": 2636,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "web",
+    "case": "code",
+    "prompt": "Give only a Python function parse(text) returning [] for empty input, otherwise text.split(','). No Markdown fences or explanation.",
+    "system_sha256": "373c9e47e68606df1b753772285104927157016c1e89853ee44b9a40817a5765",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 1522,
+      "stop_reason": "end_turn",
+      "session_id": "9863b14c-b492-4945-802e-61fb01eb5ac4",
+      "total_cost_usd": 0.0061258,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 624,
+        "cache_read_input_tokens": 16779,
+        "output_tokens": 27,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 624,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 27,
+            "cache_read_input_tokens": 16779,
+            "cache_creation_input_tokens": 624,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 624
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 27,
+          "cacheReadInputTokens": 16779,
+          "cacheCreationInputTokens": 624,
+          "webSearchRequests": 0,
+          "costUSD": 0.0061258,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "def parse(text):\n    if not text:\n        return []\n    return text.split(',')",
+      "ttft_ms": 1540,
+      "type": "result",
+      "duration_ms": 1562,
+      "uuid": "ac3779c5-5fc8-477f-be50-23f8ec6f81ef",
+      "ttft_stream_ms": 947,
+      "time_to_request_ms": 41,
+      "first_content_frame_ms": 947,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  },
+  {
+    "phase": "before",
+    "variant": "web",
+    "case": "override",
+    "prompt": "Untuk jawaban ini, saya ingin satu paragraf yang rinci tanpa daftar. Jelaskan urutan mengganti parse(text) agar input kosong menghasilkan [], menambahkan test pytest, lalu menjalankan pytest tests/test_parser.py. Saya yang mengedit sendiri.",
+    "system_sha256": "373c9e47e68606df1b753772285104927157016c1e89853ee44b9a40817a5765",
+    "exit_code": 0,
+    "response": {
+      "duration_api_ms": 5098,
+      "stop_reason": "end_turn",
+      "session_id": "02403e94-77be-4c09-a5a5-96646e90c75e",
+      "total_cost_usd": 0.0115818,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 693,
+        "cache_read_input_tokens": 16779,
+        "output_tokens": 545,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 693,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 545,
+            "cache_read_input_tokens": 16779,
+            "cache_creation_input_tokens": 693,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 693
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 2,
+          "outputTokens": 545,
+          "cacheReadInputTokens": 16779,
+          "cacheCreationInputTokens": 693,
+          "webSearchRequests": 0,
+          "costUSD": 0.0115818,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subagent_stats": {
+        "spawned": 0,
+        "requested": {
+          "background": 0,
+          "foreground": 0,
+          "unset": 0
+        },
+        "started_in_background": 0,
+        "max_depth": 0,
+        "spawned_by_subagents": 0,
+        "completed": 0,
+        "failed": 0,
+        "killed": {
+          "parent": 0,
+          "user": 0,
+          "system": 0
+        },
+        "refused": {
+          "depth_limit": 0,
+          "concurrency_limit": 0,
+          "budget": 0
+        },
+        "by_type": {}
+      },
+      "safety_stops": 0,
+      "is_error": false,
+      "num_turns": 1,
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "Mulai dari fungsi `parse(text)` di file parser Anda: tambahkan pengecekan di baris paling atas, misalnya `if not text or not text.strip(): return []`, supaya string kosong, `None`, dan teks yang isinya cuma spasi atau baris baru langsung menghasilkan list kosong sebelum kode lain jalan (kalau Anda ingin spasi saja tetap diproses seperti biasa, cukup pakai `if not text:`). Setelah itu buka `tests/test_parser.py`, pastikan ada `from parser import parse` (sesuaikan nama modul dengan struktur proyek Anda), lalu tambahkan fungsi test baru seperti `def test_parse_empty_input_returns_empty_list(): assert parse(\"\") == []`, dan kalau mau lebih lengkap, tambahkan juga `assert parse(\"   \\n\") == []` di dalamnya atau pakai `@pytest.mark.parametrize(\"text\", [\"\", \"   \", \"\\n\"])` agar tiap kasus dilaporkan terpisah. Terakhir, simpan kedua file, buka PowerShell di folder root proyek (yang berisi folder `tests`), aktifkan virtual environment jika Anda memakainya, lalu jalankan `pytest tests/test_parser.py`; kalau semua hijau, berarti perubahan sudah benar, dan kalau ada test lama yang gagal, biasanya itu karena test tersebut mengharapkan hasil lain untuk input kosong, jadi periksa dulu pesan errornya sebelum mengubah apa pun.",
+      "ttft_ms": 5687,
+      "type": "result",
+      "duration_ms": 5719,
+      "uuid": "cc871e95-375c-4ea0-883b-421b4a05e503",
+      "ttft_stream_ms": 1559,
+      "time_to_request_ms": 612,
+      "first_content_frame_ms": 1559,
+      "queued_turn_count": 0,
+      "result_index": 0
+    }
+  }
+]

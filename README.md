@@ -104,6 +104,8 @@ No skill loader is required. Focus adapts the MIT-licensed i-have-adhd; the runt
 and WebBased distribution each retain its attribution and full license notice.
 
 Validation details: [Focus integration](docs/exec-plans/completed/focus.md).
+The [Focus contract evaluation](docs/validation/focus-contract/report.md) records
+paired model outputs, observed improvements and remaining behavioral limits.
 Setup downloads Focus from its own distribution branch. The release manifest also
 pins Focus and Andino for `--source bundled` installations. File and entry-point
 checks do not prove that a running agent has loaded the skill.
