@@ -207,3 +207,6 @@ ulang atau perubahan aktivasi untuk meninjau perubahan lokal ini.
 
 Revisi dokumen selesai. Bukti mendukung manfaat terbatas yang disebutkan di atas;
 keandalan penuh semua default dan eksekusi agent tetap belum terbukti.
+
+Cleanup, publikasi, dan update instalasi berikutnya tercatat dalam
+[delivery verification](delivery.md) dan [setup proof](setup-verification.json).

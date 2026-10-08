@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-08",
+  "removed_generated_directories": [
+    "build",
+    "src\\ai_rules.egg-info",
+    "scripts\\__pycache__",
+    "tests\\__pycache__",
+    "docs\\validation\\focus-contract\\__pycache__",
+    "src\\ai_rules\\__pycache__",
+    "src\\ai_rules\\capabilities\\__pycache__",
+    "src\\ai_rules\\catalog\\__pycache__",
+    "src\\ai_rules\\domain\\__pycache__",
+    "src\\ai_rules\\evidence\\__pycache__",
+    "src\\ai_rules\\execution\\__pycache__",
+    "src\\ai_rules\\hosts\\__pycache__",
+    "src\\ai_rules\\planning\\__pycache__",
+    "src\\ai_rules\\platform\\__pycache__",
+    "src\\ai_rules\\profiles\\__pycache__",
+    "src\\ai_rules\\release\\__pycache__",
+    "src\\ai_rules\\resolver\\__pycache__",
+    "src\\ai_rules\\state\\__pycache__",
+    "src\\ai_rules\\verification\\__pycache__",
+    "src\\ai_rules\\release\\data\\__pycache__",
+    "tests\\installer\\__pycache__"
+  ],
+  "removed_empty_source_directories": 5,
+  "gitignore_changed": false,
+  "tracked_files_removed": false,
+  "preserved": "Paired inference records, fixtures, existing plans and proof, global installer backups and user configuration"
+}
