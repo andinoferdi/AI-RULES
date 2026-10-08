@@ -11,6 +11,16 @@ support, daily tasks and ordinary conversation are valid contexts. This is one
 adaptive protocol, not a mandatory ticket lifecycle or a visible checklist.
 Codex, Claude Code, Antigravity and OpenCode are peers; the active host is primary.
 
+Before substantive work, read [routing](references/routing.md) through a permitted
+tool unless its current contents are already loaded. A slash command may inject
+this SKILL.md without loading its references; descriptions alone do not replace
+the routing table. Apply matching required routes before DIRECT/SIMPLE shortcuts;
+activate the selected skill before inspecting task artifacts when the request
+already establishes that need. Load only the current phase's specialists, using
+the [host contract](references/invocation-adapter.md); report blocked required routes.
+Other references remain conditional: read handoff on resume and execution-plan
+when checkpointed work needs it, not every reference for a brief status question.
+
 ## Separate intent from factual state
 
 For intent, scope and decisions, follow the latest user instruction, applicable
@@ -130,14 +140,10 @@ history; keep CURRENT STATE, CURRENT PHASE, EVIDENCE and concrete NEXT ACTION cu
 
 ## Route and finish
 
-Evaluate [routing](references/routing.md) before substantive task work. Apply matching
-required routes before DIRECT/SIMPLE shortcuts; add conditional capabilities only
-for evidenced needs in the current phase. Zero specialists is valid when no required
-route or explicit specialist choice applies. Honor explicit skill choices and native
-invocation permissions; report blocked required routes instead of silently skipping.
-When the request already establishes a required need, activate that skill before
-inspecting task artifacts. Do not batch-load diagnosis, regression and completion
-skills: activate each only when entering its work, never for an anticipated phase.
+Add conditional capabilities only for evidenced needs in the current phase. Zero
+specialists is valid when no required route or explicit specialist choice applies.
+Honor explicit skill choices and native invocation permissions. Do not batch-load
+diagnosis, regression and completion skills for anticipated phases.
 One lifecycle owner coordinates the work; specialists
 do not start competing plans. No automatic bootstrap via `using-superpowers`,
 `using-agent-skills` or the retired `agent-skills` router. Memory and graphs are
