@@ -7,6 +7,7 @@ import shutil
 import subprocess
 import tempfile
 import unittest
+from types import SimpleNamespace
 from unittest.mock import patch
 
 from ai_rules import cli
@@ -15,6 +16,15 @@ from ai_rules.interactive import InteractiveSelection
 
 
 class LiveUpdateTests(unittest.TestCase):
+    def test_antigravity_setup_without_windows_stat_constants(self):
+        from ai_rules.hosts import invocation
+
+        with patch.object(invocation, "stat", SimpleNamespace()):
+            for _ in range(2):
+                result, output = self.run_cli("--host", "antigravity-cli")
+                self.assertEqual(0, result, output)
+        self.assertTrue((self.target.parent / "focus/SKILL.md").is_file())
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
@@ -26,11 +36,19 @@ class LiveUpdateTests(unittest.TestCase):
         self.git(self.remote, "config", "user.email", "fixture@example.invalid")
         self.commit("old", extra=True)
         self.old = self.git(self.remote, "rev-parse", "HEAD").strip()
+        self.git(self.remote, "checkout", "-b", "focus")
+        (self.remote / "SKILL.md").write_text(
+            "---\nname: focus\ndescription: Fixture communication skill\n---\nAnswer first.\n",
+            encoding="utf-8")
+        self.git(self.remote, "add", "SKILL.md")
+        self.git(self.remote, "commit", "-m", "focus fixture")
+        self.git(self.remote, "checkout", "andino-workflow")
         self.project = self.root / "project"
         self.target = self.project / ".agents/skills/andino-workflow"
         self.state = self.root / "state"
         self.catalog = load_catalog()
         self.catalog.require_capability("andino-workflow").source["repository"] = str(self.remote)
+        self.catalog.require_capability("focus").source["repository"] = str(self.remote)
         self.catalog_patch = patch.object(cli, "load_catalog", return_value=self.catalog)
         self.catalog_patch.start()
         self.addCleanup(self.catalog_patch.stop)
@@ -196,7 +214,7 @@ class LiveUpdateTests(unittest.TestCase):
         self.assertEqual(0, result, output)
         self.assertEqual(1, len(list((self.state / "backups").glob("*/andino-workflow"))))
         lock = json.loads((self.state / "lock.json").read_text())
-        self.assertEqual(3, len(lock["targets"]))
+        self.assertEqual(6, len(lock["targets"]))
         self.assertEqual("verified", lock["status"])
 
     def test_edit_after_planning_is_not_overwritten(self):
@@ -396,13 +414,13 @@ class LiveUpdateTests(unittest.TestCase):
                 from ai_rules.hosts.invocation import invocation_paths, invocation_ready
                 from ai_rules.domain.statuses import Scope
                 for adapter in adapters.values():
-                    for identifier in ("andino-workflow", "ai-codebase-rescue", "skripsi-skill"):
+                    for identifier in ("andino-workflow", "focus", "ai-codebase-rescue", "skripsi-skill"):
                         skill = adapter.skill_target(Scope.GLOBAL) / identifier / "SKILL.md"
                         self.assertTrue(skill.is_file(), str(skill))
                         self.assertTrue(all(invocation_ready(p) for p in invocation_paths(adapter, Scope.GLOBAL, identifier)))
                 lock = json.loads((home / ".ai-rules/lock.json").read_text())
                 self.assertEqual("verified", lock["status"])
-                self.assertEqual(15, len(lock["targets"]))
+                self.assertEqual(20, len(lock["targets"]))
                 self.assertTrue(all(t["action"] == "INSTALL" for t in lock["targets"]))
                 self.assertIn("Codex: $andino-workflow", output.getvalue())
                 self.assertIn("Claude Code: /andino-workflow", output.getvalue())

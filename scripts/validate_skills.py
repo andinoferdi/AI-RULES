@@ -10,8 +10,8 @@ from urllib.parse import unquote
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RUNTIME_SKILLS = ("andino-workflow", "ai-codebase-rescue", "skripsi-skill")
-EVAL_SKILLS = ("andino-workflow", "ai-codebase-rescue", "skripsi-skill")
+RUNTIME_SKILLS = ("andino-workflow", "ai-codebase-rescue", "skripsi-skill", "focus")
+EVAL_SKILLS = RUNTIME_SKILLS
 LINK = re.compile(r"(?<!!)\[[^]]*\]\(([^)]+)\)")
 FIELD = re.compile(r"^([A-Za-z][A-Za-z0-9_-]*):[ \t]+(.+)$")
 NAME = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
@@ -152,9 +152,10 @@ def main():
     parser.add_argument("--andino-ref", default="origin/andino-workflow")
     parser.add_argument("--rescue-ref", default="origin/ai-codebase-rescue")
     parser.add_argument("--skripsi-ref", default="origin/skripsi-skill")
+    parser.add_argument("--focus-ref", default="origin/focus")
     args = parser.parse_args()
     errors = []
-    for skill, ref in zip(RUNTIME_SKILLS, (args.andino_ref, args.rescue_ref, args.skripsi_ref)):
+    for skill, ref in zip(RUNTIME_SKILLS, (args.andino_ref, args.rescue_ref, args.skripsi_ref, args.focus_ref)):
         try:
             errors.extend(package(ref, skill))
         except ValueError as exc:

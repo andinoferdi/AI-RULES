@@ -1,6 +1,6 @@
 {"schema_version":1,"profiles":[
-{"schema_version":1,"id":"minimal","display_name":"Minimal","description":"Andino Workflow","default":true,"capabilities":["andino-workflow"]},
-{"schema_version":1,"id":"engineering","display_name":"Engineering","description":"Coding, debugging, review, and documentation","default":false,"capabilities":["andino-workflow","ai-codebase-rescue"]},
-{"schema_version":1,"id":"research-skripsi","display_name":"Research / Skripsi","description":"Thesis and academic research","default":false,"capabilities":["andino-workflow","skripsi-skill"]},
-{"schema_version":1,"id":"everything","display_name":"Everything","description":"All AI-RULES first-party skills","default":false,"capabilities":["andino-workflow","ai-codebase-rescue","skripsi-skill"]}
+{"schema_version":1,"id":"minimal","display_name":"Minimal","description":"Andino Workflow with Focus communication","default":true,"capabilities":["andino-workflow","focus"]},
+{"schema_version":1,"id":"engineering","display_name":"Engineering","description":"Coding, debugging, review, and documentation","default":false,"capabilities":["andino-workflow","focus","ai-codebase-rescue"]},
+{"schema_version":1,"id":"research-skripsi","display_name":"Research / Skripsi","description":"Thesis and academic research","default":false,"capabilities":["andino-workflow","focus","skripsi-skill"]},
+{"schema_version":1,"id":"everything","display_name":"Everything","description":"All AI-RULES first-party skills","default":false,"capabilities":["andino-workflow","focus","ai-codebase-rescue","skripsi-skill"]}
 ]}

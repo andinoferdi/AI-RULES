@@ -550,10 +550,10 @@
     "id": "simple-task-zero-capability",
     "kind": "negative-trigger",
     "prompt": "Use Andino. Berapa 2 + 2?",
-    "fixture": "Ordinary arithmetic question. Many specialists/MCPs known, no external facts required.",
-    "capabilities": [],
-    "expected": "Answer 4 directly, zero specialists/tools/plan.",
-    "forbidden": "Invoke tools, registry full load, specialists or planning ceremony."
+    "fixture": "Ordinary arithmetic question. Focus is available but not loaded; many domain specialists/MCPs known, no external facts required.",
+    "capabilities": ["focus"],
+    "expected": "Load the required Focus communication skill once through the host contract, then answer 4 directly with no domain specialists, task tools or plan.",
+    "forbidden": "Skip Focus activation, repeatedly inject it, perform unrelated tool calls, load the full registry or start domain specialists/planning ceremony."
   },
   {
     "id": "idea-refine-route",

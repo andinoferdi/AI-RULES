@@ -28,7 +28,7 @@ class InteractiveSetupTests(unittest.TestCase):
         self.assertIn("Skills: ~/.agents/skills", host.description)
         self.assertEqual("engineering", engineering.value)
         self.assertEqual("Engineering", engineering.title)
-        self.assertIn("Includes: Andino Workflow, AI Codebase Rescue", engineering.description)
+        self.assertIn("Includes: Andino Workflow, Focus, AI Codebase Rescue", engineering.description)
         self.assertEqual("ai-codebase-rescue", rescue.value)
 
     def test_setup_summary_uses_human_names_and_types(self):

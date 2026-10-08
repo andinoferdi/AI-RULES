@@ -8,6 +8,7 @@ Install Andino's skills for Codex, Claude Code, OpenCode, and Antigravity. Start
 | --- | --- |
 | [`main`](https://github.com/andinoferdi/AI-RULES/tree/main) | Installer source, tests, release tooling, and validation evidence |
 | [`WebBased`](https://github.com/andinoferdi/AI-RULES/tree/WebBased) | Web/chat rules and project templates |
+| [`focus`](https://github.com/andinoferdi/AI-RULES/tree/focus) | Clear, concise, actionable communication |
 | [`andino-workflow`](https://github.com/andinoferdi/AI-RULES/tree/andino-workflow) | Adaptive workflow, capability routing, and portable checkpoints |
 | [`ai-codebase-rescue`](https://github.com/andinoferdi/AI-RULES/tree/ai-codebase-rescue) | Evidence-based stabilization of fragile codebases |
 | [`skripsi-skill`](https://github.com/andinoferdi/AI-RULES/tree/skripsi-skill) | Thesis and research guidance |
@@ -29,12 +30,12 @@ Select your agents and a profile, then confirm the installation plan:
 
 | Profile | Skills installed |
 | --- | --- |
-| Minimal | Andino Workflow |
-| Engineering | Andino Workflow + AI Codebase Rescue |
-| Research / Skripsi | Andino Workflow + Skripsi Skill |
-| Everything | All three |
+| Minimal | Andino Workflow + Focus |
+| Engineering | Andino Workflow + Focus + AI Codebase Rescue |
+| Research / Skripsi | Andino Workflow + Focus + Skripsi Skill |
+| Everything | All four |
 
-Open a new agent session or reload its window after setup. Installing all three skills does **not** activate all of them for every task. Third-party skills, plugins, and MCP servers require their own installation or connection.
+Open a new agent session or reload its window after setup. Installing all four skills does **not** activate all of them for every task. Third-party skills, plugins, and MCP servers require their own installation or connection.
 
 Run `ai-rules setup` again to update selected skills from their latest configured branches. To update the CLI itself, run these commands from a clean `main` checkout:
 
@@ -79,3 +80,30 @@ $andino-workflow Redesign landing page agar lebih mudah dibaca di mobile. Pertah
 State the outcome and important constraints directly. No list of every installed skill/MCP or multiple slash commands is needed. Andino selects and activates relevant supporting skills when the host allows it, and reports unavailable capabilities. Trivial tasks outside required routes may use no specialist.
 
 When checking compliance, look for routing-reference loading (unless already in context), actual supporting-skill activation when required, and task evidence. Not every reference needs to be read; a claimed skill name alone is not proof of use.
+
+## Focus
+
+Andino loads `focus` as its default communication skill, including direct answers.
+Setup resolves the dependency automatically; repeat activation reuses valid context.
+It changes communication, not task scope, investigation or verification. Higher
+instructions, explicit style requests and `A. PRIORITAS` retain priority.
+
+To select Focus alone, choose it in custom setup or run:
+
+```sh
+ai-rules setup --capability focus
+```
+
+After reloading the host, use `$focus [request]` in Codex or `/focus [request]` in
+Claude Code, OpenCode and Antigravity. It stays active in the conversation until
+you change the preference (for example, `stop focus`). Rerun setup to update it.
+
+For ChatGPT and other web chatbots, copy `A. PRIORITAS` and `X. Focus` from the
+[WebBased README](https://github.com/andinoferdi/AI-RULES/tree/WebBased#x-focus).
+No skill loader is required. Focus adapts the MIT-licensed i-have-adhd; the runtime
+and WebBased distribution each retain its attribution and full license notice.
+
+Validation details: [Focus integration](docs/exec-plans/completed/focus.md).
+Setup downloads Focus from its own distribution branch. The release manifest also
+pins Focus and Andino for `--source bundled` installations. File and entry-point
+checks do not prove that a running agent has loaded the skill.

@@ -85,6 +85,7 @@ def reconcile_invocations(plan, catalog, adapters, project_root=None):
         skill = root / target.capability_id if root is not None else None
         if (target.host_id in {"antigravity-cli", "antigravity-ide"} and skill is not None
                 and skill.is_dir()
+                and hasattr(stat, "IO_REPARSE_TAG_MOUNT_POINT")
                 and getattr(skill.lstat(), "st_reparse_tag", None) == stat.IO_REPARSE_TAG_MOUNT_POINT):
             targets.append(replace(target, action=ReconciliationAction.BLOCK, status=TargetStatus.BLOCKED,
                                    reason=f"Antigravity skill discovery skips this Windows junction: {skill}. "

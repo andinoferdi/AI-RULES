@@ -18,8 +18,9 @@ class ResolverReconciliationTests(unittest.TestCase):
         plan = resolver.resolve(
             ResolveRequest(hosts=("codex",), scope=Scope.GLOBAL, capabilities=(capability,))
         )
-        self.assertEqual(1, len(plan.targets))
-        return plan.targets[0]
+        matching = [target for target in plan.targets if target.capability_id == capability]
+        self.assertEqual(1, len(matching))
+        return matching[0]
 
     def test_absent_target_installs(self):
         target = self.resolve_one()
@@ -79,7 +80,9 @@ class ResolverReconciliationTests(unittest.TestCase):
     def test_multi_host_plan_is_supported(self):
         resolver = build_resolver(self.catalog, self.profiles, StaticCapabilityAdapter())
         plan = resolver.resolve(ResolveRequest(hosts=("codex", "opencode"), profile_id="minimal"))
-        self.assertEqual(2, len(plan.targets))
+        self.assertEqual({("andino-workflow", "codex"), ("focus", "codex"),
+                          ("andino-workflow", "opencode"), ("focus", "opencode")},
+                         {(t.capability_id, t.host_id) for t in plan.targets})
 
 
 if __name__ == "__main__":

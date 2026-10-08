@@ -1,0 +1,30 @@
+{
+  "source": "published GitHub branches",
+  "checks": [
+    {
+      "selection": "minimal",
+      "attempt": 1,
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "selection": "minimal",
+      "attempt": 2,
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "selection": "focus",
+      "attempt": 1,
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "selection": "focus",
+      "attempt": 2,
+      "exit_code": 0,
+      "status": "PASS"
+    }
+  ],
+  "live_host_activation": "NOT_VERIFIED"
+}
