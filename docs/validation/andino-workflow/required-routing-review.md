@@ -51,6 +51,12 @@ ran successfully from WebBased and reported all five targets current. WebBased
 working files remained unchanged. This does not rebuild older standalone release
 executables; their online latest-source path already follows the updated branch.
 
+After pushing runtime `6cb04a4` and main delivery `9d4a1cb`, final verification
+confirmed all five local targets have the exact runtime commit/content hash and
+clean Git state, four distinct skill-clone backups exist (CLI shares Codex's path),
+the original global-config backup hash matches, installed release sequence is 4,
+and the actual installed CLI again reports five NO_OP targets from WebBased.
+
 ## Ten final-runtime live cases
 
 Fresh Windows Codex CLI actors received the raw request, fixture facts, actual

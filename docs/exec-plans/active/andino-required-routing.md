@@ -15,7 +15,7 @@ User explicitly authorized commit/push in the final instruction; no force push.
 
 ## Current state
 
-CURRENT PHASE: publication and local setup verification.
+CURRENT PHASE: implementation/publication delivered; behavioral acceptance remains partial.
 Runtime baseline: effc3b8d7326d121317da86aff205de7c0bb0e80.
 Main baseline: 20b840f059a6c6c25b41dfe498119735caa30c9f.
 WebBased checkout remains untouched and clean. Separate managed worktrees:
@@ -36,11 +36,13 @@ Live actor processes are isolated test executions, not implementation delegation
 | --- | --- | --- |
 | Drift inspection and isolated checkouts | DONE | Remote refs, clean WebBased and local clones checked |
 | Approved patches and verification | DONE | Runtime/global patch; 124 tests PASS; ten live samples reviewed with honest limits |
-| Publication, setup and local alignment | IN_PROGRESS | Runtime pushed; main release pin/report and package repair pending |
+| Publication, setup and local alignment | DONE | Runtime 6cb04a4 and main delivery 9d4a1cb pushed; installed CLI verified from WebBased; all five local targets match commit/hash and report NO_OP |
 
 ## NEXT ACTION
 
-Publish main release metadata and evidence, replace broken editable ai-rules install
-with the reviewed ordinary package, then verify installed CLI and unchanged WebBased.
-Behavioral follow-up remains: activation-order failures and blocked fixture operations;
-see docs/validation/andino-workflow/required-routing-review.md. Do not claim all-host PASS.
+Behavioral follow-up: on an authenticated host permitting fixture reads/writes,
+rerun the two activation-order failures and four NOT_VERIFIED cases from
+evals/andino-required-routing.json with hidden oracles. Compare native activation
+events against the current commit and retain failures. See
+docs/validation/andino-workflow/required-routing-review.md. No implementation,
+publication or local setup action remains; do not claim all-host behavioral PASS.
