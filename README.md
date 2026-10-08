@@ -2,7 +2,7 @@
 
 Template aturan AI yang ringkas dan reusable. A wajib tiap sesi, B bila butuh persona kritis, D-V dan X pilih sesuai kebutuhan dan kirim bersama A. Z untuk reset konteks dan arah percakapan.
 
-**Untuk project coding:** pakai folder `put-in-your-projects/` (chat-rules, code-rules, be/fe-rules, token, git-*, Agents, dokumen project). Bootstrap repo pakai `1. First-prompt.md`, penguat tiap prompt pakai `2. Send-to-every-prompt.md`. Adaptasi ke project baru: jalankan `Project Markdown Alignment Prompt.md`.
+**Untuk project coding:** pakai folder `put-in-your-projects/` (chat-rules, code-rules, be/fe-rules, token, git-*, Agents, dokumen project). Bootstrap repo pakai `1. First-prompt.md`, penguat tiap prompt pakai `2. Send-to-every-prompt.md`. Adaptasi ke project baru: jalankan `Project Markdown Alignment Prompt.md`. Cleanup akhir + commit + push: jalankan `Repository Commit Push Prompt.md`.
 
 **Placeholder:** ganti `[PROJECT_NAME]`, `[STACK_BACKEND]`, `[STACK_FRONTEND]`, `[DATABASE]`, `[MAIN_BRANCH]`, `[STAGING_BRANCH]`, `[INTEGRASI_EKSTERNAL]` sesuai project Anda.
 
