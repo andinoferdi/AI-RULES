@@ -8,6 +8,7 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 
 | ID | Type | Family/provider | Purpose |
 | --- | --- | --- | --- |
+| [focus](#focus) | skill | AI-RULES | Default communication on every Andino invocation |
 | [systematic-debugging](#systematic-debugging) | skill | Superpowers | Root-cause investigation |
 | [test-driven-development](#test-driven-development) | skill | Superpowers | Executable regression contract |
 | [verification-before-completion](#verification-before-completion) | skill | Superpowers | Evidence before completion |
@@ -1058,3 +1059,15 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 
 Contracts use inspected installed skill IDs and actual host tool metadata. Upstream reference points: [Superpowers](https://github.com/obra/superpowers), [Agent Skills](https://github.com/addyosmani/agent-skills), [Ponytail](https://github.com/DietrichGebert/ponytail), [Claude-Mem](https://cmem.ai/), [UI/UX Pro Max](https://uupm.cc/), [Taste](https://www.tasteskill.dev/), [Cloner](https://github.com/JCodesMore/ai-website-cloner-template), [Graphify](https://graphify.net/), [Anti-Slop](https://github.com/miqdadbadjuber/anti-slop), [Context7](https://github.com/upstash/context7), [Playwright](https://github.com/microsoft/playwright-mcp), [DevTools](https://github.com/ChromeDevTools/chrome-devtools-mcp), [Git MCP](https://github.com/modelcontextprotocol/servers/tree/main/src/git), [Draw.io](https://www.npmjs.com/package/@drawio/mcp), [StarUML](https://www.npmjs.com/package/staruml-mcp-server), [Premiere](https://github.com/hetpatel-11/Adobe_Premiere_Pro_MCP), [Cheat Engine](https://github.com/miscusi-peek/cheatengine-mcp-bridge). These links identify upstreams, not installed versions or universal tool names. Refresh the selected contract from actual host schemas when version drift matters.
 
+
+## focus
+
+- Type/provider: skill / AI-RULES first-party distribution `focus`.
+- Need: default communication on every Andino invocation, including DIRECT work;
+  also independently invokable through the host's normal skill entry point.
+- Mode: AUTO for permitted skill activation, subject to the host contract and
+  explicit user overrides. Missing or denied activation is UNAVAILABLE, not USED.
+- Use: load the actual installed SKILL.md once per valid context and apply it to
+  communication. Do not repeat its body or start another lifecycle.
+- Boundary: presentation only; retain task scope, evidence, verification, safety,
+  requested depth and output formats. No new mutation authority.

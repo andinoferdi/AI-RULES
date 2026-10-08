@@ -2,6 +2,12 @@
 
 ## Plan depth is not capability routing
 
+`focus` is the required default communication layer for every Andino invocation,
+including direct answers. Activate it using the host contract unless already
+loaded with valid context. Honor explicit user overrides and invocation controls;
+report unavailability without duplicating Focus's body here. This adds no task
+lifecycle or domain-specialist requirement.
+
 Select capabilities by the current unresolved need, not by a compulsory planning
 stage or coding taxonomy. DIRECT may need no tools; GROUNDED needs bounded context;
 INVESTIGATIVE may need hypothesis testing. Independently choose EPHEMERAL or

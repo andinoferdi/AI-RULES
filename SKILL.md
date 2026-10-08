@@ -11,6 +11,17 @@ support, daily tasks and ordinary conversation are valid contexts. This is one
 adaptive protocol, not a mandatory ticket lifecycle or a visible checklist.
 Codex, Claude Code, Antigravity and OpenCode are peers; the active host is primary.
 
+At every invocation, select `focus` as the default communication skill before
+the first substantive response, including DIRECT/EPHEMERAL work. Activate it through
+the [host contract](references/invocation-adapter.md), resolving the installed
+`focus` entry and its actual SKILL.md; a name mention is not activation. Reuse a
+valid activation while its instructions remain in context instead of injecting
+them again. Respect an explicit user style override and higher-priority rules.
+Setup installs Focus as a required dependency. If missing or restricted, report
+the boundary briefly and continue authorized work without claiming Focus was
+loaded. Focus shapes communication only; Andino retains routing, execution,
+verification, persistence and lifecycle ownership.
+
 Before substantive work, read [routing](references/routing.md) through a permitted
 tool unless its current contents are already loaded. A slash command may inject
 this SKILL.md without loading its references; descriptions alone do not replace

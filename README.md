@@ -1,5 +1,12 @@
 # Andino Workflow
 
+Focus is the default communication layer on every invocation, including direct
+answers. AI-RULES setup installs the `focus` dependency and exposes its standalone
+entry point. Andino activates the installed skill through the host contract once
+per valid context, respecting user overrides and host restrictions. It never
+copies the Focus prompt into a second runtime policy. Missing or denied activation
+is reported; task execution and lifecycle remain owned by Andino.
+
 A portable problem-solving protocol for AI assistants and agents. It supports
 development, troubleshooting, research, decision support, daily tasks and ordinary
 conversation. It distinguishes the user's desired outcome from a proposed factual
