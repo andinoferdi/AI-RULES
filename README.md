@@ -81,6 +81,25 @@ State the outcome and important constraints directly. No list of every installed
 
 When checking compliance, look for routing-reference loading (unless already in context), actual supporting-skill activation when required, and task evidence. Not every reference needs to be read; a claimed skill name alone is not proof of use.
 
+## External resources — manual installation
+
+Third-party skills/plugins and MCP servers must be installed or connected separately using their own setup instructions. Select only the capabilities relevant to your task.
+
+Skills and plugin families: [Superpowers](https://github.com/obra/superpowers),
+[Ponytail](https://github.com/DietrichGebert/ponytail),
+[UI/UX Pro Max](https://uupm.cc/), [Taste Skill](https://www.tasteskill.dev/),
+[AI Website Cloner](https://github.com/JCodesMore/ai-website-cloner-template),
+[Graphify](https://graphify.net/), [Anti-Slop](https://github.com/miqdadbadjuber/anti-slop), and [Agent Skills](https://github.com/addyosmani/agent-skills).
+
+MCP servers: [Context7](https://github.com/upstash/context7),
+[Playwright MCP](https://github.com/microsoft/playwright-mcp),
+[Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp),
+[Git MCP](https://github.com/modelcontextprotocol/servers/tree/main/src/git),
+[Draw.io MCP](https://www.npmjs.com/package/@drawio/mcp),
+[StarUML MCP](https://www.npmjs.com/package/staruml-mcp-server), and specialized/on-demand
+[Premiere Pro MCP](https://github.com/hetpatel-11/Adobe_Premiere_Pro_MCP) and
+[Cheat Engine MCP bridge](https://github.com/miscusi-peek/cheatengine-mcp-bridge).
+
 ## Focus
 
 Andino loads `focus` as its default communication skill, including direct answers.
