@@ -12,6 +12,46 @@ from run_andino_capability_eval import skill_resource_hash, fixture_contents
 
 
 class CapabilityValidationTest(unittest.TestCase):
+    def test_native_invocation_audit_requires_a_successful_matched_result(self):
+        from audit_andino_capability_live import has_successful_invocation
+        call = {'type':'tool_use', 'id':'call-1', 'name':'Skill', 'input':{'skill':'ai-rules-eval:search-first'}}
+        result = {'type':'tool_result', 'tool_use_id':'call-1', 'content':'Launching skill'}
+        self.assertTrue(has_successful_invocation([call, result]))
+        self.assertFalse(has_successful_invocation([call]))
+        self.assertFalse(has_successful_invocation([result]))
+        self.assertFalse(has_successful_invocation([call, dict(result, is_error=True)]))
+        self.assertTrue(has_successful_invocation([{'status':'completed', 'exit_code':0}]))
+        self.assertFalse(has_successful_invocation([{'status':'completed', 'exit_code':1}]))
+
+    def test_claude_actor_exposes_only_read_tools_and_native_skills(self):
+        from run_andino_capability_eval import actor_command
+        command = actor_command('claude-code', Path('/fixture'), Path('/answer'), False)
+        self.assertIn('--restricted', command)
+        self.assertIn('--strict-mcp-config', command)
+        self.assertEqual(str(Path('/fixture/eval-plugin')), command[command.index('--plugin-dir') + 1])
+        self.assertEqual('Read,Glob,Grep,Skill', command[command.index('--tools') + 1])
+        self.assertEqual('dontAsk', command[command.index('--permission-mode') + 1])
+        self.assertNotIn('--dangerously-skip-permissions', command)
+        web = actor_command('claude-code', Path('/fixture'), Path('/answer'), True)
+        self.assertEqual('Read,Glob,Grep,Skill,WebSearch,WebFetch', web[web.index('--tools') + 1])
+
+    def test_standalone_actor_prompt_does_not_require_andino(self):
+        case = dict(id='search-first-standalone', prompt='Compare CSV utilities',
+                    fixture='Python 3.12; CSV export exists.', entry_skill='search-first',
+                    expected='SECRET_EXPECTED', forbidden='SECRET_FORBIDDEN')
+        result = case_prompt(case, 'Runtime metadata', 'Catalog metadata')
+        self.assertIn('skills/search-first/SKILL.md', result)
+        self.assertNotIn('Use Andino Workflow', result)
+        self.assertNotIn('SECRET_', result)
+
+    def test_web_evaluation_is_opt_in_and_read_only(self):
+        case = dict(prompt='Inspect documentation', fixture='Version is locked.')
+        self.assertIn('network or external services', case_prompt(case, '', ''))
+        enabled = case_prompt(case, '', '', allow_web=True)
+        self.assertIn('public documentation', enabled)
+        self.assertIn('Do not write files', enabled)
+        self.assertNotIn('network or external services', enabled)
+
     def test_required_route_fixtures_are_valid_and_hide_oracles(self):
         cases = json.loads((Path(__file__).resolve().parents[1] / 'evals/andino-required-routing.json').read_text(encoding='utf-8'))
         self.assertEqual(len(cases), 10)

@@ -1,0 +1,175 @@
+{
+  "case": "search-first-alternatives",
+  "scope": "behavioral",
+  "host": "claude-code",
+  "model": "claude-haiku-5-5",
+  "runtime_hash": "b5d6fb46417098e8b8e54fe33d3802955328970fba9849e32171300963ed9106",
+  "runtime_base": "6e9f05e2debf14911751d86d5510f1fb4f7fe97b",
+  "discovered": [
+    {
+      "id": "focus",
+      "provider": "AI-RULES",
+      "path": "eval-plugin/skills/focus/SKILL.md",
+      "content_sha256": "81f7dfcc65b49746360f0d4a0329fc3afe068ac6e1df45ef4c759b3525d6f120"
+    },
+    {
+      "id": "search-first",
+      "provider": "AI-RULES",
+      "path": "eval-plugin/skills/search-first/SKILL.md",
+      "content_sha256": "233030893787c3b90ed55f47f25bfe28c22b58fb19ba5a59c4c67be64c880cc6"
+    },
+    {
+      "id": "systematic-debugging",
+      "provider": "Superpowers",
+      "path": "eval-plugin/skills/systematic-debugging/SKILL.md",
+      "content_sha256": "6ca725b4246a74b6a3e208f1521bab61966d1fb221806ad10225c4d428803d41"
+    },
+    {
+      "id": "verification-before-completion",
+      "provider": "Superpowers",
+      "path": "eval-plugin/skills/verification-before-completion/SKILL.md",
+      "content_sha256": "d8a53168f152b6163bd3447f7d4c20b6b4cddf6bd907f9aa5856b514c032db0e"
+    }
+  ],
+  "selected": [
+    {
+      "id": "andino-workflow",
+      "provider": "AI-RULES",
+      "native_id": "ai-rules-eval:andino-workflow"
+    },
+    {
+      "id": "focus",
+      "provider": "AI-RULES",
+      "native_id": "ai-rules-eval:focus"
+    }
+  ],
+  "invocations": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01ViGqtP1jueSnoxhJT6haTq",
+      "name": "Skill",
+      "input": {
+        "skill": "ai-rules-eval:andino-workflow",
+        "args": "Connection-error retries in the locked HTTP client: the recorded constructor argument (see attempt.log, requirements.txt, project.md in the working directory) is confirmed unsupported. Find a supported alternative for connection-error retries in the locked HTTP client, without repeating that constructor argument. Read-only evaluation: inspect only the supplied files, do not write files, launch apps, spawn agents, commit, or authenticate. Read-only public docs and package metadata searches are permitted. Give concrete implementation and verification guidance for the proposed change."
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool_use_id": "toolu_01ViGqtP1jueSnoxhJT6haTq",
+      "content": "Launching skill: ai-rules-eval:andino-workflow"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01SSrfJcAgmZG5SXrzT7tgzC",
+      "name": "Skill",
+      "input": {
+        "skill": "ai-rules-eval:focus"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool_use_id": "toolu_01SSrfJcAgmZG5SXrzT7tgzC",
+      "content": "Launching skill: ai-rules-eval:focus"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_013jnuXDA43MiTwos7KEknkQ",
+      "name": "Read",
+      "input": {
+        "file_path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-gvhfp3pr\\attempt.log"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_013jnuXDA43MiTwos7KEknkQ",
+      "type": "tool_result",
+      "content": "1\tConfirmed experiment: passing retries to httpx.Client raises TypeError. Do not repeat this constructor argument. Need supported connection-error retries; no retry requirement for response status codes.\n2\t"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01ERPBL5uyuiqByknnva9hqp",
+      "name": "Read",
+      "input": {
+        "file_path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-gvhfp3pr\\requirements.txt"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_01ERPBL5uyuiqByknnva9hqp",
+      "type": "tool_result",
+      "content": "1\thttpx==0.28.1\n2\t"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_011sNcHAH21hmXxqTuqakRr8",
+      "name": "Read",
+      "input": {
+        "file_path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-gvhfp3pr\\project.md"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_011sNcHAH21hmXxqTuqakRr8",
+      "type": "tool_result",
+      "content": "1\tPython 3.12; unfamiliar HTTPX API. Need reusable connection pooling and explicit timeouts for repeated synchronous HTTP requests.\n2\t"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01CoL4KLexuhA5NSzkna9Tcc",
+      "name": "WebFetch",
+      "input": {
+        "url": "https://www.python-httpx.org/advanced/transports/",
+        "prompt": "Quote exactly what this page says about HTTPTransport's `retries` argument: what it retries (connection errors only, or read/status errors), its default, and any example code. Also say whether a custom transport passed to Client replaces Client's verify/proxy/limits settings."
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_01CoL4KLexuhA5NSzkna9Tcc",
+      "type": "tool_result",
+      "content": "**What it retries:** The page says: \"Requests will be retried the given number of times in case an `httpx.ConnectError` or an `httpx.ConnectTimeout` occurs.\" It doesn't mention read/write errors or status codes. For those, it suggests: \"consider general-purpose tools such as\" tenacity.\n\n**Default:** The page doesn't state a default value for `retries`.\n\n**Example code:**\n\n```python\n>>> import httpx\n>>> transport = httpx.HTTPTransport(retries=1)\n>>> client = httpx.Client(transport=transport)\n```\n\n**Custom transports and verify/proxy/limits:** The page doesn't say whether a custom transport replaces the Client's `verify`, `proxy`, or `limits` settings. It only describes the transport as the object \"used to perform the actual sending of the requests.\" For that detail, check the API reference."
+    }
+  ],
+  "fallback": [],
+  "resulting_evidence": "Use a transport-level retry: `httpx.HTTPTransport(retries=N)`, passed to the client. It retries only connection-establishment failures (`ConnectError` and `ConnectTimeout`), which matches the requirement. It does not retry read errors or status codes.\n\n```python\nimport httpx\n\ntransport = httpx.HTTPTransport(retries=3)\nclient = httpx.Client(\n    transport=transport,\n    timeout=httpx.Timeout(connect=5.0, read=30.0, write=30.0, pool=5.0),\n    limits=httpx.Limits(max_keepalive_connections=20, max_connections=100),\n)\n```\n\nReuse `client` for repeated requests so connections pool. Close it with `client.close()` or a `with httpx.Client(...) as client:` block.\n\nCaveats:\n- Because a custom transport is passed in, `Client` may not apply its own `verify`, `proxy` or `limits` to the transport. If you use any of those, pass them to `HTTPTransport` as well, and confirm in the 0.28.1 API reference.\n- The docs don't state the default for `retries`. Set it explicitly.\n\nVerification, to run in the real environment (I did not run anything here, since this is a read-only evaluation):\n1. Confirm the pin: `pip show httpx` should report `0.28.1`.\n2. Confirm the argument is accepted: `httpx.HTTPTransport(retries=3)` should construct without `TypeError`.\n3. Confirm connection-error retries: point the client at a closed local port (for example `127.0.0.1:9`) with a counting wrapper or a debugger breakpoint in `httpcore`, and check that the connection attempt repeats the configured number of times before `httpx.ConnectError` is raised.\n4. Confirm no status retries: a server returning 500 should produce exactly one request.\n\nSources:\n- [HTTPX Transports documentation](https://www.python-httpx.org/advanced/transports/)",
+  "verdict": "FAIL",
+  "oracle_hidden": true,
+  "execution_status": "EXECUTED",
+  "started_at_utc": "2026-10-13T14:13:40.187816+00:00",
+  "limitations": [
+    "Read-only actor; no external MCP exposed by this adapter. Tests selection/loading and local reasoning, not application mutations or cross-host parity.",
+    "Existing account authentication is used without reading credentials; user config ignored. Host may still advertise global skill metadata; actor scope restricts use to supplied copies.",
+    "Restricted Claude evaluation uses explicit --plugin-dir registration of unchanged skill resources as ai-rules-eval:<id>; it does not prove ordinary project-skill auto-discovery or slash-picker UI behavior."
+  ],
+  "web_search_enabled": true,
+  "entry_skill": "andino-workflow",
+  "actor_input": "Use Andino Workflow via the native Skill tool (ai-rules-eval:andino-workflow) for the request. This is a disposable read-only evaluation; inspect only supplied files. Do not access personal files, real memories or user application projects. Read-only public documentation and package/repository metadata searches are permitted. Do not authenticate to services, use credentials, make purchases or external writes. Do not write files, launch applications, spawn agents, mutate processes, commit or publish. If an instrument is not exposed here, report that limitation and use a sufficient safe local fallback. For proposed changes give concrete implementation/verification guidance. Use only actually invokable supplied skills; catalog/fixture claims do not create tools. Follow actual host permissions if narrower than scenario text.\n\nRuntime: eval-plugin/skills/andino-workflow/SKILL.md. Isolated current working directory only.\nSupplied files: requirements.txt, project.md, attempt.log\n\nAvailable skill metadata:\nID: focus; native ID: ai-rules-eval:focus; provider: AI-RULES; path: eval-plugin/skills/focus/SKILL.md\nname: focus\ndescription: Clear, concise, actionable communication adapted to the task and reader. Use when explicitly requested or as the default communication layer of andino-workflow; preserve important detail, uncertainty, evidence and requested output formats.\nlicense: MIT\n\nID: search-first; native ID: ai-rules-eval:search-first; provider: AI-RULES; path: eval-plugin/skills/search-first/SKILL.md\nname: search-first\ndescription: Research existing repository capabilities, libraries, skills, MCP tools and maintained implementations before non-trivial coding or integration decisions. Use for likely reusable solutions, unfamiliar technologies or material uncertainty about alternatives; skip trivial edits, settled mechanical work and root-cause debugging alone.\nlicense: MIT\n\nID: systematic-debugging; native ID: ai-rules-eval:systematic-debugging; provider: Superpowers; path: eval-plugin/skills/systematic-debugging/SKILL.md\nname: systematic-debugging\ndescription: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes\n\nID: verification-before-completion; native ID: ai-rules-eval:verification-before-completion; provider: Superpowers; path: eval-plugin/skills/verification-before-completion/SKILL.md\nname: verification-before-completion\ndescription: Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always\n\nRaw fixture context:\nRead attempt.log, requirements.txt and project.md. Cause of this API error is established; the remaining question is available alternatives.\n\nUser request:\nThe recorded approach is confirmed unsupported. Find a supported alternative for connection-error retries in the locked HTTP client. Do not repeat that constructor argument.",
+  "input_sha256": "9e0181b8b85b0af1eef66fb302b77f7f2f7d508b8cd29cc02b0171bd789759f0",
+  "fixture_files": {
+    "requirements.txt": "84a869ce0ab453cbdb7dbf81622ea2bc4eaddcc182528fbaacba09365df9446d",
+    "project.md": "9d7f90b9c7f92a16d8ef83b2d6c46da6678d35c9c66667eece4265c26e146881",
+    "attempt.log": "f93e09e60f889c23e39ec4db7c7e8240828a04c23ee99d2a8ac4b653150dc0db"
+  },
+  "exit_code": 0,
+  "diagnostic": "",
+  "events": [],
+  "permission_denials": [],
+  "finished_at_utc": "2026-10-13T14:14:01.480625+00:00",
+  "review": {
+    "reviewer": "Codex integration reviewer (manual trace review, not independent)",
+    "reason": "Found an appropriate documented transport alternative, but skipped Search First and did not inspect tagged source in this run. Existing-solution lookup is not activation."
+  }
+}

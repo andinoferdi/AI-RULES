@@ -26,7 +26,7 @@ class FocusSelectionTests(unittest.TestCase):
 
     def test_workflow_selection_installs_focus_without_extra_user_selection(self):
         plan = self.resolve(capabilities=("andino-workflow",))
-        self.assertEqual({"andino-workflow", "focus"}, {t.capability_id for t in plan.targets})
+        self.assertEqual({"andino-workflow", "focus", "search-first"}, {t.capability_id for t in plan.targets})
 
     def test_focus_can_be_selected_without_workflow(self):
         catalog = load_catalog()
@@ -66,7 +66,7 @@ class FocusSetupTests(unittest.TestCase):
         self.git("init", "-b", "focus")
         self.git("config", "user.name", "Fixture")
         self.git("config", "user.email", "fixture@example.invalid")
-        for identifier in ("focus", "andino-workflow"):
+        for identifier in ("focus", "andino-workflow", "search-first"):
             if identifier != "focus":
                 self.git("checkout", "--orphan", identifier)
                 self.git("rm", "-rf", ".")
@@ -82,7 +82,7 @@ class FocusSetupTests(unittest.TestCase):
             self.git("add", ".")
             self.git("commit", "-m", identifier)
         catalog = load_catalog()
-        for identifier in ("focus", "andino-workflow"):
+        for identifier in ("focus", "andino-workflow", "search-first"):
             catalog.require_capability(identifier).source["repository"] = str(self.upstream)
         self.catalog = catalog
         mocked = patch.object(cli, "load_catalog", return_value=catalog)
