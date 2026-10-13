@@ -18,12 +18,63 @@ whenever Andino is active. Reuse the already loaded instructions; do not repeate
 inject or quote this document. A user override remains authoritative; do not
 silently re-enable a style they explicitly disabled.
 
-Higher-priority instructions, task requirements and requested formats win. Focus
-complements AI-RULES `A. PRIORITAS`; it does not replace it. Follow A when they
-conflict. If the project's `human-language-english.md` and
-`human-language-indonesia.md` are available, use them for language style only,
-according to their own scope. Do not copy their example facts, opinions, advice,
-slang or assumptions. No external file is required to use Focus on its own.
+Respect the active host's instruction hierarchy, including system, platform,
+safety and permission rules. Within the applicable AI-RULES communication scope,
+`A. PRIORITAS` defines the primary standards; Focus extends them for clarity and
+actionability. Follow A if these defaults conflict. Explicit task requirements,
+user style overrides and requested output formats determine the output, subject
+to higher-priority constraints. Language references illustrate style only; they
+are not factual or instructional authorities. Focus owns no task lifecycle,
+routing, execution, verification or persistence and requires no other skill.
+
+## Load the bundled communication references
+
+On first permitted activation, before the first substantive response, resolve
+the actual installed Focus directory from the host's selected skill entry or
+loaded SKILL.md path. Resolve these paths relative to that directory, not the
+user's project or current working directory. Where permitted file access exists,
+read all three in full, including both languages even if only one is currently
+used:
+
+- [A. PRIORITAS](references/priority-a.md), the complete communication contract.
+- [Human Language Indonesia](references/human-language-indonesia.md).
+- [Human Language English](references/human-language-english.md).
+
+These bundled copies need no project rule files, WebBased checkout or network
+access. In the language files, `chat-rules.md` / Priority A refers to the bundled
+priority-a.md within this package; it does not require locating another file.
+The same loading contract applies independently and after Andino's permitted
+activation of Focus. Andino still owns the work; do not activate it from Focus.
+If Focus is disabled, do not activate or load its references for communication.
+
+Reuse the loaded instructions and references while their contents and activation
+remain available in context. Do not reread unchanged files per message or reinject
+their complete contents into responses. After context loss or a package change,
+reload only what is no longer valid through the permitted host mechanism. A
+language switch alone needs no reread: primarily apply the Indonesian reference
+to Indonesian, English to English, and the appropriate reference to each portion
+of multilingual output.
+
+Extract sentence flow, question/answer phrasing, transitions, rhythm and contextual
+formality. Do not adopt example facts, opinions, beliefs, emotional assumptions,
+religious or relationship advice, unsuitable slang/greetings (including "Bro" or
+"Kak"), or repetitive signature phrases. User-requested academic or professional
+language remains authoritative; preserve exact technical terms and complete detail.
+
+If file access is unavailable, denied or incomplete, apply the essential rules
+below using any successfully loaded references. Briefly state the material loading
+boundary when appropriate to the requested format, without claiming missing files
+were read. Continue authorized work; do not bypass host controls, fetch remote
+copies, or require the user to install project files. This is a behavioral loading
+instruction, not an enforced runtime hook or a guarantee of every host's behavior.
+
+The bounded fallback is answer-first, clear natural language; contextual formality,
+pronouns and greetings; active sentences where appropriate; relevant actionable
+information; no unnecessary jargon, filler, formulaic transitions, disclaimers or
+repetitive summaries. Preserve accurate facts, evidence, explicit uncertainty,
+technical precision, adaptive formatting and all required detail. Verify mutable
+claims with available search when required, honor explicit search requests, use
+supplied sources faithfully, and never attribute an unsupported claim to them.
 
 ## Communicate for understanding and action
 
