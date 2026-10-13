@@ -49,9 +49,9 @@ Complete — implementation and verification finished locally.
   activation claimed from source inspection.
 
 ## NEXT ACTION
-Review the local diff and, if publication is desired, obtain explicit authorization
-before pushing the three branches. Remote installation and CI remain unverified
-until those branches are published.
+The implementation branches are published. Merging the integration branch into
+`main`, creating a pull request, and publishing a release remain separate actions
+that require their own authorization.
 
 ## Verification progress
 - Targeted latest/pinned installs used actual committed runtime snapshots on all
@@ -100,3 +100,7 @@ until those branches are published.
 - Staged diff checking and targeted secret-pattern inspection passed. The test log
   was normalized from UTF-16 to UTF-8; prior behavioral traces remain as useful
   audit evidence.
+- Published `search-first` at b5596b4d47f498adeef24b689f0d44a153cf4f0d,
+  `andino-workflow` at 59529af060a516ac197ff17481e3a8f7134c4ba8, and
+  `codex/search-first-integration` at 6432d02c6c488af6e9f6017e96d1e58aaee3a180.
+  Remote installation validation passed after fetching the published branches.
