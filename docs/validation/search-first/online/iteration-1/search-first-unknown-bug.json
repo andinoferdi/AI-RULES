@@ -1,0 +1,172 @@
+{
+  "case": "search-first-unknown-bug",
+  "scope": "behavioral",
+  "host": "claude-code",
+  "model": "claude-haiku-5-5",
+  "runtime_hash": "c4f900bb0f92ae0902e0b438d6e2f89a0c9a396b95343198bc7498dd3e707c2e",
+  "runtime_base": "59529af060a516ac197ff17481e3a8f7134c4ba8",
+  "discovered": [
+    {
+      "id": "search-first",
+      "provider": "AI-RULES",
+      "path": "eval-plugin/skills/search-first/SKILL.md",
+      "content_sha256": "6c181b384a7afc4e4527731284065e049ad70236521a75064cd7aec80fb5b053"
+    },
+    {
+      "id": "focus",
+      "provider": "AI-RULES",
+      "path": "eval-plugin/skills/focus/SKILL.md",
+      "content_sha256": "008bc5e7d221526b3a6509d3d4bce4198e9ae343b0940e7c611d049843783554"
+    },
+    {
+      "id": "systematic-debugging",
+      "provider": "superpowers",
+      "path": "eval-plugin/skills/systematic-debugging/SKILL.md",
+      "content_sha256": "6ca725b4246a74b6a3e208f1521bab61966d1fb221806ad10225c4d428803d41"
+    }
+  ],
+  "selected": [],
+  "invocations": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01PUuG8H1mbXmgbVTMmAj3FK",
+      "name": "Skill",
+      "input": {
+        "skill": "ai-rules-eval:andino-workflow",
+        "args": "Investigate why login intermittently returns HTTP 500. Cause unknown. Supplied files: runtime.log, app.py. Read-only; inspect only supplied files. Propose the next discriminating check."
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool_use_id": "toolu_01PUuG8H1mbXmgbVTMmAj3FK",
+      "content": "Launching skill: ai-rules-eval:andino-workflow"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_015MQzWaz5RvFKx6kUDNM1zQ",
+      "name": "Skill",
+      "input": {
+        "skill": "ai-rules-eval:focus"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool_use_id": "toolu_015MQzWaz5RvFKx6kUDNM1zQ",
+      "content": "Launching skill: ai-rules-eval:focus"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_011sz5BuGzKk7dgki74BFLPD",
+      "name": "Skill",
+      "input": {
+        "skill": "ai-rules-eval:systematic-debugging"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool_use_id": "toolu_011sz5BuGzKk7dgki74BFLPD",
+      "content": "Launching skill: ai-rules-eval:systematic-debugging"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_013XC1aChfoLTmfqNSR7RzGh",
+      "name": "Read",
+      "input": {
+        "file_path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-px06pba6\\runtime.log"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_013XC1aChfoLTmfqNSR7RzGh",
+      "type": "tool_result",
+      "content": "1\tIntermittent login failure; response status 500. No stack trace captured. Root cause unknown.\n2\t"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01SoJDCaeqJoa9bQ46WeZBE3",
+      "name": "Read",
+      "input": {
+        "file_path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-px06pba6\\app.py"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_01SoJDCaeqJoa9bQ46WeZBE3",
+      "type": "tool_result",
+      "content": "1\tdef login(db, email):\n2\t    return db.get_user(email)\n3\t"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01F4asdT2jqJUETY556FuQXD",
+      "name": "Read",
+      "input": {
+        "file_path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-px06pba6\\eval-plugin\\skills\\andino-workflow\\references\\routing.md"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_01F4asdT2jqJUETY556FuQXD",
+      "type": "tool_result",
+      "content": "1\t# Capability routing\n2\t\n3\t## Plan depth is not capability routing\n4\t\n5\t`focus` is the required default communication layer for every Andino invocation,\n6\tincluding direct answers. Activate it using the host contract unless already\n7\tloaded with valid context. Honor explicit user overrides and invocation controls;\n8\treport unavailability without duplicating Focus's body here. This adds no task\n9\tlifecycle or domain-specialist requirement.\n10\t\n11\tSelect capabilities by the current unresolved need, not by a compulsory planning\n12\tstage or coding taxonomy. DIRECT may need no tools; GROUNDED needs bounded context;\n13\tINVESTIGATIVE may need hypothesis testing. Independently choose EPHEMERAL or\n14\tCHECKPOINTED persistence. Only the latter needs LITE/STANDARD/DEEP plan density;\n15\trecord material density changes in an existing plan. This creates no second router.\n16\t\n17\tSelect from task intent, current evidence, unresolved need, phase, consequence and\n18\tactual host availability, not keywords or an unverified diagnosis. Native\n19\tfilesystem/search/shell/Git and fetching are preferred when sufficient. Consult\n20\tonly matching entries in [the capability registry](capability-registry.md), resolve\n21\tactual provider/ID using [coexistence](capability-coexistence.md), then obey\n22\t[the host invocation contract](invocation-adapter.md). Registry metadata is not\n23\tfull skill/schema loading, installation or successful invocation.\n24\t\n25\tSkill = methodology; MCP = instrument; native = existing host facility. Select the\n26\tminimum useful combination only when each addresses a distinct need. Read relevant\n27\tinstructions/schema just-in-time, perform required preflight and use observed\n28\tresults as evidence. Reassess after new facts: keep, replace or release a capability.\n29\tRelease means stop unnecessary calls/defaults, not uninstall. Stop when acceptance\n30\tis sufficiently grounded. Simple tasks may remain DIRECT with zero specialists\n31\tonly when no required route or explicit specialist choice applies.\n32\t\n33\tREQUIRED means select and activate the matching skill before its relevant work,\n34\tsubject to native invocation controls. CONDITIONAL means select only when the\n35\tstated need is evidenced; once selected, activation is required before use.\n36\tUnmarked rows remain conditional on their stated need and boundary.\n37\tThese labels govern selection, not permission, persistence or registry AUTO modes.\n38\t\n39\tApply explicit user choices and exclusions first, then matching REQUIRED routes,\n40\tthen distinct CONDITIONAL needs. Match the requested outcome, not names appearing\n41\tin quoted examples, filenames or an inventory. Diagnose an unknown cause before\n42\tchoosing a repair; load regression support before behavior changes and completion\n43\tsupport before consequential acceptance claims. Reassess each phase; do not load\n44\tfuture phases in advance. Domain and phase routes may both apply without creating\n45\tanother owner. Resolve selected skills absent from the registry through the host\n46\tcatalog using the same invocation and coexistence contracts.\n47\t\n48\tAUTO supports relevant read-oriented lookup/normal skill loading. CONDITIONAL_AUTO\n49\twaits for the actual regression/review/quality/simplification/browser phase.\n50\tPERMISSION_GATED selects a candidate but does not authorize live/destructive\n51\tmutation. DISCOVERED, AVAILABLE, INVOKABLE, ACTIVE, USED, UNAVAILABLE and NOT_NEEDED\n52\tremain distinct; installation != activation != use. If unavailable, use a safe\n53\tsufficient native/local fallback and record it without claiming external use. If\n54\tno sufficient fallback exists, name the material gap and minimum required access.\n55\tNever install alternatives merely to satisfy registry completeness.\n56\t\n57\tOne lifecycle owner coordinates the job; supporting disciplines may change by phase.\n58\tDebugging, regression/TDD, review and completion verification may run in sequence when\n59\teach is relevant. This is phase-local support, not permission to start parallel plans.\n60\t\n61\tRespect native invocation controls. Installed does not mean model-invokable.\n62\tFor explicit-only workers, recommend the user's native invocation when that method\n63\tis needed; never reproduce a blocked skill through file reads or alternate tools.\n64\tDo ordinary task work within the available permissions without claiming a worker\n65\twas invoked. Codex implicit policy, Claude manual-only mode and OpenCode V1 deny\n66\tpermissions have different semantics; there is no universal hidden-but-callable mode.\n67\tAntigravity's scoped descriptions are behavioral guidance, not a native hard switch.\n68\t\n69\t| Need | Default worker / instrument | Boundary |\n70\t| --- | --- | --- |\n71\t| Ordinary conversation or sufficient known context | Direct response | explicit Andino invocation is valid; no forced plan, tools or specialist |\n72\t| Daily task or installation guidance | Relevant context and official instructions when needed | answer useful defaults; inspect or ask only about material environment differences |\n73\t| Current research or factual comparison | Authoritative current sources and supplied artifacts | distinguish source findings, inference and unknowns; cite evidence; no invented freshness |\n74\t| Decision support | Existing constraints, options and consequence comparison | inspect available evidence; ask only for unresolved material human preferences |\n75\t| New feature with likely reusable solutions, dependency/integration choice, new utility, unfamiliar or version-sensitive API, material external uncertainty about reported problems, maintenance or alternatives, or evidence that an approach is unsuitable | REQUIRED: search-first when this research need remains, without waiting for a web-search request | activate actual instructions before research, even offline; its contract requires actual authorized search/read actions when external evidence is needed; local sufficiency stops research; no trigger from coding alone or trivial edits; unknown cause remains with debugging |\n76\t| Thesis/research status, next steps, milestones or substantive research work | REQUIRED: skripsi-skill | activate before interpreting progress or giving research advice; preserve Andino ownership; no second plan |\n77\t| Runtime/configuration failure | Relevant logs, service/config/schema status | test environment hypotheses before assuming a source-code defect; read-only evidence does not authorize live mutation |\n78\t| Unknown bug root cause | REQUIRED: systematic-debugging | activate before reading diagnostic logs/source for the investigation, not after gathering them; reproduce or trace; distinguish observed cause from proposed diagnosis |\n79\t| Serious stabilization of a fragile/patch-heavy bounded subsystem, repeated regressions, production hardening of a fragile prototype, bounded remake candidate, or material contract/ownership/architecture drift | ai-codebase-rescue after eligibility inspection | evidence-first; smallest justified surface; AI provenance alone never justifies remediation; shared Andino plan remains lifecycle state |\n80\t| Behavior change needing a regression or executable contract | CONDITIONAL: test-driven-development | activate before implementation when an executable check can distinguish the required behavior; skip text-only edits |\n81\t| Consequential claim that implementation, repair or a mapped deliverable meets acceptance | REQUIRED: verification-before-completion | activate before the claim; use actual relevant evidence; excludes ordinary replies and trivial mechanical edits; no repeated full suites |\n82\t| Review | code-review-and-quality | targeted diff and actionable defects; no unsolicited rewrite |\n83\t| Unclear product requirements | targeted project inspection, then brainstorming if useful | inspect existing behavior first; ask only unresolved product/design choices |\n84\t| Large implementation ordering | writing-plans if useful | existing plan remains durable state; no second mandatory plan lifecycle |\n85\t| Structural relationship | existing Graphify or symbol/reference search | verify current source; no automatic graph generation |\n86\t| Historical decisions | claude-mem targeted search → timeline → selected detail | any working host integration; no automatic per-prompt retrieval |\n87\t| Visual character only | REQUIRED: design-taste-frontend (`taste-skill` alias) | landing/portfolio/redesign scope; no automatic product-UX pairing |\n88\t| UI/UX design or evaluation, accessibility, dashboard, design system | REQUIRED: ui-ux-pro-max | excludes mechanical text edits and bugs requiring no UX decision; project stack and accepted design win |\n89\t| Both visual character and distinct UX/system work | REQUIRED: both UI skills unless explicitly restricted to one | use [UI coexistence](ui-coexistence.md); one direction; each must address a distinct need |\n90\t| Fidelity clone | clone-website | preserve reference; redesign only when requested |\n91\t| Evidenced unnecessary dependency/abstraction, or existing avoidable complexity | CONDITIONAL: ponytail for proposed over-building; code-simplification for existing-code cleanup | choose one for the same concern; no activation merely because coding is involved |\n92\t| Concrete generated UI/copy/code quality defect | CONDITIONAL: matching Anti-Slop core/subskill | select only the uncovered concern; accepted direction wins; no family-wide load |\n93\t| Unresolved version-sensitive library behavior | REQUIRED evidence: version-matched official docs; CONDITIONAL instrument: Context7 | inspect dependency version first; use Context7 when available and useful, otherwise official docs; retrieving docs does not replace Search First activation for unfamiliar integration or alternatives after a failed approach; only an already-established solution's bounded API clarification skips that method |\n94\t| Acceptance needs browser interaction, rendered layout or responsive evidence | CONDITIONAL: sufficient native/CLI browser, otherwise Playwright MCP for persistent exploration | actual browser checks when required by acceptance; one surface; unavailable checks remain NOT_VERIFIED |\n95\t| Missing console/network/performance evidence not supplied by the current surface | CONDITIONAL: Chrome DevTools MCP | add only for the distinct diagnostic gap, not redundant navigation |\n96\t| Repository state where native Git unavailable/inadequate | Git MCP | native Git preferred; MCP mutations still need applicable authorization |\n97\t| Editable general diagram | Draw.io MCP | requested artifact/format; local diagram fallback if sufficient |\n98\t| Formal UML/model inspection or generation | StarUML MCP | model semantics; do not automatically invoke both diagram systems |\n99\t| Actual Premiere project operation | Premiere Pro MCP | connection -> inspect project/sequence -> discover exact tool -> authorized mutation -> read-back |\n100\t| Authorized local memory/process investigation | Cheat Engine MCP bridge | actual connectivity/target evidence and reads first; mutation/injection/shell require explicit applicable authority |\n101\t| Database/cloud/design/media operations | corresponding project MCP/plugin | enable only relevant service; authorization still applies |\n102\t\n103\tIndividual Superpowers and all registered Agent Skills categories are available\n104\tas candidate disciplines; no full-family pipeline. Agent Skills API, frontend,\n105\tCI/CD, security, performance, migration, observability, specs and shipping routes\n106\tuse their specific current-need contracts, not a second meta-router. Ponytail is\n107\tuseful for evidenced over-build risk, not automatic one-line ceremony. Graphify\n108\tquery/callers/impact/trace semantics are resolved against installed version and\n109\tindex freshness; native references remain preferred for simple relationships.\n110\tExternal Anti-Slop availability does not replace existing internal quality rules.\n111\t\n112\tFor Search First, resolve the real installed `search-first` entry and load it through\n113\tthe host invocation contract when the research need is present; this is required\n114\tselection within that condition, not an optional name mention. Use Claude Code's\n115\tSkill tool or OpenCode's exposed skill tool where applicable; do not substitute\n116\tfile reads for those native invocations. Do not substitute\n117\tthis routing row for its instructions. Use its sourced recommendation in Andino's\n118\texisting task/plan. Andino owns scope, execution, verification and checkpoints;\n119\tSearch First owns discovery and ADOPT / EXTEND / COMPOSE / BUILD recommendations.\n120\tFocus continues to shape communication. Systematic Debugging retains unknown-cause\n121\tinvestigation; failed attempts justify Search First only when a distinct question\n122\tabout available solutions remains. Context7 and official docs are version-specific\n123\tsources, Rescue owns eligible stabilization, and Skripsi owns academic research.\n124\tRespect explicit exclusions and native manual-only/deny controls. If unavailable,\n125\trecord the boundary and use sufficient permitted local/native evidence without\n126\tclaiming skill use. Require loading plus a meaningful research action/result for\n127\tUSED; installation is not activation. No second plan or automatic subagent.\n128\tFor material external uncertainty, apply Search First's proactive online contract:\n129\tactual authorized search, meaningful source reading and version-aware evaluation,\n130\tusing native tools first. A known official URL can settle a bounded lookup; open\n131\tsolution discovery or reported-problem research requires a search action. A tool\n132\tname or successful call alone does not prove useful evidence. Keep sanitized\n133\tqueries, actual URLs/actions and decision effects in existing task evidence when\n134\tverification requires it. Missing, denied, failed and insufficient research remain\n135\tdistinct; do not bypass restrictions, install a provider or invent current facts.\n136\t\n137\tFor rescue, ordinary local bugs remain on the ordinary workflow. Vague requests\n138\tsuch as \"AI wrote this\" or \"clean this\" warrant only targeted eligibility inspection,\n139\tnot automatic rescue or REMAKE. Explicit rescue/stabilization requests can select\n140\tthe specialist, subject to native availability and invocation controls above.\n141\tWhile Andino owns the task, direct rescue invocation binds to the existing plan;\n142\twhen persistence is warranted and none exists, use Andino's plan contract. The specialist\n143\treturns findings, verification evidence and a recommended next action; it owns no\n144\tindependent DONE, checkpoint or authoritative NEXT ACTION and grants no additional\n145\tmutation authorization. Andino retains lifecycle state and acceptance decisions.\n146\tRescue is an optional, separately installed package. Without it, continue ordinary\n147\tauthorized work using the available methods; do not auto-install it or claim it\n148\twas invoked. Outside an active Andino workflow, Rescue can use the host's normal\n149\ttask context independently; installing both skills does not activate both.\n150\t\n151\tAlternative planning/debugging/TDD methods remain subject to native invocation controls.\n152\tDo not combine competing planners, routers or lifecycle owners; use only the minimum\n153\tphase-local disciplines needed. Retired routers redirect to Andino without invoking a\n154\tbootstrap chain. A specialized skill's generic boilerplate never overrides the user's\n155\tconstraints, accepted repository contract or authorization.\n156\t"
+    }
+  ],
+  "fallback": [],
+  "resulting_evidence": "**Cause: not established.** The supplied evidence shows that a 500 happened, but not what raised it.\n\n**What the evidence shows**\n- `app.py` defines `login(db, email)`, which only returns `db.get_user(email)`. It has no password check, no `try`/`except`, and no logging. A 500 can only come from an exception raised inside `db.get_user`, or from the caller (not supplied), which uses the return value.\n- `runtime.log` is one line: \"Intermittent login failure; response status 500. No stack trace captured. Root cause unknown.\" It has no timestamp, request ID, exception type, or email, so failures can't be correlated with anything yet.\n\n**Hypotheses (unverified)**\n1. `db.get_user` raises intermittently, for example on a dropped connection, pool exhaustion, or timeout.\n2. `get_user` returns `None` for some emails, and the unseen caller dereferences it.\n3. The exception is raised elsewhere, such as middleware or the route wrapper. This is less likely, but the supplied files can't rule it out.\n\n**Next discriminating check**\n\n1. Temporarily log the exception at the login boundary in the affected environment. Wrap the call with `logger.exception(...)` and log the request timestamp, a request ID, and a hash of the email rather than the raw address. This is instrumentation only, not a fix.\n2. Reproduce in that environment. Log in repeatedly as an existing user and as a missing user, and under load if the failures seem load-related.\n3. Read the traceback from a failing request:\n   - Raised inside `db.get_user` → hypothesis 1. Check DB and pool logs at that timestamp.\n   - Raised in the caller on `None` → hypothesis 2. Confirm failures track missing users only.\n   - No traceback from this boundary → hypothesis 3. Check middleware and the route wrapper.\n\n**Verification:** the check succeeds when a failing request produces a traceback in the log that identifies the raising line. Until then, the cause remains unknown and no repair is supported.\n\n**Limits:** I did not run the app or the database, and I did not write files. I read only the two supplied files plus the routing reference. I activated `focus` and `systematic-debugging` but did not read Focus's bundled reference files. Search First wasn't needed, since the open question is a local root cause and the supplied evidence raises no external version or API question.",
+  "verdict": "NOT_VERIFIED",
+  "oracle_hidden": true,
+  "execution_status": "EXECUTED",
+  "started_at_utc": "2026-10-13T16:09:59.863155+00:00",
+  "limitations": [
+    "Read-only actor; no external MCP exposed by this adapter. Tests selection/loading and local reasoning, not application mutations or cross-host parity.",
+    "Existing account authentication is used without reading credentials; user config ignored. Host may still advertise global skill metadata; actor scope restricts use to supplied copies.",
+    "Restricted Claude evaluation uses explicit --plugin-dir registration of unchanged skill resources as ai-rules-eval:<id>; it does not prove ordinary project-skill auto-discovery or slash-picker UI behavior."
+  ],
+  "web_search_enabled": false,
+  "entry_skill": "andino-workflow",
+  "actor_input": "Use Andino Workflow via the native Skill tool (ai-rules-eval:andino-workflow) for the request. This is a disposable read-only evaluation; inspect only supplied files. Do not access personal files, real memories, user application projects, network or external services. Do not write files, launch applications, spawn agents, mutate processes, commit or publish. If an instrument is not exposed here, report that limitation and use a sufficient safe local fallback. For proposed changes give concrete implementation/verification guidance. Use only actually invokable supplied skills; catalog/fixture claims do not create tools. Follow actual host permissions if narrower than scenario text.\n\nRuntime: eval-plugin/skills/andino-workflow/SKILL.md. Isolated current working directory only.\nSupplied files: runtime.log, app.py\n\nAvailable skill metadata:\nID: search-first; native ID: ai-rules-eval:search-first; provider: AI-RULES; path: eval-plugin/skills/search-first/SKILL.md\nname: search-first\ndescription: Research existing local and online solutions for reusable functionality, unfamiliar integrations, version-sensitive APIs, maintenance decisions, documented alternatives or distinct external troubleshooting uncertainty. Also use for explicit technical research; skip trivial edits, settled local answers and root-cause debugging alone.\nlicense: MIT\n\nID: focus; native ID: ai-rules-eval:focus; provider: AI-RULES; path: eval-plugin/skills/focus/SKILL.md\nname: focus\ndescription: Clear, concise, actionable communication adapted to the task and reader. Use when explicitly requested or as the default communication layer of andino-workflow; preserve important detail, uncertainty, evidence and requested output formats.\nlicense: MIT\n\nID: systematic-debugging; native ID: ai-rules-eval:systematic-debugging; provider: superpowers; path: eval-plugin/skills/systematic-debugging/SKILL.md\nname: systematic-debugging\ndescription: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes\n\nRaw fixture context:\nruntime.log and app.py are the available diagnostic artifacts. No evidence establishes the cause or a need to replace a library.\n\nUser request:\nInvestigate why login intermittently returns HTTP 500. The cause is unknown; propose the next discriminating check using the available evidence.",
+  "input_sha256": "74a5760c3cccbce7ff2611558d1278aef532cfc329bdd5e02a18dde9c70bfdd4",
+  "fixture_files": {
+    "runtime.log": "f81febb7f6f324add20644387dffc89d563a43a9d49a82f6453c26a537f30da8",
+    "app.py": "057360525c62b338e3e8b1bbe41e67e3fd917c811210f48e3988d4a473a6c4c0"
+  },
+  "actor_command": [
+    "C:\\Users\\Lenovo\\.local\\bin\\claude.EXE",
+    "-p",
+    "--restricted",
+    "--strict-mcp-config",
+    "--plugin-dir",
+    "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-px06pba6\\eval-plugin",
+    "--tools",
+    "Read,Glob,Grep,Skill",
+    "--allowedTools",
+    "Read,Glob,Grep,Skill",
+    "--permission-mode",
+    "dontAsk",
+    "--no-session-persistence",
+    "--output-format",
+    "stream-json",
+    "--verbose"
+  ],
+  "tool_policy": "offline",
+  "host_version": "2.1.294 (Claude Code)",
+  "exit_code": 0,
+  "diagnostic": "",
+  "events": [],
+  "permission_denials": [],
+  "finished_at_utc": "2026-10-13T16:10:27.342057+00:00"
+}

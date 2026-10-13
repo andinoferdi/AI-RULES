@@ -1,4 +1,5 @@
 import sys
+import subprocess
 import unittest
 import tempfile
 from unittest.mock import patch
@@ -70,6 +71,22 @@ class FocusReferenceTest(unittest.TestCase):
 
 
 class PackageValidationTest(unittest.TestCase):
+    def test_cli_validates_uncommitted_search_and_workflow_directories(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            arguments = []
+            for name in ('search-first', 'andino-workflow'):
+                package = root / name
+                package.mkdir()
+                (package / 'SKILL.md').write_text(
+                    f'---\nname: {name}\ndescription: Useful research method\n---\n', encoding='utf-8')
+                (package / 'README.md').write_text('# Package\n', encoding='utf-8')
+                arguments += [f'--{name.replace("-workflow", "")}-dir', str(package)]
+            result = subprocess.run([sys.executable, 'scripts/validate_skills.py', *arguments],
+                                    cwd=Path(__file__).resolve().parents[1],
+                                    capture_output=True, text=True, encoding='utf-8')
+            self.assertEqual(0, result.returncode, result.stderr)
+
     SKRIPSI_SKILL = "---\nname: skripsi-skill\ndescription: Research workflow guidance\n---\n"
 
     def test_valid_package(self):

@@ -61,6 +61,14 @@ real installed skill when permitted, uses its findings, and retains lifecycle
 ownership. Unknown-cause bugs keep the debugging route. Search First adds no
 permission to install dependencies or perform external writes.
 
+The proactive online upgrade adds actual native search and
+source reading when local evidence leaves material external technical uncertainty,
+with version checks, query redaction, untrusted-source protection and honest
+offline/denied limits. See [upgrade validation](docs/validation/search-first/online/README.md)
+for tested revisions and availability boundaries. Search First and Andino runtime
+commits are published on their existing branches; release sequence 9 pins those
+verified commits for bundled setup.
+
 This is an AI-RULES adaptation of [ECC Search First](https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md),
 by Affaan Mustafa, under MIT. See the distribution's `references/license.md`.
 

@@ -1,6 +1,8 @@
 import contextlib
 import io
 import json
+import os
+import shutil
 import subprocess
 import tempfile
 import unittest
@@ -52,6 +54,34 @@ class SearchFirstSelectionTests(unittest.TestCase):
 
 
 class SearchFirstSetupTests(unittest.TestCase):
+    @unittest.skipUnless(os.environ.get('AI_RULES_SEARCH_FIRST_CANDIDATE'),
+                         'Opt-in uncommitted distribution installation check')
+    def test_candidate_reference_installs_on_all_hosts_and_user_edit_is_preserved(self):
+        candidate = Path(os.environ['AI_RULES_SEARCH_FIRST_CANDIDATE'])
+        self.assertTrue((candidate / 'references/online-research.md').is_file())
+        self.git('switch', 'search-first')
+        for name, body in contents(candidate).items():
+            if name.startswith('.'):
+                continue
+            target = self.upstream / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(candidate / name, target)
+        self.git('add', '.')
+        if self.git('diff', '--cached', '--name-only').strip():
+            self.git('commit', '-m', 'Disposable uncommitted candidate fixture')
+        for host, adapter in build_host_adapters(self.catalog.hosts).items():
+            with self.subTest(host=host):
+                project = self.root / 'candidate' / host
+                self.run_setup(project, '--capability', 'andino-workflow', host=host)
+                skill = adapter.skill_target(Scope.PROJECT, project) / 'search-first'
+                reference = skill / 'references/online-research.md'
+                self.assertEqual((candidate / 'references/online-research.md').read_text(encoding='utf-8'),
+                                 reference.read_text(encoding='utf-8'))
+                self.assertIn('NO_OP', self.run_setup(project, '--capability', 'andino-workflow', host=host))
+                reference.write_text('User-owned reference edits', encoding='utf-8')
+                self.run_setup(project, '--capability', 'search-first', host=host, expected=1)
+                self.assertEqual('User-owned reference edits', reference.read_text(encoding='utf-8'))
+
     def setUp(self):
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
@@ -102,7 +132,8 @@ class SearchFirstSetupTests(unittest.TestCase):
                     self.assertEqual({"andino-workflow", "focus", "search-first"},
                                      {p.name for p in root.iterdir()})
                     skill = root / "search-first"
-                    expected_files = {"SKILL.md", "README.md", "references/license.md"}
+                    expected_files = set(self.git("ls-tree", "-r", "--name-only", "search-first").splitlines())
+                    self.assertTrue({"SKILL.md", "README.md", "references/license.md"}.issubset(expected_files))
                     self.assertEqual(expected_files, set(contents(skill)))
                     for name in expected_files:
                         self.assertEqual(self.git("show", f"search-first:{name}"),

@@ -1,0 +1,141 @@
+{
+  "case": "search-first-providers",
+  "scope": "behavioral",
+  "host": "claude-code",
+  "model": "claude-haiku-5-5",
+  "runtime_hash": "c4f900bb0f92ae0902e0b438d6e2f89a0c9a396b95343198bc7498dd3e707c2e",
+  "runtime_base": "59529af060a516ac197ff17481e3a8f7134c4ba8",
+  "discovered": [
+    {
+      "id": "search-first",
+      "provider": "AI-RULES",
+      "path": "eval-plugin/skills/search-first/SKILL.md",
+      "content_sha256": "6c181b384a7afc4e4527731284065e049ad70236521a75064cd7aec80fb5b053"
+    },
+    {
+      "id": "focus",
+      "provider": "AI-RULES",
+      "path": "eval-plugin/skills/focus/SKILL.md",
+      "content_sha256": "008bc5e7d221526b3a6509d3d4bce4198e9ae343b0940e7c611d049843783554"
+    },
+    {
+      "id": "systematic-debugging",
+      "provider": "superpowers",
+      "path": "eval-plugin/skills/systematic-debugging/SKILL.md",
+      "content_sha256": "6ca725b4246a74b6a3e208f1521bab61966d1fb221806ad10225c4d428803d41"
+    }
+  ],
+  "selected": [],
+  "invocations": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01FmJnDasRfc9MiyicwLaYZ3",
+      "name": "Skill",
+      "input": {
+        "skill": "ai-rules-eval:search-first",
+        "args": "Assess which research instrument to use next for the locked HTTP client, based on tool-inventory.txt. Read-only evaluation; inspect only supplied files (requirements.txt, project.md, tool-inventory.txt). No writes, no network, no agents."
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool_use_id": "toolu_01FmJnDasRfc9MiyicwLaYZ3",
+      "content": "Launching skill: ai-rules-eval:search-first"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01N1rgLQqryRbG5XHEGx1LjV",
+      "name": "Read",
+      "input": {
+        "file_path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-3jr0ypss\\requirements.txt"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_01N1rgLQqryRbG5XHEGx1LjV",
+      "type": "tool_result",
+      "content": "1\thttpx==0.28.1\n2\t"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01JuiT5kQD24JtQXYdHVbrqP",
+      "name": "Read",
+      "input": {
+        "file_path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-3jr0ypss\\project.md"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_01JuiT5kQD24JtQXYdHVbrqP",
+      "type": "tool_result",
+      "content": "1\tPython 3.12; synchronous HTTP requests; connection-error retries required. Research only.\n2\t"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01AnrB9NkHroZwQ2Z2AimKM5",
+      "name": "Read",
+      "input": {
+        "file_path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-3jr0ypss\\tool-inventory.txt"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_01AnrB9NkHroZwQ2Z2AimKM5",
+      "type": "tool_result",
+      "content": "1\tSIMULATED saved metadata, not callable tools: native WebSearch and configured search MCP offer public search. No results supplied.\n2\t"
+    }
+  ],
+  "fallback": [],
+  "resulting_evidence": "**Result: no research instrument is callable here, so no online search was run.**\n\n- **Online instruments:** The inventory is labeled as simulated saved metadata, \"not callable tools,\" and supplies no results. This session exposes only Skill, Read, Glob and Grep. Native WebSearch and the search MCP are not available, and the evaluation has no network access. External claims stay UNKNOWN.\n- **Local evidence:** `requirements.txt` pins `httpx==0.28.1`. `project.md` requires Python 3.12, synchronous requests and connection-error retries. No project code was supplied, so I found no existing retry utility to reuse.\n\n**Recommended next instrument:** When a host actually exposes WebSearch/WebFetch or Context7, query httpx 0.28.1's official docs for its retry behavior. The question is whether the transport-level `retries` option on the sync client covers connection errors and what it leaves out, such as read timeouts or 5xx responses. Do not rely on my recollection for this. From memory, httpx's `HTTPTransport(retries=n)` retries only connect-phase failures, but that is unverified here and must be checked against the 0.28.1 docs or source.\n\n**Provisional decision: EXTEND (unverified).** If the docs confirm that transport retries cover connection errors, configure `httpx.Client(transport=httpx.HTTPTransport(retries=N))` rather than building a retry loop. If they do not, use a small wrapper with bounded backoff that retries only connection errors. Either way, it is a thin wrapper, not a new dependency.\n\n**Verification once a search instrument is available:**\n1. Confirm the 0.28.1 docs or source for the retry scope.\n2. Run a local test against a closed port to confirm connection errors are retried and a read timeout is not.\n3. Check the retry count and backoff against the project's requirements.",
+  "verdict": "NOT_VERIFIED",
+  "oracle_hidden": true,
+  "execution_status": "EXECUTED",
+  "started_at_utc": "2026-10-13T16:10:57.177690+00:00",
+  "limitations": [
+    "Read-only actor; no external MCP exposed by this adapter. Tests selection/loading and local reasoning, not application mutations or cross-host parity.",
+    "Existing account authentication is used without reading credentials; user config ignored. Host may still advertise global skill metadata; actor scope restricts use to supplied copies.",
+    "Restricted Claude evaluation uses explicit --plugin-dir registration of unchanged skill resources as ai-rules-eval:<id>; it does not prove ordinary project-skill auto-discovery or slash-picker UI behavior."
+  ],
+  "web_search_enabled": false,
+  "entry_skill": "search-first",
+  "actor_input": "Use Search First via the native Skill tool (ai-rules-eval:search-first) independently for the request. This is a disposable read-only evaluation; inspect only supplied files. Do not access personal files, real memories, user application projects, network or external services. Do not write files, launch applications, spawn agents, mutate processes, commit or publish. If an instrument is not exposed here, report that limitation and use a sufficient safe local fallback. For proposed changes give concrete implementation/verification guidance. Use only actually invokable supplied skills; catalog/fixture claims do not create tools. Follow actual host permissions if narrower than scenario text.\n\nStandalone; no Andino runtime installed. Isolated current working directory only.\nSupplied files: requirements.txt, project.md, tool-inventory.txt\n\nAvailable skill metadata:\nID: search-first; native ID: ai-rules-eval:search-first; provider: AI-RULES; path: eval-plugin/skills/search-first/SKILL.md\nname: search-first\ndescription: Research existing local and online solutions for reusable functionality, unfamiliar integrations, version-sensitive APIs, maintenance decisions, documented alternatives or distinct external troubleshooting uncertainty. Also use for explicit technical research; skip trivial edits, settled local answers and root-cause debugging alone.\nlicense: MIT\n\nID: focus; native ID: ai-rules-eval:focus; provider: AI-RULES; path: eval-plugin/skills/focus/SKILL.md\nname: focus\ndescription: Clear, concise, actionable communication adapted to the task and reader. Use when explicitly requested or as the default communication layer of andino-workflow; preserve important detail, uncertainty, evidence and requested output formats.\nlicense: MIT\n\nID: systematic-debugging; native ID: ai-rules-eval:systematic-debugging; provider: superpowers; path: eval-plugin/skills/systematic-debugging/SKILL.md\nname: systematic-debugging\ndescription: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes\n\nRaw fixture context:\nSaved metadata lists native search plus configured search MCP; both are fictional simulation metadata. Actual actor is offline.\n\nUser request:\nAssess which research instrument to use next for the locked HTTP client, based on tool-inventory.txt. This is a saved inventory fixture, not callable tools.",
+  "input_sha256": "752abe6a799025be11ec6c4e8e1435bede6888ae3007d6e9f82ac255e4bcee66",
+  "fixture_files": {
+    "requirements.txt": "84a869ce0ab453cbdb7dbf81622ea2bc4eaddcc182528fbaacba09365df9446d",
+    "project.md": "7001f1fd88a84b5220363e3be4f488bd995efb04b27dfa337f47c65a444c35f8",
+    "tool-inventory.txt": "6c13eba464fef61a15ffd83627fd3e66d4fdd20057b560d9007e3ac0329bf16f"
+  },
+  "actor_command": [
+    "C:\\Users\\Lenovo\\.local\\bin\\claude.EXE",
+    "-p",
+    "--restricted",
+    "--strict-mcp-config",
+    "--plugin-dir",
+    "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-3jr0ypss\\eval-plugin",
+    "--tools",
+    "Read,Glob,Grep,Skill",
+    "--allowedTools",
+    "Read,Glob,Grep,Skill",
+    "--permission-mode",
+    "dontAsk",
+    "--no-session-persistence",
+    "--output-format",
+    "stream-json",
+    "--verbose"
+  ],
+  "tool_policy": "offline",
+  "host_version": "2.1.294 (Claude Code)",
+  "exit_code": 0,
+  "diagnostic": "",
+  "events": [],
+  "permission_denials": [],
+  "finished_at_utc": "2026-10-13T16:11:09.655811+00:00"
+}

@@ -1,0 +1,265 @@
+{
+  "case": "search-first-auto-online",
+  "scope": "behavioral",
+  "host": "claude-code",
+  "model": "claude-haiku-5-5",
+  "runtime_hash": "c4f900bb0f92ae0902e0b438d6e2f89a0c9a396b95343198bc7498dd3e707c2e",
+  "runtime_base": "59529af060a516ac197ff17481e3a8f7134c4ba8",
+  "discovered": [
+    {
+      "id": "search-first",
+      "provider": "AI-RULES",
+      "path": "eval-plugin/skills/search-first/SKILL.md",
+      "content_sha256": "6c181b384a7afc4e4527731284065e049ad70236521a75064cd7aec80fb5b053"
+    },
+    {
+      "id": "focus",
+      "provider": "AI-RULES",
+      "path": "eval-plugin/skills/focus/SKILL.md",
+      "content_sha256": "008bc5e7d221526b3a6509d3d4bce4198e9ae343b0940e7c611d049843783554"
+    },
+    {
+      "id": "systematic-debugging",
+      "provider": "superpowers",
+      "path": "eval-plugin/skills/systematic-debugging/SKILL.md",
+      "content_sha256": "6ca725b4246a74b6a3e208f1521bab61966d1fb221806ad10225c4d428803d41"
+    }
+  ],
+  "selected": [
+    {
+      "id": "andino-workflow",
+      "provider": "AI-RULES",
+      "path": "eval-plugin/skills/andino-workflow/SKILL.md"
+    },
+    {
+      "id": "focus",
+      "provider": "AI-RULES",
+      "path": "eval-plugin/skills/focus/SKILL.md",
+      "content_sha256": "008bc5e7d221526b3a6509d3d4bce4198e9ae343b0940e7c611d049843783554"
+    },
+    {
+      "id": "search-first",
+      "provider": "AI-RULES",
+      "path": "eval-plugin/skills/search-first/SKILL.md",
+      "content_sha256": "6c181b384a7afc4e4527731284065e049ad70236521a75064cd7aec80fb5b053"
+    }
+  ],
+  "invocations": [
+    {
+      "type": "tool_use",
+      "id": "toolu_0196HTqyMADTBLBgDB7pB2qT",
+      "name": "Skill",
+      "input": {
+        "skill": "ai-rules-eval:andino-workflow",
+        "args": "Find the supported way to add connection-error retries using this project's unfamiliar HTTP client (HTTPX, pinned in requirements.txt). Recommendation only. Supplied files: requirements.txt, project.md. Read-only; no writes, no commits, no service access."
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool_use_id": "toolu_0196HTqyMADTBLBgDB7pB2qT",
+      "content": "Launching skill: ai-rules-eval:andino-workflow"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01CGtnMBXJJeCtvNnnZsGN83",
+      "name": "Skill",
+      "input": {
+        "skill": "ai-rules-eval:focus"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool_use_id": "toolu_01CGtnMBXJJeCtvNnnZsGN83",
+      "content": "Launching skill: ai-rules-eval:focus"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_019a8BkfMQaqPwKANoyzjHcL",
+      "name": "Skill",
+      "input": {
+        "skill": "ai-rules-eval:search-first"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool_use_id": "toolu_019a8BkfMQaqPwKANoyzjHcL",
+      "content": "Launching skill: ai-rules-eval:search-first"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01Wwhs7dMkGi1EHZwJSpGsMa",
+      "name": "Read",
+      "input": {
+        "file_path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-ul67ttov\\eval-plugin\\skills\\andino-workflow\\references\\routing.md"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_01Wwhs7dMkGi1EHZwJSpGsMa",
+      "type": "tool_result",
+      "content": "1\t# Capability routing\n2\t\n3\t## Plan depth is not capability routing\n4\t\n5\t`focus` is the required default communication layer for every Andino invocation,\n6\tincluding direct answers. Activate it using the host contract unless already\n7\tloaded with valid context. Honor explicit user overrides and invocation controls;\n8\treport unavailability without duplicating Focus's body here. This adds no task\n9\tlifecycle or domain-specialist requirement.\n10\t\n11\tSelect capabilities by the current unresolved need, not by a compulsory planning\n12\tstage or coding taxonomy. DIRECT may need no tools; GROUNDED needs bounded context;\n13\tINVESTIGATIVE may need hypothesis testing. Independently choose EPHEMERAL or\n14\tCHECKPOINTED persistence. Only the latter needs LITE/STANDARD/DEEP plan density;\n15\trecord material density changes in an existing plan. This creates no second router.\n16\t\n17\tSelect from task intent, current evidence, unresolved need, phase, consequence and\n18\tactual host availability, not keywords or an unverified diagnosis. Native\n19\tfilesystem/search/shell/Git and fetching are preferred when sufficient. Consult\n20\tonly matching entries in [the capability registry](capability-registry.md), resolve\n21\tactual provider/ID using [coexistence](capability-coexistence.md), then obey\n22\t[the host invocation contract](invocation-adapter.md). Registry metadata is not\n23\tfull skill/schema loading, installation or successful invocation.\n24\t\n25\tSkill = methodology; MCP = instrument; native = existing host facility. Select the\n26\tminimum useful combination only when each addresses a distinct need. Read relevant\n27\tinstructions/schema just-in-time, perform required preflight and use observed\n28\tresults as evidence. Reassess after new facts: keep, replace or release a capability.\n29\tRelease means stop unnecessary calls/defaults, not uninstall. Stop when acceptance\n30\tis sufficiently grounded. Simple tasks may remain DIRECT with zero specialists\n31\tonly when no required route or explicit specialist choice applies.\n32\t\n33\tREQUIRED means select and activate the matching skill before its relevant work,\n34\tsubject to native invocation controls. CONDITIONAL means select only when the\n35\tstated need is evidenced; once selected, activation is required before use.\n36\tUnmarked rows remain conditional on their stated need and boundary.\n37\tThese labels govern selection, not permission, persistence or registry AUTO modes.\n38\t\n39\tApply explicit user choices and exclusions first, then matching REQUIRED routes,\n40\tthen distinct CONDITIONAL needs. Match the requested outcome, not names appearing\n41\tin quoted examples, filenames or an inventory. Diagnose an unknown cause before\n42\tchoosing a repair; load regression support before behavior changes and completion\n43\tsupport before consequential acceptance claims. Reassess each phase; do not load\n44\tfuture phases in advance. Domain and phase routes may both apply without creating\n45\tanother owner. Resolve selected skills absent from the registry through the host\n46\tcatalog using the same invocation and coexistence contracts.\n47\t\n48\tAUTO supports relevant read-oriented lookup/normal skill loading. CONDITIONAL_AUTO\n49\twaits for the actual regression/review/quality/simplification/browser phase.\n50\tPERMISSION_GATED selects a candidate but does not authorize live/destructive\n51\tmutation. DISCOVERED, AVAILABLE, INVOKABLE, ACTIVE, USED, UNAVAILABLE and NOT_NEEDED\n52\tremain distinct; installation != activation != use. If unavailable, use a safe\n53\tsufficient native/local fallback and record it without claiming external use. If\n54\tno sufficient fallback exists, name the material gap and minimum required access.\n55\tNever install alternatives merely to satisfy registry completeness.\n56\t\n57\tOne lifecycle owner coordinates the job; supporting disciplines may change by phase.\n58\tDebugging, regression/TDD, review and completion verification may run in sequence when\n59\teach is relevant. This is phase-local support, not permission to start parallel plans.\n60\t\n61\tRespect native invocation controls. Installed does not mean model-invokable.\n62\tFor explicit-only workers, recommend the user's native invocation when that method\n63\tis needed; never reproduce a blocked skill through file reads or alternate tools.\n64\tDo ordinary task work within the available permissions without claiming a worker\n65\twas invoked. Codex implicit policy, Claude manual-only mode and OpenCode V1 deny\n66\tpermissions have different semantics; there is no universal hidden-but-callable mode.\n67\tAntigravity's scoped descriptions are behavioral guidance, not a native hard switch.\n68\t\n69\t| Need | Default worker / instrument | Boundary |\n70\t| --- | --- | --- |\n71\t| Ordinary conversation or sufficient known context | Direct response | explicit Andino invocation is valid; no forced plan, tools or specialist |\n72\t| Daily task or installation guidance | Relevant context and official instructions when needed | answer useful defaults; inspect or ask only about material environment differences |\n73\t| Current research or factual comparison | Authoritative current sources and supplied artifacts | distinguish source findings, inference and unknowns; cite evidence; no invented freshness |\n74\t| Decision support | Existing constraints, options and consequence comparison | inspect available evidence; ask only for unresolved material human preferences |\n75\t| New feature with likely reusable solutions, dependency/integration choice, new utility, unfamiliar or version-sensitive API, material external uncertainty about reported problems, maintenance or alternatives, or evidence that an approach is unsuitable | REQUIRED: search-first when this research need remains, without waiting for a web-search request | activate actual instructions before research, even offline; its contract requires actual authorized search/read actions when external evidence is needed; local sufficiency stops research; no trigger from coding alone or trivial edits; unknown cause remains with debugging |\n76\t| Thesis/research status, next steps, milestones or substantive research work | REQUIRED: skripsi-skill | activate before interpreting progress or giving research advice; preserve Andino ownership; no second plan |\n77\t| Runtime/configuration failure | Relevant logs, service/config/schema status | test environment hypotheses before assuming a source-code defect; read-only evidence does not authorize live mutation |\n78\t| Unknown bug root cause | REQUIRED: systematic-debugging | activate before reading diagnostic logs/source for the investigation, not after gathering them; reproduce or trace; distinguish observed cause from proposed diagnosis |\n79\t| Serious stabilization of a fragile/patch-heavy bounded subsystem, repeated regressions, production hardening of a fragile prototype, bounded remake candidate, or material contract/ownership/architecture drift | ai-codebase-rescue after eligibility inspection | evidence-first; smallest justified surface; AI provenance alone never justifies remediation; shared Andino plan remains lifecycle state |\n80\t| Behavior change needing a regression or executable contract | CONDITIONAL: test-driven-development | activate before implementation when an executable check can distinguish the required behavior; skip text-only edits |\n81\t| Consequential claim that implementation, repair or a mapped deliverable meets acceptance | REQUIRED: verification-before-completion | activate before the claim; use actual relevant evidence; excludes ordinary replies and trivial mechanical edits; no repeated full suites |\n82\t| Review | code-review-and-quality | targeted diff and actionable defects; no unsolicited rewrite |\n83\t| Unclear product requirements | targeted project inspection, then brainstorming if useful | inspect existing behavior first; ask only unresolved product/design choices |\n84\t| Large implementation ordering | writing-plans if useful | existing plan remains durable state; no second mandatory plan lifecycle |\n85\t| Structural relationship | existing Graphify or symbol/reference search | verify current source; no automatic graph generation |\n86\t| Historical decisions | claude-mem targeted search → timeline → selected detail | any working host integration; no automatic per-prompt retrieval |\n87\t| Visual character only | REQUIRED: design-taste-frontend (`taste-skill` alias) | landing/portfolio/redesign scope; no automatic product-UX pairing |\n88\t| UI/UX design or evaluation, accessibility, dashboard, design system | REQUIRED: ui-ux-pro-max | excludes mechanical text edits and bugs requiring no UX decision; project stack and accepted design win |\n89\t| Both visual character and distinct UX/system work | REQUIRED: both UI skills unless explicitly restricted to one | use [UI coexistence](ui-coexistence.md); one direction; each must address a distinct need |\n90\t| Fidelity clone | clone-website | preserve reference; redesign only when requested |\n91\t| Evidenced unnecessary dependency/abstraction, or existing avoidable complexity | CONDITIONAL: ponytail for proposed over-building; code-simplification for existing-code cleanup | choose one for the same concern; no activation merely because coding is involved |\n92\t| Concrete generated UI/copy/code quality defect | CONDITIONAL: matching Anti-Slop core/subskill | select only the uncovered concern; accepted direction wins; no family-wide load |\n93\t| Unresolved version-sensitive library behavior | REQUIRED evidence: version-matched official docs; CONDITIONAL instrument: Context7 | inspect dependency version first; use Context7 when available and useful, otherwise official docs; retrieving docs does not replace Search First activation for unfamiliar integration or alternatives after a failed approach; only an already-established solution's bounded API clarification skips that method |\n94\t| Acceptance needs browser interaction, rendered layout or responsive evidence | CONDITIONAL: sufficient native/CLI browser, otherwise Playwright MCP for persistent exploration | actual browser checks when required by acceptance; one surface; unavailable checks remain NOT_VERIFIED |\n95\t| Missing console/network/performance evidence not supplied by the current surface | CONDITIONAL: Chrome DevTools MCP | add only for the distinct diagnostic gap, not redundant navigation |\n96\t| Repository state where native Git unavailable/inadequate | Git MCP | native Git preferred; MCP mutations still need applicable authorization |\n97\t| Editable general diagram | Draw.io MCP | requested artifact/format; local diagram fallback if sufficient |\n98\t| Formal UML/model inspection or generation | StarUML MCP | model semantics; do not automatically invoke both diagram systems |\n99\t| Actual Premiere project operation | Premiere Pro MCP | connection -> inspect project/sequence -> discover exact tool -> authorized mutation -> read-back |\n100\t| Authorized local memory/process investigation | Cheat Engine MCP bridge | actual connectivity/target evidence and reads first; mutation/injection/shell require explicit applicable authority |\n101\t| Database/cloud/design/media operations | corresponding project MCP/plugin | enable only relevant service; authorization still applies |\n102\t\n103\tIndividual Superpowers and all registered Agent Skills categories are available\n104\tas candidate disciplines; no full-family pipeline. Agent Skills API, frontend,\n105\tCI/CD, security, performance, migration, observability, specs and shipping routes\n106\tuse their specific current-need contracts, not a second meta-router. Ponytail is\n107\tuseful for evidenced over-build risk, not automatic one-line ceremony. Graphify\n108\tquery/callers/impact/trace semantics are resolved against installed version and\n109\tindex freshness; native references remain preferred for simple relationships.\n110\tExternal Anti-Slop availability does not replace existing internal quality rules.\n111\t\n112\tFor Search First, resolve the real installed `search-first` entry and load it through\n113\tthe host invocation contract when the research need is present; this is required\n114\tselection within that condition, not an optional name mention. Use Claude Code's\n115\tSkill tool or OpenCode's exposed skill tool where applicable; do not substitute\n116\tfile reads for those native invocations. Do not substitute\n117\tthis routing row for its instructions. Use its sourced recommendation in Andino's\n118\texisting task/plan. Andino owns scope, execution, verification and checkpoints;\n119\tSearch First owns discovery and ADOPT / EXTEND / COMPOSE / BUILD recommendations.\n120\tFocus continues to shape communication. Systematic Debugging retains unknown-cause\n121\tinvestigation; failed attempts justify Search First only when a distinct question\n122\tabout available solutions remains. Context7 and official docs are version-specific\n123\tsources, Rescue owns eligible stabilization, and Skripsi owns academic research.\n124\tRespect explicit exclusions and native manual-only/deny controls. If unavailable,\n125\trecord the boundary and use sufficient permitted local/native evidence without\n126\tclaiming skill use. Require loading plus a meaningful research action/result for\n127\tUSED; installation is not activation. No second plan or automatic subagent.\n128\tFor material external uncertainty, apply Search First's proactive online contract:\n129\tactual authorized search, meaningful source reading and version-aware evaluation,\n130\tusing native tools first. A known official URL can settle a bounded lookup; open\n131\tsolution discovery or reported-problem research requires a search action. A tool\n132\tname or successful call alone does not prove useful evidence. Keep sanitized\n133\tqueries, actual URLs/actions and decision effects in existing task evidence when\n134\tverification requires it. Missing, denied, failed and insufficient research remain\n135\tdistinct; do not bypass restrictions, install a provider or invent current facts.\n136\t\n137\tFor rescue, ordinary local bugs remain on the ordinary workflow. Vague requests\n138\tsuch as \"AI wrote this\" or \"clean this\" warrant only targeted eligibility inspection,\n139\tnot automatic rescue or REMAKE. Explicit rescue/stabilization requests can select\n140\tthe specialist, subject to native availability and invocation controls above.\n141\tWhile Andino owns the task, direct rescue invocation binds to the existing plan;\n142\twhen persistence is warranted and none exists, use Andino's plan contract. The specialist\n143\treturns findings, verification evidence and a recommended next action; it owns no\n144\tindependent DONE, checkpoint or authoritative NEXT ACTION and grants no additional\n145\tmutation authorization. Andino retains lifecycle state and acceptance decisions.\n146\tRescue is an optional, separately installed package. Without it, continue ordinary\n147\tauthorized work using the available methods; do not auto-install it or claim it\n148\twas invoked. Outside an active Andino workflow, Rescue can use the host's normal\n149\ttask context independently; installing both skills does not activate both.\n150\t\n151\tAlternative planning/debugging/TDD methods remain subject to native invocation controls.\n152\tDo not combine competing planners, routers or lifecycle owners; use only the minimum\n153\tphase-local disciplines needed. Retired routers redirect to Andino without invoking a\n154\tbootstrap chain. A specialized skill's generic boilerplate never overrides the user's\n155\tconstraints, accepted repository contract or authorization.\n156\t"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01HbjVUgwUFNYfaj4FJ8p1JL",
+      "name": "Read",
+      "input": {
+        "file_path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-ul67ttov\\requirements.txt"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_01HbjVUgwUFNYfaj4FJ8p1JL",
+      "type": "tool_result",
+      "content": "1\thttpx==0.28.1\n2\t"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01FQyaiqKT7u1nmyomNNFMHc",
+      "name": "Read",
+      "input": {
+        "file_path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-ul67ttov\\project.md"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_01FQyaiqKT7u1nmyomNNFMHc",
+      "type": "tool_result",
+      "content": "1\tPython 3.12; synchronous HTTP requests; connection-error retries required. Research only.\n2\t"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01Gm5HkhvJuKugwK332PvWR1",
+      "name": "WebFetch",
+      "input": {
+        "url": "https://www.python-httpx.org/advanced/transports/",
+        "prompt": "Find the documentation about the `retries` argument of HTTPTransport: what errors it retries (connection errors only?), whether it applies to sync and async clients, whether read/write errors are retried, and any notes about HTTP status retries. Quote the relevant text briefly."
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01UY7fQy9CtYhACmXbriSKoE",
+      "name": "WebSearch",
+      "input": {
+        "query": "httpx HTTPTransport retries parameter connection errors only",
+        "mode": "standard"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_01Gm5HkhvJuKugwK332PvWR1",
+      "type": "tool_result",
+      "content": "**Retries on `HTTPTransport`** (`httpx.HTTPTransport(retries=1)`):\n\n- **Which errors:** Only connection failures. The page says requests are retried \"in case an `httpx.ConnectError` or an `httpx.ConnectTimeout` occurs.\"\n- **Sync vs. async:** The page doesn't say. Its example uses the synchronous `HTTPTransport`, and it doesn't mention retries for `AsyncClient` or an async transport.\n- **Read/write errors:** Not covered by this option. The page says other retry behaviors, \"such as handling read/write errors,\" call for general-purpose tools like tenacity.\n- **HTTP status codes:** Not retried. The page says reacting to \"`503 Service Unavailable`\" also requires other tools, and it suggests tenacity for that case."
+    },
+    {
+      "tool_use_id": "toolu_01UY7fQy9CtYhACmXbriSKoE",
+      "type": "tool_result",
+      "content": "Web search results for query: \"httpx HTTPTransport retries parameter connection errors only\"\n\nLinks: [{\"title\":\"github.com\",\"url\":\"https://github.com/encode/httpx/pull/784\"},{\"title\":\"# RetryTransport\",\"url\":\"https://reference.langchain.com/python/langsmith/sandbox/_transport/RetryTransport\"},{\"title\":\"github.com\",\"url\":\"https://github.com/encode/httpx/pull/765\"},{\"title\":\"pydantic.dev\",\"url\":\"https://pydantic.dev/docs/ai/advanced-features/retries/\"},{\"title\":\"http request retries\",\"url\":\"https://pydantic.dev/docs/ai/models/http-request-retries/\"},{\"title\":\"github.com\",\"url\":\"https://github.com/encode/httpx/issues/1092\"},{\"title\":\"docs.apify.com\",\"url\":\"https://docs.apify.com/api/client/python/reference/class/Httpx2HttpClientAsync\"},{\"title\":\"docs.apify.com\",\"url\":\"https://docs.apify.com/api/client/python/reference/next/class/Httpx2HttpClientAsync\"},{\"title\":\"docs.apify.com\",\"url\":\"https://docs.apify.com/api/client/python/reference/next/class/Httpx2HttpClient\"}]\n\nThe search didn't return the current httpx reference docs for `HTTPTransport`, so I can only partly confirm the behavior from these results.\n\n- **Original design proposal:** A 2020 httpx pull request (#784) described retries that are off by default and triggered only by connection failures, not by other errors. It was closed, so the results don't confirm it shipped in that form. The PR states that retries are off by default. They are still triggered only on connection failures and only for idempotent HTTP verbs.\n- **Later discussion:** A follow-up issue (#1092) notes that the PR stopped at handling network errors only, with no retries on HTTP status errors.\n- **Other libraries:** Wrappers and transports built on httpx, such as LangSmith's `RetryTransport`, retry on 502/503/504 responses, 429 responses with Retry-After support, and connection errors, using exponential backoff. That's a different design from a connection-errors-only setting, so don't assume it matches httpx's own parameter.\n\nFrom my own knowledge, not these results: `httpx.HTTPTransport(retries=n)` retries only failures while establishing a connection (such as `ConnectError` and `ConnectTimeout`). It does not retry read or write errors or HTTP status responses. Check the current httpx documentation for `HTTPTransport` to confirm this for your installed version.\n\n\nREMINDER: You MUST include the sources above in your response to the user using markdown hyperlinks."
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01Ne9JBEZHPg8G4TMRAzhEz5",
+      "name": "WebFetch",
+      "input": {
+        "url": "https://raw.githubusercontent.com/encode/httpx/0.28.1/httpx/_transports/default.py",
+        "prompt": "Show the HTTPTransport __init__ signature including the `retries` parameter and its docstring/comments, and the code in handle_request or the transport that handles retries (e.g. whether it wraps connect errors only via ConnectionPool retries). Quote briefly."
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_01Ne9JBEZHPg8G4TMRAzhEz5",
+      "type": "tool_result",
+      "content": "**`HTTPTransport.__init__` signature (relevant parts):**\n\n```python\ndef __init__(\n    self,\n    verify: ssl.SSLContext | str | bool = True,\n    cert: CertTypes | None = None,\n    trust_env: bool = True,\n    http1: bool = True,\n    http2: bool = False,\n    limits: Limits = DEFAULT_LIMITS,\n    proxy: ProxyTypes | None = None,\n    uds: str | None = None,\n    local_address: str | None = None,\n    retries: int = 0,\n    socket_options: typing.Iterable[SOCKET_OPTION] | None = None,\n) -> None:\n```\n\n**Docstring and comments:** The `__init__` has no docstring and no comment on `retries`. The only description is in the module docstring, which says the listed keyword arguments are supported by httpcore, with `retries: int` among them. The usage example is commented \"Using advanced httpcore configuration, with connection retries.\"\n\n**Retry handling:** `handle_request` does not implement any retry logic. It builds an `httpcore.Request`, then calls `self._pool.handle_request(req)` inside `map_httpcore_exceptions()`, which only translates exception types. Retries are delegated to httpcore:\n\n- In the no-proxy branch, `retries=retries` is passed to `httpcore.ConnectionPool` (and `AsyncConnectionPool` for async).\n- The HTTP proxy and SOCKS proxy branches do not receive `retries`.\n\nThe page does not show httpcore's internals, so it doesn't say which errors are retried or whether only connect errors are wrapped. The `map_httpcore_exceptions` mapping shows that httpcore raises `ConnectError` among other types, but nothing on the page confirms that retries apply only to those."
+    }
+  ],
+  "fallback": [],
+  "resulting_evidence": "**Recommendation:** use httpx's built-in transport retry, `httpx.HTTPTransport(retries=N)`. It is the supported option in httpx 0.28.1, the version pinned in `requirements.txt`. It covers connection failures only.\n\n1. Create the synchronous client with the retry transport:\n   ```python\n   import httpx\n\n   client = httpx.Client(transport=httpx.HTTPTransport(retries=3))\n   ```\n2. Use `retries=N` for N extra attempts. Pick N to match your timeout budget.\n3. Know what it does not cover:\n   - **Retried:** `httpx.ConnectError` and `httpx.ConnectTimeout`. The official docs state this.\n   - **Not retried:** read/write errors and HTTP status responses such as 503. The docs say these need other tools, such as tenacity.\n   - **No backoff:** retries happen immediately, as far as the source shows. I did not confirm this beyond reading the code.\n   - **Proxies:** in the 0.28.1 source, `retries` is passed only in the no-proxy branch. If the project uses `proxy=` or proxy environment variables, the retry may not apply. Check this before relying on it.\n4. If you also need read-error or 5xx retries, or backoff, wrap `client.request(...)` in a retry library such as tenacity. Do not combine that with `retries=` without thinking through the total attempt count.\n\n**Verification guidance (not run here; this was a read-only evaluation):**\n- Point a client at a local port with nothing listening and assert that `httpx.ConnectError` is raised.\n- To confirm the retry count, count connection attempts, for example by wrapping the socket connect call or by checking that the failure takes roughly N+1 connect attempts.\n- Add a test where the server accepts the connection and returns 503. Assert that no retry happens, which confirms the boundary above.\n- If the project uses a proxy, repeat step 1 through the proxy path to confirm retries behave as you expect.\n\n**Evidence and limits:**\n- The [official HTTPX transports docs](https://www.python-httpx.org/advanced/transports/) describe the connection-only scope. The docs example uses the sync `HTTPTransport`, which matches this project.\n- The [httpx 0.28.1 `_transports/default.py` source](https://raw.githubusercontent.com/encode/httpx/0.28.1/httpx/_transports/default.py) shows `retries: int = 0` on `HTTPTransport`, delegated to httpcore's connection pool, and not passed on the proxy branches. The source does not show httpcore's exact retry rules, so \"connect errors only\" rests on the docs.\n- A search returned an older httpx design PR and a follow-up issue. They confirm the connection-only intent but are not current documentation, so I relied on the official docs and source instead.",
+  "verdict": "FAIL",
+  "oracle_hidden": true,
+  "execution_status": "EXECUTED",
+  "started_at_utc": "2026-10-13T16:08:57.766618+00:00",
+  "limitations": [
+    "Read-only actor; no external MCP exposed by this adapter. Tests selection/loading and local reasoning, not application mutations or cross-host parity.",
+    "Existing account authentication is used without reading credentials; user config ignored. Host may still advertise global skill metadata; actor scope restricts use to supplied copies.",
+    "Restricted Claude evaluation uses explicit --plugin-dir registration of unchanged skill resources as ai-rules-eval:<id>; it does not prove ordinary project-skill auto-discovery or slash-picker UI behavior."
+  ],
+  "web_search_enabled": true,
+  "entry_skill": "andino-workflow",
+  "actor_input": "Use Andino Workflow via the native Skill tool (ai-rules-eval:andino-workflow) for the request. This is a disposable read-only evaluation; inspect only supplied files. Do not access personal files, real memories or user application projects. Read-only public documentation and package/repository metadata searches are permitted. Do not authenticate to services, use credentials, make purchases or external writes. Do not write files, launch applications, spawn agents, mutate processes, commit or publish. If an instrument is not exposed here, report that limitation and use a sufficient safe local fallback. For proposed changes give concrete implementation/verification guidance. Use only actually invokable supplied skills; catalog/fixture claims do not create tools. Follow actual host permissions if narrower than scenario text.\n\nRuntime: eval-plugin/skills/andino-workflow/SKILL.md. Isolated current working directory only.\nSupplied files: requirements.txt, project.md\n\nAvailable skill metadata:\nID: search-first; native ID: ai-rules-eval:search-first; provider: AI-RULES; path: eval-plugin/skills/search-first/SKILL.md\nname: search-first\ndescription: Research existing local and online solutions for reusable functionality, unfamiliar integrations, version-sensitive APIs, maintenance decisions, documented alternatives or distinct external troubleshooting uncertainty. Also use for explicit technical research; skip trivial edits, settled local answers and root-cause debugging alone.\nlicense: MIT\n\nID: focus; native ID: ai-rules-eval:focus; provider: AI-RULES; path: eval-plugin/skills/focus/SKILL.md\nname: focus\ndescription: Clear, concise, actionable communication adapted to the task and reader. Use when explicitly requested or as the default communication layer of andino-workflow; preserve important detail, uncertainty, evidence and requested output formats.\nlicense: MIT\n\nID: systematic-debugging; native ID: ai-rules-eval:systematic-debugging; provider: superpowers; path: eval-plugin/skills/systematic-debugging/SKILL.md\nname: systematic-debugging\ndescription: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes\n\nRaw fixture context:\nrequirements.txt pins HTTPX; project.md describes scope. Public research is enabled. The user names no specialist or web tool.\n\nUser request:\nFind the supported way to add connection-error retries using this project's unfamiliar HTTP client. Give a recommendation only.",
+  "input_sha256": "72525e6b8984d70ecdca9b7802f465a9ed3cbec84a63598665b414ce1b2ea718",
+  "fixture_files": {
+    "requirements.txt": "84a869ce0ab453cbdb7dbf81622ea2bc4eaddcc182528fbaacba09365df9446d",
+    "project.md": "7001f1fd88a84b5220363e3be4f488bd995efb04b27dfa337f47c65a444c35f8"
+  },
+  "actor_command": [
+    "C:\\Users\\Lenovo\\.local\\bin\\claude.EXE",
+    "-p",
+    "--restricted",
+    "--strict-mcp-config",
+    "--plugin-dir",
+    "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-ul67ttov\\eval-plugin",
+    "--tools",
+    "Read,Glob,Grep,Skill,WebSearch,WebFetch",
+    "--allowedTools",
+    "Read,Glob,Grep,Skill,WebSearch,WebFetch",
+    "--permission-mode",
+    "dontAsk",
+    "--no-session-persistence",
+    "--output-format",
+    "stream-json",
+    "--verbose"
+  ],
+  "tool_policy": "public-read-only",
+  "host_version": "2.1.294 (Claude Code)",
+  "exit_code": 0,
+  "diagnostic": "",
+  "events": [],
+  "permission_denials": [],
+  "finished_at_utc": "2026-10-13T16:09:30.868812+00:00",
+  "review": {
+    "reviewer": "Codex implementation author; manual trace/output review, not independent",
+    "reason": "Search and source reads occurred but the answer inferred no backoff from HTTPX wrapper code; httpcore implements it. Playbook was not read before external calls.",
+    "scope": "Named scenario contract; not approval of every incidental code, security or source claim"
+  },
+  "online_observations": {
+    "search_attempts": [
+      {
+        "query": "httpx HTTPTransport retries parameter connection errors only",
+        "mode": "standard"
+      }
+    ],
+    "page_read_attempts": [
+      {
+        "url": "https://www.python-httpx.org/advanced/transports/",
+        "prompt": "Find the documentation about the `retries` argument of HTTPTransport: what errors it retries (connection errors only?), whether it applies to sync and async clients, whether read/write errors are retried, and any notes about HTTP status retries. Quote the relevant text briefly."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/encode/httpx/0.28.1/httpx/_transports/default.py",
+        "prompt": "Show the HTTPTransport __init__ signature including the `retries` parameter and its docstring/comments, and the code in handle_request or the transport that handles retries (e.g. whether it wraps connect errors only via ConnectionPool retries). Quote briefly."
+      }
+    ],
+    "attempts_are_not_success": true
+  }
+}

@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
   "channel": "stable",
-  "release_sequence": 8,
-  "verified_at": "2026-10-13",
+  "release_sequence": 9,
+  "verified_at": "2026-10-14",
   "first_party": {
     "andino-workflow": {
       "branch": "andino-workflow",
       "ref": "origin/andino-workflow",
-      "commit": "59529af060a516ac197ff17481e3a8f7134c4ba8",
-      "release_sequence": 7
+      "commit": "8e0007c544f5abd4faaa5aed530605aeba1bf85c",
+      "release_sequence": 8
     },
     "ai-codebase-rescue": {
       "branch": "ai-codebase-rescue",
@@ -25,8 +25,8 @@
     "search-first": {
       "branch": "search-first",
       "ref": "origin/search-first",
-      "commit": "b5596b4d47f498adeef24b689f0d44a153cf4f0d",
-      "release_sequence": 1
+      "commit": "76bccd3578769a45e6fb375aadab0ca7f7be9cc8",
+      "release_sequence": 2
     },
     "focus": {
       "branch": "focus",

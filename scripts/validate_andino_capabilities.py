@@ -17,7 +17,8 @@ CAPABILITIES = SUPERPOWERS | AGENT_SKILLS | OTHER_SKILLS | MCPS | {'native-capab
 REQUIRED_CASES = set('debugging-superpowers-route no-full-superpowers-bootstrap agent-skills-no-double-router duplicate-tdd-provider ponytail-needed ponytail-not-needed claude-mem-history graphify-impact graphify-not-needed ui-ux-route taste-route ui-taste-coexistence clone-fidelity antislop-ui antislop-copy context7-version playwright-route devtools-route playwright-devtools-coexistence git-native-preferred git-mcp-fallback drawio-diagram staruml-model diagram-tool-choice premiere-preflight premiere-howto-no-mutation cheatengine-read-first cheatengine-permission unavailable-capability capability-rerouting capability-stop simple-task-zero-capability'.split())
 ADDITIONAL_CASES = {'idea-refine-route', 'interview-material-only'}
 SEARCH_FIRST_CASES = set('search-first-feature search-first-existing search-first-trivial search-first-sdk search-first-alternatives search-first-unknown-bug search-first-offline search-first-permission search-first-standalone search-first-andino'.split())
-EVAL_CASES = REQUIRED_CASES | ADDITIONAL_CASES | SEARCH_FIRST_CASES
+SEARCH_FIRST_CASES |= set('search-first-online search-first-auto-online search-first-github search-first-community search-first-denied search-first-injection search-first-sensitive search-first-browser search-first-stale search-first-providers'.split())
+EVAL_CASES = REQUIRED_CASES | ADDITIONAL_CASES | SEARCH_FIRST_CASES | {'single-lifecycle', 'research-specialist-owner'}
 FIELDS = ('Type', 'Family/provider', 'Aliases', 'Primary purpose', 'Trigger', 'Preferred when', 'Avoid when', 'Availability check', 'Invocation method', 'First-call/preflight', 'Fallback', 'Coexistence/conflicts', 'Mutation/permission boundary', 'Verification requirement', 'Activation policy')
 
 
@@ -121,7 +122,7 @@ def case_prompt(case, runtime_metadata, catalog_metadata, allow_web=False):
               if allow_web else
               'Do not access personal files, real memories, user application projects, network or external services. ')
     return (entry +
-            'This is a disposable read-only evaluation; inspect only supplied files. '
+            'This is a disposable read-only evaluation; inspect only supplied fixtures and the supplied skill resources, including their referenced files. '
             + access +
             'Do not write files, launch applications, spawn agents, mutate processes, commit or publish. '
             'If an instrument is not exposed here, report that limitation and use a sufficient safe local fallback. '

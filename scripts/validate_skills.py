@@ -200,12 +200,14 @@ def eval_cases(skill):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--andino-ref", default="origin/andino-workflow")
+    parser.add_argument("--andino-dir", type=Path, help="validate an uncommitted Andino package instead of --andino-ref")
     parser.add_argument("--rescue-ref", default="origin/ai-codebase-rescue")
     parser.add_argument("--skripsi-ref", default="origin/skripsi-skill")
     parser.add_argument("--focus-ref", default="origin/focus")
     parser.add_argument("--focus-dir", type=Path, help="validate an uncommitted Focus package instead of --focus-ref")
     parser.add_argument("--webbased-ref", help="opt-in maintainer source-drift check against a locally available Git ref")
     parser.add_argument("--search-first-ref", default="origin/search-first")
+    parser.add_argument("--search-first-dir", type=Path, help="validate an uncommitted Search First package instead of --search-first-ref")
     args = parser.parse_args()
     errors = []
     for skill, ref in zip(RUNTIME_SKILLS, (args.andino_ref, args.rescue_ref, args.skripsi_ref, args.focus_ref, args.search_first_ref)):
@@ -220,7 +222,12 @@ def main():
                         "put-in-your-projects/human-language-english.md")}
                     errors.extend(focus_reference_drift(files, source))
             else:
-                errors.extend(package(ref, skill))
+                directory = args.andino_dir if skill == "andino-workflow" else args.search_first_dir if skill == "search-first" else None
+                if directory:
+                    files, modes = directory_files(directory)
+                    errors.extend(package_files(files, skill, modes))
+                else:
+                    errors.extend(package(ref, skill))
         except (ValueError, OSError) as exc:
             errors.append(str(exc))
     for skill in EVAL_SKILLS:
