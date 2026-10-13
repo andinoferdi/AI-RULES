@@ -9,6 +9,7 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 | ID | Type | Family/provider | Purpose |
 | --- | --- | --- | --- |
 | [focus](#focus) | skill | AI-RULES | Default communication on every Andino invocation |
+| [search-first](#search-first) | skill | AI-RULES, adapted from ECC | Existing-solution research before implementation |
 | [systematic-debugging](#systematic-debugging) | skill | Superpowers | Root-cause investigation |
 | [test-driven-development](#test-driven-development) | skill | Superpowers | Executable regression contract |
 | [verification-before-completion](#verification-before-completion) | skill | Superpowers | Evidence before completion |
@@ -1059,6 +1060,24 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 
 Contracts use inspected installed skill IDs and actual host tool metadata. Upstream reference points: [Superpowers](https://github.com/obra/superpowers), [Agent Skills](https://github.com/addyosmani/agent-skills), [Ponytail](https://github.com/DietrichGebert/ponytail), [Claude-Mem](https://cmem.ai/), [UI/UX Pro Max](https://uupm.cc/), [Taste](https://www.tasteskill.dev/), [Cloner](https://github.com/JCodesMore/ai-website-cloner-template), [Graphify](https://graphify.net/), [Anti-Slop](https://github.com/miqdadbadjuber/anti-slop), [Context7](https://github.com/upstash/context7), [Playwright](https://github.com/microsoft/playwright-mcp), [DevTools](https://github.com/ChromeDevTools/chrome-devtools-mcp), [Git MCP](https://github.com/modelcontextprotocol/servers/tree/main/src/git), [Draw.io](https://www.npmjs.com/package/@drawio/mcp), [StarUML](https://www.npmjs.com/package/staruml-mcp-server), [Premiere](https://github.com/hetpatel-11/Adobe_Premiere_Pro_MCP), [Cheat Engine](https://github.com/miscusi-peek/cheatengine-mcp-bridge). These links identify upstreams, not installed versions or universal tool names. Refresh the selected contract from actual host schemas when version drift matters.
 
+
+## search-first
+
+- Type: skill
+- Family/provider: AI-RULES; adapted from ECC by Affaan Mustafa
+- Aliases: search-first; resolve actual installed provider
+- Primary purpose: Research existing solutions and recommend ADOPT, EXTEND, COMPOSE or BUILD
+- Trigger: Meaningful reusable-solution, dependency, integration, unfamiliar-technology or alternatives uncertainty
+- Preferred when: Research can materially change an implementation decision; local reuse is considered first
+- Avoid when: Trivial edits, greetings, settled conventions, sufficient known explanations or root-cause debugging alone
+- Availability check: Resolve actual installed search-first metadata/path and native invocation permissions; setup dependency is not activation
+- Invocation method: Load actual selected SKILL.md through the host contract; never bypass manual-only or deny controls
+- First-call/preflight: Establish need and project/version constraints, then select relevant permitted sources
+- Fallback: Sufficient native/local evidence; state unavailable external research and unresolved claims without invented use
+- Coexistence/conflicts: Andino owns lifecycle; Focus communication; systematic-debugging root cause; Rescue stabilization; Skripsi academic research; Context7/docs are sources
+- Mutation/permission boundary: Read-oriented research adds no installation, credential, paid-service, external-write or configuration permission; reuse valid task authorization
+- Verification requirement: Actual load plus meaningful research action/result, decisive sources/versions and stated uncertainty; installation alone is insufficient
+- Activation policy: CONDITIONAL_AUTO
 
 ## focus
 

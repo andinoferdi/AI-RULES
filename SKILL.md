@@ -22,6 +22,12 @@ the boundary briefly and continue authorized work without claiming Focus was
 loaded. Focus shapes communication only; Andino retains routing, execution,
 verification, persistence and lifecycle ownership.
 
+Setup also installs `search-first`. Select it when meaningful existing-solution
+research is needed, following [routing](references/routing.md), and activate the
+actual installed skill through the host contract before that research. Installation
+does not activate it on every task. Use its findings for implementation decisions;
+Search First owns research methodology only, while Andino retains the lifecycle.
+
 Before substantive work, read [routing](references/routing.md) through a permitted
 tool unless its current contents are already loaded. A slash command may inject
 this SKILL.md without loading its references; descriptions alone do not replace

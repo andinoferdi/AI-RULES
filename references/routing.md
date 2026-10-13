@@ -72,6 +72,7 @@ Antigravity's scoped descriptions are behavioral guidance, not a native hard swi
 | Daily task or installation guidance | Relevant context and official instructions when needed | answer useful defaults; inspect or ask only about material environment differences |
 | Current research or factual comparison | Authoritative current sources and supplied artifacts | distinguish source findings, inference and unknowns; cite evidence; no invented freshness |
 | Decision support | Existing constraints, options and consequence comparison | inspect available evidence; ask only for unresolved material human preferences |
+| New feature with likely reusable solutions, dependency/integration choice, new utility, unfamiliar technology, material uncertainty about technical alternatives, or evidence that an approach is unsuitable | CONDITIONAL: search-first; select when this research need is present | activate actual installed instructions before solution research; local reuse may settle the need without web search; no trigger from coding alone, trivial edits or already-established solutions |
 | Thesis/research status, next steps, milestones or substantive research work | REQUIRED: skripsi-skill | activate before interpreting progress or giving research advice; preserve Andino ownership; no second plan |
 | Runtime/configuration failure | Relevant logs, service/config/schema status | test environment hypotheses before assuming a source-code defect; read-only evidence does not authorize live mutation |
 | Unknown bug root cause | REQUIRED: systematic-debugging | activate before investigation/repair; reproduce or trace; distinguish observed cause from proposed diagnosis |
@@ -107,6 +108,20 @@ useful for evidenced over-build risk, not automatic one-line ceremony. Graphify
 query/callers/impact/trace semantics are resolved against installed version and
 index freshness; native references remain preferred for simple relationships.
 External Anti-Slop availability does not replace existing internal quality rules.
+
+For Search First, resolve the real installed `search-first` entry and load it through
+the host invocation contract when the research need is present; do not substitute
+this routing row for its instructions. Use its sourced recommendation in Andino's
+existing task/plan. Andino owns scope, execution, verification and checkpoints;
+Search First owns discovery and ADOPT / EXTEND / COMPOSE / BUILD recommendations.
+Focus continues to shape communication. Systematic Debugging retains unknown-cause
+investigation; failed attempts justify Search First only when a distinct question
+about available solutions remains. Context7 and official docs are version-specific
+sources, Rescue owns eligible stabilization, and Skripsi owns academic research.
+Respect explicit exclusions and native manual-only/deny controls. If unavailable,
+record the boundary and use sufficient permitted local/native evidence without
+claiming skill use. Require loading plus a meaningful research action/result for
+USED; installation is not activation. No second plan or automatic subagent.
 
 For rescue, ordinary local bugs remain on the ordinary workflow. Vague requests
 such as "AI wrote this" or "clean this" warrant only targeted eligibility inspection,

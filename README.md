@@ -1,5 +1,13 @@
 # Andino Workflow
 
+AI-RULES setup installs `focus` and `search-first` as required dependencies.
+Search First is selected only for meaningful existing-solution research, loaded
+through the native host contract, and used to inform implementation decisions.
+It remains independently usable. Trivial edits and settled solutions need no
+research; unknown-cause bugs retain the debugging route. Andino remains the sole
+lifecycle owner. Prefer `ai-rules setup --capability andino-workflow` to install
+the complete dependency set; a manual clone alone does not install dependencies.
+
 Focus is the default communication layer on every invocation, including direct
 answers. AI-RULES setup installs the `focus` dependency and exposes its standalone
 entry point. Andino activates the installed skill through the host contract once
