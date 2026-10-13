@@ -8,6 +8,13 @@ research; unknown-cause bugs retain the debugging route. Andino remains the sole
 lifecycle owner. Prefer `ai-rules setup --capability andino-workflow` to install
 the complete dependency set; a manual clone alone does not install dependencies.
 
+When local evidence leaves material external uncertainty, this route selects Search
+First without requiring another request to browse. Its online contract calls actual
+authorized native search/read tools, checks versions and source quality, and keeps
+query privacy and untrusted-source boundaries. Skill activation, tool execution
+and sufficient evidence are distinct. Local sufficiency stops research; offline or
+denied tools leave external claims unverified. No provider is installed by default.
+
 Focus is the default communication layer on every invocation, including direct
 answers. AI-RULES setup installs the `focus` dependency and exposes its standalone
 entry point. Andino activates the installed skill through the host contract once

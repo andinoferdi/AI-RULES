@@ -72,7 +72,7 @@ Antigravity's scoped descriptions are behavioral guidance, not a native hard swi
 | Daily task or installation guidance | Relevant context and official instructions when needed | answer useful defaults; inspect or ask only about material environment differences |
 | Current research or factual comparison | Authoritative current sources and supplied artifacts | distinguish source findings, inference and unknowns; cite evidence; no invented freshness |
 | Decision support | Existing constraints, options and consequence comparison | inspect available evidence; ask only for unresolved material human preferences |
-| New feature with likely reusable solutions, dependency/integration choice, new utility, unfamiliar technology, material uncertainty about technical alternatives, or evidence that an approach is unsuitable | REQUIRED: search-first when this research need remains | activate actual installed instructions before solution research, even offline; local reuse may settle the need without web search; no trigger from coding alone, trivial edits or already-established solutions |
+| New feature with likely reusable solutions, dependency/integration choice, new utility, unfamiliar or version-sensitive API, material external uncertainty about reported problems, maintenance or alternatives, or evidence that an approach is unsuitable | REQUIRED: search-first when this research need remains, without waiting for a web-search request | activate actual instructions before research, even offline; its contract requires actual authorized search/read actions when external evidence is needed; local sufficiency stops research; no trigger from coding alone or trivial edits; unknown cause remains with debugging |
 | Thesis/research status, next steps, milestones or substantive research work | REQUIRED: skripsi-skill | activate before interpreting progress or giving research advice; preserve Andino ownership; no second plan |
 | Runtime/configuration failure | Relevant logs, service/config/schema status | test environment hypotheses before assuming a source-code defect; read-only evidence does not authorize live mutation |
 | Unknown bug root cause | REQUIRED: systematic-debugging | activate before reading diagnostic logs/source for the investigation, not after gathering them; reproduce or trace; distinguish observed cause from proposed diagnosis |
@@ -125,6 +125,14 @@ Respect explicit exclusions and native manual-only/deny controls. If unavailable
 record the boundary and use sufficient permitted local/native evidence without
 claiming skill use. Require loading plus a meaningful research action/result for
 USED; installation is not activation. No second plan or automatic subagent.
+For material external uncertainty, apply Search First's proactive online contract:
+actual authorized search, meaningful source reading and version-aware evaluation,
+using native tools first. A known official URL can settle a bounded lookup; open
+solution discovery or reported-problem research requires a search action. A tool
+name or successful call alone does not prove useful evidence. Keep sanitized
+queries, actual URLs/actions and decision effects in existing task evidence when
+verification requires it. Missing, denied, failed and insufficient research remain
+distinct; do not bypass restrictions, install a provider or invent current facts.
 
 For rescue, ordinary local bugs remain on the ordinary workflow. Vague requests
 such as "AI wrote this" or "clean this" warrant only targeted eligibility inspection,

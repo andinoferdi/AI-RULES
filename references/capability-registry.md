@@ -1067,16 +1067,16 @@ Contracts use inspected installed skill IDs and actual host tool metadata. Upstr
 - Family/provider: AI-RULES; adapted from ECC by Affaan Mustafa
 - Aliases: search-first; resolve actual installed provider
 - Primary purpose: Research existing solutions and recommend ADOPT, EXTEND, COMPOSE or BUILD
-- Trigger: Meaningful reusable-solution, dependency, integration, unfamiliar-technology or alternatives uncertainty
+- Trigger: Meaningful reusable-solution, integration, unfamiliar/version-sensitive API, reported-problem, maintenance or alternatives uncertainty; explicit technical research
 - Preferred when: Research can materially change an implementation decision; local reuse is considered first
 - Avoid when: Trivial edits, greetings, settled conventions, sufficient known explanations or root-cause debugging alone
 - Availability check: Resolve actual installed search-first metadata/path and native invocation permissions; setup dependency is not activation
 - Invocation method: Load actual selected SKILL.md through the host contract; never bypass manual-only or deny controls
-- First-call/preflight: Establish need and project/version constraints, then select relevant permitted sources
+- First-call/preflight: Inspect relevant local/version constraints, sanitize external context and load the specialist online playbook when needed; resolve actual authorized tool schemas, native first
 - Fallback: Sufficient native/local evidence; state unavailable external research and unresolved claims without invented use
 - Coexistence/conflicts: Andino owns lifecycle; Focus communication; systematic-debugging root cause; Rescue stabilization; Skripsi academic research; Context7/docs are sources
 - Mutation/permission boundary: Read-oriented research adds no installation, credential, paid-service, external-write or configuration permission; reuse valid task authorization
-- Verification requirement: Actual load plus meaningful research action/result, decisive sources/versions and stated uncertainty; installation alone is insufficient
+- Verification requirement: Actual load, actual authorized search/read actions for material external uncertainty, useful source/version findings and decision effect; discovery, execution and success are separate; preserve offline/denied/failed/insufficient limits
 - Activation policy: CONDITIONAL_AUTO
 
 ## focus

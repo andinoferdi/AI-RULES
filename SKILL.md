@@ -36,6 +36,12 @@ This includes finding the supported way to integrate an unfamiliar library and
 finding an alternative after an API approach failed, even when official docs alone
 may supply the answer. Retrieving those docs is the research action; it does not
 replace activating the selected methodology first.
+When local evidence leaves material external uncertainty about versions, supported
+APIs, reported problems, maintenance or alternatives, select Search First without
+waiting for a request to browse. It must use actual authorized search/read tools
+under its online contract; installation, activation, tool execution and sufficient
+evidence are separate outcomes. Local sufficiency stops research; denied or missing
+tools leave the external claim unverified. Andino retains one lifecycle and plan.
 An open integration or alternatives decision still needs this method when external
 search is unavailable; offline is not equivalent to NOT_NEEDED. For Claude Code,
 activate with the native Skill tool; for OpenCode, use its exposed skill tool.
