@@ -22,6 +22,11 @@ the boundary briefly and continue authorized work without claiming Focus was
 loaded. Focus shapes communication only; Andino retains routing, execution,
 verification, persistence and lifecycle ownership.
 
+When the request already establishes an unknown-cause bug, activate the installed
+`systematic-debugging` through the native host mechanism immediately after Focus,
+before the first diagnostic log/source read. Do not defer activation until after
+an initial investigation or replace it with Search First.
+
 Setup also installs `search-first`. When meaningful existing-solution research
 is needed, selection is required by [routing](references/routing.md); activate the
 actual installed skill through the host contract before that research. Installation
