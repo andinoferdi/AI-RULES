@@ -1,5 +1,5 @@
 {
-  "status": "LOCAL_REVIEW_CANDIDATE",
+  "status": "GIT_DELIVERED",
   "date": "2026-10-13",
   "main_base": "68e9e9f05152420a50fb657bb3de35677946b7bc",
   "andino_base": "59529af060a516ac197ff17481e3a8f7134c4ba8",
@@ -208,11 +208,16 @@
     "date": "2026-10-14",
     "search_first_commit": "76bccd3578769a45e6fb375aadab0ca7f7be9cc8",
     "andino_commit": "8e0007c544f5abd4faaa5aed530605aeba1bf85c",
+    "main_implementation_commit": "1062755794b56fddd2d3929c42b8c76f680e76c8",
+    "main_push": "Ordinary origin/main push succeeded; ls-remote matched the implementation SHA",
     "runtime_push": "Ordinary upstream pushes succeeded; ls-remote matched both SHAs",
     "release_sequence": 9,
     "installer_smoke": "Temporary Codex project: remote latest and source-mode bundled matched committed Git blobs after CRLF normalization; repeat NO_OP",
     "installer_record": "installer-delivery.json",
     "delivery_test_log": "unittest-delivery.log",
+    "delivery_tests": {"executed": 163, "failures": 0, "errors": 0, "skipped": 0},
+    "initial_delivery_test_log": "unittest-delivery-initial.log",
+    "cleanup": "18 verified generated Python cache directories removed; ignore patterns already correct; immutable/control files untouched",
     "excluded_actions": "No force push, merge, rebase, branch switch, tag, hosted release, PR or hook bypass"
   }
 }

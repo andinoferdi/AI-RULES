@@ -183,6 +183,15 @@ See [installer delivery evidence](installer-delivery.json) and
 [post-pin unittest log](unittest-delivery.log). Earlier records keep their original
 base commits and resource hashes; publication does not regrade historical actors.
 
+Main implementation commit `1062755794b56fddd2d3929c42b8c76f680e76c8` was pushed
+to `origin/main` and its SHA verified remotely. The post-pin suite passed all 163
+tests with no failures, errors or skips. Its [initial failed run](unittest-delivery-initial.log)
+is retained: the candidate fixture attempted an empty commit once the pin already
+contained those files; the test now commits only actual staged changes. Cleanup
+removed 18 verified generated Python cache directories. Existing ignore rules were
+sufficient; no immutable template or control prompt was changed. This delivery
+checkpoint is recorded separately from the implementation commit.
+
 Anti-slop scope: no UI or visual asset was created; UI delivery gates are not
 applicable. The technical change uses existing mechanisms, measured checks and
 explicit limits, with no invented product claims or extra installer workflow.

@@ -1,6 +1,6 @@
 # Search First proactive online research
 
-Status: IN_PROGRESS (authorized Git delivery)
+Status: DONE
 Plan depth: STANDARD
 
 ## Executive Snapshot
@@ -25,18 +25,17 @@ source reading, with safe offline/denied behavior and observable evaluation trac
 - Installer/regression/structural checks pass; report unverified hosts honestly.
 
 ## CURRENT STATE
-Local implementation is verified within available capabilities. Delivery inspection
-found main at 68e9e9f with the expected uncommitted tests/docs/evaluator changes.
-Fetch confirmed all three branches had zero upstream divergence. Managed runtime
-worktrees are C:/Users/Lenovo/.codex/worktrees/search-first-online/AI-RULES on
-search-first (base b5596b4d47f498adeef24b689f0d44a153cf4f0d) and
-C:/Users/Lenovo/.codex/worktrees/andino-online-routing/AI-RULES on andino-workflow
-(base 59529af060a516ac197ff17481e3a8f7134c4ba8). No real repository commits or
-publication occurred. Existing release pins still reference published snapshots.
+Implementation and authorized delivery are complete within the recorded capability
+limits. Inspection confirmed main's original base 68e9e9f and zero upstream drift.
+Search First commit 76bccd3578769a45e6fb375aadab0ca7f7be9cc8, Andino commit
+8e0007c544f5abd4faaa5aed530605aeba1bf85c and main implementation commit
+1062755794b56fddd2d3929c42b8c76f680e76c8 were pushed normally to their existing
+origin upstreams; ls-remote verified all three SHAs. Manifest sequence 9 pins the
+delivered runtimes. The attached runtime worktrees remain available for inspection.
 
 ## CURRENT PHASE
-P6 in progress: final selective cleanup, verification, runtime commits/push,
-verified installer pins, main commit/push and final upstream comparison.
+P6 complete: selective cleanup, post-pin verification and ordinary upstream delivery.
+This final checkpoint is recorded in a separate documentation commit.
 
 ## Execution Board
 | Phase | Status | Result / evidence |
@@ -46,6 +45,7 @@ verified installer pins, main commit/push and final upstream comparison.
 | P3 Andino route | DONE | Entry/routing/registry and README updated; one lifecycle retained. |
 | P4 Regression and live verification | DONE | 163 source-first tests passed, no failures/errors/skips; five package schemas/links, 54 capability cases/57 contracts, Skripsi traceability and three-workspace diff checks passed. 53 real restricted Claude actors retained; final exact-content standalone/automatic/stale cases and native Rescue/Skripsi ownership regressions reviewed. Four unavailable acceptance surfaces stay NOT_VERIFIED. |
 | P5 Documentation and review | DONE | Evidence README, verification.json and raw actor histories retained; main README distinguishes candidate from published setup. Source-quality refinements tested, MIT unchanged, actual resource hashes recorded. No release/pins/publication claim. |
+| P6 Authorized Git delivery | DONE | Runtime and main implementation pushes verified remotely; sequence 9 pins real commits. Post-pin suite: 163 passed, zero errors/skips. Remote latest and source-mode bundled installer smoke passed with repeat NO_OP. Removed 18 verified Python cache directories; no ignore/tracking change or immutable/control file edit. |
 
 ## Decisions
 - EXTEND existing packages and evaluator; no new search provider or installer.
@@ -102,7 +102,21 @@ denial, other host runtime parity and remote/release builds are not claimed.
   the actor had to inspect changelog evidence.
 
 ## NEXT ACTION
-Commit and push the reviewed Search First and Andino changes to their existing
-upstreams; verify the remote SHAs, then update main's manifest to those real commits,
-verify source/tests/packages and deliver main. Preserve immutable files, raw actor
-histories and unrelated work. Recheck drift before any resume.
+No implementation work remains. On a future follow-up, check repository drift
+before using this checkpoint. Browser/MCP, multiple-provider and other-host live
+behavior remain explicit limits; a hosted executable release requires separate
+authorization. Do not repeat completed actor runs or erase historical failures.
+
+## Delivery review
+- All changed files were reviewed before targeted staging. No tracked local cache
+  or sensitive artifact was found; .gitignore already covered generated Python caches.
+- Secret-pattern scan found only the public `username:password` localhost proxy
+  documentation placeholder; synthetic privacy/injection fixtures remain intentional.
+- The first post-pin suite failed because the candidate fixture attempted an empty
+  commit after its files became the published pin. The test now commits only when
+  staged content changes. Initial and passing rerun logs are both retained.
+- First installer smoke compared raw checkout bytes; Git's LF/CRLF conversion
+  invalidated that check. Both sources match committed Git blobs after normalization.
+- Package/Focus-source validation, 54 capability schemas/57 contracts, 53 raw record
+  schemas, Skripsi traceability, changed-document links and git diff --check passed.
+- Three immutable filenames and the repository control prompt were untouched.
