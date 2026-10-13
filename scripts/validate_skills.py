@@ -10,7 +10,7 @@ from urllib.parse import unquote
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RUNTIME_SKILLS = ("andino-workflow", "ai-codebase-rescue", "skripsi-skill", "focus")
+RUNTIME_SKILLS = ("andino-workflow", "ai-codebase-rescue", "skripsi-skill", "focus", "search-first")
 EVAL_SKILLS = RUNTIME_SKILLS
 LINK = re.compile(r"(?<!!)\[[^]]*\]\(([^)]+)\)")
 FIELD = re.compile(r"^([A-Za-z][A-Za-z0-9_-]*):[ \t]+(.+)$")
@@ -205,9 +205,10 @@ def main():
     parser.add_argument("--focus-ref", default="origin/focus")
     parser.add_argument("--focus-dir", type=Path, help="validate an uncommitted Focus package instead of --focus-ref")
     parser.add_argument("--webbased-ref", help="opt-in maintainer source-drift check against a locally available Git ref")
+    parser.add_argument("--search-first-ref", default="origin/search-first")
     args = parser.parse_args()
     errors = []
-    for skill, ref in zip(RUNTIME_SKILLS, (args.andino_ref, args.rescue_ref, args.skripsi_ref, args.focus_ref)):
+    for skill, ref in zip(RUNTIME_SKILLS, (args.andino_ref, args.rescue_ref, args.skripsi_ref, args.focus_ref, args.search_first_ref)):
         try:
             if skill == "focus":
                 files, modes = directory_files(args.focus_dir) if args.focus_dir else ref_files(ref)

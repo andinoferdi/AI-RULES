@@ -80,8 +80,8 @@ class ResolverReconciliationTests(unittest.TestCase):
     def test_multi_host_plan_is_supported(self):
         resolver = build_resolver(self.catalog, self.profiles, StaticCapabilityAdapter())
         plan = resolver.resolve(ResolveRequest(hosts=("codex", "opencode"), profile_id="minimal"))
-        self.assertEqual({("andino-workflow", "codex"), ("focus", "codex"),
-                          ("andino-workflow", "opencode"), ("focus", "opencode")},
+        self.assertEqual({("andino-workflow", "codex"), ("focus", "codex"), ("search-first", "codex"),
+                          ("andino-workflow", "opencode"), ("focus", "opencode"), ("search-first", "opencode")},
                          {(t.capability_id, t.host_id) for t in plan.targets})
 
 

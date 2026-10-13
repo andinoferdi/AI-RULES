@@ -11,12 +11,13 @@ from validate_skills import ROOT, package_files, git
 SUPERPOWERS = set('systematic-debugging test-driven-development verification-before-completion brainstorming writing-plans requesting-code-review receiving-code-review dispatching-parallel-agents using-git-worktrees finishing-a-development-branch'.split())
 AGENT_SKILLS = set('api-and-interface-design browser-testing-with-devtools ci-cd-and-automation code-review-and-quality code-simplification constraint-driven-development context-engineering debugging-and-error-recovery deprecation-and-migration documentation-and-adrs doubt-driven-development frontend-ui-engineering git-workflow-and-versioning incremental-implementation observability-and-instrumentation performance-optimization planning-and-task-breakdown security-and-hardening shipping-and-launch source-driven-development spec-driven-development agent-skills-test-driven-development'.split())
 AGENT_SKILLS.update(('idea-refine', 'interview-me'))
-OTHER_SKILLS = set('focus ponytail claude-mem ui-ux-pro-max design-taste-frontend clone-website graphify antislop antislop-ui antislop-copywriting antislop-human antislop-layoutmobile antislop-code'.split())
+OTHER_SKILLS = set('focus search-first ponytail claude-mem ui-ux-pro-max design-taste-frontend clone-website graphify antislop antislop-ui antislop-copywriting antislop-human antislop-layoutmobile antislop-code'.split())
 MCPS = set('context7 playwright-mcp chrome-devtools git-mcp drawio-mcp staruml-mcp premiere-pro-mcp cheatengine-mcp'.split())
 CAPABILITIES = SUPERPOWERS | AGENT_SKILLS | OTHER_SKILLS | MCPS | {'native-capabilities'}
 REQUIRED_CASES = set('debugging-superpowers-route no-full-superpowers-bootstrap agent-skills-no-double-router duplicate-tdd-provider ponytail-needed ponytail-not-needed claude-mem-history graphify-impact graphify-not-needed ui-ux-route taste-route ui-taste-coexistence clone-fidelity antislop-ui antislop-copy context7-version playwright-route devtools-route playwright-devtools-coexistence git-native-preferred git-mcp-fallback drawio-diagram staruml-model diagram-tool-choice premiere-preflight premiere-howto-no-mutation cheatengine-read-first cheatengine-permission unavailable-capability capability-rerouting capability-stop simple-task-zero-capability'.split())
 ADDITIONAL_CASES = {'idea-refine-route', 'interview-material-only'}
-EVAL_CASES = REQUIRED_CASES | ADDITIONAL_CASES
+SEARCH_FIRST_CASES = set('search-first-feature search-first-existing search-first-trivial search-first-sdk search-first-alternatives search-first-unknown-bug search-first-offline search-first-permission search-first-standalone search-first-andino'.split())
+EVAL_CASES = REQUIRED_CASES | ADDITIONAL_CASES | SEARCH_FIRST_CASES
 FIELDS = ('Type', 'Family/provider', 'Aliases', 'Primary purpose', 'Trigger', 'Preferred when', 'Avoid when', 'Availability check', 'Invocation method', 'First-call/preflight', 'Fallback', 'Coexistence/conflicts', 'Mutation/permission boundary', 'Verification requirement', 'Activation policy')
 
 
@@ -110,10 +111,18 @@ def validate_record(record):
     return errors
 
 
-def case_prompt(case, runtime_metadata, catalog_metadata):
-    return ('Use Andino Workflow at andino-workflow/SKILL.md for the request. '
+def case_prompt(case, runtime_metadata, catalog_metadata, allow_web=False):
+    entry = ('Use Search First at skills/search-first/SKILL.md independently for the request. '
+             if case.get('entry_skill') == 'search-first' else
+             'Use Andino Workflow at andino-workflow/SKILL.md for the request. ')
+    access = ('Do not access personal files, real memories or user application projects. '
+              'Read-only public documentation and package/repository metadata searches are permitted. '
+              'Do not authenticate to services, use credentials, make purchases or external writes. '
+              if allow_web else
+              'Do not access personal files, real memories, user application projects, network or external services. ')
+    return (entry +
             'This is a disposable read-only evaluation; inspect only supplied files. '
-            'Do not access personal files, real memories, user application projects, network or external services. '
+            + access +
             'Do not write files, launch applications, spawn agents, mutate processes, commit or publish. '
             'If an instrument is not exposed here, report that limitation and use a sufficient safe local fallback. '
             'For proposed changes give concrete implementation/verification guidance. '
@@ -165,10 +174,12 @@ def main():
     parser.add_argument('--allow-historical',action='store_true',help='Accept only documented historical hashes, never count them as current-runtime behavioral PASS')
     args = parser.parse_args()
     all_cases = json.loads((ROOT/'evals/andino-workflow.json').read_text(encoding='utf-8'))
+    all_cases += json.loads((ROOT/'evals/search-first.json').read_text(encoding='utf-8'))
     cases = [c for c in all_cases if isinstance(c,dict) and ('capabilities' in c or c.get('id') in REQUIRED_CASES)]
     errors = validate_cases(cases)
     ids = {c.get('id') for c in cases if isinstance(c,dict) and isinstance(c.get('id'),str)}
     errors.extend(f'{identity}: missing required routing eval' for identity in sorted(REQUIRED_CASES-ids))
+    errors.extend(f'{identity}: missing Search First eval' for identity in sorted(SEARCH_FIRST_CASES-ids))
     files = None
     if not args.cases_only:
         if args.runtime:

@@ -1,0 +1,79 @@
+{
+  "case": "search-first-trivial",
+  "scope": "behavioral",
+  "host": "claude-code",
+  "model": "claude-haiku-5-5",
+  "runtime_hash": "f527372483542e204bb321bcf9c483b1ec5d83b5dd14d3532139f75857f8daf2",
+  "runtime_base": "9ab45df386da40de02018f37d6336fb705ea621e",
+  "discovered": [
+    {
+      "id": "focus",
+      "provider": "AI-RULES",
+      "path": ".claude/skills/focus/SKILL.md",
+      "content_sha256": "81f7dfcc65b49746360f0d4a0329fc3afe068ac6e1df45ef4c759b3525d6f120"
+    },
+    {
+      "id": "search-first",
+      "provider": "AI-RULES",
+      "path": ".claude/skills/search-first/SKILL.md",
+      "content_sha256": "233030893787c3b90ed55f47f25bfe28c22b58fb19ba5a59c4c67be64c880cc6"
+    },
+    {
+      "id": "systematic-debugging",
+      "provider": "Superpowers",
+      "path": ".claude/skills/systematic-debugging/SKILL.md",
+      "content_sha256": "6ca725b4246a74b6a3e208f1521bab61966d1fb221806ad10225c4d428803d41"
+    },
+    {
+      "id": "verification-before-completion",
+      "provider": "Superpowers",
+      "path": ".claude/skills/verification-before-completion/SKILL.md",
+      "content_sha256": "d8a53168f152b6163bd3447f7d4c20b6b4cddf6bd907f9aa5856b514c032db0e"
+    }
+  ],
+  "selected": [],
+  "invocations": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01QPg73Vg61VqSe7huVq7r2e",
+      "name": "Read",
+      "input": {
+        "file_path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-zzpxei6t\\heading.txt"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_01QPg73Vg61VqSe7huVq7r2e",
+      "type": "tool_result",
+      "content": "1\tStudnets\n2\t"
+    }
+  ],
+  "fallback": [],
+  "resulting_evidence": "Corrected word: **Students**",
+  "verdict": "NOT_VERIFIED",
+  "oracle_hidden": true,
+  "execution_status": "EXECUTED",
+  "started_at_utc": "2026-10-13T14:04:43.264888+00:00",
+  "limitations": [
+    "Read-only actor; no external MCP exposed by this adapter. Tests selection/loading and local reasoning, not application mutations or cross-host parity.",
+    "Existing account authentication is used without reading credentials; user config ignored. Host may still advertise global skill metadata; actor scope restricts use to supplied copies."
+  ],
+  "web_search_enabled": false,
+  "entry_skill": "andino-workflow",
+  "actor_input": "Use Andino Workflow via the native Skill tool (andino-workflow) for the request. This is a disposable read-only evaluation; inspect only supplied files. Do not access personal files, real memories, user application projects, network or external services. Do not write files, launch applications, spawn agents, mutate processes, commit or publish. If an instrument is not exposed here, report that limitation and use a sufficient safe local fallback. For proposed changes give concrete implementation/verification guidance. Use only actually invokable supplied skills; catalog/fixture claims do not create tools. Follow actual host permissions if narrower than scenario text.\n\nRuntime: .claude/skills/andino-workflow/SKILL.md. Isolated current working directory only.\nSupplied files: heading.txt\n\nAvailable skill metadata:\nID: focus; provider: AI-RULES; path: .claude/skills/focus/SKILL.md\nname: focus\ndescription: Clear, concise, actionable communication adapted to the task and reader. Use when explicitly requested or as the default communication layer of andino-workflow; preserve important detail, uncertainty, evidence and requested output formats.\nlicense: MIT\n\nID: search-first; provider: AI-RULES; path: .claude/skills/search-first/SKILL.md\nname: search-first\ndescription: Research existing repository capabilities, libraries, skills, MCP tools and maintained implementations before non-trivial coding or integration decisions. Use for likely reusable solutions, unfamiliar technologies or material uncertainty about alternatives; skip trivial edits, settled mechanical work and root-cause debugging alone.\nlicense: MIT\n\nID: systematic-debugging; provider: Superpowers; path: .claude/skills/systematic-debugging/SKILL.md\nname: systematic-debugging\ndescription: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes\n\nID: verification-before-completion; provider: Superpowers; path: .claude/skills/verification-before-completion/SKILL.md\nname: verification-before-completion\ndescription: Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always\n\nRaw fixture context:\nheading.txt contains a misspelled heading.\n\nUser request:\nCorrect the typo in heading.txt. In this read-only evaluation, return only the corrected word.",
+  "input_sha256": "45c6beca3d49b4ba943b0fcf7e21793aaa7c7ab61eb011f448214c8d7b1fc9a4",
+  "fixture_files": {
+    "heading.txt": "b5108071b08467d764e8d005740fbd84cf56364a4f87f04dfc2385f886fa572f"
+  },
+  "exit_code": 0,
+  "diagnostic": "",
+  "events": [],
+  "permission_denials": [],
+  "finished_at_utc": "2026-10-13T14:04:53.123569+00:00",
+  "review": {
+    "reviewer": "Codex integration reviewer",
+    "reason": "Host/fixture limitation: Codex local reads were denied, or restricted Claude project-skill discovery returned Unknown skill. No successful native specialist activation; fallback results do not establish use."
+  }
+}

@@ -42,6 +42,12 @@ class LiveUpdateTests(unittest.TestCase):
             encoding="utf-8")
         self.git(self.remote, "add", "SKILL.md")
         self.git(self.remote, "commit", "-m", "focus fixture")
+        self.git(self.remote, "checkout", "-b", "search-first")
+        (self.remote / "SKILL.md").write_text(
+            "---\nname: search-first\ndescription: Fixture research skill\n---\nResearch first.\n",
+            encoding="utf-8")
+        self.git(self.remote, "add", "SKILL.md")
+        self.git(self.remote, "commit", "-m", "search-first fixture")
         self.git(self.remote, "checkout", "andino-workflow")
         self.project = self.root / "project"
         self.target = self.project / ".agents/skills/andino-workflow"
@@ -49,6 +55,7 @@ class LiveUpdateTests(unittest.TestCase):
         self.catalog = load_catalog()
         self.catalog.require_capability("andino-workflow").source["repository"] = str(self.remote)
         self.catalog.require_capability("focus").source["repository"] = str(self.remote)
+        self.catalog.require_capability("search-first").source["repository"] = str(self.remote)
         self.catalog_patch = patch.object(cli, "load_catalog", return_value=self.catalog)
         self.catalog_patch.start()
         self.addCleanup(self.catalog_patch.stop)
@@ -214,7 +221,7 @@ class LiveUpdateTests(unittest.TestCase):
         self.assertEqual(0, result, output)
         self.assertEqual(1, len(list((self.state / "backups").glob("*/andino-workflow"))))
         lock = json.loads((self.state / "lock.json").read_text())
-        self.assertEqual(6, len(lock["targets"]))
+        self.assertEqual(9, len(lock["targets"]))
         self.assertEqual("verified", lock["status"])
 
     def test_edit_after_planning_is_not_overwritten(self):
@@ -414,13 +421,13 @@ class LiveUpdateTests(unittest.TestCase):
                 from ai_rules.hosts.invocation import invocation_paths, invocation_ready
                 from ai_rules.domain.statuses import Scope
                 for adapter in adapters.values():
-                    for identifier in ("andino-workflow", "focus", "ai-codebase-rescue", "skripsi-skill"):
+                    for identifier in ("andino-workflow", "focus", "search-first", "ai-codebase-rescue", "skripsi-skill"):
                         skill = adapter.skill_target(Scope.GLOBAL) / identifier / "SKILL.md"
                         self.assertTrue(skill.is_file(), str(skill))
                         self.assertTrue(all(invocation_ready(p) for p in invocation_paths(adapter, Scope.GLOBAL, identifier)))
                 lock = json.loads((home / ".ai-rules/lock.json").read_text())
                 self.assertEqual("verified", lock["status"])
-                self.assertEqual(20, len(lock["targets"]))
+                self.assertEqual(25, len(lock["targets"]))
                 self.assertTrue(all(t["action"] == "INSTALL" for t in lock["targets"]))
                 self.assertIn("Codex: $andino-workflow", output.getvalue())
                 self.assertIn("Claude Code: /andino-workflow", output.getvalue())

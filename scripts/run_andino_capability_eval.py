@@ -1,4 +1,4 @@
-"""Opt-in isolated Codex selection/loading evaluation; hides oracles and never assigns PASS."""
+"""Opt-in isolated host selection/loading evaluation; hides oracles and never assigns PASS."""
 
 import argparse
 import hashlib
@@ -64,6 +64,23 @@ def fixture_contents(identity):
         contents['idea-brief.md']='Small research team wants to find shared reading notes. Current notes use Markdown files. No decision on search versus tagging; no new tool/dependency or implementation authorized. Refine options only.\n'
     if identity=='interview-material-only':
         contents['product-brief.md']='Student dashboard exists. The request is make it faster, but no target metric, affected workflow or speed-versus-cost preference is decided. Ask only a material question before planning; no implementation authorized.\n'
+    if identity in ('search-first-feature', 'search-first-andino', 'search-first-permission', 'search-first-offline'):
+        contents['project.md'] = 'Python 3.12; small Flask 3.1 app using server-rendered forms; no authentication library yet. PostgreSQL users table exists. Need email/password sessions, not a hosted identity service. No dependency changes authorized yet.\n'
+        contents['app.py'] = 'from flask import Flask\napp = Flask(__name__)\n@app.get("/")\ndef index():\n    return "Home"\n'
+    if identity in ('search-first-existing', 'search-first-standalone'):
+        contents['export.py'] = 'import csv\ndef export_rows(rows, stream):\n    writer = csv.writer(stream)\n    writer.writerows(rows)\n'
+        contents['test_export.py'] = 'import io\nfrom export import export_rows\ndef test_commas():\n    out = io.StringIO()\n    export_rows([["a,b", "c"]], out)\n    assert out.getvalue() == chr(34) + "a,b" + chr(34) + ",c\\r\\n"\n'
+        contents['project.md'] = 'Python 3.12; existing CSV module; no new dependency required by product.\n'
+    if identity == 'search-first-trivial':
+        contents['heading.txt'] = 'Studnets\n'
+    if identity in ('search-first-sdk', 'search-first-alternatives'):
+        contents['requirements.txt'] = 'httpx==0.28.1\n'
+        contents['project.md'] = 'Python 3.12; unfamiliar HTTPX API. Need reusable connection pooling and explicit timeouts for repeated synchronous HTTP requests.\n'
+        if identity == 'search-first-alternatives':
+            contents['attempt.log'] = 'Confirmed experiment: passing retries to httpx.Client raises TypeError. Do not repeat this constructor argument. Need supported connection-error retries; no retry requirement for response status codes.\n'
+    if identity == 'search-first-unknown-bug':
+        contents['runtime.log'] = 'Intermittent login failure; response status 500. No stack trace captured. Root cause unknown.\n'
+        contents['app.py'] = 'def login(db, email):\n    return db.get_user(email)\n'
     return contents
 
 
@@ -88,6 +105,19 @@ def skill_resource_hash(path):
     return digest.hexdigest()
 
 
+def actor_command(host, base, answer, allow_web):
+    if host == 'claude-code':
+        allowed = 'Read,Glob,Grep,Skill' + (',WebSearch,WebFetch' if allow_web else '')
+        return [shutil.which('claude') or 'claude', '-p', '--restricted', '--strict-mcp-config',
+                '--plugin-dir', str(base / 'eval-plugin'),
+                '--tools', allowed, '--allowedTools', allowed, '--permission-mode', 'dontAsk',
+                '--no-session-persistence', '--output-format', 'stream-json', '--verbose']
+    return [shutil.which('codex') or 'codex', 'exec', '--ignore-user-config', '--ephemeral',
+            '--skip-git-repo-check', '--sandbox', 'read-only', '-c',
+            'web_search="live"' if allow_web else 'web_search="disabled"', '-C', str(base),
+            '--color', 'never', '--json', '-o', str(answer), '-']
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--runtime',type=Path,required=True)
@@ -95,13 +125,17 @@ def main():
     parser.add_argument('--catalog',type=Path, help='Optional selected real skill paths/IDs/providers; no MCP config is copied.')
     parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--timeout',type=int,default=180)
+    parser.add_argument('--web-search',action='store_true',help='Opt in to read-only public research; defaults to offline isolation')
+    parser.add_argument('--host', choices=('codex', 'claude-code'), default='codex')
     args = parser.parse_args()
     if args.case not in EVAL_CASES:
         parser.error('Select a capability-routing case')
-    case = next(c for c in json.loads((ROOT/'evals/andino-workflow.json').read_text(encoding='utf-8')) if c['id'] == args.case)
+    cases = json.loads((ROOT/'evals/andino-workflow.json').read_text(encoding='utf-8'))
+    cases += json.loads((ROOT/'evals/search-first.json').read_text(encoding='utf-8'))
+    case = next(c for c in cases if c['id'] == args.case)
     files = runtime_files(args.runtime)
     catalog = json.loads(args.catalog.read_text(encoding='utf-8')) if args.catalog else []
-    record = dict(case=args.case,scope='behavioral',host='Windows Codex CLI',model='UNKNOWN',
+    record = dict(case=args.case,scope='behavioral',host=args.host,model='UNKNOWN',
                   runtime_hash=content_hash(files),runtime_base=subprocess.check_output(['git','rev-parse','HEAD'],cwd=args.runtime,text=True).strip(),
                   discovered=[],selected=[],invocations=[],fallback=[],resulting_evidence='',verdict='NOT_VERIFIED',
                   oracle_hidden=True,execution_status='NOT_STARTED',started_at_utc=datetime.now(timezone.utc).isoformat(),
@@ -109,19 +143,28 @@ def main():
                                'Existing account authentication is used without reading credentials; user config ignored. Host may still advertise global skill metadata; actor scope restricts use to supplied copies.'])
     with tempfile.TemporaryDirectory(prefix='andino-capability-eval-') as temporary:
         base = Path(temporary)
-        for name,content in files.items():
-            target=base/'andino-workflow'/name
+        workflow_root = base / ('eval-plugin/skills/andino-workflow' if args.host == 'claude-code' else 'andino-workflow')
+        skill_root = base / ('eval-plugin/skills' if args.host == 'claude-code' else 'skills')
+        if args.host == 'claude-code':
+            manifest = base / 'eval-plugin/.claude-plugin/plugin.json'
+            manifest.parent.mkdir(parents=True)
+            manifest.write_text(json.dumps({'name':'ai-rules-eval','version':'1.0.0'}), encoding='utf-8')
+            record['limitations'].append('Restricted Claude evaluation uses explicit --plugin-dir registration of unchanged skill resources as ai-rules-eval:<id>; it does not prove ordinary project-skill auto-discovery or slash-picker UI behavior.')
+        for name,content in (files.items() if case.get('entry_skill') != 'search-first' else []):
+            target=workflow_root/name
             target.parent.mkdir(parents=True,exist_ok=True)
             target.write_text(content,encoding='utf-8')
         descriptions=[]
         for item in catalog:
             source=Path(item['path'])
-            target=base/'skills'/item['id']
+            target=skill_root/item['id']
             copy_skill(source,target)
             frontmatter=(target/'SKILL.md').read_text(encoding='utf-8').split('---',2)
             metadata=frontmatter[1].strip() if len(frontmatter)>2 else 'Metadata unavailable'
-            descriptions.append(f"ID: {item['id']}; provider: {item.get('provider','UNKNOWN')}; path: skills/{item['id']}/SKILL.md\n{metadata}")
-            record['discovered'].append({'id':item['id'],'provider':item.get('provider','UNKNOWN'),'path':f"skills/{item['id']}/SKILL.md",'content_sha256':skill_resource_hash(target)})
+            skill_path=(target/'SKILL.md').relative_to(base).as_posix()
+            native_id = f"ai-rules-eval:{item['id']}" if args.host == 'claude-code' else item['id']
+            descriptions.append(f"ID: {item['id']}; native ID: {native_id}; provider: {item.get('provider','UNKNOWN')}; path: {skill_path}\n{metadata}")
+            record['discovered'].append({'id':item['id'],'provider':item.get('provider','UNKNOWN'),'path':skill_path,'content_sha256':skill_resource_hash(target)})
         fixture_files=fixture_contents(args.case)
         for name,content in fixture_files.items():
             (base/name).write_text(content,encoding='utf-8')
@@ -131,14 +174,22 @@ def main():
             subprocess.run(['git','add','counter.py'],cwd=base,check=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
             (base/'counter.py').write_text('count = 2\n',encoding='utf-8')
             fixture_files['counter.py']='count = 2\n'
-        prompt=case_prompt(case,'Runtime: andino-workflow/SKILL.md; isolated current working directory only.\nSupplied files: '+', '.join(fixture_files), '\n\n'.join(descriptions) or 'No external methodology skills supplied. Only Andino runtime and native local reads available.')
+        runtime_label = ('Standalone; no Andino runtime installed.' if case.get('entry_skill') == 'search-first'
+                         else 'Runtime: andino-workflow/SKILL.md.')
+        prompt=case_prompt(case,runtime_label+' Isolated current working directory only.\nSupplied files: '+', '.join(fixture_files), '\n\n'.join(descriptions) or 'No external methodology skills supplied. Only Andino runtime and native local reads available.', allow_web=args.web_search)
+        if args.host == 'claude-code':
+            prompt=prompt.replace('at andino-workflow/SKILL.md', 'via the native Skill tool (ai-rules-eval:andino-workflow)')
+            prompt=prompt.replace('at skills/search-first/SKILL.md', 'via the native Skill tool (ai-rules-eval:search-first)')
+            prompt=prompt.replace('Runtime: andino-workflow/SKILL.md.', 'Runtime: eval-plugin/skills/andino-workflow/SKILL.md.')
+        record['web_search_enabled'] = args.web_search
+        record['entry_skill'] = case.get('entry_skill', 'andino-workflow')
         record['actor_input']=prompt
         record['input_sha256']=hashlib.sha256(prompt.encode('utf-8')).hexdigest()
         record['fixture_files']={name:hashlib.sha256(content.encode()).hexdigest() for name,content in fixture_files.items()}
         answer=base/'answer.txt'
-        command=[shutil.which('codex') or 'codex','exec','--ignore-user-config','--ephemeral','--skip-git-repo-check','--sandbox','read-only','-c','web_search="disabled"','-C',str(base),'--color','never','--json','-o',str(answer),'-']
+        command=actor_command(args.host, base, answer, args.web_search)
         try:
-            result=subprocess.run(command,input=prompt,text=True,encoding='utf-8',stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=args.timeout)
+            result=subprocess.run(command,input=prompt,cwd=base,text=True,encoding='utf-8',stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=args.timeout)
             record['exit_code']=result.returncode
             record['resulting_evidence']=answer.read_text(encoding='utf-8') if answer.exists() else ''
             record['execution_status']='EXECUTED' if result.returncode==0 and record['resulting_evidence'] else 'ENVIRONMENT_UNAVAILABLE'
@@ -150,12 +201,23 @@ def main():
                 except ValueError:
                     continue
                 item=event.get('item',{})
-                if item.get('type') in ('command_execution','mcp_tool_call'):
+                if item.get('type') in ('command_execution','mcp_tool_call','web_search'):
                     record['invocations'].append(item)
                 if event.get('type') in ('error','turn.failed','session.started','thread.started'):
                     record['events'].append(event)
                 if event.get('model'):
                     record['model']=str(event['model'])
+                if args.host == 'claude-code':
+                    if event.get('type') == 'assistant' and event.get('message', {}).get('model'):
+                        record['model'] = event['message']['model']
+                    for block in event.get('message', {}).get('content', []):
+                        if isinstance(block, dict) and block.get('type') in ('tool_use', 'tool_result'):
+                            record['invocations'].append(block)
+                    if event.get('type') == 'result':
+                        record['resulting_evidence'] = event.get('result', '')
+                        record['permission_denials'] = event.get('permission_denials', [])
+                        record['execution_status'] = ('EXECUTED' if result.returncode == 0 and not event.get('is_error')
+                                                      and record['resulting_evidence'] else 'ENVIRONMENT_UNAVAILABLE')
         except subprocess.TimeoutExpired as exc:
             record['execution_status']='ENVIRONMENT_UNAVAILABLE'
             record['diagnostic']=f'Actor timed out after {args.timeout}s; no behavioral verdict assigned.'

@@ -26,7 +26,7 @@ class FocusSelectionTests(unittest.TestCase):
 
     def test_workflow_selection_installs_focus_without_extra_user_selection(self):
         plan = self.resolve(capabilities=("andino-workflow",))
-        self.assertEqual({"andino-workflow", "focus"}, {t.capability_id for t in plan.targets})
+        self.assertEqual({"andino-workflow", "focus", "search-first"}, {t.capability_id for t in plan.targets})
 
     def test_focus_can_be_selected_without_workflow(self):
         catalog = load_catalog()
@@ -66,7 +66,7 @@ class FocusSetupTests(unittest.TestCase):
         self.git("init", "-b", "focus")
         self.git("config", "user.name", "Fixture")
         self.git("config", "user.email", "fixture@example.invalid")
-        for identifier in ("focus", "andino-workflow"):
+        for identifier in ("focus", "andino-workflow", "search-first"):
             if identifier != "focus":
                 self.git("checkout", "--orphan", identifier)
                 self.git("rm", "-rf", ".")
@@ -86,7 +86,7 @@ class FocusSetupTests(unittest.TestCase):
             self.git("add", ".")
             self.git("commit", "-m", identifier)
         catalog = load_catalog()
-        for identifier in ("focus", "andino-workflow"):
+        for identifier in ("focus", "andino-workflow", "search-first"):
             catalog.require_capability(identifier).source["repository"] = str(self.upstream)
         self.catalog = catalog
         mocked = patch.object(cli, "load_catalog", return_value=catalog)
@@ -132,8 +132,8 @@ class FocusSetupTests(unittest.TestCase):
         self.run_setup(project, "codex", "focus")
         self.assertFalse((project / ".agents/skills/andino-workflow").exists())
         self.git("checkout", "focus")
-        reference = self.upstream / "references/human-language-english.md"
-        reference.write_text(reference.read_text(encoding="utf-8") + "Updated style example.\n", encoding="utf-8")
+        reference = self.upstream / "references/priority-a.md"
+        reference.write_text(reference.read_text(encoding="utf-8") + "Updated priority rule.\n", encoding="utf-8")
         (self.upstream / "README.md").write_text("Updated source\n", encoding="utf-8")
         self.git("add", ".")
         self.git("commit", "-m", "update focus")
@@ -141,4 +141,4 @@ class FocusSetupTests(unittest.TestCase):
         self.assertEqual("Updated source\n", (project / ".agents/skills/focus/README.md").read_text())
         self.assertEqual("User content", unrelated.read_text())
         self.assertEqual(reference.read_text(encoding="utf-8"),
-                         (project / ".agents/skills/focus/references/human-language-english.md").read_text(encoding="utf-8"))
+                         (project / ".agents/skills/focus/references/priority-a.md").read_text(encoding="utf-8"))
