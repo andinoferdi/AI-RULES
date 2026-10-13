@@ -27,6 +27,10 @@ is needed, selection is required by [routing](references/routing.md); activate t
 actual installed skill through the host contract before that research. Installation
 does not activate it on every task. Use its findings for implementation decisions;
 Search First owns research methodology only, while Andino retains the lifecycle.
+This includes finding the supported way to integrate an unfamiliar library and
+finding an alternative after an API approach failed, even when official docs alone
+may supply the answer. Retrieving those docs is the research action; it does not
+replace activating the selected methodology first.
 An open integration or alternatives decision still needs this method when external
 search is unavailable; offline is not equivalent to NOT_NEEDED. For Claude Code,
 activate with the native Skill tool; for OpenCode, use its exposed skill tool.
