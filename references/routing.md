@@ -72,7 +72,7 @@ Antigravity's scoped descriptions are behavioral guidance, not a native hard swi
 | Daily task or installation guidance | Relevant context and official instructions when needed | answer useful defaults; inspect or ask only about material environment differences |
 | Current research or factual comparison | Authoritative current sources and supplied artifacts | distinguish source findings, inference and unknowns; cite evidence; no invented freshness |
 | Decision support | Existing constraints, options and consequence comparison | inspect available evidence; ask only for unresolved material human preferences |
-| New feature with likely reusable solutions, dependency/integration choice, new utility, unfamiliar technology, material uncertainty about technical alternatives, or evidence that an approach is unsuitable | CONDITIONAL: search-first; select when this research need is present | activate actual installed instructions before solution research; local reuse may settle the need without web search; no trigger from coding alone, trivial edits or already-established solutions |
+| New feature with likely reusable solutions, dependency/integration choice, new utility, unfamiliar technology, material uncertainty about technical alternatives, or evidence that an approach is unsuitable | REQUIRED: search-first when this research need remains | activate actual installed instructions before solution research, even offline; local reuse may settle the need without web search; no trigger from coding alone, trivial edits or already-established solutions |
 | Thesis/research status, next steps, milestones or substantive research work | REQUIRED: skripsi-skill | activate before interpreting progress or giving research advice; preserve Andino ownership; no second plan |
 | Runtime/configuration failure | Relevant logs, service/config/schema status | test environment hypotheses before assuming a source-code defect; read-only evidence does not authorize live mutation |
 | Unknown bug root cause | REQUIRED: systematic-debugging | activate before investigation/repair; reproduce or trace; distinguish observed cause from proposed diagnosis |
@@ -90,7 +90,7 @@ Antigravity's scoped descriptions are behavioral guidance, not a native hard swi
 | Fidelity clone | clone-website | preserve reference; redesign only when requested |
 | Evidenced unnecessary dependency/abstraction, or existing avoidable complexity | CONDITIONAL: ponytail for proposed over-building; code-simplification for existing-code cleanup | choose one for the same concern; no activation merely because coding is involved |
 | Concrete generated UI/copy/code quality defect | CONDITIONAL: matching Anti-Slop core/subskill | select only the uncovered concern; accepted direction wins; no family-wide load |
-| Unresolved version-sensitive library behavior | REQUIRED evidence: version-matched official docs; CONDITIONAL instrument: Context7 | inspect dependency version first; use Context7 when available and useful, otherwise official documentation directly; no mandatory extra skill |
+| Unresolved version-sensitive library behavior | REQUIRED evidence: version-matched official docs; CONDITIONAL instrument: Context7 | inspect dependency version first; use Context7 when available and useful, otherwise official docs; a bounded known-API lookup needs no extra method, but unfamiliar integration or solution alternatives also follow the Search First route |
 | Acceptance needs browser interaction, rendered layout or responsive evidence | CONDITIONAL: sufficient native/CLI browser, otherwise Playwright MCP for persistent exploration | actual browser checks when required by acceptance; one surface; unavailable checks remain NOT_VERIFIED |
 | Missing console/network/performance evidence not supplied by the current surface | CONDITIONAL: Chrome DevTools MCP | add only for the distinct diagnostic gap, not redundant navigation |
 | Repository state where native Git unavailable/inadequate | Git MCP | native Git preferred; MCP mutations still need applicable authorization |
@@ -110,7 +110,10 @@ index freshness; native references remain preferred for simple relationships.
 External Anti-Slop availability does not replace existing internal quality rules.
 
 For Search First, resolve the real installed `search-first` entry and load it through
-the host invocation contract when the research need is present; do not substitute
+the host invocation contract when the research need is present; this is required
+selection within that condition, not an optional name mention. Use Claude Code's
+Skill tool or OpenCode's exposed skill tool where applicable; do not substitute
+file reads for those native invocations. Do not substitute
 this routing row for its instructions. Use its sourced recommendation in Andino's
 existing task/plan. Andino owns scope, execution, verification and checkpoints;
 Search First owns discovery and ADOPT / EXTEND / COMPOSE / BUILD recommendations.

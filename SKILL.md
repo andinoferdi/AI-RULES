@@ -22,11 +22,16 @@ the boundary briefly and continue authorized work without claiming Focus was
 loaded. Focus shapes communication only; Andino retains routing, execution,
 verification, persistence and lifecycle ownership.
 
-Setup also installs `search-first`. Select it when meaningful existing-solution
-research is needed, following [routing](references/routing.md), and activate the
+Setup also installs `search-first`. When meaningful existing-solution research
+is needed, selection is required by [routing](references/routing.md); activate the
 actual installed skill through the host contract before that research. Installation
 does not activate it on every task. Use its findings for implementation decisions;
 Search First owns research methodology only, while Andino retains the lifecycle.
+An open integration or alternatives decision still needs this method when external
+search is unavailable; offline is not equivalent to NOT_NEEDED. For Claude Code,
+activate with the native Skill tool; for OpenCode, use its exposed skill tool.
+A file read is activation only on a host whose permitted loading mechanism is file
+reading, not a substitute for an available native invocation tool.
 
 Before substantive work, read [routing](references/routing.md) through a permitted
 tool unless its current contents are already loaded. A slash command may inject
