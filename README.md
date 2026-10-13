@@ -8,6 +8,7 @@ Install Andino's skills for Codex, Claude Code, OpenCode, and Antigravity. Start
 | --- | --- |
 | [`main`](https://github.com/andinoferdi/AI-RULES/tree/main) | Installer source, tests, release tooling, and validation evidence |
 | [`WebBased`](https://github.com/andinoferdi/AI-RULES/tree/WebBased) | Web/chat rules and project templates |
+| [`search-first`](https://github.com/andinoferdi/AI-RULES/tree/search-first) | Existing-solution research before implementation |
 | [`focus`](https://github.com/andinoferdi/AI-RULES/tree/focus) | Clear, concise, actionable communication |
 | [`andino-workflow`](https://github.com/andinoferdi/AI-RULES/tree/andino-workflow) | Adaptive workflow, capability routing, and portable checkpoints |
 | [`ai-codebase-rescue`](https://github.com/andinoferdi/AI-RULES/tree/ai-codebase-rescue) | Evidence-based stabilization of fragile codebases |
@@ -30,12 +31,12 @@ Select your agents and a profile, then confirm the installation plan:
 
 | Profile | Skills installed |
 | --- | --- |
-| Minimal | Andino Workflow + Focus |
-| Engineering | Andino Workflow + Focus + AI Codebase Rescue |
-| Research / Skripsi | Andino Workflow + Focus + Skripsi Skill |
-| Everything | All four |
+| Minimal | Andino Workflow + Focus + Search First |
+| Engineering | Andino Workflow + Focus + Search First + AI Codebase Rescue |
+| Research / Skripsi | Andino Workflow + Focus + Search First + Skripsi Skill |
+| Everything | All five |
 
-Open a new agent session or reload its window after setup. Installing all four skills does **not** activate all of them for every task. Third-party skills, plugins, and MCP servers require their own installation or connection.
+Open a new agent session or reload its window after setup. Installing all five skills does **not** activate all of them for every task. Third-party skills, plugins, and MCP servers require their own installation or connection.
 
 Run `ai-rules setup` again to update selected skills from their latest configured branches. To update the CLI itself, run these commands from a clean `main` checkout:
 
@@ -46,6 +47,22 @@ ai-rules setup
 ```
 
 Setup verifies files and entry points, not successful skill use in a running agent. Review any reported conflict or unsupported installation layout before replacing files. See the [validation guide](evals/README.md) for testing details.
+
+## Search First
+
+`ai-rules setup --capability search-first` installs it independently. Selecting
+Andino automatically installs Focus and Search First through the dependency
+resolver. Focus stays independent; Search First is activated only when meaningful
+existing-solution research is needed, not for every coding request.
+
+Use `$search-first [task]` in Codex. Other hosts use their supported native skill
+or setup-generated command/workflow (such as `/search-first`). Andino loads the
+real installed skill when permitted, uses its findings, and retains lifecycle
+ownership. Unknown-cause bugs keep the debugging route. Search First adds no
+permission to install dependencies or perform external writes.
+
+This is an AI-RULES adaptation of [ECC Search First](https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md),
+by Affaan Mustafa, under MIT. See the distribution's `references/license.md`.
 
 ## Example prompt
 

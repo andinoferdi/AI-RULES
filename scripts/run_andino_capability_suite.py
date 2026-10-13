@@ -16,9 +16,12 @@ def main():
     parser.add_argument('--output',type=Path,default=ROOT/'docs/validation/andino-workflow/live')
     parser.add_argument('--case',action='append',help='Repeat to select cases; default is all capability scenarios')
     parser.add_argument('--timeout',type=int,default=120)
+    parser.add_argument('--host', choices=('codex', 'claude-code'), default='codex')
+    parser.add_argument('--web-search',action='store_true',help='Opt in to public read-only research; exclude offline cases')
     parser.add_argument('--skip-recorded',action='store_true',help='Resume without overwriting existing records; hashes still need audit')
     args=parser.parse_args()
     all_cases=json.loads((ROOT/'evals/andino-workflow.json').read_text(encoding='utf-8'))
+    all_cases+=json.loads((ROOT/'evals/search-first.json').read_text(encoding='utf-8'))
     selected=args.case or [c['id'] for c in all_cases if c['id'] in EVAL_CASES]
     if set(selected)-EVAL_CASES:
         parser.error('Unknown capability case')
@@ -29,6 +32,9 @@ def main():
             print(f'PRESERVED: {identity}',flush=True)
             continue
         command=[sys.executable,str(ROOT/'scripts/run_andino_capability_eval.py'),'--runtime',str(args.runtime),'--case',identity,'--output',str(output),'--timeout',str(args.timeout)]
+        command.extend(['--host', args.host])
+        if args.web_search:
+            command.append('--web-search')
         if args.catalog:
             command.extend(['--catalog',str(args.catalog)])
         result=subprocess.run(command,cwd=ROOT,check=False)

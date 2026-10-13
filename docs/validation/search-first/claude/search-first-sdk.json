@@ -1,0 +1,269 @@
+{
+  "case": "search-first-sdk",
+  "scope": "behavioral",
+  "host": "claude-code",
+  "model": "claude-haiku-5-5",
+  "runtime_hash": "76c58ce05157f44a9f77e7b7e0f8ef4068acd5b076e9e0ec9f90546ae022191d",
+  "runtime_base": "59529af060a516ac197ff17481e3a8f7134c4ba8",
+  "discovered": [
+    {
+      "id": "focus",
+      "provider": "AI-RULES",
+      "path": "eval-plugin/skills/focus/SKILL.md",
+      "content_sha256": "81f7dfcc65b49746360f0d4a0329fc3afe068ac6e1df45ef4c759b3525d6f120"
+    },
+    {
+      "id": "search-first",
+      "provider": "AI-RULES",
+      "path": "eval-plugin/skills/search-first/SKILL.md",
+      "content_sha256": "233030893787c3b90ed55f47f25bfe28c22b58fb19ba5a59c4c67be64c880cc6"
+    },
+    {
+      "id": "systematic-debugging",
+      "provider": "Superpowers",
+      "path": "eval-plugin/skills/systematic-debugging/SKILL.md",
+      "content_sha256": "6ca725b4246a74b6a3e208f1521bab61966d1fb221806ad10225c4d428803d41"
+    },
+    {
+      "id": "verification-before-completion",
+      "provider": "Superpowers",
+      "path": "eval-plugin/skills/verification-before-completion/SKILL.md",
+      "content_sha256": "d8a53168f152b6163bd3447f7d4c20b6b4cddf6bd907f9aa5856b514c032db0e"
+    }
+  ],
+  "selected": [
+    {
+      "id": "andino-workflow",
+      "provider": "AI-RULES",
+      "native_id": "ai-rules-eval:andino-workflow"
+    },
+    {
+      "id": "focus",
+      "provider": "AI-RULES",
+      "native_id": "ai-rules-eval:focus"
+    },
+    {
+      "id": "search-first",
+      "provider": "AI-RULES",
+      "native_id": "ai-rules-eval:search-first"
+    }
+  ],
+  "invocations": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01RCk3zhSi4WYhjzDKBPqPz4",
+      "name": "Skill",
+      "input": {
+        "skill": "ai-rules-eval:andino-workflow",
+        "args": "Research only. User request: \"I am unfamiliar with this HTTP client. Find its documented way to reuse connections and configure timeouts for repeated synchronous requests.\" Supplied files: requirements.txt, project.md (inspect only these, in the isolated cwd). No writes, no launches, no agents, no external writes or auth. Public docs/package metadata search is permitted."
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool_use_id": "toolu_01RCk3zhSi4WYhjzDKBPqPz4",
+      "content": "Launching skill: ai-rules-eval:andino-workflow"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01Boni3gznZBhnLx6AUQwbMp",
+      "name": "Read",
+      "input": {
+        "file_path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-gbcidoty\\requirements.txt"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_01Boni3gznZBhnLx6AUQwbMp",
+      "type": "tool_result",
+      "content": "1\thttpx==0.28.1\n2\t"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_015oAiFJxSxc3a9BtpHuGRZJ",
+      "name": "Read",
+      "input": {
+        "file_path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-gbcidoty\\project.md"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_015oAiFJxSxc3a9BtpHuGRZJ",
+      "type": "tool_result",
+      "content": "1\tPython 3.12; unfamiliar HTTPX API. Need reusable connection pooling and explicit timeouts for repeated synchronous HTTP requests.\n2\t"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01DRcZszQ2cGjScrWw2u4xu4",
+      "name": "Read",
+      "input": {
+        "file_path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-gbcidoty\\eval-plugin\\skills\\andino-workflow\\references\\routing.md"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_01DRcZszQ2cGjScrWw2u4xu4",
+      "type": "tool_result",
+      "content": "1\t# Capability routing\n2\t\n3\t## Plan depth is not capability routing\n4\t\n5\t`focus` is the required default communication layer for every Andino invocation,\n6\tincluding direct answers. Activate it using the host contract unless already\n7\tloaded with valid context. Honor explicit user overrides and invocation controls;\n8\treport unavailability without duplicating Focus's body here. This adds no task\n9\tlifecycle or domain-specialist requirement.\n10\t\n11\tSelect capabilities by the current unresolved need, not by a compulsory planning\n12\tstage or coding taxonomy. DIRECT may need no tools; GROUNDED needs bounded context;\n13\tINVESTIGATIVE may need hypothesis testing. Independently choose EPHEMERAL or\n14\tCHECKPOINTED persistence. Only the latter needs LITE/STANDARD/DEEP plan density;\n15\trecord material density changes in an existing plan. This creates no second router.\n16\t\n17\tSelect from task intent, current evidence, unresolved need, phase, consequence and\n18\tactual host availability, not keywords or an unverified diagnosis. Native\n19\tfilesystem/search/shell/Git and fetching are preferred when sufficient. Consult\n20\tonly matching entries in [the capability registry](capability-registry.md), resolve\n21\tactual provider/ID using [coexistence](capability-coexistence.md), then obey\n22\t[the host invocation contract](invocation-adapter.md). Registry metadata is not\n23\tfull skill/schema loading, installation or successful invocation.\n24\t\n25\tSkill = methodology; MCP = instrument; native = existing host facility. Select the\n26\tminimum useful combination only when each addresses a distinct need. Read relevant\n27\tinstructions/schema just-in-time, perform required preflight and use observed\n28\tresults as evidence. Reassess after new facts: keep, replace or release a capability.\n29\tRelease means stop unnecessary calls/defaults, not uninstall. Stop when acceptance\n30\tis sufficiently grounded. Simple tasks may remain DIRECT with zero specialists\n31\tonly when no required route or explicit specialist choice applies.\n32\t\n33\tREQUIRED means select and activate the matching skill before its relevant work,\n34\tsubject to native invocation controls. CONDITIONAL means select only when the\n35\tstated need is evidenced; once selected, activation is required before use.\n36\tUnmarked rows remain conditional on their stated need and boundary.\n37\tThese labels govern selection, not permission, persistence or registry AUTO modes.\n38\t\n39\tApply explicit user choices and exclusions first, then matching REQUIRED routes,\n40\tthen distinct CONDITIONAL needs. Match the requested outcome, not names appearing\n41\tin quoted examples, filenames or an inventory. Diagnose an unknown cause before\n42\tchoosing a repair; load regression support before behavior changes and completion\n43\tsupport before consequential acceptance claims. Reassess each phase; do not load\n44\tfuture phases in advance. Domain and phase routes may both apply without creating\n45\tanother owner. Resolve selected skills absent from the registry through the host\n46\tcatalog using the same invocation and coexistence contracts.\n47\t\n48\tAUTO supports relevant read-oriented lookup/normal skill loading. CONDITIONAL_AUTO\n49\twaits for the actual regression/review/quality/simplification/browser phase.\n50\tPERMISSION_GATED selects a candidate but does not authorize live/destructive\n51\tmutation. DISCOVERED, AVAILABLE, INVOKABLE, ACTIVE, USED, UNAVAILABLE and NOT_NEEDED\n52\tremain distinct; installation != activation != use. If unavailable, use a safe\n53\tsufficient native/local fallback and record it without claiming external use. If\n54\tno sufficient fallback exists, name the material gap and minimum required access.\n55\tNever install alternatives merely to satisfy registry completeness.\n56\t\n57\tOne lifecycle owner coordinates the job; supporting disciplines may change by phase.\n58\tDebugging, regression/TDD, review and completion verification may run in sequence when\n59\teach is relevant. This is phase-local support, not permission to start parallel plans.\n60\t\n61\tRespect native invocation controls. Installed does not mean model-invokable.\n62\tFor explicit-only workers, recommend the user's native invocation when that method\n63\tis needed; never reproduce a blocked skill through file reads or alternate tools.\n64\tDo ordinary task work within the available permissions without claiming a worker\n65\twas invoked. Codex implicit policy, Claude manual-only mode and OpenCode V1 deny\n66\tpermissions have different semantics; there is no universal hidden-but-callable mode.\n67\tAntigravity's scoped descriptions are behavioral guidance, not a native hard switch.\n68\t\n69\t| Need | Default worker / instrument | Boundary |\n70\t| --- | --- | --- |\n71\t| Ordinary conversation or sufficient known context | Direct response | explicit Andino invocation is valid; no forced plan, tools or specialist |\n72\t| Daily task or installation guidance | Relevant context and official instructions when needed | answer useful defaults; inspect or ask only about material environment differences |\n73\t| Current research or factual comparison | Authoritative current sources and supplied artifacts | distinguish source findings, inference and unknowns; cite evidence; no invented freshness |\n74\t| Decision support | Existing constraints, options and consequence comparison | inspect available evidence; ask only for unresolved material human preferences |\n75\t| New feature with likely reusable solutions, dependency/integration choice, new utility, unfamiliar technology, material uncertainty about technical alternatives, or evidence that an approach is unsuitable | REQUIRED: search-first when this research need remains | activate actual installed instructions before solution research, even offline; local reuse may settle the need without web search; no trigger from coding alone, trivial edits or already-established solutions |\n76\t| Thesis/research status, next steps, milestones or substantive research work | REQUIRED: skripsi-skill | activate before interpreting progress or giving research advice; preserve Andino ownership; no second plan |\n77\t| Runtime/configuration failure | Relevant logs, service/config/schema status | test environment hypotheses before assuming a source-code defect; read-only evidence does not authorize live mutation |\n78\t| Unknown bug root cause | REQUIRED: systematic-debugging | activate before reading diagnostic logs/source for the investigation, not after gathering them; reproduce or trace; distinguish observed cause from proposed diagnosis |\n79\t| Serious stabilization of a fragile/patch-heavy bounded subsystem, repeated regressions, production hardening of a fragile prototype, bounded remake candidate, or material contract/ownership/architecture drift | ai-codebase-rescue after eligibility inspection | evidence-first; smallest justified surface; AI provenance alone never justifies remediation; shared Andino plan remains lifecycle state |\n80\t| Behavior change needing a regression or executable contract | CONDITIONAL: test-driven-development | activate before implementation when an executable check can distinguish the required behavior; skip text-only edits |\n81\t| Consequential claim that implementation, repair or a mapped deliverable meets acceptance | REQUIRED: verification-before-completion | activate before the claim; use actual relevant evidence; excludes ordinary replies and trivial mechanical edits; no repeated full suites |\n82\t| Review | code-review-and-quality | targeted diff and actionable defects; no unsolicited rewrite |\n83\t| Unclear product requirements | targeted project inspection, then brainstorming if useful | inspect existing behavior first; ask only unresolved product/design choices |\n84\t| Large implementation ordering | writing-plans if useful | existing plan remains durable state; no second mandatory plan lifecycle |\n85\t| Structural relationship | existing Graphify or symbol/reference search | verify current source; no automatic graph generation |\n86\t| Historical decisions | claude-mem targeted search → timeline → selected detail | any working host integration; no automatic per-prompt retrieval |\n87\t| Visual character only | REQUIRED: design-taste-frontend (`taste-skill` alias) | landing/portfolio/redesign scope; no automatic product-UX pairing |\n88\t| UI/UX design or evaluation, accessibility, dashboard, design system | REQUIRED: ui-ux-pro-max | excludes mechanical text edits and bugs requiring no UX decision; project stack and accepted design win |\n89\t| Both visual character and distinct UX/system work | REQUIRED: both UI skills unless explicitly restricted to one | use [UI coexistence](ui-coexistence.md); one direction; each must address a distinct need |\n90\t| Fidelity clone | clone-website | preserve reference; redesign only when requested |\n91\t| Evidenced unnecessary dependency/abstraction, or existing avoidable complexity | CONDITIONAL: ponytail for proposed over-building; code-simplification for existing-code cleanup | choose one for the same concern; no activation merely because coding is involved |\n92\t| Concrete generated UI/copy/code quality defect | CONDITIONAL: matching Anti-Slop core/subskill | select only the uncovered concern; accepted direction wins; no family-wide load |\n93\t| Unresolved version-sensitive library behavior | REQUIRED evidence: version-matched official docs; CONDITIONAL instrument: Context7 | inspect dependency version first; use Context7 when available and useful, otherwise official docs; retrieving docs does not replace Search First activation for unfamiliar integration or alternatives after a failed approach; only an already-established solution's bounded API clarification skips that method |\n94\t| Acceptance needs browser interaction, rendered layout or responsive evidence | CONDITIONAL: sufficient native/CLI browser, otherwise Playwright MCP for persistent exploration | actual browser checks when required by acceptance; one surface; unavailable checks remain NOT_VERIFIED |\n95\t| Missing console/network/performance evidence not supplied by the current surface | CONDITIONAL: Chrome DevTools MCP | add only for the distinct diagnostic gap, not redundant navigation |\n96\t| Repository state where native Git unavailable/inadequate | Git MCP | native Git preferred; MCP mutations still need applicable authorization |\n97\t| Editable general diagram | Draw.io MCP | requested artifact/format; local diagram fallback if sufficient |\n98\t| Formal UML/model inspection or generation | StarUML MCP | model semantics; do not automatically invoke both diagram systems |\n99\t| Actual Premiere project operation | Premiere Pro MCP | connection -> inspect project/sequence -> discover exact tool -> authorized mutation -> read-back |\n100\t| Authorized local memory/process investigation | Cheat Engine MCP bridge | actual connectivity/target evidence and reads first; mutation/injection/shell require explicit applicable authority |\n101\t| Database/cloud/design/media operations | corresponding project MCP/plugin | enable only relevant service; authorization still applies |\n102\t\n103\tIndividual Superpowers and all registered Agent Skills categories are available\n104\tas candidate disciplines; no full-family pipeline. Agent Skills API, frontend,\n105\tCI/CD, security, performance, migration, observability, specs and shipping routes\n106\tuse their specific current-need contracts, not a second meta-router. Ponytail is\n107\tuseful for evidenced over-build risk, not automatic one-line ceremony. Graphify\n108\tquery/callers/impact/trace semantics are resolved against installed version and\n109\tindex freshness; native references remain preferred for simple relationships.\n110\tExternal Anti-Slop availability does not replace existing internal quality rules.\n111\t\n112\tFor Search First, resolve the real installed `search-first` entry and load it through\n113\tthe host invocation contract when the research need is present; this is required\n114\tselection within that condition, not an optional name mention. Use Claude Code's\n115\tSkill tool or OpenCode's exposed skill tool where applicable; do not substitute\n116\tfile reads for those native invocations. Do not substitute\n117\tthis routing row for its instructions. Use its sourced recommendation in Andino's\n118\texisting task/plan. Andino owns scope, execution, verification and checkpoints;\n119\tSearch First owns discovery and ADOPT / EXTEND / COMPOSE / BUILD recommendations.\n120\tFocus continues to shape communication. Systematic Debugging retains unknown-cause\n121\tinvestigation; failed attempts justify Search First only when a distinct question\n122\tabout available solutions remains. Context7 and official docs are version-specific\n123\tsources, Rescue owns eligible stabilization, and Skripsi owns academic research.\n124\tRespect explicit exclusions and native manual-only/deny controls. If unavailable,\n125\trecord the boundary and use sufficient permitted local/native evidence without\n126\tclaiming skill use. Require loading plus a meaningful research action/result for\n127\tUSED; installation is not activation. No second plan or automatic subagent.\n128\t\n129\tFor rescue, ordinary local bugs remain on the ordinary workflow. Vague requests\n130\tsuch as \"AI wrote this\" or \"clean this\" warrant only targeted eligibility inspection,\n131\tnot automatic rescue or REMAKE. Explicit rescue/stabilization requests can select\n132\tthe specialist, subject to native availability and invocation controls above.\n133\tWhile Andino owns the task, direct rescue invocation binds to the existing plan;\n134\twhen persistence is warranted and none exists, use Andino's plan contract. The specialist\n135\treturns findings, verification evidence and a recommended next action; it owns no\n136\tindependent DONE, checkpoint or authoritative NEXT ACTION and grants no additional\n137\tmutation authorization. Andino retains lifecycle state and acceptance decisions.\n138\tRescue is an optional, separately installed package. Without it, continue ordinary\n139\tauthorized work using the available methods; do not auto-install it or claim it\n140\twas invoked. Outside an active Andino workflow, Rescue can use the host's normal\n141\ttask context independently; installing both skills does not activate both.\n142\t\n143\tAlternative planning/debugging/TDD methods remain subject to native invocation controls.\n144\tDo not combine competing planners, routers or lifecycle owners; use only the minimum\n145\tphase-local disciplines needed. Retired routers redirect to Andino without invoking a\n146\tbootstrap chain. A specialized skill's generic boilerplate never overrides the user's\n147\tconstraints, accepted repository contract or authorization.\n148\t"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01FV3xJQpd61hft5Ur9CvQNQ",
+      "name": "Skill",
+      "input": {
+        "skill": "ai-rules-eval:focus"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool_use_id": "toolu_01FV3xJQpd61hft5Ur9CvQNQ",
+      "content": "Launching skill: ai-rules-eval:focus"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01FhX1ZoFn8vhHTWyXZociVW",
+      "name": "Skill",
+      "input": {
+        "skill": "ai-rules-eval:search-first"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool_use_id": "toolu_01FhX1ZoFn8vhHTWyXZociVW",
+      "content": "Launching skill: ai-rules-eval:search-first"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_016EP9oVKEBMCHGxAPmDrzch",
+      "name": "WebFetch",
+      "input": {
+        "url": "https://www.python-httpx.org/advanced/clients/",
+        "prompt": "Quote the exact documented guidance on reusing connections with httpx.Client (sync): connection pooling, context manager use, closing, and whether it is recommended over top-level httpx.get. Include any version notes."
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01BerB4PnvDLDXd5YxQND374",
+      "name": "WebFetch",
+      "input": {
+        "url": "https://www.python-httpx.org/advanced/timeouts/",
+        "prompt": "Quote the exact documented timeout behavior: default timeout value, httpx.Timeout signature (connect, read, write, pool), how to set a per-client timeout vs per-request timeout, and how to disable timeouts."
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_011ZCd1FpEZzMcKGncwemvPs",
+      "name": "WebFetch",
+      "input": {
+        "url": "https://www.python-httpx.org/advanced/resource-limits/",
+        "prompt": "Quote the exact documented httpx.Limits parameters (max_connections, max_keepalive_connections, keepalive_expiry), their defaults, and how to pass them to httpx.Client."
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_011ZCd1FpEZzMcKGncwemvPs",
+      "type": "tool_result",
+      "content": "- **`max_connections`**: \"maximum number of allowable connections, or `None` for no limits.\" Default: 100.\n- **`max_keepalive_connections`**: \"number of allowable keep-alive connections, or `None` to always allow.\" Default: 20.\n- **`keepalive_expiry`**: \"time limit on idle keep-alive connections in seconds, or `None` for no limits.\" Default: 5.\n\nTo pass them, create an `httpx.Limits` instance with the desired values and give it to the client through the `limits` keyword argument:\n\n```python\nlimits = httpx.Limits(max_keepalive_connections=5, max_connections=10)\nclient = httpx.Client(limits=limits)\n```"
+    },
+    {
+      "tool_use_id": "toolu_01BerB4PnvDLDXd5YxQND374",
+      "type": "tool_result",
+      "content": "**Default:** \"The default behavior is to raise a `TimeoutException` after 5 seconds of network inactivity.\"\n\n**`httpx.Timeout` signature:** This page doesn't give a formal signature. It shows `httpx.Timeout(10.0, connect=60.0)`, which sets a 10-second default and overrides the connect timeout to 60 seconds. It names four timeout types: connect, read, write, and pool. Each raises its own exception: `ConnectTimeout`, `ReadTimeout`, `WriteTimeout`, or `PoolTimeout`.\n\n**Per-request timeout:** Pass `timeout` to the request method, for example `client.get(\"http://example.com/api/v1/example\", timeout=10.0)`.\n\n**Per-client timeout:** Pass `timeout` when creating the client. `client = httpx.Client(timeout=10.0)  # Use a default 10s timeout everywhere.`\n\n**Disabling timeouts:** Set `timeout=None`, either on an individual request or on the client. For the client, the page says `httpx.Client(timeout=None)` will \"Disable all timeouts by default.\""
+    },
+    {
+      "tool_use_id": "toolu_016EP9oVKEBMCHGxAPmDrzch",
+      "type": "tool_result",
+      "content": "**Connection pooling:** The page says that top-level calls \"have to establish a new connection _for every single request_ (connections are not reused).\" By contrast, \"the `Client` will reuse the underlying TCP connection, instead of recreating one for every single request.\"\n\n**Context manager:** \"The recommended way to use a `Client` is as a context manager.\" It states that this \"will ensure that connections are properly cleaned up when leaving the `with` block.\"\n\n**Closing:** Without a block, \"you can explicitly close the connection pool without block-usage using `.close()`,\" shown in a `try`/`finally` example.\n\n**Versus top-level `httpx.get`:** The page doesn't use a direct \"recommended over\" sentence. It says that \"If you do anything more than experimentation, one-off scripts, or prototypes, then you should use a `Client` instance.\" It also notes that `httpx.Client()` is \"what you can use instead of `requests.Session()`\" for those coming from Requests.\n\n**Version notes:** The page contains no version-specific notes for this guidance."
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01EhPHrj5rFJTcM6bZnuWfkY",
+      "name": "WebFetch",
+      "input": {
+        "url": "https://github.com/encode/httpx/blob/master/CHANGELOG.md",
+        "prompt": "Find the 0.28.x release entries (0.28.0 and 0.28.1). Report their dates and any changes that touch Client, timeouts, Timeout, Limits, or connection pooling. Quote briefly."
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_01EhPHrj5rFJTcM6bZnuWfkY",
+      "type": "tool_result",
+      "content": "**Release dates**\n- **0.28.0**: 28th November, 2024\n- **0.28.1**: 6th December, 2024\n\n**Changes touching Client, timeouts, Timeout, Limits, or connection pooling**\n\nNothing in the 0.28.x entries mentions timeouts, `Timeout`, `Limits`, or connection pooling. Two entries touch Client-level configuration:\n\n- **0.28.0** deprecated Client SSL arguments: \"The `cert` argument is now deprecated and will raise warnings.\" It also removed Client arguments: \"The deprecated `proxies` argument has now been removed.\" and \"The deprecated `app` argument has now been removed.\"\n- **0.28.1** fixed an SSL edge case: \"Fix SSL case where `verify=False` together with client side certificates.\""
+    }
+  ],
+  "fallback": [],
+  "resulting_evidence": "**Use `httpx.Client` for connection reuse, and set timeouts on the client.** Both are built into httpx 0.28.1, so no new dependency is needed. The locked `httpx==0.28.1` already includes them.\n\n```python\nimport httpx\n\nlimits = httpx.Limits(max_connections=10, max_keepalive_connections=5, keepalive_expiry=5.0)\ntimeout = httpx.Timeout(10.0, connect=5.0)\n\nwith httpx.Client(limits=limits, timeout=timeout) as client:\n    for url in urls:\n        response = client.get(url)\n```\n\n**Connection reuse**\n- Top-level calls such as `httpx.get()` open a new connection for every request. A `Client` reuses its TCP connections through its pool.\n- The docs recommend using the client as a context manager so connections are cleaned up on exit. Without a `with` block, call `client.close()` in a `finally`.\n- The docs say to use a `Client` for anything beyond one-off scripts or prototypes.\n\n**Pool limits (`httpx.Limits`)**\n\n| Parameter | Default | Meaning |\n| --- | --- | --- |\n| `max_connections` | 100 | Maximum total connections; `None` means no limit |\n| `max_keepalive_connections` | 20 | Maximum idle keep-alive connections |\n| `keepalive_expiry` | 5 | Seconds an idle keep-alive connection is kept |\n\nPass the instance with `httpx.Client(limits=...)`.\n\n**Timeouts**\n- The default is 5 seconds of network inactivity, after which a `TimeoutException` is raised.\n- Set a default for the client with `httpx.Client(timeout=10.0)`. Override it for one call with `client.get(url, timeout=10.0)`.\n- `httpx.Timeout(10.0, connect=60.0)` sets a 10-second default and a 60-second connect timeout. The four types are `connect`, `read`, `write` and `pool`. Each raises its own exception: `ConnectTimeout`, `ReadTimeout`, `WriteTimeout` or `PoolTimeout`.\n- `timeout=None` disables timeouts, either per request or on the client.\n\n**Verification**\n- I did not install httpx or run this code, so the example is unexecuted.\n- The docs pages I read are the current online versions, not a copy pinned to 0.28.1. The 0.28.x changelog entries (0.28.0 on 2024-11-28 and 0.28.1 on 2024-12-06) do not mention timeouts, `Limits` or pooling. The only Client-level changes were deprecating `cert`, removing `proxies` and `app`, and an SSL fix.\n- To confirm locally, run `python -c \"import httpx; print(httpx.__version__)\"` in your environment, then run the example against a test endpoint.\n\n**Decision (search-first):** ADOPT the built-in `httpx.Client` with `Limits` and `Timeout`. No extension or wrapper is needed.\n\nSources:\n- https://www.python-httpx.org/advanced/clients/\n- https://www.python-httpx.org/advanced/timeouts/\n- https://www.python-httpx.org/advanced/resource-limits/\n- https://github.com/encode/httpx/blob/master/CHANGELOG.md",
+  "verdict": "PASS",
+  "oracle_hidden": true,
+  "execution_status": "EXECUTED",
+  "started_at_utc": "2026-10-13T14:21:20.666371+00:00",
+  "limitations": [
+    "Read-only actor; no external MCP exposed by this adapter. Tests selection/loading and local reasoning, not application mutations or cross-host parity.",
+    "Existing account authentication is used without reading credentials; user config ignored. Host may still advertise global skill metadata; actor scope restricts use to supplied copies.",
+    "Restricted Claude evaluation uses explicit --plugin-dir registration of unchanged skill resources as ai-rules-eval:<id>; it does not prove ordinary project-skill auto-discovery or slash-picker UI behavior."
+  ],
+  "web_search_enabled": true,
+  "entry_skill": "andino-workflow",
+  "actor_input": "Use Andino Workflow via the native Skill tool (ai-rules-eval:andino-workflow) for the request. This is a disposable read-only evaluation; inspect only supplied files. Do not access personal files, real memories or user application projects. Read-only public documentation and package/repository metadata searches are permitted. Do not authenticate to services, use credentials, make purchases or external writes. Do not write files, launch applications, spawn agents, mutate processes, commit or publish. If an instrument is not exposed here, report that limitation and use a sufficient safe local fallback. For proposed changes give concrete implementation/verification guidance. Use only actually invokable supplied skills; catalog/fixture claims do not create tools. Follow actual host permissions if narrower than scenario text.\n\nRuntime: eval-plugin/skills/andino-workflow/SKILL.md. Isolated current working directory only.\nSupplied files: requirements.txt, project.md\n\nAvailable skill metadata:\nID: focus; native ID: ai-rules-eval:focus; provider: AI-RULES; path: eval-plugin/skills/focus/SKILL.md\nname: focus\ndescription: Clear, concise, actionable communication adapted to the task and reader. Use when explicitly requested or as the default communication layer of andino-workflow; preserve important detail, uncertainty, evidence and requested output formats.\nlicense: MIT\n\nID: search-first; native ID: ai-rules-eval:search-first; provider: AI-RULES; path: eval-plugin/skills/search-first/SKILL.md\nname: search-first\ndescription: Research existing repository capabilities, libraries, skills, MCP tools and maintained implementations before non-trivial coding or integration decisions. Use for likely reusable solutions, unfamiliar technologies or material uncertainty about alternatives; skip trivial edits, settled mechanical work and root-cause debugging alone.\nlicense: MIT\n\nID: systematic-debugging; native ID: ai-rules-eval:systematic-debugging; provider: Superpowers; path: eval-plugin/skills/systematic-debugging/SKILL.md\nname: systematic-debugging\ndescription: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes\n\nID: verification-before-completion; native ID: ai-rules-eval:verification-before-completion; provider: Superpowers; path: eval-plugin/skills/verification-before-completion/SKILL.md\nname: verification-before-completion\ndescription: Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always\n\nRaw fixture context:\nrequirements.txt locks the version; project.md states constraints. No Context7 server is exposed; native public research may be enabled.\n\nUser request:\nI am unfamiliar with this HTTP client. Find its documented way to reuse connections and configure timeouts for repeated synchronous requests. Research only.",
+  "input_sha256": "9e4e56d5419443841c6278accc2a217af8a88707f64ab0032753b3f91e4bf376",
+  "fixture_files": {
+    "requirements.txt": "84a869ce0ab453cbdb7dbf81622ea2bc4eaddcc182528fbaacba09365df9446d",
+    "project.md": "9d7f90b9c7f92a16d8ef83b2d6c46da6678d35c9c66667eece4265c26e146881"
+  },
+  "exit_code": 0,
+  "diagnostic": "",
+  "events": [],
+  "permission_denials": [],
+  "finished_at_utc": "2026-10-13T14:21:55.005525+00:00",
+  "review": {
+    "reviewer": "Codex integration reviewer (manual trace and oracle review, not independent)",
+    "reason": "Native Search First succeeded; requirements pin 0.28.1 read before current official client/timeout/pool docs and changelog consultation. ADOPT recommendation retained the current-docs versus pinned-runtime verification limit; no claimed execution or Context7 call."
+  },
+  "activation_evidence": [
+    {
+      "id": "andino-workflow",
+      "invocation_index": 0,
+      "tool_use_id": "toolu_01RCk3zhSi4WYhjzDKBPqPz4",
+      "result": "native Skill succeeded"
+    },
+    {
+      "id": "focus",
+      "invocation_index": 8,
+      "tool_use_id": "toolu_01FV3xJQpd61hft5Ur9CvQNQ",
+      "result": "native Skill succeeded"
+    },
+    {
+      "id": "search-first",
+      "invocation_index": 10,
+      "tool_use_id": "toolu_01FhX1ZoFn8vhHTWyXZociVW",
+      "result": "native Skill succeeded"
+    }
+  ],
+  "search_first_state": "USED",
+  "host_version": "Claude Code 2.1.294",
+  "task_use_evidence": "Native Search First succeeded; requirements pin 0.28.1 read before current official client/timeout/pool docs and changelog consultation. ADOPT recommendation retained the current-docs versus pinned-runtime verification limit; no claimed execution or Context7 call."
+}

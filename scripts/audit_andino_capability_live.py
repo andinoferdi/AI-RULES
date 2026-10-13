@@ -8,11 +8,23 @@ from pathlib import Path
 from validate_andino_capabilities import ROOT, REQUIRED_CASES, EVAL_CASES, content_hash, runtime_files, validate_record, historical_hashes
 
 
+def has_successful_invocation(invocations):
+    items = [item for item in invocations if isinstance(item, dict)]
+    calls = {item['id'] for item in items if item.get('type') == 'tool_use' and item.get('id')}
+    return any(
+        (item.get('status') == 'completed' and item.get('exit_code', 0) == 0)
+        or (item.get('type') == 'tool_result' and item.get('tool_use_id') in calls
+            and not item.get('is_error') and item.get('content'))
+        for item in items
+    )
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--runtime',type=Path,required=True)
     parser.add_argument('--records',type=Path,default=ROOT/'docs/validation/andino-workflow/live')
     parser.add_argument('--allow-historical',action='store_true',help='Audit only documented older hashes without claiming latest-runtime PASS')
+    parser.add_argument('--case', action='append', choices=sorted(EVAL_CASES), help='Repeat to specify required coverage; default is the original routing suite')
     args=parser.parse_args()
     current=content_hash(runtime_files(args.runtime))
     prior=historical_hashes(current,args.allow_historical)
@@ -42,11 +54,10 @@ def main():
         if record.get('scope') != 'behavioral':
             errors.append(f'{path.name}: smoke must stay separate')
         if record.get('verdict') == 'PASS' and record.get('selected'):
-            completed=[i for i in record.get('invocations',[]) if isinstance(i,dict) and i.get('status')=='completed' and i.get('exit_code',0)==0]
-            if not completed:
+            if not has_successful_invocation(record.get('invocations', [])):
                 errors.append(f'{path.name}: selected capability PASS has no successful observed invocation')
         results[record.get('verdict','INVALID')]+=1
-    missing=sorted(REQUIRED_CASES-seen)
+    missing=sorted(set(args.case or REQUIRED_CASES)-seen)
     print(json.dumps({'recorded':len(seen),'verdicts':dict(results),'missing':missing,'current_runtime_hash':current,'recorded_revisions':dict(revisions)}))
     if errors:
         print('\n'.join('FAIL: '+error for error in errors))
