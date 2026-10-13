@@ -79,6 +79,10 @@ class FocusSetupTests(unittest.TestCase):
                     f"---\nname: {identifier}\ndescription: Test skill\n---\nAnswer clearly.\n",
                     encoding="utf-8")
                 (self.upstream / "README.md").write_text("Test distribution\n", encoding="utf-8")
+                if identifier == "focus":
+                    (self.upstream / "references").mkdir()
+                    for name in ("priority-a.md", "human-language-indonesia.md", "human-language-english.md"):
+                        (self.upstream / "references" / name).write_text(f"Fixture {name}\n", encoding="utf-8")
             self.git("add", ".")
             self.git("commit", "-m", identifier)
         catalog = load_catalog()
@@ -112,6 +116,9 @@ class FocusSetupTests(unittest.TestCase):
                 skill = adapter.skill_target(Scope.PROJECT, project) / "focus" / "SKILL.md"
                 self.assertTrue(skill.is_file())
                 self.assertEqual(self.git("show", "focus:SKILL.md"), skill.read_text(encoding="utf-8"))
+                for name in ("priority-a.md", "human-language-indonesia.md", "human-language-english.md"):
+                    self.assertEqual(self.git("show", f"focus:references/{name}"),
+                                     (skill.parent / "references" / name).read_text(encoding="utf-8"))
                 for command in invocation_paths(adapter, Scope.PROJECT, "focus", project):
                     self.assertTrue(invocation_ready(command))
                     self.assertIn(skill.as_posix(), command.read_text(encoding="utf-8"))
@@ -125,9 +132,13 @@ class FocusSetupTests(unittest.TestCase):
         self.run_setup(project, "codex", "focus")
         self.assertFalse((project / ".agents/skills/andino-workflow").exists())
         self.git("checkout", "focus")
+        reference = self.upstream / "references/human-language-english.md"
+        reference.write_text(reference.read_text(encoding="utf-8") + "Updated style example.\n", encoding="utf-8")
         (self.upstream / "README.md").write_text("Updated source\n", encoding="utf-8")
         self.git("add", ".")
         self.git("commit", "-m", "update focus")
         self.assertIn("UPDATE", self.run_setup(project, "codex", "focus"))
         self.assertEqual("Updated source\n", (project / ".agents/skills/focus/README.md").read_text())
         self.assertEqual("User content", unrelated.read_text())
+        self.assertEqual(reference.read_text(encoding="utf-8"),
+                         (project / ".agents/skills/focus/references/human-language-english.md").read_text(encoding="utf-8"))

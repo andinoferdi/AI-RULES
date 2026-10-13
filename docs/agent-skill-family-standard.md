@@ -73,6 +73,17 @@ and host controls, retaining stricter research ethics/access gates.
 
 ## Minimum quality and release verification
 
+Focus bundles the complete communication A from WebBased's project chat-rules
+entrypoint and unchanged Indonesian/English style references. Compare the README
+A before syncing; disagreement requires maintainer review. Main's validator accepts
+`--webbased-ref` for a local Git source-drift check and `--focus-dir` for an
+uncommitted package; neither is a runtime dependency or an automatic overwrite.
+CI fetches WebBased and checks the current Focus branch, so publish the matching
+runtime change before enabling the corresponding main CI change. Loading all three
+references is a skill instruction, not an enforced hook; package and installer
+checks cannot establish model compliance. Preserve instruction hierarchy, style-only
+examples, user overrides and the existing Focus/Andino ownership boundary.
+
 Every skill needs package, required README/entrypoint, metadata, relative-link,
 allowed-path and regular-Git-file validation. Include representative positive,
 negative and distinctive regression expectations, and meaningful failure-case tests

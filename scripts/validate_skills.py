@@ -104,7 +104,52 @@ def package_files(files, expected_name, modes=None):
     return errors
 
 
-def package(ref, expected_name):
+def focus_reference_drift(files, source):
+    normalize = lambda text: text.replace("\r\n", "\n")
+    try:
+        chat = normalize(source["put-in-your-projects/chat-rules.md"])
+        priority = chat[chat.index("A. PRIORITAS\n"):]
+        readme = normalize(source["README.md"])
+        section = readme.split("## A. PRIORITAS\n", 1)[1]
+        fenced = section.split("````text\n", 1)[1]
+        readme_priority, closing, _ = fenced.partition("````")
+        if not closing:
+            raise ValueError("unterminated README A fence")
+        # Ignore the presentation blank lines around README's fenced text only.
+        if priority.strip("\n") != readme_priority.strip("\n"):
+            return ["focus: WebBased A. PRIORITAS sources disagree; review canonical source before syncing"]
+        expected = {"references/priority-a.md": priority}
+        for name in ("human-language-indonesia.md", "human-language-english.md"):
+            expected[f"references/{name}"] = normalize(source[f"put-in-your-projects/{name}"])
+    except (KeyError, ValueError, IndexError) as exc:
+        return [f"focus: missing or malformed WebBased communication source: {exc}"]
+    return [f"focus: missing or drifted bundled reference: {name}"
+            for name, text in expected.items()
+            if name not in files or normalize(files[name]) != text]
+
+
+def directory_files(root):
+    files, modes = {}, {}
+    if not root.is_dir():
+        raise ValueError(f"missing package directory: {root}")
+    def visit(directory):
+        for path in directory.iterdir():
+            if path == root / ".git":
+                continue
+            name = path.relative_to(root).as_posix()
+            if path.is_symlink() or getattr(path, "is_junction", lambda: False)():
+                files[name], modes[name] = "", "120000"
+            elif path.is_dir():
+                visit(path)
+            elif path.is_file():
+                files[name], modes[name] = path.read_text(encoding="utf-8"), "100644"
+            else:
+                files[name], modes[name] = "", "unsupported"
+    visit(root)
+    return files, modes
+
+
+def ref_files(ref):
     modes = {}
     for entry in git("ls-tree", "-rz", ref).split("\0"):
         if entry:
@@ -113,6 +158,11 @@ def package(ref, expected_name):
     # Never follow runtime symlinks or treat submodules as installed resources.
     files = {name: git("show", f"{ref}:{name}") if mode in ("100644", "100755") else ""
              for name, mode in modes.items()}
+    return files, modes
+
+
+def package(ref, expected_name):
+    files, modes = ref_files(ref)
     return package_files(files, expected_name, modes)
 
 
@@ -153,12 +203,24 @@ def main():
     parser.add_argument("--rescue-ref", default="origin/ai-codebase-rescue")
     parser.add_argument("--skripsi-ref", default="origin/skripsi-skill")
     parser.add_argument("--focus-ref", default="origin/focus")
+    parser.add_argument("--focus-dir", type=Path, help="validate an uncommitted Focus package instead of --focus-ref")
+    parser.add_argument("--webbased-ref", help="opt-in maintainer source-drift check against a locally available Git ref")
     args = parser.parse_args()
     errors = []
     for skill, ref in zip(RUNTIME_SKILLS, (args.andino_ref, args.rescue_ref, args.skripsi_ref, args.focus_ref)):
         try:
-            errors.extend(package(ref, skill))
-        except ValueError as exc:
+            if skill == "focus":
+                files, modes = directory_files(args.focus_dir) if args.focus_dir else ref_files(ref)
+                errors.extend(package_files(files, skill, modes))
+                if args.webbased_ref:
+                    source = {name: git("show", f"{args.webbased_ref}:{name}") for name in (
+                        "README.md", "put-in-your-projects/chat-rules.md",
+                        "put-in-your-projects/human-language-indonesia.md",
+                        "put-in-your-projects/human-language-english.md")}
+                    errors.extend(focus_reference_drift(files, source))
+            else:
+                errors.extend(package(ref, skill))
+        except (ValueError, OSError) as exc:
             errors.append(str(exc))
     for skill in EVAL_SKILLS:
         errors.extend(eval_cases(skill))
@@ -167,6 +229,8 @@ def main():
         return 1
     print(f"PASS: {len(RUNTIME_SKILLS)} skill packages, metadata, relative links, and {len(EVAL_SKILLS)} eval schemas")
     print("Live behavioral evaluation: NOT VERIFIED")
+    if args.webbased_ref:
+        print(f"PASS: Focus communication references match {args.webbased_ref}; A sources equivalent")
     return 0
 
 

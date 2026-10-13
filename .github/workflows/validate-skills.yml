@@ -15,11 +15,11 @@ jobs:
         with:
           fetch-depth: 0
       - name: Fetch skill branches
-        run: git fetch --no-tags origin andino-workflow:refs/remotes/origin/andino-workflow ai-codebase-rescue:refs/remotes/origin/ai-codebase-rescue skripsi-skill:refs/remotes/origin/skripsi-skill focus:refs/remotes/origin/focus
+        run: git fetch --no-tags origin andino-workflow:refs/remotes/origin/andino-workflow ai-codebase-rescue:refs/remotes/origin/ai-codebase-rescue skripsi-skill:refs/remotes/origin/skripsi-skill focus:refs/remotes/origin/focus WebBased:refs/remotes/origin/WebBased
       - name: Install AI-RULES package
         run: python3 -m pip install --editable .
       - name: Validate
-        run: python3 scripts/validate_skills.py
+        run: python3 scripts/validate_skills.py --webbased-ref origin/WebBased
       - name: Validate capability evaluation schemas
         run: python3 scripts/validate_andino_capabilities.py --cases-only
       - name: Test validator failure cases

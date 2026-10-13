@@ -5,7 +5,68 @@ from unittest.mock import patch
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from validate_skills import package_files, eval_cases
+from validate_skills import package_files, eval_cases, focus_reference_drift, directory_files
+
+
+class FocusReferenceTest(unittest.TestCase):
+    def setUp(self):
+        self.source = {
+            'put-in-your-projects/chat-rules.md': '# Chat Rules\n\nA. PRIORITAS\n\nComplete rules.\n',
+            'README.md': '# Template\n\n## A. PRIORITAS\n\n````text\nA. PRIORITAS\n\nComplete rules.\n````\n\n## B. Other\nOther rules.\n',
+            'put-in-your-projects/human-language-indonesia.md': '# Indonesia\nAll examples.\n',
+            'put-in-your-projects/human-language-english.md': '# English\nAll examples.\n',
+        }
+        self.files = {
+            'references/priority-a.md': 'A. PRIORITAS\n\nComplete rules.\n',
+            'references/human-language-indonesia.md': '# Indonesia\nAll examples.\n',
+            'references/human-language-english.md': '# English\nAll examples.\n',
+        }
+
+    def test_complete_copies_match_without_other_readme_sections(self):
+        self.assertEqual([], focus_reference_drift(self.files, self.source))
+
+    def test_missing_copy_is_rejected(self):
+        del self.files['references/human-language-english.md']
+        self.assertTrue(focus_reference_drift(self.files, self.source))
+
+    def test_changed_example_is_rejected(self):
+        self.files['references/human-language-indonesia.md'] += 'Invented example.\n'
+        self.assertTrue(focus_reference_drift(self.files, self.source))
+
+    def test_truncated_priority_is_rejected(self):
+        self.files['references/priority-a.md'] = 'A. PRIORITAS\n'
+        self.assertTrue(focus_reference_drift(self.files, self.source))
+
+    def test_conflicting_readme_priority_is_rejected(self):
+        self.source['README.md'] = self.source['README.md'].replace('Complete rules.', 'Different rules.')
+        self.assertTrue(focus_reference_drift(self.files, self.source))
+
+    def test_missing_source_section_is_rejected(self):
+        self.source['README.md'] = '# No A section\n'
+        self.assertTrue(focus_reference_drift(self.files, self.source))
+
+    def test_unterminated_source_fence_is_rejected(self):
+        self.source['README.md'] = '## A. PRIORITAS\n\n````text\nA. PRIORITAS\n\nComplete rules.\n'
+        self.assertTrue(focus_reference_drift(self.files, self.source))
+
+    def test_line_endings_are_portable_but_wording_is_not_normalized(self):
+        self.files = {name: body.replace('\n', '\r\n') for name, body in self.files.items()}
+        self.assertEqual([], focus_reference_drift(self.files, self.source))
+        self.files['references/priority-a.md'] = self.files['references/priority-a.md'].replace('Complete', 'Partial')
+        self.assertTrue(focus_reference_drift(self.files, self.source))
+
+    def test_local_package_includes_untracked_references(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / '.git').mkdir()
+            (root / '.git/private').write_text('ignored')
+            for name, body in self.files.items():
+                path = root / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(body, encoding='utf-8')
+            files, modes = directory_files(root)
+            self.assertEqual(self.files, files)
+            self.assertEqual({'100644'}, set(modes.values()))
 
 
 class PackageValidationTest(unittest.TestCase):
