@@ -310,11 +310,11 @@
     "id": "ui-ux-route",
     "kind": "behavior",
     "prompt": "Use Andino. Review the supplied dashboard keyboard navigation and accessible form behavior.",
-    "fixture": "dashboard.html has a clickable div without keyboard handler and an input with no label. Product UX/accessibility is requested; no visual redesign. Actual UI/UX Pro Max skill is invokable if supplied.",
+    "fixture": "dashboard.html has a clickable div without keyboard handler and an input with no label. Product UX/accessibility is requested; no visual redesign. Actual Impeccable skill is invokable if supplied.",
     "capabilities": [
-      "ui-ux-pro-max"
+      "impeccable"
     ],
-    "expected": "Resolve/load ui-ux-pro-max when invokable; apply focused accessibility/product guidance in existing stack, identify concrete problems.",
+    "expected": "Resolve/load impeccable when invokable; apply focused accessibility/product guidance in existing stack, identify concrete problems.",
     "forbidden": "Auto-pair Taste, change stack or treat catalog presence as actual skill use."
   },
   {
@@ -331,11 +331,11 @@
   {
     "id": "ui-taste-coexistence",
     "kind": "behavior",
-    "prompt": "Use Andino with Taste and UI/UX Pro Max. Improve this portfolio contact form visually and for keyboard access.",
+    "prompt": "Use Andino with Taste and Impeccable. Improve this portfolio contact form visually and for keyboard access.",
     "fixture": "Both actual skills invokable. Existing portfolio includes typography direction and contact form without labels. Accepted tokens.md and page override supplied.",
     "capabilities": [
       "design-taste-frontend",
-      "ui-ux-pro-max"
+      "impeccable"
     ],
     "expected": "Load both actual skills plus accepted coexistence; one reconciled direction, read tokens first, functional accessibility wins and preserve existing stack.",
     "forbidden": "Claim both used after reading one, overwrite tokens unreviewed or competing design workflows."
