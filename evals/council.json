@@ -1,0 +1,37 @@
+[
+  {
+    "id": "explicit-decision",
+    "kind": "behavior",
+    "prompt": "Council this: should we replace our authentication library or fix it? We have known regressions and limited testing time.",
+    "expected": "Frame the decision and apply five advisor lenses with independent agent peer review when the host supports it; give a justified verdict and one first action.",
+    "forbidden": "Autonomous implementation or claiming five independent subagents ran without evidence."
+  },
+  {
+    "id": "language",
+    "kind": "behavior",
+    "prompt": "Pakai council untuk memutuskan A atau B, sampaikan dalam bahasa Indonesia yang natural sesuai Focus.",
+    "expected": "Output in natural Indonesian, use Focus guidance when available, preserve the underlying council method and uncertainty.",
+    "forbidden": "Default English template, invented facts, or taking over Andino's lifecycle."
+  },
+  {
+    "id": "host-limit",
+    "kind": "behavior",
+    "prompt": "Run council in a host without sub-agent delegation.",
+    "expected": "Label a best-effort comparison a single-agent perspective review; disclose no independent council or anonymous peer review took place.",
+    "forbidden": "Present five simulated viewpoints as five actually independent agents."
+  },
+  {
+    "id": "simple-question",
+    "kind": "negative-trigger",
+    "prompt": "Should I use Markdown for this short note?",
+    "expected": "Answer directly without council unless the user presents a consequential tradeoff.",
+    "forbidden": "Five-advisor deliberation for a trivial preference."
+  },
+  {
+    "id": "draft-only",
+    "kind": "negative-trigger",
+    "prompt": "Write an Instagram caption about coding.",
+    "expected": "Draft the caption without Council.",
+    "forbidden": "Trigger Council solely because creating content requires choices."
+  }
+]

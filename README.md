@@ -8,6 +8,7 @@
 | [`WebBased`](https://github.com/andinoferdi/AI-RULES/tree/WebBased) | Web/chat rules and project templates |
 | [`search-first`](https://github.com/andinoferdi/AI-RULES/tree/search-first) | Existing-solution research before implementation |
 | [`focus`](https://github.com/andinoferdi/AI-RULES/tree/focus) | Clear, concise, actionable communication |
+| [`council`](https://github.com/andinoferdi/AI-RULES/tree/council) | Five-perspective decision review and verdict |
 | [`andino-workflow`](https://github.com/andinoferdi/AI-RULES/tree/andino-workflow) | Adaptive workflow, capability routing, and portable checkpoints |
 | [`ai-codebase-rescue`](https://github.com/andinoferdi/AI-RULES/tree/ai-codebase-rescue) | Evidence-based stabilization of fragile codebases |
 | [`skripsi-skill`](https://github.com/andinoferdi/AI-RULES/tree/skripsi-skill) | Thesis and research guidance |
@@ -32,9 +33,9 @@ Select your agents and a profile, then confirm the installation plan:
 | Minimal | Andino Workflow + Focus + Search First |
 | Engineering | Andino Workflow + Focus + Search First + AI Codebase Rescue |
 | Research / Skripsi | Andino Workflow + Focus + Search First + Skripsi Skill |
-| Everything | All five |
+| Everything | All six (including Council) |
 
-Open a new agent session or reload its window after setup. Installing all five skills does not activate all of them for every task. Third-party skills, plugins, and MCP servers need their own installation or connection.
+Open a new agent session or reload its window after setup. Installing all six skills does not activate all of them for every task. Third-party skills, plugins, and MCP servers need their own installation or connection.
 
 Run `ai-rules setup` again to update the selected skills from their latest configured branches. To update the CLI itself, run these commands from a clean `main` checkout:
 
@@ -45,6 +46,8 @@ ai-rules setup
 ```
 
 Setup verifies files and entry points. It does not confirm that a running agent has used a skill. Review any reported conflict or unsupported installation layout before you replace files. See the [validation guide](evals/README.md) for testing details.
+
+Council is optional in Custom setup selection and included in Everything. For standalone installation, use `ai-rules setup --capability council --host codex` (replace the host as needed). Council uses Focus for natural language and can assist Andino Workflow with consequential decisions; it does not replace Andino's lifecycle or guarantee independent sub-agents on every host.
 
 ## Skill combinations by task
 

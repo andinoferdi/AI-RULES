@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "channel": "stable",
-  "release_sequence": 9,
-  "verified_at": "2026-10-14",
+  "release_sequence": 10,
+  "verified_at": "2026-10-15",
   "first_party": {
     "andino-workflow": {
       "branch": "andino-workflow",
@@ -33,6 +33,12 @@
       "ref": "origin/focus",
       "commit": "9eb6081aa1ae26a4bb81a38eb49e4b1f9b9c3da3",
       "release_sequence": 2
+    },
+    "council": {
+      "branch": "council",
+      "ref": "origin/council",
+      "commit": "82984fa4dd75023e63d944e6cee1b61d191047c4",
+      "release_sequence": 1
     }
   }
 }
