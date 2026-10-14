@@ -65,12 +65,13 @@ Council is optional in Custom setup selection and included in Everything. For st
 | Overly complex code | `andino-workflow` + `search-first` → `code-simplification` | For existing code. `ponytail` fits better for preventing over-engineering before implementation. |
 | Code review | `andino-workflow` + `search-first` → `code-review-and-quality` | Add `security-and-hardening` or `performance-optimization` only when a relevant need is found. |
 | Thesis / research | `andino-workflow` + `search-first` → `skripsi-skill` | Add coding skills only when the task involves software implementation. |
+| Consequential decision, strategy, or competing options | `andino-workflow` → `council` | Use for a meaningful trade-off that benefits from independent perspectives and peer review. Focus handles communication; Council does not replace Andino's lifecycle. Actual independent sub-agents depend on host support. |
 | API, authentication, authorization | `andino-workflow` + `search-first` + `api-and-interface-design` + `security-and-hardening` | Use for systems that handle user data or access rights. |
 | Slow website | `andino-workflow` + `search-first` → `performance-optimization` | Measure first. If the root cause is unknown, use `systematic-debugging` to investigate. |
 | Database or framework migration | `andino-workflow` + `search-first` + `deprecation-and-migration` | `search-first` checks unclear version compatibility. Add TDD for regression protection. |
 | UI / browser testing | `andino-workflow` + `search-first` + `browser-testing-with-devtools` | Use a real browser with Playwright or DevTools to verify interaction and rendering. |
 | CI/CD and deployment | `andino-workflow` + `search-first` + `ci-cd-and-automation` or `shipping-and-launch` | Pick by phase: building the pipeline or preparing a release. |
-| Technical documentation and architecture decisions | `andino-workflow` + `search-first` + `documentation-and-adrs` | For important technical decisions, not every small change. |
+| Technical documentation and architecture decisions | `andino-workflow` + `search-first` + `documentation-and-adrs` | Add `council` when a consequential architecture choice needs competing perspectives before recording the decision; skip it for routine documentation. |
 
 ## External resources: manual installation
 
