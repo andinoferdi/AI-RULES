@@ -106,6 +106,29 @@ State the outcome and important constraints directly. No list of every installed
 
 When checking compliance, look for routing-reference loading (unless already in context), actual supporting-skill activation when required, and task evidence. Not every reference needs to be read; a claimed skill name alone is not proof of use.
 
+## Skill combinations by task
+
+`andino-workflow` is the single entry point and routes required skills by itself, so a prompt only needs to name it plus the skills that are not activated automatically. Do not list every skill: Superpowers and Agent Skills are individual skills, not a bundle to load together. `focus` and `verification-before-completion` are activated by Andino when needed. Use `anti-slop` only when a concrete UI, copy, or code quality defect appears.
+
+| Task | Suggested combination | Notes |
+| --- | --- | --- |
+| New frontend (landing page, portfolio, company profile) | `andino-workflow` → `design-taste-frontend` → `impeccable` | Taste produces the visual direction; Impeccable evaluates and refines it. Check rendered screenshots before calling it done. |
+| Polish an existing UI | `andino-workflow` → `impeccable` | Add Taste only when the design direction should change. |
+| Dashboard, admin panel, multi-page app | `andino-workflow` → `impeccable` + `frontend-ui-engineering` | Taste is not needed for every dashboard. |
+| Website cloning | `andino-workflow` → `clone-website` | Fidelity first. For a redesign afterwards, continue with Taste and Impeccable. |
+| New backend feature | `andino-workflow` + `test-driven-development` | Add `search-first` when researching solutions or libraries, and `api-and-interface-design` for API contracts. |
+| Bug with unknown cause | `andino-workflow` → `systematic-debugging` → `test-driven-development` | Use TDD for the regression test or behavior fix. |
+| Fragile codebase, repeated patches, regressions | `andino-workflow` → `ai-codebase-rescue` | Use after there is evidence of a structural problem, not just ugly code. |
+| Overly complex code | `andino-workflow` → `code-simplification` | For existing code. `ponytail` fits better for preventing over-engineering before implementation. |
+| Code review | `andino-workflow` → `code-review-and-quality` | Add `security-and-hardening` or `performance-optimization` only when a relevant need is found. |
+| Thesis / research | `andino-workflow` → `skripsi-skill` | Add coding skills only when the task involves software implementation. |
+| API, authentication, authorization | `andino-workflow` + `api-and-interface-design` + `security-and-hardening` | Important for systems handling data and access rights. |
+| Slow website | `andino-workflow` → `performance-optimization` | Measure first. If the root cause is unknown, use `systematic-debugging` to investigate. |
+| Database or framework migration | `andino-workflow` + `deprecation-and-migration` | Add `search-first` for unclear version compatibility and TDD for regression protection. |
+| UI / browser testing | `andino-workflow` + `browser-testing-with-devtools` | Use a real browser with Playwright or DevTools to verify interaction and rendering. |
+| CI/CD and deployment | `andino-workflow` + `ci-cd-and-automation` or `shipping-and-launch` | Pick by phase: building the pipeline or preparing a release. |
+| Technical documentation and architecture decisions | `andino-workflow` + `documentation-and-adrs` | For important technical decisions, not every small change. |
+
 ## External resources — manual installation
 
 Third-party skills/plugins and MCP servers must be installed or connected separately using their own setup instructions. Select only the capabilities relevant to your task.
