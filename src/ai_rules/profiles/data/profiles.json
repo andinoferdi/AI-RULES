@@ -1,6 +1,0 @@
-{"schema_version":1,"profiles":[
-{"schema_version":1,"id":"minimal","display_name":"Minimal","description":"Andino Workflow with Focus and conditional Search First research","default":true,"capabilities":["andino-workflow","focus","search-first"]},
-{"schema_version":1,"id":"engineering","display_name":"Engineering","description":"Coding, debugging, review, and documentation","default":false,"capabilities":["andino-workflow","focus","search-first","ai-codebase-rescue"]},
-{"schema_version":1,"id":"research-skripsi","display_name":"Research / Skripsi","description":"Thesis and academic research","default":false,"capabilities":["andino-workflow","focus","search-first","skripsi-skill"]},
-{"schema_version":1,"id":"everything","display_name":"Everything","description":"All AI-RULES first-party skills","default":false,"capabilities":["andino-workflow","focus","search-first","ai-codebase-rescue","skripsi-skill"]}
-]}
