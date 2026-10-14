@@ -70,12 +70,12 @@ class CapabilityValidationTest(unittest.TestCase):
     def test_council_registry_contract_is_explicit(self):
         from validate_andino_capabilities import FIELDS
         self.assertIn('council', CAPABILITIES)
-        section = '## council\\n' + ''.join(f'- {field}: valid value\\n' for field in FIELDS)
+        section = '## council\n' + ''.join(f'- {field}: valid value\n' for field in FIELDS)
         section = section.replace('- Type: valid value', '- Type: skill')
         section = section.replace('- Activation policy: valid value', '- Activation policy: CONDITIONAL_AUTO')
         valid = [error for error in validate_registry(section) if error.startswith('council:')]
         self.assertEqual([], valid)
-        incomplete = section.replace('- Verification requirement: valid value\\n', '')
+        incomplete = section.replace('- Verification requirement: valid value\n', '')
         errors = validate_registry(incomplete)
         self.assertIn('council: missing Verification requirement', errors)
 
