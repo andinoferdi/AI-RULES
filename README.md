@@ -112,7 +112,7 @@ Third-party skills/plugins and MCP servers must be installed or connected separa
 
 Skills and plugin families: [Superpowers](https://github.com/obra/superpowers),
 [Ponytail](https://github.com/DietrichGebert/ponytail),
-[UI/UX Pro Max](https://uupm.cc/), [Taste Skill](https://www.tasteskill.dev/),
+[Impeccable](https://github.com/pbakaus/impeccable), [Taste Skill](https://www.tasteskill.dev/),
 [AI Website Cloner](https://github.com/JCodesMore/ai-website-cloner-template),
 [Graphify](https://graphify.net/), [Anti-Slop](https://github.com/miqdadbadjuber/anti-slop), and [Agent Skills](https://github.com/addyosmani/agent-skills).
 
