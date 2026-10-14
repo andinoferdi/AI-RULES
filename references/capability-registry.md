@@ -10,6 +10,7 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 | --- | --- | --- | --- |
 | [focus](#focus) | skill | AI-RULES | Default communication on every Andino invocation |
 | [search-first](#search-first) | skill | AI-RULES, adapted from ECC | Existing-solution research before implementation |
+| [council](#council) | skill | AI-RULES | Independent review of consequential decisions |
 | [systematic-debugging](#systematic-debugging) | skill | Superpowers | Root-cause investigation |
 | [test-driven-development](#test-driven-development) | skill | Superpowers | Executable regression contract |
 | [verification-before-completion](#verification-before-completion) | skill | Superpowers | Evidence before completion |
@@ -1100,11 +1101,19 @@ Contracts use inspected installed skill IDs and actual host tool metadata. Upstr
 
 ## council
 
-- Provider: AI-RULES first-party; branch `council`.
-- Purpose: Five independent decision lenses, anonymized peer review and reasoned synthesis for consequential choices.
-- Trigger: Explicit Council request or real high-stakes trade-off requiring multiple perspectives; do not auto-run for trivia, ordinary drafting or small implementation details.
-- Invocation: Resolve installed `council` skill and use the host's supported invocation mechanism. Do not treat catalog discovery as activation.
-- Required context: Neutral framed question, existing material evidence, user's goals and constraints.
-- Coexistence: Andino owns routing and lifecycle; Focus owns communication; Council owns deliberation and recommendation only.
-- Capability limit: Run independent peer review only with real authorized sub-agents. Otherwise state `single-agent perspective review`, never claim actual independent reviewers.
-- Verification: Record whether actual advisors, review and synthesis ran, and whether the reported recommendation follows from available evidence.
+- Type: skill
+- Family/provider: AI-RULES first-party; adapted from aiwithremy/claude-skills-llm-council
+- Aliases: council; do not assume the upstream llm-council ID is an installed alias
+- Primary purpose: Pressure-test meaningful decisions using five independent advisor lenses, anonymized peer critique, and an actionable synthesized recommendation.
+- Trigger: An explicit Council request for a meaningful decision, or a consequential choice with real uncertainty and competing options.
+- Preferred when: Independent perspectives can expose material trade-offs, overlooked assumptions or execution risks before a decision.
+- Avoid when: Trivial choices, simple facts, summaries, ordinary drafting, straightforward fixes, or explicit exclusion by the user.
+- Availability check: Resolve the installed Council entry, native skill invocation permissions and independent sub-agent availability; discoverability does not prove execution.
+- Invocation method: Invoke the actual installed council skill through the host's authorized skill mechanism, honoring manual-only or denied invocation controls.
+- First-call/preflight: Frame the decision neutrally using known objectives, alternatives, stakes, constraints and verified evidence; ensure context sharing is authorized before delegating.
+- Fallback: If independent delegation is unavailable, give a clearly labeled single-agent perspective review without claiming independent advisor or peer-review execution.
+- Coexistence/conflicts: Andino retains sole task routing, lifecycle and checkpoints; Focus controls Indonesian/English communication; Council owns advisory deliberation and returns a verdict, not a second plan.
+- Mutation/permission boundary: A Council verdict provides no authority for repository changes, external actions, paid services, publication or other mutations; host and user permissions still apply.
+- Verification requirement: Distinguish actual independent advisor/reviewer invocations from simulated perspectives; preserve evidence, material disagreement and unresolved uncertainty in the final verdict.
+- Activation policy: CONDITIONAL_AUTO
+
