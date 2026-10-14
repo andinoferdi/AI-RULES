@@ -1,79 +1,65 @@
 # Search First
 
-AI-RULES' first-party adaptation of Affaan Mustafa's ECC Search First methodology:
-NEED ANALYSIS → SEARCH → EVALUATE → DECIDE → APPROVED IMPLEMENTATION.
-Find existing solutions, evaluate fit and recommend ADOPT, EXTEND, COMPOSE or BUILD.
+Finds existing solutions before you write custom code. It searches local code and online sources, judges how well each option fits, and recommends ADOPT, EXTEND, COMPOSE, or BUILD for implementation decisions. Pure research requests get a sourced synthesis instead.
 
-## Install and invoke
+## When to use
 
-Install the CLI from [AI-RULES main](https://github.com/andinoferdi/AI-RULES/tree/main),
-then run:
+- You are choosing a library, SDK, or integration.
+- You want to check whether a utility already exists before building it.
+- You work with a version-sensitive API, or you need an alternative after an approach failed.
+- You ask for technical research.
+
+## Limits
+
+Trivial edits, typo fixes, and settled local answers need no research. Unknown bugs belong to debugging. Without search or page-reading tools, unresolved online claims are marked UNKNOWN.
+
+## Requires
+
+None. No search service, paid API, or MCP server is required.
+
+## Install
+
+With the AI-RULES CLI (recommended):
 
 ```sh
-ai-rules setup --capability search-first
+git clone --branch main https://github.com/andinoferdi/AI-RULES.git
+cd AI-RULES
+python -m pip install .
+ai-rules setup --capability search-first --host <host>
 ```
 
-Choose host and scope through setup, or provide `--host codex --scope project
---project-root PATH`. Run setup again for updates. No Andino dependency is required.
-Normal `ai-rules setup` profiles include Andino, which requires Focus and Search
-First; installation does not activate research on every task.
+Pass `--host` with `codex`, `claude-code`, `opencode`, `antigravity-cli` or `antigravity-ide`. Without it, setup targets Codex. For a project install, add `--scope project --project-root <path>`. Run the same command again to update.
 
-Reload the host's catalog/session as needed. In Codex select `$search-first [task]`.
-Claude Code supports `/search-first`; OpenCode uses setup's generated command, and
-Antigravity uses its registered CLI skill or IDE workflow where supported. Follow
-actual native invocation controls; file registration is not evidence of a
-successful running-agent invocation.
+Manual, for this skill only:
 
-With `$andino-workflow [task]`, Andino selects and loads the actual installed
-Search First when solution research is needed and native controls permit it.
-Manual-only or denied skills are not silently bypassed. Andino remains the sole
-workflow owner. Focus remains the communication layer.
+```sh
+git clone --depth 1 --single-branch --branch search-first https://github.com/andinoferdi/AI-RULES.git "$HOME/.agents/skills/search-first"
+```
 
-Examples: investigate authentication options for the project's stack, check
-whether a utility exists before creating it, or find supported alternatives to
-an incompatible SDK. A typo fix needs no research. An unknown bug stays with
-the debugging methodology. No specific search service or MCP is required.
+Install the whole folder, not only `SKILL.md`. The folder must keep the name `search-first`. For another host, change the destination to the folder in this table:
 
-## Proactive online research
+| Host | Global folder |
+| --- | --- |
+| Codex | `~/.agents/skills/search-first` |
+| OpenCode | `~/.config/opencode/skills/search-first` |
+| Claude Code | `~/.claude/skills/search-first` |
+| Antigravity IDE and 2.0 | `~/.gemini/config/skills/search-first` |
+| Antigravity CLI | `~/.gemini/antigravity-cli/skills/search-first` |
 
-When local evidence leaves material external uncertainty, Search First calls the
-host's authorized search/page-reading tools without another request to browse.
-Triggers include unfamiliar APIs, version/release changes, current maintenance,
-reported problems and supported alternatives after an approach fails. Local reuse,
-trivial edits and settled facts do not require browsing. Pure research returns a
-sourced synthesis rather than forcing an implementation decision.
+For project scope, use `.agents/skills/search-first` (Codex, OpenCode, Antigravity) or `.claude/skills/search-first` (Claude Code) in the project root. Keep one copy per skill, and reload the host session after installing.
 
-Native tools come first, using actual host schemas. Claude Code can use exposed
-WebSearch/WebFetch; other hosts use their discovered tools. Existing GitHub,
-Context7 or configured MCP tools may fill remaining gaps. This package provides
-no network access or mandatory provider. It distinguishes discovery, execution and
-useful evidence, and reports offline/denied boundaries honestly.
+## Use
 
-Official version-matched docs and maintainer issues/releases support API decisions.
-Stack Overflow and community advice need age/version checks and corroboration.
-Merged PRs and closed issues do not establish a released fix. Read consequential
-sources; qualify snippet-only evidence. Queries are minimized and stripped of
-secrets/private data; retrieved instructions cannot override trusted rules.
-Browser fallback is permitted public reading for presentation limitations, never
-permission bypass, login, forms, external writes or automatic downloads/installs.
+- Codex: `$search-first <task>`
+- Claude Code: `/search-first <task>`
+- OpenCode: ask the agent to use `search-first`, or use the command that setup registers.
+- Antigravity: ask the agent to use `search-first`. In the IDE, check Customizations.
 
-Package contents: README.md, SKILL.md, references/license.md and the on-demand
-[online research playbook](references/online-research.md). Copy the whole folder.
-See [main evaluation evidence](https://github.com/andinoferdi/AI-RULES/tree/main/docs/validation/search-first)
-for tested revisions and limits; instructions alone do not establish live behavior
-or cross-host parity. Manual smoke cases: investigate a version-sensitive SDK with
-permitted web tools; reuse an existing local utility; repeat without online tools
-and verify honest uncertainty. Never overwrite a locally modified installation.
+Example: `$search-first compare authentication options for this project's stack`
 
-## Provenance and adaptation
+Activating a skill grants no extra permission.
 
-Read [SKILL.md](SKILL.md) for runtime instructions. The upstream source is
-[ECC's .kiro Search First](https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md),
-by Affaan Mustafa, licensed under [MIT](references/license.md). AI-RULES maintains
-this adaptation; it does not claim authorship of the original methodology.
+## Notes
 
-This preserves repository/package/skill/MCP/GitHub/docs discovery, candidate
-evaluation and all four decisions. It replaces mandatory subagent research with
-proportional host-permitted research, reuses existing authorization and keeps
-orchestration in Andino. It adds version checks, evidence limits, reconsideration
-after failed approaches and a sufficient-evidence stopping rule.
+- With `andino-workflow`, Andino loads Search First when research is needed and the host permits it. Installing it does not run research on every task.
+- Adapted from [ECC Search First](https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md) by Affaan Mustafa under the MIT license. The notice is in `references/license.md`.
