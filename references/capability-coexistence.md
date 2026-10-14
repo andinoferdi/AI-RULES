@@ -39,8 +39,9 @@ not permission to bypass them. Evidence records include the resolved ID, provide
 | --- | --- |
 | Superpowers / Agent Skills | Load relevant individual discipline, never `using-superpowers` or `using-agent-skills` as a second router. Existing Andino plan/checkpoint remains authoritative. Specialist planning templates and completion options yield to the current owner/scope. |
 | Ponytail / code-simplification | Prefer Ponytail for prospective dependency/abstraction over-build risk; Agent Skills code-simplification for behavior-preserving cleanup of existing code. One discipline for the same concern. Ponytail's upstream broad coding/persistence defaults do not make it active in every Andino task. |
-| Anti-Slop / UI/UX / Taste | Apply only relevant quality concern to the accepted direction. Core Anti-Slop does not activate all subskills. Functional accessibility, correctness and explicit design constraints win over style preferences. |
-| UI/UX / Taste | Preserve [the accepted UI policy](ui-coexistence.md): explicit single-skill choice stands, both only when both add value/requested, one design direction and existing stack/token source. |
+| Anti-Slop / Impeccable / Taste | Apply only relevant quality concern to the accepted direction. Core Anti-Slop does not activate all subskills. Functional accessibility, correctness and explicit design constraints win over style preferences. |
+| Impeccable / Taste | Preserve [the accepted UI policy](ui-coexistence.md): explicit single-skill choice stands, Taste generates and Impeccable critiques and refines, one design direction, one DESIGN.md and existing stack/token source. |
+| clone-website / Taste / Impeccable | Fidelity clone preserves the reference; a requested redesign runs clone-website first, then Taste and Impeccable under the UI policy. |
 | Graphify / native references | Simple bounded lookup uses native symbol/reference search. Graph query is useful for unresolved complex relationships; verify freshness and actual tool semantics. No automatic generation or delegation. |
 | Playwright / DevTools | One browser surface for reproduction. Add DevTools only for distinct console/network/trace diagnosis; do not repeat the same browser loop. |
 | Draw.io / StarUML | Choose requested artifact semantics: general editable diagram versus formal UML/model. Do not automatically invoke both. |

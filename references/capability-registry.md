@@ -46,7 +46,7 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 | [agent-skills-test-driven-development](#agent-skills-test-driven-development) | skill | Agent Skills | Executable regression contract |
 | [ponytail](#ponytail) | skill | Ponytail | Minimal correct implementation |
 | [claude-mem](#claude-mem) | skill | Claude-Mem | Targeted historical decisions |
-| [ui-ux-pro-max](#ui-ux-pro-max) | skill | UI/UX Pro Max | Product UX and accessibility |
+| [impeccable](#impeccable) | skill | Impeccable | UI critique, polish and anti-slop detection |
 | [design-taste-frontend](#design-taste-frontend) | skill | Taste Skill | Visual direction |
 | [clone-website](#clone-website) | skill | AI Website Cloner | Fidelity reconstruction |
 | [graphify](#graphify) | skill | Graphify | Complex structural relationship analysis |
@@ -714,15 +714,15 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 - Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
 - Activation policy: AUTO
 
-## ui-ux-pro-max
+## impeccable
 
 - Type: skill
-- Family/provider: UI/UX Pro Max
+- Family/provider: Impeccable (pbakaus/impeccable, Apache-2.0)
 - Aliases: none
-- Primary purpose: Product UX and accessibility
-- Trigger: Product UI, dashboard, complex forms, accessibility, responsive behavior, design-system or UX evaluation needs expertise.
-- Preferred when: Existing product stack and accepted design guide research/implementation.
-- Avoid when: Automatically pairing Taste or overwriting accepted tokens.
+- Primary purpose: UI critique, refinement, accessibility and anti-slop detection
+- Trigger: Frontend interface needs design context (PRODUCT.md/DESIGN.md), critique, audit, polish, hardening, dashboards, product UI, design-system work or a deterministic `detect` scan after generation.
+- Preferred when: A design direction exists or is being recorded and the output must be evaluated and refined against it; always after Taste generation for landing and marketing pages.
+- Avoid when: Backend-only or non-UI work; overwriting accepted tokens; treating a clean `detect` run as proof of quality.
 - Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
 - Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
 - First-call/preflight: Read applicable project constraints and current evidence first.
@@ -745,7 +745,7 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 - Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
 - First-call/preflight: Read applicable project constraints and current evidence first.
 - Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Apply [UI coexistence](ui-coexistence.md). Both UI skills only when both add value or explicitly requested; preserve reduced motion and project stack.
+- Coexistence/conflicts: Apply [UI coexistence](ui-coexistence.md). Taste generates and Impeccable critiques and refines; preserve reduced motion and project stack.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
 - Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
 - Activation policy: CONDITIONAL_AUTO
@@ -1058,7 +1058,7 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 
 ## Sources and version limits
 
-Contracts use inspected installed skill IDs and actual host tool metadata. Upstream reference points: [Superpowers](https://github.com/obra/superpowers), [Agent Skills](https://github.com/addyosmani/agent-skills), [Ponytail](https://github.com/DietrichGebert/ponytail), [Claude-Mem](https://cmem.ai/), [UI/UX Pro Max](https://uupm.cc/), [Taste](https://www.tasteskill.dev/), [Cloner](https://github.com/JCodesMore/ai-website-cloner-template), [Graphify](https://graphify.net/), [Anti-Slop](https://github.com/miqdadbadjuber/anti-slop), [Context7](https://github.com/upstash/context7), [Playwright](https://github.com/microsoft/playwright-mcp), [DevTools](https://github.com/ChromeDevTools/chrome-devtools-mcp), [Git MCP](https://github.com/modelcontextprotocol/servers/tree/main/src/git), [Draw.io](https://www.npmjs.com/package/@drawio/mcp), [StarUML](https://www.npmjs.com/package/staruml-mcp-server), [Premiere](https://github.com/hetpatel-11/Adobe_Premiere_Pro_MCP), [Cheat Engine](https://github.com/miscusi-peek/cheatengine-mcp-bridge). These links identify upstreams, not installed versions or universal tool names. Refresh the selected contract from actual host schemas when version drift matters.
+Contracts use inspected installed skill IDs and actual host tool metadata. Upstream reference points: [Superpowers](https://github.com/obra/superpowers), [Agent Skills](https://github.com/addyosmani/agent-skills), [Ponytail](https://github.com/DietrichGebert/ponytail), [Claude-Mem](https://cmem.ai/), [Impeccable](https://github.com/pbakaus/impeccable), [Taste](https://www.tasteskill.dev/), [Cloner](https://github.com/JCodesMore/ai-website-cloner-template), [Graphify](https://graphify.net/), [Anti-Slop](https://github.com/miqdadbadjuber/anti-slop), [Context7](https://github.com/upstash/context7), [Playwright](https://github.com/microsoft/playwright-mcp), [DevTools](https://github.com/ChromeDevTools/chrome-devtools-mcp), [Git MCP](https://github.com/modelcontextprotocol/servers/tree/main/src/git), [Draw.io](https://www.npmjs.com/package/@drawio/mcp), [StarUML](https://www.npmjs.com/package/staruml-mcp-server), [Premiere](https://github.com/hetpatel-11/Adobe_Premiere_Pro_MCP), [Cheat Engine](https://github.com/miscusi-peek/cheatengine-mcp-bridge). These links identify upstreams, not installed versions or universal tool names. Refresh the selected contract from actual host schemas when version drift matters.
 
 
 ## search-first

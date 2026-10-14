@@ -41,7 +41,7 @@ Andino knows a broad [capability registry](references/capability-registry.md), b
 selects and loads only the minimum useful methods/instruments for the current
 unresolved need. Evidence and task context guide selection, not keyword matching.
 The registry covers individual Superpowers/Agent Skills, Ponytail, Claude-Mem,
-UI/UX Pro Max, Taste, Cloner, Graphify, Anti-Slop and eight recommended MCP families.
+Impeccable, Taste, Cloner, Graphify, Anti-Slop and eight recommended MCP families.
 It contains short contracts, not bundled third-party implementations or automatic
 installation. [Coexistence](references/capability-coexistence.md) resolves competing
 providers; [host invocation](references/invocation-adapter.md) separates discovered,
