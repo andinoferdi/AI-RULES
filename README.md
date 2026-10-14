@@ -1,80 +1,66 @@
 # Focus
 
-AI-RULES personal communication skill adapted from
-[i-have-adhd](https://github.com/ayghri/i-have-adhd) by Ayoub Ghriss.
-The [MIT notice](references/license.md) is retained with the adaptation.
+A communication style for AI answers. It puts the answer or result first, uses short concrete steps, and removes filler, while keeping the detail, evidence, and uncertainty you need. It matches the language you write in.
 
-Focus keeps answer-first writing, concrete actions, manageable steps, relevant
-state reminders and visible results. AI-RULES adapts these into natural English
-or Indonesian aligned with `A. PRIORITAS`: no diagnosis assumptions, fixed list
-caps, compulsory time estimates, repeated recaps or rigid response template.
-Long explanations, technical evidence and complete requested outputs stay intact.
+## When to use
+
+- You want direct answers without filler.
+- You want steps you can follow right away.
+- You want status updates that say what is done and what comes next.
+
+## Limits
+
+Focus changes how work is written. It does not reduce investigation, verification, or scope. Your explicit style requests override it.
+
+## Requires
+
+None. Every `ai-rules setup` profile includes Focus through Andino's dependency.
+
+## Install
+
+With the AI-RULES CLI (recommended):
+
+```sh
+git clone --branch main https://github.com/andinoferdi/AI-RULES.git
+cd AI-RULES
+python -m pip install .
+ai-rules setup --capability focus --host <host>
+```
+
+Pass `--host` with `codex`, `claude-code`, `opencode`, `antigravity-cli` or `antigravity-ide`. Without it, setup targets Codex. For a project install, add `--scope project --project-root <path>`. Run the same command again to update.
+
+Manual, for this skill only:
+
+```sh
+git clone --depth 1 --single-branch --branch focus https://github.com/andinoferdi/AI-RULES.git "$HOME/.agents/skills/focus"
+```
+
+Install the whole folder, not only `SKILL.md`. The folder must keep the name `focus`. For another host, change the destination to the folder in this table:
+
+| Host | Global folder |
+| --- | --- |
+| Codex | `~/.agents/skills/focus` |
+| OpenCode | `~/.config/opencode/skills/focus` |
+| Claude Code | `~/.claude/skills/focus` |
+| Antigravity IDE and 2.0 | `~/.gemini/config/skills/focus` |
+| Antigravity CLI | `~/.gemini/antigravity-cli/skills/focus` |
+
+For project scope, use `.agents/skills/focus` (Codex, OpenCode, Antigravity) or `.claude/skills/focus` (Claude Code) in the project root. Keep one copy per skill, and reload the host session after installing.
 
 ## Use
 
-Install from the AI-RULES `main` CLI with `ai-rules setup`. Every profile includes
-Focus through Andino's dependency. To install only Focus:
+- Codex: `$focus <request>`
+- Claude Code: `/focus <request>`
+- OpenCode: ask the agent to use `focus`, or use the command that setup registers.
+- Antigravity: ask the agent to use `focus`. In the IDE, check Customizations.
 
-```sh
-ai-rules setup --capability focus
-```
+Example: `$focus explain how to roll back the last database migration`
 
-Reload the host session after installation. Invoke `$focus [request]` through the
-Codex skill picker, or `/focus [request]` in Claude Code, OpenCode and Antigravity.
-The existing setup registers commands/workflows where those hosts require them.
-Use `stop focus` or an ordinary instruction to change the communication preference.
+To turn it off, say `stop focus`. Activating a skill grants no extra permission.
 
-Andino automatically selects and loads Focus once through its native host contract;
-no second invocation is needed. Restricted or missing host capabilities must be
-reported honestly. Focus owns no plan, workflow, tool permissions or task execution.
+## Notes
 
-Rerun setup to update from the configured `focus` branch. User-modified installations
-remain protected by the existing installer reconciliation rules.
-
-For web chatbots, copy `A. PRIORITAS` and `X. Focus` from the `WebBased` README.
-That text works without an agent filesystem or skill loader.
-
-## Bundled communication contract
-
-Install the whole folder: `SKILL.md`, this README, and `references/` containing
-`license.md`, `priority-a.md`, `human-language-indonesia.md` and
-`human-language-english.md`. Focus resolves references from its actual installed
-directory and instructs the agent to read A and both language files before its
-first substantive response. Standalone and Andino activation use the same contract.
-Reuse valid context; reload after context loss or package changes. Switching
-languages uses already loaded references. Restricted access uses the embedded
-essential rules and reports the real boundary without claiming full loading.
-
-A defines communication standards, Focus extends clarity/actionability, and the
-language examples provide style only. Host hierarchy, explicit user overrides and
-required formats retain authority. No project files or network are needed at runtime.
-These are loading instructions, not an enforced host hook. Installer registration
-and package checks do not prove model compliance or cross-host communication quality.
-
-WebBased maintains the source at commit
-`2d488a46baed247f43d17b44681e197ca400deab`. `priority-a.md` copies the complete
-A section from `put-in-your-projects/chat-rules.md`; the fenced A in README was
-equivalent at that revision. Both language files are unchanged copies, including
-all examples and guardrails. Their textual `chat-rules.md` references denote the
-bundled A through SKILL.md's mapping. No source edits or example omissions were
-needed. The original upstream attribution and MIT notice remain intact.
-
-Maintainers can check drift with the main quality-plane validator after fetching
-the relevant source refs (never during skill use):
-
-```sh
-python scripts/validate_skills.py --focus-ref origin/focus --webbased-ref origin/WebBased
-```
-
-For an uncommitted runtime tree, replace `--focus-ref` with
-`--focus-dir /path/to/focus-package`. Comparison reports differences; it never
-overwrites an intentional divergence. Review source changes before updating copies.
-See the [family quality contract](https://github.com/andinoferdi/AI-RULES/blob/main/docs/agent-skill-family-standard.md).
-
-Manual smoke checks: informal Indonesian, academic Indonesian, natural/technical
-English, mixed languages, complete technical documentation, strict JSON and code-only
-output. Check that formats and detail survive, facts/assumptions are not inherited,
-greetings and lists are contextual, and `stop focus` prevents reactivation.
-Also check first activation reads all three local references, a second turn reuses
-them, and restricted access produces an honest fallback. These cases require actual
-host execution before claiming behavioral success.
+- With Andino, Focus loads once automatically. You do not invoke it again.
+- Focus owns no plan, tool permissions, or task execution.
+- For web chatbots, copy `A. PRIORITAS` and `X. FOCUS` from the [WebBased branch README](https://github.com/andinoferdi/AI-RULES/tree/WebBased).
+- Adapted from [i-have-adhd](https://github.com/ayghri/i-have-adhd) by Ayoub Ghriss under the MIT license. The notice is in `references/license.md`.
