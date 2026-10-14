@@ -1,5 +1,9 @@
 # AI Rules Template
 
+> **Branch ini (WebBased) khusus untuk AI chatbot berbasis web** seperti Claude web, ChatGPT web, dan sejenisnya: isinya prompt yang ditempel manual ke chat.
+> Bukan untuk AI coding agent (Claude Code, Codex, OpenCode, Antigravity). Skill dan routing agent ada di branch ndino-workflow, validator dan eval di branch main.
+> Manusia maupun AI agent: jangan mengedit branch ini untuk perubahan skill, routing, atau capability agent.
+
 Template aturan AI yang ringkas dan reusable. A wajib tiap sesi, B bila butuh persona kritis, D-V dan X pilih sesuai kebutuhan dan kirim bersama A. Z untuk reset konteks dan arah percakapan.
 
 **Untuk project coding:** pakai folder `put-in-your-projects/` (chat-rules, code-rules, be/fe-rules, token, git-*, Agents, dokumen project). Bootstrap repo pakai `1. First-prompt.md`, penguat tiap prompt pakai `2. Send-to-every-prompt.md`. Adaptasi ke project baru: jalankan `Project Markdown Alignment Prompt.md`. Cleanup akhir + commit + push: jalankan `Repository Commit Push Prompt.md`.
