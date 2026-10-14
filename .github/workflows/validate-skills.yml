@@ -15,7 +15,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Fetch skill branches
-        run: git fetch --no-tags origin andino-workflow:refs/remotes/origin/andino-workflow ai-codebase-rescue:refs/remotes/origin/ai-codebase-rescue skripsi-skill:refs/remotes/origin/skripsi-skill focus:refs/remotes/origin/focus search-first:refs/remotes/origin/search-first WebBased:refs/remotes/origin/WebBased
+        run: git fetch --no-tags origin andino-workflow:refs/remotes/origin/andino-workflow ai-codebase-rescue:refs/remotes/origin/ai-codebase-rescue skripsi-skill:refs/remotes/origin/skripsi-skill focus:refs/remotes/origin/focus search-first:refs/remotes/origin/search-first council:refs/remotes/origin/council WebBased:refs/remotes/origin/WebBased
       - name: Install AI-RULES package
         run: python3 -m pip install --editable .
       - name: Validate
