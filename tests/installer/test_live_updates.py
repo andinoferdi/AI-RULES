@@ -13,6 +13,7 @@ from unittest.mock import patch
 from ai_rules import cli
 from ai_rules.catalog import load_catalog
 from ai_rules.interactive import InteractiveSelection
+from ai_rules.profiles import load_profiles
 
 
 class LiveUpdateTests(unittest.TestCase):
@@ -397,7 +398,7 @@ class LiveUpdateTests(unittest.TestCase):
             self.assertNotIn("Already installed", output.getvalue())
 
     def test_novice_setup_from_empty_home_installs_and_registers_all_hosts(self):
-        for identifier in ("ai-codebase-rescue", "skripsi-skill"):
+        for identifier in ("ai-codebase-rescue", "skripsi-skill", "council"):
             self.git(self.remote, "checkout", "-b", identifier)
             (self.remote / "SKILL.md").write_text(
                 f"---\nname: {identifier}\ndescription: Fixture {identifier}\n---\nInstructions\n")
@@ -407,6 +408,7 @@ class LiveUpdateTests(unittest.TestCase):
         home = self.root / "empty-home"
         home.mkdir()
         hosts = tuple(self.catalog.hosts)
+        expected_skills = load_profiles(self.catalog).require("everything").capabilities
         selection = InteractiveSelection(hosts, "everything", ())
         output = io.StringIO()
         original = Path.cwd()
@@ -421,13 +423,13 @@ class LiveUpdateTests(unittest.TestCase):
                 from ai_rules.hosts.invocation import invocation_paths, invocation_ready
                 from ai_rules.domain.statuses import Scope
                 for adapter in adapters.values():
-                    for identifier in ("andino-workflow", "focus", "search-first", "ai-codebase-rescue", "skripsi-skill"):
+                    for identifier in expected_skills:
                         skill = adapter.skill_target(Scope.GLOBAL) / identifier / "SKILL.md"
                         self.assertTrue(skill.is_file(), str(skill))
                         self.assertTrue(all(invocation_ready(p) for p in invocation_paths(adapter, Scope.GLOBAL, identifier)))
                 lock = json.loads((home / ".ai-rules/lock.json").read_text())
                 self.assertEqual("verified", lock["status"])
-                self.assertEqual(25, len(lock["targets"]))
+                self.assertEqual(len(hosts) * len(expected_skills), len(lock["targets"]))
                 self.assertTrue(all(t["action"] == "INSTALL" for t in lock["targets"]))
                 self.assertIn("Codex: $andino-workflow", output.getvalue())
                 self.assertIn("Claude Code: /andino-workflow", output.getvalue())
