@@ -7,8 +7,8 @@
     "andino-workflow": {
       "branch": "andino-workflow",
       "ref": "origin/andino-workflow",
-      "commit": "8e0007c544f5abd4faaa5aed530605aeba1bf85c",
-      "release_sequence": 8
+      "commit": "fb3a767f2a9859cc7184311486b561b1ba95858b",
+      "release_sequence": 9
     },
     "ai-codebase-rescue": {
       "branch": "ai-codebase-rescue",
