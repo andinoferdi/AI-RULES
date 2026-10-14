@@ -66,3 +66,6 @@ Activating a skill grants no extra permission.
 - `focus` is the default communication style for every invocation, including direct answers.
 - Andino loads other installed skills only when the task needs them, for example `search-first` for research or `ai-codebase-rescue` for codebase stabilization.
 - To combine it with a specialist, install `ai-codebase-rescue` or `skripsi-skill` as a separate folder under the same skill root. Andino coordinates the work, and its plan stays the only lifecycle owner. Neither package installs the other.
+
+
+Council decision specialist: The [council](https://github.com/andinoferdi/AI-RULES/tree/council) branch offers five advisor perspectives, anonymous peer review when agents support it, and an actionable verdict. Focus remains the language layer and Andino retains routing and execution ownership. Standalone Council is available through `ai-rules setup --capability council`.

@@ -1096,3 +1096,15 @@ Contracts use inspected installed skill IDs and actual host tool metadata. Upstr
 - Mutation/permission boundary: Communication only; no new authority or limits on task execution.
 - Verification requirement: Distinguish actual loading and applied output from a name mention or installation record.
 - Activation policy: AUTO
+
+
+## council
+
+- Provider: AI-RULES first-party; branch `council`.
+- Purpose: Five independent decision lenses, anonymized peer review and reasoned synthesis for consequential choices.
+- Trigger: Explicit Council request or real high-stakes trade-off requiring multiple perspectives; do not auto-run for trivia, ordinary drafting or small implementation details.
+- Invocation: Resolve installed `council` skill and use the host's supported invocation mechanism. Do not treat catalog discovery as activation.
+- Required context: Neutral framed question, existing material evidence, user's goals and constraints.
+- Coexistence: Andino owns routing and lifecycle; Focus owns communication; Council owns deliberation and recommendation only.
+- Capability limit: Run independent peer review only with real authorized sub-agents. Otherwise state `single-agent perspective review`, never claim actual independent reviewers.
+- Verification: Record whether actual advisors, review and synthesis ran, and whether the reported recommendation follows from available evidence.
