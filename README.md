@@ -70,11 +70,13 @@ and selected renderer peer. Generator scripts use optional external Tripo, Gemin
 and ElevenLabs services and user-provided credentials; installation makes no calls,
 incurs no charges and installs no npm packages. Paid calls need task authorization.
 
-Source is the user-supplied local collection; no upstream origin or blanket license
-is asserted. Preserve included MIT, CC0 and GPL notices and full GPL texts. Some
-code/assets have no explicit rights declaration: review the main inventory and
-confirm distribution rights before publication. No remote readiness is claimed
-for these unpublished local commits.
+The maintainer reports that this collection is their own work (statement recorded
+2026-10-16); no external collection repository was supplied. This is maintainer
+attestation, not independent verification of every embedded resource. Preserve the
+included MIT, CC0 and GPL notices and full GPL texts for identified third-party
+materials. No new collection-wide license has been specified by this integration.
+See the main provenance record for the attestation and resource-level limits.
+These local commits have not been authorized for remote publication.
 
 [Main quality contract](https://github.com/andinoferdi/AI-RULES/blob/main/docs/agent-skill-family-standard.md)
 [Inventory and release evidence](https://github.com/andinoferdi/AI-RULES/tree/main/docs/threejs)
