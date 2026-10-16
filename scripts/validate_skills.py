@@ -16,9 +16,8 @@ EVAL_SKILLS = RUNTIME_SKILLS
 LINK = re.compile(r"(?<!!)\[[^]]*\]\(([^)]+)\)")
 FIELD = re.compile(r"^([A-Za-z][A-Za-z0-9_-]*):[ \t]+(.+)$")
 NAME = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
-THREEJS_SKILLS = frozenset(item['id'] for item in json.loads(
-    (ROOT / 'src/ai_rules/catalog/data/capabilities.json').read_text(encoding='utf-8'))['capabilities']
-    if item.get('source', {}).get('branch') == 'threejs-skills')
+THREEJS_SKILLS = frozenset({'threejs-skills'} | {item['name'] for item in json.loads(
+    (ROOT / 'docs/threejs/inventory.json').read_text(encoding='utf-8'))['skills']})
 BINARY_SUFFIXES = {'.png', '.jpg', '.webp', '.bin', '.exr', '.glb', '.wasm', '.gz'}
 THREEJS_SUFFIXES = BINARY_SUFFIXES | {'.md', '.ts', '.js', '.mjs', '.py', '.sh', '.json',
     '.yaml', '.txt', '.glsl', '.wgsl', '.frag', '.vert', '.html', '.css'}
@@ -59,6 +58,22 @@ def package_files(files, expected_name, modes=None):
     errors = []
     threejs = expected_name in THREEJS_SKILLS
     files = dict(files)
+    if expected_name == 'threejs-skills':
+        for member in sorted(THREEJS_SKILLS - {'threejs-skills'}):
+            prefix = f'skills/{member}/'
+            child = {p[len(prefix):]: value for p, value in files.items() if p.startswith(prefix)}
+            child_modes = {p[len(prefix):]: value for p, value in (modes or {}).items() if p.startswith(prefix)}
+            guide = child.pop('GUIDE.md', None)
+            if guide is None:
+                errors.append(f'{member}: missing internal GUIDE.md')
+            else:
+                child['SKILL.md'] = guide
+                child_modes['SKILL.md'] = child_modes.pop('GUIDE.md', '100644')
+                # Validate member metadata and support paths with its local guide identity.
+                child = {p: v.replace('](GUIDE.md)', '](SKILL.md)') if isinstance(v, str) else v for p, v in child.items()}
+                errors.extend(package_files(child, member, child_modes))
+        if any(p != 'SKILL.md' and p.endswith('/SKILL.md') for p in files):
+            errors.append('threejs-skills: nested native SKILL.md is forbidden')
     for name, content in files.items():
         if PurePosixPath(name).suffix.lower() in BINARY_SUFFIXES:
             if not isinstance(content, bytes):
@@ -93,6 +108,10 @@ def package_files(files, expected_name, modes=None):
                 name == 'agents/openai.yaml' or
                 (name.startswith(('references/', 'assets/', 'scripts/', 'examples/'))
                  and PurePosixPath(name).suffix.lower() in THREEJS_SUFFIXES)))
+        if expected_name == 'threejs-skills' and name.startswith('skills/'):
+            parts = name.split('/')
+            # Member validators above enforce path, extension and resource safety.
+            allowed = len(parts) > 2 and parts[1] in THREEJS_SKILLS - {'threejs-skills'}
         if not allowed:
             errors.append(f"{expected_name}: unexpected runtime file: {name}")
         if modes and modes.get(name, "100644") not in ("100644", "100755"):
@@ -283,21 +302,7 @@ def main():
     if args.threejs_ref or args.threejs_dir:
         try:
             all_files, all_modes = directory_files(args.threejs_dir) if args.threejs_dir else ref_files(args.threejs_ref)
-            expected = {'threejs-skills': 'entrypoint/'}
-            expected.update({name: f'skills/{name}/' for name in THREEJS_SKILLS if name != 'threejs-skills'})
-            discovered = {name for name in all_files if name.endswith('/SKILL.md')}
-            wanted = {prefix + 'SKILL.md' for prefix in expected.values()}
-            if discovered != wanted:
-                errors.append(f'Three.js package set mismatch: missing {sorted(wanted-discovered)}, unexpected {sorted(discovered-wanted)}')
-            for name, prefix in expected.items():
-                files = {p[len(prefix):]: value for p, value in all_files.items() if p.startswith(prefix)}
-                modes = {p[len(prefix):]: value for p, value in all_modes.items() if p.startswith(prefix)}
-                errors.extend(package_files(files, name, modes))
-            root_files = {p: value for p, value in all_files.items() if not p.startswith(('entrypoint/', 'skills/'))}
-            errors.extend(package_files(root_files, 'threejs-skills', all_modes))
-            for name in ('SKILL.md', 'README.md'):
-                if root_files.get(name) != all_files.get('entrypoint/' + name):
-                    errors.append(f'Three.js entrypoint projection differs: {name}')
+            errors.extend(package_files(all_files, 'threejs-skills', all_modes))
         except (ValueError, OSError) as exc:
             errors.append(str(exc))
     for skill, ref in zip(RUNTIME_SKILLS, (args.andino_ref, args.rescue_ref, args.skripsi_ref, args.focus_ref, args.search_first_ref, args.council_ref)):
@@ -328,7 +333,7 @@ def main():
     print(f"PASS: {len(RUNTIME_SKILLS)} skill packages, metadata, relative links, and {len(EVAL_SKILLS)} eval schemas")
     print("Live behavioral evaluation: NOT VERIFIED")
     if args.threejs_ref or args.threejs_dir:
-        print(f'PASS: {len(THREEJS_SKILLS)} Three.js packages including standalone family index')
+        print(f'PASS: one Three.js family with {len(THREEJS_SKILLS)-1} internal methods')
     if args.webbased_ref:
         print(f"PASS: Focus communication references match {args.webbased_ref}; A sources equivalent")
     return 0

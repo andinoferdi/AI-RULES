@@ -13,8 +13,10 @@ INTEGRATION = """## AI-RULES integration
 Use this specialist only for the domain need described above. Ordinary frontend
 work without that need is excluded. Inspect the project's actual Three.js and
 renderer versions before applying examples; examples are not compatibility claims.
-Use the host's permitted discovery/invocation mechanism for selected siblings;
-an absent sibling is optional guidance, not an implicit installation dependency.
+This is an internal method of the installed threejs-skills family. Resolve selected
+siblings as ../<method-id>/GUIDE.md within that family, through authorized resource
+reads after family invocation; they are not separate native skill registrations.
+An absent sibling is optional guidance, not an installation dependency.
 Never bypass explicit-only or denied invocation controls by reading another path.
 Load the minimum relevant specialists at the phase where they are needed.
 
@@ -31,27 +33,61 @@ task authorization; this skill grants none.
 
 FAMILY = """---
 name: threejs-skills
-description: Discover the AI-RULES Three.js and NixieFX specialist collection for actual 3D scene, rendering, animation, game or particle-effect needs. Excludes ordinary frontend work and general task orchestration.
+description: Apply the bundled Three.js and NixieFX specialist methods for 3D scenes, shaders, lighting, animation, geometry, interactions, games and particle effects. Use for an explicit specialist name or select relevant methods from the prompt. Excludes ordinary frontend work and general task orchestration.
 ---
 
 # Three.js Skills
 
-This is a family index and boundary statement. Select individual installed skills
-through the current host catalog and permitted invocation mechanism. Do not load
-the collection as a batch. For an ambiguous multi-system graphics request,
-`threejs-skill-router` can recommend the smallest domain set; the family index
-does not dispatch or repeat its technical selection table. Game production uses
-`threejs-game-director` only when game-wide coordination is actually needed.
+This is one installed skill containing 45 domain methods. They are internal
+resources, not separately registered native skills or installation dependencies.
+The user can say "use andino-workflow and threejs-skills" for automatic selection,
+or "use threejs-skills, specifically threejs-shaders" to choose a method explicitly.
 
-Andino Workflow, when active, retains lifecycle, routing, one plan/checkpoint,
-handoff and completion. Focus controls communication. Search First handles
-evidenced research needs. Specialists supply methods, results and evidence.
-They also work independently in normal host context. Honor invocation permissions
-and distinguish DISCOVERED, AVAILABLE, INVOKABLE, ACTIVE, USED, UNAVAILABLE and
-NOT_NEEDED. Missing or denied skills require an honest native fallback, never a
-claim of activation. Reassess selection when requirements change or work resumes.
+## Select and apply
 
-Read the [package guide](README.md) for installation, discovery and limits.
+1. Identify the actual current need and any explicitly requested method. Honor an
+   explicit relevant choice. Ordinary frontend work needs no Three.js method.
+   For an unknown-cause failure use the host's debugging method first, then add
+   a domain method when evidence identifies its need; do not guess shader/light.
+2. For a narrow need read the corresponding local guide directly:
+   shaders -> `skills/threejs-shaders/GUIDE.md`; lighting ->
+   `skills/threejs-lighting/GUIDE.md`; keyframe/skeletal animation ->
+   `skills/threejs-animation/GUIDE.md`; materials ->
+   `skills/threejs-materials/GUIDE.md`; geometry ->
+   `skills/threejs-geometry/GUIDE.md`; picking/input ->
+   `skills/threejs-interaction/GUIDE.md`.
+   For other needs consult [the method index](references/specialists.md) and load
+   the minimum distinct guides needed now. A shader-and-light request needs those
+   two methods, not all 45. Game Director is only for game-wide production;
+   the optional domain advisor supports complex technical selection, not a second
+   dispatcher or bootstrap chain. Do not invoke them recursively.
+3. Resolve guide paths relative to this installed family directory, read each
+   selected GUIDE.md through an authorized resource-reading tool and apply its
+   technical method. Resolve that guide's examples/references/scripts relative to
+   its own directory. Never require a native `$threejs-shaders` registration.
+   If a sibling method is recommended, use the same need/permission check first.
+4. Return the domain result, evidence, limitations and next recommendation. Loading
+   is ACTIVE; USED also requires meaningful application, not just naming a method.
+   Identify the actual guide when relevant to evidence. Unselected methods are
+   NOT_NEEDED. Missing or restricted resources are UNAVAILABLE: use an honest
+   native fallback without claiming their use or reading alternate denied copies.
+
+Invoke this family through the actual host skill mechanism before loading its
+resources. Permission to read bundled guides is subordinate to host/project rules;
+this is not a bypass of a denied family, method or resource. Discovery, availability,
+permission, activation and use remain distinct. Reassess after changed needs/resume;
+release irrelevant methods rather than accumulating the whole collection.
+
+## Ownership and limits
+
+With Andino active it owns lifecycle, routing, one plan/checkpoint, handoff and DONE.
+This family supplies domain selection and methods within that task. Focus controls
+communication; Search First handles relevant solution/version research. Without
+Andino use the host's existing task context. No new plan, checkpoint or delegation
+is implied. Paid services, credentials, external writes and publication still need
+applicable task authorization. Installation makes no API calls or npm installs.
+Rendering, performance and browser interaction claims require observed evidence;
+static review does not verify rendering. Read [the package guide](README.md).
 """
 
 
@@ -136,51 +172,18 @@ def prepare(source, destination, inventory_path):
 
 {description}
 
-## Use and boundaries
-
-Read [SKILL.md](SKILL.md) for domain triggers, methods, evidence and exclusions.
-This specialist can work alone. With Andino active, return results to its single
-plan; Focus controls communication and Search First handles relevant research.
-Sibling suggestions are optional, selected by need and host invocation permission.
-
-## Installation and discovery
-
-After the runtime and installer are published:
+This is an internal method bundled in `threejs-skills`, not an individual installer
+choice or native skill. Read [GUIDE.md](GUIDE.md) for the method; its supporting
+resources remain relative to this directory. Install the complete family:
 
 ```sh
-ai-rules setup --host codex --capability {name} --scope project --source latest
-ai-rules setup --host codex --profile threejs --scope project --source latest
+ai-rules setup --host codex --capability threejs-skills --scope project --project-root . --source latest
 ```
 
-Use the project root as the working directory; `--project-root PATH` selects another.
-Global scope uses `--scope global`. Codex project/global roots are `.agents/skills`;
-Claude Code uses `.claude/skills`; OpenCode uses `.agents/skills` for projects and
-`~/.config/opencode/skills` globally. Antigravity CLI and IDE use the catalog's
-separate roots. These are installer mappings; live execution on each host is
-NOT_VERIFIED. Refresh/restart discovery as required by the host. Invoke this exact
-name through its permitted mechanism; installation does not prove activation.
-
-## Package and dependencies
-
-Install the whole directory with SKILL.md directly at its root. Preserve all
-included references, scripts, examples, agent metadata, assets and license notices.
-The skill body describes version-sensitive tools, render backends and optional
-services. Installing this package installs no npm dependencies or credentials and
-does not authorize paid API calls. No blanket license is inferred from local files.
-
-## Update, conflicts and verification
-
-Use `ai-rules update` with the same host, scope, capability and source selection.
-Review modified or unrecognized directories before explicit repair; preserve user
-edits and backups. Bundled releases pin commit and subpath; latest resolves the
-branch at setup. Do not install a second discoverable copy as a workaround.
-Run the main package validator, then an applicable domain behavior check. Positive
-smoke: invoke this skill for its stated domain, observe a relevant action and
-evidence. Negative smoke: ordinary unrelated frontend work must not select it;
-missing/denied siblings require a truthful fallback. File presence alone proves
-neither invocation nor rendering quality.
-
-[Family quality contract](https://github.com/andinoferdi/AI-RULES/blob/main/docs/agent-skill-family-standard.md)
+Use "threejs-skills, specifically {name}" or let the family select by need.
+With Andino, return evidence/results to its single task context. Preserve supplied
+notices, observe project versions, and get task authorization for paid services.
+Update the family through the existing CLI; modified/unmanaged targets are preserved.
 '''
         (target / 'README.md').write_text(readme, encoding='utf-8')
         for entry in entries:
@@ -191,94 +194,76 @@ neither invocation nor rendering quality.
             'license_notices': [e['path'] for e in entries if 'LICENSE' in e['path'] or 'GPL-' in e['path']],
             'files': entries})
     (destination / 'SKILL.md').write_text(FAMILY, encoding='utf-8')
-    entrypoint = destination / 'entrypoint'
-    entrypoint.mkdir()
-    (entrypoint / 'SKILL.md').write_text(FAMILY, encoding='utf-8')
     readme = '''# Three.js Skills for AI-RULES
 
-A domain collection of 45 standalone Three.js and NixieFX specialists. This family
-does not own a task lifecycle, general router, plan or DONE decision. Andino owns
-those when active; Focus controls communication and Search First relevant research.
-Use for real scene/rendering/game/particle needs; ordinary frontend work is excluded.
+One installable family containing all 45 original Three.js/NixieFX methods and
+supporting resources. Use for scene/rendering/game/particle needs, not ordinary
+frontend work. Andino owns lifecycle when active; Focus controls communication.
 
-## Packages
+## Installation
 
-The branch root is the family reading entrypoint. `entrypoint/` is its standalone
-installable projection (identical SKILL.md and README.md); `skills/<name>/` holds
-each original skill and all supporting files. The installer selects subpaths so
-the family installation does not contain nested discoverable copies of specialists.
-The installed shape is `<host-skill-root>/<name>/SKILL.md`, with support files
-beside it. No installer source, tests or main quality artifacts ship on this branch.
-
-## Install, update and discovery
-
-After publication, use these existing CLI selections:
+Select only **Three.js Skills** in Custom, or select **Three.js Development** for
+the family plus Andino Workflow, Focus and Search First (four installed directories).
 
 ```sh
-ai-rules setup --host codex --profile threejs --scope project --source latest
-ai-rules setup --host codex --capability threejs-shaders --scope project --source latest
-ai-rules setup --host codex --profile threejs --scope global --source bundled
-ai-rules update --host codex --profile threejs --scope project --source latest
+ai-rules setup --host codex --capability threejs-skills --scope project --project-root . --source latest
+ai-rules setup --host codex --profile threejs --scope project --project-root . --source latest
+ai-rules setup --host codex --capability threejs-skills --scope global --source bundled
+ai-rules update --host codex --capability threejs-skills --scope project --project-root . --source latest
 ```
 
-Run in the target project or pass `--project-root PATH`. The profile includes all
-45 members, this index, Andino, Focus and Search First. Individual specialists do
-not require the lifecycle skills. Minimal and Engineering keep their existing sets.
-Everything includes all first-party members when newly selected; existing locks
-retain explicit targets unless the caller selects that expanded profile again.
+Bundled distributions use the pinned family revision; latest resolves its branch.
+Use the same host/scope when updating. Existing staging, verification, backup and
+rollback apply to the entire directory. Modified or unrecognized targets need
+explicit conflict review. Old separately installed specialist directories are not
+automatically removed or overwritten; preserve personal edits before any cleanup.
 
-Host mappings: Codex `.agents/skills` (project/global); Claude Code `.claude/skills`;
-OpenCode `.agents/skills` project, `~/.config/opencode/skills` global; Antigravity CLI
-`.agents/skills` project and `~/.gemini/antigravity-cli/skills` global; Antigravity IDE
-`.agents/skills` project and `~/.gemini/config/skills` global. Installer mappings
-are structural support, not live-host execution proof. All live Three.js host use
-is NOT_VERIFIED until observed. Refresh discovery in the host's normal manner;
-invoke exact installed names through permitted host controls. Never bypass a deny
-or explicit-only setting with file reads. Avoid duplicate discoverable installations.
+## Layout and use
 
-Latest uses one fetch per repository, identifies packages by branch/subpath, and
-preserves edited/unrecognized targets. Bundled uses the release-pinned commit and
-same subpath. Updates use existing staging, backup, verification and rollback.
-Review conflicts before explicit repair; never overwrite personal edits blindly.
+`<host-skill-root>/threejs-skills/SKILL.md` is the only native entrypoint.
+`skills/<method-id>/GUIDE.md` contains each original method, with references,
+scripts, examples, assets and license notices beside it. The original SKILL.md
+content is preserved as GUIDE.md with integration boundaries. Nothing requires
+45 separately installed skill directories or commands. All resources ship together.
+See [SKILL.md](SKILL.md) and [the method index](references/specialists.md).
 
-## Domain selection and evidence
+Say "use andino-workflow and threejs-skills" for selection from the prompt, or
+"use threejs-skills, specifically threejs-shaders" to name one method. Invoke the
+family through the host's native mechanism and load only the relevant authorized
+guides. Do not claim that internal methods are separately registered native skills.
+Andino retains its single plan, checkpoints, handoff and completion. Standalone
+family use follows the existing host context, with no new general lifecycle.
 
-Select only current needs: shaders, lighting, animation, materials, geometry and
-interaction have their namesake specialists. Complex graphics may use the domain
-advisor `threejs-skill-router`; game-wide production may use `threejs-game-director`.
-Neither starts a second plan nor activates all siblings. Distinguish DISCOVERED,
-AVAILABLE, INVOKABLE, ACTIVE, USED, UNAVAILABLE and NOT_NEEDED. Reassess after
-requirements change and after resume; missing/denied skills use honest fallbacks.
+Codex uses .agents/skills; Claude Code .claude/skills. Other hosts use the existing
+AI-RULES catalog adapters. Refresh session discovery after installation. Installer
+path support does not establish live cross-host behavior. Never bypass restrictions
+with alternate source reads. Missing/denied methods require honest fallback.
 
-Main's package validator checks metadata, regular files, safe paths, relative links
-and binary signatures. Behavioral smoke: request one shader change, activate only
-the relevant permitted specialist, apply its method and record output. Negative
-smoke: unrelated frontend work selects none; an unavailable or denied specialist
-must not be reported as used. Rendering/performance/interaction claims need actual
-browser evidence. For UI acceptance under Andino inspect 360/768/1440 px captures.
-Unit and structural tests are not live model-routing proof.
+## Verification, dependencies and provenance
 
-## Dependencies, provenance and limits
+Validate paths, metadata, relative references, binary signatures and the original
+inventory in main. Verify actual host family discovery and selective guide use
+separately; structural checks do not prove rendering or API compatibility. Browser,
+interaction and performance claims require observed runtime evidence. Andino UI
+acceptance retains 360/768/1440 px screenshots when applicable.
 
-Examples span different Three.js/WebGL/WebGPU/TSL versions. Inspect project versions
-and official documentation before use. NixieFX requires its actual public runtime
-and selected renderer peer. Generator scripts use optional external Tripo, Gemini
-and ElevenLabs services and user-provided credentials; installation makes no calls,
-incurs no charges and installs no npm packages. Paid calls need task authorization.
+Inspect actual Three.js/WebGL/WebGPU/TSL and NixieFX versions before using examples.
+Optional generators use Tripo, Gemini or ElevenLabs and user-provided credentials.
+Installation calls none of those services and installs no npm dependencies. Paid
+calls, delegation and publication require applicable task authorization.
 
-The maintainer reports that this collection is their own work (statement recorded
-2026-10-16); no external collection repository was supplied. This is maintainer
-attestation, not independent verification of every embedded resource. Preserve the
-included MIT, CC0 and GPL notices and full GPL texts for identified third-party
-materials. No new collection-wide license has been specified by this integration.
-See the main provenance record for the attestation and resource-level limits.
-These local commits have not been authorized for remote publication.
+The maintainer attests original collection authorship. Embedded MIT, CC0 and GPL
+notices/full texts remain intact; no collection-wide license is invented. This is
+not independent verification of every resource origin. See main's provenance record.
 
-[Main quality contract](https://github.com/andinoferdi/AI-RULES/blob/main/docs/agent-skill-family-standard.md)
-[Inventory and release evidence](https://github.com/andinoferdi/AI-RULES/tree/main/docs/threejs)
+[Inventory and evidence](https://github.com/andinoferdi/AI-RULES/tree/main/docs/threejs)
 '''
     (destination / 'README.md').write_text(readme, encoding='utf-8')
-    (entrypoint / 'README.md').write_text(readme, encoding='utf-8')
+    (destination / 'references').mkdir()
+    index = '# Internal specialist methods\n\nRead only the guide matching the current need; descriptions are selection metadata.\n\n'
+    for row in inventory['skills']:
+        index += f"- [{row['name']}](../skills/{row['name']}/GUIDE.md): {row['description']}\n"
+    (destination / 'references/specialists.md').write_text(index, encoding='utf-8')
     for row in inventory['skills']:
         target = destination / 'skills' / row['name']
         skill = target / 'SKILL.md'
@@ -314,13 +299,20 @@ These local commits have not been authorized for remote publication.
         cleaned = '\n'.join(lines).rstrip('\n') + ('\n' if text.endswith('\n') else '')
         if cleaned != path.read_text(encoding='utf-8'):
             path.write_text(cleaned, encoding='utf-8')
+    for row in inventory['skills']:
+        target = destination / 'skills' / row['name']
+        (target / 'SKILL.md').rename(target / 'GUIDE.md')
+        for entry in row['files']:
+            if entry['path'] == 'SKILL.md':
+                entry['runtime_path'] = 'GUIDE.md'
+    inventory['distribution'] = 'One root family skill; 45 internal GUIDE.md methods'
     inventory['runtime_hash_normalization'] = 'Text CRLF normalized to LF; binary resources byte-exact'
     for row in inventory['skills']:
         target = destination / 'skills' / row['name']
         for entry in row['files']:
-            data = (target / entry['path']).read_bytes()
+            data = (target / entry.get('runtime_path', entry['path'])).read_bytes()
             entry['runtime_sha256'] = digest(data if entry['kind'] == 'binary' else data.replace(b'\r\n', b'\n'))
-        originals = {entry['path'] for entry in row['files']}
+        originals = {entry.get('runtime_path', entry['path']) for entry in row['files']}
         row['added_files'] = [{'path': path.relative_to(target).as_posix(),
                                'sha256': digest(path.read_bytes().replace(b'\r\n', b'\n'))}
                               for path in sorted(target.rglob('*')) if path.is_file()

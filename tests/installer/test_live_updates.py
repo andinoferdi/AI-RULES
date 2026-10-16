@@ -412,7 +412,7 @@ class LiveUpdateTests(unittest.TestCase):
             if capability.source.get('branch') != 'threejs-skills':
                 continue
             capability.source['repository'] = str(self.remote)
-            package = self.remote / capability.source['subpath']
+            package = self.remote / capability.source.get('subpath', '')
             package.mkdir(parents=True, exist_ok=True)
             (package / 'SKILL.md').write_text(
                 f'---\nname: {capability.id}\ndescription: Fixture\n---\nInstructions\n')

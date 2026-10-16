@@ -14,11 +14,11 @@ def validate_inventory(inventory, files, original=None):
     names = [s['name'] for s in inventory['skills']]
     if len(names) != len(set(names)) or set(names) != THREEJS_SKILLS - {'threejs-skills'}:
         errors.append('inventory/catalog identity mismatch')
-    expected_paths = {'README.md', 'SKILL.md', 'entrypoint/README.md', 'entrypoint/SKILL.md'}
+    expected_paths = {'README.md', 'SKILL.md', 'references/specialists.md'}
     for skill in inventory['skills']:
         prefix = 'skills/' + skill['name'] + '/'
         for entry in skill['files'] + skill.get('added_files', []):
-            path = prefix + entry['path']
+            path = prefix + entry.get('runtime_path', entry['path'])
             expected_paths.add(path)
             content = files.get(path)
             if content is None:
@@ -56,16 +56,13 @@ def main():
     inventory = json.loads((ROOT / 'docs/threejs/inventory.json').read_text(encoding='utf-8'))
     files, modes = directory_files(args.runtime_dir) if args.runtime_dir else ref_files(args.runtime_ref)
     errors = validate_inventory(inventory, files, args.original)
-    for name in sorted(THREEJS_SKILLS):
-        prefix = 'entrypoint/' if name == 'threejs-skills' else f'skills/{name}/'
-        errors += package_files({p[len(prefix):]: v for p, v in files.items() if p.startswith(prefix)},
-                                name, {p[len(prefix):]: v for p, v in modes.items() if p.startswith(prefix)})
+    errors += package_files(files, 'threejs-skills', modes)
     cases = json.loads((ROOT / 'evals/threejs-routing.json').read_text(encoding='utf-8'))
     errors += validate_cases(cases, CAPABILITIES | OPTIONAL_CAPABILITIES)
     if errors:
         print('\n'.join('FAIL: ' + e for e in errors))
         return 1
-    print(f"PASS: {len(inventory['skills'])} source skills, {sum(len(s['files']) for s in inventory['skills'])} original resources, {len(THREEJS_SKILLS)} standalone packages; {len(cases)} review-only scenario schemas")
+    print(f"PASS: {len(inventory['skills'])} source skills, {sum(len(s['files']) for s in inventory['skills'])} original resources, one installed family with {len(THREEJS_SKILLS)-1} internal methods; {len(cases)} review-only scenario schemas")
     print('Live routing/host use is separate; schema validation is not behavioral verification.')
     return 0
 

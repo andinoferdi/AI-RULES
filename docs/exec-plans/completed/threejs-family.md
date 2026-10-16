@@ -1,8 +1,8 @@
 # Three.js family integration
 
-Status: DONE (authorized branch pushes verified)
+Status: ACTIVE (single installed family requested)
 Depth: STANDARD
-CURRENT PHASE: Branch publication complete
+CURRENT PHASE: Single-family packaging correction
 
 ## Executive Snapshot / CURRENT STATE
 
@@ -144,3 +144,19 @@ NEXT ACTION: Remote installation smoke or tagged installer release when requeste
   Final checkpoint commit will be pushed normally and verified in the delivery.
   Original source remains untracked; no force push, merge, PR, tag or installer
   release creation occurred.
+
+## Single-family requirement correction
+
+CURRENT STATE: User rejects45 individual menu entries and45 installed directories.
+User selected one family folder; methods can be selected automatically or named
+in the prompt. Native individual `$threejs-shaders` registration is not required.
+CURRENT PHASE: Regression protection and packaging correction.
+DECISIONS: One catalog capability `threejs-skills`, branch-root package, all45
+methods preserved as `skills/<id>/GUIDE.md`, one root SKILL.md. Family chooses a
+minimum method set; Andino owns one lifecycle. Profile has4 capabilities including
+Andino/Focus/Search First. No new worktrees; use checked branch switches. Existing
+user specialist directories are preserved; no implicit cleanup/migration.
+EVIDENCE: Current catalog has46 family capabilities, entrypoint subpath contains
+only index files. Root supports full resources but duplicates native SKILL names.
+NEXT ACTION: Fail new menu/profile/whole-package tests, update runtime and Andino,
+then main catalog/validator/generator/tests; verify installation and live selection.

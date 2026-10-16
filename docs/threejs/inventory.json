@@ -55,13 +55,14 @@
           "sha256": "f072d017919a135b0073042b0efea5a2d885a5545b03c1bcebcbd5f3538e07b7",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "52c0e2deaaf1060277b0bd8e739b04f8b71f60c39fed3b2c19f4f733a7c83b0c"
+          "runtime_sha256": "35b62b30f67a36cdfe4ff2f3b1cbfbc476ecab4d0c0c91ccc91e1277386a9b2f",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "b9204cfe9f02105669923e3f96be166cd8cf3236cd6cf183369dc95bba48ff20"
+          "sha256": "b327e7ab455b285bf5950fb542e891af1d59831944086240c61240b9c2d4e30d"
         }
       ]
     },
@@ -110,13 +111,14 @@
           "sha256": "f135f79c52896f4a0e8164df64a556cc3669a0f7c2228db5f32dcae36e0fb410",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "2387e1d10622fef124c7087fad57b96240754807647e25bea1c41279ce612cee"
+          "runtime_sha256": "6a6533fafe27a2c363b26f001ac5f6a41ae3029a756ea8dfc21cb865def99dcd",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "b59a725194e755eabedbfbe7b3f8a3e974b925c71b28946daa7ce69a3e055fd3"
+          "sha256": "2b00c54d2bc1afc83b755fe7e00586a9f2d041421cb387ca26efd4c5f8111105"
         }
       ]
     },
@@ -177,13 +179,14 @@
           "sha256": "1c403e3f89fd9dd97eec64f1a3d60fd1fcd41e098ec72876fe6e7035403a1c9a",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "28e2b1eec958d09a9080ac08fef12a196540ecc08150d4736c4505c744123184"
+          "runtime_sha256": "4b5b7a1c624e0376f66a5f5939f0db74033f878c0402632e13d92510401560a4",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "1152079a4ac388b9ea5b7b5eb1d2cb0012967afc901d8021acea6e7aa72a8e73"
+          "sha256": "91ec68882a815ea1d66d5cfa40a42966d15e02b8192bef11df97bb510974438f"
         },
         {
           "path": "scripts/probe_asset_credentials.sh",
@@ -272,13 +275,14 @@
           "sha256": "0607460dd603644d471fcad9b579b99e042ab2a939a52eaaf1000892836ce920",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "1394745eacfe0780b55c2d79f1cb825d63aa4920564efc10d47da42c7bcbb881"
+          "runtime_sha256": "f3e5caf86ae0a0fb74763d0e24267090fa89dd9c8095c17e51edba6cf8929f9e",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "0e85ac2ce07c69cef301b4671eede2bd0fca55ef4e04935e58493235bba48e2b"
+          "sha256": "c72857d9d27859d7250c1389cb915ca4368225dbaf58d449d83efecdd619c654"
         },
         {
           "path": "scripts/probe_asset_credentials.sh",
@@ -303,13 +307,14 @@
           "sha256": "d5dbcda9d08614d6fde7cf38ab5e649feed72237f9ac3e649052e01a15a19b8c",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "80cbe517dfc3c2cfda869c9ecc8ee09d274a39dd56afc1804cee78ac2f995e2d"
+          "runtime_sha256": "1db99699be912ca05f80a09cbaa21d97fe626af362689e1912d373f858809499",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "4f0dc628d2aa8f5fef7634aeecb2417f41013e658d557ed24fae96c38040cfb5"
+          "sha256": "352ddd528c0fbc919191155807adf00b32abef57cc73b8d93ad4053beb045e46"
         }
       ]
     },
@@ -1123,13 +1128,14 @@
           "sha256": "eaf3db23786994eb8216fad63a4e92b256ae20441a7746199c9edc38ef6ddc5e",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "efdf1af4d501bc732fe6a41949f0c4252278cb82941f54ec80fcdd8c3c039b57"
+          "runtime_sha256": "e0cd99f2ab32eab685a4bf1d636317dcfcd8eb487e60db450192a3a56cea5dec",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "09128229ee444ee69070812b18ee46c08665f972275f7c984ba5beaa82ffb871"
+          "sha256": "0911dea1ceb45c2aeefe3e742fd1f46e3de7678556b6d1ce71f437590501467b"
         }
       ]
     },
@@ -1172,13 +1178,14 @@
           "sha256": "7602dd274c1bbf24d943e06c6f3aa38de738e9c3a7a120e3118649b8bcc154bb",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "fc4b614e35ec92e53dba6bcf7ec4f2aafc3fc2ea53417ff9d776bc6ae5294885"
+          "runtime_sha256": "d1c722dfca9065f7cbb4af3ba7e56abaf81d39afeb666275109db5f942290497",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "5e2a6b42effd30dd5e57bc21f4eb73997eb9d94bfb92d976f35f16a08209ad5f"
+          "sha256": "dd6f9f5905a230a61728734a1ec95ffde6befbdfac5249eba5672b934a468cb8"
         },
         {
           "path": "scripts/probe_asset_credentials.sh",
@@ -1219,13 +1226,14 @@
           "sha256": "072b5443531eb53b3b53059d5fadc6252e56d85d23ce6b65dc92793c1fb8d27f",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "0a03fac3cb8cf5081fff161645e998aef673c1fed541e43f4fd8bbf1fbaa0bcb"
+          "runtime_sha256": "9873d99af01fe5f914d42f6751ad00e6488b9aa1f9887b8200657d69bd5c8ff0",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "e1651dc9caea46201c2c207c41c12d84c935bcc8badf0a847ed5b0b09d4028d1"
+          "sha256": "6cf5dcaa3fc090a8076cfcc3848da5896173c25a55048eb055ccf5cf012ce40a"
         }
       ]
     },
@@ -1260,13 +1268,14 @@
           "sha256": "9559e63ade85dc5084284d4f10cce45685d08bc6c0268b6a900333af91207bb1",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "36fa8327c6d4a8807ba69d3a13831540ac7e7d6a79e3f79bab1c82d346cf054d"
+          "runtime_sha256": "d8090e0f07789bd9fc344d57ca5500049c58a453371d5c57a746fb5810d1b3fe",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "7125e768ef538d6083d7e77e73512195d1f2cd417131cb63ee5445a8e6cdd846"
+          "sha256": "7c2fd09d311d466cf3478a98b28173c2a0057807ee6f5addb099b45d17ae6206"
         }
       ]
     },
@@ -1299,13 +1308,14 @@
           "sha256": "20b1dc50ed5872698c27e03e379d8695d47e1515062ecc8589b3bb3cdcc7d27b",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "3980e434516b9b7881b06eaebfb4d70d54111f3120a5e488401566f3d258b819"
+          "runtime_sha256": "4a9264fe946e34c4982b85b17ef78934559889591ea6b00cd15a534cb90eb4a7",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "7067d167047335b06f3d2fa2252ee3e602c595db530e08485230a87137bc6c73"
+          "sha256": "1be79f6559a47239471b772ca16885a823395508c52fbe9d7be70da874d304c6"
         }
       ]
     },
@@ -1341,13 +1351,14 @@
           "sha256": "a66e5171232e5483fadaff14b74f2a852e7b50cadc563c21ec867f240e140b9a",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "3bf2c4eecc3b14dc6b2c3ee3d9c9d7eda676d9525f667991660e2186ed37747e"
+          "runtime_sha256": "d621a387e9e3a05feb6887e51b916659b97819f7a2d626cf962d9f0014109819",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "2457394016ed36a20679b18296e1916d7389a7cac0a0743563413ea405e3a1fa"
+          "sha256": "55540611578fbd252f2557b2356e4dd35cd9bb05fe00bf15ecf4c092c9b78656"
         }
       ]
     },
@@ -1368,13 +1379,14 @@
           "sha256": "c89027e35cf56629dcf1e9e51aa16ead5107f6551efecd9bdbbf90dfb749653a",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "06c111a263a5f664d5c37708c57f73c802ee153e16dc2b3f9035338045ae1fcf"
+          "runtime_sha256": "9c9fecc46c23a32b1ac8baca4ee8120fec2bec74a05370b7dadadfc46d2b5e18",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "9232ca598d44ec0d8853f796edcf94552f04b3780b50ebc9afe7525744043b7f"
+          "sha256": "b9e1396c73390322defff203709b457afa36656c90fbdf147a0badb2fdfb3189"
         }
       ]
     },
@@ -1451,13 +1463,14 @@
           "sha256": "88c4810af05d20f180af993adae65632bf8b70cf35218fdd7c9a21169f1a5d6c",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "3c9d71402707c8978e85c150562ace7d1dba8742ea946c0d0993050c41491f25"
+          "runtime_sha256": "156f0af41ab0a0c7fd6a11a1d79f4e480d88a5cfb98946d1d1c9c8df32962a38",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "8fe0a1c8abaa959fb0d501a37124232e1c8a70e695f4227b2cd4279ba519d5fc"
+          "sha256": "ceebd7c3332c1100f2f8db1b9b8bd26ae0394a4c4a9c42197b484310bed29ef1"
         }
       ]
     },
@@ -1493,13 +1506,14 @@
           "sha256": "190f9e29ad0b12adaaea4226bb6efa30ebdc0446ff229202a8de5f05efcf6453",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "02d6c8dd1b7339e5a3c67c565a481a3cdcf759e0d3e5537421ac5a2d8bb8803c"
+          "runtime_sha256": "a9270465069e90b1a5832142e55e93d2d8f53c686aff1bada4bce74b70758cc9",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "b18e6eac00df46b33d8c53f52a53558da6c067e93d23cda0d47a4dcdca3389b9"
+          "sha256": "41e9948ff769de3376f1731d4b9586c36b9d12d296c9ae1bd455b81c8a4da79f"
         }
       ]
     },
@@ -1775,13 +1789,14 @@
           "sha256": "782480029079d0ec321ee555417e901760b863fff816ff7eb5ddc650f06f014f",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "a64005608271951ea526372add74c42c9e719e86a430d6b44b868146df353450"
+          "runtime_sha256": "a73dff935dd4d65e84016688cc85bd188bc084bdb36eec0b558ac1d6ddba3cba",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "2c97261512e4df608686bc7fb7534adeef1216edbd997ae46eea80a2df1026f9"
+          "sha256": "eea8f967bf21be1883c035aeef2319d921f1c6ee7e1f07a55f3af7b329254dce"
         }
       ]
     },
@@ -1802,13 +1817,14 @@
           "sha256": "21040e92119411a532e1df019f38c31124ec3dcc96031390a51465389fb2462b",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "35fb6d8dfa10561b8844d376e9c002967a67535d0a5b82ce919b600073a91eae"
+          "runtime_sha256": "6c7139a16b5da24c4ad71936d8d03d136442f0b2f91def6e37e68c65107c6cc7",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "80dee1bc82ee517116e33ccdc764a8b9bfc346347d8524ada9085283a6b5bb0d"
+          "sha256": "94c05b9ffeb3c72cb2bf202908df2c1b112f44f0efc6b96cf30a5d4d0e0dcc61"
         }
       ]
     },
@@ -1844,13 +1860,14 @@
           "sha256": "84661fa9a0b8a3dcba3ac236017c9dfec2deebd081d91c88b1852b8df5fc83f1",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "94da325f63e037bd78369ad3fb2196651223adb5ea27c79c5bdf38d50c949fe1"
+          "runtime_sha256": "2c5f4baccc851147aba969956e35a6eac4cb59981e2142f70cf9c1b9df58700c",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "603a4b837a5cb814c7a7ff07cf678ab7677d104155d73b276625a30ec357baa7"
+          "sha256": "e319e849fbce51763b540c5df6f8bf95bc70f54bfbc0aa2423bfe54bfd82bfb1"
         },
         {
           "path": "scripts/probe_asset_credentials.sh",
@@ -1891,13 +1908,14 @@
           "sha256": "db5a77f701f7d2b46cab04399cda52b509dca5b536732b208dfcf6270f7daf92",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "afb74f614dc9ccc8fa353500396ca54eabe6a49814e8b85dbddd1be0dcc8ad7f"
+          "runtime_sha256": "6786db3c94cbd1f47b884854c6802a1ac5c5322d6ca50cf03861605ab0a4efc1",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "b3e7d4ee8a16739aecf233000bceedbda181a0a21fb105de85f6949e79406b8e"
+          "sha256": "d61d8d0bdf4da6ce93e8360c354641313d9deecdc68d640625d51b93eb77a658"
         }
       ]
     },
@@ -1918,13 +1936,14 @@
           "sha256": "6a2251ce5dc088ad16febbbd31c2bcdd0f98b99ae366f556ac683f0f91741343",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "e904d3b4776034d6d65cf8d0880de419c2016cd8253f9dea66b9d291f6e14fdb"
+          "runtime_sha256": "d563863e71b457517ad54e702d27c5fb386c6f099e6b92b1ff559256bc0fe45d",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "17d7e39da2bb94ab8c1d8c3094b70e352a502f232256ea525bfd53d446f19285"
+          "sha256": "013460a1ad669cb5062cf71b8bda1b1def43e518556f0aa2ad3ebb0cf988da50"
         }
       ]
     },
@@ -1945,13 +1964,14 @@
           "sha256": "33bb2d1fa9b30450484744ab31446650180eda924fb5ba3efebf0d0b4f3c8f61",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "d22ee481649973dd81791e6fc824bb2e241edb6993ff74c74c0822b6047a0376"
+          "runtime_sha256": "da632c47dfd7838ea9ba1ea0277e87e4d8933174869b163a39b5fb14e98e93a2",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "ee0f72cdd588548fd0ffa36f6392baa318fc20ae440d6aa5f3ce4e1c298c85aa"
+          "sha256": "1c136848d4796fb6728c4b6a4e55b162a488ddcfb8d2dda361ca8f878fc9770b"
         }
       ]
     },
@@ -1972,13 +1992,14 @@
           "sha256": "deef71b4f581463ec0660b36d4db0125ee35c41d4fa1e551df65a97de2680c3f",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "dbfe9bff588301f39f167cf04d0ff504e0f7728cc39dcee562d4b32d68e5653f"
+          "runtime_sha256": "116f946204680d49ef36475b3cf31f1c550b54ff384f9f74b542547969f17bc7",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "87720aaec45cdc5ea4dc789f7b8da47f2910a7c6f038415a98e6e9d6c3d37abd"
+          "sha256": "9c804635bef774acd6aa782eccc58ef3ff08ce1a21820e898603a74ba9f9f4bb"
         }
       ]
     },
@@ -1999,13 +2020,14 @@
           "sha256": "c6dcfb1f45e08fcf1f01305516782c5c4640754c830b5b994dac4c48fa19b296",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "a4db13927492b42df0bebe9866663519bfc8c63e33f8ad590e41b97ffc67df3d"
+          "runtime_sha256": "80df66eac4222d7cbfaeaa57a56ed312584220fa2b8123adc7852327add27bc6",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "0a119b1a2ccf5e612d46a6d5a19da6ea4158bc3bf5584ee4824e36e2e5ea1880"
+          "sha256": "690814efd817a7c561adca8ca987dbda29f133a20bb91f45991c1776d16969e6"
         }
       ]
     },
@@ -2065,13 +2087,14 @@
           "sha256": "66aab0b65773d51144d98b875af71acd660ff13a50269f27eb723833853ab3e6",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "74b66357a022bf767d27e67542f918469c606b46298dc1049f2d41cd3b8f53da"
+          "runtime_sha256": "7e65373bfa4251770dad1e23d6f75d14d33723c50696f21667df5779f7c330c1",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "8d06ca2b75ba061cdd55b5cc14b9f15213a9f0c36f59e40b66882b2bfe2c4576"
+          "sha256": "4dc5f50cdc4153c16e3337e6deb1ffc9ee67c5268a2927cbdf61a70dcf900154"
         }
       ]
     },
@@ -2092,13 +2115,14 @@
           "sha256": "e29494e50776ed0a9a60916daec78431320724d08c3049719daa9574ca6a48dc",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "b60593d689344152fa24ab66506eea124b5e417b7875a2c011fa59514d2674e5"
+          "runtime_sha256": "35fe3ce281992f114b4f4a712f2508929311c4afeb0cd0e80deb5af1ff40a697",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "6f473e4a1b0ad73e785e40028b43e12167ee8956d489fdf0591965cc77eecd7e"
+          "sha256": "47be0212b3b3227e14d0eeeeda46dd590dce999b25157104523274b69e1bc03d"
         }
       ]
     },
@@ -2201,13 +2225,14 @@
           "sha256": "57850a92c9ef3cd1733cdc269174499552197cd01bbd5a38cf603185b6bc85e9",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "6e6400bf1250300983590c437d2a764146795e868c11da32a35b60af536a15fe"
+          "runtime_sha256": "2a9a64b0df3bd5932f35025474faa72932df7a55708e7f6e1b9f45311af3c249",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "8d1a48f174726b309379f5fba21383498ea21183f2b59a81aa9ec54d6c6d28c9"
+          "sha256": "d109c4f4c80cae1c75e35a314752791312f6b49c382f5131d672d4dc6ed02bcb"
         }
       ]
     },
@@ -2243,13 +2268,14 @@
           "sha256": "ffff08ac650e8aebd24f769a653e9baab322876feec75c32fd8184011d469f54",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "b88c819ca3c69cb25c418f218413fdb9189087ed2ee03eaa8ce587b59638bb44"
+          "runtime_sha256": "fee123179349545192fdff6a7104dbf7bdc6cd50a541ea3c20eafc3de5bbff2c",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "b4d00ca53438863d4047abea2f834210f693489aa740a746ee6a9975426fc041"
+          "sha256": "7a6230219ca55fcd65309eef5599b6558c65915164ac247b150e37faa662c582"
         }
       ]
     },
@@ -2342,13 +2368,14 @@
           "sha256": "4a2327585614bd3c878a9ea1ed1048e824f339ad38193c4da4492e5a86c8c609",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "99fcc928f0c7e4a8a8b471bd59fa458ea4b11e9f207c3422b64f0d9749179673"
+          "runtime_sha256": "2b7702f22fe3113f6dd47c51cc8a27015766694b0840cd621c8a43d7d6ad84cd",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "1e66f292959a9b14f6ccbe340bcda200c0f234721fdad05a0230eff85ff7a7c7"
+          "sha256": "2e959d2323481ae23c8a8b9624cc87a869bcedf719b3075e90741fc1afce968a"
         }
       ]
     },
@@ -2384,7 +2411,8 @@
           "sha256": "4adda9ecf13be183a30c106834204ae6b96418deb3e254965b3e8ab52f0f9358",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "dba4700f804cf7f18f6bbd3a259daeec8a58990237c383ea79b5c35a392e7e3e"
+          "runtime_sha256": "8a37d08dde0df845298d8d69d4d788c75a57f3ffa54eb188c3a803beb17f342f",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
@@ -2398,7 +2426,7 @@
         },
         {
           "path": "README.md",
-          "sha256": "2b931107c953aadf757a41a97c2ca65272e7d152b57d8d90eb0ff511bd9b06ec"
+          "sha256": "6e80ec4bbc9c6251fc0eb7896f48a9edd7e39d19ac1d772704d6b8ffd3c01cc7"
         }
       ]
     },
@@ -2715,7 +2743,8 @@
           "sha256": "d59eb9333f30c7282de22bf59d9340fbb143af5770daa2c82b7c269d0bb124c0",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "95f06d00979c38d7f1e54decd11cc4d32005bfa816e8259501af2372420d6f63"
+          "runtime_sha256": "c780d2a8314b928e06246b4bae284da30a2e1b459bdd195087cceb3e7ebc0ab5",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
@@ -2729,7 +2758,7 @@
         },
         {
           "path": "README.md",
-          "sha256": "0f46111ffccf18cc07863f35e5e357e5d8654424eee6c7ef7751058a903375ad"
+          "sha256": "1b1a379d558826ba467bfe6494a3a231306e274121d7d59231b798ebc337d516"
         }
       ]
     },
@@ -3726,7 +3755,8 @@
           "sha256": "0ba06bd3f4a1c03fc657640ce97647d2f1cb48dc1f71c01a262fd8e7c8248daf",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "e15cffa9190ba80fe7247c7387937c8991dcdb46081d3baa829eb5735d0f8943"
+          "runtime_sha256": "ac7d64e10585cb1e37103e8b831c083999a825da9534457f2ecb6210db195576",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
@@ -3744,7 +3774,7 @@
         },
         {
           "path": "README.md",
-          "sha256": "3e877d3c72e28d66d4ef238f6023298bfe9e1ed78c91f0635e8d62c863bf9855"
+          "sha256": "71e8c62548eac8390ff1906fc7f0ca7da742a11db44685bf8257ef5fad51ff34"
         }
       ]
     },
@@ -3796,13 +3826,14 @@
           "sha256": "b403e414397fc45a53e66aa0176ac46f2c794fb8a5e57c24a6415a5ac8eba833",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "4a7ded5a4aa3838df1829b0a38db7511b32dd1817ab2fafb71eacb7dd3526e10"
+          "runtime_sha256": "19b0feb7e8a94b1b6bd980908317eaac0e2d57b31ad350133f2948276f407da7",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "c466e6902682c0d3d9e4683a359d34c249417cbd410402e7ee0cc1ce20a1fb5a"
+          "sha256": "7f365d14f10e5635a09c06977727c643f69c0ddb0f0242f519affdc58f9aff5f"
         }
       ]
     },
@@ -4032,13 +4063,14 @@
           "sha256": "ba601624c21d7f016220ddb73f733c5ecd4625900cf291ff72afbd8635c0573e",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "040e739fe240e176bc8d5e13254aeb3afc194146e1e3c3cdb8ed85af9ce816e3"
+          "runtime_sha256": "029e1876be761d08e359a97bc3f61e15e02f631d5e936299763973fac904e483",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "cac7187989e03e062a3cdc9f7f5227986d4097c8d9d9797aba4227dc34587aaf"
+          "sha256": "a473bd930dfc52b2e0713c627624df59921c8bf9fc4135e18aafb9baa38dacdb"
         }
       ]
     },
@@ -4284,13 +4316,14 @@
           "sha256": "6094bb92a25d5a7bac5d36b6f325ecaadae332f6cad3e1142c849bcae8f08969",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "bc53fa1c119f82ca7632534426b04b212c4f3b9d99caf0c30d150d231e14431f"
+          "runtime_sha256": "e88118562552189a61033ebb3ba044d1fb5ac590ed82b7c21c490f675d8cc4a9",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "81665eb62a5156c1a499894c4c62770bf1862b842042e3c8a0b93cb3974a3af9"
+          "sha256": "eaae3d2c59a65c915f4deba71b6ae0bfb9036ae1967340263a0d03db1451b3f1"
         }
       ]
     },
@@ -4350,13 +4383,14 @@
           "sha256": "cf86ea23ea77839a81374dd66bc8f70c5284f8556398c08292e24c706c35863e",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "cdf21a87e12329d00e24c0f3020a42e9804f13a1892ef91c0a971ad297ed6613"
+          "runtime_sha256": "6f5d9ed5de4ad0071e1e62e512342beb2af1230d30d57eb882d35fcbb4754fae",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "113ad924295d36de93a1e2e025b1993c6db2f113fd306d8bde2da3d08ccdd606"
+          "sha256": "0e166523efda07314ec6156a4a29f93f06df05045bd857bed46f8d824e0ef803"
         }
       ]
     },
@@ -4441,13 +4475,14 @@
           "sha256": "5a9993119494658f00934def4b53d08af295f35d25b75ac27f12edde71950329",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "68bba24249634f324de2bc0e38dbe79d7ad2ebe18f356138399883264e01b6ab"
+          "runtime_sha256": "db0349ac934da3b43566f53af933773ada6b74e14da2ffa11b59a7478e889b7e",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "705ece5092f9e75912b72b6f8bc93cbbb3ce1421c5c68778e28f6f9d372938e2"
+          "sha256": "2bd3ef238926dadbee0df4e6b1f8388bf9444a1c4824b4d42371c546c97c3a20"
         }
       ]
     },
@@ -4482,13 +4517,14 @@
           "sha256": "6a02c9b10d17cf15969a4696abdf4bdda7ed90463fb5d237583fe85863ccd9f5",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "41b2ace8e7fd2cf9e9f5365675859119492814311c5187efc9be32a201fa6909"
+          "runtime_sha256": "3749bb80067ef9a93f4dd03c5d9d9d1d9bb4a6b3762df9382c7db48aa9ee7992",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "d0ef0cea300c8b7068c3ee632b7bf88b1c84b8cb76e3d67da1546d45ec3bde5e"
+          "sha256": "c0047c232c54852ea8c22b0287955343517e4f9ecfac3a09801461c6a917459b"
         }
       ]
     },
@@ -4509,13 +4545,14 @@
           "sha256": "e9b1560195a856c8102cb8d51e64029f4420fabe07c1ff997542be2ff1e55a3e",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "557d2578997d80d57427b6aa037744c6c3078619ebb4bc041dd7b48c8c02311e"
+          "runtime_sha256": "e1f0186c5efd4d0cf459560e8ffa38a31f5960970df9ec883379f7f77dc1bb1d",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "aa014aa47f258963bf011d4d1372e4edca27b2fd7bd758c5c334bf706addb23e"
+          "sha256": "6791a95496f783974bdd23fbfdbc6159bd8c8a0b9114e77e594f9659e7be5039"
         }
       ]
     },
@@ -4551,7 +4588,8 @@
           "sha256": "0d0ca70a37b2e03488aad0a6153881e1bdfad756412c0abe8fa83907cb9eded4",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "54258b5df4071fa5880e6b30d8af435e872f5277a310059ae473abc5ac09d332"
+          "runtime_sha256": "ffd66c962c0db4673beca245fc312cd56cb445ab07c281465d69d644fa1ca6de",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
@@ -4565,7 +4603,7 @@
         },
         {
           "path": "README.md",
-          "sha256": "e9d6f493c70489e2a69d29018f801ced6d2faf4db94cc8663a5823e4820f6c3b"
+          "sha256": "0bf4e2cf9385b555fe8b06fabb75589edd11c2eddf4199c6854ab82a2b9f2700"
         }
       ]
     },
@@ -4614,13 +4652,14 @@
           "sha256": "358f6be5204be83ae11dad8841aa71ee184863682f69396b493f6cd954339649",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "c8e77e463c377e600527f3a00665157e81b45f2061f4566640ab326429e42940"
+          "runtime_sha256": "1ed75ecf6b69b9d9da843070c5368bf056564e2af386af9006190ebe55beafe3",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "189cc895802b9b30e4c9c734ceca81c56f2c756b22f70b686e48db2e79bc0c34"
+          "sha256": "0a46a4c887d13b21f72b27ba1157869a7645ab9584a209195cf16ce51e5fb11a"
         }
       ]
     },
@@ -5107,13 +5146,14 @@
           "sha256": "b81b299b0af382a893e394e81e11fbc27f7efd41667e9103cef3b218a1ea2994",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "a06aadfd7a6b82114ae4760680572e996e791b13812e2a83adddc409a070f827"
+          "runtime_sha256": "45425cda222982bbb4faf927eef8fe06bcfae0155d5f470abb6abb6997435519",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "54b188dfc722d59fe978b1dbbb404369dc53d5fb1f5a4c302dfc31ad292f2255"
+          "sha256": "e6062e324b622b22f19ab7e5b947c3182f9f86b255df43e3a382258983122588"
         }
       ]
     },
@@ -5206,13 +5246,14 @@
           "sha256": "95b601aed2e559e9b943b57224fbfe83c547a62d58bd6a57efa66de8e5a731c9",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "e3b8ebbe0eef9093df2202cc888693e0bbc2b69bfd0c61e0730476cf3ac72cd1"
+          "runtime_sha256": "1ba1ff319b5291fa7940b7089001e9ea9c08a644b9079eeadd1e77d2c442150b",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "c4c6e8261d6cc762b48c538b5f8a3a9be19b2890be3a94d4ca2054e55277cf07"
+          "sha256": "5617ddabe29935e9431637cd2e07399c4fdd771b89ff81cc6853de013f64049c"
         }
       ]
     },
@@ -5233,13 +5274,14 @@
           "sha256": "1708569adf18bb60c3366edfa70a95c14ab25fbaa5c55442e23d045c2c596b08",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "ea99d10f90dfcb3e425047ddd711c28dd931243f9398ad3fb1a357b1240ae68e"
+          "runtime_sha256": "91cf95c271af045ab04fa1aa0713e51f7096ef98edbbeb9f5a05c3e47c41a84d",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "f14220a9a46a6da1b698503beb350234ca66320324c75941b611436cfeedbd39"
+          "sha256": "2a1a52ddd993e0728e7358a763ea5196a626c114461b390687ea336cfdb81a59"
         }
       ]
     },
@@ -5272,13 +5314,14 @@
           "sha256": "e5532e7fcc0bf704a761444513d758c6bb036d7dde7035cc439e011b02fba2e8",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "a61a8dd1c30053311561324a827fd5e14ec6326853e086b7eb6489ae5f6b4ed2"
+          "runtime_sha256": "4c72ffc210dff1d0f726d3ddcddfc6b4f1fa22bb2a209dcb029325180ee9ff3c",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "cf395e3d4f2670e4ebd5d411d2fb6ca224cf81b97e8b3fb094c7bd750461d8bc"
+          "sha256": "28cb2362ba97254b58929e08e2e3d142768b741c396d6d9f114b77293545aae1"
         }
       ]
     },
@@ -6492,13 +6535,14 @@
           "sha256": "902888984f40236d50a2d7b9ccdb83a3487d1dcc79603b7c8a3ea648ba4678c2",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "1414d74160f3c755b6b2bcc5a92b09a1b2c4ccb4dca698e47c59f350c9c23fce"
+          "runtime_sha256": "1d95a1abc4d9e470fbf16ee90ca5be813110982549b2df2fa72d4e438dc69d6e",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "276c577a2b221ab06e4dffded31ac722780d2d5ecd90bfd62c18c60f4b78cfa3"
+          "sha256": "134b5fc372a16a2bb0a353a042925ab15b08799e5a90c3acad07371eeb17ceb6"
         }
       ]
     },
@@ -6624,18 +6668,20 @@
           "sha256": "4ee02799fb9eb7c83901883d5f3a89ede3cac0c599fa3fe3f0f9438b4255353a",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "26f8adc427467263be2a055464a9deb790cfab67b647d03fd130e1abb6eed787"
+          "runtime_sha256": "316ac5b4c91c13851dd8f1fa2810e5da22639cb0266f53df692236723bb9ee6d",
+          "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "b54f47afb5eb166a33f5f3f174539dd5bac65cb0c242225b816df69fce832876"
+          "sha256": "fd0c68f659e72a9f49ce0387c0ed2caa893866f2e4fd905691c3789ee0a9be28"
         }
       ]
     }
   ],
   "provenance": "Maintainer reports original collection authorship on 2026-10-16; embedded third-party notices remain authoritative for those materials; no new blanket license inferred.",
-  "publication": "LOCAL ONLY; publication not authorized; maintainer authorship attestation recorded separately from third-party notices.",
+  "publication": "Single-family correction prepared locally; branch publication tracked separately.",
+  "distribution": "One root family skill; 45 internal GUIDE.md methods",
   "runtime_hash_normalization": "Text CRLF normalized to LF; binary resources byte-exact"
 }

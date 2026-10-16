@@ -14,8 +14,7 @@ class InventoryTests(unittest.TestCase):
                  'sha256': hashlib.sha256(b'\xff\x00').hexdigest(),
                  'runtime_sha256': hashlib.sha256(b'\xff\x00').hexdigest()}
         inventory = {'skills': [{'name': 'threejs-shaders', 'files': [entry]}]}
-        files = {'README.md': '', 'SKILL.md': '', 'entrypoint/README.md': '',
-                 'entrypoint/SKILL.md': '', 'skills/threejs-shaders/assets/data.bin': b'\xff\x00'}
+        files = {'README.md': '', 'SKILL.md': '', 'references/specialists.md': '', 'skills/threejs-shaders/assets/data.bin': b'\xff\x00'}
         with patch('validate_threejs_family.THREEJS_SKILLS', {'threejs-skills', 'threejs-shaders'}):
             self.assertEqual([], validate_inventory(inventory, files))
             files['skills/threejs-shaders/assets/data.bin'] = b'changed'

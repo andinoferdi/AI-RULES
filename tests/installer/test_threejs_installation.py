@@ -37,12 +37,17 @@ class ThreejsInstallerTests(unittest.TestCase):
             capability.source['repository'] = str(self.remote)
             if capability.source['branch'] == 'threejs-skills':
                 self.names.append(capability.id)
-                folder = self.remote / capability.source['subpath']
+                folder = self.remote / capability.source.get('subpath', '')
                 self.write_skill(folder, capability.id)
                 (folder / 'assets').mkdir()
                 (folder / 'assets/field.bin').write_bytes(b'\x00\xff\x00\x01')
                 (folder / 'scripts').mkdir()
                 (folder / 'scripts/probe_asset_credentials.sh').write_text('printf SET\n', encoding='utf-8')
+        inventory = json.loads((Path(__file__).resolve().parents[2] / 'docs/threejs/inventory.json').read_text())
+        for member in inventory['skills']:
+            target = self.remote / 'skills' / member['name']
+            target.mkdir(parents=True)
+            (target / 'GUIDE.md').write_text('Internal method fixture\n', encoding='utf8')
         self.head = self.commit('family')
         self.project = self.root / 'project'
         self.home = self.root / 'home'
@@ -91,28 +96,33 @@ class ThreejsInstallerTests(unittest.TestCase):
     def target(self, name, scope='project'):
         return (self.project if scope == 'project' else self.home) / '.agents/skills' / name
 
-    def test_profile_latest_installs_all_packages_without_nested_discovery_and_is_noop(self):
+    def test_profile_latest_installs_one_complete_family_and_is_noop(self):
         result, output = self.run_cli()
         self.assertEqual(0, result, output)
-        self.assertEqual(49, len(list((self.project / '.agents/skills').iterdir())))
-        for name in self.names:
-            self.assertTrue((self.target(name) / 'SKILL.md').is_file())
-            self.assertEqual(b'\x00\xff\x00\x01', (self.target(name) / 'assets/field.bin').read_bytes())
-            self.assertFalse((self.target(name) / 'skills').exists())
+        self.assertEqual(4, len(list((self.project / '.agents/skills').iterdir())))
+        family = self.target('threejs-skills')
+        self.assertTrue((family / 'SKILL.md').is_file())
+        self.assertEqual(b'\x00\xff\x00\x01', (family / 'assets/field.bin').read_bytes())
+        self.assertEqual(45, len(list(family.glob('skills/*/GUIDE.md'))))
+        self.assertEqual(1, len(list(family.rglob('SKILL.md'))))
         result, output = self.run_cli()
         self.assertEqual(0, result, output)
         lock = json.loads((self.state / 'lock.json').read_text())
         self.assertTrue(all(t['action'] == 'NO_OP' for t in lock['targets']))
         records = json.loads((self.state / 'managed-installations.json').read_text())['installations']
-        self.assertEqual('skills/threejs-shaders', records['threejs-shaders:codex:project']['source']['subpath'])
+        self.assertNotIn('subpath', records['threejs-skills:codex:project']['source'])
 
-    def test_single_and_multiple_selection_leave_other_skills_untouched(self):
-        for names in (('threejs-shaders',), ('threejs-shaders', 'threejs-lighting')):
-            selection = tuple(x for name in names for x in ('--capability', name))
-            result, output = self.run_cli(selections=selection)
-            self.assertEqual(0, result, output)
-        self.assertEqual({'threejs-shaders', 'threejs-lighting'},
+    def test_family_selection_leaves_legacy_and_unselected_skills_untouched(self):
+        legacy = self.target('threejs-shaders')
+        self.write_skill(legacy, 'threejs-shaders')
+        (legacy / 'personal.txt').write_text('preserve me', encoding='utf8')
+        before = contents(legacy)
+        result, output = self.run_cli(selections=('--capability', 'threejs-skills'))
+        self.assertEqual(0, result, output)
+        self.assertEqual({'threejs-shaders', 'threejs-skills'},
                          {p.name for p in (self.project / '.agents/skills').iterdir()})
+        self.assertEqual(before, contents(legacy))
+        self.assertFalse(self.target('andino-workflow').exists())
 
     def test_bundled_profile_project_and_global_scopes(self):
         for scope in ('project', 'global'):
@@ -125,20 +135,20 @@ class ThreejsInstallerTests(unittest.TestCase):
             self.assertNotIn('APPLIED INSTALL', output)
 
     def test_update_backups_changed_member_and_preserves_unselected_files(self):
-        selection = ('--capability', 'threejs-shaders')
+        selection = ('--capability', 'threejs-skills')
         self.assertEqual(0, self.run_cli(selections=selection)[0])
-        (self.remote / 'skills/threejs-shaders/new.txt').write_text('revision two', encoding='utf-8')
+        (self.remote / 'new.txt').write_text('revision two', encoding='utf-8')
         self.commit('update shaders')
         result, output = self.run_cli('update', selections=selection)
         self.assertEqual(0, result, output)
-        self.assertEqual('revision two', (self.target('threejs-shaders') / 'new.txt').read_text())
-        self.assertTrue(list((self.state / 'backups').glob('*/threejs-shaders/SKILL.md')))
+        self.assertEqual('revision two', (self.target('threejs-skills') / 'new.txt').read_text())
+        self.assertTrue(list((self.state / 'backups').glob('*/threejs-skills/SKILL.md')))
         self.assertFalse(self.target('threejs-lighting').exists())
 
     def test_latest_preserves_modified_managed_and_unmanaged_conflicts(self):
-        selection = ('--capability', 'threejs-shaders')
+        selection = ('--capability', 'threejs-skills')
         self.assertEqual(0, self.run_cli(selections=selection)[0])
-        personal = self.target('threejs-shaders') / 'personal.txt'
+        personal = self.target('threejs-skills') / 'personal.txt'
         personal.write_text('mine', encoding='utf-8')
         result, output = self.run_cli('update', selections=selection)
         self.assertNotEqual(0, result, output)
@@ -147,17 +157,18 @@ class ThreejsInstallerTests(unittest.TestCase):
         result, output = self.run_cli('remove', source='bundled', selections=selection)
         self.assertNotEqual(0, result, output)
         self.assertEqual('mine', personal.read_text())
-        target = self.target('threejs-lighting')
+        self.project = self.root / 'unmanaged-project'
+        target = self.target('threejs-skills')
         self.write_skill(target, 'personal-lighting')
         before = contents(target)
-        result, output = self.run_cli(selections=('--capability', 'threejs-lighting'))
+        result, output = self.run_cli(selections=('--capability', 'threejs-skills'))
         self.assertNotEqual(0, result, output)
         self.assertEqual(before, contents(target))
 
     def test_atomic_replacement_rolls_back_failed_binary_verification(self):
         source, target = self.root / 'source', self.root / 'target'
-        self.write_skill(source, 'threejs-shaders')
-        self.write_skill(target, 'threejs-shaders')
+        self.write_skill(source, 'threejs-skills')
+        self.write_skill(target, 'threejs-skills')
         (target / 'personal.bin').write_bytes(b'\xff\x00')
         before = contents(target)
         with self.assertRaisesRegex(RuntimeError, 'rolled back'):
@@ -167,28 +178,28 @@ class ThreejsInstallerTests(unittest.TestCase):
         self.assertTrue(list((self.root / 'backups').glob('*/target/personal.bin')))
 
     def test_doctor_repair_remove_and_global_latest_keep_selected_identity(self):
-        selection = ('--capability', 'threejs-shaders')
+        selection = ('--capability', 'threejs-skills')
         self.assertEqual(0, self.run_cli(scope='global', selections=selection)[0])
-        self.assertTrue((self.target('threejs-shaders', 'global') / 'SKILL.md').is_file())
+        self.assertTrue((self.target('threejs-skills', 'global') / 'SKILL.md').is_file())
         self.assertEqual(0, self.run_cli(source='bundled', selections=selection)[0])
         result, output = self.run_cli('doctor', source='bundled', selections=selection)
         self.assertEqual(0, result, output)
-        (self.target('threejs-shaders') / 'SKILL.md').unlink()
+        (self.target('threejs-skills') / 'SKILL.md').unlink()
         result, output = self.run_cli('doctor', source='bundled', selections=(*selection, '--repair'))
         self.assertEqual(0, result, output)
-        self.assertTrue((self.target('threejs-shaders') / 'SKILL.md').is_file())
+        self.assertTrue((self.target('threejs-skills') / 'SKILL.md').is_file())
         result, output = self.run_cli('remove', source='bundled', selections=selection)
         self.assertEqual(0, result, output)
-        self.assertFalse(self.target('threejs-shaders').exists())
-        self.assertTrue(self.target('threejs-shaders', 'global').exists())
+        self.assertFalse(self.target('threejs-skills').exists())
+        self.assertTrue(self.target('threejs-skills', 'global').exists())
 
     def test_bundled_update_and_remove_preserve_user_modified_files(self):
-        selection = ('--capability', 'threejs-shaders')
+        selection = ('--capability', 'threejs-skills')
         self.assertEqual(0, self.run_cli(source='bundled', selections=selection)[0])
-        personal = self.target('threejs-shaders') / 'personal.txt'
+        personal = self.target('threejs-skills') / 'personal.txt'
         personal.write_text('mine', encoding='utf-8')
-        (self.remote / 'skills/threejs-shaders/new.txt').write_text('update', encoding='utf-8')
-        self.manifest['first_party']['threejs-shaders']['commit'] = self.commit('bundle update')
+        (self.remote / 'new.txt').write_text('update', encoding='utf-8')
+        self.manifest['first_party']['threejs-skills']['commit'] = self.commit('bundle update')
         result, output = self.run_cli('update', source='bundled', selections=selection)
         self.assertNotEqual(0, result, output)
         self.assertEqual('mine', personal.read_text())
@@ -198,16 +209,16 @@ class ThreejsInstallerTests(unittest.TestCase):
         self.assertEqual('mine', personal.read_text())
 
     def test_legacy_bundled_record_without_fingerprints_requires_explicit_review(self):
-        selection = ('--capability', 'threejs-shaders')
+        selection = ('--capability', 'threejs-skills')
         self.assertEqual(0, self.run_cli(source='bundled', selections=selection)[0])
         record_path = self.state / 'managed-installations.json'
         records = json.loads(record_path.read_text())
-        del records['installations']['threejs-shaders:codex:project']['files']
+        del records['installations']['threejs-skills:codex:project']['files']
         record_path.write_text(json.dumps(records), encoding='utf-8')
-        personal = self.target('threejs-shaders') / 'personal.txt'
+        personal = self.target('threejs-skills') / 'personal.txt'
         personal.write_text('legacy personal edit', encoding='utf-8')
-        (self.remote / 'skills/threejs-shaders/new.txt').write_text('new release', encoding='utf-8')
-        self.manifest['first_party']['threejs-shaders']['commit'] = self.commit('legacy upgrade')
+        (self.remote / 'new.txt').write_text('new release', encoding='utf-8')
+        self.manifest['first_party']['threejs-skills']['commit'] = self.commit('legacy upgrade')
         result, output = self.run_cli('update', source='bundled', selections=selection)
         self.assertNotEqual(0, result, output)
         self.assertEqual('legacy personal edit', personal.read_text())
