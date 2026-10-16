@@ -2,7 +2,7 @@
   "date": "2026-10-16",
   "status": "LOCAL_VERIFIED_REMOTE_PUBLICATION_PENDING",
   "branches": {
-    "threejs-skills": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
+    "threejs-skills": "207d09dbed6521a9071d5a9a1757bd8d6aeb1d33",
     "andino-workflow": "06aca9e0bb6de169a46261bd37cb96bfde9b0210"
   },
   "suite": {
@@ -73,14 +73,14 @@
     "staged_capabilities": 52,
     "artifact": {
       "name": "ai-rules.exe",
-      "sha256": "1cd3aa2264d50ef1d136a9e89614c74871efb695f19a9145af7e53d79af0cf21",
-      "size": 98933164
+      "sha256": "78edb4186935dc4862fa44a7d58600d5245fbea050ca460678117ba4a056e272",
+      "size": 98934165
     },
-    "artifact_path": "build/threejs-executable-final-20261016/ai-rules.exe",
+    "artifact_path": "build/threejs-continuation-executable-20261016/ai-rules.exe",
     "build_tool": "PyInstaller 6.22.3",
-    "source_commit_base": "2a1491851e9e985ada60f2533d908be7b3db1b6b",
+    "source_commit_base": "2fe7c3b177408628bfa791864f59d5df7c5f56c9",
     "source_dirty": true,
-    "note": "Local development build made before final main commit; not a published release. Runtime source commits/subpaths are pinned in embedded manifest."
+    "note": "Continuation local development build embeds updated index pin207d09d, unchanged membersa41a0a1, Andino06aca9e. Not published."
   },
   "executable_smoke": [
     {
@@ -131,16 +131,59 @@
   "host_smoke_record": "host-smoke.json",
   "limits": [
     "No push, merge, PR, tag or publication performed",
-    "Collection-wide rights/provenance need review; supplied notices retained",
-    "Live host proof is limited to Codex discovery and two bounded static review scenarios",
-    "Remaining routing scenarios are schemas/review-only, not executed behavioral PASS",
     "No renderer, browser screenshot, FPS or external paid generator execution",
     "Other hosts and non-Windows binaries NOT_VERIFIED",
-    "Remote latest/executable distribution NOT_VERIFIED until runtime branches and installer release are published"
+    "Remote latest/executable distribution NOT_VERIFIED until runtime branches and installer release are published",
+    "Maintainer attests collection authorship; embedded resource origins are not independently verified and supplied notices remain unchanged.",
+    "Codex observed behavior includes nine bounded static scenarios; rendering scenario remains NOT_VERIFIED.",
+    "Installed-but-prohibited evaluation proves project-rule compliance only, not OS-enforced permission rejection."
   ],
   "authoring_reproduction": {
     "status": "PASS",
     "method": "prepare_threejs_family.py into a fresh ignored directory, then compare every runtime resource to committed inventory",
-    "source_untouched": true
+    "source_untouched": true,
+    "continuation": "PASS: all 776 current runtime regular-file hashes match freshly reproduced output, including authorship README"
+  },
+  "provenance_record": "provenance.json",
+  "continued_behavioral_review": {
+    "records": "routing-records/",
+    "executed": 7,
+    "reviewed_pass": 7,
+    "new_runtime_head_changes": "README.md and entrypoint/README.md only; all 45 specialist package trees remain at tested a41a0a1 content",
+    "post_run_integrity": "All 7 input and complete skill packages unchanged; intentional pre-run resume wind8to12 drift preserved."
+  },
+  "previous_release": {
+    "staged_capabilities": 52,
+    "artifact": {
+      "name": "ai-rules.exe",
+      "sha256": "1cd3aa2264d50ef1d136a9e89614c74871efb695f19a9145af7e53d79af0cf21",
+      "size": 98933164
+    },
+    "artifact_path": "build/threejs-executable-final-20261016/ai-rules.exe",
+    "build_tool": "PyInstaller 6.22.3",
+    "source_commit_base": "2a1491851e9e985ada60f2533d908be7b3db1b6b",
+    "source_dirty": true,
+    "note": "Local development build made before final main commit; not a published release. Runtime source commits/subpaths are pinned in embedded manifest."
+  },
+  "remote_readiness_check": {
+    "method": "git ls-remote --heads origin main andino-workflow threejs-skills",
+    "date": "2026-10-16",
+    "main": "2a1491851e9e985ada60f2533d908be7b3db1b6b",
+    "andino-workflow": "d5fbcec8218a72220c192c0d709fcb94263bbcde",
+    "threejs-skills": "ABSENT",
+    "status": "Local task commits not published"
+  },
+  "continuation_checks": {
+    "targeted_tests": {
+      "command": "python -m unittest discover -s tests -p test_threejs*.py (workspace src on sys.path)",
+      "total": 14,
+      "passed": 14
+    },
+    "current_family_and_original_hash_validation": "PASS",
+    "old_family_and_focus_compatibility_validation": "PASS",
+    "reviewed_record_schema_and_runtime_hash_validation": "PASS",
+    "current_runtime_reproduction_all_776_files": "PASS",
+    "git_diff_check": "PASS",
+    "production_installer_logic_changed_in_continuation": false
   }
 }

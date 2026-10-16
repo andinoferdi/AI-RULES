@@ -1,0 +1,134 @@
+{
+  "case": "threejs-director-boundary",
+  "scope": "behavioral",
+  "host": "Codex CLI 0.154.0",
+  "model": "gpt-6-astra",
+  "runtime_hash": "4130f12a3f86a89be265639d7fcfd6ae4b737d1f10e1e68c8c259fedf66077ca",
+  "andino_commit": "06aca9e0bb6de169a46261bd37cb96bfde9b0210",
+  "domain_commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
+  "verdict": "PASS",
+  "execution_status": "EXECUTED",
+  "discovered": [
+    {
+      "id": "threejs-game-director",
+      "provider": "project-local package; permitted metadata"
+    },
+    {
+      "id": "threejs-gameplay-systems",
+      "provider": "project-local package; permitted metadata"
+    },
+    {
+      "id": "threejs-aaa-graphics-builder",
+      "provider": "project-local package; permitted metadata"
+    },
+    {
+      "id": "threejs-game-ui-designer",
+      "provider": "project-local package; permitted metadata"
+    },
+    {
+      "id": "threejs-debug-profiler",
+      "provider": "project-local package; permitted metadata"
+    },
+    {
+      "id": "threejs-qa-release",
+      "provider": "project-local package; permitted metadata"
+    },
+    {
+      "id": "andino-workflow",
+      "provider": "project-local package; permitted metadata"
+    },
+    {
+      "id": "focus",
+      "provider": "project-local package; permitted metadata"
+    },
+    {
+      "id": "search-first",
+      "provider": "project-local package; permitted metadata"
+    }
+  ],
+  "selected": [
+    {
+      "id": "andino-workflow",
+      "provider": "project-local full skill package",
+      "state": "USED"
+    },
+    {
+      "id": "focus",
+      "provider": "project-local full skill package",
+      "state": "USED"
+    },
+    {
+      "id": "threejs-game-director",
+      "provider": "project-local full skill package",
+      "state": "USED"
+    },
+    {
+      "id": "threejs-gameplay-systems",
+      "provider": "project-local full skill package",
+      "state": "USED"
+    }
+  ],
+  "invocations": [
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'Get-Content AGENTS.md'",
+      "output_sha256": "bd4b409eafac8f0f743b48b0479a49220365aad915e1f0f158e7079df28a617b"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'Get-Content .agents/skills/andino-workflow/SKILL.md'",
+      "output_sha256": "e15939fdb4650d86de50f8508c7c162ff65b5a9f680eac27a9479587ae26fb36"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'Get-Content .agents/skills/andino-workflow/references/routing.md, .agents/skills/andino-workflow/references/invocation-adapter.md, .agents/skills/focus/SKILL.md, .agents/skills/andino-workflow/references/execution-plan.md'",
+      "output_sha256": "843d4f8a9ce3f8f530655a1a6aae856f15d211563e0279911e23efb2d330f1dd"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'Get-Content .agents/skills/andino-workflow/references/invocation-adapter.md, .agents/skills/andino-workflow/references/threejs-specialists.md'",
+      "output_sha256": "29068914e807e9d8763ccfa9ac3d9f9f9bb4d4259a1d2ff455deccad6561be58"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'Get-Content .agents/skills/threejs-game-director/SKILL.md, .agents/skills/focus/SKILL.md'",
+      "output_sha256": "eddb97df39290f2d2bde620314c9e610a2ba00be8e23cd95bb49b5d537d99efd"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'Get-Content .agents/skills/threejs-gameplay-systems/SKILL.md'",
+      "output_sha256": "8a350c2a93a070dfd0f2c79edc7092a0b783468f38788bbd72f9496181f70bcc"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'Get-Content brief.md, active-plan.md, .agents/skills/threejs-gameplay-systems/references/genre-design.md'",
+      "output_sha256": "02336048db3214ee3a6b4be4011914df69111beb3925c41f61d3522b92a7cd16"
+    }
+  ],
+  "fallback": [],
+  "review": {
+    "reviewer": "primary Codex agent; manual command/result review, not actor self-grading",
+    "reason": "Bounded assessment selected director and gameplay only; proposed one playable loop and later evidence, retained one Andino checkpoint, did not delegate or invoke generators."
+  },
+  "resulting_evidence": "The first slice should be **one complete, repeatable three-gate run**. [brief.md](brief.md) already bounds the game well; the main production risk is ambiguous movement and scoring rules, not missing content.\n\nKeep the locked flat monochrome direction. Procedural cubes and gates are the intended art, so no asset generation or visual redesign is needed.\n\n**Proposed slice and loop contract**\n\n> The player steers a cube through three gates while avoiding obstacles; each distinct gate awards one point, obstacle contact ends the run, and R resets the attempt.\n\nProposed defaults—not existing requirements:\n\n- Automatic forward movement; left/right arrows or A/D steer laterally. A fixed elevated camera shows the next gate and its approaching obstacle.\n- One fixed course: gate one teaches alignment, gate two requires changing direction around an obstacle, and gate three combines those decisions. Leave recovery space between them.\n- Crossing a gate’s opening awards exactly one point. Repeated overlap cannot score again. Collecting all three ends the run successfully.\n- Missing a gate awards nothing; reaching the course end below three points ends an incomplete attempt.\n- Obstacle contact takes priority over scoring in the same update. Terminal states stop movement and scoring.\n- R resets position, score, gate flags, obstacles, and run state from any state.\n\nThe intended feeling is precise, readable steering. Every few seconds the player reads the opening, aligns, avoids contact, and receives progress feedback. Better play means anticipating turns rather than correcting late. No extra levels, upgrades, enemy types, persistence, or new UI design belong in this slice.\n\n**Evidence to obtain after implementation is authorized**\n\n| Question | Evidence needed later |\n|---|---|\n| Can a person complete the loop? | Real-input recording showing steering, all three scores, success, and R restart. |\n| Do failure and retry work? | Obstacle-contact recording, including contact near a gate; verify no subsequent scoring and a clean reset. |\n| Is scoring reliable? | Focused checks for repeated gate overlap, missed gates, simultaneous collision/crossing, and reset after partial progress. |\n| Is the course readable? | Observe first-time play: the player must steer to progress, recognize the next opening, and understand why a collision ended the attempt. |\n| Does presentation hold up? | Later inspect screenshots at 360, 768, and 1440 px for camera visibility and existing presentation. These alone do not establish touch playability. |\n| Does the runtime support the slice? | Production-build result, browser console and renderer diagnostics, and frame-time observations on a declared target device. |\n\n[active-plan.md](active-plan.md) remains the sole task record and is unchanged under the read-only restriction. Its proposed next checkpoint is: **assessment complete; slice rules proposed; implementation and runtime behavior NOT_VERIFIED; next action—when building is authorized, inspect the existing project against this contract before making changes.**\n\nI used the project-local Andino, Focus, Game Director, and Gameplay Systems instructions. No files were modified, and no game, renderer, or browser was run.",
+  "raw_log_sha256": "462b0193636383dc6132fa46b132897d420fd04d63978313ac7dce02a0b9c4af",
+  "raw_log_path": "build/threejs-continuation-20261016/director-events.jsonl",
+  "fixture": "evals/threejs-routing-fixtures.json#director",
+  "limits": [
+    "Single bounded read-only static scenario; no application implementation or browser execution.",
+    "Project-scoped invocation policy, not OS-enforced deny testing.",
+    "No global skill/configuration mutation or publication authorized."
+  ],
+  "domain_selected": [
+    "threejs-game-director",
+    "threejs-gameplay-systems"
+  ],
+  "post_run_integrity": "Original fixture inputs and full skill packages unchanged; intentional pre-run resume drift retained."
+}

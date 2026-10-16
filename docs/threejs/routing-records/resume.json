@@ -1,0 +1,122 @@
+{
+  "case": "threejs-resume",
+  "scope": "behavioral",
+  "host": "Codex CLI 0.154.0",
+  "model": "gpt-6-astra",
+  "runtime_hash": "4130f12a3f86a89be265639d7fcfd6ae4b737d1f10e1e68c8c259fedf66077ca",
+  "andino_commit": "06aca9e0bb6de169a46261bd37cb96bfde9b0210",
+  "domain_commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
+  "verdict": "PASS",
+  "execution_status": "EXECUTED",
+  "discovered": [
+    {
+      "id": "threejs-spectral-ocean",
+      "provider": "project-local package; permitted metadata"
+    },
+    {
+      "id": "threejs-visual-validation",
+      "provider": "project-local package; permitted metadata"
+    },
+    {
+      "id": "threejs-lighting",
+      "provider": "project-local package; permitted metadata"
+    },
+    {
+      "id": "andino-workflow",
+      "provider": "project-local package; permitted metadata"
+    },
+    {
+      "id": "focus",
+      "provider": "project-local package; permitted metadata"
+    },
+    {
+      "id": "search-first",
+      "provider": "project-local package; permitted metadata"
+    }
+  ],
+  "selected": [
+    {
+      "id": "andino-workflow",
+      "provider": "project-local full skill package",
+      "state": "USED"
+    },
+    {
+      "id": "focus",
+      "provider": "project-local full skill package",
+      "state": "USED"
+    },
+    {
+      "id": "threejs-spectral-ocean",
+      "provider": "project-local full skill package",
+      "state": "USED"
+    }
+  ],
+  "invocations": [
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'Get-Content -LiteralPath AGENTS.md'",
+      "output_sha256": "bd4b409eafac8f0f743b48b0479a49220365aad915e1f0f158e7079df28a617b"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'Get-Content -LiteralPath .agents/skills/andino-workflow/SKILL.md'",
+      "output_sha256": "e15939fdb4650d86de50f8508c7c162ff65b5a9f680eac27a9479587ae26fb36"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.agents/skills/andino-workflow/references/invocation-adapter.md'\nGet-Content -LiteralPath '.agents/skills/andino-workflow/references/routing.md'\nGet-Content -LiteralPath '.agents/skills/andino-workflow/references/handoff.md'\nGet-Content -LiteralPath '.agents/skills/andino-workflow/references/execution-plan.md'\nGet-Content -LiteralPath '.agents/skills/focus/SKILL.md'\"",
+      "output_sha256": "c55f3d8bea1b9d0923668c23e07ff86d7dddc6d4feec11e08a42312a1faee823"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.agents/skills/andino-workflow/references/routing.md'\"",
+      "output_sha256": "f2ad89cdf59b16350934e6c6005bca22e10b476980cf07149ee0e9dfd0a33424"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.agents/skills/andino-workflow/references/handoff.md'\"",
+      "output_sha256": "9b68d9c4b4f6ddc86f4ec1caaec7fea73c17b1eed9ddd907c5da58891fd01e5b"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'Get-Content -LiteralPath active-plan.md\n git --no-optional-locks status --short\n git rev-parse --show-toplevel\n git log -1 --format=\"%h %s\"'",
+      "output_sha256": "c600b833f0843b7f0d4e8d8299c8563ef25a4c080b8d22856ff8f4832c4108c0"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'git diff -- ocean-settings.json\nGet-Content -LiteralPath ocean-settings.json\ngit branch --show-current\ngit ls-files\nGet-Content -LiteralPath .agents/skills/andino-workflow/references/threejs-specialists.md'",
+      "output_sha256": "f94ef7cd68dd52a45b1c7b0f1c82a0401d969d9d1008e4ddbe8b52f4181c8a0f"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath .agents/skills/threejs-spectral-ocean/SKILL.md\nrg --files --hidden -g '\"'!.git/**'\"' -g '\"'!.agents/**'\"'\"",
+      "output_sha256": "f4361299e557a7bf7d188ca506d9029e6cceb67f8b502ea6fc93382180617896"
+    }
+  ],
+  "fallback": [],
+  "review": {
+    "reviewer": "primary Codex agent; manual command/result review, not actor self-grading",
+    "reason": "Read existing checkpoint and Git diff, identified wind 8 to 12 drift, kept seed42/WebGPU, and used only ocean method for input review. No renderer/source implementation supplied."
+  },
+  "resulting_evidence": "Resumed from [active-plan.md](C:/Users/Lenovo/Downloads/AI-RULES/build/threejs-continuation-20261016/resume/active-plan.md) without chat history.\n\n- **Changed:** Git diff confirms `windSpeed: 8 → 12`. The checkpoint’s recorded input is stale. `.agents/` is also untracked.\n- **Established:** `seed: 42`, renderer setting `WebGPU`, and the accepted spectral design remain unchanged. Implementation remains incomplete. Current branch is `master`, at `ac4efcb`.\n- **Evidence limits:** Only the plan, settings, rules, and local skills are present; no implementation or dependency manifest is available. Runtime, visual quality, and renderer compatibility remain **NOT_VERIFIED**.\n- **Next bounded action:** Locate or supply the ocean implementation and dependency manifest, then trace how `windSpeed: 12` feeds spectrum initialization while preserving seed 42 and the accepted design.\n\nThe input drift check is complete. Retain the same checkpoint; no files were modified under the read-only constraint.",
+  "raw_log_sha256": "94a60d2921c238d47c8ebcc4373960ead65f05c7ae52e7c6ffff5dc66de38cdf",
+  "raw_log_path": "build/threejs-continuation-20261016/resume-events.jsonl",
+  "fixture": "evals/threejs-routing-fixtures.json#resume",
+  "limits": [
+    "Single bounded read-only static scenario; no application implementation or browser execution.",
+    "Project-scoped invocation policy, not OS-enforced deny testing.",
+    "No global skill/configuration mutation or publication authorized."
+  ],
+  "domain_selected": [
+    "threejs-spectral-ocean"
+  ],
+  "post_run_integrity": "Original fixture inputs and full skill packages unchanged; intentional pre-run resume drift retained."
+}

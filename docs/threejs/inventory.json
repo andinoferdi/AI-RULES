@@ -6635,7 +6635,7 @@
       ]
     }
   ],
-  "provenance": "User-supplied local collection; no blanket license inferred.",
-  "publication": "LOCAL ONLY; review upstream rights and supplied notices before publication.",
+  "provenance": "Maintainer reports original collection authorship on 2026-10-16; embedded third-party notices remain authoritative for those materials; no new blanket license inferred.",
+  "publication": "LOCAL ONLY; publication not authorized; maintainer authorship attestation recorded separately from third-party notices.",
   "runtime_hash_normalization": "Text CRLF normalized to LF; binary resources byte-exact"
 }

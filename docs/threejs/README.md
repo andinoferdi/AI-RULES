@@ -5,7 +5,7 @@ This is quality-plane evidence, not a runtime router or a license declaration.
 
 ## Branches and layout
 
-- `threejs-skills`: `a41a0a10eccc02ab35d2d89fae3165f269624b38` (orphan runtime branch).
+- `threejs-skills`: `207d09dbed6521a9071d5a9a1757bd8d6aeb1d33` (runtime head; original orphan root a41a0a1).
 - `andino-workflow`: `06aca9e0bb6de169a46261bd37cb96bfde9b0210` (based on fetched d5fbcec).
 - `main`: installer/catalog/tests/quality work; final local commit is reported in the delivery.
 
@@ -107,9 +107,13 @@ package includes GPL texts and notices for deformable-sand and simulated-tearabl
 these notices are preserved. The deformable-sand notice mentions an optional
 `coconut_tree.glb` that is absent from the supplied source (not a missing installed
 file; the inventory preserves exactly what was supplied). Many other files have
-no explicit redistribution declaration, including the collection itself. Upstream
-provenance and blanket distribution rights remain UNKNOWN. No license was invented.
-Confirm rights before publication; do not infer them from a neighboring MIT notice.
+no explicit redistribution declaration, including the collection itself. The maintainer
+subsequently identified the collection as their own work, without an external
+collection source; see [the recorded attestation](provenance.json). This updates
+collection-level provenance, while resource-level origins remain supported only
+by supplied notices and any later independent checks. No new collection-wide
+license was specified or invented. The attestation does not replace included
+third-party authorship or notices. Publication remains separately unauthorized.
 
 ## Installer and release contracts
 
@@ -138,6 +142,11 @@ review; absent targets remain safely installable. User edits/additions block nor
 updates/removal. Existing repair ownership/replace-existing gates remain in force.
 Doctor, safe repair, remove, backups, no-op, locks and snapshots use existing CLI
 mechanisms. Repair is explicitly bundled; latest updates use setup/update.
+
+The provenance continuation changes only the root/entrypoint README files. The
+45 individual package trees remain identical to a41a0a1, so their bundled pins
+remain at that verified commit; only the family index pin advances to 207d09d.
+Both revisions are reachable through the same runtime branch history.
 
 Minimal and Engineering are unchanged. A newly selected Everything includes all
 first-party capabilities; saved explicit selections are not silently migrated.
@@ -192,10 +201,26 @@ no rendering, browser or full-scenario compliance claim follows. The first confi
 model alias failed before activation; the successful test used the host catalog's
 default model only for that process. [Observed record](host-smoke.json).
 
+Continuation added seven fresh isolated actors using full project-local packages.
+[Reviewed records](routing-records/) preserve successful command invocations, output
+hashes, raw-log hashes, complete static responses and primary review reasons. The
+[raw inputs](../../evals/threejs-routing-fixtures.json) were supplied without review
+oracles. Observed selections: shaders + lighting; debugging before unknown-cause
+investigation; native fallbacks for missing/prohibited skills; animation after
+changed needs; ocean input review after checkpoint/Git drift; director + gameplay
+for a bounded game assessment. All seven passed those bounded reviews. Together
+with the original two, this is nine static scenarios, not application correctness.
+The prohibited-skill case tests a project instruction, not OS tool denial. Browser
+render evidence remains NOT_VERIFIED, as do other hosts. No automatic PASS was
+assigned merely from actor exit status or its own claims.
+
 The Windows executable installed all 49 profile targets in isolated project and
 fake-home global scopes with Git absent from PATH, then NO_OP on repeat. It is a
 local development build (base main revision plus uncommitted task code, explicitly
-recorded as dirty), not a published release artifact. Raw logs and binary stay under
+recorded as dirty), not a published release artifact. The continuation rebuilt and
+retested this executable with index `207d09d` and unchanged specialists `a41a0a1`; both
+scopes again install 49/repeat NO_OP with Git absent. Exact artifact hash and retained
+previous-build evidence are in evidence.json. Raw logs and binary stay under
 ignored build directories; compact evidence is committed here.
 
 ## Tested commands and publication order
@@ -221,7 +246,7 @@ Local validation:
 python -m unittest discover -s tests
 python scripts/validate_skills.py --andino-ref andino-workflow --threejs-ref threejs-skills --webbased-ref origin/WebBased
 python scripts/validate_threejs_family.py --runtime-ref threejs-skills --original threejs-skills
-python scripts/validate_andino_capabilities.py --runtime-ref andino-workflow
+python scripts/validate_andino_capabilities.py --runtime-ref andino-workflow --records docs/threejs/routing-records
 python scripts/build_release.py --stage-only --output NEW_EMPTY_OUTPUT
 ```
 
@@ -229,7 +254,7 @@ Use this workspace package (`PYTHONPATH=src` or an isolated editable install), n
 an older ai-rules installation elsewhere on the machine. No global Python package
 was replaced during this work.
 
-NEXT ACTION: review source rights/provenance and authorize publication. Then publish
+NEXT ACTION: review the local diff and attestations, then authorize publication. Publish
 runtime threejs-skills, publish the dependent andino-workflow commit, verify both
 remote SHAs, clear LOCAL_ONLY manifest markers/update remote refs, publish main and
 build/tag the installer release. CI now fetches the family branch, so runtimes must

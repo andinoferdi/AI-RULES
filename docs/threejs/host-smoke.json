@@ -47,7 +47,7 @@
     "reason": "configured gpt-6.1-sol rejected by CLI ChatGPT transport, HTTP 400"
   },
   "other_hosts": "NOT_VERIFIED",
-  "full_scenario_behavior": "NOT_VERIFIED; ten scenario schemas are review-only",
+  "full_scenario_behavior": "Nine bounded static scenarios observed including original shader/frontend; renderer evidence scenario and cross-host behavior NOT_VERIFIED.",
   "negative": {
     "scope": "mechanical HTML navigation label correction; stable pre-existing fixture",
     "result": "```html\n<nav><a href=\"/about\">About</a></nav>\n```",
@@ -60,5 +60,21 @@
     "state": "NOT_NEEDED",
     "browser_execution": "NOT_VERIFIED"
   },
-  "fixture_note": "An earlier negative run encountered a fixture timing error and was superseded by this fresh stable-input run."
+  "fixture_note": "An earlier negative run encountered a fixture timing error and was superseded by this fresh stable-input run.",
+  "continuation": {
+    "records": "routing-records/",
+    "raw_fixtures": "../../evals/threejs-routing-fixtures.json",
+    "executed_cases": [
+      "multiple",
+      "unknown",
+      "missing",
+      "denied",
+      "reroute",
+      "resume",
+      "director"
+    ],
+    "reviewed_pass": 7,
+    "evaluation": "real full skill packages; fresh isolated read-only Codex actors; independent primary review",
+    "limitations": "Static output/application of methods only; project-rule prohibition is not native hard denial; no renderer or full scenario parity proof."
+  }
 }

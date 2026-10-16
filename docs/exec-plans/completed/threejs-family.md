@@ -1,19 +1,21 @@
 # Three.js family integration
 
-Status: DONE (authorized local implementation; remote publication remains a separate authorized action)
+Status: DONE (local authorized scope; remote publication pending)
 Depth: STANDARD
-CURRENT PHASE: Verification (DONE)
+CURRENT PHASE: Completed local delivery
 
 ## Executive Snapshot / CURRENT STATE
 
 Local implementation is verified on main, threejs-skills and andino-workflow.
-Runtime a41a0a1 and Andino 06aca9e are committed; main commit follows final review.
-All 714 source files remain unchanged. 45 members + family index install as 46
-standalone packages; the threejs profile installs 49 targets. Actual CLI and Windows
-executable smoke pass, including Git-free bundled install in isolated scopes.
-Codex live discovery finds all 46; one shader and one unrelated HTML scenario were
-observed. Other host behavior, remaining review-only scenarios, rendering and
-remote publication remain NOT_VERIFIED. See docs/threejs/README.md and evidence.json.
+Runtime head 207d09d (README attestation only; specialists remain a41a0a1), Andino
+06aca9e, and main integration 2fe7c3b plus this continuation delivery are local.
+All 714 source files remain unchanged. 45 members + index form 46 packages;
+the threejs profile installs 49. New Windows executable verifies both isolated scopes
+without Git, repeated NO_OP. Nine bounded static Codex scenarios are observed,
+including seven additional manually reviewed real-package actors. No rendering,
+OS-level deny, other-host parity or remote publication claim follows. See
+`docs/threejs/README.md`, `evidence.json` and `routing-records/`.
+
 
 
 ## Objective
@@ -40,6 +42,8 @@ and backward-compatible individual/subpath installation plus threejs profile on 
 | Routing | DONE | 06aca9e committed; registry and invocation validated; Codex positive and negative smoke observed |
 | Verification | DONE | 52 bundles staged; executable installs 49 targets with no Git, project/global and repeated NO_OP; package/source hashes validated |
 
+| Continuation verification | DONE | Authorship recorded; seven extra actors reviewed; all 776 hashes reproduced; new executable: 49 targets/repeatNO_OP in both scopes without Git |
+
 ## DECISIONS
 
 - EXTEND existing source/export mechanisms; no new dependency or router.
@@ -58,10 +62,10 @@ and backward-compatible individual/subpath installation plus threejs profile on 
 
 ## NEXT ACTION
 
-Review docs/threejs/README.md and the inventory's source-rights gaps, then authorize
-publication separately. Publish threejs-skills, andino-workflow, main, then the
-installer release in that order; verify remote SHAs before clearing local-only
-manifest markers. No push, merge, PR, tag or publication is authorized or performed.
+Review local commits and, if desired, explicitly authorize remote publication.
+Then publish runtime threejs-skills, dependent andino-workflow, verify remote SHAs,
+reconcile LOCAL_ONLY manifest metadata, and publish main/installer release in that
+order. Re-run remote latest after publication. No push, merge, PR or tag was made.
 
 ## Progress / decisions
 
@@ -104,3 +108,22 @@ manifest markers. No push, merge, PR, tag or publication is authorized or perfor
 - Final legacy-guard suite: 192 total, 191 passed, one optional fixture skipped. Authoring helper reproduces all committed runtime resource hashes from the untouched original collection.
 
 - Final executable after legacy guard: SHA256 1cd3aa2264d50ef1d136a9e89614c74871efb695f19a9145af7e53d79af0cf21. Fresh project/global installs each 49 VERIFIED targets without Git; repeats NO_OP. Main original source remains untracked and unchanged.
+
+- Continuation: user reports the collection is their own work, with no external collection source. This is maintainer attestation, not independent provenance verification and not a replacement for existing third-party notices.
+
+- Continuation complete: maintainer authorship attestation recorded without changing
+  third-party notices. Runtime 207d09d changes only two README projections; original
+  45 skill trees and all 714 supplied files retain verified hashes.
+- Seven additional real-package Codex cases passed manual bounded behavioral review;
+  actor input/package integrity retained. Existing record validator confirms current
+  Andino content hash. Project-rule denial is not native OS enforcement evidence.
+- Rebuilt Windows executable 78edb4186935dc4862fa44a7d58600d5245fbea050ca460678117ba4a056e272
+  installs 49 targets in isolated project/global scopes with no Git; repeats NO_OP.
+- Fresh authoring output reproduces all 776 current runtime hashes; package/source
+  and old-family validators pass. No installer logic changed in this continuation;
+  previous 192-test suite evidence remains applicable (191 passed, 1 optional skip).
+- Read-only ls-remote confirms runtime branch absent and main/Andino task commits
+  still local. Publication pending explicit authorization, not claimed ready remotely.
+
+- Continuation targeted regression suite: 14 tests, all pass. Cached diff whitespace
+  check passes; runtime/Andino worktrees clean; source folder remains untracked.

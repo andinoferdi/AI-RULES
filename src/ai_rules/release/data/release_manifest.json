@@ -44,7 +44,7 @@
     "threejs-skills": {
       "branch": "threejs-skills",
       "ref": "threejs-skills",
-      "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
+      "commit": "207d09dbed6521a9071d5a9a1757bd8d6aeb1d33",
       "subpath": "entrypoint",
       "release_sequence": 12,
       "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
