@@ -12,14 +12,14 @@
 | [`andino-workflow`](https://github.com/andinoferdi/AI-RULES/tree/andino-workflow) | Adaptive workflow, capability routing, and portable checkpoints |
 | [`ai-codebase-rescue`](https://github.com/andinoferdi/AI-RULES/tree/ai-codebase-rescue) | Evidence-based stabilization of fragile codebases |
 | [`skripsi-skill`](https://github.com/andinoferdi/AI-RULES/tree/skripsi-skill) | Thesis and research guidance |
-| [`threejs-skills`](https://github.com/andinoferdi/AI-RULES/tree/threejs-skills) | 45 Three.js/NixieFX specialists and a lightweight family index; local integration pending publication |
+| [`threejs-skills`](https://github.com/andinoferdi/AI-RULES/tree/threejs-skills) | One installable family containing all 45 Three.js/NixieFX methods and supporting files |
 
-The `threejs` profile installs all 45 specialists, the family index, Andino,
-Focus and Search First (49 packages). Individual skills use `--capability NAME`.
-Minimal and Engineering keep their existing selections; a fresh Everything
-selection includes the collection. Existing saved selections are not migrated
-implicitly. See [Three.js integration and release evidence](docs/threejs/README.md)
-for local validation, the inventory, host verification limits and publication order.
+The `threejs` profile installs one complete `threejs-skills` family plus Andino,
+Focus and Search First (four directories). Custom offers only **Three.js Skills**
+for this collection. Its 45 internal methods are selected automatically by need or
+explicitly named in a prompt, e.g. "threejs-skills, specifically threejs-shaders".
+Use "andino-workflow and threejs-skills" for selective domain help in Andino's task.
+Minimal/Engineering are unchanged. See [the package contract](docs/threejs/README.md).
 
 Install the CLI from `main`. Setup downloads each skill from its own distribution branch, so you never switch branches or copy skill files by hand.
 
@@ -41,9 +41,10 @@ Select your agents and a profile, then confirm the installation plan:
 | Minimal | Andino Workflow + Focus + Search First |
 | Engineering | Andino Workflow + Focus + Search First + AI Codebase Rescue |
 | Research / Skripsi | Andino Workflow + Focus + Search First + Skripsi Skill |
-| Everything | All six (including Council) |
+| Three.js Development | Complete Three.js family + Andino Workflow + Focus + Search First |
+| Everything | All seven first-party capabilities, including the complete Three.js family |
 
-Open a new agent session or reload its window after setup. Installing all six skills does not activate all of them for every task. Third-party skills, plugins, and MCP servers need their own installation or connection.
+Open a new agent session or reload its window after setup. Installing skills does not activate every method for every task. Third-party skills, plugins, and MCP servers need their own installation or connection.
 
 Run `ai-rules setup` again to update the selected skills from their latest configured branches. To update the CLI itself, run these commands from a clean `main` checkout:
 

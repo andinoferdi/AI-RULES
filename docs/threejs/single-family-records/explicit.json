@@ -1,0 +1,65 @@
+{
+  "case": "single-family-explicit",
+  "scope": "behavioral",
+  "host": "Codex CLI0.154.0",
+  "model": "gpt-6-astra",
+  "runtime_hash": "a16147bb4eb1cd15738ac913d09b90410cbe560ec628c1a866f42b11a92404e7",
+  "family_commit": "f47d7c03a309703d6804b9e8e4787d54cbbdb53f",
+  "andino_commit": "f531269775aafa8b162b4ec65dd919b37a208ffe",
+  "verdict": "PASS",
+  "execution_status": "EXECUTED",
+  "discovered": [
+    {
+      "id": "threejs-skills",
+      "provider": "one installed project-local family"
+    }
+  ],
+  "selected": [
+    {
+      "id": "threejs-lighting",
+      "provider": "bundled internal GUIDE.md, not native skill"
+    }
+  ],
+  "native_skill_reads": [
+    "andino-workflow",
+    "focus",
+    "threejs-skills"
+  ],
+  "invocations": [
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'Get-Content AGENTS.md'",
+      "output_sha256": "2762a9bc8baa49c561142a7dd3f3eb2980c30e7b6f015dbbf110c63607b4df0d"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content C:\\\\Users\\\\Lenovo\\\\.codex\\\\RTK.md; Get-Content .agents/skills/andino-workflow/SKILL.md; Get-Content .agents/skills/threejs-skills/SKILL.md; rg --files -g '*lights*' -g '*lighting*' -g 'package.json'\"",
+      "output_sha256": "f09b8ce2cd2958ed517530ed444acf2774aef4c729f3dd3416a4118c17d9bd8e"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'rtk proxy powershell -NoProfile -Command \"Get-Content .agents/skills/andino-workflow/references/invocation-adapter.md; Get-Content .agents/skills/andino-workflow/references/routing.md; Get-Content .agents/skills/focus/SKILL.md; Get-Content .agents/skills/threejs-skills/README.md; Get-Content .agents/skills/threejs-skills/skills/threejs-lighting/GUIDE.md; Get-Content lights.js\"'",
+      "output_sha256": "a64c8768486119586fa90516c43a89b03c1ab1c1c176d527614f716905d90d73"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'rtk proxy powershell -NoProfile -Command \"Get-Content .agents/skills/focus/SKILL.md; Get-Content .agents/skills/andino-workflow/references/routing.md | Select-Object -Skip 70; Get-Content .agents/skills/threejs-skills/README.md; Get-Content .agents/skills/threejs-skills/skills/threejs-lighting/GUIDE.md -TotalCount 45; Get-ChildItem -Name\"'",
+      "output_sha256": "e5d3da39d88b675b91d84c30601823af02eb1cc7d2c7e729652f8ae564e1c25d"
+    }
+  ],
+  "fallback": [],
+  "review": {
+    "reviewer": "primary agent; manual command and resulting response review",
+    "reason": "Explicit internal method ID honored through the family; actor loaded lighting GUIDE only and returned concrete key/fill lights and scene assumptions."
+  },
+  "resulting_evidence": "[lights.js](C:/Users/Lenovo/Downloads/AI-RULES/build/threejs-single-family-v2-live-b/explicit/lights.js:1) currently adds only full-intensity ambient light, giving no directional shading to describe the mesh’s form.\n\nUsing the bundled `threejs-lighting` guide, replace it with this key-and-fill setup. Assumes the subject is centered at the origin, with Y up and viewed from +Z.\n\n```js\nexport function illuminate(THREE, scene) {\n  const key = new THREE.DirectionalLight(0xffffff, 1);\n  key.position.set(5, 6, 5);\n  key.target.position.set(0, 0, 0);\n\n  const fill = new THREE.DirectionalLight(0xffffff, 0.35);\n  fill.position.set(-5, 2, 4);\n  fill.target.position.set(0, 0, 0);\n\n  scene.add(key, key.target, fill, fill.target);\n}\n```\n\nThe elevated key defines form; the weaker opposite fill lifts dark-facing surfaces while preserving contrast. Call once during scene setup, replacing the existing ambient-light call. Shadows remain disabled, so this requires no renderer or mesh changes.\n\nStatic review only: no files changed or rendering performed. No dependency manifest was present to verify the Three.js version; intensities are starting values for visual tuning.",
+  "raw_log_sha256": "0e81372cc3e33235fbec1c1e40cd562d39e0c88fc34d42bf2b090f501569cf6c",
+  "limitations": [
+    "Bounded static review, not rendering/performance/browser proof.",
+    "Other hosts NOT_VERIFIED."
+  ]
+}

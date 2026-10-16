@@ -11,9 +11,13 @@ runtime branches. Each runtime has README.md, SKILL.md and useful supporting fil
 
 Multi-package families can share a runtime branch using each capability's validated
 `source.subpath`. Each selected subtree must be independently installable with its
-own root SKILL.md and stable identity. Keep a family index's installable projection
-separate from nested specialist directories to avoid duplicate host discovery.
-Three.js uses `entrypoint/` and `skills/<name>/`; it owns no second lifecycle.
+own root SKILL.md and stable identity. A single-package family can instead bundle
+internal methods as resources. Three.js is one branch-root package with one
+catalog/menu identity and only one root SKILL.md. Its 45 internal methods live at
+`skills/<name>/GUIDE.md`, not native specialist SKILL.md entries. Invoke the family
+through the host, then read selected guides through authorized resource tools.
+Explicit method names and minimum prompt-based selection are supported without
+separate native registrations. It owns no second lifecycle.
 Its catalog-scoped validator permits enumerated code, shader and binary resource
 types, checking signatures without decoding binaries as UTF-8. Existing family
 allowlists remain unchanged. Preserve supplied licenses; family registration is

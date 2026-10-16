@@ -32,7 +32,8 @@ class SingleThreejsFamilyTests(unittest.TestCase):
         inventory = json.loads((ROOT / 'docs/threejs/inventory.json').read_text())
         with tempfile.TemporaryDirectory() as temporary:
             target = Path(temporary) / 'threejs-skills'
-            export_git_ref('refs/heads/threejs-skills', target, ROOT, subpath=capability.source.get('subpath'))
+            manifest = json.loads((ROOT / 'src/ai_rules/release/data/release_manifest.json').read_text())
+            export_git_ref(manifest['first_party']['threejs-skills']['commit'], target, ROOT, subpath=capability.source.get('subpath'))
             self.assertEqual(['SKILL.md'], [p.relative_to(target).as_posix() for p in target.rglob('SKILL.md')])
             self.assertEqual(45, len(list(target.glob('skills/*/GUIDE.md'))))
             for member in inventory['skills']:

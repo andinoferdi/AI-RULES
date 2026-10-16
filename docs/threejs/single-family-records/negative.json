@@ -1,0 +1,45 @@
+{
+  "case": "single-family-negative",
+  "scope": "behavioral",
+  "host": "Codex CLI0.154.0",
+  "model": "gpt-6-astra",
+  "runtime_hash": "a16147bb4eb1cd15738ac913d09b90410cbe560ec628c1a866f42b11a92404e7",
+  "family_commit": "f47d7c03a309703d6804b9e8e4787d54cbbdb53f",
+  "andino_commit": "f531269775aafa8b162b4ec65dd919b37a208ffe",
+  "verdict": "PASS",
+  "execution_status": "EXECUTED",
+  "discovered": [
+    {
+      "id": "threejs-skills",
+      "provider": "one installed project-local family"
+    }
+  ],
+  "selected": [],
+  "native_skill_reads": [],
+  "invocations": [
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'Get-Content -LiteralPath AGENTS.md'",
+      "output_sha256": "2762a9bc8baa49c561142a7dd3f3eb2980c30e7b6f015dbbf110c63607b4df0d"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'Get-Content -LiteralPath index.html'",
+      "output_sha256": "d70c09b5eb845eee1f91635ac4dd276ed24f0e15edfe992e7b9643cc9216f947"
+    }
+  ],
+  "fallback": [],
+  "review": {
+    "reviewer": "primary agent; manual command and resulting response review",
+    "reason": "Narrow domain-exclusion observation: no family or internal guide loaded for HTML typo; correct markup returned. Explicit Andino invocation was not observed in this run, so this does not verify complete Andino compliance."
+  },
+  "resulting_evidence": "```html\n<nav><a href=\"/about\">About</a></nav>\n```",
+  "raw_log_sha256": "89b2756473d810cae8c5cc3fa5e89bb15fb91d68defac6e500ad9b84450fbfad",
+  "limitations": [
+    "Bounded static review, not rendering/performance/browser proof.",
+    "Other hosts NOT_VERIFIED.",
+    "Andino native invocation NOT_OBSERVED; PASS scope is only family non-selection and correct typo result."
+  ]
+}

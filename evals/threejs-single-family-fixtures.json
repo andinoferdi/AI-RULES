@@ -1,0 +1,35 @@
+{
+  "automatic": {
+    "request": "Use andino-workflow and threejs-skills. Review pulse.frag and replace the hard flash with a smooth one-second brightness pulse from0to1. Return concrete shader code and its reasoning. Keep scene/renderer ownership; do not redesign unrelated systems.",
+    "instructions": "Only project-local .agents/skills packages are in scope; do not load global skill copies. Use the full installed family and its authorized internal guides, not separate native specialist skills. Read-only local assessment: do not write files, install packages, access network/services/credentials, spawn workers, launch browser/apps, commit/publish or claim renderer execution. Read AGENTS.md first.\n",
+    "files": {
+      "AGENTS.md": "Only project-local .agents/skills packages are in scope; do not load global skill copies. Use the full installed family and its authorized internal guides, not separate native specialist skills. Read-only local assessment: do not write files, install packages, access network/services/credentials, spawn workers, launch browser/apps, commit/publish or claim renderer execution. Read AGENTS.md first.\n",
+      "pulse.frag": "uniform float uTime;\nvoid main(){gl_FragColor=vec4(vec3(step(0.5,fract(uTime))),1.0);}\n"
+    }
+  },
+  "explicit": {
+    "request": "Use andino-workflow and threejs-skills, specifically threejs-lighting. Review lights.js and propose a key-and-fill arrangement for an existing mesh scene. Return concrete code. No material, geometry or animation redesign.",
+    "instructions": "Only project-local .agents/skills packages are in scope; do not load global skill copies. Use the full installed family and its authorized internal guides, not separate native specialist skills. Read-only local assessment: do not write files, install packages, access network/services/credentials, spawn workers, launch browser/apps, commit/publish or claim renderer execution. Read AGENTS.md first.\n",
+    "files": {
+      "AGENTS.md": "Only project-local .agents/skills packages are in scope; do not load global skill copies. Use the full installed family and its authorized internal guides, not separate native specialist skills. Read-only local assessment: do not write files, install packages, access network/services/credentials, spawn workers, launch browser/apps, commit/publish or claim renderer execution. Read AGENTS.md first.\n",
+      "lights.js": "export function illuminate(THREE,scene){scene.add(new THREE.AmbientLight(0xffffff,1));}\n"
+    }
+  },
+  "multiple": {
+    "request": "Use andino-workflow and threejs-skills. Review pulse.frag and lights.js. Propose a smooth one-second brightness pulse and key/fill lighting for the existing scene. Give concrete shader and light code. No geometry, material or animation-clip redesign.",
+    "instructions": "Only project-local .agents/skills packages are in scope; do not load global skill copies. Use the full installed family and its authorized internal guides, not separate native specialist skills. Read-only local assessment: do not write files, install packages, access network/services/credentials, spawn workers, launch browser/apps, commit/publish or claim renderer execution. Read AGENTS.md first.\n",
+    "files": {
+      "AGENTS.md": "Only project-local .agents/skills packages are in scope; do not load global skill copies. Use the full installed family and its authorized internal guides, not separate native specialist skills. Read-only local assessment: do not write files, install packages, access network/services/credentials, spawn workers, launch browser/apps, commit/publish or claim renderer execution. Read AGENTS.md first.\n",
+      "lights.js": "export function illuminate(THREE,scene){scene.add(new THREE.AmbientLight(0xffffff,1));}\n",
+      "pulse.frag": "uniform float uTime;\nvoid main(){gl_FragColor=vec4(vec3(step(0.5,fract(uTime))),1.0);}\n"
+    }
+  },
+  "negative": {
+    "request": "Use andino-workflow and threejs-skills if relevant. Correct the typo in index.html to About. Return the corrected markup; no other design changes.",
+    "instructions": "Only project-local .agents/skills packages are in scope; do not load global skill copies. Use the full installed family and its authorized internal guides, not separate native specialist skills. Read-only local assessment: do not write files, install packages, access network/services/credentials, spawn workers, launch browser/apps, commit/publish or claim renderer execution. Read AGENTS.md first.\n",
+    "files": {
+      "AGENTS.md": "Only project-local .agents/skills packages are in scope; do not load global skill copies. Use the full installed family and its authorized internal guides, not separate native specialist skills. Read-only local assessment: do not write files, install packages, access network/services/credentials, spawn workers, launch browser/apps, commit/publish or claim renderer execution. Read AGENTS.md first.\n",
+      "index.html": "<nav><a href=\"/about\">Abuot</a></nav>\n"
+    }
+  }
+}

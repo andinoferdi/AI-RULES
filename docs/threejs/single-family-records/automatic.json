@@ -1,0 +1,77 @@
+{
+  "case": "single-family-automatic",
+  "scope": "behavioral",
+  "host": "Codex CLI0.154.0",
+  "model": "gpt-6-astra",
+  "runtime_hash": "a16147bb4eb1cd15738ac913d09b90410cbe560ec628c1a866f42b11a92404e7",
+  "family_commit": "f47d7c03a309703d6804b9e8e4787d54cbbdb53f",
+  "andino_commit": "f531269775aafa8b162b4ec65dd919b37a208ffe",
+  "verdict": "PASS",
+  "execution_status": "EXECUTED",
+  "discovered": [
+    {
+      "id": "threejs-skills",
+      "provider": "one installed project-local family"
+    }
+  ],
+  "selected": [
+    {
+      "id": "threejs-shaders",
+      "provider": "bundled internal GUIDE.md, not native skill"
+    }
+  ],
+  "native_skill_reads": [
+    "andino-workflow",
+    "focus",
+    "threejs-skills"
+  ],
+  "invocations": [
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'Get-Content AGENTS.md'",
+      "output_sha256": "2762a9bc8baa49c561142a7dd3f3eb2980c30e7b6f015dbbf110c63607b4df0d"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'Get-Content .agents/skills/andino-workflow/SKILL.md; Get-Content .agents/skills/threejs-skills/SKILL.md'",
+      "output_sha256": "5dd5b87658d03abc47db325e840a9fbdab56e5bb81e84ec997be295db517707b"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content C:\\\\Users\\\\Lenovo\\\\.codex\\\\RTK.md\"",
+      "output_sha256": "06b0156b79e1689d12ce58ca0c2b1881cb42e585031ad2d24003a5a4c46f17af"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"rg --files -g '*pulse*' -g 'AGENTS.md'\"",
+      "output_sha256": "3be00b946e73f45f6a6b6081368c272879af4c6ba3ea6990ab83d6d8a0fa2814"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'rtk proxy powershell -NoProfile -Command \"Get-Content .agents/skills/focus/SKILL.md; Get-Content .agents/skills/andino-workflow/references/invocation-adapter.md; Get-Content .agents/skills/andino-workflow/references/routing.md; Get-Content .agents/skills/threejs-skills/README.md; Get-Content .agents/skills/threejs-skills/skills/threejs-shaders/GUIDE.md\"'",
+      "output_sha256": "de1a030c033cc80baa11f9c557117f4ef4d63aa3cd9193ebfb4b4107568d52bf"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'rtk proxy powershell -NoProfile -Command \"Get-Content .agents/skills/andino-workflow/references/routing.md; Get-Content .agents/skills/threejs-skills/README.md; Get-Content pulse.frag; Get-ChildItem -Name\"'",
+      "output_sha256": "c14e9ccc10489f418fb72ccf964fa6828ae41cd7c0db21ad99ed170f594bd51d"
+    }
+  ],
+  "fallback": [],
+  "review": {
+    "reviewer": "primary agent; manual command and resulting response review",
+    "reason": "Prompt named only Andino and family; actor loaded family/root and only shader GUIDE, then applied uniform/GLSL method to a smooth0..1 one-second cosine pulse."
+  },
+  "resulting_evidence": "Replace [pulse.frag](C:/Users/Lenovo/Downloads/AI-RULES/build/threejs-single-family-v2-live-b/automatic/pulse.frag) with:\n\n```glsl\nuniform float uTime; // Elapsed time in seconds.\n\nvoid main() {\n    float phase = fract(uTime);\n    float brightness = 0.5 - 0.5 * cos(6.28318530718 * phase);\n    gl_FragColor = vec4(vec3(brightness), 1.0);\n}\n```\n\nThe existing `step(0.5, fract(uTime))` abruptly switches between black and white. This cosine curve produces a repeating one-second pulse: **0 → 1 → 0**, peaking at 0.5 seconds. Its slope is zero at the peak and cycle boundaries, so the wrap stays smooth.\n\nThis preserves `uTime`, opaque alpha, and existing scene/renderer ownership. It assumes the scene supplies time in seconds; no caller is present to confirm that.\n\nApplied the local shader guide’s uniform and GLSL methods. Files remain unchanged under the read-only constraint; rendering was not tested.",
+  "raw_log_sha256": "3b4d7d3ed372b2e377cb2587bbceb3a670e6438ecf91ef0877bc2f9a0326f5c8",
+  "limitations": [
+    "Bounded static review, not rendering/performance/browser proof.",
+    "Other hosts NOT_VERIFIED."
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "case": "single-family-multiple",
+  "scope": "behavioral",
+  "host": "Codex CLI0.154.0",
+  "model": "gpt-6-astra",
+  "runtime_hash": "a16147bb4eb1cd15738ac913d09b90410cbe560ec628c1a866f42b11a92404e7",
+  "family_commit": "f47d7c03a309703d6804b9e8e4787d54cbbdb53f",
+  "andino_commit": "f531269775aafa8b162b4ec65dd919b37a208ffe",
+  "verdict": "PASS",
+  "execution_status": "EXECUTED",
+  "discovered": [
+    {
+      "id": "threejs-skills",
+      "provider": "one installed project-local family"
+    }
+  ],
+  "selected": [
+    {
+      "id": "threejs-lighting",
+      "provider": "bundled internal GUIDE.md, not native skill"
+    },
+    {
+      "id": "threejs-shaders",
+      "provider": "bundled internal GUIDE.md, not native skill"
+    }
+  ],
+  "native_skill_reads": [
+    "andino-workflow",
+    "focus",
+    "threejs-skills"
+  ],
+  "invocations": [
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content AGENTS.md; Get-Content C:\\\\Users\\\\Lenovo\\\\.codex\\\\RTK.md\"",
+      "output_sha256": "eec5d60a3f52f7851529d3bd97f7a9040601122cd732f2ad3e07b1b5e5ee2cf6"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content .agents/skills/andino-workflow/SKILL.md; Get-Content .agents/skills/threejs-skills/SKILL.md; rg --files -g '*pulse.frag' -g '*lights.js' -g '*AGENTS.md'\"",
+      "output_sha256": "b905e4acd222d61d920392bec1fa29e00f7dc02919e412b4fd196ec552ec17a5"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'rtk proxy powershell -NoProfile -Command \"Get-Content .agents/skills/andino-workflow/references/routing.md; Get-Content .agents/skills/andino-workflow/references/invocation-adapter.md; Get-Content .agents/skills/focus/SKILL.md; Get-Content .agents/skills/threejs-skills/README.md; Get-Content .agents/skills/threejs-skills/skills/threejs-shaders/GUIDE.md; Get-Content .agents/skills/threejs-skills/skills/threejs-lighting/GUIDE.md; Get-Content pulse.frag; Get-Content lights.js\"'",
+      "output_sha256": "470d5d3079ba0c6cb9e44a48148cbb4cd1b7829ba429d555ac88ef2fedf70074"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"rtk rg --files -g '\"'! .agents/**'\"' -g '\"'!node_modules/**'\"' -g '\"'! .git/**'\"'\"",
+      "output_sha256": "90a35f27b71ef0642543ac45e1f79139e5e9d7b3dbd91d8feb4af80b504e94d6"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'rtk proxy powershell -NoProfile -Command \"Get-Content .agents/skills/andino-workflow/references/invocation-adapter.md; Get-Content .agents/skills/focus/SKILL.md; Get-Content .agents/skills/threejs-skills/README.md\"'",
+      "output_sha256": "46676cc3fa9df8fc8a60cf81f982e974cd740775bf8886c0dfa57e351a0dc76b"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'rtk proxy powershell -NoProfile -Command \"Get-Content .agents/skills/threejs-skills/skills/threejs-shaders/GUIDE.md\"'",
+      "output_sha256": "2db5919e72444920136de57c662853595cb7899159a20130285534a8e1984277"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "command": "\"C:\\\\Users\\\\Lenovo\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'rtk proxy powershell -NoProfile -Command \"Get-ChildItem -File | Select-Object Name; Get-Content .agents/skills/focus/SKILL.md | Select-Object -First 65; Get-Content .agents/skills/threejs-skills/skills/threejs-shaders/GUIDE.md | Select-Object -Skip 100 -First 150\"'",
+      "output_sha256": "05f78bba924c4c11fa7da7bf867050279fd87b12c4479d5d034b27d262b795b8"
+    }
+  ],
+  "fallback": [],
+  "review": {
+    "reviewer": "primary agent; manual command and resulting response review",
+    "reason": "Actor loaded exactly the two distinct required internal guides, returned concrete shader and light code, and disclosed unlit-shader lighting limitations; no other45-method batch."
+  },
+  "resulting_evidence": "The current shader’s `step(0.5, fract(uTime))` produces abrupt black/white flashes. Replace it with a cosine pulse that repeats every second, easing smoothly through its minimum and maximum.\n\nProposed `pulse.frag`:\n\n```glsl\nuniform float uTime; // elapsed seconds\n\nvoid main() {\n    float phase = fract(uTime);\n    float pulse = 0.5 - 0.5 * cos(6.28318530718 * phase);\n    float brightness = mix(0.25, 1.0, pulse);\n\n    gl_FragColor = vec4(vec3(brightness), 1.0);\n}\n```\n\nBrightness is `0.25 → 0.625 → 1.0 → 0.625 → 0.25` at quarter-second intervals. The wrap has matching values and zero slope. Set the minimum to `0.0` if you want to preserve the original black-to-white range. Continue supplying `uTime` in seconds through the existing uniform update.\n\nThe current lighting is ambient-only, so it provides no directional modeling. Proposed `lights.js` preserves the existing function signature and adds a key three times stronger than the fill:\n\n```javascript\nexport function illuminate(THREE, scene) {\n    const ambient = new THREE.AmbientLight(0xffffff, 0.15);\n\n    const key = new THREE.DirectionalLight(0xffffff, 1.5);\n    key.position.set(4, 6, 5);\n    key.target.position.set(0, 0, 0);\n\n    const fill = new THREE.DirectionalLight(0xffffff, 0.5);\n    fill.position.set(-4, 2, 3);\n    fill.target.position.set(0, 0, 0);\n\n    scene.add(ambient, key, key.target, fill, fill.target);\n}\n```\n\nCall this once during scene setup, replacing the existing ambient setup. Positions assume a subject centered at the origin with its front toward `+Z`; adjust targets and directions to the actual scene. Intensities are starting values for visual tuning.\n\n**Important:** `pulse.frag` outputs an unlit color directly. These lights affect existing light-responsive materials, but cannot shade this shader without adding lighting calculations.\n\nApplied Andino with the bundled shader and lighting guides. No files changed or renderer executed; the supplied files contain no scene, camera, or Three.js version information to verify the final appearance.",
+  "raw_log_sha256": "6d1cccb2e2b753037117524f9c3f2d5a7eb755f75bcecee11ad7490823d0c926",
+  "limitations": [
+    "Bounded static review, not rendering/performance/browser proof.",
+    "Other hosts NOT_VERIFIED."
+  ]
+}

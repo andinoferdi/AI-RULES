@@ -1,0 +1,173 @@
+{
+  "date": "2026-10-16",
+  "status": "SINGLE_FAMILY_VERIFIED_RUNTIME_REFS_PUBLISHED",
+  "family_commit": "f47d7c03a309703d6804b9e8e4787d54cbbdb53f",
+  "andino_commit": "f531269775aafa8b162b4ec65dd919b37a208ffe",
+  "suite": {
+    "total": 195,
+    "passed": 194,
+    "skipped": 1,
+    "skip_reason": "optional AI_RULES_SEARCH_FIRST_CANDIDATE fixture unset",
+    "red_tests": "Three new selection/profile/package assertions failed before implementation and passed afterward; repeated with manifest-pinned commit for CI availability"
+  },
+  "package": {
+    "menu_options_total": 7,
+    "family_options": 1,
+    "family_directories_when_selected_alone": 1,
+    "profile_directories": 4,
+    "internal_methods": 45,
+    "native_entrypoints_per_family": 1,
+    "runtime_files": 775,
+    "original_inputs": 714,
+    "source_unchanged": true,
+    "member_entrypoint_rename": "SKILL.md -> GUIDE.md, paths/hashes explicitly inventoried"
+  },
+  "installation_smoke": [
+    {
+      "source": "latest",
+      "scope": "project",
+      "attempt": 1,
+      "exit": 0,
+      "targets": 4,
+      "methods": 45,
+      "only_one_family_entrypoint": true,
+      "actions": [
+        "INSTALL"
+      ]
+    },
+    {
+      "source": "latest",
+      "scope": "project",
+      "attempt": 2,
+      "exit": 0,
+      "targets": 4,
+      "methods": 45,
+      "only_one_family_entrypoint": true,
+      "actions": [
+        "NO_OP"
+      ]
+    },
+    {
+      "source": "latest",
+      "scope": "global",
+      "attempt": 1,
+      "exit": 0,
+      "targets": 4,
+      "methods": 45,
+      "only_one_family_entrypoint": true,
+      "actions": [
+        "INSTALL"
+      ]
+    },
+    {
+      "source": "latest",
+      "scope": "global",
+      "attempt": 2,
+      "exit": 0,
+      "targets": 4,
+      "methods": 45,
+      "only_one_family_entrypoint": true,
+      "actions": [
+        "NO_OP"
+      ]
+    },
+    {
+      "source": "bundled",
+      "scope": "project",
+      "attempt": 1,
+      "exit": 0,
+      "targets": 4,
+      "methods": 45,
+      "only_one_family_entrypoint": true,
+      "actions": [
+        "INSTALL"
+      ]
+    },
+    {
+      "source": "bundled",
+      "scope": "project",
+      "attempt": 2,
+      "exit": 0,
+      "targets": 4,
+      "methods": 45,
+      "only_one_family_entrypoint": true,
+      "actions": [
+        "NO_OP"
+      ]
+    },
+    {
+      "source": "bundled",
+      "scope": "global",
+      "attempt": 1,
+      "exit": 0,
+      "targets": 4,
+      "methods": 45,
+      "only_one_family_entrypoint": true,
+      "actions": [
+        "INSTALL"
+      ]
+    },
+    {
+      "source": "bundled",
+      "scope": "global",
+      "attempt": 2,
+      "exit": 0,
+      "targets": 4,
+      "methods": 45,
+      "only_one_family_entrypoint": true,
+      "actions": [
+        "NO_OP"
+      ]
+    }
+  ],
+  "native_discovery": {
+    "method": "Codex app-server skills/list",
+    "family_entries": 1,
+    "name": "threejs-skills",
+    "enabled": true,
+    "internal_native_entries": 0,
+    "family_errors": 0,
+    "raw_response_sha256": "3ee2e5e99f64ca50ee69304b6c4459e79fecc5d80c3829d6026a76e643ec68fe"
+  },
+  "behavioral_records": "single-family-records/",
+  "observed_positive_cases": [
+    "automatic",
+    "explicit",
+    "multiple"
+  ],
+  "negative": "Correct HTML result; no family guides loaded. Andino invocation not observed, so no full-workflow compliance claim.",
+  "staging": {
+    "bundles": 7,
+    "output": "build/threejs-single-family-v2-release-stage",
+    "result": "PASS"
+  },
+  "limits": [
+    "No current standalone executable was rebuilt/tagged/published; previous standalone-package build evidence does not verify this revision.",
+    "No renderer/browser execution, paid services, credential actions or cross-host behavioral proof.",
+    "Old separately installed directories and edits remain preserved; no automatic cleanup."
+  ],
+  "failed_fixture_attempt": "First disposable bare source fixture lacked focus/search-first heads; corrected fixture refs and used a fresh directory. This was not a production installer defect.",
+  "post_run_integrity": "PASS: all fixture input files and all four complete installed packages remained byte/content-identical after all actors",
+  "publication": {
+    "authorization": "Existing explicit push instruction for this integration; subsequent correction is within the same task",
+    "threejs-skills": "f47d7c03a309703d6804b9e8e4787d54cbbdb53f",
+    "andino-workflow": "f531269775aafa8b162b4ec65dd919b37a208ffe",
+    "verification": "Both remote heads matched ls-remote after normal pushes; main metadata/test/evidence commit is pushed last",
+    "tagged_installer_release": "NOT_CREATED"
+  },
+  "local_cli": {
+    "update": "python -m pip install --upgrade --no-deps --no-build-isolation .",
+    "result": "SUCCESS",
+    "menu_options": 7,
+    "family_option_count": 1,
+    "old_global_specialist_directories": "No existing Three.js/NixieFX directories found in the5 known host skill roots; none modified"
+  },
+  "public_latest_cli_dry_run": {
+    "exit": 0,
+    "targets": 1,
+    "family": "threejs-skills",
+    "source": "actual public GitHub branch",
+    "installed_cli_capabilities": 7,
+    "installation_performed": false
+  }
+}

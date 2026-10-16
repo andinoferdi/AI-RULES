@@ -1,4 +1,4 @@
-"""Copy the supplied collection into a runtime worktree; never edit the input."""
+"""Copy the supplied collection into one runtime family; never edit the input."""
 
 import argparse
 import hashlib
@@ -102,7 +102,7 @@ def prepare(source, destination, inventory_path):
     if any(destination.iterdir()):
         # A managed worktree has a .git administrative pointer.
         if any(p.name != '.git' for p in destination.iterdir()):
-            raise ValueError('destination must be an empty runtime worktree')
+            raise ValueError('destination must be an empty runtime directory')
     candidates = sorted(source.glob('*/SKILL.md'))
     if len(candidates) != len(list(source.rglob('SKILL.md'))):
         raise ValueError('nested skill requires explicit inventory review')
@@ -319,7 +319,7 @@ not independent verification of every resource origin. See main's provenance rec
                               and path.relative_to(target).as_posix() not in originals]
     inventory_path.parent.mkdir(parents=True, exist_ok=True)
     inventory_path.write_text(json.dumps(inventory, indent=2) + '\n', encoding='utf-8')
-    print(f'Prepared {len(candidates)} packages; source unchanged; inventory {inventory_path}')
+    print(f'Prepared one family with {len(candidates)} internal methods; source unchanged; inventory {inventory_path}')
 
 
 if __name__ == '__main__':

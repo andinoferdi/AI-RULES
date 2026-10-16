@@ -7,7 +7,7 @@
     "andino-workflow": {
       "branch": "andino-workflow",
       "ref": "origin/andino-workflow",
-      "commit": "06aca9e0bb6de169a46261bd37cb96bfde9b0210",
+      "commit": "f531269775aafa8b162b4ec65dd919b37a208ffe",
       "release_sequence": 12,
       "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
@@ -44,9 +44,9 @@
     "threejs-skills": {
       "branch": "threejs-skills",
       "ref": "origin/threejs-skills",
-      "commit": "207d09dbed6521a9071d5a9a1757bd8d6aeb1d33",
+      "commit": "f47d7c03a309703d6804b9e8e4787d54cbbdb53f",
       "release_sequence": 12,
-      "publication_status": "LOCAL_SINGLE_FAMILY_REVISION_PENDING"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     }
   },
   "publication_order": [
@@ -55,5 +55,5 @@
     "main",
     "tagged installer release"
   ],
-  "publication_status": "LOCAL_SINGLE_FAMILY_REVISION_PENDING"
+  "publication_status": "RUNTIME_REFS_PUBLISHED_INSTALLER_RELEASE_PENDING"
 }

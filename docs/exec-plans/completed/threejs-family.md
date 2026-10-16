@@ -1,21 +1,20 @@
 # Three.js family integration
 
-Status: ACTIVE (single installed family requested)
+Status: DONE (single installed family verified)
 Depth: STANDARD
-CURRENT PHASE: Single-family packaging correction
+CURRENT PHASE: Single-family correction complete
 
 ## Executive Snapshot / CURRENT STATE
 
-Local implementation is verified on main, threejs-skills and andino-workflow.
-Runtime head 207d09d (README attestation only; specialists remain a41a0a1), Andino
-06aca9e, and main integration 2fe7c3b plus this continuation delivery are local.
-All 714 source files remain unchanged. 45 members + index form 46 packages;
-the threejs profile installs 49. New Windows executable verifies both isolated scopes
-without Git, repeated NO_OP. Nine bounded static Codex scenarios are observed,
-including seven additional manually reviewed real-package actors. No rendering,
-OS-level deny, other-host parity or remote publication claim follows. See
-`docs/threejs/README.md`, `evidence.json` and `routing-records/`.
-
+The latest accepted requirement supersedes the previous standalone distribution.
+Custom now offers one Three.js Skills capability; it installs one family directory
+with45 internal GUIDE.md methods and one native SKILL.md. The profile installs4
+including Andino/Focus/Search First. All714 original inputs remain unchanged.
+Runtimef47d7c0 and Andinof531269 are published/verified. Main's corrective changes
+are prepared for the final normal push. Full suite195:194 pass,1 optional skip;
+actual latest/bundled project/global installs and repeat NO_OP pass. Codex discovers
+one family and applies automatic, explicitly named and combined internal methods.
+Other hosts/rendering remain NOT_VERIFIED. See single-family-evidence.json.
 
 
 ## Objective
@@ -160,3 +159,39 @@ EVIDENCE: Current catalog has46 family capabilities, entrypoint subpath contains
 only index files. Root supports full resources but duplicates native SKILL names.
 NEXT ACTION: Fail new menu/profile/whole-package tests, update runtime and Andino,
 then main catalog/validator/generator/tests; verify installation and live selection.
+
+- Correction evidence: three new acceptance tests failed before changes and now pass.
+  Full suite195:194 passed,1 optional Search First candidate skipped. Root family
+  and all45 internal guides pass metadata/path/link/binary/source-hash validation.
+  Andino runtime hash a16147bb4eb1cd15738ac913d09b90410cbe560ec628c1a866f42b11a92404e7.
+- Checked branch switches (no new worktrees) produced runtimef47d7c0 and Andinof531269.
+  Release staging now exports7 bundles, not52. Codex skills/list sees exactly one
+  enabled Three.js entrypoint and no internal native skills/errors.
+- NEXT ACTION: complete four real-package Codex behavior actors, review observed
+  guide reads/results, finalize current evidence, publish revisions in dependency
+  order under the existing push authorization and refresh the local Python CLI.
+
+- All four actual-package latest/bundled project/global installs have4 targets,
+  45 internal guides and one family SKILL.md; all repeats NO_OP. All actor inputs
+  and complete packages are unchanged after execution.
+- Three positive Codex cases independently observed family invocation and required
+  internal guide application: automatic shader, explicitly named lighting, shader
+  plus lighting. Negative HTML loaded no guide; Andino invocation not observed there,
+  so only domain exclusion is established. Rendering/other hosts NOT_VERIFIED.
+- Runtime and Andino commit diffs pass whitespace checks; release staging has7
+  bundles. Full suite195 passed194 and skipped1 optional fixture. Current records
+  validate against Andino a16147bb content hash. No new worktree or global skill
+  installation. Next: publish branch revisions normally, reconcile manifest status,
+  update main and local CLI; verify one-option selection and remote latest plan.
+
+- Final state: existing push authorization used for corrected runtimef47d7c0 and
+  Andinof531269; remote SHA verification passes. Installed Python CLI now has7
+  menu options, one family choice and4 profile targets. Original source and all
+  global skill/configuration files remain unchanged; no attached worktrees.
+- NEXT ACTION: verify the final main push and report its hash; user can cancel the
+  already-running old wizard and start ai-rules setup again. No installer tag/release
+  or global skill installation was requested/performed by this correction.
+
+- Installed CLI verified against actual published GitHub source: latest dry-run
+  exits0 and plans exactly one threejs-skills target. No real user skill target
+  was installed by this check. Final main commit/push follows whitespace review.
