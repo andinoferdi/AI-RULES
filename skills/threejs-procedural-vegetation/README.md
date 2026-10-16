@@ -2,48 +2,15 @@
 
 Generate authored procedural trees, grass, ivy, flowers, and vegetation in Three.js or raw WebGPU. Use for surface-following vines, painted ivy paths, stylized or GPU grass, GPU-culled virtual flower fields, trunks, recursive branches, roots, canopies, leaf cards, species presets, deterministic growth, distance-tiered plant geometry, and rooted blade, stem, or petiole-hinge wind.
 
-## Use and boundaries
-
-Read [SKILL.md](SKILL.md) for domain triggers, methods, evidence and exclusions.
-This specialist can work alone. With Andino active, return results to its single
-plan; Focus controls communication and Search First handles relevant research.
-Sibling suggestions are optional, selected by need and host invocation permission.
-
-## Installation and discovery
-
-After the runtime and installer are published:
+This is an internal method bundled in `threejs-skills`, not an individual installer
+choice or native skill. Read [GUIDE.md](GUIDE.md) for the method; its supporting
+resources remain relative to this directory. Install the complete family:
 
 ```sh
-ai-rules setup --host codex --capability threejs-procedural-vegetation --scope project --project-root . --source latest
-ai-rules setup --host codex --profile threejs --scope project --project-root . --source latest
+ai-rules setup --host codex --capability threejs-skills --scope project --project-root . --source latest
 ```
 
-Pass `--project-root PATH` for project scope; it is required by the CLI.
-Global scope uses `--scope global`. Codex project/global roots are `.agents/skills`;
-Claude Code uses `.claude/skills`; OpenCode uses `.agents/skills` for projects and
-`~/.config/opencode/skills` globally. Antigravity CLI and IDE use the catalog's
-separate roots. These are installer mappings; live execution on each host is
-NOT_VERIFIED. Refresh/restart discovery as required by the host. Invoke this exact
-name through its permitted mechanism; installation does not prove activation.
-
-## Package and dependencies
-
-Install the whole directory with SKILL.md directly at its root. Preserve all
-included references, scripts, examples, agent metadata, assets and license notices.
-The skill body describes version-sensitive tools, render backends and optional
-services. Installing this package installs no npm dependencies or credentials and
-does not authorize paid API calls. No blanket license is inferred from local files.
-
-## Update, conflicts and verification
-
-Use `ai-rules update` with the same host, scope, capability and source selection.
-Review modified or unrecognized directories before explicit repair; preserve user
-edits and backups. Bundled releases pin commit and subpath; latest resolves the
-branch at setup. Do not install a second discoverable copy as a workaround.
-Run the main package validator, then an applicable domain behavior check. Positive
-smoke: invoke this skill for its stated domain, observe a relevant action and
-evidence. Negative smoke: ordinary unrelated frontend work must not select it;
-missing/denied siblings require a truthful fallback. File presence alone proves
-neither invocation nor rendering quality.
-
-[Family quality contract](https://github.com/andinoferdi/AI-RULES/blob/main/docs/agent-skill-family-standard.md)
+Use "threejs-skills, specifically threejs-procedural-vegetation" or let the family select by need.
+With Andino, return evidence/results to its single task context. Preserve supplied
+notices, observe project versions, and get task authorization for paid services.
+Update the family through the existing CLI; modified/unmanaged targets are preserved.
