@@ -100,14 +100,20 @@ forbidden and reviewer decisions hidden. Transport smoke tests and self-reported
 selection are insufficient to prove autonomous just-in-time routing. Cross-host
 use remains NOT_VERIFIED until actually executed on each claimed host.
 
-## Three.js packages
+## Three.js family and bundled methods
 
-Resolve individual Three.js/NixieFX specialists by their exact installed names.
-A family branch or subdirectory found during an inventory is only DISCOVERED;
-it is not a host installation or invocation. Read only the selected package's
-SKILL.md through the host's permitted mechanism after AVAILABLE and INVOKABLE
-are established. Never bypass explicit-only/deny controls with a repository copy.
-Record ACTIVE load evidence, then USED only after an identifiable domain action.
-A missing/denied package is UNAVAILABLE; an irrelevant installed package is
-NOT_NEEDED. Reassess availability and current need after scope changes or resume.
-The family index and domain advisor do not invoke each other in a bootstrap loop.
+Resolve `threejs-skills` as one installed native skill and invoke it using this
+host's actual mechanism. An inventory/source directory is only DISCOVERED, not
+an installation or invocation. Once the family is AVAILABLE and INVOKABLE, load
+its root SKILL.md and only selected `skills/<method-id>/GUIDE.md` resources through
+permitted resource reads. The methods are internal documents, not separately
+registered native skills. A guide read proves method activation; USED also needs
+meaningful application/evidence. Family invocation does not imply all45 methods
+are active, nor does an absent `$threejs-shaders` registration make its bundled
+guide unavailable. Honor explicit relevant method names in the prompt.
+
+No alternate-source fallback for a denied family or guide; report UNAVAILABLE
+and use sufficient native/project reasoning without claiming restricted method
+use. Missing guide content likewise stays unavailable. Reassess selection on
+changed needs/resume and retain Andino's one plan. This contract creates no new
+host tool, install permission, router loop or second lifecycle.

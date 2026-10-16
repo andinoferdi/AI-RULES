@@ -1,10 +1,12 @@
 # Andino Workflow
 
-For actual Three.js or NixieFX domain work, select only relevant installed
-[specialists](references/threejs-specialists.md) through the host invocation
-contract. `ai-rules setup --host codex --profile threejs --scope project --project-root .` installs
-the collection after publication; installation does not activate it. Andino keeps
-one lifecycle, Focus communication and Search First relevant research.
+For actual Three.js or NixieFX work invoke the single `threejs-skills` family
+through the host contract, then load only relevant [internal methods](references/threejs-specialists.md).
+Say "use andino-workflow and threejs-skills" for prompt-based selection, or name a
+method such as "threejs-skills, specifically threejs-shaders". The existing
+`threejs` profile installs four directories: family, Andino, Focus and Search First.
+The family contains all45 methods; individual native registration is unnecessary.
+Andino keeps one lifecycle and checkpoint. Installation does not activate methods.
 
 An adaptive problem-solving protocol for AI agents. It matches the depth of investigation to the task, separates your goal from a suspected cause, and asks only about decisions the available context cannot settle. It covers development, troubleshooting, research, decisions, daily tasks, and conversation.
 

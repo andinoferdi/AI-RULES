@@ -1123,14 +1123,14 @@ Contracts use inspected installed skill IDs and actual host tool metadata. Upstr
 
 - Type: skill
 - Family/provider: AI-RULES Three.js family; user-supplied domain collection, no blanket upstream endorsement
-- Aliases: none; individual installed names are authoritative
+- Aliases: none; internal method IDs identify bundled guides, not native skill aliases
 - Primary purpose: On-demand domain methods for Three.js scenes, rendering, games and NixieFX effects
 - Trigger: A current unresolved domain need matching one of the actual specialists
 - Preferred when: Scene/shader/light/material/geometry/animation/interaction or particle expertise materially helps
 - Avoid when: Ordinary frontend work, inventory-only mentions, unknown-cause diagnosis before debugging, or no matching need
-- Availability check: Resolve the exact selected installed ID, path, provenance and invocation controls from the current host catalog
-- Invocation method: Use the current host contract for each selected specialist; the family index need not be loaded to invoke a known individual
-- First-call/preflight: Read threejs-specialists.md only for selection uncertainty; inspect project versions and load the permitted actual skill before applying methods
+- Availability check: Resolve installed threejs-skills, path, provenance and host controls; verify selected bundled guides and resource permissions
+- Invocation method: Invoke threejs-skills through the native host contract, then read only selected skills/<method-id>/GUIDE.md resources; explicit method names are supported
+- First-call/preflight: Load the family SKILL.md, inspect actual project versions, and load the minimum relevant authorized guides; never all methods automatically
 - Fallback: Missing or denied specialists are UNAVAILABLE; use sufficient native/project methods and record the limit without claiming skill use
 - Coexistence/conflicts: Andino owns lifecycle and one plan; Focus communication; Search First relevant research; domain router and game director recommend within that owner
 - Mutation/permission boundary: No implicit installs, paid API calls, delegation, publication or permission bypass

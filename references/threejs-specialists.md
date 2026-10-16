@@ -1,8 +1,14 @@
 # Three.js specialist selection
 
 This is on-demand selection metadata, not activation or another router.
-Use only for an evidenced Three.js/NixieFX need. Known narrow requests can select
-the matching individual directly without loading the family index or advisor.
+Use only for an evidenced Three.js/NixieFX need. Resolve and invoke the installed
+`threejs-skills` family through the host contract. It is one native skill containing
+45 internal methods, not 45 native registrations. Its root SKILL.md selects a
+minimum method set from the prompt or an explicitly requested method ID.
+Load only selected `skills/<method-id>/GUIDE.md` resources relative to that installed
+family, through authorized reads after family invocation. These table IDs identify
+bundled methods; they do not require `$threejs-shaders` native registration. The
+family method index covers all45. Do not start another router or lifecycle.
 
 | Current need | Candidate |
 | --- | --- |
@@ -64,13 +70,15 @@ project constraints, host invocation controls and Andino's single lifecycle.
 Unknown-cause failures start with `systematic-debugging`. Add a domain specialist
 only after evidence identifies the needed domain. Ordinary frontend requests do
 not select these skills. The minimum set can change when requirements change;
-release irrelevant methods and activate newly selected ones through the actual
-host mechanism. Do not load all members for a broad request or profile install.
+release irrelevant methods and load newly selected permitted guides within the
+already invoked family. Do not load all members for a broad request or install.
 
-Resolve DISCOVERED -> AVAILABLE -> INVOKABLE -> ACTIVE -> USED with evidence per
+Resolve the family DISCOVERED -> AVAILABLE -> INVOKABLE -> ACTIVE -> USED with evidence per
 [host contract](invocation-adapter.md). Missing, denied or explicit-only methods
 are not bypassed through source-file reads; report UNAVAILABLE and a sufficient
-native fallback. An available irrelevant method is NOT_NEEDED. Search First owns
+native fallback. Also check any method/resource restriction; family invocation
+never overrides one. Record guide loading separately from native family invocation.
+An available irrelevant method is NOT_NEEDED. Search First owns
 relevant library/version/alternative research; Focus owns communication.
 
 Specialists return domain methods/results, evidence, limits and recommendations
