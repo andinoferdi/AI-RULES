@@ -7,6 +7,7 @@ from pathlib import Path
 
 from ai_rules.domain.errors import ValidationError
 from ai_rules.domain.models import Capability, Host
+from ai_rules.release.bundles import validate_subpath
 
 
 @dataclass(frozen=True)
@@ -62,6 +63,7 @@ def _index(kind: str, values):
 
 def _validate_references(capabilities: dict[str, Capability]) -> None:
     for capability in capabilities.values():
+        validate_subpath(capability.source.get("subpath"))
         for dependency in (*capability.requires, *capability.recommends):
             if dependency not in capabilities:
                 raise ValidationError(f"{capability.id} references missing capability {dependency}")

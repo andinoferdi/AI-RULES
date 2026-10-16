@@ -212,6 +212,15 @@ def cmd_remove(args: argparse.Namespace) -> int:
                 print(f"{capability_id} -> {host_id}: PREVIEW REMOVE {record.get('path', '')}")
                 continue
             path = Path(record["path"]) if record.get("path") else (root / capability_id if root else None)
+            expected = root / capability_id if root else None
+            if (path is None or expected is None or path.absolute() != expected.absolute()
+                    or path.is_symlink() or getattr(path, 'is_junction', lambda: False)()):
+                print(f'{capability_id} -> {host_id}: BLOCKED target path changed; preserved')
+                continue
+            baseline = _record_files(record)
+            if path.exists() and (baseline is None or contents(path) != baseline):
+                print(f'{capability_id} -> {host_id}: BLOCKED local changes or unverified legacy content are preserved before removal')
+                continue
             if path is not None and path.exists():
                 import shutil
                 shutil.rmtree(path)
@@ -349,6 +358,21 @@ def _resolve_from_args(args: argparse.Namespace):
         if not getattr(args, "_latest", None):
             args._latest = LatestSources(catalog, [target.capability_id for target in plan.targets if target.strategy_id])
         plan = args._latest.reconcile(plan, catalog, args)
+    else:
+        records = _managed_installation_records(args.state_dir)
+        adapters = build_host_adapters(catalog.hosts)
+        targets = []
+        for target in plan.targets:
+            record = records.get(_installation_key(target.capability_id, target.host_id, target.scope))
+            root = adapters[target.host_id].skill_target(target.scope, args.project_root)
+            if (record and _record_files(record) is None and root is not None
+                    and (root / target.capability_id).exists()
+                    and catalog.require_capability(target.capability_id).ownership.value == 'FIRST_PARTY'
+                    and target.action in {ReconciliationAction.UPDATE, ReconciliationAction.REPAIR}):
+                target = replace(target, action=ReconciliationAction.BLOCK, status=TargetStatus.BLOCKED,
+                                 reason='Legacy installation has no file fingerprints; review before explicit repair', operations=())
+            targets.append(target)
+        plan = replace(plan, targets=tuple(targets))
     return reconcile_invocations(plan, catalog, build_host_adapters(catalog.hosts), args.project_root)
 
 
@@ -394,8 +418,9 @@ def _executor_for_plan(plan, args: argparse.Namespace) -> Executor:
             continue
         bundle = packaged_bundle(capability.id)
         if bundle is None:
-            bundle = args.state_dir / "bundles" / capability.id
-            export_git_ref(release["commit"], bundle, repo_root=Path.cwd())
+            bundle = args.state_dir / "bundles" / release["commit"] / capability.id
+            export_git_ref(release["commit"], bundle, repo_root=Path.cwd(),
+                           subpath=release.get("subpath"))
         bundles[capability.id] = bundle
     return Executor(args.state_dir, first_party_bundles=bundles, host_skill_roots=roots, invocation_installers=registrations)
 
@@ -440,12 +465,15 @@ def _actual_state(
                     healthy=(target / "SKILL.md").is_file(),
                 )
                 continue
+            baseline = _record_files(record)
+            current = contents(target) if baseline is not None else {}
+            modified = baseline is not None and any(baseline.get(name) != value for name, value in current.items())
             result[(capability_id, host_id, scope.value)] = ActualState(
                 exists=True,
-                ownership=InstalledOwnership.MANAGED_BY_AI_RULES,
+                ownership=InstalledOwnership.CONFLICTING if modified else InstalledOwnership.MANAGED_BY_AI_RULES,
                 installed_version=record.get("version"),
                 healthy=(target / "SKILL.md").is_file(),
-                artifact_drift=not (target / "SKILL.md").is_file(),
+                artifact_drift=not (target / "SKILL.md").is_file() or (baseline is not None and current != baseline),
             )
     return result
 
@@ -477,7 +505,15 @@ def _record_managed_installations(plan, result, args: argparse.Namespace) -> Non
                 records[key]["source"] = {"repository": latest.entries[target.capability_id][1],
                                            "branch": latest.entries[target.capability_id][2],
                                            "commit": latest.entries[target.capability_id][3]}
+                if subpath := latest.subpaths[target.capability_id]:
+                    records[key]['source']['subpath'] = subpath
                 records[key]["files"] = contents((root / target.capability_id).resolve())
+            elif release := _release_manifest().get('first_party', {}).get(target.capability_id):
+                records[key]['source'] = {key: release[key] for key in ('branch', 'commit', 'subpath') if key in release}
+                records[key]['files'] = contents((root / target.capability_id).resolve())
+            if isinstance(records[key].get('files'), dict):
+                records[key]['files'] = [{'path': path, 'blob': blob}
+                                         for path, blob in records[key]['files'].items()]
         else:
             records[key] = {
                 "capability": target.capability_id,
@@ -488,6 +524,13 @@ def _record_managed_installations(plan, result, args: argparse.Namespace) -> Non
                 "target": next((operation.target for operation in target.operations), target.strategy_id),
             }
     atomic_write_json(args.state_dir / "managed-installations.json", {"schema_version": 1, "installations": records})
+
+
+def _record_files(record):
+    files = record.get('files')
+    if files is None or isinstance(files, dict):
+        return files
+    return {entry['path']: entry['blob'] for entry in files}
 
 
 def _managed_installation_records(state_dir: Path) -> dict[str, dict]:

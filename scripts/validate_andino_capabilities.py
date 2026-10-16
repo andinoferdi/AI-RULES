@@ -14,6 +14,7 @@ AGENT_SKILLS.update(('idea-refine', 'interview-me'))
 OTHER_SKILLS = set('focus search-first council ponytail claude-mem impeccable design-taste-frontend clone-website graphify antislop antislop-ui antislop-copywriting antislop-human antislop-layoutmobile antislop-code'.split())
 MCPS = set('context7 playwright-mcp chrome-devtools git-mcp drawio-mcp staruml-mcp premiere-pro-mcp cheatengine-mcp'.split())
 CAPABILITIES = SUPERPOWERS | AGENT_SKILLS | OTHER_SKILLS | MCPS | {'native-capabilities'}
+OPTIONAL_CAPABILITIES = {'threejs-skills'}
 REQUIRED_CASES = set('debugging-superpowers-route no-full-superpowers-bootstrap agent-skills-no-double-router duplicate-tdd-provider ponytail-needed ponytail-not-needed claude-mem-history graphify-impact graphify-not-needed ui-ux-route taste-route ui-taste-coexistence clone-fidelity antislop-ui antislop-copy context7-version playwright-route devtools-route playwright-devtools-coexistence git-native-preferred git-mcp-fallback drawio-diagram staruml-model diagram-tool-choice premiere-preflight premiere-howto-no-mutation cheatengine-read-first cheatengine-permission unavailable-capability capability-rerouting capability-stop simple-task-zero-capability'.split())
 ADDITIONAL_CASES = {'idea-refine-route', 'interview-material-only'}
 SEARCH_FIRST_CASES = set('search-first-feature search-first-existing search-first-trivial search-first-sdk search-first-alternatives search-first-unknown-bug search-first-offline search-first-permission search-first-standalone search-first-andino'.split())
@@ -45,7 +46,7 @@ def validate_registry(text):
             errors.append(f'{identity}: expected type {expected_type}')
         if fields.get('Activation policy') not in ('AUTO', 'CONDITIONAL_AUTO', 'PERMISSION_GATED'):
             errors.append(f'{identity}: invalid activation policy')
-        if identity not in CAPABILITIES:
+        if identity not in CAPABILITIES | OPTIONAL_CAPABILITIES:
             errors.append(f'{identity}: unrecognized registry ID; extend coverage deliberately')
     errors.extend(f'{identity}: missing contract' for identity in sorted(CAPABILITIES-seen))
     return errors

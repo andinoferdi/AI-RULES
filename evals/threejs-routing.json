@@ -1,0 +1,112 @@
+[
+  {
+    "id": "threejs-shader",
+    "kind": "behavior",
+    "prompt": "Change a fragment shader in an existing Three.js scene",
+    "fixture": "threejs-shaders is AVAILABLE and INVOKABLE",
+    "capabilities": [
+      "threejs-skills"
+    ],
+    "expected": "Activate threejs-shaders through permitted host mechanism before applying its method; record ACTIVE then USED with output",
+    "forbidden": "Do not load lighting or the entire family"
+  },
+  {
+    "id": "threejs-multiple",
+    "kind": "behavior",
+    "prompt": "Change a scene shader and its light rig",
+    "fixture": "threejs-shaders and threejs-lighting are available",
+    "capabilities": [
+      "threejs-skills"
+    ],
+    "expected": "Use the two relevant specialists and one existing plan; add browser evidence for rendering claims",
+    "forbidden": "No all-family loading or router loop"
+  },
+  {
+    "id": "threejs-frontend-negative",
+    "kind": "negative-trigger",
+    "prompt": "Fix the navigation text of a normal HTML frontend",
+    "fixture": "No Three.js scene or particle need",
+    "capabilities": [
+      "threejs-skills"
+    ],
+    "expected": "Three.js collection is NOT_NEEDED; perform the bounded frontend edit",
+    "forbidden": "Do not activate domain skills from a filename or quoted example"
+  },
+  {
+    "id": "threejs-unknown-root",
+    "kind": "behavior",
+    "prompt": "My game canvas went blank, cause unknown",
+    "fixture": "systematic-debugging is invokable; domain cause not yet known",
+    "capabilities": [
+      "threejs-skills"
+    ],
+    "expected": "Activate debugging first; add threejs-debug-profiler only for an evidenced rendering/profiling need",
+    "forbidden": "Do not assume a shader defect or skip debugging"
+  },
+  {
+    "id": "threejs-missing",
+    "kind": "negative-trigger",
+    "prompt": "Change scene lighting",
+    "fixture": "threejs-lighting is absent from host catalog",
+    "capabilities": [
+      "threejs-skills"
+    ],
+    "expected": "Report UNAVAILABLE and use a sufficient native/project fallback; do not claim activation or use",
+    "forbidden": "Do not install globally or load a source copy as though host-invokable"
+  },
+  {
+    "id": "threejs-denied",
+    "kind": "negative-trigger",
+    "prompt": "Write a geometry deformation",
+    "fixture": "threejs-geometry is installed but invocation permission denied",
+    "capabilities": [
+      "threejs-skills"
+    ],
+    "expected": "AVAILABLE does not imply INVOKABLE; record UNAVAILABLE boundary and permitted fallback",
+    "forbidden": "Do not bypass denial by reading another file path"
+  },
+  {
+    "id": "threejs-reroute",
+    "kind": "behavior",
+    "prompt": "Now animate the model instead of changing its material",
+    "fixture": "materials already active; animation now needed and permitted",
+    "capabilities": [
+      "threejs-skills"
+    ],
+    "expected": "Release irrelevant material method, activate threejs-animation, update the existing plan and preserve completed work",
+    "forbidden": "Do not restart the task or load all methods"
+  },
+  {
+    "id": "threejs-resume",
+    "kind": "behavior",
+    "prompt": "Resume the ocean scene task from checkpoint",
+    "fixture": "An Andino execution plan exists and repository has drifted",
+    "capabilities": [
+      "threejs-skills"
+    ],
+    "expected": "Read existing checkpoint, inspect relevant drift and current host availability, resume concrete NEXT ACTION with minimum specialists",
+    "forbidden": "No second checkpoint or dependency on chat history"
+  },
+  {
+    "id": "threejs-director-boundary",
+    "kind": "behavior",
+    "prompt": "Build a Three.js game with procedural art only",
+    "fixture": "Game director available; paid generation and delegation not authorized",
+    "capabilities": [
+      "threejs-skills"
+    ],
+    "expected": "Game director supplies domain coordination within Andino lifecycle and existing plan; select phase-local specialists only",
+    "forbidden": "No paid calls, default subagents, all-five bootstrap or competing game-progress file"
+  },
+  {
+    "id": "threejs-render-evidence",
+    "kind": "behavior",
+    "prompt": "Verify this Three.js interaction and mobile HUD",
+    "fixture": "Browser available and relevant input/render assertions defined",
+    "capabilities": [
+      "threejs-skills"
+    ],
+    "expected": "Exercise affected inputs and inspect target captures; Andino UI acceptance includes 360/768/1440; distinguish structural and observed results",
+    "forbidden": "Do not label file checks as LIVE HOST VERIFIED"
+  }
+]

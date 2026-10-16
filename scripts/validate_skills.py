@@ -5,6 +5,7 @@ import json
 import re
 import subprocess
 import sys
+import gzip
 from pathlib import Path, PurePosixPath
 from urllib.parse import unquote
 
@@ -15,6 +16,33 @@ EVAL_SKILLS = RUNTIME_SKILLS
 LINK = re.compile(r"(?<!!)\[[^]]*\]\(([^)]+)\)")
 FIELD = re.compile(r"^([A-Za-z][A-Za-z0-9_-]*):[ \t]+(.+)$")
 NAME = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
+THREEJS_SKILLS = frozenset(item['id'] for item in json.loads(
+    (ROOT / 'src/ai_rules/catalog/data/capabilities.json').read_text(encoding='utf-8'))['capabilities']
+    if item.get('source', {}).get('branch') == 'threejs-skills')
+BINARY_SUFFIXES = {'.png', '.jpg', '.webp', '.bin', '.exr', '.glb', '.wasm', '.gz'}
+THREEJS_SUFFIXES = BINARY_SUFFIXES | {'.md', '.ts', '.js', '.mjs', '.py', '.sh', '.json',
+    '.yaml', '.txt', '.glsl', '.wgsl', '.frag', '.vert', '.html', '.css'}
+
+
+def binary_error(name, data):
+    suffix = PurePosixPath(name).suffix.lower()
+    signatures = {'.png': b'\x89PNG\r\n\x1a\n', '.jpg': b'\xff\xd8\xff',
+                  '.exr': b'\x76\x2f\x31\x01', '.wasm': b'\x00asm\x01\x00\x00\x00',
+                  '.glb': b'glTF\x02\x00\x00\x00', '.gz': b'\x1f\x8b'}
+    if not data:
+        return 'empty binary resource'
+    if suffix in signatures and not data.startswith(signatures[suffix]):
+        return 'invalid binary signature'
+    if suffix == '.glb' and (len(data) < 12 or int.from_bytes(data[8:12], 'little') != len(data)):
+        return 'invalid GLB length'
+    if suffix == '.webp' and (data[:4] != b'RIFF' or data[8:12] != b'WEBP'):
+        return 'invalid WebP signature'
+    if suffix == '.gz':
+        try:
+            gzip.decompress(data)
+        except (OSError, EOFError):
+            return 'invalid gzip data'
+    return None
 
 
 def git(*args):
@@ -29,6 +57,20 @@ def git(*args):
 
 def package_files(files, expected_name, modes=None):
     errors = []
+    threejs = expected_name in THREEJS_SKILLS
+    files = dict(files)
+    for name, content in files.items():
+        if PurePosixPath(name).suffix.lower() in BINARY_SUFFIXES:
+            if not isinstance(content, bytes):
+                errors.append(f'{expected_name}:{name}: binary resource must be bytes')
+            elif problem := binary_error(name, content):
+                errors.append(f'{expected_name}:{name}: {problem}')
+        elif isinstance(content, bytes):
+            try:
+                files[name] = content.decode('utf-8').replace('\r\n', '\n')
+            except UnicodeDecodeError:
+                errors.append(f'{expected_name}:{name}: invalid UTF-8 text')
+                files[name] = ''
     if "README.md" not in files:
         errors.append(f"{expected_name}: missing README.md")
     for name in files:
@@ -41,6 +83,16 @@ def package_files(files, expected_name, modes=None):
             expected_name == "skripsi-skill"
             and name.startswith("assets/") and name.endswith(".md")
         ))
+        if threejs:
+            scaffold_ignore = name == 'assets/threejs-vite-game/.gitignore'
+            safe = '\\' not in name and ':' not in name and all(
+                part and not part.startswith('.') and not part.endswith((' ', '.'))
+                and not re.match(r'^(?:CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(?:\.|$)', part, re.I)
+                for part in name.split('/'))
+            allowed = allowed or scaffold_ignore or (safe and (
+                name == 'agents/openai.yaml' or
+                (name.startswith(('references/', 'assets/', 'scripts/', 'examples/'))
+                 and PurePosixPath(name).suffix.lower() in THREEJS_SUFFIXES)))
         if not allowed:
             errors.append(f"{expected_name}: unexpected runtime file: {name}")
         if modes and modes.get(name, "100644") not in ("100644", "100755"):
@@ -83,9 +135,13 @@ def package_files(files, expected_name, modes=None):
     for name, content in files.items():
         if not name.endswith(".md"):
             continue
-        for raw in LINK.findall(content):
+        links = re.findall(r'!?\[[^]]*\]\(([^)]+)\)', content) if threejs else LINK.findall(content)
+        for raw in links:
             target = unquote(raw.split("#", 1)[0].strip().split(" ", 1)[0])
-            if not target or re.match(r"^[a-z][a-z0-9+.-]*:", target, re.I) or target.startswith("/"):
+            if not target or re.match(r"^[a-z][a-z0-9+.-]*:", target, re.I):
+                continue
+            if target.startswith('/') or '\\' in target:
+                errors.append(f'{expected_name}:{name}: unsafe link: {raw}')
                 continue
             resolved = PurePosixPath(name).parent.joinpath(target)
             parts = []
@@ -142,7 +198,12 @@ def directory_files(root):
             elif path.is_dir():
                 visit(path)
             elif path.is_file():
-                files[name], modes[name] = path.read_text(encoding="utf-8"), "100644"
+                data = path.read_bytes()
+                try:
+                    content = data if path.suffix.lower() in BINARY_SUFFIXES else data.decode('utf-8').replace('\r\n', '\n')
+                except UnicodeDecodeError:
+                    content = data
+                files[name], modes[name] = content, "100644"
             else:
                 files[name], modes[name] = "", "unsupported"
     visit(root)
@@ -156,8 +217,14 @@ def ref_files(ref):
             metadata, name = entry.split("\t", 1)
             modes[name] = metadata.split()[0]
     # Never follow runtime symlinks or treat submodules as installed resources.
-    files = {name: git("show", f"{ref}:{name}") if mode in ("100644", "100755") else ""
-             for name, mode in modes.items()}
+    files = {}
+    for name, mode in modes.items():
+        if mode not in ('100644', '100755'):
+            files[name] = ''
+        elif PurePosixPath(name).suffix.lower() in BINARY_SUFFIXES:
+            files[name] = subprocess.check_output(['git', 'show', f'{ref}:{name}'], cwd=ROOT)
+        else:
+            files[name] = git('show', f'{ref}:{name}')
     return files, modes
 
 
@@ -209,8 +276,30 @@ def main():
     parser.add_argument("--council-ref", default="origin/council")
     parser.add_argument("--search-first-ref", default="origin/search-first")
     parser.add_argument("--search-first-dir", type=Path, help="validate an uncommitted Search First package instead of --search-first-ref")
+    parser.add_argument('--threejs-ref', help='opt-in local/fetched Three.js runtime ref')
+    parser.add_argument('--threejs-dir', type=Path, help='opt-in Three.js runtime worktree')
     args = parser.parse_args()
     errors = []
+    if args.threejs_ref or args.threejs_dir:
+        try:
+            all_files, all_modes = directory_files(args.threejs_dir) if args.threejs_dir else ref_files(args.threejs_ref)
+            expected = {'threejs-skills': 'entrypoint/'}
+            expected.update({name: f'skills/{name}/' for name in THREEJS_SKILLS if name != 'threejs-skills'})
+            discovered = {name for name in all_files if name.endswith('/SKILL.md')}
+            wanted = {prefix + 'SKILL.md' for prefix in expected.values()}
+            if discovered != wanted:
+                errors.append(f'Three.js package set mismatch: missing {sorted(wanted-discovered)}, unexpected {sorted(discovered-wanted)}')
+            for name, prefix in expected.items():
+                files = {p[len(prefix):]: value for p, value in all_files.items() if p.startswith(prefix)}
+                modes = {p[len(prefix):]: value for p, value in all_modes.items() if p.startswith(prefix)}
+                errors.extend(package_files(files, name, modes))
+            root_files = {p: value for p, value in all_files.items() if not p.startswith(('entrypoint/', 'skills/'))}
+            errors.extend(package_files(root_files, 'threejs-skills', all_modes))
+            for name in ('SKILL.md', 'README.md'):
+                if root_files.get(name) != all_files.get('entrypoint/' + name):
+                    errors.append(f'Three.js entrypoint projection differs: {name}')
+        except (ValueError, OSError) as exc:
+            errors.append(str(exc))
     for skill, ref in zip(RUNTIME_SKILLS, (args.andino_ref, args.rescue_ref, args.skripsi_ref, args.focus_ref, args.search_first_ref, args.council_ref)):
         try:
             if skill == "focus":
@@ -238,6 +327,8 @@ def main():
         return 1
     print(f"PASS: {len(RUNTIME_SKILLS)} skill packages, metadata, relative links, and {len(EVAL_SKILLS)} eval schemas")
     print("Live behavioral evaluation: NOT VERIFIED")
+    if args.threejs_ref or args.threejs_dir:
+        print(f'PASS: {len(THREEJS_SKILLS)} Three.js packages including standalone family index')
     if args.webbased_ref:
         print(f"PASS: Focus communication references match {args.webbased_ref}; A sources equivalent")
     return 0

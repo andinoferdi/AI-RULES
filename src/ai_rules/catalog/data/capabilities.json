@@ -263,6 +263,1984 @@
         "version_observability": "full",
         "exact_pin_supported": true
       }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-skills",
+      "display_name": "Three.js Skills",
+      "description": "Three.js specialist family index",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "entrypoint",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-skills"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "nixie-fx-authoring",
+      "display_name": "nixie-fx-authoring",
+      "description": "Create, modify, validate, and export NixieFX particle-effect projects for the public editor and runtimes. Use when an agent needs to locate or initialize vfx-editor.prj, create an effect with the nixie-fx CLI, edit effect JSON, organize textures materials or meshes, diagnose validation and backend-support reports, export out/vfx, or prepare an effect for visual review in the NixieFX editor.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/nixie-fx-authoring",
+        "trust": "first_party"
+      },
+      "provides": [
+        "nixie-fx-authoring"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "nixie-fx-runtime",
+      "display_name": "nixie-fx-runtime",
+      "description": "Integrate compiled NixieFX particle effects into PixiJS or Three.js applications using the public nixie-fx package. Use when an agent needs to install the runtime, load an out/vfx export bundle, implement texture or material providers, mount a renderer, drive effects from a game loop, inspect runtime diagnostics, or clean up NixieFX resources.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/nixie-fx-runtime",
+        "trust": "first_party"
+      },
+      "provides": [
+        "nixie-fx-runtime"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-3d-generator",
+      "display_name": "threejs-3d-generator",
+      "description": "Generate, texture, rig, animate, stylize, convert, and download 3D assets for Three.js games via the Tripo API. Use for text-to-3D, image-to-3D, game-ready GLB/FBX, characters, creatures, buildings, props, weapons, terrain, auto-rigging, animation retargeting, model texturing, voxel/LEGO stylization, and low-poly conversion. Pair with threejs-image-generator for concept and texture references first.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-3d-generator",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-3d-generator"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-aaa-graphics-builder",
+      "display_name": "threejs-aaa-graphics-builder",
+      "description": "Upgrade Three.js games from prototype visuals to premium browser graphics - art-direction critique, procedural model building, material and texture libraries, world prop kits, shaders, VFX, lighting and render pipeline, LOD and instancing, render budgets, and a 10-category visual scorecard. Use when screenshots still look basic or the user asks for premium, AAA, high-fidelity, showcase, or less-basic graphics.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-aaa-graphics-builder",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-aaa-graphics-builder"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-animation",
+      "display_name": "threejs-animation",
+      "description": "Three.js animation - keyframe animation, skeletal animation, morph targets, animation mixing. Use when animating objects, playing GLTF animations, creating procedural motion, or blending animations.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-animation",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-animation"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-atmosphere-aerial-perspective",
+      "display_name": "threejs-atmosphere-aerial-perspective",
+      "description": "Implement physically motivated sky and aerial-perspective systems in Three.js. Use for planetary atmospheres, ground-to-space transitions, Rayleigh/Mie scattering, precomputed LUTs, depth-based transmittance and inscattering, sun/moon discs, and atmosphere-aware lighting.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-atmosphere-aerial-perspective",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-atmosphere-aerial-perspective"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-audio-generator",
+      "display_name": "threejs-audio-generator",
+      "description": "Generate, convert, clean, and integrate audio for Three.js browser games with ElevenLabs - sound effects, looping ambience, music tracks and loops (menu, gameplay, boss, victory/defeat stingers), UI sounds, impact/weapon/vehicle audio, creature and boss stingers, announcer and dialogue TTS, voice conversion from a scratch performance, voice cleanup, audio manifests, and Web Audio integration.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-audio-generator",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-audio-generator"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-bloom",
+      "display_name": "threejs-bloom",
+      "description": "Implement production bloom in advanced Three.js scenes. Use for HDR signal ordering, bloom-node controls, dual selective bloom with guaranteed material restoration, scene-relative emissive hierarchy, and effect-isolation diagnostics.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-bloom",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-bloom"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-camera-direction",
+      "display_name": "threejs-camera-direction",
+      "description": "Direct advanced Three.js camera systems. Use for scale-aware chase rigs, thrust lag, side/orbit cameras, body-relative up vectors, quaternion handoffs, authored cinematic framing, floating origins, pointer-look controls, camera collision constraints, projection ownership, and lifecycle restoration.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-camera-direction",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-camera-direction"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-debug-profiler",
+      "display_name": "threejs-debug-profiler",
+      "description": "Debug and profile Three.js browser games - blank canvases, render and runtime bugs, asset and audio loading, animation, resize, mobile input, plus performance profiling of draw calls, triangles, textures, memory, shader and post-processing cost, and bundle size.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-debug-profiler",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-debug-profiler"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-exposure-color-grading",
+      "display_name": "threejs-exposure-color-grading",
+      "description": "Build a measured exposure and grading path in Three.js. Use for a 64x36 encoded luminance meter, asynchronous readback, weighted log-average exposure, asymmetric adaptation, single tone-map ownership, and a generated 32-cube post-tone-map LUT.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-exposure-color-grading",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-exposure-color-grading"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-fundamentals",
+      "display_name": "threejs-fundamentals",
+      "description": "Three.js scene setup, cameras, renderer, Object3D hierarchy, coordinate systems. Use when setting up 3D scenes, creating cameras, configuring renderers, managing object hierarchies, or working with transforms.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-fundamentals",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-fundamentals"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-game-director",
+      "display_name": "threejs-game-director",
+      "description": "Entrypoint for building, upgrading, and finishing Three.js browser games. Routes work across the sibling threejs-* skills for gameplay, graphics, UI, 3D/image/audio asset generation, debugging, and release. Use for any request to build, upgrade, polish, or ship a Three.js game as a whole, at any scope from a small arcade prototype to a premium release.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-game-director",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-game-director"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-game-ui-designer",
+      "display_name": "threejs-game-ui-designer",
+      "description": "Design premium Three.js game UI - HUDs, menus, overlays, pause/win/lose screens, settings, icon controls, touch UI, typography, responsive layout, safe areas, text fit, and UI/world cohesion.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-game-ui-designer",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-game-ui-designer"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-gameplay-systems",
+      "display_name": "threejs-gameplay-systems",
+      "description": "Build and iterate playable Three.js game systems - starter scaffold, architecture, design briefs, core loops, level and encounter design, entities, input, camera, collision and physics, scoring, objectives, and game feel. Use for first playable slices, new Vite/TypeScript/Three.js setups, level/arena/track/wave/hole/puzzle design, combat encounters, difficulty tuning, and juice.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-gameplay-systems",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-gameplay-systems"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-geometry",
+      "display_name": "threejs-geometry",
+      "description": "Three.js geometry creation - built-in shapes, BufferGeometry, custom geometry, instancing. Use when creating 3D shapes, working with vertices, building custom meshes, or optimizing with instanced rendering.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-geometry",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-geometry"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-image-generator",
+      "display_name": "threejs-image-generator",
+      "description": "Generate and edit 2D image assets for Three.js games with Google's Gemini image API - concept sheets, image-to-3D inputs, texture and material references, sky and background plates, decals, logos, icons, GUI art, title and menu art, and marketing stills. Also use for direct image editing when the user supplies an image path.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-image-generator",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-image-generator"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-image-pipeline",
+      "display_name": "threejs-image-pipeline",
+      "description": "Build a deliberate final-image pipeline for advanced Three.js scenes. Use for depth, normal, albedo, and history ownership; GTAO or bent normals; bloom; eye adaptation; tone mapping; 3D LUT grading; effect-local render targets; and pass diagnostics.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-image-pipeline",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-image-pipeline"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-interaction",
+      "display_name": "threejs-interaction",
+      "description": "Three.js interaction - raycasting, controls, mouse/touch input, object selection. Use when handling user input, implementing click detection, adding camera controls, or creating interactive 3D experiences.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-interaction",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-interaction"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-lighting",
+      "display_name": "threejs-lighting",
+      "description": "Three.js lighting - light types, shadows, environment lighting. Use when adding lights, configuring shadows, setting up IBL, or optimizing lighting performance.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-lighting",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-lighting"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-loaders",
+      "display_name": "threejs-loaders",
+      "description": "Three.js asset loading - GLTF, textures, images, models, async patterns. Use when loading 3D models, textures, HDR environments, or managing loading progress.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-loaders",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-loaders"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-materials",
+      "display_name": "threejs-materials",
+      "description": "Three.js materials - PBR, basic, phong, shader materials, material properties. Use when styling meshes, working with textures, creating custom shaders, or optimizing material performance.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-materials",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-materials"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-parallax-occlusion-mapping",
+      "display_name": "threejs-parallax-occlusion-mapping",
+      "description": "Build silhouette-aware parallax occlusion mapping in Three.js WebGPU and TSL. Use for height-field ray marching, relief UVs, clipped flat or curved silhouettes, inflated shells, self-shadowing, relief-aware shadow depth, and height-derived normals.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-parallax-occlusion-mapping",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-parallax-occlusion-mapping"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-postprocessing",
+      "display_name": "threejs-postprocessing",
+      "description": "Three.js post-processing - EffectComposer, bloom, DOF, screen effects. Use when adding visual effects, color grading, blur, glow, or creating custom screen-space shaders.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-postprocessing",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-postprocessing"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-precipitation-surfaces",
+      "display_name": "threejs-precipitation-surfaces",
+      "description": "Build coupled precipitation and affected surfaces in Three.js. Use for falling snow, snow accumulation, model snow caps, wet asphalt puddles, procedural ripple normals, splash flipbooks, rain streaks, shared weather envelopes, and surface wetness or coverage transitions.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-precipitation-surfaces",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-precipitation-surfaces"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-procedural-animation",
+      "display_name": "threejs-procedural-animation",
+      "description": "Build advanced procedural animation in Three.js. Use for launch kinematics, gravity turns, staging, spin docking, target-frame decomposition, spring-follow motion, rotating-frame alignment, peeling debris, analytic transform timelines, frame-rate-independent response, and quaternion control.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-procedural-animation",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-procedural-animation"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-procedural-architecture",
+      "display_name": "threejs-procedural-architecture",
+      "description": "Build authored procedural buildings and architectural kits in Three.js. Use for massing grammars, exposed-edge analysis, fa\u00e7ade bays, profiles, arches, cornices, roofs, ornaments, material-slot mesh compilation, deterministic variants, and procedural city assets.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-procedural-architecture",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-procedural-architecture"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-procedural-fields",
+      "display_name": "threejs-procedural-fields",
+      "description": "Build coherent procedural scalar and vector fields for Three.js materials and geometry. Use for terrain, planets, wear, biomes, clouds, water masks, displacement, roughness, normals, domain warping, and any visual where several channels must derive from shared causes.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-procedural-fields",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-procedural-fields"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-procedural-geometry",
+      "display_name": "threejs-procedural-geometry",
+      "description": "Build well-crafted production procedural meshes in Three.js. Use for complete hard-surface assemblies and humanoid robots, profile extrusion, parameter-curve and spine lofts, pillow panels, exact polygon cuts, inset, revolve, sweep, solidify, bevels and fillets, shell thickness, direct-topology apertures, semantic mesh writers, or diagnosing primitive-built forms, coplanar flicker, loose/non-manifold geometry, detached parts, interpenetration, support, clearance, and swept-envelope defects.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-procedural-geometry",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-procedural-geometry"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-procedural-materials",
+      "display_name": "threejs-procedural-materials",
+      "description": "Author production procedural materials in Three.js. Use for hybrid texture-backed PBR soil and moss with procedural displacement and masks, upward-facing model moss accumulation, atlas filtering, specular AA, planet-space fields, terrain wetness, deformable granular sand with mass-coupled grain shading, simulated tearable denim with implicit yarn mechanics, wear-driven failure and frayed fibres, woven cloth with GPU XPBD mechanics and yarn microstructure, simulated fur with interactive grooming and strand shading, lava and emissive surfaces, reflective wave-optical diffraction gratings, air-film-air soap bubbles with Airy interference, raytraced diamond and gem refraction with internal reflection and dispersion, image-space glass transmission with spectral dispersion and volume absorption, deforming softbody jelly materials with XPBD mechanics and refractive caustics, per-instance dissolve, authored PBR identities, derivative normals, and custom direct-light shadow modulation.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-procedural-materials",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-procedural-materials"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-procedural-planets",
+      "display_name": "threejs-procedural-planets",
+      "description": "Author procedural planetary bodies in Three.js. Use for spherical terrain, continents, ridges, craters, biome masks, coastlines, material variation, analytic normals, altitude LOD, and bodies that must hold up from orbit through close approach.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-procedural-planets",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-procedural-planets"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-procedural-vegetation",
+      "display_name": "threejs-procedural-vegetation",
+      "description": "Generate authored procedural trees, grass, ivy, flowers, and vegetation in Three.js or raw WebGPU. Use for surface-following vines, painted ivy paths, stylized or GPU grass, GPU-culled virtual flower fields, trunks, recursive branches, roots, canopies, leaf cards, species presets, deterministic growth, distance-tiered plant geometry, and rooted blade, stem, or petiole-hinge wind.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-procedural-vegetation",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-procedural-vegetation"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-procedural-vfx",
+      "display_name": "threejs-procedural-vfx",
+      "description": "Author production real-time VFX in Three.js. Use for filmic HDR lens-flare compositors, highlight-derived ghosts, field-angle pupil deformation, localized glare and bloom, raymarched aurora curtains, finite-footprint emissive slabs, uniform volume integration, equirectangular radiance probes, WebGPU voxel fire and smoke, coupled volumetric fluid fields, mesh-surface emitters, signed-distance fire collisions, ship-conforming reentry plasma, generated capsule wakes, instanced analytic sparks, timed dissolving debris, dense-swap effect pools, additive holographic projections, Fresnel rim shells, scanline banding, glitch displacement, swept shape-to-shape handovers, and explicit scene-relative HDR emission hierarchy.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-procedural-vfx",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-procedural-vfx"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-qa-release",
+      "display_name": "threejs-qa-release",
+      "description": "Verify and release Three.js browser games - playtest QA, automated bot playtests, mobile and responsive checks, production builds, static-hosting base paths, debug gating, bundle review, screenshots, visual regression baselines, canvas-pixel inspection with measured metrics, and release risk reports.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-qa-release",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-qa-release"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-raymarched-space-effects",
+      "display_name": "threejs-raymarched-space-effects",
+      "description": "Build raymarched space phenomena in Three.js. Use for black-hole lensing, accretion disks, wormhole throat transits, curved-ray and null-geodesic integration, lensed celestial spheres, procedural star fields and galactic skies, relativistic-looking distortion, bounded volumetric structures, and GPU effects that need controlled numerical integration.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-raymarched-space-effects",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-raymarched-space-effects"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-screen-space-ambient-occlusion",
+      "display_name": "threejs-screen-space-ambient-occlusion",
+      "description": "Implement a production GTAO path in Three.js. Use for half-resolution horizon sampling, reversed-depth reconstruction, bent-normal encoding, full-resolution bilateral reconstruction, environment-light application, contact grounding, and halo diagnosis.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-screen-space-ambient-occlusion",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-screen-space-ambient-occlusion"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-shaders",
+      "display_name": "threejs-shaders",
+      "description": "Three.js shaders - GLSL, ShaderMaterial, uniforms, custom effects. Use when creating custom visual effects, modifying vertices, writing fragment shaders, or extending built-in materials.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-shaders",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-shaders"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-shadow-systems",
+      "display_name": "threejs-shadow-systems",
+      "description": "Implement stable, scalable directional-shadow systems for Three.js. Use for large procedural worlds, city scenes, terrain, moving cameras, WebGPU/TSL shadow nodes, cascades, cached clipmaps, texel stabilization, update budgets, and targeted invalidation.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-shadow-systems",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-shadow-systems"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-skill-router",
+      "display_name": "threejs-skill-router",
+      "description": "Route ambitious Three.js graphics work to the smallest expert skill set. Use for new visual experiences, graphics rewrites, reference matching, or requests spanning geometry, materials, atmosphere, shadows, temporal effects, and final image treatment.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-skill-router",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-skill-router"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-spectral-ocean",
+      "display_name": "threejs-spectral-ocean",
+      "description": "Build large procedural oceans and coast transitions in Three.js. Use for WebGPU/TSL FFT oceans, multi-cascade wavelength bands, coastal breakers, finite-volume shallow-water beach waves, signed-distance coastlines, shallow-water swash films, wet-sand transitions, rock-impact spray, stylized above/below surface optics, permanently submerged Snell-window views, total internal reflection, forward-refracted structures through an interface, pixel-footprint spectral LOD, aquatic perspective, caustic god rays, choppy displacement, spectral derivatives, Jacobian whitecaps, windrow and temporal foam, analytic sky reflection, underwater absorption, crest scatter, and GPU validation.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-spectral-ocean",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-spectral-ocean"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-temporal-surfaces",
+      "display_name": "threejs-temporal-surfaces",
+      "description": "Build view-aligned and screen-space surface effects in Three.js. Use for touch-history frost and thaw, ping-pong accumulation, reduced-resolution blur, crystalline masks, two-scale refraction, and procedural rain droplets that refract and blur a background through wet glass.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-temporal-surfaces",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-temporal-surfaces"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-textures",
+      "display_name": "threejs-textures",
+      "description": "Three.js textures - texture types, UV mapping, environment maps, texture settings. Use when working with images, UV coordinates, cubemaps, HDR environments, or texture optimization.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-textures",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-textures"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-visual-validation",
+      "display_name": "threejs-visual-validation",
+      "description": "Validate advanced Three.js graphics as authored systems rather than subjective screenshots. Use for fixed-view visual contracts, field and pass diagnostics, no-post baselines, seed sweeps, camera-scale tests, temporal stability checks, GPU budgets, and regression evidence for procedural scenes.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-visual-validation",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-visual-validation"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-volumetric-clouds",
+      "display_name": "threejs-volumetric-clouds",
+      "description": "Implement volumetric cloud systems in Three.js. Use for weather-driven density, bounded raymarching, shape/detail erosion, vertical profiles, lighting cones, silver lining, temporal reconstruction, cloud shadows, multiple layers, and scalable quality modes.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-volumetric-clouds",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-volumetric-clouds"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "threejs-water-optics",
+      "display_name": "threejs-water-optics",
+      "description": "Build production analytic and bounded water in Three.js. Use for photoreal shallow water with gravity-capillary FFT waves, dispersive caustics and diffraction glare, shared multi-wave displacement and normals, bounded RGBA heightfield pool simulation, local drops, object-driven ripples, differential-area caustics, ray-traced pool/water/sphere volume optics, derivative-filtered normal bands, analytic sky reflection, side-aware Fresnel, heuristic screen refraction, Beer-Lambert absorption, and crest foam.",
+      "ownership": "FIRST_PARTY",
+      "kind": "skill",
+      "importance": "RECOMMENDED",
+      "source": {
+        "repository": "https://github.com/andinoferdi/AI-RULES",
+        "branch": "threejs-skills",
+        "subpath": "skills/threejs-water-optics",
+        "trust": "first_party"
+      },
+      "provides": [
+        "threejs-water-optics"
+      ],
+      "requires": [],
+      "recommends": [],
+      "delivery": [
+        {
+          "id": "first-party-skill-directory",
+          "mechanism": "SKILL_DIRECTORY",
+          "hosts": [
+            "codex",
+            "claude-code",
+            "opencode",
+            "antigravity-cli",
+            "antigravity-ide"
+          ],
+          "automated": true
+        }
+      ],
+      "verification": [
+        "artifact",
+        "host_discovery"
+      ],
+      "update_policy": {
+        "model": "release_manifest",
+        "version_observability": "full",
+        "exact_pin_supported": true
+      }
     }
   ]
 }

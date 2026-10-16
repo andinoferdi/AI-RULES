@@ -111,12 +111,23 @@ class Resolver:
             selected = list(profile.capabilities)
         else:
             selected = list(request.capabilities or self.profiles.default.capabilities)
-        for capability_id in list(selected):
-            capability = self.catalog.require_capability(capability_id)
-            for required in capability.requires:
-                if required not in selected:
-                    selected.append(required)
-        return tuple(dict.fromkeys(selected))
+        ordered, visited, active = [], set(), set()
+
+        def visit(identifier):
+            if identifier in active:
+                raise ValidationError(f"dependency cycle at {identifier}")
+            if identifier in visited:
+                return
+            active.add(identifier)
+            for required in self.catalog.require_capability(identifier).requires:
+                visit(required)
+            active.remove(identifier)
+            visited.add(identifier)
+            ordered.append(identifier)
+
+        for identifier in selected:
+            visit(identifier)
+        return tuple(ordered)
 
     def _target_version(self, capability_id: str, request: ResolveRequest) -> str | None:
         if request.explicit_pins and capability_id in request.explicit_pins:

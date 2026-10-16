@@ -9,6 +9,16 @@ Runtime skills ship on separate branches; WebBased retains web/chat rules and
 project templates. Never copy runtime packages into main or quality artifacts into
 runtime branches. Each runtime has README.md, SKILL.md and useful supporting files.
 
+Multi-package families can share a runtime branch using each capability's validated
+`source.subpath`. Each selected subtree must be independently installable with its
+own root SKILL.md and stable identity. Keep a family index's installable projection
+separate from nested specialist directories to avoid duplicate host discovery.
+Three.js uses `entrypoint/` and `skills/<name>/`; it owns no second lifecycle.
+Its catalog-scoped validator permits enumerated code, shader and binary resource
+types, checking signatures without decoding binaries as UTF-8. Existing family
+allowlists remain unchanged. Preserve supplied licenses; family registration is
+not a declaration of blanket redistribution rights.
+
 Andino owns lifecycle and completion when active. For CHECKPOINTED work its plan
 owns checkpoints and authoritative NEXT ACTION; EPHEMERAL work requires no durable
 plan. Specialists return domain results, evidence, limitations and recommended

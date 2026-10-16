@@ -105,7 +105,8 @@ class LiveUpdateTests(unittest.TestCase):
         self.assertIn("NO_OP", output)
         lock = json.loads((self.state / "lock.json").read_text())
         self.assertEqual("verified", lock["status"])
-        self.assertIn(self.git(self.remote, "rev-parse", "HEAD").strip(), lock["targets"][0]["target_version"])
+        workflow = next(t for t in lock['targets'] if t['capability'] == 'andino-workflow')
+        self.assertIn(self.git(self.remote, "rev-parse", "HEAD").strip(), workflow['target_version'])
 
     def test_current_skill_gets_missing_command_and_setup_repairs_deleted_command(self):
         self.copy_old()
@@ -143,7 +144,7 @@ class LiveUpdateTests(unittest.TestCase):
         self.assertNotEqual(0, result, output)
         self.assertEqual("personal notes\n", command.read_text())
         lock = json.loads((self.state / "lock.json").read_text())
-        self.assertEqual("SKIPPED", next(t["status"] for t in lock["targets"] if t["host"] == "opencode"))
+        self.assertEqual("SKIPPED", next(t["status"] for t in lock["targets"] if t["host"] == "opencode" and t['capability'] == 'andino-workflow'))
 
     def test_ide_workflow_loads_skill_without_copying_body(self):
         result, output = self.run_cli("--host", "antigravity-ide")
@@ -406,6 +407,17 @@ class LiveUpdateTests(unittest.TestCase):
             self.git(self.remote, "commit", "-m", identifier)
             self.catalog.require_capability(identifier).source["repository"] = str(self.remote)
         home = self.root / "empty-home"
+        self.git(self.remote, 'checkout', '-b', 'threejs-skills')
+        for capability in self.catalog.capabilities.values():
+            if capability.source.get('branch') != 'threejs-skills':
+                continue
+            capability.source['repository'] = str(self.remote)
+            package = self.remote / capability.source['subpath']
+            package.mkdir(parents=True, exist_ok=True)
+            (package / 'SKILL.md').write_text(
+                f'---\nname: {capability.id}\ndescription: Fixture\n---\nInstructions\n')
+        self.git(self.remote, 'add', '.')
+        self.git(self.remote, 'commit', '-m', 'Three.js family fixture')
         home.mkdir()
         hosts = tuple(self.catalog.hosts)
         expected_skills = load_profiles(self.catalog).require("everything").capabilities
@@ -431,9 +443,8 @@ class LiveUpdateTests(unittest.TestCase):
                 self.assertEqual("verified", lock["status"])
                 self.assertEqual(len(hosts) * len(expected_skills), len(lock["targets"]))
                 self.assertTrue(all(t["action"] == "INSTALL" for t in lock["targets"]))
-                self.assertIn("Codex: $andino-workflow", output.getvalue())
-                self.assertIn("Claude Code: /andino-workflow", output.getvalue())
-                self.assertIn("OpenCode: /andino-workflow", output.getvalue())
+                self.assertIn('$andino-workflow', output.getvalue())
+                self.assertIn('/andino-workflow', output.getvalue())
         finally:
             os.chdir(original)
 

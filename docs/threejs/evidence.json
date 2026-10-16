@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-16",
+  "status": "LOCAL_VERIFIED_REMOTE_PUBLICATION_PENDING",
+  "branches": {
+    "threejs-skills": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
+    "andino-workflow": "06aca9e0bb6de169a46261bd37cb96bfde9b0210"
+  },
+  "suite": {
+    "command": "python -m unittest discover -s tests (workspace src on sys.path)",
+    "total": 192,
+    "passed": 191,
+    "skipped": 1,
+    "skip_reason": "optional AI_RULES_SEARCH_FIRST_CANDIDATE environment fixture not set"
+  },
+  "package_validation": {
+    "original_skills": 45,
+    "original_files": 714,
+    "standalone_family_packages": 46,
+    "runtime_regular_files": 776,
+    "source_original_unchanged": true,
+    "commands": [
+      "python scripts/validate_skills.py --andino-ref andino-workflow --threejs-ref threejs-skills --webbased-ref origin/WebBased",
+      "python scripts/validate_threejs_family.py --runtime-ref threejs-skills --original threejs-skills",
+      "python scripts/validate_andino_capabilities.py --runtime-ref andino-workflow",
+      "python scripts/validate_skripsi_traceability.py"
+    ]
+  },
+  "local_latest_actual_package_smoke": [
+    {
+      "source": "latest",
+      "pass": 1,
+      "exit": 0,
+      "packages": 49,
+      "lock": "verified",
+      "actions": [
+        "INSTALL"
+      ]
+    },
+    {
+      "source": "latest",
+      "pass": 2,
+      "exit": 0,
+      "packages": 49,
+      "lock": "verified",
+      "actions": [
+        "NO_OP"
+      ]
+    }
+  ],
+  "local_bundled_actual_package_smoke": [
+    {
+      "source": "bundled",
+      "pass": 1,
+      "exit": 0,
+      "packages": 49,
+      "lock": "verified",
+      "actions": [
+        "INSTALL"
+      ]
+    },
+    {
+      "source": "bundled",
+      "pass": 2,
+      "exit": 0,
+      "packages": 49,
+      "lock": "verified",
+      "actions": [
+        "NO_OP"
+      ]
+    }
+  ],
+  "release": {
+    "staged_capabilities": 52,
+    "artifact": {
+      "name": "ai-rules.exe",
+      "sha256": "1cd3aa2264d50ef1d136a9e89614c74871efb695f19a9145af7e53d79af0cf21",
+      "size": 98933164
+    },
+    "artifact_path": "build/threejs-executable-final-20261016/ai-rules.exe",
+    "build_tool": "PyInstaller 6.22.3",
+    "source_commit_base": "2a1491851e9e985ada60f2533d908be7b3db1b6b",
+    "source_dirty": true,
+    "note": "Local development build made before final main commit; not a published release. Runtime source commits/subpaths are pinned in embedded manifest."
+  },
+  "executable_smoke": [
+    {
+      "scope": "project",
+      "pass": 1,
+      "exit": 0,
+      "targets": 49,
+      "lock": "verified",
+      "actions": [
+        "INSTALL"
+      ],
+      "git_on_path": false
+    },
+    {
+      "scope": "project",
+      "pass": 2,
+      "exit": 0,
+      "targets": 49,
+      "lock": "verified",
+      "actions": [
+        "NO_OP"
+      ],
+      "git_on_path": false
+    },
+    {
+      "scope": "global",
+      "pass": 1,
+      "exit": 0,
+      "targets": 49,
+      "lock": "verified",
+      "actions": [
+        "INSTALL"
+      ],
+      "git_on_path": false
+    },
+    {
+      "scope": "global",
+      "pass": 2,
+      "exit": 0,
+      "targets": 49,
+      "lock": "verified",
+      "actions": [
+        "NO_OP"
+      ],
+      "git_on_path": false
+    }
+  ],
+  "host_smoke_record": "host-smoke.json",
+  "limits": [
+    "No push, merge, PR, tag or publication performed",
+    "Collection-wide rights/provenance need review; supplied notices retained",
+    "Live host proof is limited to Codex discovery and two bounded static review scenarios",
+    "Remaining routing scenarios are schemas/review-only, not executed behavioral PASS",
+    "No renderer, browser screenshot, FPS or external paid generator execution",
+    "Other hosts and non-Windows binaries NOT_VERIFIED",
+    "Remote latest/executable distribution NOT_VERIFIED until runtime branches and installer release are published"
+  ],
+  "authoring_reproduction": {
+    "status": "PASS",
+    "method": "prepare_threejs_family.py into a fresh ignored directory, then compare every runtime resource to committed inventory",
+    "source_untouched": true
+  }
+}

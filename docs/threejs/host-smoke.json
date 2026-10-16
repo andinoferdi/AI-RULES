@@ -1,0 +1,64 @@
+{
+  "host": "codex-cli 0.154.0",
+  "model": "gpt-6-astra (default returned by live model/list; process override only)",
+  "runtime_commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
+  "andino_commit": "06aca9e0bb6de169a46261bd37cb96bfde9b0210",
+  "discovery": {
+    "method": "skills/list",
+    "family_packages": 46,
+    "enabled": 46,
+    "errors": 0
+  },
+  "positive": {
+    "scope": "bounded shader code review, static output",
+    "prompt": "Use Andino to replace the intentional hard flash in pulse.frag with a smooth one-second pulse, brightness 0..1; read-only local task",
+    "observed_invocations": [
+      {
+        "exit": 0,
+        "shader_skill_loaded": false,
+        "domain_skills": []
+      },
+      {
+        "exit": 0,
+        "shader_skill_loaded": false,
+        "domain_skills": []
+      },
+      {
+        "exit": 0,
+        "shader_skill_loaded": true,
+        "domain_skills": [
+          "threejs-shaders"
+        ]
+      },
+      {
+        "exit": 0,
+        "shader_skill_loaded": true,
+        "domain_skills": [
+          "threejs-shaders"
+        ]
+      }
+    ],
+    "result": "Loaded threejs-shaders through permitted file reads; returned 0.5 - 0.5*cos(TAU*uTime), preserving alpha 1.0",
+    "state": "USED",
+    "renderer_execution": "NOT_VERIFIED"
+  },
+  "initial_attempt": {
+    "state": "FAILED_BEFORE_ACTIVATION",
+    "reason": "configured gpt-6.1-sol rejected by CLI ChatGPT transport, HTTP 400"
+  },
+  "other_hosts": "NOT_VERIFIED",
+  "full_scenario_behavior": "NOT_VERIFIED; ten scenario schemas are review-only",
+  "negative": {
+    "scope": "mechanical HTML navigation label correction; stable pre-existing fixture",
+    "result": "```html\n<nav><a href=\"/about\">About</a></nav>\n```",
+    "turn_completed": true,
+    "command_exit_codes": [
+      0,
+      0
+    ],
+    "domain_skill_reads": [],
+    "state": "NOT_NEEDED",
+    "browser_execution": "NOT_VERIFIED"
+  },
+  "fixture_note": "An earlier negative run encountered a fixture timing error and was superseded by this fresh stable-input run."
+}

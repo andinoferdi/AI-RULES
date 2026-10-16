@@ -14,7 +14,7 @@ from ai_rules.domain.models import ActualState, InstallationPlan, Operation
 from ai_rules.domain.statuses import InstalledOwnership, ReconciliationAction, ReconciliationAssessment, TargetStatus
 from ai_rules.execution.executor import copy_tree_atomic
 from ai_rules.hosts.adapters import build_host_adapters
-from ai_rules.release.bundles import export_git_ref
+from ai_rules.release.bundles import export_git_ref, validate_subpath
 
 
 def git(root: Path, *args: str) -> str:
@@ -66,10 +66,12 @@ class LatestSources:
         self.installers = {}
         self.expected = {}
         self._trees = {}
+        self.subpaths = {}
         try:
             groups = {}
             for identifier in dict.fromkeys(capability_ids):
                 capability = catalog.require_capability(identifier)
+                self.subpaths[identifier] = validate_subpath(capability.source.get("subpath"))
                 repository = capability.source["repository"]
                 branch = capability.source["branch"]
                 groups.setdefault(repository, []).append((identifier, branch))
@@ -92,16 +94,19 @@ class LatestSources:
     def close(self):
         self.workspace.cleanup()
 
-    def tree(self, local, commit):
-        key = (str(local), commit)
+    def tree(self, local, commit, subpath=None):
+        subpath = validate_subpath(subpath)
+        key = (str(local), commit, subpath)
         if key not in self._trees:
             result = {}
-            for entry in git(local, "ls-tree", "-rz", commit).split("\0"):
+            tree_ref = f"{commit}:{subpath}" if subpath else commit
+            for entry in git(local, "ls-tree", "-rz", tree_ref).split("\0"):
                 if not entry:
                     continue
                 metadata, name = entry.split("\t", 1)
                 mode, kind, blob = metadata.split()
                 path = PurePosixPath(name)
+                validate_subpath(name)
                 if mode not in {"100644", "100755"} or kind != "blob":
                     raise ValueError(f"Unsupported source entry: {name}")
                 if path.is_absolute() or any(part in {"..", ".git"} for part in path.parts) or "\\" in name or ":" in name:
@@ -112,11 +117,11 @@ class LatestSources:
 
     def bundle(self, identifier):
         local, _, _, commit = self.entries[identifier]
-        files = self.tree(local, commit)
+        files = self.tree(local, commit, self.subpaths[identifier])
         if "SKILL.md" not in files:
             raise ValueError(f"Source branch for {identifier} has no SKILL.md")
         target = self.root / "bundles" / identifier
-        export_git_ref(commit, target, repo_root=local)
+        export_git_ref(commit, target, repo_root=local, subpath=self.subpaths[identifier])
         body = (target / "SKILL.md").read_text(encoding="utf-8")
         if not re.search(rf"^name:\s*{re.escape(identifier)}\s*$", body, re.M):
             raise ValueError(f"Skill identity does not match {identifier}")
@@ -130,7 +135,7 @@ class LatestSources:
         # Adoption is bounded. Older/unrecognized copies remain protected, never assumed current.
         candidates = git(local, "rev-list", "--max-count=256", head).splitlines()
         for commit in candidates:
-            if self.tree(local, commit) == actual:
+            if self.tree(local, commit, self.subpaths[identifier]) == actual:
                 return commit
         return None
 
@@ -157,6 +162,8 @@ class LatestSources:
                 is_git = (destination / ".git").exists()
                 installed = None
                 if is_git:
+                    if self.subpaths[identifier]:
+                        raise ValueError("Git checkout for a subpath package is preserved; use a managed directory installation")
                     if Path(git(destination, "rev-parse", "--show-toplevel")).resolve() != destination:
                         raise ValueError("Nested Git checkout is preserved")
                     if canonical_source(git(destination, "remote", "get-url", "origin")) != canonical_source(repository):
@@ -176,11 +183,11 @@ class LatestSources:
                         raise ValueError("Local content is modified or unrecognized; preserved. Use explicit repair only after review")
                 if not destination.exists():
                     action, reason = ReconciliationAction.INSTALL, "latest source revision resolved"
-                elif before == self.tree(local, head) and (not is_git or installed == head):
+                elif before == self.tree(local, head, self.subpaths[identifier]) and (not is_git or installed == head):
                     action, reason = ReconciliationAction.NO_OP, "full content matches the freshly fetched branch"
                 else:
                     action, reason = ReconciliationAction.UPDATE, "clean official installation is behind the source branch"
-                self.expected[key] = self.tree(local, head)
+                self.expected[key] = self.tree(local, head, self.subpaths[identifier])
                 self.installers[key] = self._installer(identifier, original, destination, before, is_git, installed, args.state_dir)
                 actual = ActualState(exists=destination.exists(), ownership=InstalledOwnership.MANAGED_BY_AI_RULES,
                                      installed_version=self.version(identifier, installed) if installed else None,
@@ -201,7 +208,7 @@ class LatestSources:
     def _installer(self, identifier, original, destination, before, is_git, installed, state_dir):
         def install():
             local, _, branch, commit = self.entries[identifier]
-            expected = self.tree(local, commit)
+            expected = self.tree(local, commit, self.subpaths[identifier])
             if original.resolve() != destination:
                 raise ValueError("Installation link changed after planning; refusing to replace it")
             if (destination / ".git").exists() != is_git:
