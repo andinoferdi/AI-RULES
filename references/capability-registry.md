@@ -11,6 +11,7 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 | [focus](#focus) | skill | AI-RULES | Default communication on every Andino invocation |
 | [search-first](#search-first) | skill | AI-RULES, adapted from ECC | Existing-solution research before implementation |
 | [council](#council) | skill | AI-RULES | Independent review of consequential decisions |
+| [threejs-skills](#threejs-skills) | skill | AI-RULES | On-demand Three.js and NixieFX domain specialists |
 | [systematic-debugging](#systematic-debugging) | skill | Superpowers | Root-cause investigation |
 | [test-driven-development](#test-driven-development) | skill | Superpowers | Executable regression contract |
 | [verification-before-completion](#verification-before-completion) | skill | Superpowers | Evidence before completion |
@@ -1117,3 +1118,21 @@ Contracts use inspected installed skill IDs and actual host tool metadata. Upstr
 - Verification requirement: Distinguish actual independent advisor/reviewer invocations from simulated perspectives; preserve evidence, material disagreement and unresolved uncertainty in the final verdict.
 - Activation policy: CONDITIONAL_AUTO
 
+
+## threejs-skills
+
+- Type: skill
+- Family/provider: AI-RULES Three.js family; user-supplied domain collection, no blanket upstream endorsement
+- Aliases: none; individual installed names are authoritative
+- Primary purpose: On-demand domain methods for Three.js scenes, rendering, games and NixieFX effects
+- Trigger: A current unresolved domain need matching one of the actual specialists
+- Preferred when: Scene/shader/light/material/geometry/animation/interaction or particle expertise materially helps
+- Avoid when: Ordinary frontend work, inventory-only mentions, unknown-cause diagnosis before debugging, or no matching need
+- Availability check: Resolve the exact selected installed ID, path, provenance and invocation controls from the current host catalog
+- Invocation method: Use the current host contract for each selected specialist; the family index need not be loaded to invoke a known individual
+- First-call/preflight: Read threejs-specialists.md only for selection uncertainty; inspect project versions and load the permitted actual skill before applying methods
+- Fallback: Missing or denied specialists are UNAVAILABLE; use sufficient native/project methods and record the limit without claiming skill use
+- Coexistence/conflicts: Andino owns lifecycle and one plan; Focus communication; Search First relevant research; domain router and game director recommend within that owner
+- Mutation/permission boundary: No implicit installs, paid API calls, delegation, publication or permission bypass
+- Verification requirement: Record actual activation plus domain action for USED; browser rendering/performance/interaction claims need observed evidence, otherwise NOT_VERIFIED
+- Activation policy: CONDITIONAL_AUTO

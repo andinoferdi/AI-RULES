@@ -99,3 +99,15 @@ Evaluate a fresh actor with only raw fixture/request/runtime; keep expected,
 forbidden and reviewer decisions hidden. Transport smoke tests and self-reported
 selection are insufficient to prove autonomous just-in-time routing. Cross-host
 use remains NOT_VERIFIED until actually executed on each claimed host.
+
+## Three.js packages
+
+Resolve individual Three.js/NixieFX specialists by their exact installed names.
+A family branch or subdirectory found during an inventory is only DISCOVERED;
+it is not a host installation or invocation. Read only the selected package's
+SKILL.md through the host's permitted mechanism after AVAILABLE and INVOKABLE
+are established. Never bypass explicit-only/deny controls with a repository copy.
+Record ACTIVE load evidence, then USED only after an identifiable domain action.
+A missing/denied package is UNAVAILABLE; an irrelevant installed package is
+NOT_NEEDED. Reassess availability and current need after scope changes or resume.
+The family index and domain advisor do not invoke each other in a bootstrap loop.
