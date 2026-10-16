@@ -1,8 +1,8 @@
 # Three.js family integration
 
-Status: ACTIVE (branch push authorized by user)
+Status: DONE (authorized branch pushes verified)
 Depth: STANDARD
-CURRENT PHASE: Ordered runtime and installer branch publication
+CURRENT PHASE: Branch publication complete
 
 ## Executive Snapshot / CURRENT STATE
 
@@ -137,4 +137,10 @@ DECISIONS: Push runtime, then Andino, then main using normal fast-forward pushes
 no force, merge, tag or release creation. Reconcile local-only manifest markers
 only after remote runtime SHA verification.
 EVIDENCE: Normal runtime and Andino pushes succeeded. ls-remote confirms runtime207d09d and Andino06aca9e. 47 manifest entries reconciled to remotely verified origin refs.
-NEXT ACTION: Verify runtime push, push Andino, reconcile metadata, check and push main.
+NEXT ACTION: Remote installation smoke or tagged installer release when requested; no further branch implementation work required.
+
+- Ordered pushes complete: Three.js207d09d, Andino06aca9e, main3386df2 verified
+  with ls-remote. Release staging with reconciled refs exports all52 bundles.
+  Final checkpoint commit will be pushed normally and verified in the delivery.
+  Original source remains untracked; no force push, merge, PR, tag or installer
+  release creation occurred.

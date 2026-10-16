@@ -9,5 +9,11 @@
   "main_delivery_base": "773843d28a22ef73111e9c4e6f9e8e73cbb784b3",
   "manifest": "47 runtime entries now use origin refs with remotely verified pinned commits; other pins unchanged",
   "previous_evidence": "Earlier local-only/no-publication statements describe the earlier evidence snapshot; this authorization supersedes that boundary for these branch pushes. Authorship and supplied third-party notices remain unchanged.",
-  "remaining": "Verify main push via ls-remote. Tagged installer release and remote installation behavior are separate and not claimed here."
+  "remaining": "Final checkpoint commit push and matching remote SHA verification are reported in task delivery. No tag/installer release or remote installation test performed.",
+  "main_push_verified": "3386df201f7d98b4ae647a274d92fbd1b871282e",
+  "checks": {
+    "bundle_staging": "PASS:52 bundles exported after manifest reconciliation",
+    "diff_check": "PASS",
+    "source_preserved": "Original threejs-skills folder remains untracked; no source contents changed"
+  }
 }
