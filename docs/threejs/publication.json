@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-16",
+  "authorization": "Direct user instruction: push dulu",
+  "scope": "Normal pushes of threejs-skills, andino-workflow, main; no tag or installer release creation",
+  "runtime_pushes_verified": {
+    "threejs-skills": "207d09dbed6521a9071d5a9a1757bd8d6aeb1d33",
+    "andino-workflow": "06aca9e0bb6de169a46261bd37cb96bfde9b0210"
+  },
+  "main_delivery_base": "773843d28a22ef73111e9c4e6f9e8e73cbb784b3",
+  "manifest": "47 runtime entries now use origin refs with remotely verified pinned commits; other pins unchanged",
+  "previous_evidence": "Earlier local-only/no-publication statements describe the earlier evidence snapshot; this authorization supersedes that boundary for these branch pushes. Authorship and supplied third-party notices remain unchanged.",
+  "remaining": "Verify main push via ls-remote. Tagged installer release and remote installation behavior are separate and not claimed here."
+}

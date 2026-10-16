@@ -1,6 +1,10 @@
 # Three.js family integration
 
-Status: LOCAL IMPLEMENTATION COMPLETE; publication and cross-host behavior pending.
+Status: IMPLEMENTATION COMPLETE; runtime branches published; main push in this delivery.
+Tagged installer release, remote installation and cross-host behavior remain pending.
+See [publication evidence](publication.json). Earlier local-only/no-authorization
+statements below describe previous verification snapshots; the subsequent explicit
+`push dulu` instruction authorizes these branch pushes.
 This is quality-plane evidence, not a runtime router or a license declaration.
 
 ## Branches and layout
@@ -254,9 +258,7 @@ Use this workspace package (`PYTHONPATH=src` or an isolated editable install), n
 an older ai-rules installation elsewhere on the machine. No global Python package
 was replaced during this work.
 
-NEXT ACTION: review the local diff and attestations, then authorize publication. Publish
-runtime threejs-skills, publish the dependent andino-workflow commit, verify both
-remote SHAs, clear LOCAL_ONLY manifest markers/update remote refs, publish main and
-build/tag the installer release. CI now fetches the family branch, so runtimes must
-precede main. Re-run remote latest and executable bundled installations only after
-publication. No push, merge, PR, tag or external publication occurred here.
+NEXT ACTION: verify main remote SHA after this normal push. Runtime branches are
+already published and verified, and manifest entries now use origin refs. Remote
+latest installation and tagged installer release remain separate verification and
+publication steps; no tag, PR, merge or installer release was created by this push.

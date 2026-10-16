@@ -1,8 +1,8 @@
 # Three.js family integration
 
-Status: DONE (local authorized scope; remote publication pending)
+Status: ACTIVE (branch push authorized by user)
 Depth: STANDARD
-CURRENT PHASE: Completed local delivery
+CURRENT PHASE: Ordered runtime and installer branch publication
 
 ## Executive Snapshot / CURRENT STATE
 
@@ -127,3 +127,14 @@ order. Re-run remote latest after publication. No push, merge, PR or tag was mad
 
 - Continuation targeted regression suite: 14 tests, all pass. Cached diff whitespace
   check passes; runtime/Andino worktrees clean; source folder remains untracked.
+
+## Authorized push continuation (2026-10-16)
+
+CURRENT STATE: User explicitly requested `push dulu`. Remote inspected: main2a14918,
+Andino d5fbcec, Three.js branch absent. Local main773843d, runtime207d09d,
+Andino06aca9e. Only original source folder is untracked.
+DECISIONS: Push runtime, then Andino, then main using normal fast-forward pushes;
+no force, merge, tag or release creation. Reconcile local-only manifest markers
+only after remote runtime SHA verification.
+EVIDENCE: Normal runtime and Andino pushes succeeded. ls-remote confirms runtime207d09d and Andino06aca9e. 47 manifest entries reconciled to remotely verified origin refs.
+NEXT ACTION: Verify runtime push, push Andino, reconcile metadata, check and push main.

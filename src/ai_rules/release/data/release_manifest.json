@@ -6,10 +6,10 @@
   "first_party": {
     "andino-workflow": {
       "branch": "andino-workflow",
-      "ref": "andino-workflow",
+      "ref": "origin/andino-workflow",
       "commit": "06aca9e0bb6de169a46261bd37cb96bfde9b0210",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "ai-codebase-rescue": {
       "branch": "ai-codebase-rescue",
@@ -43,371 +43,371 @@
     },
     "threejs-skills": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "207d09dbed6521a9071d5a9a1757bd8d6aeb1d33",
       "subpath": "entrypoint",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "nixie-fx-authoring": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/nixie-fx-authoring",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "nixie-fx-runtime": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/nixie-fx-runtime",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-3d-generator": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-3d-generator",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-aaa-graphics-builder": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-aaa-graphics-builder",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-animation": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-animation",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-atmosphere-aerial-perspective": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-atmosphere-aerial-perspective",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-audio-generator": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-audio-generator",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-bloom": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-bloom",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-camera-direction": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-camera-direction",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-debug-profiler": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-debug-profiler",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-exposure-color-grading": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-exposure-color-grading",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-fundamentals": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-fundamentals",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-game-director": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-game-director",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-game-ui-designer": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-game-ui-designer",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-gameplay-systems": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-gameplay-systems",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-geometry": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-geometry",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-image-generator": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-image-generator",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-image-pipeline": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-image-pipeline",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-interaction": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-interaction",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-lighting": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-lighting",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-loaders": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-loaders",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-materials": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-materials",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-parallax-occlusion-mapping": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-parallax-occlusion-mapping",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-postprocessing": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-postprocessing",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-precipitation-surfaces": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-precipitation-surfaces",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-procedural-animation": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-procedural-animation",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-procedural-architecture": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-procedural-architecture",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-procedural-fields": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-procedural-fields",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-procedural-geometry": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-procedural-geometry",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-procedural-materials": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-procedural-materials",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-procedural-planets": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-procedural-planets",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-procedural-vegetation": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-procedural-vegetation",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-procedural-vfx": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-procedural-vfx",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-qa-release": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-qa-release",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-raymarched-space-effects": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-raymarched-space-effects",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-screen-space-ambient-occlusion": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-screen-space-ambient-occlusion",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-shaders": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-shaders",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-shadow-systems": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-shadow-systems",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-skill-router": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-skill-router",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-spectral-ocean": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-spectral-ocean",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-temporal-surfaces": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-temporal-surfaces",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-textures": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-textures",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-visual-validation": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-visual-validation",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-volumetric-clouds": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-volumetric-clouds",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-water-optics": {
       "branch": "threejs-skills",
-      "ref": "threejs-skills",
+      "ref": "origin/threejs-skills",
       "commit": "a41a0a10eccc02ab35d2d89fae3165f269624b38",
       "subpath": "skills/threejs-water-optics",
       "release_sequence": 12,
-      "publication_status": "LOCAL_ONLY_PENDING_PUBLICATION"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     }
   },
   "publication_order": [
@@ -416,5 +416,5 @@
     "main",
     "tagged installer release"
   ],
-  "publication_status": "LOCAL_ONLY_PENDING_RUNTIME_PUBLICATION_AND_RIGHTS_REVIEW"
+  "publication_status": "RUNTIME_REFS_PUBLISHED_INSTALLER_RELEASE_PENDING"
 }
