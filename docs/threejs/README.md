@@ -1,7 +1,7 @@
 # Three.js Skills: one installed family
 
 Current requirement: **one Custom menu option, one installed Three.js directory,
-all45 methods and supporting files included**. The `threejs` profile adds Andino,
+all 45 methods and supporting files included**. The `threejs` profile adds Andino,
 Focus and Search First: four directories total. Minimal/Engineering are unchanged;
 Everything contains seven first-party capabilities. There is no native command
 or individual installer capability for the internal method IDs.
@@ -19,12 +19,12 @@ or individual installer capability for the internal method IDs.
     references/, scripts/, examples/, assets/, agents/ as supplied
 ```
 
-Only root SKILL.md is discoverable. All45 former SKILL.md files become internal
+Only root SKILL.md is discoverable. All 45 former SKILL.md files become internal
 GUIDE.md documents, retaining original metadata and technical methods plus the
 previously reviewed coexistence boundaries. Supporting files remain beside each
-guide, so references resolve from that method directory. All714 original inputs
+guide, so references resolve from that method directory. All 714 original inputs
 are inventoried by exact source hash and runtime path/hash; source is untouched.
-The complete runtime has775 files. Existing copied standalone support is retained
+The complete runtime has 775 files. Existing copied standalone support is retained
 rather than deleting examples or changing their imports during this correction.
 
 Examples:
@@ -32,10 +32,10 @@ Examples:
 - `gunakan andino-workflow dan threejs-skills` followed by the actual graphics task:
   the family identifies and reads the minimum relevant internal guides.
 - `gunakan threejs-skills, khusus threejs-shaders`: explicitly selects that guide.
-- A shader-and-lighting request can use those two methods; it need not load45.
+- A shader-and-lighting request can use those two methods; it need not load all 45.
 
 Invoke the family through the native host mechanism. Read selected guides as
-bundled resources through authorized tools, not as45 separately registered skills.
+bundled resources through authorized tools, not as 45 separately registered skills.
 A guide being present or named is not proof of use. Missing/denied family or guides
 use honest fallback; no alternate-source permission bypass. Andino owns lifecycle,
 one plan/checkpoint, handoff and DONE. Focus communication and Search First research
@@ -50,7 +50,7 @@ ai-rules setup --host codex --profile threejs --scope project --project-root . -
 ai-rules setup --host codex --capability threejs-skills --scope global --source latest
 ```
 
-Selecting just the family installs one directory; selecting the profile installs4.
+Selecting just the family installs one directory; selecting the profile installs four.
 Latest and bundled both acquire the complete branch-root package. The strict subpath
 feature remains for other packages and regression protection, but this family no
 longer uses it. Existing transactions, fingerprints, no-op, backup, rollback and
@@ -77,6 +77,10 @@ ai-rules setup
 
 ## Verification and distribution
 
+The [eight-branch maintenance report](../validation/repository-maintenance/README.md)
+records the subsequent README-only runtime publication and frozen manifest update.
+The following original reports retain their revision-specific evidence limits.
+
 [Current evidence](single-family-evidence.json) distinguishes regression tests,
 full-package installations, host discovery and observed selective method use.
 [Inventory](inventory.json) includes every input and support file. The previous
@@ -88,7 +92,7 @@ No paid generator, credentials, npm dependencies, PR, merge or tagged installer
 release is implied. Existing provenance attestation and third-party notices stay
 unchanged; no new collection license is invented.
 
-## All45 internal methods
+## All 45 internal methods
 
 - `nixie-fx-authoring`
 - `nixie-fx-runtime`

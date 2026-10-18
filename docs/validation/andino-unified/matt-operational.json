@@ -1,23 +1,23 @@
 {
   "schema_version": 1,
   "source_family": "matt",
-  "checked_at_utc": "2026-10-18T09:07:52.158648+00:00",
-  "runtime_root": "C:\\Users\\Lenovo\\Downloads\\AI-RULES",
+  "checked_at_utc": "2026-10-18T09:44:20.861979+00:00",
+  "runtime_root": "<runtime-export>",
   "checker_sha256": "eb04a79df12c08f5f6fa3c8ee73c2824843dfeae72a96c51cb5692e60ab7df2f",
-  "methods_sha256": "115d04dd15441119662998d5cf8632976e88dd90bd822036e6f7af6d1238ebd8",
+  "methods_sha256": "89eed290268d343cad2227907d2d292c961354f135f5e39a2a226a9c720996a4",
   "inputs": {
     "scripts/check_andino_matt_methods.py": "eb04a79df12c08f5f6fa3c8ee73c2824843dfeae72a96c51cb5692e60ab7df2f",
-    "docs/validation/andino-unified/matt-methods.json": "115d04dd15441119662998d5cf8632976e88dd90bd822036e6f7af6d1238ebd8"
+    "docs/validation/andino-unified/matt-methods.json": "89eed290268d343cad2227907d2d292c961354f135f5e39a2a226a9c720996a4"
   },
   "command": [
-    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
-    "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\scripts\\check_andino_matt_methods.py",
+    "<python-runtime>\\python.exe",
+    "<main-export>\\scripts\\check_andino_matt_methods.py",
     "--runtime-root",
-    "C:\\Users\\Lenovo\\Downloads\\AI-RULES",
+    "<runtime-export>",
     "--methods",
-    "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\matt-methods.json",
+    "<main-export>\\docs\\validation\\andino-unified\\matt-methods.json",
     "--output",
-    "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\matt-operational.json"
+    "<procedure-output>\\matt-operational.json"
   ],
   "verification_scope": "Executed exact Python examples extracted from adapted Markdown; independently checked literal results and generated artifact semantics.",
   "limitations": [
@@ -269,7 +269,7 @@
       "verification_level": "deterministic-operational-example",
       "source_hashes": {
         "skills/design-prototype/GUIDE.md": "000087f5a336ad50125a07035e87cb0fecb21322526560c4b92311d54653a421",
-        "skills/design-prototype/resources/worked-example.md": "5aefe3a1cd5912a92af5cb23c5e3dfe61fcebfb5965c7e7e2ea8d3d75e1b1d39"
+        "skills/design-prototype/resources/worked-example.md": "7efd7d939079e307f7e60fe64cb5a8c76d0def73500c4158ab491dadcb042008"
       },
       "observed": {
         "empty_checkout": {
@@ -1051,7 +1051,7 @@
       "verification_level": "deterministic-operational-example",
       "source_hashes": {
         "skills/typescript-boundary-enforcement/GUIDE.md": "c56fb14ac1fea90e4a28eb6daaff6f4a95589fa6e3b2ac853284c2dce46b6998",
-        "skills/typescript-boundary-enforcement/resources/worked-example.md": "ed6a5d62b43791dfb96ee2de69928daf38cc66a029f0b957c36dcce95deccb3e"
+        "skills/typescript-boundary-enforcement/resources/worked-example.md": "70bbeef9c6aff63aa63fa10e27f43d03b0ba84435d6efe42ffef56749c230697"
       },
       "observed": {
         "app": [

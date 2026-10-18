@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-18",
+  "scope": [
+    "main",
+    "ai-codebase-rescue",
+    "andino-workflow",
+    "council",
+    "focus",
+    "search-first",
+    "skripsi-skill",
+    "threejs-skills"
+  ],
+  "main": {
+    "baseline": "6b2875312fb03d6e6f977aa30a6d7044a336b3ce",
+    "final": "containing Git commit; publication confirmed in delivery checkpoint",
+    "status": "VERIFIED_PENDING_PUBLICATION"
+  },
+  "runtime_branches": {
+    "ai-codebase-rescue": {
+      "baseline": "ff61f482eb85c8f4870ee74ffe208394a61cb433",
+      "final": "5b0b47c678425daf33be582806f49aed497e2c2b",
+      "changed_files": [
+        "README.md"
+      ],
+      "status": "PUSHED",
+      "verification": "VERIFIED: package, metadata, local links, README lint and preservation",
+      "files": 9,
+      "native_entrypoints": 1,
+      "guides": 0,
+      "protected_git_tree_sha256_before": "20487856c4cb613e77f3a7318e3d9233b36c128edd17c1f41f21aa6d7d49002b",
+      "protected_git_tree_sha256_after": "20487856c4cb613e77f3a7318e3d9233b36c128edd17c1f41f21aa6d7d49002b",
+      "worktree_state": "clean detached HEAD",
+      "remaining_risk": "Native discovery/model behavior not re-evaluated; runtime instructions unchanged"
+    },
+    "andino-workflow": {
+      "baseline": "efd9c508d55ed94ab2a1229e3324a008e7db71f0",
+      "final": "8866a23c5491baf9845e7ba7f7f3b43baaca32d6",
+      "changed_files": [
+        "README.md"
+      ],
+      "status": "PUSHED",
+      "verification": "VERIFIED: package, metadata, local links, README lint and preservation",
+      "files": 127,
+      "native_entrypoints": 1,
+      "guides": 57,
+      "protected_git_tree_sha256_before": "889ddbe48d78d769f63218610ac4c5c110f139eb1456a690728277d455918daa",
+      "protected_git_tree_sha256_after": "889ddbe48d78d769f63218610ac4c5c110f139eb1456a690728277d455918daa",
+      "worktree_state": "clean detached HEAD",
+      "remaining_risk": "Native discovery/model behavior not re-evaluated; runtime instructions unchanged"
+    },
+    "council": {
+      "baseline": "82984fa4dd75023e63d944e6cee1b61d191047c4",
+      "final": "82984fa4dd75023e63d944e6cee1b61d191047c4",
+      "changed_files": [],
+      "status": "NO_CHANGE",
+      "verification": "VERIFIED: package, metadata, local links, README lint and preservation",
+      "files": 2,
+      "native_entrypoints": 1,
+      "guides": 0,
+      "protected_git_tree_sha256_before": "39794ae651e8e36d2cb366b89542cd0307c9952dabc6f934f931a351ae6aa8de",
+      "protected_git_tree_sha256_after": "39794ae651e8e36d2cb366b89542cd0307c9952dabc6f934f931a351ae6aa8de",
+      "worktree_state": "clean detached HEAD",
+      "remaining_risk": "Native discovery/model behavior not re-evaluated; runtime instructions unchanged"
+    },
+    "focus": {
+      "baseline": "3effa779d14303ed33ee8be874e86c2c3a873f55",
+      "final": "dbeff404f8f894e53aacc7aabf16c12a6326c887",
+      "changed_files": [
+        "README.md"
+      ],
+      "status": "PUSHED",
+      "verification": "VERIFIED: package, metadata, local links, README lint and preservation",
+      "files": 6,
+      "native_entrypoints": 1,
+      "guides": 0,
+      "protected_git_tree_sha256_before": "53f86bcdada93b1ecfee01698f3c9250d6f04552e4633099b857acbdad315ccc",
+      "protected_git_tree_sha256_after": "53f86bcdada93b1ecfee01698f3c9250d6f04552e4633099b857acbdad315ccc",
+      "worktree_state": "clean detached HEAD",
+      "remaining_risk": "Native discovery/model behavior not re-evaluated; runtime instructions unchanged"
+    },
+    "search-first": {
+      "baseline": "8383f8a329beff75867de80a517a8ef4d253e678",
+      "final": "b55364bf231085bb4a9126c9fe694ddb445df17f",
+      "changed_files": [
+        "README.md"
+      ],
+      "status": "PUSHED",
+      "verification": "VERIFIED: package, metadata, local links, README lint and preservation",
+      "files": 4,
+      "native_entrypoints": 1,
+      "guides": 0,
+      "protected_git_tree_sha256_before": "5a66eec1cf10636ffeb25e7f704a4e9436a464d75aeb3edcece0a1acab620263",
+      "protected_git_tree_sha256_after": "5a66eec1cf10636ffeb25e7f704a4e9436a464d75aeb3edcece0a1acab620263",
+      "worktree_state": "clean detached HEAD",
+      "remaining_risk": "Native discovery/model behavior not re-evaluated; runtime instructions unchanged"
+    },
+    "skripsi-skill": {
+      "baseline": "1161da8411c1914ad5207cde384ce151293d226e",
+      "final": "fceec66210be1f407942ee5d016dc7801f26e68f",
+      "changed_files": [
+        "README.md"
+      ],
+      "status": "PUSHED",
+      "verification": "VERIFIED: package, metadata, local links, README lint and preservation",
+      "files": 27,
+      "native_entrypoints": 1,
+      "guides": 0,
+      "protected_git_tree_sha256_before": "7761374b075fb786670c0749153fcbc431b23d6ea65c1d7d6c94d2f4b756955f",
+      "protected_git_tree_sha256_after": "7761374b075fb786670c0749153fcbc431b23d6ea65c1d7d6c94d2f4b756955f",
+      "worktree_state": "clean detached HEAD",
+      "remaining_risk": "Native discovery/model behavior not re-evaluated; runtime instructions unchanged"
+    },
+    "threejs-skills": {
+      "baseline": "f47d7c03a309703d6804b9e8e4787d54cbbdb53f",
+      "final": "7ff3f5752b333cbe041385372bb3d419a8f0c494",
+      "changed_files": [
+        "README.md"
+      ],
+      "status": "PUSHED",
+      "verification": "VERIFIED: package, metadata, local links, README lint and preservation",
+      "files": 775,
+      "native_entrypoints": 1,
+      "guides": 45,
+      "protected_git_tree_sha256_before": "1e81c142ea1dcb641416ef19932e5673b7188eb0cf48fb6b358c76a49eefdeeb",
+      "protected_git_tree_sha256_after": "1e81c142ea1dcb641416ef19932e5673b7188eb0cf48fb6b358c76a49eefdeeb",
+      "worktree_state": "clean detached HEAD",
+      "remaining_risk": "Native discovery/model behavior not re-evaluated; runtime instructions unchanged"
+    }
+  },
+  "webbased": {
+    "commit": "9a5d0e1b31257c4fcb1554558266ec7afc2a6160",
+    "state": "UNCHANGED_READ_ONLY"
+  },
+  "immutable_files": "No diff to chat-rules.md, human-language-english.md or human-language-indonesia.md on any scoped branch",
+  "cleanup": {
+    "deleted": [],
+    "retained": [
+      "docs/validation including failed logs and fixture implementations",
+      "docs/exec-plans and partial historical acceptance",
+      "docs/threejs inventories and historical reports",
+      "evals, tests, scripts, release metadata, provenance and legal notices",
+      "all runtime guides, Markdown resources, examples, code, shaders and binary assets"
+    ],
+    "rationale": "Every retained category has a runtime, regression, audit or release role. No unused file without evidence value was established."
+  },
+  "manifest": {
+    "sequence": 14,
+    "pins_remotely_verified": true,
+    "council_entry_unchanged": true,
+    "reason": "Six distributed README changes require new frozen package identities and update sequences.",
+    "focus_note": "Previous frozen Focus pin was older than the already-published communication contract. Current task changed only README; new pin includes those prior published references and matches WebBased."
+  },
+  "checks": {
+    "packages": "PASS: all seven, one native entrypoint each",
+    "focus_webbased": "PASS: both Priority A sources agree; all three bundled references match",
+    "andino_procedures": "PASS: 18 Addy + 28 Matt + 11 Superpowers; canonical Git byte inputs",
+    "andino_unified": "PASS: 79 source rows; no unresolved ownership collisions",
+    "capability_schemas": "PASS: 54 eval schemas, 58 contracts",
+    "threejs": "PASS: 45 methods, 714 original resources; 775 total package files; 10 scenario schemas",
+    "skripsi": "PASS: 335 requirements/acceptance criteria; 32 capabilities; 110 initial eval owners; 75 task records",
+    "markdown": "PASS: markdownlint-cli2 0.23.3, all defaults except MD013 for long commands/tables",
+    "readme_links": {
+      "result": "PASS",
+      "readmes": 8,
+      "checked": 50,
+      "errors": [],
+      "scope": "Local paths and Git objects for first-party branch URLs; external third-party availability is not inferred."
+    },
+    "tests": {
+      "result": "PASS",
+      "ran": 223,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1,
+      "skip": "AI_RULES_SEARCH_FIRST_CANDIDATE opt-in fixture not supplied",
+      "source": "Current checkout src explicitly inserted before import; no global reinstall",
+      "command": "python -c \"import sys,unittest; sys.path.insert(0, 'src'); unittest.main(module=None, argv=['unittest', 'discover', '-s', 'tests'])\""
+    },
+    "installation": {
+      "result": "PASS",
+      "scenarios": 16,
+      "evidence": "installation.json",
+      "scope": "Five bundled adapter fresh/repeat pairs; real default-latest fresh/repeat, baseline upgrade/backup/repeat, two modified-managed blocks"
+    },
+    "changed_markdown": "PASS: all changed main Markdown plus all seven runtime READMEs; MD013 disabled only for long commands/tables"
+  },
+  "resolved_diagnostics": [
+    "Byte-sensitive procedure reports were stale at canonical source; archived originals and re-executed all 57 methods. CRLF checkout differences were isolated through Git exports.",
+    "Plain python initially imported a stale globally installed ai_rules package; six post-pin failures reflected that mismatch. Current suite explicitly inserts checkout src; no global installation changed.",
+    "Disposable verification helper used capability_id instead of lock schema capability; corrected helper only and reran."
+  ],
+  "external_link_checks": [
+    {
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "status": 200,
+      "destination": "https://github.com/ChromeDevTools/chrome-devtools-mcp"
+    },
+    {
+      "url": "https://github.com/DietrichGebert/ponytail",
+      "status": 200,
+      "destination": "https://github.com/DietrichGebert/ponytail"
+    },
+    {
+      "url": "https://github.com/JCodesMore/ai-website-cloner-template",
+      "status": 200,
+      "destination": "https://github.com/JCodesMore/ai-website-cloner-template"
+    },
+    {
+      "url": "https://github.com/addyosmani/agent-skills",
+      "status": 200,
+      "destination": "https://github.com/addyosmani/agent-skills"
+    },
+    {
+      "url": "https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md",
+      "status": 200,
+      "destination": "https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md"
+    },
+    {
+      "url": "https://github.com/ayghri/i-have-adhd",
+      "status": 200,
+      "destination": "https://github.com/ayghri/i-have-adhd"
+    },
+    {
+      "url": "https://github.com/hetpatel-11/Adobe_Premiere_Pro_MCP",
+      "status": 200,
+      "destination": "https://github.com/hetpatel-11/Adobe_Premiere_Pro_MCP"
+    },
+    {
+      "url": "https://github.com/mattpocock/skills",
+      "status": 200,
+      "destination": "https://github.com/mattpocock/skills"
+    },
+    {
+      "url": "https://github.com/microsoft/playwright-mcp",
+      "status": 200,
+      "destination": "https://github.com/microsoft/playwright-mcp"
+    },
+    {
+      "url": "https://github.com/miqdadbadjuber/anti-slop",
+      "status": 200,
+      "destination": "https://github.com/miqdadbadjuber/anti-slop"
+    },
+    {
+      "url": "https://github.com/miscusi-peek/cheatengine-mcp-bridge",
+      "status": 200,
+      "destination": "https://github.com/miscusi-peek/cheatengine-mcp-bridge"
+    },
+    {
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/git",
+      "status": 200,
+      "destination": "https://github.com/modelcontextprotocol/servers/tree/main/src/git"
+    },
+    {
+      "url": "https://github.com/obra/superpowers",
+      "status": 200,
+      "destination": "https://github.com/obra/superpowers"
+    },
+    {
+      "url": "https://github.com/pbakaus/impeccable",
+      "status": 200,
+      "destination": "https://github.com/pbakaus/impeccable"
+    },
+    {
+      "url": "https://github.com/upstash/context7",
+      "status": 200,
+      "destination": "https://github.com/upstash/context7"
+    },
+    {
+      "url": "https://graphify.net/",
+      "status": 200,
+      "destination": "https://graaph.org/"
+    },
+    {
+      "url": "https://www.npmjs.com/package/@drawio/mcp",
+      "status": 403
+    },
+    {
+      "url": "https://www.npmjs.com/package/staruml-mcp-server",
+      "status": 403
+    },
+    {
+      "url": "https://www.tasteskill.dev/",
+      "status": 200,
+      "destination": "https://www.tasteskill.dev/"
+    }
+  ],
+  "research": {
+    "method": "Search First: reuse existing installers/validators and local contracts; public README inspiration only",
+    "sources": [
+      "https://github.com/addyosmani/agent-skills",
+      "https://github.com/mattpocock/skills",
+      "https://github.com/DavidAnson/markdownlint-cli2"
+    ],
+    "decision": "EXTEND existing documentation and refresh evidence; no new runtime architecture or dependency"
+  },
+  "antislop": {
+    "copy": "PASS: benefit-first, concrete commands, sourced counts/credits, no invented claims or decorative badges",
+    "honesty": "PASS: structural, installation and live-host scopes explicitly separated",
+    "preservation": "PASS: all non-README runtime Git blobs/modes unchanged",
+    "ui_gate": "NOT_APPLICABLE: documentation maintenance, no UI implementation"
+  },
+  "limits": [
+    "Live host discovery, model routing, service use, rendering and cross-host behavioral parity NOT_VERIFIED.",
+    "Two npm package pages returned HTTP 403 to HEAD; availability NOT_VERIFIED. No denial bypass attempted.",
+    "No tag, GitHub Release, installer executable or global setup created."
+  ]
+}

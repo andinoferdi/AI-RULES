@@ -1,6 +1,21 @@
-# Unified Andino integration — local delivery
+# Unified Andino integration: evidence and publication history
 
-This report belongs to the single active [execution plan](../../exec-plans/active/andino-capability-integration.md). The user-supplied `ULTIMATE-PROMPT.md` is the execution/permission authority; `GRAND-PLAN.md` defines Phase A–G and the quality gates. Earlier delivery history is not current acceptance evidence.
+Current maintenance: runtime `8866a23c5491baf9845e7ba7f7f3b43baaca32d6` is published;
+main's frozen manifest uses sequence 14. The README is the only runtime file changed
+by this maintenance. See the [eight-branch verification report](../repository-maintenance/README.md)
+for current package and installation checks. Earlier hashes, permissions and live
+host observations below remain scoped to their recorded revisions.
+
+The three current `*-operational.json` reports were re-executed on canonical Git
+exports after stale byte identities were detected. Their prior versions remain in
+`pre-maintenance/`; no failed or historical evidence was removed. Byte-sensitive
+procedural verification uses LF Git exports of main and runtime, since Windows
+checkout conversion changes raw hashes. Structural package checks normalize CRLF.
+
+The original integration report belongs to its [execution plan](../../exec-plans/active/andino-capability-integration.md).
+Its user-supplied `ULTIMATE-PROMPT.md` and `GRAND-PLAN.md` defined that delivery's
+authority and quality gates. They are historical context, not prerequisites for
+installing or using the published runtime.
 
 ## 1. Status
 

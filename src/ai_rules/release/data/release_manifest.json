@@ -1,39 +1,43 @@
 {
   "schema_version": 1,
   "channel": "stable",
-  "release_sequence": 13,
+  "release_sequence": 14,
   "verified_at": "2026-10-18",
   "first_party": {
     "andino-workflow": {
       "branch": "andino-workflow",
       "ref": "origin/andino-workflow",
-      "commit": "efd9c508d55ed94ab2a1229e3324a008e7db71f0",
-      "release_sequence": 13,
+      "commit": "8866a23c5491baf9845e7ba7f7f3b43baaca32d6",
+      "release_sequence": 14,
       "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "ai-codebase-rescue": {
       "branch": "ai-codebase-rescue",
       "ref": "origin/ai-codebase-rescue",
-      "commit": "b34f4d792420039cbb52bceee76dc0240846b5f2",
-      "release_sequence": 1
+      "commit": "5b0b47c678425daf33be582806f49aed497e2c2b",
+      "release_sequence": 14,
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "skripsi-skill": {
       "branch": "skripsi-skill",
       "ref": "origin/skripsi-skill",
-      "commit": "6f7c57c8a2d600f092c6a31937d4ec218d9888b6",
-      "release_sequence": 1
+      "commit": "fceec66210be1f407942ee5d016dc7801f26e68f",
+      "release_sequence": 14,
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "search-first": {
       "branch": "search-first",
       "ref": "origin/search-first",
-      "commit": "76bccd3578769a45e6fb375aadab0ca7f7be9cc8",
-      "release_sequence": 2
+      "commit": "b55364bf231085bb4a9126c9fe694ddb445df17f",
+      "release_sequence": 14,
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "focus": {
       "branch": "focus",
       "ref": "origin/focus",
-      "commit": "9eb6081aa1ae26a4bb81a38eb49e4b1f9b9c3da3",
-      "release_sequence": 2
+      "commit": "dbeff404f8f894e53aacc7aabf16c12a6326c887",
+      "release_sequence": 14,
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "council": {
       "branch": "council",
@@ -44,8 +48,8 @@
     "threejs-skills": {
       "branch": "threejs-skills",
       "ref": "origin/threejs-skills",
-      "commit": "f47d7c03a309703d6804b9e8e4787d54cbbdb53f",
-      "release_sequence": 12,
+      "commit": "7ff3f5752b333cbe041385372bb3d419a8f0c494",
+      "release_sequence": 14,
       "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     }
   },

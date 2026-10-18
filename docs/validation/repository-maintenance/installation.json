@@ -1,0 +1,389 @@
+{
+  "result": "PASS",
+  "date": "2026-10-18",
+  "release_sequence": 14,
+  "published_commits": {
+    "andino-workflow": "8866a23c5491baf9845e7ba7f7f3b43baaca32d6",
+    "ai-codebase-rescue": "5b0b47c678425daf33be582806f49aed497e2c2b",
+    "skripsi-skill": "fceec66210be1f407942ee5d016dc7801f26e68f",
+    "search-first": "b55364bf231085bb4a9126c9fe694ddb445df17f",
+    "focus": "dbeff404f8f894e53aacc7aabf16c12a6326c887",
+    "council": "82984fa4dd75023e63d944e6cee1b61d191047c4",
+    "threejs-skills": "7ff3f5752b333cbe041385372bb3d419a8f0c494"
+  },
+  "global_installation_modified": false,
+  "sources": "real remote latest; real frozen-manifest Git exports",
+  "isolation": "Only Path.home redirected; all project/state/backup outputs disposable. No source/catalog/network mocks.",
+  "records": [
+    {
+      "host": "codex",
+      "source": "bundled",
+      "scenario": "fresh",
+      "attempt": "first",
+      "result": "PASS",
+      "exact_content_matches": [
+        "ai-codebase-rescue",
+        "andino-workflow",
+        "council",
+        "focus",
+        "search-first",
+        "skripsi-skill",
+        "threejs-skills"
+      ],
+      "actions": {
+        "focus": "INSTALL",
+        "search-first": "INSTALL",
+        "andino-workflow": "INSTALL",
+        "ai-codebase-rescue": "INSTALL",
+        "skripsi-skill": "INSTALL",
+        "council": "INSTALL",
+        "threejs-skills": "INSTALL"
+      }
+    },
+    {
+      "host": "codex",
+      "source": "bundled",
+      "scenario": "fresh",
+      "attempt": "repeat",
+      "result": "PASS",
+      "exact_content_matches": [
+        "ai-codebase-rescue",
+        "andino-workflow",
+        "council",
+        "focus",
+        "search-first",
+        "skripsi-skill",
+        "threejs-skills"
+      ],
+      "actions": {
+        "focus": "NO_OP",
+        "search-first": "NO_OP",
+        "andino-workflow": "NO_OP",
+        "ai-codebase-rescue": "NO_OP",
+        "skripsi-skill": "NO_OP",
+        "council": "NO_OP",
+        "threejs-skills": "NO_OP"
+      }
+    },
+    {
+      "host": "claude-code",
+      "source": "bundled",
+      "scenario": "fresh",
+      "attempt": "first",
+      "result": "PASS",
+      "exact_content_matches": [
+        "ai-codebase-rescue",
+        "andino-workflow",
+        "council",
+        "focus",
+        "search-first",
+        "skripsi-skill",
+        "threejs-skills"
+      ],
+      "actions": {
+        "focus": "INSTALL",
+        "search-first": "INSTALL",
+        "andino-workflow": "INSTALL",
+        "ai-codebase-rescue": "INSTALL",
+        "skripsi-skill": "INSTALL",
+        "council": "INSTALL",
+        "threejs-skills": "INSTALL"
+      }
+    },
+    {
+      "host": "claude-code",
+      "source": "bundled",
+      "scenario": "fresh",
+      "attempt": "repeat",
+      "result": "PASS",
+      "exact_content_matches": [
+        "ai-codebase-rescue",
+        "andino-workflow",
+        "council",
+        "focus",
+        "search-first",
+        "skripsi-skill",
+        "threejs-skills"
+      ],
+      "actions": {
+        "focus": "NO_OP",
+        "search-first": "NO_OP",
+        "andino-workflow": "NO_OP",
+        "ai-codebase-rescue": "NO_OP",
+        "skripsi-skill": "NO_OP",
+        "council": "NO_OP",
+        "threejs-skills": "NO_OP"
+      }
+    },
+    {
+      "host": "opencode",
+      "source": "bundled",
+      "scenario": "fresh",
+      "attempt": "first",
+      "result": "PASS",
+      "exact_content_matches": [
+        "ai-codebase-rescue",
+        "andino-workflow",
+        "council",
+        "focus",
+        "search-first",
+        "skripsi-skill",
+        "threejs-skills"
+      ],
+      "actions": {
+        "focus": "INSTALL",
+        "search-first": "INSTALL",
+        "andino-workflow": "INSTALL",
+        "ai-codebase-rescue": "INSTALL",
+        "skripsi-skill": "INSTALL",
+        "council": "INSTALL",
+        "threejs-skills": "INSTALL"
+      }
+    },
+    {
+      "host": "opencode",
+      "source": "bundled",
+      "scenario": "fresh",
+      "attempt": "repeat",
+      "result": "PASS",
+      "exact_content_matches": [
+        "ai-codebase-rescue",
+        "andino-workflow",
+        "council",
+        "focus",
+        "search-first",
+        "skripsi-skill",
+        "threejs-skills"
+      ],
+      "actions": {
+        "focus": "NO_OP",
+        "search-first": "NO_OP",
+        "andino-workflow": "NO_OP",
+        "ai-codebase-rescue": "NO_OP",
+        "skripsi-skill": "NO_OP",
+        "council": "NO_OP",
+        "threejs-skills": "NO_OP"
+      }
+    },
+    {
+      "host": "antigravity-cli",
+      "source": "bundled",
+      "scenario": "fresh",
+      "attempt": "first",
+      "result": "PASS",
+      "exact_content_matches": [
+        "ai-codebase-rescue",
+        "andino-workflow",
+        "council",
+        "focus",
+        "search-first",
+        "skripsi-skill",
+        "threejs-skills"
+      ],
+      "actions": {
+        "focus": "INSTALL",
+        "search-first": "INSTALL",
+        "andino-workflow": "INSTALL",
+        "ai-codebase-rescue": "INSTALL",
+        "skripsi-skill": "INSTALL",
+        "council": "INSTALL",
+        "threejs-skills": "INSTALL"
+      }
+    },
+    {
+      "host": "antigravity-cli",
+      "source": "bundled",
+      "scenario": "fresh",
+      "attempt": "repeat",
+      "result": "PASS",
+      "exact_content_matches": [
+        "ai-codebase-rescue",
+        "andino-workflow",
+        "council",
+        "focus",
+        "search-first",
+        "skripsi-skill",
+        "threejs-skills"
+      ],
+      "actions": {
+        "focus": "NO_OP",
+        "search-first": "NO_OP",
+        "andino-workflow": "NO_OP",
+        "ai-codebase-rescue": "NO_OP",
+        "skripsi-skill": "NO_OP",
+        "council": "NO_OP",
+        "threejs-skills": "NO_OP"
+      }
+    },
+    {
+      "host": "antigravity-ide",
+      "source": "bundled",
+      "scenario": "fresh",
+      "attempt": "first",
+      "result": "PASS",
+      "exact_content_matches": [
+        "ai-codebase-rescue",
+        "andino-workflow",
+        "council",
+        "focus",
+        "search-first",
+        "skripsi-skill",
+        "threejs-skills"
+      ],
+      "actions": {
+        "focus": "INSTALL",
+        "search-first": "INSTALL",
+        "andino-workflow": "INSTALL",
+        "ai-codebase-rescue": "INSTALL",
+        "skripsi-skill": "INSTALL",
+        "council": "INSTALL",
+        "threejs-skills": "INSTALL"
+      }
+    },
+    {
+      "host": "antigravity-ide",
+      "source": "bundled",
+      "scenario": "fresh",
+      "attempt": "repeat",
+      "result": "PASS",
+      "exact_content_matches": [
+        "ai-codebase-rescue",
+        "andino-workflow",
+        "council",
+        "focus",
+        "search-first",
+        "skripsi-skill",
+        "threejs-skills"
+      ],
+      "actions": {
+        "focus": "NO_OP",
+        "search-first": "NO_OP",
+        "andino-workflow": "NO_OP",
+        "ai-codebase-rescue": "NO_OP",
+        "skripsi-skill": "NO_OP",
+        "council": "NO_OP",
+        "threejs-skills": "NO_OP"
+      }
+    },
+    {
+      "host": "codex",
+      "source": "latest-default",
+      "scenario": "fresh",
+      "attempt": "first",
+      "result": "PASS",
+      "exact_content_matches": [
+        "ai-codebase-rescue",
+        "andino-workflow",
+        "council",
+        "focus",
+        "search-first",
+        "skripsi-skill",
+        "threejs-skills"
+      ],
+      "actions": {
+        "focus": "INSTALL",
+        "search-first": "INSTALL",
+        "andino-workflow": "INSTALL",
+        "ai-codebase-rescue": "INSTALL",
+        "skripsi-skill": "INSTALL",
+        "council": "INSTALL",
+        "threejs-skills": "INSTALL"
+      }
+    },
+    {
+      "host": "codex",
+      "source": "latest-default",
+      "scenario": "fresh",
+      "attempt": "repeat",
+      "result": "PASS",
+      "exact_content_matches": [
+        "ai-codebase-rescue",
+        "andino-workflow",
+        "council",
+        "focus",
+        "search-first",
+        "skripsi-skill",
+        "threejs-skills"
+      ],
+      "actions": {
+        "focus": "NO_OP",
+        "search-first": "NO_OP",
+        "andino-workflow": "NO_OP",
+        "ai-codebase-rescue": "NO_OP",
+        "skripsi-skill": "NO_OP",
+        "council": "NO_OP",
+        "threejs-skills": "NO_OP"
+      }
+    },
+    {
+      "host": "codex",
+      "source": "latest-default",
+      "scenario": "fresh",
+      "attempt": "modified-managed-conflict",
+      "result": "PASS",
+      "user_edit_preserved": true,
+      "expected_exit": 1
+    },
+    {
+      "host": "codex",
+      "source": "latest-default",
+      "scenario": "upgrade",
+      "attempt": "first",
+      "result": "PASS",
+      "exact_content_matches": [
+        "ai-codebase-rescue",
+        "andino-workflow",
+        "council",
+        "focus",
+        "search-first",
+        "skripsi-skill",
+        "threejs-skills"
+      ],
+      "actions": {
+        "focus": "UPDATE",
+        "search-first": "UPDATE",
+        "andino-workflow": "UPDATE",
+        "ai-codebase-rescue": "UPDATE",
+        "skripsi-skill": "UPDATE",
+        "council": "NO_OP",
+        "threejs-skills": "UPDATE"
+      },
+      "backup_preservation": "PASS for all six changed packages"
+    },
+    {
+      "host": "codex",
+      "source": "latest-default",
+      "scenario": "upgrade",
+      "attempt": "repeat",
+      "result": "PASS",
+      "exact_content_matches": [
+        "ai-codebase-rescue",
+        "andino-workflow",
+        "council",
+        "focus",
+        "search-first",
+        "skripsi-skill",
+        "threejs-skills"
+      ],
+      "actions": {
+        "focus": "NO_OP",
+        "search-first": "NO_OP",
+        "andino-workflow": "NO_OP",
+        "ai-codebase-rescue": "NO_OP",
+        "skripsi-skill": "NO_OP",
+        "council": "NO_OP",
+        "threejs-skills": "NO_OP"
+      }
+    },
+    {
+      "host": "codex",
+      "source": "latest-default",
+      "scenario": "upgrade",
+      "attempt": "modified-managed-conflict",
+      "result": "PASS",
+      "user_edit_preserved": true,
+      "expected_exit": 1
+    }
+  ],
+  "limit": "File/content/state verification only. Native discovery, model behavior and rendering NOT_VERIFIED."
+}

@@ -2,11 +2,11 @@
   "schema_version": 1,
   "source_family": "addy",
   "kind": "executed-guide-procedure-examples",
-  "runtime_root": "C:\\Users\\Lenovo\\Downloads\\AI-RULES",
-  "manifest_sha256": "001f8801877ef1fabe4d4096e806485d0bf774ee14cbdfeca8fca7e3798b306c",
+  "runtime_root": "<runtime-export>",
+  "manifest_sha256": "8568e476e99c29de105093c80fcdb6d12af14065a60ccd7409dc0233a0a0df4b",
   "inputs": {
     "scripts/check_andino_addy_methods.py": "f7bf15420f5796d352b0f254578adfa6c4d97787dcb23c6931cc1245bdf68dc1",
-    "docs/validation/andino-unified/addy-methods.json": "001f8801877ef1fabe4d4096e806485d0bf774ee14cbdfeca8fca7e3798b306c"
+    "docs/validation/andino-unified/addy-methods.json": "8568e476e99c29de105093c80fcdb6d12af14065a60ccd7409dc0233a0a0df4b"
   },
   "summary": {
     "methods": 18,
@@ -68,7 +68,7 @@
         "result": {
           "ok": false,
           "exit_code": 1,
-          "error": "Traceback (most recent call last):\n  File \"<string>\", line 39, in <module>\n  File \"<guide-operational-example>\", line 27, in <module>\n  File \"<guide-operational-example>\", line 20, in probe\n  File \"C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\concurrent\\futures\\_base.py\", line 619, in result_iterator\n    yield _result_or_cancel(fs.pop())\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\concurrent\\futures\\_base.py\", line 317, in _result_or_cancel\n    return fut.result(timeout)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\concurrent\\futures\\_base.py\", line 456, in result\n    return self.__get_result()\n           ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\concurrent\\futures\\_base.py\", line 401, in __get_result\n    raise self._exception\n  File \"C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\concurrent\\futures\\thread.py\", line 59, in run\n    result = self.fn(*self.args, **self.kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<guide-operational-example>\", line 15, in apply\nsqlite3.IntegrityError: UNIQUE constraint failed: intents.key\n"
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 39, in <module>\n  File \"<guide-operational-example>\", line 27, in <module>\n  File \"<guide-operational-example>\", line 20, in probe\n  File \"<python-runtime>\\Lib\\concurrent\\futures\\_base.py\", line 619, in result_iterator\n    yield _result_or_cancel(fs.pop())\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<python-runtime>\\Lib\\concurrent\\futures\\_base.py\", line 317, in _result_or_cancel\n    return fut.result(timeout)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"<python-runtime>\\Lib\\concurrent\\futures\\_base.py\", line 456, in result\n    return self.__get_result()\n           ^^^^^^^^^^^^^^^^^^^\n  File \"<python-runtime>\\Lib\\concurrent\\futures\\_base.py\", line 401, in __get_result\n    raise self._exception\n  File \"<python-runtime>\\Lib\\concurrent\\futures\\thread.py\", line 59, in run\n    result = self.fn(*self.args, **self.kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<guide-operational-example>\", line 15, in apply\nsqlite3.IntegrityError: UNIQUE constraint failed: intents.key\n"
         }
       },
       "limit": "SQLite proof covers a local transactional effect only; remote timeout reconciliation and provider behavior require integration evidence."
