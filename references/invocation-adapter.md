@@ -100,6 +100,28 @@ forbidden and reviewer decisions hidden. Transport smoke tests and self-reported
 selection are insufficient to prove autonomous just-in-time routing. Cross-host
 use remains NOT_VERIFIED until actually executed on each claimed host.
 
+## Andino internal methods
+
+Once Andino is legitimately ACTIVE, resolve a relevant canonical ID or source-name
+alias in the [internal index](internal-method-index.md). Confirm the bundled
+`skills/<id>/GUIDE.md` and needed local resources are present and permitted; read
+only those selected resources. These are internal documents, not native skills,
+agents or tools. Do not call a fictitious universal method loader, require an
+upstream installation, or claim native Superpowers/Agent Skills/Matt invocation.
+
+A guide read establishes ACTIVE; USED also needs a relevant action/output. Name
+lookup alone establishes DISCOVERED. Missing/denied guide or tool is UNAVAILABLE;
+an irrelevant guide is NOT_NEEDED. Respect restrictions on the family, individual
+method/resource and actual action. No alternate-source bypass for a denied resource.
+Reading an internal research guide never bypasses required Search First activation;
+generic engineering methods do not replace domain owners. Explicit native sibling
+requests still follow their actual host invocation controls above.
+
+Real delegation tools are host-conditional. At least two independent tasks, benefit,
+authority and disjoint file scopes are required; at most three direct children,
+no nested spawning, no concurrent shared writes. Parent inspects artifacts and
+reruns relevant checks. Sequential fallback is valid; do not imitate absent agents.
+
 ## Three.js family and bundled methods
 
 Resolve `threejs-skills` as one installed native skill and invoke it using this

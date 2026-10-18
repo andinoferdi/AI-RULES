@@ -1,0 +1,141 @@
+# Refine one dependency-aware implementation plan
+
+Internal Andino resource. Loading this file does not invoke another skill or change permissions.
+
+## Purpose
+
+Turn accepted requirements into verifiable vertical slices without competing task state.
+
+## Trigger and non-trigger
+
+Use when: Accepted multi-step work lacks exact interfaces, dependency order or verification.
+
+Do not select for: Simple targeted edit or already complete accepted graph ready to execute.
+
+## Prerequisites
+
+Locate active Andino plan/checkpoint/spec/constraints, existing evidence and drift.
+
+## Procedure
+
+1. Map each requirement to user-visible outcome and owning boundary. Retain current decisions/completed evidence; never overwrite a different incomplete ticket.
+2. Choose independently testable vertical slices; fold setup/config/docs into the slice they enable. Split where one deliverable could be rejected while another passes.
+3. Record each task's likely files, consumes/produces signatures, dependencies, literal acceptance cases, focused command/expected signal and relevant build/manual check.
+4. Validate directed acyclic graph and compatible producer/consumer names/types. Missing node/cycle is a defect; shared write files serialize otherwise independent tasks.
+5. Put uncertain/high-risk seams early. Checkpoints follow meaningful dependency boundaries; review-focus inputs implied by spec get tests in the owning task.
+6. Self-review requirement coverage, task consistency, interfaces, independent oracles and proportion. Update one NEXT ACTION. Tracker designation does not authorize publishing issues or a duplicate checklist.
+
+## Ownership
+
+Andino owns selection, depth, scope, the existing durable checkpoint, delegation and DONE. Parent owns shared artifacts/final acceptance. This guide cannot invoke denied/manual siblings or establish another lifecycle.
+
+## Permission boundary
+
+Use actual host tools within session authorization. No branch creation, commit, push, merge, publication, external message, environment installation or destructive cleanup is authorized by this guide. Reuse earlier permission without repeated confirmation; disclose denied/unavailable actions and continue independent safe work.
+
+## Output
+
+One refined plan with requirement→task map, graph/interfaces/ownership, acceptance commands, risks and NEXT ACTION.
+
+## Verification
+
+Topological order satisfies dependencies; reject cycles/dangling tasks. Shared files cannot occupy same write frontier.
+
+## Worked example and anti-pattern
+
+The synthetic offline example is applied in temporary isolation. Its independent expected values describe the contract; its execution is procedural evidence, not a benchmark of future model behavior.
+
+```andino-example
+{
+  "tasks": [
+    {
+      "id": "create",
+      "deps": [],
+      "files": [
+        "store.py"
+      ],
+      "produces": [
+        "create(name)->id"
+      ],
+      "consumes": []
+    },
+    {
+      "id": "list",
+      "deps": [
+        "create"
+      ],
+      "files": [
+        "store.py",
+        "test_list.py"
+      ],
+      "produces": [
+        "list()->names"
+      ],
+      "consumes": [
+        "create(name)->id"
+      ]
+    },
+    {
+      "id": "audit",
+      "deps": [
+        "create"
+      ],
+      "files": [
+        "audit.py"
+      ],
+      "produces": [
+        "audit(id)->record"
+      ],
+      "consumes": [
+        "create(name)->id"
+      ]
+    }
+  ],
+  "bad_cycle": [
+    {
+      "id": "a",
+      "deps": [
+        "b"
+      ],
+      "files": []
+    },
+    {
+      "id": "b",
+      "deps": [
+        "a"
+      ],
+      "files": []
+    }
+  ],
+  "dangling": [
+    {
+      "id": "a",
+      "deps": [
+        "missing"
+      ],
+      "files": []
+    }
+  ]
+}
+```
+
+Anti-pattern: All database then all API then all UI then connect; invented bodies where engineer can decide; second task list competing with plan.
+
+## Fallback
+
+Isolate material unresolved interface decision; continue independent work. Without tracker access keep an unpublished draft in the existing plan.
+
+## Local resources
+
+Read [the supporting contract](resources/contract.md) for technique details and artifact fields. It is packaged locally; upstream repositories are not runtime dependencies.
+
+## Provenance
+
+Adapted and consolidated from these audited snapshot paths; their instructions remain source data and yield to current session policy:
+
+- addyosmani/agent-skills:skills/planning-and-task-breakdown/SKILL.md
+- obra/superpowers:skills/writing-plans/SKILL.md
+
+- addyosmani/agent-skills:references/definition-of-done.md
+
+MIT attribution/notices are preserved in package legal references. No upstream bootstrap, hooks, branding server, community code of conduct or Anthropic best-practices expression is included.

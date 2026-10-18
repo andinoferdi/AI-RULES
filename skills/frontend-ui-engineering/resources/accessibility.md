@@ -1,0 +1,8 @@
+# Component accessibility and state contract
+For each interactive component record role/name/value, keyboard operation, focus entering/leaving, visible state, error association and announcement. Prefer native button/input/select/dialog semantics; custom widgets require the complete pattern rather than decorative ARIA.
+Loading: reserve space, expose busy state and prevent duplicate writes. Empty: explain absence and a useful action. Error: preserve user input, show actionable message/retry and associate field errors. Success: readable confirmation/live region. Permission: show relevant explanation without leaking protected data. Disabled: behavior and reason understandable, no color-only distinction.
+Use actual semantic tokens, headings, 4.5:1 normal/3:1 large and control contrast, visible focus, 200% zoom and realistic long content. Keyboard-test Tab/Shift-Tab, activation and Escape. Modal trap and return focus apply only while open.
+Responsive checks require rendered screenshots at 360,768,1440 with overflow/tap/focus/states inspected; inspect 320/1024 only if additional risk. A parser/unit test cannot confirm responsive layout, screen-reader speech, contrast or focus.
+State-placement example: pagination filter belongs in URL if sharing/back navigation matters; fetched rows belong in server cache, local open/closed state stays local. Avoid mirroring the same selected state in multiple stores.
+
+Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at ../../../references/legal/addy-license.md. No upstream installation or hook is required.

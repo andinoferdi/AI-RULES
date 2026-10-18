@@ -30,14 +30,18 @@ Release means stop unnecessary calls/defaults, not uninstall. Stop when acceptan
 is sufficiently grounded. Simple tasks may remain DIRECT with zero specialists
 only when no required route or explicit specialist choice applies.
 
-REQUIRED means select and activate the matching skill before its relevant work,
-subject to native invocation controls. CONDITIONAL means select only when the
+REQUIRED means select and load the matching bundled guide, or activate a native
+sibling, before its relevant work, subject to the applicable resource/native controls.
+CONDITIONAL means select only when the
 stated need is evidenced; once selected, activation is required before use.
 Unmarked rows remain conditional on their stated need and boundary.
 These labels govern selection, not permission, persistence or registry AUTO modes.
 
 Apply explicit user choices and exclusions first, then matching REQUIRED routes,
-then distinct CONDITIONAL needs. Match the requested outcome, not names appearing
+then distinct CONDITIONAL needs. Integrated methods resolve through the
+[local index](internal-method-index.md), not an upstream native skill installation.
+Native siblings/instruments retain their actual host discovery and invocation controls.
+Match the requested outcome, not names appearing
 in quoted examples, filenames or an inventory. Diagnose an unknown cause before
 choosing a repair; load regression support before behavior changes and completion
 support before consequential acceptance claims. Reassess each phase; do not load
@@ -76,14 +80,14 @@ Antigravity's scoped descriptions are behavioral guidance, not a native hard swi
 | New feature with likely reusable solutions, dependency/integration choice, new utility, unfamiliar or version-sensitive API, material external uncertainty about reported problems, maintenance or alternatives, or evidence that an approach is unsuitable | REQUIRED: search-first when this research need remains, without waiting for a web-search request | activate actual instructions before research, even offline; its contract requires actual authorized search/read actions when external evidence is needed; local sufficiency stops research; no trigger from coding alone or trivial edits; unknown cause remains with debugging |
 | Thesis/research status, next steps, milestones or substantive research work | REQUIRED: skripsi-skill | activate before interpreting progress or giving research advice; preserve Andino ownership; no second plan |
 | Runtime/configuration failure | Relevant logs, service/config/schema status | test environment hypotheses before assuming a source-code defect; read-only evidence does not authorize live mutation |
-| Unknown bug root cause | REQUIRED: systematic-debugging | activate before reading diagnostic logs/source for the investigation, not after gathering them; reproduce or trace; distinguish observed cause from proposed diagnosis |
+| Unknown bug root cause | REQUIRED: bundled [debugging](../skills/debugging/GUIDE.md) | read before diagnostic logs/source for the investigation; reproduce or trace; distinguish observed cause from proposed diagnosis |
 | Evidenced Three.js scene, rendering, animation, material, geometry, interaction, game or NixieFX need | CONDITIONAL: [threejs-skills family](threejs-specialists.md) | choose by unresolved domain need, not a quoted keyword; invoke the one family through the host contract, then load minimum relevant internal GUIDE.md methods; honor explicitly named methods; unknown causes start with debugging; no all-method loading or second lifecycle |
 | Serious stabilization of a fragile/patch-heavy bounded subsystem, repeated regressions, production hardening of a fragile prototype, bounded remake candidate, or material contract/ownership/architecture drift | ai-codebase-rescue after eligibility inspection | evidence-first; smallest justified surface; AI provenance alone never justifies remediation; shared Andino plan remains lifecycle state |
-| Behavior change needing a regression or executable contract | CONDITIONAL: test-driven-development | activate before implementation when an executable check can distinguish the required behavior; skip text-only edits |
-| Consequential claim that implementation, repair or a mapped deliverable meets acceptance | REQUIRED: verification-before-completion | activate before the claim; use actual relevant evidence; excludes ordinary replies and trivial mechanical edits; no repeated full suites |
-| Review | code-review-and-quality | targeted diff and actionable defects; no unsolicited rewrite |
-| Unclear product requirements | targeted project inspection, then brainstorming if useful | inspect existing behavior first; ask only unresolved product/design choices |
-| Large implementation ordering | writing-plans if useful | existing plan remains durable state; no second mandatory plan lifecycle |
+| Behavior change needing a regression or executable contract | CONDITIONAL: bundled [tdd](../skills/tdd/GUIDE.md) | read before implementation when an executable check distinguishes behavior; RED→GREEN per seam, optional separate GREEN-only refactor gate; skip text-only edits |
+| Consequential claim that implementation, repair or a mapped deliverable meets acceptance | REQUIRED: bundled [verification](../skills/verification/GUIDE.md) | read before the claim; use actual current evidence; excludes ordinary replies/trivial edits; no repeated unchanged suites |
+| Review | bundled [code-review](../skills/code-review/GUIDE.md) | explicit current diff including owned untracked bytes; Spec and Standards axes; no unsolicited rewrite |
+| Unclear product requirements | inspect evidence, then [decision-interview](../skills/decision-interview/GUIDE.md) if material choice remains | inspect existing behavior first; no reinterview of locked decisions or environment facts |
+| Large implementation ordering | bundled [planning](../skills/planning/GUIDE.md) if useful | existing Andino plan remains durable state; task decomposition/decision maps are supporting artifacts |
 | Structural relationship | existing Graphify or symbol/reference search | verify current source; no automatic graph generation |
 | Historical decisions | claude-mem targeted search → timeline → selected detail | any working host integration; no automatic per-prompt retrieval |
 | New visual direction or generation: landing, portfolio, redesign, typography, composition | REQUIRED: design-taste-frontend (`taste-skill` alias) | Taste generates one design direction recorded in the project's DESIGN.md; dials are stated explicitly from the brief, never inferred from adjectives such as "minimal" or "professional" |
@@ -102,10 +106,13 @@ Antigravity's scoped descriptions are behavioral guidance, not a native hard swi
 | Authorized local memory/process investigation | Cheat Engine MCP bridge | actual connectivity/target evidence and reads first; mutation/injection/shell require explicit applicable authority |
 | Database/cloud/design/media operations | corresponding project MCP/plugin | enable only relevant service; authorization still applies |
 
-Individual Superpowers and all registered Agent Skills categories are available
-as candidate disciplines; no full-family pipeline. Agent Skills API, frontend,
-CI/CD, security, performance, migration, observability, specs and shipping routes
-use their specific current-need contracts, not a second meta-router. Ponytail is
+Integrated API, frontend, CI/CD, security, performance, migration, observability,
+specification, productivity and shipping techniques are local methods in the
+[internal index](internal-method-index.md). Select the guide matching the actual
+need; no upstream native skill installation or full-family pipeline. Explicit
+internal IDs and source-name aliases select the same canonical implementation.
+Method discovery/read/use remain separate; no executable keyword router is implied.
+Ponytail is
 useful for evidenced over-build risk, not automatic one-line ceremony. Graphify
 query/callers/impact/trace semantics are resolved against installed version and
 index freshness; native references remain preferred for simple relationships.
@@ -150,8 +157,8 @@ authorized work using the available methods; do not auto-install it or claim it
 was invoked. Outside an active Andino workflow, Rescue can use the host's normal
 task context independently; installing both skills does not activate both.
 
-Alternative planning/debugging/TDD methods remain subject to native invocation controls.
-Do not combine competing planners, routers or lifecycle owners; use only the minimum
-phase-local disciplines needed. Retired routers redirect to Andino without invoking a
-bootstrap chain. A specialized skill's generic boilerplate never overrides the user's
-constraints, accepted repository contract or authorization.
+Bundled planning/debugging/TDD methods obey resource permissions and the canonical
+procedures; native siblings still obey native invocation controls. Do not combine
+competing planners, routers or lifecycle owners. Retired bootstrap names perform
+no activation; useful discovery belongs to Andino already. No generic method
+boilerplate overrides user scope, accepted project contracts or authorization.

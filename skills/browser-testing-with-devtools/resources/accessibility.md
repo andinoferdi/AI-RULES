@@ -1,0 +1,9 @@
+# Accessibility evidence checklist
+Use semantic native controls: button for action, anchor for navigation; avoid click-only div/span. Associate visible labels with inputs; name icon controls. Provide a document title, language and logical h1→h2→h3 structure, table header scope and meaningful image alt (empty for decorative).
+Keyboard: Tab reaches every action, order follows reading order, visible focus, Enter/Space activate native controls and Escape closes dismissible overlays. Modal focus enters, remains inside while open, then returns to invoking element. Outside modal there must be no trap. A skip link becomes visible on focus.
+Forms: required/error state uses text beyond color, messages reference fields, submission error summary is focusable, known inputs carry autocomplete. Status uses role=status/aria-live=polite; urgent error uses alert/assertive only when justified. Loading exposes busy state without repeatedly announcing every frame.
+Verify normal text contrast >=4.5:1, large >=3:1, UI controls >=3:1; resize text to 200%; mobile targets around 44x44; no color-only information or >3Hz flashing. Reduced motion and media controls matter.
+Automated DOM/axe checks find a subset. Manually exercise keyboard and a real screen reader if available; inspect actual accessibility tree and live updates. Record unavailable checks. Screenshots at 360/768/1440 prove rendered geometry only, not all accessibility.
+Example: saving failed → named Retry saving button, specific text error linked to field, retained input and polite/alert announcement as appropriate. Empty screen or red border alone fails.
+
+Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at ../../../references/legal/addy-license.md. No upstream installation or hook is required.

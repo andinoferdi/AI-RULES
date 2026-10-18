@@ -22,10 +22,13 @@ the boundary briefly and continue authorized work without claiming Focus was
 loaded. Focus shapes communication only; Andino retains routing, execution,
 verification, persistence and lifecycle ownership.
 
-When the request already establishes an unknown-cause bug, activate the installed
-`systematic-debugging` through the native host mechanism immediately after Focus,
+When the request already establishes an unknown-cause bug, load the bundled
+[debugging method](skills/debugging/GUIDE.md) through permitted resource reads immediately after Focus,
 before the first diagnostic log/source read. Do not defer activation until after
 an initial investigation or replace it with Search First.
+Complete Focus activation and the selected guide read before diagnostic work.
+Invoking a skill and reading project evidence in the same parallel batch does
+not satisfy this ordering: instructions must be available before their use.
 
 Setup also installs `search-first`. When meaningful existing-solution research
 is needed, selection is required by [routing](references/routing.md); activate the
@@ -52,11 +55,42 @@ Before substantive work, read [routing](references/routing.md) through a permitt
 tool unless its current contents are already loaded. A slash command may inject
 this SKILL.md without loading its references; descriptions alone do not replace
 the routing table. Apply matching required routes before DIRECT/SIMPLE shortcuts;
-activate the selected skill before inspecting task artifacts when the request
+load the selected internal guide or activate the selected native sibling before inspecting task artifacts when the request
 already establishes that need. Load only the current phase's specialists, using
 the [host contract](references/invocation-adapter.md); report blocked required routes.
 Other references remain conditional: read handoff on resume and execution-plan
 when checkpointed work needs it, not every reference for a brief status question.
+
+## Use bundled methods on demand
+
+The [internal method index](references/internal-method-index.md) contains the
+adapted engineering, requirements, productivity and collaboration techniques.
+They are local GUIDE.md resources, not additional native skills. This package has
+one root SKILL.md. No Addy, Matt or Superpowers installation, bootstrap, plugin,
+startup hook, upstream checkout or runtime fetch is required.
+
+Select by actual intent, evidence and the current phase; honor an explicitly named
+relevant internal method. Read only its guide, then the resources needed now.
+Original source names resolve through the index to one canonical procedure:
+TDD aliases select `tdd`, debugging aliases `debugging`, review aliases `code-review`.
+Do not load competing source providers or invoke Andino recursively. A metadata
+lookup is DISCOVERED; an authorized guide read is ACTIVE; USED also needs a meaningful
+action/result. Unavailable or denied resources remain UNAVAILABLE, with no alternate
+copy bypass. An irrelevant method is NOT_NEEDED. Reassess rather than accumulating
+all methods in context.
+
+For an executable behavior change load [tdd](skills/tdd/GUIDE.md) before implementation;
+when the requested change, seam and acceptance facts are settled, select TDD for
+the regression/implementation phase now. A mention of an existing public API does
+not reopen accepted interface decisions or postpone regression support behind a
+new design phase. When asked to assess method selection without executing the
+task, preserve the scenario's stated phase rather than treating the assessment
+as a new product-design phase.
+For consequential acceptance load [verification](skills/verification/GUIDE.md) before
+the claim. RED→GREEN proceeds one public behavior at a time. Optional refactoring is
+a separate GREEN-only review gate, preserving the accepted seam and behavior.
+Static text changes need no TDD ceremony. Native sibling activation still follows
+the host contract; an internal method cannot replace a required or denied sibling.
 
 ## Separate intent from factual state
 
@@ -185,7 +219,11 @@ One lifecycle owner coordinates the work; specialists
 do not start competing plans. No automatic bootstrap via `using-superpowers`,
 `using-agent-skills` or the retired `agent-skills` router. Memory and graphs are
 optional accelerators, never prerequisites. Default subagents: zero; delegate only
-authorized, useful, bounded independent work. Increase reasoning effort only when
+authorized, useful, bounded independent work. Use at most three direct workers,
+prohibit nested spawning, assign disjoint write scopes, serialize shared files and
+verify worker artifacts/results before accepting them. Without actual delegation
+tools execute sequentially and name the limitation. No worker may expand permission.
+Increase reasoning effort only when
 difficulty warrants it and the host supports the control; never invent settings.
 
 Know the available capability catalog broadly, select narrowly, load just-in-time,

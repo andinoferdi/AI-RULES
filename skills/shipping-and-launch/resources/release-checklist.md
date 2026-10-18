@@ -1,0 +1,9 @@
+# Release decision and rollback record
+Candidate: content/commit identity that actually exists; version/change rationale; owner. Acceptance and standing completion evidence linked by exact artifact/command. Applicable gates: tests/build/lint/types/review; native dependency audit and unreviewed scripts blocked; security/auth/data; measured performance; a11y; environment/secrets/health/migrations/DNS/SSL/static caching; current API/readme/changelog/ADRs.
+Rollout: staging smoke, prod flag OFF+health, team, small canary, increasing percentage, stable full period, owned cleanup. Test on/off; flag has expiry, no nested combinations. Observation windows justified by traffic/risk and recorded timestamps, not claimed from one sample.
+Decision defaults relative to baseline: error within +10% / p95 within +20% may advance; moderate rise hold; error>2x /p95>+50% rollback proposal. New security/data integrity incident blocks regardless. Zero baseline requires absolute policy. New JS error types/business decline have accepted boundaries; do not promote sample thresholds to immutable product law.
+Error budget >20 normal,0–20 slow only, exhausted no feature release; high burn hold. Product SLO overrides examples.
+Rollback record: trigger, authorized executor, exact flag/redeploy command, candidate previous artifact, health/error verification, database recovery/data preservation, expected duration and escalation. Prepare safely; actual remote change and message require permission. Reverting code is not dropping schema/data backwards.
+First-hour authorized verification: health200, errors/types, p95, critical journey, logs/traces and dry-run rollback if possible. Offline readiness is not live deployment evidence.
+
+Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at ../../../references/legal/addy-license.md. No upstream installation or hook is required.

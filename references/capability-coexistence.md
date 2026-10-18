@@ -14,19 +14,16 @@ Project constraints and explicit user choices precede generic specialist default
    selection, host's declared authoritative skill root, then another accessible
    copy with matching identity/content. Record the actual selected path. Never
    silently choose a different provider by directory order.
-4. For competing providers without a project choice, use the documented default:
-   Superpowers for `test-driven-development`, `systematic-debugging`,
-   `verification-before-completion`, `brainstorming`, `writing-plans`,
-   `requesting-code-review`, `receiving-code-review`, `dispatching-parallel-agents`,
-   `using-git-worktrees` and `finishing-a-development-branch`; Agent Skills for its
-   named engineering categories. Agent Skills TDD may be installed as
-   `agent-skills-test-driven-development` or `test-driven-development`; aliases
-   never erase the provider distinction.
-5. If the preferred provider is unavailable, use one identifiable permitted
-   equivalent and record the fallback/provider. Do not load both competing
-   implementations. If provenance cannot be determined, record UNKNOWN and use
-   native/project discipline instead of inventing a provider; ask only when the
-   unresolved provider changes acceptance materially.
+4. For the integrated upstream disciplines use the bundled canonical method in
+   the [internal index](internal-method-index.md). Original names are internal
+   aliases, not preferred external providers: both TDD source names resolve to
+   `tdd`, debugging to `debugging`, and reviews to `code-review`. Read one selected
+   local guide, without a native upstream invocation or second lifecycle.
+5. Explicit native sibling/provider requests retain their actual host controls.
+   If an internal resource is missing or denied, record UNAVAILABLE and use
+   sufficient permitted native reasoning; do not fetch an upstream copy or read
+   another copy to bypass denial. Never claim the absent method was used. Unknown
+   external provenance remains UNKNOWN; ask only when material to acceptance.
 
 These are behavioral selection rules, not a claim of universal host precedence
 or enforcement. Respect explicit-only invocation restrictions; a readable path is
@@ -37,8 +34,8 @@ not permission to bypass them. Evidence records include the resolved ID, provide
 
 | Overlap | Decision |
 | --- | --- |
-| Superpowers / Agent Skills | Load relevant individual discipline, never `using-superpowers` or `using-agent-skills` as a second router. Existing Andino plan/checkpoint remains authoritative. Specialist planning templates and completion options yield to the current owner/scope. |
-| Ponytail / code-simplification | Prefer Ponytail for prospective dependency/abstraction over-build risk; Agent Skills code-simplification for behavior-preserving cleanup of existing code. One discipline for the same concern. Ponytail's upstream broad coding/persistence defaults do not make it active in every Andino task. |
+| Integrated Addy / Matt / Superpowers | Use the single canonical local guide and its source-name aliases; no upstream native registration or installation. Useful discovery, context and authoring techniques are internalized; upstream bootstrap/router hooks stay excluded. Andino's existing plan and authority remain sole lifecycle state. |
+| Ponytail / code-simplification | Prefer Ponytail for evidenced prospective over-build risk; bundled code-simplification for behavior-preserving cleanup of existing code. One discipline for the same concern. Ponytail's broad coding/persistence defaults do not make it active in every Andino task. |
 | Anti-Slop / Impeccable / Taste | Apply only relevant quality concern to the accepted direction. Core Anti-Slop does not activate all subskills. Functional accessibility, correctness and explicit design constraints win over style preferences. |
 | Impeccable / Taste | Preserve [the accepted UI policy](ui-coexistence.md): explicit single-skill choice stands, Taste generates and Impeccable critiques and refines, one design direction, one DESIGN.md and existing stack/token source. |
 | clone-website / Taste / Impeccable | Fidelity clone preserves the reference; a requested redesign runs clone-website first, then Taste and Impeccable under the UI policy. |

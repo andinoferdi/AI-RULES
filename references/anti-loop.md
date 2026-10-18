@@ -14,6 +14,9 @@ Behavioral rules unless a host adapter documents a supported hard limit:
   stable policy separately from task state. Do not claim cache/token savings without metrics.
 - Default subagents zero; no planner/implementer/reviewer/verifier swarm by habit.
   If useful and authorized, use bounded independent scopes and compact results.
+  Maximum three direct children; no nested spawning. Reject concurrent overlapping
+  writes and serialize shared files. Parent verifies outputs and integrated acceptance;
+  worker self-reported PASS is insufficient. Missing delegation tools mean sequential work.
 - Use one browser surface for reproduction; another only for a distinct diagnosis.
 - No broad research for a typo, no reasoning MCP stacked on native reasoning.
 - Stop acquiring context when the next decision is sufficiently grounded, unless

@@ -1,5 +1,19 @@
 # Andino Workflow
 
+One native skill with 57 reviewed internal methods adapted from Addy Osmani Agent
+Skills, Matt Pocock Skills and Superpowers. Use the [method index](references/internal-method-index.md)
+for requirements, planning, implementation, diagnosis, tests, reviews, architecture,
+productivity and delivery. These are local `GUIDE.md` resources under `skills/`,
+loaded only when needed. The three upstream repositories/plugins are not runtime
+dependencies. [Snapshot provenance and notices](references/legal/provenance.md)
+remain bundled; upstream updates require manual review and regressions.
+
+Examples: `$andino-workflow use the tdd method for this behavior change`, or
+`use andino-workflow, specifically domain-modeling`. Original names such as
+`test-driven-development`, `grill-me` and `writing-plans` are internal aliases,
+not additional native skills to install. Andino keeps one plan, permission boundary
+and acceptance gate. Reading a guide proves loading; relevant action/results prove use.
+
 For actual Three.js or NixieFX work invoke the single `threejs-skills` family
 through the host contract, then load only relevant [internal methods](references/threejs-specialists.md).
 Say "use andino-workflow and threejs-skills" for prompt-based selection, or name a
@@ -46,7 +60,8 @@ Manual, for this skill only:
 git clone --depth 1 --single-branch --branch andino-workflow https://github.com/andinoferdi/AI-RULES.git "$HOME/.agents/skills/andino-workflow"
 ```
 
-Install the whole folder, not only `SKILL.md`. The folder must keep the name `andino-workflow`. For another host, change the destination to the folder in this table:
+Install the whole folder, including `skills/`, local resources, references and legal
+notices, not only `SKILL.md`. The folder must keep the name `andino-workflow`. For another host, change the destination to the folder in this table:
 
 | Host | Global folder |
 | --- | --- |
@@ -77,3 +92,24 @@ Activating a skill grants no extra permission.
 
 
 Council decision specialist: The [council](https://github.com/andinoferdi/AI-RULES/tree/council) branch offers five advisor perspectives, anonymous peer review when agents support it, and an actionable verdict. Focus remains the language layer and Andino retains routing and execution ownership. Standalone Council is available through `ai-rules setup --capability council`.
+
+## Verification and safe update
+
+Use one regular directory per native skill; preserve local edits before updating.
+Setup's file checks establish package delivery, not live discovery or model behavior.
+Installation executes no examples, hooks, package manager, network fetch or background
+server. Methods requiring a browser, tracker, optional CLI or external service verify
+actual availability and permissions first; offline examples do not prove live service use.
+
+Manual smoke for each supported host: start/reload an isolated project session,
+invoke Andino through that host's mechanism, request an explicit relevant method,
+observe its GUIDE.md read and a concrete task artifact/result. Then ask a simple fact
+and confirm irrelevant guides/plans/agents are not loaded. Test a missing/denied
+resource and confirm honest UNAVAILABLE without another-copy bypass. For an unknown
+bug observe diagnosis before repair; for TDD observe correct-reason RED, GREEN and a
+separate optional refactor gate. Do not infer another host's behavior from one run.
+
+The [main quality plane](https://github.com/andinoferdi/AI-RULES/tree/main/docs/validation/andino-unified)
+owns source/asset matrices, procedural checks, installer tests, live records and
+publication status. Deterministic examples, structural compatibility and actual live
+host use are reported separately; unavailable checks remain NOT VERIFIED.

@@ -1,6 +1,6 @@
 # Capability registry
 
-This is on-demand contract metadata, not a second router or a full-load requirement. Select a heading by the current unresolved need; do not load every skill/schema. Provider identities below are intended families; actual host provenance must be resolved. Metadata is DISCOVERED, not proof of AVAILABLE, INVOKABLE or USED. See [invocation](invocation-adapter.md) and [coexistence](capability-coexistence.md).
+This is on-demand contract metadata, not a second router or a full-load requirement. Select a heading by the current unresolved need; do not load every skill/schema. Bundled method aliases resolve to the [canonical index](internal-method-index.md); native sibling/tool provenance is resolved through the host. Metadata is DISCOVERED, not proof of AVAILABLE, INVOKABLE or USED. See [invocation](invocation-adapter.md) and [coexistence](capability-coexistence.md).
 
 Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs their routing role; invoking them would create a competing lifecycle. Other installed skills remain discoverable through the host catalog when a real need warrants them. Registry does not install, enable or health-check every capability.
 
@@ -12,40 +12,40 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 | [search-first](#search-first) | skill | AI-RULES, adapted from ECC | Existing-solution research before implementation |
 | [council](#council) | skill | AI-RULES | Independent review of consequential decisions |
 | [threejs-skills](#threejs-skills) | skill | AI-RULES | On-demand Three.js and NixieFX domain specialists |
-| [systematic-debugging](#systematic-debugging) | skill | Superpowers | Root-cause investigation |
-| [test-driven-development](#test-driven-development) | skill | Superpowers | Executable regression contract |
-| [verification-before-completion](#verification-before-completion) | skill | Superpowers | Evidence before completion |
-| [brainstorming](#brainstorming) | skill | Superpowers | Clarify product/design choices |
-| [writing-plans](#writing-plans) | skill | Superpowers | Order dependent implementation |
-| [requesting-code-review](#requesting-code-review) | skill | Superpowers | Prepare bounded implementation review |
-| [receiving-code-review](#receiving-code-review) | skill | Superpowers | Evaluate review feedback |
-| [dispatching-parallel-agents](#dispatching-parallel-agents) | skill | Superpowers | Bounded concurrent work |
-| [using-git-worktrees](#using-git-worktrees) | skill | Superpowers | Implementation isolation |
-| [finishing-a-development-branch](#finishing-a-development-branch) | skill | Superpowers | Branch completion options |
-| [idea-refine](#idea-refine) | skill | Agent Skills | Refine an uncertain idea |
-| [interview-me](#interview-me) | skill | Agent Skills | Resolve material human intent |
-| [api-and-interface-design](#api-and-interface-design) | skill | Agent Skills | Stable API/interface contracts |
-| [browser-testing-with-devtools](#browser-testing-with-devtools) | skill | Agent Skills | Browser verification methodology |
-| [ci-cd-and-automation](#ci-cd-and-automation) | skill | Agent Skills | CI and delivery automation |
-| [code-review-and-quality](#code-review-and-quality) | skill | Agent Skills | Assess implementation quality |
-| [code-simplification](#code-simplification) | skill | Agent Skills | Simplify existing code |
-| [constraint-driven-development](#constraint-driven-development) | skill | Agent Skills | Establish quality constraints |
-| [context-engineering](#context-engineering) | skill | Agent Skills | Bound useful task context |
-| [debugging-and-error-recovery](#debugging-and-error-recovery) | skill | Agent Skills | Recover execution errors |
-| [deprecation-and-migration](#deprecation-and-migration) | skill | Agent Skills | Evolve compatibility safely |
-| [documentation-and-adrs](#documentation-and-adrs) | skill | Agent Skills | Record decisions and documentation |
-| [doubt-driven-development](#doubt-driven-development) | skill | Agent Skills | Challenge consequential assumptions |
-| [frontend-ui-engineering](#frontend-ui-engineering) | skill | Agent Skills | Implement product UI |
-| [git-workflow-and-versioning](#git-workflow-and-versioning) | skill | Agent Skills | Git workflow discipline |
-| [incremental-implementation](#incremental-implementation) | skill | Agent Skills | Deliver dependent changes incrementally |
-| [observability-and-instrumentation](#observability-and-instrumentation) | skill | Agent Skills | Diagnose production behavior |
-| [performance-optimization](#performance-optimization) | skill | Agent Skills | Measure and improve performance |
-| [planning-and-task-breakdown](#planning-and-task-breakdown) | skill | Agent Skills | Order complex work |
-| [security-and-hardening](#security-and-hardening) | skill | Agent Skills | Address concrete security concerns |
-| [shipping-and-launch](#shipping-and-launch) | skill | Agent Skills | Prepare an authorized release |
-| [source-driven-development](#source-driven-development) | skill | Agent Skills | Ground technical decisions |
-| [spec-driven-development](#spec-driven-development) | skill | Agent Skills | Specify consequential behavior |
-| [agent-skills-test-driven-development](#agent-skills-test-driven-development) | skill | Agent Skills | Executable regression contract |
+| [systematic-debugging](#systematic-debugging) | method | Andino internal | Root-cause investigation |
+| [test-driven-development](#test-driven-development) | method | Andino internal | Executable regression contract |
+| [verification-before-completion](#verification-before-completion) | method | Andino internal | Evidence before completion |
+| [brainstorming](#brainstorming) | method | Andino internal | Clarify product/design choices |
+| [writing-plans](#writing-plans) | method | Andino internal | Order dependent implementation |
+| [requesting-code-review](#requesting-code-review) | method | Andino internal | Prepare bounded implementation review |
+| [receiving-code-review](#receiving-code-review) | method | Andino internal | Evaluate review feedback |
+| [dispatching-parallel-agents](#dispatching-parallel-agents) | method | Andino internal | Bounded concurrent work |
+| [using-git-worktrees](#using-git-worktrees) | method | Andino internal | Implementation isolation |
+| [finishing-a-development-branch](#finishing-a-development-branch) | method | Andino internal | Branch completion options |
+| [idea-refine](#idea-refine) | method | Andino internal | Refine an uncertain idea |
+| [interview-me](#interview-me) | method | Andino internal | Resolve material human intent |
+| [api-and-interface-design](#api-and-interface-design) | method | Andino internal | Stable API/interface contracts |
+| [browser-testing-with-devtools](#browser-testing-with-devtools) | method | Andino internal | Browser verification methodology |
+| [ci-cd-and-automation](#ci-cd-and-automation) | method | Andino internal | CI and delivery automation |
+| [code-review-and-quality](#code-review-and-quality) | method | Andino internal | Assess implementation quality |
+| [code-simplification](#code-simplification) | method | Andino internal | Simplify existing code |
+| [constraint-driven-development](#constraint-driven-development) | method | Andino internal | Establish quality constraints |
+| [context-engineering](#context-engineering) | method | Andino internal | Bound useful task context |
+| [debugging-and-error-recovery](#debugging-and-error-recovery) | method | Andino internal | Recover execution errors |
+| [deprecation-and-migration](#deprecation-and-migration) | method | Andino internal | Evolve compatibility safely |
+| [documentation-and-adrs](#documentation-and-adrs) | method | Andino internal | Record decisions and documentation |
+| [doubt-driven-development](#doubt-driven-development) | method | Andino internal | Challenge consequential assumptions |
+| [frontend-ui-engineering](#frontend-ui-engineering) | method | Andino internal | Implement product UI |
+| [git-workflow-and-versioning](#git-workflow-and-versioning) | method | Andino internal | Git workflow discipline |
+| [incremental-implementation](#incremental-implementation) | method | Andino internal | Deliver dependent changes incrementally |
+| [observability-and-instrumentation](#observability-and-instrumentation) | method | Andino internal | Diagnose production behavior |
+| [performance-optimization](#performance-optimization) | method | Andino internal | Measure and improve performance |
+| [planning-and-task-breakdown](#planning-and-task-breakdown) | method | Andino internal | Order complex work |
+| [security-and-hardening](#security-and-hardening) | method | Andino internal | Address concrete security concerns |
+| [shipping-and-launch](#shipping-and-launch) | method | Andino internal | Prepare an authorized release |
+| [source-driven-development](#source-driven-development) | method | Andino internal | Ground technical decisions |
+| [spec-driven-development](#spec-driven-development) | method | Andino internal | Specify consequential behavior |
+| [agent-skills-test-driven-development](#agent-skills-test-driven-development) | method | Andino internal | Executable regression contract |
 | [ponytail](#ponytail) | skill | Ponytail | Minimal correct implementation |
 | [claude-mem](#claude-mem) | skill | Claude-Mem | Targeted historical decisions |
 | [impeccable](#impeccable) | skill | Impeccable | UI critique, polish and anti-slop detection |
@@ -70,615 +70,649 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 
 ## systematic-debugging
 
-- Type: skill
-- Family/provider: Superpowers
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: systematic-debugging resolves to canonical debugging; no upstream native registration required
 - Primary purpose: Root-cause investigation
 - Trigger: Cause is unresolved or evidence contradicts the diagnosis.
 - Preferred when: Reproduction and discriminating hypotheses are needed.
 - Avoid when: Cause already established; do not repeat investigation.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Apply [provider precedence](capability-coexistence.md). Never bootstrap using-superpowers; plans remain Andino state.
+- Availability check: Check local skills/debugging/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [debugging](../skills/debugging/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/debugging/GUIDE.md
 
 ## test-driven-development
 
-- Type: skill
-- Family/provider: Superpowers
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: test-driven-development resolves to canonical tdd; no upstream native registration required
 - Primary purpose: Executable regression contract
 - Trigger: Behavior change needs a failing regression or executable contract.
 - Preferred when: Project tests can distinguish the desired behavior.
 - Avoid when: Text-only edits and already-verified unchanged behavior.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Apply [provider precedence](capability-coexistence.md). Never bootstrap using-superpowers; plans remain Andino state.
+- Availability check: Check local skills/tdd/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [tdd](../skills/tdd/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/tdd/GUIDE.md
 
 ## verification-before-completion
 
-- Type: skill
-- Family/provider: Superpowers
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: verification-before-completion resolves to canonical verification; no upstream native registration required
 - Primary purpose: Evidence before completion
 - Trigger: A consequential completion claim needs validation.
 - Preferred when: Relevant checks can prove acceptance.
 - Avoid when: Repeating unchanged passing suites without new evidence.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Apply [provider precedence](capability-coexistence.md). Never bootstrap using-superpowers; plans remain Andino state.
+- Availability check: Check local skills/verification/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [verification](../skills/verification/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/verification/GUIDE.md
 
 ## brainstorming
 
-- Type: skill
-- Family/provider: Superpowers
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: brainstorming resolves to canonical decision-interview; no upstream native registration required
 - Primary purpose: Clarify product/design choices
 - Trigger: Material requirement remains unclear after inspecting existing project behavior.
 - Preferred when: Options and human preferences change the outcome.
 - Avoid when: Repository-answerable details or locked requirements.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Apply [provider precedence](capability-coexistence.md). Never bootstrap using-superpowers; plans remain Andino state.
+- Availability check: Check local skills/decision-interview/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [decision-interview](../skills/decision-interview/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/decision-interview/GUIDE.md
 
 ## writing-plans
 
-- Type: skill
-- Family/provider: Superpowers
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: writing-plans resolves to canonical planning; no upstream native registration required
 - Primary purpose: Order dependent implementation
 - Trigger: Implementation sequencing is materially useful.
 - Preferred when: Dependent steps need a durable execution contract.
 - Avoid when: Simple tasks or creating a competing plan.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Apply [provider precedence](capability-coexistence.md). Never bootstrap using-superpowers; plans remain Andino state.
+- Availability check: Check local skills/planning/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [planning](../skills/planning/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/planning/GUIDE.md
 
 ## requesting-code-review
 
-- Type: skill
-- Family/provider: Superpowers
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: requesting-code-review resolves to canonical code-review; no upstream native registration required
 - Primary purpose: Prepare bounded implementation review
 - Trigger: Implemented scope warrants reviewer evidence.
 - Preferred when: A targeted diff/contract needs a review.
 - Avoid when: Automatic agent fan-out or a review of unrelated code.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Apply [provider precedence](capability-coexistence.md). Never bootstrap using-superpowers; plans remain Andino state.
+- Availability check: Check local skills/code-review/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [code-review](../skills/code-review/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/code-review/GUIDE.md
 
 ## receiving-code-review
 
-- Type: skill
-- Family/provider: Superpowers
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: receiving-code-review resolves to canonical code-review; no upstream native registration required
 - Primary purpose: Evaluate review feedback
 - Trigger: Received feedback needs technical assessment.
 - Preferred when: Check evidence before accepting a proposed fix.
 - Avoid when: Blind agreement or optional preferences treated as blockers.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Apply [provider precedence](capability-coexistence.md). Never bootstrap using-superpowers; plans remain Andino state.
+- Availability check: Check local skills/code-review/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [code-review](../skills/code-review/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/code-review/GUIDE.md
 
 ## dispatching-parallel-agents
 
-- Type: skill
-- Family/provider: Superpowers
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: dispatching-parallel-agents resolves to canonical delegation; no upstream native registration required
 - Primary purpose: Bounded concurrent work
 - Trigger: Independent tasks justify concurrency AND user/host authorizes delegation.
 - Preferred when: Separate scopes reduce a demonstrated bottleneck.
 - Avoid when: Default fan-out, shared mutable scopes or absent authorization.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Apply [provider precedence](capability-coexistence.md). Never bootstrap using-superpowers; plans remain Andino state.
+- Availability check: Check local skills/delegation/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [delegation](../skills/delegation/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/delegation/GUIDE.md
 
 ## using-git-worktrees
 
-- Type: skill
-- Family/provider: Superpowers
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: using-git-worktrees resolves to canonical git-isolation; no upstream native registration required
 - Primary purpose: Implementation isolation
 - Trigger: Isolation is needed and existing checkout/worktree is unsuitable.
 - Preferred when: Separate branch state prevents conflicts.
 - Avoid when: Unnecessary new checkout or contradicting project/user choice.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Apply [provider precedence](capability-coexistence.md). Never bootstrap using-superpowers; plans remain Andino state.
+- Availability check: Check local skills/git-isolation/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [git-isolation](../skills/git-isolation/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/git-isolation/GUIDE.md
 
 ## finishing-a-development-branch
 
-- Type: skill
-- Family/provider: Superpowers
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: finishing-a-development-branch resolves to canonical delivery; no upstream native registration required
 - Primary purpose: Branch completion options
 - Trigger: Validated implementation enters branch completion workflow.
 - Preferred when: The requested completion action is clear.
 - Avoid when: Assuming commit/push/merge authorization from a review GO.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Apply [provider precedence](capability-coexistence.md). Never bootstrap using-superpowers; plans remain Andino state.
+- Availability check: Check local skills/delivery/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [delivery](../skills/delivery/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/delivery/GUIDE.md
 
 ## idea-refine
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: idea-refine resolves to canonical idea-refine; no upstream native registration required
 - Primary purpose: Refine an uncertain idea
 - Trigger: A vague idea needs evidence-backed alternatives before choosing an approach.
 - Preferred when: Generate and converge options when actual product uncertainty warrants it.
 - Avoid when: Reopening locked decisions, forcing ideation on mechanical work or writing a one-pager outside authorized scope.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/idea-refine/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [idea-refine](../skills/idea-refine/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/idea-refine/GUIDE.md
 
 ## interview-me
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: interview-me resolves to canonical decision-interview; no upstream native registration required
 - Primary purpose: Resolve material human intent
 - Trigger: Targeted project inspection leaves material who/why/success/constraint choices unresolved.
 - Preferred when: Ask focused consequential questions or honor explicit interview request.
 - Avoid when: Repository-answerable questions, already clear intent, mandatory confidence ceremony or a second plan.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/decision-interview/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [decision-interview](../skills/decision-interview/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/decision-interview/GUIDE.md
 
 ## api-and-interface-design
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: api-and-interface-design resolves to canonical api-and-interface-design; no upstream native registration required
 - Primary purpose: Stable API/interface contracts
 - Trigger: Public interface or consumer compatibility needs design.
 - Preferred when: Trace actual consumers and versioning needs.
 - Avoid when: Internal detail with no meaningful contract change.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/api-and-interface-design/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [api-and-interface-design](../skills/api-and-interface-design/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/api-and-interface-design/GUIDE.md
 
 ## browser-testing-with-devtools
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: browser-testing-with-devtools resolves to canonical browser-testing-with-devtools; no upstream native registration required
 - Primary purpose: Browser verification methodology
 - Trigger: Browser behavior needs observable functional/diagnostic checks.
 - Preferred when: A real browser provides missing evidence.
 - Avoid when: No browser outcome involved; method is not a connected MCP.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/browser-testing-with-devtools/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [browser-testing-with-devtools](../skills/browser-testing-with-devtools/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/browser-testing-with-devtools/GUIDE.md
 
 ## ci-cd-and-automation
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: ci-cd-and-automation resolves to canonical ci-cd-and-automation; no upstream native registration required
 - Primary purpose: CI and delivery automation
 - Trigger: Task changes pipelines or build automation.
 - Preferred when: Existing CI extension points and checks are known.
 - Avoid when: Starting deploys or schedules without applicable authorization.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/ci-cd-and-automation/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [ci-cd-and-automation](../skills/ci-cd-and-automation/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/ci-cd-and-automation/GUIDE.md
 
 ## code-review-and-quality
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: code-review-and-quality resolves to canonical code-review; no upstream native registration required
 - Primary purpose: Assess implementation quality
 - Trigger: Bounded diff needs correctness/quality review.
 - Preferred when: Review after implementation or explicit audit.
 - Avoid when: Unsolicited whole-repository rewrite.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/code-review/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [code-review](../skills/code-review/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/code-review/GUIDE.md
 
 ## code-simplification
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: code-simplification resolves to canonical code-simplification; no upstream native registration required
 - Primary purpose: Simplify existing code
 - Trigger: Existing code has avoidable complexity.
 - Preferred when: Refactor preserves behavior with meaningful evidence.
 - Avoid when: Already minimal changes or replacing accepted architecture.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/code-simplification/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [code-simplification](../skills/code-simplification/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/code-simplification/GUIDE.md
 
 ## constraint-driven-development
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: constraint-driven-development resolves to canonical constraint-driven-development; no upstream native registration required
 - Primary purpose: Establish quality constraints
 - Trigger: Implementation lacks material written constraints.
 - Preferred when: Agree verifiable constraints using existing project rules.
 - Avoid when: Inventing a new quality bar for a routine edit.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/constraint-driven-development/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [constraint-driven-development](../skills/constraint-driven-development/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/constraint-driven-development/GUIDE.md
 
 ## context-engineering
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: context-engineering resolves to canonical context-engineering; no upstream native registration required
 - Primary purpose: Bound useful task context
 - Trigger: Context selection or drift prevents reliable execution.
 - Preferred when: Narrow artifacts can resolve a real context gap.
 - Avoid when: Full repository loading by default.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/context-engineering/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [context-engineering](../skills/context-engineering/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/context-engineering/GUIDE.md
 
 ## debugging-and-error-recovery
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: debugging-and-error-recovery resolves to canonical debugging; no upstream native registration required
 - Primary purpose: Recover execution errors
 - Trigger: A tool/test/runtime failure needs diagnosis or recovery.
 - Preferred when: Differentiate deterministic versus transient failures.
 - Avoid when: Retrying identical schema/permission/credential errors.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/debugging/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [debugging](../skills/debugging/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/debugging/GUIDE.md
 
 ## deprecation-and-migration
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: deprecation-and-migration resolves to canonical deprecation-and-migration; no upstream native registration required
 - Primary purpose: Evolve compatibility safely
 - Trigger: Deprecation or data/contract migration is in scope.
 - Preferred when: Affected versions/consumers and rollback evidence are available.
 - Avoid when: Unrequested irreversible/live migration.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/deprecation-and-migration/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [deprecation-and-migration](../skills/deprecation-and-migration/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/deprecation-and-migration/GUIDE.md
 
 ## documentation-and-adrs
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: documentation-and-adrs resolves to canonical documentation-and-adrs; no upstream native registration required
 - Primary purpose: Record decisions and documentation
 - Trigger: Material decisions or usage changes need durable documentation.
 - Preferred when: Use an existing ADR/docs convention.
 - Avoid when: Placeholder docs or duplicating the active plan.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/documentation-and-adrs/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [documentation-and-adrs](../skills/documentation-and-adrs/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/documentation-and-adrs/GUIDE.md
 
 ## doubt-driven-development
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: doubt-driven-development resolves to canonical doubt-driven-development; no upstream native registration required
 - Primary purpose: Challenge consequential assumptions
 - Trigger: A consequential uncertain choice warrants independent evidence.
 - Preferred when: Discriminating checks can reject a material assumption.
 - Avoid when: Generic skepticism or unnecessary delegation.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/doubt-driven-development/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [doubt-driven-development](../skills/doubt-driven-development/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/doubt-driven-development/GUIDE.md
 
 ## frontend-ui-engineering
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: frontend-ui-engineering resolves to canonical frontend-ui-engineering; no upstream native registration required
 - Primary purpose: Implement product UI
 - Trigger: Accessible responsive frontend behavior is in scope.
 - Preferred when: Existing stack/components can implement accepted design.
 - Avoid when: Changing design direction or stack without requirement.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/frontend-ui-engineering/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [frontend-ui-engineering](../skills/frontend-ui-engineering/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/frontend-ui-engineering/GUIDE.md
 
 ## git-workflow-and-versioning
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: git-workflow-and-versioning resolves to canonical git-workflow-and-versioning; no upstream native registration required
 - Primary purpose: Git workflow discipline
 - Trigger: Requested work changes branch/release/version workflow.
 - Preferred when: Clarify local state and applicable authorized action.
 - Avoid when: Skill as consent to commit/push/merge.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/git-workflow-and-versioning/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [git-workflow-and-versioning](../skills/git-workflow-and-versioning/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/git-workflow-and-versioning/GUIDE.md
 
 ## incremental-implementation
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: incremental-implementation resolves to canonical incremental-implementation; no upstream native registration required
 - Primary purpose: Deliver dependent changes incrementally
 - Trigger: Coupled implementation benefits from thin verifiable slices.
 - Preferred when: Each slice proves a real acceptance outcome.
 - Avoid when: Rigid phases for a one-line edit.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/incremental-implementation/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [incremental-implementation](../skills/incremental-implementation/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/incremental-implementation/GUIDE.md
 
 ## observability-and-instrumentation
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: observability-and-instrumentation resolves to canonical observability-and-instrumentation; no upstream native registration required
 - Primary purpose: Diagnose production behavior
 - Trigger: Missing logs/metrics/traces obstruct a required outcome.
 - Preferred when: Focused instrumentation can answer a concrete question.
 - Avoid when: Collecting sensitive data or instrumenting unrelated systems.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/observability-and-instrumentation/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [observability-and-instrumentation](../skills/observability-and-instrumentation/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/observability-and-instrumentation/GUIDE.md
 
 ## performance-optimization
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: performance-optimization resolves to canonical performance-optimization; no upstream native registration required
 - Primary purpose: Measure and improve performance
 - Trigger: A measured bottleneck or performance requirement exists.
 - Preferred when: Baseline and repeatable benchmark are available.
 - Avoid when: Speculative micro-optimization.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/performance-optimization/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [performance-optimization](../skills/performance-optimization/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/performance-optimization/GUIDE.md
 
 ## planning-and-task-breakdown
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: planning-and-task-breakdown resolves to canonical planning; no upstream native registration required
 - Primary purpose: Order complex work
 - Trigger: Dependencies or milestones need task decomposition.
 - Preferred when: Refine Andino existing plan with bounded actions.
 - Avoid when: Second lifecycle/plan owner.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/planning/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [planning](../skills/planning/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/planning/GUIDE.md
 
 ## security-and-hardening
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: security-and-hardening resolves to canonical security-and-hardening; no upstream native registration required
 - Primary purpose: Address concrete security concerns
 - Trigger: Scope exposes a vulnerability or explicit security requirement.
 - Preferred when: Threat/attack surface evidence guides focused fixes.
 - Avoid when: Unsolicited hypothetical compliance ceremony.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/security-and-hardening/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [security-and-hardening](../skills/security-and-hardening/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/security-and-hardening/GUIDE.md
 
 ## shipping-and-launch
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: shipping-and-launch resolves to canonical shipping-and-launch; no upstream native registration required
 - Primary purpose: Prepare an authorized release
 - Trigger: Actual release/launch readiness is requested.
 - Preferred when: Verify artifacts, rollback and requested environment.
 - Avoid when: Assuming deploy or publication consent.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/shipping-and-launch/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [shipping-and-launch](../skills/shipping-and-launch/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/shipping-and-launch/GUIDE.md
 
 ## source-driven-development
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: source-driven-development resolves to canonical source-driven-development; no upstream native registration required
 - Primary purpose: Ground technical decisions
 - Trigger: Version-sensitive implementation contract needs primary documentation.
 - Preferred when: Inspect dependency versions before authoritative lookup.
 - Avoid when: Research for reliable local trivial facts.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/source-driven-development/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [source-driven-development](../skills/source-driven-development/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/source-driven-development/GUIDE.md
 
 ## spec-driven-development
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: none
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: spec-driven-development resolves to canonical specification; no upstream native registration required
 - Primary purpose: Specify consequential behavior
 - Trigger: A new/material feature needs an observable contract.
 - Preferred when: Existing specification can be extended before code.
 - Avoid when: Mandatory spec ceremony for simple edits.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/specification/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [specification](../skills/specification/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/specification/GUIDE.md
 
 ## agent-skills-test-driven-development
 
-- Type: skill
-- Family/provider: Agent Skills
-- Aliases: test-driven-development (Agent Skills provider only)
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: agent-skills-test-driven-development resolves to canonical tdd; no upstream native registration required
 - Primary purpose: Executable regression contract
 - Trigger: Behavior change needs failing regression/executable contract.
-- Preferred when: Project-selected Agent Skills provider or precedence chooses it.
+- Preferred when: An accepted public behavior needs a regression; this source-name alias selects the same canonical tdd procedure.
 - Avoid when: Double-loading a competing TDD provider or text-only edits.
-- Availability check: Resolve the exact host skill ID/path and provider; check native invocation permission. A directory alone proves neither invocation nor use.
-- Invocation method: Load the selected actual SKILL.md through the host-supported skill mechanism, then only relevant references. Do not bypass explicit-only restrictions via file reads.
-- First-call/preflight: Read applicable project constraints and current evidence first.
-- Fallback: Use the relevant local discipline without claiming this external skill was loaded.
-- Coexistence/conflicts: Never bootstrap using-agent-skills. Apply [provider precedence](capability-coexistence.md); Andino owns the existing plan.
+- Availability check: Check local skills/tdd/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [tdd](../skills/tdd/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
-- Verification requirement: Record resolved ID/path/provider, actual load and task-relevant result. Similar reasoning or a mention is not evidence of use.
+- Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/tdd/GUIDE.md
 
 ## ponytail
 
