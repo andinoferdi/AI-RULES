@@ -20,6 +20,8 @@ None. It works standalone. The companion `andino-workflow` is optional (see Note
 
 ## Install
 
+Requirements: Python 3.11+, Git, and an installed agent for CLI setup.
+
 With the AI-RULES CLI (recommended):
 
 ```sh
@@ -63,3 +65,22 @@ Activating a skill grants no extra permission. Skill activation does not authori
 ## Notes
 
 - With `andino-workflow`, Andino owns the lifecycle, plan, and checkpoints. Skripsi Skill returns research findings and recommended actions without a competing plan. Install both as separate folders under the same skill root. Installing both does not activate both.
+
+## Research integrity and verification
+
+The [runtime contract](SKILL.md) and
+[evidence guidelines](references/evidence-guidelines-integrity.md) require traceable
+sources and honest limits. They do not supply missing literature, participant data,
+ethics approval, or campus requirements. Use your institution's actual guidance.
+The [research templates](assets/research-core-templates.md) support that work;
+they are not completed research evidence.
+
+Preserve the full references/assets directories and local edits before updating.
+After reloading the host, provide your approved topic and current stage: expect
+guidance for that stage without reopening settled decisions. A single-sentence
+polish should not start the full workflow. These are manual smoke cases; setup
+verifies files rather than academic correctness or live host behavior.
+
+The [main quality plane](https://github.com/andinoferdi/AI-RULES/tree/main)
+owns evaluation cases, requirement traceability and installer tests. Consult source
+history and applicable notices for provenance; this README adds no license grant.
