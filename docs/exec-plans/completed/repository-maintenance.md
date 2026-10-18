@@ -1,6 +1,6 @@
 # Eight-branch repository maintenance
 
-Status: IN_PROGRESS | Depth: STANDARD | Date: 2026-10-18
+Status: DONE | Depth: STANDARD | Date: 2026-10-18
 
 ## Executive Snapshot
 
@@ -10,7 +10,11 @@ Final current-src suite: 223 tests, zero failures, one opt-in skip. All package,
 inventory, schema, traceability, README lint/link and canonical procedure gates pass.
 Sixteen disposable installation scenarios pass, including real remote acquisition,
 upgrade/backup, idempotency and local-edit protection. No global setup performed.
-CURRENT PHASE: Publication and final checks.
+Main implementation ad80499fd1d588e52b00056c5472cfec705406f6 is pushed and remote-
+confirmed. GitHub Actions run 39117329749 completed successfully. All runtime
+worktrees are clean detached HEADs; main tracked state is clean and only the
+user's original untracked prompt remains. No material blocker remains.
+CURRENT PHASE: Complete.
 
 ## Objective
 
@@ -33,13 +37,13 @@ non-force pushes. WebBased and immutable communication files remain read-only.
 | Baseline and audit | DONE | All packages classified; no obsolete file proved safe to delete |
 | Runtime documentation and publication | DONE | Six README commits PUSHED; Council VERIFIED / NO CHANGE |
 | Main reconciliation and verification | DONE | Sequence 14, seven exact remote pins; fresh suite and installation checks pass |
-| Publication and final checks | IN_PROGRESS | Main ready for targeted staging, commit and normal push; CI pending |
+| Publication and final checks | DONE | Main ad80499 remote-confirmed; Actions 39117329749 SUCCESS; all final Git states checked |
 
 ## Baseline and matrix
 
 | Branch | Baseline SHA | State |
 | --- | --- | --- |
-| main | 6b2875312fb03d6e6f977aa30a6d7044a336b3ce | CHANGE_REQUIRED |
+| main | 6b2875312fb03d6e6f977aa30a6d7044a336b3ce | PUSHED ad80499; final checkpoint identified by containing commit |
 | ai-codebase-rescue | ff61f482eb85c8f4870ee74ffe208394a61cb433 | PUSHED 5b0b47c |
 | andino-workflow | efd9c508d55ed94ab2a1229e3324a008e7db71f0 | PUSHED 8866a23 |
 | council | 82984fa4dd75023e63d944e6cee1b61d191047c4 | VERIFIED / NO CHANGE |
@@ -90,8 +94,14 @@ non-force pushes. WebBased and immutable communication files remain read-only.
 - Evidence: docs/validation/repository-maintenance/README.md, verification.json and
   installation.json. Scope limits include unexecuted native host/model/rendering
   checks; existing revision-specific evidence remains intact.
+- Implementation publication: main ad80499fd1d588e52b00056c5472cfec705406f6, normal
+  push confirmed by ls-remote. Actions 39117329749 SUCCESS, including every validator
+  and test step. Canonical exports of that main commit and actual published Andino
+  pass source/procedure validation; all seven manifest pins match remote heads.
+- Final checkpoint closes this plan and records the confirmed implementation commit;
+  its own commit identity and push/CI result are reported in the final delivery.
+  No self-referential SHA is invented. Runtime branches need no further changes.
 
 ## NEXT ACTION
 
-Stage only the 14 reviewed main documentation/evidence/manifest files, commit and
-normal-push main. Verify remote identity and GitHub Actions; record final Git state.
+None; implementation, runtime publication and acceptance checks complete.

@@ -22,6 +22,12 @@ in [verification.json](verification.json). Runtime pushes were individual,
 non-force HEAD-to-existing-branch pushes. Detached worktrees avoid creating local
 branches or switching the user's dirty main checkout.
 
+The main implementation commit is `ad80499fd1d588e52b00056c5472cfec705406f6`,
+confirmed on the remote. Its [Validate skills workflow](https://github.com/andinoferdi/AI-RULES/actions/runs/39117329749)
+passed every step. This report's final checkpoint commit carries that observed
+result; its identity is obtained from Git history, without inventing a self-reference.
+See the [completed plan](../../exec-plans/completed/repository-maintenance.md).
+
 ## Preservation and selective cleanup
 
 No file was deleted. All seven packages retain exactly one native `SKILL.md`.

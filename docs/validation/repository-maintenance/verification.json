@@ -13,8 +13,9 @@
   ],
   "main": {
     "baseline": "6b2875312fb03d6e6f977aa30a6d7044a336b3ce",
-    "final": "containing Git commit; publication confirmed in delivery checkpoint",
-    "status": "VERIFIED_PENDING_PUBLICATION"
+    "final": "Containing final checkpoint commit; actual identity and push/CI confirmed in task delivery",
+    "status": "PUSHED",
+    "implementation_commit": "ad80499fd1d588e52b00056c5472cfec705406f6"
   },
   "runtime_branches": {
     "ai-codebase-rescue": {
@@ -183,7 +184,8 @@
       "evidence": "installation.json",
       "scope": "Five bundled adapter fresh/repeat pairs; real default-latest fresh/repeat, baseline upgrade/backup/repeat, two modified-managed blocks"
     },
-    "changed_markdown": "PASS: all changed main Markdown plus all seven runtime READMEs; MD013 disabled only for long commands/tables"
+    "changed_markdown": "PASS: all changed main Markdown plus all seven runtime READMEs; MD013 disabled only for long commands/tables",
+    "published_canonical_main": "PASS: source/procedure validator at exact published main/runtime exports; all seven manifest pins match remote heads"
   },
   "resolved_diagnostics": [
     "Byte-sensitive procedure reports were stale at canonical source; archived originals and re-executed all 57 methods. CRLF checkout differences were isolated through Git exports.",
@@ -304,5 +306,24 @@
     "Live host discovery, model routing, service use, rendering and cross-host behavioral parity NOT_VERIFIED.",
     "Two npm package pages returned HTTP 403 to HEAD; availability NOT_VERIFIED. No denial bypass attempted.",
     "No tag, GitHub Release, installer executable or global setup created."
-  ]
+  ],
+  "github_actions": {
+    "result": "PASS",
+    "run_id": 39117329749,
+    "commit": "ad80499fd1d588e52b00056c5472cfec705406f6",
+    "url": "https://github.com/andinoferdi/AI-RULES/actions/runs/39117329749",
+    "steps": "All validation and test steps succeeded"
+  },
+  "final_git": {
+    "main": "Tracked/index clean after implementation; original user prompt remains untracked",
+    "runtime_worktrees": "All seven clean, detached at the recorded published existing-branch commits",
+    "local_branches": [
+      "main"
+    ],
+    "created_branch_refs": [],
+    "deleted_files": [],
+    "webbased": "Remote SHA unchanged; read-only",
+    "global_setup": "Not run",
+    "followup": "Final checkpoint commit/push and matching CI result reported by the delivering agent"
+  }
 }
