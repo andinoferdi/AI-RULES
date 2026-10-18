@@ -12,11 +12,16 @@ A communication style for AI answers. It puts the answer or result first, uses s
 
 Focus changes how work is written. It does not reduce investigation, verification, or scope. Your explicit style requests override it.
 
+It is unnecessary when the current style already fits your request. It supplies
+no research method, implementation workflow, or independent factual authority.
+
 ## Requires
 
 None. Every `ai-rules setup` profile includes Focus through Andino's dependency.
 
 ## Install
+
+Requirements: Python 3.11+, Git, and an installed agent for CLI setup.
 
 With the AI-RULES CLI (recommended):
 
@@ -60,7 +65,18 @@ To turn it off, say `stop focus`. Activating a skill grants no extra permission.
 
 ## Notes
 
-- With Andino, Focus loads once automatically. You do not invoke it again.
+- Andino's contract calls for Focus as its default communication layer. Actual loading follows the host's permitted invocation mechanism; installation alone does not activate it.
 - Focus owns no plan, tool permissions, or task execution.
 - For web chatbots, copy `A. PRIORITAS` and `X. FOCUS` from the [WebBased branch README](https://github.com/andinoferdi/AI-RULES/tree/WebBased).
-- Adapted from [i-have-adhd](https://github.com/ayghri/i-have-adhd) by Ayoub Ghriss under the MIT license. The notice is in `references/license.md`.
+- Adapted from [i-have-adhd](https://github.com/ayghri/i-have-adhd) by Ayoub Ghriss under the MIT license. See the [retained notice](references/license.md).
+
+## Verify
+
+Preserve the whole folder and local edits when updating. Setup verifies files;
+after reloading, invoke Focus and check that a practical answer leads with usable
+steps and retains relevant uncertainty. An explicit request for a formal style
+should still be honored. These are manual checks, not claimed live-host results.
+
+[SKILL.md](SKILL.md) defines the loading contract for the bundled Priority A and
+both language references. Main's [package validator](https://github.com/andinoferdi/AI-RULES/blob/main/scripts/validate_skills.py)
+also compares those references with WebBased without changing either source.
