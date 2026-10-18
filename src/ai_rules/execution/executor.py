@@ -13,6 +13,7 @@ from typing import Callable
 from ai_rules.domain.models import InstallationPlan, Operation
 from ai_rules.domain.statuses import ReconciliationAction
 from ai_rules.evidence.redaction import redact
+from ai_rules.events import Reporter, emit
 
 
 @dataclass(frozen=True)
@@ -38,14 +39,47 @@ class Executor:
         host_skill_roots: dict[str, Path] | None = None,
         first_party_installers: dict[tuple[str, str], Callable[[], Path]] | None = None,
         invocation_installers: dict[tuple[str, str], Callable] | None = None,
+        reporter: Reporter | None = None,
     ):
         self.state_dir = state_dir
         self.first_party_bundles = first_party_bundles or {}
         self.host_skill_roots = host_skill_roots or {}
         self.first_party_installers = first_party_installers or {}
         self.invocation_installers = invocation_installers or {}
+        self.reporter = reporter
 
     def execute(self, plan: InstallationPlan, dry_run: bool = True, yes: bool = False) -> ExecutionResult:
+        phase = "Applying approved changes" if yes and not dry_run else "Previewing target actions"
+        emit(self.reporter, phase, kind="execution", total=len(plan.targets), completed=0)
+        results = []
+        for index, target in enumerate(plan.targets):
+            context = dict(host=target.host_id, capability=target.capability_id, action=target.action.value)
+            emit(self.reporter, "Processing target", kind="target_start", **context)
+            batch = self._execute_targets(InstallationPlan(plan.schema_version, plan.profile_id, (target,)), dry_run, yes)
+            results.extend(batch.results)
+            statuses = {item.status for item in batch.results}
+            if "FAILED" in statuses:
+                status = "FAILED"
+            elif target.action == ReconciliationAction.BLOCK or "BLOCKED" in statuses:
+                status = "BLOCKED"
+            elif "MANUAL_ACTION_REQUIRED" in statuses:
+                status = "MANUAL_ACTION_REQUIRED"
+            elif target.action == ReconciliationAction.NO_OP:
+                status = "CURRENT"
+            elif statuses == {"APPLIED"}:
+                status = "APPLIED"
+            elif "PLANNED" in statuses:
+                status = "PLANNED"
+            else:
+                status = "SKIPPED"
+            emit(self.reporter, "Target finished", kind="target_done", status=status,
+                 completed=index + 1, total=len(plan.targets), **context)
+            if status in {"FAILED", "BLOCKED", "MANUAL_ACTION_REQUIRED"}:
+                emit(self.reporter, "Target diagnostic", kind="diagnostic", status=status,
+                     detail="; ".join(item.message for item in batch.results), **context)
+        return ExecutionResult(dry_run=dry_run, results=tuple(results))
+
+    def _execute_targets(self, plan: InstallationPlan, dry_run: bool, yes: bool) -> ExecutionResult:
         results: list[OperationResult] = []
         for target in plan.targets:
             if target.action == ReconciliationAction.BLOCK:
@@ -71,6 +105,9 @@ class Executor:
                 try:
                     results.append(self._execute_operation(operation, dry_run=dry_run, yes=yes))
                 except Exception as exc:
+                    emit(self.reporter, "Operation failed", kind="diagnostic", host=operation.host_id,
+                         capability=operation.capability_id, action=operation.action.value,
+                         status="FAILED", detail=f"{operation.kind}: {exc}")
                     results.append(
                         OperationResult(
                             operation.capability_id,
@@ -87,6 +124,8 @@ class Executor:
             return OperationResult(operation.capability_id, operation.host_id, operation.action.value, "PLANNED", operation.reason)
         if not yes:
             return OperationResult(operation.capability_id, operation.host_id, operation.action.value, "BLOCKED", "confirmation required")
+        emit(self.reporter, f"Operation: {operation.kind}", host=operation.host_id,
+             capability=operation.capability_id, action=operation.action.value)
         if operation.kind == "run_command":
             if not operation.argv:
                 raise ValueError("external command operation is missing argv")
@@ -96,6 +135,7 @@ class Executor:
                 raise RuntimeError(f"command exited {completed.returncode}: {detail}")
         installed_path = None if operation.action == ReconciliationAction.ADOPT else self._install_first_party_bundle(operation)
         if register := self.invocation_installers.get((operation.capability_id, operation.host_id)):
+            emit(self.reporter, "Registering invocation", host=operation.host_id, capability=operation.capability_id)
             register()
         self.state_dir.mkdir(parents=True, exist_ok=True)
         evidence_path = self.state_dir / "last-operation.json"
@@ -118,7 +158,7 @@ class Executor:
         if not (bundle / "SKILL.md").is_file():
             raise ValueError(f"first-party bundle is missing SKILL.md: {bundle}")
         target = skill_root / operation.capability_id
-        copy_tree_atomic(bundle, target, self.state_dir / "backups")
+        copy_tree_atomic(bundle, target, self.state_dir / "backups", reporter=self.reporter)
         return target
 
 
@@ -148,9 +188,11 @@ def copy_tree_atomic(
     target: Path,
     backup_dir: Path | None = None,
     verify: Callable[[Path], bool] | None = None,
+    reporter: Reporter | None = None,
 ) -> None:
     """Stage, back up, replace, and verify a directory with rollback on failure."""
     verify = verify or _is_valid_skill_tree
+    emit(reporter, "Verifying source bundle")
     if not verify(source):
         raise ValueError(f"source bundle verification failed: {source}")
     target.parent.mkdir(parents=True, exist_ok=True)
@@ -158,33 +200,43 @@ def copy_tree_atomic(
     temporary = target.with_name(f".{target.name}.staged-{token}")
     previous = target.with_name(f".{target.name}.previous-{token}")
     try:
+        emit(reporter, "Staging bundle")
         shutil.copytree(source, temporary)
+        emit(reporter, "Verifying staged bundle")
         if not verify(temporary):
             raise RuntimeError(f"staged bundle verification failed: {temporary}")
         if not target.exists():
+            emit(reporter, "Installing staged bundle")
             temporary.replace(target)
+            emit(reporter, "Verifying installed bundle")
             if not verify(target):
                 raise RuntimeError(f"installed bundle verification failed: {target}")
             return
         if backup_dir is None:
             raise ValueError("backup directory is required when replacing an existing target")
         backup = backup_dir / token / target.name
+        emit(reporter, "Backing up existing target")
         backup.parent.mkdir(parents=True, exist_ok=False)
         shutil.copytree(target, backup)
         (backup.parent / "transaction.json").write_text(
             json.dumps({"transaction_id": token, "target": str(target), "backup": str(backup)}, indent=2),
             encoding="utf-8",
         )
+        emit(reporter, "Replacing target atomically")
         target.replace(previous)
         temporary.replace(target)
+        emit(reporter, "Verifying installed bundle")
         if not verify(target):
             raise RuntimeError(f"installed bundle verification failed: {target}")
         shutil.rmtree(previous)
-    except Exception as exc:
+    except BaseException as exc:
         if previous.exists():
+            emit(reporter, "Rolling back replacement")
             if target.exists():
                 shutil.rmtree(target)
             previous.replace(target)
+            if isinstance(exc, (KeyboardInterrupt, SystemExit)):
+                raise
             raise RuntimeError(f"replacement failed and was rolled back: {exc}") from exc
         raise
     finally:

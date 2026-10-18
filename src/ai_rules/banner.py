@@ -47,7 +47,6 @@ def print_setup_banner() -> None:
     if not sys.stdout.isatty() or os.environ.get("TERM") == "dumb":
         return
     from prompt_toolkit import ANSI, print_formatted_text
-    from prompt_toolkit.output import ColorDepth
 
     block = "█"
     try:
@@ -56,7 +55,7 @@ def print_setup_banner() -> None:
         block = "#"
     banner = render_banner(
         shutil.get_terminal_size().columns,
-        color=not bool(os.environ.get("NO_COLOR")),
+        color="NO_COLOR" not in os.environ,
         block=block,
     )
-    print_formatted_text(ANSI(banner), color_depth=ColorDepth.TRUE_COLOR)
+    print_formatted_text(ANSI(banner))

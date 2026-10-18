@@ -1,0 +1,12 @@
+INSTALLATION PLAN
+ Host                  Install Update Current Blocked
+ Codex                       7      0       0       0
+ Claude Code                 7      0       0       0
+ OpenCode                    7      0       0       0
+ Antigravity CLI             7      0       0       0
+ Antigravity IDE / 2.0       7      0       0       0
+35 targets
+35 INSTALL | 0 UPDATE | 0 NO_OP
+0 BLOCKED | 0 MANUAL_ACTION
+Up to 0 targets need backup if existing files are replaced.
+Operation details: --verbose

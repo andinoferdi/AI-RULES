@@ -92,6 +92,40 @@ selection to update it. Default `--source latest` checks the configured branches
 Source checkouts acquire pinned content through Git when an embedded bundle is
 unavailable. Preserve local edits and review reported conflicts before replacement.
 
+Setup shows the active phase before installed-state inspection, Git fetch, source
+bundle preparation, reconciliation and plan generation. On an interactive terminal,
+an orange spinner and elapsed time keep updating during blocking work. Counts appear
+only for known work units. After approval, `processed / total` counts resolved
+targets, including dependencies; all operations belonging to a target finish before
+it is counted. Processed includes failed and blocked targets and is not a success
+percentage. The final summary separates installed, updated, current, failed, blocked,
+skipped, manual and unfinished targets. A final verification failure removes that
+target from the successful count.
+
+The default plan groups actions by host. Global scope uses user skill locations for
+the selected hosts; project scope shows the project root once. Full source URLs,
+target paths, backup flags, commands and operation diagnostics are available with
+`--verbose`. Errors and conflict reasons remain visible without it. Installation
+records and the backup root, when relevant, are printed at the end.
+
+```sh
+ai-rules setup --host codex --profile everything --dry-run --verbose --non-interactive
+ai-rules setup --host codex --profile minimal --yes --non-interactive --no-progress
+```
+
+`--no-progress` disables animation and keeps plain milestones. Redirected output,
+non-TTY, `--non-interactive`, CI and dumb terminals use plain output automatically,
+without cursor animation or ANSI escapes. `NO_COLOR` removes color. Narrow terminals
+use a per-host action list instead of squeezing table columns. `--dry-run` resolves
+and displays the plan without writing installation or state files; latest source
+checks still use temporary Git workspaces. `--yes` keeps its existing approval
+behavior. Ctrl+C during installer work exits with code 130, stops the live display and retains completed
+changes/backups; an interrupted atomic directory replacement restores the previous
+tree. Cancelling selection or confirmation keeps the existing no-change behavior.
+Rerun the same setup command to inspect remaining work. Refresh the agent
+session/window after installation; file verification does not establish native
+discovery or live skill use.
+
 To update the CLI itself, from a clean `main` checkout:
 
 ```sh

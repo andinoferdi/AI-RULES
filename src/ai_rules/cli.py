@@ -26,6 +26,8 @@ from ai_rules.release.latest import LatestSources, contents
 from ai_rules.resolver import ResolveRequest, build_resolver
 from ai_rules.state import atomic_write_json, create_snapshot, read_json, read_snapshot, write_profile
 from ai_rules.verification import doctor_from_plan, render_doctor
+from ai_rules.progress import SetupProgress
+from ai_rules.events import emit
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -33,6 +35,9 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         return args.func(args)
+    except KeyboardInterrupt:
+        print("setup interrupted; completed changes and backups are retained. Rerun setup to inspect remaining targets.", file=sys.stderr)
+        return 130
     except Exception as exc:  # pragma: no cover - CLI boundary
         print(f"ai-rules: {exc}", file=sys.stderr)
         return 2
@@ -97,6 +102,8 @@ def add_common_setup_flags(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--yes", action="store_true")
     parser.add_argument("--non-interactive", action="store_true")
+    parser.add_argument("--verbose", action="store_true", help="show full plan, source, target and operation diagnostics")
+    parser.add_argument("--no-progress", action="store_true", help="use plain milestones without terminal animation")
     parser.add_argument("--state-dir", type=Path)
     parser.add_argument("--source", choices=("latest", "bundled"), default="latest",
                         help="latest checks configured remote branches; bundled uses this CLI's frozen manifest without checking freshness")
@@ -122,44 +129,64 @@ def cmd_setup(args: argparse.Namespace) -> int:
         args.profile = selection.profile_id or "custom"
         args.capabilities = list(selection.capabilities)
         interactive = True
-    plan = _resolve_from_args(args)
-    setup_summary = None
-    if interactive:
-        catalog = load_catalog()
-        profiles = load_profiles(catalog)
-        capabilities = tuple(args.capabilities) if args.capabilities else profiles.require(args.profile).capabilities
-        setup_summary = (catalog, capabilities, profiles)
+    catalog = load_catalog()
+    profiles = load_profiles(catalog)
+    capabilities = tuple(args.capabilities) if args.capabilities else profiles.require(args.profile).capabilities
+    print(render_setup_summary(tuple(_hosts(args.hosts)), args.profile if not args.capabilities else None,
+                               capabilities, args.scope, catalog, profiles.profiles, compact=True,
+                               project_root=args.project_root))
+    progress = SetupProgress(enabled=not getattr(args, "no_progress", False) and not args.non_interactive,
+                             verbose=getattr(args, "verbose", False))
+    args._reporter = progress
+    with progress:
+        plan = _resolve_from_args(args)
     all_current = interactive and plan.targets and all(target.action == ReconciliationAction.NO_OP for target in plan.targets)
     if all_current:
         args.yes = True
-    if setup_summary is not None and not all_current:
-        catalog, capabilities, profiles = setup_summary
-        print(render_setup_summary(tuple(args.hosts), args.profile if not args.capabilities else None, capabilities, args.scope, catalog, profiles.profiles))
     if not all_current or args.dry_run:
-        print(_preflight_text())
-        print(render_plan(plan))
+        if getattr(args, "verbose", False):
+            print(_preflight_text())
+        print(render_plan(plan, verbose=getattr(args, "verbose", False)))
     if args.dry_run:
+        print("Dry run complete; no installation or state files changed.")
         return 1 if plan.blocked else 0
     if interactive and not args.yes and not prompt_confirmation():
         print("setup cancelled; no changes made")
         return 0
     if interactive:
         args.yes = True
-    result = _executor_for_plan(plan, args).execute(plan, dry_run=False, yes=args.yes)
+    with progress:
+        emit(progress, "Preparing execution bundles")
+        result = _executor_for_plan(plan, args).execute(plan, dry_run=False, yes=args.yes)
+        if args.yes:
+            emit(progress, "Recording installed state")
+            _record_managed_installations(plan, result, args)
+            capabilities = tuple(args.capabilities) if args.capabilities else tuple(_profile_capabilities(args.profile))
+            write_profile(args.state_dir / "profile.json", args.profile, tuple(_hosts(args.hosts)), capabilities, args.scope)
+            emit(progress, "Verifying installation evidence")
+            verified = _write_verified_lock(plan, result, args)
+            if verified is False:
+                for target in read_json(args.state_dir / "lock.json")["targets"]:
+                    if target["status"] == "FAILED":
+                        emit(progress, "Final verification failed", kind="verification_failed",
+                             host=target["host"], capability=target["capability"],
+                             detail=str(target["verification"]))
+        else:
+            verified = None
     for item in result.results:
-        if all_current and item.status == "VERIFIED":
+        if all_current and item.status == "VERIFIED" and getattr(args, "verbose", False):
             label = "Up to date" if getattr(args, "_latest", None) else "Already installed (latest not checked)"
             print(f"✓ {catalog.hosts[item.host_id].display_name}: {catalog.require_capability(item.capability_id).display_name}  {label}")
-        else:
+        elif getattr(args, "verbose", False) or item.status in {"FAILED", "BLOCKED", "MANUAL_ACTION_REQUIRED"}:
             print(f"{item.capability_id} -> {item.host_id}: {item.status} {item.action} - {item.message}")
     if not args.yes:
         return 0
-    _record_managed_installations(plan, result, args)
-    capabilities = tuple(args.capabilities) if args.capabilities else tuple(_profile_capabilities(args.profile))
-    write_profile(args.state_dir / "profile.json", args.profile, tuple(_hosts(args.hosts)), capabilities, args.scope)
-    verified = _write_verified_lock(plan, result, args)
+    print(f"Installation records: {args.state_dir}")
+    if (args.state_dir / "backups").exists():
+        print(f"Backups: {args.state_dir / 'backups'}")
     if all_current and verified:
-        print("\nNo changes were needed.")
+        label = "Up to date" if getattr(args, "_latest", None) else "Already installed (latest not checked)"
+        print(f"\n{label}. No changes were needed.")
     if verified:
         print("\nFile verification only; native session discovery and skill use are not verified by setup.")
         print("\nManual invocation: start a new agent session or reload its window.")
@@ -170,6 +197,8 @@ def cmd_setup(args: argparse.Namespace) -> int:
                      if target.host_id == host_id and catalog.require_capability(target.capability_id).ownership.value == "FIRST_PARTY"]
             if names:
                 print(f"  {catalog.require_host(host_id).display_name}: " + ", ".join(names))
+    elif any(item.status == "APPLIED" for item in result.results):
+        print("Start a new agent session or reload its window for applied files; review remaining diagnostics.")
     return 1 if verified is False or any(item.status in {"FAILED", "SKIPPED", "BLOCKED"} for item in result.results) else 0
 
 
@@ -265,7 +294,7 @@ def cmd_update(args: argparse.Namespace) -> int:
     _prepare_args(args)
     plan = _resolve_from_args(args)
     print("AI-RULES update preview")
-    print(render_plan(plan))
+    print(render_plan(plan, verbose=getattr(args, "verbose", False)))
     if args.dry_run or not args.yes:
         return 1 if plan.blocked else 0
     result = _executor_for_plan(plan, args).execute(plan, dry_run=False, yes=True)
@@ -284,7 +313,7 @@ def cmd_repair(args: argparse.Namespace) -> int:
     plan = _resolve_from_args(args)
     repair_plan = _explicit_repair_plan(plan, allow_replace=args.replace_existing)
     print("AI-RULES Repair")
-    print(render_plan(repair_plan))
+    print(render_plan(repair_plan, verbose=getattr(args, "verbose", False)))
     if args.dry_run or not args.yes:
         print("repair preview only; pass --yes to apply the official stable release")
         return 1 if repair_plan.blocked else 0
@@ -341,11 +370,15 @@ def cmd_restore(args: argparse.Namespace) -> int:
 
 
 def _resolve_from_args(args: argparse.Namespace):
+    reporter = getattr(args, "_reporter", None)
+    emit(reporter, "Checking sources and configuration")
     catalog = load_catalog()
     profiles = load_profiles(catalog)
+    emit(reporter, "Inspecting installed state")
     resolver = build_resolver(catalog, profiles, StaticCapabilityAdapter(state=_actual_state(catalog, args)))
     hosts = tuple(_hosts(args.hosts))
     profile_id = None if args.capabilities else args.profile
+    emit(reporter, "Resolving dependencies and initial plan")
     plan = resolver.resolve(
         ResolveRequest(
             hosts=hosts,
@@ -356,7 +389,8 @@ def _resolve_from_args(args: argparse.Namespace):
     )
     if getattr(args, "source", "bundled") == "latest":
         if not getattr(args, "_latest", None):
-            args._latest = LatestSources(catalog, [target.capability_id for target in plan.targets if target.strategy_id])
+            args._latest = LatestSources(catalog, [target.capability_id for target in plan.targets if target.strategy_id], reporter=reporter)
+        emit(reporter, "Reconciling source revisions")
         plan = args._latest.reconcile(plan, catalog, args)
     else:
         records = _managed_installation_records(args.state_dir)
@@ -373,6 +407,7 @@ def _resolve_from_args(args: argparse.Namespace):
                                  reason='Legacy installation has no file fingerprints; review before explicit repair', operations=())
             targets.append(target)
         plan = replace(plan, targets=tuple(targets))
+    emit(reporter, "Building installation plan and invocation checks")
     return reconcile_invocations(plan, catalog, build_host_adapters(catalog.hosts), args.project_root)
 
 
@@ -404,7 +439,8 @@ def _executor_for_plan(plan, args: argparse.Namespace) -> Executor:
         for target in plan.targets if catalog.require_capability(target.capability_id).ownership.value == "FIRST_PARTY"
     }
     if latest := getattr(args, "_latest", None):
-        return Executor(args.state_dir, first_party_installers=latest.installers, invocation_installers=registrations)
+        return Executor(args.state_dir, first_party_installers=latest.installers, invocation_installers=registrations,
+                        reporter=getattr(args, "_reporter", None))
     roots: dict[str, Path] = {}
     bundles: dict[str, Path] = {}
     manifest = _release_manifest()
@@ -422,7 +458,8 @@ def _executor_for_plan(plan, args: argparse.Namespace) -> Executor:
             export_git_ref(release["commit"], bundle, repo_root=Path.cwd(),
                            subpath=release.get("subpath"))
         bundles[capability.id] = bundle
-    return Executor(args.state_dir, first_party_bundles=bundles, host_skill_roots=roots, invocation_installers=registrations)
+    return Executor(args.state_dir, first_party_bundles=bundles, host_skill_roots=roots, invocation_installers=registrations,
+                    reporter=getattr(args, "_reporter", None))
 
 
 def _actual_state(

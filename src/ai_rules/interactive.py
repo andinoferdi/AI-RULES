@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import shutil
 from typing import Callable, Mapping, Sequence
 
 from ai_rules.catalog.loader import Catalog
@@ -61,9 +62,30 @@ def render_setup_summary(
     scope: str,
     catalog: Catalog,
     profiles: Mapping[str, Profile] | None = None,
+    *,
+    compact: bool = False,
+    project_root=None,
 ) -> str:
     profile_name = "Custom" if profile_id is None else (profiles or {}).get(profile_id, None)
     profile_label = profile_name.display_name if isinstance(profile_name, Profile) else (profile_id or "Custom").replace("-", " ").title()
+    if compact:
+        from io import StringIO
+        from rich.console import Console
+        from rich.table import Table
+        stream = StringIO()
+        console = Console(file=stream, width=shutil.get_terminal_size().columns, color_system=None, force_terminal=False)
+        table = Table.grid(padding=(0, 2))
+        table.add_row("Profile", profile_label)
+        table.add_row("Scope", scope.title())
+        table.add_row("Hosts", f"{len(host_ids)} selected: " + ", ".join(catalog.require_host(h).display_name for h in host_ids))
+        table.add_row("Capabilities", f"{len(capabilities)} selected (dependencies included in plan)")
+        if scope == "project":
+            table.add_row("Project root", str(project_root))
+        else:
+            table.add_row("Location", "User skill locations for the selected hosts")
+        console.print("AI-RULES Setup\n")
+        console.print(table)
+        return stream.getvalue().rstrip()
     lines = ["AI-RULES Setup", "", "Hosts"]
     lines.extend(f"  {catalog.require_host(host_id).display_name}" for host_id in host_ids)
     lines.extend(["", "Profile", f"  {profile_label}", "", "Will install/configure"])

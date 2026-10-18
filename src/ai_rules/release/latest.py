@@ -15,6 +15,7 @@ from ai_rules.domain.statuses import InstalledOwnership, ReconciliationAction, R
 from ai_rules.execution.executor import copy_tree_atomic
 from ai_rules.hosts.adapters import build_host_adapters
 from ai_rules.release.bundles import export_git_ref, validate_subpath
+from ai_rules.events import emit
 
 
 def git(root: Path, *args: str) -> str:
@@ -58,7 +59,9 @@ def canonical_source(value: str) -> str:
 
 
 class LatestSources:
-    def __init__(self, catalog, capability_ids):
+    def __init__(self, catalog, capability_ids, reporter=None):
+        self.reporter = reporter
+        emit(reporter, "Checking source configuration")
         self.workspace = tempfile.TemporaryDirectory(prefix="ai-rules-sources-")
         self.root = Path(self.workspace.name)
         self.sources = {}
@@ -75,7 +78,10 @@ class LatestSources:
                 repository = capability.source["repository"]
                 branch = capability.source["branch"]
                 groups.setdefault(repository, []).append((identifier, branch))
+            bundle_total = sum(len(selections) for selections in groups.values())
+            bundle_completed = 0
             for index, (repository, selections) in enumerate(groups.items()):
+                emit(reporter, "Fetching remote branches", completed=index, total=len(groups))
                 local = self.root / f"source-{index}"
                 local.mkdir()
                 git(local, "init", "--bare")
@@ -83,11 +89,17 @@ class LatestSources:
                     git(local, "check-ref-format", f"refs/heads/{branch}")
                 refs = [f"+refs/heads/{branch}:refs/heads/{branch}" for _, branch in selections]
                 git(local, "fetch", "--no-tags", "--", repository, *dict.fromkeys(refs))
+                emit(reporter, "Remote branches fetched", completed=index + 1, total=len(groups))
                 for identifier, branch in selections:
+                    emit(reporter, "Preparing source bundle", capability=identifier,
+                         completed=bundle_completed, total=bundle_total)
                     commit = git(local, "rev-parse", f"refs/heads/{branch}^{{commit}}")
                     self.entries[identifier] = (local, repository, branch, commit)
                     self.sources[identifier] = self.bundle(identifier)
-        except Exception:
+                    bundle_completed += 1
+                    emit(reporter, "Source bundle prepared", capability=identifier,
+                         completed=bundle_completed, total=bundle_total)
+        except BaseException:
             self.close()
             raise
 
@@ -142,7 +154,9 @@ class LatestSources:
     def reconcile(self, plan, catalog, args):
         adapters = build_host_adapters(catalog.hosts)
         targets = []
-        for target in plan.targets:
+        for index, target in enumerate(plan.targets):
+            emit(self.reporter, "Reconciling installed content", host=target.host_id, capability=target.capability_id,
+                 completed=index, total=len(plan.targets))
             if target.strategy_id is None:
                 targets.append(target)
                 continue
@@ -203,10 +217,12 @@ class LatestSources:
                 targets.append(replace(target, action=ReconciliationAction.BLOCK, target_version=version,
                                        status=TargetStatus.BLOCKED, assessment=ReconciliationAssessment.VERSION_UNKNOWN,
                                        reason=str(exc), operations=()))
+        emit(self.reporter, "Reconciliation complete", completed=len(targets), total=len(plan.targets))
         return InstallationPlan(plan.schema_version, plan.profile_id, tuple(targets))
 
     def _installer(self, identifier, original, destination, before, is_git, installed, state_dir):
         def install():
+            emit(self.reporter, "Checking target before installation", capability=identifier)
             local, _, branch, commit = self.entries[identifier]
             expected = self.tree(local, commit, self.subpaths[identifier])
             if original.resolve() != destination:
@@ -228,12 +244,16 @@ class LatestSources:
                 if git(destination, "rev-parse", "HEAD") != installed or git(destination, "branch", "--show-current") != branch:
                     raise ValueError("Git checkout changed after planning")
                 backup = state_dir / "backups" / uuid.uuid4().hex / identifier
+                emit(self.reporter, "Backing up Git checkout", capability=identifier)
                 shutil.copytree(destination, backup)
+                emit(self.reporter, "Fetching resolved revision into checkout", capability=identifier)
                 git(destination, "fetch", "--no-tags", str(local), f"{commit}:refs/remotes/origin/{branch}")
+                emit(self.reporter, "Fast-forwarding checkout", capability=identifier)
                 git(destination, "merge", "--ff-only", commit)
             else:
                 copy_tree_atomic(self.sources[identifier], destination, state_dir / "backups",
-                                 verify=lambda path: contents(path) == expected)
+                                 verify=lambda path: contents(path) == expected, reporter=self.reporter)
+            emit(self.reporter, "Verifying installed content", capability=identifier)
             if contents(destination) != expected:
                 raise ValueError("Installed content differs from the resolved source; backup retained")
             return original
