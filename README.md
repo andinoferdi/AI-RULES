@@ -19,6 +19,8 @@ None. It works standalone.
 
 ## Install
 
+Requirements: Python 3.11+, Git, and an installed agent for CLI setup.
+
 With the AI-RULES CLI (recommended):
 
 ```sh
@@ -62,3 +64,19 @@ Activating a skill grants no extra permission. A rescue request alone does not a
 ## Notes
 
 - To combine it with Andino, install `andino-workflow` as a separate folder under the same skill root. Andino coordinates the task and may route eligible rescue work here. Andino's plan stays the only lifecycle owner. Installing both does not activate both.
+
+## Verify and explore
+
+Keep one complete skill directory and preserve local edits before re-running setup.
+Setup checks package files; native discovery and behavior need a separate session
+check. After reloading the host, try a bounded repeated-regression request and
+expect evidence before a KEEP/REFACTOR/REMAKE/REMOVE/INVESTIGATE decision. A request
+to fix a typo should stay a normal local edit.
+
+The [runtime contract](SKILL.md), [audit taxonomy](references/audit-taxonomy.md),
+[regression guidance](references/regression-and-verification.md), and
+[validation scenarios](references/validation-scenarios.md) explain the method.
+The [main quality plane](https://github.com/andinoferdi/AI-RULES/tree/main)
+owns installer tests and package validation; this branch distributes the entrypoint
+and focused references. Consult source history and any applicable resource notices
+for provenance; this README adds no license grant.
