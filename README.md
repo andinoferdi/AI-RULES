@@ -1,28 +1,10 @@
 # Andino Workflow
 
-One native skill with 57 reviewed internal methods adapted from Addy Osmani Agent
-Skills, Matt Pocock Skills and Superpowers. Use the [method index](references/internal-method-index.md)
-for requirements, planning, implementation, diagnosis, tests, reviews, architecture,
-productivity and delivery. These are local `GUIDE.md` resources under `skills/`,
-loaded only when needed. The three upstream repositories/plugins are not runtime
-dependencies. [Snapshot provenance and notices](references/legal/provenance.md)
-remain bundled; upstream updates require manual review and regressions.
-
-Examples: `$andino-workflow use the tdd method for this behavior change`, or
-`use andino-workflow, specifically domain-modeling`. Original names such as
-`test-driven-development`, `grill-me` and `writing-plans` are internal aliases,
-not additional native skills to install. Andino keeps one plan, permission boundary
-and acceptance gate. Reading a guide proves loading; relevant action/results prove use.
-
-For actual Three.js or NixieFX work invoke the single `threejs-skills` family
-through the host contract, then load only relevant [internal methods](references/threejs-specialists.md).
-Say "use andino-workflow and threejs-skills" for prompt-based selection, or name a
-method such as "threejs-skills, specifically threejs-shaders". The existing
-`threejs` profile installs four directories: family, Andino, Focus and Search First.
-The family contains all45 methods; individual native registration is unnecessary.
-Andino keeps one lifecycle and checkpoint. Installation does not activate methods.
-
 An adaptive problem-solving protocol for AI agents. It matches the depth of investigation to the task, separates your goal from a suspected cause, and asks only about decisions the available context cannot settle. It covers development, troubleshooting, research, decisions, daily tasks, and conversation.
+
+Resume work from a portable checkpoint, investigate an uncertain problem, or use
+a focused engineering method without installing a separate workflow for each phase.
+Andino keeps one lifecycle, permission boundary and acceptance gate.
 
 ## When to use
 
@@ -42,6 +24,8 @@ Routine conversation and trivial mechanical edits outside mapped needs do not tr
 `focus` and `search-first`. Setup installs both as required dependencies. A manual clone does not, so use `ai-rules setup --capability andino-workflow --host <host>` to get the full set.
 
 ## Install
+
+Requirements: Python 3.11+, Git, and an installed agent for CLI setup.
 
 With the AI-RULES CLI (recommended):
 
@@ -84,12 +68,33 @@ Example: `$andino-workflow resume the existing task plan and check repository dr
 
 Activating a skill grants no extra permission.
 
+## Bundled methods and provenance
+
+One native entrypoint contains 57 reviewed internal methods adapted from Addy
+Osmani Agent Skills, Matt Pocock Skills and Superpowers. The
+[method index](references/internal-method-index.md) covers requirements, planning,
+implementation, diagnosis, tests, reviews, architecture, productivity and delivery.
+These local `GUIDE.md` resources under `skills/` load only when needed. The upstream
+repositories and plugins are not runtime dependencies.
+
+Examples: `$andino-workflow use the tdd method for this behavior change`, or
+`use andino-workflow, specifically domain-modeling`. Original names such as
+`test-driven-development`, `grill-me` and `writing-plans` are internal aliases,
+not extra native skills to install. Reading a guide proves loading; relevant
+action and results prove use. Keep the [snapshot provenance and legal notices](references/legal/provenance.md);
+upstream updates require manual review and regressions.
+
 ## Notes
 
 - `focus` is the default communication style for every invocation, including direct answers.
 - Andino loads other installed skills only when the task needs them, for example `search-first` for research or `ai-codebase-rescue` for codebase stabilization.
 - To combine it with a specialist, install `ai-codebase-rescue` or `skripsi-skill` as a separate folder under the same skill root. Andino coordinates the work, and its plan stays the only lifecycle owner. Neither package installs the other.
 
+For actual Three.js or NixieFX work, invoke the single `threejs-skills` family
+through the host contract, then load only relevant [internal methods](references/threejs-specialists.md).
+Say "use andino-workflow and threejs-skills", or name "threejs-skills, specifically
+threejs-shaders". The `threejs` profile installs four directories: the complete
+45-method family, Andino, Focus and Search First. Installation does not activate methods.
 
 Council decision specialist: The [council](https://github.com/andinoferdi/AI-RULES/tree/council) branch offers five advisor perspectives, anonymous peer review when agents support it, and an actionable verdict. Focus remains the language layer and Andino retains routing and execution ownership. Standalone Council is available through `ai-rules setup --capability council`.
 
@@ -97,8 +102,9 @@ Council decision specialist: The [council](https://github.com/andinoferdi/AI-RUL
 
 Use one regular directory per native skill; preserve local edits before updating.
 Setup's file checks establish package delivery, not live discovery or model behavior.
-Installation executes no examples, hooks, package manager, network fetch or background
-server. Methods requiring a browser, tracker, optional CLI or external service verify
+Installing the package runs no bundled examples, upstream hooks, package manager or
+background server. CLI setup may fetch its configured runtime branch. Methods
+requiring a browser, tracker, optional CLI or external service verify
 actual availability and permissions first; offline examples do not prove live service use.
 
 Manual smoke for each supported host: start/reload an isolated project session,
