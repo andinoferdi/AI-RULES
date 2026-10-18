@@ -241,6 +241,7 @@ requirements. They are not installed by an AI-RULES profile.
   [Anti-Slop](https://github.com/miqdadbadjuber/anti-slop),
   [Ponytail](https://github.com/DietrichGebert/ponytail), and
   [Graphify](https://graphify.net/).
+- Shell command proxy: [RTK](https://github.com/rtk-ai/rtk).
 - Reverse engineering skill: [REA's `reverse-engineer-anything`](https://github.com/morluto/rea/tree/main/.agents/skills/reverse-engineer-anything)
   from [morluto/rea](https://github.com/morluto/rea). Install only the skill and its
   bundled references with the upstream [skill-only installation](https://github.com/morluto/rea/blob/main/docs/installation.md#skill-only-installation):
