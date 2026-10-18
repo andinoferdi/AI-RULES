@@ -19,6 +19,8 @@ None. No search service, paid API, or MCP server is required.
 
 ## Install
 
+Requirements: Python 3.11+, Git, and an installed agent for CLI setup.
+
 With the AI-RULES CLI (recommended):
 
 ```sh
@@ -62,4 +64,18 @@ Activating a skill grants no extra permission.
 ## Notes
 
 - With `andino-workflow`, Andino loads Search First when research is needed and the host permits it. Installing it does not run research on every task.
-- Adapted from [ECC Search First](https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md) by Affaan Mustafa under the MIT license. The notice is in `references/license.md`.
+- Adapted from [ECC Search First](https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md) by Affaan Mustafa under the MIT license. See the [retained notice](references/license.md).
+
+## Verification and research limits
+
+Keep the complete folder and preserve local edits before updating. Setup verifies
+files, not actual research or native discovery. Reload the host, ask for a bounded
+integration comparison, and check that local evidence comes first. If online
+evidence is needed, expect actual authorized searches and supporting page reads;
+a missing tool must leave the external claim UNKNOWN. A typo fix needs no search.
+
+Read the [runtime contract](SKILL.md) and
+[online research playbook](references/online-research.md) for evidence and permission
+boundaries. The [main quality plane](https://github.com/andinoferdi/AI-RULES/tree/main)
+holds package, installer and research-contract tests. These checks do not establish
+that a host invoked a search service or followed the method on a real task.
