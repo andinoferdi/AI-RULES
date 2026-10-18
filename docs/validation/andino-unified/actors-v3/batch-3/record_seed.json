@@ -1,0 +1,300 @@
+{
+  "rows": [
+    [
+      "92f1a3ca4ad7",
+      [],
+      "Mechanical private rename; no framework/API, migration or behavior specialist is needed."
+    ],
+    [
+      "dd5707c5e96e",
+      [],
+      "Ready approved tickets are excluded from incoming issue triage; preserve accepted state rather than retriage."
+    ],
+    [
+      "661302e7fccb",
+      [
+        "implementation",
+        "tdd"
+      ],
+      "Accepted basic behavior is ready to implement; absent measured slowdown/budget excludes performance optimization."
+    ],
+    [
+      "99311717ada0",
+      [
+        "git-operation-guard"
+      ],
+      "The present task is read-only authority classification; -C does not change push publication semantics."
+    ],
+    [
+      "66f55e5d499c",
+      [
+        "session-diagnostics"
+      ],
+      "Investigate repetition in the specified session with bounded cited evidence, without sweeping history."
+    ],
+    [
+      "77e44b26b7ba",
+      [
+        "plain-language-repitch"
+      ],
+      "Repair understanding of the last blocker message; no new technical investigation or edits."
+    ],
+    [
+      "7c4a2595b405",
+      [
+        "deep-module-design"
+      ],
+      "Observed policy leakage across six callers justifies comparison of smaller seams; no whole-repository survey."
+    ],
+    [
+      "b6e1d75e8102",
+      [
+        "pre-commit-setup"
+      ],
+      "Prepare project-scoped checks while preserving prepare, hooks and user staging; staged mutation testing requires isolation."
+    ],
+    [
+      "aee1fafddd30",
+      [
+        "primary-source-research",
+        "search-first"
+      ],
+      "Explicit technical source investigation selects primary findings plus the installed external research owner. No research actions are authorized by this snapshot."
+    ],
+    [
+      "90eef278de50",
+      [
+        "code-review"
+      ],
+      "Review the CSV ordering against its contract; backend-only work excludes browser/UI skills."
+    ],
+    [
+      "70ab932b47b2",
+      [],
+      "Design discussion is insufficient grounds to activate a schedule. Root permission boundary resolves the request; workflow specification explicitly excludes implicit activation."
+    ],
+    [
+      "29ee382225a5",
+      [
+        "workflow-specification"
+      ],
+      "Specify trigger, inputs, outputs and failure/permission behavior; do not activate recurring execution."
+    ],
+    [
+      "8689985b71f5",
+      [],
+      "Unscoped all-chat scanning/upload is outside bounded session diagnostics and current authority; resolve scope/privacy in root."
+    ],
+    [
+      "4d5a573cf528",
+      [],
+      "An automatic global workflow install is not an Andino prerequisite or authorized selection action."
+    ],
+    [
+      "c6340f7b0291",
+      [
+        "implementation",
+        "tdd"
+      ],
+      "Accepted design belongs in behavior implementation with regression support, not a prototype or new interview."
+    ],
+    [
+      "b3b4e1f24fa2",
+      [
+        "decision-interview"
+      ],
+      "Outcome remains unknown and user explicitly asks for interview. Clarify intent before dashboard design methods."
+    ],
+    [
+      "8255fc705a0e",
+      [],
+      "A one-line typo fits one bounded edit; twelve tickets would violate proportionality and decomposition exclusion."
+    ],
+    [
+      "16ae9cada727",
+      [
+        "test-fixture-migration"
+      ],
+      "Preserve selected partial versus intentionally invalid test data; no blanket production assertion replacement."
+    ],
+    [
+      "e9ecaa692ba5",
+      [
+        "planning"
+      ],
+      "Refine the existing accepted plan's interfaces, dependency graph, slices and acceptance checks without a second lifecycle."
+    ],
+    [
+      "104861058847",
+      [],
+      "The snapshot grants no branch publication; root authorization boundary suffices without loading a refusal-only guide."
+    ],
+    [
+      "23d74c58008a",
+      [
+        "debugging"
+      ],
+      "A private-function fix without an established cause begins diagnosis. No release or deployment phase is requested."
+    ],
+    [
+      "425e8b3d530a",
+      [
+        "verification"
+      ],
+      "Prove the claimed repair against current bytes, complete observations and relevant acceptance."
+    ],
+    [
+      "612a2f703df2",
+      [
+        "article-shaping"
+      ],
+      "Fixed raw material is ready for a separate grounded article; preserve raw bytes and concept prerequisites."
+    ],
+    [
+      "74cf60176195",
+      [],
+      "README spelling is static text with code/CI explicitly excluded; no TDD or CI ceremony."
+    ],
+    [
+      "ca98841e1c41",
+      [],
+      "Unused private local rename has no consumers or migration; perform direct targeted edit if separately authorized."
+    ],
+    [
+      "ea55c8b321dc",
+      [
+        "api-and-interface-design"
+      ],
+      "Concurrent retryable charging needs an explicit idempotency/in-flight/unknown contract before implementation; domain interface phase is current."
+    ],
+    [
+      "83d4b1c614a2",
+      [
+        "delivery",
+        "verification"
+      ],
+      "Prepare a factual final handoff with current test evidence while preserving explicit no-commit/no-push restrictions."
+    ],
+    [
+      "3aba4cb6dbb3",
+      [],
+      "Documentation spelling has no production behavior; direct text correction needs no TDD."
+    ],
+    [
+      "1ea6c65b752f",
+      [],
+      "Removing technique solely for brevity conflicts with behavior preservation; root resolves boundary without activating authoring merely to refuse."
+    ],
+    [
+      "900c53232aba",
+      [],
+      "One answer needs no global course CLI installation; no exercise scaffolding is requested."
+    ],
+    [
+      "9ec6e1e86686",
+      [
+        "code-simplification"
+      ],
+      "Code is green with observed nesting; preserve values/errors and exact marked fast-path bytes in a separate refactor gate."
+    ],
+    [
+      "b06923ca675a",
+      [],
+      "A README title change is a direct static-text edit."
+    ],
+    [
+      "9cc13ff5f988",
+      [
+        "shipping-and-launch"
+      ],
+      "Use supplied canary baselines and error budget for readiness and rollback decisions; this is not speculative tuning or deployment authority."
+    ],
+    [
+      "0ca76d37f3af",
+      [
+        "debugging"
+      ],
+      "An observed empty-input crash needs cause/reproduction first; request does not supply a settled correction/output contract. Do not misclassify as green simplification."
+    ],
+    [
+      "54789a16a752",
+      [],
+      "Recursive helpers violate the root no-nested-spawning boundary; no delegation method or tool action is needed to reject it."
+    ],
+    [
+      "101500f0c1a8",
+      [
+        "task-decomposition"
+      ],
+      "Accepted rename needs expand, caller batches and guarded contract task dependencies; the method directly supplies this slicing technique."
+    ],
+    [
+      "ae6ee4cf57a6",
+      [
+        "implementation",
+        "incremental-implementation",
+        "tdd"
+      ],
+      "Select the dependency-ready accepted API task, implement one working slice and guard accepted public behavior; passed schema does not reopen design."
+    ],
+    [
+      "c6b3e6bf803f",
+      [],
+      "Unit tests alone establish neither release acceptance nor deployment authority. Root boundary rejects this shortcut; no live action is authorized."
+    ]
+  ],
+  "insights": {
+    "implementation": "Resolve accepted task/dependencies and inspect integrated evidence; retain one parent checkpoint and implement only authorized behavior.",
+    "tdd": "Use an independently derived literal oracle; observe intended RED then minimal GREEN one public behavior at a time.",
+    "git-operation-guard": "Classify semantic Git effects across global options; advisory regex is not a security boundary and classification never runs push.",
+    "session-diagnostics": "Identify the exact session, bound extraction by size, and distinguish observations, causes and historical versus current versions.",
+    "plain-language-repitch": "Lead with practical meaning and one concrete example; retain technical meaning while explaining terms.",
+    "deep-module-design": "Apply the deletion test and compare materially different signatures, invariants and dependency seams using actual caller obligations.",
+    "pre-commit-setup": "Inspect existing toolchain; preserve prepare/hooks and verify staged-writing tools in a disposable fixture or isolated index.",
+    "primary-source-research": "Trace each material claim to its owning source with version/date; separate fact, inference and unresolved gaps.",
+    "search-first": "Explicit technical research selects this owner; actual authorized source actions are separately required for USED.",
+    "code-review": "Pin owned untracked bytes and review independently against literal Spec and explicit Standards; report triggers and consequences at exact lines.",
+    "workflow-specification": "Make trigger/input/output/checkpoint/retry/permissions concrete; a specification does not activate schedules or messages.",
+    "decision-interview": "Reuse known facts and locked decisions; ask one discriminating human-choice question on the unblocked frontier.",
+    "test-fixture-migration": "Keep intentionally wrong inputs wrong, use test-only helpers where verified, and compare affected tests/typechecking.",
+    "planning": "Retain the existing plan; define consumes/produces signatures, DAG edges, independent acceptance and serialized shared files.",
+    "debugging": "Reproduce the exact symptom, test one falsifiable hypothesis and distinguish observed cause from proposed diagnosis.",
+    "verification": "Bind claims to current hashes, exact checks/exit/results and limitations; invalidate only evidence affected by byte drift.",
+    "article-shaping": "Keep raw material read-only, shape separate agreed moves and introduce concepts before dependent claims.",
+    "api-and-interface-design": "Atomically claim stable intent identity, reject payload conflicts and preserve UNKNOWN remote outcomes for reconciliation.",
+    "delivery": "Report current criteria and exact remaining action; checks never grant commit, push or publication permission.",
+    "code-simplification": "Start after GREEN, preserve outputs/errors/effect order and protected block bytes; stop if semantics change.",
+    "shipping-and-launch": "Decide advance/hold/rollback from actual baselines, budget and recovery readiness; offline decisions do not prove live rollout.",
+    "task-decomposition": "Use narrow observable deliverables with genuine blockers; wide renames use expand, migrate caller batches, then contract.",
+    "incremental-implementation": "Choose the smallest ready working task, respect dependencies/shared ownership and stop dependent progression on failed gates."
+  },
+  "fixtureResults": [
+    {
+      "command": "rtk proxy python test_review.py candidate.py spec",
+      "cwd": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors-v3/batch-3",
+      "chunk_id": "9a93da",
+      "wall_time_seconds": 0.4357934,
+      "exit_code": 1,
+      "original_token_count": 173,
+      "output": "[rtk] /!\\ No hook installed — run `rtk init -g` for automatic token savings\n{\"axis\": \"spec\", \"cases\": [{\"actual\": true, \"expected\": true, \"id\": \"admin_own_org\", \"pass\": true, \"record\": {\"org\": \"A\"}, \"user\": {\"org\": \"A\", \"role\": \"admin\"}}, {\"actual\": true, \"expected\": true, \"id\": \"admin_other_org\", \"pass\": true, \"record\": {\"org\": \"B\"}, \"user\": {\"org\": \"A\", \"role\": \"admin\"}}, {\"actual\": false, \"expected\": true, \"id\": \"member_own_org\", \"pass\": false, \"record\": {\"org\": \"A\"}, \"user\": {\"org\": \"A\", \"role\": \"member\"}}, {\"actual\": true, \"expected\": false, \"id\": \"member_other_org\", \"pass\": false, \"record\": {\"org\": \"B\"}, \"user\": {\"org\": \"A\", \"role\": \"member\"}}], \"failed\": 2, \"passed\": 2}\r\n"
+    },
+    {
+      "command": "rtk proxy python test_review.py candidate.py standards",
+      "cwd": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors-v3/batch-3",
+      "chunk_id": "4472d1",
+      "wall_time_seconds": 0.3994521,
+      "exit_code": 1,
+      "original_token_count": 55,
+      "output": "[rtk] /!\\ No hook installed — run `rtk init -g` for automatic token savings\n{\"axis\": \"standards\", \"dynamic_eval_calls\": [{\"line\": 2, \"name\": \"eval\"}], \"pass\": false, \"rule\": \"never evaluate user input dynamically\"}\r\n"
+    },
+    {
+      "command": "rtk proxy python test_review.py candidate_mutant.py spec",
+      "cwd": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors-v3/batch-3",
+      "chunk_id": "bd9a69",
+      "wall_time_seconds": 0.4219252,
+      "exit_code": 1,
+      "original_token_count": 173,
+      "output": "[rtk] /!\\ No hook installed — run `rtk init -g` for automatic token savings\n{\"axis\": \"spec\", \"cases\": [{\"actual\": false, \"expected\": true, \"id\": \"admin_own_org\", \"pass\": false, \"record\": {\"org\": \"A\"}, \"user\": {\"org\": \"A\", \"role\": \"admin\"}}, {\"actual\": true, \"expected\": true, \"id\": \"admin_other_org\", \"pass\": true, \"record\": {\"org\": \"B\"}, \"user\": {\"org\": \"A\", \"role\": \"admin\"}}, {\"actual\": false, \"expected\": true, \"id\": \"member_own_org\", \"pass\": false, \"record\": {\"org\": \"A\"}, \"user\": {\"org\": \"A\", \"role\": \"member\"}}, {\"actual\": true, \"expected\": false, \"id\": \"member_other_org\", \"pass\": false, \"record\": {\"org\": \"B\"}, \"user\": {\"org\": \"A\", \"role\": \"member\"}}], \"failed\": 3, \"passed\": 1}\r\n"
+    }
+  ]
+}

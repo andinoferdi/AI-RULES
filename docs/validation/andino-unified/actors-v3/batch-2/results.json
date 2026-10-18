@@ -1,0 +1,1077 @@
+{
+  "host": {
+    "surface": "Codex delegated agent",
+    "model": "UNKNOWN",
+    "version": "UNKNOWN",
+    "observed_runtime": "Python 3.12.10 on current Windows host"
+  },
+  "scope": {
+    "resource_activation": "Frozen Andino root/routing/index/selected guides and actual installed Focus references; installed Search First selected for the explicit research case.",
+    "fixture_actions": "Only supplied pagination reproduction, isolated cause probe, local fix, regression and faulty-copy sensitivity within this batch directory.",
+    "selection_cases": "Selection only; no scenario execution and no nested agents."
+  },
+  "andino_content": {
+    "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3",
+    "root_sha256": "714f94e749872c281c6e6de785d3f01545bd1e4e40d94dc2cd702c18908a6e8b",
+    "routing_sha256": "19f19dbecc2acbed98068b4f7d86c0927545a464f99999f4472f971c871692b1",
+    "index_sha256": "08d4500283417f003e705d4789a5c199827c8126fb8a8d41daa2050041ab565c"
+  },
+  "selection_results": [
+    {
+      "id": "5ad2fb667acf",
+      "request": "Summarize this already accepted one-line rename.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [],
+      "unavailable": [],
+      "note": "Direct summary of an accepted mechanical rename; no changed behavior or consequential acceptance claim.",
+      "scenario_actions": []
+    },
+    {
+      "id": "52ac50f632f2",
+      "request": "Add comments saying increment counter above every increment.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [],
+      "unavailable": [],
+      "note": "Obvious increment narration is excluded from documentation-and-adrs. Root scope/quality rules suffice; no scenario edit performed.",
+      "scenario_actions": []
+    },
+    {
+      "id": "4c9b5e6b8815",
+      "request": "Run the existing test suite.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "verification",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\verification\\GUIDE.md",
+          "sha256": "7d79dcd35c90611c99bf7250f9ef2d879c16f305e27f4f6a0ccd7817b3adaa71",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "The current activity is executing checks and accurately reporting their result.",
+          "insight": "Record the actual command, runtime, exit and cases; a suite name alone is no passing evidence."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection only; no repository suite executed.",
+      "scenario_actions": []
+    },
+    {
+      "id": "2945d7ddf125",
+      "request": "Turn our settled billing discussion into a buildable spec.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "specification",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\specification\\GUIDE.md",
+          "sha256": "72b92b4eb385ad6eb6f3cf4b03576a5ac6b79bf7834ecdc1f583976bcb0954be",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "Accepted billing decisions need a buildable artifact, not renewed intent discovery.",
+          "insight": "Reuse settled decisions and existing spec convention; each criterion needs a falsifiable public seam."
+        }
+      ],
+      "unavailable": [],
+      "note": "",
+      "scenario_actions": []
+    },
+    {
+      "id": "cb7dbafba722",
+      "request": "Prepare local tracker and triage vocabulary docs using our existing conventions.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "project-configuration",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\project-configuration\\GUIDE.md",
+          "sha256": "0dad7c41a0841ac5a61bb97d64ef913cddaffe06a2ea181d1f7ed1dbfa137801",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "The requested local artifacts are tracker mapping and triage vocabulary.",
+          "insight": "Map roles onto existing label strings, keep category and state separate, and preserve the host-read instruction pointer."
+        }
+      ],
+      "unavailable": [],
+      "note": "",
+      "scenario_actions": []
+    },
+    {
+      "id": "5af5921054aa",
+      "request": "Refine collaborative editing into a small test of whether presence solves coordination.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "idea-refine",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\idea-refine\\GUIDE.md",
+          "sha256": "5d1d07ca851839c5e2675f657af81fe06d7b63488b73537ca270921531ed6793",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "A rough collaborative-editing direction needs a focused assumption test.",
+          "insight": "Test the riskiest coordination assumption with a one-job MVP and explicit non-goals; extra features do not validate it."
+        }
+      ],
+      "unavailable": [],
+      "note": "",
+      "scenario_actions": []
+    },
+    {
+      "id": "35a0077b5dc6",
+      "request": "Instrument payment retries so scheduler and replay origins can be distinguished in the same log.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "observability-and-instrumentation",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\observability-and-instrumentation\\GUIDE.md",
+          "sha256": "1c26a01de213658a8441ecde429cb033510d4e3f9ac1c0127601e847902ac218",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "The requested result is distinguishing retry origins in a common telemetry sink.",
+          "insight": "Set entryPoint at the scheduler/replay origin and propagate it; request correlation alone does not establish origin."
+        },
+        {
+          "id": "tdd",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\tdd\\GUIDE.md",
+          "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "This is an authorized observable behavior change with settled telemetry intent.",
+          "insight": "Assert actual structured event fields at the public sink; fail when entryPoint is absent before implementation."
+        }
+      ],
+      "unavailable": [],
+      "note": "No payment-system actions performed.",
+      "scenario_actions": []
+    },
+    {
+      "id": "7aaee84047e6",
+      "request": "Tambahkan total faktur pada API publik yang sudah ada.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "api-and-interface-design",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\api-and-interface-design\\GUIDE.md",
+          "sha256": "379746694129f138748acba7c30e97169b497851db0e41dfdb3cfe9b62d4a42f",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "Adding invoice total changes an existing public response boundary.",
+          "insight": "Preserve consumer-visible shape and compatibility; reuse accepted contracts rather than invent a new API version."
+        },
+        {
+          "id": "tdd",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\tdd\\GUIDE.md",
+          "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "The additive API behavior is ready for regression/implementation, with other facts and seams settled.",
+          "insight": "Use the accepted public API seam and independent literal invoice expectations; observe RED before adding the field."
+        }
+      ],
+      "unavailable": [],
+      "note": "No product discovery/specification phase reopened.",
+      "scenario_actions": []
+    },
+    {
+      "id": "97adb1b99213",
+      "request": "List all files in the repository.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [],
+      "unavailable": [],
+      "note": "Native bounded file listing is sufficient; an inventory request does not justify graph generation or architecture survey.",
+      "scenario_actions": []
+    },
+    {
+      "id": "1c5886e258e4",
+      "request": "Build the next already specified API slice.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "incremental-implementation",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\incremental-implementation\\GUIDE.md",
+          "sha256": "eaebd3e0d82222f712b4c56906b7debd938377e652194362b7dba49ac53e4cf7",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "The request is the next already specified dependency-ready slice.",
+          "insight": "Consume the existing graph, implement a complete small path, and block dependent progression when a gate fails."
+        },
+        {
+          "id": "tdd",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\tdd\\GUIDE.md",
+          "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "This scenario is already in executable API implementation, not design.",
+          "insight": "Reuse the agreed API seam; one observable behavior must fail before the minimal implementation."
+        }
+      ],
+      "unavailable": [],
+      "note": "",
+      "scenario_actions": []
+    },
+    {
+      "id": "5378d05d3e6e",
+      "request": "Rewrite this agent procedure so its branch triggers and completion bounds work.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "agent-document-authoring",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\agent-document-authoring\\GUIDE.md",
+          "sha256": "73ee49d2aa4e223666d65787181e0fc880fd370c0a8d66c2d0682fa6483b6aad",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "The requested artifact is an agent-facing procedure with branch and completion defects.",
+          "insight": "Define distinct triggers and demanding observable completion bounds; shorter prose must preserve required technique."
+        }
+      ],
+      "unavailable": [],
+      "note": "",
+      "scenario_actions": []
+    },
+    {
+      "id": "3d17a0dd1324",
+      "request": "Review perubahan termasuk file baru belum tracked.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "code-review",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\code-review\\GUIDE.md",
+          "sha256": "ee97a3c7a06c2e057ca760fba788ca748ee40192a234daa22b74e9b8a68d3ff3",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "The current activity is reviewing changes, expressly including untracked files.",
+          "insight": "Pin staged, unstaged and owned new bytes, and preserve separate Spec and Standards verdicts."
+        }
+      ],
+      "unavailable": [],
+      "note": "",
+      "scenario_actions": []
+    },
+    {
+      "id": "7b8f67c0de48",
+      "request": "Survey this order subsystem for evidenced deepening opportunities.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "architecture-survey",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\architecture-survey\\GUIDE.md",
+          "sha256": "cdae61097aa4772ee01e78bab2c77f66b6b6e7d1fb24e35d02a649eb18d8200a",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "This is a bounded request for evidenced deepening candidates in the order subsystem.",
+          "insight": "Trace actual caller friction; offer source-backed candidates or none worthwhile before interface design."
+        }
+      ],
+      "unavailable": [],
+      "note": "",
+      "scenario_actions": []
+    },
+    {
+      "id": "e08782084ea0",
+      "request": "Jelaskan fungsi cache yang ada.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [],
+      "unavailable": [],
+      "note": "A healthy existing-cache explanation needs only relevant source evidence; no bug, redesign or performance issue is established.",
+      "scenario_actions": []
+    },
+    {
+      "id": "36feb4262cb5",
+      "request": "Decide my personal preference for dashboard colors.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [],
+      "unavailable": [],
+      "note": "Personal preference belongs to the user. Root decision-support rules require an unresolved human preference, not an invented color choice or a UI design project.",
+      "scenario_actions": []
+    },
+    {
+      "id": "adfe38adca99",
+      "request": "Tenant B melihat hasil tenant A setelah dua pencarian.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "debugging",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\debugging\\GUIDE.md",
+          "sha256": "0beb55e7efa68b7965e3d2c52f73e78b42af711bc9f7d4f2e298ea143c55f508",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "Tenant B receiving tenant A results is a reported wrong output with unknown cause.",
+          "insight": "Reproduce the actual two-tenant sequence and trace identity/state before choosing a cache or authorization repair."
+        }
+      ],
+      "unavailable": [],
+      "note": "Diagnosis phase only; do not pre-load implementation or assume the cache is the cause.",
+      "scenario_actions": []
+    },
+    {
+      "id": "4ca6b6700667",
+      "request": "Rename this local variable.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [],
+      "unavailable": [],
+      "note": "Private local-variable rename is a direct mechanical edit; no migration or public-interface method.",
+      "scenario_actions": []
+    },
+    {
+      "id": "ad962d2c7fea",
+      "request": "Prepare a portable handoff for a colleague in another checkout.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "handoff",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\handoff\\GUIDE.md",
+          "sha256": "468b89031f6fbd6261f6c7c4cbb8cc45ae620403d966ccf67702e80bb124dca6",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "A colleague in another checkout needs portable continuation.",
+          "insight": "Persist current state, decisions, permissions, exact reachable artifact pointers and a first concrete action; recipient checks drift."
+        }
+      ],
+      "unavailable": [],
+      "note": "",
+      "scenario_actions": []
+    },
+    {
+      "id": "3a62a9e3ac0a",
+      "request": "Change one typo in the README.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [],
+      "unavailable": [],
+      "note": "Single README typo is direct static text work; no TDD or specialist ceremony.",
+      "scenario_actions": []
+    },
+    {
+      "id": "d6e6853eae28",
+      "request": "Turn this fixed pile directly into a final article.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "article-shaping",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\article-shaping\\GUIDE.md",
+          "sha256": "af9888c968ba339844b4b16276348ddacbe0a2a2c6d4ae118ffb4c38eed94d88",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "A fixed raw-material pile is ready for an article, rather than fragment exploration.",
+          "insight": "Keep raw material read-only and ground concept dependencies; direct final-article authorization governs collaboration pace."
+        }
+      ],
+      "unavailable": [],
+      "note": "",
+      "scenario_actions": []
+    },
+    {
+      "id": "c0d38829fba5",
+      "request": "Teach me safe retry design over several lessons in this learning folder.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "learning-workspace",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\learning-workspace\\GUIDE.md",
+          "sha256": "f723f13abace1639a259b29dc3b5998bca1723e6f9d3b00a3274f7a2ff0ebef0",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "The user explicitly wants a sequence of lessons in a learning folder.",
+          "insight": "Choose a bounded mission and short lesson, cite trusted sources, and record demonstrated understanding rather than exposure."
+        }
+      ],
+      "unavailable": [],
+      "note": "No lessons or recurring automation created.",
+      "scenario_actions": []
+    },
+    {
+      "id": "1faa1ed6c8b3",
+      "request": "Prepare a bounded handoff that preserves scope and the current error while dropping old logs.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "context-engineering",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\context-engineering\\GUIDE.md",
+          "sha256": "178247255cddb86dc62a56def8ef826ff77c92ceb681f218cc8ea1f9a29f8f66",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "The requested bounded context packet must preserve scope and current failure while trimming history.",
+          "insight": "Keep binding scope and active error; compress superseded logs into evidence breadcrumbs in the existing checkpoint."
+        }
+      ],
+      "unavailable": [],
+      "note": "",
+      "scenario_actions": []
+    },
+    {
+      "id": "587b325770f9",
+      "request": "Implement the already approved invoice retry ticket.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "implementation",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\implementation\\GUIDE.md",
+          "sha256": "2215c4f9e360ad75585e490f79d4e7434a9eaf82f339ec765b1d88836ee20aa5",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "An already approved invoice retry ticket is authorized and ready to build.",
+          "insight": "Resolve the actual accepted task and dependency frontier, preserve one owner, and implement without restarting product ideation."
+        },
+        {
+          "id": "tdd",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\tdd\\GUIDE.md",
+          "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "Approved retry behavior needs executable regression support in the current implementation phase.",
+          "insight": "Use the accepted public seam and literal outcomes; a production mutation must make the test fail."
+        }
+      ],
+      "unavailable": [],
+      "note": "No ticket or payment actions performed.",
+      "scenario_actions": []
+    },
+    {
+      "id": "360fbe25a5c2",
+      "request": "Wire lint, unit, build and release readiness so a failed ancestor prevents advancement.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "ci-cd-and-automation",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\ci-cd-and-automation\\GUIDE.md",
+          "sha256": "8c01e6324a9d13969019136488dfa8047b2d1fb3a0b22aab0bf3cdfb32f22d69",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "The requested deliverable is a check graph whose failed ancestors prevent advancement.",
+          "insight": "Use real repository commands and preserve required check names; failed gates block every dependent stage."
+        },
+        {
+          "id": "tdd",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\tdd\\GUIDE.md",
+          "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "Dependency-blocking pipeline behavior has an observable regression contract.",
+          "insight": "A planted failing ancestor must prevent downstream advancement; demonstrate failure before changing executable gate logic."
+        }
+      ],
+      "unavailable": [],
+      "note": "Hosted CI, protection and deployment remain untested.",
+      "scenario_actions": []
+    },
+    {
+      "id": "246432375a1a",
+      "request": "Explain two plus three without inspecting or changing a repository.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [],
+      "unavailable": [],
+      "note": "Two plus three is stable direct explanation; repository work is explicitly excluded.",
+      "scenario_actions": []
+    },
+    {
+      "id": "800f809b56fa",
+      "request": "Reorganize every TypeScript project into this layout by default.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [],
+      "unavailable": [],
+      "note": "Universal default restructuring is excluded by typescript-boundary-enforcement, which requires an explicitly accepted deep-package layout. Root scope rules resolve this.",
+      "scenario_actions": []
+    },
+    {
+      "id": "44c630f34d7e",
+      "request": "Migrate name to full_name while old clients still run; show expand, backfill and guarded contract.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "deprecation-and-migration",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\deprecation-and-migration\\GUIDE.md",
+          "sha256": "606cc6318f1ea31e3702a549559b27acaabf6234cd9ab3e43a6e2299c6fecbde",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "The request explicitly asks for coexistence-safe schema transition while old clients remain.",
+          "insight": "Expand, dual-write, bounded backfill, switch reads, then contract only after verified old-consumer zero use; rollback must preserve data."
+        }
+      ],
+      "unavailable": [],
+      "note": "Current output is transition design/showing phases; no live migration or implementation assumed.",
+      "scenario_actions": []
+    },
+    {
+      "id": "8d19111bb034",
+      "request": "Draft questions for our platform owner about launch capacity and retention.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "stakeholder-questionnaire",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\stakeholder-questionnaire\\GUIDE.md",
+          "sha256": "8f219ce4fa42dc18b869c144c3860a38311b64f3d9590aaed235f774df219c9c",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "Launch capacity and retention facts must be obtained from the named platform owner.",
+          "insight": "Map each decision gap to one focused question and answer stub; draft locally, do not send without authority."
+        }
+      ],
+      "unavailable": [],
+      "note": "",
+      "scenario_actions": []
+    },
+    {
+      "id": "4d48c2b89af5",
+      "request": "Lanjutkan plan sesudah memeriksa drift.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "plan-execution",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\plan-execution\\GUIDE.md",
+          "sha256": "358a916e729a43638cfb2f08efe0908cfc31ad51dcddf255ff4bff393fa3ed67",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "The user asks to resume the existing accepted plan after checking drift.",
+          "insight": "Compare current artifacts to recorded evidence, invalidate only affected acceptance, and select the ready frontier without redoing verified tasks."
+        }
+      ],
+      "unavailable": [],
+      "note": "Load root handoff/execution-plan references as relevant; no new plan or speculative implementation phase.",
+      "scenario_actions": []
+    },
+    {
+      "id": "ad15210b7f8f",
+      "request": "Buat ulang semua rencana tanpa sebab.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [],
+      "unavailable": [],
+      "note": "Restarting all plans without a cause contradicts reuse and drift contracts; root lifecycle suffices to preserve completed decisions/evidence.",
+      "scenario_actions": []
+    },
+    {
+      "id": "b9f721de7bc3",
+      "request": "Validate an owned temporary job leaf before cleanup and prove SQL input cannot alter the query.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "security-and-hardening",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\security-and-hardening\\GUIDE.md",
+          "sha256": "0dda985580593275f63da836c82ba834cab9945606d80dc0a382a6f8b29d0118",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "The requested checks concern destructive derived paths and SQL input trust boundaries.",
+          "insight": "Resolve and verify a strict owned descendant before cleanup; parameterized SQL must keep injection text as data, and no broad fallback delete is safe."
+        }
+      ],
+      "unavailable": [],
+      "note": "No cleanup, SQL service or user-project action executed.",
+      "scenario_actions": []
+    },
+    {
+      "id": "98fa914fb8f5",
+      "request": "Say hello in one sentence; no change, test result or completion claim is requested.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [],
+      "unavailable": [],
+      "note": "A one-sentence greeting explicitly has no change or acceptance claim; no verification method needed.",
+      "scenario_actions": []
+    },
+    {
+      "id": "0304b7c94b26",
+      "request": "Research a new unrelated framework.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "search-first",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\search-first\\SKILL.md",
+          "sha256": "fd9d774b0b35394fee191b437f6ef29635f4d6192b44d94b6a4226320bbf85a3",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "Explicit technical research into a new unfamiliar framework is a present research need.",
+          "insight": "Research-only work returns sourced applicability and uncertainty; installation is not research or use."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only scope and no-network instruction prevent actual research. Skill ACTIVE; no USED or external-fact claim.",
+      "scenario_actions": []
+    },
+    {
+      "id": "4552083726eb",
+      "request": "Use fromAny throughout production request validation.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [],
+      "unavailable": [],
+      "note": "test-fixture-migration expressly excludes production runtime validation. Root boundary resolves the requested misuse; no fixture-only method selected.",
+      "scenario_actions": []
+    },
+    {
+      "id": "03a09343cf18",
+      "request": "Record the queue decision using our existing ADR-004 .rst convention and retain its throughput caveat.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "documentation-and-adrs",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\documentation-and-adrs\\GUIDE.md",
+          "sha256": "4dd09cd2b0c3c24b16e09843272f976cc4857d738b9128a53fe4a6b9caa64472",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "The task records an accepted architectural decision using an established ADR convention.",
+          "insight": "Inspect existing numbering/markup and preserve throughput caveats, limitations and history; no competing default format."
+        }
+      ],
+      "unavailable": [],
+      "note": "",
+      "scenario_actions": []
+    },
+    {
+      "id": "80778696001c",
+      "request": "Prepare exact manual steps for the credential dashboard I must access myself.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "human-procedure",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\human-procedure\\GUIDE.md",
+          "sha256": "935c71bf6b9faaacb7069ec4c935f84f0daaac0a3989406e8ebf37afff5ef1c3",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "The credential dashboard step is explicitly human-only and needs exact manual instructions.",
+          "insight": "Use verified dashboard journeys, name source/destination/secrecy, keep secrets in the human environment, and label unverified UI paths."
+        }
+      ],
+      "unavailable": [],
+      "note": "No dashboard/browser/credential operations performed.",
+      "scenario_actions": []
+    },
+    {
+      "id": "082c8d19b4bb",
+      "request": "Lanjutkan task pada graph yang sudah lengkap.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "plan-execution",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\plan-execution\\GUIDE.md",
+          "sha256": "358a916e729a43638cfb2f08efe0908cfc31ad51dcddf255ff4bff393fa3ed67",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "A complete accepted task graph is ready to continue; it needs execution rather than another planning artifact.",
+          "insight": "Check current accepted producer evidence, select the next ready task, and preserve completed outcomes instead of decomposing again."
+        }
+      ],
+      "unavailable": [],
+      "note": "The raw request does not identify the next task behavior, so do not pre-load a speculative implementation domain.",
+      "scenario_actions": []
+    },
+    {
+      "id": "289d07b21a28",
+      "request": "Assess whether these two independent audit tasks could be safely delegated by their authorized parent with child tools. This is a planning decision only; do not spawn a child.",
+      "phase_preserved": true,
+      "selection_only": true,
+      "selected": [
+        {
+          "id": "delegation",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\delegation\\GUIDE.md",
+          "sha256": "395c3af12c210fd8e140777c807a742a96d5758b1691605b8ae47a094e966988",
+          "state": "ACTIVE",
+          "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+          "action": null,
+          "reason": "The task explicitly asks for a read-only safety assessment of an authorized parent delegating two independent audits.",
+          "insight": "Check ready producer evidence, benefit, exposed child tools, and normalized disjoint write scopes; parent verifies outputs, maximum three direct children and no nesting."
+        }
+      ],
+      "unavailable": [],
+      "note": "This actor does not spawn. Assessing the parent scenario is permitted selection work; inherited no-nesting does not erase its planning need.",
+      "scenario_actions": []
+    }
+  ],
+  "resource_activation": [
+    {
+      "id": "andino-workflow",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\SKILL.md",
+      "sha256": "714f94e749872c281c6e6de785d3f01545bd1e4e40d94dc2cd702c18908a6e8b",
+      "state": "USED",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": "Applied root routing, scope boundaries and fixture lifecycle."
+    },
+    {
+      "id": "focus",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+      "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+      "state": "USED",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": "Applied clear concise progress/result communication without changing execution scope."
+    },
+    {
+      "id": "focus/priority-a.md",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\references\\priority-a.md",
+      "sha256": "d50f0438ef16d87e8a2bde408f0f20794d0ee8f3b00b93c012add20e0d097d1b",
+      "state": "USED",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": "Applied installed communication contract."
+    },
+    {
+      "id": "focus/human-language-indonesia.md",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\references\\human-language-indonesia.md",
+      "sha256": "339b959b250c96a89c7412a429d92c9a45e679f4844ea3fa58d6d26787f931c6",
+      "state": "USED",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": "Applied installed communication contract."
+    },
+    {
+      "id": "focus/human-language-english.md",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\references\\human-language-english.md",
+      "sha256": "c496893a8c093d588af6df21b0c793256f1874290b241603f056cbc9496973be",
+      "state": "USED",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": "Applied installed communication contract."
+    },
+    {
+      "id": "andino/routing.md",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\references\\routing.md",
+      "sha256": "19f19dbecc2acbed98068b4f7d86c0927545a464f99999f4472f971c871692b1",
+      "state": "USED",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": "Applied capability identity, phase and lifecycle selection."
+    },
+    {
+      "id": "andino/invocation-adapter.md",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\references\\invocation-adapter.md",
+      "sha256": "b21e797d9422a499a64a33ef193457655d8249e49b2a4b76d5a940241a1ef500",
+      "state": "USED",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": "Applied capability identity, phase and lifecycle selection."
+    },
+    {
+      "id": "andino/internal-method-index.md",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\references\\internal-method-index.md",
+      "sha256": "08d4500283417f003e705d4789a5c199827c8126fb8a8d41daa2050041ab565c",
+      "state": "USED",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": "Applied capability identity, phase and lifecycle selection."
+    },
+    {
+      "id": "andino/execution-plan.md",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\references\\execution-plan.md",
+      "sha256": "892113f9e881651dfc7a1e4980881b126d24e02ab157db1174783c845d5e7406",
+      "state": "USED",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": "Applied capability identity, phase and lifecycle selection."
+    },
+    {
+      "id": "andino/handoff.md",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\references\\handoff.md",
+      "sha256": "9b68d9c4b4f6ddc86f4ec1caaec7fea73c17b1eed9ddd907c5da58891fd01e5b",
+      "state": "USED",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": "Applied capability identity, phase and lifecycle selection."
+    },
+    {
+      "id": "agent-document-authoring",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\agent-document-authoring\\GUIDE.md",
+      "sha256": "73ee49d2aa4e223666d65787181e0fc880fd370c0a8d66c2d0682fa6483b6aad",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "api-and-interface-design",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\api-and-interface-design\\GUIDE.md",
+      "sha256": "379746694129f138748acba7c30e97169b497851db0e41dfdb3cfe9b62d4a42f",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "architecture-survey",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\architecture-survey\\GUIDE.md",
+      "sha256": "cdae61097aa4772ee01e78bab2c77f66b6b6e7d1fb24e35d02a649eb18d8200a",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "article-shaping",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\article-shaping\\GUIDE.md",
+      "sha256": "af9888c968ba339844b4b16276348ddacbe0a2a2c6d4ae118ffb4c38eed94d88",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "ci-cd-and-automation",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\ci-cd-and-automation\\GUIDE.md",
+      "sha256": "8c01e6324a9d13969019136488dfa8047b2d1fb3a0b22aab0bf3cdfb32f22d69",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "code-review",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\code-review\\GUIDE.md",
+      "sha256": "ee97a3c7a06c2e057ca760fba788ca748ee40192a234daa22b74e9b8a68d3ff3",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "context-engineering",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\context-engineering\\GUIDE.md",
+      "sha256": "178247255cddb86dc62a56def8ef826ff77c92ceb681f218cc8ea1f9a29f8f66",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "debugging",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\debugging\\GUIDE.md",
+      "sha256": "0beb55e7efa68b7965e3d2c52f73e78b42af711bc9f7d4f2e298ea143c55f508",
+      "state": "USED",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": "See work.json observed fixture actions."
+    },
+    {
+      "id": "delegation",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\delegation\\GUIDE.md",
+      "sha256": "395c3af12c210fd8e140777c807a742a96d5758b1691605b8ae47a094e966988",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "deprecation-and-migration",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\deprecation-and-migration\\GUIDE.md",
+      "sha256": "606cc6318f1ea31e3702a549559b27acaabf6234cd9ab3e43a6e2299c6fecbde",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "documentation-and-adrs",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\documentation-and-adrs\\GUIDE.md",
+      "sha256": "4dd09cd2b0c3c24b16e09843272f976cc4857d738b9128a53fe4a6b9caa64472",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "handoff",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\handoff\\GUIDE.md",
+      "sha256": "468b89031f6fbd6261f6c7c4cbb8cc45ae620403d966ccf67702e80bb124dca6",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "human-procedure",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\human-procedure\\GUIDE.md",
+      "sha256": "935c71bf6b9faaacb7069ec4c935f84f0daaac0a3989406e8ebf37afff5ef1c3",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "idea-refine",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\idea-refine\\GUIDE.md",
+      "sha256": "5d1d07ca851839c5e2675f657af81fe06d7b63488b73537ca270921531ed6793",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "implementation",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\implementation\\GUIDE.md",
+      "sha256": "2215c4f9e360ad75585e490f79d4e7434a9eaf82f339ec765b1d88836ee20aa5",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "incremental-implementation",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\incremental-implementation\\GUIDE.md",
+      "sha256": "eaebd3e0d82222f712b4c56906b7debd938377e652194362b7dba49ac53e4cf7",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "learning-workspace",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\learning-workspace\\GUIDE.md",
+      "sha256": "f723f13abace1639a259b29dc3b5998bca1723e6f9d3b00a3274f7a2ff0ebef0",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "observability-and-instrumentation",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\observability-and-instrumentation\\GUIDE.md",
+      "sha256": "1c26a01de213658a8441ecde429cb033510d4e3f9ac1c0127601e847902ac218",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "plan-execution",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\plan-execution\\GUIDE.md",
+      "sha256": "358a916e729a43638cfb2f08efe0908cfc31ad51dcddf255ff4bff393fa3ed67",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "project-configuration",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\project-configuration\\GUIDE.md",
+      "sha256": "0dad7c41a0841ac5a61bb97d64ef913cddaffe06a2ea181d1f7ed1dbfa137801",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "security-and-hardening",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\security-and-hardening\\GUIDE.md",
+      "sha256": "0dda985580593275f63da836c82ba834cab9945606d80dc0a382a6f8b29d0118",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "specification",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\specification\\GUIDE.md",
+      "sha256": "72b92b4eb385ad6eb6f3cf4b03576a5ac6b79bf7834ecdc1f583976bcb0954be",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "stakeholder-questionnaire",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\stakeholder-questionnaire\\GUIDE.md",
+      "sha256": "8f219ce4fa42dc18b869c144c3860a38311b64f3d9590aaed235f774df219c9c",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "tdd",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\tdd\\GUIDE.md",
+      "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+      "state": "USED",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": "See work.json observed fixture actions."
+    },
+    {
+      "id": "verification",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\verification\\GUIDE.md",
+      "sha256": "7d79dcd35c90611c99bf7250f9ef2d879c16f305e27f4f6a0ccd7817b3adaa71",
+      "state": "USED",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": "See work.json observed fixture actions."
+    },
+    {
+      "id": "search-first",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\search-first\\SKILL.md",
+      "sha256": "fd9d774b0b35394fee191b437f6ef29635f4d6192b44d94b6a4226320bbf85a3",
+      "state": "ACTIVE",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": null
+    },
+    {
+      "id": "debugging/supporting-contract",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\debugging\\resources\\contract.md",
+      "sha256": "685751e25e0f3e078d916c5b6f0102b9b43c694fb8e301ec820ffdb3aba8ee77",
+      "state": "USED",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": "Applied fixture evidence, literal oracle and faulty-copy regression checks."
+    },
+    {
+      "id": "tdd/supporting-contract",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\tdd\\resources\\contract.md",
+      "sha256": "cd338df4ae6f3140eaac85e502d2be856652582570fae3f5461a488ab510b5fc",
+      "state": "USED",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": "Applied fixture evidence, literal oracle and faulty-copy regression checks."
+    },
+    {
+      "id": "verification/supporting-contract",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v3\\skills\\verification\\resources\\contract.md",
+      "sha256": "04f67706387a7dfa695b2c8e585508529dd8dce97ae9fd8f87ff1d4638676517",
+      "state": "USED",
+      "activation": "Full relevant instructions read via rtk-prefixed permitted file reader.",
+      "action": "Applied fixture evidence, literal oracle and faulty-copy regression checks."
+    }
+  ],
+  "work": {
+    "record": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v3\\batch-2\\work.json",
+    "status": "DONE",
+    "methods_used": [
+      "debugging",
+      "tdd",
+      "verification"
+    ],
+    "evidence": "Exact reproduction, intended RED, isolated one-variable hypothesis confirmation, GREEN, fixture suite, faulty-copy failure and corrected original scenario recorded with commands and hashes."
+  },
+  "unavailable": [],
+  "limits": [
+    "No native skill-picker invocation, cross-host parity, external research, live service or publication claim.",
+    "Resource reading establishes ACTIVE; selection-only cases do not establish scenario use.",
+    "The allowed raw fixture includes source; diagnostic actions began only after Focus and debugging instructions were loaded."
+  ],
+  "errors": [
+    {
+      "kind": "output_truncation",
+      "detail": "Some initial combined resource-read outputs were truncated; relevant instructions were re-read in smaller full outputs before their use."
+    },
+    {
+      "kind": "environment_notice",
+      "detail": "rtk prints no-hook-installed notices; no global setup attempted. Child-process stderr captures the notice with Windows encoding artifacts; test assertion and exits remained legible."
+    }
+  ]
+}

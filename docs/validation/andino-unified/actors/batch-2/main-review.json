@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "reviewer": {
+    "surface": "Codex delegated agent",
+    "model": "UNKNOWN",
+    "mode": "independent read-only MAIN implementation review"
+  },
+  "verdict": "CHANGES_REQUESTED",
+  "scope": {
+    "root": "C:/Users/Lenovo/Downloads/AI-RULES-main",
+    "files": [
+      "scripts/validate_andino_unified.py",
+      "scripts/integrate_andino_methods.py",
+      "scripts/validate_skills.py",
+      "scripts/validate_andino_capabilities.py",
+      "scripts/check_andino_addy_methods.py",
+      "scripts/check_andino_matt_methods.py",
+      "scripts/check_andino_superpowers_methods.py",
+      "scripts/check_andino_installation.py",
+      "tests/test_andino_unified.py"
+    ],
+    "contracts": [
+      "C:/Users/Lenovo/Downloads/AI-RULES/ULTIMATE-PROMPT.md",
+      "C:/Users/Lenovo/Downloads/AI-RULES/GRAND-PLAN.md"
+    ],
+    "excluded": [
+      "routing-oracle.json",
+      "network",
+      "Git mutation",
+      "runtime/main source edits",
+      "nested agents"
+    ]
+  },
+  "tested_hashes": {
+    "scripts/validate_andino_unified.py": "d9e1d51cfb9b71d6b750a5ddc48dfa2ce86a1c0d7c5fb5335355ea30bfbc95ba",
+    "scripts/integrate_andino_methods.py": "67161c25602fdad7a812c4b8f4054b5f6531c5ea36d77f49d55211766fd977b9",
+    "scripts/validate_skills.py": "b445dc5e02f0a8f6915ecda61d0149997d41e92adf9bad8f6f75ea6f3a75ed52",
+    "scripts/validate_andino_capabilities.py": "44399dc27c6aeb2e3a23e3ebe9a6b3705b1b35ebc6635cb3dacc1ff3b22fb336",
+    "scripts/check_andino_addy_methods.py": "e6a58a949a4471d869c866f3cc0853c37a17ea36acef08be990cfa67907d4ba1",
+    "scripts/check_andino_matt_methods.py": "bbcda90998b5384c3948ed8f1e7a4be6a2f57811fdae34b9a632412129a591d1",
+    "scripts/check_andino_superpowers_methods.py": "1389710aecb4d7c9316eaaafa344e199e9d434bc8f30462e395be95bc32eb2f0",
+    "scripts/check_andino_installation.py": "e236d141e2be010c593d780c921e8a5130b8b9cef811a3ba954a91ba1ffba78c",
+    "tests/test_andino_unified.py": "65fc1b3c7e277b2b33c515cb7306ff359689386999dbb3b4781e2e4b36b603f0"
+  },
+  "findings": [
+    {
+      "id": "MAIN-01",
+      "severity": "P1",
+      "title": "Outside-scope filesystem mutation is not contained by the Addy wrapper",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/scripts/check_andino_addy_methods.py",
+      "line_start": 76,
+      "line_end": 80,
+      "scenario": "The extracted example is allowed to import os. If an example uses os.truncate(absolute_user_path, 0) or os.chmod(absolute_user_path, mode), Python emits an audit event that this hook does not inspect. The operation proceeds with the caller's permissions outside TemporaryDirectory, despite the wrapper and generated report claiming outside mutations are disabled.",
+      "evidence": {
+        "kind": "read-only extracted audit-function probe",
+        "action": "Parsed WRAPPER with ast, compiled only its audit function, supplied inside(...)=False, and called audit on synthetic outside-path events. No filesystem syscall was executed.",
+        "observed": {
+          "os.remove": "BLOCKED",
+          "os.chmod": "ALLOWED",
+          "os.truncate": "ALLOWED"
+        },
+        "filesystem_mutations": 0
+      },
+      "contract": "GRAND-PLAN section 12 requires scoped filesystem operations and negative safety fixtures; ULTIMATE permission boundaries prohibit unrelated user-environment mutation. check_andino_addy_methods.py also states writes outside owned temporary scope are blocked.",
+      "remedy": "Do not treat this audit-hook subset as a general sandbox. Restrict execution to explicitly reviewed snippet identities and either enforce all supported mutation boundaries with an adequate process sandbox or remove unsupported OS capabilities and reject unsupported operations. At minimum add negative probes for chmod/truncate and other filesystem audit events before retaining the current containment claim.",
+      "confidence": "high for missing event handling; destructive external execution deliberately not performed"
+    },
+    {
+      "id": "MAIN-02",
+      "severity": "P2",
+      "title": "Case-sensitive package checks permit extra Windows native identities and colliding files",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/scripts/validate_skills.py",
+      "line_start": 101,
+      "line_end": 113,
+      "scenario": "package_files accepts references/skill.md with native skill frontmatter because the nested-native rejection compares only exact 'SKILL.md'. On the target Windows filesystem, that basename is equivalent to SKILL.md and can be discovered as another native entrypoint. The same validation accepts resources/Foo.md and resources/foo.md together, which cannot be installed as distinct files on Windows and can overwrite one another.",
+      "evidence": {
+        "kind": "in-memory package_files probes",
+        "base": "Valid root SKILL.md, README.md and skills/tdd/GUIDE.md",
+        "inputs": [
+          {
+            "path": "references/skill.md",
+            "content": "---\\nname: hidden\\ndescription: Hidden identity\\n---\\n"
+          },
+          {
+            "paths": [
+              "skills/tdd/resources/Foo.md",
+              "skills/tdd/resources/foo.md"
+            ],
+            "content": [
+              "first",
+              "second"
+            ]
+          }
+        ],
+        "observed": {
+          "lowercase_native_identity_errors": [],
+          "windows_case_collision_errors": []
+        }
+      },
+      "contract": "GRAND-PLAN R04 requires exactly one root SKILL.md and zero nested native identities; ULTIMATE 9.2 requires Windows-first portability.",
+      "remedy": "For the Andino policy, compare nested native basenames using casefold and reject normalized case-insensitive duplicate paths. Add direct tests covering lowercase/mixed-case SKILL.md and path collisions, without relaxing unrelated skill policies.",
+      "confidence": "high for validation acceptance; live native host discovery was not executed"
+    },
+    {
+      "id": "MAIN-03",
+      "severity": "P2",
+      "title": "Broken image resources bypass Andino package closure",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/scripts/validate_skills.py",
+      "line_start": 170,
+      "line_end": 170,
+      "scenario": "An internal guide can contain ![diagram](resources/missing.md) or an escaped local image target. The non-Three.js branch uses LINK, whose negative lookbehind deliberately excludes Markdown images, so package_files returns no errors although the referenced local resource is absent or outside the bundle.",
+      "evidence": {
+        "kind": "in-memory package_files probe",
+        "input": "skills/tdd/GUIDE.md contains '# TDD\\n![diagram](resources/missing.md)\\n'; resources/missing.md is absent",
+        "observed": {
+          "missing_image_errors": []
+        }
+      },
+      "contract": "GRAND-PLAN R02 and section 10 require local resource closure and missing/broken resources to fail; ULTIMATE 9.1 forbids dropping essential resources merely to pass package validation.",
+      "remedy": "Apply the same local target safety and existence checks to Andino Markdown images as to normal links. Add missing-image and image-path-escape regressions; keep the allowed runtime resource types scoped to the accepted Andino policy.",
+      "confidence": "high"
+    },
+    {
+      "id": "MAIN-04",
+      "severity": "P2",
+      "title": "Procedural evidence stays valid after its acceptance metadata changes",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/scripts/validate_andino_unified.py",
+      "line_start": 121,
+      "line_end": 137,
+      "scenario": "After an operational expected value or trigger fixture is corrected in *-methods.json, an older operational report with unchanged GUIDE/resource hashes is still accepted. The checker reports already record manifest_sha256/methods_sha256 and, for Matt, checker_sha256, but this validator ignores them and trusts status PASS plus a truthy observed/default object. Thus a report observed under the old acceptance contract can satisfy the new gate without rerunning the procedure.",
+      "evidence": {
+        "kind": "in-memory validate_method_evidence probe",
+        "metadata": {
+          "id": "sample",
+          "resources": [],
+          "positive_requests": [
+            "apply"
+          ],
+          "negative_requests": [
+            "skip"
+          ],
+          "operational": {
+            "expected": 16
+          }
+        },
+        "report": {
+          "manifest_sha256": "stale-manifest",
+          "methods": [
+            {
+              "id": "sample",
+              "status": "PASS",
+              "guide_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "resource_sha256": {},
+              "observed": {
+                "result": 15
+              }
+            }
+          ]
+        },
+        "hashes": {
+          "skills/sample/GUIDE.md": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "observed_errors": []
+      },
+      "contract": "GRAND-PLAN R07 and K09 require current evidence identity and rerunning impacted checks; acceptance-contract changes affect what was verified even when runtime prose bytes stay unchanged.",
+      "remedy": "Bind each report to the current method manifest and checker identity, with family-specific schemas where necessary. Reject stale manifest/checker hashes and inconsistent pass/default/adversarial results. Add a test that changes only operational expectation or activation metadata and proves the old report is invalidated.",
+      "confidence": "high"
+    },
+    {
+      "id": "MAIN-05",
+      "severity": "P2",
+      "title": "Duplicate physical sources can inflate the source-driven inventory",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/scripts/validate_andino_unified.py",
+      "line_start": 33,
+      "line_end": 36,
+      "scenario": "Copy a coverage row, change only source_id, and retain the same upstream and source_path. The duplicate-ID check is bypassed and accounted stores paths in a set, so reconciliation still passes with two inventory rows for one real source. Reported category and coverage totals are then incorrect, and the required one-to-one original-source accounting is not enforced.",
+      "evidence": {
+        "kind": "in-memory validate_coverage probe",
+        "fixture": "CoverageGateTests.setUp() from tests/test_andino_unified.py",
+        "action": "Duplicated its one row and changed only source_id to another-id-for-same-file; passed its exact source_paths mapping.",
+        "observed": {
+          "duplicate_upstream_source_path_errors": [],
+          "rows": 2,
+          "actual_sources": 1
+        }
+      },
+      "contract": "GRAND-PLAN section 6.1 requires every record to uniquely tie to its original local file path and snapshot identity; success denominators must derive from verified inventory rather than duplicate rows.",
+      "remedy": "Track and reject duplicate (upstream, normalized source_path) source identities independently of source_id, and validate source_id consistency if its canonical upstream:path form is intended. Preserve many-to-many method mappings within one source row. Add a regression for distinct IDs targeting the same physical source.",
+      "confidence": "high"
+    }
+  ],
+  "verification": [
+    {
+      "command": "rtk proxy python -B -m unittest discover -s tests -p test_andino_unified.py -q",
+      "cwd": "C:/Users/Lenovo/Downloads/AI-RULES-main",
+      "exit_code": 0,
+      "observed": "Ran 21 tests in 0.010s; OK",
+      "scope": "Current final precedence-aware test form"
+    },
+    {
+      "command": "rtk proxy python -B -c <in-memory package/evidence probes>",
+      "cwd": "C:/Users/Lenovo/Downloads/AI-RULES-main",
+      "exit_code": 0,
+      "observed": {
+        "missing_image_errors": [],
+        "windows_case_collision_errors": [],
+        "lowercase_native_identity_errors": [],
+        "changed_acceptance_errors": []
+      },
+      "scope": "Functions imported from current main; no filesystem fixture writes"
+    },
+    {
+      "command": "rtk proxy python -B -c <duplicate-source coverage probe>",
+      "cwd": "C:/Users/Lenovo/Downloads/AI-RULES-main",
+      "exit_code": 0,
+      "observed": {
+        "duplicate_upstream_source_path_errors": [],
+        "rows": 2,
+        "actual_sources": 1
+      }
+    },
+    {
+      "command": "rtk proxy python -B -c <AST-extracted Addy audit hook probe>",
+      "cwd": "C:/Users/Lenovo/Downloads/AI-RULES-main",
+      "exit_code": 0,
+      "observed": {
+        "os.remove": "BLOCKED",
+        "os.chmod": "ALLOWED",
+        "os.truncate": "ALLOWED",
+        "filesystem_mutations_performed": 0
+      }
+    }
+  ],
+  "limitations": [
+    "Read-only review: no check_andino_* executable procedure or installation integration run was launched because those scripts create temporary directories outside the one permitted report file.",
+    "No Git diff was requested or used; review covers current files, not a pinned committed patch range. Hashes identify inspected state.",
+    "The first focused test run coincided with the parent's deliberate precedence TDD RED; the parent confirmed it and the final current rerun passed. That transient failure is not a finding.",
+    "Native host discovery, Windows overwrite behavior and destructive OS operations were not executed. Related findings use package acceptance and audit-hook logic probes with explicit limits.",
+    "ULTIMATE/GRAND were consulted for the relevant acceptance requirements; their earlier plan history is not treated as current implementation evidence.",
+    "No routing-oracle.json, network, external service, upstream execution, new agent, runtime/main source edit or Git mutation was used.",
+    "Only this main-review.json was written for the independent review."
+  ]
+}

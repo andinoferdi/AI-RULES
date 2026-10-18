@@ -1,0 +1,162 @@
+{
+  "selection_cases": [
+    {
+      "id": "5ad2fb667acf",
+      "request": "Summarize this already accepted one-line rename."
+    },
+    {
+      "id": "52ac50f632f2",
+      "request": "Add comments saying increment counter above every increment."
+    },
+    {
+      "id": "4c9b5e6b8815",
+      "request": "Run the existing test suite."
+    },
+    {
+      "id": "2945d7ddf125",
+      "request": "Turn our settled billing discussion into a buildable spec."
+    },
+    {
+      "id": "cb7dbafba722",
+      "request": "Prepare local tracker and triage vocabulary docs using our existing conventions."
+    },
+    {
+      "id": "5af5921054aa",
+      "request": "Refine collaborative editing into a small test of whether presence solves coordination."
+    },
+    {
+      "id": "35a0077b5dc6",
+      "request": "Instrument payment retries so scheduler and replay origins can be distinguished in the same log."
+    },
+    {
+      "id": "7aaee84047e6",
+      "request": "Tambahkan total faktur pada API publik yang sudah ada."
+    },
+    {
+      "id": "97adb1b99213",
+      "request": "List all files in the repository."
+    },
+    {
+      "id": "1c5886e258e4",
+      "request": "Build the next already specified API slice."
+    },
+    {
+      "id": "5378d05d3e6e",
+      "request": "Rewrite this agent procedure so its branch triggers and completion bounds work."
+    },
+    {
+      "id": "3d17a0dd1324",
+      "request": "Review perubahan termasuk file baru belum tracked."
+    },
+    {
+      "id": "7b8f67c0de48",
+      "request": "Survey this order subsystem for evidenced deepening opportunities."
+    },
+    {
+      "id": "e08782084ea0",
+      "request": "Jelaskan fungsi cache yang ada."
+    },
+    {
+      "id": "36feb4262cb5",
+      "request": "Decide my personal preference for dashboard colors."
+    },
+    {
+      "id": "adfe38adca99",
+      "request": "Tenant B melihat hasil tenant A setelah dua pencarian."
+    },
+    {
+      "id": "4ca6b6700667",
+      "request": "Rename this local variable."
+    },
+    {
+      "id": "ad962d2c7fea",
+      "request": "Prepare a portable handoff for a colleague in another checkout."
+    },
+    {
+      "id": "3a62a9e3ac0a",
+      "request": "Change one typo in the README."
+    },
+    {
+      "id": "d6e6853eae28",
+      "request": "Turn this fixed pile directly into a final article."
+    },
+    {
+      "id": "c0d38829fba5",
+      "request": "Teach me safe retry design over several lessons in this learning folder."
+    },
+    {
+      "id": "1faa1ed6c8b3",
+      "request": "Prepare a bounded handoff that preserves scope and the current error while dropping old logs."
+    },
+    {
+      "id": "587b325770f9",
+      "request": "Implement the already approved invoice retry ticket."
+    },
+    {
+      "id": "360fbe25a5c2",
+      "request": "Wire lint, unit, build and release readiness so a failed ancestor prevents advancement."
+    },
+    {
+      "id": "246432375a1a",
+      "request": "Explain two plus three without inspecting or changing a repository."
+    },
+    {
+      "id": "800f809b56fa",
+      "request": "Reorganize every TypeScript project into this layout by default."
+    },
+    {
+      "id": "44c630f34d7e",
+      "request": "Migrate name to full_name while old clients still run; show expand, backfill and guarded contract."
+    },
+    {
+      "id": "8d19111bb034",
+      "request": "Draft questions for our platform owner about launch capacity and retention."
+    },
+    {
+      "id": "4d48c2b89af5",
+      "request": "Lanjutkan plan sesudah memeriksa drift."
+    },
+    {
+      "id": "ad15210b7f8f",
+      "request": "Buat ulang semua rencana tanpa sebab."
+    },
+    {
+      "id": "b9f721de7bc3",
+      "request": "Validate an owned temporary job leaf before cleanup and prove SQL input cannot alter the query."
+    },
+    {
+      "id": "98fa914fb8f5",
+      "request": "Nyatakan lulus karena worker bilang selesai."
+    },
+    {
+      "id": "0304b7c94b26",
+      "request": "Research a new unrelated framework."
+    },
+    {
+      "id": "4552083726eb",
+      "request": "Use fromAny throughout production request validation."
+    },
+    {
+      "id": "03a09343cf18",
+      "request": "Record the queue decision using our existing ADR-004 .rst convention and retain its throughput caveat."
+    },
+    {
+      "id": "80778696001c",
+      "request": "Prepare exact manual steps for the credential dashboard I must access myself."
+    },
+    {
+      "id": "082c8d19b4bb",
+      "request": "Lanjutkan task pada graph yang sudah lengkap."
+    },
+    {
+      "id": "289d07b21a28",
+      "request": "Audit dua modul independen paralel bila tersedia."
+    }
+  ],
+  "work": {
+    "request": "Use Andino to investigate and fix this reported bug. Calling page([A,B,C,D],0,2) returns A,B but page(...,1,2) returns B,C; page indices start at zero and pages must be consecutive non-overlapping slices. Reproduce the actual symptom, test a cause, and verify the fix in your output directory only.",
+    "files": {
+      "subject.py": "def page(items, index, size):\n    start = index * (size - 1)\n    return items[start:start + size]\n"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "kind": "Final structural and current-hash check only; not a behavioral PASS claim",
+  "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-3",
+  "command": "rtk python -c \"import hashlib,json; from pathlib import Path; p=Path('.'); r=json.loads((p/'results.json').read_text(encoding='utf-8')); w=json.loads((p/'work.json').read_text(encoding='utf-8')); v=json.loads((p/'review.json').read_text(encoding='utf-8')); assert len(r['selection_results'])==38; assert len({x['id'] for x in r['selection_results']})==38; assert all(hashlib.sha256(Path(a['path']).read_bytes()).hexdigest()==a['sha256'] for a in w['artifacts']); assert all(hashlib.sha256(Path(a['path']).read_bytes()).hexdigest()==a['sha256'] for a in r['activation_evidence']); assert v['spec']['verdict']=='FAIL' and v['standards']['verdict']=='FAIL'; print(json.dumps({'selection_count':38,'artifact_hashes_verified':len(w['artifacts']),'guide_hashes_verified':len(r['activation_evidence']),'findings':[(f['axis'],f['line'],f['severity']) for f in v['findings']],'candidate_repaired':w['candidate_repaired']},sort_keys=True))\"",
+  "exit_code": 0,
+  "output": {"artifact_hashes_verified": 7, "candidate_repaired": false, "findings": [["Spec", 3, "HIGH"], ["Standards", 2, "MEDIUM"]], "guide_hashes_verified": 24, "selection_count": 38},
+  "limits": "Checks record consistency and current identities only. Fixture behavior remains Spec FAIL and Standards FAIL; no native picker or cross-host parity has been tested."
+}

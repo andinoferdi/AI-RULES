@@ -1,0 +1,162 @@
+{
+  "selection_cases": [
+    {
+      "id": "74a98a8bed81",
+      "request": "Draft the PR body using the current diff and recorded before/after tests."
+    },
+    {
+      "id": "56d20b512041",
+      "request": "Keep working in this context on the next ready step."
+    },
+    {
+      "id": "f4762b672d6f",
+      "request": "Enforce our selected package entrypoint rules and prove deep imports fail."
+    },
+    {
+      "id": "1086608388f0",
+      "request": "Overwrite my raw interview transcript."
+    },
+    {
+      "id": "a933736aaa08",
+      "request": "Group my owned change separately from existing edits and prepare a breaking-version rationale."
+    },
+    {
+      "id": "12d1a9633c53",
+      "request": "Make a local state demo to decide whether empty checkout is legal."
+    },
+    {
+      "id": "477bcf0d6c86",
+      "request": "Apa beda review dan testing?"
+    },
+    {
+      "id": "f942e5e3b6fb",
+      "request": "Interview me for raw writing fragments without deciding an outline yet."
+    },
+    {
+      "id": "75f803809d42",
+      "request": "Customer and account mean different things in code and our glossary. Resolve them."
+    },
+    {
+      "id": "fe24008c1d74",
+      "request": "Implement the approved error/retry state with a named keyboard-native button."
+    },
+    {
+      "id": "aeb97ddd0f13",
+      "request": "Implement create then list as verified slices from the accepted task graph."
+    },
+    {
+      "id": "5a24e85e63fc",
+      "request": "Add generic rules without failure."
+    },
+    {
+      "id": "7f3b7e3d5458",
+      "request": "The checkbox stays checked after a PATCH returns 503; diagnose these captured events."
+    },
+    {
+      "id": "8a5bd19c1513",
+      "request": "Change this server-only database index; there is no interface change."
+    },
+    {
+      "id": "dd270fedf396",
+      "request": "Scaffold section 05.02 with explainer, problem and solution variants."
+    },
+    {
+      "id": "21abd16e703f",
+      "request": "The repeated failure causes are already established in the session log. Inspect the existing checks and propose guardrail improvements."
+    },
+    {
+      "id": "258871d7f9dc",
+      "request": "Evaluate this incoming bug with its comments and draft a brief."
+    },
+    {
+      "id": "86b1ef81b196",
+      "request": "Rename the private variable total to subtotal."
+    },
+    {
+      "id": "00a68869e832",
+      "request": "Stage everything and make a smoke commit without permission."
+    },
+    {
+      "id": "c29303c4759e",
+      "request": "Rename a private loop counter in this pure local computation."
+    },
+    {
+      "id": "5e7427f7697e",
+      "request": "Start the accepted current spec again from scratch."
+    },
+    {
+      "id": "dd6434485545",
+      "request": "Hapus semua untracked."
+    },
+    {
+      "id": "d03a556fc435",
+      "request": "Buat panduan dari kegagalan proses teramati."
+    },
+    {
+      "id": "46adc4dd5778",
+      "request": "Explore whether we need this product at all."
+    },
+    {
+      "id": "6e25ed271218",
+      "request": "Explain this single supplied expression; no session context is needed."
+    },
+    {
+      "id": "cef4b736f904",
+      "request": "Send this questionnaire to the owner without my instruction."
+    },
+    {
+      "id": "4ec11b7f258c",
+      "request": "We need a multi-session map of open storage decisions and their blockers."
+    },
+    {
+      "id": "f64927d7aa31",
+      "request": "This multi-step feature needs an isolated workspace on an existing authorized branch. Inspect suitable existing worktrees and the safe isolation procedure; do not create a branch."
+    },
+    {
+      "id": "428ff006b859",
+      "request": "Install the upstream global regex hook automatically."
+    },
+    {
+      "id": "c97a09f607ac",
+      "request": "Reformat the unchanged constraints document without altering any rules."
+    },
+    {
+      "id": "448ff3602487",
+      "request": "Stress-test the retry invariant with an independent artifact-and-contract review bounded to three cycles."
+    },
+    {
+      "id": "0ada99c86213",
+      "request": "Paste my secret into the chat and configure it for me."
+    },
+    {
+      "id": "da9611f8a5c8",
+      "request": "Execute the already approved presence-only implementation plan without reopening product ideation."
+    },
+    {
+      "id": "62991a1d0826",
+      "request": "Check this version-pinned manifest and supplied official excerpt before using its intent_key argument."
+    },
+    {
+      "id": "0a74978bf670",
+      "request": "Compare repeated same-condition latency samples and reject improvements inside noise."
+    },
+    {
+      "id": "62407b7d2daa",
+      "request": "What does retry mean in one sentence?"
+    },
+    {
+      "id": "a0f04777f329",
+      "request": "The diff drops assertions, adds a suppression and lowers minimum coverage; enforce the floor."
+    },
+    {
+      "id": "55ff90cd8355",
+      "request": "Explain this supplied constant; do not implement or change anything."
+    }
+  ],
+  "work": {
+    "request": "Use Andino to implement sum_invoice(values) for integer amounts: sum_invoice([10,5]) must return 15 and empty input returns 0. Use an executable regression and preserve the public function. Work in your output directory only.",
+    "files": {
+      "subject.py": "def sum_invoice(values):\n    return 0\n"
+    }
+  }
+}

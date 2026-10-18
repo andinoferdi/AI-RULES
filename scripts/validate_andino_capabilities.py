@@ -11,6 +11,17 @@ from validate_skills import ROOT, package_files, git
 SUPERPOWERS = set('systematic-debugging test-driven-development verification-before-completion brainstorming writing-plans requesting-code-review receiving-code-review dispatching-parallel-agents using-git-worktrees finishing-a-development-branch'.split())
 AGENT_SKILLS = set('api-and-interface-design browser-testing-with-devtools ci-cd-and-automation code-review-and-quality code-simplification constraint-driven-development context-engineering debugging-and-error-recovery deprecation-and-migration documentation-and-adrs doubt-driven-development frontend-ui-engineering git-workflow-and-versioning incremental-implementation observability-and-instrumentation performance-optimization planning-and-task-breakdown security-and-hardening shipping-and-launch source-driven-development spec-driven-development agent-skills-test-driven-development'.split())
 AGENT_SKILLS.update(('idea-refine', 'interview-me'))
+INTERNAL_METHODS = {identity: identity for identity in SUPERPOWERS | AGENT_SKILLS}
+INTERNAL_METHODS.update({
+    'test-driven-development': 'tdd', 'agent-skills-test-driven-development': 'tdd',
+    'systematic-debugging': 'debugging', 'debugging-and-error-recovery': 'debugging',
+    'verification-before-completion': 'verification', 'brainstorming': 'decision-interview',
+    'interview-me': 'decision-interview', 'writing-plans': 'planning',
+    'planning-and-task-breakdown': 'planning', 'requesting-code-review': 'code-review',
+    'receiving-code-review': 'code-review', 'code-review-and-quality': 'code-review',
+    'dispatching-parallel-agents': 'delegation', 'using-git-worktrees': 'git-isolation',
+    'finishing-a-development-branch': 'delivery', 'spec-driven-development': 'specification',
+})
 OTHER_SKILLS = set('focus search-first council ponytail claude-mem impeccable design-taste-frontend clone-website graphify antislop antislop-ui antislop-copywriting antislop-human antislop-layoutmobile antislop-code'.split())
 MCPS = set('context7 playwright-mcp chrome-devtools git-mcp drawio-mcp staruml-mcp premiere-pro-mcp cheatengine-mcp'.split())
 CAPABILITIES = SUPERPOWERS | AGENT_SKILLS | OTHER_SKILLS | MCPS | {'native-capabilities'}
@@ -30,7 +41,7 @@ def registry_entries(text):
     return entries
 
 
-def validate_registry(text):
+def validate_registry(text, require_internal=False):
     errors, seen = [], set()
     for identity, fields in registry_entries(text):
         if identity in seen:
@@ -39,9 +50,13 @@ def validate_registry(text):
         for key in FIELDS:
             if not fields.get(key, '').strip():
                 errors.append(f'{identity}: missing {key}')
-        if fields.get('Type') not in ('skill', 'MCP', 'native'):
+        if fields.get('Type') not in ('skill', 'method', 'MCP', 'native'):
             errors.append(f'{identity}: invalid Type')
-        expected_type = 'MCP' if identity in MCPS else 'native' if identity == 'native-capabilities' else 'skill'
+        internal = identity in INTERNAL_METHODS and (require_internal or fields.get('Type') == 'method')
+        expected_type = ('method' if internal else 'MCP' if identity in MCPS
+                         else 'native' if identity == 'native-capabilities' else 'skill')
+        if internal and fields.get('Internal method') != f'skills/{INTERNAL_METHODS[identity]}/GUIDE.md':
+            errors.append(f'{identity}: missing or incorrect canonical internal method path')
         if fields.get('Type') != expected_type:
             errors.append(f'{identity}: expected type {expected_type}')
         if fields.get('Activation policy') not in ('AUTO', 'CONDITIONAL_AUTO', 'PERMISSION_GATED'):
@@ -53,6 +68,7 @@ def validate_registry(text):
 
 
 def validate_cases(cases, identities=CAPABILITIES):
+    identities = set(identities) | set(INTERNAL_METHODS.values())
     if not isinstance(cases, list):
         return ['cases: expected array']
     errors, seen = [], set()
@@ -191,7 +207,8 @@ def main():
             names = git('ls-tree','-r','--name-only',ref).splitlines()
             files = {name:git('show',f'{ref}:{name}') for name in names}
         errors.extend(package_files(files,'andino-workflow'))
-        errors.extend(validate_registry(files.get('references/capability-registry.md','')))
+        errors.extend(validate_registry(files.get('references/capability-registry.md',''),
+                                        require_internal='references/internal-method-index.md' in files))
     if args.records:
         prior=historical_hashes(content_hash(files),args.allow_historical) if files else set()
         historical_count=0

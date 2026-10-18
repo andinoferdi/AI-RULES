@@ -1,0 +1,810 @@
+[
+  {
+    "id": "decision-interview",
+    "title": "Clarify the decision",
+    "purpose": "Resolve material uncertainty about the outcome before selecting an implementation.",
+    "trigger": "An ambiguous ask, explicit interview request, or consequential choice with missing intent.",
+    "non_trigger": "A clear accepted ticket, informational question, or simple mechanical edit.",
+    "source_paths": [
+      "addyosmani/agent-skills:skills/interview-me/SKILL.md",
+      "mattpocock/skills:skills/engineering/grill-with-docs/SKILL.md",
+      "mattpocock/skills:skills/productivity/grilling/SKILL.md",
+      "mattpocock/skills:skills/productivity/grill-me/SKILL.md",
+      "obra/superpowers:skills/brainstorming/SKILL.md"
+    ],
+    "resources": [
+      "skills/decision-interview/resources/worked-example.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "skills/brainstorming/builder-check-prompt.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/decision-interview/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      },
+      {
+        "source_path": "skills/brainstorming/scripts/frame-template.html",
+        "disposition": "EXCLUDE",
+        "runtime_path": "skills/decision-interview/resources/worked-example.md",
+        "rationale": "Executable/server/hook implementation excluded for scope, safety and portability; the useful human/visual/risk technique is independently retained in GUIDE.md procedure and local worked example."
+      },
+      {
+        "source_path": "skills/brainstorming/scripts/helper.js",
+        "disposition": "EXCLUDE",
+        "runtime_path": "skills/decision-interview/resources/worked-example.md",
+        "rationale": "Executable/server/hook implementation excluded for scope, safety and portability; the useful human/visual/risk technique is independently retained in GUIDE.md procedure and local worked example."
+      },
+      {
+        "source_path": "skills/brainstorming/scripts/server.cjs",
+        "disposition": "EXCLUDE",
+        "runtime_path": "skills/decision-interview/resources/worked-example.md",
+        "rationale": "Executable/server/hook implementation excluded for scope, safety and portability; the useful human/visual/risk technique is independently retained in GUIDE.md procedure and local worked example."
+      },
+      {
+        "source_path": "skills/brainstorming/scripts/start-server.sh",
+        "disposition": "EXCLUDE",
+        "runtime_path": "skills/decision-interview/resources/worked-example.md",
+        "rationale": "Executable/server/hook implementation excluded for scope, safety and portability; the useful human/visual/risk technique is independently retained in GUIDE.md procedure and local worked example."
+      },
+      {
+        "source_path": "skills/brainstorming/scripts/stop-server.sh",
+        "disposition": "EXCLUDE",
+        "runtime_path": "skills/decision-interview/resources/worked-example.md",
+        "rationale": "Executable/server/hook implementation excluded for scope, safety and portability; the useful human/visual/risk technique is independently retained in GUIDE.md procedure and local worked example."
+      },
+      {
+        "source_path": "skills/brainstorming/visual-companion.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/decision-interview/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      }
+    ],
+    "positive_requests": [
+      "I asked for a dashboard but I am not sure what I actually need. Interview me."
+    ],
+    "negative_requests": [
+      "Implement the already approved invoice retry ticket."
+    ],
+    "status": "ADAPTED"
+  },
+  {
+    "id": "deep-module-design",
+    "title": "Design a deep module",
+    "purpose": "Concentrate behavior behind a small useful interface at a justified seam.",
+    "trigger": "A known module interface is hard to use, hard to verify or spreads changes across callers.",
+    "non_trigger": "A request for a whole-codebase survey or speculative abstraction without observed friction.",
+    "source_paths": [
+      "mattpocock/skills:skills/engineering/codebase-design/SKILL.md",
+      "mattpocock/skills:skills/engineering/improve-codebase-architecture/SKILL.md"
+    ],
+    "resources": [
+      "skills/deep-module-design/resources/worked-example.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "skills/engineering/codebase-design/DEEPENING.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/deep-module-design/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      },
+      {
+        "source_path": "skills/engineering/codebase-design/DESIGN-IT-TWICE.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/deep-module-design/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      },
+      {
+        "source_path": "skills/engineering/improve-codebase-architecture/HTML-REPORT.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/deep-module-design/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      }
+    ],
+    "positive_requests": [
+      "Callers repeat order policy in six places. Compare smaller interfaces."
+    ],
+    "negative_requests": [
+      "List all files in the repository."
+    ],
+    "status": "ADAPTED"
+  },
+  {
+    "id": "domain-modeling",
+    "title": "Sharpen domain terms",
+    "purpose": "Keep domain concepts and durable decisions precise while the work develops.",
+    "trigger": "Overloaded domain terms, contradictory code/user vocabulary, or a meaningful architecture decision.",
+    "non_trigger": "Merely reading existing glossary terms or adding generic programming definitions.",
+    "source_paths": [
+      "mattpocock/skills:skills/engineering/domain-modeling/SKILL.md",
+      "mattpocock/skills:skills/engineering/grill-with-docs/SKILL.md"
+    ],
+    "resources": [
+      "skills/domain-modeling/resources/worked-example.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "skills/engineering/domain-modeling/ADR-FORMAT.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/domain-modeling/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      },
+      {
+        "source_path": "skills/engineering/domain-modeling/GLOSSARY-FORMAT.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/domain-modeling/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      }
+    ],
+    "positive_requests": [
+      "Customer and account mean different things in code and our glossary. Resolve them."
+    ],
+    "negative_requests": [
+      "Run the existing test suite."
+    ],
+    "status": "ADAPTED"
+  },
+  {
+    "id": "implementation",
+    "title": "Execute an accepted slice",
+    "purpose": "Build accepted task behavior while preserving one execution owner and current user work.",
+    "trigger": "A concrete accepted specification or ready task with implementation authorization.",
+    "non_trigger": "Unresolved material product decisions, research-only requests or permission-denied live changes.",
+    "source_paths": [
+      "mattpocock/skills:skills/engineering/implement/SKILL.md",
+      "mattpocock/skills:skills/engineering/implement-spec/SKILL.md",
+      "mattpocock/skills:skills/in-progress/chief-of-staff/SKILL.md"
+    ],
+    "resources": [
+      "skills/implementation/resources/worked-example.md"
+    ],
+    "resource_dispositions": [],
+    "positive_requests": [
+      "Implement the accepted API task whose schema dependency has passed."
+    ],
+    "negative_requests": [
+      "Explore whether we need this product at all."
+    ],
+    "status": "CONDITIONAL"
+  },
+  {
+    "id": "architecture-survey",
+    "title": "Survey architecture friction",
+    "purpose": "Present evidence-backed deepening candidates without silently redesigning the codebase.",
+    "trigger": "A named architecture pain point or bounded request to find maintainability/testability friction.",
+    "non_trigger": "A routine feature fix, arbitrary whole-repo scan, or repeated search for findings after no worthwhile candidate.",
+    "source_paths": [
+      "mattpocock/skills:skills/engineering/improve-codebase-architecture/SKILL.md"
+    ],
+    "resources": [
+      "skills/architecture-survey/resources/worked-example.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "skills/engineering/improve-codebase-architecture/HTML-REPORT.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/architecture-survey/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      }
+    ],
+    "positive_requests": [
+      "Survey this order subsystem for evidenced deepening opportunities."
+    ],
+    "negative_requests": [
+      "Rename this local variable."
+    ],
+    "status": "ADAPTED"
+  },
+  {
+    "id": "pr-description",
+    "title": "Describe a pull request",
+    "purpose": "Make an existing change reviewable through compact explanation, actual evidence and reversibility.",
+    "trigger": "Writing or updating a PR description for a concrete diff.",
+    "non_trigger": "Creating/publishing a PR without authority or triaging review comments.",
+    "source_paths": [
+      "mattpocock/skills:skills/engineering/pr/SKILL.md"
+    ],
+    "resources": [
+      "skills/pr-description/resources/worked-example.md",
+      "skills/pr-description/resources/credits.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "skills/engineering/pr/CREDITS.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/pr-description/resources/credits.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      }
+    ],
+    "positive_requests": [
+      "Draft the PR body using the current diff and recorded before/after tests."
+    ],
+    "negative_requests": [
+      "Push my branch without approval."
+    ],
+    "status": "ADAPTED"
+  },
+  {
+    "id": "design-prototype",
+    "title": "Answer one design question",
+    "purpose": "Make a specific unresolved logic or visual choice concrete without presenting prototype code as production.",
+    "trigger": "A design question cannot be answered reliably in conversation alone.",
+    "non_trigger": "An already settled implementation ticket, full-app sales demo, or a production feature disguised as throwaway work.",
+    "source_paths": [
+      "mattpocock/skills:skills/engineering/prototype/SKILL.md"
+    ],
+    "resources": [
+      "skills/design-prototype/resources/worked-example.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "skills/engineering/prototype/LOGIC.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/design-prototype/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      },
+      {
+        "source_path": "skills/engineering/prototype/UI.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/design-prototype/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      }
+    ],
+    "positive_requests": [
+      "Make a local state demo to decide whether empty checkout is legal."
+    ],
+    "negative_requests": [
+      "The design is accepted; implement its production behavior."
+    ],
+    "status": "ADAPTED"
+  },
+  {
+    "id": "primary-source-research",
+    "title": "Capture primary-source findings",
+    "purpose": "Produce bounded findings whose factual claims trace to sources that own them.",
+    "trigger": "A concrete technical/factual question needs documentation or source investigation.",
+    "non_trigger": "An unresolved user preference, uncited speculative answer, or duplicate research with unchanged valid evidence.",
+    "source_paths": [
+      "mattpocock/skills:skills/engineering/research/SKILL.md"
+    ],
+    "resources": [
+      "skills/primary-source-research/resources/worked-example.md"
+    ],
+    "resource_dispositions": [],
+    "positive_requests": [
+      "Investigate the retry contract in official sources and cite findings."
+    ],
+    "negative_requests": [
+      "Decide my personal preference for dashboard colors."
+    ],
+    "status": "ADAPTED"
+  },
+  {
+    "id": "environment-retrospective",
+    "title": "Improve the working environment",
+    "purpose": "Turn observed session failures into proportionate improvements to navigation, checks and review context.",
+    "trigger": "Established failure causes and an explicit prevention retrospective; unknown causes go to session-diagnostics first.",
+    "non_trigger": "Unexplained failures needing diagnosis, a trivial task, or unrelated global instruction rewrites.",
+    "source_paths": [
+      "mattpocock/skills:skills/engineering/retro/SKILL.md",
+      "mattpocock/skills:skills/in-progress/chief-of-staff/SKILL.md"
+    ],
+    "resources": [
+      "skills/environment-retrospective/resources/worked-example.md"
+    ],
+    "resource_dispositions": [],
+    "positive_requests": [
+      "The repeated failure causes are already established in the session log. Inspect the existing checks and propose guardrail improvements."
+    ],
+    "negative_requests": [
+      "Change one typo in the README."
+    ],
+    "status": "CONDITIONAL"
+  },
+  {
+    "id": "project-configuration",
+    "title": "Configure project workflow documents",
+    "purpose": "Make optional tracker/domain/triage conventions explicit without installing a second workflow.",
+    "trigger": "A project needs an explicit tracker mapping, domain-doc convention or triage vocabulary.",
+    "non_trigger": "Ordinary Andino use, mandatory setup before every engineering task or global host configuration.",
+    "source_paths": [
+      "mattpocock/skills:skills/engineering/setup-matt-pocock-skills/SKILL.md"
+    ],
+    "resources": [
+      "skills/project-configuration/resources/worked-example.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "skills/engineering/setup-matt-pocock-skills/domain.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/project-configuration/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      },
+      {
+        "source_path": "skills/engineering/setup-matt-pocock-skills/issue-tracker-github.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/project-configuration/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      },
+      {
+        "source_path": "skills/engineering/setup-matt-pocock-skills/issue-tracker-gitlab.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/project-configuration/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      },
+      {
+        "source_path": "skills/engineering/setup-matt-pocock-skills/issue-tracker-local.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/project-configuration/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      },
+      {
+        "source_path": "skills/engineering/setup-matt-pocock-skills/triage-labels.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/project-configuration/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      }
+    ],
+    "positive_requests": [
+      "Prepare local tracker and triage vocabulary docs using our existing conventions."
+    ],
+    "negative_requests": [
+      "Install another workflow globally before doing anything."
+    ],
+    "status": "ADAPTED"
+  },
+  {
+    "id": "specification",
+    "title": "Write a buildable specification",
+    "purpose": "Record the accepted behavior, scope, test seams and constraints without repeating settled discovery.",
+    "trigger": "A significant accepted request lacks a buildable specification or its scope has materially changed.",
+    "non_trigger": "An existing current approved spec, a small unambiguous edit or a request to explore intent before it is known.",
+    "source_paths": [
+      "addyosmani/agent-skills:skills/spec-driven-development/SKILL.md",
+      "mattpocock/skills:skills/engineering/to-spec/SKILL.md"
+    ],
+    "resources": [
+      "skills/specification/resources/worked-example.md"
+    ],
+    "resource_dispositions": [],
+    "positive_requests": [
+      "Turn our settled billing discussion into a buildable spec."
+    ],
+    "negative_requests": [
+      "Start the accepted current spec again from scratch."
+    ],
+    "status": "ADAPTED"
+  },
+  {
+    "id": "task-decomposition",
+    "title": "Slice work into dependent tasks",
+    "purpose": "Convert accepted scope into independently verifiable vertical slices with genuine blockers.",
+    "trigger": "An accepted multi-step build needs bounded task deliverables and dependencies.",
+    "non_trigger": "A change already fits one clear slice or an attempt to create another mandatory plan.",
+    "source_paths": [
+      "mattpocock/skills:skills/engineering/to-tickets/SKILL.md"
+    ],
+    "resources": [
+      "skills/task-decomposition/resources/worked-example.md"
+    ],
+    "resource_dispositions": [],
+    "positive_requests": [
+      "Slice the accepted rename into expand, caller migrations and contract tasks."
+    ],
+    "negative_requests": [
+      "Make twelve tickets for this one-line typo."
+    ],
+    "status": "ADAPTED"
+  },
+  {
+    "id": "issue-triage",
+    "title": "Triage an incoming issue",
+    "purpose": "Turn inbound reports into verified, durable next-action briefs under the project's tracker conventions.",
+    "trigger": "A maintainer requests evaluation of incoming issues or opted-in external PRs.",
+    "non_trigger": "Already accepted implementation tasks, self-generated tickets needing no new triage, or unauthorized bulk tracker changes.",
+    "source_paths": [
+      "mattpocock/skills:skills/engineering/triage/SKILL.md"
+    ],
+    "resources": [
+      "skills/issue-triage/resources/worked-example.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "skills/engineering/triage/AGENT-BRIEF.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/issue-triage/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      },
+      {
+        "source_path": "skills/engineering/triage/OUT-OF-SCOPE.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/issue-triage/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      }
+    ],
+    "positive_requests": [
+      "Evaluate this incoming bug with its comments and draft a brief."
+    ],
+    "negative_requests": [
+      "Re-triage all the ready tickets we just approved."
+    ],
+    "status": "ADAPTED"
+  },
+  {
+    "id": "decision-map",
+    "title": "Map unresolved decisions",
+    "purpose": "Keep a bounded multi-session investigation navigable without confusing decisions with deliverable tasks.",
+    "trigger": "A destination is clear but several consequential questions cannot be resolved in one context.",
+    "non_trigger": "A small settled feature, routine task list or a second execution plan.",
+    "source_paths": [
+      "mattpocock/skills:skills/engineering/wayfinder/SKILL.md"
+    ],
+    "resources": [
+      "skills/decision-map/resources/worked-example.md"
+    ],
+    "resource_dispositions": [],
+    "positive_requests": [
+      "We need a multi-session map of open storage decisions and their blockers."
+    ],
+    "negative_requests": [
+      "Build the next already specified API slice."
+    ],
+    "status": "ADAPTED"
+  },
+  {
+    "id": "human-procedure",
+    "title": "Prepare a human-only procedure",
+    "purpose": "Make manual prerequisite steps concrete, resumable and safe without asking the agent to handle secrets.",
+    "trigger": "A required step needs human dashboard access, secret entry or another action the agent cannot perform.",
+    "non_trigger": "A task the agent can already safely execute or an unrequested setup wizard.",
+    "source_paths": [
+      "mattpocock/skills:skills/engineering/wizard/SKILL.md"
+    ],
+    "resources": [
+      "skills/human-procedure/resources/worked-example.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "skills/engineering/wizard/template.sh",
+        "disposition": "EXCLUDE",
+        "runtime_path": "skills/human-procedure/resources/worked-example.md",
+        "rationale": "Executable/server/hook implementation excluded for scope, safety and portability; the useful human/visual/risk technique is independently retained in GUIDE.md procedure and local worked example."
+      }
+    ],
+    "positive_requests": [
+      "Prepare exact manual steps for the credential dashboard I must access myself."
+    ],
+    "negative_requests": [
+      "Paste my secret into the chat and configure it for me."
+    ],
+    "status": "ADAPTED"
+  },
+  {
+    "id": "handoff",
+    "title": "Prepare a portable handoff",
+    "purpose": "Let another context continue from verified artifacts and a concrete next action.",
+    "trigger": "Work moves to another host/directory/person or requires an explicit portable continuation.",
+    "non_trigger": "Routine continuation in the same context with enough room, or duplicating the existing Andino checkpoint.",
+    "source_paths": [
+      "mattpocock/skills:skills/engineering/ask-matt/SKILL.md",
+      "mattpocock/skills:skills/productivity/handoff/SKILL.md",
+      "mattpocock/skills:skills/in-progress/claude-handoff/SKILL.md"
+    ],
+    "resources": [
+      "skills/handoff/resources/worked-example.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "skills/engineering/ask-matt/PHASE-BOUNDARIES.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/handoff/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      }
+    ],
+    "positive_requests": [
+      "Prepare a portable handoff for a colleague in another checkout."
+    ],
+    "negative_requests": [
+      "Keep working in this context on the next ready step."
+    ],
+    "status": "CONDITIONAL"
+  },
+  {
+    "id": "learning-workspace",
+    "title": "Build a learning workspace",
+    "purpose": "Teach a bounded skill from trusted sources and demonstrated learning rather than mere content coverage.",
+    "trigger": "An explicit request for learning across sessions or a structured lesson tied to a concrete mission.",
+    "non_trigger": "A one-off factual answer or an assumption the user wants recurring lessons/automation.",
+    "source_paths": [
+      "mattpocock/skills:skills/productivity/teach/SKILL.md"
+    ],
+    "resources": [
+      "skills/learning-workspace/resources/worked-example.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "skills/productivity/teach/GLOSSARY-FORMAT.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/learning-workspace/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      },
+      {
+        "source_path": "skills/productivity/teach/LEARNING-RECORD-FORMAT.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/learning-workspace/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      },
+      {
+        "source_path": "skills/productivity/teach/MISSION-FORMAT.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/learning-workspace/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      },
+      {
+        "source_path": "skills/productivity/teach/RESOURCES-FORMAT.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/learning-workspace/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      }
+    ],
+    "positive_requests": [
+      "Teach me safe retry design over several lessons in this learning folder."
+    ],
+    "negative_requests": [
+      "What does retry mean in one sentence?"
+    ],
+    "status": "ADAPTED"
+  },
+  {
+    "id": "stakeholder-questionnaire",
+    "title": "Draft a questionnaire for someone else",
+    "purpose": "Get decision-relevant knowledge from the person who holds it through a usable local document.",
+    "trigger": "Progress depends on facts/decisions held by a named other person.",
+    "non_trigger": "The user can answer directly, environmental facts the agent can inspect, or an instruction to send messages without authority.",
+    "source_paths": [
+      "mattpocock/skills:skills/productivity/to-questionnaire/SKILL.md"
+    ],
+    "resources": [
+      "skills/stakeholder-questionnaire/resources/worked-example.md"
+    ],
+    "resource_dispositions": [],
+    "positive_requests": [
+      "Draft questions for our platform owner about launch capacity and retention."
+    ],
+    "negative_requests": [
+      "Send this questionnaire to the owner without my instruction."
+    ],
+    "status": "ADAPTED"
+  },
+  {
+    "id": "plain-language-repitch",
+    "title": "Re-explain a confusing message",
+    "purpose": "Restore shared understanding by adding missing context and concrete domain language.",
+    "trigger": "The user says the last explanation did not land or asks what a technical message means.",
+    "non_trigger": "A new research/implementation task or an opportunity to change project files.",
+    "source_paths": [
+      "mattpocock/skills:skills/productivity/wait-what/SKILL.md"
+    ],
+    "resources": [
+      "skills/plain-language-repitch/resources/worked-example.md"
+    ],
+    "resource_dispositions": [],
+    "positive_requests": [
+      "I do not understand your last message about task blockers. Explain plainly."
+    ],
+    "negative_requests": [
+      "Research a new unrelated framework."
+    ],
+    "status": "ADAPTED"
+  },
+  {
+    "id": "agent-document-authoring",
+    "title": "Write documents agents can use",
+    "purpose": "Make instructions predictable through precise triggers, useful structure and observable completion.",
+    "trigger": "Creating/reviewing an agent-facing guide, instruction pointer or durable procedure.",
+    "non_trigger": "Stylistic compression that removes behavior or a second native skill/router system.",
+    "source_paths": [
+      "mattpocock/skills:skills/productivity/writing-for-agents/SKILL.md"
+    ],
+    "resources": [
+      "skills/agent-document-authoring/resources/worked-example.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "skills/productivity/writing-for-agents/SKILL-MECHANICS.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/agent-document-authoring/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      }
+    ],
+    "positive_requests": [
+      "Rewrite this agent procedure so its branch triggers and completion bounds work."
+    ],
+    "negative_requests": [
+      "Delete half the technique just to make the document shorter."
+    ],
+    "status": "ADAPTED"
+  },
+  {
+    "id": "git-operation-guard",
+    "title": "Classify Git operation authority",
+    "purpose": "Recognize publishing/destructive Git intent under the actual host permission boundary.",
+    "trigger": "An operation would publish, discard, rewrite or stage repository state, or an optional guard is explicitly requested.",
+    "non_trigger": "Treating an upstream regex hook as a complete security control or installing global hooks automatically.",
+    "source_paths": [
+      "mattpocock/skills:skills/misc/git-guardrails-claude-code/SKILL.md"
+    ],
+    "resources": [
+      "skills/git-operation-guard/resources/worked-example.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "skills/misc/git-guardrails-claude-code/scripts/block-dangerous-git.sh",
+        "disposition": "EXCLUDE",
+        "runtime_path": "skills/git-operation-guard/resources/worked-example.md",
+        "rationale": "Executable/server/hook implementation excluded for scope, safety and portability; the useful human/visual/risk technique is independently retained in GUIDE.md procedure and local worked example."
+      }
+    ],
+    "positive_requests": [
+      "Review whether git -C repo push is allowed by the current authority."
+    ],
+    "negative_requests": [
+      "Install the upstream global regex hook automatically."
+    ],
+    "status": "CONDITIONAL"
+  },
+  {
+    "id": "test-fixture-migration",
+    "title": "Migrate TypeScript test fixtures",
+    "purpose": "Express partial and intentionally invalid test data clearly without changing the tested behavior.",
+    "trigger": "An explicit TypeScript test-fixture assertion problem or requested shoehorn migration.",
+    "non_trigger": "Production code, runtime validation, or blanket replacement of every type assertion.",
+    "source_paths": [
+      "mattpocock/skills:skills/misc/migrate-to-shoehorn/SKILL.md"
+    ],
+    "resources": [
+      "skills/test-fixture-migration/resources/worked-example.md"
+    ],
+    "resource_dispositions": [],
+    "positive_requests": [
+      "Replace these selected partial test casts without weakening invalid-input cases."
+    ],
+    "negative_requests": [
+      "Use fromAny throughout production request validation."
+    ],
+    "status": "CONDITIONAL"
+  },
+  {
+    "id": "exercise-scaffolding",
+    "title": "Scaffold a course exercise",
+    "purpose": "Create a coherent numbered learning exercise with meaningful content and verifiable structure.",
+    "trigger": "An explicit exercise/course-section scaffolding or renumbering request.",
+    "non_trigger": "Creating unsolicited course material or installing a proprietary linter as a prerequisite.",
+    "source_paths": [
+      "mattpocock/skills:skills/misc/scaffold-exercises/SKILL.md"
+    ],
+    "resources": [
+      "skills/exercise-scaffolding/resources/worked-example.md"
+    ],
+    "resource_dispositions": [],
+    "positive_requests": [
+      "Scaffold section 05.02 with explainer, problem and solution variants."
+    ],
+    "negative_requests": [
+      "Install a course CLI globally to answer one question."
+    ],
+    "status": "CONDITIONAL"
+  },
+  {
+    "id": "pre-commit-setup",
+    "title": "Prepare project pre-commit checks",
+    "purpose": "Wire existing project quality checks without disturbing staging or replacing established hooks.",
+    "trigger": "An explicit request for commit-time formatting/checks or an evidenced missing guardrail.",
+    "non_trigger": "Committing work, global installation or running staged-file mutations on the user's index without authority.",
+    "source_paths": [
+      "mattpocock/skills:skills/misc/setup-pre-commit/SKILL.md"
+    ],
+    "resources": [
+      "skills/pre-commit-setup/resources/worked-example.md"
+    ],
+    "resource_dispositions": [],
+    "positive_requests": [
+      "Prepare project pre-commit checks while preserving prepare and current staging."
+    ],
+    "negative_requests": [
+      "Stage everything and make a smoke commit without permission."
+    ],
+    "status": "CONDITIONAL"
+  },
+  {
+    "id": "workflow-specification",
+    "title": "Specify a recurring workflow",
+    "purpose": "Describe a recurring pattern precisely without creating schedules or automation implicitly.",
+    "trigger": "An explicit request to design a repeatable workflow or identify a delegable recurring pattern.",
+    "non_trigger": "Starting a monitor/schedule, replacing Andino lifecycle or forcing AI/checkpoints into every activity.",
+    "source_paths": [
+      "mattpocock/skills:skills/in-progress/loop-me/SKILL.md"
+    ],
+    "resources": [
+      "skills/workflow-specification/resources/worked-example.md"
+    ],
+    "resource_dispositions": [],
+    "positive_requests": [
+      "Specify a recurring support-response drafting workflow without activating it."
+    ],
+    "negative_requests": [
+      "Create a scheduled job automatically from this design discussion."
+    ],
+    "status": "CONDITIONAL"
+  },
+  {
+    "id": "typescript-boundary-enforcement",
+    "title": "Enforce TypeScript package entrypoints",
+    "purpose": "Make a chosen package boundary reject deep imports and cycles through an actual project check.",
+    "trigger": "An explicitly accepted TypeScript deep-package layout needs deterministic import enforcement.",
+    "non_trigger": "Universal folder restructuring or a conceptual interface discussion without a chosen layout.",
+    "source_paths": [
+      "mattpocock/skills:skills/in-progress/setup-ts-deep-modules/SKILL.md"
+    ],
+    "resources": [
+      "skills/typescript-boundary-enforcement/resources/worked-example.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "skills/in-progress/setup-ts-deep-modules/dependency-cruiser.config.cjs",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/typescript-boundary-enforcement/resources/worked-example.md",
+        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+      }
+    ],
+    "positive_requests": [
+      "Enforce our selected package entrypoint rules and prove deep imports fail."
+    ],
+    "negative_requests": [
+      "Reorganize every TypeScript project into this layout by default."
+    ],
+    "status": "CONDITIONAL"
+  },
+  {
+    "id": "article-shaping",
+    "title": "Shape raw material into an article",
+    "purpose": "Develop a coherent argument whose reader meets prerequisite concepts before later claims depend on them.",
+    "trigger": "An explicit writing request with existing raw material ready to be shaped.",
+    "non_trigger": "Open fragment exploration, editing raw input without permission or publishing finished copy.",
+    "source_paths": [
+      "mattpocock/skills:skills/in-progress/writing-beats/SKILL.md",
+      "mattpocock/skills:skills/in-progress/writing-shape/SKILL.md"
+    ],
+    "resources": [
+      "skills/article-shaping/resources/worked-example.md"
+    ],
+    "resource_dispositions": [],
+    "positive_requests": [
+      "Shape this fixed raw material into a separate article with grounded concepts."
+    ],
+    "negative_requests": [
+      "Overwrite my raw interview transcript."
+    ],
+    "status": "CONDITIONAL"
+  },
+  {
+    "id": "writing-fragments",
+    "title": "Collect raw writing fragments",
+    "purpose": "Preserve useful raw observations before imposing an article structure.",
+    "trigger": "An explicit exploratory writing session seeking material rather than a finished argument.",
+    "non_trigger": "A fixed-pile article-shaping task or permission to invent personal anecdotes.",
+    "source_paths": [
+      "mattpocock/skills:skills/in-progress/writing-fragments/SKILL.md"
+    ],
+    "resources": [
+      "skills/writing-fragments/resources/worked-example.md"
+    ],
+    "resource_dispositions": [],
+    "positive_requests": [
+      "Interview me for raw writing fragments without deciding an outline yet."
+    ],
+    "negative_requests": [
+      "Turn this fixed pile directly into a final article."
+    ],
+    "status": "CONDITIONAL"
+  }
+]

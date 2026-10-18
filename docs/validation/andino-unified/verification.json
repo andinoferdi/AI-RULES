@@ -1,0 +1,87 @@
+{
+  "result": "PASS",
+  "runtime_hash": "628e3d35c153e463924dbb17212523568e9b759e4d6fd3367a30dad70d6424cd",
+  "main_base": "80f54467188a76ad95af3943221fd2a4b59d2181",
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/validate_skills.py",
+        "--andino-dir",
+        "build\\andino-unified-candidate-v3",
+        "--webbased-ref",
+        "origin/WebBased",
+        "--threejs-ref",
+        "origin/threejs-skills"
+      ],
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main",
+      "exit_code": 0,
+      "output": "PASS: 6 skill packages, metadata, relative links, and 6 eval schemas\nLive behavioral evaluation: NOT VERIFIED\nPASS: one Three.js family with 45 internal methods\nPASS: Focus communication references match origin/WebBased; A sources equivalent\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/validate_andino_capabilities.py",
+        "--runtime",
+        "build\\andino-unified-candidate-v3"
+      ],
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main",
+      "exit_code": 0,
+      "output": "PASS: 54 capability eval schemas, 58 contracts; runtime SHA256 628e3d35c153e463924dbb17212523568e9b759e4d6fd3367a30dad70d6424cd\nLive behavioral coverage: inspect reviewed records; schema success never implies live PASS.\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/validate_andino_unified.py",
+        "--runtime",
+        "build\\andino-unified-candidate-v3",
+        "--check-sources"
+      ],
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main",
+      "exit_code": 0,
+      "output": "{\n  \"result\": \"PASS\",\n  \"evidence_class\": \"STRUCTURAL VERIFIED\",\n  \"rows\": 79,\n  \"categories\": {\n    \"stable\": 61,\n    \"meta\": 5,\n    \"setup\": 1,\n    \"misc\": 4,\n    \"in-progress\": 7,\n    \"deprecated\": 1\n  },\n  \"method_destinations\": 58,\n  \"unresolved_collisions\": 0,\n  \"errors\": [],\n  \"limitation\": \"Does not prove method operation or live host routing.\"\n}\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "..\\AI-RULES",
+        "diff",
+        "--check"
+      ],
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main",
+      "exit_code": 0,
+      "output": ""
+    }
+  ],
+  "unittest": {
+    "command": [
+      "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "run": 223,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "log": "final-tests-v3.log",
+    "log_sha256": "851c6165ae3b26600a450bcdca1b19e4f265b5e90931e9e9fbc1406f9234bae3"
+  },
+  "unified_fixture_schema_cases": 114,
+  "coverage_fixture_ids_resolve": true,
+  "current_runtime_equals_frozen_candidate": true
+}

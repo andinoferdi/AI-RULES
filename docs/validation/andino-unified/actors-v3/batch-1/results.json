@@ -1,0 +1,567 @@
+{
+  "host": {
+    "surface": "Codex delegated agent",
+    "model/version": "UNKNOWN",
+    "scope": "resource activation and fixture actions"
+  },
+  "input": {
+    "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actor-inputs-v2/batch-1.json",
+    "sha256": "d0fb68c47c54701fd6286d0be6610b8214d60dc95f5b2084c766d2caabd0e2b5"
+  },
+  "package": {
+    "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/SKILL.md",
+    "sha256": "714f94e749872c281c6e6de785d3f01545bd1e4e40d94dc2cd702c18908a6e8b"
+  },
+  "activation_evidence": [
+    {
+      "state": "ACTIVE",
+      "mechanism": "Permitted rtk-prefixed full filesystem content read; content retained and reused",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/SKILL.md",
+      "sha256": "714f94e749872c281c6e6de785d3f01545bd1e4e40d94dc2cd702c18908a6e8b"
+    },
+    {
+      "state": "ACTIVE",
+      "mechanism": "Permitted rtk-prefixed full filesystem content read; content retained and reused",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/references/routing.md",
+      "sha256": "19f19dbecc2acbed98068b4f7d86c0927545a464f99999f4472f971c871692b1"
+    },
+    {
+      "state": "ACTIVE",
+      "mechanism": "Permitted rtk-prefixed full filesystem content read; content retained and reused",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/references/internal-method-index.md",
+      "sha256": "08d4500283417f003e705d4789a5c199827c8126fb8a8d41daa2050041ab565c"
+    },
+    {
+      "state": "ACTIVE",
+      "mechanism": "Permitted rtk-prefixed full filesystem content read; content retained and reused",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/references/invocation-adapter.md",
+      "sha256": "b21e797d9422a499a64a33ef193457655d8249e49b2a4b76d5a940241a1ef500"
+    },
+    {
+      "state": "ACTIVE",
+      "mechanism": "Permitted rtk-prefixed full filesystem content read; content retained and reused",
+      "path": "C:/Users/Lenovo/.agents/skills/focus/SKILL.md",
+      "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6"
+    },
+    {
+      "state": "ACTIVE",
+      "mechanism": "Permitted rtk-prefixed full filesystem content read; content retained and reused",
+      "path": "C:/Users/Lenovo/.agents/skills/focus/references/priority-a.md",
+      "sha256": "d50f0438ef16d87e8a2bde408f0f20794d0ee8f3b00b93c012add20e0d097d1b"
+    },
+    {
+      "state": "ACTIVE",
+      "mechanism": "Permitted rtk-prefixed full filesystem content read; content retained and reused",
+      "path": "C:/Users/Lenovo/.agents/skills/focus/references/human-language-indonesia.md",
+      "sha256": "339b959b250c96a89c7412a429d92c9a45e679f4844ea3fa58d6d26787f931c6"
+    },
+    {
+      "state": "ACTIVE",
+      "mechanism": "Permitted rtk-prefixed full filesystem content read; content retained and reused",
+      "path": "C:/Users/Lenovo/.agents/skills/focus/references/human-language-english.md",
+      "sha256": "c496893a8c093d588af6df21b0c793256f1874290b241603f056cbc9496973be"
+    }
+  ],
+  "selection_results": [
+    {
+      "id": "74a98a8bed81",
+      "selected": [
+        {
+          "id": "pr-description",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/pr-description/GUIDE.md",
+          "sha256": "96cd92fc8a65faafd528d214f5fc31ff64f488816979d6ff7fc995ff8b86707d",
+          "state": "ACTIVE",
+          "reason": "Current task is drafting a description for a concrete diff.",
+          "insight": "Read the house PR template and current final diff; connect recorded before/after evidence to resulting behavior and reversibility. Drafting does not publish a PR."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "56d20b512041",
+      "selected": [],
+      "unavailable": [],
+      "note": "Routine continuation in the same sufficient context does not require handoff or context reconstruction; select the next actual step from current state without inventing a new phase."
+    },
+    {
+      "id": "f4762b672d6f",
+      "selected": [
+        {
+          "id": "typescript-boundary-enforcement",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/typescript-boundary-enforcement/GUIDE.md",
+          "sha256": "2e86f9da21ee0232f10441a100f351ea5d955ec5a23812df563ec9e8140149b4",
+          "state": "ACTIVE",
+          "reason": "Entrypoint layout and rules are already selected; deterministic enforcement is requested.",
+          "insight": "Reuse existing resolver/check configuration; valid root imports must pass while deep imports fail, then restore a passing graph."
+        },
+        {
+          "id": "tdd",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/tdd/GUIDE.md",
+          "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+          "state": "ACTIVE",
+          "reason": "Accepted executable behavior is in regression/implementation phase.",
+          "insight": "Observe an assertion RED at the public seam, implement minimal GREEN, then prove faulty-copy sensitivity; do not reopen accepted interface decisions."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "1086608388f0",
+      "selected": [],
+      "unavailable": [],
+      "note": "Overwriting raw input is not exploratory fragment collection or article shaping. No relevant method selected merely to override preservation boundaries; no transcript was accessed or changed."
+    },
+    {
+      "id": "a933736aaa08",
+      "selected": [
+        {
+          "id": "git-workflow-and-versioning",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/git-workflow-and-versioning/GUIDE.md",
+          "sha256": "0161632f8310fbeed73653372283f018e47e82685fc3772355f340caedd5156f",
+          "state": "ACTIVE",
+          "reason": "Owned change grouping and breaking-version rationale are the current need.",
+          "insight": "Inspect dirty/staged/untracked ownership and preserve pre-existing edits; breaking consumer behavior supports a MAJOR rationale without staging or publishing."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "12d1a9633c53",
+      "selected": [
+        {
+          "id": "design-prototype",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/design-prototype/GUIDE.md",
+          "sha256": "a31c14453976fdaf42491a4e4b064199f948a948e032b793b9e040174d04b803",
+          "state": "ACTIVE",
+          "reason": "A specific unresolved checkout-state legality question needs a local demo.",
+          "insight": "Use a pure portable state model with resettable happy/awkward/illegal scenarios and scratch data; actual feedback decides legality, and prototype code is not production acceptance."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "477bcf0d6c86",
+      "selected": [],
+      "unavailable": [],
+      "note": "Conceptual comparison can be answered directly; no diff review, test execution or method activation is required."
+    },
+    {
+      "id": "f942e5e3b6fb",
+      "selected": [
+        {
+          "id": "writing-fragments",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/writing-fragments/GUIDE.md",
+          "sha256": "9acbe7b1790ca20b14fa58660607b9970e0d426f9cd8098653739870a2bf3438",
+          "state": "ACTIVE",
+          "reason": "Exploratory writing explicitly seeks raw material while outline decisions remain open.",
+          "insight": "Append heterogeneous real observations, preserve author voice and edits, and defer shaping until requested."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "75f803809d42",
+      "selected": [
+        {
+          "id": "domain-modeling",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/domain-modeling/GUIDE.md",
+          "sha256": "620719a408890912f25612a5d7580e59adffafd34dfd0fb59c72c7b488a301df",
+          "state": "ACTIVE",
+          "reason": "Code and glossary use conflicting domain vocabulary.",
+          "insight": "Read the relevant glossary map and concrete code examples; resolve canonical terms with real distinctions rather than collapsing concepts into a preferred synonym."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "fe24008c1d74",
+      "selected": [
+        {
+          "id": "frontend-ui-engineering",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/frontend-ui-engineering/GUIDE.md",
+          "sha256": "bde0cc4c35836734237817d2a918bcbe21b3326f860770a5dda5413cb409308f",
+          "state": "ACTIVE",
+          "reason": "An approved user-facing retry state and keyboard-native named control must be implemented.",
+          "insight": "Honor the accepted design; use a semantic button with accessible name, focus behavior and announced error/retry states. Rendering at 360/768/1440 and keyboard evidence belong before UI acceptance."
+        },
+        {
+          "id": "tdd",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/tdd/GUIDE.md",
+          "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+          "state": "ACTIVE",
+          "reason": "Accepted executable behavior is in regression/implementation phase.",
+          "insight": "Observe an assertion RED at the public seam, implement minimal GREEN, then prove faulty-copy sensitivity; do not reopen accepted interface decisions."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "aeb97ddd0f13",
+      "selected": [
+        {
+          "id": "incremental-implementation",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/incremental-implementation/GUIDE.md",
+          "sha256": "eaebd3e0d82222f712b4c56906b7debd938377e652194362b7dba49ac53e4cf7",
+          "state": "ACTIVE",
+          "reason": "Create then list are dependency-ready slices in an accepted graph.",
+          "insight": "Complete and verify create before list; failing gates stop dependents while the existing plan remains the sole lifecycle record."
+        },
+        {
+          "id": "tdd",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/tdd/GUIDE.md",
+          "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+          "state": "ACTIVE",
+          "reason": "Accepted executable behavior is in regression/implementation phase.",
+          "insight": "Observe an assertion RED at the public seam, implement minimal GREEN, then prove faulty-copy sensitivity; do not reopen accepted interface decisions."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "5a24e85e63fc",
+      "selected": [],
+      "unavailable": [],
+      "note": "No observed failure supports new generic procedural rules. Do not activate method-authoring for an imagined problem."
+    },
+    {
+      "id": "7f3b7e3d5458",
+      "selected": [
+        {
+          "id": "debugging",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/debugging/GUIDE.md",
+          "sha256": "0beb55e7efa68b7965e3d2c52f73e78b42af711bc9f7d4f2e298ea143c55f508",
+          "state": "ACTIVE",
+          "reason": "A concrete wrong checkbox state has an unknown cause.",
+          "insight": "Load diagnosis before examining captured events; trace state and request/response boundaries. HTTP 503 alone does not establish the cause."
+        },
+        {
+          "id": "browser-testing-with-devtools",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/browser-testing-with-devtools/GUIDE.md",
+          "sha256": "bb534ab98d778127fb72b45d31285f7d07a116da6e47e3f0fed3278d8c2ea694",
+          "state": "ACTIVE",
+          "reason": "The supplied evidence concerns browser state and a failed PATCH.",
+          "insight": "Use sanitized captured network/component evidence to distinguish request wiring, response handling and render state; captured events do not prove a live browser replay."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "8a5bd19c1513",
+      "selected": [],
+      "unavailable": [],
+      "note": "A settled targeted server-only index edit does not need frontend engineering, API design or a new product phase. No measured bottleneck or behavioral-contract change is supplied to justify performance/TDD specialists now."
+    },
+    {
+      "id": "dd270fedf396",
+      "selected": [
+        {
+          "id": "exercise-scaffolding",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/exercise-scaffolding/GUIDE.md",
+          "sha256": "d5d51b9d140b86f8b6d0c74ca183e0bbaae5dc68185abb80bbc2f31681445324",
+          "state": "ACTIVE",
+          "reason": "An explicit numbered course section with three variants is requested.",
+          "insight": "Preserve numbering/conventions, meaningful README links and required code entry files; locally checked structure is narrower than a course linter run."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "21abd16e703f",
+      "selected": [
+        {
+          "id": "environment-retrospective",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/environment-retrospective/GUIDE.md",
+          "sha256": "31bc9666f6c198d5a2614b064000b3a17e0ae47e282905791b8357d98bbac59f",
+          "state": "ACTIVE",
+          "reason": "Failure causes are established and prevention improvements are requested.",
+          "insight": "Inspect existing check wiring before adding safeguards, tie each recommendation to an observed failure, and prefer deterministic checks for mechanical errors."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "258871d7f9dc",
+      "selected": [
+        {
+          "id": "issue-triage",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/issue-triage/GUIDE.md",
+          "sha256": "646afab3ae4a903c32dbe2dddb8b9bf17f45a297a4d82e00f008596dc0d4e1dc",
+          "state": "ACTIVE",
+          "reason": "Incoming bug evaluation, full comments and a local next-action brief are requested.",
+          "insight": "Read full report and prior notes, verify the exact claim boundedly, then draft one consistent category/state and testable acceptance. Escalate deep diagnosis only if needed."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "86b1ef81b196",
+      "selected": [],
+      "unavailable": [],
+      "note": "Mechanical private rename can use targeted edit and verification; no public interface, migration or behavioral regression method is needed."
+    },
+    {
+      "id": "00a68869e832",
+      "selected": [],
+      "unavailable": [],
+      "note": "The request explicitly asks to bypass permission and stage everything. Resolve authority and ownership in the root contract; do not load a method just to carry out/refuse blind staging. No Git mutation performed."
+    },
+    {
+      "id": "c29303c4759e",
+      "selected": [],
+      "unavailable": [],
+      "note": "Pure private loop-counter rename is a mechanical edit with no trust boundary or changed behavior."
+    },
+    {
+      "id": "5e7427f7697e",
+      "selected": [],
+      "unavailable": [],
+      "note": "A current accepted spec is not a missing specification; do not select specification or recreate settled work merely for a fresh start."
+    },
+    {
+      "id": "dd6434485545",
+      "selected": [
+        {
+          "id": "git-operation-guard",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/git-operation-guard/GUIDE.md",
+          "sha256": "b65d5ade93dfc1dad440ca8c37362dfcb46eb568b62d64804ef483823e7ebde9",
+          "state": "ACTIVE",
+          "reason": "Deleting untracked repository content is a discard operation requiring exact scope/authority classification.",
+          "insight": "Inspect the exact paths, ownership and semantic effect before mutation; neither an advisory parser nor a method trigger authorizes deletion of user work."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "d03a556fc435",
+      "selected": [
+        {
+          "id": "method-authoring",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/method-authoring/GUIDE.md",
+          "sha256": "2e5660250701f66d5730d2e1f8e29a07dbca5c1be2eaf3d2877b610b4732944e",
+          "state": "ACTIVE",
+          "reason": "The request creates guidance from observed process failures.",
+          "insight": "Start with a real failing no-guidance baseline, write only the minimal discriminating procedure, and evaluate consumer behavior rather than counting headings."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "46adc4dd5778",
+      "selected": [
+        {
+          "id": "idea-refine",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/idea-refine/GUIDE.md",
+          "sha256": "5d1d07ca851839c5e2675f657af81fe06d7b63488b73537ca270921531ed6793",
+          "state": "ACTIVE",
+          "reason": "Product necessity is explicitly reopened for value and assumption testing.",
+          "insight": "Use the settled user/outcome facts to identify current workarounds, dealbreakers and the smallest validation experiment; viable engineering alone does not establish product value."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "6e25ed271218",
+      "selected": [],
+      "unavailable": [],
+      "note": "The single supplied expression is self-contained; direct explanation needs no context-engineering, research or implementation method."
+    },
+    {
+      "id": "cef4b736f904",
+      "selected": [],
+      "unavailable": [],
+      "note": "Sending without the user instruction is outside message authority; do not select stakeholder-questionnaire to bypass that exclusion. No message sent."
+    },
+    {
+      "id": "4ec11b7f258c",
+      "selected": [
+        {
+          "id": "decision-map",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/decision-map/GUIDE.md",
+          "sha256": "8399850b569c504b63393839b5d9989e344e25dae86724f644e641a53bd709c4",
+          "state": "ACTIVE",
+          "reason": "Several open storage choices and blockers need a multi-session map.",
+          "insight": "Separate decision questions from deliverable tasks, link real blockers and resolve only with evidence; the map does not authorize implementation or replace the existing checkpoint."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "f64927d7aa31",
+      "selected": [
+        {
+          "id": "git-isolation",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/git-isolation/GUIDE.md",
+          "sha256": "18a1ad3c8d0b0a0204188bdc67195bc9b11d2b8e8bfbb65d464de471ec92a7fd",
+          "state": "ACTIVE",
+          "reason": "The feature needs isolation on an already authorized branch, with existing-worktree inspection explicitly requested.",
+          "insight": "Inspect actual root/common-dir/superproject/worktrees and dirty state; reuse a suitable authorized checkout and reject any mechanism that forces an unauthorized new branch."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "428ff006b859",
+      "selected": [],
+      "unavailable": [],
+      "note": "Automatic upstream global hook installation is excluded. Resolve in the root authority contract without invoking a local guard as a workaround."
+    },
+    {
+      "id": "c97a09f607ac",
+      "selected": [],
+      "unavailable": [],
+      "note": "Formatting an unchanged constraints document does not establish a missing/changing quality contract; targeted formatting only."
+    },
+    {
+      "id": "448ff3602487",
+      "selected": [
+        {
+          "id": "doubt-driven-development",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/doubt-driven-development/GUIDE.md",
+          "sha256": "6d995fa3f847d521a08ea37b8317922104cba3dddada917fdd6fda640136be08",
+          "state": "ACTIVE",
+          "reason": "An independent bounded artifact-and-contract challenge of an invariant is requested.",
+          "insight": "Give a root-owned reviewer only artifact and accepted contract, classify contract misreads before artifact findings, and stop at three cycles. This child cannot spawn a reviewer or claim independent review from a self-check."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "0ada99c86213",
+      "selected": [],
+      "unavailable": [],
+      "note": "Do not expose secret values in chat or treat a method as credential access permission. Root secret/authority boundaries apply; no secret read, pasted value or setup action performed."
+    },
+    {
+      "id": "da9611f8a5c8",
+      "selected": [
+        {
+          "id": "plan-execution",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/plan-execution/GUIDE.md",
+          "sha256": "358a916e729a43638cfb2f08efe0908cfc31ad51dcddf255ff4bff393fa3ed67",
+          "state": "ACTIVE",
+          "reason": "The implementation plan is already approved and ready to execute.",
+          "insight": "Reconcile current bytes with completed evidence, select the dependency-ready accepted task, and avoid reopening ideation or starting another plan."
+        },
+        {
+          "id": "tdd",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/tdd/GUIDE.md",
+          "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+          "state": "ACTIVE",
+          "reason": "Accepted executable behavior is in regression/implementation phase.",
+          "insight": "Observe an assertion RED at the public seam, implement minimal GREEN, then prove faulty-copy sensitivity; do not reopen accepted interface decisions."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "62991a1d0826",
+      "selected": [
+        {
+          "id": "source-driven-development",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/source-driven-development/GUIDE.md",
+          "sha256": "f212283f011d7458950e56c5a2188484bf30879eee0384c59590bb8c3b8be59b",
+          "state": "ACTIVE",
+          "reason": "A bounded version-pinned API argument check has supplied official evidence.",
+          "insight": "Match manifest plus resolved environment version to the specific supplied signature; do not invent API availability. This established-solution clarification does not itself require open solution research."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "0a74978bf670",
+      "selected": [
+        {
+          "id": "performance-optimization",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/performance-optimization/GUIDE.md",
+          "sha256": "ab8fc15d6893912d0fb0c00649867168eb62750597c77ce5781064984266cb16",
+          "state": "ACTIVE",
+          "reason": "Repeated comparable latency samples and a noise-sensitive verdict are requested.",
+          "insight": "Compare same-condition distributions and variance, retain only improvement exceeding noise with correctness preserved, and record rejected attempts without claiming field performance."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "62407b7d2daa",
+      "selected": [],
+      "unavailable": [],
+      "note": "One-sentence definition is direct sufficient conversation; no engineering method needed."
+    },
+    {
+      "id": "a0f04777f329",
+      "selected": [
+        {
+          "id": "constraint-driven-development",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/constraint-driven-development/GUIDE.md",
+          "sha256": "cc24818ece3d282fae80e3bfd24d4b8d1fbe0a8a1f3a9f92be676557ae51137d",
+          "state": "ACTIVE",
+          "reason": "The diff weakens assertions, suppressions and a minimum coverage floor.",
+          "insight": "Inspect both added and removed lines against the accepted baseline; missing baseline is ERROR rather than CLEAN, and relaxation requires current explicit authority."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only assessment; guides read in full, no scenario actions executed. Accepted facts and current phase remain binding. No completion/future-phase specialist preloaded as a scenario selection."
+    },
+    {
+      "id": "55ff90cd8355",
+      "selected": [],
+      "unavailable": [],
+      "note": "Supplied constant explanation explicitly excludes implementation; no incremental implementation, research or TDD needed."
+    }
+  ],
+  "additional_guide_read": {
+    "id": "decision-interview",
+    "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/decision-interview/GUIDE.md",
+    "sha256": "938a7fa8c33e212190f2ce110ef83370ab63997bbc50c0927d1365c71c1261d4",
+    "state": "ACTIVE",
+    "released": true,
+    "note": "Compared with idea-refine for product-necessity exploration; settled background facts support direct value/assumption refinement, so not retained as a selected specialist."
+  },
+  "work_methods": [
+    {
+      "id": "tdd",
+      "state": "USED",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/tdd/GUIDE.md",
+      "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+      "action": "Actual public known-invoice assertion failed on original stub, passed minimal implementation, and failed faulty first-element copy; empty case also passed."
+    },
+    {
+      "id": "verification",
+      "state": "USED",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3/skills/verification/GUIDE.md",
+      "sha256": "7d79dcd35c90611c99bf7250f9ef2d879c16f305e27f4f6a0ccd7817b3adaa71",
+      "action": "Pinned before/current/mutant hashes and exact commands/output/exit codes in work.json; inspected two-test GREEN and mutation failure, including prior harness error."
+    }
+  ],
+  "work_record": {
+    "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors-v3/batch-1/work.json",
+    "sha256": "fa3b9b5342b3f9831cb50e01614998cffac95e75098590ef7ec764b0b2ae2735"
+  },
+  "limits": [
+    "No oracle, eval, expected, audit/coverage, previous actor output or implementation script read.",
+    "No scenario side effects; only supplied local work and output artifacts written under batch-1.",
+    "No network, services, Git mutation, setup, global change or nested agent.",
+    "No native picker or cross-host claim; file-based activation and this isolated fixture only."
+  ]
+}

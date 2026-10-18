@@ -1,0 +1,491 @@
+{
+  "status": "IMPLEMENTED_WITH_INCOMPLETE_HOST_VERIFICATION",
+  "material_local_failures": [],
+  "tasks": [
+    {
+      "id": "A-T01",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "preflight.json",
+        "preflight-upstreams.json",
+        "addy-audit.json",
+        "matt-audit.json",
+        "superpowers-audit.json",
+        "baseline-tests.log"
+      ]
+    },
+    {
+      "id": "A-T02",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "preflight.json",
+        "preflight-upstreams.json",
+        "addy-audit.json",
+        "matt-audit.json",
+        "superpowers-audit.json",
+        "baseline-tests.log"
+      ]
+    },
+    {
+      "id": "A-T03",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "preflight.json",
+        "preflight-upstreams.json",
+        "addy-audit.json",
+        "matt-audit.json",
+        "superpowers-audit.json",
+        "baseline-tests.log"
+      ]
+    },
+    {
+      "id": "A-T04",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "preflight.json",
+        "preflight-upstreams.json",
+        "addy-audit.json",
+        "matt-audit.json",
+        "superpowers-audit.json",
+        "baseline-tests.log"
+      ]
+    },
+    {
+      "id": "A-T05",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "preflight.json",
+        "preflight-upstreams.json",
+        "addy-audit.json",
+        "matt-audit.json",
+        "superpowers-audit.json",
+        "baseline-tests.log"
+      ]
+    },
+    {
+      "id": "B-T01",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "coverage.json",
+        "ownership.json",
+        "canonical-decisions.md",
+        "resource-map.json"
+      ]
+    },
+    {
+      "id": "B-T02",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "coverage.json",
+        "ownership.json",
+        "canonical-decisions.md",
+        "resource-map.json"
+      ]
+    },
+    {
+      "id": "B-T03",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "coverage.json",
+        "ownership.json",
+        "canonical-decisions.md",
+        "resource-map.json"
+      ]
+    },
+    {
+      "id": "B-T04",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "coverage.json",
+        "ownership.json",
+        "canonical-decisions.md",
+        "resource-map.json"
+      ]
+    },
+    {
+      "id": "C-T01",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "addy-operational.json",
+        "matt-operational.json",
+        "superpowers-operational.json"
+      ]
+    },
+    {
+      "id": "C-T02",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "addy-operational.json",
+        "matt-operational.json",
+        "superpowers-operational.json"
+      ]
+    },
+    {
+      "id": "C-T03",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "addy-operational.json",
+        "matt-operational.json",
+        "superpowers-operational.json"
+      ]
+    },
+    {
+      "id": "C-T04",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "addy-operational.json",
+        "matt-operational.json",
+        "superpowers-operational.json"
+      ]
+    },
+    {
+      "id": "C-T05",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "addy-operational.json",
+        "matt-operational.json",
+        "superpowers-operational.json"
+      ]
+    },
+    {
+      "id": "C-T06",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "addy-operational.json",
+        "matt-operational.json",
+        "superpowers-operational.json"
+      ]
+    },
+    {
+      "id": "D-T01",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "behavior-grade.json",
+        "parent-work-grade.json",
+        "preservation.json"
+      ]
+    },
+    {
+      "id": "D-T02",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "behavior-grade.json",
+        "parent-work-grade.json",
+        "preservation.json"
+      ]
+    },
+    {
+      "id": "D-T03",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "behavior-grade.json",
+        "parent-work-grade.json",
+        "preservation.json"
+      ]
+    },
+    {
+      "id": "D-T04",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "behavior-grade.json",
+        "parent-work-grade.json",
+        "preservation.json"
+      ]
+    },
+    {
+      "id": "D-T05",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "behavior-grade.json",
+        "parent-work-grade.json",
+        "preservation.json"
+      ]
+    },
+    {
+      "id": "E-T01",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "installation.json",
+        "release-proposal.json",
+        "verification.json"
+      ]
+    },
+    {
+      "id": "E-T02",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "installation.json",
+        "release-proposal.json",
+        "verification.json"
+      ]
+    },
+    {
+      "id": "E-T03",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "installation.json",
+        "release-proposal.json",
+        "verification.json"
+      ]
+    },
+    {
+      "id": "E-T04",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "installation.json",
+        "release-proposal.json",
+        "verification.json"
+      ]
+    },
+    {
+      "id": "E-T05",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "installation.json",
+        "release-proposal.json",
+        "verification.json"
+      ]
+    },
+    {
+      "id": "F-T01",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "verification.json",
+        "native-grade.json",
+        "review-resolution.json",
+        "actors/batch-2/final-resolution.json"
+      ]
+    },
+    {
+      "id": "F-T02",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "verification.json",
+        "native-grade.json",
+        "review-resolution.json",
+        "actors/batch-2/final-resolution.json"
+      ]
+    },
+    {
+      "id": "F-T03",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "verification.json",
+        "native-grade.json",
+        "review-resolution.json",
+        "actors/batch-2/final-resolution.json"
+      ]
+    },
+    {
+      "id": "F-T04",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "verification.json",
+        "native-grade.json",
+        "review-resolution.json",
+        "actors/batch-2/final-resolution.json"
+      ]
+    },
+    {
+      "id": "F-T05",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "verification.json",
+        "native-grade.json",
+        "review-resolution.json",
+        "actors/batch-2/final-resolution.json"
+      ]
+    },
+    {
+      "id": "G-T01",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "README.md",
+        "release-proposal.json"
+      ]
+    },
+    {
+      "id": "G-T02",
+      "status": "DONE",
+      "scope": "Local task completed; F-T04 includes explicit NOT VERIFIED host outcomes, not blanket live success",
+      "evidence": [
+        "README.md",
+        "release-proposal.json"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R01",
+      "result": "PASS",
+      "evidence": [
+        "coverage.json",
+        "addy-audit.json",
+        "matt-audit.json",
+        "superpowers-audit.json"
+      ]
+    },
+    {
+      "id": "R02",
+      "result": "PASS",
+      "evidence": [
+        "coverage.json",
+        "behavior-grade.json",
+        "addy-operational.json",
+        "matt-operational.json",
+        "superpowers-operational.json"
+      ]
+    },
+    {
+      "id": "R03",
+      "result": "PASS",
+      "evidence": [
+        "coverage.json",
+        "resource-map.json"
+      ]
+    },
+    {
+      "id": "R04",
+      "result": "PASS",
+      "evidence": [
+        "verification.json",
+        "installation.json"
+      ]
+    },
+    {
+      "id": "R05",
+      "result": "PASS",
+      "evidence": [
+        "ownership.json",
+        "canonical-decisions.md"
+      ]
+    },
+    {
+      "id": "R06",
+      "result": "PASS_WITH_EXPLICIT_HOST_LIMITS",
+      "evidence": [
+        "behavior-grade.json",
+        "actors-v3/batch-1/results.json",
+        "actors-v3/batch-2/results.json",
+        "actors-v3/batch-3/results.json"
+      ]
+    },
+    {
+      "id": "R07",
+      "result": "PASS_WITH_EXPLICIT_HOST_LIMITS",
+      "evidence": [
+        "parent-work-grade.json",
+        "native-grade.json"
+      ]
+    },
+    {
+      "id": "R08",
+      "result": "PASS",
+      "evidence": [
+        "review-resolution.json",
+        "parent-work-grade.json"
+      ]
+    },
+    {
+      "id": "R09",
+      "result": "PASS_WITH_EXPLICIT_HOST_LIMITS",
+      "evidence": [
+        "preservation.json",
+        "verification.json",
+        "behavior-grade.json"
+      ]
+    },
+    {
+      "id": "R10",
+      "result": "PASS",
+      "evidence": [
+        "installation.json"
+      ]
+    },
+    {
+      "id": "R11",
+      "result": "PASS",
+      "evidence": [
+        "resource-map.json",
+        "review-resolution.json",
+        "preservation.json"
+      ]
+    },
+    {
+      "id": "R12",
+      "result": "PASS_WITH_EXPLICIT_HOST_LIMITS",
+      "evidence": [
+        "native-grade.json",
+        "host-preflight.json",
+        "README.md"
+      ]
+    },
+    {
+      "id": "R13",
+      "result": "PASS",
+      "evidence": [
+        "README.md",
+        "verification.json"
+      ]
+    },
+    {
+      "id": "R14",
+      "result": "PASS",
+      "evidence": [
+        "preservation.json",
+        "final-preflight.json"
+      ]
+    }
+  ],
+  "quality_gates": {
+    "Q1": "PASS_LOCAL_SCOPE",
+    "Q2": "PASS_LOCAL_SCOPE",
+    "Q3": "PASS_LOCAL_SCOPE",
+    "Q4": "PASS_LOCAL_SCOPE",
+    "Q5": "PASS_LOCAL_SCOPE",
+    "Q6": "APPROVED_BY_USER_FOR_EXISTING_RUNTIME_AND_MAIN_BRANCH_COMMIT_PUSH"
+  },
+  "runtime_hash": "628e3d35c153e463924dbb17212523568e9b759e4d6fd3367a30dad70d6424cd",
+  "limits": "Sibling structural/legacy regression, Codex resource-work and Claude v2 native evidence have different scopes. Claude final v3 weekly limit and untested hosts remain NOT VERIFIED. Publication is outside delivered local scope.",
+  "runtime_hash_scope": "Original v3 behavioral candidate; publication EOF-only lineage in publication-lineage.json",
+  "published_runtime_hash": "b94423e2409edcac5616ce097aa2741c0bc3a26dfda8690563a68bb540c1d657",
+  "published_runtime_commit": "efd9c508d55ed94ab2a1229e3324a008e7db71f0",
+  "publication_evidence": [
+    "publication-preflight.json",
+    "publication-lineage.json",
+    "staged-runtime.json",
+    "published-setup.json",
+    "publication-tests.log"
+  ]
+}

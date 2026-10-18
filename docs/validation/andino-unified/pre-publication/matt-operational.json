@@ -1,0 +1,1191 @@
+{
+  "schema_version": 1,
+  "source_family": "matt",
+  "checked_at_utc": "2026-10-18T08:44:48.282372+00:00",
+  "runtime_root": "C:\\Users\\Lenovo\\Downloads\\AI-RULES",
+  "checker_sha256": "5766412beb172538ee14228f8fc07944c9e24a6ec6dd068bac66b207aeae4570",
+  "methods_sha256": "115d04dd15441119662998d5cf8632976e88dd90bd822036e6f7af6d1238ebd8",
+  "inputs": {
+    "scripts/check_andino_matt_methods.py": "5766412beb172538ee14228f8fc07944c9e24a6ec6dd068bac66b207aeae4570",
+    "docs/validation/andino-unified/matt-methods.json": "115d04dd15441119662998d5cf8632976e88dd90bd822036e6f7af6d1238ebd8"
+  },
+  "command": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\scripts\\check_andino_matt_methods.py",
+    "--runtime-root",
+    "C:\\Users\\Lenovo\\Downloads\\AI-RULES",
+    "--methods",
+    "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\matt-methods.json",
+    "--output",
+    "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\matt-operational.json"
+  ],
+  "verification_scope": "Executed exact Python examples extracted from adapted Markdown; independently checked literal results and generated artifact semantics.",
+  "limitations": [
+    "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+    "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+    "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+    "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+    "Source libraries, scripts, hooks, installers and remote services are not executed."
+  ],
+  "records": [
+    {
+      "id": "decision-interview",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/decision-interview/GUIDE.md": "938a7fa8c33e212190f2ce110ef83370ab63997bbc50c0927d1365c71c1261d4",
+        "skills/decision-interview/resources/worked-example.md": "62c3b1446b037012dbb0af22c6ff432faacb85b46a53a852dcf260fb199c6ff0"
+      },
+      "observed": {
+        "frontier": [
+          "charts",
+          "storage"
+        ],
+        "material_missing": [],
+        "out_of_scope": "metrics charts"
+      },
+      "artifacts": [
+        {
+          "path": "intent.md",
+          "bytes": 178,
+          "sha256": "812e9692ef83869fb71ce4104691cd5994a44016ba0befaa76282be1b03b5f1a",
+          "observations": [
+            "track active experiments",
+            "metrics charts",
+            "local only"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "e42f9446c9465dc47a95765132982a24ca29955f493da5049429c924046313b2"
+    },
+    {
+      "id": "deep-module-design",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/deep-module-design/GUIDE.md": "237ff7b3fdc5fd5160bdbc79c51918c8eec85def0d9686c22c117a10a765111f",
+        "skills/deep-module-design/resources/worked-example.md": "c01601449c3ffd018b0a1bce65f8a7aacb7795c4bd4e0805c5cddd95970cd008"
+      },
+      "observed": {
+        "hypothetical_seams": [
+          "flexible"
+        ],
+        "public_behaviors": 6,
+        "selected": "minimal"
+      },
+      "artifacts": [
+        {
+          "path": "interface.md",
+          "bytes": 116,
+          "sha256": "915cddc6a38ce400897168a3fcb5bd10f091421098762157289afd068cb47293",
+          "observations": [
+            "quote(order)",
+            "unsupported destination",
+            "cents >= 0"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "a0b29d63b694feb78f4b08b36976bb31084c0bd23a2a1cd66d6f80638def95ee"
+    },
+    {
+      "id": "domain-modeling",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/domain-modeling/GUIDE.md": "620719a408890912f25612a5d7580e59adffafd34dfd0fb59c72c7b488a301df",
+        "skills/domain-modeling/resources/worked-example.md": "42bdc9225d8b0827889a64b9a7b4463adc26b4267f95aceceefac3af22de2743"
+      },
+      "observed": {
+        "canonical": [
+          "Order",
+          "Invoice",
+          "Order"
+        ],
+        "distinct_terms": 2,
+        "implementation_details": []
+      },
+      "artifacts": [
+        {
+          "path": "GLOSSARY.md",
+          "bytes": 139,
+          "sha256": "1da2cfe58e94c583e5aeaf7e83874d20bad723d95d500dd14993572879d20e85",
+          "observations": [
+            "**Order**",
+            "_Avoid_: Purchase",
+            "**Invoice**"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "442604a4b2452dca81c8ae71f2fd7857d9d292b2e67425f1c779ab5e0515308d"
+    },
+    {
+      "id": "implementation",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/implementation/GUIDE.md": "2215c4f9e360ad75585e490f79d4e7434a9eaf82f339ec765b1d88836ee20aa5",
+        "skills/implementation/resources/worked-example.md": "af53a2a654279c93f735acb936f8c48c0e31d4f770cb9c7781d7ecbff5d8c0a0"
+      },
+      "observed": {
+        "blocked": [
+          "screen"
+        ],
+        "git_mutations": [],
+        "ready": [
+          "api",
+          "docs"
+        ]
+      },
+      "artifacts": [
+        {
+          "path": "checkpoint.md",
+          "bytes": 79,
+          "sha256": "a98cc2078374391938c92881ac48b441d1b4bddf63756320a2f5aa90f6d6b555",
+          "observations": [
+            "Accepted: schema",
+            "Ready: api, docs",
+            "Blocked: screen"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "b86fb94d22e7b1b976bdab896c6aae5ff14fb7787d1734d6e71da76cd368acc6"
+    },
+    {
+      "id": "architecture-survey",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/architecture-survey/GUIDE.md": "cdae61097aa4772ee01e78bab2c77f66b6b6e7d1fb24e35d02a649eb18d8200a",
+        "skills/architecture-survey/resources/worked-example.md": "2c6062ea87f4be19ae9447e6476c2c1ad4e28844e9e1ea50a52a3338d846e2cf"
+      },
+      "observed": {
+        "candidate": "Order intake",
+        "external_assets": [],
+        "product_edits": [],
+        "strength": "Strong"
+      },
+      "artifacts": [
+        {
+          "path": "architecture.html",
+          "bytes": 317,
+          "sha256": "e95a2707e7c5d5e70658120574c717f9ff0c2af6ba793183c0c13aeca53434fe",
+          "observations": [
+            "Before",
+            "After",
+            "caller repeats validation",
+            "submit_order"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "fc343ee6f6a567624ed03d2eabe341de4283dbd88f86b5b9afe8697ba58f649e"
+    },
+    {
+      "id": "pr-description",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/pr-description/GUIDE.md": "96cd92fc8a65faafd528d214f5fc31ff64f488816979d6ff7fc995ff8b86707d",
+        "skills/pr-description/resources/worked-example.md": "baff2680ac1439c61cd27ce825bb58d0217183e00c625c8fea4860853a92a500",
+        "skills/pr-description/resources/credits.md": "d65d6d0ee64cd498726ecf278185bf284fc689118be524d6837a63a6f66e938c"
+      },
+      "observed": {
+        "after": "duplicate request returns original invoice",
+        "before": "duplicate request creates 2 invoices",
+        "published": false,
+        "risk": "billing retries"
+      },
+      "artifacts": [
+        {
+          "path": "pr-body.md",
+          "bytes": 274,
+          "sha256": "e3d2209527668546d71e333efb4b2f5c4d7cf3f8e858e8f54011ae987698c62b",
+          "observations": [
+            "Before:",
+            "After:",
+            "billing retries",
+            "external invoice delivery"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "4ae0d34eb39701f68f22e5e93ff9b073eb6ba02018c46cca8a809ae744a92285"
+    },
+    {
+      "id": "design-prototype",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/design-prototype/GUIDE.md": "a31c14453976fdaf42491a4e4b064199f948a948e032b793b9e040174d04b803",
+        "skills/design-prototype/resources/worked-example.md": "8fcea94450a1892602d2881a4c6215fe00b264f0169f62d186204189f60e9cb7"
+      },
+      "observed": {
+        "empty_checkout": {
+          "items": 0,
+          "status": "draft"
+        },
+        "live_mutations": [],
+        "paid": {
+          "items": 1,
+          "status": "paid"
+        },
+        "reset": {
+          "items": 0,
+          "status": "draft"
+        }
+      },
+      "artifacts": [
+        {
+          "path": "prototype.html",
+          "bytes": 1416,
+          "sha256": "5604f021b277644bd7cb1c94bc4eae9b1dfae4099b1579d2fd3ec7fd8f2bea9d",
+          "observations": [
+            "data-action=\"add\"",
+            "data-action=\"checkout\"",
+            "Guided walkthroughs",
+            "function reduce",
+            "aria-live"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "fe36c5ebfeea00cd096ae3cf61b6d22260e0e90bd101862cb984e49d971edfa0"
+    },
+    {
+      "id": "primary-source-research",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/primary-source-research/GUIDE.md": "d890dce190b54841e03e09286aa1a0c4c0851775f40ac0436e3b5c3ba265babd",
+        "skills/primary-source-research/resources/worked-example.md": "351efde9a52e9e1f7b5d8ebb22d8d6448d2b2b188cfc47469014de5d919be4dc"
+      },
+      "observed": {
+        "live_research": false,
+        "supported": 2,
+        "unsupported": []
+      },
+      "artifacts": [
+        {
+          "path": "research.md",
+          "bytes": 84,
+          "sha256": "be2051691719d7b7a7b76288aa3dd0b49b08de0b6267cb895ebcdb478d0c6c96",
+          "observations": [
+            "Retry key is required",
+            "Retention is 24 hours",
+            "fixture spec-v1"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "30e12cec4c9bc3ccfe89976ea84fe7a40dbdd45d1978d7df49e657f5bb49b752"
+    },
+    {
+      "id": "environment-retrospective",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/environment-retrospective/GUIDE.md": "31bc9666f6c198d5a2614b064000b3a17e0ae47e282905791b8357d98bbac59f",
+        "skills/environment-retrospective/resources/worked-example.md": "80f7787f7d26a2f2b9d845903ade06adb8ecd1036db176aa639c4c906a3bb267"
+      },
+      "observed": {
+        "actions": [
+          {
+            "action": "wire existing format-check",
+            "evidence": "e1"
+          },
+          {
+            "action": "add review standard",
+            "evidence": "e2"
+          }
+        ],
+        "global_edits": [],
+        "new_formatter": false
+      },
+      "artifacts": [
+        {
+          "path": "retro.md",
+          "bytes": 55,
+          "sha256": "c552e898e10b4e9884ecace1e757bfa96bb103f560870e22cb88508cb0762123",
+          "observations": [
+            "e1: wire existing format-check",
+            "e2: add review standard"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "fc72592f70daed530408036bc01c8b7c84e9a00b74a882997ee364208e7f5f27"
+    },
+    {
+      "id": "project-configuration",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/project-configuration/GUIDE.md": "0dad7c41a0841ac5a61bb97d64ef913cddaffe06a2ea181d1f7ed1dbfa137801",
+        "skills/project-configuration/resources/worked-example.md": "f7e83e15729cf39e3a2ae2414758f85ce6ca7dea7e8222ad8134e85ccc9fae8c"
+      },
+      "observed": {
+        "external_writes": [],
+        "preserved": true,
+        "roles": 5
+      },
+      "artifacts": [
+        {
+          "path": "AGENTS.md",
+          "bytes": 98,
+          "sha256": "9c4821669f69365e3c1eb442244b2c636bf0d1e0580edaf7e84b889b3f3ef401",
+          "observations": [
+            "Keep this instruction.",
+            "issue-tracker.md"
+          ]
+        },
+        {
+          "path": "issue-tracker.md",
+          "bytes": 83,
+          "sha256": "66346bbd369225f2c424805bb23749b3c025023b0571fbeaf190b3718826074e",
+          "observations": [
+            "local Markdown",
+            "real IDs"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "328c1516a121141874b1c2bc8e5646f7968e4c4322c8be08bc3b3197ea99073a"
+    },
+    {
+      "id": "specification",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/specification/GUIDE.md": "72b92b4eb385ad6eb6f3cf4b03576a5ac6b79bf7834ecdc1f583976bcb0954be",
+        "skills/specification/resources/worked-example.md": "491333dea60fec2f6deadca92de112753724607f5272ee8c902559b375dfa96f"
+      },
+      "observed": {
+        "build_order": [
+          "identity",
+          "billing",
+          "reports"
+        ],
+        "criteria_owned": [
+          "billing",
+          "identity",
+          "reports"
+        ],
+        "open_questions": []
+      },
+      "artifacts": [
+        {
+          "path": "spec.md",
+          "bytes": 238,
+          "sha256": "dcfd6867fc35a18d5bb17ed29f35db39ccbd2e2ddff6224f929b56284b02c909",
+          "observations": [
+            "identity -> billing -> reports",
+            "one invoice per retry key",
+            "Out of scope: email delivery"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "b8ea6f8123d6ceb8403b951288063ecf2b5df02a9aef8463531d8f13614ba5e0"
+    },
+    {
+      "id": "task-decomposition",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/task-decomposition/GUIDE.md": "8d869801b3eae1d14e0e0e8c095fbaadabca2c4602b639f6d23ca7a1e26fd201",
+        "skills/task-decomposition/resources/worked-example.md": "6d29482ee02ce749ac5d20cbc722c5851d8b9dfcde6c815e6b0f9b7bbbde21e3"
+      },
+      "observed": {
+        "contract_blocked": true,
+        "parent_closed": false,
+        "ready": [
+          "migrate-worker"
+        ]
+      },
+      "artifacts": [
+        {
+          "path": "tasks.json",
+          "bytes": 116,
+          "sha256": "5eafebc84fb6c260b67a30600f4d1c61e158a623d3bb4a3695471875a6fed4d0",
+          "observations": [
+            "migrate-ui",
+            "migrate-worker",
+            "contract"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "9ba27b27827237e40255be608a1cf176acfbac196a8875d82d07ed8d3aea5910"
+    },
+    {
+      "id": "issue-triage",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/issue-triage/GUIDE.md": "646afab3ae4a903c32dbe2dddb8b9bf17f45a297a4d82e00f008596dc0d4e1dc",
+        "skills/issue-triage/resources/worked-example.md": "2384d7a34168a398ed165c20d8edb9ba04ecbc0e10b65be69a5e457fcf978b35"
+      },
+      "observed": {
+        "category": "enhancement",
+        "external_write": false,
+        "reason": "already implemented",
+        "recommended_state": "wontfix",
+        "record_rejection": false
+      },
+      "artifacts": [
+        {
+          "path": "triage.md",
+          "bytes": 129,
+          "sha256": "e96dd2202bbb1f3b9918c338df2fc1820891371c4fe681fae56e811613d55c76",
+          "observations": [
+            "generated by AI",
+            "already implemented",
+            "feature exists"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "b9a9914be483e9d73d43daca7389f7b3711aa27124f69d6a88baba0ebff1f0f6"
+    },
+    {
+      "id": "decision-map",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/decision-map/GUIDE.md": "8399850b569c504b63393839b5d9989e344e25dae86724f644e641a53bd709c4",
+        "skills/decision-map/resources/worked-example.md": "706aff1c15102944c242737e85452caf915cb8472f4930312f99aee60cc27263"
+      },
+      "observed": {
+        "frontier": [
+          "choice"
+        ],
+        "implementation_started": false,
+        "user_choice_resolved": false
+      },
+      "artifacts": [
+        {
+          "path": "map.md",
+          "bytes": 138,
+          "sha256": "f3a2b344f84763d656b5d7e8bb8cd762e5eee463737a544734d258c1f75c705e",
+          "observations": [
+            "Destination: choose local storage",
+            "Not yet specified: backup policy",
+            "Out of scope: cloud sync"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "e0e160a20bbf244b26aaa5bb2473263140cfe2983861fa32bef79fb68f5b116f"
+    },
+    {
+      "id": "human-procedure",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/human-procedure/GUIDE.md": "935c71bf6b9faaacb7069ec4c935f84f0daaac0a3989406e8ebf37afff5ef1c3",
+        "skills/human-procedure/resources/worked-example.md": "28e28a29d3a2f8c7980d37728319878c382b66ba6fd74a3f881a3cb5ec3a8e66"
+      },
+      "observed": {
+        "external_writes": [],
+        "secret_names": [
+          "SERVICE_KEY"
+        ],
+        "secret_values": [],
+        "variables": [
+          "SERVICE_KEY",
+          "MODE"
+        ]
+      },
+      "artifacts": [
+        {
+          "path": "manual-steps.md",
+          "bytes": 149,
+          "sha256": "4ff3967441b339e39f685a6bf40cd46b834feb2ced8ca7373b14738a02c1a1fe",
+          "observations": [
+            "privately",
+            "never paste into chat",
+            "No external writes"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "a9cfafdbe60c6e9d57bc8e62b9a17510df43ff11af58e9bfded0762033fabd04"
+    },
+    {
+      "id": "handoff",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/handoff/GUIDE.md": "468b89031f6fbd6261f6c7c4cbb8cc45ae620403d966ccf67702e80bb124dca6",
+        "skills/handoff/resources/worked-example.md": "fc46cc516905ab38c56c00f120f46b3be8b7b108f01a05d1947313562c630255"
+      },
+      "observed": {
+        "commit_allowed": false,
+        "next_action": "run the accepted public-interface test",
+        "references": [
+          "spec.md",
+          "changes.diff"
+        ],
+        "spawned": false
+      },
+      "artifacts": [
+        {
+          "path": "handoff.md",
+          "bytes": 191,
+          "sha256": "e779eb2ba9dc3239c6e1cdc9e1dd2074d4322becc86ee9ee886d05cd7999dd5c",
+          "observations": [
+            "verification pending",
+            "spec.md",
+            "commit",
+            "false",
+            "run the accepted public-interface test"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "1ce8918b6aef45443d265dbe15755150a1c2efb5a496fd739e4ddbc0fad302f5"
+    },
+    {
+      "id": "learning-workspace",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/learning-workspace/GUIDE.md": "f723f13abace1639a259b29dc3b5998bca1723e6f9d3b00a3274f7a2ff0ebef0",
+        "skills/learning-workspace/resources/worked-example.md": "66b8b5df65eba7c4135f61f265f086fa91d6b2586c9c7a474a160def20393939"
+      },
+      "observed": {
+        "covered_not_mastered": [
+          "retry identity"
+        ],
+        "recorded": [
+          "idempotency",
+          "timeouts"
+        ],
+        "scheduled": false
+      },
+      "artifacts": [
+        {
+          "path": "MISSION.md",
+          "bytes": 100,
+          "sha256": "7ebba0f171d3d32c403599f3de28ee994a76dad94dcfca4de632147ea4e68983",
+          "observations": [
+            "diagnose safe retries",
+            "explain duplicate handling",
+            "Out of scope"
+          ]
+        },
+        {
+          "path": "lesson.html",
+          "bytes": 139,
+          "sha256": "310b200b852a1251b2063e3980cfa9762570a27e933f605c1f7de74f7a0e42ca",
+          "observations": [
+            "local source fixture"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "87058c41423b65af321079ddf85623e29e347920cd682c63b927dd6b3aba9eeb"
+    },
+    {
+      "id": "stakeholder-questionnaire",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/stakeholder-questionnaire/GUIDE.md": "8f219ce4fa42dc18b869c144c3860a38311b64f3d9590aaed235f774df219c9c",
+        "skills/stakeholder-questionnaire/resources/worked-example.md": "9e7c8ddc16d547bbe1f558360160143d5406a027c8c052967feb0180d5002127"
+      },
+      "observed": {
+        "covered_gaps": [
+          "capacity",
+          "retention"
+        ],
+        "recipient": "platform owner",
+        "sent": false
+      },
+      "artifacts": [
+        {
+          "path": "questionnaire.md",
+          "bytes": 229,
+          "sha256": "bd7cbecfcf77bc391e6892f4101769ab03fc9a0ca86c38f159174acee960f552",
+          "observations": [
+            "platform owner",
+            "peak request rate",
+            "retained",
+            "unknowns are useful",
+            "> "
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "da4072cbaff9996c3fdb8d689033b6de6afa709b9dd69d0c7804aff4ab33a7a8"
+    },
+    {
+      "id": "plain-language-repitch",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/plain-language-repitch/GUIDE.md": "cc10e252c61a8c20c0fe70211156ebc9a8574ecc61eacc74f9deaa42c91670a6",
+        "skills/plain-language-repitch/resources/worked-example.md": "b1581ae1137997e53585855299829c572243aae7c98e09fbf01f4b3292a91792"
+      },
+      "observed": {
+        "meaning_preserved": true,
+        "prerequisite": "schema",
+        "task": "API",
+        "tool_actions": []
+      },
+      "artifacts": [
+        {
+          "path": "repitch.txt",
+          "bytes": 95,
+          "sha256": "fc42a0c27d0516e7b681a806c9821a88fd8759bd726c29fbe2c376744af172e0",
+          "observations": [
+            "API task",
+            "schema change",
+            "Finish that change first"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "ace43d21249b2c68bbd43831b519210a3123558e7f736f4d421ce9cca858bcba"
+    },
+    {
+      "id": "agent-document-authoring",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/agent-document-authoring/GUIDE.md": "73ee49d2aa4e223666d65787181e0fc880fd370c0a8d66c2d0682fa6483b6aad",
+        "skills/agent-document-authoring/resources/worked-example.md": "1a3549bd0e54c72eacc61b4106786debd9673950e81c42a82b932a7760a822a2"
+      },
+      "observed": {
+        "branch_reference": "TS-specific fixture examples",
+        "duplicate_removed": 1,
+        "live_model_verified": false,
+        "meanings": 2
+      },
+      "artifacts": [
+        {
+          "path": "consumer-guide.md",
+          "bytes": 167,
+          "sha256": "0ba134e8177a931801a7f8d9e1fae47deb3ade8ced79e7e316aeb57497bf5a99",
+          "observations": [
+            "done when",
+            "only for TypeScript tests"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "ca36652703b3ae3896df0bdf5f669ab1e73f8f065d40418ff64cb03967daab62"
+    },
+    {
+      "id": "git-operation-guard",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/git-operation-guard/GUIDE.md": "b65d5ade93dfc1dad440ca8c37362dfcb46eb568b62d64804ef483823e7ebde9",
+        "skills/git-operation-guard/resources/worked-example.md": "c78e2e7f2713ac3125304e8d82c32cf459fda37a262589de09be574a011f6f14"
+      },
+      "observed": {
+        "executed_mutations": [],
+        "verdicts": [
+          "read-only",
+          "requires-authority",
+          "requires-authority",
+          "review-required"
+        ]
+      },
+      "artifacts": [
+        {
+          "path": "git-review.json",
+          "bytes": 76,
+          "sha256": "3bf16cb08ed43df541fb3a3d0916ab2353352946a912a4f895d583696e101ad4",
+          "observations": [
+            "requires-authority",
+            "review-required",
+            "read-only"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "424e668e280058302cd90aa17b90d20c1eb1706df40b61ff3a3e7761f8cc8bc3"
+    },
+    {
+      "id": "test-fixture-migration",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/test-fixture-migration/GUIDE.md": "2d1931988f3c7b0ecf66140515ced1ec4403282857de770b2ca08c04003347d6",
+        "skills/test-fixture-migration/resources/worked-example.md": "4633d5b074f8393145ec671d2a3702f2647fbb08b5de2283f1f069a9eee8a0ec"
+      },
+      "observed": {
+        "helpers": [
+          "fromPartial",
+          "fromAny"
+        ],
+        "invalid_id": 123,
+        "production_imports": [],
+        "typescript_run": false
+      },
+      "artifacts": [
+        {
+          "path": "fixture-migration.json",
+          "bytes": 116,
+          "sha256": "fb3b8b640c1345656cc5d5f432a881e66e16ff5b444aa21863f6f9bab252c32a",
+          "observations": [
+            "fromPartial",
+            "fromAny",
+            "123"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "de457fd7468c898590ec45b5411f0486fba2d1a15322b04ee5ec56705f4b21e1"
+    },
+    {
+      "id": "exercise-scaffolding",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/exercise-scaffolding/GUIDE.md": "d5d51b9d140b86f8b6d0c74ca183e0bbaae5dc68185abb80bbc2f31681445324",
+        "skills/exercise-scaffolding/resources/worked-example.md": "61205e2a3e24046a3f4c486f665f54afaa6a5731f1fed8558afe6a8183faacd3"
+      },
+      "observed": {
+        "course_linter_run": false,
+        "nonempty_readmes": true,
+        "variants": [
+          "explainer",
+          "problem",
+          "solution"
+        ]
+      },
+      "artifacts": [
+        {
+          "path": "exercises/05-memory/05.02-short-term/explainer/readme.md",
+          "bytes": 68,
+          "sha256": "0c22a0c9aac5222e495c203acae2b48a3633ec66fc5d59b8f2863dfc748d2d73",
+          "observations": [
+            "Short-term memory",
+            "concrete recall task"
+          ]
+        },
+        {
+          "path": "exercises/05-memory/05.02-short-term/problem/readme.md",
+          "bytes": 52,
+          "sha256": "dfdd3a593afbc55ba1a29dc781d2a2f04ecab7e6bfffc835a55f4321d15ffbe8",
+          "observations": [
+            "Recall task"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "2197920bd2761079d1e2c0660b5e399ec335337ebd915cb0fe84d41819697c32"
+    },
+    {
+      "id": "pre-commit-setup",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/pre-commit-setup/GUIDE.md": "763cd0111b3459571c0c3dce040d88ddd4bc3ff6ebfc18d8d62f8c6910bf5285",
+        "skills/pre-commit-setup/resources/worked-example.md": "f9a65f5bdb23ee519ce512ec82e0aa27d9ad7c4479aeea365543d207ce9a95fd"
+      },
+      "observed": {
+        "hook": [
+          "lint-staged",
+          "npm run typecheck",
+          "npm run test"
+        ],
+        "index_touched": false,
+        "package_execution": false,
+        "prepare": "build-tools && husky"
+      },
+      "artifacts": [
+        {
+          "path": "proposed-hook.txt",
+          "bytes": 44,
+          "sha256": "44b43b96fb045c03af25df2644acc5dc427cd9c6ef917c000aed3d4176f8ce09",
+          "observations": [
+            "lint-staged",
+            "npm run typecheck",
+            "npm run test"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "ed012f5e830dbea57d9a0007ebf9f103e290677d00b180fabd7ccc6d0dc87ccf"
+    },
+    {
+      "id": "workflow-specification",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/workflow-specification/GUIDE.md": "2d5fbd702cb957f2045fc99f1250decf44537f25db1f0d34459877dbab9572b0",
+        "skills/workflow-specification/resources/worked-example.md": "f7f78d643a656bfad6888676b5fd99ffe0bbfa653c4283d672bc870afb6a2e47"
+      },
+      "observed": {
+        "automation_created": false,
+        "checkpoint_after": "draft response",
+        "send_allowed": false,
+        "trigger": "event"
+      },
+      "artifacts": [
+        {
+          "path": "workflow.json",
+          "bytes": 362,
+          "sha256": "2dd7e676fb9710f366658ad3f4d452db70d484152f55f17157ded7e800f37841",
+          "observations": [
+            "new support request",
+            "draft response",
+            "draft link"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "f2dd494d1739fb3c31688b96fc5311f764be6b78156f9273477d1e1bd4d679cd"
+    },
+    {
+      "id": "typescript-boundary-enforcement",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/typescript-boundary-enforcement/GUIDE.md": "2e86f9da21ee0232f10441a100f351ea5d955ec5a23812df563ec9e8140149b4",
+        "skills/typescript-boundary-enforcement/resources/worked-example.md": "314ca431d93a7f29d99c81dad749e4a4653da8815d42a4a638586326a5eb4bf7"
+      },
+      "observed": {
+        "app": [
+          "entrypoint-boundary-from-app"
+        ],
+        "clean": [],
+        "cross": [
+          "entrypoint-boundary-across-packages"
+        ],
+        "cycle": [
+          "no-circular"
+        ],
+        "dirty": [
+          "tests-through-entrypoints"
+        ],
+        "external_tool_run": false,
+        "fixture": [
+          "tests-folder-is-private"
+        ],
+        "restored": []
+      },
+      "artifacts": [
+        {
+          "path": "boundary-results.json",
+          "bytes": 254,
+          "sha256": "c58658c9bd3ae6b98fc5481990c5155d4c1f90cafeb1f91588e551e4281b7c22",
+          "observations": [
+            "tests-through-entrypoints",
+            "entrypoint-boundary-from-app",
+            "entrypoint-boundary-across-packages",
+            "tests-folder-is-private",
+            "no-circular"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "720d58fae55f0dbc656ac5b889178272f394874dba21e71d0efc18949479f8da"
+    },
+    {
+      "id": "article-shaping",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/article-shaping/GUIDE.md": "af9888c968ba339844b4b16276348ddacbe0a2a2c6d4ae118ffb4c38eed94d88",
+        "skills/article-shaping/resources/worked-example.md": "3baa7dcaf70a446b1491c06ab964c0197a1239e2f1ce2309ac3c95a8237a16d0"
+      },
+      "observed": {
+        "grounded": [
+          "idempotency",
+          "request"
+        ],
+        "initial_choices": [
+          "identity"
+        ],
+        "next_choices": [
+          "retry"
+        ],
+        "raw_preserved": true
+      },
+      "artifacts": [
+        {
+          "path": "raw.md",
+          "bytes": 62,
+          "sha256": "0328601050ec3358c13f6fa06c861a167d62647729cca20b68293e7c5f50adfc",
+          "observations": [
+            "Requests can be repeated."
+          ]
+        },
+        {
+          "path": "article.md",
+          "bytes": 87,
+          "sha256": "5ab7ff0850573b0ff38729296e1e6160f0955b38d525f4058507c8d07a28d7a1",
+          "observations": [
+            "Idempotency",
+            "same intended action"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "85b45ad7b4b710f1069310874ff0ab3f704a8daf5c983e7da77a2fa250817401"
+    },
+    {
+      "id": "writing-fragments",
+      "status": "PASS",
+      "verification_level": "deterministic-operational-example",
+      "source_hashes": {
+        "skills/writing-fragments/GUIDE.md": "9acbe7b1790ca20b14fa58660607b9970e0d426f9cd8098653739870a2bf3438",
+        "skills/writing-fragments/resources/worked-example.md": "afd076831e3c128998077c3d552fbc5ddfb1d71b5509c31495d74e70c6f654dd"
+      },
+      "observed": {
+        "fragments": 2,
+        "opening_preserved": true,
+        "outline_added": false
+      },
+      "artifacts": [
+        {
+          "path": "fragments.md",
+          "bytes": 98,
+          "sha256": "fe6e26c22a42b57588fadcde31a343f50b26570d692b971321edcd99657aeb90",
+          "observations": [
+            "User-edited opening.",
+            "---",
+            "one intention"
+          ]
+        }
+      ],
+      "live_model_routing": "NOT VERIFIED",
+      "live_optional_tools": "NOT VERIFIED",
+      "limitations": [
+        "Deterministic local example execution and artifact semantics only; no model routing selector is implemented or claimed.",
+        "Positive/negative raw requests are evaluation inputs, not proven live-model activation results.",
+        "No live host parity, human feedback quality, browser rendering/click-through, external tracker mutation or optional package CLI execution is claimed.",
+        "TypeScript boundary checks exercise the stated graph rules on literal fixtures, not dependency-cruiser parsing/resolution.",
+        "Source libraries, scripts, hooks, installers and remote services are not executed."
+      ],
+      "metadata_sha256": "172bf66303b2eaaa2b6249eb321042fb9fa33d0f3b61b42b075a58270bb75241"
+    }
+  ],
+  "passed": 28,
+  "failed": 0
+}

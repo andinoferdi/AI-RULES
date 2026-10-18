@@ -1,0 +1,341 @@
+{
+  "request": "Use Andino to review candidate.py as an uncommitted new file. Spec: admins may open every record; members may open only records from their own organization. Standard: never evaluate user input dynamically. Do not repair it. Write review.json with specific findings, file/line, consequence, and separate spec/standards verdicts.",
+  "scope": {
+    "kind": "uncommitted new-file fixture",
+    "baseline": "empty prior file, as specified by raw work request",
+    "files": [
+      {
+        "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors/batch-3/candidate.py",
+        "sha256": "1669b711b0f16f44a9dc1545c57ef6d87b055fe12dd0f5d19ea42732be47ddfd",
+        "bytes": 123,
+        "lines": 3
+      }
+    ],
+    "excluded": [
+      "actor harness/report files",
+      "repository-wide status or history",
+      "unrelated files"
+    ]
+  },
+  "request_and_input": {
+    "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actor-inputs/batch-3.json",
+    "sha256": "a93cdc588deb9a065b24a2391acc3e1fb457121f926dc96f754735663509bab0"
+  },
+  "runtime": [
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/SKILL.md",
+      "sha256": "30272e5961b438b9902aa2eb60dc0099be968b09f179c97bfe31fc2501342936"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/references/routing.md",
+      "sha256": "19f19dbecc2acbed98068b4f7d86c0927545a464f99999f4472f971c871692b1"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/references/invocation-adapter.md",
+      "sha256": "b21e797d9422a499a64a33ef193457655d8249e49b2a4b76d5a940241a1ef500"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/references/internal-method-index.md",
+      "sha256": "0ac0a0e373c0497946bdbde1014c2e7a8ef96d45c40f119e2b40c4863e3b61f3"
+    }
+  ],
+  "actual_guide_reads": [
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/implementation/GUIDE.md",
+      "sha256": "2215c4f9e360ad75585e490f79d4e7434a9eaf82f339ec765b1d88836ee20aa5"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/tdd/GUIDE.md",
+      "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/git-operation-guard/GUIDE.md",
+      "sha256": "b65d5ade93dfc1dad440ca8c37362dfcb46eb568b62d64804ef483823e7ebde9"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/session-diagnostics/GUIDE.md",
+      "sha256": "d8ef41b3a33f67c8b49bde0dce8a0ed37c75bb4187df2fabfae231c3b9725c74"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/plain-language-repitch/GUIDE.md",
+      "sha256": "cc10e252c61a8c20c0fe70211156ebc9a8574ecc61eacc74f9deaa42c91670a6"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/deep-module-design/GUIDE.md",
+      "sha256": "237ff7b3fdc5fd5160bdbc79c51918c8eec85def0d9686c22c117a10a765111f"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/pre-commit-setup/GUIDE.md",
+      "sha256": "763cd0111b3459571c0c3dce040d88ddd4bc3ff6ebfc18d8d62f8c6910bf5285"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/primary-source-research/GUIDE.md",
+      "sha256": "d890dce190b54841e03e09286aa1a0c4c0851775f40ac0436e3b5c3ba265babd"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/code-review/GUIDE.md",
+      "sha256": "ee97a3c7a06c2e057ca760fba788ca748ee40192a234daa22b74e9b8a68d3ff3"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/workflow-specification/GUIDE.md",
+      "sha256": "2d5fbd702cb957f2045fc99f1250decf44537f25db1f0d34459877dbab9572b0"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/decision-interview/GUIDE.md",
+      "sha256": "938a7fa8c33e212190f2ce110ef83370ab63997bbc50c0927d1365c71c1261d4"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/test-fixture-migration/GUIDE.md",
+      "sha256": "2d1931988f3c7b0ecf66140515ced1ec4403282857de770b2ca08c04003347d6"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/task-decomposition/GUIDE.md",
+      "sha256": "8d869801b3eae1d14e0e0e8c095fbaadabca2c4602b639f6d23ca7a1e26fd201"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/verification/GUIDE.md",
+      "sha256": "7d79dcd35c90611c99bf7250f9ef2d879c16f305e27f4f6a0ccd7817b3adaa71"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/article-shaping/GUIDE.md",
+      "sha256": "af9888c968ba339844b4b16276348ddacbe0a2a2c6d4ae118ffb4c38eed94d88"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/api-and-interface-design/GUIDE.md",
+      "sha256": "379746694129f138748acba7c30e97169b497851db0e41dfdb3cfe9b62d4a42f"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/observability-and-instrumentation/GUIDE.md",
+      "sha256": "1c26a01de213658a8441ecde429cb033510d4e3f9ac1c0127601e847902ac218"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/delivery/GUIDE.md",
+      "sha256": "f67939cd3b2250e16ada52024575ada4e6d5385bb636933d8aeff5534cefc157"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/code-simplification/GUIDE.md",
+      "sha256": "ce597d8364292cad23d4e5144a7ac3d9c060bb54cf46a6299b83729a5b108f4a"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/shipping-and-launch/GUIDE.md",
+      "sha256": "7d28617fe1462ccd00f15257ceba730b90c773222f9bf04f20af7ff8134c0296"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/debugging/GUIDE.md",
+      "sha256": "0beb55e7efa68b7965e3d2c52f73e78b42af711bc9f7d4f2e298ea143c55f508"
+    }
+  ],
+  "supporting_resource_reads": [
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/tdd/resources/contract.md",
+      "sha256": "cd338df4ae6f3140eaac85e502d2be856652582570fae3f5461a488ab510b5fc"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/session-diagnostics/resources/contract.md",
+      "sha256": "d7a3fdc066bd059da7057bf495ffef9b2abe78382f7a3d460a1ae504326c6ecd"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/code-review/resources/contract.md",
+      "sha256": "ace716fd7c90107e2c791ef5e0ef4d5e1dc04c46e888f5b29eb207c5fe0fe314"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/verification/resources/contract.md",
+      "sha256": "04f67706387a7dfa695b2c8e585508529dd8dce97ae9fd8f87ff1d4638676517"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/delivery/resources/contract.md",
+      "sha256": "f8b2ba44c41b0e4b02caaf56ae5f2ba6b9a54d4ddf1ac42a68ae7e7c00c8648d"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/code-simplification/resources/protected-regions.md",
+      "sha256": "8ef1c19a74f90110851126d07dd3ab2c52092ebbdb5f8a3652168a6906098c2f"
+    },
+    {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/debugging/resources/contract.md",
+      "sha256": "685751e25e0f3e078d916c5b6f0102b9b43c694fb8e301ec820ffdb3aba8ee77"
+    }
+  ],
+  "communication_activation": {
+    "id": "focus",
+    "path": "C:/Users/Lenovo/.agents/skills/focus/SKILL.md",
+    "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+    "resources": [
+      {
+        "path": "C:/Users/Lenovo/.agents/skills/focus/references/priority-a.md",
+        "sha256": "d50f0438ef16d87e8a2bde408f0f20794d0ee8f3b00b93c012add20e0d097d1b"
+      },
+      {
+        "path": "C:/Users/Lenovo/.agents/skills/focus/references/human-language-indonesia.md",
+        "sha256": "339b959b250c96a89c7412a429d92c9a45e679f4844ea3fa58d6d26787f931c6"
+      },
+      {
+        "path": "C:/Users/Lenovo/.agents/skills/focus/references/human-language-english.md",
+        "sha256": "c496893a8c093d588af6df21b0c793256f1874290b241603f056cbc9496973be"
+      }
+    ],
+    "application": "Bounded progress updates and self-contained factual artifact handoff; no invented evidence or repeated lifecycle."
+  },
+  "research_activation": {
+    "id": "search-first",
+    "path": "C:/Users/Lenovo/.agents/skills/search-first/SKILL.md",
+    "sha256": "fd9d774b0b35394fee191b437f6ef29635f4d6192b44d94b6a4226320bbf85a3",
+    "state": "ACTIVE for case aee1fafddd30; online execution unavailable, no research-use claim"
+  },
+  "actions": [
+    {
+      "action": "Read root/routing/host contract before raw selection cases and work.request.",
+      "result": "Routing and permitted Codex file-read activation established."
+    },
+    {
+      "action": "Read full selected guides progressively; release irrelevant methods between independent snapshots.",
+      "result": "All 38 IDs accounted for. Observability assessed for retry case then released because no distinct telemetry decision remained."
+    },
+    {
+      "action": "Read code-review guide and supporting contract before work.files.",
+      "result": "Review fixture only; no unknown-cause diagnostic source investigation."
+    },
+    {
+      "action": "Created candidate.py from the raw work.files exact UTF-8 bytes.",
+      "result": {
+        "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors/batch-3/candidate.py",
+        "sha256": "1669b711b0f16f44a9dc1545c57ef6d87b055fe12dd0f5d19ea42732be47ddfd"
+      }
+    },
+    {
+      "command": "rtk python C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors/batch-3/review_probe.py",
+      "exit_code": 0,
+      "result": "4 literal spec cases: 2 match and 2 mismatch; eval AST call line 2; deliberately faulty in-memory admin mutation detected; source hash unchanged."
+    },
+    {
+      "action": "Separate spec and standards review passes; no repair.",
+      "result": "review.json contains independent FAIL verdicts and 2 concrete findings."
+    },
+    {
+      "command": "rtk python -c: read back results/review/work, compare all 38 IDs, selected path hashes and raw fixture bytes",
+      "exit_code": 0,
+      "result": {
+        "unique_selection_ids": 38,
+        "selected_resource_records_verified": 31,
+        "candidate_bytes": 123,
+        "findings_lines": [
+          3,
+          2
+        ],
+        "json_artifacts_read_back": 3
+      }
+    }
+  ],
+  "tool_incidents": [
+    {
+      "command": "rtk powershell reading Focus and parsing raw JSON with an unescaped shell variable",
+      "exit_code": 1,
+      "effect": "Focus was read; JSON extraction failed before any fixture read/write. Corrected once using rtk python."
+    },
+    {
+      "effect": "A combined read exceeded returned output budget; selected Focus language references were reread in bounded calls. No hidden evidence or alternate source was used."
+    },
+    {
+      "command": "rtk python -c validation with embedded quoted source literal",
+      "exit_code": 1,
+      "effect": "Shell quote syntax failed before execution; corrected once by comparing raw input bytes instead."
+    }
+  ],
+  "results": {
+    "candidate_path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-3\\candidate.py",
+    "sha256_before": "1669b711b0f16f44a9dc1545c57ef6d87b055fe12dd0f5d19ea42732be47ddfd",
+    "scope": {
+      "baseline": "new file; empty prior bytes",
+      "owned_new_files_reviewed": [
+        "candidate.py"
+      ],
+      "reviewed_bytes": 123,
+      "reviewed_lines": 3
+    },
+    "spec_cases": [
+      {
+        "id": "admin_own",
+        "user": {
+          "role": "admin",
+          "org": "A"
+        },
+        "record": {
+          "org": "A"
+        },
+        "expected": true,
+        "actual": true,
+        "matches_spec": true
+      },
+      {
+        "id": "admin_other",
+        "user": {
+          "role": "admin",
+          "org": "A"
+        },
+        "record": {
+          "org": "B"
+        },
+        "expected": true,
+        "actual": true,
+        "matches_spec": true
+      },
+      {
+        "id": "member_own",
+        "user": {
+          "role": "member",
+          "org": "A"
+        },
+        "record": {
+          "org": "A"
+        },
+        "expected": true,
+        "actual": false,
+        "matches_spec": false
+      },
+      {
+        "id": "member_other",
+        "user": {
+          "role": "member",
+          "org": "A"
+        },
+        "record": {
+          "org": "B"
+        },
+        "expected": false,
+        "actual": true,
+        "matches_spec": false
+      }
+    ],
+    "spec_matches": 2,
+    "spec_mismatches": 2,
+    "standards_dynamic_calls": [
+      {
+        "line": 2,
+        "call": "eval"
+      }
+    ],
+    "mutation": {
+      "kind": "admin comparison changed only in memory",
+      "expected": true,
+      "actual": false,
+      "independent_oracle_detected": true,
+      "candidate_file_modified": false
+    },
+    "sha256_after": "1669b711b0f16f44a9dc1545c57ef6d87b055fe12dd0f5d19ea42732be47ddfd",
+    "environment": "offline Python standard library; no service calls"
+  },
+  "artifacts": [
+    "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors/batch-3/candidate.py",
+    "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors/batch-3/review_probe.py",
+    "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors/batch-3/probe-results.json",
+    "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors/batch-3/review.json",
+    "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors/batch-3/work.json",
+    "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors/batch-3/results.json"
+  ],
+  "limits": [
+    "No supplied repository tests; independent literal spec matrix used.",
+    "No live service or UI validation.",
+    "The new-file baseline is provided by the fixture request; no repository-wide Git status/history was read.",
+    "Review only; candidate was not repaired.",
+    "No network, Git mutation, installation, global configuration or nested agents."
+  ]
+}

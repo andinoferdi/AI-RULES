@@ -1,0 +1,1114 @@
+{
+  "schema_version": 1,
+  "source_family": "addy",
+  "kind": "executed-guide-procedure-examples",
+  "runtime_root": "C:\\Users\\Lenovo\\Downloads\\AI-RULES",
+  "manifest_sha256": "001f8801877ef1fabe4d4096e806485d0bf774ee14cbdfeca8fca7e3798b306c",
+  "inputs": {
+    "scripts/check_andino_addy_methods.py": "f7bf15420f5796d352b0f254578adfa6c4d97787dcb23c6931cc1245bdf68dc1",
+    "docs/validation/andino-unified/addy-methods.json": "001f8801877ef1fabe4d4096e806485d0bf774ee14cbdfeca8fca7e3798b306c"
+  },
+  "summary": {
+    "methods": 18,
+    "passed": 18,
+    "failed": 0,
+    "live_browser_or_service_runs": 0,
+    "model_activation_runs": 0
+  },
+  "limits": [
+    "Activation requests are explicit positive/negative fixtures; no model routing is inferred from keywords.",
+    "Executed Python examples demonstrate bounded procedures and mutation sensitivity, not whole-project/live-host parity.",
+    "All example filesystem mutations occurred in owned TemporaryDirectory; network/external process disabled."
+  ],
+  "methods": [
+    {
+      "id": "api-and-interface-design",
+      "metadata_sha256": "47e7ecee8fb6c9918b4df586a9dac7882ae6fa1572267763aefbd37bd674bc54",
+      "status": "PASS",
+      "guide_sha256": "ede9ae32186819893f152c58fc036fb3be3c225810c173db8264a93415d6597c",
+      "resource_sha256": {},
+      "positive_activation_request": "Make this charge endpoint honor retries when four requests arrive together.",
+      "negative_activation_request": "Rename the private variable total to subtotal.",
+      "activation_evidence": "DECLARED_FIXTURES_ONLY; model routing not executed",
+      "default": {
+        "ok": true,
+        "observed": {
+          "applied": 1,
+          "effects": 1,
+          "payload_check": "conflict",
+          "replayed": 3
+        },
+        "expected": {
+          "applied": 1,
+          "replayed": 3,
+          "effects": 1,
+          "payload_check": "conflict"
+        },
+        "pass": true
+      },
+      "adversarial": {
+        "ok": true,
+        "observed": {
+          "applied": 1,
+          "effects": 1,
+          "payload_check": "replay",
+          "replayed": 3
+        },
+        "expected": {
+          "applied": 1,
+          "replayed": 3,
+          "effects": 1,
+          "payload_check": "replay"
+        },
+        "pass": true
+      },
+      "mutation": {
+        "fault": "ignore previously claimed intent",
+        "detected": true,
+        "result": {
+          "ok": false,
+          "exit_code": 1,
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 39, in <module>\n  File \"<guide-operational-example>\", line 27, in <module>\n  File \"<guide-operational-example>\", line 20, in probe\n  File \"C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\concurrent\\futures\\_base.py\", line 619, in result_iterator\n    yield _result_or_cancel(fs.pop())\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\concurrent\\futures\\_base.py\", line 317, in _result_or_cancel\n    return fut.result(timeout)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\concurrent\\futures\\_base.py\", line 456, in result\n    return self.__get_result()\n           ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\concurrent\\futures\\_base.py\", line 401, in __get_result\n    raise self._exception\n  File \"C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\concurrent\\futures\\thread.py\", line 59, in run\n    result = self.fn(*self.args, **self.kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<guide-operational-example>\", line 15, in apply\nsqlite3.IntegrityError: UNIQUE constraint failed: intents.key\n"
+        }
+      },
+      "limit": "SQLite proof covers a local transactional effect only; remote timeout reconciliation and provider behavior require integration evidence."
+    },
+    {
+      "id": "browser-testing-with-devtools",
+      "metadata_sha256": "3e95b9e1eb553e5a9e09ebe0b2d79a5e1fc7f44d15ba1d1d64de376e95d77d94",
+      "status": "PASS",
+      "guide_sha256": "f83d00200a8a9db77afb934c242952909cc7a53b63415663779b37eab72a77df",
+      "resource_sha256": {
+        "skills/browser-testing-with-devtools/resources/accessibility.md": "78a0e7c05d5393678c0b2d1065a6565a4d000c45828dd7251a001a4becc96ef2"
+      },
+      "positive_activation_request": "The checkbox stays checked after a PATCH returns 503; diagnose these captured events.",
+      "negative_activation_request": "Check the ordering of rows in this backend-only CSV exporter.",
+      "activation_evidence": "DECLARED_FIXTURES_ONLY; model routing not executed",
+      "default": {
+        "ok": true,
+        "observed": {
+          "layer": "server",
+          "live_browser": false,
+          "requests": 1
+        },
+        "expected": {
+          "layer": "server",
+          "requests": 1,
+          "live_browser": false
+        },
+        "pass": true
+      },
+      "adversarial": {
+        "ok": true,
+        "observed": {
+          "layer": "event-wiring",
+          "live_browser": false,
+          "requests": 0
+        },
+        "expected": {
+          "layer": "event-wiring",
+          "requests": 0,
+          "live_browser": false
+        },
+        "pass": true
+      },
+      "mutation": {
+        "fault": "misclassify server status",
+        "detected": true,
+        "result": {
+          "ok": true,
+          "observed": {
+            "layer": "client-contract",
+            "live_browser": false,
+            "requests": 1
+          }
+        }
+      },
+      "limit": "Offline artifact triage only; no live browser, screenshot, computed style, accessibility tree or performance capture claimed."
+    },
+    {
+      "id": "ci-cd-and-automation",
+      "metadata_sha256": "f7fe7bb9097c8912e6c90cf31028f863abe17dc0b2ea72cfab0de7aa201ca27b",
+      "status": "PASS",
+      "guide_sha256": "750250d5d2dd65bc63dabbe34a8571634a54330389dada457577b545e03dab73",
+      "resource_sha256": {},
+      "positive_activation_request": "Wire lint, unit, build and release readiness so a failed ancestor prevents advancement.",
+      "negative_activation_request": "Correct a README spelling error; do not change code or CI.",
+      "activation_evidence": "DECLARED_FIXTURES_ONLY; model routing not executed",
+      "default": {
+        "ok": true,
+        "observed": {
+          "deployed": false,
+          "publish_ready": true,
+          "stages": {
+            "build": "pass",
+            "lint": "pass",
+            "publish": "pass",
+            "unit": "pass"
+          }
+        },
+        "expected": {
+          "stages": {
+            "lint": "pass",
+            "unit": "pass",
+            "build": "pass",
+            "publish": "pass"
+          },
+          "publish_ready": true,
+          "deployed": false
+        },
+        "pass": true
+      },
+      "adversarial": {
+        "ok": true,
+        "observed": {
+          "deployed": false,
+          "publish_ready": false,
+          "stages": {
+            "build": "blocked",
+            "lint": "fail",
+            "publish": "blocked",
+            "unit": "blocked"
+          }
+        },
+        "expected": {
+          "stages": {
+            "lint": "fail",
+            "unit": "blocked",
+            "build": "blocked",
+            "publish": "blocked"
+          },
+          "publish_ready": false,
+          "deployed": false
+        },
+        "pass": true
+      },
+      "mutation": {
+        "fault": "invert prerequisite gate",
+        "detected": true,
+        "result": {
+          "ok": true,
+          "observed": {
+            "deployed": false,
+            "publish_ready": false,
+            "stages": {
+              "build": "pass",
+              "lint": "pass",
+              "publish": "blocked",
+              "unit": "blocked"
+            }
+          }
+        }
+      },
+      "limit": "Offline dependency/gate execution model; hosted CI, required check protection, secrets and deployment remain unverified."
+    },
+    {
+      "id": "code-simplification",
+      "metadata_sha256": "c49d07d223c32d5cc35ce33303ea0f6aadc61fa1c84f177b4b8b2a21652a46ce",
+      "status": "PASS",
+      "guide_sha256": "fe6818a878e5e7bc94dc06c4b95daed3fb41fc84ad1d09c48cb6bc7e073c23cf",
+      "resource_sha256": {
+        "skills/code-simplification/resources/protected-regions.md": "ff5ec359c88c4035fc94ddfca7e0558b5f4a21236830046de5d00a3075730cef"
+      },
+      "positive_activation_request": "Simplify this green nested function without changing errors or the marked fast path.",
+      "negative_activation_request": "Fix the empty-input crash; the accepted behavior must change.",
+      "activation_evidence": "DECLARED_FIXTURES_ONLY; model routing not executed",
+      "default": {
+        "ok": true,
+        "observed": {
+          "behavior_equal": true,
+          "cases": 7,
+          "protected_equal": true
+        },
+        "expected": {
+          "behavior_equal": true,
+          "protected_equal": true,
+          "cases": 7
+        },
+        "pass": true
+      },
+      "adversarial": {
+        "ok": true,
+        "observed": {
+          "behavior_equal": true,
+          "cases": 7,
+          "protected_equal": false
+        },
+        "expected": {
+          "behavior_equal": true,
+          "protected_equal": false,
+          "cases": 7
+        },
+        "pass": true
+      },
+      "mutation": {
+        "fault": "change accepted numeric behavior",
+        "detected": true,
+        "result": {
+          "ok": true,
+          "observed": {
+            "behavior_equal": false,
+            "cases": 7,
+            "protected_equal": true
+          }
+        }
+      },
+      "limit": "Finite input/error comparison proves only these cases; full project regression and actual hot-path performance remain separate."
+    },
+    {
+      "id": "constraint-driven-development",
+      "metadata_sha256": "af821fce59bf64e8a3c5bfbdf185c992455117004d931ef2c29481869e95e2fb",
+      "status": "PASS",
+      "guide_sha256": "58cf7c4ae0f9607a873e6929c9f9f264a95d964f9112ade86d3490d026fcb813",
+      "resource_sha256": {
+        "skills/constraint-driven-development/resources/floor-guard.md": "6df4eac50f6a7654b1eba7819142ba49a30f48a5c43872e896fb20f9947a28f3"
+      },
+      "positive_activation_request": "The diff drops assertions, adds a suppression and lowers minimum coverage; enforce the floor.",
+      "negative_activation_request": "Reformat the unchanged constraints document without altering any rules.",
+      "activation_evidence": "DECLARED_FIXTURES_ONLY; model routing not executed",
+      "default": {
+        "ok": true,
+        "observed": {
+          "exit": 1,
+          "rules": [
+            "assertion-removed",
+            "silenced-or-skipped",
+            "threshold-loosened"
+          ]
+        },
+        "expected": {
+          "exit": 1,
+          "rules": [
+            "assertion-removed",
+            "silenced-or-skipped",
+            "threshold-loosened"
+          ]
+        },
+        "pass": true
+      },
+      "adversarial": {
+        "ok": true,
+        "observed": {
+          "exit": 2,
+          "rules": [
+            "baseline-unavailable"
+          ]
+        },
+        "expected": {
+          "exit": 2,
+          "rules": [
+            "baseline-unavailable"
+          ]
+        },
+        "pass": true
+      },
+      "mutation": {
+        "fault": "invert minimum ratchet",
+        "detected": true,
+        "result": {
+          "ok": true,
+          "observed": {
+            "exit": 1,
+            "rules": [
+              "assertion-removed",
+              "silenced-or-skipped"
+            ]
+          }
+        }
+      },
+      "limit": "Example evaluates supplied unified diff/rule pairs; it is a reference core, not a full repository Git diff collector."
+    },
+    {
+      "id": "context-engineering",
+      "metadata_sha256": "c56b7c7594e298714db54bbabb2e3f56a0d5f2315d5b576c3c11e11428ec8c28",
+      "status": "PASS",
+      "guide_sha256": "a52fca45cb6b339e49e6adc2d99b7083303ad22b622937356d84ce5a91fe745e",
+      "resource_sha256": {},
+      "positive_activation_request": "Prepare a bounded handoff that preserves scope and the current error while dropping old logs.",
+      "negative_activation_request": "Explain this single supplied expression; no session context is needed.",
+      "activation_evidence": "DECLARED_FIXTURES_ONLY; model routing not executed",
+      "default": {
+        "ok": true,
+        "observed": {
+          "kept": [
+            "scope",
+            "current-error"
+          ],
+          "state": "ready"
+        },
+        "expected": {
+          "state": "ready",
+          "kept": [
+            "scope",
+            "current-error"
+          ]
+        },
+        "pass": true
+      },
+      "adversarial": {
+        "ok": true,
+        "observed": {
+          "kept": [],
+          "state": "needs-split"
+        },
+        "expected": {
+          "state": "needs-split",
+          "kept": []
+        },
+        "pass": true
+      },
+      "mutation": {
+        "fault": "invert protected-context budget",
+        "detected": true,
+        "result": {
+          "ok": true,
+          "observed": {
+            "kept": [],
+            "state": "needs-split"
+          }
+        }
+      },
+      "limit": "Budgeted artifact selection is tested; model attention quality and live compaction behavior are not measured."
+    },
+    {
+      "id": "deprecation-and-migration",
+      "metadata_sha256": "e0405d300e7201e54ae6fe2ca075e35f5f5638583706565c4a017b39b73b2616",
+      "status": "PASS",
+      "guide_sha256": "da7372011f1a9722e0ce6b0b68fa6defb0f06c872d4abf0357ec91ccd6a5a2c4",
+      "resource_sha256": {},
+      "positive_activation_request": "Migrate name to full_name while old clients still run; show expand, backfill and guarded contract.",
+      "negative_activation_request": "Rename a private loop variable in an unused example.",
+      "activation_evidence": "DECLARED_FIXTURES_ONLY; model routing not executed",
+      "default": {
+        "ok": true,
+        "observed": {
+          "coexisting_rows": 2,
+          "contracted": true,
+          "names": [
+            "Ada",
+            "Lin"
+          ],
+          "old_consumers": 0
+        },
+        "expected": {
+          "coexisting_rows": 2,
+          "names": [
+            "Ada",
+            "Lin"
+          ],
+          "contracted": true,
+          "old_consumers": 0
+        },
+        "pass": true
+      },
+      "adversarial": {
+        "ok": true,
+        "observed": {
+          "coexisting_rows": 2,
+          "contracted": false,
+          "names": [
+            "Ada",
+            "Lin"
+          ],
+          "old_consumers": 1
+        },
+        "expected": {
+          "coexisting_rows": 2,
+          "names": [
+            "Ada",
+            "Lin"
+          ],
+          "contracted": false,
+          "old_consumers": 1
+        },
+        "pass": true
+      },
+      "mutation": {
+        "fault": "contract while legacy consumer remains",
+        "detected": true,
+        "result": {
+          "ok": true,
+          "observed": {
+            "coexisting_rows": 2,
+            "contracted": true,
+            "names": [
+              "Ada",
+              "Lin"
+            ],
+            "old_consumers": 1
+          }
+        }
+      },
+      "limit": "Real temporary SQLite schema/data transitions; production traffic, online DDL, backfill locking and down migrations need target-engine evidence."
+    },
+    {
+      "id": "documentation-and-adrs",
+      "metadata_sha256": "61f096117623b3147739828db330dee10d05f6aafdd68728d6d7a88bb9336842",
+      "status": "PASS",
+      "guide_sha256": "3138ba7a2fe99d3daee6c776248c90e4b8550b4b8bd0015d9a4ef150a1892748",
+      "resource_sha256": {},
+      "positive_activation_request": "Record the queue decision using our existing ADR-004 .rst convention and retain its throughput caveat.",
+      "negative_activation_request": "Add comments saying increment counter above every increment.",
+      "activation_evidence": "DECLARED_FIXTURES_ONLY; model routing not executed",
+      "default": {
+        "ok": true,
+        "observed": {
+          "new_name": "ADR-005-Queue.rst",
+          "old_preserved": true,
+          "qualifier_preserved": true
+        },
+        "expected": {
+          "new_name": "ADR-005-Queue.rst",
+          "old_preserved": true,
+          "qualifier_preserved": true
+        },
+        "pass": true
+      },
+      "adversarial": {
+        "ok": true,
+        "observed": {
+          "new_name": "ADR-005-Queue.rst",
+          "old_preserved": true,
+          "qualifier_preserved": false
+        },
+        "expected": {
+          "new_name": "ADR-005-Queue.rst",
+          "old_preserved": true,
+          "qualifier_preserved": false
+        },
+        "pass": true
+      },
+      "mutation": {
+        "fault": "reuse existing ADR sequence number",
+        "detected": true,
+        "result": {
+          "ok": true,
+          "observed": {
+            "new_name": "ADR-004-Queue.rst",
+            "old_preserved": true,
+            "qualifier_preserved": true
+          }
+        }
+      },
+      "limit": "Real temporary-file convention/history/qualifier checks; full document factual accuracy requires current project sources."
+    },
+    {
+      "id": "doubt-driven-development",
+      "metadata_sha256": "ea0253e84a2b827ba505464e9fe10ee1e471461e2ab27274c4d0e18d00a3e845",
+      "status": "PASS",
+      "guide_sha256": "8fbdee7c1db22f6ca4a3f6e1c07d8a7b59cf107829dc033c4052320655f157d0",
+      "resource_sha256": {
+        "skills/doubt-driven-development/resources/review-perspectives.md": "8d4e407fb83bdbb7ef7431f4039c5542763e1eed01bd4cd5b32ab6e8fe23b596"
+      },
+      "positive_activation_request": "Stress-test the retry invariant with an independent artifact-and-contract review bounded to three cycles.",
+      "negative_activation_request": "Summarize this already accepted one-line rename.",
+      "activation_evidence": "DECLARED_FIXTURES_ONLY; model routing not executed",
+      "default": {
+        "ok": true,
+        "observed": {
+          "claim_sent": false,
+          "classification": "contract-misread",
+          "cycles": 3,
+          "independent_review": false,
+          "stop": "bound-reassess"
+        },
+        "expected": {
+          "classification": "contract-misread",
+          "cycles": 3,
+          "stop": "bound-reassess",
+          "claim_sent": false,
+          "independent_review": false
+        },
+        "pass": true
+      },
+      "adversarial": {
+        "ok": true,
+        "observed": {
+          "claim_sent": false,
+          "classification": "contract-misread",
+          "cycles": 1,
+          "independent_review": false,
+          "stop": "diminishing-findings"
+        },
+        "expected": {
+          "classification": "contract-misread",
+          "cycles": 1,
+          "stop": "diminishing-findings",
+          "claim_sent": false,
+          "independent_review": false
+        },
+        "pass": true
+      },
+      "mutation": {
+        "fault": "ignore contract-misread precedence",
+        "detected": true,
+        "result": {
+          "ok": true,
+          "observed": {
+            "claim_sent": false,
+            "classification": "actionable",
+            "cycles": 3,
+            "independent_review": false,
+            "stop": "bound-reassess"
+          }
+        }
+      },
+      "limit": "Reconciliation precedence and stop policy tested offline; no actual independent/cross-model reviewer invocation is claimed."
+    },
+    {
+      "id": "frontend-ui-engineering",
+      "metadata_sha256": "cf201c133f5e7fef39ee11ad35b0fff6cb1cd993d930b738bcd1456c3c572380",
+      "status": "PASS",
+      "guide_sha256": "c6e846dbb6215bf55a1def910f68c84943ecf1ee41a29cc78e0c927a06ab7f57",
+      "resource_sha256": {
+        "skills/frontend-ui-engineering/resources/accessibility.md": "9fde41dd2dddba349bd5898b7f4d3c3f5c0c9d080b107ef99223246a9a489a7a",
+        "skills/browser-testing-with-devtools/resources/accessibility.md": "78a0e7c05d5393678c0b2d1065a6565a4d000c45828dd7251a001a4becc96ef2"
+      },
+      "positive_activation_request": "Implement the approved error/retry state with a named keyboard-native button.",
+      "negative_activation_request": "Change this server-only database index; there is no interface change.",
+      "activation_evidence": "DECLARED_FIXTURES_ONLY; model routing not executed",
+      "default": {
+        "ok": true,
+        "observed": {
+          "names": [
+            "Retry saving"
+          ],
+          "violations": [],
+          "visual_verified": false
+        },
+        "expected": {
+          "names": [
+            "Retry saving"
+          ],
+          "violations": [],
+          "visual_verified": false
+        },
+        "pass": true
+      },
+      "adversarial": {
+        "ok": true,
+        "observed": {
+          "names": [],
+          "violations": [
+            "nonsemantic-action",
+            "unnamed-button"
+          ],
+          "visual_verified": false
+        },
+        "expected": {
+          "names": [],
+          "violations": [
+            "nonsemantic-action",
+            "unnamed-button"
+          ],
+          "visual_verified": false
+        },
+        "pass": true
+      },
+      "mutation": {
+        "fault": "miss click-only nonsemantic action",
+        "detected": true,
+        "result": {
+          "ok": true,
+          "observed": {
+            "names": [],
+            "violations": [
+              "unnamed-button"
+            ],
+            "visual_verified": false
+          }
+        }
+      },
+      "limit": "Real HTML parsing detects these semantic errors; keyboard, contrast, screen reader, responsive screenshot and live layout remain unverified."
+    },
+    {
+      "id": "git-workflow-and-versioning",
+      "metadata_sha256": "34214251b76269f0814edb40f1220e4c7fbaf738ff790a55fd8a80668d981371",
+      "status": "PASS",
+      "guide_sha256": "baa94a4e25a5defb1ed65f54ec0ea789ccf955384846706bf9e221c38056af31",
+      "resource_sha256": {},
+      "positive_activation_request": "Group my owned change separately from existing edits and prepare a breaking-version rationale.",
+      "negative_activation_request": "Explain two plus three without inspecting or changing a repository.",
+      "activation_evidence": "DECLARED_FIXTURES_ONLY; model routing not executed",
+      "default": {
+        "ok": true,
+        "observed": {
+          "bump": "major",
+          "errors": [],
+          "git_mutated": false
+        },
+        "expected": {
+          "bump": "major",
+          "errors": [],
+          "git_mutated": false
+        },
+        "pass": true
+      },
+      "adversarial": {
+        "ok": true,
+        "observed": {
+          "bump": "major",
+          "errors": [
+            "user-change-selected"
+          ],
+          "git_mutated": false
+        },
+        "expected": {
+          "bump": "major",
+          "errors": [
+            "user-change-selected"
+          ],
+          "git_mutated": false
+        },
+        "pass": true
+      },
+      "mutation": {
+        "fault": "ignore pre-existing user change",
+        "detected": true,
+        "result": {
+          "ok": true,
+          "observed": {
+            "bump": "major",
+            "errors": [],
+            "git_mutated": false
+          }
+        }
+      },
+      "limit": "Pure change-set/semver policy check; no Git mutation, commit, release or actual staging performed."
+    },
+    {
+      "id": "idea-refine",
+      "metadata_sha256": "cdca25c87b7b1d25903a659829db8d4cc9de812fa0349c3dcf697594cf518ff4",
+      "status": "PASS",
+      "guide_sha256": "5d6bbbfdbec0f5b8dffc47bdfdc866408d46dede91c5b4434edf7260b128a2db",
+      "resource_sha256": {
+        "skills/idea-refine/resources/ideation.md": "0a8a4af05f669ca88042bb494155534158743cb896818ad4162e16a9f61384c4"
+      },
+      "positive_activation_request": "Refine collaborative editing into a small test of whether presence solves coordination.",
+      "negative_activation_request": "Execute the already approved presence-only implementation plan without reopening product ideation.",
+      "activation_evidence": "DECLARED_FIXTURES_ONLY; model routing not executed",
+      "default": {
+        "ok": true,
+        "observed": {
+          "next": "presence-only",
+          "non_goals": [
+            "offline-sync",
+            "character-merge"
+          ]
+        },
+        "expected": {
+          "next": "presence-only",
+          "non_goals": [
+            "offline-sync",
+            "character-merge"
+          ]
+        },
+        "pass": true
+      },
+      "adversarial": {
+        "ok": true,
+        "observed": {
+          "next": "validate-dealbreaker",
+          "non_goals": [
+            "offline-sync",
+            "character-merge"
+          ]
+        },
+        "expected": {
+          "next": "validate-dealbreaker",
+          "non_goals": [
+            "offline-sync",
+            "character-merge"
+          ]
+        },
+        "pass": true
+      },
+      "mutation": {
+        "fault": "recommend unvalidated dealbreaker",
+        "detected": true,
+        "result": {
+          "ok": true,
+          "observed": {
+            "next": "presence-only",
+            "non_goals": [
+              "offline-sync",
+              "character-merge"
+            ]
+          }
+        }
+      },
+      "limit": "The rubric mechanically compares stated inputs; actual customer demand, switching and assumptions require field validation."
+    },
+    {
+      "id": "incremental-implementation",
+      "metadata_sha256": "945579ce0c6d0582d16fb2d85df299e0d58d0153b2916bf4b2ca7f261ac0c11e",
+      "status": "PASS",
+      "guide_sha256": "07609fef92c068431a2e9c295fddf9f50c27503d71660d94be9e35c16c435b8b",
+      "resource_sha256": {
+        "skills/incremental-implementation/resources/completion.md": "956f32a39900b66e54b061e1b4a8ce2cd8202f6579acf150d6a09c71083016cd"
+      },
+      "positive_activation_request": "Implement create then list as verified slices from the accepted task graph.",
+      "negative_activation_request": "Explain this supplied constant; do not implement or change anything.",
+      "activation_evidence": "DECLARED_FIXTURES_ONLY; model routing not executed",
+      "default": {
+        "ok": true,
+        "observed": {
+          "rows": [
+            {
+              "id": 1,
+              "title": "A"
+            }
+          ],
+          "slices": {
+            "create": true,
+            "list": true
+          }
+        },
+        "expected": {
+          "slices": {
+            "create": true,
+            "list": true
+          },
+          "rows": [
+            {
+              "id": 1,
+              "title": "A"
+            }
+          ]
+        },
+        "pass": true
+      },
+      "adversarial": {
+        "ok": true,
+        "observed": {
+          "rows": [
+            {
+              "id": 1,
+              "title": "A"
+            }
+          ],
+          "slices": {
+            "create": true,
+            "list": false
+          }
+        },
+        "expected": {
+          "slices": {
+            "create": true,
+            "list": false
+          },
+          "rows": [
+            {
+              "id": 1,
+              "title": "A"
+            }
+          ]
+        },
+        "pass": true
+      },
+      "mutation": {
+        "fault": "execute before dependency is ready",
+        "detected": true,
+        "result": {
+          "ok": true,
+          "observed": {
+            "rows": [
+              {
+                "id": 1,
+                "title": "A"
+              }
+            ],
+            "slices": {
+              "create": true,
+              "list": true
+            }
+          }
+        }
+      },
+      "limit": "Executable tiny state workflow tests dependency blocking and complete paths; it is not a substitute for the target repository's tests."
+    },
+    {
+      "id": "observability-and-instrumentation",
+      "metadata_sha256": "dc9bc085a7766cdc17472f5efa1274bf021b39705fb304d091e56e7e1e36aaa5",
+      "status": "PASS",
+      "guide_sha256": "4d8e13e379454f2fec82ef127944154d3716a6cd28534db65a1fcc56aa7de097",
+      "resource_sha256": {
+        "skills/observability-and-instrumentation/resources/telemetry-checklist.md": "8f589bac48b56f40599f25c1a19e288475412e69be7119c43e4b2d0154868180"
+      },
+      "positive_activation_request": "Instrument payment retries so scheduler and replay origins can be distinguished in the same log.",
+      "negative_activation_request": "Fix a documentation spelling error with no production behavior change.",
+      "activation_evidence": "DECLARED_FIXTURES_ONLY; model routing not executed",
+      "default": {
+        "ok": true,
+        "observed": {
+          "errors": [],
+          "events": 1,
+          "series": 1
+        },
+        "expected": {
+          "errors": [],
+          "series": 1,
+          "events": 1
+        },
+        "pass": true
+      },
+      "adversarial": {
+        "ok": true,
+        "observed": {
+          "errors": [
+            "missing-attribution",
+            "unbounded-label"
+          ],
+          "events": 1,
+          "series": 1
+        },
+        "expected": {
+          "errors": [
+            "missing-attribution",
+            "unbounded-label"
+          ],
+          "series": 1,
+          "events": 1
+        },
+        "pass": true
+      },
+      "mutation": {
+        "fault": "accept unbounded metric dimension",
+        "detected": true,
+        "result": {
+          "ok": true,
+          "observed": {
+            "errors": [
+              "missing-attribution"
+            ],
+            "events": 1,
+            "series": 1
+          }
+        }
+      },
+      "limit": "Real JSON-lines ingestion/attribution/cardinality checks; exporter delivery, complete traces and live alert routing remain unverified."
+    },
+    {
+      "id": "performance-optimization",
+      "metadata_sha256": "0518e5947adf8b3a1d507e2e81df99a943f422cdfb2eeff16d25e8efabbf769b",
+      "status": "PASS",
+      "guide_sha256": "56fba1d9cd1a0d1b9f580e567721f888c3f3ab1b66d7bee0556acc1dc3c96a53",
+      "resource_sha256": {
+        "skills/performance-optimization/resources/optimization-patterns.md": "fc1bf06c6d20641fbc98ec09c59b95aab3eeab19b36a60d0ec33aabfb219e670",
+        "skills/performance-optimization/resources/performance-audit.md": "6c8d7b9b61b474a83ecdac9fdc55668948047d1bc749add9dfc33f9983b30ce6"
+      },
+      "positive_activation_request": "Compare repeated same-condition latency samples and reject improvements inside noise.",
+      "negative_activation_request": "Build the accepted basic list; there is no measured slowdown or performance budget.",
+      "activation_evidence": "DECLARED_FIXTURES_ONLY; model routing not executed",
+      "default": {
+        "ok": true,
+        "observed": {
+          "baseline_ms": 101,
+          "decision": "keep",
+          "noise_ms": 2,
+          "result_ms": 61
+        },
+        "expected": {
+          "baseline_ms": 101,
+          "result_ms": 61,
+          "noise_ms": 2,
+          "decision": "keep"
+        },
+        "pass": true
+      },
+      "adversarial": {
+        "ok": true,
+        "observed": {
+          "baseline_ms": 101,
+          "decision": "restore-owned-change",
+          "noise_ms": 3,
+          "result_ms": 99
+        },
+        "expected": {
+          "baseline_ms": 101,
+          "result_ms": 99,
+          "noise_ms": 3,
+          "decision": "restore-owned-change"
+        },
+        "pass": true
+      },
+      "mutation": {
+        "fault": "retain a gain inside measurement noise",
+        "detected": true,
+        "result": {
+          "ok": true,
+          "observed": {
+            "baseline_ms": 101,
+            "decision": "keep",
+            "noise_ms": 3,
+            "result_ms": 99
+          }
+        }
+      },
+      "limit": "Observed fixed-sample statistical decision only; no real service/browser benchmark or field improvement claimed."
+    },
+    {
+      "id": "security-and-hardening",
+      "metadata_sha256": "f13dc95971b78b9ce58f7fe091fffa2bcbf54934b0f4851e4690289423bd97f3",
+      "status": "PASS",
+      "guide_sha256": "426cda65fe4f6a9c685271a5903c4b6b9b7491adf6f5a859893195ea742cdb41",
+      "resource_sha256": {
+        "skills/security-and-hardening/resources/hardening-patterns.md": "d746eab7ccc16bf4b920be57c75c81b41763660e7bef59adf0a8f16bf67ea1fd"
+      },
+      "positive_activation_request": "Validate an owned temporary job leaf before cleanup and prove SQL input cannot alter the query.",
+      "negative_activation_request": "Rename a private loop counter in this pure local computation.",
+      "activation_evidence": "DECLARED_FIXTURES_ONLY; model routing not executed",
+      "default": {
+        "ok": true,
+        "observed": {
+          "deleted": false,
+          "injected_matches": 0,
+          "owned_leaf": true,
+          "unsafe_target_refused": true
+        },
+        "expected": {
+          "owned_leaf": true,
+          "unsafe_target_refused": true,
+          "injected_matches": 0,
+          "deleted": false
+        },
+        "pass": true
+      },
+      "adversarial": {
+        "ok": true,
+        "observed": {
+          "deleted": false,
+          "injected_matches": 0,
+          "owned_leaf": true,
+          "unsafe_target_refused": true
+        },
+        "expected": {
+          "owned_leaf": true,
+          "unsafe_target_refused": true,
+          "injected_matches": 0,
+          "deleted": false
+        },
+        "pass": true
+      },
+      "mutation": {
+        "fault": "permit owned root as destructive leaf",
+        "detected": true,
+        "result": {
+          "ok": true,
+          "observed": {
+            "deleted": false,
+            "injected_matches": 0,
+            "owned_leaf": true,
+            "unsafe_target_refused": false
+          }
+        }
+      },
+      "limit": "Real resolved-path/ownership and parameterized SQLite checks; no destructive call, attacker race simulation, SSRF network or live scanner/auth/privacy proof."
+    },
+    {
+      "id": "shipping-and-launch",
+      "metadata_sha256": "6769ff0f474e6b903f936cc4bb7682cb78cc57e69ccb2bd1e86415dd8c54937e",
+      "status": "PASS",
+      "guide_sha256": "7d540d73f21abad497c5237fedddbe2e3e0d0ec4eb6e0f5ce627d9a08a93b8ac",
+      "resource_sha256": {
+        "skills/shipping-and-launch/resources/release-checklist.md": "d6ebbf5f3fee9454ac27faad1ea6c4934a0da522e43798774b240c57128e8b1a",
+        "skills/incremental-implementation/resources/completion.md": "956f32a39900b66e54b061e1b4a8ce2cd8202f6579acf150d6a09c71083016cd",
+        "skills/security-and-hardening/resources/hardening-patterns.md": "d746eab7ccc16bf4b920be57c75c81b41763660e7bef59adf0a8f16bf67ea1fd",
+        "skills/performance-optimization/resources/optimization-patterns.md": "fc1bf06c6d20641fbc98ec09c59b95aab3eeab19b36a60d0ec33aabfb219e670",
+        "skills/browser-testing-with-devtools/resources/accessibility.md": "78a0e7c05d5393678c0b2d1065a6565a4d000c45828dd7251a001a4becc96ef2"
+      },
+      "positive_activation_request": "Use these canary error/latency baselines and error budget to prepare go/no-go with rollback.",
+      "negative_activation_request": "Fix the private function locally; no release or deployment is requested.",
+      "activation_evidence": "DECLARED_FIXTURES_ONLY; model routing not executed",
+      "default": {
+        "ok": true,
+        "observed": {
+          "decision": "advance",
+          "deployed": false
+        },
+        "expected": {
+          "decision": "advance",
+          "deployed": false
+        },
+        "pass": true
+      },
+      "adversarial": {
+        "ok": true,
+        "observed": {
+          "decision": "rollback-proposal",
+          "deployed": false
+        },
+        "expected": {
+          "decision": "rollback-proposal",
+          "deployed": false
+        },
+        "pass": true
+      },
+      "mutation": {
+        "fault": "advance rollback boundary too far",
+        "detected": true,
+        "result": {
+          "ok": true,
+          "observed": {
+            "decision": "hold",
+            "deployed": false
+          }
+        }
+      },
+      "limit": "Offline threshold decision only; no deployment, monitoring window, notification or live rollback performed."
+    },
+    {
+      "id": "source-driven-development",
+      "metadata_sha256": "1062c91cf898649cd3bcf49c98d864ba0e02b9d7361944604f7329490255864e",
+      "status": "PASS",
+      "guide_sha256": "da2165d74f65bfdd7fdf6cab1e14ecf2ffded148f42830c91248866017d8462a",
+      "resource_sha256": {
+        "skills/source-driven-development/resources/documentation-freshness.md": "274aec111de3fd6676c40db43190d6f210582795dfed0e4747b6829f2357c331"
+      },
+      "positive_activation_request": "Check this version-pinned manifest and supplied official excerpt before using its intent_key argument.",
+      "negative_activation_request": "Rename this private loop variable without a framework/API change.",
+      "activation_evidence": "DECLARED_FIXTURES_ONLY; model routing not executed",
+      "default": {
+        "ok": true,
+        "observed": {
+          "api": "documented",
+          "cache": "refetch-or-unverified",
+          "fetched": false
+        },
+        "expected": {
+          "api": "documented",
+          "cache": "refetch-or-unverified",
+          "fetched": false
+        },
+        "pass": true
+      },
+      "adversarial": {
+        "ok": true,
+        "observed": {
+          "api": "version-mismatch",
+          "cache": "refetch-or-unverified",
+          "fetched": false
+        },
+        "expected": {
+          "api": "version-mismatch",
+          "cache": "refetch-or-unverified",
+          "fetched": false
+        },
+        "pass": true
+      },
+      "mutation": {
+        "fault": "accept documentation for wrong version",
+        "detected": true,
+        "result": {
+          "ok": true,
+          "observed": {
+            "api": "documented",
+            "cache": "refetch-or-unverified",
+            "fetched": false
+          }
+        }
+      },
+      "limit": "Offline supplied-document/version comparison; demo is an explicit synthetic fixture, not a verified real framework API or fetched source."
+    }
+  ]
+}

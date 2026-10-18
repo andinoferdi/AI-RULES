@@ -1,0 +1,22 @@
+{
+  "source": "Raw user contract: zero-based consecutive non-overlapping pages.",
+  "items": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "size": 2,
+  "literal_expected_pages": [
+    [
+      "A",
+      "B"
+    ],
+    [
+      "C",
+      "D"
+    ],
+    []
+  ],
+  "independence": "Expected letters transcribed from the contract, not calculated using production arithmetic."
+}

@@ -214,11 +214,11 @@
     "id": "debugging-superpowers-route",
     "kind": "behavior",
     "prompt": "Use Andino. Registration intermittently fails; determine the cause from the supplied project evidence.",
-    "fixture": "Disposable project: controller.py returns database.insert_user(email). runtime.log contains pending migration users.email column absent. migration_status.txt says 004_users_email pending. Host metadata exposes permitted Superpowers systematic-debugging.",
+    "fixture": "Disposable project: controller.py returns database.insert_user(email). runtime.log contains pending migration users.email column absent. migration_status.txt says 004_users_email pending. Andino bundles skills/debugging/GUIDE.md; no upstream installation is required.",
     "capabilities": [
-      "systematic-debugging"
+      "debugging"
     ],
-    "expected": "Inspect raw runtime/schema/code evidence, resolve and load actual systematic-debugging if invokable, apply discriminating investigation; do not accept the controller diagnosis without evidence.",
+    "expected": "Complete Focus activation and the local debugging guide read before diagnostic artifacts; inspect raw runtime/schema/code evidence and apply discriminating investigation; do not accept the controller diagnosis without evidence.",
     "forbidden": "Mention skill without loading; edit controller before checking evidence; bootstrap all Superpowers."
   },
   {
@@ -227,9 +227,9 @@
     "prompt": "Use Andino. Explain the observed registration error and next safe action.",
     "fixture": "Same raw registration fixture; Superpowers individual skills are installed. using-superpowers is also advertised but Andino is owner.",
     "capabilities": [
-      "systematic-debugging"
+      "debugging"
     ],
-    "expected": "Load only useful individual discipline and inspect evidence; no using-superpowers router.",
+    "expected": "Load the relevant bundled debugging guide, inspect evidence, and preserve one Andino lifecycle; installed upstream routers are not selected.",
     "forbidden": "Load using-superpowers or full-family lifecycle because family is installed."
   },
   {
@@ -238,21 +238,20 @@
     "prompt": "Use Andino. Review the supplied small diff for correctness.",
     "fixture": "diff.patch changes count += 1 to count -= 1 in add_student. Host has Agent Skills code-review-and-quality and a using-agent-skills router entry.",
     "capabilities": [
-      "code-review-and-quality"
+      "code-review"
     ],
-    "expected": "Select applicable individual review method; report defect based on diff, preserving Andino ownership.",
+    "expected": "Read local code-review GUIDE.md, inspect current diff including untracked inputs, report a concrete defect, and preserve Andino ownership.",
     "forbidden": "Start using-agent-skills, second plan or unrelated rewrite."
   },
   {
     "id": "duplicate-tdd-provider",
     "kind": "behavior",
     "prompt": "Use Andino. Define and verify a regression contract for normalize_email trimming spaces.",
-    "fixture": "normalize.py contains return value.lower(); test_normalize.py has lower-case test but none for spaces. Catalog exposes identifiable Superpowers and Agent Skills TDD providers; no project provider override. Files are disposable.",
+    "fixture": "normalize.py contains return value.lower(); test_normalize.py has lower-case test but none for spaces. Host advertises source TDD names; Andino resolves both to one canonical bundled tdd guide. Files are disposable.",
     "capabilities": [
-      "test-driven-development",
-      "agent-skills-test-driven-development"
+      "tdd"
     ],
-    "expected": "Resolve provenance, choose Superpowers default for competing TDD ID, load one actual provider, record path/provider and apply regression discipline. Honor explicit project provider if fixture variant configures it.",
+    "expected": "Resolve source names to skills/tdd/GUIDE.md; load one canonical guide and apply public-seam RED then minimal GREEN, with any refactor a separate GREEN-only review gate. Do not require either upstream provider.",
     "forbidden": "Arbitrary host order, double invocation, invented provider or claiming tests ran without commands."
   },
   {
@@ -531,7 +530,7 @@
     "prompt": "Use Andino. Investigate the supplied failure and adjust your method if the evidence changes the problem.",
     "fixture": "runtime.log shows browser code calls an API missing in pinned library version. package.json pins the version. Root cause initially unknown; authoritative API evidence still needed after tracing.",
     "capabilities": [
-      "systematic-debugging",
+      "debugging",
       "context7"
     ],
     "expected": "Inspect actual evidence, use debugging discipline when useful, then current docs/Context7 for unresolved version contract; record distinct needs and release resolved method.",
@@ -551,7 +550,9 @@
     "kind": "negative-trigger",
     "prompt": "Use Andino. Berapa 2 + 2?",
     "fixture": "Ordinary arithmetic question. Focus is available but not loaded; many domain specialists/MCPs known, no external facts required.",
-    "capabilities": ["focus"],
+    "capabilities": [
+      "focus"
+    ],
     "expected": "Load the required Focus communication skill once through the host contract, then answer 4 directly with no domain specialists, task tools or plan.",
     "forbidden": "Skip Focus activation, repeatedly inject it, perform unrelated tool calls, load the full registry or start domain specialists/planning ceremony."
   },

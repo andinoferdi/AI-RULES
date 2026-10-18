@@ -60,7 +60,15 @@ Council is optional in Custom setup selection and included in Everything. For st
 
 ## Skill combinations by task
 
-`andino-workflow` is the single entry point. It routes the required skills itself, so a prompt only needs to name it, plus any skill it does not activate automatically. Do not load every skill at once: Superpowers and Agent Skills are individual skills, not a bundle to load together. `focus` and `verification-before-completion` are activated by Andino when needed. Use `anti-slop` only when a concrete UI, copy, or code quality defect appears.
+`andino-workflow` is the single entry point. Its unified package contains 57
+reviewed internal methods adapted from Addy Osmani Agent Skills, Matt Pocock Skills
+and Superpowers. Name Andino and the task, or an explicit internal method such as
+`tdd`, `decision-interview` or `domain-modeling`. Original source names in the
+table are compatibility aliases for local guides; they need no upstream skill/plugin
+installation. Andino reads only the methods needed for the current phase. Focus
+remains its communication sibling; consequential acceptance uses bundled `verification`.
+The unified working-tree candidate is tested locally; publication and pin advancement
+remain separate authorized release actions. See [current evidence](docs/validation/andino-unified/README.md).
 
 | Task | Suggested combination | Notes |
 | --- | --- | --- |
@@ -86,11 +94,16 @@ Council is optional in Custom setup selection and included in Everything. For st
 
 Third-party skills/plugins and MCP servers must be installed or connected separately using their own setup instructions. Select only the capabilities relevant to your task.
 
-Skills and plugin families: [Superpowers](https://github.com/obra/superpowers),
-[Ponytail](https://github.com/DietrichGebert/ponytail),
+Skills and plugin families: [Ponytail](https://github.com/DietrichGebert/ponytail),
 [Impeccable](https://github.com/pbakaus/impeccable), [Taste Skill](https://www.tasteskill.dev/),
 [AI Website Cloner](https://github.com/JCodesMore/ai-website-cloner-template),
-[Graphify](https://graphify.net/), [Anti-Slop](https://github.com/miqdadbadjuber/anti-slop), and [Agent Skills](https://github.com/addyosmani/agent-skills).
+[Graphify](https://graphify.net/) and [Anti-Slop](https://github.com/miqdadbadjuber/anti-slop).
+
+Addy/Matt/Superpowers repositories are reviewed build/audit provenance for bundled
+Andino methods, not runtime prerequisites. Preserve the complete Andino directory,
+including `skills/`, local resources and legal notices. Installation runs no upstream
+hooks, method examples, package managers or automatic fetch/update. Optional external
+services are invoked only when actually available, relevant and authorized.
 
 MCP servers: [Context7](https://github.com/upstash/context7),
 [Playwright MCP](https://github.com/microsoft/playwright-mcp),

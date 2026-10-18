@@ -1,0 +1,117 @@
+{
+  "reviewer": {
+    "surface": "Codex delegated agent",
+    "model": "UNKNOWN",
+    "independence": "Independent of runtime implementation; this actor previously wrote only isolated evaluation artifacts. This review did not read a hidden routing oracle or modify frozen actor records.",
+    "proof_level": "Read-only structural reconciliation and targeted semantic review, not live host or complete source-semantic validation"
+  },
+  "scope": {
+    "actual_runtime": "C:/Users/Lenovo/Downloads/AI-RULES",
+    "runtime_surfaces": ["SKILL.md", "references/**", "skills/**"],
+    "candidate": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate",
+    "validation_evidence": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/{coverage.json,ownership.json,resource-map.json,canonical-decisions.md,addy-audit.*,matt-audit.*,superpowers-audit.*}",
+    "only_write": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors/batch-1/runtime-review.json"
+  },
+  "findings": [
+    {
+      "id": "RR-01",
+      "severity": "P2",
+      "title": "Remove integration-ticket branch restrictions from the reusable Git guide",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES/skills/git-workflow-and-versioning/GUIDE.md",
+      "line": 23,
+      "also_affected": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/git-workflow-and-versioning/GUIDE.md:23",
+      "trigger": "A later Andino task selects Git change grouping or versioning in a suitable project checkout whose branch is neither main nor andino-workflow, without an explicit branch instruction that overrides the guide.",
+      "consequence": "The general method incorrectly carries this integration ticket's rule into the later task: it can report the valid checkout as blocked or route runtime/QA work to irrelevant branch names. This conflicts with the reusable root's current-user/current-project authority and the isolation method's suitable-current-checkout rule.",
+      "evidence": [
+        {
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES/skills/git-workflow-and-versioning/GUIDE.md",
+          "line": 23,
+          "quote": "This ticket allows runtime only on existing andino-workflow and QA only on existing main. No new branch."
+        },
+        {
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES/skills/git-isolation/GUIDE.md",
+          "line": 22,
+          "quote": "Reuse suitable current/attached worktree and explicit branch/location preference. Inspect actual state before creating anything."
+        },
+        {
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/canonical-decisions.md",
+          "interpretation": "The main-plane decision correctly describes existing main/andino-workflow branches as restrictions of this integration ticket; those restrictions are not portable generic-method defaults."
+        }
+      ],
+      "minimum_remedy": "Keep the concrete branch restrictions in this ticket's plan/evidence. Replace the runtime sentence with an instruction to honor the active task's actual branch/location policy, reuse a suitable authorized checkout, and never create or switch branches without applicable authority. Regenerate the candidate and add a bounded regression asserting the general guide does not contain ticket-specific branch names.",
+      "confidence": "HIGH",
+      "proof": "Exact runtime line inspected; actual/candidate byte parity establishes the same defect exists in the candidate. No branch mutation or hypothetical live failure was performed."
+    }
+  ],
+  "checks": [
+    {
+      "name": "Actual/candidate byte identity",
+      "action": "rtk-prefixed Python SHA256 dictionaries over SKILL.md, references/** and skills/**",
+      "observed": "126 files in each surface; zero missing paths and zero differing file hashes.",
+      "status": "STRUCTURALLY_VERIFIED"
+    },
+    {
+      "name": "One native runtime identity and index closure",
+      "action": "rtk-prefixed file inventory and Markdown index parsing",
+      "observed": "Only root SKILL.md in runtime surfaces; 57 GUIDE.md methods, all indexed with no nonexistent method targets. Source aliases are resource mappings, not new native skill identities.",
+      "status": "STRUCTURALLY_VERIFIED",
+      "limit": "Upstream source checkouts and build directories inside the development checkout were excluded from the runtime identity assertion; no installer or native host picker was executed."
+    },
+    {
+      "name": "Every audited source entry reconciles",
+      "action": "Join Addy methods, Matt items and Superpowers skills against coverage rows by upstream/source_path; compare recorded source SHA256",
+      "observed": "79 audited entries and 79 coverage entries; zero missing/extra sources and zero recorded-hash mismatches. Counts include the explicitly excluded archived Matt page.",
+      "status": "STRUCTURALLY_VERIFIED",
+      "limit": "Hashes compared to audit manifests; original upstream source bytes were not reread or rehashed in this review."
+    },
+    {
+      "name": "Essential-resource and runtime target closure",
+      "action": "Join all 115 declared audit essential-resource references against resource-map.json; check all mapped runtime paths and coverage guide paths exist",
+      "observed": "Zero missing essential-resource rows and zero missing runtime/guide targets. Resource map has 116 rows: 98 ADAPT, 6 INTERNALIZE, 12 EXCLUDE.",
+      "status": "STRUCTURALLY_VERIFIED",
+      "limit": "A disposition/path join proves traceability, not semantic equivalence of each adaptation."
+    },
+    {
+      "name": "Local resource links",
+      "action": "Resolve relative Markdown link targets from every Markdown file in the runtime surfaces, excluding external URLs and anchors",
+      "observed": "262 local file links checked; zero missing targets.",
+      "status": "STRUCTURALLY_VERIFIED",
+      "limit": "No external URLs, rendered anchors or browser rendering checked."
+    },
+    {
+      "name": "Triggers, exclusions and canonical aliases",
+      "action": "Read internal-method-index and targeted guide/root/registry contracts; reconcile original source names with canonical IDs/alias rows",
+      "observed": "53 alias rows inspected. All audited source names resolve through a canonical ID or alias except intentionally internalized bootstrap names using-agent-skills/using-superpowers and excluded archived resolving-merge-conflicts. Index explicitly applies trigger plus exclusion and prohibits loading methods merely to refuse prohibited work.",
+      "status": "TARGETED_SEMANTIC_REVIEW",
+      "limit": "No new model-selection probe or native discovery test performed for this review."
+    },
+    {
+      "name": "Canonical substantive methods and single lifecycle",
+      "action": "Compare canonical-decisions and ownership matrices to loaded root, TDD/debugging/review/verification, execution/delegation, interface/deep-module and selected domain guides/resources",
+      "observed": "Substantive public-seam RED/GREEN, separate GREEN-only refactor gate, exact-symptom hypothesis probes, separate Spec/Standards review, current-byte verification, atomic intent-key idempotency and unknown-outcome boundary, deletion test/dependency classification remain expressed. Andino retains one plan, routing, delegation and acceptance. No competing owner found in sampled contracts.",
+      "status": "TARGETED_SEMANTIC_REVIEW",
+      "limit": "This is a sample of substantive method content informed by the declared audit summaries, not a full paragraph-by-paragraph comparison of 79 original entries."
+    },
+    {
+      "name": "Progressive loading, states, permission and delegation boundaries",
+      "action": "Read actual root, routing, invocation-adapter, capability-coexistence, delegation GUIDE/contract and selected sibling registry contracts",
+      "observed": "Current-phase loading and release are explicit; DISCOVERED/AVAILABLE/INVOKABLE/ACTIVE/USED/UNAVAILABLE remain distinct; native denied/manual-only controls prohibit alternate-copy bypass; maximum three direct children, disjoint writes, no nested spawning and parent verification remain explicit. Missing live capabilities require truthful fallback evidence.",
+      "status": "TARGETED_SEMANTIC_REVIEW",
+      "limit": "Policy text and reconciliation only; no actual native permission denial, child spawn or external tool action was tested."
+    },
+    {
+      "name": "Sibling and provenance boundaries",
+      "action": "Read runtime coexistence/provenance and relevant routing/ownership/registry entries",
+      "observed": "Focus communication, Search First solution/external research, Taste/Impeccable accepted design ownership, and domain sibling controls remain separate. Runtime includes three MIT notice files and source commit/provenance pointers; hazardous hooks/server behavior is expressly excluded rather than executed.",
+      "status": "TARGETED_SEMANTIC_REVIEW",
+      "limit": "Notice presence and declared provenance checked; no independent legal sufficiency opinion or native sibling invocation claimed."
+    }
+  ],
+  "remaining_limits": [
+    "The sole concrete finding is RR-01; no runtime or metadata fix was attempted.",
+    "No network, Git mutation, global configuration, installer, nested agent, live browser/service or host-parity check was run.",
+    "Frozen actor results/work artifacts were not edited or used as the authority for this review.",
+    "Some broad initial search output was truncated; conclusions above rely on subsequent bounded reads/reconciliation, not unseen omitted output.",
+    "Complete source semantic preservation remains a broader acceptance claim than the structural reconciliation and targeted samples performed here."
+  ]
+}

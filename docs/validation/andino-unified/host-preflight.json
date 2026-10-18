@@ -1,0 +1,22 @@
+{
+  "codex_cli": {
+    "version": "0.154.0",
+    "scope": "version discovery only; delegated Codex actor evaluation is separate"
+  },
+  "claude_code": {
+    "version": "2.1.300",
+    "scope": "version discovery only"
+  },
+  "opencode": {
+    "version": "2.0.29",
+    "scope": "version discovery only"
+  },
+  "antigravity_cli": {
+    "version": "UNKNOWN",
+    "live": "NOT VERIFIED; no gemini command found"
+  },
+  "antigravity_ide": {
+    "version": "UNKNOWN",
+    "live": "NOT VERIFIED; no controlled IDE conversation adapter"
+  }
+}

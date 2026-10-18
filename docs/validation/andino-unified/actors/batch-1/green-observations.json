@@ -1,0 +1,16 @@
+{
+  "first_behavior": {
+    "chunk_id": "14f382",
+    "wall_time_seconds": 0.3364451,
+    "exit_code": 0,
+    "original_token_count": 65,
+    "output": "[rtk] /!\\ No hook installed — run `rtk init -g` for automatic token savings\ntest_known_invoice (test_subject.InvoiceContract.test_known_invoice) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 1 test in 0.000s\r\n\r\nOK\r\n"
+  },
+  "final_two_behaviors": {
+    "chunk_id": "926579",
+    "wall_time_seconds": 0.3504617,
+    "exit_code": 0,
+    "original_token_count": 84,
+    "output": "[rtk] /!\\ No hook installed — run `rtk init -g` for automatic token savings\ntest_empty_invoice (test_subject.InvoiceContract.test_empty_invoice) ... ok\r\ntest_known_invoice (test_subject.InvoiceContract.test_known_invoice) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 2 tests in 0.000s\r\n\r\nOK\r\n"
+  }
+}

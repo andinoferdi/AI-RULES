@@ -1,0 +1,106 @@
+{
+  "captured_at_utc": "2026-10-18T08:55:09.460211+00:00",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "states": {
+    "runtime": {
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES",
+      "root": "C:/Users/Lenovo/Downloads/AI-RULES",
+      "branch": "andino-workflow",
+      "head": "f531269775aafa8b162b4ec65dd919b37a208ffe",
+      "head_tree": "2ef3aa9cdfdf5582764a8deb5a4b8d2c424ba85b",
+      "tracked_changes": [
+        "M README.md",
+        " M SKILL.md",
+        " M references/anti-loop.md",
+        " M references/capability-coexistence.md",
+        " M references/capability-registry.md",
+        " M references/invocation-adapter.md",
+        " M references/routing.md"
+      ],
+      "untracked_by_top_level": {
+        "GRAND-PLAN.md": 1,
+        "ULTIMATE-PROMPT.md": 1,
+        "addyosmani-agent-skills": 1,
+        "build": 26123,
+        "mattpocock-skills": 1,
+        "obra-superpowers": 1,
+        "references": 5,
+        "scripts": 10,
+        "skills": 110,
+        "src": 46,
+        "tests": 22,
+        "threejs-skills": 714
+      },
+      "status_sha256": "b0225e13bc5b74e8b0887741d7700d55a7fe9c3e468008101cb0a35994df5a99",
+      "worktrees": "worktree C:/Users/Lenovo/Downloads/AI-RULES\nHEAD f531269775aafa8b162b4ec65dd919b37a208ffe\nbranch refs/heads/andino-workflow\n\nworktree C:/Users/Lenovo/Downloads/AI-RULES-main\nHEAD 80f54467188a76ad95af3943221fd2a4b59d2181\nbranch refs/heads/main",
+      "remotes": "origin\thttps://github.com/andinoferdi/AI-RULES.git (fetch)\norigin\thttps://github.com/andinoferdi/AI-RULES.git (push)"
+    },
+    "main": {
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main",
+      "root": "C:/Users/Lenovo/Downloads/AI-RULES-main",
+      "branch": "main",
+      "head": "80f54467188a76ad95af3943221fd2a4b59d2181",
+      "head_tree": "21b61e45b0a28daf4a7130f4a28faadf451126fd",
+      "tracked_changes": [
+        "M README.md",
+        " M docs/agent-skill-family-standard.md",
+        " M docs/exec-plans/active/andino-capability-integration.md",
+        " M evals/andino-required-routing.json",
+        " M evals/andino-workflow.json",
+        " M scripts/validate_andino_capabilities.py",
+        " M scripts/validate_skills.py"
+      ],
+      "untracked_by_top_level": {
+        "docs": 175,
+        "evals": 1,
+        "scripts": 10,
+        "tests": 1
+      },
+      "status_sha256": "9123def27b6a8dc6f8bebbb9c0c1ae48b5aafe1fc7f7eff97ca6b0625bb7ab63",
+      "worktrees": "worktree C:/Users/Lenovo/Downloads/AI-RULES\nHEAD f531269775aafa8b162b4ec65dd919b37a208ffe\nbranch refs/heads/andino-workflow\n\nworktree C:/Users/Lenovo/Downloads/AI-RULES-main\nHEAD 80f54467188a76ad95af3943221fd2a4b59d2181\nbranch refs/heads/main",
+      "remotes": "origin\thttps://github.com/andinoferdi/AI-RULES.git (fetch)\norigin\thttps://github.com/andinoferdi/AI-RULES.git (push)"
+    },
+    "addyosmani-agent-skills": {
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES\\addyosmani-agent-skills",
+      "root": "C:/Users/Lenovo/Downloads/AI-RULES/addyosmani-agent-skills",
+      "branch": "main",
+      "head": "aeac41d4d005999432bb7312f7ff06383a91d59d",
+      "head_tree": "8483a004722df18e33800e00da9880f328db5e7c",
+      "tracked_changes": [],
+      "untracked_by_top_level": {},
+      "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "worktrees": "worktree C:/Users/Lenovo/Downloads/AI-RULES/addyosmani-agent-skills\nHEAD aeac41d4d005999432bb7312f7ff06383a91d59d\nbranch refs/heads/main",
+      "remotes": "origin\thttps://github.com/addyosmani/agent-skills.git (fetch)\norigin\thttps://github.com/addyosmani/agent-skills.git (push)"
+    },
+    "mattpocock-skills": {
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES\\mattpocock-skills",
+      "root": "C:/Users/Lenovo/Downloads/AI-RULES/mattpocock-skills",
+      "branch": "main",
+      "head": "49dd158d1076134a641b33efb035946536778336",
+      "head_tree": "3ce485319972aae46dec0c2ac34cf4a7f28f7414",
+      "tracked_changes": [],
+      "untracked_by_top_level": {},
+      "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "worktrees": "worktree C:/Users/Lenovo/Downloads/AI-RULES/mattpocock-skills\nHEAD 49dd158d1076134a641b33efb035946536778336\nbranch refs/heads/main",
+      "remotes": "origin\thttps://github.com/mattpocock/skills.git (fetch)\norigin\thttps://github.com/mattpocock/skills.git (push)"
+    },
+    "obra-superpowers": {
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES\\obra-superpowers",
+      "root": "C:/Users/Lenovo/Downloads/AI-RULES/obra-superpowers",
+      "branch": "main",
+      "head": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
+      "head_tree": "4ac675daa3415bc836f707c7e60237ac7b66c7d5",
+      "tracked_changes": [],
+      "untracked_by_top_level": {},
+      "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "worktrees": "worktree C:/Users/Lenovo/Downloads/AI-RULES/obra-superpowers\nHEAD bb92a77741419a4ab5f06e711a283343f1ada0c3\nbranch refs/heads/main",
+      "remotes": "origin\thttps://github.com/obra/superpowers.git (fetch)\norigin\thttps://github.com/obra/superpowers.git (push)"
+    }
+  },
+  "refs": "WebBased 9a5d0e1b31257c4fcb1554558266ec7afc2a6160\nandino-workflow f531269775aafa8b162b4ec65dd919b37a208ffe\nmain 80f54467188a76ad95af3943221fd2a4b59d2181\nsearch-first 8383f8a329beff75867de80a517a8ef4d253e678\nthreejs-skills f47d7c03a309703d6804b9e8e4787d54cbbdb53f\norigin 80f54467188a76ad95af3943221fd2a4b59d2181\norigin/WebBased 9a5d0e1b31257c4fcb1554558266ec7afc2a6160\norigin/ai-codebase-rescue ff61f482eb85c8f4870ee74ffe208394a61cb433\norigin/andino-workflow f531269775aafa8b162b4ec65dd919b37a208ffe\norigin/codex/search-first-integration c256bfadd4385f3d7e3ebaed532f93c1e101de28\norigin/council 82984fa4dd75023e63d944e6cee1b61d191047c4\norigin/focus 3effa779d14303ed33ee8be874e86c2c3a873f55\norigin/main 80f54467188a76ad95af3943221fd2a4b59d2181\norigin/search-first 8383f8a329beff75867de80a517a8ef4d253e678\norigin/skripsi-skill 1161da8411c1914ad5207cde384ce151293d226e\norigin/threejs-skills f47d7c03a309703d6804b9e8e4787d54cbbdb53f",
+  "prompts": {
+    "ULTIMATE-PROMPT.md": "5c9cf1bb93d0fbb93bb224d8b982363e07169bd9ed213feb605fde7d839da000",
+    "GRAND-PLAN.md": "8c5ec29746ebd8516cf07328b9c974ec4114b03c2ec744bf9a77695add8e830f"
+  },
+  "safety": "No branch creation, staging, commit, push, reset, stash or upstream write."
+}

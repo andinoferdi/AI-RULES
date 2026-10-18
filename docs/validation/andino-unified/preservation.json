@@ -1,0 +1,41 @@
+{
+  "result": "PASS",
+  "repositories": {
+    "runtime": {
+      "branch": "andino-workflow",
+      "head": "f531269775aafa8b162b4ec65dd919b37a208ffe",
+      "unchanged_refs": true
+    },
+    "main": {
+      "branch": "main",
+      "head": "80f54467188a76ad95af3943221fd2a4b59d2181",
+      "unchanged_refs": true
+    }
+  },
+  "prompts_unchanged": true,
+  "no_staged_changes": true,
+  "protected_runtime_contracts": {
+    "references/execution-plan-template.md": {
+      "unchanged": true,
+      "sha256": "d36e137fcb030aa3e360ebf30427c88229b81d6d9fba2b7343d05e0cfc24b365"
+    },
+    "references/execution-plan.md": {
+      "unchanged": true,
+      "sha256": "892113f9e881651dfc7a1e4980881b126d24e02ab157db1174783c845d5e7406"
+    },
+    "references/handoff.md": {
+      "unchanged": true,
+      "sha256": "9b68d9c4b4f6ddc86f4ec1caaec7fea73c17b1eed9ddd907c5da58891fd01e5b"
+    },
+    "references/threejs-specialists.md": {
+      "unchanged": true,
+      "sha256": "59173aabb0a774f872c898ed23449a95c87237a24fbcc30d9236e83280b51240"
+    },
+    "references/ui-coexistence.md": {
+      "unchanged": true,
+      "sha256": "cff3bdfde304a467d2de27fd2ff467aa38c74567aafeee6fa00ca7ea02deb6a2"
+    }
+  },
+  "manifest_and_sibling_pins_unchanged": true,
+  "limit": "Preflight tracks all refs/status and prompt/snapshot bytes; arbitrary pre-existing untracked directory contents were not exhaustively byte-snapshotted. No edits targeted them."
+}

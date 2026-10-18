@@ -1,0 +1,132 @@
+{
+  "result": "PASS",
+  "source": "real default latest; no source/catalog/network override",
+  "repository": "https://github.com/andinoferdi/AI-RULES.git",
+  "published_runtime_commit": "efd9c508d55ed94ab2a1229e3324a008e7db71f0",
+  "previous_commit": "f531269775aafa8b162b4ec65dd919b37a208ffe",
+  "sibling_pins_unchanged": true,
+  "global_installation_modified": false,
+  "records": [
+    {
+      "scenario": "fresh",
+      "attempt": "first",
+      "exit_code": 0,
+      "command": [
+        "python",
+        "-m",
+        "ai_rules",
+        "setup",
+        "--host",
+        "codex",
+        "--scope",
+        "project",
+        "--project-root",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-0azvi2m7\\fresh",
+        "--state-dir",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-0azvi2m7\\fresh-state",
+        "--capability",
+        "andino-workflow",
+        "--yes",
+        "--non-interactive"
+      ],
+      "installed_runtime_hash": "b94423e2409edcac5616ce097aa2741c0bc3a26dfda8690563a68bb540c1d657",
+      "actions": [
+        "INSTALL",
+        "INSTALL",
+        "INSTALL"
+      ],
+      "output": "Preflight os=windows arch=amd64 python=3.12.10 commands=[git=yes, npx=yes, node=yes, codex=yes, claude=yes, opencode=yes, antigravity=yes]\nAI-RULES plan schema=1 profile=custom\n- focus -> codex/project: INSTALL (UPDATE_AVAILABLE) - latest source revision resolved\n  * capability_operation: source=https://github.com/andinoferdi/AI-RULES target=<disposable-root>\\fresh\\.agents\\skills\\focus backup=False reversible=True\n- search-first -> codex/project: INSTALL (UPDATE_AVAILABLE) - latest source revision resolved\n  * capability_operation: source=https://github.com/andinoferdi/AI-RULES target=<disposable-root>\\fresh\\.agents\\skills\\search-first backup=False reversible=True\n- andino-workflow -> codex/project: INSTALL (UPDATE_AVAILABLE) - latest source revision resolved\n  * capability_operation: source=https://github.com/andinoferdi/AI-RULES target=<disposable-root>\\fresh\\.agents\\skills\\andino-workflow backup=False reversible=True\nfocus -> codex: APPLIED INSTALL - installed <disposable-root>\\fresh\\.agents\\skills\\focus; recorded <disposable-root>\\fresh-state\\last-operation.json\nsearch-first -> codex: APPLIED INSTALL - installed <disposable-root>\\fresh\\.agents\\skills\\search-first; recorded <disposable-root>\\fresh-state\\last-operation.json\nandino-workflow -> codex: APPLIED INSTALL - installed <disposable-root>\\fresh\\.agents\\skills\\andino-workflow; recorded <disposable-root>\\fresh-state\\last-operation.json\n\nFile verification only; native session discovery and skill use are not verified by setup.\n\nManual invocation: start a new agent session or reload its window.\n  Codex: $focus, $search-first, $andino-workflow\n"
+    },
+    {
+      "scenario": "fresh",
+      "attempt": "repeat",
+      "exit_code": 0,
+      "command": [
+        "python",
+        "-m",
+        "ai_rules",
+        "setup",
+        "--host",
+        "codex",
+        "--scope",
+        "project",
+        "--project-root",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-0azvi2m7\\fresh",
+        "--state-dir",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-0azvi2m7\\fresh-state",
+        "--capability",
+        "andino-workflow",
+        "--yes",
+        "--non-interactive"
+      ],
+      "installed_runtime_hash": "b94423e2409edcac5616ce097aa2741c0bc3a26dfda8690563a68bb540c1d657",
+      "actions": [
+        "NO_OP",
+        "NO_OP",
+        "NO_OP"
+      ],
+      "output": "Preflight os=windows arch=amd64 python=3.12.10 commands=[git=yes, npx=yes, node=yes, codex=yes, claude=yes, opencode=yes, antigravity=yes]\nAI-RULES plan schema=1 profile=custom\n- focus -> codex/project: NO_OP (CURRENT) - full content matches the freshly fetched branch\n- search-first -> codex/project: NO_OP (CURRENT) - full content matches the freshly fetched branch\n- andino-workflow -> codex/project: NO_OP (CURRENT) - full content matches the freshly fetched branch\nfocus -> codex: VERIFIED NO_OP - full content matches the freshly fetched branch\nsearch-first -> codex: VERIFIED NO_OP - full content matches the freshly fetched branch\nandino-workflow -> codex: VERIFIED NO_OP - full content matches the freshly fetched branch\n\nFile verification only; native session discovery and skill use are not verified by setup.\n\nManual invocation: start a new agent session or reload its window.\n  Codex: $focus, $search-first, $andino-workflow\n"
+    },
+    {
+      "scenario": "upgrade",
+      "attempt": "first",
+      "exit_code": 0,
+      "command": [
+        "python",
+        "-m",
+        "ai_rules",
+        "setup",
+        "--host",
+        "codex",
+        "--scope",
+        "project",
+        "--project-root",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-0azvi2m7\\upgrade",
+        "--state-dir",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-0azvi2m7\\upgrade-state",
+        "--capability",
+        "andino-workflow",
+        "--yes",
+        "--non-interactive"
+      ],
+      "installed_runtime_hash": "b94423e2409edcac5616ce097aa2741c0bc3a26dfda8690563a68bb540c1d657",
+      "actions": [
+        "INSTALL",
+        "INSTALL",
+        "UPDATE"
+      ],
+      "output": "Preflight os=windows arch=amd64 python=3.12.10 commands=[git=yes, npx=yes, node=yes, codex=yes, claude=yes, opencode=yes, antigravity=yes]\nAI-RULES plan schema=1 profile=custom\n- focus -> codex/project: INSTALL (UPDATE_AVAILABLE) - latest source revision resolved\n  * capability_operation: source=https://github.com/andinoferdi/AI-RULES target=<disposable-root>\\upgrade\\.agents\\skills\\focus backup=False reversible=True\n- search-first -> codex/project: INSTALL (UPDATE_AVAILABLE) - latest source revision resolved\n  * capability_operation: source=https://github.com/andinoferdi/AI-RULES target=<disposable-root>\\upgrade\\.agents\\skills\\search-first backup=False reversible=True\n- andino-workflow -> codex/project: UPDATE (UPDATE_AVAILABLE) - clean official installation is behind the source branch\n  * capability_operation: source=https://github.com/andinoferdi/AI-RULES target=<disposable-root>\\upgrade\\.agents\\skills\\andino-workflow backup=True reversible=True\nfocus -> codex: APPLIED INSTALL - installed <disposable-root>\\upgrade\\.agents\\skills\\focus; recorded <disposable-root>\\upgrade-state\\last-operation.json\nsearch-first -> codex: APPLIED INSTALL - installed <disposable-root>\\upgrade\\.agents\\skills\\search-first; recorded <disposable-root>\\upgrade-state\\last-operation.json\nandino-workflow -> codex: APPLIED UPDATE - installed <disposable-root>\\upgrade\\.agents\\skills\\andino-workflow; recorded <disposable-root>\\upgrade-state\\last-operation.json\n\nFile verification only; native session discovery and skill use are not verified by setup.\n\nManual invocation: start a new agent session or reload its window.\n  Codex: $focus, $search-first, $andino-workflow\n"
+    },
+    {
+      "scenario": "upgrade",
+      "attempt": "repeat",
+      "exit_code": 0,
+      "command": [
+        "python",
+        "-m",
+        "ai_rules",
+        "setup",
+        "--host",
+        "codex",
+        "--scope",
+        "project",
+        "--project-root",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-0azvi2m7\\upgrade",
+        "--state-dir",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-0azvi2m7\\upgrade-state",
+        "--capability",
+        "andino-workflow",
+        "--yes",
+        "--non-interactive"
+      ],
+      "installed_runtime_hash": "b94423e2409edcac5616ce097aa2741c0bc3a26dfda8690563a68bb540c1d657",
+      "actions": [
+        "NO_OP",
+        "NO_OP",
+        "NO_OP"
+      ],
+      "output": "Preflight os=windows arch=amd64 python=3.12.10 commands=[git=yes, npx=yes, node=yes, codex=yes, claude=yes, opencode=yes, antigravity=yes]\nAI-RULES plan schema=1 profile=custom\n- focus -> codex/project: NO_OP (CURRENT) - full content matches the freshly fetched branch\n- search-first -> codex/project: NO_OP (CURRENT) - full content matches the freshly fetched branch\n- andino-workflow -> codex/project: NO_OP (CURRENT) - full content matches the freshly fetched branch\nfocus -> codex: VERIFIED NO_OP - full content matches the freshly fetched branch\nsearch-first -> codex: VERIFIED NO_OP - full content matches the freshly fetched branch\nandino-workflow -> codex: VERIFIED NO_OP - full content matches the freshly fetched branch\n\nFile verification only; native session discovery and skill use are not verified by setup.\n\nManual invocation: start a new agent session or reload its window.\n  Codex: $focus, $search-first, $andino-workflow\n"
+    }
+  ],
+  "limit": "Actual remote acquisition and disposable file/state verification; native host discovery/use is not proved."
+}

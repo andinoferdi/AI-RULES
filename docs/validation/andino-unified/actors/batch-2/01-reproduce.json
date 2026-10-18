@@ -1,0 +1,19 @@
+{
+  "label": "01-reproduce",
+  "command": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-B",
+    "reproduce.py"
+  ],
+  "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\fixture",
+  "observed_at": "2026-10-18T08:27:16.239118+00:00",
+  "exit_code": 0,
+  "stdout": "{\"first\": [\"A\", \"B\"], \"second\": [\"B\", \"C\"]}\n",
+  "stderr": "",
+  "tested_files": {
+    "fixture\\probe_cause.py": "87431283bf118d6010c94df86df08a6852b664d961c0952c223a9db764d6ee2e",
+    "fixture\\reproduce.py": "f7cb7825eb0eedb18cc729d97d2e4423e316400a2c29f883ed117892ae632a0f",
+    "fixture\\subject.py": "6be30fbd485578ecd856998253e2b39c6a447429ef12fa5cc8e14d01fee2592d",
+    "fixture\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97"
+  }
+}

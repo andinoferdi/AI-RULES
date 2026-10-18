@@ -1,0 +1,58 @@
+{
+  "records": [
+    {
+      "trace": "claude-debugging.json",
+      "runtime_hash": "ec364b5f5f0de2ba62a6938af3e87d00af7013ae1bcf45a8e3e5da0a6523da34",
+      "host_version": "2.1.300 (Claude Code)",
+      "model": "claude-opus-5-5",
+      "scope": "Restricted explicit native plugin registration and read-only debugging fixture",
+      "observed_tool_order": {
+        "ai-rules-eval:andino-workflow": 0,
+        "artifact": 1,
+        "ai-rules-eval:focus": 5,
+        "guide": 7
+      },
+      "ordering_pass": false,
+      "reasoning_pass": true,
+      "verdict": "FAIL",
+      "environment_message": null,
+      "trace_sha256": "4902693ca93086344d16e61f470a58a7214a75027f19b580c493821278cd6f75"
+    },
+    {
+      "trace": "claude-debugging-v2.json",
+      "runtime_hash": "9973fa8c41fc09768126d00aadb2b95cd1d5c93ca16cc9a704492b5afbc8b9cf",
+      "host_version": "2.1.300 (Claude Code)",
+      "model": "claude-opus-5-5",
+      "scope": "Restricted explicit native plugin registration and read-only debugging fixture",
+      "observed_tool_order": {
+        "ai-rules-eval:andino-workflow": 0,
+        "ai-rules-eval:focus": 1,
+        "guide": 6,
+        "artifact": 8
+      },
+      "ordering_pass": true,
+      "reasoning_pass": true,
+      "verdict": "PASS",
+      "environment_message": null,
+      "trace_sha256": "c73f02d2797bd1e3468de335c52762e2b155a59040c1a0cffeaadc47d38f872e"
+    },
+    {
+      "trace": "claude-debugging-v3.json",
+      "runtime_hash": "628e3d35c153e463924dbb17212523568e9b759e4d6fd3367a30dad70d6424cd",
+      "host_version": "2.1.300 (Claude Code)",
+      "model": "<synthetic>",
+      "scope": "Restricted explicit native plugin registration and read-only debugging fixture",
+      "observed_tool_order": {
+        "ai-rules-eval:andino-workflow": 0,
+        "ai-rules-eval:focus": 1,
+        "guide": 6
+      },
+      "ordering_pass": false,
+      "reasoning_pass": false,
+      "verdict": "NOT_VERIFIED",
+      "environment_message": "You've hit your weekly limit \u00b7 resets 3pm (Asia/Bangkok)",
+      "trace_sha256": "d8fbc573cce79b28bfb674c72b12874e82bf789e8736065b3024442c64c53407"
+    }
+  ],
+  "limitation": "Raw runner verdict remains NOT_VERIFIED until this parent review; v2 scoped PASS does not become current-v3 live proof. Claude v3 hit an account weekly limit; no retry or alternate-account bypass."
+}

@@ -1,0 +1,16 @@
+[rtk] /!\ No hook installed — run `rtk init -g` for automatic token savings
+test_empty_invoice (test_subject.InvoiceContract.test_empty_invoice) ... FAIL
+test_known_invoice (test_subject.InvoiceContract.test_known_invoice) ... ok
+
+======================================================================
+FAIL: test_empty_invoice (test_subject.InvoiceContract.test_empty_invoice)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\Downloads\AI-RULES-main\docs\validation\andino-unified\actors\batch-1\mutations\wrong_empty\test_subject.py", line 11, in test_empty_invoice
+    self.assertEqual(sum_invoice([]), 0)
+AssertionError: 1 != 0
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=1)

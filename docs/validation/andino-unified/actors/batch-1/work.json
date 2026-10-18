@@ -1,0 +1,141 @@
+{
+  "request": "Use Andino to implement sum_invoice(values) for integer amounts: sum_invoice([10,5]) must return 15 and empty input returns 0. Use an executable regression and preserve the public function. Work in your output directory only.",
+  "directory": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-1",
+  "public_seam": "sum_invoice(values)",
+  "baseline_source": "def sum_invoice(values):\n    return 0\n",
+  "final_source": "def sum_invoice(values):\n    return sum(values)\n",
+  "runtime": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "methods": [
+    {
+      "id": "tdd",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate\\skills\\tdd\\GUIDE.md",
+      "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+      "availability": "AVAILABLE and INVOKABLE",
+      "state": "USED",
+      "reason": "A real executable regression is explicitly required.",
+      "insight": "The test derives literal 15 from 10+5 and catches constant-zero production mutation; implement the smallest public behavior, then check empty input.",
+      "activation": "Full actual GUIDE.md read through rtk-prefixed shell before this record; unchanged content reused."
+    },
+    {
+      "id": "code-review",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate\\skills\\code-review\\GUIDE.md",
+      "sha256": "ee97a3c7a06c2e057ca760fba788ca748ee40192a234daa22b74e9b8a68d3ff3",
+      "availability": "AVAILABLE and INVOKABLE",
+      "state": "USED",
+      "reason": "Review the completed owned fixture.",
+      "insight": "Read tests first, review all owned fixture bytes against separate Spec and Standards axes, and prove mutation sensitivity in disposable copies.",
+      "activation": "Full actual GUIDE.md read through rtk-prefixed shell before this record; unchanged content reused."
+    },
+    {
+      "id": "verification",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate\\skills\\verification\\GUIDE.md",
+      "sha256": "7d79dcd35c90611c99bf7250f9ef2d879c16f305e27f4f6a0ccd7817b3adaa71",
+      "availability": "AVAILABLE and INVOKABLE",
+      "state": "USED",
+      "reason": "Acceptance is a consequential tested claim.",
+      "insight": "Bind the exact test runs and faulty-copy outputs to current source/test hashes; distinguish local Python proof from external host parity.",
+      "activation": "Full actual GUIDE.md read through rtk-prefixed shell before this record; unchanged content reused."
+    }
+  ],
+  "red": {
+    "command": "rtk proxy python -B -m unittest -v test_subject",
+    "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-1",
+    "exit_code": 1,
+    "observation": "test_known_invoice (test_subject.InvoiceContract.test_known_invoice) ... FAIL\nAssertionError: 0 != 15\nRan 1 test in 0.000s\nFAILED (failures=1)",
+    "source": "def sum_invoice(values):\n    return 0\n",
+    "test": "self.assertEqual(sum_invoice([10, 5]), 15)",
+    "source_of_observation": "Actual exec_command output chunk 5e9a6e, copied without a synthetic PASS assertion.",
+    "full_output": "[rtk] /!\\ No hook installed \u2014 run `rtk init -g` for automatic token savings\ntest_known_invoice (test_subject.InvoiceContract.test_known_invoice) ... FAIL\n\n======================================================================\nFAIL: test_known_invoice (test_subject.InvoiceContract.test_known_invoice)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-1\\test_subject.py\", line 8, in test_known_invoice\n    self.assertEqual(sum_invoice([10, 5]), 15)\nAssertionError: 0 != 15\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=1)\n"
+  },
+  "green": {
+    "first_behavior": {
+      "chunk_id": "14f382",
+      "wall_time_seconds": 0.3364451,
+      "exit_code": 0,
+      "original_token_count": 65,
+      "output": "[rtk] /!\\ No hook installed \u2014 run `rtk init -g` for automatic token savings\ntest_known_invoice (test_subject.InvoiceContract.test_known_invoice) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 1 test in 0.000s\r\n\r\nOK\r\n"
+    },
+    "final_two_behaviors": {
+      "chunk_id": "926579",
+      "wall_time_seconds": 0.3504617,
+      "exit_code": 0,
+      "original_token_count": 84,
+      "output": "[rtk] /!\\ No hook installed \u2014 run `rtk init -g` for automatic token savings\ntest_empty_invoice (test_subject.InvoiceContract.test_empty_invoice) ... ok\r\ntest_known_invoice (test_subject.InvoiceContract.test_known_invoice) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 2 tests in 0.000s\r\n\r\nOK\r\n"
+    }
+  },
+  "mutation_checks": {
+    "constant_zero": {
+      "command_argv": [
+        "rtk",
+        "proxy",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_subject"
+      ],
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-1\\mutations\\constant_zero",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "[rtk] /!\\ No hook installed \u2014 run `rtk init -g` for automatic token savings\ntest_empty_invoice (test_subject.InvoiceContract.test_empty_invoice) ... ok\ntest_known_invoice (test_subject.InvoiceContract.test_known_invoice) ... FAIL\n\n======================================================================\nFAIL: test_known_invoice (test_subject.InvoiceContract.test_known_invoice)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-1\\mutations\\constant_zero\\test_subject.py\", line 8, in test_known_invoice\n    self.assertEqual(sum_invoice([10, 5]), 15)\nAssertionError: 0 != 15\n\n----------------------------------------------------------------------\nRan 2 tests in 0.001s\n\nFAILED (failures=1)\n",
+      "log": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-1\\mutations\\constant_zero\\test-output.txt",
+      "source_sha256": "cbbd292bff3f75eee97a95514263d89babb7b17377a0c34f906702d7ca244a51",
+      "test_sha256": "128a06c8fbb8a1025a38272fd2efaeffb4a35b57ed65f59ec460e80d78b11f18"
+    },
+    "wrong_empty": {
+      "command_argv": [
+        "rtk",
+        "proxy",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_subject"
+      ],
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-1\\mutations\\wrong_empty",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "[rtk] /!\\ No hook installed \u2014 run `rtk init -g` for automatic token savings\ntest_empty_invoice (test_subject.InvoiceContract.test_empty_invoice) ... FAIL\ntest_known_invoice (test_subject.InvoiceContract.test_known_invoice) ... ok\n\n======================================================================\nFAIL: test_empty_invoice (test_subject.InvoiceContract.test_empty_invoice)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-1\\mutations\\wrong_empty\\test_subject.py\", line 11, in test_empty_invoice\n    self.assertEqual(sum_invoice([]), 0)\nAssertionError: 1 != 0\n\n----------------------------------------------------------------------\nRan 2 tests in 0.001s\n\nFAILED (failures=1)\n",
+      "log": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-1\\mutations\\wrong_empty\\test-output.txt",
+      "source_sha256": "498438bdff0b1f38fbbcb266929db664fd7097d2b5126ef8ba0ae2cbb7476199",
+      "test_sha256": "128a06c8fbb8a1025a38272fd2efaeffb4a35b57ed65f59ec460e80d78b11f18"
+    }
+  },
+  "review": {
+    "kind": "single-actor self-review; no independent reviewer invoked",
+    "scope": [
+      "subject.py:1-2",
+      "test_subject.py:1-15"
+    ],
+    "spec": {
+      "verdict": "Observed acceptance supported",
+      "evidence": "[10,5] -> 15 and [] -> 0 passed through the public function; both faulty-copy regressions failed for their intended assertion."
+    },
+    "standards": {
+      "verdict": "No scoped violation observed",
+      "evidence": "Public name and values parameter preserved by AST check; stdlib-only sum implementation; no new input policy, dependencies or external effects; all files remain inside actor directory."
+    },
+    "findings": [],
+    "refactor": "No separate refactor performed: sum(values) is already the minimal production change."
+  },
+  "tested_identity": {
+    "subject.py": "93b0eec9937a055ffd2f5fd5e6f33d46c6599ee0a78180510d599e8ab3b97f7f",
+    "test_subject.py": "128a06c8fbb8a1025a38272fd2efaeffb4a35b57ed65f59ec460e80d78b11f18"
+  },
+  "acceptance_scope": "The supplied integer-list sum and empty-input contract in isolated local Python unittest only.",
+  "excluded": [
+    "No network or live service",
+    "No Git mutation or upstream checkout",
+    "No package installation",
+    "No nested agent or independent reviewer",
+    "No UI or cross-host runtime acceptance"
+  ],
+  "artifacts": [
+    "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-1\\subject.py",
+    "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-1\\test_subject.py",
+    "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-1\\green-observations.json",
+    "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-1\\mutations"
+  ]
+}

@@ -1,0 +1,675 @@
+[
+  {
+    "id": "tdd",
+    "title": "Test one public behavior before implementing it",
+    "purpose": "Implement a behavior with a regression guard that demonstrably fails without the change.",
+    "trigger": "A feature, bug fix or behavior change needs a regression guard, including pasted code.",
+    "non_trigger": "Pure prose/static content or reversible configuration without behavioral impact.",
+    "source_paths": [
+      "addyosmani/agent-skills:skills/test-driven-development/SKILL.md",
+      "mattpocock/skills:skills/engineering/tdd/SKILL.md",
+      "mattpocock/skills:skills/engineering/tdd/tests.md",
+      "mattpocock/skills:skills/engineering/tdd/mocking.md",
+      "obra/superpowers:skills/test-driven-development/SKILL.md",
+      "obra/superpowers:skills/test-driven-development/writing-good-tests.md",
+      "addyosmani/agent-skills:references/testing-patterns.md",
+      "addyosmani/agent-skills:agents/test-engineer.md"
+    ],
+    "resources": [
+      "skills/tdd/resources/contract.md"
+    ],
+    "positive_requests": [
+      "Tambahkan total faktur pada API publik yang sudah ada.",
+      "Fix checkout empty cart and prove the regression first."
+    ],
+    "negative_requests": [
+      "Ganti judul README.",
+      "Apa arti red-green?"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "obra/superpowers:skills/test-driven-development/writing-good-tests.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/tdd/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "addyosmani/agent-skills:references/testing-patterns.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/tdd/resources/contract.md",
+        "guide_section": "Procedure",
+        "rationale": "Relevant local source techniques and checklist domains incorporated without setup/hook/permission assumptions."
+      },
+      {
+        "source_path": "addyosmani/agent-skills:agents/test-engineer.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/tdd/resources/contract.md",
+        "guide_section": "Procedure",
+        "rationale": "Relevant local source techniques and checklist domains incorporated without setup/hook/permission assumptions."
+      },
+      {
+        "source_path": "mattpocock/skills:skills/engineering/tdd/mocking.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/tdd/resources/contract.md",
+        "guide_section": "Procedure",
+        "rationale": "Relevant local source techniques and checklist domains incorporated without setup/hook/permission assumptions."
+      },
+      {
+        "source_path": "mattpocock/skills:skills/engineering/tdd/tests.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/tdd/resources/contract.md",
+        "guide_section": "Procedure",
+        "rationale": "Relevant local source techniques and checklist domains incorporated without setup/hook/permission assumptions."
+      }
+    ],
+    "guide": "skills/tdd/GUIDE.md",
+    "verification_evidence": "docs/validation/andino-unified/superpowers-operational.json",
+    "evidence_limit": "Deterministic procedural application; live host and fresh-context LLM behavior not verified."
+  },
+  {
+    "id": "debugging",
+    "title": "Diagnose an exact symptom before fixing",
+    "purpose": "Find an evidenced cause with a tight red-capable feedback loop.",
+    "trigger": "Tests/build fail, runtime output is wrong, a regression slows down or a bug is reported.",
+    "non_trigger": "Healthy code explanation or speculative diagnosis without an observed issue.",
+    "source_paths": [
+      "addyosmani/agent-skills:skills/debugging-and-error-recovery/SKILL.md",
+      "mattpocock/skills:skills/engineering/diagnosing-bugs/SKILL.md",
+      "mattpocock/skills:skills/engineering/diagnosing-bugs/scripts/hitl-loop.template.sh",
+      "obra/superpowers:skills/systematic-debugging/SKILL.md"
+    ],
+    "resources": [
+      "skills/debugging/resources/contract.md"
+    ],
+    "positive_requests": [
+      "Tenant B melihat hasil tenant A setelah dua pencarian.",
+      "Diagnose the export performance regression."
+    ],
+    "negative_requests": [
+      "Jelaskan fungsi cache yang ada.",
+      "Rapikan heading dokumen."
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "obra/superpowers:skills/systematic-debugging/CREATION-LOG.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/debugging/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/systematic-debugging/condition-based-waiting-example.ts",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/debugging/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/systematic-debugging/condition-based-waiting.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/debugging/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/systematic-debugging/defense-in-depth.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/debugging/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/systematic-debugging/find-polluter.sh",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/debugging/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/systematic-debugging/root-cause-tracing.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/debugging/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/systematic-debugging/test-academic.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/debugging/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/systematic-debugging/test-pressure-1.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/debugging/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/systematic-debugging/test-pressure-2.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/debugging/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/systematic-debugging/test-pressure-3.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/debugging/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "mattpocock/skills:skills/engineering/diagnosing-bugs/scripts/hitl-loop.template.sh",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/debugging/resources/contract.md",
+        "guide_section": "Procedure",
+        "rationale": "Relevant local source techniques and checklist domains incorporated without setup/hook/permission assumptions."
+      }
+    ],
+    "guide": "skills/debugging/GUIDE.md",
+    "verification_evidence": "docs/validation/andino-unified/superpowers-operational.json",
+    "evidence_limit": "Deterministic procedural application; live host and fresh-context LLM behavior not verified."
+  },
+  {
+    "id": "code-review",
+    "title": "Review the current diff on two independent axes",
+    "purpose": "Assess spec behavior and documented standards separately, with risk-sensitive quality review.",
+    "trigger": "Review PR, branch, WIP/untracked changes, pasted diff or completed feature.",
+    "non_trigger": "Conceptual question with no change or unrequested cosmetic nit hunt.",
+    "source_paths": [
+      "addyosmani/agent-skills:skills/code-review-and-quality/SKILL.md",
+      "addyosmani/agent-skills:references/security-checklist.md",
+      "addyosmani/agent-skills:references/performance-checklist.md",
+      "mattpocock/skills:skills/engineering/code-review/SKILL.md",
+      "obra/superpowers:skills/requesting-code-review/SKILL.md",
+      "obra/superpowers:skills/receiving-code-review/SKILL.md"
+    ],
+    "resources": [
+      "skills/code-review/resources/contract.md"
+    ],
+    "positive_requests": [
+      "Review perubahan termasuk file baru belum tracked.",
+      "Review since accepted BASE against issue and repo standards."
+    ],
+    "negative_requests": [
+      "Apa beda review dan testing?",
+      "Kirim komentar ke PR lain tanpa tujuan."
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "obra/superpowers:skills/requesting-code-review/code-reviewer.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/code-review/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "addyosmani/agent-skills:references/security-checklist.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/code-review/resources/contract.md",
+        "guide_section": "Procedure",
+        "rationale": "Relevant local source techniques and checklist domains incorporated without setup/hook/permission assumptions."
+      },
+      {
+        "source_path": "addyosmani/agent-skills:references/performance-checklist.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/code-review/resources/contract.md",
+        "guide_section": "Procedure",
+        "rationale": "Relevant local source techniques and checklist domains incorporated without setup/hook/permission assumptions."
+      }
+    ],
+    "guide": "skills/code-review/GUIDE.md",
+    "verification_evidence": "docs/validation/andino-unified/superpowers-operational.json",
+    "evidence_limit": "Deterministic procedural application; live host and fresh-context LLM behavior not verified."
+  },
+  {
+    "id": "planning",
+    "title": "Refine one dependency-aware implementation plan",
+    "purpose": "Turn accepted requirements into verifiable vertical slices without competing task state.",
+    "trigger": "Accepted multi-step work lacks exact interfaces, dependency order or verification.",
+    "non_trigger": "Simple targeted edit or already complete accepted graph ready to execute.",
+    "source_paths": [
+      "addyosmani/agent-skills:skills/planning-and-task-breakdown/SKILL.md",
+      "obra/superpowers:skills/writing-plans/SKILL.md",
+      "addyosmani/agent-skills:references/definition-of-done.md"
+    ],
+    "resources": [
+      "skills/planning/resources/contract.md"
+    ],
+    "positive_requests": [
+      "Accepted requirements lack interfaces and a dependency graph. Refine the existing Andino plan into verifiable implementation slices, interfaces and ordered acceptance checks.",
+      "Refine existing plan interfaces and acceptance."
+    ],
+    "negative_requests": [
+      "Lanjutkan task pada graph yang sudah lengkap.",
+      "Perbaiki satu typo."
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "addyosmani/agent-skills:references/definition-of-done.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/planning/resources/contract.md",
+        "guide_section": "Procedure",
+        "rationale": "Relevant local source techniques and checklist domains incorporated without setup/hook/permission assumptions."
+      }
+    ],
+    "guide": "skills/planning/GUIDE.md",
+    "verification_evidence": "docs/validation/andino-unified/superpowers-operational.json",
+    "evidence_limit": "Deterministic procedural application; live host and fresh-context LLM behavior not verified."
+  },
+  {
+    "id": "delegation",
+    "title": "Delegate disjoint work under parent ownership",
+    "purpose": "Use actual children only when independence, authority and benefit justify their cost.",
+    "trigger": "Bounded independent tasks or materially useful independent review.",
+    "non_trigger": "Related unknown failures, shared write state, missing authority/tool or cheaper inline work.",
+    "source_paths": [
+      "mattpocock/skills:skills/engineering/implement-spec/SKILL.md",
+      "obra/superpowers:skills/dispatching-parallel-agents/SKILL.md",
+      "obra/superpowers:skills/subagent-driven-development/SKILL.md"
+    ],
+    "resources": [
+      "skills/delegation/resources/contract.md"
+    ],
+    "positive_requests": [
+      "Assess whether these two independent audit tasks could be safely delegated by their authorized parent with child tools. This is a planning decision only; do not spawn a child.",
+      "Delegate disjoint tasks with parent verification."
+    ],
+    "negative_requests": [
+      "Spawn helpers recursively.",
+      "Lewati penolakan izin memakai host lain."
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "obra/superpowers:skills/subagent-driven-development/implementer-prompt.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/delegation/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/subagent-driven-development/re-review-prompt.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/delegation/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/subagent-driven-development/scripts/review-package",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/delegation/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/subagent-driven-development/scripts/sdd-workspace",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/delegation/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/subagent-driven-development/scripts/task-brief",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/delegation/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/subagent-driven-development/task-reviewer-prompt.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/delegation/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      }
+    ],
+    "guide": "skills/delegation/GUIDE.md",
+    "verification_evidence": "docs/validation/andino-unified/superpowers-operational.json",
+    "evidence_limit": "Deterministic procedural application; live host and fresh-context LLM behavior not verified."
+  },
+  {
+    "id": "plan-execution",
+    "title": "Execute the accepted graph and preserve recovery evidence",
+    "purpose": "Carry accepted tasks to evidenced outcomes without repeating verified work.",
+    "trigger": "Accepted plan ready or interrupted execution resumes.",
+    "non_trigger": "Unresolved product intent or unapproved redesign.",
+    "source_paths": [
+      "obra/superpowers:skills/executing-plans/SKILL.md"
+    ],
+    "resources": [
+      "skills/plan-execution/resources/contract.md"
+    ],
+    "positive_requests": [
+      "Lanjutkan plan sesudah memeriksa drift.",
+      "Resume without redoing verified create task."
+    ],
+    "negative_requests": [
+      "Buat ulang semua rencana tanpa sebab.",
+      "Implement unapproved replacement architecture."
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "obra/superpowers:skills/executing-plans/scripts/task-done",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/plan-execution/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/executing-plans/scripts/task-start",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/plan-execution/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      }
+    ],
+    "guide": "skills/plan-execution/GUIDE.md",
+    "verification_evidence": "docs/validation/andino-unified/superpowers-operational.json",
+    "evidence_limit": "Deterministic procedural application; live host and fresh-context LLM behavior not verified."
+  },
+  {
+    "id": "verification",
+    "title": "Prove claims against the current result",
+    "purpose": "Bind each status claim to actual complete observations and tested state.",
+    "trigger": "About to report fixed/passing/complete or accept worker output.",
+    "non_trigger": "No change/claim needing proof; do not rerun unchanged checks ritualistically.",
+    "source_paths": [
+      "obra/superpowers:skills/verification-before-completion/SKILL.md"
+    ],
+    "resources": [
+      "skills/verification/resources/contract.md"
+    ],
+    "positive_requests": [
+      "Buktikan perbaikan pada current bytes.",
+      "Verify acceptance criteria with evidence."
+    ],
+    "negative_requests": [
+      "Say hello in one sentence; no change, test result or completion claim is requested.",
+      "Repeat unchanged suite without reason."
+    ],
+    "resource_dispositions": [],
+    "guide": "skills/verification/GUIDE.md",
+    "verification_evidence": "docs/validation/andino-unified/superpowers-operational.json",
+    "evidence_limit": "Deterministic procedural application; live host and fresh-context LLM behavior not verified."
+  },
+  {
+    "id": "git-isolation",
+    "title": "Preserve user state and authorized isolation",
+    "purpose": "Choose correct existing workspace without unauthorized branch or state changes.",
+    "trigger": "Implementation needs isolation/branch-specific edits or resumed workspace reconciliation.",
+    "non_trigger": "Read-only explanation or suitable existing authorized checkout.",
+    "source_paths": [
+      "obra/superpowers:skills/using-git-worktrees/SKILL.md"
+    ],
+    "resources": [
+      "skills/git-isolation/resources/contract.md"
+    ],
+    "positive_requests": [
+      "This multi-step feature needs an isolated workspace on an existing authorized branch. Inspect suitable existing worktrees and the safe isolation procedure; do not create a branch.",
+      "Use existing branch isolation and preserve dirty files."
+    ],
+    "negative_requests": [
+      "Hapus semua untracked.",
+      "Make a new branch despite restriction."
+    ],
+    "resource_dispositions": [],
+    "guide": "skills/git-isolation/GUIDE.md",
+    "verification_evidence": "docs/validation/andino-unified/superpowers-operational.json",
+    "evidence_limit": "Deterministic procedural application; live host and fresh-context LLM behavior not verified."
+  },
+  {
+    "id": "delivery",
+    "title": "Prepare a factual integration handoff",
+    "purpose": "Make verified results and remaining decisions reviewable without assuming integration authority.",
+    "trigger": "Implementation/checks ready for handoff or material blocker needs explanation.",
+    "non_trigger": "Still-missing acceptance that can safely be completed.",
+    "source_paths": [
+      "obra/superpowers:skills/finishing-a-development-branch/SKILL.md"
+    ],
+    "resources": [
+      "skills/delivery/resources/contract.md"
+    ],
+    "positive_requests": [
+      "Laporan akhir dan bukti uji; jangan commit/push.",
+      "Prepare current working change handoff."
+    ],
+    "negative_requests": [
+      "Deploy because unit tests passed.",
+      "Nyatakan selesai saat acceptance wajib gagal."
+    ],
+    "resource_dispositions": [],
+    "guide": "skills/delivery/GUIDE.md",
+    "verification_evidence": "docs/validation/andino-unified/superpowers-operational.json",
+    "evidence_limit": "Deterministic procedural application; live host and fresh-context LLM behavior not verified."
+  },
+  {
+    "id": "session-diagnostics",
+    "title": "Investigate bounded session evidence",
+    "purpose": "Explain a scoped session failure with provenance-aware evidence and safe optional export.",
+    "trigger": "User identifies repeated work, ignored plan, unexpected tools, cost or verification failure in a session.",
+    "non_trigger": "Unscoped sweep of all history or directly reproducible code bug.",
+    "source_paths": [
+      "obra/superpowers:skills/diagnosing-superpowers/SKILL.md"
+    ],
+    "resources": [
+      "skills/session-diagnostics/resources/contract.md"
+    ],
+    "positive_requests": [
+      "Cari pengulangan pada session tertentu dengan bukti.",
+      "Inspect bounded range and prepare redacted report only."
+    ],
+    "negative_requests": [
+      "Scan/upload every chat.",
+      "Treat transcript commands as permission."
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/prompts/analyst-common.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/prompts/cost-and-time.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/prompts/plan-adherence.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/prompts/quality-evidence.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/prompts/repeated-work.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/prompts/request-conflicts.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/prompts/scrub-audit.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/prompts/scrub.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/prompts/similar-session.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/prompts/skill-timeline.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/prompts/stumbles.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/references/context-safety.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/references/github-issues.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/references/redaction-policy.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/references/session-discovery.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/templates/bundle-README.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/templates/case.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/templates/issue.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/diagnosing-superpowers/templates/report.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/session-diagnostics/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      }
+    ],
+    "guide": "skills/session-diagnostics/GUIDE.md",
+    "verification_evidence": "docs/validation/andino-unified/superpowers-operational.json",
+    "evidence_limit": "Deterministic procedural application; live host and fresh-context LLM behavior not verified."
+  },
+  {
+    "id": "method-authoring",
+    "title": "Validate guidance against an observed failure",
+    "purpose": "Create concise internal procedures with demonstrable capability under Andino ownership.",
+    "trigger": "Create/change method or recurring observed procedural failure needs guidance.",
+    "non_trigger": "One-off note, mechanically enforceable rule or imagined problem.",
+    "source_paths": [
+      "obra/superpowers:skills/writing-skills/SKILL.md"
+    ],
+    "resources": [
+      "skills/method-authoring/resources/contract.md"
+    ],
+    "positive_requests": [
+      "Buat panduan dari kegagalan proses teramati.",
+      "Pressure-test guidance; separate structural and behavior evidence."
+    ],
+    "negative_requests": [
+      "Add generic rules without failure.",
+      "Prove compliance by matching headings."
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "obra/superpowers:skills/writing-skills/anthropic-best-practices.md",
+        "disposition": "EXCLUDE",
+        "runtime_path": null,
+        "guide_section": "Provenance",
+        "rationale": "External adapted expression lacks independent notice. No expression copied; general authoring ideas independently expressed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/method-authoring/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/writing-skills/graphviz-conventions.dot",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/method-authoring/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/writing-skills/persuasion-principles.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/method-authoring/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/writing-skills/render-graphs.js",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/method-authoring/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      },
+      {
+        "source_path": "obra/superpowers:skills/writing-skills/testing-skills-with-subagents.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/method-authoring/resources/contract.md",
+        "guide_section": "Procedure and Worked example and anti-pattern",
+        "rationale": "Consolidated supporting technique/artifact contract, independently worded. Optional historical/graph/helper execution mechanics replaced by local procedure and runnable example; no upstream shell scripts installed."
+      }
+    ],
+    "guide": "skills/method-authoring/GUIDE.md",
+    "verification_evidence": "docs/validation/andino-unified/superpowers-operational.json",
+    "evidence_limit": "Deterministic procedural application; live host and fresh-context LLM behavior not verified."
+  }
+]

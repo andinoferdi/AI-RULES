@@ -1,0 +1,98 @@
+{
+  "request": "Review supplied candidate.py as an uncommitted new file without repair.",
+  "scope": {
+    "baseline": "absent file; complete supplied owned new-file bytes",
+    "candidate": {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors-v3/batch-3/candidate.py",
+      "sha256": "1669b711b0f16f44a9dc1545c57ef6d87b055fe12dd0f5d19ea42732be47ddfd"
+    },
+    "byte_count": 123,
+    "new_file_scope_supplied": true,
+    "git_status_not_queried": true
+  },
+  "spec": "Admins may open every record; members may open only records from their own organization.",
+  "standard": "Never evaluate user input dynamically.",
+  "spec_verdict": "FAIL",
+  "standards_verdict": "FAIL",
+  "findings": [
+    {
+      "id": "F1",
+      "axis": "spec",
+      "severity": "P1",
+      "file": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors-v3/batch-3/candidate.py",
+      "line": 3,
+      "title": "Member organization predicate is inverted",
+      "trigger": "member org A with record org B; also member org A with record org A",
+      "actual": "Cross-organization record allowed; own-organization record denied.",
+      "expected": "Cross-organization record denied; own-organization record allowed.",
+      "consequence": "Members can access records outside their organization and cannot open their own records.",
+      "evidence": "Literal member_other_org and member_own_org cases both fail; both admin cases pass.",
+      "concrete_remedy": "Use an own-organization equality condition for members while retaining the admin rule. No repair performed.",
+      "verification_gap": "Only supplied admin/member dictionary domain is covered; unspecified roles and malformed data are outside this spec."
+    },
+    {
+      "id": "F2",
+      "axis": "standards",
+      "severity": "P2",
+      "file": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors-v3/batch-3/candidate.py",
+      "line": 2,
+      "title": "Role input is routed through dynamic eval",
+      "trigger": "Every can_open call evaluates repr(user[\"role\"]) with eval.",
+      "actual": "Dynamic evaluator consumes a representation derived from user input.",
+      "expected": "Use the role value without dynamic evaluation.",
+      "consequence": "Violates the explicit hard standard and retains an unnecessary dynamic execution surface.",
+      "evidence": "AST finds an eval Call at line 2; direct source inspection confirms input lineage.",
+      "concrete_remedy": "Remove dynamic evaluation and use validated role data directly. No repair performed.",
+      "verification_gap": "Arbitrary code execution from ordinary string role values was not demonstrated; repr quotes those values. Finding is the explicit standards violation."
+    }
+  ],
+  "checks": [
+    {
+      "command": "rtk proxy python test_review.py candidate.py spec",
+      "cwd": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors-v3/batch-3",
+      "chunk_id": "9a93da",
+      "wall_time_seconds": 0.4357934,
+      "exit_code": 1,
+      "original_token_count": 173,
+      "output": "[rtk] /!\\ No hook installed — run `rtk init -g` for automatic token savings\n{\"axis\": \"spec\", \"cases\": [{\"actual\": true, \"expected\": true, \"id\": \"admin_own_org\", \"pass\": true, \"record\": {\"org\": \"A\"}, \"user\": {\"org\": \"A\", \"role\": \"admin\"}}, {\"actual\": true, \"expected\": true, \"id\": \"admin_other_org\", \"pass\": true, \"record\": {\"org\": \"B\"}, \"user\": {\"org\": \"A\", \"role\": \"admin\"}}, {\"actual\": false, \"expected\": true, \"id\": \"member_own_org\", \"pass\": false, \"record\": {\"org\": \"A\"}, \"user\": {\"org\": \"A\", \"role\": \"member\"}}, {\"actual\": true, \"expected\": false, \"id\": \"member_other_org\", \"pass\": false, \"record\": {\"org\": \"B\"}, \"user\": {\"org\": \"A\", \"role\": \"member\"}}], \"failed\": 2, \"passed\": 2}\r\n"
+    },
+    {
+      "command": "rtk proxy python test_review.py candidate.py standards",
+      "cwd": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors-v3/batch-3",
+      "chunk_id": "4472d1",
+      "wall_time_seconds": 0.3994521,
+      "exit_code": 1,
+      "original_token_count": 55,
+      "output": "[rtk] /!\\ No hook installed — run `rtk init -g` for automatic token savings\n{\"axis\": \"standards\", \"dynamic_eval_calls\": [{\"line\": 2, \"name\": \"eval\"}], \"pass\": false, \"rule\": \"never evaluate user input dynamically\"}\r\n"
+    },
+    {
+      "command": "rtk proxy python test_review.py candidate_mutant.py spec",
+      "cwd": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors-v3/batch-3",
+      "chunk_id": "bd9a69",
+      "wall_time_seconds": 0.4219252,
+      "exit_code": 1,
+      "original_token_count": 173,
+      "output": "[rtk] /!\\ No hook installed — run `rtk init -g` for automatic token savings\n{\"axis\": \"spec\", \"cases\": [{\"actual\": false, \"expected\": true, \"id\": \"admin_own_org\", \"pass\": false, \"record\": {\"org\": \"A\"}, \"user\": {\"org\": \"A\", \"role\": \"admin\"}}, {\"actual\": true, \"expected\": true, \"id\": \"admin_other_org\", \"pass\": true, \"record\": {\"org\": \"B\"}, \"user\": {\"org\": \"A\", \"role\": \"admin\"}}, {\"actual\": false, \"expected\": true, \"id\": \"member_own_org\", \"pass\": false, \"record\": {\"org\": \"A\"}, \"user\": {\"org\": \"A\", \"role\": \"member\"}}, {\"actual\": true, \"expected\": false, \"id\": \"member_other_org\", \"pass\": false, \"record\": {\"org\": \"B\"}, \"user\": {\"org\": \"A\", \"role\": \"member\"}}], \"failed\": 3, \"passed\": 1}\r\n"
+    }
+  ],
+  "independent_oracle": "Four literal expected booleans derived directly from the two role rules, not calculated from candidate logic.",
+  "mutation": {
+    "artifact": {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors-v3/batch-3/candidate_mutant.py",
+      "sha256": "4d25d4b7eaf23e240ecb85410f8f65a1846471c189e14d4601f37561f9473b1d"
+    },
+    "change": "Only the disposable copy replaces the admin equality branch with False.",
+    "result": "admin_own_org changes from PASS to FAIL; three total failures, proving admin acceptance sensitivity.",
+    "original_unchanged": true
+  },
+  "candidate_preserved": true,
+  "candidate_post_checks_sha256": "1669b711b0f16f44a9dc1545c57ef6d87b055fe12dd0f5d19ea42732be47ddfd",
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26300-SP0"
+  },
+  "limits": [
+    "No repairs, production changes, real Git operations or live authorization environment tested.",
+    "AST rule check is appropriate to this exact three-line supplied fixture; it is not a general dynamic-input analyzer."
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "candidate_path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-3\\candidate.py",
+  "sha256_before": "1669b711b0f16f44a9dc1545c57ef6d87b055fe12dd0f5d19ea42732be47ddfd",
+  "scope": {
+    "baseline": "new file; empty prior bytes",
+    "owned_new_files_reviewed": [
+      "candidate.py"
+    ],
+    "reviewed_bytes": 123,
+    "reviewed_lines": 3
+  },
+  "spec_cases": [
+    {
+      "id": "admin_own",
+      "user": {
+        "role": "admin",
+        "org": "A"
+      },
+      "record": {
+        "org": "A"
+      },
+      "expected": true,
+      "actual": true,
+      "matches_spec": true
+    },
+    {
+      "id": "admin_other",
+      "user": {
+        "role": "admin",
+        "org": "A"
+      },
+      "record": {
+        "org": "B"
+      },
+      "expected": true,
+      "actual": true,
+      "matches_spec": true
+    },
+    {
+      "id": "member_own",
+      "user": {
+        "role": "member",
+        "org": "A"
+      },
+      "record": {
+        "org": "A"
+      },
+      "expected": true,
+      "actual": false,
+      "matches_spec": false
+    },
+    {
+      "id": "member_other",
+      "user": {
+        "role": "member",
+        "org": "A"
+      },
+      "record": {
+        "org": "B"
+      },
+      "expected": false,
+      "actual": true,
+      "matches_spec": false
+    }
+  ],
+  "spec_matches": 2,
+  "spec_mismatches": 2,
+  "standards_dynamic_calls": [
+    {
+      "line": 2,
+      "call": "eval"
+    }
+  ],
+  "mutation": {
+    "kind": "admin comparison changed only in memory",
+    "expected": true,
+    "actual": false,
+    "independent_oracle_detected": true,
+    "candidate_file_modified": false
+  },
+  "sha256_after": "1669b711b0f16f44a9dc1545c57ef6d87b055fe12dd0f5d19ea42732be47ddfd",
+  "environment": "offline Python standard library; no service calls"
+}

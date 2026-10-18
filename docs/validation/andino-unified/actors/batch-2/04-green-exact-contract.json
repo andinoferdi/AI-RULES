@@ -1,0 +1,23 @@
+{
+  "label": "04-green-exact-contract",
+  "command": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-B",
+    "-m",
+    "unittest",
+    "-v",
+    "test_page.py"
+  ],
+  "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\fixture",
+  "observed_at": "2026-10-18T08:27:40.388504+00:00",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_reported_consecutive_pages (test_page.PaginationContract.test_reported_consecutive_pages) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+  "tested_files": {
+    "fixture\\probe_cause.py": "87431283bf118d6010c94df86df08a6852b664d961c0952c223a9db764d6ee2e",
+    "fixture\\reproduce.py": "f7cb7825eb0eedb18cc729d97d2e4423e316400a2c29f883ed117892ae632a0f",
+    "fixture\\subject.py": "811b3df94b7fe91c3bde09551b1a8a02e8a7f42066fe95d3da464d2bdabb2cac",
+    "fixture\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97",
+    "fixture\\test_page_boundaries.py": "69a73784630944c256e3d2bf090f53c02303ad3f2987d0f8700a3f2505480241"
+  }
+}

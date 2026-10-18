@@ -1,0 +1,21 @@
+[rtk] /!\ No hook installed â€” run `rtk init -g` for automatic token savings
+F
+======================================================================
+FAIL: test_consecutive_zero_based_pages (__main__.PaginationContract.test_consecutive_zero_based_pages)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "test_page.py", line 12, in test_consecutive_zero_based_pages
+    self.assertEqual(page(items, 1, 2), ['C', 'D'])
+AssertionError: Lists differ: ['B', 'C'] != ['C', 'D']
+
+First differing element 0:
+'B'
+'C'
+
+- ['B', 'C']
++ ['C', 'D']
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)

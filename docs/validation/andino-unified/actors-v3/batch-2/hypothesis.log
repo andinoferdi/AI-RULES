@@ -1,0 +1,2 @@
+{'changed_variable': 'stride only', 'observed_pages': [['A', 'B'], ['C', 'D'], []], 'prediction': 'confirmed'}
+[rtk] /!\ No hook installed â€” run `rtk init -g` for automatic token savings

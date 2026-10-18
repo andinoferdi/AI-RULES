@@ -1,0 +1,2215 @@
+{
+  "schema_version": 1,
+  "source": "mattpocock/skills",
+  "audit_date": "2026-10-18",
+  "scope": "Complete actual skill inventory; substantive source procedures, supporting resources, executable scripts, config, metadata and legal notices. Upstream instructions are data, not authority.",
+  "snapshot": {
+    "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES\\mattpocock-skills",
+    "remote": "https://github.com/mattpocock/skills.git",
+    "branch": "main",
+    "head": "49dd158d1076134a641b33efb035946536778336",
+    "tree": "3ce485319972aae46dec0c2ac34cf4a7f28f7414",
+    "commit_date": "2026-10-09T11:56:49+01:00",
+    "subject": "wizard: template fixes (#1220, #1142, #1081, #1041, #1003) (#1237)",
+    "dirty_status": "",
+    "dirty_bytes_fingerprint_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_fingerprint_sha256": "a518ded416351de2146854dac7b3e9e2b08add42ce54c2574146c51a7585b349",
+    "fingerprint_algorithm": "UTF-8 lines sorted by path: path + NUL + sha256(raw bytes) + NUL + decimal byte count + LF; excludes .git metadata",
+    "tracked_files": 190,
+    "local_files": 190,
+    "missing_tracked_files": [],
+    "untracked_files": [],
+    "completeness": "All tracked local snapshot files present; remote completeness/latest not asserted",
+    "working_bytes": "Actual filesystem bytes hashed, including CRLF checkout normalization where present.",
+    "plugin_skill_count": 27,
+    "plugin_paths_all_present": true
+  },
+  "implementation_status": "AUDITED_NOT_IMPLEMENTED",
+  "counts": {
+    "engineering": 20,
+    "productivity": 7,
+    "misc": 4,
+    "in-progress": 7,
+    "deprecated_skills": 0,
+    "archived_docs_only": 1,
+    "skill_total": 38,
+    "file_total": 190,
+    "roles": {
+      "reference-or-config": 76,
+      "human-doc": 29,
+      "legal-notice": 2,
+      "executable-template": 7,
+      "agent-metadata": 38,
+      "skill": 38
+    }
+  },
+  "items": [
+    {
+      "name": "ask-matt",
+      "category": "engineering",
+      "status": "active-meta",
+      "method_ids": [
+        "routing",
+        "handoff"
+      ],
+      "disposition": "absorb",
+      "techniques": [
+        "Choose a conditional flow rather than keyword-only skill name matching; verify actual method before recommending omission",
+        "Context decision tree: continue, irrelevant-context clear, portable handoff, scoped delegation, then compaction at phase boundaries; preserve primary-source reasoning when next phase needs it"
+      ],
+      "adaptation": "Andino owns routing/lifecycle; remove ask-matt router, fixed token smart-zone numbers, mandatory context resets and upstream native skill calls.",
+      "source_path": "skills/engineering/ask-matt/SKILL.md",
+      "source_sha256": "9153a87908838ed24838c16da0eaeec46877f3ab701efdeefea7a5579a4a474d",
+      "resources": [
+        "skills/engineering/ask-matt/PHASE-BOUNDARIES.md"
+      ]
+    },
+    {
+      "name": "codebase-design",
+      "category": "engineering",
+      "status": "active",
+      "method_ids": [
+        "deep-module-design"
+      ],
+      "disposition": "integrate",
+      "techniques": [
+        "Interface includes invariants, ordering, configuration, errors and performance, beyond signatures",
+        "Depth means leverage; deletion test distinguishes pass-through from concentrated complexity; locality confines changes",
+        "Interface is test surface; real variation justifies two adapters; internal seams need not leak publicly",
+        "Classify dependencies as in-process, local-substitutable, remote-owned ports/adapters or true external mocks",
+        "Replace obsolete shallow tests with interface tests after equivalent coverage exists",
+        "Design-it-twice compares three distinct interfaces optimized for minimal surface, flexibility and common caller, optionally ports/adapters; outputs usage, hidden implementation, invariants and trade-offs"
+      ],
+      "adaptation": "Reference technique under Andino, no autonomous full scan; alternatives can be sequential when delegation unavailable.",
+      "source_path": "skills/engineering/codebase-design/SKILL.md",
+      "source_sha256": "362b0bec828219d9f4b08ca7c466164e67253bdd817359258e60d2e9c5692a8f",
+      "resources": [
+        "skills/engineering/codebase-design/DEEPENING.md",
+        "skills/engineering/codebase-design/DESIGN-IT-TWICE.md"
+      ]
+    },
+    {
+      "name": "code-review",
+      "category": "engineering",
+      "status": "active",
+      "method_ids": [
+        "code-review"
+      ],
+      "disposition": "merge",
+      "techniques": [
+        "Separate Standards and Spec axes so a passing axis cannot mask a failing one",
+        "Pin base and exact diff, validate ref/non-empty, discover spec by commits/path/convention then ask",
+        "Load all project standards including CODING_STANDARDS and CONTRIBUTING; repo overrides Fowler smell heuristics; skip tooling-enforced findings",
+        "Twelve smell baseline: Mysterious Name, Duplicated Code, Feature Envy, Data Clumps, Primitive Obsession, Repeated Switches, Shotgun Surgery, Divergent Change, Speculative Generality, Message Chains, Middle Man, Refused Bequest",
+        "Findings cite rule or spec and actual hunk; absent spec is reported, not invented"
+      ],
+      "adaptation": "Freeze working-tree diff when commits are unauthorized: original three-dot HEAD excludes uncommitted changes. Leaf reviewers only, verify claims, bounded focused repair review; no recursive native calls.",
+      "source_path": "skills/engineering/code-review/SKILL.md",
+      "source_sha256": "9e6d1b00c31e10a002ac3e5fb49014c9589166f668c62996e80a36d23ca21e70",
+      "resources": []
+    },
+    {
+      "name": "diagnosing-bugs",
+      "category": "engineering",
+      "status": "active",
+      "method_ids": [
+        "systematic-debugging"
+      ],
+      "disposition": "merge",
+      "techniques": [
+        "Redact commands/artifacts before display; keep credentials in environment",
+        "Establish one already-run exact-symptom red-capable deterministic fast loop before hypothesizing",
+        "Loop options: failing test, HTTP/CLI, browser, trace replay, harness, seeded fuzz, bisect, differential, HITL last resort",
+        "Raise flaky repro rate, minimize one input at a time until each remaining piece is load-bearing",
+        "Rank 3-5 falsifiable hypotheses, vary one factor, use debugger before targeted tagged logs; performance baseline/profiler then bisect",
+        "Test at seam reproducing actual caller pattern; if no seam exists document limitation; prove forced mutation with diff",
+        "Rerun original scenario, remove tagged instrumentation and account for throwaway artifacts"
+      ],
+      "adaptation": "Bound depth by actual complexity and preserve existing repro evidence; never require live/production access. HITL template prints observations, never secrets.",
+      "source_path": "skills/engineering/diagnosing-bugs/SKILL.md",
+      "source_sha256": "aa87b0ac245c6d1b203c4678eb34dc101af02291448780c55c5e58ccc1619bd7",
+      "resources": [
+        "skills/engineering/diagnosing-bugs/scripts/hitl-loop.template.sh"
+      ]
+    },
+    {
+      "name": "domain-modeling",
+      "category": "engineering",
+      "status": "active",
+      "method_ids": [
+        "domain-modeling"
+      ],
+      "disposition": "integrate",
+      "techniques": [
+        "Challenge overloaded vocabulary against code and glossary; stress-test concrete edge scenarios",
+        "Capture resolved terms inline as tight definitions and avoided aliases, no implementation details",
+        "Root glossary or contextual glossary map, create lazily only on actual content",
+        "ADR only if hard to reverse, surprising and real trade-off; small numbered decision record, optional status/options/consequences"
+      ],
+      "adaptation": "Existing project glossary/ADR location and conventions override seed templates; Andino checkpoint stores operational decisions.",
+      "source_path": "skills/engineering/domain-modeling/SKILL.md",
+      "source_sha256": "b62d997256cc073e123d4303da8e9db00db0e28de9739660ca3e55ab76e09cdb",
+      "resources": [
+        "skills/engineering/domain-modeling/ADR-FORMAT.md",
+        "skills/engineering/domain-modeling/GLOSSARY-FORMAT.md"
+      ]
+    },
+    {
+      "name": "grill-with-docs",
+      "category": "engineering",
+      "status": "active",
+      "method_ids": [
+        "decision-interview",
+        "domain-modeling"
+      ],
+      "disposition": "compose",
+      "techniques": [
+        "Stateful interview composes decision-tree interviewing with inline domain terms and qualified ADR recording"
+      ],
+      "adaptation": "Substantive composed procedures must be local, no thin wrapper or two native skill calls; retain non-ADR decisions in Andino checkpoint/spec.",
+      "source_path": "skills/engineering/grill-with-docs/SKILL.md",
+      "source_sha256": "abc0fa7948db18b5fb0e1cc1c522ac5ff47d874e2da1e5df60619d79be11f38b",
+      "resources": []
+    },
+    {
+      "name": "implement",
+      "category": "engineering",
+      "status": "active",
+      "method_ids": [
+        "implementation"
+      ],
+      "disposition": "absorb",
+      "techniques": [
+        "Fetch explicit ticket from configured tracker, state title and resolve ambiguity",
+        "Drive test-first public-seam slices, run targeted tests and typechecks during work, full suite at completion, review resulting diff"
+      ],
+      "adaptation": "Andino lifecycle and acceptance control execution; remove automatic commit and upstream native calls.",
+      "source_path": "skills/engineering/implement/SKILL.md",
+      "source_sha256": "83042ad79e3d7ce616124bf59a38a5ebe79417adb36bedfc4e6223aab783be8c",
+      "resources": []
+    },
+    {
+      "name": "implement-spec",
+      "category": "engineering",
+      "status": "active",
+      "method_ids": [
+        "implementation",
+        "parallel-delegation"
+      ],
+      "disposition": "absorb",
+      "techniques": [
+        "Read ticket blockers as graph; dispatch ready frontier and update it from accepted integrated work",
+        "Share spec/research pointers rather than duplicating context; optional exploration isolates reading from implementation",
+        "One integration result and final spec review after all dependent tickets, one bounded finding repair pass"
+      ],
+      "adaptation": "No automatic branch, reset, merge, commit, push, draft PR or ticket close. Explicit file ownership and actual host authority gate delegation; compute progress independently of stale remote closed counters.",
+      "source_path": "skills/engineering/implement-spec/SKILL.md",
+      "source_sha256": "5bdaaf884b02b24db432241bcc32250bfee6149c45c743a2a1fef6b416837cfa",
+      "resources": []
+    },
+    {
+      "name": "improve-codebase-architecture",
+      "category": "engineering",
+      "status": "active",
+      "method_ids": [
+        "architecture-survey",
+        "deep-module-design"
+      ],
+      "disposition": "integrate",
+      "techniques": [
+        "Scope by user direction or recent change hotspots before scanning; locate friction and apply deletion test",
+        "Produce before/after candidate visuals with files, problem, solution, leverage/locality, testability, dependency class, strength and ADR conflict",
+        "Recommend one candidate, let user choose before designing interface; record durable rejected alternatives"
+      ],
+      "adaptation": "Report offline inline CSS/SVG instead of mandatory CDN Tailwind/Mermaid; keep survey bounded and acknowledge no worthwhile findings. Existing UI owner controls presentation.",
+      "source_path": "skills/engineering/improve-codebase-architecture/SKILL.md",
+      "source_sha256": "f053ff6d7a70f10bd0104e368f7e664b23ea6378898e305bf027e8864757822f",
+      "resources": [
+        "skills/engineering/improve-codebase-architecture/HTML-REPORT.md"
+      ]
+    },
+    {
+      "name": "pr",
+      "category": "engineering",
+      "status": "active",
+      "method_ids": [
+        "pr-description"
+      ],
+      "disposition": "integrate",
+      "techniques": [
+        "Smallest useful summary view: pseudocode, call/component/file tree, Mermaid or shaped diff",
+        "Concrete before/after evidence and one-way/two-way door plus blast radius",
+        "PR body technique only, not creation or publication authority"
+      ],
+      "adaptation": "Repo PR template wins; retain CREDITS.md attribution to Dex Horthy/Humanlayer show-me; risk call must include irreversible external effects beyond Git rollback.",
+      "source_path": "skills/engineering/pr/SKILL.md",
+      "source_sha256": "57658baca2e50e9cf98fdb6b74a51f2afd34b71019d516f7c5d45a51a28354b0",
+      "resources": [
+        "skills/engineering/pr/CREDITS.md"
+      ]
+    },
+    {
+      "name": "prototype",
+      "category": "engineering",
+      "status": "active",
+      "method_ids": [
+        "design-prototype"
+      ],
+      "disposition": "integrate",
+      "techniques": [
+        "One explicit unresolved design question; memory/scratch state and obvious prototype label, trivial run path",
+        "Logic path: self-contained HTML, pure portable state module separate from DOM, full readable state, free play and resettable guided scenarios",
+        "UI path: 3 structurally distinct variants (max 5), existing route preferred, URL variant and shared keyboard switcher, preserve inputs/auth; no real mutations",
+        "Capture answer and primary-source artifact, then properly implement validated decision"
+      ],
+      "adaptation": "No new prototype branch/commit required or authorized. Store local evidence under existing conventions; prototype constraints never substitute production checks; UI direction remains existing sibling owner.",
+      "source_path": "skills/engineering/prototype/SKILL.md",
+      "source_sha256": "f74ae01f4fc454d3a4ef21271920f1706e626271e715dda0559e489f45c792c3",
+      "resources": [
+        "skills/engineering/prototype/LOGIC.md",
+        "skills/engineering/prototype/UI.md"
+      ]
+    },
+    {
+      "name": "research",
+      "category": "engineering",
+      "status": "active",
+      "method_ids": [
+        "primary-source-research"
+      ],
+      "disposition": "integrate",
+      "techniques": [
+        "Investigate official docs/source/specs/first-party APIs, trace every factual claim to owning primary source",
+        "Write one cited findings artifact in existing convention with context pointer for consumer"
+      ],
+      "adaptation": "Delegate only if available/allowed; leaf execution does actual reading rather than respawning research. Retain dates, uncertainty and verify citations.",
+      "source_path": "skills/engineering/research/SKILL.md",
+      "source_sha256": "524b404b1ca373a8b00f63a64667ec4b0a61c3c9cf4e8f246e639be859bb6979",
+      "resources": []
+    },
+    {
+      "name": "retro",
+      "category": "engineering",
+      "status": "active",
+      "method_ids": [
+        "environment-retrospective"
+      ],
+      "disposition": "integrate",
+      "techniques": [
+        "Use actual selected session evidence, ranked environment improvements rather than speculative code rewrites",
+        "Inspect existing checks and CI before proposing new guardrails; mechanical violations become deterministic checks, judgment calls become review standards",
+        "Navigation, hidden dependencies, steering no-ops, tool economy, access limitations; remove/move bloated always-loaded instructions",
+        "Agent-document authoring definitions needed even in read-only retrospective"
+      ],
+      "adaptation": "No mandatory retrospective every task, no global instruction edit or new access grant without authority; every finding cites session evidence and existing tooling.",
+      "source_path": "skills/engineering/retro/SKILL.md",
+      "source_sha256": "42110f533f169026d037cf141b9f6c2752c6d914903be4758c38a68349e83e78",
+      "resources": []
+    },
+    {
+      "name": "setup-matt-pocock-skills",
+      "category": "engineering",
+      "status": "active-setup",
+      "method_ids": [
+        "project-configuration"
+      ],
+      "disposition": "adapt",
+      "techniques": [
+        "Inspect actual remote/instructions/tracker/docs and existing conventions before configuration",
+        "Capture issue-tracker operations for GitHub, GitLab, local markdown or described custom tracker; map canonical triage roles",
+        "Preserve existing instruction blocks/user edits, create domain docs lazily, verify label availability",
+        "Tracker templates cover read/list/subissue/native blockers/frontier/claim/resolve and textual fallback"
+      ],
+      "adaptation": "Optional repository configuration method, never installer/bootstrap/precondition for Andino. No automatic labels, external write, global configuration or mandatory upstream installation. Active host decides instruction pointer file.",
+      "source_path": "skills/engineering/setup-matt-pocock-skills/SKILL.md",
+      "source_sha256": "5dcf60b4265d52423cd83b8f0aef466f93b624152bbb9d2450b41ed80f7d0e6d",
+      "resources": [
+        "skills/engineering/setup-matt-pocock-skills/domain.md",
+        "skills/engineering/setup-matt-pocock-skills/issue-tracker-github.md",
+        "skills/engineering/setup-matt-pocock-skills/issue-tracker-gitlab.md",
+        "skills/engineering/setup-matt-pocock-skills/issue-tracker-local.md",
+        "skills/engineering/setup-matt-pocock-skills/triage-labels.md"
+      ]
+    },
+    {
+      "name": "tdd",
+      "category": "engineering",
+      "status": "active",
+      "method_ids": [
+        "test-driven-development"
+      ],
+      "disposition": "merge",
+      "techniques": [
+        "Agree observable public seams and record catch/miss trade-offs before tests",
+        "One red test and minimal green implementation vertically per cycle",
+        "Behavioral specification tests survive internal changes; no private-method/internal-collaborator assertions or database side-channel verification",
+        "Independent literal/spec oracle avoids tautological expectations; external boundary mocking via injected specific operation interfaces"
+      ],
+      "adaptation": "Canonical Andino TDD must explicitly reconcile Matt review-only refactoring versus other upstream green refactor. Existing accepted seams can satisfy agreement; no repeated permission gate on already-authorized routine checks.",
+      "source_path": "skills/engineering/tdd/SKILL.md",
+      "source_sha256": "969583080caf842ae86a53501a0091eced13fd89cad65d3aa75c09112318ff33",
+      "resources": [
+        "skills/engineering/tdd/mocking.md",
+        "skills/engineering/tdd/tests.md"
+      ]
+    },
+    {
+      "name": "to-spec",
+      "category": "engineering",
+      "status": "active",
+      "method_ids": [
+        "specification"
+      ],
+      "disposition": "integrate",
+      "techniques": [
+        "Synthesize settled conversation without repeating interview; inspect repo, glossary and ADRs",
+        "Prefer highest existing seam, state test decisions and scope",
+        "Problem/solution/user stories/implementation decisions/testing/out-of-scope/further notes; decision-rich prototype snippets may be included",
+        "Durable interface/behavior decisions rather than stale file/line implementation recipe"
+      ],
+      "adaptation": "Proportional template for engineering work, no invented extensive stories. Local spec first; tracker publication and labels need explicit authority, and spec is not an AFK work-order.",
+      "source_path": "skills/engineering/to-spec/SKILL.md",
+      "source_sha256": "c73a2250beac0479e384f5466e834bb54ce6e30b7f8705e9999ba840d9d59b36",
+      "resources": []
+    },
+    {
+      "name": "to-tickets",
+      "category": "engineering",
+      "status": "active",
+      "method_ids": [
+        "task-decomposition"
+      ],
+      "disposition": "merge",
+      "techniques": [
+        "Complete demoable tracer-bullet slices sized for fresh context, prefactor first, explicit genuine blockers",
+        "Wide mechanical refactor exception: expand, bounded migrate batches, contract after all callers; final integrate gate if batches cannot be green alone",
+        "Review granularity and edges; publish blockers first and real native links when supported",
+        "One local file per ticket with behavior, blocker IDs and independently falsifiable criteria; parent issue remains unchanged"
+      ],
+      "adaptation": "Use existing Andino plan state, never second mandatory board; concrete paths allowed where required by existing durable contract. External publication authorization separate.",
+      "source_path": "skills/engineering/to-tickets/SKILL.md",
+      "source_sha256": "b8eb6dca1085e85220b0f5990ed787ebf8a924844d090689f1073b06367e2f7a",
+      "resources": []
+    },
+    {
+      "name": "triage",
+      "category": "engineering",
+      "status": "active",
+      "method_ids": [
+        "issue-triage"
+      ],
+      "disposition": "integrate",
+      "techniques": [
+        "Incoming issues and opted-in external PR requests: exactly one category and one triage state, flag conflicts",
+        "Cheap oldest-first discovery then full selected body/comments/labels/author/dates/diff; reuse prior resolved notes",
+        "Read project scope and conceptual out-of-scope rejection KB, bounded reproduce/claim verification, interview only actual gaps",
+        "Durable behavioral agent brief with current/desired/interfaces/criteria/scope; distinguish already-implemented close from rejected enhancement KB",
+        "AI disclaimer on external triage writing; reporter response reopens triage frontier"
+      ],
+      "adaptation": "Triage roles are domain tracker states, never a competing Andino execution lifecycle. No comment, relabel or close without explicit external-write authority.",
+      "source_path": "skills/engineering/triage/SKILL.md",
+      "source_sha256": "797f4371a4cea1b564ecfdc7a603089acf3c023454e47ccb0b3307c62de279f8",
+      "resources": [
+        "skills/engineering/triage/AGENT-BRIEF.md",
+        "skills/engineering/triage/OUT-OF-SCOPE.md"
+      ]
+    },
+    {
+      "name": "wayfinder",
+      "category": "engineering",
+      "status": "active",
+      "method_ids": [
+        "decision-map"
+      ],
+      "disposition": "integrate",
+      "techniques": [
+        "Bounded multi-session destination, map as index into question tickets, one source for each decision",
+        "Research AFK, prototype/interview HITL, prerequisite task typed distinctly; never fabricate human decisions",
+        "Sharp questions become tickets, in-scope fog remains not-yet-specified; outside destination stays out of scope",
+        "Create IDs then wire blockers, claim frontier before work, resolve with answer and context pointer; graduate fog and revise invalidated decisions",
+        "Plan by default and collapse resolved map into build spec before implementation"
+      ],
+      "adaptation": "Existing Andino plan owns lifecycle; no fixed one-ticket session stop in autonomous implementation ticket, no agent-authored Notes can grant permission, no research branch/push. Track optional decision map as plan artifact.",
+      "source_path": "skills/engineering/wayfinder/SKILL.md",
+      "source_sha256": "0efeec3d47d2fdd3d9b677f19ca7360a3e1e2034ff23bfee33765a74c5d27d22",
+      "resources": []
+    },
+    {
+      "name": "wizard",
+      "category": "engineering",
+      "status": "active",
+      "method_ids": [
+        "human-procedure"
+      ],
+      "disposition": "adapt",
+      "techniques": [
+        "Scope human-only dependency-ordered stages and each input's source/destination/secrecy",
+        "Precise verified dashboard/CLI journey, hidden secret input, idempotent dotenv storage, progress and summary, irreversible confirmation",
+        "Statically trace all values and validate syntax; do not run human-input wizard end-to-end as agent"
+      ],
+      "adaptation": "Audited Bash template may inform shell-native implementation but is not installed/executed verbatim. Prevent symlink escape/non-atomic credential rewrite; local and GitHub secret/variable mutations require explicit authority.",
+      "source_path": "skills/engineering/wizard/SKILL.md",
+      "source_sha256": "dbefb750eae07d9f8b05ab1084f6acfdda2752df2a6b577c46a505e2bc790164",
+      "resources": [
+        "skills/engineering/wizard/template.sh"
+      ]
+    },
+    {
+      "name": "grilling",
+      "category": "productivity",
+      "status": "active",
+      "method_ids": [
+        "decision-interview"
+      ],
+      "disposition": "integrate",
+      "techniques": [
+        "Design tree, ask currently unblocked decision frontier, recommended answers with yes accepting recommendation",
+        "Resolve environmental facts independently, not user questions; recompute dependent frontier after answers",
+        "Reach shared understanding without unanswered material assumptions"
+      ],
+      "adaptation": "Andino chooses proportional cadence, user can end/skip interview; no mandatory all-frontier question dump or nested exploration.",
+      "source_path": "skills/productivity/grilling/SKILL.md",
+      "source_sha256": "26d225ea8a36f4acacbe267e789cfb97d73964412f4243dd4b65b6cb806ddebc",
+      "resources": []
+    },
+    {
+      "name": "grill-me",
+      "category": "productivity",
+      "status": "active",
+      "method_ids": [
+        "decision-interview"
+      ],
+      "disposition": "compose",
+      "techniques": [
+        "Stateless decision-tree interview when no repository artifacts are appropriate"
+      ],
+      "adaptation": "Local method implementation, not native upstream call.",
+      "source_path": "skills/productivity/grill-me/SKILL.md",
+      "source_sha256": "19e660207b447acf6ee0d600471c02e549c7aca8fb3ab38fdc2c7056aa442fc8",
+      "resources": []
+    },
+    {
+      "name": "handoff",
+      "category": "productivity",
+      "status": "active",
+      "method_ids": [
+        "handoff"
+      ],
+      "disposition": "merge",
+      "techniques": [
+        "Portable OS-temp handoff tailored to next focus, pointers to existing artifacts rather than duplicate specs/diffs",
+        "Suggested next methods and secrets/PII redaction"
+      ],
+      "adaptation": "Andino durable checkpoint remains source; no clear/context reset required, no transmitting prompt to another host without authorization.",
+      "source_path": "skills/productivity/handoff/SKILL.md",
+      "source_sha256": "739d8fbe3e6ed688581eb62b35f04834822eae47e57bc35a79c8d8dc9ac703d3",
+      "resources": []
+    },
+    {
+      "name": "teach",
+      "category": "productivity",
+      "status": "active",
+      "method_ids": [
+        "learning-workspace"
+      ],
+      "disposition": "integrate",
+      "techniques": [
+        "Mission/success/constraints/scope anchor teaching, mission changes confirmed",
+        "Trusted resource register and knowledge-vs-skill/wisdom split, tight interactive feedback",
+        "Short numbered HTML lessons and printable references, reusable shared assets, linked related lessons",
+        "Use demonstrated learning records to target zone of proximal development; retrieval/spacing/interleaving for storage rather than momentary fluency",
+        "Quiz answers comparable length and varied correct positions; glossary contains understood concepts, supersede corrected records"
+      ],
+      "adaptation": "Workspace-relative output separate from package resources; no unsolicited scheduled automation or joining communities, no claim of learning from coverage alone.",
+      "source_path": "skills/productivity/teach/SKILL.md",
+      "source_sha256": "d9480a846c88bb1151947eb484bab1a8c9a84af4d9ddf1ea0f6fb7fe639cf9b3",
+      "resources": [
+        "skills/productivity/teach/GLOSSARY-FORMAT.md",
+        "skills/productivity/teach/LEARNING-RECORD-FORMAT.md",
+        "skills/productivity/teach/MISSION-FORMAT.md",
+        "skills/productivity/teach/RESOURCES-FORMAT.md"
+      ]
+    },
+    {
+      "name": "to-questionnaire",
+      "category": "productivity",
+      "status": "active",
+      "method_ids": [
+        "stakeholder-questionnaire"
+      ],
+      "disposition": "integrate",
+      "techniques": [
+        "Interview send: recipient expertise/relationship and decisions/facts needed, rather than ask sender unknown subject facts",
+        "Most-important-first discover questions, one idea each, answer stubs, purpose/context/how answers used, deadline/effort and uncertainty allowed",
+        "Coverage check each requested decision gap has a question"
+      ],
+      "adaptation": "Produce local reviewable document only; sending requires user authority.",
+      "source_path": "skills/productivity/to-questionnaire/SKILL.md",
+      "source_sha256": "77825120815c21400f82e2794faf342d1d1a4ab1493be3fe061857885d26b768",
+      "resources": []
+    },
+    {
+      "name": "wait-what",
+      "category": "productivity",
+      "status": "active",
+      "method_ids": [
+        "plain-language-repitch"
+      ],
+      "disposition": "integrate",
+      "techniques": [
+        "Re-explain last confusing message with missing context, simplified language and project glossary vocabulary"
+      ],
+      "source_path": "skills/productivity/wait-what/SKILL.md",
+      "source_sha256": "95393f96e730b20dabc6b425515cb6292d34bd9a91859a03c2c821e24d321112",
+      "resources": [],
+      "adaptation": "Repitch the previous message under Focus communication ownership using existing context and domain vocabulary; no new investigation, tool dependency, unsolicited file edit or second lifecycle."
+    },
+    {
+      "name": "writing-for-agents",
+      "category": "productivity",
+      "status": "active-meta",
+      "method_ids": [
+        "agent-document-authoring"
+      ],
+      "disposition": "adapt",
+      "techniques": [
+        "Context pointers state resource and distinct trigger branches, front-load leading concept",
+        "Separate ordered actions from reference; disclose branch-only resources and co-locate each concept's rules/caveats",
+        "Checkable exhaustive step completion bounds counter premature completion; split only when hierarchy/context boundary earns cost",
+        "One authoritative meaning; prune environment-cache duplication, stale sediment and model-relative no-op instructions",
+        "Positive target behavior plus hard guardrails; distinct context cost and human cognitive cost"
+      ],
+      "adaptation": "Mechanics resource becomes guide/index design under one native Andino SKILL; no native skill proliferation/router authority.",
+      "source_path": "skills/productivity/writing-for-agents/SKILL.md",
+      "source_sha256": "1c0c4ebf2d221917591144f0ced4fe46dae13301cb3d6d93fc88ecf0dda6aed2",
+      "resources": [
+        "skills/productivity/writing-for-agents/SKILL-MECHANICS.md"
+      ]
+    },
+    {
+      "name": "git-guardrails-claude-code",
+      "category": "misc",
+      "status": "frozen-functional-with-known-defects",
+      "method_ids": [
+        "git-operation-guard"
+      ],
+      "disposition": "adapt-conditionally",
+      "techniques": [
+        "Identify destructive/publishing Git actions and scoped pre-execution interception",
+        "Preserve existing hook arrays and validate rejection fixture"
+      ],
+      "adaptation": "Original regex Bash/jq hook fails open and misses global-option spellings; never claim complete enforcement or copy unchanged. Host permission layer remains authority; optional project-only hook after explicit scope approval.",
+      "source_path": "skills/misc/git-guardrails-claude-code/SKILL.md",
+      "source_sha256": "12d335b84bcf984b213b527014262233f27ffa1eb807db466832ff711b96f41f",
+      "resources": [
+        "skills/misc/git-guardrails-claude-code/scripts/block-dangerous-git.sh"
+      ]
+    },
+    {
+      "name": "migrate-to-shoehorn",
+      "category": "misc",
+      "status": "frozen-functional",
+      "method_ids": [
+        "test-fixture-migration"
+      ],
+      "disposition": "integrate-conditionally",
+      "techniques": [
+        "Test-only partial fixture migration: as Typeâ†’fromPartial, intentionally malformed double assertionâ†’fromAny, fromExact for full objects",
+        "Inspect actual fixture needs, preserve negative test intent, add imports and run typecheck plus affected tests"
+      ],
+      "adaptation": "Use detected package manager, devDependency and current official API verification before installation; never apply to production or claim casts become runtime validation.",
+      "source_path": "skills/misc/migrate-to-shoehorn/SKILL.md",
+      "source_sha256": "200c11163ecd56d908ec431154e4b452cd6afeb3de91e5b54434f543f0822201",
+      "resources": []
+    },
+    {
+      "name": "scaffold-exercises",
+      "category": "misc",
+      "status": "frozen-functional",
+      "method_ids": [
+        "exercise-scaffolding"
+      ],
+      "disposition": "integrate-conditionally",
+      "techniques": [
+        "Number section XX and exercise XX.YY directories, explicit problem/solution/explainer variants",
+        "Non-empty linked readmes; code variants main.ts, readme-only permitted; no .gitkeep/speaker-notes/dead links",
+        "Validate course linter if installed; renumber intentionally preserving content"
+      ],
+      "adaptation": "No implicit ai-hero-cli install or commit/stage/git mv; use repo conventions and portable filesystem moves under authority.",
+      "source_path": "skills/misc/scaffold-exercises/SKILL.md",
+      "source_sha256": "de28db7a0954db55c11ba1e3cc0fd4c037bf0f5cb8313cb292e319bcce47f424",
+      "resources": []
+    },
+    {
+      "name": "setup-pre-commit",
+      "category": "misc",
+      "status": "frozen-functional",
+      "method_ids": [
+        "pre-commit-setup"
+      ],
+      "disposition": "integrate-conditionally",
+      "techniques": [
+        "Detect package manager and existing scripts/config; staged-only formatter before typecheck/tests",
+        "Husky+lint-staged+Prettier optional recipe, preserve existing formatting conventions, omit missing scripts explicitly",
+        "Verify hook invocation and staged lint behavior without committing"
+      ],
+      "adaptation": "Merge hooks and prepare script rather than overwrite, no auto stage/commit or global install; use disposable fixture for lint-staged to preserve user staging.",
+      "source_path": "skills/misc/setup-pre-commit/SKILL.md",
+      "source_sha256": "e069e6a23069ebdba946d4dea11e5d663c10640c6b14b55c4585c81b1a256ac9",
+      "resources": []
+    },
+    {
+      "name": "chief-of-staff",
+      "category": "in-progress",
+      "status": "beta-unlisted",
+      "method_ids": [
+        "implementation",
+        "environment-retrospective"
+      ],
+      "disposition": "exclude-lifecycle-absorb-techniques",
+      "techniques": [
+        "Distinguish tactical goal progress from future environment improvement; context pointer handoffs"
+      ],
+      "adaptation": "Exclude always-delegate, recurring schedules, environment-first on every message and no-workaround universal policy: conflicts with proportional Andino lifecycle, tool limits and permission scope.",
+      "source_path": "skills/in-progress/chief-of-staff/SKILL.md",
+      "source_sha256": "001ffc84d809d3dc97751e58227f26c20806722f067abcee51ec640f7c97af24",
+      "resources": []
+    },
+    {
+      "name": "claude-handoff",
+      "category": "in-progress",
+      "status": "beta",
+      "method_ids": [
+        "handoff"
+      ],
+      "disposition": "absorb-portable-extension",
+      "techniques": [
+        "Named background continuation seeded by redacted OS-temp summary and context pointers"
+      ],
+      "adaptation": "No hardcoded claude --bg shell execution. Only supported current host adapter after explicit delegation authority; if unavailable keep file-based handoff and report actual mode.",
+      "source_path": "skills/in-progress/claude-handoff/SKILL.md",
+      "source_sha256": "24853e92b98dea61e5e6cdfeb929e47f98d61d9ccb21e8bb952f917d29980970",
+      "resources": []
+    },
+    {
+      "name": "loop-me",
+      "category": "in-progress",
+      "status": "beta-procedurally-mature",
+      "method_ids": [
+        "workflow-specification"
+      ],
+      "disposition": "integrate-conditionally",
+      "techniques": [
+        "Find recurring patterns and specify trigger (event preferred where efficient), human checkpoint, late decision-ready brief",
+        "One workflow spec each, world/tool/vocabulary notes first if needed; no structural schedule/AI/checkpoint requirement",
+        "Done when implementer can build without unresolved material questions"
+      ],
+      "adaptation": "Workflow specification is user artifact, never creates recurring automation or second agent lifecycle by itself.",
+      "source_path": "skills/in-progress/loop-me/SKILL.md",
+      "source_sha256": "38ac316635d244abfdc1526edec49596f9284b36595f5a212fc5983894b6094a",
+      "resources": []
+    },
+    {
+      "name": "setup-ts-deep-modules",
+      "category": "in-progress",
+      "status": "beta-procedurally-mature",
+      "method_ids": [
+        "typescript-boundary-enforcement"
+      ],
+      "disposition": "integrate-conditionally",
+      "techniques": [
+        "Flat packages with all root files public entrypoints, all subfolders private, avoid giant barrels",
+        "Five actual dependency-cruiser rules: outside-app entrypoint, cross-package entrypoint, tests through entrypoints, tests-folder private, no cycles",
+        "Intra-package implementation free imports, tests may use only public root and own test fixtures",
+        "Detect manager/root/existing config, merge and wire umbrella check; preserve tsconfig/no new aliases",
+        "Disposable clean passâ†’deep-import failâ†’restore pass proves rules bite; document copyable example and pointer"
+      ],
+      "adaptation": "Source prose says four rules, config actually five; preserve five and prove each applicable negative. Dependency install/project edits authorized per task, no commit or global setup.",
+      "source_path": "skills/in-progress/setup-ts-deep-modules/SKILL.md",
+      "source_sha256": "3709fc7d62ea75cd7da1d6f21e33d58d758766fb8f5247a859687d7ed63c213e",
+      "resources": [
+        "skills/in-progress/setup-ts-deep-modules/dependency-cruiser.config.cjs"
+      ]
+    },
+    {
+      "name": "writing-beats",
+      "category": "in-progress",
+      "status": "beta-procedurally-mature",
+      "method_ids": [
+        "article-shaping"
+      ],
+      "disposition": "integrate-conditionally",
+      "techniques": [
+        "Audience prerequisites and grounded-concept frontier; candidate reachable beats state newly grounded concepts",
+        "Offer 2-3 structurally different openings/next beats; user chooses, write only selected beat, reread disk each time",
+        "End when journey complete rather than raw pile exhausted; preserve edits and narrow rewrite scope"
+      ],
+      "adaptation": "Keep beat path distinct from paragraph-shaping path; no automatic choice for human or publication.",
+      "source_path": "skills/in-progress/writing-beats/SKILL.md",
+      "source_sha256": "b23f7851987dab7828c83d42df98090ccebff586b64908ce6a5e772440214621",
+      "resources": []
+    },
+    {
+      "name": "writing-fragments",
+      "category": "in-progress",
+      "status": "beta-procedurally-mature",
+      "method_ids": [
+        "writing-fragments"
+      ],
+      "disposition": "integrate-conditionally",
+      "techniques": [
+        "Explore heterogeneous raw fragments, including leading metaphors, without premature outline",
+        "Single working-title document with horizontal-rule fragments, capture from initial prompt",
+        "Reread before append, preserve user edits, targeted revisions only when requested"
+      ],
+      "adaptation": "No speculative article structure or sending/publishing; destination selected by user or existing convention.",
+      "source_path": "skills/in-progress/writing-fragments/SKILL.md",
+      "source_sha256": "3be6ffe9386ddd6de8b320c331295953995792fd65d0972aa2a28524ead73e90",
+      "resources": []
+    },
+    {
+      "name": "writing-shape",
+      "category": "in-progress",
+      "status": "beta-procedurally-mature",
+      "method_ids": [
+        "article-shaping"
+      ],
+      "disposition": "integrate-conditionally",
+      "techniques": [
+        "Read fixed raw material end-to-end, keep it read-only and write separate article",
+        "Set audience grounded concepts; 2-3 thesis openings and deliberate argument/form choice per block",
+        "Prose vs parallel list, callout vs inline, repeated-fields table, quote vs paraphrase and block vs inline code tradeoffs",
+        "Name missing material rather than invent it; reread destination before each agreed append, user decides completion"
+      ],
+      "adaptation": "Keep paragraph/block path distinct from choose-next-beat path; no raw-source edit, publishing or unrequested metadata.",
+      "source_path": "skills/in-progress/writing-shape/SKILL.md",
+      "source_sha256": "c13cbc364fbceefce654d9a4b0331113ff47efe90ce2523c2de23ecef63fefbd",
+      "resources": []
+    },
+    {
+      "name": "resolving-merge-conflicts",
+      "category": "deprecated-doc-only",
+      "status": "archived-removed-in-1.3.0",
+      "method_ids": [],
+      "disposition": "exclude-runtime",
+      "techniques": [
+        "Archived human docs retain historical role-aware conflict advice; no actual SKILL.md or current runtime capability"
+      ],
+      "adaptation": "Inventory historical removed item only; do not activate retired skill or execute merge/rebase.",
+      "source_path": "docs/engineering/resolving-merge-conflicts.md",
+      "source_sha256": "8980c9e62011f80d17fa7e375fc718b5bc4d1704f6a3450d1e9c565ada0b7ba7",
+      "resources": []
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "M-C01",
+      "source": "tdd",
+      "conflict": "Matt explicitly excludes refactoring from redâ†’green and assigns it to review; other upstream TDD may permit green refactor.",
+      "resolution_required": "Canonical owner must state exact green-state refactor versus separate architectural-review boundary."
+    },
+    {
+      "id": "M-C02",
+      "source": "implement/implement-spec/prototype/wayfinder/misc",
+      "conflict": "Automatic commit/new branches/merge/reset/push/staging and external tracker writes exceed current user authority.",
+      "resolution_required": "Preserve technical procedures; central Andino permission contract controls all side effects."
+    },
+    {
+      "id": "M-C03",
+      "source": "ask-matt/setup/chief-of-staff/wayfinder",
+      "conflict": "Second router, setup gate, always-delegate lifecycle and self-authored Notes permission.",
+      "resolution_required": "Absorb bounded techniques into existing Andino route/plan/lifecycle; user instructions are sole permission source."
+    },
+    {
+      "id": "M-C04",
+      "source": "research/code-review/grilling/design-it-twice",
+      "conflict": "Recursive delegation, hardcoded tool/native skills, mandatory fan-out and absent sequential fallback.",
+      "resolution_required": "Host capability checks, leaf agents, ownership bounds and truthful sequential fallback."
+    },
+    {
+      "id": "M-C05",
+      "source": "git-guardrails-claude-code",
+      "conflict": "Bash/jq regex hook fails open and can miss git -C push; not security enforcement.",
+      "resolution_required": "Adapt safety classification under host permissions; any optional hook must fail closed on parser failure and have explicit limitations/negative tests."
+    },
+    {
+      "id": "M-C06",
+      "source": "HTML-REPORT.md",
+      "conflict": "CDN scripts violate mandatory offline self-containment, mermaid securityLevel loose.",
+      "resolution_required": "Inline local CSS/SVG rendering, escape untrusted source text; no runtime network dependency."
+    },
+    {
+      "id": "M-C07",
+      "source": "docs versus actual sources",
+      "conflict": "Human docs state already-fixed redaction/labels/tool wording absent; beta setup claims no rule despite actual config; tdd short description still red-green-refactor.",
+      "resolution_required": "Actual SKILL/resource/config wins; retain docs as observed failure evidence, never current authority."
+    }
+  ],
+  "legal": {
+    "license": "MIT",
+    "copyright": "Copyright (c) 2026 Matt Pocock",
+    "notice_paths": [
+      "LICENSE",
+      "skills/engineering/pr/CREDITS.md"
+    ],
+    "additional_attribution": "PR Summary visuals copied from Dex Horthy / Humanlayer show-me. Preserve named attribution and source links. Snapshot contains no separate license for that cited source; this audit does not assert independently verified remote ownership/license.",
+    "lockfile_note": "package-lock.json dev-dependency licenses are build provenance, not bundled runtime libraries.",
+    "notice_hashes": {
+      "LICENSE": "4981c5f6a90eb3a969dacabb9350f5a75695ff3910b39b6534952908dfdc5ff7",
+      "skills/engineering/pr/CREDITS.md": "f5b7f7ead794f672324eb6a2cdc6986840e452abf15d72938084b645074bd149"
+    },
+    "lockfile_dependency_license_counts": {
+      "MIT": 96,
+      "Python-2.0": 1,
+      "BSD-3-Clause": 2,
+      "BSD-2-Clause": 3,
+      "ISC": 8,
+      "SEE LICENSE IN LICENSE": 1
+    },
+    "lockfile_packages": 111
+  },
+  "dependency_policy": "No upstream installers, global links, automatic update or plugin runtime required. Node/Changesets belong to upstream build only. Conditional methods inspect actual project tools and verify current third-party APIs before changes.",
+  "audit_limitations": [
+    "This is an audit/mapping proposal, not implementation or live-host verification.",
+    "No upstream code was executed, installed, updated or modified.",
+    "Local snapshot completeness is checked against tracked tree and local files; remote HEAD parity is not claimed.",
+    "Human docs are secondary and contain stale claims; actual skills/resources read in full, human docs unique FAQ/acceptance sections inspected."
+  ],
+  "files": [
+    {
+      "path": ".agents/adr/0001-explicit-setup-pointer-only-for-hard-dependencies.md",
+      "bytes": 1164,
+      "sha256": "b6f21d955eeabd31eb6de189abb488a7b38d660f01c95912964432cf90dd5ff4",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".agents/adr/0002-ship-as-a-claude-code-plugin.md",
+      "bytes": 6615,
+      "sha256": "93bb18f7a1c928338af9dcbde8c78a34a0f43b38593d0476310c763ef5aad5d8",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".agents/install-block.md",
+      "bytes": 5379,
+      "sha256": "f44f48c36a49ee13bca0374d6c9206409e18633dd7b4135229af1b2a6b0683f1",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".agents/invocation.md",
+      "bytes": 3876,
+      "sha256": "12770081fb55728caedf70f477d78895be181dfcff2b1af0af594861ec152eeb",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".agents/writing-docs.md",
+      "bytes": 13049,
+      "sha256": "ad2e51a77be7a9404cf46cc9732f645dfae145a4683165f860c8fe25136dded3",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".changeset/ask-matt-read-skill-first.md",
+      "bytes": 201,
+      "sha256": "82b396db1c98b6baa946d296fc5d74600505c3b3589b43d2813a6d457c0bd4fb",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".changeset/code-review-standards-and-subagents.md",
+      "bytes": 373,
+      "sha256": "a9d651bb13b467b08cc14a7a28490d189ad92242539ae67933205cfc5147fc8d",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".changeset/config.json",
+      "bytes": 395,
+      "sha256": "e451094205788eb7c2b7b19bbaddcf04f9a9c89e8ece04016558bf45f09b481d",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".changeset/diagnosing-bugs-prove-mutation.md",
+      "bytes": 237,
+      "sha256": "e2716bbc1a745543ba7cae3afe65cae0e2f85e6ab9e7afdcb893c53b262b8fca",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".changeset/github-tracker-external-pr-list.md",
+      "bytes": 241,
+      "sha256": "59292885cba8c93b1c71442809a89761ad28b97e78ccb5fa4e005754c47f5220",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".changeset/grilling-yes-accepts-recommendation.md",
+      "bytes": 160,
+      "sha256": "ef5a03d511aefa343b79c610feecd8f8c4329fe92e9e9e93dd5549c2e23c0a69",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".changeset/handoff-temp-dir.md",
+      "bytes": 171,
+      "sha256": "55e923dc38d54b5ea4300afe93a08e4d4da7b4e5c1736f634ec64b50bb02b186",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".changeset/implement-skill-tool-wording.md",
+      "bytes": 153,
+      "sha256": "1c45a949d00c4ba18560c096498fbeb685d3e78890c9611ec1790ad6925fbc29",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".changeset/implement-ticket-reference.md",
+      "bytes": 195,
+      "sha256": "96acc66792bd6774c239ce36b44a45257292d2712c52f434537ab78b6a6bacc7",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".changeset/README.md",
+      "bytes": 520,
+      "sha256": "350b53a835fed10b0847944a9342e194ba93d28ec52123a62395b5006bf8bd92",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".changeset/setup-tracker-fixes.md",
+      "bytes": 389,
+      "sha256": "bbc80f579218557f5c90b9ea016a74e491234d98afdee21b769aeb10cda00ff4",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".changeset/tdd-seam-tradeoffs.md",
+      "bytes": 186,
+      "sha256": "a21fe15a0d08cb3df134349ee13e797c5181b5b42e754a2b54210ac9c825bb63",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".changeset/teach-quiz-answer-position.md",
+      "bytes": 110,
+      "sha256": "9e9447db0fcbef3a639db8a1b3ca5687e212866728783d7d68b5eb3568563366",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".changeset/teach-workspace-root.md",
+      "bytes": 131,
+      "sha256": "305ab52186fbcae25761b3e1dd9cd804dc26297ea9fc2e8c28dccc7f301542ee",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".changeset/to-tickets-sub-issues.md",
+      "bytes": 347,
+      "sha256": "f754acab382c6f41f9459270b23cf88e9ab0c68ab445d7ffbd4779e80eb8745e",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".changeset/wayfinder-labels-refs-research-prs.md",
+      "bytes": 320,
+      "sha256": "27c8f15ef7881b3dad1927fc1c27a2d248facc647fcea806a3273f0c41821ec3",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".changeset/wizard-template-fixes-2.md",
+      "bytes": 402,
+      "sha256": "3867670350b59c720f37635c90b15b3c1662271f56e1de862eee2b3d0becd88a",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".changeset/wizard-template-fixes.md",
+      "bytes": 459,
+      "sha256": "2406060a0b5bb6cbca74f19f8c5408c142e4a088f384fcc0f0d5a977fbb59cae",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".claude-plugin/marketplace.json",
+      "bytes": 628,
+      "sha256": "d47268bfc8d0cd3e212874d108016e814ea52020d06e33c0155b08e32b42860a",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".claude-plugin/plugin.json",
+      "bytes": 1740,
+      "sha256": "57aac13fcf01c274deccebd891e1f7739237ba44ab5fb50e60826c46cfa2dc5c",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug.yml",
+      "bytes": 1498,
+      "sha256": "6af603b3a2ccfed6979d8acb0c5f1cc0f8a21bc6a710bbe57ae57bfd07b93ca4",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "bytes": 259,
+      "sha256": "ec1ba606628d63d5813b96705e9a29eda10411186b40c99a27ceb7922b201235",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/idea.yml",
+      "bytes": 1625,
+      "sha256": "fdf0a37cd558c77e3f61e49b9162278824ff293981a1a3459611563f0a95d864",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".github/workflows/needs-info.yml",
+      "bytes": 1400,
+      "sha256": "c1753d8d38ea03d4ef20196df55010ee3c16c64cfd737ebd160d50d524100927",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".github/workflows/release.yml",
+      "bytes": 817,
+      "sha256": "e6280722c1fdb5864469cc722ac87ab4e9b43d09f7005b13e5e82c63951418a8",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".github/workflows/triage-label.yml",
+      "bytes": 570,
+      "sha256": "e3edf568fa4c9ef970560c556fef30ce788ca8abb60785f85e2c9345cd1d0108",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 23,
+      "sha256": "c8f8d51c9f757ef05ebec2839b82b7571f7549c7df8ba7bdee7f4cc930af463b",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".out-of-scope/frozen-misc-skills.md",
+      "bytes": 1402,
+      "sha256": "875dff01c632f08dbc976a76f669c1432b129f4104aaec6d2dc70bd84094f03e",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".out-of-scope/harness-name-collisions.md",
+      "bytes": 1634,
+      "sha256": "2f18b71fa80166d579941e891f7cdf1f772bee196a37845e484b0f7efd9cb368",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".out-of-scope/lazy-load-writing-for-agents.md",
+      "bytes": 751,
+      "sha256": "7346eac38258634f059663b2b16ea56ee374876f7d11bf1747903c65174fc83d",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".out-of-scope/mainstream-issue-trackers-only.md",
+      "bytes": 2000,
+      "sha256": "0e9cfb4de9a70978545ae822211c746cfa23cd89c2c5bd7da40661de6ef0f1a8",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".out-of-scope/native-question-tool.md",
+      "bytes": 1693,
+      "sha256": "7a5ac65666eb82c7015c4a1d43c275e4f68e6468637d4364f88ecd5a599a6f24",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".out-of-scope/new-skills.md",
+      "bytes": 1560,
+      "sha256": "0a82b33db2ce8c8fa21d8fdbde343173a4d0aa7373db3424eaab7c404bf1d117",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".out-of-scope/question-limits.md",
+      "bytes": 1277,
+      "sha256": "c6f28e5930bd6a6f81247b8a73089bcfd43133b39a8e80ba360301df053d9aa0",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".out-of-scope/setup-skill-verify-mode.md",
+      "bytes": 1140,
+      "sha256": "7eb0de3614ee8710233e8771da36808aa4c1166e29e8f966780111c8fc76cc7e",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": ".out-of-scope/subagent-recursion.md",
+      "bytes": 1151,
+      "sha256": "e8348594ccccd81c156b24b08f8f404126e67670498a23eb399b3d0b91e4e16c",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 9,
+      "sha256": "6ebdb617a8104a7756d0cf36578ab01103dc9f07e4dc6feb751296b9c402faf7",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 55806,
+      "sha256": "f872ff16a6d608995ffc1121ad8db07cfd9d388c5f2ec74882f365e5f7865c5d",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "CLAUDE.md",
+      "bytes": 3988,
+      "sha256": "27dda2d839544e8a432e0cd215e46f14e39990ec4208c2e5d5778a80593a0639",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "docs/agents/triage-labels.md",
+      "bytes": 1100,
+      "sha256": "d2fdf2022e51ec616952517d69b46d690d3b9764e5b0c3bdf60cce0f08b34548",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/ask-matt.md",
+      "bytes": 11295,
+      "sha256": "12795f93566f4259fbd94ce077e2efa4f6c5a99f809b299884f2c9e89c873df1",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/code-review.md",
+      "bytes": 11097,
+      "sha256": "4fffa70d606a8daf84a2a7c84b7cbf0b7ecaaa717195fd4b447d955b46b316bf",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/codebase-design.md",
+      "bytes": 12284,
+      "sha256": "71fba61b4f2c26ad86c709c97c56b8d7f8914d8ecae38b209e4672ea591af154",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/diagnosing-bugs.md",
+      "bytes": 10861,
+      "sha256": "0ab9c032ca76dc801ea742cb3dc162a26cf591b9aa2d319effbe5490e9c805e4",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/domain-modeling.md",
+      "bytes": 10658,
+      "sha256": "9853a9dc8bee9dfe66e60ce1dbfa363b26f332e5d4a442cd228622fdf8d59b1b",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/grill-with-docs.md",
+      "bytes": 9939,
+      "sha256": "1602c7d816febd21670b730435c1900ac33fc019b3b2a55bdad2a337188b39f1",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/implement-spec.md",
+      "bytes": 9850,
+      "sha256": "6b00af7524ee08a96bc0126bb389ea9005718d653af6256aa06444a8c6faaa7c",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/implement.md",
+      "bytes": 10355,
+      "sha256": "4201e1eaa292129a47956c71988a175acaf7d7153a83304fa74e678aa20d0f93",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/improve-codebase-architecture.md",
+      "bytes": 11877,
+      "sha256": "adce9ad20fa03a54f8f8b4cfe45682cccef76fc23a47815ef87e0746c0840383",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/pr.md",
+      "bytes": 8158,
+      "sha256": "a33a1de48cd6bad412b37f902ca3d04bb45702b7683f93c4a790712e745a311a",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/prototype.md",
+      "bytes": 9583,
+      "sha256": "f666d96873a6f601cfcac7a98a1d2ccc03bc3de995a956de4853e73cae9298eb",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/research.md",
+      "bytes": 9429,
+      "sha256": "3efd0cd1d152d6ce4c7b0743f04dbfa58300e05732f3fdb588bbb2094bafda81",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/resolving-merge-conflicts.md",
+      "bytes": 5539,
+      "sha256": "8980c9e62011f80d17fa7e375fc718b5bc4d1704f6a3450d1e9c565ada0b7ba7",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/retro.md",
+      "bytes": 8909,
+      "sha256": "d81121c231e96b489a0ad466da5ff815993ed57401d7f9e766b7aa5c9a6a371f",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/setup-matt-pocock-skills.md",
+      "bytes": 9226,
+      "sha256": "59e544e49d1606a21cf4b5c31a6e7bb76e5faf566fc92c55c791512370d1e0aa",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/tdd.md",
+      "bytes": 10457,
+      "sha256": "36a6baf97a56e1220aba8f703996b95ed3eb9c553c768822e509c8dbc8e1e683",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/to-spec.md",
+      "bytes": 8583,
+      "sha256": "15cc8a9fc796d0f6c01c091d58d1bea0015ba786849580cf0a4de0c68ddedffa",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/to-tickets.md",
+      "bytes": 10995,
+      "sha256": "a0df14a149c4d47cb6aab4bb6f4773bae2b187fe02edfcf8cedb4f7315eb097d",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/triage.md",
+      "bytes": 13002,
+      "sha256": "485c17be55a3060c7b79b7e8660f63cf6dae0b85a356935714955974e3578269",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/wayfinder.md",
+      "bytes": 15685,
+      "sha256": "d1b561a4146ba1b2d86bf8f5995bfe35273e05adf4a409a8ec54fc5fe3e455fc",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/engineering/wizard.md",
+      "bytes": 9667,
+      "sha256": "48fd383aca2f3037c8410adc5150ab8943cc97c548fc1ee599f81d3511c74fa5",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/productivity/grill-me.md",
+      "bytes": 6657,
+      "sha256": "df411017604abd7983c234f70f050884d5eb401638b41c4fe04283eb259fd022",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/productivity/grilling.md",
+      "bytes": 10330,
+      "sha256": "5922810f75425af7730f733f1672afeed6eecd71eb696b3277aba9af6d4f1c7a",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/productivity/handoff.md",
+      "bytes": 8870,
+      "sha256": "c609d9e3d3e5fb320290814d9ca6f8d480c49f853d3d152c224856cfe04d5498",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/productivity/teach.md",
+      "bytes": 12519,
+      "sha256": "a7ed7c5038bd17f2f62e184dc1538bbb7d8d27783676cf43c007aac90248cfc7",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/productivity/to-questionnaire.md",
+      "bytes": 7893,
+      "sha256": "e035ff128b4a43e5f378dcc9c9802ea2acc2e762e4fd1d1e8894c9f53402af96",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/productivity/wait-what.md",
+      "bytes": 3647,
+      "sha256": "22a0fe08d7648e3eb62c17be6a6805a663b9654262c80edc567a0eef89bce0cb",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "docs/productivity/writing-for-agents.md",
+      "bytes": 7769,
+      "sha256": "bbcd4b788acf686692da1a692c1ad919316875a6869a0220d514b29f88d44f33",
+      "tracked": true,
+      "role": "human-doc"
+    },
+    {
+      "path": "GLOSSARY.md",
+      "bytes": 1798,
+      "sha256": "d0d709d717fad1c0f3eb113a04b17cfcd88a73ed0fa3116f6da67fdd7282a2ca",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1089,
+      "sha256": "4981c5f6a90eb3a969dacabb9350f5a75695ff3910b39b6534952908dfdc5ff7",
+      "tracked": true,
+      "role": "legal-notice"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 50675,
+      "sha256": "e26c145e0ff6e14a9f0ff6bd2f3e7cb2c820a152eb8f2b4147ca525a98209ed4",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "package.json",
+      "bytes": 618,
+      "sha256": "a419dcc2c7995a4203a9d5a0fd626bd3dc5a64f9c52e32ec65f6af18da199171",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "README.md",
+      "bytes": 16719,
+      "sha256": "b1ff8acade606a4df470c25017b7f1de0d2814e8f294f1d9e07a0b89c472154b",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "SCOPE.md",
+      "bytes": 2383,
+      "sha256": "b9dfeccd1f313819ced98c23f1a5fff54123f6d8ae3f52c29afe67a0234b4e59",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "scripts/link-skills.sh",
+      "bytes": 2302,
+      "sha256": "13ff24ef78a12de9cce261da59a30d22874c3802220664cf59d4b125bb89a6ba",
+      "tracked": true,
+      "role": "executable-template"
+    },
+    {
+      "path": "scripts/list-skills.sh",
+      "bytes": 175,
+      "sha256": "450e75550f7fbaaaa0e4e3fc6baead0a1100e1ed6edf5ba77547e7d7886db5f4",
+      "tracked": true,
+      "role": "executable-template"
+    },
+    {
+      "path": "scripts/sync-plugin-version.mjs",
+      "bytes": 1470,
+      "sha256": "7bf99f16864c6423e49094be7cd090bbee9e2f881a463cb030e22f3536d1c9fe",
+      "tracked": true,
+      "role": "executable-template"
+    },
+    {
+      "path": "skills/deprecated/README.md",
+      "bytes": 163,
+      "sha256": "54e9b67d7e4690436253d549561caeadbe9ed1cdac954cfb190c59811f5593c8",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/ask-matt/agents/openai.yaml",
+      "bytes": 142,
+      "sha256": "d30cfa5b0e84e2ca10b8d263b9dfcc13c3aa089ae6bc26096bc549fc037d274e",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/ask-matt/PHASE-BOUNDARIES.md",
+      "bytes": 4304,
+      "sha256": "4e2a891beb182df8c2eb2a7dfbff20ba43ae008d29c77ac41b005181018f7ccd",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/ask-matt/SKILL.md",
+      "bytes": 12691,
+      "sha256": "9153a87908838ed24838c16da0eaeec46877f3ab701efdeefea7a5579a4a474d",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/code-review/agents/openai.yaml",
+      "bytes": 103,
+      "sha256": "3f72329747a916ac8ab2b4004490c79e1be6774a8a83e5b258d6ddc7e866abfe",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/code-review/SKILL.md",
+      "bytes": 6759,
+      "sha256": "9e6d1b00c31e10a002ac3e5fb49014c9589166f668c62996e80a36d23ca21e70",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/codebase-design/agents/openai.yaml",
+      "bytes": 105,
+      "sha256": "967df5c80a2a00e8fea9ce0e7914fb57114c93d16baa3b7743347a4dfeed61fc",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/codebase-design/DEEPENING.md",
+      "bytes": 2590,
+      "sha256": "a67260cb384580b60430486edeb47a6e656ea5f8a42b7196b24461459031f00c",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/codebase-design/DESIGN-IT-TWICE.md",
+      "bytes": 2709,
+      "sha256": "b6d23731a6feea1293cc97e08f983e9fdf48b99275d5d306c93738f06bcdce92",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/codebase-design/SKILL.md",
+      "bytes": 6560,
+      "sha256": "362b0bec828219d9f4b08ca7c466164e67253bdd817359258e60d2e9c5692a8f",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/diagnosing-bugs/agents/openai.yaml",
+      "bytes": 106,
+      "sha256": "167ab1659754b8c53706ecca7502ccc7fb219ff14f0c36bfb1db05ae31a8ac58",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/diagnosing-bugs/scripts/hitl-loop.template.sh",
+      "bytes": 1360,
+      "sha256": "063ef14e7212113c7778258172e7c76e963926963e448934048f505d6e576e8f",
+      "tracked": true,
+      "role": "executable-template"
+    },
+    {
+      "path": "skills/engineering/diagnosing-bugs/SKILL.md",
+      "bytes": 8802,
+      "sha256": "aa87b0ac245c6d1b203c4678eb34dc101af02291448780c55c5e58ccc1619bd7",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/domain-modeling/ADR-FORMAT.md",
+      "bytes": 2780,
+      "sha256": "b7021c31a1c2485b07356a8110fd1fd1ae4facbab3e210983789f425f867d95b",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/domain-modeling/agents/openai.yaml",
+      "bytes": 104,
+      "sha256": "ce496c77c77a090877bff10f198c9770fb52e23088351350ea0826380f948ff8",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/domain-modeling/GLOSSARY-FORMAT.md",
+      "bytes": 2360,
+      "sha256": "61fa9f6f9231070461dd4f7d4cfad377c33013c1e5668e1e6c0a8e4500944b3b",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/domain-modeling/SKILL.md",
+      "bytes": 3420,
+      "sha256": "b62d997256cc073e123d4303da8e9db00db0e28de9739660ca3e55ab76e09cdb",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/grill-with-docs/agents/openai.yaml",
+      "bytes": 150,
+      "sha256": "81e6af95559517a292767439da8f46a468b4d88a6773a3316d511a428eb16ff3",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/grill-with-docs/SKILL.md",
+      "bytes": 254,
+      "sha256": "abc0fa7948db18b5fb0e1cc1c522ac5ff47d874e2da1e5df60619d79be11f38b",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/implement/agents/openai.yaml",
+      "bytes": 144,
+      "sha256": "8494f83602c58f8ab33d047d0516cdb90b8c29e6d564de0cef810daaca378bcb",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/implement/SKILL.md",
+      "bytes": 639,
+      "sha256": "83042ad79e3d7ce616124bf59a38a5ebe79417adb36bedfc4e6223aab783be8c",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/implement-spec/agents/openai.yaml",
+      "bytes": 173,
+      "sha256": "143db4aaaee1dfee7db6da5dab41501fb3852be498fb719dd52f1e21f29a383f",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/implement-spec/SKILL.md",
+      "bytes": 2820,
+      "sha256": "5bdaaf884b02b24db432241bcc32250bfee6149c45c743a2a1fef6b416837cfa",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/improve-codebase-architecture/agents/openai.yaml",
+      "bytes": 171,
+      "sha256": "6b69701fc3f4f31ec626c1ae5c090dc5c640fab147a63be81b575c2f9c5231fa",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/improve-codebase-architecture/HTML-REPORT.md",
+      "bytes": 6764,
+      "sha256": "870acb4262373ae536af7d1f4a9b56d33e7e7faa632bd425c09edb4f897fb828",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/improve-codebase-architecture/SKILL.md",
+      "bytes": 6071,
+      "sha256": "f053ff6d7a70f10bd0104e368f7e664b23ea6378898e305bf027e8864757822f",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/pr/agents/openai.yaml",
+      "bytes": 96,
+      "sha256": "33b71355c3ec06963d9a276baff9e9bf89a1ac69a5b9489a368c95021a8d6cc4",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/pr/CREDITS.md",
+      "bytes": 607,
+      "sha256": "f5b7f7ead794f672324eb6a2cdc6986840e452abf15d72938084b645074bd149",
+      "tracked": true,
+      "role": "legal-notice"
+    },
+    {
+      "path": "skills/engineering/pr/SKILL.md",
+      "bytes": 4339,
+      "sha256": "57658baca2e50e9cf98fdb6b74a51f2afd34b71019d516f7c5d45a51a28354b0",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/prototype/agents/openai.yaml",
+      "bytes": 103,
+      "sha256": "cc1ce1ceaba1442c431dc76abb84b271ad72ecb94dcefee53130df742dc11787",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/prototype/LOGIC.md",
+      "bytes": 6103,
+      "sha256": "8d7e31de7ce73b8e62f207e3f3ecbd90a7a54fdc728f8965f5f0739976f9959a",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/prototype/SKILL.md",
+      "bytes": 2957,
+      "sha256": "f74ae01f4fc454d3a4ef21271920f1706e626271e715dda0559e489f45c792c3",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/prototype/UI.md",
+      "bytes": 7025,
+      "sha256": "5ea83263ba72174c9055d58045f053d6577c0db6802c1e15bd1468dd16f78a0b",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/README.md",
+      "bytes": 4321,
+      "sha256": "230dc5f0f9a3ea1b003bc5b93d20c4383ac3a4d373b37d0edc49a748abb77de6",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/research/agents/openai.yaml",
+      "bytes": 97,
+      "sha256": "73840328dfa6b689d81ee645d8aaf8570a0cc44d64a32b119ea6091d2828d412",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/research/SKILL.md",
+      "bytes": 806,
+      "sha256": "524b404b1ca373a8b00f63a64667ec4b0a61c3c9cf4e8f246e639be859bb6979",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/retro/agents/openai.yaml",
+      "bytes": 151,
+      "sha256": "61afaa61443da49b3ff8fcc9d04735362bfec03e213791226134a3a21a9c6fd3",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/retro/SKILL.md",
+      "bytes": 4413,
+      "sha256": "42110f533f169026d037cf141b9f6c2752c6d914903be4758c38a68349e83e78",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/setup-matt-pocock-skills/agents/openai.yaml",
+      "bytes": 157,
+      "sha256": "53d0bf3786862a1cb5013ca78f12013b166d0819823dae0d3f9eb13eee2acdf2",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/setup-matt-pocock-skills/domain.md",
+      "bytes": 2093,
+      "sha256": "20ee347cfcb4bd2266a8b747c11ca6c3dec85ff4cc38319de88cc3cadc12c80b",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/setup-matt-pocock-skills/issue-tracker-github.md",
+      "bytes": 4163,
+      "sha256": "aa933ecccc415f7b51681075879439a6616ba1bf9a8cf91dbee536ff1625ecac",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/setup-matt-pocock-skills/issue-tracker-gitlab.md",
+      "bytes": 3862,
+      "sha256": "ce09c41e2cfd2a4cd751c9f0557e8c9acd07b035b6fca45268ab350e3343bc77",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/setup-matt-pocock-skills/issue-tracker-local.md",
+      "bytes": 1840,
+      "sha256": "a604b658f0730eae3107671b09323ed8382bd546e82dc3bedc265bccbeb35021",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/setup-matt-pocock-skills/SKILL.md",
+      "bytes": 7096,
+      "sha256": "5dcf60b4265d52423cd83b8f0aef466f93b624152bbb9d2450b41ed80f7d0e6d",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/setup-matt-pocock-skills/triage-labels.md",
+      "bytes": 1072,
+      "sha256": "713abcdd778059289bc4ed8278d14787f719707d429da716ae814e69a727843c",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/tdd/agents/openai.yaml",
+      "bytes": 90,
+      "sha256": "f8e2afc1fbcd6a6e1178c30f290ca9f2286c949a0b74b8b68fd14f198b78ebac",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/tdd/mocking.md",
+      "bytes": 1540,
+      "sha256": "73a10b6a26b56197c738a764c1e4205af98c74553f4a713795997f6bc35b917d",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/tdd/SKILL.md",
+      "bytes": 3667,
+      "sha256": "969583080caf842ae86a53501a0091eced13fd89cad65d3aa75c09112318ff33",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/tdd/tests.md",
+      "bytes": 2291,
+      "sha256": "0b401f98bd3684d2fea6440d6946afcf8f5f68ac6a65599dd7a2b90dd9f02eb5",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/to-spec/agents/openai.yaml",
+      "bytes": 140,
+      "sha256": "55037139831219743dda1f716fe69eab3366e922529f69cc988fea3b1d34c74a",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/to-spec/SKILL.md",
+      "bytes": 3118,
+      "sha256": "c73a2250beac0479e384f5466e834bb54ce6e30b7f8705e9999ba840d9d59b36",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/to-tickets/agents/openai.yaml",
+      "bytes": 151,
+      "sha256": "e396b8caaf6cdd95c94cf707a7ca2fa5c3a04b37ae5d4301b5b360a7ff7a34cb",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/to-tickets/SKILL.md",
+      "bytes": 5917,
+      "sha256": "b8eb6dca1085e85220b0f5990ed787ebf8a924844d090689f1073b06367e2f7a",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/triage/AGENT-BRIEF.md",
+      "bytes": 8149,
+      "sha256": "9160800ad5483816f5bcd7f5aa62cfb6dbb16e6343d0754b9bb739815145fa15",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/triage/agents/openai.yaml",
+      "bytes": 140,
+      "sha256": "d930356b9f23b89361f5b8f4fef87c911b35531b15a9005956c944a1058973ae",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/triage/OUT-OF-SCOPE.md",
+      "bytes": 4772,
+      "sha256": "a48a2c63f0520eaa08cd68705030a77428e7ba6647834c7a644ad9cda396e4ae",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/engineering/triage/SKILL.md",
+      "bytes": 6670,
+      "sha256": "797f4371a4cea1b564ecfdc7a603089acf3c023454e47ccb0b3307c62de279f8",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/wayfinder/agents/openai.yaml",
+      "bytes": 149,
+      "sha256": "3e698cdff8e84d0e900d8dec535060e9e6d16d923b313eefd881e958d164e37a",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/wayfinder/SKILL.md",
+      "bytes": 12508,
+      "sha256": "0efeec3d47d2fdd3d9b677f19ca7360a3e1e2034ff23bfee33765a74c5d27d22",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/wizard/agents/openai.yaml",
+      "bytes": 99,
+      "sha256": "b9a0f4a716a64ada207aa4b38ce53981729cde053d87a39f2d51ad2dd30d3249",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/engineering/wizard/SKILL.md",
+      "bytes": 4167,
+      "sha256": "dbefb750eae07d9f8b05ab1084f6acfdda2752df2a6b577c46a505e2bc790164",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/engineering/wizard/template.sh",
+      "bytes": 9721,
+      "sha256": "b1f2291a7d01062aee8359cb987f6dd9da7a9627b0055faa1cff540a7e770dd2",
+      "tracked": true,
+      "role": "executable-template"
+    },
+    {
+      "path": "skills/in-progress/chief-of-staff/agents/openai.yaml",
+      "bytes": 189,
+      "sha256": "93759642f8834b9b28e8204eb4949eab4873cc6b1709f40daa5b14806b514d01",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/in-progress/chief-of-staff/SKILL.md",
+      "bytes": 2157,
+      "sha256": "001ffc84d809d3dc97751e58227f26c20806722f067abcee51ec640f7c97af24",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/in-progress/claude-handoff/agents/openai.yaml",
+      "bytes": 146,
+      "sha256": "c49d051126b7ef690418b431a4317298a5bbb2bcf4cb0661d3a06f115ce12263",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/in-progress/claude-handoff/SKILL.md",
+      "bytes": 1442,
+      "sha256": "24853e92b98dea61e5e6cdfeb929e47f98d61d9ccb21e8bb952f917d29980970",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/in-progress/loop-me/agents/openai.yaml",
+      "bytes": 145,
+      "sha256": "ec257a7995d8eba46b6a95471f5fb569798aa975a1b1c438542b1a9c82bc33d3",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/in-progress/loop-me/SKILL.md",
+      "bytes": 2554,
+      "sha256": "38ac316635d244abfdc1526edec49596f9284b36595f5a212fc5983894b6094a",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/in-progress/README.md",
+      "bytes": 1692,
+      "sha256": "8812b8ba094310414016985a4bb579ce33ac132eca41f0171a76932601418de5",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/in-progress/setup-ts-deep-modules/agents/openai.yaml",
+      "bytes": 154,
+      "sha256": "bf3d58c59b0e68ef3b0287ac3ab3d165b066dfd31e146ecf278e56e4df664610",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/in-progress/setup-ts-deep-modules/dependency-cruiser.config.cjs",
+      "bytes": 3807,
+      "sha256": "d80c982bc496ff6fb65c91bfa5b3ffccd64396cd488f556779ce3f1bd770f376",
+      "tracked": true,
+      "role": "executable-template"
+    },
+    {
+      "path": "skills/in-progress/setup-ts-deep-modules/SKILL.md",
+      "bytes": 7648,
+      "sha256": "3709fc7d62ea75cd7da1d6f21e33d58d758766fb8f5247a859687d7ed63c213e",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/in-progress/writing-beats/agents/openai.yaml",
+      "bytes": 147,
+      "sha256": "30ad45c6d16b7e3e58d656c8d2619c68916d14b96e218de3c042cac89ef85a84",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/in-progress/writing-beats/SKILL.md",
+      "bytes": 4922,
+      "sha256": "b23f7851987dab7828c83d42df98090ccebff586b64908ce6a5e772440214621",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/in-progress/writing-fragments/agents/openai.yaml",
+      "bytes": 145,
+      "sha256": "d082f54a16e95d0eb5c3bcf3e2ff7b78b8c5b2e142c5d1b8897d7f3282adbedb",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/in-progress/writing-fragments/SKILL.md",
+      "bytes": 3637,
+      "sha256": "3be6ffe9386ddd6de8b320c331295953995792fd65d0972aa2a28524ead73e90",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/in-progress/writing-shape/agents/openai.yaml",
+      "bytes": 149,
+      "sha256": "7f82f71f0849ada3acb686dfe9977a7b5b1af3c1fc049ac5275b8fdf3a18c299",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/in-progress/writing-shape/SKILL.md",
+      "bytes": 6001,
+      "sha256": "c13cbc364fbceefce654d9a4b0331113ff47efe90ce2523c2de23ecef63fefbd",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/misc/git-guardrails-claude-code/agents/openai.yaml",
+      "bytes": 115,
+      "sha256": "9151961c68ab52e07e2463df15e8ff7c9331c3b7afbf716c3461623f87c57c14",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/misc/git-guardrails-claude-code/scripts/block-dangerous-git.sh",
+      "bytes": 532,
+      "sha256": "bb5dc3a96ae81924ff3b88b959979b4eb68b7810f6fa9bd395fb8f781e0d8c12",
+      "tracked": true,
+      "role": "executable-template"
+    },
+    {
+      "path": "skills/misc/git-guardrails-claude-code/SKILL.md",
+      "bytes": 2408,
+      "sha256": "12d335b84bcf984b213b527014262233f27ffa1eb807db466832ff711b96f41f",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/misc/migrate-to-shoehorn/agents/openai.yaml",
+      "bytes": 113,
+      "sha256": "43d8fbb6347d771e82eb866bae6987acede6dc1d16d46b9c69e2b06930771180",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/misc/migrate-to-shoehorn/SKILL.md",
+      "bytes": 2913,
+      "sha256": "200c11163ecd56d908ec431154e4b452cd6afeb3de91e5b54434f543f0822201",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/misc/README.md",
+      "bytes": 692,
+      "sha256": "ac9240fb282e0d008a16d1581eb06750b1e1125d8dec277b951c10358f2bbb9f",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/misc/scaffold-exercises/agents/openai.yaml",
+      "bytes": 111,
+      "sha256": "f3ab550f1077150f0fe728fe3ff187e8672f4df7eedc7f233cdd1a61f347f1db",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/misc/scaffold-exercises/SKILL.md",
+      "bytes": 3695,
+      "sha256": "de28db7a0954db55c11ba1e3cc0fd4c037bf0f5cb8313cb292e319bcce47f424",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/misc/setup-pre-commit/agents/openai.yaml",
+      "bytes": 102,
+      "sha256": "946bfa9a3cab905f4241d8dcc127a11fdcf2994027b87e198f26f7e65d88f727",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/misc/setup-pre-commit/SKILL.md",
+      "bytes": 2349,
+      "sha256": "e069e6a23069ebdba946d4dea11e5d663c10640c6b14b55c4585c81b1a256ac9",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/productivity/grill-me/agents/openai.yaml",
+      "bytes": 142,
+      "sha256": "c03a1eee1161bb70ca360b3d17705638b93bc8eec41319732725dc05a53196a5",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/productivity/grill-me/SKILL.md",
+      "bytes": 164,
+      "sha256": "19e660207b447acf6ee0d600471c02e549c7aca8fb3ab38fdc2c7056aa442fc8",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/productivity/grilling/agents/openai.yaml",
+      "bytes": 116,
+      "sha256": "ad75163922ff8263acdd25ebc37420e8fcf1fccb93483fd5742e9bd26f5c45f6",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/productivity/grilling/SKILL.md",
+      "bytes": 2079,
+      "sha256": "26d225ea8a36f4acacbe267e789cfb97d73964412f4243dd4b65b6cb806ddebc",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/productivity/handoff/agents/openai.yaml",
+      "bytes": 146,
+      "sha256": "deb645c801764579994bd23d1954aa991ef1d0d55bf30043d47ada631fcff5f4",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/productivity/handoff/SKILL.md",
+      "bytes": 956,
+      "sha256": "739d8fbe3e6ed688581eb62b35f04834822eae47e57bc35a79c8d8dc9ac703d3",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/productivity/README.md",
+      "bytes": 1501,
+      "sha256": "21c2d6a007be500eaff7db04be11f4d73f169bcacd3fde3cd192e1a1bf292707",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/productivity/teach/agents/openai.yaml",
+      "bytes": 144,
+      "sha256": "80e96a4d492ad8538e609672361e8543b69e7b22ce83be0efc2e5532472ede69",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/productivity/teach/GLOSSARY-FORMAT.md",
+      "bytes": 2157,
+      "sha256": "22f851b265a3bec5a333937cc7ff1250136c9b6512787ae2eb51a2a14e35c341",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/productivity/teach/LEARNING-RECORD-FORMAT.md",
+      "bytes": 2793,
+      "sha256": "d49c754ea416a075534d0ba1428a0beba1327ae527c2d1af0333908d08e25d05",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/productivity/teach/MISSION-FORMAT.md",
+      "bytes": 1571,
+      "sha256": "44ea82d5f57a626086bde99c70cd229cdef67998e8502c1cbcd50504f57f989a",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/productivity/teach/RESOURCES-FORMAT.md",
+      "bytes": 1956,
+      "sha256": "377e70f83d41fdc2623037410600194655a2f7df41000925c24cc437da074ab5",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/productivity/teach/SKILL.md",
+      "bytes": 9873,
+      "sha256": "d9480a846c88bb1151947eb484bab1a8c9a84af4d9ddf1ea0f6fb7fe639cf9b3",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/productivity/to-questionnaire/agents/openai.yaml",
+      "bytes": 171,
+      "sha256": "0b5ed84d805809777a15371c946a70f98321e3c6400fce5fcd74df71d40e860b",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/productivity/to-questionnaire/SKILL.md",
+      "bytes": 2958,
+      "sha256": "77825120815c21400f82e2794faf342d1d1a4ab1493be3fe061857885d26b768",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/productivity/wait-what/agents/openai.yaml",
+      "bytes": 163,
+      "sha256": "e0d9beddf0093b3cf05de2722699affab5d240e5950469e208d59c1f0ed91bef",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/productivity/wait-what/SKILL.md",
+      "bytes": 403,
+      "sha256": "95393f96e730b20dabc6b425515cb6292d34bd9a91859a03c2c821e24d321112",
+      "tracked": true,
+      "role": "skill"
+    },
+    {
+      "path": "skills/productivity/writing-for-agents/agents/openai.yaml",
+      "bytes": 105,
+      "sha256": "486c388ed1babac6ea25001147b41d3ff6c8892b0128ae1b0bef8feea6363428",
+      "tracked": true,
+      "role": "agent-metadata"
+    },
+    {
+      "path": "skills/productivity/writing-for-agents/SKILL-MECHANICS.md",
+      "bytes": 2651,
+      "sha256": "86f112c08d785cc224c13dcda75c0724b74bd62622cc61d4b7ab3dbbaf37f6fc",
+      "tracked": true,
+      "role": "reference-or-config"
+    },
+    {
+      "path": "skills/productivity/writing-for-agents/SKILL.md",
+      "bytes": 10967,
+      "sha256": "1c0c4ebf2d221917591144f0ced4fe46dae13301cb3d6d93fc88ecf0dda6aed2",
+      "tracked": true,
+      "role": "skill"
+    }
+  ],
+  "canonical_comparative_decisions": {
+    "tdd": "RED then GREEN, one public-seam behavior per slice. Optional behavior-preserving GREEN-only refactor gate owned by review; architectural redesign is separate. Accepted interfaces satisfy seam agreement; ask only material unresolved interface choices.",
+    "interview": "Combine Addy interview-me one-question-with-hypothesis and outcome/user/why-now/success/constraint/scope restate with Matt dependency-aware frontier and recommended answers; choose cadence proportionally. Facts investigated; material user decisions await answer. No invented 95% certainty or rejection of ordinary clear authorization.",
+    "specification": "Combine Addy conditional capability map, stable IDs, acyclic dependencies, exact factual commands/project conventions/testing/boundaries and live scope updates with Matt synthesis of already-settled conversation, high public seam catch/miss tradeoffs and decision-rich prototype snippets. Existing accepted spec and plan remain authoritative; no mandatory terminal-turn ceremony or duplicate files."
+  }
+}

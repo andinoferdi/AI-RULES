@@ -1,0 +1,91 @@
+{
+  "host_surface": "Codex delegated agent",
+  "model_version": "UNKNOWN",
+  "current_state": "COMPLETE: 38 selection snapshots recorded; supplied review completed and candidate preserved.",
+  "current_phase": "Verified resource selection and fixture review",
+  "decisions": [
+    "No scenario actions; only reads and owned fixture artifacts in this directory.",
+    "Use literal role/organization cases and separate AST/source standards review.",
+    "No repair; mutation occurs solely in a separately named disposable copy."
+  ],
+  "evidence": {
+    "input": {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actor-inputs-v2/batch-3.json",
+      "sha256": "af709374fd57ca422320403ba9cf45a5f4714073d5e3f0689d3c7d50f74a1e9a"
+    },
+    "candidate": {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors-v3/batch-3/candidate.py",
+      "sha256": "1669b711b0f16f44a9dc1545c57ef6d87b055fe12dd0f5d19ea42732be47ddfd"
+    },
+    "harness": {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors-v3/batch-3/test_review.py",
+      "sha256": "286c438fdc57afc40899f882754181dbe51686de78b718d8cadb8655ba806ae9"
+    },
+    "review": {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors-v3/batch-3/review.json",
+      "sha256": "02323a72c0f8f4fa24fc79c937f4803d0fe96d25921410c8e73f3843bb08aee6"
+    },
+    "results": {
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors-v3/batch-3/results.json",
+      "sha256": "f29a2a401de701d4d1d70af0075fc3a0b9b7945f8a2b82c2e02e5ba2a2ecbd3f"
+    }
+  },
+  "commands": [
+    {
+      "command": "rtk proxy python test_review.py candidate.py spec",
+      "cwd": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors-v3/batch-3",
+      "chunk_id": "9a93da",
+      "wall_time_seconds": 0.4357934,
+      "exit_code": 1,
+      "original_token_count": 173,
+      "output": "[rtk] /!\\ No hook installed — run `rtk init -g` for automatic token savings\n{\"axis\": \"spec\", \"cases\": [{\"actual\": true, \"expected\": true, \"id\": \"admin_own_org\", \"pass\": true, \"record\": {\"org\": \"A\"}, \"user\": {\"org\": \"A\", \"role\": \"admin\"}}, {\"actual\": true, \"expected\": true, \"id\": \"admin_other_org\", \"pass\": true, \"record\": {\"org\": \"B\"}, \"user\": {\"org\": \"A\", \"role\": \"admin\"}}, {\"actual\": false, \"expected\": true, \"id\": \"member_own_org\", \"pass\": false, \"record\": {\"org\": \"A\"}, \"user\": {\"org\": \"A\", \"role\": \"member\"}}, {\"actual\": true, \"expected\": false, \"id\": \"member_other_org\", \"pass\": false, \"record\": {\"org\": \"B\"}, \"user\": {\"org\": \"A\", \"role\": \"member\"}}], \"failed\": 2, \"passed\": 2}\r\n"
+    },
+    {
+      "command": "rtk proxy python test_review.py candidate.py standards",
+      "cwd": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors-v3/batch-3",
+      "chunk_id": "4472d1",
+      "wall_time_seconds": 0.3994521,
+      "exit_code": 1,
+      "original_token_count": 55,
+      "output": "[rtk] /!\\ No hook installed — run `rtk init -g` for automatic token savings\n{\"axis\": \"standards\", \"dynamic_eval_calls\": [{\"line\": 2, \"name\": \"eval\"}], \"pass\": false, \"rule\": \"never evaluate user input dynamically\"}\r\n"
+    },
+    {
+      "command": "rtk proxy python test_review.py candidate_mutant.py spec",
+      "cwd": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors-v3/batch-3",
+      "chunk_id": "bd9a69",
+      "wall_time_seconds": 0.4219252,
+      "exit_code": 1,
+      "original_token_count": 173,
+      "output": "[rtk] /!\\ No hook installed — run `rtk init -g` for automatic token savings\n{\"axis\": \"spec\", \"cases\": [{\"actual\": false, \"expected\": true, \"id\": \"admin_own_org\", \"pass\": false, \"record\": {\"org\": \"A\"}, \"user\": {\"org\": \"A\", \"role\": \"admin\"}}, {\"actual\": true, \"expected\": true, \"id\": \"admin_other_org\", \"pass\": true, \"record\": {\"org\": \"B\"}, \"user\": {\"org\": \"A\", \"role\": \"admin\"}}, {\"actual\": false, \"expected\": true, \"id\": \"member_own_org\", \"pass\": false, \"record\": {\"org\": \"A\"}, \"user\": {\"org\": \"A\", \"role\": \"member\"}}, {\"actual\": true, \"expected\": false, \"id\": \"member_other_org\", \"pass\": false, \"record\": {\"org\": \"B\"}, \"user\": {\"org\": \"A\", \"role\": \"member\"}}], \"failed\": 3, \"passed\": 1}\r\n"
+    }
+  ],
+  "record_command": "rtk proxy python write_records.py",
+  "candidate_matches_input_bytes": true,
+  "spec_result": "2 PASS, 2 FAIL; exit 1",
+  "standards_result": "FAIL line 2; exit 1",
+  "mutation_result": "1 PASS, 3 FAIL; exit 1; admin_own_org newly fails",
+  "errors": [
+    {
+      "operation": "Initial RTK instruction read",
+      "detail": "Get-Content was invoked before learning the RTK prefix requirement; subsequent shell commands were prefixed."
+    },
+    {
+      "operation": "PowerShell batched guide read",
+      "detail": "Nested variable interpolation produced a parser error. No guide activation claimed from that attempt; corrected with Python."
+    },
+    {
+      "operation": "First Python multi-guide read",
+      "detail": "cp1252 stdout could not encode an arrow after complete code-review output. Subsequent full guide reads explicitly configured UTF-8."
+    },
+    {
+      "operation": "Oversized combined read output",
+      "detail": "Tool output truncated combined reads. Root/routing/index and priority were reread in bounded calls; no missing full-read claims used."
+    }
+  ],
+  "limits": [
+    "No native picker test or cross-host parity claim.",
+    "All per-case ACTIVE states mean actual full guide instruction reads, not execution of the scenario.",
+    "No external source research, service call, Git operation, schedule, installation or nested spawning."
+  ],
+  "next_action": "Parent inspects these artifacts and integrates evaluation evidence; no scenario execution authorized."
+}

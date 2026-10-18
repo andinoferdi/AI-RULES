@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "review": "Independent resolution review of MAIN-01 through MAIN-05",
+  "reviewer": {
+    "surface": "Codex delegated agent",
+    "model": "UNKNOWN",
+    "version": "UNKNOWN"
+  },
+  "verdict": "CHANGES_REQUESTED",
+  "summary": "Four findings are resolved for their stated scenarios. MAIN-04 now rejects changed metadata and declared stale checker hashes, but omitted checker identity still bypasses input validation.",
+  "tested_hashes": {
+    "scripts/validate_andino_unified.py": "c3f7f7f9caef0294d7c89e3206ad53bbed3c2d4c464c92573c1608d1b8595cc7",
+    "scripts/validate_skills.py": "f180b6b8123c4762edbe6431f5e4dc76accc73932fe43d56ae472b009a939b49",
+    "scripts/check_andino_addy_methods.py": "fadeb607fd98ab7133d6c24cf10ce5489ce5ae515c6d9cbaeb01a9043d155ed9",
+    "scripts/check_andino_matt_methods.py": "6e936aa482e3e87984792b457853899313556aef8d7b4aedb4c572fbd5927d1c",
+    "scripts/check_andino_superpowers_methods.py": "aa262828a6f8bee135a03fcc1f5e47b82adb127c97842b6919d02e79c902ecf4",
+    "tests/test_andino_unified.py": "733b69de2d9a280041a9809741412bada8087b878fe934190a5a67c008b4ad60"
+  },
+  "resolutions": [
+    {
+      "id": "MAIN-01",
+      "status": "RESOLVED_FOR_REPORTED_SCENARIO",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/scripts/check_andino_addy_methods.py",
+      "lines": [
+        76,
+        77
+      ],
+      "change": "The audited mutation-event set now includes chmod, chown, truncate and utime, enforcing the existing inside-root check.",
+      "verification": "Actual focused test test_path_mutations_outside_example_scope_are_blocked ran chmod and truncate through run_example against its disposable user-file fixture. Both calls were rejected and original file content remained preserved.",
+      "limit": "This resolves the stated chmod/truncate bypass; it is not certification of an adversarial general-purpose Python sandbox."
+    },
+    {
+      "id": "MAIN-02",
+      "status": "RESOLVED",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/scripts/validate_skills.py",
+      "lines": [
+        91,
+        94,
+        117
+      ],
+      "change": "Andino paths are checked for casefold collisions and nested native basenames are rejected case-insensitively.",
+      "verification": {
+        "nested_lowercase": [
+          "andino-workflow: unexpected runtime file: references/skill.md"
+        ],
+        "case_collision": [
+          "andino-workflow: case-insensitive runtime path collision"
+        ]
+      }
+    },
+    {
+      "id": "MAIN-03",
+      "status": "RESOLVED",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/scripts/validate_skills.py",
+      "lines": [
+        174
+      ],
+      "change": "Andino now applies local link validation to Markdown image references as well as ordinary links.",
+      "verification": {
+        "missing_image": [
+          "andino-workflow:skills/tdd/GUIDE.md: broken link: resources/missing.md"
+        ],
+        "escaped_image": [
+          "andino-workflow:skills/tdd/GUIDE.md: link escapes package: ../../../outside.md"
+        ]
+      }
+    },
+    {
+      "id": "MAIN-04",
+      "status": "PARTIALLY_RESOLVED",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/scripts/validate_andino_unified.py",
+      "lines": [
+        126,
+        128,
+        137,
+        139
+      ],
+      "change": "All three checker families now emit canonical per-method metadata_sha256 and report-level inputs containing checker and manifest hashes. The unified validator rejects metadata drift and mismatched declared input hashes.",
+      "verification": {
+        "stale_metadata": [
+          "sample: stale or missing operational metadata identity"
+        ],
+        "stale_checker": [
+          "procedural report: stale or missing checker/manifest input identity"
+        ],
+        "omitted_checker_with_matching_manifest": []
+      },
+      "remaining": "The validator checks only entries that a report chooses to include. It does not require both the family checker and manifest identities."
+    },
+    {
+      "id": "MAIN-05",
+      "status": "RESOLVED_FOR_REPORTED_SCENARIO",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/scripts/validate_andino_unified.py",
+      "lines": [
+        37,
+        40
+      ],
+      "change": "A separate seen_paths set rejects duplicate upstream/source_path pairs even when source_id differs.",
+      "verification": {
+        "duplicate_source": [
+          "another-id-for-same-file: duplicate upstream/source path"
+        ]
+      }
+    }
+  ],
+  "findings": [
+    {
+      "id": "MAIN-04-R1",
+      "origin": "MAIN-04",
+      "severity": "P2",
+      "title": "Require the checker and manifest identities rather than a nonempty matching subset",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/scripts/validate_andino_unified.py",
+      "line_start": 126,
+      "line_end": 129,
+      "scenario": "A procedural report has valid current per-method metadata/guide hashes and declares only its matching manifest input. Its checker input is omitted. Even if the current checker hash differs from the one used to produce the report, validate_method_evidence returns no error because it iterates only inputs.items(). Consequently checker freshness is not a required schema invariant and an incomplete record can retain PASS.",
+      "observed": {
+        "declared_inputs": {
+          "manifest.json": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        "current_inputs": {
+          "checker.py": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "manifest.json": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        "errors": []
+      },
+      "reproduction_source": "import sys, copy\nsys.path[:0] = ['scripts', 'tests']\nfrom test_andino_unified import CurrentEvidenceTests\nfrom validate_andino_unified import validate_method_evidence\ne = CurrentEvidenceTests(); e.setUp()\ne.reports[0]['inputs'] = {'checker.py': 'a'*64, 'manifest.json': 'c'*64}\ncurrent = {'checker.py': 'b'*64, 'manifest.json': 'c'*64}\nassert validate_method_evidence(e.methods, e.reports, e.hashes, current)\ndel e.reports[0]['inputs']['checker.py']\nassert validate_method_evidence(e.methods, e.reports, e.hashes, current) == []\n",
+      "remedy": "Associate each report with its actual family schema/producer and require that family's exact checker and manifest keys before comparing hashes. Reject missing or substituted producer keys. Do not require all families' inputs on every report. Add negative tests for omitted checker, omitted manifest, and unrelated matching inputs.",
+      "confidence": "high; directly reproduced in current validator without modifying source or evidence files"
+    }
+  ],
+  "verification": [
+    {
+      "command": "rtk proxy python -B -m unittest discover -s tests -p test_andino_unified.py -v",
+      "cwd": "C:/Users/Lenovo/Downloads/AI-RULES-main",
+      "exit_code": 0,
+      "observed": "Ran 27 tests in 0.190s; OK",
+      "cases": 27,
+      "scope": "Focused current suite, including actual isolated subprocess chmod/truncate rejection and content preservation"
+    },
+    {
+      "command": "rtk proxy python -B -c <in-memory adversarial package/coverage/evidence probes>",
+      "cwd": "C:/Users/Lenovo/Downloads/AI-RULES-main",
+      "exit_code": 0,
+      "observed": {
+        "missing_image": "REJECTED",
+        "escaped_image": "REJECTED",
+        "nested_lowercase": "REJECTED",
+        "case_collision": "REJECTED",
+        "duplicate_source": "REJECTED",
+        "stale_metadata": "REJECTED",
+        "stale_declared_checker": "REJECTED",
+        "omitted_checker_subset": "ACCEPTED"
+      }
+    },
+    {
+      "command": "rtk proxy rg -n -A 9 -B 4 metadata_sha256|inputs|methods_sha256|manifest_sha256|checker_sha256 <three checker scripts>",
+      "exit_code": 0,
+      "scope": "Inspected actual emitters; all three carry method metadata identity and checker/manifest inputs"
+    }
+  ],
+  "limitations": [
+    "No MAIN or runtime code was edited; original main-review.json is preserved.",
+    "Only resolution-review.json was authored. The explicitly requested focused tests created and cleaned their own disposable temporary fixtures.",
+    "Frozen runtime v2 was not modified or executed.",
+    "No hidden oracles, network, Git mutation, external services or subagents were used.",
+    "No broad installer/procedure suite or live host discovery was rerun; claims are limited to the current focused tests and in-memory adversarial probes.",
+    "No additional material issue beyond the remaining MAIN-04 input-closure gap was found in this resolution scope.",
+    "Acceptance is pinned to the recorded source hashes. Later parent changes require only affected rechecks."
+  ]
+}

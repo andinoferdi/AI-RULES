@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "status": "UNPUBLISHED_LOCAL_CANDIDATE",
+  "runtime_branch": "andino-workflow",
+  "runtime_base_commit": "f531269775aafa8b162b4ec65dd919b37a208ffe",
+  "candidate_runtime_content_sha256": "628e3d35c153e463924dbb17212523568e9b759e4d6fd3367a30dad70d6424cd",
+  "hash_algorithm": "SHA256 sorted relative path + NUL + UTF-8 Markdown with CRLF normalized to LF + NUL; see validate_andino_capabilities.content_hash",
+  "main_base_commit": "80f54467188a76ad95af3943221fd2a4b59d2181",
+  "current_published_release_sequence": 12,
+  "proposed_release_sequence": 13,
+  "proposed_runtime_commit": null,
+  "frozen_manifest_modified": false,
+  "sibling_pins_modified": false,
+  "publication_authorized": false,
+  "required_order_after_explicit_authorization": [
+    "Review exact runtime working-tree package and evidence; authorize runtime commit and normal push separately.",
+    "Obtain the actual published runtime commit; verify its bytes match the reviewed candidate or rerun impacted checks.",
+    "Advance only Andino/global release sequence and exact runtime pin on main; preserve sibling pins.",
+    "Run published-ref acquisition/setup regression, then obtain authorization for main commit/push/publication."
+  ],
+  "limit": "The candidate content hash is not a Git commit SHA or proof of published remote setup. Disposable installer version transitions do not change real release pins.",
+  "candidate_path": "build\\andino-unified-candidate-v3",
+  "prior_candidates": [
+    "ec364b5f5f0de2ba62a6938af3e87d00af7013ae1bcf45a8e3e5da0a6523da34",
+    "9973fa8c41fc09768126d00aadb2b95cd1d5c93ca16cc9a704492b5afbc8b9cf"
+  ]
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "id": "focus",
+    "path": "C:/Users/Lenovo/.agents/skills/focus",
+    "provider": "AI-RULES"
+  },
+  {
+    "id": "search-first",
+    "path": "C:/Users/Lenovo/.agents/skills/search-first",
+    "provider": "AI-RULES"
+  }
+]

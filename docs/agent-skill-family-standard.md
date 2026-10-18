@@ -58,6 +58,15 @@ Skripsi also uses research assets. Add assets/scripts only for actual runtime ne
 No empty placeholders, personal configuration, credentials, control-plane material,
 submodules or symlink entries in distributed package trees.
 
+Andino is also one branch-root native package. Its internal methods use
+`skills/<id>/GUIDE.md` and on-demand Markdown resources, with source-name aliases
+resolving to one canonical implementation. They never register extra native skills.
+Its scoped resource policy accepts only the currently required Markdown guide,
+reference, resource, template and example paths; no global suffix allowlist changes
+or automatic example execution. The main quality plane holds source/asset matrices,
+ownership, procedural fixtures, live records and candidate release hashes. Source
+checkouts and build/audit artifacts are excluded from distributed runtime folders.
+
 Each README explains role/boundaries, whole-folder installation, host roots/discovery,
 invocation, optional coexistence, safe update, verification, positive/negative manual
 smoke cases, package contents and a main quality-plane link. Preserve user edits;

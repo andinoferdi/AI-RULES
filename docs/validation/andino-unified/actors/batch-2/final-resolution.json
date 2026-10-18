@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "review": "Final narrow independent recheck of MAIN-04-R1",
+  "reviewer": {
+    "surface": "Codex delegated agent",
+    "model": "UNKNOWN",
+    "version": "UNKNOWN"
+  },
+  "checked_at_utc": "2026-10-18T08:50:33.762613+00:00",
+  "verdict": "RESOLVED",
+  "findings": [],
+  "resolution": {
+    "original_id": "MAIN-04",
+    "residual_id": "MAIN-04-R1",
+    "observed_code": "Validator requires source_family in addy/matt/superpowers and both canonical family checker and manifest keys, then checks all declared input hashes. Three emitters provide these identities.",
+    "scope": "Current report-input closure only; previous main-review.json and resolution-review.json preserved."
+  },
+  "current_byte_hashes": {
+    "scripts/validate_andino_unified.py": "52d0d6be1a4fcaade7fdb9e1557772f23a80e6eac12776b92ba854c67d12bce8",
+    "tests/test_andino_unified.py": "99cdd805f35737dcad3b19f3e569b97748cffa856c216f57c4661f117cb22411",
+    "scripts/check_andino_addy_methods.py": "010df607b47312680c1c422aa46da9cbad93697a1ac9c6d9aac0381c58702a1f",
+    "scripts/check_andino_matt_methods.py": "5766412beb172538ee14228f8fc07944c9e24a6ec6dd068bac66b207aeae4570",
+    "scripts/check_andino_superpowers_methods.py": "1181f4ffa1a41493e2d67e648109239ca700b105135c61c40e6be270a42e8ac8",
+    "docs/validation/andino-unified/addy-methods.json": "001f8801877ef1fabe4d4096e806485d0bf774ee14cbdfeca8fca7e3798b306c",
+    "docs/validation/andino-unified/addy-operational.json": "41df1cec4f24a623e82b2e6b1527b434acbd23ee9f472091e59e089e9947b883",
+    "docs/validation/andino-unified/matt-methods.json": "115d04dd15441119662998d5cf8632976e88dd90bd822036e6f7af6d1238ebd8",
+    "docs/validation/andino-unified/matt-operational.json": "9dab8e862cb3c8b37a62fa9b5911f29c04738da4d2f226aae13201d253d92546",
+    "docs/validation/andino-unified/superpowers-methods.json": "23282f18f078bcbb5ceb3500a69060936adaa574d30a1f6c90b4411f3465fd15",
+    "docs/validation/andino-unified/superpowers-operational.json": "b3b90a0a4caf1a93060db361a94edccd5f96cd897b1f1b392236b07ef7c1c0c6"
+  },
+  "verification": {
+    "focused_tests": {
+      "command": "rtk proxy python -B -m unittest discover -s tests -p test_andino_unified.py -q",
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main",
+      "exit_code": 0,
+      "tests": 28,
+      "observed": "Ran 28 tests in 0.198s; OK"
+    },
+    "actual_report_baseline": {
+      "validator": "validate_andino_unified.validate_method_evidence",
+      "methods": 57,
+      "report_records": 57,
+      "errors": [],
+      "runtime_root": "C:/Users/Lenovo/Downloads/AI-RULES",
+      "methodology": "Loaded the three current family manifests and procedural reports; computed current checker/manifest hashes and actual current GUIDE/resource hashes from the runtime, then called the validator with all57 methods and records."
+    },
+    "adversarial_probes": {
+      "command": "rtk proxy python -B -c <read-only in-memory validate_method_evidence calls>",
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main",
+      "exit_code": 0,
+      "methodology": "Deep-copied the actual report set, removed exactly one checker or manifest key from one family at a time, held all other report and runtime state constant, and required the exact missing-input error. No source/report was mutated.",
+      "cases": [
+        {
+          "family": "addy",
+          "omitted": "checker",
+          "result": "REJECTED",
+          "errors": [
+            "procedural report: stale or missing checker/manifest input identity"
+          ]
+        },
+        {
+          "family": "addy",
+          "omitted": "manifest",
+          "result": "REJECTED",
+          "errors": [
+            "procedural report: stale or missing checker/manifest input identity"
+          ]
+        },
+        {
+          "family": "matt",
+          "omitted": "checker",
+          "result": "REJECTED",
+          "errors": [
+            "procedural report: stale or missing checker/manifest input identity"
+          ]
+        },
+        {
+          "family": "matt",
+          "omitted": "manifest",
+          "result": "REJECTED",
+          "errors": [
+            "procedural report: stale or missing checker/manifest input identity"
+          ]
+        },
+        {
+          "family": "superpowers",
+          "omitted": "checker",
+          "result": "REJECTED",
+          "errors": [
+            "procedural report: stale or missing checker/manifest input identity"
+          ]
+        },
+        {
+          "family": "superpowers",
+          "omitted": "manifest",
+          "result": "REJECTED",
+          "errors": [
+            "procedural report: stale or missing checker/manifest input identity"
+          ]
+        }
+      ],
+      "passed": 6,
+      "failed": 0
+    }
+  },
+  "limitations": [
+    "The focused suite and six adversarial cases were independently executed; the parent-reported full223 suite was not rerun or claimed here.",
+    "Existing procedural reports were validated against current bytes; their57 underlying procedures were not rerun by this reviewer.",
+    "No hidden oracles, network, source edits, Git mutation, runtime mutation or subagents were used.",
+    "Only final-resolution.json was authored. The explicitly requested focused tests created and cleaned their own disposable temporary fixtures.",
+    "Narrow review establishes report-input schema closure; it does not claim native live-host parity or certify arbitrary Python sandbox security."
+  ]
+}

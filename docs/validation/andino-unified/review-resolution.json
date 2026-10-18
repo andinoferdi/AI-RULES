@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "scope": "Parent acceptance of actual current review fixes; original independent review files retained",
+  "runtime_hash": "628e3d35c153e463924dbb17212523568e9b759e4d6fd3367a30dad70d6424cd",
+  "main_findings": [
+    "MAIN-01",
+    "MAIN-02",
+    "MAIN-03",
+    "MAIN-04",
+    "MAIN-05"
+  ],
+  "runtime_findings": [
+    "RR-01",
+    "bootstrap-alias",
+    "instruction-order",
+    "settled-phase-TDD"
+  ],
+  "checks": [
+    {
+      "family": "addy",
+      "omitted": "checker",
+      "rejected": true
+    },
+    {
+      "family": "addy",
+      "omitted": "manifest",
+      "rejected": true
+    },
+    {
+      "family": "matt",
+      "omitted": "checker",
+      "rejected": true
+    },
+    {
+      "family": "matt",
+      "omitted": "manifest",
+      "rejected": true
+    },
+    {
+      "family": "superpowers",
+      "omitted": "checker",
+      "rejected": true
+    },
+    {
+      "family": "superpowers",
+      "omitted": "manifest",
+      "rejected": true
+    }
+  ],
+  "focused_tests": 28,
+  "full_suite_log": "final-tests-v3.log",
+  "limitations": "Independent reviewer first found the omitted-checker residual; parent closed it with required family input keys and observed negative tests. Not a claim of exhaustive security review."
+}

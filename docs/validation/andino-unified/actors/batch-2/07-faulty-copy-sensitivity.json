@@ -1,0 +1,20 @@
+{
+  "label": "07-faulty-copy-sensitivity",
+  "command": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-B",
+    "-m",
+    "unittest",
+    "-v",
+    "test_page.py"
+  ],
+  "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\mutation",
+  "observed_at": "2026-10-18T08:27:40.742074+00:00",
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "test_reported_consecutive_pages (test_page.PaginationContract.test_reported_consecutive_pages) ... FAIL\n\n======================================================================\nFAIL: test_reported_consecutive_pages (test_page.PaginationContract.test_reported_consecutive_pages)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\mutation\\test_page.py\", line 9, in test_reported_consecutive_pages\n    self.assertEqual(page(items, 1, 2), ['C', 'D'])\nAssertionError: Lists differ: ['B', 'C'] != ['C', 'D']\n\nFirst differing element 0:\n'B'\n'C'\n\n- ['B', 'C']\n+ ['C', 'D']\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n",
+  "tested_files": {
+    "mutation\\subject.py": "6be30fbd485578ecd856998253e2b39c6a447429ef12fa5cc8e14d01fee2592d",
+    "mutation\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97"
+  }
+}

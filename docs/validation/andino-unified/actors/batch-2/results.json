@@ -1,0 +1,676 @@
+{
+  "host": {
+    "surface": "Codex delegated agent",
+    "model": "UNKNOWN",
+    "version": "UNKNOWN",
+    "scope": "resource activation and fixture actions"
+  },
+  "selection_results": [
+    {
+      "id": "5ad2fb667acf",
+      "selected": [],
+      "unavailable": [],
+      "note": "Direct summary of an accepted mechanical rename; no method or acceptance claim is needed."
+    },
+    {
+      "id": "52ac50f632f2",
+      "selected": [],
+      "unavailable": [],
+      "note": "Obvious increment narration is explicitly excluded from documentation-and-adrs; explain the boundary without loading a method solely to refuse."
+    },
+    {
+      "id": "4c9b5e6b8815",
+      "selected": [
+        {
+          "id": "verification",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/verification/GUIDE.md",
+          "sha256": "7d79dcd35c90611c99bf7250f9ef2d879c16f305e27f4f6a0ccd7817b3adaa71",
+          "reason": "The requested action is to observe current test results.",
+          "insight": "Run the existing real suite command, inspect case counts and skips, and bind its result to tested bytes; do not infer pass from exit zero alone."
+        }
+      ],
+      "unavailable": [],
+      "note": "Verification governs suite evidence; no behavior is being changed and no TDD cycle is needed."
+    },
+    {
+      "id": "2945d7ddf125",
+      "selected": [
+        {
+          "id": "specification",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/specification/GUIDE.md",
+          "sha256": "72b92b4eb385ad6eb6f3cf4b03576a5ac6b79bf7834ecdc1f583976bcb0954be",
+          "reason": "Settled billing decisions need a buildable contract.",
+          "insight": "Reuse settled billing intent, state falsifiable criteria and public seams, and preserve existing spec format rather than reopen discovery or invent a duplicate plan."
+        }
+      ],
+      "unavailable": [],
+      "note": "Current phase is specification, not implementation."
+    },
+    {
+      "id": "cb7dbafba722",
+      "selected": [
+        {
+          "id": "project-configuration",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/project-configuration/GUIDE.md",
+          "sha256": "0dad7c41a0841ac5a61bb97d64ef913cddaffe06a2ea181d1f7ed1dbfa137801",
+          "reason": "Local tracker mapping and triage vocabulary are explicit project configuration.",
+          "insight": "Map canonical triage roles to existing label strings, keep category separate from state, and merge one pointer into the actual host instruction file without external label creation."
+        }
+      ],
+      "unavailable": [],
+      "note": "Local docs only; no tracker or global configuration mutation is implied."
+    },
+    {
+      "id": "5af5921054aa",
+      "selected": [
+        {
+          "id": "idea-refine",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/idea-refine/GUIDE.md",
+          "sha256": "5d1d07ca851839c5e2675f657af81fe06d7b63488b73537ca270921531ed6793",
+          "reason": "A rough collaborative-editing direction needs an assumption test.",
+          "insight": "Make presence solving coordination the riskiest bet, compare meaningful directions, and bound a one-job MVP with explicit non-goals such as offline sync."
+        }
+      ],
+      "unavailable": [],
+      "note": "Refinement precedes implementation; no prototype is needed until a concrete uncertainty requires one."
+    },
+    {
+      "id": "35a0077b5dc6",
+      "selected": [
+        {
+          "id": "observability-and-instrumentation",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/observability-and-instrumentation/GUIDE.md",
+          "sha256": "1c26a01de213658a8441ecde429cb033510d4e3f9ac1c0127601e847902ac218",
+          "reason": "Payment retry origins need distinguishable operational evidence.",
+          "insight": "Set entryPoint at scheduler/replay origin and propagate it with correlation; correlation alone does not establish origin, and labels must remain bounded."
+        },
+        {
+          "id": "tdd",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/tdd/GUIDE.md",
+          "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+          "reason": "Adding observable retry attribution changes executable behavior.",
+          "insight": "Drive one log-attribution contract through its public retry seam: fail when scheduler/replay origins are indistinguishable, then minimally propagate origin."
+        }
+      ],
+      "unavailable": [],
+      "note": "Instrumentation and regression are distinct current needs; no current incident or performance tuning is established."
+    },
+    {
+      "id": "7aaee84047e6",
+      "selected": [
+        {
+          "id": "api-and-interface-design",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/api-and-interface-design/GUIDE.md",
+          "sha256": "379746694129f138748acba7c30e97169b497851db0e41dfdb3cfe9b62d4a42f",
+          "reason": "Adding invoice totals changes an existing public API boundary.",
+          "insight": "Read existing provider and consumers, preserve ordering/null/error contracts, and define the additive total field before implementation instead of making callers choose competing versions."
+        },
+        {
+          "id": "tdd",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/tdd/GUIDE.md",
+          "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+          "reason": "The new API response behavior needs executable protection.",
+          "insight": "Use a literal invoice example with an independently computed total at the accepted API seam; observe its missing/wrong total before implementation."
+        }
+      ],
+      "unavailable": [],
+      "note": "No product rediscovery or unrelated API redesign is needed."
+    },
+    {
+      "id": "97adb1b99213",
+      "selected": [],
+      "unavailable": [],
+      "note": "A direct native file listing is sufficient; no architecture scan, graph generation or method is implied."
+    },
+    {
+      "id": "1c5886e258e4",
+      "selected": [
+        {
+          "id": "incremental-implementation",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/incremental-implementation/GUIDE.md",
+          "sha256": "eaebd3e0d82222f712b4c56906b7debd938377e652194362b7dba49ac53e4cf7",
+          "reason": "The next specified API slice is a dependency-ready increment.",
+          "insight": "Consume the existing graph, select the smallest ready complete API path, preserve failed ancestor gates, and keep owned files and acceptance attached to the same plan."
+        },
+        {
+          "id": "tdd",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/tdd/GUIDE.md",
+          "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+          "reason": "Building the API slice changes executable behavior.",
+          "insight": "Implement one specified public API behavior at a time, with an assertion RED for the right reason followed by minimal GREEN."
+        }
+      ],
+      "unavailable": [],
+      "note": "Existing interfaces/specification are settled; release planning/specification and do not load anticipated completion specialists."
+    },
+    {
+      "id": "5378d05d3e6e",
+      "selected": [
+        {
+          "id": "agent-document-authoring",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/agent-document-authoring/GUIDE.md",
+          "sha256": "73ee49d2aa4e223666d65787181e0fc880fd370c0a8d66c2d0682fa6483b6aad",
+          "reason": "The deliverable is an agent-facing procedure with faulty triggers and completion bounds.",
+          "insight": "Separate distinct branch triggers from shared ordered actions, front-load pointer conditions, and give every branch an observable demanding done bound without deleting required behavior."
+        }
+      ],
+      "unavailable": [],
+      "note": "This edits a durable procedure, not a native skill/router system."
+    },
+    {
+      "id": "3d17a0dd1324",
+      "selected": [
+        {
+          "id": "code-review",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/code-review/GUIDE.md",
+          "sha256": "ee97a3c7a06c2e057ca760fba788ca748ee40192a234daa22b74e9b8a68d3ff3",
+          "reason": "The user requests review including owned untracked files.",
+          "insight": "Pin the actual review scope, include staged/unstaged and owned new bytes, and preserve independent Spec and Standards verdicts; HEAD-only review can omit the change."
+        }
+      ],
+      "unavailable": [],
+      "note": "Current phase is review, with no automatic rewrite or merge."
+    },
+    {
+      "id": "7b8f67c0de48",
+      "selected": [
+        {
+          "id": "architecture-survey",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/architecture-survey/GUIDE.md",
+          "sha256": "cdae61097aa4772ee01e78bab2c77f66b6b6e7d1fb24e35d02a649eb18d8200a",
+          "reason": "A bounded order-subsystem survey asks for evidenced deepening candidates.",
+          "insight": "Trace one order concept through real callers and tests, apply the deletion test, and report strength plus locality/test consequences; allow a finding of no worthwhile candidate."
+        }
+      ],
+      "unavailable": [],
+      "note": "Survey before interface design; no speculative deep-module rewrite or whole-repository scan."
+    },
+    {
+      "id": "e08782084ea0",
+      "selected": [],
+      "unavailable": [],
+      "note": "Explaining a healthy existing cache needs targeted reading and direct explanation; neither debugging nor speculative performance tuning is triggered."
+    },
+    {
+      "id": "36feb4262cb5",
+      "selected": [
+        {
+          "id": "decision-interview",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/decision-interview/GUIDE.md",
+          "sha256": "938a7fa8c33e212190f2ce110ef83370ab63997bbc50c0927d1365c71c1261d4",
+          "reason": "A personal preference belongs to the user and cannot be established by factual research.",
+          "insight": "Separate inspectable dashboard facts from the user-owned color preference and ask one discriminating preference question; do not invent their answer."
+        }
+      ],
+      "unavailable": [],
+      "note": "No visual design/evaluation has been requested yet, and primary-source research cannot decide taste."
+    },
+    {
+      "id": "adfe38adca99",
+      "selected": [
+        {
+          "id": "debugging",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/debugging/GUIDE.md",
+          "sha256": "0beb55e7efa68b7965e3d2c52f73e78b42af711bc9f7d4f2e298ea143c55f508",
+          "reason": "Cross-tenant cache output is a reported unknown-cause bug.",
+          "insight": "Reproduce two tenant lookups with the same key at the public seam before diagnosing; compare identity and boundary data and test one falsifiable cause, rather than assume the cache is guilty."
+        }
+      ],
+      "unavailable": [],
+      "note": "Load debugging before source/logs; regression and security remedies wait for evidenced cause/current phase."
+    },
+    {
+      "id": "4ca6b6700667",
+      "selected": [],
+      "unavailable": [],
+      "note": "A private local-variable rename is a targeted mechanical edit; no public interface, migration or architecture method."
+    },
+    {
+      "id": "ad962d2c7fea",
+      "selected": [
+        {
+          "id": "handoff",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/handoff/GUIDE.md",
+          "sha256": "468b89031f6fbd6261f6c7c4cbb8cc45ae620403d966ccf67702e80bb124dca6",
+          "reason": "Work must travel to a colleague in another checkout.",
+          "insight": "Use durable reachable artifact pointers, preserve scope/permissions, decisions and evidence, and give the recipient one concrete safe next action after drift reconciliation."
+        }
+      ],
+      "unavailable": [],
+      "note": "Prepare a portable artifact; no background host, agent or duplicate plan is implied."
+    },
+    {
+      "id": "3a62a9e3ac0a",
+      "selected": [],
+      "unavailable": [],
+      "note": "A README typo is a direct static edit; no TDD, CI or release method is needed."
+    },
+    {
+      "id": "d6e6853eae28",
+      "selected": [
+        {
+          "id": "article-shaping",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/article-shaping/GUIDE.md",
+          "sha256": "af9888c968ba339844b4b16276348ddacbe0a2a2c6d4ae118ffb4c38eed94d88",
+          "reason": "The input is a fixed pile intended for a final article.",
+          "insight": "Read the pile end to end without overwriting it, ground prerequisite concepts before dependent claims, and write to a separate output without invented personal evidence."
+        }
+      ],
+      "unavailable": [],
+      "note": "User explicitly requests the final article, so direct final drafting overrides the guide default of collaborative incremental approval; writing-fragments is excluded."
+    },
+    {
+      "id": "c0d38829fba5",
+      "selected": [
+        {
+          "id": "learning-workspace",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/learning-workspace/GUIDE.md",
+          "sha256": "f723f13abace1639a259b29dc3b5998bca1723e6f9d3b00a3274f7a2ff0ebef0",
+          "reason": "The user explicitly wants several lessons in a learning folder.",
+          "insight": "Build one tangible safe-retry lesson from trusted sources, use retrieval and feedback, and record demonstrated understanding separately from content merely covered."
+        }
+      ],
+      "unavailable": [],
+      "note": "No schedule, automation, or unsolicited course scaffolding is implied."
+    },
+    {
+      "id": "1faa1ed6c8b3",
+      "selected": [
+        {
+          "id": "context-engineering",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/context-engineering/GUIDE.md",
+          "sha256": "178247255cddb86dc62a56def8ef826ff77c92ceb681f218cc8ea1f9a29f8f66",
+          "reason": "The current need is a bounded packet that keeps scope/error and drops obsolete logs.",
+          "insight": "Compress resolved history to decision plus evidence breadcrumb, protect binding scope and the current failure, and reuse the existing checkpoint rather than duplicate the plan."
+        }
+      ],
+      "unavailable": [],
+      "note": "Context selection owns this request; another person/host transfer is not stated, so a separate handoff method adds no distinct need."
+    },
+    {
+      "id": "587b325770f9",
+      "selected": [
+        {
+          "id": "implementation",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/implementation/GUIDE.md",
+          "sha256": "2215c4f9e360ad75585e490f79d4e7434a9eaf82f339ec765b1d88836ee20aa5",
+          "reason": "The invoice retry ticket is already approved for implementation.",
+          "insight": "Resolve the exact accepted ticket and ready dependencies, preserve current work, and implement its accepted behavior under one parent checkpoint without reopening intent."
+        },
+        {
+          "id": "tdd",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/tdd/GUIDE.md",
+          "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+          "reason": "Implementing retry behavior needs a demonstrably sensitive regression.",
+          "insight": "Choose one approved public retry behavior and a literal expected outcome; RED must fail for that behavior before minimal GREEN, with real collaborators where safe."
+        }
+      ],
+      "unavailable": [],
+      "note": "No reinterview, fresh spec, or speculative idempotency redesign; accepted contracts stand."
+    },
+    {
+      "id": "360fbe25a5c2",
+      "selected": [
+        {
+          "id": "ci-cd-and-automation",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/ci-cd-and-automation/GUIDE.md",
+          "sha256": "8c01e6324a9d13969019136488dfa8047b2d1fb3a0b22aab0bf3cdfb32f22d69",
+          "reason": "The requested change wires an executable quality pipeline.",
+          "insight": "Use actual repository commands and preserved check names, model lint/unit/build/release dependencies, and show a failed ancestor blocking advancement while hosted protection remains separately unverified."
+        },
+        {
+          "id": "tdd",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/tdd/GUIDE.md",
+          "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+          "reason": "The pipeline failure-blocking rule is observable executable behavior.",
+          "insight": "Drive one failure-propagation contract RED then GREEN: a failed lint ancestor must prevent build/release readiness, rather than merely testing the green path."
+        }
+      ],
+      "unavailable": [],
+      "note": "Release readiness is a pipeline gate here; no deployment or recurring workflow design is requested."
+    },
+    {
+      "id": "246432375a1a",
+      "selected": [],
+      "unavailable": [],
+      "note": "Two plus three is five; answer directly without repository inspection or mutation."
+    },
+    {
+      "id": "800f809b56fa",
+      "selected": [],
+      "unavailable": [],
+      "note": "Universal TypeScript restructuring is explicitly excluded: deterministic boundary enforcement requires an already accepted concrete deep-package layout. No blanket reorganization."
+    },
+    {
+      "id": "44c630f34d7e",
+      "selected": [
+        {
+          "id": "deprecation-and-migration",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/deprecation-and-migration/GUIDE.md",
+          "sha256": "606cc6318f1ea31e3702a549559b27acaabf6234cd9ab3e43a6e2299c6fecbde",
+          "reason": "A public name/full_name schema migration must coexist with old clients.",
+          "insight": "Expand additively, retain dual writes through backfill and read switch, and guard later contract on measured zero old readers/writers; code rollback cannot resurrect dropped data."
+        }
+      ],
+      "unavailable": [],
+      "note": "Current request is the migration phases/guarded contract; no live data or deployment action is implied."
+    },
+    {
+      "id": "8d19111bb034",
+      "selected": [
+        {
+          "id": "stakeholder-questionnaire",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/stakeholder-questionnaire/GUIDE.md",
+          "sha256": "8f219ce4fa42dc18b869c144c3860a38311b64f3d9590aaed235f774df219c9c",
+          "reason": "Launch capacity and retention facts are held by the platform owner.",
+          "insight": "Map each capacity/retention decision gap to one owner-appropriate question with an answer stub; prepare one local document and do not invent a deadline or send it."
+        }
+      ],
+      "unavailable": [],
+      "note": "The output is a draft for the knowledge holder, not an interview with the sender."
+    },
+    {
+      "id": "4d48c2b89af5",
+      "selected": [
+        {
+          "id": "plan-execution",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/plan-execution/GUIDE.md",
+          "sha256": "358a916e729a43638cfb2f08efe0908cfc31ad51dcddf255ff4bff393fa3ed67",
+          "reason": "An existing plan resumes after drift inspection.",
+          "insight": "Compare completed-task identities and current bytes, invalidate only affected evidence, and select the dependency-ready frontier while preserving verified completed work."
+        }
+      ],
+      "unavailable": [],
+      "note": "Keep the accepted plan; do not restart planning or automatically create a branch."
+    },
+    {
+      "id": "ad15210b7f8f",
+      "selected": [],
+      "unavailable": [],
+      "note": "Recreating all plans without evidence conflicts with one durable plan and evidence reuse; retain current plans and require a concrete changed need before replanning."
+    },
+    {
+      "id": "b9f721de7bc3",
+      "selected": [
+        {
+          "id": "security-and-hardening",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/security-and-hardening/GUIDE.md",
+          "sha256": "0dda985580593275f63da836c82ba834cab9945606d80dc0a382a6f8b29d0118",
+          "reason": "Owned-path cleanup and SQL input cross filesystem/data trust boundaries.",
+          "insight": "Resolve links, require a strict owned descendant with corroborated ownership before teardown, and prove injected text stays a parameter rather than SQL structure; a marker alone is insufficient under adversarial conditions."
+        }
+      ],
+      "unavailable": [],
+      "note": "No deletion is authorized by validation; no scanner/live-environment use is claimed."
+    },
+    {
+      "id": "98fa914fb8f5",
+      "selected": [
+        {
+          "id": "verification",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/verification/GUIDE.md",
+          "sha256": "7d79dcd35c90611c99bf7250f9ef2d879c16f305e27f4f6a0ccd7817b3adaa71",
+          "reason": "Worker self-report is being offered as acceptance evidence.",
+          "insight": "Inspect actual produced bytes and integration checks against criteria before accepting; done text does not establish pass, and affected evidence expires after drift."
+        }
+      ],
+      "unavailable": [],
+      "note": "Decline the unsupported pass claim and obtain real evidence; no new worker is required."
+    },
+    {
+      "id": "0304b7c94b26",
+      "selected": [
+        {
+          "id": "primary-source-research",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/primary-source-research/GUIDE.md",
+          "sha256": "d890dce190b54841e03e09286aa1a0c4c0851775f40ac0436e3b5c3ba265babd",
+          "reason": "The explicit current request is framework research, separate from implementation.",
+          "insight": "Define the bounded framework question and consuming decision, then trace factual findings to the owning primary sources with dates/versions; do not invent current evidence."
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection-only probe: no source retrieval/network is authorized in this actor. Source-driven implementation is irrelevant; no integration/alternative solution decision is stated to require Search First."
+    },
+    {
+      "id": "4552083726eb",
+      "selected": [],
+      "unavailable": [],
+      "note": "fromAny is a test-fixture escape hatch, explicitly excluded from production runtime validation. Do not apply fixture migration globally or replace actual boundary validation."
+    },
+    {
+      "id": "03a09343cf18",
+      "selected": [
+        {
+          "id": "documentation-and-adrs",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/documentation-and-adrs/GUIDE.md",
+          "sha256": "4dd09cd2b0c3c24b16e09843272f976cc4857d738b9128a53fe4a6b9caa64472",
+          "reason": "The accepted queue decision needs an ADR in the existing convention.",
+          "insight": "Inspect ADR-004 numbering/markup and write the next .rst record without rewriting history; preserve the throughput caveat and distinguish limits from guarantees."
+        }
+      ],
+      "unavailable": [],
+      "note": "Preserve the actual convention and rationale; no new decisions directory, publication or commit."
+    },
+    {
+      "id": "80778696001c",
+      "selected": [
+        {
+          "id": "human-procedure",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/human-procedure/GUIDE.md",
+          "sha256": "935c71bf6b9faaacb7069ec4c935f84f0daaac0a3989406e8ebf37afff5ef1c3",
+          "reason": "Credential dashboard access is explicitly human-only.",
+          "insight": "Use verified dashboard stages, classify each value source/destination and secrecy, and provide resumable manual steps without secret echo or requesting credentials in chat."
+        }
+      ],
+      "unavailable": [],
+      "note": "No invented dashboard path or external credential write; unavailable current journey evidence must remain unverified."
+    },
+    {
+      "id": "082c8d19b4bb",
+      "selected": [
+        {
+          "id": "plan-execution",
+          "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/plan-execution/GUIDE.md",
+          "sha256": "358a916e729a43638cfb2f08efe0908cfc31ad51dcddf255ff4bff393fa3ed67",
+          "reason": "The complete accepted graph is ready for task continuation.",
+          "insight": "Use verified producer evidence to select the next ready node and preserve the existing graph; do not run planning again or treat a completed checkbox as proof."
+        }
+      ],
+      "unavailable": [],
+      "note": "Complete graph means an already supplied task graph, not permission to replan or skip acceptance."
+    },
+    {
+      "id": "289d07b21a28",
+      "selected": [],
+      "unavailable": [
+        {
+          "id": "delegation",
+          "boundary": "Execution denied: parent explicitly prohibits nested agents. Tools being exposed does not grant authority."
+        }
+      ],
+      "note": "Two independent audits can be bounded, but this delegated actor is explicitly prohibited from nested spawning. Use sequential bounded review if work were supplied; no dispatch or child use is claimed."
+    }
+  ],
+  "work": {
+    "runtime": {
+      "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+      "executable": "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe"
+    },
+    "request": "Zero-based pages must be consecutive non-overlapping slices.",
+    "source": "Exact supplied work.files subject.py copied into actor-owned fixture.",
+    "commands": [
+      {
+        "label": "01-reproduce",
+        "command": [
+          "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+          "-B",
+          "reproduce.py"
+        ],
+        "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\fixture",
+        "observed_at": "2026-10-18T08:27:16.239118+00:00",
+        "exit_code": 0,
+        "stdout": "{\"first\": [\"A\", \"B\"], \"second\": [\"B\", \"C\"]}\n",
+        "stderr": "",
+        "tested_files": {
+          "fixture\\probe_cause.py": "87431283bf118d6010c94df86df08a6852b664d961c0952c223a9db764d6ee2e",
+          "fixture\\reproduce.py": "f7cb7825eb0eedb18cc729d97d2e4423e316400a2c29f883ed117892ae632a0f",
+          "fixture\\subject.py": "6be30fbd485578ecd856998253e2b39c6a447429ef12fa5cc8e14d01fee2592d",
+          "fixture\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97"
+        }
+      },
+      {
+        "label": "02-red-exact-contract",
+        "command": [
+          "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+          "-B",
+          "-m",
+          "unittest",
+          "-v",
+          "test_page.py"
+        ],
+        "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\fixture",
+        "observed_at": "2026-10-18T08:27:16.421974+00:00",
+        "exit_code": 1,
+        "stdout": "",
+        "stderr": "test_reported_consecutive_pages (test_page.PaginationContract.test_reported_consecutive_pages) ... FAIL\n\n======================================================================\nFAIL: test_reported_consecutive_pages (test_page.PaginationContract.test_reported_consecutive_pages)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\fixture\\test_page.py\", line 9, in test_reported_consecutive_pages\n    self.assertEqual(page(items, 1, 2), ['C', 'D'])\nAssertionError: Lists differ: ['B', 'C'] != ['C', 'D']\n\nFirst differing element 0:\n'B'\n'C'\n\n- ['B', 'C']\n+ ['C', 'D']\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=1)\n",
+        "tested_files": {
+          "fixture\\probe_cause.py": "87431283bf118d6010c94df86df08a6852b664d961c0952c223a9db764d6ee2e",
+          "fixture\\reproduce.py": "f7cb7825eb0eedb18cc729d97d2e4423e316400a2c29f883ed117892ae632a0f",
+          "fixture\\subject.py": "6be30fbd485578ecd856998253e2b39c6a447429ef12fa5cc8e14d01fee2592d",
+          "fixture\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97"
+        }
+      },
+      {
+        "label": "03-hypothesis-stride-probe",
+        "command": [
+          "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+          "-B",
+          "probe_cause.py"
+        ],
+        "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\fixture",
+        "observed_at": "2026-10-18T08:27:16.490985+00:00",
+        "exit_code": 0,
+        "stdout": "[{\"size\": 1, \"actual\": [\"A\"], \"expected\": [\"B\"], \"candidate\": [\"B\"]}, {\"size\": 2, \"actual\": [\"B\", \"C\"], \"expected\": [\"C\", \"D\"], \"candidate\": [\"C\", \"D\"]}, {\"size\": 3, \"actual\": [\"C\", \"D\"], \"expected\": [\"D\"], \"candidate\": [\"D\"]}]\n",
+        "stderr": "",
+        "tested_files": {
+          "fixture\\probe_cause.py": "87431283bf118d6010c94df86df08a6852b664d961c0952c223a9db764d6ee2e",
+          "fixture\\reproduce.py": "f7cb7825eb0eedb18cc729d97d2e4423e316400a2c29f883ed117892ae632a0f",
+          "fixture\\subject.py": "6be30fbd485578ecd856998253e2b39c6a447429ef12fa5cc8e14d01fee2592d",
+          "fixture\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97"
+        }
+      },
+      {
+        "label": "04-green-exact-contract",
+        "command": [
+          "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+          "-B",
+          "-m",
+          "unittest",
+          "-v",
+          "test_page.py"
+        ],
+        "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\fixture",
+        "observed_at": "2026-10-18T08:27:40.388504+00:00",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "test_reported_consecutive_pages (test_page.PaginationContract.test_reported_consecutive_pages) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+        "tested_files": {
+          "fixture\\probe_cause.py": "87431283bf118d6010c94df86df08a6852b664d961c0952c223a9db764d6ee2e",
+          "fixture\\reproduce.py": "f7cb7825eb0eedb18cc729d97d2e4423e316400a2c29f883ed117892ae632a0f",
+          "fixture\\subject.py": "811b3df94b7fe91c3bde09551b1a8a02e8a7f42066fe95d3da464d2bdabb2cac",
+          "fixture\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97",
+          "fixture\\test_page_boundaries.py": "69a73784630944c256e3d2bf090f53c02303ad3f2987d0f8700a3f2505480241"
+        }
+      },
+      {
+        "label": "05-original-scenario-fixed",
+        "command": [
+          "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+          "-B",
+          "reproduce.py"
+        ],
+        "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\fixture",
+        "observed_at": "2026-10-18T08:27:40.456021+00:00",
+        "exit_code": 0,
+        "stdout": "{\"first\": [\"A\", \"B\"], \"second\": [\"C\", \"D\"]}\n",
+        "stderr": "",
+        "tested_files": {
+          "fixture\\probe_cause.py": "87431283bf118d6010c94df86df08a6852b664d961c0952c223a9db764d6ee2e",
+          "fixture\\reproduce.py": "f7cb7825eb0eedb18cc729d97d2e4423e316400a2c29f883ed117892ae632a0f",
+          "fixture\\subject.py": "811b3df94b7fe91c3bde09551b1a8a02e8a7f42066fe95d3da464d2bdabb2cac",
+          "fixture\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97",
+          "fixture\\test_page_boundaries.py": "69a73784630944c256e3d2bf090f53c02303ad3f2987d0f8700a3f2505480241"
+        }
+      },
+      {
+        "label": "06-suite",
+        "command": [
+          "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-v"
+        ],
+        "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\fixture",
+        "observed_at": "2026-10-18T08:27:40.588085+00:00",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "test_reported_consecutive_pages (test_page.PaginationContract.test_reported_consecutive_pages) ... ok\ntest_empty_collection (test_page_boundaries.PaginationBoundaries.test_empty_collection) ... ok\ntest_partial_and_empty_pages (test_page_boundaries.PaginationBoundaries.test_partial_and_empty_pages) ... ok\ntest_size_one_advances (test_page_boundaries.PaginationBoundaries.test_size_one_advances) ... ok\ntest_size_three_pages_are_consecutive (test_page_boundaries.PaginationBoundaries.test_size_three_pages_are_consecutive) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK\n",
+        "tested_files": {
+          "fixture\\probe_cause.py": "87431283bf118d6010c94df86df08a6852b664d961c0952c223a9db764d6ee2e",
+          "fixture\\reproduce.py": "f7cb7825eb0eedb18cc729d97d2e4423e316400a2c29f883ed117892ae632a0f",
+          "fixture\\subject.py": "811b3df94b7fe91c3bde09551b1a8a02e8a7f42066fe95d3da464d2bdabb2cac",
+          "fixture\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97",
+          "fixture\\test_page_boundaries.py": "69a73784630944c256e3d2bf090f53c02303ad3f2987d0f8700a3f2505480241"
+        }
+      },
+      {
+        "label": "07-faulty-copy-sensitivity",
+        "command": [
+          "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+          "-B",
+          "-m",
+          "unittest",
+          "-v",
+          "test_page.py"
+        ],
+        "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\mutation",
+        "observed_at": "2026-10-18T08:27:40.742074+00:00",
+        "exit_code": 1,
+        "stdout": "",
+        "stderr": "test_reported_consecutive_pages (test_page.PaginationContract.test_reported_consecutive_pages) ... FAIL\n\n======================================================================\nFAIL: test_reported_consecutive_pages (test_page.PaginationContract.test_reported_consecutive_pages)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\mutation\\test_page.py\", line 9, in test_reported_consecutive_pages\n    self.assertEqual(page(items, 1, 2), ['C', 'D'])\nAssertionError: Lists differ: ['B', 'C'] != ['C', 'D']\n\nFirst differing element 0:\n'B'\n'C'\n\n- ['B', 'C']\n+ ['C', 'D']\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n",
+        "tested_files": {
+          "mutation\\subject.py": "6be30fbd485578ecd856998253e2b39c6a447429ef12fa5cc8e14d01fee2592d",
+          "mutation\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97"
+        }
+      }
+    ],
+    "hypothesis": "The stride uses size - 1; at index 1 this shifts the start one item left, and at size 1 every page starts at zero.",
+    "prediction_and_probe": "With size 1/2/3 and index 1, the original starts A/B/C; changing only stride to size starts B/C/D and gives the independently literal expected slices.",
+    "status": "PASS",
+    "limitations": [
+      "Local Python fixture only; no live service, network, Git mutation or global configuration."
+    ],
+    "fix": "Changed only start = index * (size - 1) to start = index * size.",
+    "refactor_decision": "No refactor: no independent complexity concern is needed for this one-expression defect.",
+    "artifacts": {
+      "fixture\\probe_cause.py": "87431283bf118d6010c94df86df08a6852b664d961c0952c223a9db764d6ee2e",
+      "fixture\\reproduce.py": "f7cb7825eb0eedb18cc729d97d2e4423e316400a2c29f883ed117892ae632a0f",
+      "fixture\\subject.py": "811b3df94b7fe91c3bde09551b1a8a02e8a7f42066fe95d3da464d2bdabb2cac",
+      "fixture\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97",
+      "fixture\\test_page_boundaries.py": "69a73784630944c256e3d2bf090f53c02303ad3f2987d0f8700a3f2505480241",
+      "mutation\\subject.py": "6be30fbd485578ecd856998253e2b39c6a447429ef12fa5cc8e14d01fee2592d",
+      "mutation\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97",
+      "run_work.py": "6c6dc592b908c1cadc6eeb870096ec5875fa17e96ea33c99347eba7f0afc3bb0",
+      "subject.before.py": "6be30fbd485578ecd856998253e2b39c6a447429ef12fa5cc8e14d01fee2592d"
+    }
+  },
+  "limitations": [
+    "Selection snapshots establish actual resource activation and task-specific procedural understanding, not execution of 38 separate product requests.",
+    "Only the supplied Python fixture was changed and executed; no network, live services, installs, global configuration, external mutation, Git mutation or nested agents.",
+    "The framework research selection has no factual source findings or current-version verification under the allowed-read and no-network boundaries.",
+    "Delegation execution is unavailable because nested agents are expressly prohibited; no tool absence or invented dispatch is claimed.",
+    "Host model and version are not exposed for this measurement and are reported UNKNOWN."
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "mechanism": "Actual permitted Codex filesystem reads through rtk proxy shell; guide reads precede task-governed work. Metadata discovery was not counted as activation.",
+  "runtime": {
+    "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/SKILL.md",
+    "sha256": "30272e5961b438b9902aa2eb60dc0099be968b09f179c97bfe31fc2501342936"
+  },
+  "focus": {
+    "path": "C:/Users/Lenovo/.agents/skills/focus/SKILL.md",
+    "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+    "references_read": [
+      "references/priority-a.md",
+      "references/human-language-indonesia.md",
+      "references/human-language-english.md"
+    ],
+    "state": "ACTIVE",
+    "application": "Concise result-first status, explicit limits, exact JSON output schema; no extra lifecycle."
+  },
+  "internal_guides_read": [
+    {
+      "id": "agent-document-authoring",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/agent-document-authoring/GUIDE.md",
+      "sha256": "73ee49d2aa4e223666d65787181e0fc880fd370c0a8d66c2d0682fa6483b6aad",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "api-and-interface-design",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/api-and-interface-design/GUIDE.md",
+      "sha256": "379746694129f138748acba7c30e97169b497851db0e41dfdb3cfe9b62d4a42f",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "architecture-survey",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/architecture-survey/GUIDE.md",
+      "sha256": "cdae61097aa4772ee01e78bab2c77f66b6b6e7d1fb24e35d02a649eb18d8200a",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "article-shaping",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/article-shaping/GUIDE.md",
+      "sha256": "af9888c968ba339844b4b16276348ddacbe0a2a2c6d4ae118ffb4c38eed94d88",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "ci-cd-and-automation",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/ci-cd-and-automation/GUIDE.md",
+      "sha256": "8c01e6324a9d13969019136488dfa8047b2d1fb3a0b22aab0bf3cdfb32f22d69",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "code-review",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/code-review/GUIDE.md",
+      "sha256": "ee97a3c7a06c2e057ca760fba788ca748ee40192a234daa22b74e9b8a68d3ff3",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "context-engineering",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/context-engineering/GUIDE.md",
+      "sha256": "178247255cddb86dc62a56def8ef826ff77c92ceb681f218cc8ea1f9a29f8f66",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "debugging",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/debugging/GUIDE.md",
+      "sha256": "0beb55e7efa68b7965e3d2c52f73e78b42af711bc9f7d4f2e298ea143c55f508",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "decision-interview",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/decision-interview/GUIDE.md",
+      "sha256": "938a7fa8c33e212190f2ce110ef83370ab63997bbc50c0927d1365c71c1261d4",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "delegation",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/delegation/GUIDE.md",
+      "sha256": "395c3af12c210fd8e140777c807a742a96d5758b1691605b8ae47a094e966988",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "deprecation-and-migration",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/deprecation-and-migration/GUIDE.md",
+      "sha256": "606cc6318f1ea31e3702a549559b27acaabf6234cd9ab3e43a6e2299c6fecbde",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "documentation-and-adrs",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/documentation-and-adrs/GUIDE.md",
+      "sha256": "4dd09cd2b0c3c24b16e09843272f976cc4857d738b9128a53fe4a6b9caa64472",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "handoff",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/handoff/GUIDE.md",
+      "sha256": "468b89031f6fbd6261f6c7c4cbb8cc45ae620403d966ccf67702e80bb124dca6",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "human-procedure",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/human-procedure/GUIDE.md",
+      "sha256": "935c71bf6b9faaacb7069ec4c935f84f0daaac0a3989406e8ebf37afff5ef1c3",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "idea-refine",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/idea-refine/GUIDE.md",
+      "sha256": "5d1d07ca851839c5e2675f657af81fe06d7b63488b73537ca270921531ed6793",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "implementation",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/implementation/GUIDE.md",
+      "sha256": "2215c4f9e360ad75585e490f79d4e7434a9eaf82f339ec765b1d88836ee20aa5",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "incremental-implementation",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/incremental-implementation/GUIDE.md",
+      "sha256": "eaebd3e0d82222f712b4c56906b7debd938377e652194362b7dba49ac53e4cf7",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "learning-workspace",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/learning-workspace/GUIDE.md",
+      "sha256": "f723f13abace1639a259b29dc3b5998bca1723e6f9d3b00a3274f7a2ff0ebef0",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "observability-and-instrumentation",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/observability-and-instrumentation/GUIDE.md",
+      "sha256": "1c26a01de213658a8441ecde429cb033510d4e3f9ac1c0127601e847902ac218",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "plan-execution",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/plan-execution/GUIDE.md",
+      "sha256": "358a916e729a43638cfb2f08efe0908cfc31ad51dcddf255ff4bff393fa3ed67",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "primary-source-research",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/primary-source-research/GUIDE.md",
+      "sha256": "d890dce190b54841e03e09286aa1a0c4c0851775f40ac0436e3b5c3ba265babd",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "project-configuration",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/project-configuration/GUIDE.md",
+      "sha256": "0dad7c41a0841ac5a61bb97d64ef913cddaffe06a2ea181d1f7ed1dbfa137801",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "security-and-hardening",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/security-and-hardening/GUIDE.md",
+      "sha256": "0dda985580593275f63da836c82ba834cab9945606d80dc0a382a6f8b29d0118",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "specification",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/specification/GUIDE.md",
+      "sha256": "72b92b4eb385ad6eb6f3cf4b03576a5ac6b79bf7834ecdc1f583976bcb0954be",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "stakeholder-questionnaire",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/stakeholder-questionnaire/GUIDE.md",
+      "sha256": "8f219ce4fa42dc18b869c144c3860a38311b64f3d9590aaed235f774df219c9c",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "tdd",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/tdd/GUIDE.md",
+      "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "verification",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/verification/GUIDE.md",
+      "sha256": "7d79dcd35c90611c99bf7250f9ef2d879c16f305e27f4f6a0ccd7817b3adaa71",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    },
+    {
+      "id": "workflow-specification",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/workflow-specification/GUIDE.md",
+      "sha256": "2d5fbd702cb957f2045fc99f1250decf44537f25db1f0d34459877dbab9572b0",
+      "reason": "Resource read, reused while loaded; case-specific reasons are in results.json.",
+      "insight": "ACTIVE does not by itself establish product-task execution."
+    }
+  ],
+  "resources_read": [
+    "skills/debugging/resources/contract.md",
+    "skills/tdd/resources/contract.md",
+    "skills/verification/resources/contract.md"
+  ],
+  "released": [
+    {
+      "id": "workflow-specification",
+      "reason": "A considered candidate was read, then released: the pipeline request is executable CI quality-gate wiring, not recurring-workflow design. This was an extra exploratory guide load, not selected in the final minimum set."
+    },
+    {
+      "id": "delegation",
+      "reason": "Guide was read for the conditional parallel-audit case; actual nested dispatch is prohibited, so no execution/use is claimed."
+    }
+  ],
+  "work_used": [
+    {
+      "id": "debugging",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/debugging/GUIDE.md",
+      "sha256": "0beb55e7efa68b7965e3d2c52f73e78b42af711bc9f7d4f2e298ea143c55f508",
+      "reason": "Unknown pagination cause before fixture source inspection.",
+      "insight": "Observed exact overlap, confirmed the wrong-stride prediction with sizes 1/2/3 and preserved original source."
+    },
+    {
+      "id": "tdd",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/tdd/GUIDE.md",
+      "sha256": "639e04ba15bc7e7fbcc5aa106a1a4cb46459676371eb1661e0a1b83f9c6c1e0c",
+      "reason": "Executable pagination fix.",
+      "insight": "Literal second-page assertion failed before changing the single stride expression and passed after; faulty original failed again."
+    },
+    {
+      "id": "verification",
+      "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate/skills/verification/GUIDE.md",
+      "sha256": "7d79dcd35c90611c99bf7250f9ef2d879c16f305e27f4f6a0ccd7817b3adaa71",
+      "reason": "Accept fixed fixture only with actual evidence.",
+      "insight": "Inspected 5-test suite, original scenario, faulty-copy failure and tested file identities."
+    }
+  ],
+  "tool_limits": [
+    "The first rtk tree command did not yield an inventory; rtk proxy rg --files succeeded. No hook was installed.",
+    "One nested PowerShell variable extraction failed because the outer shell expanded it; Python extraction succeeded. No evidence was inferred from the failed command."
+  ]
+}

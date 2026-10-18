@@ -1,0 +1,162 @@
+{
+  "selection_cases": [
+    {
+      "id": "92f1a3ca4ad7",
+      "request": "Rename this private loop variable without a framework/API change."
+    },
+    {
+      "id": "dd5707c5e96e",
+      "request": "Re-triage all the ready tickets we just approved."
+    },
+    {
+      "id": "661302e7fccb",
+      "request": "Build the accepted basic list; there is no measured slowdown or performance budget."
+    },
+    {
+      "id": "99311717ada0",
+      "request": "Review whether git -C repo push is allowed by the current authority."
+    },
+    {
+      "id": "66f55e5d499c",
+      "request": "Cari pengulangan pada session tertentu dengan bukti."
+    },
+    {
+      "id": "77e44b26b7ba",
+      "request": "I do not understand your last message about task blockers. Explain plainly."
+    },
+    {
+      "id": "7c4a2595b405",
+      "request": "Callers repeat order policy in six places. Compare smaller interfaces."
+    },
+    {
+      "id": "b6e1d75e8102",
+      "request": "Prepare project pre-commit checks while preserving prepare and current staging."
+    },
+    {
+      "id": "aee1fafddd30",
+      "request": "Investigate the retry contract in official sources and cite findings."
+    },
+    {
+      "id": "90eef278de50",
+      "request": "Check the ordering of rows in this backend-only CSV exporter."
+    },
+    {
+      "id": "70ab932b47b2",
+      "request": "Create a scheduled job automatically from this design discussion."
+    },
+    {
+      "id": "29ee382225a5",
+      "request": "Specify a recurring support-response drafting workflow without activating it."
+    },
+    {
+      "id": "8689985b71f5",
+      "request": "Scan/upload every chat."
+    },
+    {
+      "id": "4d5a573cf528",
+      "request": "Install another workflow globally before doing anything."
+    },
+    {
+      "id": "c6340f7b0291",
+      "request": "The design is accepted; implement its production behavior."
+    },
+    {
+      "id": "b3b4e1f24fa2",
+      "request": "I asked for a dashboard but I am not sure what I actually need. Interview me."
+    },
+    {
+      "id": "8255fc705a0e",
+      "request": "Make twelve tickets for this one-line typo."
+    },
+    {
+      "id": "16ae9cada727",
+      "request": "Replace these selected partial test casts without weakening invalid-input cases."
+    },
+    {
+      "id": "e9ecaa692ba5",
+      "request": "Uraikan spesifikasi menjadi irisan dan dependensinya."
+    },
+    {
+      "id": "104861058847",
+      "request": "Push my branch without approval."
+    },
+    {
+      "id": "23d74c58008a",
+      "request": "Fix the private function locally; no release or deployment is requested."
+    },
+    {
+      "id": "425e8b3d530a",
+      "request": "Buktikan perbaikan pada current bytes."
+    },
+    {
+      "id": "612a2f703df2",
+      "request": "Shape this fixed raw material into a separate article with grounded concepts."
+    },
+    {
+      "id": "74cf60176195",
+      "request": "Correct a README spelling error; do not change code or CI."
+    },
+    {
+      "id": "ca98841e1c41",
+      "request": "Rename a private loop variable in an unused example."
+    },
+    {
+      "id": "ea55c8b321dc",
+      "request": "Make this charge endpoint honor retries when four requests arrive together."
+    },
+    {
+      "id": "83d4b1c614a2",
+      "request": "Laporan akhir dan bukti uji; jangan commit/push."
+    },
+    {
+      "id": "3aba4cb6dbb3",
+      "request": "Fix a documentation spelling error with no production behavior change."
+    },
+    {
+      "id": "1ea6c65b752f",
+      "request": "Delete half the technique just to make the document shorter."
+    },
+    {
+      "id": "900c53232aba",
+      "request": "Install a course CLI globally to answer one question."
+    },
+    {
+      "id": "9ec6e1e86686",
+      "request": "Simplify this green nested function without changing errors or the marked fast path."
+    },
+    {
+      "id": "b06923ca675a",
+      "request": "Ganti judul README."
+    },
+    {
+      "id": "9cc13ff5f988",
+      "request": "Use these canary error/latency baselines and error budget to prepare go/no-go with rollback."
+    },
+    {
+      "id": "0ca76d37f3af",
+      "request": "Fix the empty-input crash; the accepted behavior must change."
+    },
+    {
+      "id": "54789a16a752",
+      "request": "Spawn helpers recursively."
+    },
+    {
+      "id": "101500f0c1a8",
+      "request": "Slice the accepted rename into expand, caller migrations and contract tasks."
+    },
+    {
+      "id": "ae6ee4cf57a6",
+      "request": "Implement the accepted API task whose schema dependency has passed."
+    },
+    {
+      "id": "c6b3e6bf803f",
+      "request": "Deploy because unit tests passed."
+    }
+  ],
+  "work": {
+    "request": "Use Andino to review candidate.py as an uncommitted new file. Spec: admins may open every record; members may open only records from their own organization. Standard: never evaluate user input dynamically. Do not repair it. Write review.json with specific findings, file/line, consequence, and separate spec/standards verdicts.",
+    "files": {
+      "candidate.py": "def can_open(user, record):\n    role = eval(repr(user[\"role\"]))\n    return role == \"admin\" or user[\"org\"] != record[\"org\"]\n"
+    }
+  }
+}

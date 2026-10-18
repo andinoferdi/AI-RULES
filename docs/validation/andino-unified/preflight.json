@@ -1,0 +1,52 @@
+{
+  "captured_at_utc": "2026-10-18T07:51:47.048027+00:00",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "states": {
+    "runtime": {
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES",
+      "root": "C:/Users/Lenovo/Downloads/AI-RULES",
+      "branch": "andino-workflow",
+      "head": "f531269775aafa8b162b4ec65dd919b37a208ffe",
+      "head_tree": "2ef3aa9cdfdf5582764a8deb5a4b8d2c424ba85b",
+      "tracked_changes": [],
+      "untracked_by_top_level": {
+        "GRAND-PLAN.md": 1,
+        "ULTIMATE-PROMPT.md": 1,
+        "addyosmani-agent-skills": 1,
+        "build": 26123,
+        "mattpocock-skills": 1,
+        "obra-superpowers": 1,
+        "scripts": 10,
+        "src": 46,
+        "tests": 22,
+        "threejs-skills": 714
+      },
+      "status_sha256": "d6c9d5d2076b7bf299908ab1bbff0009889764ab27b617960b24b2763793c4b8",
+      "worktrees": "worktree C:/Users/Lenovo/Downloads/AI-RULES\nHEAD f531269775aafa8b162b4ec65dd919b37a208ffe\nbranch refs/heads/andino-workflow\n\nworktree C:/Users/Lenovo/Downloads/AI-RULES-main\nHEAD 80f54467188a76ad95af3943221fd2a4b59d2181\nbranch refs/heads/main",
+      "remotes": "origin\thttps://github.com/andinoferdi/AI-RULES.git (fetch)\norigin\thttps://github.com/andinoferdi/AI-RULES.git (push)"
+    },
+    "main": {
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main",
+      "root": "C:/Users/Lenovo/Downloads/AI-RULES-main",
+      "branch": "main",
+      "head": "80f54467188a76ad95af3943221fd2a4b59d2181",
+      "head_tree": "21b61e45b0a28daf4a7130f4a28faadf451126fd",
+      "tracked_changes": [
+        "M docs/exec-plans/active/andino-capability-integration.md"
+      ],
+      "untracked_by_top_level": {
+        "docs": 1,
+        "scripts": 1
+      },
+      "status_sha256": "006497c8672e8aeba35b6aceede7faba7654c2830629b4c5347f223b96aa3810",
+      "worktrees": "worktree C:/Users/Lenovo/Downloads/AI-RULES\nHEAD f531269775aafa8b162b4ec65dd919b37a208ffe\nbranch refs/heads/andino-workflow\n\nworktree C:/Users/Lenovo/Downloads/AI-RULES-main\nHEAD 80f54467188a76ad95af3943221fd2a4b59d2181\nbranch refs/heads/main",
+      "remotes": "origin\thttps://github.com/andinoferdi/AI-RULES.git (fetch)\norigin\thttps://github.com/andinoferdi/AI-RULES.git (push)"
+    }
+  },
+  "refs": "WebBased 9a5d0e1b31257c4fcb1554558266ec7afc2a6160\nandino-workflow f531269775aafa8b162b4ec65dd919b37a208ffe\nmain 80f54467188a76ad95af3943221fd2a4b59d2181\nsearch-first 8383f8a329beff75867de80a517a8ef4d253e678\nthreejs-skills f47d7c03a309703d6804b9e8e4787d54cbbdb53f\norigin 80f54467188a76ad95af3943221fd2a4b59d2181\norigin/WebBased 9a5d0e1b31257c4fcb1554558266ec7afc2a6160\norigin/ai-codebase-rescue ff61f482eb85c8f4870ee74ffe208394a61cb433\norigin/andino-workflow f531269775aafa8b162b4ec65dd919b37a208ffe\norigin/codex/search-first-integration c256bfadd4385f3d7e3ebaed532f93c1e101de28\norigin/council 82984fa4dd75023e63d944e6cee1b61d191047c4\norigin/focus 3effa779d14303ed33ee8be874e86c2c3a873f55\norigin/main 80f54467188a76ad95af3943221fd2a4b59d2181\norigin/search-first 8383f8a329beff75867de80a517a8ef4d253e678\norigin/skripsi-skill 1161da8411c1914ad5207cde384ce151293d226e\norigin/threejs-skills f47d7c03a309703d6804b9e8e4787d54cbbdb53f",
+  "prompts": {
+    "ULTIMATE-PROMPT.md": "5c9cf1bb93d0fbb93bb224d8b982363e07169bd9ed213feb605fde7d839da000",
+    "GRAND-PLAN.md": "8c5ec29746ebd8516cf07328b9c974ec4114b03c2ec744bf9a77695add8e830f"
+  },
+  "safety": "No branch creation, staging, commit, push, reset, stash or upstream write."
+}

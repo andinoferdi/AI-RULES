@@ -1,0 +1,16 @@
+{
+  "selection_cases": 38,
+  "resource_hashes": "match current files",
+  "fixture_record": "DONE",
+  "observed_exits": {
+    "reproduction": 0,
+    "red": 1,
+    "hypothesis": 0,
+    "green": 0,
+    "suite": 0,
+    "faulty_copy_sensitivity": 1,
+    "original_scenario_after_fix": 0
+  },
+  "results_sha256": "36e0f5b1f56cb3bb644ecadef4d0267bd3c3b727521ed900d654f5b1827778d1",
+  "work_sha256": "a336ee305303921768829bf716ac7dddd3030cec465d6b3a1d351f37418df36f"
+}

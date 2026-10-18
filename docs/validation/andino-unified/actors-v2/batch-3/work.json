@@ -1,0 +1,83 @@
+{
+  "host_surface": "Codex delegated agent",
+  "model": "UNKNOWN",
+  "version": "UNKNOWN",
+  "runtime": "3.12.10",
+  "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-3",
+  "request": "Use Andino to review candidate.py as an uncommitted new file. Spec: admins may open every record; members may open only records from their own organization. Standard: never evaluate user input dynamically. Do not repair it. Write review.json with specific findings, file/line, consequence, and separate spec/standards verdicts.",
+  "state": "REVIEW_COMPLETE_WITH_FAILURES",
+  "phase": "verification and evidence handoff",
+  "next_action": "Parent independently inspect these review artifacts and evidence; do not repair the fixture.",
+  "load_order": [
+    "Read raw request and candidate runtime; no task artifact action.",
+    "Complete installed Focus plus its three references and runtime routing/index/host contract.",
+    "Read selected code-review, verification and security guides plus supporting contracts before fixture creation/inspection.",
+    "Create supplied candidate, independent literal tests and separate spec/standards artifacts.",
+    "Read tests and spec/standards first, then numbered candidate; run five checks.",
+    "Apply one mutation only to a separate disposable copy; run two admin tests; preserve original bytes.",
+    "Write independent two-axis review and current hashes."
+  ],
+  "commands": [
+    {
+      "command": "rtk Get-Content -LiteralPath 'C:\\Users\\Lenovo\\.codex\\RTK.md'",
+      "exit_code": 1,
+      "result": "Get-Content is a PowerShell builtin, not an executable; corrected with rtk powershell -NoProfile -Command."
+    },
+    {
+      "command": "rtk powershell -NoProfile -Command \"$reviewLine=0; Get-Content -LiteralPath 'C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-3\\candidate.py' | ForEach-Object { $reviewLine++; '{0}: {1}' -f $reviewLine, $_ }\"",
+      "exit_code": 1,
+      "result": "Nested shell expanded dollar variables, yielding parser error. No candidate mutation; corrected with Python numbered read."
+    },
+    {
+      "command": "rtk python contract_tests.py candidate.py",
+      "exit_code": 1,
+      "result": "Ran 5 tests: admin same/other pass; member same/other and dynamic-evaluation standard fail."
+    },
+    {
+      "command": "rtk python contract_tests.py candidate_admin_mutation.py SpecContract.test_admin_same_org SpecContract.test_admin_other_org",
+      "exit_code": 1,
+      "result": "Ran 2 tests: same-org admin fails False is not True; other-org admin passes because the reversed non-admin branch still grants it."
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-3\\candidate.py",
+      "sha256": "1669b711b0f16f44a9dc1545c57ef6d87b055fe12dd0f5d19ea42732be47ddfd"
+    },
+    {
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-3\\candidate_admin_mutation.py",
+      "sha256": "4e022cbaed9cda1e1f87d2134245e02d2d9e9b3c9829eb1c7bab6de421c3e5f7"
+    },
+    {
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-3\\contract_tests.py",
+      "sha256": "5cb25079ead13f3d8d7659e6adef9b7a79927811d4ee76bd1f1452098037a867"
+    },
+    {
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-3\\spec.txt",
+      "sha256": "fbd3124cf454302bfe7e26573dec2ac6fa6a60d365faf57e88dcf35cda65de95"
+    },
+    {
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-3\\standards.txt",
+      "sha256": "5eeb8cdd767a384a0dffb4530aacbcbeb1d4d28dcb4c0178123056844099c9af"
+    },
+    {
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-3\\review.json",
+      "sha256": "9f1d97e651af1fe4cd1c54364e33b1aeaf949d70f25778561cde19ef19f9278a"
+    },
+    {
+      "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-3\\results.json",
+      "sha256": "555a704c19c5cffa17c8aa032221dbaf3ed8356bb162beaae78826df18efc732"
+    }
+  ],
+  "candidate_matches_supplied_bytes": true,
+  "candidate_repaired": false,
+  "scope_limits": [
+    "No scenario side effects executed.",
+    "No network/service/Git mutation/setup/global/project operations.",
+    "No nested subagents.",
+    "No oracle/evals/expected files, prior actor output, implementation scripts, audit matrices or ULTIMATE/GRAND sources read.",
+    "No native picker or cross-host parity claim; model/version not exposed.",
+    "Review only; no repair was performed.",
+    "Five bounded cases are not a full project, integration, live authorization or exploit audit."
+  ]
+}

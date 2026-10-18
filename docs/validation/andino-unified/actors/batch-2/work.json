@@ -1,0 +1,175 @@
+{
+  "runtime": {
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "executable": "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe"
+  },
+  "request": "Zero-based pages must be consecutive non-overlapping slices.",
+  "source": "Exact supplied work.files subject.py copied into actor-owned fixture.",
+  "commands": [
+    {
+      "label": "01-reproduce",
+      "command": [
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "reproduce.py"
+      ],
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\fixture",
+      "observed_at": "2026-10-18T08:27:16.239118+00:00",
+      "exit_code": 0,
+      "stdout": "{\"first\": [\"A\", \"B\"], \"second\": [\"B\", \"C\"]}\n",
+      "stderr": "",
+      "tested_files": {
+        "fixture\\probe_cause.py": "87431283bf118d6010c94df86df08a6852b664d961c0952c223a9db764d6ee2e",
+        "fixture\\reproduce.py": "f7cb7825eb0eedb18cc729d97d2e4423e316400a2c29f883ed117892ae632a0f",
+        "fixture\\subject.py": "6be30fbd485578ecd856998253e2b39c6a447429ef12fa5cc8e14d01fee2592d",
+        "fixture\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97"
+      }
+    },
+    {
+      "label": "02-red-exact-contract",
+      "command": [
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_page.py"
+      ],
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\fixture",
+      "observed_at": "2026-10-18T08:27:16.421974+00:00",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "test_reported_consecutive_pages (test_page.PaginationContract.test_reported_consecutive_pages) ... FAIL\n\n======================================================================\nFAIL: test_reported_consecutive_pages (test_page.PaginationContract.test_reported_consecutive_pages)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\fixture\\test_page.py\", line 9, in test_reported_consecutive_pages\n    self.assertEqual(page(items, 1, 2), ['C', 'D'])\nAssertionError: Lists differ: ['B', 'C'] != ['C', 'D']\n\nFirst differing element 0:\n'B'\n'C'\n\n- ['B', 'C']\n+ ['C', 'D']\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=1)\n",
+      "tested_files": {
+        "fixture\\probe_cause.py": "87431283bf118d6010c94df86df08a6852b664d961c0952c223a9db764d6ee2e",
+        "fixture\\reproduce.py": "f7cb7825eb0eedb18cc729d97d2e4423e316400a2c29f883ed117892ae632a0f",
+        "fixture\\subject.py": "6be30fbd485578ecd856998253e2b39c6a447429ef12fa5cc8e14d01fee2592d",
+        "fixture\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97"
+      }
+    },
+    {
+      "label": "03-hypothesis-stride-probe",
+      "command": [
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "probe_cause.py"
+      ],
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\fixture",
+      "observed_at": "2026-10-18T08:27:16.490985+00:00",
+      "exit_code": 0,
+      "stdout": "[{\"size\": 1, \"actual\": [\"A\"], \"expected\": [\"B\"], \"candidate\": [\"B\"]}, {\"size\": 2, \"actual\": [\"B\", \"C\"], \"expected\": [\"C\", \"D\"], \"candidate\": [\"C\", \"D\"]}, {\"size\": 3, \"actual\": [\"C\", \"D\"], \"expected\": [\"D\"], \"candidate\": [\"D\"]}]\n",
+      "stderr": "",
+      "tested_files": {
+        "fixture\\probe_cause.py": "87431283bf118d6010c94df86df08a6852b664d961c0952c223a9db764d6ee2e",
+        "fixture\\reproduce.py": "f7cb7825eb0eedb18cc729d97d2e4423e316400a2c29f883ed117892ae632a0f",
+        "fixture\\subject.py": "6be30fbd485578ecd856998253e2b39c6a447429ef12fa5cc8e14d01fee2592d",
+        "fixture\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97"
+      }
+    },
+    {
+      "label": "04-green-exact-contract",
+      "command": [
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_page.py"
+      ],
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\fixture",
+      "observed_at": "2026-10-18T08:27:40.388504+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_reported_consecutive_pages (test_page.PaginationContract.test_reported_consecutive_pages) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+      "tested_files": {
+        "fixture\\probe_cause.py": "87431283bf118d6010c94df86df08a6852b664d961c0952c223a9db764d6ee2e",
+        "fixture\\reproduce.py": "f7cb7825eb0eedb18cc729d97d2e4423e316400a2c29f883ed117892ae632a0f",
+        "fixture\\subject.py": "811b3df94b7fe91c3bde09551b1a8a02e8a7f42066fe95d3da464d2bdabb2cac",
+        "fixture\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97",
+        "fixture\\test_page_boundaries.py": "69a73784630944c256e3d2bf090f53c02303ad3f2987d0f8700a3f2505480241"
+      }
+    },
+    {
+      "label": "05-original-scenario-fixed",
+      "command": [
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "reproduce.py"
+      ],
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\fixture",
+      "observed_at": "2026-10-18T08:27:40.456021+00:00",
+      "exit_code": 0,
+      "stdout": "{\"first\": [\"A\", \"B\"], \"second\": [\"C\", \"D\"]}\n",
+      "stderr": "",
+      "tested_files": {
+        "fixture\\probe_cause.py": "87431283bf118d6010c94df86df08a6852b664d961c0952c223a9db764d6ee2e",
+        "fixture\\reproduce.py": "f7cb7825eb0eedb18cc729d97d2e4423e316400a2c29f883ed117892ae632a0f",
+        "fixture\\subject.py": "811b3df94b7fe91c3bde09551b1a8a02e8a7f42066fe95d3da464d2bdabb2cac",
+        "fixture\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97",
+        "fixture\\test_page_boundaries.py": "69a73784630944c256e3d2bf090f53c02303ad3f2987d0f8700a3f2505480241"
+      }
+    },
+    {
+      "label": "06-suite",
+      "command": [
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\fixture",
+      "observed_at": "2026-10-18T08:27:40.588085+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_reported_consecutive_pages (test_page.PaginationContract.test_reported_consecutive_pages) ... ok\ntest_empty_collection (test_page_boundaries.PaginationBoundaries.test_empty_collection) ... ok\ntest_partial_and_empty_pages (test_page_boundaries.PaginationBoundaries.test_partial_and_empty_pages) ... ok\ntest_size_one_advances (test_page_boundaries.PaginationBoundaries.test_size_one_advances) ... ok\ntest_size_three_pages_are_consecutive (test_page_boundaries.PaginationBoundaries.test_size_three_pages_are_consecutive) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK\n",
+      "tested_files": {
+        "fixture\\probe_cause.py": "87431283bf118d6010c94df86df08a6852b664d961c0952c223a9db764d6ee2e",
+        "fixture\\reproduce.py": "f7cb7825eb0eedb18cc729d97d2e4423e316400a2c29f883ed117892ae632a0f",
+        "fixture\\subject.py": "811b3df94b7fe91c3bde09551b1a8a02e8a7f42066fe95d3da464d2bdabb2cac",
+        "fixture\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97",
+        "fixture\\test_page_boundaries.py": "69a73784630944c256e3d2bf090f53c02303ad3f2987d0f8700a3f2505480241"
+      }
+    },
+    {
+      "label": "07-faulty-copy-sensitivity",
+      "command": [
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_page.py"
+      ],
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\mutation",
+      "observed_at": "2026-10-18T08:27:40.742074+00:00",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "test_reported_consecutive_pages (test_page.PaginationContract.test_reported_consecutive_pages) ... FAIL\n\n======================================================================\nFAIL: test_reported_consecutive_pages (test_page.PaginationContract.test_reported_consecutive_pages)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors\\batch-2\\mutation\\test_page.py\", line 9, in test_reported_consecutive_pages\n    self.assertEqual(page(items, 1, 2), ['C', 'D'])\nAssertionError: Lists differ: ['B', 'C'] != ['C', 'D']\n\nFirst differing element 0:\n'B'\n'C'\n\n- ['B', 'C']\n+ ['C', 'D']\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n",
+      "tested_files": {
+        "mutation\\subject.py": "6be30fbd485578ecd856998253e2b39c6a447429ef12fa5cc8e14d01fee2592d",
+        "mutation\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97"
+      }
+    }
+  ],
+  "hypothesis": "The stride uses size - 1; at index 1 this shifts the start one item left, and at size 1 every page starts at zero.",
+  "prediction_and_probe": "With size 1/2/3 and index 1, the original starts A/B/C; changing only stride to size starts B/C/D and gives the independently literal expected slices.",
+  "status": "PASS",
+  "limitations": [
+    "Local Python fixture only; no live service, network, Git mutation or global configuration."
+  ],
+  "fix": "Changed only start = index * (size - 1) to start = index * size.",
+  "refactor_decision": "No refactor: no independent complexity concern is needed for this one-expression defect.",
+  "artifacts": {
+    "fixture\\probe_cause.py": "87431283bf118d6010c94df86df08a6852b664d961c0952c223a9db764d6ee2e",
+    "fixture\\reproduce.py": "f7cb7825eb0eedb18cc729d97d2e4423e316400a2c29f883ed117892ae632a0f",
+    "fixture\\subject.py": "811b3df94b7fe91c3bde09551b1a8a02e8a7f42066fe95d3da464d2bdabb2cac",
+    "fixture\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97",
+    "fixture\\test_page_boundaries.py": "69a73784630944c256e3d2bf090f53c02303ad3f2987d0f8700a3f2505480241",
+    "mutation\\subject.py": "6be30fbd485578ecd856998253e2b39c6a447429ef12fa5cc8e14d01fee2592d",
+    "mutation\\test_page.py": "0b9032ed1a1dccbcf6df86d662957f9adfc767aa886b34398dc49a0c8df8cf97",
+    "run_work.py": "6c6dc592b908c1cadc6eeb870096ec5875fa17e96ea33c99347eba7f0afc3bb0",
+    "subject.before.py": "6be30fbd485578ecd856998253e2b39c6a447429ef12fa5cc8e14d01fee2592d"
+  }
+}

@@ -1,0 +1,7 @@
+[rtk] /!\ No hook installed â€” run `rtk init -g` for automatic token savings
+test_consecutive_zero_based_pages (test_page.PaginationContract.test_consecutive_zero_based_pages) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK

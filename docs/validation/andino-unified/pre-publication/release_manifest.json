@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "channel": "stable",
+  "release_sequence": 12,
+  "verified_at": "2026-10-16",
+  "first_party": {
+    "andino-workflow": {
+      "branch": "andino-workflow",
+      "ref": "origin/andino-workflow",
+      "commit": "f531269775aafa8b162b4ec65dd919b37a208ffe",
+      "release_sequence": 12,
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
+    },
+    "ai-codebase-rescue": {
+      "branch": "ai-codebase-rescue",
+      "ref": "origin/ai-codebase-rescue",
+      "commit": "b34f4d792420039cbb52bceee76dc0240846b5f2",
+      "release_sequence": 1
+    },
+    "skripsi-skill": {
+      "branch": "skripsi-skill",
+      "ref": "origin/skripsi-skill",
+      "commit": "6f7c57c8a2d600f092c6a31937d4ec218d9888b6",
+      "release_sequence": 1
+    },
+    "search-first": {
+      "branch": "search-first",
+      "ref": "origin/search-first",
+      "commit": "76bccd3578769a45e6fb375aadab0ca7f7be9cc8",
+      "release_sequence": 2
+    },
+    "focus": {
+      "branch": "focus",
+      "ref": "origin/focus",
+      "commit": "9eb6081aa1ae26a4bb81a38eb49e4b1f9b9c3da3",
+      "release_sequence": 2
+    },
+    "council": {
+      "branch": "council",
+      "ref": "origin/council",
+      "commit": "82984fa4dd75023e63d944e6cee1b61d191047c4",
+      "release_sequence": 1
+    },
+    "threejs-skills": {
+      "branch": "threejs-skills",
+      "ref": "origin/threejs-skills",
+      "commit": "f47d7c03a309703d6804b9e8e4787d54cbbdb53f",
+      "release_sequence": 12,
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
+    }
+  },
+  "publication_order": [
+    "threejs-skills",
+    "andino-workflow",
+    "main",
+    "tagged installer release"
+  ],
+  "publication_status": "RUNTIME_REFS_PUBLISHED_INSTALLER_RELEASE_PENDING"
+}

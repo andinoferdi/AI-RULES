@@ -1,0 +1,1423 @@
+{
+  "result": "PASS",
+  "scope": "Oracle-hidden Codex delegated resource selection; actual work and native host invocation graded separately.",
+  "runtime": "C:/Users/Lenovo/Downloads/AI-RULES-main/build/andino-unified-candidate-v3",
+  "cases": 114,
+  "passed": 114,
+  "rows": [
+    {
+      "id": "74a98a8bed81",
+      "expected": {
+        "method": "pr-description",
+        "kind": "positive"
+      },
+      "selected": [
+        "pr-description"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "56d20b512041",
+      "expected": {
+        "method": "handoff",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "f4762b672d6f",
+      "expected": {
+        "method": "typescript-boundary-enforcement",
+        "kind": "positive"
+      },
+      "selected": [
+        "typescript-boundary-enforcement",
+        "tdd"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "1086608388f0",
+      "expected": {
+        "method": "article-shaping",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "a933736aaa08",
+      "expected": {
+        "method": "git-workflow-and-versioning",
+        "kind": "positive"
+      },
+      "selected": [
+        "git-workflow-and-versioning"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "12d1a9633c53",
+      "expected": {
+        "method": "design-prototype",
+        "kind": "positive"
+      },
+      "selected": [
+        "design-prototype"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "477bcf0d6c86",
+      "expected": {
+        "method": "code-review",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "f942e5e3b6fb",
+      "expected": {
+        "method": "writing-fragments",
+        "kind": "positive"
+      },
+      "selected": [
+        "writing-fragments"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "75f803809d42",
+      "expected": {
+        "method": "domain-modeling",
+        "kind": "positive"
+      },
+      "selected": [
+        "domain-modeling"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "fe24008c1d74",
+      "expected": {
+        "method": "frontend-ui-engineering",
+        "kind": "positive"
+      },
+      "selected": [
+        "frontend-ui-engineering",
+        "tdd"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "aeb97ddd0f13",
+      "expected": {
+        "method": "incremental-implementation",
+        "kind": "positive"
+      },
+      "selected": [
+        "incremental-implementation",
+        "tdd"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "5a24e85e63fc",
+      "expected": {
+        "method": "method-authoring",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "7f3b7e3d5458",
+      "expected": {
+        "method": "browser-testing-with-devtools",
+        "kind": "positive"
+      },
+      "selected": [
+        "debugging",
+        "browser-testing-with-devtools"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "8a5bd19c1513",
+      "expected": {
+        "method": "frontend-ui-engineering",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "dd270fedf396",
+      "expected": {
+        "method": "exercise-scaffolding",
+        "kind": "positive"
+      },
+      "selected": [
+        "exercise-scaffolding"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "21abd16e703f",
+      "expected": {
+        "method": "environment-retrospective",
+        "kind": "positive"
+      },
+      "selected": [
+        "environment-retrospective"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "258871d7f9dc",
+      "expected": {
+        "method": "issue-triage",
+        "kind": "positive"
+      },
+      "selected": [
+        "issue-triage"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "86b1ef81b196",
+      "expected": {
+        "method": "api-and-interface-design",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "00a68869e832",
+      "expected": {
+        "method": "pre-commit-setup",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "c29303c4759e",
+      "expected": {
+        "method": "security-and-hardening",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "5e7427f7697e",
+      "expected": {
+        "method": "specification",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "dd6434485545",
+      "expected": {
+        "method": "git-isolation",
+        "kind": "negative"
+      },
+      "selected": [
+        "git-operation-guard"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "d03a556fc435",
+      "expected": {
+        "method": "method-authoring",
+        "kind": "positive"
+      },
+      "selected": [
+        "method-authoring"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "46adc4dd5778",
+      "expected": {
+        "method": "implementation",
+        "kind": "negative"
+      },
+      "selected": [
+        "idea-refine"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "6e25ed271218",
+      "expected": {
+        "method": "context-engineering",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "cef4b736f904",
+      "expected": {
+        "method": "stakeholder-questionnaire",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "4ec11b7f258c",
+      "expected": {
+        "method": "decision-map",
+        "kind": "positive"
+      },
+      "selected": [
+        "decision-map"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "f64927d7aa31",
+      "expected": {
+        "method": "git-isolation",
+        "kind": "positive"
+      },
+      "selected": [
+        "git-isolation"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "428ff006b859",
+      "expected": {
+        "method": "git-operation-guard",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "c97a09f607ac",
+      "expected": {
+        "method": "constraint-driven-development",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "448ff3602487",
+      "expected": {
+        "method": "doubt-driven-development",
+        "kind": "positive"
+      },
+      "selected": [
+        "doubt-driven-development"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "0ada99c86213",
+      "expected": {
+        "method": "human-procedure",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "da9611f8a5c8",
+      "expected": {
+        "method": "idea-refine",
+        "kind": "negative"
+      },
+      "selected": [
+        "plan-execution",
+        "tdd"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "62991a1d0826",
+      "expected": {
+        "method": "source-driven-development",
+        "kind": "positive"
+      },
+      "selected": [
+        "source-driven-development"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "0a74978bf670",
+      "expected": {
+        "method": "performance-optimization",
+        "kind": "positive"
+      },
+      "selected": [
+        "performance-optimization"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "62407b7d2daa",
+      "expected": {
+        "method": "learning-workspace",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "a0f04777f329",
+      "expected": {
+        "method": "constraint-driven-development",
+        "kind": "positive"
+      },
+      "selected": [
+        "constraint-driven-development"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "55ff90cd8355",
+      "expected": {
+        "method": "incremental-implementation",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-1/results.json"
+    },
+    {
+      "id": "5ad2fb667acf",
+      "expected": {
+        "method": "doubt-driven-development",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "52ac50f632f2",
+      "expected": {
+        "method": "documentation-and-adrs",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "4c9b5e6b8815",
+      "expected": {
+        "method": "domain-modeling",
+        "kind": "negative"
+      },
+      "selected": [
+        "verification"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "2945d7ddf125",
+      "expected": {
+        "method": "specification",
+        "kind": "positive"
+      },
+      "selected": [
+        "specification"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "cb7dbafba722",
+      "expected": {
+        "method": "project-configuration",
+        "kind": "positive"
+      },
+      "selected": [
+        "project-configuration"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "5af5921054aa",
+      "expected": {
+        "method": "idea-refine",
+        "kind": "positive"
+      },
+      "selected": [
+        "idea-refine"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "35a0077b5dc6",
+      "expected": {
+        "method": "observability-and-instrumentation",
+        "kind": "positive"
+      },
+      "selected": [
+        "observability-and-instrumentation",
+        "tdd"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "7aaee84047e6",
+      "expected": {
+        "method": "tdd",
+        "kind": "positive"
+      },
+      "selected": [
+        "api-and-interface-design",
+        "tdd"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "97adb1b99213",
+      "expected": {
+        "method": "deep-module-design",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "1c5886e258e4",
+      "expected": {
+        "method": "decision-map",
+        "kind": "negative"
+      },
+      "selected": [
+        "incremental-implementation",
+        "tdd"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "5378d05d3e6e",
+      "expected": {
+        "method": "agent-document-authoring",
+        "kind": "positive"
+      },
+      "selected": [
+        "agent-document-authoring"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "3d17a0dd1324",
+      "expected": {
+        "method": "code-review",
+        "kind": "positive"
+      },
+      "selected": [
+        "code-review"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "7b8f67c0de48",
+      "expected": {
+        "method": "architecture-survey",
+        "kind": "positive"
+      },
+      "selected": [
+        "architecture-survey"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "e08782084ea0",
+      "expected": {
+        "method": "debugging",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "36feb4262cb5",
+      "expected": {
+        "method": "primary-source-research",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "adfe38adca99",
+      "expected": {
+        "method": "debugging",
+        "kind": "positive"
+      },
+      "selected": [
+        "debugging"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "4ca6b6700667",
+      "expected": {
+        "method": "architecture-survey",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "ad962d2c7fea",
+      "expected": {
+        "method": "handoff",
+        "kind": "positive"
+      },
+      "selected": [
+        "handoff"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "3a62a9e3ac0a",
+      "expected": {
+        "method": "environment-retrospective",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "d6e6853eae28",
+      "expected": {
+        "method": "writing-fragments",
+        "kind": "negative"
+      },
+      "selected": [
+        "article-shaping"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "c0d38829fba5",
+      "expected": {
+        "method": "learning-workspace",
+        "kind": "positive"
+      },
+      "selected": [
+        "learning-workspace"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "1faa1ed6c8b3",
+      "expected": {
+        "method": "context-engineering",
+        "kind": "positive"
+      },
+      "selected": [
+        "context-engineering"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "587b325770f9",
+      "expected": {
+        "method": "decision-interview",
+        "kind": "negative"
+      },
+      "selected": [
+        "implementation",
+        "tdd"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "360fbe25a5c2",
+      "expected": {
+        "method": "ci-cd-and-automation",
+        "kind": "positive"
+      },
+      "selected": [
+        "ci-cd-and-automation",
+        "tdd"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "246432375a1a",
+      "expected": {
+        "method": "git-workflow-and-versioning",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "800f809b56fa",
+      "expected": {
+        "method": "typescript-boundary-enforcement",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "44c630f34d7e",
+      "expected": {
+        "method": "deprecation-and-migration",
+        "kind": "positive"
+      },
+      "selected": [
+        "deprecation-and-migration"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "8d19111bb034",
+      "expected": {
+        "method": "stakeholder-questionnaire",
+        "kind": "positive"
+      },
+      "selected": [
+        "stakeholder-questionnaire"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "4d48c2b89af5",
+      "expected": {
+        "method": "plan-execution",
+        "kind": "positive"
+      },
+      "selected": [
+        "plan-execution"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "ad15210b7f8f",
+      "expected": {
+        "method": "plan-execution",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "b9f721de7bc3",
+      "expected": {
+        "method": "security-and-hardening",
+        "kind": "positive"
+      },
+      "selected": [
+        "security-and-hardening"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "98fa914fb8f5",
+      "expected": {
+        "method": "verification",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "0304b7c94b26",
+      "expected": {
+        "method": "plain-language-repitch",
+        "kind": "negative"
+      },
+      "selected": [
+        "search-first"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "4552083726eb",
+      "expected": {
+        "method": "test-fixture-migration",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "03a09343cf18",
+      "expected": {
+        "method": "documentation-and-adrs",
+        "kind": "positive"
+      },
+      "selected": [
+        "documentation-and-adrs"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "80778696001c",
+      "expected": {
+        "method": "human-procedure",
+        "kind": "positive"
+      },
+      "selected": [
+        "human-procedure"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "082c8d19b4bb",
+      "expected": {
+        "method": "planning",
+        "kind": "negative"
+      },
+      "selected": [
+        "plan-execution"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "289d07b21a28",
+      "expected": {
+        "method": "delegation",
+        "kind": "positive"
+      },
+      "selected": [
+        "delegation"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-2/results.json"
+    },
+    {
+      "id": "92f1a3ca4ad7",
+      "expected": {
+        "method": "source-driven-development",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "dd5707c5e96e",
+      "expected": {
+        "method": "issue-triage",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "661302e7fccb",
+      "expected": {
+        "method": "performance-optimization",
+        "kind": "negative"
+      },
+      "selected": [
+        "implementation",
+        "tdd"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "99311717ada0",
+      "expected": {
+        "method": "git-operation-guard",
+        "kind": "positive"
+      },
+      "selected": [
+        "git-operation-guard"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "66f55e5d499c",
+      "expected": {
+        "method": "session-diagnostics",
+        "kind": "positive"
+      },
+      "selected": [
+        "session-diagnostics"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "77e44b26b7ba",
+      "expected": {
+        "method": "plain-language-repitch",
+        "kind": "positive"
+      },
+      "selected": [
+        "plain-language-repitch"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "7c4a2595b405",
+      "expected": {
+        "method": "deep-module-design",
+        "kind": "positive"
+      },
+      "selected": [
+        "deep-module-design"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "b6e1d75e8102",
+      "expected": {
+        "method": "pre-commit-setup",
+        "kind": "positive"
+      },
+      "selected": [
+        "pre-commit-setup"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "aee1fafddd30",
+      "expected": {
+        "method": "primary-source-research",
+        "kind": "positive"
+      },
+      "selected": [
+        "primary-source-research",
+        "search-first"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "90eef278de50",
+      "expected": {
+        "method": "browser-testing-with-devtools",
+        "kind": "negative"
+      },
+      "selected": [
+        "code-review"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "70ab932b47b2",
+      "expected": {
+        "method": "workflow-specification",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "29ee382225a5",
+      "expected": {
+        "method": "workflow-specification",
+        "kind": "positive"
+      },
+      "selected": [
+        "workflow-specification"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "8689985b71f5",
+      "expected": {
+        "method": "session-diagnostics",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "4d5a573cf528",
+      "expected": {
+        "method": "project-configuration",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "c6340f7b0291",
+      "expected": {
+        "method": "design-prototype",
+        "kind": "negative"
+      },
+      "selected": [
+        "implementation",
+        "tdd"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "b3b4e1f24fa2",
+      "expected": {
+        "method": "decision-interview",
+        "kind": "positive"
+      },
+      "selected": [
+        "decision-interview"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "8255fc705a0e",
+      "expected": {
+        "method": "task-decomposition",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "16ae9cada727",
+      "expected": {
+        "method": "test-fixture-migration",
+        "kind": "positive"
+      },
+      "selected": [
+        "test-fixture-migration"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "e9ecaa692ba5",
+      "expected": {
+        "method": "planning",
+        "kind": "positive"
+      },
+      "selected": [
+        "planning"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "104861058847",
+      "expected": {
+        "method": "pr-description",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "23d74c58008a",
+      "expected": {
+        "method": "shipping-and-launch",
+        "kind": "negative"
+      },
+      "selected": [
+        "debugging"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "425e8b3d530a",
+      "expected": {
+        "method": "verification",
+        "kind": "positive"
+      },
+      "selected": [
+        "verification"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "612a2f703df2",
+      "expected": {
+        "method": "article-shaping",
+        "kind": "positive"
+      },
+      "selected": [
+        "article-shaping"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "74cf60176195",
+      "expected": {
+        "method": "ci-cd-and-automation",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "ca98841e1c41",
+      "expected": {
+        "method": "deprecation-and-migration",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "ea55c8b321dc",
+      "expected": {
+        "method": "api-and-interface-design",
+        "kind": "positive"
+      },
+      "selected": [
+        "api-and-interface-design"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "83d4b1c614a2",
+      "expected": {
+        "method": "delivery",
+        "kind": "positive"
+      },
+      "selected": [
+        "delivery",
+        "verification"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "3aba4cb6dbb3",
+      "expected": {
+        "method": "observability-and-instrumentation",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "1ea6c65b752f",
+      "expected": {
+        "method": "agent-document-authoring",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "900c53232aba",
+      "expected": {
+        "method": "exercise-scaffolding",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "9ec6e1e86686",
+      "expected": {
+        "method": "code-simplification",
+        "kind": "positive"
+      },
+      "selected": [
+        "code-simplification"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "b06923ca675a",
+      "expected": {
+        "method": "tdd",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "9cc13ff5f988",
+      "expected": {
+        "method": "shipping-and-launch",
+        "kind": "positive"
+      },
+      "selected": [
+        "shipping-and-launch"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "0ca76d37f3af",
+      "expected": {
+        "method": "code-simplification",
+        "kind": "negative"
+      },
+      "selected": [
+        "debugging"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "54789a16a752",
+      "expected": {
+        "method": "delegation",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "101500f0c1a8",
+      "expected": {
+        "method": "task-decomposition",
+        "kind": "positive"
+      },
+      "selected": [
+        "task-decomposition"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "ae6ee4cf57a6",
+      "expected": {
+        "method": "implementation",
+        "kind": "positive"
+      },
+      "selected": [
+        "implementation",
+        "incremental-implementation",
+        "tdd"
+      ],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    },
+    {
+      "id": "c6b3e6bf803f",
+      "expected": {
+        "method": "delivery",
+        "kind": "negative"
+      },
+      "selected": [],
+      "result": "PASS",
+      "errors": [],
+      "actor": "docs/validation/andino-unified/actors-v3/batch-3/results.json"
+    }
+  ],
+  "errors": [],
+  "limitation": "Checks expected membership and actual resource byte identity. Parent reviews substantive insights and work; this is not native picker discovery or cross-host parity."
+}

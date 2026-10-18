@@ -1,0 +1,458 @@
+{
+  "ea55c8b321dc": {
+    "method": "api-and-interface-design",
+    "kind": "positive"
+  },
+  "86b1ef81b196": {
+    "method": "api-and-interface-design",
+    "kind": "negative"
+  },
+  "7f3b7e3d5458": {
+    "method": "browser-testing-with-devtools",
+    "kind": "positive"
+  },
+  "90eef278de50": {
+    "method": "browser-testing-with-devtools",
+    "kind": "negative"
+  },
+  "360fbe25a5c2": {
+    "method": "ci-cd-and-automation",
+    "kind": "positive"
+  },
+  "74cf60176195": {
+    "method": "ci-cd-and-automation",
+    "kind": "negative"
+  },
+  "9ec6e1e86686": {
+    "method": "code-simplification",
+    "kind": "positive"
+  },
+  "0ca76d37f3af": {
+    "method": "code-simplification",
+    "kind": "negative"
+  },
+  "a0f04777f329": {
+    "method": "constraint-driven-development",
+    "kind": "positive"
+  },
+  "c97a09f607ac": {
+    "method": "constraint-driven-development",
+    "kind": "negative"
+  },
+  "1faa1ed6c8b3": {
+    "method": "context-engineering",
+    "kind": "positive"
+  },
+  "6e25ed271218": {
+    "method": "context-engineering",
+    "kind": "negative"
+  },
+  "44c630f34d7e": {
+    "method": "deprecation-and-migration",
+    "kind": "positive"
+  },
+  "ca98841e1c41": {
+    "method": "deprecation-and-migration",
+    "kind": "negative"
+  },
+  "03a09343cf18": {
+    "method": "documentation-and-adrs",
+    "kind": "positive"
+  },
+  "52ac50f632f2": {
+    "method": "documentation-and-adrs",
+    "kind": "negative"
+  },
+  "448ff3602487": {
+    "method": "doubt-driven-development",
+    "kind": "positive"
+  },
+  "5ad2fb667acf": {
+    "method": "doubt-driven-development",
+    "kind": "negative"
+  },
+  "fe24008c1d74": {
+    "method": "frontend-ui-engineering",
+    "kind": "positive"
+  },
+  "8a5bd19c1513": {
+    "method": "frontend-ui-engineering",
+    "kind": "negative"
+  },
+  "a933736aaa08": {
+    "method": "git-workflow-and-versioning",
+    "kind": "positive"
+  },
+  "246432375a1a": {
+    "method": "git-workflow-and-versioning",
+    "kind": "negative"
+  },
+  "5af5921054aa": {
+    "method": "idea-refine",
+    "kind": "positive"
+  },
+  "da9611f8a5c8": {
+    "method": "idea-refine",
+    "kind": "negative"
+  },
+  "aeb97ddd0f13": {
+    "method": "incremental-implementation",
+    "kind": "positive"
+  },
+  "55ff90cd8355": {
+    "method": "incremental-implementation",
+    "kind": "negative"
+  },
+  "35a0077b5dc6": {
+    "method": "observability-and-instrumentation",
+    "kind": "positive"
+  },
+  "3aba4cb6dbb3": {
+    "method": "observability-and-instrumentation",
+    "kind": "negative"
+  },
+  "0a74978bf670": {
+    "method": "performance-optimization",
+    "kind": "positive"
+  },
+  "661302e7fccb": {
+    "method": "performance-optimization",
+    "kind": "negative"
+  },
+  "b9f721de7bc3": {
+    "method": "security-and-hardening",
+    "kind": "positive"
+  },
+  "c29303c4759e": {
+    "method": "security-and-hardening",
+    "kind": "negative"
+  },
+  "9cc13ff5f988": {
+    "method": "shipping-and-launch",
+    "kind": "positive"
+  },
+  "23d74c58008a": {
+    "method": "shipping-and-launch",
+    "kind": "negative"
+  },
+  "62991a1d0826": {
+    "method": "source-driven-development",
+    "kind": "positive"
+  },
+  "92f1a3ca4ad7": {
+    "method": "source-driven-development",
+    "kind": "negative"
+  },
+  "b3b4e1f24fa2": {
+    "method": "decision-interview",
+    "kind": "positive"
+  },
+  "587b325770f9": {
+    "method": "decision-interview",
+    "kind": "negative"
+  },
+  "7c4a2595b405": {
+    "method": "deep-module-design",
+    "kind": "positive"
+  },
+  "97adb1b99213": {
+    "method": "deep-module-design",
+    "kind": "negative"
+  },
+  "75f803809d42": {
+    "method": "domain-modeling",
+    "kind": "positive"
+  },
+  "4c9b5e6b8815": {
+    "method": "domain-modeling",
+    "kind": "negative"
+  },
+  "ae6ee4cf57a6": {
+    "method": "implementation",
+    "kind": "positive"
+  },
+  "46adc4dd5778": {
+    "method": "implementation",
+    "kind": "negative"
+  },
+  "7b8f67c0de48": {
+    "method": "architecture-survey",
+    "kind": "positive"
+  },
+  "4ca6b6700667": {
+    "method": "architecture-survey",
+    "kind": "negative"
+  },
+  "74a98a8bed81": {
+    "method": "pr-description",
+    "kind": "positive"
+  },
+  "104861058847": {
+    "method": "pr-description",
+    "kind": "negative"
+  },
+  "12d1a9633c53": {
+    "method": "design-prototype",
+    "kind": "positive"
+  },
+  "c6340f7b0291": {
+    "method": "design-prototype",
+    "kind": "negative"
+  },
+  "aee1fafddd30": {
+    "method": "primary-source-research",
+    "kind": "positive"
+  },
+  "36feb4262cb5": {
+    "method": "primary-source-research",
+    "kind": "negative"
+  },
+  "21abd16e703f": {
+    "method": "environment-retrospective",
+    "kind": "positive"
+  },
+  "3a62a9e3ac0a": {
+    "method": "environment-retrospective",
+    "kind": "negative"
+  },
+  "cb7dbafba722": {
+    "method": "project-configuration",
+    "kind": "positive"
+  },
+  "4d5a573cf528": {
+    "method": "project-configuration",
+    "kind": "negative"
+  },
+  "2945d7ddf125": {
+    "method": "specification",
+    "kind": "positive"
+  },
+  "5e7427f7697e": {
+    "method": "specification",
+    "kind": "negative"
+  },
+  "101500f0c1a8": {
+    "method": "task-decomposition",
+    "kind": "positive"
+  },
+  "8255fc705a0e": {
+    "method": "task-decomposition",
+    "kind": "negative"
+  },
+  "258871d7f9dc": {
+    "method": "issue-triage",
+    "kind": "positive"
+  },
+  "dd5707c5e96e": {
+    "method": "issue-triage",
+    "kind": "negative"
+  },
+  "4ec11b7f258c": {
+    "method": "decision-map",
+    "kind": "positive"
+  },
+  "1c5886e258e4": {
+    "method": "decision-map",
+    "kind": "negative"
+  },
+  "80778696001c": {
+    "method": "human-procedure",
+    "kind": "positive"
+  },
+  "0ada99c86213": {
+    "method": "human-procedure",
+    "kind": "negative"
+  },
+  "ad962d2c7fea": {
+    "method": "handoff",
+    "kind": "positive"
+  },
+  "56d20b512041": {
+    "method": "handoff",
+    "kind": "negative"
+  },
+  "c0d38829fba5": {
+    "method": "learning-workspace",
+    "kind": "positive"
+  },
+  "62407b7d2daa": {
+    "method": "learning-workspace",
+    "kind": "negative"
+  },
+  "8d19111bb034": {
+    "method": "stakeholder-questionnaire",
+    "kind": "positive"
+  },
+  "cef4b736f904": {
+    "method": "stakeholder-questionnaire",
+    "kind": "negative"
+  },
+  "77e44b26b7ba": {
+    "method": "plain-language-repitch",
+    "kind": "positive"
+  },
+  "0304b7c94b26": {
+    "method": "plain-language-repitch",
+    "kind": "negative"
+  },
+  "5378d05d3e6e": {
+    "method": "agent-document-authoring",
+    "kind": "positive"
+  },
+  "1ea6c65b752f": {
+    "method": "agent-document-authoring",
+    "kind": "negative"
+  },
+  "99311717ada0": {
+    "method": "git-operation-guard",
+    "kind": "positive"
+  },
+  "428ff006b859": {
+    "method": "git-operation-guard",
+    "kind": "negative"
+  },
+  "16ae9cada727": {
+    "method": "test-fixture-migration",
+    "kind": "positive"
+  },
+  "4552083726eb": {
+    "method": "test-fixture-migration",
+    "kind": "negative"
+  },
+  "dd270fedf396": {
+    "method": "exercise-scaffolding",
+    "kind": "positive"
+  },
+  "900c53232aba": {
+    "method": "exercise-scaffolding",
+    "kind": "negative"
+  },
+  "b6e1d75e8102": {
+    "method": "pre-commit-setup",
+    "kind": "positive"
+  },
+  "00a68869e832": {
+    "method": "pre-commit-setup",
+    "kind": "negative"
+  },
+  "29ee382225a5": {
+    "method": "workflow-specification",
+    "kind": "positive"
+  },
+  "70ab932b47b2": {
+    "method": "workflow-specification",
+    "kind": "negative"
+  },
+  "f4762b672d6f": {
+    "method": "typescript-boundary-enforcement",
+    "kind": "positive"
+  },
+  "800f809b56fa": {
+    "method": "typescript-boundary-enforcement",
+    "kind": "negative"
+  },
+  "612a2f703df2": {
+    "method": "article-shaping",
+    "kind": "positive"
+  },
+  "1086608388f0": {
+    "method": "article-shaping",
+    "kind": "negative"
+  },
+  "f942e5e3b6fb": {
+    "method": "writing-fragments",
+    "kind": "positive"
+  },
+  "d6e6853eae28": {
+    "method": "writing-fragments",
+    "kind": "negative"
+  },
+  "7aaee84047e6": {
+    "method": "tdd",
+    "kind": "positive"
+  },
+  "b06923ca675a": {
+    "method": "tdd",
+    "kind": "negative"
+  },
+  "adfe38adca99": {
+    "method": "debugging",
+    "kind": "positive"
+  },
+  "e08782084ea0": {
+    "method": "debugging",
+    "kind": "negative"
+  },
+  "3d17a0dd1324": {
+    "method": "code-review",
+    "kind": "positive"
+  },
+  "477bcf0d6c86": {
+    "method": "code-review",
+    "kind": "negative"
+  },
+  "e9ecaa692ba5": {
+    "method": "planning",
+    "kind": "positive"
+  },
+  "082c8d19b4bb": {
+    "method": "planning",
+    "kind": "negative"
+  },
+  "289d07b21a28": {
+    "method": "delegation",
+    "kind": "positive"
+  },
+  "54789a16a752": {
+    "method": "delegation",
+    "kind": "negative"
+  },
+  "4d48c2b89af5": {
+    "method": "plan-execution",
+    "kind": "positive"
+  },
+  "ad15210b7f8f": {
+    "method": "plan-execution",
+    "kind": "negative"
+  },
+  "425e8b3d530a": {
+    "method": "verification",
+    "kind": "positive"
+  },
+  "98fa914fb8f5": {
+    "method": "verification",
+    "kind": "negative"
+  },
+  "f64927d7aa31": {
+    "method": "git-isolation",
+    "kind": "positive"
+  },
+  "dd6434485545": {
+    "method": "git-isolation",
+    "kind": "negative"
+  },
+  "83d4b1c614a2": {
+    "method": "delivery",
+    "kind": "positive"
+  },
+  "c6b3e6bf803f": {
+    "method": "delivery",
+    "kind": "negative"
+  },
+  "66f55e5d499c": {
+    "method": "session-diagnostics",
+    "kind": "positive"
+  },
+  "8689985b71f5": {
+    "method": "session-diagnostics",
+    "kind": "negative"
+  },
+  "d03a556fc435": {
+    "method": "method-authoring",
+    "kind": "positive"
+  },
+  "5a24e85e63fc": {
+    "method": "method-authoring",
+    "kind": "negative"
+  }
+}

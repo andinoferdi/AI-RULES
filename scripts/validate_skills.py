@@ -88,6 +88,10 @@ def package_files(files, expected_name, modes=None):
                 files[name] = ''
     if "README.md" not in files:
         errors.append(f"{expected_name}: missing README.md")
+    if expected_name == 'andino-workflow':
+        folded = [name.casefold() for name in files]
+        if len(folded) != len(set(folded)):
+            errors.append('andino-workflow: case-insensitive runtime path collision')
     for name in files:
         portable_path = "\\" not in name and all(
             part and not part.startswith(".") for part in name.split("/")
@@ -98,6 +102,19 @@ def package_files(files, expected_name, modes=None):
             expected_name == "skripsi-skill"
             and name.startswith("assets/") and name.endswith(".md")
         ))
+        if expected_name == 'andino-workflow':
+            parts = name.split('/')
+            safe = '\\' not in name and ':' not in name and all(
+                part and not part.startswith('.') and not part.endswith((' ', '.'))
+                and not any(ord(char) < 32 or char in '<>"|?*' for char in part)
+                and not re.match(r'^(?:CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(?:\.|$)', part, re.I)
+                for part in parts)
+            method_resource = (len(parts) >= 3 and parts[0] == 'skills'
+                               and NAME.fullmatch(parts[1]) and len(parts[1]) <= 64
+                               and (parts[2:] == ['GUIDE.md'] or
+                                    len(parts) >= 4 and parts[2] in {'references', 'resources', 'templates', 'examples'}
+                                    and name.endswith('.md') and parts[-1] != 'SKILL.md'))
+            allowed = safe and (allowed or bool(method_resource)) and (name == 'SKILL.md' or parts[-1].casefold() != 'skill.md')
         if threejs:
             scaffold_ignore = name == 'assets/threejs-vite-game/.gitignore'
             safe = '\\' not in name and ':' not in name and all(
@@ -154,7 +171,7 @@ def package_files(files, expected_name, modes=None):
     for name, content in files.items():
         if not name.endswith(".md"):
             continue
-        links = re.findall(r'!?\[[^]]*\]\(([^)]+)\)', content) if threejs else LINK.findall(content)
+        links = re.findall(r'!?\[[^]]*\]\(([^)]+)\)', content) if threejs or expected_name == 'andino-workflow' else LINK.findall(content)
         for raw in links:
             target = unquote(raw.split("#", 1)[0].strip().split(" ", 1)[0])
             if not target or re.match(r"^[a-z][a-z0-9+.-]*:", target, re.I):

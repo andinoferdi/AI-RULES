@@ -1,0 +1,118 @@
+{
+  "request": "Use Andino to implement sum_invoice(values) for integer amounts: sum_invoice([10,5]) must return 15 and empty input returns 0. Use an executable regression and preserve the public function. Work in your output directory only.",
+  "status": "PASS",
+  "runtime": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "seam": "sum_invoice(values)",
+  "before": {
+    "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v3\\batch-1\\subject.before.py",
+    "bytes_base64": "ZGVmIHN1bV9pbnZvaWNlKHZhbHVlcyk6CiAgICByZXR1cm4gMAo=",
+    "text": "def sum_invoice(values):\n    return 0\n",
+    "sha256": "cf253806ad0b8fc83cee273e691bf356c4d23969816f4220d57a826cc15bb427"
+  },
+  "accepted_contract": [
+    "sum_invoice([10,5]) == 15",
+    "sum_invoice([]) == 0",
+    "public function name and argument preserved"
+  ],
+  "records": [
+    {
+      "label": "RED_known_invoice",
+      "command_argv": [
+        "rtk",
+        "proxy",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_subject.Contract.test_known_invoice"
+      ],
+      "command": "rtk proxy C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -B -m unittest -v test_subject.Contract.test_known_invoice",
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v3\\batch-1",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "[rtk] /!\\ No hook installed \u00e2\u20ac\u201d run `rtk init -g` for automatic token savings\ntest_known_invoice (test_subject.Contract.test_known_invoice) ... FAIL\n\n======================================================================\nFAIL: test_known_invoice (test_subject.Contract.test_known_invoice)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v3\\batch-1\\test_subject.py\", line 6, in test_known_invoice\n    self.assertEqual(sum_invoice([10, 5]), 15)\nAssertionError: 0 != 15\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=1)\n",
+      "subject_sha256": "cf253806ad0b8fc83cee273e691bf356c4d23969816f4220d57a826cc15bb427",
+      "test_sha256": "3917291a773e5e0f6da185bd920f498955c12c7beea1ded3a68f32d7a977e4f4"
+    },
+    {
+      "label": "GREEN_known_invoice",
+      "command_argv": [
+        "rtk",
+        "proxy",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_subject.Contract.test_known_invoice"
+      ],
+      "command": "rtk proxy C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -B -m unittest -v test_subject.Contract.test_known_invoice",
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v3\\batch-1",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "[rtk] /!\\ No hook installed \u00e2\u20ac\u201d run `rtk init -g` for automatic token savings\ntest_known_invoice (test_subject.Contract.test_known_invoice) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+      "subject_sha256": "93b0eec9937a055ffd2f5fd5e6f33d46c6599ee0a78180510d599e8ab3b97f7f",
+      "test_sha256": "3917291a773e5e0f6da185bd920f498955c12c7beea1ded3a68f32d7a977e4f4"
+    },
+    {
+      "label": "GREEN_complete_local_suite",
+      "command_argv": [
+        "rtk",
+        "proxy",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_subject"
+      ],
+      "command": "rtk proxy C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -B -m unittest -v test_subject",
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v3\\batch-1",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "[rtk] /!\\ No hook installed \u00e2\u20ac\u201d run `rtk init -g` for automatic token savings\ntest_empty_invoice (test_subject.Contract.test_empty_invoice) ... ok\ntest_known_invoice (test_subject.Contract.test_known_invoice) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n",
+      "subject_sha256": "93b0eec9937a055ffd2f5fd5e6f33d46c6599ee0a78180510d599e8ab3b97f7f",
+      "test_sha256": "8608b6c02dc71e55733b6ef55b4ae3e7ac27ac30c91f8b7db1e687da756a456a"
+    },
+    {
+      "label": "FAULTY_COPY_sensitivity",
+      "command_argv": [
+        "rtk",
+        "proxy",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_subject"
+      ],
+      "command": "rtk proxy C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -B -m unittest -v test_subject",
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v3\\batch-1\\faulty-copy",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "[rtk] /!\\ No hook installed \u00e2\u20ac\u201d run `rtk init -g` for automatic token savings\ntest_empty_invoice (test_subject.Contract.test_empty_invoice) ... ok\ntest_known_invoice (test_subject.Contract.test_known_invoice) ... FAIL\n\n======================================================================\nFAIL: test_known_invoice (test_subject.Contract.test_known_invoice)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v3\\batch-1\\faulty-copy\\test_subject.py\", line 6, in test_known_invoice\n    self.assertEqual(sum_invoice([10, 5]), 15)\nAssertionError: 10 != 15\n\n----------------------------------------------------------------------\nRan 2 tests in 0.001s\n\nFAILED (failures=1)\n",
+      "subject_sha256": "fbc52ea4920f70c0ed6ff95e3ac2678ddfaff34eac9157a6efdc5706fcb67a11",
+      "test_sha256": "8608b6c02dc71e55733b6ef55b4ae3e7ac27ac30c91f8b7db1e687da756a456a"
+    }
+  ],
+  "prior_harness_error": {
+    "command": "rtk proxy C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -B -m unittest -v discover -s . -p test_subject.py",
+    "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v3\\batch-1",
+    "exit_code": 2,
+    "stderr": "python.exe -m unittest: error: unrecognized arguments: -s . -p test_subject.py",
+    "subject_sha256": "93b0eec9937a055ffd2f5fd5e6f33d46c6599ee0a78180510d599e8ab3b97f7f",
+    "test_sha256": "8608b6c02dc71e55733b6ef55b4ae3e7ac27ac30c91f8b7db1e687da756a456a",
+    "resolution": "Use module test_subject for the two-test local suite; no production change. Earlier known-invoice RED and GREEN were valid; repeated after harness repair."
+  },
+  "after": {
+    "subject_sha256": "93b0eec9937a055ffd2f5fd5e6f33d46c6599ee0a78180510d599e8ab3b97f7f",
+    "test_sha256": "8608b6c02dc71e55733b6ef55b4ae3e7ac27ac30c91f8b7db1e687da756a456a",
+    "source": "def sum_invoice(values):\n    return sum(values)\n"
+  },
+  "red_green": "Observed 0 != 15 on original bytes, then passing known-invoice test on minimal implementation.",
+  "empty_case": "Added after first GREEN and passed; original stub already satisfies empty input, so no fabricated empty-input RED.",
+  "mutation": "Faulty copy returns only first amount; the same two tests expose 10 != 15 while empty still passes.",
+  "refactor": "Not needed; minimal implementation already uses the standard sum operation.",
+  "limits": "Only supplied isolated Python contract tested. No repository integration, network, service, Git, host parity or future model behavior claim."
+}

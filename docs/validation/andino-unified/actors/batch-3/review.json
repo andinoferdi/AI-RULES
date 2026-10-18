@@ -1,0 +1,148 @@
+{
+  "scope": {
+    "kind": "uncommitted new-file fixture",
+    "baseline": "empty prior file, as specified by raw work request",
+    "files": [
+      {
+        "path": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors/batch-3/candidate.py",
+        "sha256": "1669b711b0f16f44a9dc1545c57ef6d87b055fe12dd0f5d19ea42732be47ddfd",
+        "bytes": 123,
+        "lines": 3
+      }
+    ],
+    "excluded": [
+      "actor harness/report files",
+      "repository-wide status or history",
+      "unrelated files"
+    ]
+  },
+  "spec": "Admins may open every record; members may open only records from their own organization.",
+  "standard": "Never evaluate user input dynamically.",
+  "spec_verdict": {
+    "verdict": "FAIL",
+    "evidence": "2 admin cases match; both member cases violate the stated contract.",
+    "cases": [
+      {
+        "id": "admin_own",
+        "user": {
+          "role": "admin",
+          "org": "A"
+        },
+        "record": {
+          "org": "A"
+        },
+        "expected": true,
+        "actual": true,
+        "matches_spec": true
+      },
+      {
+        "id": "admin_other",
+        "user": {
+          "role": "admin",
+          "org": "A"
+        },
+        "record": {
+          "org": "B"
+        },
+        "expected": true,
+        "actual": true,
+        "matches_spec": true
+      },
+      {
+        "id": "member_own",
+        "user": {
+          "role": "member",
+          "org": "A"
+        },
+        "record": {
+          "org": "A"
+        },
+        "expected": true,
+        "actual": false,
+        "matches_spec": false
+      },
+      {
+        "id": "member_other",
+        "user": {
+          "role": "member",
+          "org": "A"
+        },
+        "record": {
+          "org": "B"
+        },
+        "expected": false,
+        "actual": true,
+        "matches_spec": false
+      }
+    ]
+  },
+  "standards_verdict": {
+    "verdict": "FAIL",
+    "evidence": "AST finds eval(repr(user[role])) at candidate.py:2; this dynamically evaluates a user-derived value.",
+    "rule": "Never evaluate user input dynamically."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "axis": "spec",
+      "severity": "P1",
+      "file": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors/batch-3/candidate.py",
+      "line": 3,
+      "title": "Organization comparison reverses member access",
+      "trigger": "A member with org A opens a record from org B, or opens a record from org A.",
+      "actual": "Different organization returns True; same organization returns False.",
+      "expected": "Members may open same-organization records and must be denied cross-organization records.",
+      "consequence": "Cross-organization records are exposed to members, and legitimate own-organization access is blocked.",
+      "evidence": [
+        "probe-results.json: spec_cases/member_other",
+        "probe-results.json: spec_cases/member_own"
+      ],
+      "remedy": "Use organization equality for the member permission while preserving the admin override; retain both member boundary cases.",
+      "verification_gap": "No application/service integration context was supplied; the function-level counterexamples are observed."
+    },
+    {
+      "id": "F2",
+      "axis": "standards",
+      "severity": "P2",
+      "file": "C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors/batch-3/candidate.py",
+      "line": 2,
+      "title": "Dynamic evaluation violates the explicit input standard",
+      "trigger": "Any can_open call evaluates repr(user[role]) using eval.",
+      "actual": "The role is round-tripped through Python dynamic evaluation.",
+      "expected": "Read and compare the role value without evaluating user-derived input.",
+      "consequence": "Every call violates the documented prohibition and unnecessarily introduces a dynamic execution primitive into authorization logic.",
+      "evidence": [
+        "probe-results.json: standards_dynamic_calls",
+        "candidate.py:2"
+      ],
+      "remedy": "Read user[role] directly; validate accepted role values at the applicable input boundary.",
+      "verification_gap": "No arbitrary-code-execution exploit is claimed for ordinary string roles: repr quotes strings. The explicit standards violation is independently established."
+    }
+  ],
+  "checks": {
+    "command": "rtk python C:/Users/Lenovo/Downloads/AI-RULES-main/docs/validation/andino-unified/actors/batch-3/review_probe.py",
+    "exit_code": 0,
+    "spec_matches": 2,
+    "spec_mismatches": 2,
+    "dynamic_calls": [
+      {
+        "line": 2,
+        "call": "eval"
+      }
+    ],
+    "mutation": {
+      "kind": "admin comparison changed only in memory",
+      "expected": true,
+      "actual": false,
+      "independent_oracle_detected": true,
+      "candidate_file_modified": false
+    },
+    "candidate_unchanged": true
+  },
+  "limitations": [
+    "No supplied repository tests; independent literal spec matrix used.",
+    "No live service or UI validation.",
+    "The new-file baseline is provided by the fixture request; no repository-wide Git status/history was read.",
+    "Review only; candidate was not repaired."
+  ]
+}

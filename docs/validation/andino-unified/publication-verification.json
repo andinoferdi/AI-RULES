@@ -1,0 +1,63 @@
+{
+  "result": "PASS",
+  "runtime_commit": "efd9c508d55ed94ab2a1229e3324a008e7db71f0",
+  "runtime_hash": "b94423e2409edcac5616ce097aa2741c0bc3a26dfda8690563a68bb540c1d657",
+  "source_bundle_count": 7,
+  "andino_files": 127,
+  "andino_guides": 57,
+  "post_pin_suite": {
+    "run": 223,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "log": "publication-tests.log",
+    "log_sha256": "84962a702cb4b26888966155bc4daad1cb4bc833ea3b1de4e4d31d72e3caa753"
+  },
+  "after_suite_change": "5 MAIN files EOF-only normalized; all4 Python ASTs equal; focused28 and all57 procedures rerun afterwards",
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/validate_skills.py",
+        "--andino-dir",
+        "build/andino-unified-publication",
+        "--webbased-ref",
+        "origin/WebBased",
+        "--threejs-ref",
+        "origin/threejs-skills"
+      ],
+      "exit_code": 0,
+      "output": "PASS: 6 skill packages, metadata, relative links, and 6 eval schemas\nLive behavioral evaluation: NOT VERIFIED\nPASS: one Three.js family with 45 internal methods\nPASS: Focus communication references match origin/WebBased; A sources equivalent\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/validate_andino_capabilities.py",
+        "--runtime",
+        "build/andino-unified-publication"
+      ],
+      "exit_code": 0,
+      "output": "PASS: 54 capability eval schemas, 58 contracts; runtime SHA256 b94423e2409edcac5616ce097aa2741c0bc3a26dfda8690563a68bb540c1d657\nLive behavioral coverage: inspect reviewed records; schema success never implies live PASS.\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/validate_andino_unified.py",
+        "--runtime",
+        "build/andino-unified-publication",
+        "--check-sources"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"result\": \"PASS\",\n  \"evidence_class\": \"STRUCTURAL VERIFIED\",\n  \"rows\": 79,\n  \"categories\": {\n    \"stable\": 61,\n    \"meta\": 5,\n    \"setup\": 1,\n    \"misc\": 4,\n    \"in-progress\": 7,\n    \"deprecated\": 1\n  },\n  \"method_destinations\": 58,\n  \"unresolved_collisions\": 0,\n  \"errors\": [],\n  \"limitation\": \"Does not prove method operation or live host routing.\"\n}\n"
+    }
+  ],
+  "remote_setup": "published-setup.json",
+  "behavior_scope": "114/114 on v3 candidate; publication EOF-only lineage proves all non-EOF method text unchanged. No new live-host verification claimed.",
+  "source_build_command": [
+    "python",
+    "scripts/build_release.py",
+    "--stage-only",
+    "--output",
+    "build/andino-unified-release-13"
+  ]
+}

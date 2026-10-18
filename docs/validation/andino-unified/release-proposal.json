@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "status": "RUNTIME_PUBLISHED_MAIN_DELIVERY_VERIFIED",
+  "runtime_branch": "andino-workflow",
+  "runtime_base_commit": "f531269775aafa8b162b4ec65dd919b37a208ffe",
+  "candidate_runtime_content_sha256": "628e3d35c153e463924dbb17212523568e9b759e4d6fd3367a30dad70d6424cd",
+  "hash_algorithm": "SHA256 sorted relative path + NUL + UTF-8 Markdown with CRLF normalized to LF + NUL; see validate_andino_capabilities.content_hash",
+  "main_base_commit": "80f54467188a76ad95af3943221fd2a4b59d2181",
+  "current_published_release_sequence": 13,
+  "proposed_release_sequence": 13,
+  "proposed_runtime_commit": null,
+  "frozen_manifest_modified": true,
+  "sibling_pins_modified": false,
+  "publication_authorized": true,
+  "required_order_after_explicit_authorization": [
+    "Runtime pushed first; actual commit pinned in MAIN.",
+    "Remote acquisition/setup and source bundles verified.",
+    "Commit and normal-push the containing MAIN delivery; confirm its actual remote head."
+  ],
+  "limit": "The candidate content hash is not a Git commit SHA or proof of published remote setup. Disposable installer version transitions do not change real release pins.",
+  "candidate_path": "build\\andino-unified-candidate-v3",
+  "prior_candidates": [
+    "ec364b5f5f0de2ba62a6938af3e87d00af7013ae1bcf45a8e3e5da0a6523da34",
+    "9973fa8c41fc09768126d00aadb2b95cd1d5c93ca16cc9a704492b5afbc8b9cf"
+  ],
+  "published_runtime_commit": "efd9c508d55ed94ab2a1229e3324a008e7db71f0",
+  "published_runtime_content_sha256": "b94423e2409edcac5616ce097aa2741c0bc3a26dfda8690563a68bb540c1d657",
+  "authorization": "User: oke commit dan push",
+  "publication_steps": {
+    "runtime_commit_push": "DONE_REMOTE_CONFIRMED",
+    "main_pin_sequence13": "DONE_SIBLINGS_UNCHANGED",
+    "published_setup": "PASS",
+    "post_pin_tests": "223_OK_ONE_SKIP",
+    "main_commit_push": "AUTHORIZED_FINAL_ACTION_OF_CONTAINING_DELIVERY_COMMIT",
+    "tagged_binary_installer_release": "NOT_PERFORMED"
+  }
+}

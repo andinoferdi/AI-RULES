@@ -1,0 +1,35 @@
+{
+  "change": "EOF newlines only; Python AST unchanged",
+  "files": [
+    {
+      "path": "docs/validation/andino-unified/addy-audit.md",
+      "before_sha256": "d94d250edc1f114b6285be72be40772f931304cc86631b3b29f4082266d253ac",
+      "after_sha256": "4a37f34060551f4a9d57b914e010dfe52072cbf0bf0ae9bf9bd6f8c4cb9c91b6",
+      "python_ast_unchanged": false
+    },
+    {
+      "path": "scripts/check_andino_addy_methods.py",
+      "before_sha256": "010df607b47312680c1c422aa46da9cbad93697a1ac9c6d9aac0381c58702a1f",
+      "after_sha256": "f7bf15420f5796d352b0f254578adfa6c4d97787dcb23c6931cc1245bdf68dc1",
+      "python_ast_unchanged": true
+    },
+    {
+      "path": "scripts/check_andino_matt_methods.py",
+      "before_sha256": "5766412beb172538ee14228f8fc07944c9e24a6ec6dd068bac66b207aeae4570",
+      "after_sha256": "eb04a79df12c08f5f6fa3c8ee73c2824843dfeae72a96c51cb5692e60ab7df2f",
+      "python_ast_unchanged": true
+    },
+    {
+      "path": "scripts/check_andino_superpowers_methods.py",
+      "before_sha256": "1181f4ffa1a41493e2d67e648109239ca700b105135c61c40e6be270a42e8ac8",
+      "after_sha256": "b0de577010a2e0e5c58312fd0a55a3fee7e0124948beb3e70f4e9467cb0b99d0",
+      "python_ast_unchanged": true
+    },
+    {
+      "path": "tests/test_andino_unified.py",
+      "before_sha256": "99cdd805f35737dcad3b19f3e569b97748cffa856c216f57c4661f117cb22411",
+      "after_sha256": "43c279e84d6b154450f15637f0d817dbb342a199847620076cc12fa265fbc76e",
+      "python_ast_unchanged": true
+    }
+  ]
+}

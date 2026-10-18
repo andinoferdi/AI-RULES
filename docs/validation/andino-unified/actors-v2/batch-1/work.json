@@ -1,0 +1,89 @@
+{
+  "request": "sum_invoice([10,5]) returns 15; empty input returns 0",
+  "status": "PASS",
+  "scope": "Local supplied pure-Python fixture only",
+  "public_seam": "sum_invoice(values)",
+  "oracle": {
+    "independent": true,
+    "source": "Literal user contract, no expected-value calculation through production sum",
+    "cases": [
+      {
+        "input": [
+          10,
+          5
+        ],
+        "expected": 15
+      },
+      {
+        "input": [],
+        "expected": 0
+      }
+    ]
+  },
+  "before": {
+    "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-1\\subject.before.py",
+    "sha256": "cf253806ad0b8fc83cee273e691bf356c4d23969816f4220d57a826cc15bb427",
+    "bytes_preserved_exactly": true
+  },
+  "red": {
+    "command": "rtk proxy python -B -m unittest -v test_subject",
+    "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-1",
+    "exit_code": 1,
+    "output": "test_integer_invoice ... FAIL\nAssertionError: 0 != 15\nRan 1 test\nFAILED (failures=1)",
+    "output_kind": "Bounded exact observed failure excerpt; complete initial RED is in actor tool transcript",
+    "subject_sha256": "cf253806ad0b8fc83cee273e691bf356c4d23969816f4220d57a826cc15bb427",
+    "test_source": "import unittest\n\nfrom subject import sum_invoice\n\n\nclass InvoiceContract(unittest.TestCase):\n    def test_integer_invoice(self):\n        self.assertEqual(sum_invoice([10, 5]), 15)\n\n\nif __name__ == \"__main__\":\n    unittest.main()\n",
+    "test_sha256": "f2f3a1bc55cc7dfa01d6969ccf2b1a74b944e1fa9c0c1432e78c14a446ea66c5"
+  },
+  "first_green": {
+    "command": "rtk proxy python -B -m unittest -v test_subject",
+    "exit_code": 0,
+    "output": "test_integer_invoice ... ok\nRan 1 test\nOK",
+    "output_kind": "Bounded observed result excerpt; complete output in actor transcript"
+  },
+  "verification": [
+    {
+      "phase": "final",
+      "command": "rtk proxy C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -B -m unittest -v test_subject",
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-1",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "[rtk] /!\\ No hook installed \u00e2\u20ac\u201d run `rtk init -g` for automatic token savings\ntest_empty_invoice (test_subject.InvoiceContract.test_empty_invoice) ... ok\ntest_integer_invoice (test_subject.InvoiceContract.test_integer_invoice) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n",
+      "subject_sha256": "1a140299d6e961a43e5a8c75eddb08d026c99798d821bcc729fd5d41edd5d15b",
+      "test_sha256": "869cc653d5c61da5291905258c42e5ecb4039830e3a626e63ef1151564931203"
+    },
+    {
+      "phase": "faulty_zero",
+      "command": "rtk proxy C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -B -m unittest -v test_subject",
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-1\\faulty_zero",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "[rtk] /!\\ No hook installed \u00e2\u20ac\u201d run `rtk init -g` for automatic token savings\ntest_empty_invoice (test_subject.InvoiceContract.test_empty_invoice) ... ok\ntest_integer_invoice (test_subject.InvoiceContract.test_integer_invoice) ... FAIL\n\n======================================================================\nFAIL: test_integer_invoice (test_subject.InvoiceContract.test_integer_invoice)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-1\\faulty_zero\\test_subject.py\", line 8, in test_integer_invoice\n    self.assertEqual(sum_invoice([10, 5]), 15)\nAssertionError: 0 != 15\n\n----------------------------------------------------------------------\nRan 2 tests in 0.001s\n\nFAILED (failures=1)\n",
+      "subject_sha256": "cf253806ad0b8fc83cee273e691bf356c4d23969816f4220d57a826cc15bb427",
+      "test_sha256": "869cc653d5c61da5291905258c42e5ecb4039830e3a626e63ef1151564931203"
+    },
+    {
+      "phase": "faulty_empty",
+      "command": "rtk proxy C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -B -m unittest -v test_subject",
+      "cwd": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-1\\faulty_empty",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "[rtk] /!\\ No hook installed \u00e2\u20ac\u201d run `rtk init -g` for automatic token savings\ntest_empty_invoice (test_subject.InvoiceContract.test_empty_invoice) ... FAIL\ntest_integer_invoice (test_subject.InvoiceContract.test_integer_invoice) ... ok\n\n======================================================================\nFAIL: test_empty_invoice (test_subject.InvoiceContract.test_empty_invoice)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-1\\faulty_empty\\test_subject.py\", line 11, in test_empty_invoice\n    self.assertEqual(sum_invoice([]), 0)\nAssertionError: 1 != 0\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nFAILED (failures=1)\n",
+      "subject_sha256": "30258bdd5ca671f6c30ee87f7222bf04d7fb90f94b10724dc4a4a85208528f11",
+      "test_sha256": "869cc653d5c61da5291905258c42e5ecb4039830e3a626e63ef1151564931203"
+    }
+  ],
+  "tested_hashes": {
+    "subject.py": "1a140299d6e961a43e5a8c75eddb08d026c99798d821bcc729fd5d41edd5d15b",
+    "test_subject.py": "869cc653d5c61da5291905258c42e5ecb4039830e3a626e63ef1151564931203",
+    "verify_work.py": "b51f83e179662ec3f353b91bf0b3b8e8b0d1650d9533fa358e9d21738182ed75"
+  },
+  "runtime": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "implementation": "return sum(values)",
+  "refactor": "No refactor was needed; direct minimal GREEN implementation preserves the public function.",
+  "limits": [
+    "No real repository, native picker or other host evaluated",
+    "No input validation semantics outside the integer contract claimed",
+    "No network or external services used"
+  ]
+}

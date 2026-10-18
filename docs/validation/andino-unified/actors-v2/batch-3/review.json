@@ -1,0 +1,76 @@
+{
+  "scope": {
+    "kind": "uncommitted new file",
+    "file": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-3\\candidate.py",
+    "sha256": "1669b711b0f16f44a9dc1545c57ef6d87b055fe12dd0f5d19ea42732be47ddfd",
+    "baseline": "No prior tracked file; supplied bytes are the complete owned review scope."
+  },
+  "spec": {
+    "text": "Admins may open every record; members may open only records from their own organization.",
+    "verdict": "FAIL",
+    "evidence": "Admin same/other organization pass; member same organization denies and other organization allows."
+  },
+  "standards": {
+    "text": "Never evaluate user input dynamically.",
+    "verdict": "FAIL",
+    "evidence": "AST detects eval call on line 2; its argument derives from user role."
+  },
+  "findings": [
+    {
+      "id": "R1",
+      "axis": "Spec",
+      "severity": "HIGH",
+      "file": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-3\\candidate.py",
+      "line": 3,
+      "title": "Organization comparison reverses member authorization",
+      "trigger": {
+        "user": {
+          "role": "member",
+          "org": "A"
+        },
+        "record": {
+          "org": "B"
+        }
+      },
+      "actual": true,
+      "expected": false,
+      "consequence": "A member can open another organization record, exposing tenant data; the same comparison also denies their own organization record.",
+      "evidence": [
+        "test_member_other_org: True is not False",
+        "test_member_same_org: False is not True"
+      ],
+      "remedy": "Use own-organization equality for the member branch and preserve the admin override, with both tenant cases covered.",
+      "verification_gap": "Other roles and malformed records are outside the supplied specification and were not invented as requirements."
+    },
+    {
+      "id": "R2",
+      "axis": "Standards",
+      "severity": "MEDIUM",
+      "file": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-3\\candidate.py",
+      "line": 2,
+      "title": "Dynamic evaluation violates the explicit input standard",
+      "trigger": "Any supplied user role reaches eval(repr(user[\"role\"])).",
+      "consequence": "The implementation evaluates an expression derived from user input despite the explicit ban. repr of an ordinary string quotes that string, so this review does not claim demonstrated arbitrary code execution from an ordinary role string.",
+      "evidence": "test_no_dynamic_evaluation finds eval on line 2 and fails independently of authorization behavior.",
+      "remedy": "Read/validate the role as data rather than evaluating an expression.",
+      "verification_gap": "No arbitrary-object or remote exploitation scenario was executed."
+    }
+  ],
+  "checks": {
+    "command": "rtk python contract_tests.py candidate.py",
+    "exit_code": 1,
+    "tests": 5,
+    "passed": 2,
+    "failed": 3,
+    "mutated_copy": "candidate_admin_mutation.py",
+    "mutation_command": "rtk python contract_tests.py candidate_admin_mutation.py SpecContract.test_admin_same_org SpecContract.test_admin_other_org",
+    "mutation_exit_code": 1,
+    "mutation_tests": 2,
+    "mutation_failed": 1,
+    "mutation_result": "Changing only the disposable admin literal makes the previously passing same-org admin assertion fail. Original candidate remains unchanged."
+  },
+  "limitations": [
+    "Review only; no repair was performed.",
+    "Five bounded cases are not a full project, integration, live authorization or exploit audit."
+  ]
+}

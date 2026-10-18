@@ -1,0 +1,189 @@
+{
+  "result": "PASS",
+  "scope": "Parent inspected actual short source, independently evaluated literal public contracts and review axes; no worker self-report acceptance",
+  "implementation_cases": [
+    {
+      "artifact": "batch-1/subject.py",
+      "sha256": "93b0eec9937a055ffd2f5fd5e6f33d46c6599ee0a78180510d599e8ab3b97f7f",
+      "input": [
+        10,
+        5
+      ],
+      "expected": 15,
+      "actual": 15,
+      "pass_": true
+    },
+    {
+      "artifact": "batch-1/subject.py",
+      "sha256": "93b0eec9937a055ffd2f5fd5e6f33d46c6599ee0a78180510d599e8ab3b97f7f",
+      "input": [],
+      "expected": 0,
+      "actual": 0,
+      "pass_": true
+    },
+    {
+      "artifact": "batch-1/subject.py",
+      "sha256": "93b0eec9937a055ffd2f5fd5e6f33d46c6599ee0a78180510d599e8ab3b97f7f",
+      "input": [
+        -3,
+        8
+      ],
+      "expected": 5,
+      "actual": 5,
+      "pass_": true
+    },
+    {
+      "artifact": "batch-2/subject.py",
+      "sha256": "5a68c3f9f43370ce214c6f38f4f6778133bb77d619d00806587a955350e412c1",
+      "input": [
+        [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        0,
+        2
+      ],
+      "expected": [
+        "A",
+        "B"
+      ],
+      "actual": [
+        "A",
+        "B"
+      ],
+      "pass_": true
+    },
+    {
+      "artifact": "batch-2/subject.py",
+      "sha256": "5a68c3f9f43370ce214c6f38f4f6778133bb77d619d00806587a955350e412c1",
+      "input": [
+        [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        1,
+        2
+      ],
+      "expected": [
+        "C",
+        "D"
+      ],
+      "actual": [
+        "C",
+        "D"
+      ],
+      "pass_": true
+    },
+    {
+      "artifact": "batch-2/subject.py",
+      "sha256": "5a68c3f9f43370ce214c6f38f4f6778133bb77d619d00806587a955350e412c1",
+      "input": [
+        [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        2,
+        2
+      ],
+      "expected": [],
+      "actual": [],
+      "pass_": true
+    },
+    {
+      "artifact": "batch-2/subject.py",
+      "sha256": "5a68c3f9f43370ce214c6f38f4f6778133bb77d619d00806587a955350e412c1",
+      "input": [
+        [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        1,
+        1
+      ],
+      "expected": [
+        "B"
+      ],
+      "actual": [
+        "B"
+      ],
+      "pass_": true
+    },
+    {
+      "artifact": "batch-2/subject.py",
+      "sha256": "5a68c3f9f43370ce214c6f38f4f6778133bb77d619d00806587a955350e412c1",
+      "input": [
+        [],
+        0,
+        2
+      ],
+      "expected": [],
+      "actual": [],
+      "pass_": true
+    }
+  ],
+  "review_cases": [
+    {
+      "role": "admin",
+      "record_org": "A",
+      "expected": true,
+      "actual": true,
+      "matches": true
+    },
+    {
+      "role": "admin",
+      "record_org": "B",
+      "expected": true,
+      "actual": true,
+      "matches": true
+    },
+    {
+      "role": "member",
+      "record_org": "A",
+      "expected": true,
+      "actual": false,
+      "matches": false
+    },
+    {
+      "role": "member",
+      "record_org": "B",
+      "expected": false,
+      "actual": true,
+      "matches": false
+    }
+  ],
+  "standards_eval_lines": [
+    2
+  ],
+  "review_findings_confirmed": true,
+  "faulty_before_copies": [
+    {
+      "path": "batch-1/subject.before.py",
+      "sha256": "cf253806ad0b8fc83cee273e691bf356c4d23969816f4220d57a826cc15bb427",
+      "actual": 0,
+      "expected": 15,
+      "detected": true
+    },
+    {
+      "path": "batch-2/subject.before.py",
+      "sha256": "a33acdd7613112c05718ffebbf4c2b5c9ce2edfde4dcfa2159721ca62a225652",
+      "actual": [
+        "B",
+        "C"
+      ],
+      "expected": [
+        "C",
+        "D"
+      ],
+      "detected": true
+    }
+  ],
+  "limits": "Disposable Python functions only. Review fixture intentionally remains defective; its FAILs are expected observations validating findings, not delivery defects."
+}

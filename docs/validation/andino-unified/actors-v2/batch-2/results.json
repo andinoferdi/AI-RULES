@@ -1,0 +1,1061 @@
+{
+  "host": {
+    "surface": "Codex delegated agent",
+    "model": "UNKNOWN",
+    "version": "UNKNOWN",
+    "scope": "Resource activation and isolated fixture actions only; native picker and universal-host behavior not tested."
+  },
+  "candidate": {
+    "root": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2",
+    "skill_sha256": "5f18632f19179fb789233265f61d0e4bd0f86517378a35ec2f17dab845e1c54c",
+    "routing_sha256": "19f19dbecc2acbed98068b4f7d86c0927545a464f99999f4472f971c871692b1",
+    "index_sha256": "08d4500283417f003e705d4789a5c199827c8126fb8a8d41daa2050041ab565c"
+  },
+  "input": {
+    "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actor-inputs-v2\\batch-2.json",
+    "sha256": "7bec2a1f5358eb747c4cf47e302c727bd8ba66515efaf2afac2ec58fb87b6cdb"
+  },
+  "state_semantics": {
+    "DISCOVERED": "Metadata known",
+    "AVAILABLE": "Actual resource exists",
+    "INVOKABLE": "Current permissions allow file read",
+    "ACTIVE": "Actual full permitted guide read",
+    "USED": "Loaded guide plus relevant fixture action/result",
+    "UNAVAILABLE": "Needed resource/action missing or denied",
+    "NOT_NEEDED": "No current evidenced need"
+  },
+  "selection_results": [
+    {
+      "id": "5ad2fb667acf",
+      "request": "Summarize this already accepted one-line rename.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Accepted one-line rename summary is DIRECT; no consequential completion or specialist method is needed.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "52ac50f632f2",
+      "request": "Add comments saying increment counter above every increment.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Root scope discipline excludes comments that merely restate increments; do not select documentation to add narration.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "4c9b5e6b8815",
+      "request": "Run the existing test suite.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "verification",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\verification\\GUIDE.md",
+          "sha256": "7d79dcd35c90611c99bf7250f9ef2d879c16f305e27f4f6a0ccd7817b3adaa71",
+          "reason": "Existing suite execution and evidence reporting.",
+          "insight": "A zero exit alone is insufficient; inspect actual cases, skips, failures and tested bytes.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Current phase is checking, not implementing; no TDD or CI configuration route.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "2945d7ddf125",
+      "request": "Turn our settled billing discussion into a buildable spec.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "specification",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\specification\\GUIDE.md",
+          "sha256": "72b92b4eb385ad6eb6f3cf4b03576a5ac6b79bf7834ecdc1f583976bcb0954be",
+          "reason": "Accepted billing discussion needs a buildable contract.",
+          "insight": "Reuse settled decisions and existing spec conventions; make acceptance falsifiable without reinterviewing.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Discovery is settled; no decision interview.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "cb7dbafba722",
+      "request": "Prepare local tracker and triage vocabulary docs using our existing conventions.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "project-configuration",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\project-configuration\\GUIDE.md",
+          "sha256": "0dad7c41a0841ac5a61bb97d64ef913cddaffe06a2ea181d1f7ed1dbfa137801",
+          "reason": "Requested local tracker and triage convention documentation.",
+          "insight": "Map category and state to actual labels and preserve existing pointers; local docs grant no external label/setup permission.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "No automatic tracker service or global setup.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "5af5921054aa",
+      "request": "Refine collaborative editing into a small test of whether presence solves coordination.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "idea-refine",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\idea-refine\\GUIDE.md",
+          "sha256": "5d1d07ca851839c5e2675f657af81fe06d7b63488b73537ca270921531ed6793",
+          "reason": "Rough collaboration idea needs a bounded assumption test.",
+          "insight": "Presence-only MVP should test the riskiest coordination assumption and make non-goals explicit.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "No implementation or full CRDT design is authorized by the snapshot.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "35a0077b5dc6",
+      "request": "Instrument payment retries so scheduler and replay origins can be distinguished in the same log.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "observability-and-instrumentation",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\observability-and-instrumentation\\GUIDE.md",
+          "sha256": "1c26a01de213658a8441ecde429cb033510d4e3f9ac1c0127601e847902ac218",
+          "reason": "Origin attribution in a shared retry log is the stated need.",
+          "insight": "Propagate entryPoint from scheduler/replay origin with correlation; correlation alone does not prove origin.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Instrument the named distinction; no speculative vendor telemetry.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "7aaee84047e6",
+      "request": "Tambahkan total faktur pada API publik yang sudah ada.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "api-and-interface-design",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\api-and-interface-design\\GUIDE.md",
+          "sha256": "379746694129f138748acba7c30e97169b497851db0e41dfdb3cfe9b62d4a42f",
+          "reason": "An existing public API changes its invoice output.",
+          "insight": "Inspect provider and consumers and preserve compatibility, error/order/null behavior at the public seam.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Select the boundary method now; load regression support before actual executable implementation, which this snapshot does not authorize.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "97adb1b99213",
+      "request": "List all files in the repository.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "A file inventory needs a sufficient native listing instrument, no methodology or graph.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "1c5886e258e4",
+      "request": "Build the next already specified API slice.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "incremental-implementation",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\incremental-implementation\\GUIDE.md",
+          "sha256": "eaebd3e0d82222f712b4c56906b7debd938377e652194362b7dba49ac53e4cf7",
+          "reason": "The next already specified dependency-ready API slice is requested.",
+          "insight": "Reuse the accepted graph, build the smallest complete slice, and block dependent progression on failed gates.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "No new planning/specification or product discovery; TDD applies when real behavioral implementation begins.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "5378d05d3e6e",
+      "request": "Rewrite this agent procedure so its branch triggers and completion bounds work.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "agent-document-authoring",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\agent-document-authoring\\GUIDE.md",
+          "sha256": "73ee49d2aa4e223666d65787181e0fc880fd370c0a8d66c2d0682fa6483b6aad",
+          "reason": "Rewrite an agent-facing procedure with functional triggers and completion bounds.",
+          "insight": "Separate branch-only references from common steps and demand observable completion; do not compress away required behavior.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "This is document structure and consumer behavior, not a native skill installer.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "3d17a0dd1324",
+      "request": "Review perubahan termasuk file baru belum tracked.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "code-review",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\code-review\\GUIDE.md",
+          "sha256": "ee97a3c7a06c2e057ca760fba788ca748ee40192a234daa22b74e9b8a68d3ff3",
+          "reason": "Review explicitly includes new untracked files.",
+          "insight": "Pin staged, unstaged and owned untracked bytes and preserve separate Spec and Standards verdicts.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "HEAD-only review would omit requested scope.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "7b8f67c0de48",
+      "request": "Survey this order subsystem for evidenced deepening opportunities.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "architecture-survey",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\architecture-survey\\GUIDE.md",
+          "sha256": "cdae61097aa4772ee01e78bab2c77f66b6b6e7d1fb24e35d02a649eb18d8200a",
+          "reason": "Bounded order-subsystem friction survey.",
+          "insight": "Trace actual concepts/callers and report evidenced candidates or none; survey grants no redesign authority.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Interface deepening follows a selected candidate; no premature implementation.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "e08782084ea0",
+      "request": "Jelaskan fungsi cache yang ada.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Healthy existing-cache explanation needs bounded source reading; a cache keyword does not establish a bug or performance problem.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "36feb4262cb5",
+      "request": "Decide my personal preference for dashboard colors.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "A personal preference belongs to the user and cannot be researched or invented. Directly elicit the preference if needed; no UI design/evaluation action is requested.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "adfe38adca99",
+      "request": "Tenant B melihat hasil tenant A setelah dua pencarian.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "debugging",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\debugging\\GUIDE.md",
+          "sha256": "0beb55e7efa68b7965e3d2c52f73e78b42af711bc9f7d4f2e298ea143c55f508",
+          "reason": "A reported cross-tenant wrong-result symptom has unknown cause.",
+          "insight": "Reproduce two-search order and trace identity before confirming cache or any proposed fix.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Security impact matters to diagnosis, but no confirmed cause or remediation is selected in advance.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "4ca6b6700667",
+      "request": "Rename this local variable.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Private local variable rename is a mechanical SIMPLE edit with targeted checking, no migration/API/TDD ceremony.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "ad962d2c7fea",
+      "request": "Prepare a portable handoff for a colleague in another checkout.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "handoff",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\handoff\\GUIDE.md",
+          "sha256": "468b89031f6fbd6261f6c7c4cbb8cc45ae620403d966ccf67702e80bb124dca6",
+          "reason": "Explicit portable continuation for another colleague and checkout.",
+          "insight": "Reference durable reachable artifacts, current state, permissions and a concrete next action; recipient checks drift.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "No new host, background process or message is authorized.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "3a62a9e3ac0a",
+      "request": "Change one typo in the README.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "One README typo is a static SIMPLE edit; no TDD, plan or specialist ceremony.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "d6e6853eae28",
+      "request": "Turn this fixed pile directly into a final article.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "article-shaping",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\article-shaping\\GUIDE.md",
+          "sha256": "af9888c968ba339844b4b16276348ddacbe0a2a2c6d4ae118ffb4c38eed94d88",
+          "reason": "Fixed raw writing material is ready for a final article.",
+          "insight": "Preserve raw pile, ground concepts before dependent claims and do not invent anecdotes; settled user choices remain settled.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Use a separate output and preserve accepted direction; no exploratory writing-fragments route.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "c0d38829fba5",
+      "request": "Teach me safe retry design over several lessons in this learning folder.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "learning-workspace",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\learning-workspace\\GUIDE.md",
+          "sha256": "f723f13abace1639a259b29dc3b5998bca1723e6f9d3b00a3274f7a2ff0ebef0",
+          "reason": "Explicit multi-lesson learning folder.",
+          "insight": "Teach one bounded tangible lesson, distinguish coverage from demonstrated learning and keep lesson paths within the selected workspace.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "No automatic recurring schedule or community account.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "1faa1ed6c8b3",
+      "request": "Prepare a bounded handoff that preserves scope and the current error while dropping old logs.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "context-engineering",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\context-engineering\\GUIDE.md",
+          "sha256": "178247255cddb86dc62a56def8ef826ff77c92ceb681f218cc8ea1f9a29f8f66",
+          "reason": "A bounded context packet must retain scope/current failure and drop old logs.",
+          "insight": "Protect original scope, binding constraints and active failure; compress resolved material to evidence breadcrumbs in the existing checkpoint.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "This is context selection, not a second execution plan.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "587b325770f9",
+      "request": "Implement the already approved invoice retry ticket.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "implementation",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\implementation\\GUIDE.md",
+          "sha256": "2215c4f9e360ad75585e490f79d4e7434a9eaf82f339ec765b1d88836ee20aa5",
+          "reason": "The invoice retry ticket is already approved and ready.",
+          "insight": "Resolve exact ticket/accepted graph, inspect drift and execute one ready public behavior without reopening intent.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "TDD and review activate at their real work phases; no new product interview.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "360fbe25a5c2",
+      "request": "Wire lint, unit, build and release readiness so a failed ancestor prevents advancement.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "ci-cd-and-automation",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\ci-cd-and-automation\\GUIDE.md",
+          "sha256": "8c01e6324a9d13969019136488dfa8047b2d1fb3a0b22aab0bf3cdfb32f22d69",
+          "reason": "Configure lint/unit/build/release dependency gating.",
+          "insight": "Model actual stage dependencies so every failed ancestor blocks advancement; keep hosted enforcement and local model proof distinct.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "The request is pipeline preparation, not deployment authorization.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "246432375a1a",
+      "request": "Explain two plus three without inspecting or changing a repository.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Two plus three is five; sufficient DIRECT answer needs no repository inspection, guide or verification ritual.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "800f809b56fa",
+      "request": "Reorganize every TypeScript project into this layout by default.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Universal TypeScript restructuring is excluded by the layout method; root scope/convention discipline resolves the boundary without loading it.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "44c630f34d7e",
+      "request": "Migrate name to full_name while old clients still run; show expand, backfill and guarded contract.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "deprecation-and-migration",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\deprecation-and-migration\\GUIDE.md",
+          "sha256": "606cc6318f1ea31e3702a549559b27acaabf6234cd9ab3e43a6e2299c6fecbde",
+          "reason": "Schema rename must coexist with old clients.",
+          "insight": "Expand, dual-write, bounded backfill and switch reads precede a separate guarded contract after old consumers are gone.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Live data/destructive changes remain separately bounded; no in-place rename.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "8d19111bb034",
+      "request": "Draft questions for our platform owner about launch capacity and retention.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "stakeholder-questionnaire",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\stakeholder-questionnaire\\GUIDE.md",
+          "sha256": "8f219ce4fa42dc18b869c144c3860a38311b64f3d9590aaed235f774df219c9c",
+          "reason": "Named platform owner holds launch capacity and retention facts.",
+          "insight": "Map each decision gap to one recipient-appropriate question with answer space; draft locally without inventing urgency or sending it.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Question drafting is distinct from messaging authority.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "4d48c2b89af5",
+      "request": "Lanjutkan plan sesudah memeriksa drift.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "plan-execution",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\plan-execution\\GUIDE.md",
+          "sha256": "358a916e729a43638cfb2f08efe0908cfc31ad51dcddf255ff4bff393fa3ed67",
+          "reason": "Resume accepted plan after checking drift.",
+          "insight": "Compare actual artifact identities and reopen only affected evidence; resume concrete NEXT ACTION instead of reinitializing.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Root handoff/execution-plan references were also read; no mandatory history or memory service.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "ad15210b7f8f",
+      "request": "Buat ulang semua rencana tanpa sebab.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Replanning every plan without a cause contradicts reuse of accepted durable state; no planning method is needed merely to refuse the pointless restart.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "b9f721de7bc3",
+      "request": "Validate an owned temporary job leaf before cleanup and prove SQL input cannot alter the query.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "security-and-hardening",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\security-and-hardening\\GUIDE.md",
+          "sha256": "0dda985580593275f63da836c82ba834cab9945606d80dc0a382a6f8b29d0118",
+          "reason": "Owned cleanup path and SQL injection trust boundaries are explicit.",
+          "insight": "Resolve containment and authenticated ownership before teardown; parameterize the SQL value, and do not treat markers alone as security proof.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Selection grants no deletion or live database operation.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "98fa914fb8f5",
+      "request": "Say hello in one sentence; no change, test result or completion claim is requested.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Greeting only: no change, result or completion claim, so no verification or plan.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "0304b7c94b26",
+      "request": "Research a new unrelated framework.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "search-first",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\search-first\\SKILL.md",
+          "sha256": "fd9d774b0b35394fee191b437f6ef29635f4d6192b44d94b6a4226320bbf85a3",
+          "reason": "Explicit unfamiliar framework technical research.",
+          "insight": "Research need remains selected even offline; absent authorized network evidence leaves external findings unknown.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "primary-source-research",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\primary-source-research\\GUIDE.md",
+          "sha256": "d890dce190b54841e03e09286aa1a0c4c0851775f40ac0436e3b5c3ba265babd",
+          "reason": "Technical findings need source-owned support.",
+          "insight": "Separate facts, interpretation and gaps, preserving version/date and exact supporting sources.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "ACTIVE only. No network/services or research action authorized in these snapshots; neither research method is USED.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "4552083726eb",
+      "request": "Use fromAny throughout production request validation.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Test-fixture fromAny casting is explicitly excluded from production/runtime validation. Resolve boundary without loading the test migration method.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "03a09343cf18",
+      "request": "Record the queue decision using our existing ADR-004 .rst convention and retain its throughput caveat.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "documentation-and-adrs",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\documentation-and-adrs\\GUIDE.md",
+          "sha256": "4dd09cd2b0c3c24b16e09843272f976cc4857d738b9128a53fe4a6b9caa64472",
+          "reason": "Record a queue decision preserving existing ADR-004 .rst conventions.",
+          "insight": "Inspect numbering/location/format and preserve throughput caveats and history; do not create a competing ADR system.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "No generic comment expansion or publication.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "80778696001c",
+      "request": "Prepare exact manual steps for the credential dashboard I must access myself.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "human-procedure",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\human-procedure\\GUIDE.md",
+          "sha256": "935c71bf6b9faaacb7069ec4c935f84f0daaac0a3989406e8ebf37afff5ef1c3",
+          "reason": "Credential dashboard journey must be performed by the human.",
+          "insight": "Use verified/current journey steps and secret destinations; never invent UI paths or request secrets in chat.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Manual steps can be drafted; no dashboard access or credential handling is authorized.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "082c8d19b4bb",
+      "request": "Lanjutkan task pada graph yang sudah lengkap.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "plan-execution",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\plan-execution\\GUIDE.md",
+          "sha256": "358a916e729a43638cfb2f08efe0908cfc31ad51dcddf255ff4bff393fa3ed67",
+          "reason": "Continue a task in an already complete graph.",
+          "insight": "Reuse the graph, reconcile evidence and choose the verified ready frontier; complete graph structure is not proof all task results are accepted.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "No replacement planning/decomposition phase.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    },
+    {
+      "id": "289d07b21a28",
+      "request": "Assess whether these two independent audit tasks could be safely delegated by their authorized parent with child tools. This is a planning decision only; do not spawn a child.",
+      "selected": [
+        {
+          "id": "focus",
+          "path": "C:\\Users\\Lenovo\\.agents\\skills\\focus\\SKILL.md",
+          "sha256": "daea6a7bc5a39afe235b3f06b0f2769b859cc6d591062cd5588487b31d6a0ef6",
+          "reason": "Required Andino default communication layer.",
+          "insight": "Preserve evidence and uncertainty while keeping output direct; Focus owns no lifecycle.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        },
+        {
+          "id": "delegation",
+          "path": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\build\\andino-unified-candidate-v2\\skills\\delegation\\GUIDE.md",
+          "sha256": "395c3af12c210fd8e140777c807a742a96d5758b1691605b8ae47a094e966988",
+          "reason": "Planning-only parent delegation safety assessment for two independent audit tasks.",
+          "insight": "Authorized parent can consider bounded disjoint ready tasks with real child tools, at most three direct workers and no nested spawning; inspect reports before acceptance.",
+          "state": "ACTIVE",
+          "mechanism": "actual permitted full file read",
+          "used": false
+        }
+      ],
+      "unavailable": [],
+      "note": "Guide ACTIVE only. Actor is a delegated child and cannot spawn; no dispatch was attempted or claimed.",
+      "snapshot_only": true,
+      "actual_task_actions_authorized": false
+    }
+  ],
+  "selection_limits": "Reads establish ACTIVE only. Snapshot actions were not executed. Other product facts and current phases treated as settled; no oracle/expected/evals, prior actors, implementation scripts or audit/coverage artifacts read.",
+  "work": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-main\\docs\\validation\\andino-unified\\actors-v2\\batch-2\\work.json"
+}
