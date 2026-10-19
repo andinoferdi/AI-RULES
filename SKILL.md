@@ -31,6 +31,7 @@ Load only the reference needed for the current decision, not every resource:
 - Resolve short requests or feedback: [Intent and context](references/intent-and-context.md).
 - Check claims, sources or institutional authority: [Evidence and integrity](references/evidence-guidelines-integrity.md).
 - Work under Andino: [Lifecycle integration](references/andino-integration.md).
+- Refine the prose of supported academic text with the optional `natural-writing` skill: [Companion skills](references/andino-integration.md).
 - Develop an idea or assess access: [Discovery and feasibility](references/discovery-feasibility.md).
 - Develop or revise a title: [Title development](references/title-development.md).
 - Establish gap, contribution or answerable questions: [Problem and RQ](references/research-problem-gap-rq.md).
