@@ -51,7 +51,7 @@ from pathlib import Path
 root = Path.cwd().resolve()
 prefixes = [Path(sys.base_prefix).resolve(), Path(sys.prefix).resolve()]
 source = sys.stdin.read()
-allowed = {"json","os","sqlite3","hashlib","pathlib","concurrent.futures","statistics","re","html.parser"}
+allowed = {"json","os","sqlite3","hashlib","pathlib","concurrent.futures","statistics","re","html.parser","itertools"}
 for node in ast.walk(ast.parse(source)):
     if isinstance(node, ast.Import):
         if any(a.name not in allowed for a in node.names):
@@ -191,7 +191,7 @@ def main() -> int:
         "runtime_root": str(args.runtime_root.resolve()),
         "manifest_sha256": digest(args.manifest),
         "inputs": {"scripts/check_andino_addy_methods.py": digest(Path(__file__)),
-                   "docs/validation/andino-unified/addy-methods.json": digest(args.manifest)},
+                   args.manifest.resolve().relative_to(main_root).as_posix(): digest(args.manifest)},
         "summary": {"methods": len(results), "passed": passed,
                     "failed": len(results)-passed,
                     "live_browser_or_service_runs": 0,

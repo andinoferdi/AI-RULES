@@ -1,5 +1,6 @@
 """Verify published default-latest setup in disposable projects, never global skills."""
 import contextlib
+import argparse
 import io
 import json
 from pathlib import Path
@@ -16,11 +17,16 @@ from validate_andino_capabilities import content_hash, runtime_files
 
 
 def main():
-    evidence = ROOT / 'docs/validation/andino-unified'
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--evidence-dir', type=Path, default=ROOT / 'docs/validation/andino-unified')
+    parser.add_argument('--previous-manifest', type=Path,
+                        help='previous official release manifest; defaults to evidence pre-publication snapshot')
+    args = parser.parse_args()
+    evidence = args.evidence_dir.resolve()
     manifest = json.loads((ROOT / 'src/ai_rules/release/data/release_manifest.json').read_text(encoding='utf-8'))
     expected = manifest['first_party']['andino-workflow']['commit']
     lineage = json.loads((evidence / 'publication-lineage.json').read_text(encoding='utf-8'))
-    old_manifest = json.loads((evidence / 'pre-publication/release_manifest.json').read_text(encoding='utf-8'))
+    old_manifest = json.loads((args.previous_manifest or evidence / 'pre-publication/release_manifest.json').read_text(encoding='utf-8'))
     prior = old_manifest['first_party']['andino-workflow']['commit']
     records = []
     with TemporaryDirectory(prefix='andino-published-proof-') as temporary:

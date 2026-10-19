@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "channel": "stable",
+  "release_sequence": 14,
+  "verified_at": "2026-10-18",
+  "first_party": {
+    "andino-workflow": {
+      "branch": "andino-workflow",
+      "ref": "origin/andino-workflow",
+      "commit": "8866a23c5491baf9845e7ba7f7f3b43baaca32d6",
+      "release_sequence": 14,
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
+    },
+    "ai-codebase-rescue": {
+      "branch": "ai-codebase-rescue",
+      "ref": "origin/ai-codebase-rescue",
+      "commit": "5b0b47c678425daf33be582806f49aed497e2c2b",
+      "release_sequence": 14,
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
+    },
+    "skripsi-skill": {
+      "branch": "skripsi-skill",
+      "ref": "origin/skripsi-skill",
+      "commit": "fceec66210be1f407942ee5d016dc7801f26e68f",
+      "release_sequence": 14,
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
+    },
+    "search-first": {
+      "branch": "search-first",
+      "ref": "origin/search-first",
+      "commit": "b55364bf231085bb4a9126c9fe694ddb445df17f",
+      "release_sequence": 14,
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
+    },
+    "focus": {
+      "branch": "focus",
+      "ref": "origin/focus",
+      "commit": "dbeff404f8f894e53aacc7aabf16c12a6326c887",
+      "release_sequence": 14,
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
+    },
+    "council": {
+      "branch": "council",
+      "ref": "origin/council",
+      "commit": "82984fa4dd75023e63d944e6cee1b61d191047c4",
+      "release_sequence": 1
+    },
+    "threejs-skills": {
+      "branch": "threejs-skills",
+      "ref": "origin/threejs-skills",
+      "commit": "7ff3f5752b333cbe041385372bb3d419a8f0c494",
+      "release_sequence": 14,
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
+    }
+  },
+  "publication_order": [
+    "threejs-skills",
+    "andino-workflow",
+    "main",
+    "tagged installer release"
+  ],
+  "publication_status": "RUNTIME_REFS_PUBLISHED_INSTALLER_RELEASE_PENDING"
+}

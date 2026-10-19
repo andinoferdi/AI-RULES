@@ -1,0 +1,437 @@
+{
+  "schema_version": 1,
+  "source_family": "superpowers",
+  "status": "PASS",
+  "methods": [
+    {
+      "method": "tdd",
+      "status": "PASS",
+      "metadata_sha256": "c38bcfb0794c81811ac42745ffa3ad9fe365d7f758c622cfab8c27d424c3ce35",
+      "evidence_type": "deterministic_procedural_application",
+      "guide_sha256": "4b54cdbe7fab40051b91f5291d56932a411f67149ce95f97d4698891712120e0",
+      "resource_sha256": {
+        "skills/tdd/resources/contract.md": "a018dd8e2405857ffcb1638c77702747f596c8b971fbba93566e0c11d57225c4"
+      },
+      "observed": {
+        "red": {
+          "command": [
+            "python.exe",
+            "-B",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            ".",
+            "-v"
+          ],
+          "exit_code": 1,
+          "output": "test_known_invoice (test_contract.Contract.test_known_invoice) ... FAIL\n\n======================================================================\nFAIL: test_known_invoice (test_contract.Contract.test_known_invoice)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-superpowers-procedures-s0flfsvh\\tdd\\test_contract.py\", line 5, in test_known_invoice\n    self.assertEqual(total([10, 5]), 15)\nAssertionError: 0 != 15\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=1)",
+          "source_sha256": "09c7948b8ae6a627b9f670bb2d69bf1f71a69a0ff8f69f41bc83cc3277045388"
+        },
+        "green": {
+          "command": [
+            "python.exe",
+            "-B",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            ".",
+            "-v"
+          ],
+          "exit_code": 0,
+          "output": "test_known_invoice (test_contract.Contract.test_known_invoice) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK",
+          "source_sha256": "cfa7852de016d35f44f92b1a00eff9c3493944d345e2d88fee4c0dacda021ad2"
+        },
+        "separate_refactor_gate": {
+          "command": [
+            "python.exe",
+            "-B",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            ".",
+            "-v"
+          ],
+          "exit_code": 0,
+          "output": "test_known_invoice (test_contract.Contract.test_known_invoice) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK",
+          "source_sha256": "c59afe37bd0cf751d180214ca37463f3c8ae0e173fe9b0e3fd1572d55fe85b36"
+        },
+        "mutation_killed": {
+          "command": [
+            "python.exe",
+            "-B",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            ".",
+            "-v"
+          ],
+          "exit_code": 1,
+          "output": "test_known_invoice (test_contract.Contract.test_known_invoice) ... FAIL\n\n======================================================================\nFAIL: test_known_invoice (test_contract.Contract.test_known_invoice)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-superpowers-procedures-s0flfsvh\\tdd\\test_contract.py\", line 5, in test_known_invoice\n    self.assertEqual(total([10, 5]), 15)\nAssertionError: 0 != 15\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=1)",
+          "source_sha256": "09c7948b8ae6a627b9f670bb2d69bf1f71a69a0ff8f69f41bc83cc3277045388"
+        },
+        "oracle": "known literal 15 for [10,5]"
+      }
+    },
+    {
+      "method": "debugging",
+      "status": "PASS",
+      "metadata_sha256": "7707dec7bf7e3103cf6cdf4a91d7d8bd8eb98afbbeace2c2f187d7fffe8bc5e0",
+      "evidence_type": "deterministic_procedural_application",
+      "guide_sha256": "0b08a3539976fbd2dbfb949d58472eb1d77a5a7d632257b305874ba8e87134ea",
+      "resource_sha256": {
+        "skills/debugging/resources/contract.md": "a050728a4b93aa6f05f03a9b5d2bbe291e7560363565677c50c6284b86b6f9d0"
+      },
+      "observed": {
+        "exact_repro": {
+          "command": [
+            "python.exe",
+            "-B",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            ".",
+            "-v"
+          ],
+          "exit_code": 1,
+          "output": "test_two_tenants_same_key (test_contract.Contract.test_two_tenants_same_key) ... FAIL\n\n======================================================================\nFAIL: test_two_tenants_same_key (test_contract.Contract.test_two_tenants_same_key)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-superpowers-procedures-s0flfsvh\\debugging\\test_contract.py\", line 6, in test_two_tenants_same_key\n    self.assertEqual(lookup('B', '7'), 'B:7')\nAssertionError: 'A:7' != 'B:7'\n- A:7\n? ^\n+ B:7\n? ^\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)",
+          "source_sha256": "318212828b15591031056b9acfbe610c77b58b06991a95c6e14e711623d9bb88"
+        },
+        "observed_two_callers": {
+          "exit_code": 0,
+          "output": "[\"A:7\", \"A:7\"]"
+        },
+        "hypothesis": "Cache identity omits tenant; changing only identity to (tenant, key) prevents B receiving A's value.",
+        "distinguishing_probe": {
+          "exit_code": 0,
+          "output": "[\"A:7\", \"B:7\"]"
+        },
+        "regression_and_original_scenario": {
+          "command": [
+            "python.exe",
+            "-B",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            ".",
+            "-v"
+          ],
+          "exit_code": 0,
+          "output": "test_two_tenants_same_key (test_contract.Contract.test_two_tenants_same_key) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK",
+          "source_sha256": "32911e9155197d3766f0da310bd151450309970b5398d1592c76d6b185f82feb"
+        },
+        "mutation_killed": {
+          "command": [
+            "python.exe",
+            "-B",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            ".",
+            "-v"
+          ],
+          "exit_code": 1,
+          "output": "test_two_tenants_same_key (test_contract.Contract.test_two_tenants_same_key) ... FAIL\n\n======================================================================\nFAIL: test_two_tenants_same_key (test_contract.Contract.test_two_tenants_same_key)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-superpowers-procedures-s0flfsvh\\debugging\\test_contract.py\", line 6, in test_two_tenants_same_key\n    self.assertEqual(lookup('B', '7'), 'B:7')\nAssertionError: 'A:7' != 'B:7'\n- A:7\n? ^\n+ B:7\n? ^\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)",
+          "source_sha256": "318212828b15591031056b9acfbe610c77b58b06991a95c6e14e711623d9bb88"
+        },
+        "limit": "Synthetic multi-tenant cache, no production environment measured"
+      }
+    },
+    {
+      "method": "code-review",
+      "status": "PASS",
+      "metadata_sha256": "b19e69b9726d4f0bcfdb3af90b42914fc21c1c3f1bd1e70aa459c7c8a80fafab",
+      "evidence_type": "deterministic_procedural_application",
+      "guide_sha256": "26b277d4e168094d27c535dd2b88ff68c59b37302e420175fe78f9af427a5177",
+      "resource_sha256": {
+        "skills/code-review/resources/contract.md": "1915c87f9f9b6697bf867790468d0848d3c369f69ac5cdb9a6180a7b7b6003bf"
+      },
+      "observed": {
+        "working_snapshot_including_new_files": {
+          "candidate.py": "a4351e53d8450d3d25c1c986cdbab12b74156566af8f012c019f2a4156cf6edf",
+          "helper.py": "1b9a7ff45695b6bdcd0b0505b98c637d9b8790a15306f04cd07cb08698ce5375"
+        },
+        "diff": "--- base\n+++ candidate\n@@ -1,2 +1,5 @@\n def spend(balance, amount):\n+    amount = eval(str(amount))\n+    if amount >= balance:\n+        return None\n     return balance - amount\n",
+        "spec_regression": {
+          "command": [
+            "python.exe",
+            "-B",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            ".",
+            "-v"
+          ],
+          "exit_code": 1,
+          "output": "test_exact_balance_allowed (test_contract.Contract.test_exact_balance_allowed) ... FAIL\n\n======================================================================\nFAIL: test_exact_balance_allowed (test_contract.Contract.test_exact_balance_allowed)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-superpowers-procedures-s0flfsvh\\code-review\\test_contract.py\", line 5, in test_exact_balance_allowed\n    self.assertEqual(spend(10, 10), 0)\nAssertionError: None != 0\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)",
+          "source_sha256": "a4351e53d8450d3d25c1c986cdbab12b74156566af8f012c019f2a4156cf6edf"
+        },
+        "independent_axis_findings": [
+          {
+            "axis": "Spec",
+            "verdict": "FAIL",
+            "file": "candidate.py",
+            "line": 3,
+            "trigger": "spend(10,10)",
+            "expected": 0,
+            "observed": null,
+            "effect": "Valid exact-balance spend is rejected",
+            "remedy": "Reject only amount > balance"
+          },
+          {
+            "axis": "Standards",
+            "verdict": "FAIL",
+            "file": "candidate.py",
+            "line": 2,
+            "rule": "Dynamic eval of input is prohibited.",
+            "effect": "Input evaluation violates policy",
+            "remedy": "Remove eval and preserve numeric public input contract"
+          }
+        ],
+        "fixed_contract": {
+          "command": [
+            "python.exe",
+            "-B",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            ".",
+            "-v"
+          ],
+          "exit_code": 0,
+          "output": "test_exact_balance_allowed (test_contract.Contract.test_exact_balance_allowed) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK",
+          "source_sha256": "735403ae9d3c5ffadd0d5c4081ee949d7e1c1ef0bcdeaa0fb515a2f0d05378c3"
+        },
+        "post_review_drift_detected": true,
+        "limit": "Procedural review of planted defect, not independent LLM review"
+      }
+    },
+    {
+      "method": "planning",
+      "status": "PASS",
+      "metadata_sha256": "29c347aac3393c03e31cecc9698369fb76203c26166f3fa83aee0e9fda91ac6f",
+      "evidence_type": "deterministic_procedural_application",
+      "guide_sha256": "9543eb6620cb013b5c89e100ed5bcff7d94756e805c569fe06f676266a6259f8",
+      "resource_sha256": {
+        "skills/planning/resources/contract.md": "995df859d7873ed90d5b51496361c7b23830485983f6024dc88e052a47d6e712"
+      },
+      "observed": {
+        "frontiers": [
+          [
+            "create"
+          ],
+          [
+            "audit",
+            "list"
+          ]
+        ],
+        "interface_compatibility": "matched",
+        "cycle_rejected": "dependency cycle",
+        "dangling_rejected": "dangling dependency",
+        "independent_after_create": [
+          "audit",
+          "list"
+        ]
+      }
+    },
+    {
+      "method": "delegation",
+      "status": "PASS",
+      "metadata_sha256": "9e78af38121d78543663819ec57da92805599cb0f18be407a1a57725303749a3",
+      "evidence_type": "deterministic_procedural_application",
+      "guide_sha256": "d7cd174d3c35d871f93f9aaa4e11d850f945981875bbb07ae367bb3e22a0aee4",
+      "resource_sha256": {
+        "skills/delegation/resources/contract.md": "176dbe10a9bc97ff833e59fedf8d032edc145a63c0b4fd35b2423118a235e9a1"
+      },
+      "observed": {
+        "ready_selected": [
+          "api",
+          "docs"
+        ],
+        "dependent_ui_not_selected": true,
+        "ancestor_and_normalized_overlap_rejected": true,
+        "denied_or_missing_tool_fallback": "inline",
+        "live_children_spawned": 0,
+        "limit": "Scheduling/ownership procedure only; no real agent dispatch in checker"
+      }
+    },
+    {
+      "method": "plan-execution",
+      "status": "PASS",
+      "metadata_sha256": "11a6745731c22d495db0fc9886c1fb145ebfff0de4066188a0de30c230db52ac",
+      "evidence_type": "deterministic_procedural_application",
+      "guide_sha256": "e59c94594ec2342531a79068d0801707f636ebfa74a561475ec2c80b3b33663c",
+      "resource_sha256": {
+        "skills/plan-execution/resources/contract.md": "627f4be29114f7905690431f7a45b929b93b93d043ddc95063b2a1d37038ab72"
+      },
+      "observed": {
+        "plan_id": "ticket-17",
+        "unchanged_task_skipped": "create",
+        "selected_next": "list",
+        "create_hash": "9f777d26c649d1658a32a1e3eb4ba836dec1e466cca764990678d3194b24d821",
+        "drift_invalidates_producer_and_blocks_list": true
+      }
+    },
+    {
+      "method": "verification",
+      "status": "PASS",
+      "metadata_sha256": "079166c12fffd6e023a0d7093f9bff4116d130d029f85b9e2fc692e89dd1d550",
+      "evidence_type": "deterministic_procedural_application",
+      "guide_sha256": "cda5ec01527a76f5c03246c71f0732751376da4b6838d37de2cdfd8805ce7ff5",
+      "resource_sha256": {
+        "skills/verification/resources/contract.md": "8168ebcc13e7e02a53e116e3dee51ebc042f655a5dd2e701036f1faf0e5bec74"
+      },
+      "observed": {
+        "claim": "public answer returns 15",
+        "verified": {
+          "command": [
+            "python.exe",
+            "-B",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            ".",
+            "-v"
+          ],
+          "exit_code": 0,
+          "output": "test_answer (test_contract.Contract.test_answer) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK",
+          "source_sha256": "f0eca3d7d274df9a908ba1d33317f6316ba0b5adf4415bd9c927cba9fc9e1c11"
+        },
+        "tested_sha256": "f0eca3d7d274df9a908ba1d33317f6316ba0b5adf4415bd9c927cba9fc9e1c11",
+        "stale_evidence_rejected": true,
+        "current_changed_behavior": {
+          "command": [
+            "python.exe",
+            "-B",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            ".",
+            "-v"
+          ],
+          "exit_code": 1,
+          "output": "test_answer (test_contract.Contract.test_answer) ... FAIL\n\n======================================================================\nFAIL: test_answer (test_contract.Contract.test_answer)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-superpowers-procedures-s0flfsvh\\verification\\test_contract.py\", line 5, in test_answer\n    self.assertEqual(answer(),15)\nAssertionError: 16 != 15\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=1)",
+          "source_sha256": "47be5bef0224302c557573f20d51e53ea205450fff1958cd04832968ac0e3dcd"
+        }
+      }
+    },
+    {
+      "method": "git-isolation",
+      "status": "PASS",
+      "metadata_sha256": "b717cfc3ed5461ee90670dc61eb7712a6fa048aea5f8d13d302bc57f54004e20",
+      "evidence_type": "deterministic_procedural_application",
+      "guide_sha256": "d297feb5ec19298c29cf3a046e18273c9dc4c49f6095280c5d049646e233258e",
+      "resource_sha256": {
+        "skills/git-isolation/resources/contract.md": "d597ff4683793658ebffcf222f2670292564598d88592ed514a490c05dd01ba4"
+      },
+      "observed": {
+        "metadata_classifications": [
+          "ordinary",
+          "linked",
+          "submodule"
+        ],
+        "contained_target_accepted": true,
+        "outside_and_protected_targets_rejected": true,
+        "user_marker_preserved": true,
+        "git_mutations": 0,
+        "limit": "Synthetic Git metadata plus real filesystem containment; no live worktree created"
+      }
+    },
+    {
+      "method": "delivery",
+      "status": "PASS",
+      "metadata_sha256": "ecc08733027365f975c42d5813faca0677a2b006d2224fa7596d24175b3d3822",
+      "evidence_type": "deterministic_procedural_application",
+      "guide_sha256": "2c8bbdb7f4832e5c1a8834fff222e841c39175ef6c4316cb1a2ea903eeafef62",
+      "resource_sha256": {
+        "skills/delivery/resources/contract.md": "e61c4b0f73ffda6bc47db45fb94400669c2f628a117ab355e9214874cc3cfb67"
+      },
+      "observed": {
+        "implementation_ready": true,
+        "candidate": "uncommitted",
+        "allowed_integration_actions": [],
+        "material_unverified_criterion_blocks_ready_claim": "live-host",
+        "git_or_external_mutations": 0
+      }
+    },
+    {
+      "method": "session-diagnostics",
+      "status": "PASS",
+      "metadata_sha256": "fb288bc9b8093fbb8d756a0724c58d10c43df5ef503bd0eeb7234bec8f342227",
+      "evidence_type": "deterministic_procedural_application",
+      "guide_sha256": "45e0bbd2c2508fbd9831e36a0fabc1628bbf590c46ba23969c34384f84232773",
+      "resource_sha256": {
+        "skills/session-diagnostics/resources/contract.md": "a1093e6e323cbfa56fca5c0fedeb26b28f0d28e76cf992953affad5f2c293034"
+      },
+      "observed": {
+        "source_sha256_unchanged": "e461e33dc2b546da61c64def9db741c69a0483eacb4974ad2a6e4f3369f9328c",
+        "record_sizes": [
+          60,
+          106,
+          200094
+        ],
+        "bounded_findings": [
+          {
+            "line": 2,
+            "quote": "Authorization: Bearer <SECRET-1>\nerror: tenant mismatch",
+            "source": "session.jsonl",
+            "classification": "tool"
+          }
+        ],
+        "secret_removed": true,
+        "privacy_outcome": "synthetic credential category passed",
+        "evidence_support": "tenant mismatch signal retained at original line 2",
+        "hostile_record_actions": 0,
+        "limit": "No live session inspected; narrow synthetic redaction, not privacy certification"
+      }
+    },
+    {
+      "method": "method-authoring",
+      "status": "PASS",
+      "metadata_sha256": "80106abcbdc65279e2573bca59cfdd319f701c4f4d98c8f2774b748d2132e5a1",
+      "evidence_type": "deterministic_procedural_application",
+      "guide_sha256": "1ec77ab84fe20e2c869b43d236b9d272680b2da72e2d3f4acc76f375be165565",
+      "resource_sha256": {
+        "skills/method-authoring/resources/contract.md": "81fdfca7297aec5707f10f19ca200942635872bb98c2d5433e33bbda85931a9b"
+      },
+      "observed": {
+        "pressure": "We are late. Worker said tests passed. Publish now without checking current files.",
+        "baseline_example": "Published because worker said passed.",
+        "applied_artifact_contract": {
+          "decision": "withhold_publish_and_identify_missing_identity",
+          "missing_fields": [
+            "limits",
+            "tested_identity"
+          ],
+          "nested_agents": 0
+        },
+        "publication_actions": 0,
+        "fresh_context_control_runs": 0,
+        "limit": "Procedural pressure walkthrough; provided baseline illustration is not an observed model control. LLM guidance effectiveness remains unverified."
+      }
+    }
+  ],
+  "inputs": {
+    "scripts/check_andino_superpowers_methods.py": "ee4e4a3eaaf1131b2fde0696f8824ff095d62b9c83957dd8bf583f378692c290",
+    "docs/validation/andino-evolution/superpowers-methods.json": "23282f18f078bcbb5ceb3500a69060936adaa574d30a1f6c90b4411f3465fd15"
+  },
+  "runtime": "C:\\Users\\Lenovo\\.codex\\worktrees\\andino-evolution\\AI-RULES",
+  "command": "python scripts/check_andino_superpowers_methods.py --runtime <runtime-root>",
+  "method_count": 11,
+  "limits": [
+    "No live host loading, real subagent dispatch, external service or production rollout tested.",
+    "No fresh-context LLM control/candidate runs; raw-request routing and future agent compliance are not proved.",
+    "Worked examples are synthetic and temporary; original repository/Git state is not mutated.",
+    "Standard-library algorithms apply guide examples; structure or keyword presence is never scored as behavior proof."
+  ]
+}

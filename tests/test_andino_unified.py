@@ -15,7 +15,7 @@ class InternalRegistryTests(unittest.TestCase):
     def fixture(self):
         aliases = {'test-driven-development': 'tdd', 'agent-skills-test-driven-development': 'tdd',
                    'systematic-debugging': 'debugging', 'debugging-and-error-recovery': 'debugging',
-                   'verification-before-completion': 'verification', 'brainstorming': 'decision-interview',
+                   'verification-before-completion': 'verification', 'brainstorming': 'brainstorming',
                    'interview-me': 'decision-interview', 'writing-plans': 'planning',
                    'planning-and-task-breakdown': 'planning', 'requesting-code-review': 'code-review',
                    'receiving-code-review': 'code-review', 'code-review-and-quality': 'code-review',
@@ -24,7 +24,7 @@ class InternalRegistryTests(unittest.TestCase):
         blocks = []
         for identity in sorted(CAPABILITIES):
             values = dict.fromkeys(FIELDS, 'bounded current need')
-            internal = identity in SUPERPOWERS | AGENT_SKILLS
+            internal = identity in SUPERPOWERS | AGENT_SKILLS | {'workflow-advisor'}
             values['Type'] = 'method' if internal else 'MCP' if identity in MCPS else 'native' if identity == 'native-capabilities' else 'skill'
             values['Activation policy'] = 'CONDITIONAL_AUTO'
             if internal:

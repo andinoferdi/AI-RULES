@@ -430,9 +430,14 @@ def main() -> int:
     parser.add_argument("--output", type=Path,
                         default=Path(__file__).resolve().parents[1] /
                         "docs/validation/andino-unified/superpowers-operational.json")
+    parser.add_argument('--methods', type=Path, default=Path(__file__).resolve().parents[1] /
+                        'docs/validation/andino-unified/superpowers-methods.json')
     args = parser.parse_args()
-    metadata_path = Path(__file__).resolve().parents[1] / 'docs/validation/andino-unified/superpowers-methods.json'
-    metadata = {m['id']: m for m in json.loads(metadata_path.read_text(encoding='utf-8'))}
+    metadata_path = args.methods.resolve()
+    owned = json.loads(metadata_path.read_text(encoding='utf-8'))
+    metadata = {m['id']: m for m in owned}
+    if set(metadata) != set(IDS) or len(owned) != len(IDS):
+        raise ValueError('manifest must cover the 11 assigned methods exactly once')
     results = []
     with TemporaryDirectory(prefix="andino-superpowers-procedures-") as temp:
         for method in IDS:
@@ -453,7 +458,7 @@ def main() -> int:
     report = {
         "schema_version": 1, "source_family": "superpowers", "status": "PASS", "methods": results,
         "inputs": {"scripts/check_andino_superpowers_methods.py": digest(Path(__file__).read_bytes()),
-                   "docs/validation/andino-unified/superpowers-methods.json": digest(metadata_path.read_bytes())},
+                   metadata_path.relative_to(Path(__file__).resolve().parents[1]).as_posix(): digest(metadata_path.read_bytes())},
         "runtime": str(args.runtime.resolve()),
         "command": "python scripts/check_andino_superpowers_methods.py --runtime <runtime-root>",
         "method_count": len(results),

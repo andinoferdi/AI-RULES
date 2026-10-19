@@ -1,0 +1,71 @@
+{
+  "candidate_runtime_sha256": "46098a07318176bb69d37458423bbc3cf4161aa5ccfcdaee758180a28476e086",
+  "reports": {
+    "addy": {
+      "passed": 18,
+      "records": 18
+    },
+    "matt": {
+      "passed": 28,
+      "records": 28
+    },
+    "superpowers": {
+      "passed": 11,
+      "records": 11
+    },
+    "evolution": {
+      "passed": 2,
+      "records": 2
+    }
+  },
+  "new_policy_sets": 7,
+  "new_faulty_copy_mutations_killed": 7,
+  "unit_suite": {
+    "run": 246,
+    "failed": 0,
+    "skipped": 1,
+    "seconds": 178.377,
+    "scope": "full current repository suite after manifest pin and publication-checker changes"
+  },
+  "focused_final": {
+    "run": 48,
+    "failed": 0
+  },
+  "structural": {
+    "coverage_rows": 79,
+    "guide_count": 59,
+    "unresolved_collisions": 0
+  },
+  "live_hosts": {
+    "Codex": "Actual requested worker dispatch and independent review occurred; autonomous routing of candidate NOT VERIFIED",
+    "Claude Code": "NOT VERIFIED",
+    "OpenCode": "NOT VERIFIED",
+    "Antigravity CLI": "NOT VERIFIED",
+    "Antigravity IDE": "NOT VERIFIED"
+  },
+  "publication": {
+    "runtime_commit": "037a483fcd3b59a0cb3a36d8dfb62af6e879e2f4",
+    "runtime_remote_confirmed": true,
+    "main_release_sequence": 15,
+    "sibling_pins_unchanged": true,
+    "remote_setup": "fresh/repeat and prior-official upgrade/backup/repeat PASS",
+    "actual_installed_entrypoint": "fresh/repeat PASS without source or home override",
+    "staged_bundles": 7,
+    "staged_andino_hash": "46098a07318176bb69d37458423bbc3cf4161aa5ccfcdaee758180a28476e086",
+    "tagged_binary_release": "NOT CREATED; default-latest setup fetches runtime branch",
+    "main_state": "validated and staged; commit/push next"
+  },
+  "offline_installer": {
+    "result": "PASS",
+    "scenarios": 41,
+    "host_path_surfaces": 5,
+    "scope": "disposable offline project installs, repeat NO_OP, conflict preservation and clean upgrade/backup; not live native discovery"
+  },
+  "final_status": "DONE: implementation and available local validation; live host limits explicit",
+  "implementation_unit_suite": {
+    "run": 243,
+    "failed": 0,
+    "skipped": 1,
+    "scope": "full suite before final source/relative-audit-path fixes; affected tests rerun below"
+  }
+}

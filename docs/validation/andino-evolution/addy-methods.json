@@ -1,0 +1,967 @@
+[
+  {
+    "id": "api-and-interface-design",
+    "title": "API and interface design",
+    "purpose": "Define a stable public seam and make retries safe under concurrent delivery.",
+    "trigger": "A new or changed API/module boundary, inconsistent errors or a retryable state-changing operation.",
+    "non_trigger": "Pure private renaming or a request only to format code.",
+    "upstream": "addyosmani/agent-skills",
+    "source_paths": [
+      "skills/api-and-interface-design/SKILL.md"
+    ],
+    "resources": [],
+    "resource_dispositions": [],
+    "activation": {
+      "positive": {
+        "request": "Make this charge endpoint honor retries when four requests arrive together.",
+        "expected": "select",
+        "rationale": "A new or changed API/module boundary, inconsistent errors or a retryable state-changing operation."
+      },
+      "negative": {
+        "request": "Rename the private variable total to subtotal.",
+        "expected": "do-not-select",
+        "rationale": "Pure private renaming or a request only to format code."
+      },
+      "status": "declared-fixture; model-routing-not-executed"
+    },
+    "operational": {
+      "expected": {
+        "applied": 1,
+        "replayed": 3,
+        "effects": 1,
+        "payload_check": "conflict"
+      },
+      "adversarial_expected": {
+        "applied": 1,
+        "replayed": 3,
+        "effects": 1,
+        "payload_check": "replay"
+      },
+      "limit": "SQLite proof covers a local transactional effect only; remote timeout reconciliation and provider behavior require integration evidence."
+    }
+  },
+  {
+    "id": "browser-testing-with-devtools",
+    "title": "Browser runtime verification",
+    "purpose": "Use observed browser artifacts to reproduce and diagnose UI/network failures.",
+    "trigger": "Browser-rendered behavior, console/network failure, layout/a11y regression or performance trace investigation.",
+    "non_trigger": "Backend-only changes with no browser surface.",
+    "upstream": "addyosmani/agent-skills",
+    "source_paths": [
+      "skills/browser-testing-with-devtools/SKILL.md"
+    ],
+    "resources": [
+      "skills/browser-testing-with-devtools/resources/accessibility.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "references/accessibility-checklist.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/browser-testing-with-devtools/resources/accessibility.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      }
+    ],
+    "activation": {
+      "positive": {
+        "request": "The checkbox stays checked after a PATCH returns 503; diagnose these captured events.",
+        "expected": "select",
+        "rationale": "Browser-rendered behavior, console/network failure, layout/a11y regression or performance trace investigation."
+      },
+      "negative": {
+        "request": "Check the ordering of rows in this backend-only CSV exporter.",
+        "expected": "do-not-select",
+        "rationale": "Backend-only changes with no browser surface."
+      },
+      "status": "declared-fixture; model-routing-not-executed"
+    },
+    "operational": {
+      "expected": {
+        "layer": "server",
+        "requests": 1,
+        "live_browser": false
+      },
+      "adversarial_expected": {
+        "layer": "event-wiring",
+        "requests": 0,
+        "live_browser": false
+      },
+      "limit": "Offline artifact triage only; no live browser, screenshot, computed style, accessibility tree or performance capture claimed."
+    }
+  },
+  {
+    "id": "ci-cd-and-automation",
+    "title": "CI/CD and quality automation",
+    "purpose": "Make applicable quality checks reproducible and make failures prevent unsafe advancement.",
+    "trigger": "CI/build/test pipeline configuration, automated checks, slow/flaky CI or deployment-strategy preparation.",
+    "non_trigger": "A request to manually deploy without an accepted verification contract.",
+    "upstream": "addyosmani/agent-skills",
+    "source_paths": [
+      "skills/ci-cd-and-automation/SKILL.md"
+    ],
+    "resources": [],
+    "resource_dispositions": [],
+    "activation": {
+      "positive": {
+        "request": "Wire lint, unit, build and release readiness so a failed ancestor prevents advancement.",
+        "expected": "select",
+        "rationale": "CI/build/test pipeline configuration, automated checks, slow/flaky CI or deployment-strategy preparation."
+      },
+      "negative": {
+        "request": "Correct a README spelling error; do not change code or CI.",
+        "expected": "do-not-select",
+        "rationale": "A request to manually deploy without an accepted verification contract."
+      },
+      "status": "declared-fixture; model-routing-not-executed"
+    },
+    "operational": {
+      "expected": {
+        "stages": {
+          "lint": "pass",
+          "unit": "pass",
+          "build": "pass",
+          "publish": "pass"
+        },
+        "publish_ready": true,
+        "deployed": false
+      },
+      "adversarial_expected": {
+        "stages": {
+          "lint": "fail",
+          "unit": "blocked",
+          "build": "blocked",
+          "publish": "blocked"
+        },
+        "publish_ready": false,
+        "deployed": false
+      },
+      "limit": "Offline dependency/gate execution model; hosted CI, required check protection, secrets and deployment remain unverified."
+    }
+  },
+  {
+    "id": "code-simplification",
+    "title": "Behavior-preserving simplification",
+    "purpose": "Reduce demonstrated complexity while preserving the accepted public behavior.",
+    "trigger": "Working green code with observed nesting, duplication, unclear names or a flagged complexity problem.",
+    "non_trigger": "A failing test needing a behavioral fix, speculative cleanup or a rewrite whose seam is not accepted.",
+    "upstream": "addyosmani/agent-skills",
+    "source_paths": [
+      "skills/code-simplification/SKILL.md"
+    ],
+    "resources": [
+      "skills/code-simplification/resources/protected-regions.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "hooks/SIMPLIFY-IGNORE.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/code-simplification/resources/protected-regions.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      },
+      {
+        "source_path": "hooks/simplify-ignore.sh",
+        "disposition": "EXCLUDE",
+        "runtime_path": "skills/code-simplification/resources/protected-regions.md",
+        "rationale": "Exclude source-mutating Read/Edit/Stop hook with crash/rename/concurrency hazards; retain non-mutating exact-byte protection."
+      },
+      {
+        "source_path": "hooks/simplify-ignore-test.sh",
+        "disposition": "EXCLUDE",
+        "runtime_path": "skills/code-simplification/resources/protected-regions.md",
+        "rationale": "Exclude source-mutating Read/Edit/Stop hook with crash/rename/concurrency hazards; retain non-mutating exact-byte protection."
+      }
+    ],
+    "activation": {
+      "positive": {
+        "request": "Simplify this green nested function without changing errors or the marked fast path.",
+        "expected": "select",
+        "rationale": "Working green code with observed nesting, duplication, unclear names or a flagged complexity problem."
+      },
+      "negative": {
+        "request": "Fix the empty-input crash; the accepted behavior must change.",
+        "expected": "do-not-select",
+        "rationale": "A failing test needing a behavioral fix, speculative cleanup or a rewrite whose seam is not accepted."
+      },
+      "status": "declared-fixture; model-routing-not-executed"
+    },
+    "operational": {
+      "expected": {
+        "behavior_equal": true,
+        "protected_equal": true,
+        "cases": 7
+      },
+      "adversarial_expected": {
+        "behavior_equal": true,
+        "protected_equal": false,
+        "cases": 7
+      },
+      "limit": "Finite input/error comparison proves only these cases; full project regression and actual hot-path performance remain separate."
+    }
+  },
+  {
+    "id": "constraint-driven-development",
+    "title": "Quality constraints and ratchets",
+    "purpose": "Make the existing quality bar measurable and detect attempts to weaken it.",
+    "trigger": "Missing or changing quality contract, weakened thresholds, skips/suppressions or requested quality gates.",
+    "non_trigger": "An established unchanged contract that only needs to be followed, or a throwaway nonbehavioral edit.",
+    "upstream": "addyosmani/agent-skills",
+    "source_paths": [
+      "skills/constraint-driven-development/SKILL.md"
+    ],
+    "resources": [
+      "skills/constraint-driven-development/resources/floor-guard.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "skills/constraint-driven-development/references/floor-guard.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/constraint-driven-development/resources/floor-guard.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      }
+    ],
+    "activation": {
+      "positive": {
+        "request": "The diff drops assertions, adds a suppression and lowers minimum coverage; enforce the floor.",
+        "expected": "select",
+        "rationale": "Missing or changing quality contract, weakened thresholds, skips/suppressions or requested quality gates."
+      },
+      "negative": {
+        "request": "Reformat the unchanged constraints document without altering any rules.",
+        "expected": "do-not-select",
+        "rationale": "An established unchanged contract that only needs to be followed, or a throwaway nonbehavioral edit."
+      },
+      "status": "declared-fixture; model-routing-not-executed"
+    },
+    "operational": {
+      "expected": {
+        "exit": 1,
+        "rules": [
+          "assertion-removed",
+          "silenced-or-skipped",
+          "threshold-loosened"
+        ]
+      },
+      "adversarial_expected": {
+        "exit": 2,
+        "rules": [
+          "baseline-unavailable"
+        ]
+      },
+      "limit": "Example evaluates supplied unified diff/rule pairs; it is a reference core, not a full repository Git diff collector."
+    }
+  },
+  {
+    "id": "context-engineering",
+    "title": "Context and restartable handoff",
+    "purpose": "Keep current task evidence available without loading stale or unrelated material.",
+    "trigger": "Session restart, degraded context, task switch or a large evidence set needing a focused handoff.",
+    "non_trigger": "A tiny self-contained request already supplied with all required context.",
+    "upstream": "addyosmani/agent-skills",
+    "source_paths": [
+      "skills/context-engineering/SKILL.md"
+    ],
+    "resources": [],
+    "resource_dispositions": [],
+    "activation": {
+      "positive": {
+        "request": "Prepare a bounded handoff that preserves scope and the current error while dropping old logs.",
+        "expected": "select",
+        "rationale": "Session restart, degraded context, task switch or a large evidence set needing a focused handoff."
+      },
+      "negative": {
+        "request": "Explain this single supplied expression; no session context is needed.",
+        "expected": "do-not-select",
+        "rationale": "A tiny self-contained request already supplied with all required context."
+      },
+      "status": "declared-fixture; model-routing-not-executed"
+    },
+    "operational": {
+      "expected": {
+        "state": "ready",
+        "kept": [
+          "scope",
+          "current-error"
+        ]
+      },
+      "adversarial_expected": {
+        "state": "needs-split",
+        "kept": []
+      },
+      "limit": "Budgeted artifact selection is tested; model attention quality and live compaction behavior are not measured."
+    }
+  },
+  {
+    "id": "deprecation-and-migration",
+    "title": "Deprecation and migration",
+    "purpose": "Move consumers safely while keeping old and new code valid during transition.",
+    "trigger": "Retiring/replacing APIs, legacy ownership decisions or schema changes with active consumers.",
+    "non_trigger": "Renaming an unused private local variable with no consumer or data migration.",
+    "upstream": "addyosmani/agent-skills",
+    "source_paths": [
+      "skills/deprecation-and-migration/SKILL.md"
+    ],
+    "resources": [],
+    "resource_dispositions": [],
+    "activation": {
+      "positive": {
+        "request": "Migrate name to full_name while old clients still run; show expand, backfill and guarded contract.",
+        "expected": "select",
+        "rationale": "Retiring/replacing APIs, legacy ownership decisions or schema changes with active consumers."
+      },
+      "negative": {
+        "request": "Rename a private loop variable in an unused example.",
+        "expected": "do-not-select",
+        "rationale": "Renaming an unused private local variable with no consumer or data migration."
+      },
+      "status": "declared-fixture; model-routing-not-executed"
+    },
+    "operational": {
+      "expected": {
+        "coexisting_rows": 2,
+        "names": [
+          "Ada",
+          "Lin"
+        ],
+        "contracted": true,
+        "old_consumers": 0
+      },
+      "adversarial_expected": {
+        "coexisting_rows": 2,
+        "names": [
+          "Ada",
+          "Lin"
+        ],
+        "contracted": false,
+        "old_consumers": 1
+      },
+      "limit": "Real temporary SQLite schema/data transitions; production traffic, online DDL, backfill locking and down migrations need target-engine evidence."
+    }
+  },
+  {
+    "id": "documentation-and-adrs",
+    "title": "Documentation and architectural decisions",
+    "purpose": "Preserve rationale and make technical documents match verifiable code.",
+    "trigger": "A consequential design decision, changed public interface, repeated onboarding gap or prose clarification.",
+    "non_trigger": "Comments that merely narrate obvious code or a disposable spike.",
+    "upstream": "addyosmani/agent-skills",
+    "source_paths": [
+      "skills/documentation-and-adrs/SKILL.md"
+    ],
+    "resources": [],
+    "resource_dispositions": [],
+    "activation": {
+      "positive": {
+        "request": "Record the queue decision using our existing ADR-004 .rst convention and retain its throughput caveat.",
+        "expected": "select",
+        "rationale": "A consequential design decision, changed public interface, repeated onboarding gap or prose clarification."
+      },
+      "negative": {
+        "request": "Add comments saying increment counter above every increment.",
+        "expected": "do-not-select",
+        "rationale": "Comments that merely narrate obvious code or a disposable spike."
+      },
+      "status": "declared-fixture; model-routing-not-executed"
+    },
+    "operational": {
+      "expected": {
+        "new_name": "ADR-005-Queue.rst",
+        "old_preserved": true,
+        "qualifier_preserved": true
+      },
+      "adversarial_expected": {
+        "new_name": "ADR-005-Queue.rst",
+        "old_preserved": true,
+        "qualifier_preserved": false
+      },
+      "limit": "Real temporary-file convention/history/qualifier checks; full document factual accuracy requires current project sources."
+    }
+  },
+  {
+    "id": "doubt-driven-development",
+    "title": "Bounded adversarial review",
+    "purpose": "Challenge a material uncertain claim with independent evidence before relying on it.",
+    "trigger": "Unverified invariant, cross-boundary design, high-stakes or unfamiliar nontrivial artifact.",
+    "non_trigger": "Mechanical rename/format, pure source summary, or a clear instruction with obvious correctness.",
+    "upstream": "addyosmani/agent-skills",
+    "source_paths": [
+      "skills/doubt-driven-development/SKILL.md"
+    ],
+    "resources": [
+      "skills/doubt-driven-development/resources/review-perspectives.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "references/orchestration-patterns.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/doubt-driven-development/resources/review-perspectives.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      }
+    ],
+    "activation": {
+      "positive": {
+        "request": "Stress-test the retry invariant with an independent artifact-and-contract review bounded to three cycles.",
+        "expected": "select",
+        "rationale": "Unverified invariant, cross-boundary design, high-stakes or unfamiliar nontrivial artifact."
+      },
+      "negative": {
+        "request": "Summarize this already accepted one-line rename.",
+        "expected": "do-not-select",
+        "rationale": "Mechanical rename/format, pure source summary, or a clear instruction with obvious correctness."
+      },
+      "status": "declared-fixture; model-routing-not-executed"
+    },
+    "operational": {
+      "expected": {
+        "classification": "contract-misread",
+        "cycles": 3,
+        "stop": "bound-reassess",
+        "claim_sent": false,
+        "independent_review": false
+      },
+      "adversarial_expected": {
+        "classification": "contract-misread",
+        "cycles": 1,
+        "stop": "diminishing-findings",
+        "claim_sent": false,
+        "independent_review": false
+      },
+      "limit": "Reconciliation precedence and stop policy tested offline; no actual independent/cross-model reviewer invocation is claimed."
+    }
+  },
+  {
+    "id": "frontend-ui-engineering",
+    "title": "Frontend interface engineering",
+    "purpose": "Implement the accepted design as accessible, responsive, observable states.",
+    "trigger": "User-facing component/page/layout/state change or accessibility defect.",
+    "non_trigger": "Pure backend or an attempt to override an explicitly chosen UI methodology.",
+    "upstream": "addyosmani/agent-skills",
+    "source_paths": [
+      "skills/frontend-ui-engineering/SKILL.md"
+    ],
+    "resources": [
+      "skills/frontend-ui-engineering/resources/accessibility.md",
+      "skills/browser-testing-with-devtools/resources/accessibility.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "references/accessibility-checklist.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/browser-testing-with-devtools/resources/accessibility.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      }
+    ],
+    "activation": {
+      "positive": {
+        "request": "Implement the approved error/retry state with a named keyboard-native button.",
+        "expected": "select",
+        "rationale": "User-facing component/page/layout/state change or accessibility defect."
+      },
+      "negative": {
+        "request": "Change this server-only database index; there is no interface change.",
+        "expected": "do-not-select",
+        "rationale": "Pure backend or an attempt to override an explicitly chosen UI methodology."
+      },
+      "status": "declared-fixture; model-routing-not-executed"
+    },
+    "operational": {
+      "expected": {
+        "names": [
+          "Retry saving"
+        ],
+        "violations": [],
+        "visual_verified": false
+      },
+      "adversarial_expected": {
+        "names": [],
+        "violations": [
+          "nonsemantic-action",
+          "unnamed-button"
+        ],
+        "visual_verified": false
+      },
+      "limit": "Real HTML parsing detects these semantic errors; keyboard, contrast, screen reader, responsive screenshot and live layout remain unverified."
+    }
+  },
+  {
+    "id": "git-workflow-and-versioning",
+    "title": "Git change discipline and versions",
+    "purpose": "Prepare focused reviewable changes while preserving user work and explicit Git authority.",
+    "trigger": "Change grouping, dirty-tree hygiene, version/changelog decision or support for accepted Git isolation.",
+    "non_trigger": "Automatic branch creation, destructive reset or publishing without authority.",
+    "upstream": "addyosmani/agent-skills",
+    "source_paths": [
+      "skills/git-workflow-and-versioning/SKILL.md"
+    ],
+    "resources": [],
+    "resource_dispositions": [],
+    "activation": {
+      "positive": {
+        "request": "Group my owned change separately from existing edits and prepare a breaking-version rationale.",
+        "expected": "select",
+        "rationale": "Change grouping, dirty-tree hygiene, version/changelog decision or support for accepted Git isolation."
+      },
+      "negative": {
+        "request": "Explain two plus three without inspecting or changing a repository.",
+        "expected": "do-not-select",
+        "rationale": "Automatic branch creation, destructive reset or publishing without authority."
+      },
+      "status": "declared-fixture; model-routing-not-executed"
+    },
+    "operational": {
+      "expected": {
+        "bump": "major",
+        "errors": [],
+        "git_mutated": false
+      },
+      "adversarial_expected": {
+        "bump": "major",
+        "errors": [
+          "user-change-selected"
+        ],
+        "git_mutated": false
+      },
+      "limit": "Pure change-set/semver policy check; no Git mutation, commit, release or actual staging performed."
+    }
+  },
+  {
+    "id": "idea-refine",
+    "title": "Idea refinement",
+    "purpose": "Turn a rough direction into a focused experiment with explicit assumptions and non-goals.",
+    "trigger": "Rough idea needs distinct options, value/feasibility trade-offs or assumption testing.",
+    "non_trigger": "Accepted scope already has a direction/spec, or intent is so missing that decision-interview must clarify it first.",
+    "upstream": "addyosmani/agent-skills",
+    "source_paths": [
+      "skills/idea-refine/SKILL.md"
+    ],
+    "resources": [
+      "skills/idea-refine/resources/ideation.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "skills/idea-refine/frameworks.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/idea-refine/resources/ideation.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      },
+      {
+        "source_path": "skills/idea-refine/refinement-criteria.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/idea-refine/resources/ideation.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      },
+      {
+        "source_path": "skills/idea-refine/examples.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/idea-refine/resources/ideation.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      },
+      {
+        "source_path": "skills/idea-refine/scripts/idea-refine.sh",
+        "disposition": "EXCLUDE",
+        "runtime_path": "skills/idea-refine/GUIDE.md#procedure",
+        "rationale": "Incidental mkdir Bash helper replaced by host-native authorized persistence."
+      }
+    ],
+    "activation": {
+      "positive": {
+        "request": "Refine collaborative editing into a small test of whether presence solves coordination.",
+        "expected": "select",
+        "rationale": "Rough idea needs distinct options, value/feasibility trade-offs or assumption testing."
+      },
+      "negative": {
+        "request": "Execute the already approved presence-only implementation plan without reopening product ideation.",
+        "expected": "do-not-select",
+        "rationale": "Accepted scope already has a direction/spec, or intent is so missing that decision-interview must clarify it first."
+      },
+      "status": "declared-fixture; model-routing-not-executed"
+    },
+    "operational": {
+      "expected": {
+        "next": "presence-only",
+        "non_goals": [
+          "offline-sync",
+          "character-merge"
+        ]
+      },
+      "adversarial_expected": {
+        "next": "validate-dealbreaker",
+        "non_goals": [
+          "offline-sync",
+          "character-merge"
+        ]
+      },
+      "limit": "The rubric mechanically compares stated inputs; actual customer demand, switching and assumptions require field validation."
+    }
+  },
+  {
+    "id": "incremental-implementation",
+    "title": "Thin verified implementation slices",
+    "purpose": "Execute the next accepted task as a small complete, working increment.",
+    "trigger": "Multi-file accepted feature/change or the next dependency-ready implementation task.",
+    "non_trigger": "Tiny isolated edit, unclear scope requiring decision/specification, or permission to skip failed gates.",
+    "upstream": "addyosmani/agent-skills",
+    "source_paths": [
+      "skills/incremental-implementation/SKILL.md"
+    ],
+    "resources": [
+      "skills/incremental-implementation/resources/completion.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "references/definition-of-done.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/incremental-implementation/resources/completion.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      }
+    ],
+    "activation": {
+      "positive": {
+        "request": "Implement create then list as verified slices from the accepted task graph.",
+        "expected": "select",
+        "rationale": "Multi-file accepted feature/change or the next dependency-ready implementation task."
+      },
+      "negative": {
+        "request": "Explain this supplied constant; do not implement or change anything.",
+        "expected": "do-not-select",
+        "rationale": "Tiny isolated edit, unclear scope requiring decision/specification, or permission to skip failed gates."
+      },
+      "status": "declared-fixture; model-routing-not-executed"
+    },
+    "operational": {
+      "expected": {
+        "slices": {
+          "create": true,
+          "list": true
+        },
+        "rows": [
+          {
+            "id": 1,
+            "title": "A"
+          }
+        ]
+      },
+      "adversarial_expected": {
+        "slices": {
+          "create": true,
+          "list": false
+        },
+        "rows": [
+          {
+            "id": 1,
+            "title": "A"
+          }
+        ]
+      },
+      "limit": "Executable tiny state workflow tests dependency blocking and complete paths; it is not a substitute for the target repository's tests."
+    }
+  },
+  {
+    "id": "observability-and-instrumentation",
+    "title": "Operational instrumentation",
+    "purpose": "Make critical behavior diagnosable through deliberate, verified telemetry.",
+    "trigger": "New production I/O, endpoint/job/retry/queue, missing incident evidence or alert/runbook design.",
+    "non_trigger": "Diagnosing one current failure only (debugging owns that) or unmeasured performance tuning.",
+    "upstream": "addyosmani/agent-skills",
+    "source_paths": [
+      "skills/observability-and-instrumentation/SKILL.md"
+    ],
+    "resources": [
+      "skills/observability-and-instrumentation/resources/telemetry-checklist.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "references/observability-checklist.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/observability-and-instrumentation/resources/telemetry-checklist.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      }
+    ],
+    "activation": {
+      "positive": {
+        "request": "Instrument payment retries so scheduler and replay origins can be distinguished in the same log.",
+        "expected": "select",
+        "rationale": "New production I/O, endpoint/job/retry/queue, missing incident evidence or alert/runbook design."
+      },
+      "negative": {
+        "request": "Fix a documentation spelling error with no production behavior change.",
+        "expected": "do-not-select",
+        "rationale": "Diagnosing one current failure only (debugging owns that) or unmeasured performance tuning."
+      },
+      "status": "declared-fixture; model-routing-not-executed"
+    },
+    "operational": {
+      "expected": {
+        "errors": [],
+        "series": 1,
+        "events": 1
+      },
+      "adversarial_expected": {
+        "errors": [
+          "missing-attribution",
+          "unbounded-label"
+        ],
+        "series": 1,
+        "events": 1
+      },
+      "limit": "Real JSON-lines ingestion/attribution/cardinality checks; exporter delivery, complete traces and live alert routing remain unverified."
+    }
+  },
+  {
+    "id": "performance-optimization",
+    "title": "Measured performance improvement",
+    "purpose": "Keep only proven correct changes that improve the metric users experience.",
+    "trigger": "Measured slowness, budget regression, slow query/pool/cache issue or provided performance artifacts.",
+    "non_trigger": "Speculative memoization/index/cache work without evidence of a bottleneck.",
+    "upstream": "addyosmani/agent-skills",
+    "source_paths": [
+      "skills/performance-optimization/SKILL.md"
+    ],
+    "resources": [
+      "skills/performance-optimization/resources/optimization-patterns.md",
+      "skills/performance-optimization/resources/performance-audit.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "skills/performance-optimization/references/optimization-patterns.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/performance-optimization/resources/optimization-patterns.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      },
+      {
+        "source_path": "references/performance-checklist.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/performance-optimization/resources/optimization-patterns.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      },
+      {
+        "source_path": "agents/web-performance-auditor.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/performance-optimization/resources/performance-audit.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      }
+    ],
+    "activation": {
+      "positive": {
+        "request": "Compare repeated same-condition latency samples and reject improvements inside noise.",
+        "expected": "select",
+        "rationale": "Measured slowness, budget regression, slow query/pool/cache issue or provided performance artifacts."
+      },
+      "negative": {
+        "request": "Build the accepted basic list; there is no measured slowdown or performance budget.",
+        "expected": "do-not-select",
+        "rationale": "Speculative memoization/index/cache work without evidence of a bottleneck."
+      },
+      "status": "declared-fixture; model-routing-not-executed"
+    },
+    "operational": {
+      "expected": {
+        "baseline_ms": 101,
+        "result_ms": 61,
+        "noise_ms": 2,
+        "decision": "keep"
+      },
+      "adversarial_expected": {
+        "baseline_ms": 101,
+        "result_ms": 99,
+        "noise_ms": 3,
+        "decision": "restore-owned-change"
+      },
+      "limit": "Observed fixed-sample statistical decision only; no real service/browser benchmark or field improvement claimed."
+    }
+  },
+  {
+    "id": "security-and-hardening",
+    "title": "Trust boundaries and hardening",
+    "purpose": "Prevent exploitable misuse at boundaries and preserve permission and data ownership.",
+    "trigger": "External input/auth/data/URL/filesystem/dependency/LLM trust boundary or requested security audit.",
+    "non_trigger": "A purely mechanical private edit with no relevant boundary; speculative checklist expansion outside scope.",
+    "upstream": "addyosmani/agent-skills",
+    "source_paths": [
+      "skills/security-and-hardening/SKILL.md"
+    ],
+    "resources": [
+      "skills/security-and-hardening/resources/hardening-patterns.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "skills/security-and-hardening/references/hardening-patterns.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/security-and-hardening/resources/hardening-patterns.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      },
+      {
+        "source_path": "references/security-checklist.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/security-and-hardening/resources/hardening-patterns.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      },
+      {
+        "source_path": "agents/security-auditor.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/security-and-hardening/resources/hardening-patterns.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      }
+    ],
+    "activation": {
+      "positive": {
+        "request": "Validate an owned temporary job leaf before cleanup and prove SQL input cannot alter the query.",
+        "expected": "select",
+        "rationale": "External input/auth/data/URL/filesystem/dependency/LLM trust boundary or requested security audit."
+      },
+      "negative": {
+        "request": "Rename a private loop counter in this pure local computation.",
+        "expected": "do-not-select",
+        "rationale": "A purely mechanical private edit with no relevant boundary; speculative checklist expansion outside scope."
+      },
+      "status": "declared-fixture; model-routing-not-executed"
+    },
+    "operational": {
+      "expected": {
+        "owned_leaf": true,
+        "unsafe_target_refused": true,
+        "injected_matches": 0,
+        "deleted": false
+      },
+      "adversarial_expected": {
+        "owned_leaf": true,
+        "unsafe_target_refused": true,
+        "injected_matches": 0,
+        "deleted": false
+      },
+      "limit": "Real resolved-path/ownership and parameterized SQLite checks; no destructive call, attacker race simulation, SSRF network or live scanner/auth/privacy proof."
+    }
+  },
+  {
+    "id": "shipping-and-launch",
+    "title": "Release readiness and rollback",
+    "purpose": "Prepare a measured go/no-go and reversible rollout without assuming deployment authority.",
+    "trigger": "Requested production/release readiness, staged rollout, launch monitoring or rollback planning.",
+    "non_trigger": "A local-only change with no release request, or bypassing explicit publication approval.",
+    "upstream": "addyosmani/agent-skills",
+    "source_paths": [
+      "skills/shipping-and-launch/SKILL.md"
+    ],
+    "resources": [
+      "skills/shipping-and-launch/resources/release-checklist.md",
+      "skills/incremental-implementation/resources/completion.md",
+      "skills/security-and-hardening/resources/hardening-patterns.md",
+      "skills/performance-optimization/resources/optimization-patterns.md",
+      "skills/browser-testing-with-devtools/resources/accessibility.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "references/definition-of-done.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/incremental-implementation/resources/completion.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      },
+      {
+        "source_path": "references/security-checklist.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/security-and-hardening/resources/hardening-patterns.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      },
+      {
+        "source_path": "references/performance-checklist.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/performance-optimization/resources/optimization-patterns.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      },
+      {
+        "source_path": "references/accessibility-checklist.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/browser-testing-with-devtools/resources/accessibility.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      }
+    ],
+    "activation": {
+      "positive": {
+        "request": "Use these canary error/latency baselines and error budget to prepare go/no-go with rollback.",
+        "expected": "select",
+        "rationale": "Requested production/release readiness, staged rollout, launch monitoring or rollback planning."
+      },
+      "negative": {
+        "request": "Fix the private function locally; no release or deployment is requested.",
+        "expected": "do-not-select",
+        "rationale": "A local-only change with no release request, or bypassing explicit publication approval."
+      },
+      "status": "declared-fixture; model-routing-not-executed"
+    },
+    "operational": {
+      "expected": {
+        "decision": "advance",
+        "deployed": false
+      },
+      "adversarial_expected": {
+        "decision": "rollback-proposal",
+        "deployed": false
+      },
+      "limit": "Offline threshold decision only; no deployment, monitoring window, notification or live rollback performed."
+    }
+  },
+  {
+    "id": "source-driven-development",
+    "title": "Version-grounded source evidence",
+    "purpose": "Verify version-sensitive implementation against narrow authoritative documentation.",
+    "trigger": "Framework/API/library-specific implementation fact whose correctness depends on version.",
+    "non_trigger": "Pure stable logic, mechanical rename or mandatory fetching/installing documentation at runtime.",
+    "upstream": "addyosmani/agent-skills",
+    "source_paths": [
+      "skills/source-driven-development/SKILL.md"
+    ],
+    "resources": [
+      "skills/source-driven-development/resources/documentation-freshness.md"
+    ],
+    "resource_dispositions": [
+      {
+        "source_path": "hooks/SDD-CACHE.md",
+        "disposition": "ADAPT",
+        "runtime_path": "skills/source-driven-development/resources/documentation-freshness.md",
+        "rationale": "Substantive technique independently adapted into the local procedure/resource; upstream host/controller effects excluded."
+      },
+      {
+        "source_path": "hooks/sdd-cache-pre.sh",
+        "disposition": "EXCLUDE",
+        "runtime_path": "skills/source-driven-development/resources/documentation-freshness.md",
+        "rationale": "Exclude Claude network hooks/tests; preserve optional validator/purpose/cache policy without runtime effects."
+      },
+      {
+        "source_path": "hooks/sdd-cache-post.sh",
+        "disposition": "EXCLUDE",
+        "runtime_path": "skills/source-driven-development/resources/documentation-freshness.md",
+        "rationale": "Exclude Claude network hooks/tests; preserve optional validator/purpose/cache policy without runtime effects."
+      },
+      {
+        "source_path": "hooks/sdd-cache-test.sh",
+        "disposition": "EXCLUDE",
+        "runtime_path": "skills/source-driven-development/resources/documentation-freshness.md",
+        "rationale": "Exclude Claude network hooks/tests; preserve optional validator/purpose/cache policy without runtime effects."
+      }
+    ],
+    "activation": {
+      "positive": {
+        "request": "Check this version-pinned manifest and supplied official excerpt before using its intent_key argument.",
+        "expected": "select",
+        "rationale": "Framework/API/library-specific implementation fact whose correctness depends on version."
+      },
+      "negative": {
+        "request": "Rename this private loop variable without a framework/API change.",
+        "expected": "do-not-select",
+        "rationale": "Pure stable logic, mechanical rename or mandatory fetching/installing documentation at runtime."
+      },
+      "status": "declared-fixture; model-routing-not-executed"
+    },
+    "operational": {
+      "expected": {
+        "api": "documented",
+        "cache": "refetch-or-unverified",
+        "fetched": false
+      },
+      "adversarial_expected": {
+        "api": "version-mismatch",
+        "cache": "refetch-or-unverified",
+        "fetched": false
+      },
+      "limit": "Offline supplied-document/version comparison; demo is an explicit synthetic fixture, not a verified real framework API or fetched source."
+    }
+  }
+]

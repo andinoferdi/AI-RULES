@@ -1,0 +1,526 @@
+{
+  "schema_version": 1,
+  "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+  "concerns": [
+    {
+      "concern": "lifecycle/bootstrap",
+      "authoritative_owner": "andino-workflow",
+      "supporting_techniques": [
+        "context decision tree",
+        "discovery-before-activation"
+      ],
+      "activation": "explicit or evidenced non-trivial task",
+      "non_trigger": "simple implicit task without mapped need",
+      "permitted_side_effects": "authorized task only",
+      "permission_gate": "native controls and current user scope",
+      "fallback": "ordinary permitted task work, no fake invocation",
+      "evidence": "canonical-decisions.md",
+      "negative_test_ids": [
+        "no-full-superpowers-bootstrap",
+        "single-lifecycle"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "simple-direct",
+        "no-bootstrap"
+      ],
+      "negative_fixture_files": [
+        "evals/andino-workflow.json"
+      ],
+      "verification_scope": "Actual unified selections in behavior-grade.json; preserved sibling contracts/legacy fixture definitions are structural evidence, not blanket live PASS."
+    },
+    {
+      "concern": "requirements",
+      "authoritative_owner": "decision-interview",
+      "supporting_techniques": [
+        "grilling",
+        "interview-me",
+        "builder-readiness"
+      ],
+      "activation": "material human choice remains after source inspection",
+      "non_trigger": "locked or repository-answerable decision",
+      "permitted_side_effects": "draft requirement decisions",
+      "permission_gate": "Andino task scope",
+      "fallback": "state smallest missing decision",
+      "evidence": "canonical-decisions.md",
+      "negative_test_ids": [
+        "unified-decision-interview-negative"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "known-requirements"
+      ],
+      "negative_fixture_files": [
+        "evals/andino-unified.json"
+      ],
+      "verification_scope": "Actual unified selections in behavior-grade.json; preserved sibling contracts/legacy fixture definitions are structural evidence, not blanket live PASS."
+    },
+    {
+      "concern": "planning",
+      "authoritative_owner": "andino-workflow",
+      "supporting_techniques": [
+        "planning",
+        "decision-map",
+        "task-decomposition",
+        "plan-execution"
+      ],
+      "activation": "checkpointed dependent work",
+      "non_trigger": "one-step sufficient task",
+      "permitted_side_effects": "one existing plan and derivative artifacts",
+      "permission_gate": "no tracker publication implied",
+      "fallback": "local task graph",
+      "evidence": "canonical-decisions.md",
+      "negative_test_ids": [
+        "unified-planning-negative"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "single-plan"
+      ],
+      "negative_fixture_files": [
+        "evals/andino-unified.json"
+      ],
+      "verification_scope": "Actual unified selections in behavior-grade.json; preserved sibling contracts/legacy fixture definitions are structural evidence, not blanket live PASS."
+    },
+    {
+      "concern": "TDD/refactoring",
+      "authoritative_owner": "tdd",
+      "supporting_techniques": [
+        "public seams",
+        "vertical tracer bullets",
+        "green-only review gate",
+        "deep-module deletion test"
+      ],
+      "activation": "distinguishable behavior change",
+      "non_trigger": "static text edit",
+      "permitted_side_effects": "failing regression and minimal fix; optional separate green refactor",
+      "permission_gate": "accepted seam and task scope; material interface change needs decision",
+      "fallback": "honest reproducible manual evidence when executable test unavailable",
+      "evidence": "canonical-decisions.md",
+      "negative_test_ids": [
+        "unified-tdd-negative"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "text-no-tdd",
+        "no-refactor-during-red"
+      ],
+      "negative_fixture_files": [
+        "evals/andino-unified.json"
+      ],
+      "verification_scope": "Actual unified selections in behavior-grade.json; preserved sibling contracts/legacy fixture definitions are structural evidence, not blanket live PASS."
+    },
+    {
+      "concern": "diagnosis",
+      "authoritative_owner": "debugging",
+      "supporting_techniques": [
+        "exact symptom loop",
+        "minimized input",
+        "working pattern comparison",
+        "single hypothesis"
+      ],
+      "activation": "unknown-cause failure",
+      "non_trigger": "confirmed cause already supported",
+      "permitted_side_effects": "bounded probes then regression-protected fix",
+      "permission_gate": "no production or process write from diagnosis alone",
+      "fallback": "narrow logs or user-supplied repro",
+      "evidence": "canonical-decisions.md",
+      "negative_test_ids": [
+        "unified-debugging-negative"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "no-repair-before-diagnosis",
+        "no-unchanged-retry"
+      ],
+      "negative_fixture_files": [
+        "evals/andino-unified.json"
+      ],
+      "verification_scope": "Actual unified selections in behavior-grade.json; preserved sibling contracts/legacy fixture definitions are structural evidence, not blanket live PASS."
+    },
+    {
+      "concern": "review",
+      "authoritative_owner": "code-review",
+      "supporting_techniques": [
+        "spec axis",
+        "standards axis",
+        "proportionate security/performance",
+        "feedback validation"
+      ],
+      "activation": "bounded implementation or requested review",
+      "non_trigger": "unsolicited whole-repo rewrite",
+      "permitted_side_effects": "findings and authorized scoped fixes",
+      "permission_gate": "review GO is not merge authority",
+      "fallback": "single-agent review labeled as such",
+      "evidence": "canonical-decisions.md",
+      "negative_test_ids": [
+        "unified-code-review-negative"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "no-head-only-review",
+        "no-nested-review"
+      ],
+      "negative_fixture_files": [
+        "evals/andino-unified.json"
+      ],
+      "verification_scope": "Actual unified selections in behavior-grade.json; preserved sibling contracts/legacy fixture definitions are structural evidence, not blanket live PASS."
+    },
+    {
+      "concern": "completion",
+      "authoritative_owner": "andino-workflow",
+      "supporting_techniques": [
+        "verification",
+        "delivery"
+      ],
+      "activation": "consequential acceptance claim",
+      "non_trigger": "ordinary reply",
+      "permitted_side_effects": "current-state checks and report",
+      "permission_gate": "no publication from completion",
+      "fallback": "PARTIAL or NOT VERIFIED with specific gap",
+      "evidence": "canonical-decisions.md",
+      "negative_test_ids": [
+        "unified-verification-negative"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "no-self-reported-pass"
+      ],
+      "negative_fixture_files": [
+        "evals/andino-unified.json"
+      ],
+      "verification_scope": "Actual unified selections in behavior-grade.json; preserved sibling contracts/legacy fixture definitions are structural evidence, not blanket live PASS."
+    },
+    {
+      "concern": "Git/worktree",
+      "authoritative_owner": "andino-workflow",
+      "supporting_techniques": [
+        "git-workflow-and-versioning",
+        "git-isolation",
+        "git-operation-guard"
+      ],
+      "activation": "actual state/isolation need",
+      "non_trigger": "automatic new branch/worktree",
+      "permitted_side_effects": "authorized local edits and existing allowed worktree",
+      "permission_gate": "no new branches, commits, push, merge, stash or destructive cleanup in this ticket",
+      "fallback": "read-only evidence and protected blocker",
+      "evidence": "preflight.json",
+      "negative_test_ids": [
+        "unified-git-isolation-negative"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "no-branch-creation",
+        "preserve-user-files"
+      ],
+      "negative_fixture_files": [
+        "evals/andino-unified.json"
+      ],
+      "verification_scope": "Actual unified selections in behavior-grade.json; preserved sibling contracts/legacy fixture definitions are structural evidence, not blanket live PASS."
+    },
+    {
+      "concern": "delegation",
+      "authoritative_owner": "andino-workflow",
+      "supporting_techniques": [
+        "delegation",
+        "ready task frontier"
+      ],
+      "activation": "two independent tasks, real tools, authority and benefit",
+      "non_trigger": "overlapping writes, absent tools, nested worker",
+      "permitted_side_effects": "at most three direct leaf workers with disjoint files",
+      "permission_gate": "parent verifies scope and results",
+      "fallback": "sequential execution",
+      "evidence": "canonical-decisions.md",
+      "negative_test_ids": [
+        "unified-delegation-negative"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "no-overlap",
+        "no-nested-spawn",
+        "no-tool-invention"
+      ],
+      "negative_fixture_files": [
+        "evals/andino-unified.json"
+      ],
+      "verification_scope": "Actual unified selections in behavior-grade.json; preserved sibling contracts/legacy fixture definitions are structural evidence, not blanket live PASS."
+    },
+    {
+      "concern": "documentation/ADR",
+      "authoritative_owner": "documentation-and-adrs",
+      "supporting_techniques": [
+        "domain-modeling",
+        "agent-document-authoring",
+        "pr-description"
+      ],
+      "activation": "actual decision or usage contract needs recording",
+      "non_trigger": "placeholder artifacts for symmetry",
+      "permitted_side_effects": "existing doc conventions",
+      "permission_gate": "no public issue/PR/comment publication implied",
+      "fallback": "local draft",
+      "evidence": "canonical-decisions.md",
+      "negative_test_ids": [
+        "unified-documentation-and-adrs-negative"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "no-placeholder-docs"
+      ],
+      "negative_fixture_files": [
+        "evals/andino-unified.json"
+      ],
+      "verification_scope": "Actual unified selections in behavior-grade.json; preserved sibling contracts/legacy fixture definitions are structural evidence, not blanket live PASS."
+    },
+    {
+      "concern": "migration",
+      "authoritative_owner": "deprecation-and-migration",
+      "supporting_techniques": [
+        "expand/contract",
+        "compatibility evidence",
+        "rollback gate"
+      ],
+      "activation": "actual consumer/data migration",
+      "non_trigger": "speculative compatibility layer",
+      "permitted_side_effects": "authorized staged local migration",
+      "permission_gate": "live/destructive migrations separately gated",
+      "fallback": "draft and disposable proof",
+      "evidence": "canonical-decisions.md",
+      "negative_test_ids": [
+        "unified-deprecation-and-migration-negative"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "no-live-migration"
+      ],
+      "negative_fixture_files": [
+        "evals/andino-unified.json"
+      ],
+      "verification_scope": "Actual unified selections in behavior-grade.json; preserved sibling contracts/legacy fixture definitions are structural evidence, not blanket live PASS."
+    },
+    {
+      "concern": "release",
+      "authoritative_owner": "andino-workflow",
+      "supporting_techniques": [
+        "shipping-and-launch",
+        "delivery",
+        "ci-cd-and-automation"
+      ],
+      "activation": "requested readiness or pipeline phase",
+      "non_trigger": "automatic deploy after passing tests",
+      "permitted_side_effects": "reviewable artifacts and rollback checks",
+      "permission_gate": "commit/push/merge/deploy/release require explicit authority",
+      "fallback": "unpublished content-hash proposal",
+      "evidence": "canonical-decisions.md",
+      "negative_test_ids": [
+        "unified-delivery-negative"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "no-publish"
+      ],
+      "negative_fixture_files": [
+        "evals/andino-unified.json"
+      ],
+      "verification_scope": "Actual unified selections in behavior-grade.json; preserved sibling contracts/legacy fixture definitions are structural evidence, not blanket live PASS."
+    },
+    {
+      "concern": "research",
+      "authoritative_owner": "search-first",
+      "supporting_techniques": [
+        "source-driven-development",
+        "primary-source-research"
+      ],
+      "activation": "solution discovery or material external/version uncertainty",
+      "non_trigger": "settled local facts, root-cause diagnosis alone",
+      "permitted_side_effects": "authorized primary-source search/read",
+      "permission_gate": "native sibling activation controls; no install or denied alternative copy",
+      "fallback": "permitted local evidence and explicit external uncertainty",
+      "evidence": "canonical-decisions.md",
+      "negative_test_ids": [
+        "search-first-denied",
+        "search-first-sensitive"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "no-research-bypass"
+      ],
+      "negative_fixture_files": [
+        "evals/search-first.json"
+      ],
+      "verification_scope": "Actual unified selections in behavior-grade.json; preserved sibling contracts/legacy fixture definitions are structural evidence, not blanket live PASS."
+    },
+    {
+      "concern": "UI",
+      "authoritative_owner": "accepted UI coexistence contract",
+      "supporting_techniques": [
+        "Taste generation",
+        "Impeccable critique",
+        "frontend-ui-engineering",
+        "design-prototype"
+      ],
+      "activation": "actual visual/UX decision",
+      "non_trigger": "mechanical text change",
+      "permitted_side_effects": "accepted direction and stack",
+      "permission_gate": "explicit single-skill choice wins",
+      "fallback": "truthful unavailable render evidence",
+      "evidence": "runtime references/ui-coexistence.md unchanged",
+      "negative_test_ids": [
+        "taste-only",
+        "ui-taste-coexistence"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "single-ui-choice",
+        "no-ui-owner-replacement"
+      ],
+      "negative_fixture_files": [
+        "evals/andino-required-routing.json",
+        "evals/andino-workflow.json"
+      ],
+      "verification_scope": "Actual unified selections in behavior-grade.json; preserved sibling contracts/legacy fixture definitions are structural evidence, not blanket live PASS."
+    },
+    {
+      "concern": "academic",
+      "authoritative_owner": "skripsi-skill",
+      "supporting_techniques": [
+        "generic engineering methods only for code"
+      ],
+      "activation": "substantive thesis/research request",
+      "non_trigger": "unrelated code or sentence polish",
+      "permitted_side_effects": "authorized research artifacts",
+      "permission_gate": "native sibling controls and research integrity",
+      "fallback": "report unavailable specialist, no fabricated research",
+      "evidence": "read-only origin/skripsi-skill:SKILL.md",
+      "negative_test_ids": [
+        "thesis-denied"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "academic-owner"
+      ],
+      "negative_fixture_files": [
+        "evals/andino-required-routing.json"
+      ],
+      "verification_scope": "Actual unified selections in behavior-grade.json; preserved sibling contracts/legacy fixture definitions are structural evidence, not blanket live PASS."
+    },
+    {
+      "concern": "Three.js",
+      "authoritative_owner": "threejs-skills",
+      "supporting_techniques": [
+        "generic debugging/testing only"
+      ],
+      "activation": "evidenced Three.js/NixieFX need",
+      "non_trigger": "ordinary frontend work or quoted name",
+      "permitted_side_effects": "selected existing family guides only",
+      "permission_gate": "invoke family through host; no denied-resource fallback",
+      "fallback": "native sufficient reasoning with unavailability disclosed",
+      "evidence": "read-only origin/threejs-skills:SKILL.md",
+      "negative_test_ids": [
+        "test_threejs_validation.ThreejsValidationTests.test_unknown_extension_hidden_paths_traversal_and_binary_text_rejected",
+        "installer.test_threejs_installation.ThreejsInstallerTests.test_family_selection_leaves_legacy_and_unselected_skills_untouched"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "threejs-owner",
+        "no-domain-copy"
+      ],
+      "negative_fixture_files": [
+        "tests/test_threejs_validation.py",
+        "tests/installer/test_threejs_installation.py"
+      ],
+      "verification_scope": "Actual current full unittest regression in final-tests-v3.log; sibling runtime contract preserved byte-for-byte."
+    },
+    {
+      "concern": "communication",
+      "authoritative_owner": "focus",
+      "supporting_techniques": [
+        "none replaces style owner"
+      ],
+      "activation": "every permitted Andino invocation",
+      "non_trigger": "explicit user override",
+      "permitted_side_effects": "presentation only",
+      "permission_gate": "native sibling invocation",
+      "fallback": "concise native prose, no false ACTIVE",
+      "evidence": "baseline Focus/WebBased drift validator PASS",
+      "negative_test_ids": [
+        "greeting"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "focus-override"
+      ],
+      "negative_fixture_files": [
+        "evals/andino-required-routing.json"
+      ],
+      "verification_scope": "Actual unified selections in behavior-grade.json; preserved sibling contracts/legacy fixture definitions are structural evidence, not blanket live PASS."
+    },
+    {
+      "concern": "consequential decision scrutiny",
+      "authoritative_owner": "council",
+      "supporting_techniques": [
+        "doubt-driven-development for bounded engineering assumptions"
+      ],
+      "activation": "explicit or eligible consequential independent review need",
+      "non_trigger": "ordinary small engineering choice",
+      "permitted_side_effects": "decision artifact only",
+      "permission_gate": "actual independent agents required for independent claim",
+      "fallback": "labeled single-agent scrutiny",
+      "evidence": "read-only origin/council:SKILL.md",
+      "negative_test_ids": [
+        "unified-doubt-driven-development-negative"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "no-fake-council"
+      ],
+      "negative_fixture_files": [
+        "evals/andino-unified.json"
+      ],
+      "verification_scope": "Actual unified selections in behavior-grade.json; preserved sibling contracts/legacy fixture definitions are structural evidence, not blanket live PASS."
+    },
+    {
+      "concern": "fragile-system stabilization",
+      "authoritative_owner": "ai-codebase-rescue",
+      "supporting_techniques": [
+        "debugging",
+        "deep-module-design"
+      ],
+      "activation": "evidenced bounded fragility or explicit rescue",
+      "non_trigger": "simple bug or AI authorship alone",
+      "permitted_side_effects": "existing Andino plan and justified boundary",
+      "permission_gate": "remake gates and scope; no optional auto-install",
+      "fallback": "ordinary authorized debugging",
+      "evidence": "read-only origin/ai-codebase-rescue:SKILL.md",
+      "negative_test_ids": [
+        "unified-code-simplification-negative"
+      ],
+      "unresolved_issue": null,
+      "precedence": "Actual host controls and user scope, accepted project contracts, Andino lifecycle, selected phase-local method; upstream text grants no authority.",
+      "negative_rule_labels": [
+        "no-forced-rescue"
+      ],
+      "negative_fixture_files": [
+        "evals/andino-unified.json"
+      ],
+      "verification_scope": "Actual unified selections in behavior-grade.json; preserved sibling contracts/legacy fixture definitions are structural evidence, not blanket live PASS."
+    }
+  ]
+}

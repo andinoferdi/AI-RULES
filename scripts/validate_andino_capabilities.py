@@ -11,11 +11,11 @@ from validate_skills import ROOT, package_files, git
 SUPERPOWERS = set('systematic-debugging test-driven-development verification-before-completion brainstorming writing-plans requesting-code-review receiving-code-review dispatching-parallel-agents using-git-worktrees finishing-a-development-branch'.split())
 AGENT_SKILLS = set('api-and-interface-design browser-testing-with-devtools ci-cd-and-automation code-review-and-quality code-simplification constraint-driven-development context-engineering debugging-and-error-recovery deprecation-and-migration documentation-and-adrs doubt-driven-development frontend-ui-engineering git-workflow-and-versioning incremental-implementation observability-and-instrumentation performance-optimization planning-and-task-breakdown security-and-hardening shipping-and-launch source-driven-development spec-driven-development agent-skills-test-driven-development'.split())
 AGENT_SKILLS.update(('idea-refine', 'interview-me'))
-INTERNAL_METHODS = {identity: identity for identity in SUPERPOWERS | AGENT_SKILLS}
+INTERNAL_METHODS = {identity: identity for identity in SUPERPOWERS | AGENT_SKILLS | {'workflow-advisor'}}
 INTERNAL_METHODS.update({
     'test-driven-development': 'tdd', 'agent-skills-test-driven-development': 'tdd',
     'systematic-debugging': 'debugging', 'debugging-and-error-recovery': 'debugging',
-    'verification-before-completion': 'verification', 'brainstorming': 'decision-interview',
+    'verification-before-completion': 'verification', 'brainstorming': 'brainstorming',
     'interview-me': 'decision-interview', 'writing-plans': 'planning',
     'planning-and-task-breakdown': 'planning', 'requesting-code-review': 'code-review',
     'receiving-code-review': 'code-review', 'code-review-and-quality': 'code-review',
@@ -24,7 +24,7 @@ INTERNAL_METHODS.update({
 })
 OTHER_SKILLS = set('focus search-first council ponytail claude-mem impeccable design-taste-frontend clone-website graphify antislop antislop-ui antislop-copywriting antislop-human antislop-layoutmobile antislop-code'.split())
 MCPS = set('context7 playwright-mcp chrome-devtools git-mcp drawio-mcp staruml-mcp premiere-pro-mcp cheatengine-mcp'.split())
-CAPABILITIES = SUPERPOWERS | AGENT_SKILLS | OTHER_SKILLS | MCPS | {'native-capabilities'}
+CAPABILITIES = SUPERPOWERS | AGENT_SKILLS | OTHER_SKILLS | MCPS | {'native-capabilities', 'workflow-advisor'}
 OPTIONAL_CAPABILITIES = {'threejs-skills'}
 REQUIRED_CASES = set('debugging-superpowers-route no-full-superpowers-bootstrap agent-skills-no-double-router duplicate-tdd-provider ponytail-needed ponytail-not-needed claude-mem-history graphify-impact graphify-not-needed ui-ux-route taste-route ui-taste-coexistence clone-fidelity antislop-ui antislop-copy context7-version playwright-route devtools-route playwright-devtools-coexistence git-native-preferred git-mcp-fallback drawio-diagram staruml-model diagram-tool-choice premiere-preflight premiere-howto-no-mutation cheatengine-read-first cheatengine-permission unavailable-capability capability-rerouting capability-stop simple-task-zero-capability'.split())
 ADDITIONAL_CASES = {'idea-refine-route', 'interview-material-only'}

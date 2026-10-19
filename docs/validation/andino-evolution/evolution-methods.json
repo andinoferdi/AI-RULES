@@ -1,0 +1,28 @@
+[
+  {
+    "id": "brainstorming",
+    "source_paths": [
+      "obra/superpowers:skills/brainstorming/SKILL.md"
+    ],
+    "resources": [],
+    "positive_requests": [
+      "I want to build something interesting but have no idea what."
+    ],
+    "negative_requests": [
+      "Implement this fully specified endpoint."
+    ]
+  },
+  {
+    "id": "workflow-advisor",
+    "source_paths": [
+      "mattpocock/skills:skills/engineering/ask-matt/SKILL.md"
+    ],
+    "resources": [],
+    "positive_requests": [
+      "Which AI-RULES workflow should I use?"
+    ],
+    "negative_requests": [
+      "Implement the accepted specification."
+    ]
+  }
+]

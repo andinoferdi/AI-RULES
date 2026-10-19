@@ -108,7 +108,8 @@ def source_roots(audit_dir):
     return roots
 
 
-def validate_method_evidence(methods, reports, hashes, input_hashes=None):
+def validate_method_evidence(methods, reports, hashes, input_hashes=None,
+                             manifest_prefix='docs/validation/andino-unified'):
     errors, metadata, records = [], {}, {}
     for method in methods:
         identity = method['id']
@@ -127,8 +128,8 @@ def validate_method_evidence(methods, reports, hashes, input_hashes=None):
             inputs = report.get('inputs', {})
             family = report.get('source_family')
             required = {f'scripts/check_andino_{family}_methods.py',
-                        f'docs/validation/andino-unified/{family}-methods.json'}
-            if (family not in {'addy', 'matt', 'superpowers'} or not required <= inputs.keys()
+                        f'{manifest_prefix}/{family}-methods.json'}
+            if (family not in {'addy', 'matt', 'superpowers', 'evolution'} or not required <= inputs.keys()
                     or any(input_hashes.get(path) != digest for path, digest in inputs.items())):
                 errors.append('procedural report: stale or missing checker/manifest input identity')
         for record in report.get('methods', report.get('records', [])):
@@ -158,7 +159,10 @@ def main():
     parser.add_argument('--audit-dir', type=Path, default=AUDIT)
     parser.add_argument('--runtime', type=Path)
     parser.add_argument('--check-sources', action='store_true')
+    parser.add_argument('--source-audit-dir', type=Path,
+                        help='source snapshot records, defaults to --audit-dir')
     args = parser.parse_args()
+    args.audit_dir = args.audit_dir.resolve()
     document = json.loads((args.audit_dir / 'coverage.json').read_text(encoding='utf-8'))
     ownership = json.loads((args.audit_dir / 'ownership.json').read_text(encoding='utf-8'))
     files = None
@@ -175,7 +179,8 @@ def main():
                        *ROOT.glob('scripts/check_andino_*_methods.py')]
         input_hashes = {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
                         for p in input_paths}
-        errors += validate_method_evidence(methods, reports, hashes, input_hashes)
+        errors += validate_method_evidence(methods, reports, hashes, input_hashes,
+                                          args.audit_dir.resolve().relative_to(ROOT).as_posix())
         resources = json.loads((args.audit_dir/'resource-map.json').read_text(encoding='utf-8'))['resources']
         for row in document['rows']:
             for asset in row['essential_assets']:
@@ -188,12 +193,16 @@ def main():
         errors = []
     source_paths = None
     if args.check_sources:
-        roots = source_roots(args.audit_dir)
+        roots = source_roots(args.source_audit_dir or args.audit_dir)
         source_paths = {name: {p.relative_to(root).as_posix() for p in root.rglob('SKILL.md')
                                if '.git' not in p.relative_to(root).parts}
                         for name, root in roots.items()}
         for row in document['rows']:
-            path = roots[row['upstream']] / row['source_path']
+            root = roots.get(row['upstream'])
+            if root is None or not root.is_dir():
+                errors.append(f"{row['upstream']}: source snapshot missing or unavailable")
+                continue
+            path = root / row['source_path']
             if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != row['source_sha256']:
                 errors.append(f"{row['source_id']}: source bytes drift or missing")
     errors += validate_coverage(document, files, source_paths) + validate_ownership(ownership)

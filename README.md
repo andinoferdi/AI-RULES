@@ -46,7 +46,7 @@ checks files; it does not prove native discovery, automatic selection, or live u
 | [Council](https://github.com/andinoferdi/AI-RULES/tree/council) | Reviewing consequential choices through independent perspectives when supported |
 | [Three.js Skills](https://github.com/andinoferdi/AI-RULES/tree/threejs-skills) | Scenes, shaders, animation, interaction, games, and NixieFX |
 
-Andino is one native entrypoint with 57 reviewed internal methods adapted from
+Andino is one native entrypoint with 59 internal methods adapted from
 Addy Osmani Agent Skills, Matt Pocock Skills and Superpowers. Requirements, TDD,
 debugging, architecture and review methods are bundled local guides, not dozens
 of extra native skills. Those upstream projects do not need a separate runtime
@@ -279,6 +279,7 @@ publication step. Historical evaluations remain tied to the revisions they teste
 - [Package and release contract](docs/agent-skill-family-standard.md)
 - [Capability evaluation guide](evals/README.md)
 - [Unified Andino evidence and live-host limits](docs/validation/andino-unified/README.md)
+- [Andino evolution, setup verification and live-host limits](docs/validation/andino-evolution/README.md)
 - [Three.js inventory, provenance and verification](docs/threejs/README.md)
 
 From `main`, after fetching the runtime refs, run the package validators and tests

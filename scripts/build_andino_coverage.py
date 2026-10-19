@@ -51,8 +51,6 @@ def build_rows(audits):
             if name == 'using-agent-skills':
                 methods = ['root-contract']
                 status, disposition = 'meta', 'INTERNALIZE'
-            if name == 'brainstorming':
-                methods = ['decision-interview']
             if name == 'chief-of-staff':
                 methods = ['environment-retrospective', 'implementation']
                 disposition = 'CONDITIONAL'

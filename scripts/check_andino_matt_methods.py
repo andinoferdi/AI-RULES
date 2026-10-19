@@ -384,7 +384,7 @@ def main() -> int:
               "checker_sha256": digest(Path(__file__)),
               "methods_sha256": digest(args.methods),
               "inputs": {"scripts/check_andino_matt_methods.py": digest(Path(__file__)),
-                         "docs/validation/andino-unified/matt-methods.json": digest(args.methods)},
+                         args.methods.resolve().relative_to(Path(__file__).resolve().parents[1]).as_posix(): digest(args.methods)},
               "command": [sys.executable, str(Path(__file__).resolve()), "--runtime-root",
                           str(args.runtime_root.resolve()), "--methods", str(args.methods.resolve()),
                           "--output", str(args.output.resolve())],
