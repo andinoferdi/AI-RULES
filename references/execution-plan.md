@@ -50,6 +50,12 @@ reasoning, large logs or diffs, copied source, credentials, repeated repository 
 and repeated facts. Compact completed phases once evidence and material decisions
 remain sufficient to resume.
 
+For implementation-ready dependent work, bind each task to its accepted requirement,
+verified file ownership, consumed/produced interface and observable acceptance.
+Record exact inspected signatures only where callers need them; unresolved interfaces
+stay UNKNOWN with a discovery action. Include relevant edge/failure cases and the
+actual verification command. Routine coding choices need no pseudocode transcript.
+
 ## Phase, debugging and gate semantics
 
 Canonical phase statuses are `TODO`, `IN_PROGRESS`, `BLOCKED`, `DONE`, and `SKIPPED`.
@@ -73,6 +79,12 @@ blockers, verification and handoff. The Executive Snapshot should let a fresh ag
 understand the objective, progress, critical decision and immediate next action in
 about 30 seconds. NEXT ACTION names the first relevant artifact/source/state or question, the concrete
 action, and the next check. Follow [handoff](handoff.md) on resume.
+
+On resume compare relevant inputs, interfaces and current bytes with the evidence
+attached to completed tasks. Reuse unchanged verified work; invalidate the affected
+task and dependent evidence when drift changes acceptance. Record the reason and
+the smallest recheck in this same plan. Worker reports and checklist markers never
+override failed material acceptance; independently actionable authorized work continues.
 
 At completion, record final observable acceptance and evidence, set actual board
 statuses, retain material decisions/revisions and set `Status: DONE`. NEXT ACTION is

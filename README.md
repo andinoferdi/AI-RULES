@@ -70,7 +70,7 @@ Activating a skill grants no extra permission.
 
 ## Bundled methods and provenance
 
-One native entrypoint contains 57 reviewed internal methods adapted from Addy
+One native entrypoint contains 59 internal methods adapted from Addy
 Osmani Agent Skills, Matt Pocock Skills and Superpowers. The
 [method index](references/internal-method-index.md) covers requirements, planning,
 implementation, diagnosis, tests, reviews, architecture, productivity and delivery.
@@ -83,6 +83,13 @@ Examples: `$andino-workflow use the tdd method for this behavior change`, or
 not extra native skills to install. Reading a guide proves loading; relevant
 action and results prove use. Keep the [snapshot provenance and legal notices](references/legal/provenance.md);
 upstream updates require manual review and regressions.
+
+Use `brainstorming` to explore possible directions before choosing an outcome.
+For explicit advice about which workflow fits a problem, use `workflow-advisor`
+(alias `ask-matt`). Advice does not execute the recommended workflow. Accepted
+specifications proceed to implementation without repeating ideation. `teach`
+supports a lesson in chat; persistent learning files require a learning need
+across sessions or an explicit request.
 
 ## Notes
 

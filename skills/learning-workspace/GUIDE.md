@@ -4,33 +4,33 @@ Internal method ID: `learning-workspace`. Stable technique adapted to Andino own
 
 ## Purpose and selection
 
-Teach a bounded skill from trusted sources and demonstrated learning rather than mere content coverage.
+Support quick learning in the current conversation and intentional, persistent learning across sessions. Structured learning uses trusted sources and demonstrated understanding rather than mere content coverage.
 
-Activate for: An explicit request for learning across sessions or a structured lesson tied to a concrete mission.
+Activate for: An explicit request to learn a concept or process in this conversation, or an intentional multi-session learning goal. Use the quick branch for immediate explanation and optional practice; use the structured branch only when persistence is requested or clearly part of the user's goal.
 
-Do not activate for: A one-off factual answer or an assumption the user wants recurring lessons/automation.
+Do not activate for: An ordinary factual question that needs a direct answer, a confusing prior explanation that needs repair, or an assumption that the user wants a persistent workspace, curriculum or recurring schedule.
 
 ## Inputs and dependencies
 
-Workspace selected by the user, mission and prior knowledge, learning records/resources, existing reusable lesson assets and source evidence.
+For quick learning: the current question, known context and any prior knowledge that materially changes the explanation. For structured learning: the user's selected workspace, mission, prior records/resources, reusable lesson assets and source evidence.
 
 Use resources progressively: [worked procedure and example](resources/worked-example.md). It is local and self-contained. Optional project tools are discovered when needed, never installed merely to load this method.
 
 ## Procedure
 
-1. Read mission, prior records and preferences. In an empty/thin workspace establish why the user wants the skill, observable success, constraints and out of scope before authoring lessons.
+1. Choose the depth from the user's intent. A one-off factual question gets a direct answer. For an explicit quick-learning request, explain in the current conversation; do not create a workspace, files, HTML lesson or curriculum. For a persistent goal, read the selected workspace and prior records before extending it.
 
-2. Gather trusted primary/reference sources into an annotated resources register. State source gaps and community preferences; never teach precise procedures from unsupported guesses.
+2. In the quick branch, give a contextual explanation and a concrete example. Assess prior knowledge only when it changes what should be explained; otherwise make a reasonable starting assumption and invite correction. Offer a short exercise when it would help practice, then give feedback and handle follow-up questions naturally.
 
-3. Choose one short tangible lesson in the learner's current zone of development. Ask about material unknown prior knowledge rather than assume mastery from vocabulary.
+3. Start or continue the structured branch only when the user wants learning to persist. Read the mission and existing records; establish motivation, observable success, constraints and out of scope when they are not already clear. Do not ask the user to repeat evidence already in the workspace. If no workspace is selected, ask where the user wants persistent materials before creating them.
 
-4. Separate knowledge acquisition (clarity, low extraneous difficulty) from skill practice (retrieval, spacing, interleaving) and contextual judgment/wisdom. Recommend a primary source and give tight observable feedback.
+4. Use trustworthy primary/reference sources for structured lesson claims and record them with useful annotations in the resources register. Use Search First when external research is actually needed and state source gaps; do not teach a precise procedure from unsupported guesses. A stable one-off concept does not require a research ritual.
 
-5. Use reusable local assets and shared stylesheet, numbered lesson HTML and printable reference material, linked to related lessons. Keep all paths relative to the learning workspace, not the installed package.
+5. Choose one short lesson tied to the mission and the learner's current knowledge. Keep knowledge acquisition clear, then provide relevant skill practice with timely feedback. Contextual judgment develops through real use; do not imply a quiz alone demonstrates it.
 
-6. Quiz options should be comparably reasoned/long and correct positions varied. Record genuine demonstrated understanding, corrected misconceptions and stated prior knowledge; material merely covered is not a learning record.
+6. Reuse the workspace's existing assets and reference formats. Keep paths relative to the user's learning workspace, link related lessons and sources, and use the smallest useful artifact set; do not add reusable components just for uniformity.
 
-7. Update a learned-term glossary only after understanding is shown. Preserve superseded records, confirm changed mission, and compare success criteria to decide practice/review/finish rather than endlessly adding new lessons.
+7. Record stated prior knowledge and genuine demonstrated understanding, corrected misconceptions and evidence. Material merely covered is not a learning record. Vary correct quiz positions and avoid answer-length clues. Preserve superseded records; confirm mission changes and compare success criteria to decide whether to practice, review or finish. Do not schedule recurring learning unless separately requested.
 
 ## Ownership, precedence and permissions
 
@@ -40,9 +40,7 @@ Existing scope authorization persists. Local examples use disposable data; real 
 
 ## Outputs and verification
 
-Lesson claims cite sources, exercises give feedback, success is demonstrable, learned records have evidence and a new session can resume from files.
-
-Apply the worked example to observe an artifact and independent expected outcomes. Its deterministic result proves only that bounded procedure; it does not prove model routing, live host parity or optional external tool execution. Record actual command/tool, current content identity, result and unresolved limits before claiming success.
+Quick answers stay in the conversation and remain understandable without setup; optional practice receives feedback. For structured learning, lesson claims cite sources, exercises give feedback, records reflect demonstrated learning, and a new session can resume from user-selected workspace files. The linked workspace example applies only to structured local artifacts; its deterministic result proves that bounded procedure, not model routing or host parity. Record actual actions and unresolved limits when claiming completion.
 
 ## Example and anti-patterns
 
@@ -55,6 +53,39 @@ Invented move sequences/medical procedures, quizzes leaking correct answers, tre
 ## Fallback
 
 A sourced Markdown lesson with manual exercise feedback works without browser tools. State interaction, print rendering or topic correctness limitations honestly.
+
+## Learning mode example
+
+This standard-library example classifies intent only. The quick branch stays in chat; the structured branch is selected only for an explicit persistent goal; explanation repair remains separate.
+
+```python evolution-example
+import json
+
+def choose_mode(request):
+    if request["last_explanation_unclear"]:
+        return {"mode": "repair", "persistent_goal": False}
+    if request["multi_session_goal"]:
+        return {"mode": "structured", "persistent_goal": True}
+    if request["explicit_learning_request"]:
+        return {"mode": "quick", "persistent_goal": False}
+    return {"mode": "direct-answer", "persistent_goal": False}
+
+RESULT = {
+    "ordinary": choose_mode({"last_explanation_unclear": False, "multi_session_goal": False, "explicit_learning_request": False}),
+    "teach_now": choose_mode({"last_explanation_unclear": False, "multi_session_goal": False, "explicit_learning_request": True}),
+    "deliberate": choose_mode({"last_explanation_unclear": False, "multi_session_goal": True, "explicit_learning_request": True}),
+    "confused": choose_mode({"last_explanation_unclear": True, "multi_session_goal": False, "explicit_learning_request": True}),
+}
+print(json.dumps(RESULT, sort_keys=True))
+```
+
+Expected result:
+
+```json
+{"confused": {"mode": "repair", "persistent_goal": false}, "deliberate": {"mode": "structured", "persistent_goal": true}, "ordinary": {"mode": "direct-answer", "persistent_goal": false}, "teach_now": {"mode": "quick", "persistent_goal": false}}
+```
+
+This example demonstrates mode selection; it creates no workspace or learning record.
 
 ## Provenance
 

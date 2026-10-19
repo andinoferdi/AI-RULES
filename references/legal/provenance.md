@@ -26,3 +26,11 @@ Updates are manual: compare the actual source bytes and notices, review every ch
 technique/resource against its guide, update the source/ownership matrices on main,
 run source reconciliation, procedural regressions and disposable installer checks,
 then obtain publication authorization. Do not fetch or auto-sync source at runtime.
+
+The 2026-10-19 evolution reuses these pinned revisions for comparison. The new
+brainstorming method separates exploration from requirements interviews; the
+workflow-advisor adapts ask-matt's definition-backed advice without its secondary
+router, mandatory phase resets or tracker conventions. Existing legal notices
+remain applicable. The candidate assessment and current procedure evidence live
+under docs/validation/andino-evolution on the main quality plane; earlier unified
+evidence remains historical and is not a passing claim for changed guide bytes.

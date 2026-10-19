@@ -2,9 +2,9 @@
 
 ## Task contract
 
-Task: id, user outcome, dependencies, files, consumes, produces, acceptance example, command/expected result, state/evidence. Consumers and producers name identical signatures. Replace vague "edge cases" with specific input and outcome.
+One existing plan/checkpoint records the objective and accepted outcomes, relevant spec and decisions, current system constraints, affected boundaries, dependencies, ownership, integration or approval gates, and one `NEXT ACTION`. For each task record: id and user outcome; exact owned paths; consumers/producers with verified signatures and source pointers where available; dependencies; a concrete acceptance example; verification command and expected result; relevant failure conditions; current state and evidence. Producer and consumer names/types must match. If a path, signature or command cannot be verified yet, mark it `UNKNOWN` or provisional and block only the dependent task until inspection resolves it. Replace vague "edge cases" with a specific input and outcome.
 
-Test steps carry independent assertions; implementation steps carry signatures/pinned values; verification carries command and signal. A plan several times longer than its code often dictates unnecessary detail.
+Test steps carry independent assertions; implementation steps carry verified signatures/pinned values; verification carries command and signal. Keep the plan proportional: record decisions an implementer cannot safely infer, leave routine choices open when safe, and avoid pseudocode that merely transcribes the implementation. A plan several times longer than its code often dictates unnecessary detail.
 
 Review Focus covers real missing inputs: empty/malformed, authorization, concurrent request, restart and partial failure. Assign each to its owner. Estimates guide splitting, not acceptance.
 

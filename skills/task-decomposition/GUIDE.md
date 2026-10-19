@@ -18,19 +18,19 @@ Use resources progressively: [worked procedure and example](resources/worked-exa
 
 ## Procedure
 
-1. Read the source spec and existing graph in full including relevant comments. Reuse completed work and accepted task IDs.
+1. Read the source spec and existing graph in full, including relevant comments. Inspect the actual repository before assigning paths or interfaces. Reuse completed work and accepted task IDs; retain source pointers for verified signatures and mark unresolved ones explicitly.
 
 2. Draft narrow complete paths through necessary layers, each with demoable behavior and verification fitting a focused context. Fold setup/docs into the behavior they support.
 
 3. Do needed prefactoring first. For wide mechanical changes use expand, migrate bounded caller batches, contract after every caller migrates; allow a final integration gate where standalone batches cannot stay green.
 
-4. Assign real blocking edges, not perceived importance. Record inputs/outputs/interfaces and falsifiable acceptance observations; each criterion must be meaningful at that task's start.
+4. Assign real blocking edges, not perceived importance. Record verified inputs/outputs/interfaces and falsifiable acceptance observations; each criterion must be meaningful at that task's start. If an interface is unresolved, keep the consumer blocked behind the task or inspection that will establish it.
 
 5. Review granularity and overlapping shared files. An existing approved breakdown does not require repeated approval; ask about material scope/ownership ambiguity.
 
 6. Write one local task artifact per ticket or update the existing plan convention. Publish remote tickets only when authorized, blockers first, real sub-issues/native dependencies where supported, textual fallback otherwise.
 
-7. Work the ready frontier inside Andino. A parent issue/spec is context, not a duplicate AFK work item; do not silently close or modify it.
+7. Work the ready frontier inside Andino. Keep the breakdown inside the existing plan/checkpoint and maintain its single `NEXT ACTION`. A parent issue/spec is context, not a duplicate AFK work item; do not silently close or modify it.
 
 ## Ownership, precedence and permissions
 

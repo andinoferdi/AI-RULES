@@ -2,7 +2,9 @@
 
 ## Recovery record
 
-Keep plan/task id, state/dependencies, output hashes, exact command/result, relevant environment, test identity/scope and freshness for external observations. Hashes establish identity, not test sufficiency.
+Keep the single plan/task id, accepted requirement/spec mapping, state/dependencies, owned paths, consumed/produced interface evidence, output identities, exact command/result, relevant environment, test identity/scope and freshness for external observations. Hashes establish identity, not test sufficiency. Worker identity/status, review findings and integrated output belong in this checkpoint or linked evidence, not in a competing ledger.
+
+Revalidate a completed task when its owned outputs, required interface, dependency output, verification command/scope or relevant environment changes. Mark affected downstream evidence stale when a producer changes. Preserve unaffected task evidence if its own inputs and acceptance remain current. Unknown status or missing evidence is not a passing result.
 
 Rulings identify contradiction, evidence, chosen correction, cost if wrong and downstream consumers. Material load-bearing failures stay open; only explicit optional observations may be deferred.
 

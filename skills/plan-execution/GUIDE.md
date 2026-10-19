@@ -18,12 +18,14 @@ Locate plan identity/checkpoint; inspect branch/worktree/diff/spec/task graph an
 
 ## Procedure
 
-1. Reconcile drift for completed tasks using actual output identities and check scope. Checked boxes, old commits and recollection alone are insufficient; invalidate only affected evidence.
-2. Select dependency-ready task and read exact contract, interfaces and rulings. Capture baseline bytes/ownership; task range is not necessarily HEAD~1.
-3. Implement one slice using canonical TDD for behavior, targeted verification for static content. Compare each actual command result to expected signal; preserve named failures.
-4. Resolve bounded plan/spec/interface conflicts with evidence, reason and cost. Continue independent authorized work; ask only about material missing decisions.
-5. Record completion only after current acceptance checks ran. Append commands/results, output hashes, review residuals and next frontier immediately to the same plan.
-6. Perform cross-task/final acceptance and prepare delivery. Andino owns DONE; preserve durable evidence instead of deleting it as scratch.
+1. Establish the task and authoritative plan/checkpoint identity. Map accepted outcomes and specifications to current task IDs; inspect the current branch/worktree, status and relevant diff.
+2. Compare completed-task evidence with current outputs, dependencies, test identity/scope, environment and freshness. Reuse work only when its evidence still supports the same acceptance; invalidate drifted evidence and affected dependents, not unrelated completed work. A checkbox, worker report or old commit alone is insufficient.
+3. Select a dependency-ready task and read its exact contract, verified interfaces and recorded rulings. Confirm producer prerequisites against current bytes and capture baseline ownership; task range is not necessarily `HEAD~1`.
+4. Implement one slice using canonical TDD for behavior and suitable targeted verification for static content. Compare each actual command result to its expected signal; retain failures and material limitations.
+5. Resolve bounded plan/spec/interface conflicts from accepted requirements and current evidence, recording the decision and reason in the same checkpoint. Continue independent authorized work; ask only when a material user-owned decision or policy requires it.
+6. Inspect worker reports and actual output before integration. Check owned paths, consumed/produced interfaces, review findings and current verification; a worker success message does not establish acceptance.
+7. Record completion only after current acceptance checks ran. Append evidence identity, commands/results, review residuals, blockers and the next frontier to the same plan.
+8. Perform cross-task/final acceptance and prepare delivery. Andino owns DONE; preserve durable evidence instead of deleting it as scratch.
 
 ## Ownership
 
@@ -69,6 +71,68 @@ The synthetic offline example is applied in temporary isolation. Its independent
 ```
 
 Anti-pattern: Redo completed work after compaction, premature completion or second .superpowers ledger.
+
+## Evidence reuse example
+
+This example reuses a completed task only when its source and verification identity still match. A changed prerequisite invalidates its dependent evidence; unrelated current evidence remains reusable.
+
+```python evolution-example
+import json
+
+def reusable_tasks(tasks, prior, current):
+    def evidence_matches(task_id):
+        old = prior.get(task_id)
+        now = current.get(task_id)
+        return bool(old and now
+                    and old.get("result") == "PASS"
+                    and old.get("source") == now.get("source")
+                    and old.get("check") == now.get("check")
+                    and old.get("environment") == now.get("environment"))
+
+    invalid = {
+        task["id"] for task in tasks if not evidence_matches(task["id"])
+    }
+    changed = True
+    while changed:
+        changed = False
+        for task in tasks:
+            if task["id"] not in invalid and any(dep in invalid for dep in task["deps"]):
+                invalid.add(task["id"])
+                changed = True
+    return {
+        "reusable": sorted(task["id"] for task in tasks if task["id"] not in invalid),
+        "rerun": sorted(invalid),
+    }
+
+tasks = [
+    {"id": "base", "deps": []},
+    {"id": "ui", "deps": ["base"]},
+    {"id": "docs", "deps": ["base"]},
+]
+prior = {
+    name: {"source": name + "-source", "check": name + "-check",
+           "environment": "same", "result": "PASS"}
+    for name in ("base", "ui", "docs")
+}
+current = {
+    "base": {"source": "base-source", "check": "base-check", "environment": "same"},
+    "ui": {"source": "ui-source", "check": "new-ui-check", "environment": "same"},
+    "docs": {"source": "docs-source", "check": "docs-check", "environment": "same"},
+}
+producer_drift = dict(current)
+producer_drift["base"] = {"source": "changed-base", "check": "base-check", "environment": "same"}
+result = {
+    "local_drift": reusable_tasks(tasks, prior, current),
+    "producer_drift": reusable_tasks(tasks, prior, producer_drift),
+}
+print(json.dumps(result, sort_keys=True))
+```
+
+Expected output:
+
+```json
+{"local_drift": {"rerun": ["ui"], "reusable": ["base", "docs"]}, "producer_drift": {"rerun": ["base", "docs", "ui"], "reusable": []}}
+```
 
 ## Fallback
 

@@ -117,10 +117,19 @@ Reading an internal research guide never bypasses required Search First activati
 generic engineering methods do not replace domain owners. Explicit native sibling
 requests still follow their actual host invocation controls above.
 
-Real delegation tools are host-conditional. At least two independent tasks, benefit,
-authority and disjoint file scopes are required; at most three direct children,
+Real delegation tools are host-conditional. Parallel implementation requires at least
+two independent tasks, benefit, authority and disjoint file scopes; at most three direct children,
 no nested spawning, no concurrent shared writes. Parent inspects artifacts and
 reruns relevant checks. Sequential fallback is valid; do not imitate absent agents.
+
+Independent review can justify a single child; parallel implementation still needs
+independent scopes. Select inline, independent parallel or scoped implementer/reviewer
+execution using the [delegation method](../skills/delegation/GUIDE.md). Discover actual
+model and reasoning controls before using them. Respect a supported user selection;
+otherwise use host defaults and report unknown controls honestly. Consider brief size,
+retries, review and integration overhead along with capability fit. No model names,
+prices or fixed escalation policy are portable defaults; claim savings only with
+measured evidence. A missing model selector does not make delegation itself unavailable.
 
 ## Three.js family and bundled methods
 

@@ -14,6 +14,7 @@ Focus owns communication, Search First owns required solution/external research;
 | [api-and-interface-design](../skills/api-and-interface-design/GUIDE.md) | A new or changed API/module boundary, inconsistent errors or a retryable state-changing operation. | Pure private renaming or a request only to format code. |
 | [architecture-survey](../skills/architecture-survey/GUIDE.md) | A named architecture pain point or bounded request to find maintainability/testability friction. | A routine feature fix, arbitrary whole-repo scan, or repeated search for findings after no worthwhile candidate. |
 | [article-shaping](../skills/article-shaping/GUIDE.md) | An explicit writing request with existing raw material ready to be shaped. | Open fragment exploration, editing raw input without permission or publishing finished copy. |
+| [brainstorming](../skills/brainstorming/GUIDE.md) | Explore possible directions for an uncertain goal, creative idea, research topic or everyday problem. | Accepted specifications, settled alternatives needing assessment, or missing requirements alone. |
 | [browser-testing-with-devtools](../skills/browser-testing-with-devtools/GUIDE.md) | Browser-rendered behavior, console/network failure, layout/a11y regression or performance trace investigation. | Backend-only changes with no browser surface. |
 | [ci-cd-and-automation](../skills/ci-cd-and-automation/GUIDE.md) | CI/build/test pipeline configuration, automated checks, slow/flaky CI or deployment-strategy preparation. | A request to manually deploy without an accepted verification contract. |
 | [code-review](../skills/code-review/GUIDE.md) | Review PR, branch, WIP/untracked changes, pasted diff or completed feature. | Conceptual question with no change or unrequested cosmetic nit hunt. |
@@ -66,6 +67,7 @@ Focus owns communication, Search First owns required solution/external research;
 | [typescript-boundary-enforcement](../skills/typescript-boundary-enforcement/GUIDE.md) | An explicitly accepted TypeScript deep-package layout needs deterministic import enforcement. | Universal folder restructuring or a conceptual interface discussion without a chosen layout. |
 | [verification](../skills/verification/GUIDE.md) | About to report fixed/passing/complete or accept worker output. | No change/claim needing proof; do not rerun unchanged checks ritualistically. |
 | [workflow-specification](../skills/workflow-specification/GUIDE.md) | An explicit request to design a repeatable workflow or identify a delegable recurring pattern. | Starting a monitor/schedule, replacing Andino lifecycle or forcing AI/checkpoints into every activity. |
+| [workflow-advisor](../skills/workflow-advisor/GUIDE.md) | Explicit advice on choosing or comparing workflows, skills or method combinations. | Normal automatic routing, accepted implementation, or automatic execution of recommendations. |
 | [writing-fragments](../skills/writing-fragments/GUIDE.md) | An explicit exploratory writing session seeking material rather than a finished argument. | A fixed-pile article-shaping task or permission to invent personal anecdotes. |
 
 ## Source-name compatibility
@@ -75,7 +77,8 @@ Original names below are internal aliases/provenance, not installation requireme
 | Original name | Internal destination |
 | --- | --- |
 | agent-skills-test-driven-development | [tdd](../skills/tdd/GUIDE.md) |
-| brainstorming | [decision-interview](../skills/decision-interview/GUIDE.md) |
+| brainstorming | [brainstorming](../skills/brainstorming/GUIDE.md) |
+| ask-matt | [workflow-advisor](../skills/workflow-advisor/GUIDE.md) |
 | chief-of-staff | [environment-retrospective](../skills/environment-retrospective/GUIDE.md), [implementation](../skills/implementation/GUIDE.md) |
 | claude-handoff | [handoff](../skills/handoff/GUIDE.md) |
 | code-review-and-quality | [code-review](../skills/code-review/GUIDE.md) |

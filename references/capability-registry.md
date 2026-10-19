@@ -15,7 +15,8 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 | [systematic-debugging](#systematic-debugging) | method | Andino internal | Root-cause investigation |
 | [test-driven-development](#test-driven-development) | method | Andino internal | Executable regression contract |
 | [verification-before-completion](#verification-before-completion) | method | Andino internal | Evidence before completion |
-| [brainstorming](#brainstorming) | method | Andino internal | Clarify product/design choices |
+| [brainstorming](#brainstorming) | method | Andino internal | Explore possible directions |
+| [workflow-advisor](#workflow-advisor) | method | Andino internal | Non-executing workflow selection advice |
 | [writing-plans](#writing-plans) | method | Andino internal | Order dependent implementation |
 | [requesting-code-review](#requesting-code-review) | method | Andino internal | Prepare bounded implementation review |
 | [receiving-code-review](#receiving-code-review) | method | Andino internal | Evaluate review feedback |
@@ -129,20 +130,39 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 
 - Type: method
 - Family/provider: Andino internal; adapted source provenance in package legal records
-- Aliases: brainstorming resolves to canonical decision-interview; no upstream native registration required
-- Primary purpose: Clarify product/design choices
-- Trigger: Material requirement remains unclear after inspecting existing project behavior.
-- Preferred when: Options and human preferences change the outcome.
-- Avoid when: Repository-answerable details or locked requirements.
-- Availability check: Check local skills/decision-interview/GUIDE.md and selected resources plus actual resource permissions.
-- Invocation method: Read [decision-interview](../skills/decision-interview/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- Aliases: brainstorming resolves to canonical brainstorming; no upstream native registration required
+- Primary purpose: Explore possible directions across software, research, creative and everyday problems
+- Trigger: The goal or possible directions remain uncertain and exploration would help.
+- Preferred when: User situation, motivation and alternatives need exploration before selecting a solution.
+- Avoid when: Accepted specifications, settled alternatives needing assessment, repository-answerable details or only missing requirements.
+- Availability check: Check local skills/brainstorming/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [brainstorming](../skills/brainstorming/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
 - First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
 - Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
 - Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
 - Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
-- Internal method: skills/decision-interview/GUIDE.md
+- Internal method: skills/brainstorming/GUIDE.md
+
+## workflow-advisor
+
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: ask-matt resolves to canonical workflow-advisor
+- Primary purpose: Help users choose the smallest suitable workflow without executing it
+- Trigger: Explicit workflow/skill selection, comparison or explanation request.
+- Preferred when: User asks which AI-RULES method or sibling fits their situation.
+- Avoid when: Normal automatic routing or an accepted implementation task.
+- Availability check: Consult current relevant registry/index and actual host exposure; read selected definitions for detailed comparisons. Missing/denied capabilities remain UNAVAILABLE.
+- Invocation method: Read [workflow-advisor](../skills/workflow-advisor/GUIDE.md) through a permitted resource tool, not a new native skill.
+- First-call/preflight: Preserve explicit choices and distinguish DISCOVERED, AVAILABLE, INVOKABLE, ACTIVE and USED.
+- Fallback: Explain the known boundaries, mark unknown availability honestly; do not invent commands or activation.
+- Coexistence/conflicts: Advisory only; normal Andino routing remains independent and Council/domain siblings retain ownership.
+- Mutation/permission boundary: Advice grants no execution, installation, delegation or publication authority.
+- Verification requirement: Recommendation grounded in read definitions and available evidence; no recommended method automatically executes.
+- Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/workflow-advisor/GUIDE.md
 
 ## writing-plans
 

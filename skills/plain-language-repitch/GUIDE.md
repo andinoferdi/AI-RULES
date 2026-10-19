@@ -8,7 +8,7 @@ Restore shared understanding by adding missing context and concrete domain langu
 
 Activate for: The user says the last explanation did not land or asks what a technical message means.
 
-Do not activate for: A new research/implementation task or an opportunity to change project files.
+Do not activate for: A new research/implementation task, a request to learn a new concept, or an opportunity to change project files. Quick learning can stay in the current conversation; `learning-workspace` owns intentional learning across sessions.
 
 ## Inputs and dependencies
 
@@ -27,6 +27,8 @@ Use resources progressively: [worked procedure and example](resources/worked-exa
 4. Follow Focus communication ownership and the user's language/tone. Check the reply actually answers the confusion; ask a narrow follow-up only if needed.
 
 5. Continue the original authorized task after clarification; repitching grants no file-edit, tool, host or external-write authority.
+
+If clarification reveals a different learning goal, answer the new concept directly or use the quick-learning branch. Do not turn explanation repair into persistent teaching unless the user asks for that.
 
 ## Ownership, precedence and permissions
 

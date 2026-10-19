@@ -6,6 +6,8 @@ Internal Andino resource. Loading this file does not invoke another skill or cha
 
 Turn accepted requirements into verifiable vertical slices without competing task state.
 
+Keep the active Andino plan's `LITE`, `STANDARD`, or `DEEP` density proportional to scope and risk. Refine only the decisions needed to execute and verify the accepted work; do not force a deep plan for a small change.
+
 ## Trigger and non-trigger
 
 Use when: Accepted multi-step work lacks exact interfaces, dependency order or verification.
@@ -18,12 +20,12 @@ Locate active Andino plan/checkpoint/spec/constraints, existing evidence and dri
 
 ## Procedure
 
-1. Map each requirement to user-visible outcome and owning boundary. Retain current decisions/completed evidence; never overwrite a different incomplete ticket.
+1. Map each accepted requirement and decision to an observable outcome and owning boundary. Retain current decisions/completed evidence; never overwrite a different incomplete ticket.
 2. Choose independently testable vertical slices; fold setup/config/docs into the slice they enable. Split where one deliverable could be rejected while another passes.
-3. Record each task's likely files, consumes/produces signatures, dependencies, literal acceptance cases, focused command/expected signal and relevant build/manual check.
+3. Inspect the relevant repository and spec before recording exact paths, interfaces or commands. For each task, record owned files, consumed/produced signatures and evidence source when verified; if unknown, state the uncertainty and make dependent work wait for verification. Add dependencies, concrete acceptance cases, focused commands and expected signals.
 4. Validate directed acyclic graph and compatible producer/consumer names/types. Missing node/cycle is a defect; shared write files serialize otherwise independent tasks.
-5. Put uncertain/high-risk seams early. Checkpoints follow meaningful dependency boundaries; review-focus inputs implied by spec get tests in the owning task.
-6. Self-review requirement coverage, task consistency, interfaces, independent oracles and proportion. Update one NEXT ACTION. Tracker designation does not authorize publishing issues or a duplicate checklist.
+5. Put uncertain/high-risk seams early. Checkpoints follow meaningful dependency boundaries; failure conditions and review-focus inputs implied by the spec get an observable check in the owning task.
+6. Self-review requirement coverage, accepted decisions, repository constraints, task consistency, verified interfaces, independent oracles, integration gates and proportion. Update the existing plan's single `NEXT ACTION`. Tracker designation does not authorize publishing issues or a duplicate checklist.
 
 ## Ownership
 
