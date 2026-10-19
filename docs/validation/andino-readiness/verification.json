@@ -1,0 +1,72 @@
+{
+  "reviewer": "Codex parent",
+  "runtime_ref": "andino-workflow",
+  "runtime_commit": "f99ec59c95f1889b08fa6d873dba1522a41608ea",
+  "runtime_content_hash": "50c24252afaf7ecc0564f1b089d5999ba0c3d1b83510929bf64954902d2e671d",
+  "checks": [
+    {
+      "command": "python -m unittest discover -s tests",
+      "exit_code": 0,
+      "result": "313 tests in 204.621 seconds; OK, skipped=1",
+      "runtime_selection": "Readiness test default resolves local andino-workflow. An attempted wrapper environment assignment failed; the local default was independently confirmed by the explicit 8-test candidate check.",
+      "skipped": "Optional Search First candidate-install integration requires AI_RULES_SEARCH_FIRST_CANDIDATE; this is separate from readiness tests."
+    },
+    {
+      "command": "ANDINO_RUNTIME_REF=634585a python -m unittest discover -s tests -p test_andino_routing_readiness.py",
+      "environment_transport": "Environment supplied to subprocess.run via Python, not shell assignment",
+      "exit_code": 1,
+      "result": "Expected RED: 8 tests, 6 failures; 2 unchanged-contract checks passed."
+    },
+    {
+      "command": "python -m unittest discover -s tests -p test_andino_routing_readiness.py",
+      "exit_code": 0,
+      "result": "GREEN: all 8 tests passed on f99ec59."
+    },
+    {
+      "command": "python scripts/validate_skills.py --andino-ref andino-workflow --webbased-ref origin/WebBased --threejs-ref origin/threejs-skills",
+      "exit_code": 0,
+      "result": "7 skill packages and 7 eval schemas; Three.js 45 methods; Focus references match source."
+    },
+    {
+      "command": "python scripts/validate_threejs_family.py --runtime-ref origin/threejs-skills",
+      "exit_code": 0,
+      "result": "45 source skills, 714 resources, 45 internal methods, 10 scenario schemas."
+    },
+    {
+      "command": "python scripts/validate_andino_capabilities.py --runtime-ref andino-workflow",
+      "exit_code": 0,
+      "result": "74 eval schemas and 60 capability contracts; candidate content hash matches."
+    },
+    {
+      "command": "python scripts/validate_skripsi_traceability.py",
+      "exit_code": 0,
+      "result": "335 requirements/acceptance criteria, 32 capabilities, 110 initial eval owners, 75 task records."
+    },
+    {
+      "command": "python scripts/validate_andino_unified.py",
+      "exit_code": 0,
+      "result": "Historical structural audit: 79 rows, 58 method destinations, 0 unresolved collisions. Does not validate current live host behavior."
+    },
+    {
+      "command": "python scripts/validate_andino_unified.py --runtime C:/Users/Lenovo/Downloads/AI-RULES-worktrees/andino-workflow",
+      "exit_code": 1,
+      "result": "Historical operational audit does not match the current evolved runtime's method inventory/checker/byte identities.",
+      "classification": "Historical archive compatibility gap, not attributed to readiness repair: the runtime diff changes no GUIDE inventory or audit inputs. Published archive and lineage preserved."
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "No whitespace errors in current tracked diff."
+    }
+  ],
+  "application_reviews": [
+    "after-fix/crud-accepted-spec--claude-code--isolated--r1.review.json",
+    "after-fix/crud-delegated-id--claude-code--isolated--r1.review.json"
+  ],
+  "evidence_limits": [
+    "Static schemas, mutation-sensitive text contracts and unit tests do not establish live host parity.",
+    "Reviewed actor traces and reviewer application execution are separate evidence classes.",
+    "Quota-blocked repetitions and online application research remain NOT_VERIFIED; no unchanged quota retries.",
+    "No publication, installed-skill replacement or global configuration changes were performed."
+  ]
+}

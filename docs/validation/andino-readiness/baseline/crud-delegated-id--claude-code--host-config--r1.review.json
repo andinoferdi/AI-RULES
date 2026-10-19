@@ -1,0 +1,34 @@
+{
+  "artifacts": "crud-delegated-id--claude-code--host-config--r1-artifacts",
+  "ok": true,
+  "steps": {
+    "unittest": [
+      0,
+      "entarisTest.test_ubah_jumlah_saja) ... ok\ntest_ubah_nama_saja (test_inventaris.InventarisTest.test_ubah_nama_saja) ... ok\ntest_validasi_input (test_inventaris.InventarisTest.test_validasi_input) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.035s\n\nOK"
+    ],
+    "add": [
+      0,
+      "Ditambahkan: #1 Pensil (5)"
+    ],
+    "list1": [
+      0,
+      "1  Pensil                              5"
+    ],
+    "update": [
+      0,
+      "Diubah: #1 Pensil (7)"
+    ],
+    "list2": [
+      0,
+      "1  Pensil                              7"
+    ],
+    "delete": [
+      0,
+      "Dihapus: #1"
+    ],
+    "list3": [
+      0,
+      "Inventaris kosong."
+    ]
+  }
+}

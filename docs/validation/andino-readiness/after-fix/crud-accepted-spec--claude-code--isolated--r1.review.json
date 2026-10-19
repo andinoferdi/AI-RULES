@@ -1,0 +1,33 @@
+{
+  "record": "crud-accepted-spec--claude-code--isolated--r1",
+  "reviewer": "Codex parent",
+  "artifacts": "crud-accepted-spec--claude-code--isolated--r1-artifacts",
+  "artifact_sha256": {
+    "notes.py": "c7e2bcb700a1d2bbaf40d70eda3a77be7cb60034f941c619bb0927a9a89b13a1",
+    "test_notes.py": "3127fdb35f52014f58d3486066d8393c2d3f763c925a9f4c6f61213b394a65e6"
+  },
+  "disposable_copy": true,
+  "ok": true,
+  "steps": {
+    "unittest": {
+      "command": [
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "exit_code": 0,
+      "output": "test_add_note_returns_ids_starting_at_1 (test_notes.NotesTest.test_add_note_returns_ids_starting_at_1) ... ok\ntest_delete_note_removes_it (test_notes.NotesTest.test_delete_note_removes_it) ... ok\ntest_delete_unknown_id_raises_key_error (test_notes.NotesTest.test_delete_unknown_id_raises_key_error) ... ok\ntest_deleted_id_is_unknown_afterwards (test_notes.NotesTest.test_deleted_id_is_unknown_afterwards) ... ok\ntest_list_notes_empty (test_notes.NotesTest.test_list_notes_empty) ... ok\ntest_list_notes_returns_id_title_tuples_ordered_by_id (test_notes.NotesTest.test_list_notes_returns_id_title_tuples_ordered_by_id) ... ok\ntest_list_notes_stays_ordered_after_delete_and_add (test_notes.NotesTest.test_list_notes_stays_ordered_after_delete_and_add) ... ok\ntest_update_note_changes_title (test_notes.NotesTest.test_update_note_changes_title) ... ok\ntest_update_unknown_id_raises_key_error (test_notes.NotesTest.test_update_unknown_id_raises_key_error) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.006s\n\nOK\n"
+    },
+    "independent_crud": {
+      "command": [
+        "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-c",
+        "import notes\nassert notes.list_notes() == []\na = notes.add_note('A')\nb = notes.add_note('B')\nassert notes.list_notes() == [(a, 'A'), (b, 'B')]\nnotes.update_note(a, 'C')\nassert notes.list_notes() == [(a, 'C'), (b, 'B')]\nnotes.delete_note(a)\nassert notes.list_notes() == [(b, 'B')]\nnotes.delete_note(b)\nassert notes.list_notes() == []\nprint('independent four-operation probe passed')\n"
+      ],
+      "exit_code": 0,
+      "output": "independent four-operation probe passed\n"
+    }
+  }
+}

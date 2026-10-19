@@ -1,0 +1,239 @@
+:root {
+  --ground: #f4f5f1;
+  --surface: #ffffff;
+  --ink: #1d2420;
+  --ink-soft: #4f5a53;
+  --line: #d9ddd5;
+  --accent: #1f5c46;
+  --accent-strong: #164634;
+  --accent-wash: #e3eee8;
+  --danger: #a32d2d;
+  --danger-wash: #fbecea;
+  --radius: 6px;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+  color-scheme: light;
+  accent-color: var(--accent);
+}
+
+* { box-sizing: border-box; }
+
+::selection { background: var(--accent); color: #fff; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 16px/1.5 var(--font);
+  caret-color: var(--accent);
+}
+
+.page {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 3.5rem) clamp(1rem, 4vw, 2rem) 4rem;
+}
+
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.summary {
+  margin: 0;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Form tambah */
+.add-form {
+  display: grid;
+  grid-template-columns: 1fr 7rem auto;
+  align-items: start;
+  gap: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgb(29 36 32 / 0.06);
+}
+
+.field { display: grid; gap: 0.3rem; }
+
+label { font-size: 0.875rem; font-weight: 600; }
+
+input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  color: inherit;
+  background: var(--surface);
+  border: 1px solid #b9c0b6;
+  border-radius: var(--radius);
+}
+
+input[inputmode="numeric"] { font-variant-numeric: tabular-nums; }
+
+input:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+input[aria-invalid="true"] { border-color: var(--danger); }
+
+.error {
+  margin: 0;
+  color: var(--danger);
+  font-size: 0.875rem;
+}
+
+.add-form .btn { align-self: end; margin-bottom: 0; }
+.add-form:has(.error:not([hidden])) .btn { align-self: start; margin-top: 1.6rem; }
+
+/* Tombol */
+.btn {
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 120ms ease-out, color 120ms ease-out;
+}
+
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-strong); }
+
+.btn-quiet { background: transparent; color: var(--accent); }
+.btn-quiet:hover { background: var(--accent-wash); }
+
+.btn-danger-text { color: var(--danger); }
+.btn-danger-text:hover { background: var(--danger-wash); }
+
+.btn-danger { background: var(--danger); color: #fff; }
+.btn-danger:hover { background: #862424; }
+
+.btn-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  color: var(--accent);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.btn-icon:hover:not(:disabled) { background: var(--accent-wash); border-color: var(--accent); }
+.btn-icon:disabled { color: #9aa39c; cursor: not-allowed; }
+
+/* Daftar */
+.items {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+th {
+  padding: 0.6rem 1rem;
+  text-align: left;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--line);
+}
+
+td {
+  padding: 0.6rem 1rem;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--line);
+}
+
+tbody tr:last-child td { border-bottom: 0; }
+
+.col-qty, .cell-qty { width: 9.5rem; text-align: right; }
+
+.cell-name { overflow-wrap: anywhere; }
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stepper output {
+  min-width: 3ch;
+  text-align: right;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.cell-actions {
+  width: 1%;
+  text-align: right;
+  white-space: nowrap;
+}
+.cell-actions .btn { padding-inline: 0.75rem; }
+
+.is-editing td { background: var(--accent-wash); vertical-align: top; }
+.is-editing .cell-qty input { text-align: right; }
+.is-editing .error { text-align: left; margin-top: 0.3rem; }
+
+.is-confirming td { background: var(--danger-wash); }
+
+.empty {
+  margin: 0;
+  padding: 2.5rem 1rem;
+  text-align: center;
+  color: var(--ink-soft);
+  border: 1px dashed #b9c0b6;
+  border-radius: var(--radius);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Layar sempit: form bertumpuk, tiap barang jadi dua baris (nama+jumlah, lalu aksi). */
+@media (max-width: 560px) {
+  .add-form { grid-template-columns: 1fr 6rem; }
+  .add-form .btn,
+  .add-form:has(.error:not([hidden])) .btn { grid-column: 1 / -1; margin-top: 0; }
+
+  .items thead { display: none; }
+  .items tr {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    border-bottom: 1px solid var(--line);
+  }
+  .items tbody tr:last-child { border-bottom: 0; }
+  .items td { border-bottom: 0; padding: 0.5rem 0.75rem; }
+  .cell-qty, .col-qty { width: auto; }
+  .cell-actions { grid-column: 1 / -1; width: auto; padding-top: 0; }
+  .is-editing .cell-name, .is-editing .cell-qty { grid-column: 1 / -1; }
+  .cell-confirm { grid-column: 1 / -1; }
+}

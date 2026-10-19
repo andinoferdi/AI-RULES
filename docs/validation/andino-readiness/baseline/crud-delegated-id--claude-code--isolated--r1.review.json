@@ -1,0 +1,34 @@
+{
+  "artifacts": "crud-delegated-id--claude-code--isolated--r1-artifacts",
+  "ok": true,
+  "steps": {
+    "unittest": [
+      0,
+      "dan_jumlah) ... ok\ntest_ubah_sebagian_hanya_jumlah (test_inventaris.InventarisTest.test_ubah_sebagian_hanya_jumlah) ... ok\ntest_validasi_input (test_inventaris.InventarisTest.test_validasi_input) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.035s\n\nOK"
+    ],
+    "add": [
+      0,
+      "Barang ditambahkan dengan ID 1."
+    ],
+    "list1": [
+      0,
+      "ID  Nama                            Jumlah\n   1  Pensil                               5"
+    ],
+    "update": [
+      0,
+      "Barang ID 1 diperbarui."
+    ],
+    "list2": [
+      0,
+      "ID  Nama                            Jumlah\n   1  Pensil                               7"
+    ],
+    "delete": [
+      0,
+      "Barang ID 1 dihapus."
+    ],
+    "list3": [
+      0,
+      "Inventaris kosong."
+    ]
+  }
+}

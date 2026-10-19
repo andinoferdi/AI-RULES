@@ -1,0 +1,57 @@
+{
+  "branch": "andino-workflow",
+  "commit": "f99ec59c95f1889b08fa6d873dba1522a41608ea",
+  "content_hash": "50c24252afaf7ecc0564f1b089d5999ba0c3d1b83510929bf64954902d2e671d",
+  "base": "634585a45866261e0d981a68098fa7f1b4bf4c0e",
+  "status": "LOCAL_CANDIDATE_UNPUBLISHED",
+  "readiness": "CONDITIONALLY_READY",
+  "evaluator_commit": "31c5f4f9671506c3613e77c2a9dad959ea98d74e",
+  "evidence_index": [
+    "baseline/verdicts.json",
+    "after-fix/verdicts.json",
+    "comparability.json",
+    "verification.json",
+    "report.md",
+    "smoke/"
+  ],
+  "verdict_counts": {
+    "baseline": {
+      "antigravity-cli": {
+        "PASS": 5,
+        "FAIL": 2
+      },
+      "claude-code": {
+        "PASS": 25,
+        "FAIL": 3
+      },
+      "codex": {
+        "NOT_VERIFIED": 7,
+        "FAIL": 1,
+        "PASS": 1
+      }
+    },
+    "after-fix": {
+      "antigravity-cli": {
+        "PASS": 4,
+        "FAIL": 2,
+        "NOT_VERIFIED": 1
+      },
+      "claude-code": {
+        "PASS": 15,
+        "NOT_VERIFIED": 12,
+        "FAIL": 1
+      },
+      "codex": {
+        "NOT_VERIFIED": 5,
+        "PASS": 4
+      }
+    }
+  },
+  "limits": [
+    "Claude after-fix repeated and extended cases include session-limit failures.",
+    "Codex global instructions/policy block most evaluations; writable containment failed smoke.",
+    "OpenCode unavailable during local credential migration; no global credential/config changes attempted.",
+    "Antigravity CLI results are routing-only where writable containment is not verified; IDE is NOT_VERIFIED.",
+    "Published manifests and lineage remain unchanged; no cross-host parity or release claim."
+  ]
+}

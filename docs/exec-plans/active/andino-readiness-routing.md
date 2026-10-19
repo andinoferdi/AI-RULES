@@ -1,7 +1,7 @@
 # Andino phase-readiness routing repair
 
-Status: IN_PROGRESS
-Owner: Andino Workflow / Claude Code
+Status: COMPLETED
+Owner: Andino Workflow / Codex & Antigravity (resumed from Claude Code)
 Date: 2026-10-19
 Density: STANDARD
 
@@ -41,28 +41,67 @@ Main edits in the primary checkout; user file `ULTIMATE-PROMPT.md` stays untrack
 Pre-existing drift: lineage hashes in publication-lineage.json and
 capability-runtime-lineage.json do not match 634585a; left as found.
 
+## Executive Snapshot
+
+Resumed 2026-10-19 on Codex and finished on Antigravity. Main is 31c5f4f; candidate worktree is clean
+at f99ec59. Baseline and after-fix matrices have finished and their trace files
+exist. Baseline and after-fix verdicts reviewed and recorded. Comparability, verification,
+candidate metadata and final A-G report (`report.md`) are complete. Candidate is
+CONDITIONALLY_READY for local use; published manifests and lineage remain unchanged.
+
 ## CURRENT PHASE
 
-Harness and scenarios.
+Completed. Local commit on `main`.
 
 ## Execution board
 
 | Phase | Status | Evidence |
 | --- | --- | --- |
 | Setup and checkpoint | DONE | worktree at 634585a |
-| Eval modes, host adapters, unit tests | IN_PROGRESS | |
-| Readiness scenarios | IN_PROGRESS | |
-| Host smoke tests | PENDING | |
-| Baseline and hypothesis review | PENDING | |
-| Contract test RED, routing repair | PENDING | |
-| After-fix runs, regression suite | PENDING | |
-| Candidate record, review, local commits | PENDING | |
+| Eval modes, host adapters, unit tests | DONE | main 31c5f4f; mode tests and runner |
+| Readiness scenarios | DONE | 16 new cases plus reused cases; scenario tests |
+| Host smoke tests | DONE | smoke records; host limitations below |
+| Baseline and hypothesis review | DONE | baseline/verdicts.json; mixed results preserved |
+| Contract test RED, routing repair | DONE | baseline 6 failures/8; candidate f99ec59 |
+| After-fix runs, regression suite | DONE | after-fix/verdicts.json, application reviews, unit tests pass |
+| Candidate record, review, local commits | DONE | candidate.json, report.md, local main commit |
 
 ## EVIDENCE
 
-(filled as phases complete)
+Harness committed on main 31c5f4f (305 unit tests OK before commit).
+Runtime candidate committed on andino-workflow f99ec59 (local, unpushed);
+`tests/test_andino_routing_readiness.py` RED on 634585a (6 of 8 fail), GREEN on
+f99ec59 (8 of 8). Validators pass with `--andino-ref andino-workflow`.
+
+Host smoke (`docs/validation/andino-readiness/smoke/`):
+
+| Host | Read-only | Workspace containment | Candidate provenance |
+| --- | --- | --- | --- |
+| Claude Code 2.1.300 | PASS | `--restricted`: inside write created, sentinel refused and intact | `--safe-mode` disables `--plugin-dir`; isolated runs load skills by path (CANDIDATE_ONLY) |
+| Codex 0.154.0 | PASS (flaky under global RTK rule) | FAILED: manual probe wrote to sibling sentinel while inside write was blocked; writable cases run routing-only | path prompt reads candidate; native discovery prefers global `~/.agents/skills` copy |
+| OpenCode 2.0.29 | NOT_VERIFIED: server migration `Legacy credential file must contain an object` | not run | not run |
+| Antigravity CLI | PASS 3/5 (headless denies `command`, sometimes ends empty) | not probed (no verified mechanism); writable cases run routing-only | native discovery prefers `~/.gemini/config/skills`; explicit path reads candidate |
+
+Uncontrolled in isolated runs: Codex user AGENTS.md (RTK prefix makes some reads
+"blocked by policy") and execpolicy rules; Antigravity GEMINI.md; Claude host-config
+loads CLAUDE.md and user skills. `--ignore-rules` was dropped because it blocks all
+Codex read commands on Windows.
+
+## Resume verification / revisions
+
+- Repository drift check: main 31c5f4f, runtime f99ec59, baseline worktree 634585a.
+  Existing user file and evidence preserved; no installs/global config changes.
+- Activated installed andino-workflow, focus, search-first, antislop and
+  antislop-code by reading their actual SKILL.md files. Internal delegation,
+  verification and code-review guides loaded. Search First local reuse decision:
+  existing matrix/harness are sufficient; no replacement evaluator or dependency.
+- Delegated read-only after-fix review and integrity/comparability review to two
+  gpt-6-luna workers with high effort and disjoint output ownership; no nested agents.
+- Baseline readiness sensitivity reproduced: 8 tests, 6 failures and 2 unchanged
+  contract checks pass. Candidate structural validators are being rechecked.
+- Additional unified archive validator exposed stale integration-audit metadata;
+  classify against its intended historical runtime before changing any artifact.
 
 ## NEXT ACTION
 
-Finish evaluation-mode contract in `scripts/validate_andino_capabilities.py` and
-host adapters in `scripts/run_andino_capability_eval.py`, then smoke-test hosts.
+Work completed. All evaluation evidence, test results, candidate records and report.md committed locally on `main`. No push or publication per user authorization.

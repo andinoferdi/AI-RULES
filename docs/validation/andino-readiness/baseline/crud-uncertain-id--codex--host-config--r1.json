@@ -1,0 +1,144 @@
+{
+  "case": "crud-uncertain-id",
+  "scope": "behavioral",
+  "host": "codex",
+  "model": "UNKNOWN",
+  "mode": "read-only",
+  "mode_downgraded": true,
+  "isolation": "host-config",
+  "coverage": "routing",
+  "runtime_hash": "e4cb96cb6551557a437c9f71399a0643c6674ae309aa2b189e6963934eebdec3",
+  "runtime_base": "634585a45866261e0d981a68098fa7f1b4bf4c0e",
+  "evaluator_commit": "31c5f4f9671506c3613e77c2a9dad959ea98d74e",
+  "discovered": [
+    {
+      "id": "focus",
+      "provider": "AI-RULES",
+      "path": "skills/focus/SKILL.md",
+      "content_sha256": "f605b485069b2ebde3b298ca59cb1237d094471c2a05c056ca03e49852e0d6a6"
+    },
+    {
+      "id": "search-first",
+      "provider": "AI-RULES",
+      "path": "skills/search-first/SKILL.md",
+      "content_sha256": "0ca80efe8fcae84fb5e0330f7391a445cd330fbf6a0ed9739bee001c10c96381"
+    },
+    {
+      "id": "design-taste-frontend",
+      "provider": "Taste Skill",
+      "path": "skills/design-taste-frontend/SKILL.md",
+      "content_sha256": "694ba72256dcfe50bce53773925d0dfa69ae3959754f92d688b9b47db28ac743"
+    },
+    {
+      "id": "impeccable",
+      "provider": "Impeccable",
+      "path": "skills/impeccable/SKILL.md",
+      "content_sha256": "d58d4321d2752e81744ef595a851ecf37343800f953c5182771064587db1347e"
+    },
+    {
+      "id": "antislop",
+      "provider": "Anti-Slop",
+      "path": "skills/antislop/SKILL.md",
+      "content_sha256": "07d226d891e89fdd1c6888df47efeeb214f49cacaf3af5d3e4b015cc8be15745"
+    },
+    {
+      "id": "antislop-code",
+      "provider": "Anti-Slop",
+      "path": "skills/antislop-code/SKILL.md",
+      "content_sha256": "8aa7c29f69eaf3667de24a188a2a7e1c4a260bcf34de13ca1cf52c6b9ed35952"
+    },
+    {
+      "id": "antislop-ui",
+      "provider": "Anti-Slop",
+      "path": "skills/antislop-ui/SKILL.md",
+      "content_sha256": "744c5cfa282e033af0b827d8faba8b3a914d2bc61ac3733c275914671bb875ff"
+    },
+    {
+      "id": "antislop-copywriting",
+      "provider": "Anti-Slop",
+      "path": "skills/antislop-copywriting/SKILL.md",
+      "content_sha256": "4ef6b94e9a285b6762dc3ba50ea43f628927b19cbeba0f22c7412ee1aafabb26"
+    },
+    {
+      "id": "skripsi-skill",
+      "provider": "AI-RULES",
+      "path": "skills/skripsi-skill/SKILL.md",
+      "content_sha256": "44417ac8258a41e8de57e478968559c908177ac83d9dfb09eee9c28fee6a96ad"
+    }
+  ],
+  "selected": [],
+  "invocations": [],
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id": "01a154b8-9718-75e0-ab5a-3e414365587d"
+    },
+    {
+      "type": "error",
+      "message": "{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.1-sol' model is not supported when using Codex with a ChatGPT account.\"}}"
+    },
+    {
+      "type": "turn.failed",
+      "error": {
+        "message": "{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.1-sol' model is not supported when using Codex with a ChatGPT account.\"}}"
+      }
+    }
+  ],
+  "fallback": [],
+  "resulting_evidence": "",
+  "verdict": "NOT_VERIFIED",
+  "reason": "HOST_UNAVAILABLE",
+  "oracle_hidden": true,
+  "execution_status": "ENVIRONMENT_UNAVAILABLE",
+  "started_at_utc": "2026-10-19T15:12:22.122483+00:00",
+  "limitations": [
+    "Read-only actor. No external MCP exposed by this adapter. Tests the recorded coverage only, not cross-host parity.",
+    "Existing account authentication is used without reading credentials."
+  ],
+  "scratch_root": "C:/Users/Lenovo/Downloads/AI-RULES-worktrees/eval-scratch",
+  "discovery": "evaluator-injected-paths",
+  "web_search_enabled": false,
+  "entry_skill": "andino-workflow",
+  "actor_input": "Use Andino Workflow at andino-workflow/SKILL.md for the request. This is a disposable read-only evaluation; inspect only supplied fixtures and the supplied skill resources, including their referenced files. Do not access personal files, real memories, user application projects, network or external services. Do not write files, launch applications, spawn agents, mutate processes, commit or publish. If an instrument is not exposed here, report that limitation and use a sufficient safe local fallback. For proposed changes give concrete implementation/verification guidance. Use only actually invokable supplied skills; catalog/fixture claims do not create tools. Follow actual host permissions if narrower than scenario text.\n\nRuntime: andino-workflow/SKILL.md. Isolated current working directory only.\nSupplied files: \n\nAvailable skill metadata:\nID: focus; native ID: focus; provider: AI-RULES; path: skills/focus/SKILL.md\nname: focus\ndescription: Clear, concise, actionable communication adapted to the task and reader. Use when explicitly requested or as the default communication layer of andino-workflow; preserve important detail, uncertainty, evidence and requested output formats.\nlicense: MIT\n\nID: search-first; native ID: search-first; provider: AI-RULES; path: skills/search-first/SKILL.md\nname: search-first\ndescription: Research existing local and online solutions for reusable functionality, unfamiliar integrations, version-sensitive APIs, maintenance decisions, documented alternatives or distinct external troubleshooting uncertainty. Also use for explicit technical research; skip trivial edits, settled local answers and root-cause debugging alone.\nlicense: MIT\n\nID: design-taste-frontend; native ID: design-taste-frontend; provider: Taste Skill; path: skills/design-taste-frontend/SKILL.md\nname: design-taste-frontend\ndescription: Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent reads the brief, infers the right design direction, and ships interfaces that do not look templated. Real design systems when applicable, audit-first on redesigns, strict pre-flight check.\n\nID: impeccable; native ID: impeccable; provider: Impeccable; path: skills/impeccable/SKILL.md\nname: impeccable\ndescription: Use when the user wants to design, redesign, shape, critique, audit, polish, clarify, distill, harden, optimize, adapt, animate, colorize, extract, or otherwise improve a frontend interface. Covers websites, landing pages, dashboards, product UI, app shells, components, forms, settings, onboarding, and empty states. Handles UX review, visual hierarchy, information architecture, cognitive load, accessibility, performance, responsive behavior, theming, anti-patterns, typography, fonts, spacing, layout, alignment, color, motion, micro-interactions, UX copy, error states, edge cases, i18n, and reusable design systems or tokens. Also use for bland designs that need to become bolder or more delightful, loud designs that should become quieter, live browser iteration on UI elements, or ambitious visual effects that should feel technically extraordinary. Not for backend-only or non-UI tasks.\nversion: 4.5.2\nuser-invocable: true\nargument-hint: \"[shape · audit|critique · animate|bolder|colorize|delight|layout|overdrive|quieter|typeset · adapt|clarify|distill · harden|onboard|optimize|polish · init|document|extract|live|generate] [target]\"\nlicense: Apache 2.0\n\nID: antislop; native ID: antislop; provider: Anti-Slop; path: skills/antislop/SKILL.md\nname: antislop\ndescription: \"Anti Slop: Rules for AI Coding Agents. The core filter. Load always to stop generic AI slop.\"\nallowed-tools: Read Write Edit Glob Grep\n\nID: antislop-code; native ID: antislop-code; provider: Anti-Slop; path: skills/antislop-code/SKILL.md\nname: antislop-code\ndescription: \"Code comment hygiene for AI coding agents: remove generic AI-slop comments, keep the valuable ones, never touch the code.\"\nallowed-tools: Read Write Edit Glob Grep\n\nID: antislop-ui; native ID: antislop-ui; provider: Anti-Slop; path: skills/antislop-ui/SKILL.md\nname: antislop-ui\ndescription: \"UI and visual skill for antislop. Use when building or editing any interface: color, layout, components, motion. Load with the core.\"\nallowed-tools: Read Write Edit Glob Grep\n\nID: antislop-copywriting; native ID: antislop-copywriting; provider: Anti-Slop; path: skills/antislop-copywriting/SKILL.md\nname: antislop-copywriting\ndescription: \"Copy and text skill for antislop. Use when writing or editing prose: headlines, tone, CTAs, and anti-AI-writing patterns. Load with the core.\"\nallowed-tools: Read Write Edit Glob Grep\n\nID: skripsi-skill; native ID: skripsi-skill; provider: AI-RULES; path: skills/skripsi-skill/SKILL.md\nname: skripsi-skill\ndescription: Guide thesis and research work from the user's current research state, with evidence traceability and campus-specific requirements. Use for research planning, literature work, proposal and chapter reasoning, revisions, or defense preparation. Simple sentence polishing, unrelated coding and ordinary conversation do not require this workflow.\n\nRaw fixture context:\nEmpty disposable working directory.\n\nUser request:\ngunakan andino-workflow dan metode metode yang ada , disini tolong buatkan saya web crud , tapi saya bingung gimana",
+  "input_sha256": "2227f6820d5f3502ad9fda3b465f88659a26a18fdd40f780a0352a749580792e",
+  "fixture_files": {},
+  "actor_command": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin\\codex.EXE",
+    "exec",
+    "--ephemeral",
+    "--skip-git-repo-check",
+    "--sandbox",
+    "read-only",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "C:\\Users\\Lenovo\\Downloads\\AI-RULES-worktrees\\eval-scratch\\andino-capability-eval-8mhvklqk\\work",
+    "--color",
+    "never",
+    "--json",
+    "-o",
+    "C:\\Users\\Lenovo\\Downloads\\AI-RULES-worktrees\\eval-scratch\\andino-capability-eval-8mhvklqk\\work\\answer.txt",
+    "-"
+  ],
+  "tool_policy": "offline",
+  "host_version": "codex-cli 0.154.0",
+  "containment_probe_supported": true,
+  "exit_code": 1,
+  "diagnostic": "",
+  "workspace_changes": {
+    "created": [],
+    "modified": [],
+    "deleted": []
+  },
+  "sentinel_intact": true,
+  "provenance": {
+    "status": "NONE_OBSERVED",
+    "inside": [],
+    "outside": []
+  },
+  "finished_at_utc": "2026-10-19T15:12:34.177398+00:00",
+  "review": {
+    "reviewer": "Claude Code (session manager), trace review",
+    "reason": "User config selects model gpt-6.1-sol, rejected for this ChatGPT account (HTTP 400); no turn executed."
+  }
+}

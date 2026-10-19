@@ -1,0 +1,453 @@
+{
+  "reviewer": "Codex parent, independent Luna integrity review cross-checked",
+  "pairs": 44,
+  "frozen_input_fields_match": true,
+  "catalog_evidence": "Per-resource IDs, providers and content_sha256 match; reviewer-computed comparison, not an actor-emitted catalog hash.",
+  "limitations": [
+    "Input equality does not prove execution or behavior.",
+    "Quota failures contain synthetic model placeholders and cannot support paired behavior comparisons.",
+    "Cases downgraded to read-only prove routing only; no containment/application parity claim."
+  ],
+  "records": [
+    {
+      "record": "code-quality-comments--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "claude-opus-5-5",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "completion-verify-id--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": false,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "<synthetic>",
+      "candidate_execution_status": "ENVIRONMENT_UNAVAILABLE",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "NOT_VERIFIED"
+    },
+    {
+      "record": "crud-accepted-spec--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "claude-opus-5-5",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "crud-delegated-id--antigravity-cli--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "UNKNOWN",
+      "candidate_model": "UNKNOWN",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "crud-delegated-id--claude-code--host-config--r1",
+      "inputs_match": true,
+      "actual_model_matches": false,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "<synthetic>",
+      "candidate_execution_status": "ENVIRONMENT_UNAVAILABLE",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "NOT_VERIFIED"
+    },
+    {
+      "record": "crud-delegated-id--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "claude-opus-5-5",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "crud-delegated-id--codex--host-config--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "UNKNOWN",
+      "candidate_model": "UNKNOWN",
+      "candidate_execution_status": "ENVIRONMENT_UNAVAILABLE",
+      "baseline_verdict": "NOT_VERIFIED",
+      "candidate_verdict": "NOT_VERIFIED"
+    },
+    {
+      "record": "crud-delegated-id--codex--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "UNKNOWN",
+      "candidate_model": "UNKNOWN",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "NOT_VERIFIED",
+      "candidate_verdict": "NOT_VERIFIED"
+    },
+    {
+      "record": "crud-technical-confusion-id--antigravity-cli--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "UNKNOWN",
+      "candidate_model": "UNKNOWN",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "crud-technical-confusion-id--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "claude-opus-5-5",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "crud-technical-confusion-id--claude-code--isolated--r2",
+      "inputs_match": true,
+      "actual_model_matches": false,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "<synthetic>",
+      "candidate_execution_status": "ENVIRONMENT_UNAVAILABLE",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "NOT_VERIFIED"
+    },
+    {
+      "record": "crud-technical-confusion-id--claude-code--isolated--r3",
+      "inputs_match": true,
+      "actual_model_matches": false,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "<synthetic>",
+      "candidate_execution_status": "ENVIRONMENT_UNAVAILABLE",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "NOT_VERIFIED"
+    },
+    {
+      "record": "crud-technical-confusion-id--codex--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "UNKNOWN",
+      "candidate_model": "UNKNOWN",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "NOT_VERIFIED",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "crud-uncertain-id--antigravity-cli--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "UNKNOWN",
+      "candidate_model": "UNKNOWN",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "FAIL",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "crud-uncertain-id--claude-code--host-config--r1",
+      "inputs_match": true,
+      "actual_model_matches": false,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "<synthetic>",
+      "candidate_execution_status": "ENVIRONMENT_UNAVAILABLE",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "NOT_VERIFIED"
+    },
+    {
+      "record": "crud-uncertain-id--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "claude-opus-5-5",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "FAIL",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "crud-uncertain-id--claude-code--isolated--r2",
+      "inputs_match": true,
+      "actual_model_matches": false,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "<synthetic>",
+      "candidate_execution_status": "ENVIRONMENT_UNAVAILABLE",
+      "baseline_verdict": "FAIL",
+      "candidate_verdict": "NOT_VERIFIED"
+    },
+    {
+      "record": "crud-uncertain-id--claude-code--isolated--r3",
+      "inputs_match": true,
+      "actual_model_matches": false,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "<synthetic>",
+      "candidate_execution_status": "ENVIRONMENT_UNAVAILABLE",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "NOT_VERIFIED"
+    },
+    {
+      "record": "crud-uncertain-id--codex--host-config--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "UNKNOWN",
+      "candidate_model": "UNKNOWN",
+      "candidate_execution_status": "ENVIRONMENT_UNAVAILABLE",
+      "baseline_verdict": "NOT_VERIFIED",
+      "candidate_verdict": "NOT_VERIFIED"
+    },
+    {
+      "record": "crud-uncertain-id--codex--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "UNKNOWN",
+      "candidate_model": "UNKNOWN",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "NOT_VERIFIED",
+      "candidate_verdict": "NOT_VERIFIED"
+    },
+    {
+      "record": "explanation-repair-id--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "claude-opus-5-5",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "explicit-exclusion-id--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": false,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "<synthetic>",
+      "candidate_execution_status": "ENVIRONMENT_UNAVAILABLE",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "NOT_VERIFIED"
+    },
+    {
+      "record": "explicit-internal-method-id--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "claude-opus-5-5",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "inventory-material-req--antigravity-cli--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "UNKNOWN",
+      "candidate_model": "UNKNOWN",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "FAIL"
+    },
+    {
+      "record": "inventory-material-req--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "claude-opus-5-5",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "inventory-material-req--claude-code--isolated--r2",
+      "inputs_match": true,
+      "actual_model_matches": false,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "<synthetic>",
+      "candidate_execution_status": "ENVIRONMENT_UNAVAILABLE",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "NOT_VERIFIED"
+    },
+    {
+      "record": "inventory-material-req--claude-code--isolated--r3",
+      "inputs_match": true,
+      "actual_model_matches": false,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "<synthetic>",
+      "candidate_execution_status": "ENVIRONMENT_UNAVAILABLE",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "NOT_VERIFIED"
+    },
+    {
+      "record": "inventory-material-req--codex--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "UNKNOWN",
+      "candidate_model": "UNKNOWN",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "FAIL",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "minor-detail-default--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "claude-opus-5-5",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "resume-checkpoint-id--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": false,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "<synthetic>",
+      "candidate_execution_status": "ENVIRONMENT_UNAVAILABLE",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "NOT_VERIFIED"
+    },
+    {
+      "record": "search-first-sdk--antigravity-cli--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "UNKNOWN",
+      "candidate_model": "UNKNOWN",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "FAIL",
+      "candidate_verdict": "FAIL"
+    },
+    {
+      "record": "search-first-sdk--claude-code--isolated--r1--web",
+      "inputs_match": true,
+      "actual_model_matches": false,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "<synthetic>",
+      "candidate_execution_status": "ENVIRONMENT_UNAVAILABLE",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "NOT_VERIFIED"
+    },
+    {
+      "record": "search-first-sdk--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "claude-opus-5-5",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "search-first-sdk--codex--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "UNKNOWN",
+      "candidate_model": "UNKNOWN",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "NOT_VERIFIED",
+      "candidate_verdict": "NOT_VERIFIED"
+    },
+    {
+      "record": "simple-task-zero-capability--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "claude-opus-5-5",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "thesis-status-id--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "claude-opus-5-5",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "ui-accepted-direction--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "claude-opus-5-5",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "unavailable-capability--antigravity-cli--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "UNKNOWN",
+      "candidate_model": "UNKNOWN",
+      "candidate_execution_status": "ENVIRONMENT_UNAVAILABLE",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "NOT_VERIFIED"
+    },
+    {
+      "record": "unavailable-capability--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "claude-opus-5-5",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "unavailable-capability--codex--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "UNKNOWN",
+      "candidate_model": "UNKNOWN",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "uncertain-website-en--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "claude-opus-5-5",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "unknown-bug-id--antigravity-cli--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "UNKNOWN",
+      "candidate_model": "UNKNOWN",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "PASS",
+      "candidate_verdict": "PASS"
+    },
+    {
+      "record": "unknown-bug-id--claude-code--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "claude-opus-5-5",
+      "candidate_model": "claude-opus-5-5",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "FAIL",
+      "candidate_verdict": "FAIL"
+    },
+    {
+      "record": "unknown-bug-id--codex--isolated--r1",
+      "inputs_match": true,
+      "actual_model_matches": true,
+      "baseline_model": "UNKNOWN",
+      "candidate_model": "UNKNOWN",
+      "candidate_execution_status": "EXECUTED",
+      "baseline_verdict": "NOT_VERIFIED",
+      "candidate_verdict": "PASS"
+    }
+  ]
+}

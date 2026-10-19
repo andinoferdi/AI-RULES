@@ -1,0 +1,58 @@
+{
+  "record": "crud-delegated-id--claude-code--isolated--r1",
+  "reviewer": "Codex parent",
+  "artifacts": "crud-delegated-id--claude-code--isolated--r1-artifacts",
+  "artifact_sha256": {
+    "inventaris/app.js": "4d6f1e97d7072f3cb6e272b9732339967359fdc703ce6c07be1a38ed7c6a0af3",
+    "inventaris/index.html": "1731f4de8f2ac62f59b224bb017ffbc062c8e3051ab7dd0fd77d050351de3f18",
+    "inventaris/inventory.js": "99ba71be83eb1d0925545f629039eb584e2143383c42ca6ca577588313661a4f",
+    "inventaris/inventory.test.js": "1c70c25c8c4b96a9f6ef3f96006c471e3875217c1617186b0e6e394e091a9ab9",
+    "inventaris/styles.css": "e4193eb2821bec98fb028df4923f8608536fcb2a33b11e1aec367e1106e5216c"
+  },
+  "disposable_copy": true,
+  "ok": true,
+  "steps": {
+    "node_tests": {
+      "command": [
+        "node",
+        "--test",
+        "inventory.test.js"
+      ],
+      "exit_code": 0,
+      "output": "✔ tambah barang baru dengan nama dirapikan dan jumlah angka (1.4401ms)\n✔ tolak nama kosong dan jumlah bukan bilangan bulat >= 0 (0.2236ms)\n✔ jumlah 0 diterima (0.0983ms)\n✔ tolak nama duplikat tanpa membedakan huruf besar kecil (0.103ms)\n✔ ubah barang hanya mengganti item dengan id yang sama (0.3755ms)\n✔ ubah boleh mempertahankan nama sendiri tapi tidak memakai nama barang lain (0.6571ms)\n✔ hapus barang berdasarkan id (0.137ms)\n✔ simpan lalu muat ulang dari storage, data rusak dianggap kosong (0.397ms)\nℹ tests 8\nℹ suites 0\nℹ pass 8\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 114.6248\n"
+    },
+    "independent_crud": {
+      "command": [
+        "node",
+        "-e",
+        "const assert=require('node:assert/strict');const api=require('./inventory.js');\nlet items=api.addItem([],{name:'Pensil',quantity:'5'},'a').items;\nassert.deepEqual(items,[{id:'a',name:'Pensil',quantity:5}]);\nitems=api.updateItem(items,'a',{name:'Pensil HB',quantity:'7'}).items;\nassert.deepEqual(items,[{id:'a',name:'Pensil HB',quantity:7}]);\nassert.deepEqual(api.removeItem(items,'a'),[]);\nconsole.log('independent four-operation probe passed');"
+      ],
+      "exit_code": 0,
+      "output": "independent four-operation probe passed\n"
+    }
+  },
+  "browser_review": {
+    "tool": "mcp__playwright__browser_run_code_unsafe",
+    "disposable_copy": true,
+    "ok": true,
+    "actions": [
+      "add Pensil quantity 5",
+      "read item and reload persisted state",
+      "edit name to Pensil HB and quantity to 7 using Enter",
+      "cancel deletion with Escape",
+      "confirm deletion and reload empty state"
+    ],
+    "page_errors": [],
+    "screenshots_inspected": [
+      "crud-ui-360.png",
+      "crud-ui-768.png",
+      "crud-ui-1440.png"
+    ],
+    "document_scroll_width_equals_viewport": [
+      360,
+      768,
+      1440
+    ],
+    "limitation": "CRUD and listed keyboard/persistence checks only; not a full design/accessibility audit. Initial favicon 404 is unrelated to application execution."
+  }
+}

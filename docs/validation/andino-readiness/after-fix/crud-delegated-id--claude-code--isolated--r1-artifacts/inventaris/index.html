@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inventaris</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <header class="masthead">
+      <h1>Inventaris</h1>
+      <p id="summary" class="summary"></p>
+    </header>
+
+    <form id="add-form" class="add-form" novalidate>
+      <div class="field field-name">
+        <label for="add-name">Nama barang</label>
+        <input id="add-name" name="name" autocomplete="off" maxlength="120" aria-describedby="add-name-error">
+        <p id="add-name-error" class="error" hidden></p>
+      </div>
+      <div class="field field-qty">
+        <label for="add-qty">Jumlah</label>
+        <input id="add-qty" name="quantity" inputmode="numeric" value="1" aria-describedby="add-qty-error">
+        <p id="add-qty-error" class="error" hidden></p>
+      </div>
+      <button type="submit" class="btn btn-primary">Tambah barang</button>
+    </form>
+
+    <section aria-labelledby="list-title">
+      <h2 id="list-title" class="visually-hidden">Daftar barang</h2>
+      <table class="items" id="items-table" hidden>
+        <thead>
+          <tr>
+            <th scope="col">Barang</th>
+            <th scope="col" class="col-qty">Jumlah</th>
+            <th scope="col"><span class="visually-hidden">Aksi</span></th>
+          </tr>
+        </thead>
+        <tbody id="items-body"></tbody>
+      </table>
+      <p id="empty" class="empty">Belum ada barang. Tambahkan yang pertama lewat form di atas.</p>
+    </section>
+
+    <p id="status" class="visually-hidden" role="status"></p>
+  </main>
+
+  <script src="inventory.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

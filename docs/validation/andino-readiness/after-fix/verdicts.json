@@ -1,0 +1,708 @@
+[
+  {
+    "record": "code-quality-comments--claude-code--isolated--r1",
+    "case": "code-quality-comments",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Proposed comment-only cleanup removes generic comments and preserves the timezone rationale.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/code-quality-comments--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/code-quality-comments--claude-code--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "completion-verify-id--claude-code--isolated--r1",
+    "case": "completion-verify-id",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "NOT_VERIFIED",
+    "reason": "HOST_UNAVAILABLE",
+    "note": "Quota interruption before verification response.",
+    "provenance": "NONE_OBSERVED",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/completion-verify-id--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/completion-verify-id--claude-code--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "crud-accepted-spec--claude-code--isolated--r1",
+    "case": "crud-accepted-spec",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "isolated-writable",
+    "coverage": "application",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "TDD guide precedes writes; review reports 9 passing tests and independent CRUD probe.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/crud-accepted-spec--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/crud-accepted-spec--claude-code--isolated--r1.events.jsonl#invocations",
+      "docs/validation/andino-readiness/after-fix/crud-accepted-spec--claude-code--isolated--r1.review.json"
+    ]
+  },
+  {
+    "record": "crud-delegated-id--antigravity-cli--isolated--r1",
+    "case": "crud-delegated-id",
+    "host": "antigravity-cli",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Coverage is routing. Planning, TDD and verification guides are read; there are no app writes or test runs because the harness downgraded to read-only. The app itself remains unverified.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/crud-delegated-id--antigravity-cli--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/crud-delegated-id--antigravity-cli--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "crud-delegated-id--claude-code--host-config--r1",
+    "case": "crud-delegated-id",
+    "host": "claude-code",
+    "isolation": "host-config",
+    "mode": "isolated-writable",
+    "coverage": "application",
+    "verdict": "NOT_VERIFIED",
+    "reason": "HOST_UNAVAILABLE",
+    "note": "Quota block; no turn executed.",
+    "provenance": "NONE_OBSERVED",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/crud-delegated-id--claude-code--host-config--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/crud-delegated-id--claude-code--host-config--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "crud-delegated-id--claude-code--isolated--r1",
+    "case": "crud-delegated-id",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "isolated-writable",
+    "coverage": "application",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Review reports tests, CRUD/API checks, and browser persistence/keyboard/viewport checks pass.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/crud-delegated-id--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/crud-delegated-id--claude-code--isolated--r1.events.jsonl#invocations",
+      "docs/validation/andino-readiness/after-fix/crud-delegated-id--claude-code--isolated--r1.review.json"
+    ]
+  },
+  {
+    "record": "crud-delegated-id--codex--host-config--r1",
+    "case": "crud-delegated-id",
+    "host": "codex",
+    "isolation": "host-config",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "NOT_VERIFIED",
+    "reason": "HOST_UNAVAILABLE",
+    "note": "Host configuration rejected run; no actor turn.",
+    "provenance": "NONE_OBSERVED",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/crud-delegated-id--codex--host-config--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/crud-delegated-id--codex--host-config--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "crud-delegated-id--codex--isolated--r1",
+    "case": "crud-delegated-id",
+    "host": "codex",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "NOT_VERIFIED",
+    "reason": "CONTAINMENT_UNVERIFIED",
+    "note": "Read-only downgrade; code only, no artifact, correctly says untested.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/crud-delegated-id--codex--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/crud-delegated-id--codex--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "crud-technical-confusion-id--antigravity-cli--isolated--r1",
+    "case": "crud-technical-confusion-id",
+    "host": "antigravity-cli",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Concrete npm install/start, port and endpoint steps from fixture.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/crud-technical-confusion-id--antigravity-cli--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/crud-technical-confusion-id--antigravity-cli--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "crud-technical-confusion-id--claude-code--isolated--r1",
+    "case": "crud-technical-confusion-id",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Concrete install/start, port, API examples and expected responses.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/crud-technical-confusion-id--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/crud-technical-confusion-id--claude-code--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "crud-technical-confusion-id--claude-code--isolated--r2",
+    "case": "crud-technical-confusion-id",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "NOT_VERIFIED",
+    "reason": "HOST_UNAVAILABLE",
+    "note": "Quota block; no turn executed.",
+    "provenance": "NONE_OBSERVED",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/crud-technical-confusion-id--claude-code--isolated--r2.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/crud-technical-confusion-id--claude-code--isolated--r2.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "crud-technical-confusion-id--claude-code--isolated--r3",
+    "case": "crud-technical-confusion-id",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "NOT_VERIFIED",
+    "reason": "HOST_UNAVAILABLE",
+    "note": "Quota block; no turn executed.",
+    "provenance": "NONE_OBSERVED",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/crud-technical-confusion-id--claude-code--isolated--r3.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/crud-technical-confusion-id--claude-code--isolated--r3.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "crud-technical-confusion-id--codex--isolated--r1",
+    "case": "crud-technical-confusion-id",
+    "host": "codex",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Gives install/start, port and request steps; says commands were not run.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/crud-technical-confusion-id--codex--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/crud-technical-confusion-id--codex--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "crud-uncertain-id--antigravity-cli--isolated--r1",
+    "case": "crud-uncertain-id",
+    "host": "antigravity-cli",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Explores task tracker, inventory and contacts options, offers two later architecture directions, explicitly defers implementation until after the user chooses, and asks one focused choice. Trace reads brainstorming GUIDE.md; it does not read Taste or Impeccable SKILL.md.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/crud-uncertain-id--antigravity-cli--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/crud-uncertain-id--antigravity-cli--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "crud-uncertain-id--claude-code--host-config--r1",
+    "case": "crud-uncertain-id",
+    "host": "claude-code",
+    "isolation": "host-config",
+    "mode": "isolated-writable",
+    "coverage": "routing",
+    "verdict": "NOT_VERIFIED",
+    "reason": "HOST_UNAVAILABLE",
+    "note": "Quota block; no turn executed.",
+    "provenance": "NONE_OBSERVED",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/crud-uncertain-id--claude-code--host-config--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/crud-uncertain-id--claude-code--host-config--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "crud-uncertain-id--claude-code--isolated--r1",
+    "case": "crud-uncertain-id",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "isolated-writable",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Brainstorming precedes response; three directions/trade-offs, focused choice, no files.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/crud-uncertain-id--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/crud-uncertain-id--claude-code--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "crud-uncertain-id--claude-code--isolated--r2",
+    "case": "crud-uncertain-id",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "isolated-writable",
+    "coverage": "routing",
+    "verdict": "NOT_VERIFIED",
+    "reason": "HOST_UNAVAILABLE",
+    "note": "Quota block; no turn executed.",
+    "provenance": "NONE_OBSERVED",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/crud-uncertain-id--claude-code--isolated--r2.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/crud-uncertain-id--claude-code--isolated--r2.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "crud-uncertain-id--claude-code--isolated--r3",
+    "case": "crud-uncertain-id",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "isolated-writable",
+    "coverage": "routing",
+    "verdict": "NOT_VERIFIED",
+    "reason": "HOST_UNAVAILABLE",
+    "note": "Quota block; no turn executed.",
+    "provenance": "NONE_OBSERVED",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/crud-uncertain-id--claude-code--isolated--r3.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/crud-uncertain-id--claude-code--isolated--r3.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "crud-uncertain-id--codex--host-config--r1",
+    "case": "crud-uncertain-id",
+    "host": "codex",
+    "isolation": "host-config",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "NOT_VERIFIED",
+    "reason": "HOST_UNAVAILABLE",
+    "note": "Host configuration rejected run; no actor turn.",
+    "provenance": "NONE_OBSERVED",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/crud-uncertain-id--codex--host-config--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/crud-uncertain-id--codex--host-config--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "crud-uncertain-id--codex--isolated--r1",
+    "case": "crud-uncertain-id",
+    "host": "codex",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "NOT_VERIFIED",
+    "reason": "HOST_UNAVAILABLE",
+    "note": "Brainstorming guide read denied; downgraded run cannot establish method route.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/crud-uncertain-id--codex--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/crud-uncertain-id--codex--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "explanation-repair-id--claude-code--isolated--r1",
+    "case": "explanation-repair-id",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Concrete profile example re-explains PUT idempotency and checks understanding.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/explanation-repair-id--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/explanation-repair-id--claude-code--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "explicit-exclusion-id--claude-code--isolated--r1",
+    "case": "explicit-exclusion-id",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "NOT_VERIFIED",
+    "reason": "HOST_UNAVAILABLE",
+    "note": "Quota interruption stopped response; partial trace shows Taste but no Impeccable read.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/explicit-exclusion-id--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/explicit-exclusion-id--claude-code--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "explicit-internal-method-id--claude-code--isolated--r1",
+    "case": "explicit-internal-method-id",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Decision map separates owned decisions and research, maps dependencies, starts no migration.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/explicit-internal-method-id--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/explicit-internal-method-id--claude-code--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "inventory-material-req--antigravity-cli--isolated--r1",
+    "case": "inventory-material-req",
+    "host": "antigravity-cli",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "FAIL",
+    "reason": null,
+    "note": "After interview guide it adds brainstorming and an expansive schema/plan, forbidden by case.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/inventory-material-req--antigravity-cli--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/inventory-material-req--antigravity-cli--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "inventory-material-req--claude-code--isolated--r1",
+    "case": "inventory-material-req",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Uses fixture roles/skeleton, proposes a default, asks one material stock-recording question.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/inventory-material-req--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/inventory-material-req--claude-code--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "inventory-material-req--claude-code--isolated--r2",
+    "case": "inventory-material-req",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "NOT_VERIFIED",
+    "reason": "HOST_UNAVAILABLE",
+    "note": "Quota block; no turn executed.",
+    "provenance": "NONE_OBSERVED",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/inventory-material-req--claude-code--isolated--r2.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/inventory-material-req--claude-code--isolated--r2.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "inventory-material-req--claude-code--isolated--r3",
+    "case": "inventory-material-req",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "NOT_VERIFIED",
+    "reason": "HOST_UNAVAILABLE",
+    "note": "Quota block; no turn executed.",
+    "provenance": "NONE_OBSERVED",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/inventory-material-req--claude-code--isolated--r3.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/inventory-material-req--claude-code--isolated--r3.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "inventory-material-req--codex--isolated--r1",
+    "case": "inventory-material-req",
+    "host": "codex",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Fixture-grounded defaults and one focused sales-recording question.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/inventory-material-req--codex--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/inventory-material-req--codex--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "minor-detail-default--claude-code--isolated--r1",
+    "case": "minor-detail-default",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "isolated-writable",
+    "coverage": "application",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Artifact adds date column from data-created and leaves existing columns intact.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/minor-detail-default--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/minor-detail-default--claude-code--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "resume-checkpoint-id--claude-code--isolated--r1",
+    "case": "resume-checkpoint-id",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "NOT_VERIFIED",
+    "reason": "HOST_UNAVAILABLE",
+    "note": "Partial trace checks plan/source/tests; quota interrupts before resume response.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/resume-checkpoint-id--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/resume-checkpoint-id--claude-code--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "search-first-sdk--antigravity-cli--isolated--r1",
+    "case": "search-first-sdk",
+    "host": "antigravity-cli",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "FAIL",
+    "reason": null,
+    "note": "Trace has no docs/search retrieval; response calls memory-based fallback an authoritative documented specification despite restricted network.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/search-first-sdk--antigravity-cli--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/search-first-sdk--antigravity-cli--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "search-first-sdk--claude-code--isolated--r1--web",
+    "case": "search-first-sdk",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "NOT_VERIFIED",
+    "reason": "HOST_UNAVAILABLE",
+    "note": "Quota block; no web attempt or response.",
+    "provenance": "NONE_OBSERVED",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/search-first-sdk--claude-code--isolated--r1--web.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/search-first-sdk--claude-code--isolated--r1--web.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "search-first-sdk--claude-code--isolated--r1",
+    "case": "search-first-sdk",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Coverage is routing. The Search First SKILL and online-research playbook are read; unavailable live tools are stated, version-matched docs remain explicitly unverified, and no unsupported source retrieval is claimed.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/search-first-sdk--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/search-first-sdk--claude-code--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "search-first-sdk--codex--isolated--r1",
+    "case": "search-first-sdk",
+    "host": "codex",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "NOT_VERIFIED",
+    "reason": "HOST_UNAVAILABLE",
+    "note": "Discloses network/Context7 limits and unverified guidance; external-source requirement unmet.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/search-first-sdk--codex--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/search-first-sdk--codex--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "simple-task-zero-capability--claude-code--isolated--r1",
+    "case": "simple-task-zero-capability",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Answers 2 + 2 directly without specialist routing.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/simple-task-zero-capability--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/simple-task-zero-capability--claude-code--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "thesis-status-id--claude-code--isolated--r1",
+    "case": "thesis-status-id",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Chapter status and advisor-grounded next steps from supplied file.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/thesis-status-id--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/thesis-status-id--claude-code--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "ui-accepted-direction--claude-code--isolated--r1",
+    "case": "ui-accepted-direction",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Uses both design methods and accepted tokens; proposed redesign, no artifact claim.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/ui-accepted-direction--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/ui-accepted-direction--claude-code--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "unavailable-capability--antigravity-cli--isolated--r1",
+    "case": "unavailable-capability",
+    "host": "antigravity-cli",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "NOT_VERIFIED",
+    "reason": "HOST_UNAVAILABLE",
+    "note": "Execution unavailable; no substantive result.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/unavailable-capability--antigravity-cli--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/unavailable-capability--antigravity-cli--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "unavailable-capability--claude-code--isolated--r1",
+    "case": "unavailable-capability",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Reports two callers and unresolved alias gap; Graphify unavailable.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/unavailable-capability--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/unavailable-capability--claude-code--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "unavailable-capability--codex--isolated--r1",
+    "case": "unavailable-capability",
+    "host": "codex",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Reports known callers and leaves dynamic alias impact unverified.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/unavailable-capability--codex--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/unavailable-capability--codex--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "uncertain-website-en--claude-code--isolated--r1",
+    "case": "uncertain-website-en",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Several website directions with trade-offs and one choice question; no design/build.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/uncertain-website-en--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/uncertain-website-en--claude-code--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "unknown-bug-id--antigravity-cli--isolated--r1",
+    "case": "unknown-bug-id",
+    "host": "antigravity-cli",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Debug guide precedes source/log reads; diagnosis follows page mismatch, no patch.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/unknown-bug-id--antigravity-cli--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/unknown-bug-id--antigravity-cli--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "unknown-bug-id--claude-code--isolated--r1",
+    "case": "unknown-bug-id",
+    "host": "claude-code",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "FAIL",
+    "reason": null,
+    "note": "Correct diagnosis, but source/log/tests were read before debugging guide.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/unknown-bug-id--claude-code--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/unknown-bug-id--claude-code--isolated--r1.events.jsonl#invocations"
+    ]
+  },
+  {
+    "record": "unknown-bug-id--codex--isolated--r1",
+    "case": "unknown-bug-id",
+    "host": "codex",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "Debug guide precedes diagnostic files; reports page mismatch, no patch.",
+    "provenance": "CANDIDATE_ONLY",
+    "evidence": [
+      "docs/validation/andino-readiness/after-fix/unknown-bug-id--codex--isolated--r1.json#resulting_evidence",
+      "docs/validation/andino-readiness/after-fix/unknown-bug-id--codex--isolated--r1.events.jsonl#invocations"
+    ]
+  }
+]

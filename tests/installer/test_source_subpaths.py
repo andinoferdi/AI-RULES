@@ -37,8 +37,9 @@ class SourceSubpathTests(unittest.TestCase):
             self.catalog.require_capability(name).source.update(
                 repository=str(self.remote), branch='family', subpath=f'skills/{name}')
 
-    def git(self, *args):
+    def git(self, *args, input=None):
         return subprocess.check_output(['git', '-C', str(self.remote), *args],
+                                       input=input,
                                        text=True, encoding='utf-8', stderr=subprocess.PIPE).strip()
 
     def commit(self, message):
@@ -122,7 +123,7 @@ class SourceSubpathTests(unittest.TestCase):
                     self.sources(('focus',))
 
     def test_nested_git_symlink_is_rejected(self):
-        blob = self.git('hash-object', '-w', '--stdin')
+        blob = self.git('hash-object', '-w', '--stdin', input='../../outside')
         self.git('update-index', '--add', '--cacheinfo', f'120000,{blob},skills/focus/link')
         self.git('commit', '-m', 'unsafe link')
         with self.assertRaises((ValueError, ValidationError)):
