@@ -1,0 +1,106 @@
+[
+  {
+    "id": "s1-id-rewrite",
+    "host": "claude-code",
+    "claude_code_version": "2.1.300",
+    "model": "claude-sonnet-5-5",
+    "install": "ai-rules setup --capability natural-writing --host claude-code --scope project --source bundled (natural-writing f359b7b)",
+    "prompt": "Gunakan skill natural-writing. Tulis ulang paragraf dalam para-id.md agar lebih alami dalam ragam akademik bahasa Indonesia. Tampilkan hasilnya di chat saja; jangan mengubah file.",
+    "skill_listed_in_session": true,
+    "tool_sequence": [
+      "Skill",
+      "Read",
+      "Read",
+      "Read",
+      "Read"
+    ],
+    "skill_calls": [
+      "natural-writing"
+    ],
+    "fixture_sha256_before": "622127245c2fbbb17fbc17917ecc686e8390d73acdea4b4899be6600de750480",
+    "fixture_sha256_after": "622127245c2fbbb17fbc17917ecc686e8390d73acdea4b4899be6600de750480",
+    "fixture_unchanged": true,
+    "result_subtype": "success",
+    "num_turns": 7,
+    "semantic_check": {
+      "verdict": "PASS",
+      "findings": []
+    },
+    "output": "**Hasil penulisan ulang**\n\n> Penelitian ini membahas hubungan antara durasi tidur dan nilai ujian mahasiswa. Hasil analisis menunjukkan bahwa durasi tidur berkorelasi positif dengan nilai ujian (r = 0,41; p = 0,003) pada 128 responden (Rahman & Lestari, 2022). Temuan ini penting. Namun, data hanya berasal dari satu universitas sehingga hasilnya belum dapat digeneralisasi.\n\n**Perubahan**\n- **Kalimat 1:** \"Selain itu\" dihapus karena tidak ada hal sebelumnya yang ditambahkan. \"Dalam penelitian ini membahas\" kehilangan subjek, sehingga diubah menjadi \"Penelitian ini membahas\".\n- **Kalimat 2:** Penghubung \"Selain itu\" dihapus karena tidak menandai hubungan logis. Angka statistik, ukuran sampel, dan sitasi tidak diubah.\n- **Kalimat 3:** \"hal ini adalah merupakan temuan yang sangat krusial\" menjadi \"Temuan ini penting\". Bentuk lama rangkap (\"adalah merupakan\"), memakai \"hal ini\" yang acuannya kabur, dan \"sangat krusial\" tidak didukung isi paragraf. Jika Anda ingin menegaskan alasan pentingnya, tambahkan fakta yang spesifik, misalnya implikasinya bagi mahasiswa.\n- **Kalimat 4:** Tetap, termasuk \"Namun\" dan batasan generalisasinya.\n\n**Catatan**\n- Klaim tetap berupa korelasi dan tidak saya ubah menjadi hubungan sebab-akibat.\n- Sitasi (Rahman & Lestari, 2022) menempel pada hasil analisis, seperti di teks asli. Jika angka itu berasal dari analisis Anda sendiri dan bukan dari penelitian tersebut, penempatan sitasinya perlu Anda periksa. Saya tidak memastikannya dan tidak mengubahnya.\n- File `para-id.md` tidak diubah."
+  },
+  {
+    "id": "s2-en-rewrite",
+    "host": "claude-code",
+    "claude_code_version": "2.1.300",
+    "model": "claude-sonnet-5-5",
+    "install": "ai-rules setup --capability natural-writing --host claude-code --scope project --source bundled (natural-writing f359b7b)",
+    "prompt": "Use the natural-writing skill in rewrite mode. Improve report-en.md for clarity and naturalness. Preserve technical claims, numbers, identifiers, URLs and the full scope. Print the rewritten text in chat only; do not modify files.",
+    "skill_listed_in_session": true,
+    "tool_sequence": [
+      "Skill",
+      "Read"
+    ],
+    "skill_calls": [
+      "natural-writing"
+    ],
+    "fixture_sha256_before": "ae51fde1961ed8b7941c211de1d803511ba9439fef0d7fb3ecc987a0d0c9cf93",
+    "fixture_sha256_after": "ae51fde1961ed8b7941c211de1d803511ba9439fef0d7fb3ecc987a0d0c9cf93",
+    "fixture_unchanged": true,
+    "result_subtype": "success",
+    "num_turns": 4,
+    "semantic_check": {
+      "verdict": "PASS",
+      "findings": []
+    },
+    "output": "After we migrated `ingest_worker` to version 2.3.1, median latency dropped from 840 ms to 310 ms across 14 days of traffic (see https://example.org/runbooks/ingest). Error rates appear to be associated with the new retry policy. However, the sample window was short, and we have not ruled out seasonal load. The team decided to keep `MAX_RETRIES = 5` until further analysis is done.\n\nChanges:\n- I cut the opening sentence (\"in today's fast-paced world, the ingestion service is of paramount importance\"). It was generic filler and carried no technical claim.\n- I removed the stacked \"Moreover/Furthermore/Additionally\" connectors. I kept one \"However\" because the caveat contrasts with the preceding claim.\n- \"Made a decision to keep\" became \"decided to keep\", and \"until further analysis is performed\" became \"until further analysis is done\".\n- I kept the hedge on error rates as written: \"appear to be associated with\", not \"caused by\"."
+  },
+  {
+    "id": "s3-id-review",
+    "host": "claude-code",
+    "claude_code_version": "2.1.300",
+    "model": "claude-sonnet-5-5",
+    "install": "ai-rules setup --capability natural-writing --host claude-code --scope project --source bundled (natural-writing f359b7b)",
+    "prompt": "Gunakan natural-writing dalam mode review. Tinjau artikel.md untuk pengulangan, transisi yang tidak alami, dan ragam yang tidak konsisten. Jangan ubah file aslinya. Berikan temuan berprioritas dan saran konkret.",
+    "skill_listed_in_session": true,
+    "tool_sequence": [
+      "Skill",
+      "Glob",
+      "Read",
+      "Read",
+      "Read"
+    ],
+    "skill_calls": [
+      "natural-writing"
+    ],
+    "fixture_sha256_before": "00c53e989ae06eae5ee2eaba4478cdf251272cab4c5599c1b790c90b1596760a",
+    "fixture_sha256_after": "00c53e989ae06eae5ee2eaba4478cdf251272cab4c5599c1b790c90b1596760a",
+    "fixture_unchanged": true,
+    "result_subtype": "success",
+    "num_turns": 7,
+    "semantic_check": {
+      "verdict": "PASS"
+    },
+    "output": "# Tinjauan `artikel.md` (mode Review, file tidak diubah)\n\nRegister yang dipakai artikel ini adalah artikel umum. Teksnya pendek (tiga paragraf), jadi temuan saya kelompokkan per pola.\n\n## Prioritas tinggi\n\n**1. \"Selain itu\" tidak berfungsi sebagai penghubung (baris 3 dan 7).**\n- Teks dibuka dengan \"Selain itu\" padahal tidak ada gagasan sebelumnya yang bisa ditambahi. Judul tidak bisa menjadi pijakan penghubung.\n- Pemakaian kedua dalam paragraf yang sama (\"Selain itu, setiap tahun banjir terjadi...\") juga tidak menambah gagasan baru. Kalimat itu menjelaskan seberapa sering banjir terjadi.\n- Pemakaian di baris 7 menambahkan imbauan baru, dan hubungan itu sebenarnya nyata. Penghubungnya boleh dipertahankan, tetapi setelah dua pemakaian yang kosong, pembaca sudah tidak percaya lagi pada kata itu.\n- Saran: hapus kedua \"Selain itu\" di baris 3. Tulis misalnya: \"Banjir merupakan masalah serius bagi warga: setiap tahun air meluap di wilayah timur kota.\"\n\n**2. \"Hal ini\" diulang dengan acuan kabur dan tanpa isi (baris 5).**\n- \"Hal ini sangat penting. Hal ini juga membantu warga.\" Dua kalimat berurutan dibuka dengan frasa yang sama. Isinya juga kosong: tidak jelas apa yang penting dan dengan cara apa warga terbantu.\n- Saran: gabungkan dan sebut hal konkretnya, misalnya \"Saluran baru ini mengalirkan air hujan lebih cepat, sehingga genangan di permukiman berkurang.\" Saya tidak tahu apakah klaim ini benar, jadi **penulis perlu mengisi dampak sebenarnya**, jangan sampai saya mengarang. Kalau datanya belum ada, lebih baik tulis `[dampak: perlu data]` daripada mempertahankan \"sangat penting\".\n\n**3. Klaim tanpa dasar.**\n- \"Sangat krusial\" (baris 3) menilai tanpa bukti. Ganti dengan fakta: berapa kali banjir terjadi, berapa rumah terdampak, atau berapa lama genangan bertahan.\n- \"Setiap tahun banjir terjadi\" adalah klaim faktual yang spesifik. Periksa kebenarannya, atau tambahkan sumber atau tahun contoh.\n- \"Sampah menyebabkan saluran tersumbat\" (baris 7) menyatakan sebab tunggal. Kalau ini temuan dari sumber, sebutkan sumbernya. Kalau ini dugaan, lunakkan menjadi \"sampah dapat menyumbat saluran\".\n\n## Prioritas sedang\n\n**4. \"Adalah merupakan\" (baris 3).** Dua kata kerja penghubung bertumpuk. Pilih salah satu: \"banjir merupakan masalah...\". Kata \"sangat\" di depan \"krusial\" juga bisa dibuang kalau kata krusialnya diganti fakta.\n\n**5. Nominalisasi berat (baris 5).** \"Melakukan pembangunan terhadap saluran air baru\" lebih jelas sebagai \"membangun saluran air baru\". \"Terhadap\" di sini juga janggal karena yang dibangun adalah objek langsung.\n\n**6. \"Oleh karena itu\" (baris 5) memaksakan sebab-akibat.**\n- Hubungan banjir tahunan dengan pembangunan saluran memang masuk akal, jadi penghubung ini bisa dipertahankan setelah baris 3 dibersihkan.\n- Tetapi \"pemerintah melakukan pembangunan\" tidak menyebut pemerintah mana atau kapan. Kalau datanya ada, tambahkan.\n\n**7. Struktur alur kurang terarah.** Isinya masalah, solusi pemerintah, lalu imbauan warga. Urutan ini wajar, tetapi paragraf ketiga terasa terlepas dari yang kedua. Satu kalimat yang menghubungkan, misalnya bahwa saluran baru hanya efektif bila tidak tersumbat sampah, akan membuat alurnya utuh. Kalimat ini juga akan menggantikan \"Selain itu\".\n\n## Prioritas rendah\n\n**8. Ragam tidak konsisten.** Gaya awal (baris 3 sampai 5) kaku dan birokratis: \"warga diharapkan\", \"melakukan pembangunan terhadap\". Kalimat pendek \"Hal ini sangat penting.\" terasa seperti lisan. Judul \"Banjir di Kota Kami\" berpersona pertama (\"kami\"), tetapi isinya tidak pernah memakai sudut pandang itu. Pilih satu: sudut pandang warga yang hangat dan langsung, atau laporan netral. Kalau memilih netral, ubah judul menjadi misalnya \"Banjir di Kota X\".\n\n**9. \"Warga diharapkan untuk tidak membuang sampah\".** Kata \"untuk\" bisa dibuang, dan \"diharapkan\" lemah untuk imbauan. Pertimbangkan: \"Warga perlu berhenti membuang sampah ke sungai, karena sampah menyumbat saluran.\"\n\n## Contoh arah perbaikan (ilustrasi, bukan pengganti)\n\n> Banjir merupakan masalah serius bagi warga: setiap tahun air meluap di wilayah timur kota. Pemerintah membangun saluran air baru untuk **[dampak: perlu data]**. Saluran itu hanya berfungsi bila tidak tersumbat, karena itu warga perlu berhenti membuang sampah ke sungai.\n\nYang perlu dipastikan penulis, karena tidak bisa saya tentukan dari teks: frekuensi banjir, siapa yang membangun saluran dan kapan, serta apa dampak saluran itu."
+  },
+  {
+    "id": "s4-negative",
+    "host": "claude-code",
+    "claude_code_version": "2.1.300",
+    "model": "claude-sonnet-5-5",
+    "install": "ai-rules setup --capability natural-writing --host claude-code --scope project --source bundled (natural-writing f359b7b)",
+    "prompt": "Implement the GET /users/:id endpoint in app.js. Show the code in chat; do not edit files.",
+    "skill_listed_in_session": true,
+    "tool_sequence": [
+      "Glob",
+      "Read"
+    ],
+    "skill_calls": [],
+    "fixture_sha256_before": "b25b42457f1e0a7f23989c1efc073fbae96faf088588ec2b7909d4f50ca480a6",
+    "fixture_sha256_after": "b25b42457f1e0a7f23989c1efc073fbae96faf088588ec2b7909d4f50ca480a6",
+    "fixture_unchanged": true,
+    "result_subtype": "success",
+    "num_turns": 3,
+    "semantic_check": null,
+    "output": "I didn't edit any files. This replaces the `// TODO: GET /users/:id` line in `app.js`:\n\n```js\nconst express = require(\"express\");\nconst router = express.Router();\nconst users = new Map([[\"1\", { id: \"1\", name: \"Ayu\" }]]);\n\nrouter.get(\"/users/:id\", (req, res) => {\n  const user = users.get(req.params.id);\n  if (!user) {\n    return res.status(404).json({ error: \"User not found\" });\n  }\n  res.json(user);\n});\n\nmodule.exports = router;\n```\n\n- **Lookup:** `req.params.id` is always a string, which matches the string keys in the `Map`. `GET /users/1` returns `{ \"id\": \"1\", \"name\": \"Ayu\" }`.\n- **Missing user:** any other id returns a 404 with a JSON error body.\n- **Mounting:** the file exports a router, so the full path depends on where it's mounted. `app.use(router)` serves `/users/:id`. `app.use(\"/api\", router)` serves `/api/users/:id`."
+  }
+]

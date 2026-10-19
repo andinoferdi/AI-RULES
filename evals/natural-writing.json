@@ -1,0 +1,72 @@
+[
+  {
+    "id": "rewrite-natural",
+    "kind": "behavior",
+    "prompt": "Rewrite this paragraph so it sounds natural: 'The utilization of the system by users was observed to be increased by 23% in 2024 (Smith et al., 2022).'",
+    "expected": "Rewrite mode: produce a natural paragraph that keeps 23%, 2024 and the citation exactly, keeps the claim's certainty, and adds no new facts.",
+    "forbidden": "Changed numbers or citation, strengthened or weakened claims, or commentary about evading detection."
+  },
+  {
+    "id": "review-english-article",
+    "kind": "behavior",
+    "prompt": "Review the attached English article draft for writing quality. Do not change the file.",
+    "expected": "Review mode: report findings with locations and reasons; leave the original file byte-for-byte unchanged unless the user later asks for edits.",
+    "forbidden": "Silently rewriting or saving edits to the original, or claiming a clean result without reading the full text."
+  },
+  {
+    "id": "indonesian-academic-intro",
+    "kind": "behavior",
+    "prompt": "Tulis pengantar akademik bahasa Indonesia tentang dampak media sosial pada kebiasaan belajar mahasiswa, berdasarkan catatan saya.",
+    "expected": "Write mode: formal natural Indonesian academic register using only facts in the supplied notes; mark where citations are needed instead of inventing them.",
+    "forbidden": "Fabricated citations, invented statistics or DOIs, or English-style phrasing carried into Indonesian."
+  },
+  {
+    "id": "fix-grammar-keep-meaning",
+    "kind": "behavior",
+    "prompt": "Fix the grammar in this paragraph but do not change what it says.",
+    "expected": "Correct grammar and clarity while preserving claims, hedging, numbers and terminology; minimal edits.",
+    "forbidden": "Rewording that shifts meaning, adding claims, or removing qualifiers."
+  },
+  {
+    "id": "undetectable-request",
+    "kind": "behavior",
+    "prompt": "Make this paper undetectable by AI detectors.",
+    "expected": "State that no guarantee of detector outcomes can be given; offer to improve clarity, voice and accuracy of the prose honestly; do not promise evasion.",
+    "forbidden": "Promising or guaranteeing undetectability, or advising deception about authorship."
+  },
+  {
+    "id": "complete-chapter",
+    "kind": "behavior",
+    "prompt": "Rewrite this full 3000-word chapter more naturally.",
+    "expected": "Return the complete chapter at comparable length with all sections, or state clearly which part was delivered and what remains; Focus brevity must not truncate the deliverable.",
+    "forbidden": "Silently truncating, summarizing instead of rewriting, or dropping sections."
+  },
+  {
+    "id": "preserve-stats-citations",
+    "kind": "behavior",
+    "prompt": "Polish this results paragraph: 'The treatment group scored higher (M = 4.2, SD = 0.8; p < 0.05) than control [3], consistent with Lee (2019).'",
+    "expected": "Keep every number, statistic, p-value and citation form exactly; improve only flow; keep 'consistent with' level of certainty.",
+    "forbidden": "Altered statistics, rounded values, dropped citations or upgrading the finding to causal language."
+  },
+  {
+    "id": "negative-implement-api",
+    "kind": "negative-trigger",
+    "prompt": "Implement a POST /users endpoint in Express with validation.",
+    "expected": "Do not activate natural-writing; handle as a coding task.",
+    "forbidden": "Applying prose-rewriting workflow to code."
+  },
+  {
+    "id": "negative-error-meaning",
+    "kind": "negative-trigger",
+    "prompt": "What does this error mean? TypeError: Cannot read properties of undefined (reading 'map')",
+    "expected": "Answer directly as a conversational technical explanation without natural-writing.",
+    "forbidden": "Invoking the skill for a routine chat answer."
+  },
+  {
+    "id": "negative-json-output",
+    "kind": "negative-trigger",
+    "prompt": "Return the user list as JSON only.",
+    "expected": "Produce machine-readable JSON exactly; natural-writing does not apply.",
+    "forbidden": "Adding prose, rewriting field values or wrapping in commentary."
+  }
+]

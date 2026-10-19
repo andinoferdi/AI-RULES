@@ -44,6 +44,7 @@ checks files; it does not prove native discovery, automatic selection, or live u
 | [AI Codebase Rescue](https://github.com/andinoferdi/AI-RULES/tree/ai-codebase-rescue) | Stabilizing fragile subsystems with evidence and regression protection |
 | [Skripsi Skill](https://github.com/andinoferdi/AI-RULES/tree/skripsi-skill) | Research planning, literature, methodology, revision, and defense preparation |
 | [Council](https://github.com/andinoferdi/AI-RULES/tree/council) | Reviewing consequential choices through independent perspectives when supported |
+| [Natural Writing](https://github.com/andinoferdi/AI-RULES/tree/natural-writing) | Writing, rewriting and reviewing natural Indonesian and English prose |
 | [Three.js Skills](https://github.com/andinoferdi/AI-RULES/tree/threejs-skills) | Scenes, shaders, animation, interaction, games, and NixieFX |
 
 Andino is one native entrypoint with 59 internal methods adapted from
@@ -64,9 +65,9 @@ The CLI offers these profiles and a Custom selection:
 | --- | --- |
 | Minimal (`minimal`) | Andino Workflow, Focus, Search First |
 | Engineering (`engineering`) | Minimal + AI Codebase Rescue |
-| Research / Skripsi (`research-skripsi`) | Minimal + Skripsi Skill |
+| Research / Skripsi (`research-skripsi`) | Minimal + Skripsi Skill + Natural Writing |
 | Three.js Development (`threejs`) | Minimal + the complete Three.js family |
-| Everything (`everything`) | All seven first-party skills |
+| Everything (`everything`) | All eight first-party skills |
 
 Installer adapters target Codex (`codex`), Claude Code (`claude-code`), OpenCode
 (`opencode`), Antigravity CLI (`antigravity-cli`) and Antigravity IDE / 2.0
@@ -82,7 +83,7 @@ ai-rules setup --host codex --profile engineering --scope project --project-root
 
 For a single capability, use `--capability council` or another catalog ID in place
 of `--profile engineering`. Andino also installs Focus and Search First; Council
-also installs Focus. The Three.js family has no required sibling, while its
+also installs Focus; Natural Writing installs alone. The Three.js family has no required sibling, while its
 profile installs all four directories. Custom does not offer its internal methods
 as separate packages.
 
@@ -139,7 +140,7 @@ method examples or upstream hooks, or establish that a model followed a skill.
 ## Skill combinations by task
 
 Choose a combination for the actual task; the full catalog is not a checklist to
-activate every time. All seven first-party skills appear below. When Andino is
+activate every time. All eight first-party skills appear below. When Andino is
 active, it coordinates the lifecycle, Focus shapes communication, and Search First
 handles research when needed. Focus is named explicitly where the requested output
 especially benefits from its communication style; it remains Andino's default layer.
@@ -225,6 +226,7 @@ package from its own branch; users do not need to switch branches or copy files.
 | [`andino-workflow`](https://github.com/andinoferdi/AI-RULES/tree/andino-workflow) | Andino entrypoint, internal guides, resources and notices |
 | [`ai-codebase-rescue`](https://github.com/andinoferdi/AI-RULES/tree/ai-codebase-rescue) | Recovery methodology and focused references |
 | [`council`](https://github.com/andinoferdi/AI-RULES/tree/council) | Decision review methodology |
+| [`natural-writing`](https://github.com/andinoferdi/AI-RULES/tree/natural-writing) | Prose writing skill: Write, Rewrite and Review modes with Indonesian, English and academic references |
 | [`focus`](https://github.com/andinoferdi/AI-RULES/tree/focus) | Communication contract and bundled language references |
 | [`search-first`](https://github.com/andinoferdi/AI-RULES/tree/search-first) | Research methodology and online research playbook |
 | [`skripsi-skill`](https://github.com/andinoferdi/AI-RULES/tree/skripsi-skill) | Research guidance, references and templates |

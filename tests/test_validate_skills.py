@@ -75,7 +75,7 @@ class PackageValidationTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             arguments = []
-            for name in ('search-first', 'andino-workflow'):
+            for name in ('search-first', 'andino-workflow', 'natural-writing'):
                 package = root / name
                 package.mkdir()
                 (package / 'SKILL.md').write_text(

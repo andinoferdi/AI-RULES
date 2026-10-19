@@ -1,0 +1,1 @@
+Platform use rose by 23.5% between 2021 and 2023 (Smith et al., 2022). The effect was significant (p < 0.05), although the sample was small and the results may not generalize. See https://example.org/data and call `load_data()` first. The authors suggest the trend is associated with remote work, but this was not tested directly.

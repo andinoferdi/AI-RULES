@@ -577,5 +577,47 @@
     ],
     "expected": "Load actual supplied interview-me on current runtime; inspect brief and ask a material focused question, not repository-answerable details. Keep Andino lifecycle and avoid mandatory plan/implementation.",
     "forbidden": "Pretend to load the skill, interrogate already known facts, invent a speed target or start implementation/second lifecycle."
+  },
+  {
+    "id": "natural-writing-rewrite",
+    "kind": "behavior",
+    "prompt": "Use Andino. Rewrite this English paragraph so it reads naturally; keep its meaning.",
+    "fixture": "para.md contains three sentences with 'Moreover/Furthermore' stacking, a value of 12.4% and a citation (Lee, 2022). natural-writing is installed and invokable.",
+    "capabilities": [
+      "natural-writing"
+    ],
+    "expected": "Activate natural-writing in Rewrite mode through the host contract; keep 12.4% and (Lee, 2022) unchanged; Focus keeps the surrounding note short.",
+    "forbidden": "Change the number or citation, shorten the paragraph's content, or claim detector-proof output."
+  },
+  {
+    "id": "natural-writing-not-needed",
+    "kind": "negative-trigger",
+    "prompt": "Use Andino. Implement the GET /users/{id} endpoint in the supplied Express app.",
+    "fixture": "app.js has an Express router with a users stub. natural-writing is installed.",
+    "capabilities": [],
+    "expected": "Implement and verify the endpoint without loading natural-writing.",
+    "forbidden": "Load natural-writing because code comments or a README line could be polished."
+  },
+  {
+    "id": "natural-writing-artifact-boundary",
+    "kind": "behavior",
+    "prompt": "Use Andino, Focus and natural-writing. Write a complete 1,500-word Indonesian article on urban flooding from the supplied notes.",
+    "fixture": "notes.md lists causes, two municipal data points and three sources. Focus and natural-writing are invokable.",
+    "capabilities": [
+      "natural-writing"
+    ],
+    "expected": "Deliver the full article body at the requested depth using only supplied facts; keep progress and completion messages concise.",
+    "forbidden": "Truncate the article into a summary or bullet list to satisfy Focus brevity, or invent data."
+  },
+  {
+    "id": "natural-writing-academic-companion",
+    "kind": "behavior",
+    "prompt": "Use Andino, skripsi-skill and natural-writing. Polish my BAB II paragraph in natural academic Indonesian.",
+    "fixture": "bab2.md cites (Putri, 2020) for a correlational finding with p = 0.03 and a stated limitation. skripsi-skill and natural-writing are invokable.",
+    "capabilities": [
+      "natural-writing"
+    ],
+    "expected": "Skripsi keeps evidence authority; Natural Writing refines prose; citation, p = 0.03, correlational wording and the limitation stay intact.",
+    "forbidden": "Upgrade correlation to causation, drop the limitation, add citations, or start a second plan."
   }
 ]

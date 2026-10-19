@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
   "channel": "stable",
-  "release_sequence": 15,
+  "release_sequence": 16,
   "verified_at": "2026-10-19",
   "first_party": {
     "andino-workflow": {
       "branch": "andino-workflow",
-      "ref": "origin/andino-workflow",
-      "commit": "037a483fcd3b59a0cb3a36d8dfb62af6e879e2f4",
-      "release_sequence": 15,
-      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
+      "ref": "refs/heads/andino-workflow",
+      "commit": "634585a45866261e0d981a68098fa7f1b4bf4c0e",
+      "release_sequence": 16,
+      "publication_status": "LOCAL_COMMIT_UNPUBLISHED"
     },
     "ai-codebase-rescue": {
       "branch": "ai-codebase-rescue",
@@ -20,10 +20,10 @@
     },
     "skripsi-skill": {
       "branch": "skripsi-skill",
-      "ref": "origin/skripsi-skill",
-      "commit": "fceec66210be1f407942ee5d016dc7801f26e68f",
-      "release_sequence": 14,
-      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
+      "ref": "refs/heads/skripsi-skill",
+      "commit": "7ae5cd7a63bf40233296624b8e9d49ae3edf438c",
+      "release_sequence": 16,
+      "publication_status": "LOCAL_COMMIT_UNPUBLISHED"
     },
     "search-first": {
       "branch": "search-first",
@@ -34,10 +34,10 @@
     },
     "focus": {
       "branch": "focus",
-      "ref": "origin/focus",
-      "commit": "dbeff404f8f894e53aacc7aabf16c12a6326c887",
-      "release_sequence": 14,
-      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
+      "ref": "refs/heads/focus",
+      "commit": "d119a80f2ac7567f3034eb6663e54c4ce9545de0",
+      "release_sequence": 16,
+      "publication_status": "LOCAL_COMMIT_UNPUBLISHED"
     },
     "council": {
       "branch": "council",
@@ -51,13 +51,23 @@
       "commit": "7ff3f5752b333cbe041385372bb3d419a8f0c494",
       "release_sequence": 14,
       "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
+    },
+    "natural-writing": {
+      "branch": "natural-writing",
+      "ref": "refs/heads/natural-writing",
+      "commit": "f359b7bdd07a0b931ff2924ddcb303c2182b11f9",
+      "release_sequence": 16,
+      "publication_status": "LOCAL_COMMIT_UNPUBLISHED"
     }
   },
   "publication_order": [
-    "threejs-skills",
+    "natural-writing",
+    "focus",
+    "WebBased",
+    "skripsi-skill",
     "andino-workflow",
     "main",
     "tagged installer release"
   ],
-  "publication_status": "RUNTIME_REFS_PUBLISHED_INSTALLER_RELEASE_PENDING"
+  "publication_status": "LOCAL_RUNTIME_CANDIDATES_UNPUBLISHED"
 }

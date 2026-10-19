@@ -1,0 +1,3 @@
+- Sample: 120 students
+- Mean score rose from 4.2 to 5.1 (Lee, 2019)
+- Hypothesis only partly supported

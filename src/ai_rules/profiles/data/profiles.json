@@ -36,7 +36,8 @@
         "andino-workflow",
         "focus",
         "search-first",
-        "skripsi-skill"
+        "skripsi-skill",
+        "natural-writing"
       ]
     },
     {
@@ -65,7 +66,8 @@
         "ai-codebase-rescue",
         "skripsi-skill",
         "council",
-        "threejs-skills"
+        "threejs-skills",
+        "natural-writing"
       ]
     }
   ]

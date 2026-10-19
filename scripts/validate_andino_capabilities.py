@@ -22,7 +22,7 @@ INTERNAL_METHODS.update({
     'dispatching-parallel-agents': 'delegation', 'using-git-worktrees': 'git-isolation',
     'finishing-a-development-branch': 'delivery', 'spec-driven-development': 'specification',
 })
-OTHER_SKILLS = set('focus search-first council ponytail claude-mem impeccable design-taste-frontend clone-website graphify antislop antislop-ui antislop-copywriting antislop-human antislop-layoutmobile antislop-code'.split())
+OTHER_SKILLS = set('focus search-first council ponytail claude-mem impeccable design-taste-frontend clone-website graphify antislop antislop-ui antislop-copywriting antislop-human antislop-layoutmobile antislop-code natural-writing'.split())
 MCPS = set('context7 playwright-mcp chrome-devtools git-mcp drawio-mcp staruml-mcp premiere-pro-mcp cheatengine-mcp'.split())
 CAPABILITIES = SUPERPOWERS | AGENT_SKILLS | OTHER_SKILLS | MCPS | {'native-capabilities', 'workflow-advisor'}
 OPTIONAL_CAPABILITIES = {'threejs-skills'}
@@ -30,7 +30,8 @@ REQUIRED_CASES = set('debugging-superpowers-route no-full-superpowers-bootstrap 
 ADDITIONAL_CASES = {'idea-refine-route', 'interview-material-only'}
 SEARCH_FIRST_CASES = set('search-first-feature search-first-existing search-first-trivial search-first-sdk search-first-alternatives search-first-unknown-bug search-first-offline search-first-permission search-first-standalone search-first-andino'.split())
 SEARCH_FIRST_CASES |= set('search-first-online search-first-auto-online search-first-github search-first-community search-first-denied search-first-injection search-first-sensitive search-first-browser search-first-stale search-first-providers'.split())
-EVAL_CASES = REQUIRED_CASES | ADDITIONAL_CASES | SEARCH_FIRST_CASES | {'single-lifecycle', 'research-specialist-owner'}
+NATURAL_WRITING_CASES = set('natural-writing-rewrite natural-writing-not-needed natural-writing-artifact-boundary natural-writing-academic-companion'.split())
+EVAL_CASES = REQUIRED_CASES | ADDITIONAL_CASES | SEARCH_FIRST_CASES | NATURAL_WRITING_CASES | {'single-lifecycle', 'research-specialist-owner'}
 FIELDS = ('Type', 'Family/provider', 'Aliases', 'Primary purpose', 'Trigger', 'Preferred when', 'Avoid when', 'Availability check', 'Invocation method', 'First-call/preflight', 'Fallback', 'Coexistence/conflicts', 'Mutation/permission boundary', 'Verification requirement', 'Activation policy')
 
 
@@ -198,6 +199,7 @@ def main():
     ids = {c.get('id') for c in cases if isinstance(c,dict) and isinstance(c.get('id'),str)}
     errors.extend(f'{identity}: missing required routing eval' for identity in sorted(REQUIRED_CASES-ids))
     errors.extend(f'{identity}: missing Search First eval' for identity in sorted(SEARCH_FIRST_CASES-ids))
+    errors.extend(f'{identity}: missing Natural Writing eval' for identity in sorted(NATURAL_WRITING_CASES-ids))
     files = None
     if not args.cases_only:
         if args.runtime:

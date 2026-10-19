@@ -19,13 +19,13 @@ class SingleThreejsFamilyTests(unittest.TestCase):
         members = {s['name'] for s in json.loads((ROOT / 'docs/threejs/inventory.json').read_text())['skills']}
         self.assertIn('threejs-skills', names)
         self.assertFalse(names & members)
-        self.assertEqual(7, len(names))
+        self.assertEqual(8, len(names))
 
     def test_profile_installs_one_family_alongside_workflow_dependencies(self):
         catalog = load_catalog()
         profile = load_profiles(catalog).require('threejs')
         self.assertEqual({'threejs-skills', 'andino-workflow', 'focus', 'search-first'}, set(profile.capabilities))
-        self.assertEqual(7, len(load_profiles(catalog).require('everything').capabilities))
+        self.assertEqual(8, len(load_profiles(catalog).require('everything').capabilities))
 
     def test_installer_source_exports_all_methods_in_one_discoverable_package(self):
         capability = load_catalog().require_capability('threejs-skills')

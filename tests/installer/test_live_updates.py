@@ -399,7 +399,7 @@ class LiveUpdateTests(unittest.TestCase):
             self.assertNotIn("Already installed", output.getvalue())
 
     def test_novice_setup_from_empty_home_installs_and_registers_all_hosts(self):
-        for identifier in ("ai-codebase-rescue", "skripsi-skill", "council"):
+        for identifier in ("ai-codebase-rescue", "skripsi-skill", "council", "natural-writing"):
             self.git(self.remote, "checkout", "-b", identifier)
             (self.remote / "SKILL.md").write_text(
                 f"---\nname: {identifier}\ndescription: Fixture {identifier}\n---\nInstructions\n")

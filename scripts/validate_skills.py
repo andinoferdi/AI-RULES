@@ -11,7 +11,7 @@ from urllib.parse import unquote
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RUNTIME_SKILLS = ("andino-workflow", "ai-codebase-rescue", "skripsi-skill", "focus", "search-first", "council")
+RUNTIME_SKILLS = ("andino-workflow", "ai-codebase-rescue", "skripsi-skill", "focus", "search-first", "council", "natural-writing")
 EVAL_SKILLS = RUNTIME_SKILLS
 LINK = re.compile(r"(?<!!)\[[^]]*\]\(([^)]+)\)")
 FIELD = re.compile(r"^([A-Za-z][A-Za-z0-9_-]*):[ \t]+(.+)$")
@@ -311,6 +311,8 @@ def main():
     parser.add_argument("--webbased-ref", help="opt-in maintainer source-drift check against a locally available Git ref")
     parser.add_argument("--council-ref", default="origin/council")
     parser.add_argument("--search-first-ref", default="origin/search-first")
+    parser.add_argument("--natural-writing-ref", default="origin/natural-writing")
+    parser.add_argument("--natural-writing-dir", type=Path, help="validate an uncommitted Natural Writing package instead of --natural-writing-ref")
     parser.add_argument("--search-first-dir", type=Path, help="validate an uncommitted Search First package instead of --search-first-ref")
     parser.add_argument('--threejs-ref', help='opt-in local/fetched Three.js runtime ref')
     parser.add_argument('--threejs-dir', type=Path, help='opt-in Three.js runtime worktree')
@@ -322,7 +324,7 @@ def main():
             errors.extend(package_files(all_files, 'threejs-skills', all_modes))
         except (ValueError, OSError) as exc:
             errors.append(str(exc))
-    for skill, ref in zip(RUNTIME_SKILLS, (args.andino_ref, args.rescue_ref, args.skripsi_ref, args.focus_ref, args.search_first_ref, args.council_ref)):
+    for skill, ref in zip(RUNTIME_SKILLS, (args.andino_ref, args.rescue_ref, args.skripsi_ref, args.focus_ref, args.search_first_ref, args.council_ref, args.natural_writing_ref)):
         try:
             if skill == "focus":
                 files, modes = directory_files(args.focus_dir) if args.focus_dir else ref_files(ref)
@@ -334,7 +336,7 @@ def main():
                         "put-in-your-projects/human-language-english.md")}
                     errors.extend(focus_reference_drift(files, source))
             else:
-                directory = args.andino_dir if skill == "andino-workflow" else args.search_first_dir if skill == "search-first" else None
+                directory = args.andino_dir if skill == "andino-workflow" else args.search_first_dir if skill == "search-first" else args.natural_writing_dir if skill == "natural-writing" else None
                 if directory:
                     files, modes = directory_files(directory)
                     errors.extend(package_files(files, skill, modes))
