@@ -37,8 +37,9 @@ stated need is evidenced; once selected, activation is required before use.
 Unmarked rows remain conditional on their stated need and boundary.
 These labels govern selection, not permission, persistence or registry AUTO modes.
 
-Apply explicit user choices and exclusions first, then matching REQUIRED routes,
-then distinct CONDITIONAL needs. Integrated methods resolve through the
+Apply explicit user choices and exclusions first, then [phase readiness](#phase-readiness),
+then matching REQUIRED routes whose phase is current, then distinct CONDITIONAL
+needs. Integrated methods resolve through the
 [local index](internal-method-index.md), not an upstream native skill installation.
 Native siblings/instruments retain their actual host discovery and invocation controls.
 Match the requested outcome, not names appearing
@@ -76,7 +77,7 @@ Antigravity's scoped descriptions are behavioral guidance, not a native hard swi
 | Daily task or installation guidance | Relevant context and official instructions when needed | answer useful defaults; inspect or ask only about material environment differences |
 | Current research or factual comparison | Authoritative current sources and supplied artifacts | distinguish source findings, inference and unknowns; cite evidence; no invented freshness |
 | Decision support | Existing constraints, options and consequence comparison | inspect available evidence; ask only for unresolved material human preferences |
-| Uncertain goal or request to explore possible directions | bundled [brainstorming](../skills/brainstorming/GUIDE.md) | explore before converging; accepted specifications bypass ideation; compare settled alternatives without reopening them; Council retains independent-perspective ownership |
+| Uncertain goal or request to explore possible directions | REQUIRED while the direction is open and not delegated: bundled [brainstorming](../skills/brainstorming/GUIDE.md) | see [phase readiness](#phase-readiness); explore before converging; accepted specifications bypass ideation; compare settled alternatives without reopening them; Council retains independent-perspective ownership |
 | Explicit advice on selecting or combining workflows | bundled [workflow-advisor](../skills/workflow-advisor/GUIDE.md) | consult current relevant definitions and availability; advice does not execute recommendations or become a routing prerequisite |
 | Intentional teaching or learning | bundled [learning-workspace](../skills/learning-workspace/GUIDE.md) | a bounded lesson can stay in chat; persist progress for deliberate cross-session learning; explanation repair uses plain-language-repitch; ordinary questions stay direct |
 | Explicit Council request or consequential multi-option decision seeking independent scrutiny | CONDITIONAL: council (AI-RULES Council skill) | honor explicit request and host invocation controls; five independent advisors with anonymous review only if real delegation is available; otherwise report single-agent limitation; Andino retains lifecycle, Focus controls language |
@@ -90,13 +91,13 @@ Antigravity's scoped descriptions are behavioral guidance, not a native hard swi
 | Behavior change needing a regression or executable contract | CONDITIONAL: bundled [tdd](../skills/tdd/GUIDE.md) | read before implementation when an executable check distinguishes behavior; RED→GREEN per seam, optional separate GREEN-only refactor gate; skip text-only edits |
 | Consequential claim that implementation, repair or a mapped deliverable meets acceptance | REQUIRED: bundled [verification](../skills/verification/GUIDE.md) | read before the claim; use actual current evidence; excludes ordinary replies/trivial edits; no repeated unchanged suites |
 | Review | bundled [code-review](../skills/code-review/GUIDE.md) | explicit current diff including owned untracked bytes; Spec and Standards axes; no unsolicited rewrite |
-| Unclear product requirements | inspect evidence, then [decision-interview](../skills/decision-interview/GUIDE.md) if material choice remains | inspect existing behavior first; no reinterview of locked decisions or environment facts |
+| Unclear product requirements | inspect evidence, then REQUIRED: [decision-interview](../skills/decision-interview/GUIDE.md) if a material user-owned choice remains | inspect existing behavior first; no reinterview of locked decisions or environment facts |
 | Large implementation ordering | bundled [planning](../skills/planning/GUIDE.md) if useful | existing Andino plan remains durable state; task decomposition/decision maps are supporting artifacts |
 | Structural relationship | existing Graphify or symbol/reference search | verify current source; no automatic graph generation |
 | Historical decisions | claude-mem targeted search → timeline → selected detail | any working host integration; no automatic per-prompt retrieval |
-| New visual direction or generation: landing, portfolio, redesign, typography, composition | REQUIRED: design-taste-frontend (`taste-skill` alias) | Taste generates one design direction recorded in the project's DESIGN.md; dials are stated explicitly from the brief, never inferred from adjectives such as "minimal" or "professional" |
-| UI/UX design or evaluation, critique, polish, accessibility, dashboard, design system, anti-slop detection | REQUIRED: impeccable | `init`/`document` for PRODUCT.md and DESIGN.md; `critique`, `audit`, `polish`, `detect` after generation; excludes mechanical text edits and bugs requiring no UX decision; project stack and accepted design win |
-| Both a new visual direction and its evaluation or refinement | REQUIRED: both UI skills unless explicitly restricted to one | use [UI coexistence](ui-coexistence.md); Taste generates, Impeccable critiques and refines; one direction; each must address a distinct need |
+| New visual direction or generation: landing, portfolio, redesign, typography, composition | REQUIRED once the product direction is resolved or delegated: design-taste-frontend (`taste-skill` alias) | Taste generates one design direction recorded in the project's DESIGN.md; dials are stated explicitly from the brief, never inferred from adjectives such as "minimal" or "professional" |
+| UI/UX design or evaluation, critique, polish, accessibility, dashboard, design system, anti-slop detection | REQUIRED for existing UI, or for new UI once the product direction is resolved or delegated: impeccable | `init`/`document` for PRODUCT.md and DESIGN.md; `critique`, `audit`, `polish`, `detect` after generation; excludes mechanical text edits and bugs requiring no UX decision; project stack and accepted design win |
+| Both a new visual direction and its evaluation or refinement | REQUIRED once the product direction is resolved or delegated: both UI skills unless explicitly restricted to one | use [UI coexistence](ui-coexistence.md); Taste generates, Impeccable critiques and refines; one direction; each must address a distinct need |
 | Fidelity clone | clone-website | preserve reference; redesign only when requested; clone then redesign means clone-website first, then Taste and Impeccable under UI coexistence |
 | Evidenced unnecessary dependency/abstraction, or existing avoidable complexity | CONDITIONAL: ponytail for proposed over-building; code-simplification for existing-code cleanup | choose one for the same concern; no activation merely because coding is involved |
 | Concrete generated UI/copy/code quality defect | CONDITIONAL: matching Anti-Slop core/subskill | select only the uncovered concern; accepted direction wins; no family-wide load |
@@ -166,3 +167,27 @@ procedures; native siblings still obey native invocation controls. Do not combin
 competing planners, routers or lifecycle owners. Retired bootstrap names perform
 no activation; useful discovery belongs to Andino already. No generic method
 boilerplate overrides user scope, accepted project contracts or authorization.
+
+## Phase readiness
+
+Before design or implementation routes, decide what is still open. Read the
+request with its context and evidence: a word of confusion or an execution verb
+is a signal to interpret, not a trigger.
+
+| What is open | Route |
+| --- | --- |
+| The product or goal direction, not delegated by the user | REQUIRED: bundled [brainstorming](../skills/brainstorming/GUIDE.md); explore distinct directions and leave the choice to the user |
+| A known direction with a material user-owned requirement | inspect evidence, then REQUIRED: [decision-interview](../skills/decision-interview/GUIDE.md) for what evidence cannot settle |
+| One rough direction that needs sharpening | [idea-refine](../skills/idea-refine/GUIDE.md) |
+| How to run, use or understand something already specified or built, or a previous explanation | direct guidance from evidence; [human-procedure](../skills/human-procedure/GUIDE.md), [learning-workspace](../skills/learning-workspace/GUIDE.md) or [plain-language-repitch](../skills/plain-language-repitch/GUIDE.md) when they fit; no ideation |
+| Nothing material: specified, accepted or explicitly delegated | proceed with stated defaults; never reopen accepted decisions |
+
+Do not start work that depends on an unresolved material user decision. Minor
+details get safe stated defaults, and independent authorized work continues.
+"Build a CRUD app, but I'm confused how" leaves the direction open unless context
+settles it; "pick any stack and just build it" delegates it. Brainstorming and
+decision-interview are alternatives chosen by what is open, not a sequence.
+Design (Taste, Impeccable) and implementation routes start once the direction is
+resolved or delegated. Bugs, research, writing, thesis, review and questions route
+directly; Focus activation, debugging timing, Search First research (which may run
+during discovery), TDD and verification keep their own timing.

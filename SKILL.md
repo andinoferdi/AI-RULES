@@ -149,11 +149,17 @@ inaccessible, request the smallest missing detail or access needed, state the
 limit, and continue independent authorized work. Do not infer human decisions
 from elapsed time or silence.
 
+Investigation settles discoverable facts, not user-owned direction. Before design
+or implementation, apply [phase readiness](references/routing.md#phase-readiness):
+explore an open direction, ask about an open material requirement, and proceed
+directly when the work is specified, accepted or delegated.
+
 For "How do I install PostgreSQL on Windows 11?", give useful guidance with current
 official instructions where needed. Ask about a project only if an actual
 compatibility or setup choice depends on it. Explicit invocation does not force
-engineering questions, durable planning or unmatched specialists. Matching required
-routes still apply, including brief thesis status questions.
+engineering questions, durable planning or unmatched specialists, and it does not
+override phase readiness. Matching required routes still apply, including brief
+thesis status questions.
 
 ## Apply domain context proportionally
 
