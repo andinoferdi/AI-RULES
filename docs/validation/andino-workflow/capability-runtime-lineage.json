@@ -1,7 +1,9 @@
 {
-  "current_runtime_hash": "dc9916a964011c8c7d16c977f614616db949e0643d5b0efa0aa3b47edb7f8447",
+  "current_runtime_hash": "50c24252afaf7ecc0564f1b089d5999ba0c3d1b83510929bf64954902d2e671d",
   "historical_hashes": [
-    "75607e6fa1b4bf0b227ad677c5e42219cc62d8d3e68970fdb4dec9107ac2a8c7"
+    "75607e6fa1b4bf0b227ad677c5e42219cc62d8d3e68970fdb4dec9107ac2a8c7",
+    "dc9916a964011c8c7d16c977f614616db949e0643d5b0efa0aa3b47edb7f8447",
+    "e4cb96cb6551557a437c9f71399a0643c6674ae309aa2b189e6963934eebdec3"
   ],
   "changes": [
     {
@@ -17,6 +19,20 @@
       "unchanged_contracts": 53,
       "evidence": "Compared parsed complete original 53 contract fields exactly; every other runtime file byte-independent exact text match.",
       "behavioral_limit": "Existing 32 actor runs and nine service smoke records belong to the earlier exact content hash. They are historical scope evidence, not latest-runtime or added-route behavioral PASS."
+    },
+    {
+      "from": "e4cb96cb6551557a437c9f71399a0643c6674ae309aa2b189e6963934eebdec3",
+      "to": "50c24252afaf7ecc0564f1b089d5999ba0c3d1b83510929bf64954902d2e671d",
+      "from_commit": "634585a45866261e0d981a68098fa7f1b4bf4c0e",
+      "to_commit": "f99ec59c95f1889b08fa6d873dba1522a41608ea",
+      "changed_files": [
+        "SKILL.md",
+        "references/internal-method-index.md",
+        "references/routing.md"
+      ],
+      "change": "Phase readiness: brainstorming before design or implementation when product direction is open.",
+      "evidence": "docs/validation/andino-readiness (baseline at 634585a, after-fix at f99ec59).",
+      "behavioral_limit": "Revisions between dc9916a9 and e4cb96cb (634585a) are not itemized here; records for dc9916a9 and e4cb96cb are historical, not latest-runtime behavioral PASS."
     }
   ]
 }
