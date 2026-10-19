@@ -1,6 +1,6 @@
 ---
 name: andino-workflow
-description: Adaptive problem solving with proportional investigation, evidence-based decisions and portable checkpoints. Use when explicitly requested, for uncertain problems, multi-step coordination, resuming work, thesis/research status or next steps, unknown-cause bugs, and UI/UX design or evaluation. Routine conversation and trivial mechanical edits outside mapped needs do not auto-activate it.
+description: Adaptive problem solving with proportional investigation, evidence-based decisions and portable checkpoints. Use when explicitly requested, for uncertain problems, multi-step coordination, resuming work, thesis/research status or next steps, unknown-cause bugs, and UI/UX design or evaluation. Routine conversation and trivial mechanical edits outside mapped needs do not auto-activate it. When it applies, read it and any guide it selects before inspecting task files, not in the same parallel batch.
 ---
 
 # Andino Workflow
