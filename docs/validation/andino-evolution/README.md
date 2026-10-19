@@ -184,8 +184,12 @@ new offline bundle. No new tagged binary release or global skill replacement
 was requested or performed. Setup file verification does not establish live
 model routing on every host.
 
-The final current full suite passed246 tests in178.377 seconds, zero failures and
+The final current full suite passed 246 tests in 178.377 seconds, zero failures and
 one pre-existing opt-in skip, after manifest and publication-checker changes.
-Main commit/push is the remaining publication action; its result is recorded in
-the authoritative plan and verification.json. Earlier implementation-only
-statements remain historical, not the current publication status.
+Main delivery `e50bceaf81bef3d557e6f3006d5e6d53b2731ee7` was committed/pushed and
+its exact SHA confirmed by `git ls-remote`; runtime `037a483` is also remote-confirmed.
+The final documentation commit records that delivery without changing tested
+runtime or installer bytes. Earlier implementation-only statements remain
+historical, not the current publication status. Final status: DONE for the
+requested publication and default-latest setup availability, with live-host
+model-routing limits retained explicitly.

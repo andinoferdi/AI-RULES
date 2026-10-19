@@ -53,7 +53,8 @@
     "staged_bundles": 7,
     "staged_andino_hash": "46098a07318176bb69d37458423bbc3cf4161aa5ccfcdaee758180a28476e086",
     "tagged_binary_release": "NOT CREATED; default-latest setup fetches runtime branch",
-    "main_state": "validated and staged; commit/push next"
+    "main_state": "committed/pushed and remote-confirmed",
+    "main_delivery_commit": "e50bceaf81bef3d557e6f3006d5e6d53b2731ee7"
   },
   "offline_installer": {
     "result": "PASS",
@@ -61,7 +62,7 @@
     "host_path_surfaces": 5,
     "scope": "disposable offline project installs, repeat NO_OP, conflict preservation and clean upgrade/backup; not live native discovery"
   },
-  "final_status": "DONE: implementation and available local validation; live host limits explicit",
+  "final_status": "DONE: implementation, authorized branch publication and real default-latest setup verification; live model-routing limits retained",
   "implementation_unit_suite": {
     "run": 243,
     "failed": 0,

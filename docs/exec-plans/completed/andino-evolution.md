@@ -1,16 +1,16 @@
 # Andino workflow evolution
 
-Status: IN_PROGRESS
+Status: DONE
 Owner: active Codex host / Andino Workflow
 Date: 2026-10-19
 Density: STANDARD
 
 ## Executive snapshot
 
-CURRENT STATE: Runtime037a483fcd3b59a0cb3a36d8dfb62af6e879e2f4 is committed/pushed on andino-workflow and remote-confirmed; runtime worktree clean. Main starts at47eb032 with reviewed quality changes, release pin15 and publication evidence staged. Its pre-existing untracked ULTIMATE-PROMPT.md is preserved. All eight workstreams are implemented, reviewed and verified locally; actual default-latest setup acquisition/update and installed entrypoint fresh/repeat PASS.
-CURRENT PHASE: User-authorized publication and setup verification.
+CURRENT STATE: Runtime037a483fcd3b59a0cb3a36d8dfb62af6e879e2f4 and main deliverye50bceaf81bef3d557e6f3006d5e6d53b2731ee7 are committed/pushed and remote-confirmed. Runtime worktree clean; main has only pre-existing untracked ULTIMATE-PROMPT.md. Release pin15 is live, with successful real setup fresh/upgrade/backup/repeat and actual installed entrypoint fresh/repeat. This final documentation commit records the confirmed delivery without altering tested runtime/installer bytes.
+CURRENT PHASE: Complete, publication and available setup verification accepted.
 EVIDENCE: Final full unittest243 zero failures/one existing skip; after final validator fixes the affected Andino suite48 PASS. Existing57 procedures plus7 candidate procedure sets PASS with7 running mutants rejected. Package,59 registry contracts,79 source rows, zero ownership collisions and41 offline installer scenarios PASS, all bound to candidate hash46098a07318176bb69d37458423bbc3cf4161aa5ccfcdaee758180a28476e086. Manager independently reviewed both workers/shared changes and executed seven candidate sets; no remaining findings. Intermediate baseline240/focused46/5-set milestones are superseded, not additional test counts. Sources, commands and limitations: docs/validation/andino-evolution/README.md and verification.json.
-NEXT ACTION: Commit and push the staged main quality/release delivery, verify the remote SHA, then record final publication status.
+NEXT ACTION: None, requested commit/push and direct default-latest setup availability verified. Live cross-host model routing remains explicitly NOT VERIFIED.
 
 ## Objective
 
@@ -31,7 +31,7 @@ Implement ULTIMATE-PROMPT.md sections 5-12 across eight capabilities, extending 
 | Audit and implementation | DONE | All eight workstreams mapped; two new guides and six extended concerns implemented in disjoint scopes. Pinned source references and exclusions recorded. |
 | Integration and regression | DONE | Existing 57 procedures PASS; candidate 7 procedure sets/7 running mutants rejected; package/59 registry contracts and 79-row metadata gate PASS, zero collisions. Full unittest243 PASS/one pre-existing skip; final impacted Andino tests48 PASS after source/path error fixes. |
 | Independent review and acceptance | DONE | Sol medium reviewed both worker artifacts and shared integration, no remaining actionable findings. All41 offline installer scenarios PASS on five host paths. Candidate SHA25646098a07318176bb69d37458423bbc3cf4161aa5ccfcdaee758180a28476e086 matches verification.json. Live autonomous/cross-host routing remains NOT VERIFIED with executable follow-up procedure. |
-| Authorized publication and setup proof | IN_PROGRESS | Runtime037a483 committed/pushed/remote-confirmed. Main pin15/Andino15 updated, siblings unchanged. Real default-latest fresh/repeat and prior-official upgrade/backup/repeat PASS; actual installed ai-rules.exe fresh/repeat PASS with no source/home override;7 frozen bundles staged and candidate hash matches. Sol reviewed publication changes with no blockers. Final full unit246 zero failures/one existing skip PASS (178.377s). Main commit/push is the remaining action. |
+| Authorized publication and setup proof | DONE | Runtime037a483 and maine50bcea committed/pushed/remote-confirmed. Main pin15/Andino15 live, siblings unchanged. Real default-latest fresh/repeat and prior-official upgrade/backup/repeat PASS; actual installed ai-rules.exe fresh/repeat PASS with no source/home override;7 frozen bundles staged and candidate hash matches. Sol reviewed publication changes with no blockers. Final full unit246 zero failures/one existing skip PASS (178.377s). No tagged binary release or global skill replacement performed. |
 
 ## Decisions and ownership
 
@@ -49,4 +49,4 @@ Reuse existing Python unittest and Andino structural/procedure scripts after ins
 
 ## NEXT ACTION
 
-Commit/push the staged main delivery, verify remote equality, then finalize publication state. User prompt remains untracked. Earlier no-publication statements describe the previous turn and are superseded by the explicit 2026-10-19 publication authorization.
+None, task complete. User prompt remains untracked. Earlier no-publication statements describe the previous turn and are superseded by the explicit 2026-10-19 publication authorization. Optional cross-host live validation remains a documented follow-up, not a completed check.
