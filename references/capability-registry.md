@@ -11,6 +11,7 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 | [focus](#focus) | skill | AI-RULES | Default communication on every Andino invocation |
 | [search-first](#search-first) | skill | AI-RULES, adapted from ECC | Existing-solution research before implementation |
 | [council](#council) | skill | AI-RULES | Independent review of consequential decisions |
+| [natural-writing](#natural-writing) | skill | AI-RULES | Prose quality for requested writing artifacts |
 | [threejs-skills](#threejs-skills) | skill | AI-RULES | On-demand Three.js and NixieFX domain specialists |
 | [systematic-debugging](#systematic-debugging) | method | Andino internal | Root-cause investigation |
 | [test-driven-development](#test-driven-development) | method | Andino internal | Executable regression contract |
@@ -1170,6 +1171,25 @@ Contracts use inspected installed skill IDs and actual host tool metadata. Upstr
 - Coexistence/conflicts: Andino retains sole task routing, lifecycle and checkpoints; Focus controls Indonesian/English communication; Council owns advisory deliberation and returns a verdict, not a second plan.
 - Mutation/permission boundary: A Council verdict provides no authority for repository changes, external actions, paid services, publication or other mutations; host and user permissions still apply.
 - Verification requirement: Distinguish actual independent advisor/reviewer invocations from simulated perspectives; preserve evidence, material disagreement and unresolved uncertainty in the final verdict.
+- Activation policy: CONDITIONAL_AUTO
+
+
+## natural-writing
+
+- Type: skill
+- Family/provider: AI-RULES first-party, original work (conceptually inspired by mchardyan/anti-ai-writer, no reused text)
+- Aliases: natural-writing; do not treat anti-slop/antislop or anti-ai-writer as installed aliases
+- Primary purpose: Write, rewrite and review Indonesian/English prose inside requested writing artifacts without changing meaning
+- Trigger: Request to produce, polish, paraphrase, rewrite or review prose artifacts (essays, articles, reports, emails, academic sections, documentation prose) or explicit invocation
+- Preferred when: Artifact prose quality, register or naturalness matters
+- Avoid when: Routine chat answers, progress/completion reports, code, machine-readable output, statistics computation, pure lookup, repository work unrelated to prose; name appearing only in quoted text or filenames
+- Availability check: Resolve actual installed natural-writing metadata/path and native invocation permissions; discoverability does not prove execution
+- Invocation method: Load actual selected SKILL.md through the host contract; never bypass manual-only or deny controls
+- First-call/preflight: Identify mode (Write/Rewrite/Review), language, register and protected content before editing
+- Fallback: Write carefully with existing rules and state Natural Writing was not loaded
+- Coexistence/conflicts: Andino owns lifecycle; Focus governs surrounding communication only and never truncates artifact bodies; Natural Writing governs artifact prose; skripsi-skill owns academic validity and evidence; antislop-copywriting stays for UI/marketing copy; article-shaping/writing-fragments keep document shaping and exploration
+- Mutation/permission boundary: Edits only requested artifacts; Review mode leaves originals unchanged; no publication
+- Verification requirement: Protected values, citations, certainty and required coverage preserved; no fabricated facts
 - Activation policy: CONDITIONAL_AUTO
 
 
