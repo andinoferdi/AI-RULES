@@ -1,0 +1,47 @@
+[
+  {
+    "id": "focus",
+    "path": "C:\\Users\\Lenovo\\.claude\\skills\\focus",
+    "provider": "AI-RULES"
+  },
+  {
+    "id": "search-first",
+    "path": "C:\\Users\\Lenovo\\.claude\\skills\\search-first",
+    "provider": "AI-RULES"
+  },
+  {
+    "id": "design-taste-frontend",
+    "path": "C:\\Users\\Lenovo\\.claude\\skills\\design-taste-frontend",
+    "provider": "Taste Skill"
+  },
+  {
+    "id": "impeccable",
+    "path": "C:\\Users\\Lenovo\\.claude\\skills\\impeccable",
+    "provider": "Impeccable"
+  },
+  {
+    "id": "antislop",
+    "path": "C:\\Users\\Lenovo\\.claude\\skills\\antislop",
+    "provider": "Anti-Slop"
+  },
+  {
+    "id": "antislop-code",
+    "path": "C:\\Users\\Lenovo\\.claude\\skills\\antislop-code",
+    "provider": "Anti-Slop"
+  },
+  {
+    "id": "antislop-ui",
+    "path": "C:\\Users\\Lenovo\\.claude\\skills\\antislop-ui",
+    "provider": "Anti-Slop"
+  },
+  {
+    "id": "antislop-copywriting",
+    "path": "C:\\Users\\Lenovo\\.claude\\skills\\antislop-copywriting",
+    "provider": "Anti-Slop"
+  },
+  {
+    "id": "skripsi-skill",
+    "path": "C:\\Users\\Lenovo\\.claude\\skills\\skripsi-skill",
+    "provider": "AI-RULES"
+  }
+]

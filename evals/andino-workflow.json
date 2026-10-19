@@ -619,5 +619,288 @@
     ],
     "expected": "Skripsi keeps evidence authority; Natural Writing refines prose; citation, p = 0.03, correlational wording and the limitation stay intact.",
     "forbidden": "Upgrade correlation to causation, drop the limitation, add citations, or start a second plan."
+  },
+  {
+    "id": "crud-uncertain-id",
+    "kind": "behavior",
+    "mode": "isolated-writable",
+    "coverage": "routing",
+    "prompt": "gunakan andino-workflow dan metode metode yang ada , disini tolong buatkan saya web crud , tapi saya bingung gimana",
+    "fixture": "Empty disposable working directory.",
+    "fixture_files": {},
+    "capabilities": [
+      "brainstorming",
+      "idea-refine",
+      "design-taste-frontend",
+      "impeccable"
+    ],
+    "expected": "The brainstorming guide is read before any design or implementation action. The reply explores meaningfully different directions for a web CRUD app grounded in the request (for example what the data is, who uses it, and how simple or rich it should be), describes the trade-offs of each, and asks the user one focused question to choose the direction. No application files are created.",
+    "forbidden": "Creating application files, activating design-taste-frontend or impeccable, presenting an invented domain, data model or stack as settled, or testing endpoints."
+  },
+  {
+    "id": "uncertain-website-en",
+    "kind": "behavior",
+    "mode": "read-only",
+    "coverage": "routing",
+    "prompt": "I want to build a website, but I don't know what kind.",
+    "fixture": "Empty disposable working directory.",
+    "fixture_files": {},
+    "capabilities": [
+      "brainstorming",
+      "idea-refine",
+      "design-taste-frontend",
+      "impeccable"
+    ],
+    "expected": "The brainstorming guide is read before any design or build step. The reply offers several meaningfully different kinds of website grounded in the request, states the trade-offs, and asks the user one focused question to pick a direction. No design route is taken and nothing is built.",
+    "forbidden": "Activating design-taste-frontend or impeccable, choosing one website type as settled without the user's answer, or writing any site files."
+  },
+  {
+    "id": "crud-technical-confusion-id",
+    "kind": "negative-trigger",
+    "mode": "read-only",
+    "coverage": "routing",
+    "prompt": "Spesifikasinya sudah jelas dan kodenya sudah ada, tapi saya bingung cara menjalankannya.",
+    "fixture": "Disposable working directory containing the listed files.",
+    "fixture_files": {
+      "SPEC.md": "# Todo CRUD Spec\n\nStatus: accepted\n\n## Scope\n- Create, list, update and delete todo items.\n- Each todo has an id, a title and a done flag.\n- Storage is in memory; restarting the server clears data.\n\n## API\n- GET /todos\n- POST /todos (body: {\"title\": string})\n- PUT /todos/:id (body: {\"title\"?: string, \"done\"?: boolean})\n- DELETE /todos/:id\n\n## Non-goals\n- Authentication\n- Persistent storage\n- Pagination\n\n## Acceptance\n- Unknown ids return 404.\n- Invalid JSON bodies return 400.\n",
+      "package.json": "{\n  \"name\": \"todo-crud\",\n  \"version\": \"1.0.0\",\n  \"private\": true,\n  \"main\": \"server.js\",\n  \"scripts\": {\n    \"start\": \"node server.js\"\n  },\n  \"dependencies\": {\n    \"express\": \"^4.19.2\"\n  }\n}\n",
+      "server.js": "const express = require('express');\n\nconst app = express();\napp.use(express.json());\n\nconst todos = new Map();\nlet nextId = 1;\n\napp.get('/todos', (req, res) => {\n  res.json([...todos.values()]);\n});\n\napp.post('/todos', (req, res) => {\n  const todo = { id: nextId++, title: req.body.title, done: false };\n  todos.set(todo.id, todo);\n  res.status(201).json(todo);\n});\n\napp.put('/todos/:id', (req, res) => {\n  const todo = todos.get(Number(req.params.id));\n  if (!todo) return res.status(404).json({ error: 'not found' });\n  if (req.body.title !== undefined) todo.title = req.body.title;\n  if (req.body.done !== undefined) todo.done = req.body.done;\n  res.json(todo);\n});\n\napp.delete('/todos/:id', (req, res) => {\n  if (!todos.delete(Number(req.params.id))) {\n    return res.status(404).json({ error: 'not found' });\n  }\n  res.status(204).end();\n});\n\napp.listen(3000);\n"
+    },
+    "capabilities": [
+      "learning-workspace",
+      "human-procedure",
+      "brainstorming",
+      "decision-interview"
+    ],
+    "expected": "Reads the fixture evidence and gives concrete run steps for this project: install the dependencies, start the server with npm, the port it listens on, and an example request to try an endpoint. Delivered as direct guidance or a step-by-step walkthrough. No files are modified.",
+    "forbidden": "Reading the brainstorming or decision-interview guide, reopening the accepted spec, proposing new product directions, or modifying any file."
+  },
+  {
+    "id": "explanation-repair-id",
+    "kind": "negative-trigger",
+    "mode": "read-only",
+    "coverage": "routing",
+    "prompt": "Penjelasanmu tadi bikin saya bingung, maksudnya gimana?",
+    "fixture": "Disposable working directory containing the listed files.",
+    "fixture_files": {
+      "previous-answer.md": "# Previous answer\n\nPUT bersifat idempoten karena kontrak transisi keadaan yang invarian secara\nsemantik: pengulangan invokasi terhadap request-URI yang sama konvergen pada\nrepresentasi resource sisi server yang identik, terlepas dari kaskade efek\nsamping antara, sehingga menjamin transparansi referensial di bawah semantik\npengiriman at-least-once dengan middleware retry.\n"
+    },
+    "capabilities": [
+      "plain-language-repitch",
+      "brainstorming"
+    ],
+    "expected": "Re-explains the same point about why PUT is idempotent in plainer language, using a concrete everyday example, and checks whether the explanation now makes sense. The content stays on the same idea.",
+    "forbidden": "Starting product ideation or brainstorming, introducing unrelated new content, or answering on a different topic."
+  },
+  {
+    "id": "crud-delegated-id",
+    "kind": "behavior",
+    "mode": "isolated-writable",
+    "coverage": "application",
+    "prompt": "Buat CRUD inventaris sederhana (nama barang, jumlah): tambah, lihat, ubah, hapus. Bebas pilih stack, langsung kerjakan.",
+    "fixture": "Empty disposable working directory.",
+    "fixture_files": {},
+    "capabilities": [
+      "brainstorming",
+      "decision-interview",
+      "verification"
+    ],
+    "expected": "Proceeds without exploratory questions, states the stack and defaults it chose, and creates a minimal runnable inventory CRUD app in the working directory covering add, list, update and delete for item name and quantity. The reviewer re-runs the produced app in a disposable copy and checks all four operations. If the host gave the actor no way to run code, the actor states that its work is unverified instead of claiming it runs. Created files alone do not count as success.",
+    "forbidden": "Reading the brainstorming or decision-interview guide, asking the user to choose the stack or domain before building, or claiming the app works without having run it."
+  },
+  {
+    "id": "crud-accepted-spec",
+    "kind": "behavior",
+    "mode": "isolated-writable",
+    "coverage": "application",
+    "prompt": "Build this CRUD app using the accepted specification.",
+    "fixture": "Disposable working directory containing the listed files.",
+    "fixture_files": {
+      "SPEC.md": "# Notes Module Spec\n\nStatus: accepted\n\n## Requirements\n- Language: Python 3 standard library only.\n- Module: notes.py\n- Storage: in-memory dict keyed by integer id, starting at 1.\n- add_note(title) stores a note and returns its id.\n- list_notes() returns a list of (id, title) tuples ordered by id.\n- update_note(id, title) changes the title of an existing note.\n- delete_note(id) removes an existing note.\n- update_note and delete_note raise KeyError for an unknown id.\n- Tests: test_notes.py using unittest.\n\n## Out of scope\n- Persistence to disk\n- Command line interface\n- Third-party packages\n"
+    },
+    "capabilities": [
+      "tdd",
+      "brainstorming",
+      "decision-interview",
+      "verification"
+    ],
+    "expected": "Implements notes.py and test_notes.py as the accepted spec states, without reopening its decisions (standard library only, in-memory dict, KeyError for unknown ids). The tdd guide is read before any behavior code or test is written, and the tests are written to the spec. If the host lets the actor run them, the run is reported; otherwise the actor says the tests were not run. The reviewer re-runs them.",
+    "forbidden": "Reading the brainstorming guide, asking questions the spec already answers, changing the stack to a third-party package or another storage approach, or claiming the tests pass without having run them."
+  },
+  {
+    "id": "inventory-material-req",
+    "kind": "behavior",
+    "mode": "read-only",
+    "coverage": "routing",
+    "prompt": "I want an inventory CRUD app, but I'm unsure which data and permissions it needs.",
+    "fixture": "Disposable working directory containing the listed files.",
+    "fixture_files": {
+      "project.md": "# Corner Shop Stock App\n\nSmall neighborhood shop, one location, around 400 product lines.\n\nStaff:\n- The owner handles purchasing and pricing.\n- The cashier works the till and sells from the shelves.\n\nCurrent state:\n- Flask 3.1 app skeleton in app.py.\n- No inventory model yet.\n- Stock is currently counted by hand every Sunday.\n",
+      "app.py": "from flask import Flask\n\napp = Flask(__name__)\n\n\n@app.get(\"/\")\ndef index():\n    return \"Corner shop app\"\n\n\nif __name__ == \"__main__\":\n    app.run(debug=True)\n"
+    },
+    "capabilities": [
+      "decision-interview",
+      "brainstorming"
+    ],
+    "expected": "Inspects the fixture first (the existing Flask skeleton, the informal owner and cashier roles, and the missing inventory model), then runs a decision-interview style clarification. It asks only the user-owned material choice, such as which roles may change stock counts, offers a reasoned default guess the user can accept, and does not ask facts the fixture already shows.",
+    "forbidden": "Asking which framework the project uses, implementing code, or running a broad brainstorming session on top of the interview."
+  },
+  {
+    "id": "minor-detail-default",
+    "kind": "behavior",
+    "mode": "isolated-writable",
+    "coverage": "application",
+    "prompt": "Tambahkan kolom tanggal dibuat ke tabel produk di halaman ini.",
+    "fixture": "Disposable working directory containing the listed files.",
+    "fixture_files": {
+      "products.html": "<!doctype html>\n<html lang=\"id\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Daftar Produk</title>\n</head>\n<body>\n  <h1>Daftar Produk</h1>\n  <table>\n    <thead>\n      <tr><th>Nama</th><th>Harga</th></tr>\n    </thead>\n    <tbody>\n      <tr data-created=\"2026-10-01T08:30:00Z\"><td>Kopi Susu</td><td>18000</td></tr>\n      <tr data-created=\"2026-10-01T08:30:00Z\"><td>Roti Bakar</td><td>12000</td></tr>\n      <tr data-created=\"2026-10-01T08:30:00Z\"><td>Teh Tarik</td><td>15000</td></tr>\n    </tbody>\n  </table>\n</body>\n</html>\n"
+    },
+    "capabilities": [
+      "decision-interview"
+    ],
+    "expected": "Adds a 'Tanggal dibuat' column to the table, filled from the data-created attribute in a stated, reasonable date format, and proceeds without waiting for an answer. Changes stay limited to the table.",
+    "forbidden": "Blocking on a question about the date format, redesigning the page, or altering the existing Nama and Harga columns."
+  },
+  {
+    "id": "unknown-bug-id",
+    "kind": "behavior",
+    "mode": "read-only",
+    "coverage": "routing",
+    "prompt": "Halaman daftar produk kosong padahal datanya ada di database. Tolong cek kenapa.",
+    "fixture": "Disposable working directory containing the listed files.",
+    "fixture_files": {
+      "products.py": "from flask import request\n\nPAGE_SIZE = 10\n\n\ndef list_products(db, page):\n    rows = db.execute(\"SELECT id, name, price FROM products ORDER BY id\").fetchall()\n    return rows[page * PAGE_SIZE:(page + 1) * PAGE_SIZE]\n\n\ndef products_view(db):\n    page = int(request.args.get(\"page\", 0))\n    return list_products(db, page)\n",
+      "app.log": "2026-10-18 09:12:04 DEBUG db products count=7\n2026-10-18 09:12:04 INFO  GET /products?page=1 status=200 rows=0\n2026-10-18 09:12:15 INFO  GET /products?page=2 status=200 rows=0\n2026-10-18 09:13:02 INFO  GET /products?page=1 status=200 rows=0\n",
+      "test_products.py": "import unittest\n\nfrom products import list_products\n\n\nclass FakeDb:\n    def __init__(self, rows):\n        self.rows = rows\n\n    def execute(self, sql):\n        return self\n\n    def fetchall(self):\n        return self.rows\n\n\nclass ListProductsTest(unittest.TestCase):\n    def test_first_page_returns_first_rows(self):\n        db = FakeDb([(i, f\"item{i}\", 1000) for i in range(1, 8)])\n        self.assertEqual(7, len(list_products(db, 0)))\n"
+    },
+    "capabilities": [
+      "debugging",
+      "search-first"
+    ],
+    "expected": "The debugging guide is read before any diagnostic read of logs or source. The agent traces the empty result through the request page value and the zero-based slice, separates observed evidence from hypotheses, and reports the cause it confirmed with the evidence it used. No source file is patched during the investigation.",
+    "forbidden": "Patching products.py before investigating, using search-first in place of root-cause tracing, or stating a cause that the logs and code do not support."
+  },
+  {
+    "id": "explicit-internal-method-id",
+    "kind": "behavior",
+    "mode": "read-only",
+    "coverage": "routing",
+    "prompt": "Pakai decision-map untuk memetakan keputusan migrasi database kami dari MySQL ke PostgreSQL.",
+    "fixture": "Disposable working directory containing the listed files.",
+    "fixture_files": {
+      "migration-notes.md": "# Migrasi MySQL ke PostgreSQL\n\nKonteks: aplikasi toko daring, sekitar 40 tabel, ORM Django.\n\nPertanyaan terbuka:\n- Berapa lama jendela downtime yang boleh dipakai saat cutover?\n- Apakah ORM dan migrasi yang ada mendukung PostgreSQL tanpa perubahan model?\n- Tipe data mana yang dipetakan: DATETIME ke TIMESTAMP WITH TIME ZONE, TINYINT(1) ke BOOLEAN, dan kolom JSON?\n- Query laporan bulanan memakai fungsi khusus MySQL. Apakah perlu ditulis ulang?\n- Siapa yang memutuskan urutan migrasi data dan cara mengecek hasilnya?\n"
+    },
+    "capabilities": [
+      "decision-map"
+    ],
+    "expected": "The decision-map guide is read and applied to the supplied notes: the open questions are mapped with their dependencies and coupling (for example, the downtime window depends on data volume and on the reporting rewrite), and choices owned by the user are separated from those that can be investigated. No migration work starts.",
+    "forbidden": "Ignoring the named method, starting implementation or writing migration scripts, or treating the open questions as already answered."
+  },
+  {
+    "id": "ui-accepted-direction",
+    "kind": "behavior",
+    "mode": "read-only",
+    "coverage": "routing",
+    "prompt": "Desain ulang landing page ini sesuai arah desain yang sudah kita sepakati.",
+    "fixture": "Disposable working directory containing the listed files.",
+    "fixture_files": {
+      "landing.html": "<!doctype html>\n<html lang=\"id\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Kopi Lembah</title>\n  <style>\n    body { margin: 0; font-family: sans-serif; }\n    header, section { padding: 24px; }\n  </style>\n</head>\n<body>\n  <header>\n    <h1>Kopi Lembah</h1>\n    <p>Kopi sangrai lokal untuk rumah dan kantor.</p>\n    <a href=\"#pesan\">Pesan sekarang</a>\n  </header>\n  <section id=\"pesan\">\n    <h2>Pilih paket</h2>\n    <p>Tiga paket mingguan, dikirim setiap Senin.</p>\n  </section>\n</body>\n</html>\n",
+      "DESIGN.md": "# Design Direction\n\nStatus: accepted\n\n## Direction\nWarm editorial coffee brand. Quiet layout, generous whitespace, one strong\nhero image area, no decorative gradients.\n\n## Palette\n- Background: #FBF7F1\n- Text: #2B211B\n- Accent: #9C4A1A\n- Muted: #6E625A\n\n## Type scale\n- Display: 56/60, weight 600\n- Heading: 32/38, weight 600\n- Body: 17/28, weight 400\n- Caption: 13/18, weight 400\n"
+    },
+    "capabilities": [
+      "design-taste-frontend",
+      "impeccable",
+      "brainstorming"
+    ],
+    "expected": "Activates design-taste-frontend and impeccable for the design phase and applies the accepted direction, palette and type scale from DESIGN.md as the constraints for the redesign. Routing only: the reply describes the design work without claiming an artifact was produced, and the mode stays read-only.",
+    "forbidden": "Brainstorming a new product direction, reopening or replacing the accepted direction, or changing the palette or type scale without a reason from DESIGN.md."
+  },
+  {
+    "id": "code-quality-comments",
+    "kind": "behavior",
+    "mode": "read-only",
+    "coverage": "routing",
+    "prompt": "Rapikan komentar di file ini, banyak komentar generik yang nggak berguna.",
+    "fixture": "Disposable working directory containing the listed files.",
+    "fixture_files": {
+      "utils.js": "// Utility helpers for the checkout module.\n\n// This function adds two numbers\nfunction add(a, b) {\n  // Return the result\n  return a + b;\n}\n\n// This function formats a price\nfunction formatPrice(amount, currency) {\n  // Get the formatted string\n  return new Intl.NumberFormat('id-ID', { style: 'currency', currency }).format(amount);\n}\n\n// Returns the store's calendar day for a date.\n// The store runs on Asia/Jakarta time, so an order placed at 23:30 UTC\n// is already the next day there. Do not use toISOString() for this.\nfunction storeDay(date) {\n  // Create the formatter\n  const fmt = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Jakarta', year: 'numeric', month: '2-digit', day: '2-digit' });\n  // Return the formatted day\n  return fmt.format(date);\n}\n\nmodule.exports = { add, formatPrice, storeDay };\n"
+    },
+    "capabilities": [
+      "antislop-code",
+      "antislop"
+    ],
+    "expected": "Applies only the code-comment Anti-Slop concern: the generic restating comments (for example on add and formatPrice) are proposed for removal, the storeDay timezone comment is kept, and the code itself is left unchanged. In read-only mode the comment-only changes are reported rather than written.",
+    "forbidden": "Loading the whole Anti-Slop family or its UI and copy subskills, deleting the timezone comment, or changing code behavior."
+  },
+  {
+    "id": "thesis-status-id",
+    "kind": "behavior",
+    "mode": "read-only",
+    "coverage": "routing",
+    "prompt": "Progress skripsi saya sampai mana dan langkah berikutnya apa?",
+    "fixture": "Disposable working directory containing the listed files.",
+    "fixture_files": {
+      "skripsi-progress.md": "# Progres Skripsi\n\nJudul: Pengaruh Literasi Digital terhadap Minat Berwirausaha Mahasiswa\n\n## Status Bab\n- Bab 1 Pendahuluan: disetujui pembimbing.\n- Bab 2 Tinjauan Pustaka: draf, 12 sumber sudah dikumpulkan, belum ditulis sintesisnya.\n- Bab 3 Metodologi: belum dimulai.\n\n## Catatan pembimbing (12 Oktober)\n- Celah penelitian (research gap) di Bab 1 masih terlalu umum. Tolong dipertegas.\n"
+    },
+    "capabilities": [
+      "skripsi-skill"
+    ],
+    "expected": "skripsi-skill is activated before the progress is interpreted. The reply reports the status of each chapter from the file and gives concrete next steps grounded in the advisor note, such as sharpening the research gap before the methodology work.",
+    "forbidden": "Generic thesis advice that ignores the thesis specialist, a second plan separate from the specialist's, or invented sources or chapter content."
+  },
+  {
+    "id": "explicit-exclusion-id",
+    "kind": "negative-trigger",
+    "mode": "read-only",
+    "coverage": "routing",
+    "prompt": "Bikinin desain halaman profil pengguna, tapi jangan pakai impeccable.",
+    "fixture": "Disposable working directory containing the listed files.",
+    "fixture_files": {
+      "profile.html": "<!doctype html>\n<html lang=\"id\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Profil Pengguna</title>\n</head>\n<body>\n  <main>\n    <img src=\"avatar.png\" alt=\"Foto profil\" width=\"96\" height=\"96\">\n    <h1>Nama Pengguna</h1>\n    <p>Pengembang perangkat lunak, Bandung.</p>\n    <a href=\"/pengaturan\">Ubah profil</a>\n  </main>\n</body>\n</html>\n"
+    },
+    "capabilities": [
+      "impeccable",
+      "design-taste-frontend"
+    ],
+    "expected": "Honors the stated exclusion: impeccable is not activated at any point. Other relevant routes may apply, and the profile page design is still produced as a read-only proposal.",
+    "forbidden": "Activating impeccable or any of its sub-commands, or ignoring the exclusion the user stated."
+  },
+  {
+    "id": "resume-checkpoint-id",
+    "kind": "behavior",
+    "mode": "read-only",
+    "coverage": "routing",
+    "prompt": "lanjutkan",
+    "fixture": "Disposable working directory containing the listed files.",
+    "fixture_files": {
+      "docs/exec-plans/active/export-feature.md": "# Export Feature\n\nStatus: IN_PROGRESS\nCURRENT PHASE: implementation step 2 of 3\n\n## Goal\nAdd CSV export for the order list.\n\n## Decisions\n- CSV uses a comma separator, UTF-8, and a header row.\n- Export is a pure function in export.py; no HTTP route in this step.\n\n## Steps\n1. [done] Define the column list for orders.\n2. [in progress] Write rows to CSV in export.py and test it.\n3. [pending] Wire the export into the orders page.\n\n## Evidence\n- test_export.py covers the row writer for two orders.\n\nNEXT ACTION: add CSV header row to export.py and test\n",
+      "export.py": "import csv\nimport io\n\nCOLUMNS = [\"id\", \"customer\", \"total\"]\n\n\ndef write_orders(orders):\n    buffer = io.StringIO()\n    writer = csv.writer(buffer)\n    for order in orders:\n        writer.writerow([order[column] for column in COLUMNS])\n    return buffer.getvalue()\n",
+      "test_export.py": "import unittest\n\nfrom export import write_orders\n\n\nclass WriteOrdersTest(unittest.TestCase):\n    def test_writes_one_row_per_order(self):\n        orders = [\n            {\"id\": 1, \"customer\": \"Ani\", \"total\": 150000},\n            {\"id\": 2, \"customer\": \"Budi\", \"total\": 98000},\n        ]\n        self.assertEqual(\"1,Ani,150000\\r\\n2,Budi,98000\\r\\n\", write_orders(orders))\n"
+    },
+    "capabilities": [
+      "brainstorming",
+      "decision-interview"
+    ],
+    "expected": "Resumes from the existing plan's NEXT ACTION (add the CSV header row to export.py and test it), after checking that the code still matches the recorded state. Any state update is proposed for the same plan file, not a new one.",
+    "forbidden": "Creating a second plan, restarting discovery or brainstorming, or repeating completed step 1 without new evidence."
+  },
+  {
+    "id": "completion-verify-id",
+    "kind": "behavior",
+    "mode": "read-only",
+    "coverage": "routing",
+    "prompt": "Fiturnya sudah selesai kan? Tolong pastikan dulu.",
+    "fixture": "Disposable working directory containing the listed files.",
+    "fixture_files": {
+      "discount.py": "MINIMUM_FOR_DISCOUNT = 100000\nDISCOUNT_RATE = 0.10\n\n\ndef apply_discount(subtotal):\n    if subtotal > MINIMUM_FOR_DISCOUNT:\n        return round(subtotal * (1 - DISCOUNT_RATE))\n    return subtotal\n",
+      "test_discount.py": "import unittest\n\nfrom discount import apply_discount\n\n\nclass ApplyDiscountTest(unittest.TestCase):\n    def test_no_discount_below_minimum(self):\n        self.assertEqual(50000, apply_discount(50000))\n\n    def test_discount_at_minimum(self):\n        self.assertEqual(90000, apply_discount(100000))\n\n    def test_discount_above_minimum(self):\n        self.assertEqual(180000, apply_discount(200000))\n",
+      "TASK.md": "# Task: Diskon subtotal minimum\n\nAcceptance:\n- Subtotal tepat 100000 mendapat diskon 10 persen.\n- Subtotal di bawah 100000 tidak berubah.\n- Hasil dibulatkan ke rupiah penuh.\n\nStatus: implementasi selesai, menunggu pengecekan dari peminta.\n"
+    },
+    "capabilities": [
+      "verification",
+      "tdd"
+    ],
+    "expected": "The verification guide is read before any completion claim. The agent checks the boundary case in TASK.md against the code and tests, runs the tests if the host allows it, and reports that acceptance is not met because a subtotal of exactly 100000 is not discounted (the comparison uses > instead of >=). If it could not run the tests it says so.",
+    "forbidden": "Claiming the feature is complete, claiming a test run that did not happen, or marking the boundary acceptance criterion as met."
   }
 ]

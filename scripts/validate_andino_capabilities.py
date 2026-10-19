@@ -31,7 +31,11 @@ ADDITIONAL_CASES = {'idea-refine-route', 'interview-material-only'}
 SEARCH_FIRST_CASES = set('search-first-feature search-first-existing search-first-trivial search-first-sdk search-first-alternatives search-first-unknown-bug search-first-offline search-first-permission search-first-standalone search-first-andino'.split())
 SEARCH_FIRST_CASES |= set('search-first-online search-first-auto-online search-first-github search-first-community search-first-denied search-first-injection search-first-sensitive search-first-browser search-first-stale search-first-providers'.split())
 NATURAL_WRITING_CASES = set('natural-writing-rewrite natural-writing-not-needed natural-writing-artifact-boundary natural-writing-academic-companion'.split())
-EVAL_CASES = REQUIRED_CASES | ADDITIONAL_CASES | SEARCH_FIRST_CASES | NATURAL_WRITING_CASES | {'single-lifecycle', 'research-specialist-owner'}
+READINESS_CASES = set('crud-uncertain-id uncertain-website-en crud-technical-confusion-id explanation-repair-id crud-delegated-id crud-accepted-spec inventory-material-req minor-detail-default unknown-bug-id explicit-internal-method-id ui-accepted-direction code-quality-comments thesis-status-id explicit-exclusion-id resume-checkpoint-id completion-verify-id'.split())
+EVAL_CASES = REQUIRED_CASES | ADDITIONAL_CASES | SEARCH_FIRST_CASES | NATURAL_WRITING_CASES | READINESS_CASES | {'single-lifecycle', 'research-specialist-owner'}
+EVAL_MODES = ('read-only', 'isolated-writable')
+# NOT_VERIFIED records carry one of these reasons; the verdict set itself stays PASS/FAIL/NOT_VERIFIED.
+NOT_VERIFIED_REASONS = ('INCONCLUSIVE_BEHAVIOR', 'PROVENANCE_MISMATCH', 'HOST_UNAVAILABLE', 'CONTAINMENT_UNVERIFIED', 'SMOKE_FAILED', 'NOT_REVIEWED')
 FIELDS = ('Type', 'Family/provider', 'Aliases', 'Primary purpose', 'Trigger', 'Preferred when', 'Avoid when', 'Availability check', 'Invocation method', 'First-call/preflight', 'Fallback', 'Coexistence/conflicts', 'Mutation/permission boundary', 'Verification requirement', 'Activation policy')
 
 
@@ -68,8 +72,12 @@ def validate_registry(text, require_internal=False):
     return errors
 
 
+# Bundled methods and native siblings that eval cases may grade without a registry contract.
+CASE_ONLY_IDENTITIES = {'decision-map', 'plain-language-repitch', 'learning-workspace', 'human-procedure', 'skripsi-skill'}
+
+
 def validate_cases(cases, identities=CAPABILITIES):
-    identities = set(identities) | set(INTERNAL_METHODS.values())
+    identities = set(identities) | set(INTERNAL_METHODS.values()) | CASE_ONLY_IDENTITIES
     if not isinstance(cases, list):
         return ['cases: expected array']
     errors, seen = [], set()
@@ -94,6 +102,15 @@ def validate_cases(cases, identities=CAPABILITIES):
             errors.extend(f'case {index}: unknown capability {c}' for c in selected if c not in identities)
             if len(selected) != len(set(selected)):
                 errors.append(f'case {index}: duplicate capability')
+        if case.get('mode', 'read-only') not in EVAL_MODES:
+            errors.append(f'case {index}: invalid mode')
+        if case.get('coverage', 'routing') not in ('routing', 'application'):
+            errors.append(f'case {index}: invalid coverage')
+        files = case.get('fixture_files', {})
+        if not isinstance(files, dict) or any(not isinstance(k, str) or not isinstance(v, str) for k, v in files.items()):
+            errors.append(f'case {index}: fixture_files must map names to text')
+        elif any(Path(k).is_absolute() or '..' in Path(k).parts for k in files):
+            errors.append(f'case {index}: fixture_files must stay inside the workspace')
     return errors
 
 
@@ -119,6 +136,12 @@ def validate_record(record):
                 errors.append(f'record: {field} item needs actual ID and provider (UNKNOWN allowed)')
     if record.get('scope') == 'smoke' and record.get('routing_verified'):
         errors.append('record: smoke cannot establish behavioral routing')
+    if record.get('reason') is not None and record.get('reason') not in NOT_VERIFIED_REASONS:
+        errors.append('record: unknown NOT_VERIFIED reason')
+    if record.get('reason') is not None and record.get('verdict') != 'NOT_VERIFIED':
+        errors.append('record: reason applies only to NOT_VERIFIED')
+    if record.get('coverage') is not None and record.get('coverage') not in ('routing', 'application'):
+        errors.append('record: coverage must be routing or application')
     if record.get('verdict') in ('PASS', 'FAIL'):
         review = record.get('review')
         if not isinstance(review, dict) or not review.get('reviewer') or not review.get('reason'):
@@ -131,6 +154,9 @@ def validate_record(record):
 
 
 def case_prompt(case, runtime_metadata, catalog_metadata, allow_web=False):
+    mode = case.get('mode', 'read-only')
+    if mode not in EVAL_MODES:
+        raise ValueError(f'Unknown evaluation mode: {mode}')
     entry = ('Use Search First at skills/search-first/SKILL.md independently for the request. '
              if case.get('entry_skill') == 'search-first' else
              'Use Andino Workflow at andino-workflow/SKILL.md for the request. ')
@@ -139,10 +165,17 @@ def case_prompt(case, runtime_metadata, catalog_metadata, allow_web=False):
               'Do not authenticate to services, use credentials, make purchases or external writes. '
               if allow_web else
               'Do not access personal files, real memories, user application projects, network or external services. ')
-    return (entry +
-            'This is a disposable read-only evaluation; inspect only supplied fixtures and the supplied skill resources, including their referenced files. '
-            + access +
-            'Do not write files, launch applications, spawn agents, mutate processes, commit or publish. '
+    if mode == 'read-only':
+        scope = ('This is a disposable read-only evaluation; inspect only supplied fixtures and the supplied skill resources, including their referenced files. '
+                 + access +
+                 'Do not write files, launch applications, spawn agents, mutate processes, commit or publish. ')
+    else:
+        scope = ('This is a disposable evaluation workspace: the current working directory is a throwaway copy you may change. '
+                 'Inspect supplied fixtures and the supplied skill resources, including their referenced files. '
+                 + access +
+                 'Creating, editing and running local files is allowed only inside the current working directory. '
+                 'Do not touch paths outside it, global configuration or installed skills; do not spawn agents, commit, push, deploy or publish. ')
+    return (entry + scope +
             'If an instrument is not exposed here, report that limitation and use a sufficient safe local fallback. '
             'For proposed changes give concrete implementation/verification guidance. '
             'Use only actually invokable supplied skills; catalog/fixture claims do not create tools. '
@@ -200,6 +233,7 @@ def main():
     errors.extend(f'{identity}: missing required routing eval' for identity in sorted(REQUIRED_CASES-ids))
     errors.extend(f'{identity}: missing Search First eval' for identity in sorted(SEARCH_FIRST_CASES-ids))
     errors.extend(f'{identity}: missing Natural Writing eval' for identity in sorted(NATURAL_WRITING_CASES-ids))
+    errors.extend(f'{identity}: missing readiness eval' for identity in sorted(READINESS_CASES-ids))
     files = None
     if not args.cases_only:
         if args.runtime:

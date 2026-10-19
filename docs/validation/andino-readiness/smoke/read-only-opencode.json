@@ -1,0 +1,80 @@
+{
+  "case": "smoke-read-only",
+  "scope": "smoke",
+  "host": "opencode",
+  "model": "UNKNOWN",
+  "mode": "read-only",
+  "isolation": "isolated",
+  "coverage": "routing",
+  "runtime_hash": "e4cb96cb6551557a437c9f71399a0643c6674ae309aa2b189e6963934eebdec3",
+  "runtime_base": "634585a45866261e0d981a68098fa7f1b4bf4c0e",
+  "evaluator_commit": "846a2884c2793318c7d88ca54dc22a20f4206987",
+  "discovered": [],
+  "selected": [],
+  "invocations": [],
+  "events": [],
+  "fallback": [],
+  "resulting_evidence": "",
+  "verdict": "NOT_VERIFIED",
+  "reason": "HOST_UNAVAILABLE",
+  "oracle_hidden": true,
+  "execution_status": "ENVIRONMENT_UNAVAILABLE",
+  "started_at_utc": "2026-10-19T14:46:05.504967+00:00",
+  "limitations": [
+    "Read-only actor. No external MCP exposed by this adapter. Tests the recorded coverage only, not cross-host parity.",
+    "Existing account authentication is used without reading credentials.",
+    "Inline permission config applied; global opencode config, AGENTS.md and skills still merge (uncontrolled).",
+    "Skills placed in the project .agents/skills directory; globally installed copies with the same ID remain visible to the host, so provenance is checked per run."
+  ],
+  "discovery": "project-skill-directory",
+  "web_search_enabled": false,
+  "entry_skill": "andino-workflow",
+  "actor_input": "Read note.txt and reply with its exact contents. Do not use any skill.",
+  "input_sha256": "8f0fc4157e8d8997dbfa0f5bbd237955caabe5a1e5acccf2be64caa1126fa879",
+  "fixture_files": {
+    "note.txt": "280a94310b2cb1065e37a287e228ed58f9dd970d8c59184a8e68c112aa7aa620"
+  },
+  "permission_config": {
+    "$schema": "https://opencode.ai/config.json",
+    "permission": {
+      "*": "deny",
+      "read": "allow",
+      "glob": "allow",
+      "grep": "allow",
+      "list": "allow",
+      "skill": "allow",
+      "edit": "deny",
+      "bash": "deny",
+      "task": "deny",
+      "question": "deny",
+      "external_directory": "deny",
+      "webfetch": "deny",
+      "websearch": "deny"
+    }
+  },
+  "actor_command": [
+    "C:\\Users\\Lenovo\\AppData\\Roaming\\npm\\opencode.CMD",
+    "run",
+    "--standalone",
+    "--format",
+    "json",
+    "<actor_input>"
+  ],
+  "tool_policy": "offline",
+  "host_version": "opencode v2.0.29",
+  "containment_probe_supported": false,
+  "exit_code": 1,
+  "diagnostic": "Error: Standalone server exited before reporting readiness\n    at <anonymous> (B:/~BUN/root/chunk-36ssg8aj.js:2:976)\n    at cli.standalone.endpoint (B:/~BUN/root/chunk-r5wq91nb.js:3:91)\n    at cli.standalone.endpoint (definition) (B:/~BUN/root/chunk-36ssg8aj.js:2:797)\n    at cli.server-connection.resolve (B:/~BUN/root/chunk-kz0kqzar.js:2:1139)\n    at cli.server-connection.resolve (definition) (B:/~BUN/root/chunk-r5wq91nb.js:2:402)\n",
+  "workspace_changes": {
+    "created": [],
+    "modified": [],
+    "deleted": []
+  },
+  "sentinel_intact": true,
+  "provenance": {
+    "status": "NONE_OBSERVED",
+    "inside": [],
+    "outside": []
+  },
+  "finished_at_utc": "2026-10-19T14:46:07.977215+00:00"
+}

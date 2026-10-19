@@ -1,0 +1,92 @@
+{
+  "case": "smoke-read-only",
+  "scope": "smoke",
+  "host": "claude-code",
+  "model": "claude-opus-5-5",
+  "mode": "read-only",
+  "isolation": "isolated",
+  "coverage": "routing",
+  "runtime_hash": "e4cb96cb6551557a437c9f71399a0643c6674ae309aa2b189e6963934eebdec3",
+  "runtime_base": "634585a45866261e0d981a68098fa7f1b4bf4c0e",
+  "evaluator_commit": "846a2884c2793318c7d88ca54dc22a20f4206987",
+  "discovered": [],
+  "selected": [],
+  "invocations": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01BjRb9h736QnmnXtCu7tApm",
+      "name": "Read",
+      "input": {
+        "file_path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-eqhhpt17\\work\\note.txt"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "tool_use_id": "toolu_01BjRb9h736QnmnXtCu7tApm",
+      "type": "tool_result",
+      "content": "1\tsmoke fixture\n2\t"
+    }
+  ],
+  "events": [],
+  "fallback": [],
+  "resulting_evidence": "smoke fixture",
+  "verdict": "NOT_VERIFIED",
+  "reason": "NOT_REVIEWED",
+  "oracle_hidden": true,
+  "execution_status": "EXECUTED",
+  "started_at_utc": "2026-10-19T14:39:21.147099+00:00",
+  "limitations": [
+    "Read-only actor. No external MCP exposed by this adapter. Tests the recorded coverage only, not cross-host parity.",
+    "Existing account authentication is used without reading credentials.",
+    "--restricted ignores settings files; --safe-mode disables CLAUDE.md, user skills and plugins.",
+    "Restricted Claude evaluation uses explicit --plugin-dir registration of unchanged skill resources as ai-rules-eval:<id>; it does not prove ordinary project-skill auto-discovery or slash-picker UI behavior."
+  ],
+  "discovery": "evaluator-plugin-dir",
+  "web_search_enabled": false,
+  "entry_skill": "andino-workflow",
+  "actor_input": "Read note.txt and reply with its exact contents. Do not use any skill.",
+  "input_sha256": "8f0fc4157e8d8997dbfa0f5bbd237955caabe5a1e5acccf2be64caa1126fa879",
+  "fixture_files": {
+    "note.txt": "280a94310b2cb1065e37a287e228ed58f9dd970d8c59184a8e68c112aa7aa620"
+  },
+  "actor_command": [
+    "C:\\Users\\Lenovo\\.local\\bin\\claude.EXE",
+    "-p",
+    "--restricted",
+    "--strict-mcp-config",
+    "--plugin-dir",
+    "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-eqhhpt17\\work\\eval-plugin",
+    "--tools",
+    "Read,Glob,Grep,Skill",
+    "--allowedTools",
+    "Read,Glob,Grep,Skill",
+    "--permission-mode",
+    "dontAsk",
+    "--no-session-persistence",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--safe-mode"
+  ],
+  "tool_policy": "offline",
+  "host_version": "2.1.300 (Claude Code)",
+  "containment_probe_supported": true,
+  "exit_code": 0,
+  "diagnostic": "",
+  "permission_denials": [],
+  "result_is_error": false,
+  "workspace_changes": {
+    "created": [],
+    "modified": [],
+    "deleted": []
+  },
+  "sentinel_intact": true,
+  "provenance": {
+    "status": "NONE_OBSERVED",
+    "inside": [],
+    "outside": []
+  },
+  "finished_at_utc": "2026-10-19T14:39:27.664297+00:00"
+}

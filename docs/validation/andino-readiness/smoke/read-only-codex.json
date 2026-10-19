@@ -1,0 +1,94 @@
+{
+  "case": "smoke-read-only",
+  "scope": "smoke",
+  "host": "codex",
+  "model": "UNKNOWN",
+  "mode": "read-only",
+  "isolation": "isolated",
+  "coverage": "routing",
+  "runtime_hash": "e4cb96cb6551557a437c9f71399a0643c6674ae309aa2b189e6963934eebdec3",
+  "runtime_base": "634585a45866261e0d981a68098fa7f1b4bf4c0e",
+  "evaluator_commit": "846a2884c2793318c7d88ca54dc22a20f4206987",
+  "discovered": [],
+  "selected": [],
+  "invocations": [
+    {
+      "id": "item_2",
+      "type": "command_execution",
+      "command": "\"C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -LiteralPath note.txt -Raw'",
+      "aggregated_output": "",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "id": "item_2",
+      "type": "command_execution",
+      "command": "\"C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -LiteralPath note.txt -Raw'",
+      "aggregated_output": "smoke fixture\r\n\r\n",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id": "01a154a0-8089-79f2-9522-13aab7093aba"
+    }
+  ],
+  "fallback": [],
+  "resulting_evidence": "smoke fixture",
+  "verdict": "NOT_VERIFIED",
+  "reason": "NOT_REVIEWED",
+  "oracle_hidden": true,
+  "execution_status": "EXECUTED",
+  "started_at_utc": "2026-10-19T14:46:05.506966+00:00",
+  "limitations": [
+    "Read-only actor. No external MCP exposed by this adapter. Tests the recorded coverage only, not cross-host parity.",
+    "Existing account authentication is used without reading credentials.",
+    "User config.toml ignored; execpolicy rules, global AGENTS.md and global skills are not excluded (uncontrolled)."
+  ],
+  "discovery": "evaluator-injected-paths",
+  "web_search_enabled": false,
+  "entry_skill": "andino-workflow",
+  "actor_input": "Read note.txt and reply with its exact contents. Do not use any skill.",
+  "input_sha256": "8f0fc4157e8d8997dbfa0f5bbd237955caabe5a1e5acccf2be64caa1126fa879",
+  "fixture_files": {
+    "note.txt": "280a94310b2cb1065e37a287e228ed58f9dd970d8c59184a8e68c112aa7aa620"
+  },
+  "actor_command": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin\\codex.EXE",
+    "exec",
+    "--ignore-user-config",
+    "--ephemeral",
+    "--skip-git-repo-check",
+    "--sandbox",
+    "read-only",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-d7wrx6j4\\work",
+    "--color",
+    "never",
+    "--json",
+    "-o",
+    "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-capability-eval-d7wrx6j4\\work\\answer.txt",
+    "-"
+  ],
+  "tool_policy": "offline",
+  "host_version": "codex-cli 0.154.0",
+  "containment_probe_supported": true,
+  "exit_code": 0,
+  "diagnostic": "",
+  "workspace_changes": {
+    "created": [],
+    "modified": [],
+    "deleted": []
+  },
+  "sentinel_intact": true,
+  "provenance": {
+    "status": "NONE_OBSERVED",
+    "inside": [],
+    "outside": []
+  },
+  "finished_at_utc": "2026-10-19T14:46:19.463664+00:00"
+}

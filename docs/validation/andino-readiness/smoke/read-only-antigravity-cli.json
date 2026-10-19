@@ -1,0 +1,82 @@
+{
+  "case": "smoke-read-only",
+  "scope": "smoke",
+  "host": "antigravity-cli",
+  "model": "UNKNOWN",
+  "mode": "read-only",
+  "mode_downgraded": false,
+  "isolation": "isolated",
+  "coverage": "routing",
+  "runtime_hash": "e4cb96cb6551557a437c9f71399a0643c6674ae309aa2b189e6963934eebdec3",
+  "runtime_base": "634585a45866261e0d981a68098fa7f1b4bf4c0e",
+  "evaluator_commit": "846a2884c2793318c7d88ca54dc22a20f4206987",
+  "discovered": [],
+  "selected": [],
+  "invocations": [
+    {
+      "type": "tool_use",
+      "name": "view_file",
+      "parameters": {
+        "AbsolutePath": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-worktrees\\eval-scratch\\andino-capability-eval-5_iz2cmo\\work\\note.txt"
+      }
+    },
+    {
+      "type": "tool_use",
+      "name": "run_command",
+      "parameters": {
+        "CommandLine": "git status"
+      }
+    }
+  ],
+  "events": [],
+  "fallback": [],
+  "resulting_evidence": "",
+  "verdict": "NOT_VERIFIED",
+  "reason": "HOST_UNAVAILABLE",
+  "oracle_hidden": true,
+  "execution_status": "ENVIRONMENT_UNAVAILABLE",
+  "started_at_utc": "2026-10-19T14:54:41.727207+00:00",
+  "limitations": [
+    "Read-only actor. No external MCP exposed by this adapter. Tests the recorded coverage only, not cross-host parity.",
+    "Existing account authentication is used without reading credentials.",
+    "Global GEMINI.md, rules and skills are not excluded (uncontrolled).",
+    "Skills placed in the project .agents/skills directory and named by path; globally installed copies with the same ID remain visible to the host, so provenance is checked per run."
+  ],
+  "scratch_root": "C:/Users/Lenovo/Downloads/AI-RULES-worktrees/eval-scratch",
+  "discovery": "project-skill-directory-explicit-path",
+  "web_search_enabled": false,
+  "entry_skill": "andino-workflow",
+  "actor_input": "Read note.txt and reply with its exact contents. Do not use any skill.",
+  "input_sha256": "8f0fc4157e8d8997dbfa0f5bbd237955caabe5a1e5acccf2be64caa1126fa879",
+  "fixture_files": {
+    "note.txt": "280a94310b2cb1065e37a287e228ed58f9dd970d8c59184a8e68c112aa7aa620"
+  },
+  "actor_command": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\agy\\bin\\agy.EXE",
+    "--output-format",
+    "stream-json",
+    "--mode",
+    "plan",
+    "--sandbox",
+    "--print",
+    "<actor_input>"
+  ],
+  "tool_policy": "offline",
+  "host_version": "1.4.2",
+  "containment_probe_supported": false,
+  "exit_code": 0,
+  "diagnostic": "jetski: no output produced — a tool required the \"command\" permission that headless mode cannot prompt for, so it was auto-denied. Add an allow-rule under permissions.allow in settings.json (e.g. command(<target>)). Alternatively, re-run with --dangerously-skip-permissions to auto-approve all tools.\n",
+  "result_is_error": false,
+  "workspace_changes": {
+    "created": [],
+    "modified": [],
+    "deleted": []
+  },
+  "sentinel_intact": true,
+  "provenance": {
+    "status": "NONE_OBSERVED",
+    "inside": [],
+    "outside": []
+  },
+  "finished_at_utc": "2026-10-19T14:55:06.933945+00:00"
+}
