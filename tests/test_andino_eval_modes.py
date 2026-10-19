@@ -77,6 +77,19 @@ class ActorCommandTest(unittest.TestCase):
         self.assertIn('plan', actor_command('antigravity-cli', Path('/w'), Path('/a'), False))
         self.assertIn('accept-edits', actor_command('antigravity-cli', Path('/w'), Path('/a'), False, mode='isolated-writable'))
 
+    def test_model_and_effort_use_each_host_flag(self):
+        claude = actor_command('claude-code', Path('/w'), Path('/a'), False, model='claude-haiku-5-5', effort='xhigh')
+        self.assertEqual(['claude', '-p', '--model', 'claude-haiku-5-5', '--effort', 'xhigh'], [Path(claude[0]).stem] + claude[1:6])
+        codex = actor_command('codex', Path('/w'), Path('/a'), False, model='gpt-5.6-luna', effort='xhigh')
+        self.assertEqual(['exec', '-m', 'gpt-5.6-luna', '-c', 'model_reasoning_effort="xhigh"'], codex[1:6])
+        self.assertEqual('-', codex[-1])
+        agy = actor_command('antigravity-cli', Path('/w'), Path('/a'), False, model='gemini-3.8-flash-high', effort='high')
+        self.assertEqual(['--model', 'gemini-3.8-flash-high', '--effort', 'high'], agy[1:5])
+        self.assertEqual('--print', agy[-1])
+        opencode = actor_command('opencode', Path('/w'), Path('/a'), False, model='9router/Free', effort='high')
+        self.assertEqual(['run', '-m', '9router/Free', '--standalone'], opencode[1:5])
+        self.assertNotIn('--model', actor_command('codex', Path('/w'), Path('/a'), False))
+
     def test_opencode_permissions_deny_shell_and_outside_paths(self):
         for mode in ('read-only', 'isolated-writable'):
             rules = opencode_permissions(mode, False)['permission']

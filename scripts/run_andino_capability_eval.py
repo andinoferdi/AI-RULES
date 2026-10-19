@@ -176,7 +176,20 @@ SMOKE_CASES = {
 }
 
 
-def actor_command(host, base, answer, allow_web, deny_web=False, mode='read-only', isolation='isolated'):
+def actor_command(host, base, answer, allow_web, deny_web=False, mode='read-only', isolation='isolated',
+                  model=None, effort=None):
+    command = host_command(host, base, answer, allow_web, deny_web, mode, isolation)
+    selection = []
+    if model:
+        selection += {'codex': ['-m', model], 'opencode': ['-m', model]}.get(host, ['--model', model])
+    if effort:
+        selection += {'codex': ['-c', f'model_reasoning_effort="{effort}"'], 'opencode': []}.get(host, ['--effort', effort])
+    # Insert right after the subcommand so trailing stdin markers and agy's --print stay last.
+    position = 2 if host in ('codex', 'opencode', 'claude-code') else 1
+    return command[:position] + selection + command[position:]
+
+
+def host_command(host, base, answer, allow_web, deny_web, mode, isolation):
     writable = mode == 'isolated-writable'
     if host == 'claude-code':
         allowed = 'Read,Glob,Grep,Skill' + (',Write,Edit' if writable else '') + (',WebSearch,WebFetch' if allow_web else '')
@@ -383,6 +396,8 @@ def main():
     parser.add_argument('--web-search',action='store_true',help='Opt in to read-only public research; defaults to offline isolation')
     parser.add_argument('--host', choices=HOSTS, default='codex')
     parser.add_argument('--mode', choices=EVAL_MODES, help='Must match the case mode; defaults to it')
+    parser.add_argument('--model', help='Host model ID to request; recorded as requested_model')
+    parser.add_argument('--effort', help='Host reasoning effort to request (host-specific values)')
     parser.add_argument('--isolation', choices=('isolated', 'host-config'), default='isolated',
                         help='host-config keeps the user host instructions and skills visible; never edits them')
     args = parser.parse_args()
@@ -462,7 +477,10 @@ def main():
         record['fixture_files']={name:hashlib.sha256(content.encode()).hexdigest() for name,content in fixture_files.items()}
         answer=base/'answer.txt'
         command=actor_command(args.host, base, answer, args.web_search,
-                              deny_web=case.get('web_policy') == 'denied', mode=mode, isolation=args.isolation)
+                              deny_web=case.get('web_policy') == 'denied', mode=mode, isolation=args.isolation,
+                              model=args.model, effort=args.effort)
+        record['requested_model'] = args.model or 'HOST_DEFAULT'
+        record['requested_effort'] = args.effort or 'HOST_DEFAULT'
         environment = dict(os.environ)
         stdin_text = prompt
         if args.host == 'opencode':
