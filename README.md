@@ -67,6 +67,7 @@ To turn it off, say `stop focus`. Activating a skill grants no extra permission.
 
 - Andino's contract calls for Focus as its default communication layer. Actual loading follows the host's permitted invocation mechanism; installation alone does not activate it.
 - Focus owns no plan, tool permissions, or task execution.
+- Focus shapes communication, not the body of a requested writing artifact such as an essay or chapter; the artifact's own requirements set its length and depth. The optional `natural-writing` skill handles artifact prose.
 - For web chatbots, copy `A. PRIORITAS` and `X. FOCUS` from the [WebBased branch README](https://github.com/andinoferdi/AI-RULES/tree/WebBased).
 - Adapted from [i-have-adhd](https://github.com/ayghri/i-have-adhd) by Ayoub Ghriss under the MIT license. See the [retained notice](references/license.md).
 
