@@ -1,0 +1,96 @@
+{
+  "case": "smoke-read-only",
+  "scope": "smoke",
+  "host": "opencode",
+  "model": "UNKNOWN",
+  "mode": "read-only",
+  "mode_downgraded": false,
+  "isolation": "isolated",
+  "coverage": "routing",
+  "runtime_hash": "50c24252afaf7ecc0564f1b089d5999ba0c3d1b83510929bf64954902d2e671d",
+  "runtime_base": "f99ec59c95f1889b08fa6d873dba1522a41608ea",
+  "evaluator_commit": "e523322f4b5d93d06e37227bdc0302c7646ebedd",
+  "discovered": [],
+  "selected": [],
+  "invocations": [],
+  "events": [
+    {
+      "type": "error",
+      "timestamp": 1792435083597,
+      "sessionID": "ses_eaa8cb54fffeCJP8f04TukjSwL",
+      "error": {
+        "type": "provider.transport",
+        "message": "ConnectionRefused: Unable to connect. Is the computer able to access the url?"
+      }
+    }
+  ],
+  "fallback": [],
+  "resulting_evidence": "",
+  "verdict": "NOT_VERIFIED",
+  "reason": "HOST_UNAVAILABLE",
+  "oracle_hidden": true,
+  "execution_status": "ENVIRONMENT_UNAVAILABLE",
+  "started_at_utc": "2026-10-19T18:36:16.010894+00:00",
+  "limitations": [
+    "Read-only actor. No external MCP exposed by this adapter. Tests the recorded coverage only, not cross-host parity.",
+    "Existing account authentication is used without reading credentials.",
+    "Inline permission config applied; global opencode config, AGENTS.md and skills still merge (uncontrolled).",
+    "Skills placed in the project .agents/skills directory and named by path; globally installed copies with the same ID remain visible to the host, so provenance is checked per run."
+  ],
+  "scratch_root": "C:/Users/Lenovo/Downloads/AI-RULES-worktrees/eval-scratch",
+  "discovery": "project-skill-directory-explicit-path",
+  "web_search_enabled": false,
+  "entry_skill": "andino-workflow",
+  "actor_input": "Read note.txt and reply with its exact contents. Do not use any skill.",
+  "input_sha256": "8f0fc4157e8d8997dbfa0f5bbd237955caabe5a1e5acccf2be64caa1126fa879",
+  "fixture_files": {
+    "note.txt": "280a94310b2cb1065e37a287e228ed58f9dd970d8c59184a8e68c112aa7aa620"
+  },
+  "requested_model": "9router/Free",
+  "requested_effort": "HOST_DEFAULT",
+  "permission_config": {
+    "$schema": "https://opencode.ai/config.json",
+    "permission": {
+      "*": "deny",
+      "read": "allow",
+      "glob": "allow",
+      "grep": "allow",
+      "list": "allow",
+      "skill": "allow",
+      "edit": "deny",
+      "bash": "deny",
+      "task": "deny",
+      "question": "deny",
+      "external_directory": "deny",
+      "webfetch": "deny",
+      "websearch": "deny"
+    }
+  },
+  "actor_command": [
+    "C:\\Users\\Lenovo\\AppData\\Roaming\\npm\\opencode.CMD",
+    "run",
+    "-m",
+    "9router/Free",
+    "--standalone",
+    "--format",
+    "json",
+    "<actor_input>"
+  ],
+  "tool_policy": "offline",
+  "host_version": "opencode v2.0.29",
+  "containment_probe_supported": false,
+  "exit_code": 1,
+  "diagnostic": "",
+  "workspace_changes": {
+    "created": [],
+    "modified": [],
+    "deleted": []
+  },
+  "sentinel_intact": true,
+  "provenance": {
+    "status": "NONE_OBSERVED",
+    "inside": [],
+    "outside": []
+  },
+  "finished_at_utc": "2026-10-19T18:38:05.287679+00:00"
+}

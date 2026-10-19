@@ -1,6 +1,6 @@
 # Andino phase-readiness routing repair
 
-Status: COMPLETED
+Status: DONE (runtime pushed, release pending)
 Owner: Andino Workflow / Codex & Antigravity (resumed from Claude Code)
 Date: 2026-10-19
 Density: STANDARD
@@ -102,6 +102,20 @@ Codex read commands on Windows.
 - Additional unified archive validator exposed stale integration-audit metadata;
   classify against its intended historical runtime before changing any artifact.
 
+## Low-model rerun and delivery, 2026-10-20
+
+- Runner gained `--model` and `--effort`; paired matrix on Claude Haiku 5.5 (xhigh)
+  and Antigravity Gemini 3.8 Flash High in `docs/validation/andino-readiness/low-model/`.
+  Original CRUD prompt: Haiku baseline FAIL 3/3 (built a full app), candidate PASS 3/3;
+  Antigravity baseline FAIL 1 and inconclusive 1, candidate PASS 2. Other records kept
+  as NOT_VERIFIED/NOT_REVIEWED.
+- Codex Luna rerun skipped by user decision (usage limit). OpenCode `9router/Free`
+  unreachable (local proxy not running).
+- `andino-workflow` f99ec59 pushed to origin and verified. Release manifest and lineage
+  unchanged; updating them is a separate release step.
+
 ## NEXT ACTION
 
-Work completed. All evaluation evidence, test results, candidate records and report.md committed locally on `main`. No push or publication per user authorization.
+Optional follow-ups: release the f99ec59 runtime pin through the normal release
+process; repair the pre-existing unknown-bug ordering (debugging guide before
+diagnostic reads on Claude); rerun the core set on Codex and OpenCode when available.

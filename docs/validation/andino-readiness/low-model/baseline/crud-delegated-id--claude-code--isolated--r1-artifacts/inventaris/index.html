@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inventaris Barang</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <h1>Inventaris Barang</h1>
+
+    <section class="panel">
+      <h2 id="judul-form">Tambah barang</h2>
+      <form id="form-barang" novalidate>
+        <div class="field">
+          <label for="nama">Nama barang</label>
+          <input id="nama" name="nama" type="text" maxlength="100" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="jumlah">Jumlah</label>
+          <input id="jumlah" name="jumlah" type="number" min="0" step="1" inputmode="numeric">
+        </div>
+        <p id="pesan" role="alert" hidden></p>
+        <div class="actions">
+          <button type="submit" id="tombol-simpan">Tambah barang</button>
+          <button type="button" id="tombol-batal" hidden>Batal</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Daftar barang</h2>
+      <div class="wadah-tabel">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Nama barang</th>
+              <th scope="col" class="angka">Jumlah</th>
+              <th scope="col" class="aksi">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="daftar-barang"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="store.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

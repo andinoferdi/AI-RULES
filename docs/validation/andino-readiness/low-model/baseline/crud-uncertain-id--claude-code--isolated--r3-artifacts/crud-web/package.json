@@ -1,0 +1,13 @@
+{
+  "name": "crud-buku",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Aplikasi CRUD sederhana tanpa dependensi eksternal",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

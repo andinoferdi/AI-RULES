@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Buku</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Daftar Buku</h1>
+
+      <form id="book-form">
+        <input id="book-id" type="hidden" />
+        <label>
+          Judul
+          <input id="title" type="text" required />
+        </label>
+        <label>
+          Penulis
+          <input id="author" type="text" required />
+        </label>
+        <label>
+          Tahun
+          <input id="year" type="number" min="1000" max="2100" required />
+        </label>
+        <div class="form-actions">
+          <button id="submit-button" type="submit">Tambah</button>
+          <button id="cancel-button" type="button" hidden>Batal</button>
+        </div>
+        <p id="message" role="status"></p>
+      </form>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Judul</th>
+              <th scope="col">Penulis</th>
+              <th scope="col">Tahun</th>
+              <th scope="col">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="book-rows"></tbody>
+        </table>
+      </div>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

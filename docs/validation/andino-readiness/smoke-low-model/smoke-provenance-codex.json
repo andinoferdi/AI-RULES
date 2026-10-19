@@ -1,0 +1,93 @@
+{
+  "case": "smoke-provenance",
+  "scope": "smoke",
+  "host": "codex",
+  "model": "UNKNOWN",
+  "mode": "read-only",
+  "mode_downgraded": false,
+  "isolation": "isolated",
+  "coverage": "routing",
+  "runtime_hash": "50c24252afaf7ecc0564f1b089d5999ba0c3d1b83510929bf64954902d2e671d",
+  "runtime_base": "f99ec59c95f1889b08fa6d873dba1522a41608ea",
+  "evaluator_commit": "e523322f4b5d93d06e37227bdc0302c7646ebedd",
+  "discovered": [],
+  "selected": [],
+  "invocations": [],
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id": "01a15573-4245-7e21-99c5-6ae6bc8b14a0"
+    },
+    {
+      "type": "error",
+      "message": "You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 2:39 AM."
+    },
+    {
+      "type": "turn.failed",
+      "error": {
+        "message": "You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 2:39 AM."
+      }
+    }
+  ],
+  "fallback": [],
+  "resulting_evidence": "",
+  "verdict": "NOT_VERIFIED",
+  "reason": "HOST_UNAVAILABLE",
+  "oracle_hidden": true,
+  "execution_status": "ENVIRONMENT_UNAVAILABLE",
+  "started_at_utc": "2026-10-19T18:36:16.042897+00:00",
+  "limitations": [
+    "Read-only actor. No external MCP exposed by this adapter. Tests the recorded coverage only, not cross-host parity.",
+    "Existing account authentication is used without reading credentials.",
+    "User config.toml ignored; execpolicy rules, global AGENTS.md and global skills are not excluded (uncontrolled)."
+  ],
+  "scratch_root": "C:/Users/Lenovo/Downloads/AI-RULES-worktrees/eval-scratch",
+  "discovery": "evaluator-injected-paths",
+  "web_search_enabled": false,
+  "entry_skill": "andino-workflow",
+  "actor_input": "Load the andino-workflow skill supplied in this workspace (Claude Code native ID: ai-rules-eval:andino-workflow; other hosts: andino-workflow/SKILL.md or .agents/skills/andino-workflow/SKILL.md), then report the absolute path of the SKILL.md you loaded and its first heading. Do nothing else.",
+  "input_sha256": "4c630e8a3203b6d20f3f2946914de03c3ea2772fb526d39dd57022820dfa0ab3",
+  "fixture_files": {},
+  "requested_model": "gpt-5.6-luna",
+  "requested_effort": "xhigh",
+  "actor_command": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin\\codex.EXE",
+    "exec",
+    "-m",
+    "gpt-5.6-luna",
+    "-c",
+    "model_reasoning_effort=\"xhigh\"",
+    "--ignore-user-config",
+    "--ephemeral",
+    "--skip-git-repo-check",
+    "--sandbox",
+    "read-only",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "C:\\Users\\Lenovo\\Downloads\\AI-RULES-worktrees\\eval-scratch\\andino-capability-eval-zz5g07ze\\work",
+    "--color",
+    "never",
+    "--json",
+    "-o",
+    "C:\\Users\\Lenovo\\Downloads\\AI-RULES-worktrees\\eval-scratch\\andino-capability-eval-zz5g07ze\\work\\answer.txt",
+    "-"
+  ],
+  "tool_policy": "offline",
+  "host_version": "codex-cli 0.154.0",
+  "containment_probe_supported": true,
+  "exit_code": 1,
+  "diagnostic": "",
+  "workspace_changes": {
+    "created": [],
+    "modified": [],
+    "deleted": []
+  },
+  "sentinel_intact": true,
+  "provenance": {
+    "status": "NONE_OBSERVED",
+    "inside": [],
+    "outside": []
+  },
+  "finished_at_utc": "2026-10-19T18:36:28.532822+00:00"
+}

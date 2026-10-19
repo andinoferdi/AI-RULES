@@ -1,0 +1,86 @@
+{
+  "case": "smoke-provenance",
+  "scope": "smoke",
+  "host": "antigravity-cli",
+  "model": "UNKNOWN",
+  "mode": "read-only",
+  "mode_downgraded": false,
+  "isolation": "isolated",
+  "coverage": "routing",
+  "runtime_hash": "50c24252afaf7ecc0564f1b089d5999ba0c3d1b83510929bf64954902d2e671d",
+  "runtime_base": "f99ec59c95f1889b08fa6d873dba1522a41608ea",
+  "evaluator_commit": "e523322f4b5d93d06e37227bdc0302c7646ebedd",
+  "discovered": [],
+  "selected": [],
+  "invocations": [
+    {
+      "type": "tool_use",
+      "name": "view_file",
+      "parameters": {
+        "AbsolutePath": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-worktrees\\eval-scratch\\andino-capability-eval-zvwolsc6\\work\\.agents\\skills\\andino-workflow\\SKILL.md"
+      }
+    },
+    {
+      "type": "tool_use",
+      "name": "view_file",
+      "parameters": {
+        "AbsolutePath": "C:\\Users\\Lenovo\\Downloads\\AI-RULES-worktrees\\eval-scratch\\andino-capability-eval-zvwolsc6\\work\\.agents\\skills\\andino-workflow\\SKILL.md"
+      }
+    }
+  ],
+  "events": [],
+  "fallback": [],
+  "resulting_evidence": "- **Absolute path:** [`C:\\Users\\Lenovo\\Downloads\\AI-RULES-worktrees\\eval-scratch\\andino-capability-eval-zvwolsc6\\work\\.agents\\skills\\andino-workflow\\SKILL.md`](file:///C:/Users/Lenovo/Downloads/AI-RULES-worktrees/eval-scratch/andino-capability-eval-zvwolsc6/work/.agents/skills/andino-workflow/SKILL.md)\n- **First heading:** `# Andino Workflow`\n",
+  "verdict": "NOT_VERIFIED",
+  "reason": "NOT_REVIEWED",
+  "oracle_hidden": true,
+  "execution_status": "EXECUTED",
+  "started_at_utc": "2026-10-19T18:36:16.042897+00:00",
+  "limitations": [
+    "Read-only actor. No external MCP exposed by this adapter. Tests the recorded coverage only, not cross-host parity.",
+    "Existing account authentication is used without reading credentials.",
+    "Global GEMINI.md, rules and skills are not excluded (uncontrolled).",
+    "Skills placed in the project .agents/skills directory and named by path; globally installed copies with the same ID remain visible to the host, so provenance is checked per run."
+  ],
+  "scratch_root": "C:/Users/Lenovo/Downloads/AI-RULES-worktrees/eval-scratch",
+  "discovery": "project-skill-directory-explicit-path",
+  "web_search_enabled": false,
+  "entry_skill": "andino-workflow",
+  "actor_input": "Load the andino-workflow skill supplied in this workspace (Claude Code native ID: ai-rules-eval:andino-workflow; other hosts: andino-workflow/SKILL.md or .agents/skills/andino-workflow/SKILL.md), then report the absolute path of the SKILL.md you loaded and its first heading. Do nothing else.",
+  "input_sha256": "4c630e8a3203b6d20f3f2946914de03c3ea2772fb526d39dd57022820dfa0ab3",
+  "fixture_files": {},
+  "requested_model": "gemini-3.8-flash-high",
+  "requested_effort": "HOST_DEFAULT",
+  "actor_command": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\agy\\bin\\agy.EXE",
+    "--model",
+    "gemini-3.8-flash-high",
+    "--output-format",
+    "stream-json",
+    "--mode",
+    "plan",
+    "--sandbox",
+    "--print",
+    "<actor_input>"
+  ],
+  "tool_policy": "offline",
+  "host_version": "1.4.2",
+  "containment_probe_supported": false,
+  "exit_code": 0,
+  "diagnostic": "",
+  "result_is_error": false,
+  "workspace_changes": {
+    "created": [],
+    "modified": [],
+    "deleted": []
+  },
+  "sentinel_intact": true,
+  "provenance": {
+    "status": "CANDIDATE_ONLY",
+    "inside": [
+      "C:/Users/Lenovo/Downloads/AI-RULES-worktrees/eval-scratch/andino-capability-eval-zvwolsc6/work/.agents/skills/andino-workflow/SKILL.md"
+    ],
+    "outside": []
+  },
+  "finished_at_utc": "2026-10-19T18:37:30.363902+00:00"
+}

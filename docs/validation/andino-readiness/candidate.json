@@ -3,7 +3,7 @@
   "commit": "f99ec59c95f1889b08fa6d873dba1522a41608ea",
   "content_hash": "50c24252afaf7ecc0564f1b089d5999ba0c3d1b83510929bf64954902d2e671d",
   "base": "634585a45866261e0d981a68098fa7f1b4bf4c0e",
-  "status": "LOCAL_CANDIDATE_UNPUBLISHED",
+  "status": "PUSHED_UNRELEASED",
   "readiness": "CONDITIONALLY_READY",
   "evaluator_commit": "31c5f4f9671506c3613e77c2a9dad959ea98d74e",
   "evidence_index": [
@@ -12,7 +12,10 @@
     "comparability.json",
     "verification.json",
     "report.md",
-    "smoke/"
+    "smoke/",
+    "low-model/baseline/verdicts.json",
+    "low-model/after-fix/verdicts.json",
+    "smoke-low-model/"
   ],
   "verdict_counts": {
     "baseline": {
@@ -50,8 +53,15 @@
   "limits": [
     "Claude after-fix repeated and extended cases include session-limit failures.",
     "Codex global instructions/policy block most evaluations; writable containment failed smoke.",
-    "OpenCode unavailable during local credential migration; no global credential/config changes attempted.",
     "Antigravity CLI results are routing-only where writable containment is not verified; IDE is NOT_VERIFIED.",
-    "Published manifests and lineage remain unchanged; no cross-host parity or release claim."
-  ]
+    "OpenCode: no behavioral run; the requested 9router/Free model was unreachable (local proxy not running).",
+    "Codex low-model (gpt-5.6-luna) rerun skipped by user decision after a usage limit.",
+    "release_manifest.json still pins 634585a; updating the release pin and lineage is a separate release step not performed here."
+  ],
+  "published_ref": {
+    "remote": "origin",
+    "branch": "andino-workflow",
+    "commit": "f99ec59c95f1889b08fa6d873dba1522a41608ea",
+    "verified": "2026-10-20, origin/andino-workflow equals the candidate commit after a non-force push"
+  }
 }

@@ -5,7 +5,7 @@ Repository: https://github.com/andinoferdi/AI-RULES
 Candidate Ref: `andino-workflow` (`f99ec59c95f1889b08fa6d873dba1522a41608ea`)  
 Runtime Base: `634585a45866261e0d981a68098fa7f1b4bf4c0e`  
 Runtime Content SHA256: `50c24252afaf7ecc0564f1b089d5999ba0c3d1b83510929bf64954902d2e671d`  
-Status: `LOCAL_CANDIDATE_UNPUBLISHED`  
+Status: `PUSHED_UNRELEASED` (origin/andino-workflow = f99ec59; release manifest still pins 634585a)  
 Readiness State: `CONDITIONALLY_READY`
 
 ---
@@ -25,7 +25,7 @@ Readiness State: `CONDITIONALLY_READY`
 ### Hypotheses Evaluated & Rejected
 - **H2 (Internal Method Guide Defect):** REJECTED. The bundled guides (`brainstorming/GUIDE.md`, `decision-interview/GUIDE.md`) were functionally sound and correct. The failure was strictly orchestration routing and precedence gating.
 - **H6 (Discovery Without Activation):** REJECTED as sole cause. Traces showed agents accurately discovered available routes, but the lack of phase readiness forced selection of the wrong phase.
-- **H7 (Host-Specific Invocation Defect):** REJECTED. The premature implementation behavior was reproduced across multiple host environments (Claude Code and Antigravity CLI) under baseline conditions.
+- **H7 (Host-Specific Invocation Defect):** REJECTED as the root cause, because the defect reproduced on Claude Code and Antigravity CLI. Host differences still shape evaluation fidelity: a global AGENTS.md RTK rule blocks many Codex reads, global skill copies shadow project copies on Codex and Antigravity, and headless Antigravity sometimes ends empty after a denied command.
 
 ---
 
@@ -68,7 +68,7 @@ Readiness State: `CONDITIONALLY_READY`
 - **Internal Method Selection:** Bundled methods in `skills/<method>/GUIDE.md` are canonical. They must be resolved, read, and meaningfully executed before dependent output is generated.
 - **Supporting Specialist Activation:** `design-taste-frontend` and `impeccable` activate only after product direction is settled or delegated. They no longer preempt exploration.
 - **Tool Selection:** Focus remains the mandatory default communication skill across all invocations. Search First activates only upon actual external technical or dependency uncertainty.
-- **Phase Transitions:** The workflow enforces discovery -> requirements -> planning/design -> implementation (TDD) -> verification.
+- **Phase Transitions:** No fixed sequence. Phase readiness decides what is still open; exploration and interview run only when a material user decision is open, specified or delegated work goes straight to implementation, and TDD and verification keep their existing timing.
 - **Verification and Completion:** The verification guide must be read before claiming completion, and claims must cite actual execution evidence.
 
 ---
@@ -89,8 +89,14 @@ Readiness State: `CONDITIONALLY_READY`
 
 ### Primary Regression Scenario (`crud-uncertain-id`)
 - **Prompt:** `"gunakan andino-workflow dan metode metode yang ada, disini tolong buatkan saya web crud, tapi saya bingung gimana"`
-- **Baseline Behavior:** Agent activated Focus and Impeccable, skipped `brainstorming/GUIDE.md`, generated CRUD files immediately (**FAIL**).
-- **Candidate Behavior (`after-fix`):** Agent read `brainstorming/GUIDE.md`, presented 3 distinct conceptual options with trade-offs, deferred implementation until user decision, generated no files, and invoked no premature UI design skills (**PASS** on Claude Code and Antigravity CLI).
+- **Baseline Behavior (634585a):**
+  - Claude Opus 5.5: 2 of 3 runs activated Impeccable and the TDD guide before any exploration, without reading brainstorming. They stopped to ask setup questions and wrote no files. 1 run passed.
+  - Claude Haiku 5.5 (`low-model/`): 3 of 3 runs loaded TDD, frontend-ui-engineering and Impeccable, invented a books domain and wrote a full CRUD app (7 to 11 files). This matches the user's original report (**FAIL**).
+  - Antigravity Gemini 3.8 Flash: planned and loaded design or implementation methods before a direction existed (**FAIL**/inconclusive).
+- **Candidate Behavior (f99ec59):**
+  - Claude Haiku 5.5: 3 of 3 runs read `brainstorming/GUIDE.md` first, wrote no files, offered options with trade-offs and left the choice to the user.
+  - Claude Opus 5.5: 1 of 1 executed run passed; the repeats hit the session quota.
+  - Antigravity: 2 of 2 executed runs read brainstorming first and deferred design and TDD (**PASS**).
 
 ---
 
@@ -101,7 +107,10 @@ Readiness State: `CONDITIONALLY_READY`
 | **Claude Code** (v2.1.300) | Available | Live core & extended readiness matrix (28 runs) | **PASS** (15), **FAIL** (1), **NOT_VERIFIED** (12) | Inside writes confirmed, sentinel intact; 12 NOT_VERIFIED due to session quota limits; 1 FAIL on `unknown-bug-id` order. |
 | **Codex** (v0.154.0) | Available (Restricted) | Live core readiness matrix in routing-only mode (9 runs) | **PASS** (4), **NOT_VERIFIED** (5) | Workspace containment probe failed (outside write); writable cases ran routing-only; global AGENTS.md policy caused partial blocks. |
 | **Antigravity CLI** | Available | Live core readiness matrix in routing-only mode (7 runs) | **PASS** (4), **FAIL** (2), **NOT_VERIFIED** (1) | Primary CRUD prompt passed; 2 FAILs on headless edge cases (added brainstorming to interview / premature docs claim). |
-| **OpenCode** (v2.0.29) | Unavailable | Smoke test attempt | **NOT_VERIFIED** | Server credential migration error (`Legacy credential file must contain an object`); no config altered. |
+| **OpenCode** (v2.0.29) | Unavailable | Smoke test attempts | **NOT_VERIFIED** | First a server credential migration error; later the server started, but the requested `9router/Free` model failed with `ConnectionRefused` because the local 9router proxy was not running. No config altered. |
+| **Claude Code, Haiku 5.5 xhigh** (`low-model/`) | Available | Paired core + extended matrix, 30 runs per runtime | Original CRUD prompt: baseline **FAIL** 3/3, candidate **PASS** 3/3 | Other records executed and retained, verdict `NOT_VERIFIED`/`NOT_REVIEWED`. |
+| **Antigravity CLI, Gemini 3.8 Flash High** (`low-model/`) | Available | Paired core matrix, routing-only | Original CRUD prompt: baseline FAIL 1, inconclusive 1; candidate **PASS** 2 | One run per runtime ended empty after a headless command denial (`HOST_UNAVAILABLE`). |
+| **Codex, gpt-5.6-luna** | Usage limit reached | Smoke only | **NOT_VERIFIED** | ChatGPT usage limit at test time; the user chose to skip the Codex low-model rerun. |
 | **Antigravity IDE** | Unavailable | N/A | **NOT_VERIFIED** | No automated testing interface available; CLI results do not imply IDE parity. |
 
 ---
@@ -109,7 +118,7 @@ Readiness State: `CONDITIONALLY_READY`
 ## F. Remaining Issues
 
 1. **Host-Level Containment on Codex:** Codex OS sandbox failed containment probe on Windows (outside sentinel write was permitted while inside write was blocked). Evaluator correctly downgraded writable cases to routing-only.
-2. **OpenCode Local Credential State:** OpenCode CLI is currently in an unmigrated state on this machine. Global credentials were not touched per safety constraints.
+2. **OpenCode:** No behavioral run completed. The credential migration error later cleared, but the requested 9router proxy was not running. Global credentials and config were not touched.
 3. **Claude Code Session Quota:** Extended test repetitions in `after-fix/` were halted when Claude Code session limits were reached. Completed baseline/after-fix runs remain preserved.
 4. **Antigravity CLI Headless Heuristics:** In isolated headless mode, Antigravity CLI occasionally over-generates planning artifacts on requirement-interview cases.
 5. **Lineage Pre-Existing Mismatch:** Historical lineage hashes in `publication-lineage.json` and `capability-runtime-lineage.json` reflect a pre-existing divergence from `634585a`; left as found per non-publication directive.
@@ -120,4 +129,13 @@ Readiness State: `CONDITIONALLY_READY`
 
 **`CONDITIONALLY_READY`**
 
-The phase-readiness routing repair successfully eliminates the reported defect: ambiguous requests no longer bypass exploration or prematurely trigger design/implementation specialist skills. The contract is proven RED->GREEN on unit tests and verified via multi-host behavioral traces. Because production release manifests and publication lineage remain locked to published refs and several hosts have environment-level boundaries (quota limits, containment limits, or credential migrations), the candidate is classified as `LOCAL_CANDIDATE_UNPUBLISHED` and `CONDITIONALLY_READY` for local repository use.
+The repair removes the reported defect on the hosts that could run it. On the original CRUD prompt:
+- Claude Haiku 5.5 went from 3/3 runs building an unrequested app to 3/3 runs exploring directions first.
+- Claude Opus 5.5 and Antigravity CLI also passed after the fix.
+
+The readiness contract test goes RED on 634585a and GREEN on f99ec59. The runtime is pushed to `origin/andino-workflow`, but it is not yet released through `release_manifest.json`.
+
+The state stays conditional for three reasons:
+- Codex and OpenCode have no completed behavioral run on the candidate.
+- Antigravity IDE is untested.
+- The pre-existing unknown-bug ordering defect (Claude reads fixtures before the debugging guide) remains.
