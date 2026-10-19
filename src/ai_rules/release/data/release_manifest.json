@@ -6,10 +6,10 @@
   "first_party": {
     "andino-workflow": {
       "branch": "andino-workflow",
-      "ref": "refs/heads/andino-workflow",
+      "ref": "origin/andino-workflow",
       "commit": "634585a45866261e0d981a68098fa7f1b4bf4c0e",
       "release_sequence": 16,
-      "publication_status": "LOCAL_COMMIT_UNPUBLISHED"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "ai-codebase-rescue": {
       "branch": "ai-codebase-rescue",
@@ -20,10 +20,10 @@
     },
     "skripsi-skill": {
       "branch": "skripsi-skill",
-      "ref": "refs/heads/skripsi-skill",
+      "ref": "origin/skripsi-skill",
       "commit": "7ae5cd7a63bf40233296624b8e9d49ae3edf438c",
       "release_sequence": 16,
-      "publication_status": "LOCAL_COMMIT_UNPUBLISHED"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "search-first": {
       "branch": "search-first",
@@ -34,10 +34,10 @@
     },
     "focus": {
       "branch": "focus",
-      "ref": "refs/heads/focus",
+      "ref": "origin/focus",
       "commit": "d119a80f2ac7567f3034eb6663e54c4ce9545de0",
       "release_sequence": 16,
-      "publication_status": "LOCAL_COMMIT_UNPUBLISHED"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "council": {
       "branch": "council",
@@ -54,10 +54,10 @@
     },
     "natural-writing": {
       "branch": "natural-writing",
-      "ref": "refs/heads/natural-writing",
+      "ref": "origin/natural-writing",
       "commit": "f359b7bdd07a0b931ff2924ddcb303c2182b11f9",
       "release_sequence": 16,
-      "publication_status": "LOCAL_COMMIT_UNPUBLISHED"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     }
   },
   "publication_order": [
@@ -69,5 +69,5 @@
     "main",
     "tagged installer release"
   ],
-  "publication_status": "LOCAL_RUNTIME_CANDIDATES_UNPUBLISHED"
+  "publication_status": "RUNTIME_REFS_PUBLISHED_INSTALLER_RELEASE_PENDING"
 }

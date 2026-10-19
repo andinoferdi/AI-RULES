@@ -1,6 +1,6 @@
 # Natural Writing integration
 
-Status: DONE (local); publication pending authorization
+Status: DONE; runtime branches and main published, tagged installer release pending
 Plan depth: STANDARD
 
 ## Executive Snapshot
@@ -23,15 +23,15 @@ profiles, validators, evals and release manifest.
 ## CURRENT STATE
 Bases on 2026-10-19 (no drift after fetch): main 6bc5535, focus dbeff40,
 skripsi-skill fceec66, andino-workflow 037a483, WebBased 9a5d0e1. Work lives in
-worktrees under `C:/Users/Lenovo/Downloads/AI-RULES-wt/`. Local runtime commits:
+worktrees under `C:/Users/Lenovo/Downloads/AI-RULES-wt/`. Runtime commits, pushed and verified on origin:
 natural-writing f359b7bdd07a0b931ff2924ddcb303c2182b11f9,
 focus d119a80f2ac7567f3034eb6663e54c4ce9545de0,
 WebBased cb7564446c487b0de929203a08c1f0404bfdd56a,
 skripsi-skill 7ae5cd7a63bf40233296624b8e9d49ae3edf438c,
-andino-workflow 634585a45866261e0d981a68098fa7f1b4bf4c0e. Nothing pushed.
+andino-workflow 634585a45866261e0d981a68098fa7f1b4bf4c0e.
 
 ## CURRENT PHASE
-Complete locally. Publication is a separate, unauthorized step.
+Complete. Runtime refs published and verified; main fast-forwarded.
 
 ## Execution Board
 | Phase | Status | Result / evidence |
@@ -51,13 +51,12 @@ Complete locally. Publication is a separate, unauthorized step.
 - Semantic checker is a bounded safeguard: FAIL for exact protected values and
   spans, NEEDS_REVIEW for certainty, causality, limitation and negation shifts,
   WARNING for heavy length loss. It does not prove semantic equivalence.
-- Manifest pins use real local SHAs with `LOCAL_COMMIT_UNPUBLISHED`;
-  `--source latest` for natural-writing needs the remote branch.
+- Manifest pins were LOCAL_COMMIT_UNPUBLISHED until the runtime pushes were
+  verified, then switched to PUBLISHED_RUNTIME_REF_VERIFIED.
 
 ## Evidence
 See [validation record](../../validation/natural-writing/README.md).
 
 ## NEXT ACTION
-With authorization: push runtime branches (natural-writing, focus, WebBased,
-skripsi-skill, andino-workflow), verify remote SHAs, switch manifest statuses to
-published, then publish main and rerun CI.
+Publish a tagged installer release when authorized, and check the main CI run
+that now fetches origin/natural-writing.

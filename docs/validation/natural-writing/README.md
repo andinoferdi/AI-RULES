@@ -1,6 +1,6 @@
 # Natural Writing validation record
 
-Recorded 2026-10-19 against local, unpublished runtime commits (natural-writing
+Recorded 2026-10-19 against runtime commits, first local and then published (natural-writing
 f359b7b, focus d119a80, WebBased cb75644, skripsi-skill 7ae5cd7, andino-workflow
 634585a). Each level below proves only what it names.
 
@@ -49,5 +49,9 @@ Four scenarios are a smoke check, not broad behavioral proof. Codex, OpenCode,
 Antigravity CLI and Antigravity IDE: NOT VERIFIED (files install; no live run).
 
 ## 7. Remote installer verification
-NOT VERIFIED. Nothing is pushed; `--source latest` cannot resolve
-`natural-writing` until the branch exists on origin.
+After the runtime branches were pushed (remote SHAs matched local via
+`git ls-remote`), `validate_skills.py --webbased-ref origin/WebBased` and
+`validate_andino_capabilities.py` passed against the default `origin/*` refs, and
+`ai-rules setup --capability natural-writing --host claude-code --scope project --source latest`
+installed natural-writing at f359b7b from the remote branch. The tagged
+installer release remains pending.
