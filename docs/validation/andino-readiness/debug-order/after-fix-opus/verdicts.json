@@ -1,0 +1,32 @@
+[
+  {
+    "record": "unknown-bug-id--claude-code--isolated--r1",
+    "case": "unknown-bug-id",
+    "host": "claude-code",
+    "model": "claude-opus-5-5",
+    "requested_effort": "xhigh",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "runtime_hash": "4678cf05d47bbdf34ae7a98e4e62cb87999a09e5319367929b4c620cfbdfe75c",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "debugging guide read in batch 4, first fixture read in batch 6; guide precedes all diagnostic reads. Zero-based page slice diagnosed from app.log and products.py; no workspace writes.",
+    "provenance": "CANDIDATE_ONLY"
+  },
+  {
+    "record": "unknown-bug-id--claude-code--isolated--r2",
+    "case": "unknown-bug-id",
+    "host": "claude-code",
+    "model": "claude-opus-5-5",
+    "requested_effort": "xhigh",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "runtime_hash": "4678cf05d47bbdf34ae7a98e4e62cb87999a09e5319367929b4c620cfbdfe75c",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "debugging guide read in batch 4, first fixture read in batch 6; guide precedes all diagnostic reads. Zero-based page slice diagnosed from app.log and products.py; no workspace writes.",
+    "provenance": "CANDIDATE_ONLY"
+  }
+]

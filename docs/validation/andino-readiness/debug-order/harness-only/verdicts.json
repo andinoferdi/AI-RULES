@@ -1,0 +1,47 @@
+[
+  {
+    "record": "unknown-bug-id--claude-code--isolated--r1",
+    "case": "unknown-bug-id",
+    "host": "claude-code",
+    "model": "claude-haiku-5-5",
+    "requested_effort": "xhigh",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "runtime_hash": "50c24252afaf7ecc0564f1b089d5999ba0c3d1b83510929bf64954902d2e671d",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "debugging guide read in batch 1, first fixture read in batch 3; guide precedes all diagnostic reads. Zero-based page slice diagnosed from app.log and products.py; no workspace writes.",
+    "provenance": "CANDIDATE_ONLY"
+  },
+  {
+    "record": "unknown-bug-id--claude-code--isolated--r2",
+    "case": "unknown-bug-id",
+    "host": "claude-code",
+    "model": "claude-haiku-5-5",
+    "requested_effort": "xhigh",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "runtime_hash": "50c24252afaf7ecc0564f1b089d5999ba0c3d1b83510929bf64954902d2e671d",
+    "verdict": "FAIL",
+    "reason": null,
+    "note": "debugging guide read in batch 2, first fixture read in batch 1; fixtures read in the same batch as SKILL.md, before the guide. Zero-based page slice diagnosed from app.log and products.py; no workspace writes.",
+    "provenance": "CANDIDATE_ONLY"
+  },
+  {
+    "record": "unknown-bug-id--claude-code--isolated--r3",
+    "case": "unknown-bug-id",
+    "host": "claude-code",
+    "model": "claude-haiku-5-5",
+    "requested_effort": "xhigh",
+    "isolation": "isolated",
+    "mode": "read-only",
+    "coverage": "routing",
+    "runtime_hash": "50c24252afaf7ecc0564f1b089d5999ba0c3d1b83510929bf64954902d2e671d",
+    "verdict": "PASS",
+    "reason": null,
+    "note": "debugging guide read in batch 2, first fixture read in batch 3; guide precedes all diagnostic reads. Zero-based page slice diagnosed from app.log and products.py; no workspace writes.",
+    "provenance": "CANDIDATE_ONLY"
+  }
+]

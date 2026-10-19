@@ -336,6 +336,18 @@ def collect_events(host, stdout, record):
         record['resulting_evidence'] = texts[-1]
 
 
+def skill_metadata(text):
+    frontmatter = text.split('---', 2)
+    return frontmatter[1].strip() if len(frontmatter) > 2 else 'Metadata unavailable'
+
+
+def entry_metadata(host, isolation, files, case):
+    # Safe mode hides native skill listings; show the entry skill's own metadata, as native discovery would.
+    if host != 'claude-code' or isolation != 'isolated' or case.get('entry_skill') == 'search-first':
+        return ''
+    return '\nRuntime metadata:\n' + skill_metadata(files['SKILL.md'])
+
+
 def place_skills(host, base, files, catalog, case, record, isolation='isolated'):
     if host == 'claude-code':
         workflow_root, skill_root = base / 'eval-plugin/skills/andino-workflow', base / 'eval-plugin/skills'
@@ -359,8 +371,7 @@ def place_skills(host, base, files, catalog, case, record, isolation='isolated')
     for item in catalog:
         target = skill_root / item['id']
         copy_skill(Path(item['path']), target)
-        frontmatter = (target/'SKILL.md').read_text(encoding='utf-8').split('---', 2)
-        metadata = frontmatter[1].strip() if len(frontmatter) > 2 else 'Metadata unavailable'
+        metadata = skill_metadata((target/'SKILL.md').read_text(encoding='utf-8'))
         skill_path = (target/'SKILL.md').relative_to(base).as_posix()
         native_id = (f"ai-rules-eval:{item['id']}" if host == 'claude-code' and isolation != 'isolated'
                      else 'none (load by path)' if host == 'claude-code' else item['id'])
@@ -468,7 +479,7 @@ def main():
         if args.case in SMOKE_CASES:
             prompt = case['prompt']
         else:
-            prompt=case_prompt(case,runtime_label+' Isolated current working directory only.\nSupplied files: '+', '.join(fixture_files), '\n\n'.join(descriptions) or 'No external methodology skills supplied. Only Andino runtime and native local reads available.', allow_web=args.web_search)
+            prompt=case_prompt(case,runtime_label+' Isolated current working directory only.'+entry_metadata(args.host, args.isolation, files, case)+'\nSupplied files: '+', '.join(fixture_files), '\n\n'.join(descriptions) or 'No external methodology skills supplied. Only Andino runtime and native local reads available.', allow_web=args.web_search)
             prompt = host_prompt(args.host, prompt, args.isolation)
         record['web_search_enabled'] = args.web_search
         record['entry_skill'] = case.get('entry_skill', 'andino-workflow')
