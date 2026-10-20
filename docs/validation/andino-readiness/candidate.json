@@ -1,8 +1,8 @@
 {
   "branch": "andino-workflow",
-  "commit": "f99ec59c95f1889b08fa6d873dba1522a41608ea",
-  "content_hash": "50c24252afaf7ecc0564f1b089d5999ba0c3d1b83510929bf64954902d2e671d",
-  "base": "634585a45866261e0d981a68098fa7f1b4bf4c0e",
+  "commit": "17ce784ad0aff4b6e299ff0f3ae7b4baa012a3a9",
+  "content_hash": "4678cf05d47bbdf34ae7a98e4e62cb87999a09e5319367929b4c620cfbdfe75c",
+  "base": "f99ec59c95f1889b08fa6d873dba1522a41608ea",
   "status": "RELEASED",
   "readiness": "CONDITIONALLY_READY",
   "evaluator_commit": "31c5f4f9671506c3613e77c2a9dad959ea98d74e",
@@ -60,12 +60,12 @@
   "published_ref": {
     "remote": "origin",
     "branch": "andino-workflow",
-    "commit": "f99ec59c95f1889b08fa6d873dba1522a41608ea",
+    "commit": "17ce784ad0aff4b6e299ff0f3ae7b4baa012a3a9",
     "verified": "2026-10-20, origin/andino-workflow equals the candidate commit after a non-force push"
   },
   "release": {
     "manifest": "src/ai_rules/release/data/release_manifest.json",
-    "release_sequence": 17,
+    "release_sequence": 18,
     "verified_at": "2026-10-20",
     "publication_lineage": "publication-lineage.json",
     "previous_manifest": "previous-release-manifest.json",

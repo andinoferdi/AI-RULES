@@ -1,8 +1,8 @@
 {
-  "from_commit": "634585a45866261e0d981a68098fa7f1b4bf4c0e",
-  "to_commit": "f99ec59c95f1889b08fa6d873dba1522a41608ea",
-  "from_runtime_hash": "e4cb96cb6551557a437c9f71399a0643c6674ae309aa2b189e6963934eebdec3",
-  "to_runtime_hash": "50c24252afaf7ecc0564f1b089d5999ba0c3d1b83510929bf64954902d2e671d",
+  "from_commit": "f99ec59c95f1889b08fa6d873dba1522a41608ea",
+  "to_commit": "17ce784ad0aff4b6e299ff0f3ae7b4baa012a3a9",
+  "from_runtime_hash": "50c24252afaf7ecc0564f1b089d5999ba0c3d1b83510929bf64954902d2e671d",
+  "to_runtime_hash": "4678cf05d47bbdf34ae7a98e4e62cb87999a09e5319367929b4c620cfbdfe75c",
   "remote_verified": true,
-  "authorization": "User authorized non-force push of the andino-workflow runtime on 2026-10-20; release pin update requested from the readiness session"
+  "authorization": "User approved on 2026-10-20: push andino-workflow 17ce784, release it as release 18 and push main."
 }

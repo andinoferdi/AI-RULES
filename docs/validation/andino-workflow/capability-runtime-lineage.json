@@ -1,9 +1,10 @@
 {
-  "current_runtime_hash": "50c24252afaf7ecc0564f1b089d5999ba0c3d1b83510929bf64954902d2e671d",
+  "current_runtime_hash": "4678cf05d47bbdf34ae7a98e4e62cb87999a09e5319367929b4c620cfbdfe75c",
   "historical_hashes": [
     "75607e6fa1b4bf0b227ad677c5e42219cc62d8d3e68970fdb4dec9107ac2a8c7",
     "dc9916a964011c8c7d16c977f614616db949e0643d5b0efa0aa3b47edb7f8447",
-    "e4cb96cb6551557a437c9f71399a0643c6674ae309aa2b189e6963934eebdec3"
+    "e4cb96cb6551557a437c9f71399a0643c6674ae309aa2b189e6963934eebdec3",
+    "50c24252afaf7ecc0564f1b089d5999ba0c3d1b83510929bf64954902d2e671d"
   ],
   "changes": [
     {
@@ -33,6 +34,17 @@
       "change": "Phase readiness: brainstorming before design or implementation when product direction is open.",
       "evidence": "docs/validation/andino-readiness (baseline at 634585a, after-fix at f99ec59).",
       "behavioral_limit": "Revisions between dc9916a9 and e4cb96cb (634585a) are not itemized here; records for dc9916a9 and e4cb96cb are historical, not latest-runtime behavioral PASS."
+    },
+    {
+      "from": "50c24252afaf7ecc0564f1b089d5999ba0c3d1b83510929bf64954902d2e671d",
+      "to": "4678cf05d47bbdf34ae7a98e4e62cb87999a09e5319367929b4c620cfbdfe75c",
+      "from_commit": "f99ec59c95f1889b08fa6d873dba1522a41608ea",
+      "to_commit": "17ce784ad0aff4b6e299ff0f3ae7b4baa012a3a9",
+      "changed_files": [
+        "SKILL.md"
+      ],
+      "change": "Description orders runtime and guide reads before task files, so the debugging guide is read before diagnostic reads.",
+      "evidence": "docs/validation/andino-readiness (debugging-order records added in f879221)."
     }
   ]
 }
