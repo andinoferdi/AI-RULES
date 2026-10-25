@@ -243,6 +243,9 @@ requirements. They are not installed by an AI-RULES profile.
   [Anti-Slop](https://github.com/miqdadbadjuber/anti-slop),
   [Ponytail](https://github.com/DietrichGebert/ponytail), and
   [Graphify](https://graphify.net/).
+- Marketing and branding skills: [LinkedIn Skills](https://github.com/sergebulaev/linkedin-skills)
+  and [Logo Design Skill](https://github.com/kaankiziltug/logo-design-skill).
+- Web and social content access: [Agent-Reach](https://github.com/Panniantong/Agent-Reach).
 - Shell command proxy: [RTK](https://github.com/rtk-ai/rtk).
 - Reverse engineering skill: [REA's `reverse-engineer-anything`](https://github.com/morluto/rea/tree/main/.agents/skills/reverse-engineer-anything)
   from [morluto/rea](https://github.com/morluto/rea). Install only the skill and its
