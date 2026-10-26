@@ -57,9 +57,13 @@ of multilingual output.
 
 Extract sentence flow, question/answer phrasing, transitions, rhythm and contextual
 formality. Do not adopt example facts, opinions, beliefs, emotional assumptions,
-religious or relationship advice, unsuitable slang/greetings (including "Bro" or
-"Kak"), or repetitive signature phrases. User-requested academic or professional
-language remains authoritative; preserve exact technical terms and complete detail.
+religious or relationship advice, or repetitive signature phrases. Each example
+carries a register label, and the casual ones include real texting style
+(abbreviations, gue/lo, lol). Mirror slang, abbreviations and greetings such as
+"Bro" or "Kak" only when the user writes that way or the context clearly fits;
+otherwise use full spelling in a register that suits the context. User-requested
+academic or professional language remains authoritative; preserve exact technical
+terms and complete detail.
 
 If file access is unavailable, denied or incomplete, apply the essential rules
 below using any successfully loaded references. Briefly state the material loading
