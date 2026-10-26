@@ -31,6 +31,14 @@ Settle the register before editing: audience, genre, and how much formality the 
 - No quotas: do not alternate long and short sentences by rule, count commas, or avoid lists of three. A series of three items is fine when there are three items.
 - Read the passage aloud. If a sentence needs a second pass to parse, restructure it; if it reads smoothly, leave it.
 
+## Contrast reveals, padded triads, and empty closers
+
+- "It's not X, it's Y" and "not just X, but Y" used as a habit to sound insightful when no one claimed X. State Y directly. Keep the contrast when it corrects a misconception the reader actually holds.
+- Triads padded to sound complete ("fast, secure, and reliable") when the source has two or four items. Match the count to the content. Keep a three when there are three.
+- Em dashes where a period or comma does the job. Keep a dash that marks a real aside or interruption the style guide allows.
+- Closers that restate the paragraph ("Ultimately, ...", "In summary, ...", "Overall, ...") and inflated closings about importance or the future ("...will shape the future of ..."). Replace with the next concrete implication, or cut. A conclusion the genre requires stays; a restating last sentence does not.
+- Sweeping significance claims ("plays a crucial role in", "a testament to", "a pivotal moment") that the source does not support. Replace with the specific fact, or flag the gap. Keep the claim when the source backs it.
+
 ## Nominalization and jargon
 
 - "Make a decision" becomes "decide", "perform an analysis of" becomes "analyze", "give consideration to" becomes "consider", when the shorter verb keeps the meaning.
@@ -83,6 +91,12 @@ Keep API names, identifiers, commands, file paths, units and numbers exactly as 
 7. Before: "Call `getUserById()` to retrieve the record, and then check for null."
    After: unchanged.
    Reason: KEEP. API name and instruction are exact; rewording risks changing behavior.
+8. Before: "It's not just a note-taking app. It's a platform that transforms how teams work."
+   After: "The app lets teams log tasks and see each task's status on one screen."
+   Reason: nobody called it only a note-taking app, so the contrast adds emphasis, not information. State what the source (here, the product spec) says it does; a claim about transforming team work needs evidence.
+9. Before: "Many teams assume that adding servers automatically speeds up an app. It is not the server count that matters most, but the efficiency of database queries."
+   After: unchanged.
+   Reason: KEEP. The contrast corrects an assumption readers actually hold; removing it removes the correction.
 
 ## Review checklist
 
@@ -94,3 +108,4 @@ Keep API names, identifiers, commands, file paths, units and numbers exactly as 
 - Are passive constructions justified by an unknown, irrelevant or conventional actor?
 - Do code, identifiers, numbers, quotations and citations match the source exactly?
 - Does the edit preserve length, depth and the author's voice unless the user asked for a change?
+- Do contrast reveals, triads, dashes, and closing lines add content, or do they only add a polished tone?

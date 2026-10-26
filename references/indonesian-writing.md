@@ -67,6 +67,14 @@ Pasif di- lazim dan sering lebih wajar dalam bahasa Indonesia, terutama di metod
 
 Satu paragraf, satu gagasan utama. Periksa apakah kalimat pertama menyatakan gagasan itu, kalimat tengah mendukungnya, dan kalimat terakhir tidak sekadar mengulang. Jangan menggabung atau memecah paragraf yang strukturnya sudah disetujui.
 
+## Kontras buatan, daftar tiga, dan penutup kosong
+
+- Pola "bukan X, tetapi Y" dan "bukan hanya X, tetapi juga Y" sering dipakai sebagai gaya agar terdengar tajam, padahal tidak ada yang mengklaim X. Nyatakan langsung Y. Pertahankan jika kontras itu meluruskan kesalahpahaman yang memang dipegang pembaca.
+- Daftar tiga yang dipaksakan karena pola tiga terasa lengkap, misalnya "cepat, aman, dan andal", padahal sumbernya hanya memuat dua atau empat butir. Sesuaikan jumlah dengan isi. Pertahankan jika memang ada tiga.
+- Tanda pisah (—) dan titik dua atau titik koma yang bertumpuk dalam satu kalimat sering bisa diganti titik atau koma tanpa mengubah makna. Pertahankan tanda pisah jika menandai sisipan atau interupsi yang diizinkan pedoman gaya.
+- Kalimat penutup yang hanya mengulang paragraf, seperti "Pada akhirnya, ..." atau "Secara keseluruhan, ...", dan penutup tentang kepentingan atau masa depan yang tidak didukung isi, seperti "Ke depan, ... akan menjadi kunci". Ganti dengan implikasi atau langkah konkret, atau hapus. Kesimpulan yang diwajibkan genre tetap ada; yang diubah hanya kalimat penutup yang kosong.
+- Klaim signifikansi tanpa dasar, seperti "memainkan peran penting dalam", "merupakan bukti nyata", atau "menjadi tonggak". Ganti dengan fakta atau angka dari sumber. Pertahankan jika klaim itu didukung bukti.
+
 ## Contoh sebelum dan sesudah
 
 1. Sebelum: "Dalam penelitian ini membahas pengaruh latihan terhadap kebugaran."
@@ -90,6 +98,12 @@ Satu paragraf, satu gagasan utama. Periksa apakah kalimat pertama menyatakan gag
 7. Sebelum: "Kami mengunggah dataset ke repositori melalui `git push origin main`."
    Sesudah: tetap.
    Alasan: KEEP. "dataset" lazim di bidangnya dan perintah adalah konten terlindungi.
+8. Sebelum: "Ini bukan sekadar aplikasi catatan, tetapi alat yang mengubah cara tim bekerja."
+   Sesudah: "Aplikasi ini mencatat tugas tim dan menampilkan status setiap tugas dalam satu layar."
+   Alasan: tidak ada yang menyebut ini sekadar aplikasi catatan, jadi kontras hanya menambah kesan. Tulis fungsi yang disebut sumber (di sini, spesifikasi produk); klaim tentang perubahan cara kerja tim perlu dasar.
+9. Sebelum: "Banyak tim mengira menambah server otomatis mempercepat aplikasi. Yang paling menentukan bukan jumlah server, melainkan kueri basis data yang tidak efisien."
+   Sesudah: tetap.
+   Alasan: KEEP. Kontras ini meluruskan anggapan yang memang dipegang pembaca. Menghapusnya berarti menghapus koreksinya.
 
 ## Review checklist
 
@@ -101,3 +115,4 @@ Satu paragraf, satu gagasan utama. Periksa apakah kalimat pertama menyatakan gag
 - Apakah klaim statistik dan kausal setara dengan dasar buktinya?
 - Apakah kode, identifier, sitasi, kutipan, URL dan angka tetap sama persis?
 - Apakah register cocok dengan pembaca tanpa dipaksa lebih formal atau lebih santai?
+- Apakah kontras "bukan X, tetapi Y", daftar tiga, tanda pisah, dan kalimat penutup seperti "Pada akhirnya" menambah isi, atau hanya memberi kesan tajam?
