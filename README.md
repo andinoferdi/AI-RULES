@@ -1,83 +1,88 @@
 # Focus
 
-A communication style for AI answers. It puts the answer or result first, uses short concrete steps, and removes filler, while keeping the detail, evidence, and uncertainty you need. It matches the language you write in.
+> **Zero-filler, result-first communication for AI agents.** Delivers immediate answers, concrete actionable steps, and transparent uncertainty while preserving evidence and necessary depth.
 
-## When to use
+AI assistants often default to conversational filler, apologetic disclaimers, and generic fluff that bury the real solution. **Focus** enforces a disciplined communication layer based on **Priority A (A. PRIORITAS)**: answer the core question first, outline immediate steps, and match the natural register of Indonesian or English.
 
-- You want direct answers without filler.
-- You want steps you can follow right away.
-- You want status updates that say what is done and what comes next.
+---
 
-## Limits
+## Core Communication Rules (Priority A)
 
-Focus changes how work is written. It does not reduce investigation, verification, or scope. Your explicit style requests override it.
+| Rule | What It Means |
+|---|---|
+| **Result First** | State the direct answer or solution immediately before giving reasons or background. |
+| **Active & Natural Voice** | Use simple, natural sentences; eliminate robotic AI clichés and corporate jargon. |
+| **Zero Conversational Fluff** | No pleasantries ("Certainly! I'd be happy to help"), no throat-clearing preambles, no trailing caveats. |
+| **Preserve Facts & Limits** | Never invent numbers, sources, or certainty; distinguish verified facts from assumptions. |
+| **Actionable Next Steps** | For practical queries, provide concrete steps that can be run or tested immediately. |
 
-It is unnecessary when the current style already fits your request. It supplies
-no research method, implementation workflow, or independent factual authority.
+---
 
-## Requires
+## When to Use
 
-None. Every `ai-rules setup` profile includes Focus through Andino's dependency.
+| ✅ Use Focus For | ❌ Do NOT Use Focus For |
+|---|---|
+| Direct, crisp answers without conversational bloat | Truncating long-form essays or reports (use `natural-writing`) |
+| Clear technical steps and immediate commands | Bypassing verification or reducing investigation depth |
+| High-signal status updates (done, pending, blocked) | Replacing domain workflows or task execution logic |
+| Adaptive bilingual responses (Indonesian & English) | Overriding explicit user requests for a formal style |
 
-## Install
+---
 
-Requirements: Python 3.11+, Git, and an installed agent for CLI setup.
+## Quick Start
 
-With the AI-RULES CLI (recommended):
+### 1. Installation
+
+Install via the **AI-RULES CLI** (included automatically by default in all profiles through `andino-workflow`):
 
 ```sh
+# Install CLI
 git clone --branch main https://github.com/andinoferdi/AI-RULES.git
-cd AI-RULES
-python -m pip install .
+cd AI-RULES && python -m pip install .
+
+# Setup Focus for your host
 ai-rules setup --capability focus --host <host>
 ```
 
-Pass `--host` with `codex`, `claude-code`, `opencode`, `antigravity-cli` or `antigravity-ide`. Without it, setup targets Codex. For a project install, add `--scope project --project-root <path>`. Run the same command again to update.
-
-Manual, for this skill only:
+<details>
+<summary>Manual Installation</summary>
 
 ```sh
-git clone --depth 1 --single-branch --branch focus https://github.com/andinoferdi/AI-RULES.git "$HOME/.agents/skills/focus"
+git clone --depth 1 --single-branch --branch focus https://github.com/andinoferdi/AI-RULES.git "<skills-dir>/focus"
 ```
 
-Install the whole folder, not only `SKILL.md`. The folder must keep the name `focus`. For another host, change the destination to the folder in this table:
+| Host | Global Skills Directory | Project Skills Directory |
+|---|---|---|
+| **Codex** | `~/.agents/skills/focus` | `.agents/skills/focus` |
+| **Claude Code** | `~/.claude/skills/focus` | `.claude/skills/focus` |
+| **OpenCode** | `~/.config/opencode/skills/focus` | `.agents/skills/focus` |
+| **Antigravity** | `~/.gemini/antigravity-cli/skills/focus` | `.agents/skills/focus` |
 
-| Host | Global folder |
-| --- | --- |
-| Codex | `~/.agents/skills/focus` |
-| OpenCode | `~/.config/opencode/skills/focus` |
-| Claude Code | `~/.claude/skills/focus` |
-| Antigravity IDE and 2.0 | `~/.gemini/config/skills/focus` |
-| Antigravity CLI | `~/.gemini/antigravity-cli/skills/focus` |
+</details>
 
-For project scope, use `.agents/skills/focus` (Codex, OpenCode, Antigravity) or `.claude/skills/focus` (Claude Code) in the project root. Keep one copy per skill, and reload the host session after installing.
+### 2. Usage
 
-## Use
+Focus triggers automatically when installed alongside Andino Workflow, or you can invoke it directly:
 
-- Codex: `$focus <request>`
-- Claude Code: `/focus <request>`
-- OpenCode: ask the agent to use `focus`, or use the command that setup registers.
-- Antigravity: ask the agent to use `focus`. In the IDE, check Customizations.
+- **Claude Code:** `/focus explain how to roll back the latest database migration`
+- **Codex:** `$focus outline the steps to configure HTTPS on Caddy`
+- **OpenCode / Antigravity:** Ask your agent to "use focus" or write using the focus style.
+- **Deactivate:** Simply say `stop focus` or request another style.
 
-Example: `$focus explain how to roll back the last database migration`
+---
 
-To turn it off, say `stop focus`. Activating a skill grants no extra permission.
+## Relationship to Other Skills
 
-## Notes
+- **Andino Workflow:** Focus serves as the default presentation layer for Andino; it shapes communication while Andino owns the task lifecycle and execution plan.
+- **Natural Writing:** Focus controls conversational and progress communication; long-form writing artifacts (essays, academic chapters, documentation) are governed by `natural-writing`.
+- **Web Chatbots:** For copy-pasting into ChatGPT Web or Claude Web, refer to the [WebBased branch](https://github.com/andinoferdi/AI-RULES/tree/WebBased).
 
-- Andino's contract calls for Focus as its default communication layer. Actual loading follows the host's permitted invocation mechanism; installation alone does not activate it.
-- Focus owns no plan, tool permissions, or task execution.
-- Focus shapes communication, not the body of a requested writing artifact such as an essay or chapter; the artifact's own requirements set its length and depth. The optional `natural-writing` skill handles artifact prose.
-- For web chatbots, copy `A. PRIORITAS` and `X. FOCUS` from the [WebBased branch README](https://github.com/andinoferdi/AI-RULES/tree/WebBased).
-- Adapted from [i-have-adhd](https://github.com/ayghri/i-have-adhd) by Ayoub Ghriss under the MIT license. See the [retained notice](references/license.md).
+---
 
-## Verify
+## References & Provenance
 
-Preserve the whole folder and local edits when updating. Setup verifies files;
-after reloading, invoke Focus and check that a practical answer leads with usable
-steps and retains relevant uncertainty. An explicit request for a formal style
-should still be honored. These are manual checks, not claimed live-host results.
-
-[SKILL.md](SKILL.md) defines the loading contract for the bundled Priority A and
-both language references. Main's [package validator](https://github.com/andinoferdi/AI-RULES/blob/main/scripts/validate_skills.py)
-also compares those references with WebBased without changing either source.
+- [`SKILL.md`](SKILL.md) — Activation contract and style precedence.
+- [`references/priority-a.md`](references/priority-a.md) — Canonical Priority A communication principles.
+- [`references/human-language-indonesia.md`](references/human-language-indonesia.md) — Indonesian conversational patterns.
+- [`references/human-language-english.md`](references/human-language-english.md) — English conversational patterns.
+- Adapted from [i-have-adhd](https://github.com/ayghri/i-have-adhd) by Ayoub Ghriss under the MIT License ([license notice](references/license.md)).
