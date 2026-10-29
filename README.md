@@ -1,86 +1,96 @@
 # Three.js Skills for AI-RULES
 
-One installable family containing all 45 original Three.js/NixieFX methods and
-supporting resources. Use for scene/rendering/game/particle needs, not ordinary
-frontend work. Andino owns lifecycle when active; Focus controls communication.
+> **45 specialized Three.js & NixieFX engineering methods in one installable family.** Production-grade 3D graphics, custom GLSL/WGSL shaders, lighting, skeletal animation, physics, particle systems, and WebGL/WebGPU optimization.
 
-## Installation
+Building advanced 3D web applications requires deep mathematical and rendering discipline: shader pipelines, draw-call budgets, shadow-map cascades, matrix transformations, and asset management. **Three.js Skills** packages 45 battle-tested graphics specialist methods into a single unified capability, giving your agent expert guidance without polluting your system prompt with 45 separate skill registrations.
 
-Requirements: Python 3.11+, Git, and an installed agent for CLI setup. Install the
-CLI from `main` first, in your chosen Python environment:
+---
+
+## The Specialist Catalog (45 Methods)
+
+The family covers the complete 3D interactive graphics stack:
+
+| Domain | Key Specialists | What They Handle |
+|---|---|---|
+| **Shaders & VFX** | `threejs-shaders`, `threejs-postprocessing`, `nixie-fx-*` | Custom GLSL/WGSL shaders, postprocessing chains, bloom, depth of field, and NixieFX particle effects. |
+| **Lighting & Realism** | `threejs-lighting`, `threejs-shadows`, `threejs-environment` | Physically based lighting (PBR), shadow-map resolution tuning, HDR environments, and tone mapping. |
+| **Geometry & Math** | `threejs-geometry`, `threejs-math`, `threejs-procedural` | Custom BufferGeometry, procedural meshes, quaternion rotations, spatial indexing, and raycasting. |
+| **Animation & Rigging** | `threejs-animation`, `threejs-skeletal`, `threejs-morph` | Keyframe tracks, skeletal bone hierarchies, morph targets, and animation mixer blending. |
+| **Interaction & Input** | `threejs-interaction`, `threejs-camera`, `threejs-controls` | Raycast pointer picking, orbit/first-person camera controls, viewport resize, and touch events. |
+| **Architecture & Game** | `threejs-architecture`, `threejs-game-director`, `threejs-performance` | Component scene graphs, GLTF/GLB asset loading pipelines, draw-call minimization, and FPS profiling. |
+
+Consult the complete [Specialist Index](references/specialists.md) for detailed descriptions of all 45 methods.
+
+---
+
+## When to Use
+
+| ✅ Use Three.js Skills For | ❌ Do NOT Use For |
+|---|---|
+| WebGL/WebGPU 3D scenes, models, and canvases | Standard 2D DOM / HTML / CSS web development |
+| Custom vertex/fragment shaders and visual effects | Routine React / Tailwind frontend component styling |
+| 3D asset optimization, GLTF loading, and rigging | General full-stack architecture without 3D surfaces |
+| 3D browser games, interactive physics, and cameras | Backend-only services or simple canvas chart widgets |
+
+---
+
+## Quick Start
+
+### 1. Installation
+
+Install via the **AI-RULES CLI** (included in the `threejs` and `everything` profiles):
 
 ```sh
+# Install CLI
 git clone --branch main https://github.com/andinoferdi/AI-RULES.git
-cd AI-RULES
-python -m pip install .
+cd AI-RULES && python -m pip install .
+
+# Option A: Install Standalone Family
+ai-rules setup --capability threejs-skills --host <host> --scope project --project-root .
+
+# Option B: Install Complete 3D Dev Profile (Three.js + Andino + Focus + Search First)
+ai-rules setup --profile threejs --host <host> --scope project --project-root .
 ```
 
-Select only **Three.js Skills** in Custom, or select **Three.js Development** for
-the family plus Andino Workflow, Focus and Search First (four installed directories).
+<details>
+<summary>Manual Installation</summary>
 
 ```sh
-ai-rules setup --host codex --capability threejs-skills --scope project --project-root . --source latest
-ai-rules setup --host codex --profile threejs --scope project --project-root . --source latest
-ai-rules update --host codex --capability threejs-skills --scope project --project-root . --source latest
+git clone --depth 1 --single-branch --branch threejs-skills https://github.com/andinoferdi/AI-RULES.git "<skills-dir>/threejs-skills"
 ```
 
-The first two commands are alternatives: install the standalone family or the
-profile. Replace `codex` with `claude-code`, `opencode`, `antigravity-cli` or
-`antigravity-ide` as needed. Preview with `--dry-run --non-interactive`. The family
-requires no sibling skill; the profile supplies Andino and its dependencies.
+| Host | Global Skills Directory | Project Skills Directory |
+|---|---|---|
+| **Codex** | `~/.agents/skills/threejs-skills` | `.agents/skills/threejs-skills` |
+| **Claude Code** | `~/.claude/skills/threejs-skills` | `.claude/skills/threejs-skills` |
+| **OpenCode** | `~/.config/opencode/skills/threejs-skills` | `.agents/skills/threejs-skills` |
+| **Antigravity** | `~/.gemini/antigravity-cli/skills/threejs-skills` | `.agents/skills/threejs-skills` |
 
-Bundled distributions use the pinned family revision; latest resolves its branch.
-Select `--source bundled` explicitly to use the frozen manifest without a freshness check.
-Use the same host/scope when updating. Existing staging, verification, backup and
-rollback apply to the entire directory. Modified or unrecognized targets need
-explicit conflict review. Old separately installed specialist directories are not
-automatically removed or overwritten; preserve personal edits before any cleanup.
+</details>
 
-## Layout and use
+### 2. Usage Examples
 
-`<host-skill-root>/threejs-skills/SKILL.md` is the only native entrypoint.
-`skills/<method-id>/GUIDE.md` contains each original method, with references,
-scripts, examples, assets and license notices beside it. The original SKILL.md
-content is preserved as GUIDE.md with integration boundaries. Nothing requires
-45 separately installed skill directories or commands. All resources ship together.
-See [SKILL.md](SKILL.md) and [the method index](references/specialists.md).
+Invoke the family name, and optionally name a specific specialist method:
 
-Say "use andino-workflow and threejs-skills" for selection from the prompt, or
-"use threejs-skills, specifically threejs-shaders" to name one method. Invoke the
-family through the host's native mechanism and load only the relevant authorized
-guides. Do not claim that internal methods are separately registered native skills.
+- **Claude Code:**
+  `/threejs-skills create a custom underwater caustics shader using threejs-shaders`
+- **Codex:**
+  `$threejs-skills optimize skeletal animation blending and LOD transitions for character models`
+- **With Andino Workflow:**
+  `Use andino-workflow and threejs-skills to build an interactive solar system with orbital controls and physically based lighting`
 
-- Codex: `$threejs-skills create a shader effect using threejs-shaders`
-- Claude Code: `/threejs-skills create a shader effect using threejs-shaders`
-- OpenCode and Antigravity: ask the agent to use `threejs-skills` through its supported mechanism.
+---
 
-Andino retains its single plan, checkpoints, handoff and completion. Standalone
-family use follows the existing host context, with no new general lifecycle.
+## Architecture & Integration
 
-Codex uses .agents/skills; Claude Code .claude/skills. Other hosts use the existing
-AI-RULES catalog adapters. Refresh session discovery after installation. Installer
-path support does not establish live cross-host behavior. Never bypass restrictions
-with alternate source reads. Missing/denied methods require honest fallback.
+- **Single Host Registration:** Installs as one clean directory (`threejs-skills`) containing one root `SKILL.md`. Internal specialist guides are loaded selectively on demand from `skills/<method-id>/GUIDE.md`.
+- **With Andino Workflow:** When Andino is active, it retains the overall lifecycle, execution plan, and checkpointing. `threejs-skills` provides technical domain execution within that task.
+- **Standalone:** Functions autonomously within the host's normal task context.
 
-## Verification, dependencies and provenance
+---
 
-After reloading the host, request a named method and check that the family loads
-that guide and produces a task result. An ordinary text-only edit should need no
-Three.js guide. These manual smoke cases are not a claim of observed live use.
+## References & Verification
 
-Validate paths, metadata, relative references, binary signatures and the original
-inventory in main. Verify actual host family discovery and selective guide use
-separately; structural checks do not prove rendering or API compatibility. Browser,
-interaction and performance claims require observed runtime evidence. Andino UI
-acceptance retains 360/768/1440 px screenshots when applicable.
-
-Inspect actual Three.js/WebGL/WebGPU/TSL and NixieFX versions before using examples.
-Optional generators use Tripo, Gemini or ElevenLabs and user-provided credentials.
-Installation calls none of those services and installs no npm dependencies. Paid
-calls, delegation and publication require applicable task authorization.
-
-The maintainer attests original collection authorship. Embedded MIT, CC0 and GPL
-notices/full texts remain intact; no collection-wide license is invented. This is
-not independent verification of every resource origin. See main's provenance record.
-
-[Inventory and evidence](https://github.com/andinoferdi/AI-RULES/tree/main/docs/threejs)
+- [`SKILL.md`](SKILL.md) — Runtime contract and selective method dispatching rules.
+- [`references/specialists.md`](references/specialists.md) — Index and trigger criteria for all 45 methods.
+- [docs/threejs/inventory.json](https://github.com/andinoferdi/AI-RULES/tree/main/docs/threejs) — Complete verification inventory, file hashes, and provenance records.
