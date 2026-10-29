@@ -17,6 +17,9 @@ BASE = '634585a45866261e0d981a68098fa7f1b4bf4c0e'
 
 
 def show(ref, path):
+    directory = os.environ.get('ANDINO_RUNTIME_DIR')
+    if directory and ref == REF:
+        return (Path(directory) / path).read_text(encoding='utf-8')
     result = subprocess.run(['git', 'show', f'{ref}:{path}'], cwd=ROOT, capture_output=True, text=True, encoding='utf-8')
     if result.returncode:
         raise unittest.SkipTest(f'{ref}:{path} unavailable')
@@ -92,7 +95,7 @@ class PhaseReadinessContractTest(unittest.TestCase):
 
 
 class UnchangedContractsTest(unittest.TestCase):
-    """Readiness must not weaken Focus, debugging, Search First, TDD, verification or thesis routes."""
+    """Protect required support; the user intentionally replaces the old Focus-first order."""
 
     @classmethod
     def setUpClass(cls):
@@ -107,15 +110,28 @@ class UnchangedContractsTest(unittest.TestCase):
                            'Explicit Council request', 'Acceptance needs browser interaction'):
             self.assertEqual(row(self.base_routing, first_cell), row(self.routing, first_cell))
 
-    def test_focus_and_debugging_entry_contracts_are_unchanged(self):
-        for paragraph in ('At every invocation, select `focus`', 'When the request already establishes an unknown-cause bug',
-                          'Setup also installs `search-first`'):
+    def test_research_contract_preserved_and_task_guides_precede_focus(self):
+        for paragraph in ('Setup also installs `search-first`',):
             start = self.base_skill.index(paragraph)
             end = self.base_skill.index('\n\n', start)
             self.assertIn(self.base_skill[start:end], self.skill)
-        start = self.base_routing.index('`focus` is the required default')
-        end = self.base_routing.index('\n\n', start)
-        self.assertIn(self.base_routing[start:end], self.routing)
+        # Older immutable snapshots retain their historical order. Candidate checks
+        # opt into working bytes, where the user-authorized policy is internal-first.
+        if '## Select work methods first' in self.skill:
+            self.assertLess(self.skill.index('## Select work methods first'),
+                            self.skill.index('## Communication support'))
+            self.assertIn('before Focus', self.skill)
+            self.assertIn('default communication layer', self.skill)
+            self.assertIn('before the first diagnostic log/source read', self.skill)
+            self.assertIn('permission', self.routing)
+            communication = section(self.skill, 'Communication support')
+            self.assertRegex(communication, r'Activate.*through the \[host contract\]')
+            self.assertIn('reusing valid activation', communication)
+            self.assertIn('user style overrides', communication)
+            self.assertIn('absence does not block authorized task work', communication)
+            self.assertRegex(communication, r'disclose the boundary without claiming it was loaded')
+        else:
+            self.assertIn('before the first diagnostic log/source read', self.skill)
 
 
 if __name__ == '__main__':

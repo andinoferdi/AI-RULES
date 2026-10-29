@@ -1,0 +1,3489 @@
+[
+  {
+    "id": "method-agent-document-authoring-implicit",
+    "kind": "behavior",
+    "prompt": "Rewrite this agent procedure so its branch triggers and completion bounds work.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select agent-document-authoring",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "agent-document-authoring"
+    ],
+    "method": "agent-document-authoring",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-agent-document-authoring-negative",
+    "kind": "negative-trigger",
+    "prompt": "Delete half the technique just to make the document shorter.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select agent-document-authoring",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "agent-document-authoring"
+    ],
+    "method": "agent-document-authoring",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-agent-document-authoring-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method agent-document-authoring for this request: Rewrite this agent procedure so its branch triggers and completion bounds work.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select agent-document-authoring",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "agent-document-authoring"
+    ],
+    "method": "agent-document-authoring",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-api-and-interface-design-implicit",
+    "kind": "behavior",
+    "prompt": "Make this charge endpoint honor retries when four requests arrive together.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select api-and-interface-design",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "api-and-interface-design"
+    ],
+    "method": "api-and-interface-design",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-api-and-interface-design-negative",
+    "kind": "negative-trigger",
+    "prompt": "Rename the private variable total to subtotal.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select api-and-interface-design",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "api-and-interface-design"
+    ],
+    "method": "api-and-interface-design",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-api-and-interface-design-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method api-and-interface-design for this request: Make this charge endpoint honor retries when four requests arrive together.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select api-and-interface-design",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "api-and-interface-design"
+    ],
+    "method": "api-and-interface-design",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-architecture-survey-implicit",
+    "kind": "behavior",
+    "prompt": "Survey this order subsystem for evidenced deepening opportunities.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select architecture-survey",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "architecture-survey"
+    ],
+    "method": "architecture-survey",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-architecture-survey-negative",
+    "kind": "negative-trigger",
+    "prompt": "Rename this local variable.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select architecture-survey",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "architecture-survey"
+    ],
+    "method": "architecture-survey",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-architecture-survey-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method architecture-survey for this request: Survey this order subsystem for evidenced deepening opportunities.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select architecture-survey",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "architecture-survey"
+    ],
+    "method": "architecture-survey",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-article-shaping-implicit",
+    "kind": "behavior",
+    "prompt": "Shape this fixed raw material into a separate article with grounded concepts.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select article-shaping",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "article-shaping"
+    ],
+    "method": "article-shaping",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-article-shaping-negative",
+    "kind": "negative-trigger",
+    "prompt": "Overwrite my raw interview transcript.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select article-shaping",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "article-shaping"
+    ],
+    "method": "article-shaping",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-article-shaping-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method article-shaping for this request: Shape this fixed raw material into a separate article with grounded concepts.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select article-shaping",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "article-shaping"
+    ],
+    "method": "article-shaping",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "prompt": "Saya ingin membuat sesuatu yang bermanfaat untuk tetangga, tetapi belum punya arah. Bantu mencari beberapa kemungkinan.",
+    "fixture": "Disposable routing assessment; current product facts are settled unless the request opens them.",
+    "expected": "Select brainstorming",
+    "forbidden": "Invented invocation, bulk loading, unauthorized changes or reopened accepted decisions.",
+    "id": "method-brainstorming-implicit",
+    "kind": "behavior",
+    "method": "brainstorming",
+    "variant": "implicit",
+    "capabilities": [
+      "brainstorming"
+    ],
+    "coverage": "routing"
+  },
+  {
+    "prompt": "Implement the approved total(values) specification; the interface and acceptance cases are settled.",
+    "fixture": "Disposable routing assessment; current product facts are settled unless the request opens them.",
+    "expected": "Do not select brainstorming",
+    "forbidden": "Invented invocation, bulk loading, unauthorized changes or reopened accepted decisions.",
+    "id": "method-brainstorming-negative",
+    "kind": "negative-trigger",
+    "method": "brainstorming",
+    "variant": "negative",
+    "capabilities": [
+      "brainstorming"
+    ],
+    "coverage": "routing"
+  },
+  {
+    "prompt": "Use the Andino internal method brainstorming for this request: Saya ingin membuat sesuatu yang bermanfaat untuk tetangga, tetapi belum punya arah. Bantu mencari beberapa kemungkinan.",
+    "fixture": "Disposable routing assessment; current product facts are settled unless the request opens them.",
+    "expected": "Select brainstorming",
+    "forbidden": "Invented invocation, bulk loading, unauthorized changes or reopened accepted decisions.",
+    "id": "method-brainstorming-explicit",
+    "kind": "behavior",
+    "method": "brainstorming",
+    "variant": "explicit",
+    "capabilities": [
+      "brainstorming"
+    ],
+    "coverage": "routing"
+  },
+  {
+    "id": "method-browser-testing-with-devtools-implicit",
+    "kind": "behavior",
+    "prompt": "The checkbox stays checked after a PATCH returns 503; diagnose these captured events.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select browser-testing-with-devtools",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "browser-testing-with-devtools"
+    ],
+    "method": "browser-testing-with-devtools",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-browser-testing-with-devtools-negative",
+    "kind": "negative-trigger",
+    "prompt": "Check the ordering of rows in this backend-only CSV exporter.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select browser-testing-with-devtools",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "browser-testing-with-devtools"
+    ],
+    "method": "browser-testing-with-devtools",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-browser-testing-with-devtools-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method browser-testing-with-devtools for this request: The checkbox stays checked after a PATCH returns 503; diagnose these captured events.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select browser-testing-with-devtools",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "browser-testing-with-devtools"
+    ],
+    "method": "browser-testing-with-devtools",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-ci-cd-and-automation-implicit",
+    "kind": "behavior",
+    "prompt": "Wire lint, unit, build and release readiness so a failed ancestor prevents advancement.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select ci-cd-and-automation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "ci-cd-and-automation"
+    ],
+    "method": "ci-cd-and-automation",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-ci-cd-and-automation-negative",
+    "kind": "negative-trigger",
+    "prompt": "Correct a README spelling error; do not change code or CI.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select ci-cd-and-automation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "ci-cd-and-automation"
+    ],
+    "method": "ci-cd-and-automation",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-ci-cd-and-automation-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method ci-cd-and-automation for this request: Wire lint, unit, build and release readiness so a failed ancestor prevents advancement.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select ci-cd-and-automation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "ci-cd-and-automation"
+    ],
+    "method": "ci-cd-and-automation",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-code-review-implicit",
+    "kind": "behavior",
+    "prompt": "Review perubahan termasuk file baru belum tracked.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select code-review",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "code-review"
+    ],
+    "method": "code-review",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-code-review-negative",
+    "kind": "negative-trigger",
+    "prompt": "Apa beda review dan testing?",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select code-review",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "code-review"
+    ],
+    "method": "code-review",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-code-review-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method code-review for this request: Review perubahan termasuk file baru belum tracked.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select code-review",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "code-review"
+    ],
+    "method": "code-review",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-code-simplification-implicit",
+    "kind": "behavior",
+    "prompt": "Simplify this green nested function without changing errors or the marked fast path.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select code-simplification",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "code-simplification"
+    ],
+    "method": "code-simplification",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-code-simplification-negative",
+    "kind": "negative-trigger",
+    "prompt": "Fix the empty-input crash; the accepted behavior must change.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select code-simplification",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "code-simplification"
+    ],
+    "method": "code-simplification",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-code-simplification-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method code-simplification for this request: Simplify this green nested function without changing errors or the marked fast path.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select code-simplification",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "code-simplification"
+    ],
+    "method": "code-simplification",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-constraint-driven-development-implicit",
+    "kind": "behavior",
+    "prompt": "The diff drops assertions, adds a suppression and lowers minimum coverage; enforce the floor.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select constraint-driven-development",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "constraint-driven-development"
+    ],
+    "method": "constraint-driven-development",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-constraint-driven-development-negative",
+    "kind": "negative-trigger",
+    "prompt": "Reformat the unchanged constraints document without altering any rules.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select constraint-driven-development",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "constraint-driven-development"
+    ],
+    "method": "constraint-driven-development",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-constraint-driven-development-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method constraint-driven-development for this request: The diff drops assertions, adds a suppression and lowers minimum coverage; enforce the floor.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select constraint-driven-development",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "constraint-driven-development"
+    ],
+    "method": "constraint-driven-development",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-context-engineering-implicit",
+    "kind": "behavior",
+    "prompt": "Prepare a bounded handoff that preserves scope and the current error while dropping old logs.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select context-engineering",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "context-engineering"
+    ],
+    "method": "context-engineering",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-context-engineering-negative",
+    "kind": "negative-trigger",
+    "prompt": "Explain this single supplied expression; no session context is needed.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select context-engineering",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "context-engineering"
+    ],
+    "method": "context-engineering",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-context-engineering-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method context-engineering for this request: Prepare a bounded handoff that preserves scope and the current error while dropping old logs.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select context-engineering",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "context-engineering"
+    ],
+    "method": "context-engineering",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-debugging-implicit",
+    "kind": "behavior",
+    "prompt": "Tenant B melihat hasil tenant A setelah dua pencarian.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select debugging",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "debugging"
+    ],
+    "method": "debugging",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-debugging-negative",
+    "kind": "negative-trigger",
+    "prompt": "Jelaskan fungsi cache yang ada.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select debugging",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "debugging"
+    ],
+    "method": "debugging",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-debugging-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method debugging for this request: Tenant B melihat hasil tenant A setelah dua pencarian.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select debugging",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "debugging"
+    ],
+    "method": "debugging",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-decision-interview-implicit",
+    "kind": "behavior",
+    "prompt": "I asked for a dashboard but I am not sure what I actually need. Interview me.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select decision-interview",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "decision-interview"
+    ],
+    "method": "decision-interview",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-decision-interview-negative",
+    "kind": "negative-trigger",
+    "prompt": "Implement the already approved invoice retry ticket.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select decision-interview",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "decision-interview"
+    ],
+    "method": "decision-interview",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-decision-interview-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method decision-interview for this request: I asked for a dashboard but I am not sure what I actually need. Interview me.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select decision-interview",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "decision-interview"
+    ],
+    "method": "decision-interview",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-decision-map-implicit",
+    "kind": "behavior",
+    "prompt": "We need a multi-session map of open storage decisions and their blockers.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select decision-map",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "decision-map"
+    ],
+    "method": "decision-map",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-decision-map-negative",
+    "kind": "negative-trigger",
+    "prompt": "Build the next already specified API slice.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select decision-map",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "decision-map"
+    ],
+    "method": "decision-map",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-decision-map-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method decision-map for this request: We need a multi-session map of open storage decisions and their blockers.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select decision-map",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "decision-map"
+    ],
+    "method": "decision-map",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-deep-module-design-implicit",
+    "kind": "behavior",
+    "prompt": "Callers repeat order policy in six places. Compare smaller interfaces.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select deep-module-design",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "deep-module-design"
+    ],
+    "method": "deep-module-design",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-deep-module-design-negative",
+    "kind": "negative-trigger",
+    "prompt": "List all files in the repository.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select deep-module-design",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "deep-module-design"
+    ],
+    "method": "deep-module-design",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-deep-module-design-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method deep-module-design for this request: Callers repeat order policy in six places. Compare smaller interfaces.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select deep-module-design",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "deep-module-design"
+    ],
+    "method": "deep-module-design",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-delegation-implicit",
+    "kind": "behavior",
+    "prompt": "Assess whether these two independent audit tasks could be safely delegated by their authorized parent with child tools. This is a planning decision only; do not spawn a child.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select delegation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "delegation"
+    ],
+    "method": "delegation",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-delegation-negative",
+    "kind": "negative-trigger",
+    "prompt": "Spawn helpers recursively.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select delegation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "delegation"
+    ],
+    "method": "delegation",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-delegation-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method delegation for this request: Assess whether these two independent audit tasks could be safely delegated by their authorized parent with child tools. This is a planning decision only; do not spawn a child.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select delegation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "delegation"
+    ],
+    "method": "delegation",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-delivery-implicit",
+    "kind": "behavior",
+    "prompt": "Laporan akhir dan bukti uji; jangan commit/push.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select delivery",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "delivery"
+    ],
+    "method": "delivery",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-delivery-negative",
+    "kind": "negative-trigger",
+    "prompt": "Deploy because unit tests passed.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select delivery",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "delivery"
+    ],
+    "method": "delivery",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-delivery-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method delivery for this request: Laporan akhir dan bukti uji; jangan commit/push.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select delivery",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "delivery"
+    ],
+    "method": "delivery",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-deprecation-and-migration-implicit",
+    "kind": "behavior",
+    "prompt": "Migrate name to full_name while old clients still run; show expand, backfill and guarded contract.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select deprecation-and-migration",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "deprecation-and-migration"
+    ],
+    "method": "deprecation-and-migration",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-deprecation-and-migration-negative",
+    "kind": "negative-trigger",
+    "prompt": "Rename a private loop variable in an unused example.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select deprecation-and-migration",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "deprecation-and-migration"
+    ],
+    "method": "deprecation-and-migration",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-deprecation-and-migration-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method deprecation-and-migration for this request: Migrate name to full_name while old clients still run; show expand, backfill and guarded contract.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select deprecation-and-migration",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "deprecation-and-migration"
+    ],
+    "method": "deprecation-and-migration",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-design-prototype-implicit",
+    "kind": "behavior",
+    "prompt": "Make a local state demo to decide whether empty checkout is legal.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select design-prototype",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "design-prototype"
+    ],
+    "method": "design-prototype",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-design-prototype-negative",
+    "kind": "negative-trigger",
+    "prompt": "The design is accepted; implement its production behavior.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select design-prototype",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "design-prototype"
+    ],
+    "method": "design-prototype",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-design-prototype-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method design-prototype for this request: Make a local state demo to decide whether empty checkout is legal.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select design-prototype",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "design-prototype"
+    ],
+    "method": "design-prototype",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-documentation-and-adrs-implicit",
+    "kind": "behavior",
+    "prompt": "Record the queue decision using our existing ADR-004 .rst convention and retain its throughput caveat.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select documentation-and-adrs",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "documentation-and-adrs"
+    ],
+    "method": "documentation-and-adrs",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-documentation-and-adrs-negative",
+    "kind": "negative-trigger",
+    "prompt": "Add comments saying increment counter above every increment.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select documentation-and-adrs",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "documentation-and-adrs"
+    ],
+    "method": "documentation-and-adrs",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-documentation-and-adrs-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method documentation-and-adrs for this request: Record the queue decision using our existing ADR-004 .rst convention and retain its throughput caveat.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select documentation-and-adrs",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "documentation-and-adrs"
+    ],
+    "method": "documentation-and-adrs",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-domain-modeling-implicit",
+    "kind": "behavior",
+    "prompt": "Customer and account mean different things in code and our glossary. Resolve them.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select domain-modeling",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "domain-modeling"
+    ],
+    "method": "domain-modeling",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-domain-modeling-negative",
+    "kind": "negative-trigger",
+    "prompt": "Run the existing test suite.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select domain-modeling",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "domain-modeling"
+    ],
+    "method": "domain-modeling",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-domain-modeling-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method domain-modeling for this request: Customer and account mean different things in code and our glossary. Resolve them.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select domain-modeling",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "domain-modeling"
+    ],
+    "method": "domain-modeling",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-doubt-driven-development-implicit",
+    "kind": "behavior",
+    "prompt": "Stress-test the retry invariant with an independent artifact-and-contract review bounded to three cycles.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select doubt-driven-development",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "doubt-driven-development"
+    ],
+    "method": "doubt-driven-development",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-doubt-driven-development-negative",
+    "kind": "negative-trigger",
+    "prompt": "Summarize this already accepted one-line rename.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select doubt-driven-development",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "doubt-driven-development"
+    ],
+    "method": "doubt-driven-development",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-doubt-driven-development-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method doubt-driven-development for this request: Stress-test the retry invariant with an independent artifact-and-contract review bounded to three cycles.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select doubt-driven-development",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "doubt-driven-development"
+    ],
+    "method": "doubt-driven-development",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-environment-retrospective-implicit",
+    "kind": "behavior",
+    "prompt": "The repeated failure causes are already established in the session log. Inspect the existing checks and propose guardrail improvements.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select environment-retrospective",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "environment-retrospective"
+    ],
+    "method": "environment-retrospective",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-environment-retrospective-negative",
+    "kind": "negative-trigger",
+    "prompt": "Change one typo in the README.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select environment-retrospective",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "environment-retrospective"
+    ],
+    "method": "environment-retrospective",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-environment-retrospective-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method environment-retrospective for this request: The repeated failure causes are already established in the session log. Inspect the existing checks and propose guardrail improvements.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select environment-retrospective",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "environment-retrospective"
+    ],
+    "method": "environment-retrospective",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-exercise-scaffolding-implicit",
+    "kind": "behavior",
+    "prompt": "Scaffold section 05.02 with explainer, problem and solution variants.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select exercise-scaffolding",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "exercise-scaffolding"
+    ],
+    "method": "exercise-scaffolding",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-exercise-scaffolding-negative",
+    "kind": "negative-trigger",
+    "prompt": "Install a course CLI globally to answer one question.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select exercise-scaffolding",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "exercise-scaffolding"
+    ],
+    "method": "exercise-scaffolding",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-exercise-scaffolding-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method exercise-scaffolding for this request: Scaffold section 05.02 with explainer, problem and solution variants.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select exercise-scaffolding",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "exercise-scaffolding"
+    ],
+    "method": "exercise-scaffolding",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-frontend-ui-engineering-implicit",
+    "kind": "behavior",
+    "prompt": "Implement the approved error/retry state with a named keyboard-native button.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select frontend-ui-engineering",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "frontend-ui-engineering"
+    ],
+    "method": "frontend-ui-engineering",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-frontend-ui-engineering-negative",
+    "kind": "negative-trigger",
+    "prompt": "Change this server-only database index; there is no interface change.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select frontend-ui-engineering",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "frontend-ui-engineering"
+    ],
+    "method": "frontend-ui-engineering",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-frontend-ui-engineering-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method frontend-ui-engineering for this request: Implement the approved error/retry state with a named keyboard-native button.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select frontend-ui-engineering",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "frontend-ui-engineering"
+    ],
+    "method": "frontend-ui-engineering",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-git-isolation-implicit",
+    "kind": "behavior",
+    "prompt": "This multi-step feature needs an isolated workspace on an existing authorized branch. Inspect suitable existing worktrees and the safe isolation procedure; do not create a branch.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select git-isolation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "git-isolation"
+    ],
+    "method": "git-isolation",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-git-isolation-negative",
+    "kind": "negative-trigger",
+    "prompt": "Hapus semua untracked.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select git-isolation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "git-isolation"
+    ],
+    "method": "git-isolation",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-git-isolation-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method git-isolation for this request: This multi-step feature needs an isolated workspace on an existing authorized branch. Inspect suitable existing worktrees and the safe isolation procedure; do not create a branch.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select git-isolation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "git-isolation"
+    ],
+    "method": "git-isolation",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-git-operation-guard-implicit",
+    "kind": "behavior",
+    "prompt": "Review whether git -C repo push is allowed by the current authority.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select git-operation-guard",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "git-operation-guard"
+    ],
+    "method": "git-operation-guard",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-git-operation-guard-negative",
+    "kind": "negative-trigger",
+    "prompt": "Install the upstream global regex hook automatically.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select git-operation-guard",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "git-operation-guard"
+    ],
+    "method": "git-operation-guard",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-git-operation-guard-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method git-operation-guard for this request: Review whether git -C repo push is allowed by the current authority.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select git-operation-guard",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "git-operation-guard"
+    ],
+    "method": "git-operation-guard",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-git-workflow-and-versioning-implicit",
+    "kind": "behavior",
+    "prompt": "Group my owned change separately from existing edits and prepare a breaking-version rationale.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select git-workflow-and-versioning",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "git-workflow-and-versioning"
+    ],
+    "method": "git-workflow-and-versioning",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-git-workflow-and-versioning-negative",
+    "kind": "negative-trigger",
+    "prompt": "Explain two plus three without inspecting or changing a repository.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select git-workflow-and-versioning",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "git-workflow-and-versioning"
+    ],
+    "method": "git-workflow-and-versioning",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-git-workflow-and-versioning-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method git-workflow-and-versioning for this request: Group my owned change separately from existing edits and prepare a breaking-version rationale.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select git-workflow-and-versioning",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "git-workflow-and-versioning"
+    ],
+    "method": "git-workflow-and-versioning",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-handoff-implicit",
+    "kind": "behavior",
+    "prompt": "Prepare a portable handoff for a colleague in another checkout.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select handoff",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "handoff"
+    ],
+    "method": "handoff",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-handoff-negative",
+    "kind": "negative-trigger",
+    "prompt": "Keep working in this context on the next ready step.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select handoff",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "handoff"
+    ],
+    "method": "handoff",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-handoff-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method handoff for this request: Prepare a portable handoff for a colleague in another checkout.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select handoff",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "handoff"
+    ],
+    "method": "handoff",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-human-procedure-implicit",
+    "kind": "behavior",
+    "prompt": "Prepare exact manual steps for the credential dashboard I must access myself.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select human-procedure",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "human-procedure"
+    ],
+    "method": "human-procedure",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-human-procedure-negative",
+    "kind": "negative-trigger",
+    "prompt": "Paste my secret into the chat and configure it for me.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select human-procedure",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "human-procedure"
+    ],
+    "method": "human-procedure",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-human-procedure-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method human-procedure for this request: Prepare exact manual steps for the credential dashboard I must access myself.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select human-procedure",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "human-procedure"
+    ],
+    "method": "human-procedure",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-idea-refine-implicit",
+    "kind": "behavior",
+    "prompt": "Refine collaborative editing into a small test of whether presence solves coordination.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select idea-refine",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "idea-refine"
+    ],
+    "method": "idea-refine",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-idea-refine-negative",
+    "kind": "negative-trigger",
+    "prompt": "Execute the already approved presence-only implementation plan without reopening product ideation.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select idea-refine",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "idea-refine"
+    ],
+    "method": "idea-refine",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-idea-refine-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method idea-refine for this request: Refine collaborative editing into a small test of whether presence solves coordination.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select idea-refine",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "idea-refine"
+    ],
+    "method": "idea-refine",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-implementation-implicit",
+    "kind": "behavior",
+    "prompt": "Implement the accepted API task whose schema dependency has passed.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select implementation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "implementation"
+    ],
+    "method": "implementation",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-implementation-negative",
+    "kind": "negative-trigger",
+    "prompt": "Explore whether we need this product at all.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select implementation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "implementation"
+    ],
+    "method": "implementation",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-implementation-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method implementation for this request: Implement the accepted API task whose schema dependency has passed.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select implementation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "implementation"
+    ],
+    "method": "implementation",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-incremental-implementation-implicit",
+    "kind": "behavior",
+    "prompt": "Implement create then list as verified slices from the accepted task graph.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select incremental-implementation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "incremental-implementation"
+    ],
+    "method": "incremental-implementation",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-incremental-implementation-negative",
+    "kind": "negative-trigger",
+    "prompt": "Explain this supplied constant; do not implement or change anything.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select incremental-implementation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "incremental-implementation"
+    ],
+    "method": "incremental-implementation",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-incremental-implementation-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method incremental-implementation for this request: Implement create then list as verified slices from the accepted task graph.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select incremental-implementation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "incremental-implementation"
+    ],
+    "method": "incremental-implementation",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-issue-triage-implicit",
+    "kind": "behavior",
+    "prompt": "Evaluate this incoming bug with its comments and draft a brief.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select issue-triage",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "issue-triage"
+    ],
+    "method": "issue-triage",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-issue-triage-negative",
+    "kind": "negative-trigger",
+    "prompt": "Re-triage all the ready tickets we just approved.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select issue-triage",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "issue-triage"
+    ],
+    "method": "issue-triage",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-issue-triage-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method issue-triage for this request: Evaluate this incoming bug with its comments and draft a brief.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select issue-triage",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "issue-triage"
+    ],
+    "method": "issue-triage",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-learning-workspace-implicit",
+    "kind": "behavior",
+    "prompt": "Teach me safe retry design over several lessons in this learning folder.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select learning-workspace",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "learning-workspace"
+    ],
+    "method": "learning-workspace",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-learning-workspace-negative",
+    "kind": "negative-trigger",
+    "prompt": "What does retry mean in one sentence?",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select learning-workspace",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "learning-workspace"
+    ],
+    "method": "learning-workspace",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-learning-workspace-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method learning-workspace for this request: Teach me safe retry design over several lessons in this learning folder.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select learning-workspace",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "learning-workspace"
+    ],
+    "method": "learning-workspace",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-method-authoring-implicit",
+    "kind": "behavior",
+    "prompt": "Buat panduan dari kegagalan proses teramati.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select method-authoring",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "method-authoring"
+    ],
+    "method": "method-authoring",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-method-authoring-negative",
+    "kind": "negative-trigger",
+    "prompt": "Add generic rules without failure.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select method-authoring",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "method-authoring"
+    ],
+    "method": "method-authoring",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-method-authoring-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method method-authoring for this request: Buat panduan dari kegagalan proses teramati.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select method-authoring",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "method-authoring"
+    ],
+    "method": "method-authoring",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-observability-and-instrumentation-implicit",
+    "kind": "behavior",
+    "prompt": "Instrument payment retries so scheduler and replay origins can be distinguished in the same log.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select observability-and-instrumentation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "observability-and-instrumentation"
+    ],
+    "method": "observability-and-instrumentation",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-observability-and-instrumentation-negative",
+    "kind": "negative-trigger",
+    "prompt": "Fix a documentation spelling error with no production behavior change.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select observability-and-instrumentation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "observability-and-instrumentation"
+    ],
+    "method": "observability-and-instrumentation",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-observability-and-instrumentation-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method observability-and-instrumentation for this request: Instrument payment retries so scheduler and replay origins can be distinguished in the same log.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select observability-and-instrumentation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "observability-and-instrumentation"
+    ],
+    "method": "observability-and-instrumentation",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-performance-optimization-implicit",
+    "kind": "behavior",
+    "prompt": "Compare repeated same-condition latency samples and reject improvements inside noise.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select performance-optimization",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "performance-optimization"
+    ],
+    "method": "performance-optimization",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-performance-optimization-negative",
+    "kind": "negative-trigger",
+    "prompt": "Build the accepted basic list; there is no measured slowdown or performance budget.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select performance-optimization",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "performance-optimization"
+    ],
+    "method": "performance-optimization",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-performance-optimization-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method performance-optimization for this request: Compare repeated same-condition latency samples and reject improvements inside noise.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select performance-optimization",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "performance-optimization"
+    ],
+    "method": "performance-optimization",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-plain-language-repitch-implicit",
+    "kind": "behavior",
+    "prompt": "I do not understand your last message about task blockers. Explain plainly.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select plain-language-repitch",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "plain-language-repitch"
+    ],
+    "method": "plain-language-repitch",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-plain-language-repitch-negative",
+    "kind": "negative-trigger",
+    "prompt": "Research a new unrelated framework.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select plain-language-repitch",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "plain-language-repitch"
+    ],
+    "method": "plain-language-repitch",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-plain-language-repitch-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method plain-language-repitch for this request: I do not understand your last message about task blockers. Explain plainly.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select plain-language-repitch",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "plain-language-repitch"
+    ],
+    "method": "plain-language-repitch",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-plan-execution-implicit",
+    "kind": "behavior",
+    "prompt": "Lanjutkan plan sesudah memeriksa drift.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select plan-execution",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "plan-execution"
+    ],
+    "method": "plan-execution",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-plan-execution-negative",
+    "kind": "negative-trigger",
+    "prompt": "Buat ulang semua rencana tanpa sebab.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select plan-execution",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "plan-execution"
+    ],
+    "method": "plan-execution",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-plan-execution-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method plan-execution for this request: Lanjutkan plan sesudah memeriksa drift.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select plan-execution",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "plan-execution"
+    ],
+    "method": "plan-execution",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-planning-implicit",
+    "kind": "behavior",
+    "prompt": "Accepted requirements lack interfaces and a dependency graph. Refine the existing Andino plan into verifiable implementation slices, interfaces and ordered acceptance checks.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select planning",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "planning"
+    ],
+    "method": "planning",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-planning-negative",
+    "kind": "negative-trigger",
+    "prompt": "Lanjutkan task pada graph yang sudah lengkap.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select planning",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "planning"
+    ],
+    "method": "planning",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-planning-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method planning for this request: Accepted requirements lack interfaces and a dependency graph. Refine the existing Andino plan into verifiable implementation slices, interfaces and ordered acceptance checks.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select planning",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "planning"
+    ],
+    "method": "planning",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-pr-description-implicit",
+    "kind": "behavior",
+    "prompt": "Draft the PR body using the current diff and recorded before/after tests.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select pr-description",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "pr-description"
+    ],
+    "method": "pr-description",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-pr-description-negative",
+    "kind": "negative-trigger",
+    "prompt": "Push my branch without approval.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select pr-description",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "pr-description"
+    ],
+    "method": "pr-description",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-pr-description-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method pr-description for this request: Draft the PR body using the current diff and recorded before/after tests.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select pr-description",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "pr-description"
+    ],
+    "method": "pr-description",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-pre-commit-setup-implicit",
+    "kind": "behavior",
+    "prompt": "Prepare project pre-commit checks while preserving prepare and current staging.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select pre-commit-setup",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "pre-commit-setup"
+    ],
+    "method": "pre-commit-setup",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-pre-commit-setup-negative",
+    "kind": "negative-trigger",
+    "prompt": "Stage everything and make a smoke commit without permission.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select pre-commit-setup",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "pre-commit-setup"
+    ],
+    "method": "pre-commit-setup",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-pre-commit-setup-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method pre-commit-setup for this request: Prepare project pre-commit checks while preserving prepare and current staging.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select pre-commit-setup",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "pre-commit-setup"
+    ],
+    "method": "pre-commit-setup",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-primary-source-research-implicit",
+    "kind": "behavior",
+    "prompt": "Investigate the retry contract in official sources and cite findings.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select primary-source-research",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "primary-source-research"
+    ],
+    "method": "primary-source-research",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-primary-source-research-negative",
+    "kind": "negative-trigger",
+    "prompt": "Decide my personal preference for dashboard colors.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select primary-source-research",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "primary-source-research"
+    ],
+    "method": "primary-source-research",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-primary-source-research-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method primary-source-research for this request: Investigate the retry contract in official sources and cite findings.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select primary-source-research",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "primary-source-research"
+    ],
+    "method": "primary-source-research",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-project-configuration-implicit",
+    "kind": "behavior",
+    "prompt": "Prepare local tracker and triage vocabulary docs using our existing conventions.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select project-configuration",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "project-configuration"
+    ],
+    "method": "project-configuration",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-project-configuration-negative",
+    "kind": "negative-trigger",
+    "prompt": "Install another workflow globally before doing anything.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select project-configuration",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "project-configuration"
+    ],
+    "method": "project-configuration",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-project-configuration-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method project-configuration for this request: Prepare local tracker and triage vocabulary docs using our existing conventions.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select project-configuration",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "project-configuration"
+    ],
+    "method": "project-configuration",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-security-and-hardening-implicit",
+    "kind": "behavior",
+    "prompt": "Validate an owned temporary job leaf before cleanup and prove SQL input cannot alter the query.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select security-and-hardening",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "security-and-hardening"
+    ],
+    "method": "security-and-hardening",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-security-and-hardening-negative",
+    "kind": "negative-trigger",
+    "prompt": "Rename a private loop counter in this pure local computation.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select security-and-hardening",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "security-and-hardening"
+    ],
+    "method": "security-and-hardening",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-security-and-hardening-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method security-and-hardening for this request: Validate an owned temporary job leaf before cleanup and prove SQL input cannot alter the query.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select security-and-hardening",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "security-and-hardening"
+    ],
+    "method": "security-and-hardening",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-session-diagnostics-implicit",
+    "kind": "behavior",
+    "prompt": "Cari pengulangan pada session tertentu dengan bukti.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select session-diagnostics",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "session-diagnostics"
+    ],
+    "method": "session-diagnostics",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-session-diagnostics-negative",
+    "kind": "negative-trigger",
+    "prompt": "Scan/upload every chat.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select session-diagnostics",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "session-diagnostics"
+    ],
+    "method": "session-diagnostics",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-session-diagnostics-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method session-diagnostics for this request: Cari pengulangan pada session tertentu dengan bukti.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select session-diagnostics",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "session-diagnostics"
+    ],
+    "method": "session-diagnostics",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-shipping-and-launch-implicit",
+    "kind": "behavior",
+    "prompt": "Use these canary error/latency baselines and error budget to prepare go/no-go with rollback.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select shipping-and-launch",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "shipping-and-launch"
+    ],
+    "method": "shipping-and-launch",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-shipping-and-launch-negative",
+    "kind": "negative-trigger",
+    "prompt": "Fix the private function locally; no release or deployment is requested.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select shipping-and-launch",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "shipping-and-launch"
+    ],
+    "method": "shipping-and-launch",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-shipping-and-launch-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method shipping-and-launch for this request: Use these canary error/latency baselines and error budget to prepare go/no-go with rollback.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select shipping-and-launch",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "shipping-and-launch"
+    ],
+    "method": "shipping-and-launch",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-source-driven-development-implicit",
+    "kind": "behavior",
+    "prompt": "Check this version-pinned manifest and supplied official excerpt before using its intent_key argument.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select source-driven-development",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "source-driven-development"
+    ],
+    "method": "source-driven-development",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-source-driven-development-negative",
+    "kind": "negative-trigger",
+    "prompt": "Rename this private loop variable without a framework/API change.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select source-driven-development",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "source-driven-development"
+    ],
+    "method": "source-driven-development",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-source-driven-development-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method source-driven-development for this request: Check this version-pinned manifest and supplied official excerpt before using its intent_key argument.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select source-driven-development",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "source-driven-development"
+    ],
+    "method": "source-driven-development",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-specification-implicit",
+    "kind": "behavior",
+    "prompt": "Turn our settled billing discussion into a buildable spec.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select specification",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "specification"
+    ],
+    "method": "specification",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-specification-negative",
+    "kind": "negative-trigger",
+    "prompt": "Start the accepted current spec again from scratch.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select specification",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "specification"
+    ],
+    "method": "specification",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-specification-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method specification for this request: Turn our settled billing discussion into a buildable spec.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select specification",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "specification"
+    ],
+    "method": "specification",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-stakeholder-questionnaire-implicit",
+    "kind": "behavior",
+    "prompt": "Draft questions for our platform owner about launch capacity and retention.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select stakeholder-questionnaire",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "stakeholder-questionnaire"
+    ],
+    "method": "stakeholder-questionnaire",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-stakeholder-questionnaire-negative",
+    "kind": "negative-trigger",
+    "prompt": "Send this questionnaire to the owner without my instruction.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select stakeholder-questionnaire",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "stakeholder-questionnaire"
+    ],
+    "method": "stakeholder-questionnaire",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-stakeholder-questionnaire-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method stakeholder-questionnaire for this request: Draft questions for our platform owner about launch capacity and retention.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select stakeholder-questionnaire",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "stakeholder-questionnaire"
+    ],
+    "method": "stakeholder-questionnaire",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-task-decomposition-implicit",
+    "kind": "behavior",
+    "prompt": "Slice the accepted rename into expand, caller migrations and contract tasks.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select task-decomposition",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "task-decomposition"
+    ],
+    "method": "task-decomposition",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-task-decomposition-negative",
+    "kind": "negative-trigger",
+    "prompt": "Make twelve tickets for this one-line typo.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select task-decomposition",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "task-decomposition"
+    ],
+    "method": "task-decomposition",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-task-decomposition-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method task-decomposition for this request: Slice the accepted rename into expand, caller migrations and contract tasks.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select task-decomposition",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "task-decomposition"
+    ],
+    "method": "task-decomposition",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-tdd-implicit",
+    "kind": "behavior",
+    "prompt": "Tambahkan total faktur pada API publik yang sudah ada.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select tdd",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "tdd"
+    ],
+    "method": "tdd",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-tdd-negative",
+    "kind": "negative-trigger",
+    "prompt": "Ganti judul README.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select tdd",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "tdd"
+    ],
+    "method": "tdd",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-tdd-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method tdd for this request: Tambahkan total faktur pada API publik yang sudah ada.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select tdd",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "tdd"
+    ],
+    "method": "tdd",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-test-fixture-migration-implicit",
+    "kind": "behavior",
+    "prompt": "Replace these selected partial test casts without weakening invalid-input cases.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select test-fixture-migration",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "test-fixture-migration"
+    ],
+    "method": "test-fixture-migration",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-test-fixture-migration-negative",
+    "kind": "negative-trigger",
+    "prompt": "Use fromAny throughout production request validation.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select test-fixture-migration",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "test-fixture-migration"
+    ],
+    "method": "test-fixture-migration",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-test-fixture-migration-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method test-fixture-migration for this request: Replace these selected partial test casts without weakening invalid-input cases.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select test-fixture-migration",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "test-fixture-migration"
+    ],
+    "method": "test-fixture-migration",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-typescript-boundary-enforcement-implicit",
+    "kind": "behavior",
+    "prompt": "Enforce our selected package entrypoint rules and prove deep imports fail.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select typescript-boundary-enforcement",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "typescript-boundary-enforcement"
+    ],
+    "method": "typescript-boundary-enforcement",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-typescript-boundary-enforcement-negative",
+    "kind": "negative-trigger",
+    "prompt": "Reorganize every TypeScript project into this layout by default.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select typescript-boundary-enforcement",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "typescript-boundary-enforcement"
+    ],
+    "method": "typescript-boundary-enforcement",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-typescript-boundary-enforcement-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method typescript-boundary-enforcement for this request: Enforce our selected package entrypoint rules and prove deep imports fail.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select typescript-boundary-enforcement",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "typescript-boundary-enforcement"
+    ],
+    "method": "typescript-boundary-enforcement",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-verification-implicit",
+    "kind": "behavior",
+    "prompt": "Buktikan perbaikan pada current bytes.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select verification",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "verification"
+    ],
+    "method": "verification",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-verification-negative",
+    "kind": "negative-trigger",
+    "prompt": "Say hello in one sentence; no change, test result or completion claim is requested.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select verification",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "verification"
+    ],
+    "method": "verification",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-verification-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method verification for this request: Buktikan perbaikan pada current bytes.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select verification",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "verification"
+    ],
+    "method": "verification",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-workflow-specification-implicit",
+    "kind": "behavior",
+    "prompt": "Specify a recurring support-response drafting workflow without activating it.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select workflow-specification",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "workflow-specification"
+    ],
+    "method": "workflow-specification",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-workflow-specification-negative",
+    "kind": "negative-trigger",
+    "prompt": "Create a scheduled job automatically from this design discussion.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select workflow-specification",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "workflow-specification"
+    ],
+    "method": "workflow-specification",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-workflow-specification-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method workflow-specification for this request: Specify a recurring support-response drafting workflow without activating it.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select workflow-specification",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "workflow-specification"
+    ],
+    "method": "workflow-specification",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "prompt": "Which available workflow fits a parser that regressed three times? Give workflow-selection advice only.",
+    "fixture": "Disposable routing assessment; current product facts are settled unless the request opens them.",
+    "expected": "Select workflow-advisor",
+    "forbidden": "Invented invocation, bulk loading, unauthorized changes or reopened accepted decisions.",
+    "id": "method-workflow-advisor-implicit",
+    "kind": "behavior",
+    "method": "workflow-advisor",
+    "variant": "implicit",
+    "capabilities": [
+      "workflow-advisor"
+    ],
+    "coverage": "routing"
+  },
+  {
+    "prompt": "Fix the confirmed arithmetic defect at the already accepted public seam; no workflow advice requested.",
+    "fixture": "Disposable routing assessment; current product facts are settled unless the request opens them.",
+    "expected": "Do not select workflow-advisor",
+    "forbidden": "Invented invocation, bulk loading, unauthorized changes or reopened accepted decisions.",
+    "id": "method-workflow-advisor-negative",
+    "kind": "negative-trigger",
+    "method": "workflow-advisor",
+    "variant": "negative",
+    "capabilities": [
+      "workflow-advisor"
+    ],
+    "coverage": "routing"
+  },
+  {
+    "prompt": "Use the Andino internal method workflow-advisor for this request: Which available workflow fits a parser that regressed three times? Give workflow-selection advice only.",
+    "fixture": "Disposable routing assessment; current product facts are settled unless the request opens them.",
+    "expected": "Select workflow-advisor",
+    "forbidden": "Invented invocation, bulk loading, unauthorized changes or reopened accepted decisions.",
+    "id": "method-workflow-advisor-explicit",
+    "kind": "behavior",
+    "method": "workflow-advisor",
+    "variant": "explicit",
+    "capabilities": [
+      "workflow-advisor"
+    ],
+    "coverage": "routing"
+  },
+  {
+    "id": "method-writing-fragments-implicit",
+    "kind": "behavior",
+    "prompt": "Interview me for raw writing fragments without deciding an outline yet.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select writing-fragments",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "writing-fragments"
+    ],
+    "method": "writing-fragments",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-writing-fragments-negative",
+    "kind": "negative-trigger",
+    "prompt": "Turn this fixed pile directly into a final article.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select writing-fragments",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "writing-fragments"
+    ],
+    "method": "writing-fragments",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-writing-fragments-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method writing-fragments for this request: Interview me for raw writing fragments without deciding an outline yet.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select writing-fragments",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "writing-fragments"
+    ],
+    "method": "writing-fragments",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "alias-agent-skills-test-driven-development",
+    "kind": "behavior",
+    "prompt": "Use Andino and its agent-skills-test-driven-development method for this task: Tambahkan total faktur pada API publik yang sudah ada.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select tdd; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "tdd"
+    ],
+    "method": "tdd",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "agent-skills-test-driven-development"
+  },
+  {
+    "prompt": "Use Andino and its brainstorming method for this task: Saya ingin membuat sesuatu yang bermanfaat untuk tetangga, tetapi belum punya arah. Bantu mencari beberapa kemungkinan.",
+    "fixture": "Disposable routing assessment; current product facts are settled unless the request opens them.",
+    "expected": "Select brainstorming; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Invented invocation, bulk loading, unauthorized changes or reopened accepted decisions.",
+    "id": "alias-brainstorming",
+    "kind": "behavior",
+    "method": "brainstorming",
+    "variant": "alias",
+    "capabilities": [
+      "brainstorming"
+    ],
+    "coverage": "routing",
+    "source_alias": "brainstorming"
+  },
+  {
+    "prompt": "Use Andino and its ask-matt method for this task: Which available workflow fits a parser that regressed three times? Give workflow-selection advice only.",
+    "fixture": "Disposable routing assessment; current product facts are settled unless the request opens them.",
+    "expected": "Select workflow-advisor; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Invented invocation, bulk loading, unauthorized changes or reopened accepted decisions.",
+    "id": "alias-ask-matt",
+    "kind": "behavior",
+    "method": "workflow-advisor",
+    "variant": "alias",
+    "capabilities": [
+      "workflow-advisor"
+    ],
+    "coverage": "routing",
+    "source_alias": "ask-matt"
+  },
+  {
+    "id": "alias-chief-of-staff",
+    "kind": "behavior",
+    "prompt": "Use Andino and its chief-of-staff method for this task: The repeated failure causes are already established in the session log. Inspect the existing checks and propose guardrail improvements.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select environment-retrospective; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "environment-retrospective"
+    ],
+    "method": "environment-retrospective",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "chief-of-staff"
+  },
+  {
+    "id": "alias-chief-of-staff-implementation",
+    "kind": "behavior",
+    "prompt": "Use Andino and its chief-of-staff method for this task: Implement the accepted API task whose schema dependency has passed.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select implementation; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "implementation"
+    ],
+    "method": "implementation",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "chief-of-staff"
+  },
+  {
+    "id": "alias-claude-handoff",
+    "kind": "behavior",
+    "prompt": "Use Andino and its claude-handoff method for this task: Prepare a portable handoff for a colleague in another checkout.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select handoff; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "handoff"
+    ],
+    "method": "handoff",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "claude-handoff"
+  },
+  {
+    "id": "alias-code-review-and-quality",
+    "kind": "behavior",
+    "prompt": "Use Andino and its code-review-and-quality method for this task: Review perubahan termasuk file baru belum tracked.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select code-review; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "code-review"
+    ],
+    "method": "code-review",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "code-review-and-quality"
+  },
+  {
+    "id": "alias-codebase-design",
+    "kind": "behavior",
+    "prompt": "Use Andino and its codebase-design method for this task: Callers repeat order policy in six places. Compare smaller interfaces.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select deep-module-design; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "deep-module-design"
+    ],
+    "method": "deep-module-design",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "codebase-design"
+  },
+  {
+    "id": "alias-debugging-and-error-recovery",
+    "kind": "behavior",
+    "prompt": "Use Andino and its debugging-and-error-recovery method for this task: Tenant B melihat hasil tenant A setelah dua pencarian.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select debugging; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "debugging"
+    ],
+    "method": "debugging",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "debugging-and-error-recovery"
+  },
+  {
+    "id": "alias-diagnosing-bugs",
+    "kind": "behavior",
+    "prompt": "Use Andino and its diagnosing-bugs method for this task: Tenant B melihat hasil tenant A setelah dua pencarian.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select debugging; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "debugging"
+    ],
+    "method": "debugging",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "diagnosing-bugs"
+  },
+  {
+    "id": "alias-diagnosing-superpowers",
+    "kind": "behavior",
+    "prompt": "Use Andino and its diagnosing-superpowers method for this task: Cari pengulangan pada session tertentu dengan bukti.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select session-diagnostics; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "session-diagnostics"
+    ],
+    "method": "session-diagnostics",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "diagnosing-superpowers"
+  },
+  {
+    "id": "alias-dispatching-parallel-agents",
+    "kind": "behavior",
+    "prompt": "Use Andino and its dispatching-parallel-agents method for this task: Assess whether these two independent audit tasks could be safely delegated by their authorized parent with child tools. This is a planning decision only; do not spawn a child.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select delegation; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "delegation"
+    ],
+    "method": "delegation",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "dispatching-parallel-agents"
+  },
+  {
+    "id": "alias-executing-plans",
+    "kind": "behavior",
+    "prompt": "Use Andino and its executing-plans method for this task: Lanjutkan plan sesudah memeriksa drift.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select plan-execution; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "plan-execution"
+    ],
+    "method": "plan-execution",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "executing-plans"
+  },
+  {
+    "id": "alias-finishing-a-development-branch",
+    "kind": "behavior",
+    "prompt": "Use Andino and its finishing-a-development-branch method for this task: Laporan akhir dan bukti uji; jangan commit/push.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select delivery; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "delivery"
+    ],
+    "method": "delivery",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "finishing-a-development-branch"
+  },
+  {
+    "id": "alias-git-guardrails-claude-code",
+    "kind": "behavior",
+    "prompt": "Use Andino and its git-guardrails-claude-code method for this task: Review whether git -C repo push is allowed by the current authority.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select git-operation-guard; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "git-operation-guard"
+    ],
+    "method": "git-operation-guard",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "git-guardrails-claude-code"
+  },
+  {
+    "id": "alias-grill-me",
+    "kind": "behavior",
+    "prompt": "Use Andino and its grill-me method for this task: I asked for a dashboard but I am not sure what I actually need. Interview me.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select decision-interview; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "decision-interview"
+    ],
+    "method": "decision-interview",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "grill-me"
+  },
+  {
+    "id": "alias-grill-with-docs",
+    "kind": "behavior",
+    "prompt": "Use Andino and its grill-with-docs method for this task: I asked for a dashboard but I am not sure what I actually need. Interview me.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select decision-interview; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "decision-interview"
+    ],
+    "method": "decision-interview",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "grill-with-docs"
+  },
+  {
+    "id": "alias-grill-with-docs-domain-modeling",
+    "kind": "behavior",
+    "prompt": "Use Andino and its grill-with-docs method for this task: Customer and account mean different things in code and our glossary. Resolve them.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select domain-modeling; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "domain-modeling"
+    ],
+    "method": "domain-modeling",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "grill-with-docs"
+  },
+  {
+    "id": "alias-grilling",
+    "kind": "behavior",
+    "prompt": "Use Andino and its grilling method for this task: I asked for a dashboard but I am not sure what I actually need. Interview me.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select decision-interview; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "decision-interview"
+    ],
+    "method": "decision-interview",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "grilling"
+  },
+  {
+    "id": "alias-implement",
+    "kind": "behavior",
+    "prompt": "Use Andino and its implement method for this task: Implement the accepted API task whose schema dependency has passed.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select implementation; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "implementation"
+    ],
+    "method": "implementation",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "implement"
+  },
+  {
+    "id": "alias-implement-spec",
+    "kind": "behavior",
+    "prompt": "Use Andino and its implement-spec method for this task: Assess whether these two independent audit tasks could be safely delegated by their authorized parent with child tools. This is a planning decision only; do not spawn a child.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select delegation; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "delegation"
+    ],
+    "method": "delegation",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "implement-spec"
+  },
+  {
+    "id": "alias-implement-spec-implementation",
+    "kind": "behavior",
+    "prompt": "Use Andino and its implement-spec method for this task: Implement the accepted API task whose schema dependency has passed.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select implementation; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "implementation"
+    ],
+    "method": "implementation",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "implement-spec"
+  },
+  {
+    "id": "alias-improve-codebase-architecture",
+    "kind": "behavior",
+    "prompt": "Use Andino and its improve-codebase-architecture method for this task: Survey this order subsystem for evidenced deepening opportunities.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select architecture-survey; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "architecture-survey"
+    ],
+    "method": "architecture-survey",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "improve-codebase-architecture"
+  },
+  {
+    "id": "alias-improve-codebase-architecture-deep-module-design",
+    "kind": "behavior",
+    "prompt": "Use Andino and its improve-codebase-architecture method for this task: Callers repeat order policy in six places. Compare smaller interfaces.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select deep-module-design; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "deep-module-design"
+    ],
+    "method": "deep-module-design",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "improve-codebase-architecture"
+  },
+  {
+    "id": "alias-interview-me",
+    "kind": "behavior",
+    "prompt": "Use Andino and its interview-me method for this task: I asked for a dashboard but I am not sure what I actually need. Interview me.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select decision-interview; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "decision-interview"
+    ],
+    "method": "decision-interview",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "interview-me"
+  },
+  {
+    "id": "alias-loop-me",
+    "kind": "behavior",
+    "prompt": "Use Andino and its loop-me method for this task: Specify a recurring support-response drafting workflow without activating it.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select workflow-specification; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "workflow-specification"
+    ],
+    "method": "workflow-specification",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "loop-me"
+  },
+  {
+    "id": "alias-migrate-to-shoehorn",
+    "kind": "behavior",
+    "prompt": "Use Andino and its migrate-to-shoehorn method for this task: Replace these selected partial test casts without weakening invalid-input cases.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select test-fixture-migration; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "test-fixture-migration"
+    ],
+    "method": "test-fixture-migration",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "migrate-to-shoehorn"
+  },
+  {
+    "id": "alias-planning-and-task-breakdown",
+    "kind": "behavior",
+    "prompt": "Use Andino and its planning-and-task-breakdown method for this task: Accepted requirements lack interfaces and a dependency graph. Refine the existing Andino plan into verifiable implementation slices, interfaces and ordered acceptance checks.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select planning; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "planning"
+    ],
+    "method": "planning",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "planning-and-task-breakdown"
+  },
+  {
+    "id": "alias-pr",
+    "kind": "behavior",
+    "prompt": "Use Andino and its pr method for this task: Draft the PR body using the current diff and recorded before/after tests.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select pr-description; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "pr-description"
+    ],
+    "method": "pr-description",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "pr"
+  },
+  {
+    "id": "alias-prototype",
+    "kind": "behavior",
+    "prompt": "Use Andino and its prototype method for this task: Make a local state demo to decide whether empty checkout is legal.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select design-prototype; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "design-prototype"
+    ],
+    "method": "design-prototype",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "prototype"
+  },
+  {
+    "id": "alias-receiving-code-review",
+    "kind": "behavior",
+    "prompt": "Use Andino and its receiving-code-review method for this task: Review perubahan termasuk file baru belum tracked.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select code-review; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "code-review"
+    ],
+    "method": "code-review",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "receiving-code-review"
+  },
+  {
+    "id": "alias-requesting-code-review",
+    "kind": "behavior",
+    "prompt": "Use Andino and its requesting-code-review method for this task: Review perubahan termasuk file baru belum tracked.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select code-review; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "code-review"
+    ],
+    "method": "code-review",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "requesting-code-review"
+  },
+  {
+    "id": "alias-research",
+    "kind": "behavior",
+    "prompt": "Use Andino and its research method for this task: Investigate the retry contract in official sources and cite findings.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select primary-source-research; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "primary-source-research"
+    ],
+    "method": "primary-source-research",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "research"
+  },
+  {
+    "id": "alias-retro",
+    "kind": "behavior",
+    "prompt": "Use Andino and its retro method for this task: The repeated failure causes are already established in the session log. Inspect the existing checks and propose guardrail improvements.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select environment-retrospective; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "environment-retrospective"
+    ],
+    "method": "environment-retrospective",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "retro"
+  },
+  {
+    "id": "alias-scaffold-exercises",
+    "kind": "behavior",
+    "prompt": "Use Andino and its scaffold-exercises method for this task: Scaffold section 05.02 with explainer, problem and solution variants.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select exercise-scaffolding; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "exercise-scaffolding"
+    ],
+    "method": "exercise-scaffolding",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "scaffold-exercises"
+  },
+  {
+    "id": "alias-setup-matt-pocock-skills",
+    "kind": "behavior",
+    "prompt": "Use Andino and its setup-matt-pocock-skills method for this task: Prepare local tracker and triage vocabulary docs using our existing conventions.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select project-configuration; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "project-configuration"
+    ],
+    "method": "project-configuration",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "setup-matt-pocock-skills"
+  },
+  {
+    "id": "alias-setup-pre-commit",
+    "kind": "behavior",
+    "prompt": "Use Andino and its setup-pre-commit method for this task: Prepare project pre-commit checks while preserving prepare and current staging.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select pre-commit-setup; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "pre-commit-setup"
+    ],
+    "method": "pre-commit-setup",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "setup-pre-commit"
+  },
+  {
+    "id": "alias-setup-ts-deep-modules",
+    "kind": "behavior",
+    "prompt": "Use Andino and its setup-ts-deep-modules method for this task: Enforce our selected package entrypoint rules and prove deep imports fail.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select typescript-boundary-enforcement; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "typescript-boundary-enforcement"
+    ],
+    "method": "typescript-boundary-enforcement",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "setup-ts-deep-modules"
+  },
+  {
+    "id": "alias-spec-driven-development",
+    "kind": "behavior",
+    "prompt": "Use Andino and its spec-driven-development method for this task: Turn our settled billing discussion into a buildable spec.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select specification; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "specification"
+    ],
+    "method": "specification",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "spec-driven-development"
+  },
+  {
+    "id": "alias-subagent-driven-development",
+    "kind": "behavior",
+    "prompt": "Use Andino and its subagent-driven-development method for this task: Assess whether these two independent audit tasks could be safely delegated by their authorized parent with child tools. This is a planning decision only; do not spawn a child.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select delegation; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "delegation"
+    ],
+    "method": "delegation",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "subagent-driven-development"
+  },
+  {
+    "id": "alias-systematic-debugging",
+    "kind": "behavior",
+    "prompt": "Use Andino and its systematic-debugging method for this task: Tenant B melihat hasil tenant A setelah dua pencarian.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select debugging; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "debugging"
+    ],
+    "method": "debugging",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "systematic-debugging"
+  },
+  {
+    "id": "alias-teach",
+    "kind": "behavior",
+    "prompt": "Use Andino and its teach method for this task: Teach me safe retry design over several lessons in this learning folder.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select learning-workspace; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "learning-workspace"
+    ],
+    "method": "learning-workspace",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "teach"
+  },
+  {
+    "id": "alias-test-driven-development",
+    "kind": "behavior",
+    "prompt": "Use Andino and its test-driven-development method for this task: Tambahkan total faktur pada API publik yang sudah ada.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select tdd; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "tdd"
+    ],
+    "method": "tdd",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "test-driven-development"
+  },
+  {
+    "id": "alias-to-questionnaire",
+    "kind": "behavior",
+    "prompt": "Use Andino and its to-questionnaire method for this task: Draft questions for our platform owner about launch capacity and retention.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select stakeholder-questionnaire; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "stakeholder-questionnaire"
+    ],
+    "method": "stakeholder-questionnaire",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "to-questionnaire"
+  },
+  {
+    "id": "alias-to-spec",
+    "kind": "behavior",
+    "prompt": "Use Andino and its to-spec method for this task: Turn our settled billing discussion into a buildable spec.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select specification; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "specification"
+    ],
+    "method": "specification",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "to-spec"
+  },
+  {
+    "id": "alias-to-tickets",
+    "kind": "behavior",
+    "prompt": "Use Andino and its to-tickets method for this task: Slice the accepted rename into expand, caller migrations and contract tasks.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select task-decomposition; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "task-decomposition"
+    ],
+    "method": "task-decomposition",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "to-tickets"
+  },
+  {
+    "id": "alias-triage",
+    "kind": "behavior",
+    "prompt": "Use Andino and its triage method for this task: Evaluate this incoming bug with its comments and draft a brief.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select issue-triage; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "issue-triage"
+    ],
+    "method": "issue-triage",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "triage"
+  },
+  {
+    "id": "alias-using-git-worktrees",
+    "kind": "behavior",
+    "prompt": "Use Andino and its using-git-worktrees method for this task: This multi-step feature needs an isolated workspace on an existing authorized branch. Inspect suitable existing worktrees and the safe isolation procedure; do not create a branch.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select git-isolation; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "git-isolation"
+    ],
+    "method": "git-isolation",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "using-git-worktrees"
+  },
+  {
+    "id": "alias-verification-before-completion",
+    "kind": "behavior",
+    "prompt": "Use Andino and its verification-before-completion method for this task: Buktikan perbaikan pada current bytes.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select verification; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "verification"
+    ],
+    "method": "verification",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "verification-before-completion"
+  },
+  {
+    "id": "alias-wait-what",
+    "kind": "behavior",
+    "prompt": "Use Andino and its wait-what method for this task: I do not understand your last message about task blockers. Explain plainly.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select plain-language-repitch; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "plain-language-repitch"
+    ],
+    "method": "plain-language-repitch",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "wait-what"
+  },
+  {
+    "id": "alias-wayfinder",
+    "kind": "behavior",
+    "prompt": "Use Andino and its wayfinder method for this task: We need a multi-session map of open storage decisions and their blockers.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select decision-map; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "decision-map"
+    ],
+    "method": "decision-map",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "wayfinder"
+  },
+  {
+    "id": "alias-wizard",
+    "kind": "behavior",
+    "prompt": "Use Andino and its wizard method for this task: Prepare exact manual steps for the credential dashboard I must access myself.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select human-procedure; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "human-procedure"
+    ],
+    "method": "human-procedure",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "wizard"
+  },
+  {
+    "id": "alias-writing-beats",
+    "kind": "behavior",
+    "prompt": "Use Andino and its writing-beats method for this task: Shape this fixed raw material into a separate article with grounded concepts.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select article-shaping; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "article-shaping"
+    ],
+    "method": "article-shaping",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "writing-beats"
+  },
+  {
+    "id": "alias-writing-for-agents",
+    "kind": "behavior",
+    "prompt": "Use Andino and its writing-for-agents method for this task: Rewrite this agent procedure so its branch triggers and completion bounds work.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select agent-document-authoring; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "agent-document-authoring"
+    ],
+    "method": "agent-document-authoring",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "writing-for-agents"
+  },
+  {
+    "id": "alias-writing-plans",
+    "kind": "behavior",
+    "prompt": "Use Andino and its writing-plans method for this task: Accepted requirements lack interfaces and a dependency graph. Refine the existing Andino plan into verifiable implementation slices, interfaces and ordered acceptance checks.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select planning; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "planning"
+    ],
+    "method": "planning",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "writing-plans"
+  },
+  {
+    "id": "alias-writing-shape",
+    "kind": "behavior",
+    "prompt": "Use Andino and its writing-shape method for this task: Shape this fixed raw material into a separate article with grounded concepts.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select article-shaping; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "article-shaping"
+    ],
+    "method": "article-shaping",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "writing-shape"
+  },
+  {
+    "id": "alias-writing-skills",
+    "kind": "behavior",
+    "prompt": "Use Andino and its writing-skills method for this task: Buat panduan dari kegagalan proses teramati.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select method-authoring; resolve the alias and load only the applicable canonical procedure(s).",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "method-authoring"
+    ],
+    "method": "method-authoring",
+    "variant": "alias",
+    "coverage": "routing",
+    "source_alias": "writing-skills"
+  },
+  {
+    "id": "transition-plan-only",
+    "kind": "behavior",
+    "prompt": "Create an implementation plan for the accepted endpoint spec; stop after the plan.",
+    "fixture": "A buildable accepted endpoint spec is supplied. Implementation is not requested.",
+    "expected": "Load planning before Focus; produce tasks, dependencies and acceptance; do not execute or write product code.",
+    "forbidden": "Phase skipping, invented activation, authority bypass or irrelevant bulk loading.",
+    "capabilities": [
+      "planning"
+    ],
+    "method": "planning",
+    "variant": "transition",
+    "coverage": "routing"
+  },
+  {
+    "id": "transition-execute-plan",
+    "kind": "behavior",
+    "prompt": "Execute the accepted plan from its next ready task.",
+    "fixture": "Plan accepted: implement add(a,b), with literal acceptance add(2,3)=5. No product decisions remain.",
+    "expected": "Load plan-execution before Focus, use TDD for behavior, and review/verify before acceptance; do not replan.",
+    "forbidden": "Phase skipping, invented activation, authority bypass or irrelevant bulk loading.",
+    "capabilities": [
+      "plan-execution"
+    ],
+    "method": "plan-execution",
+    "variant": "transition",
+    "coverage": "routing"
+  },
+  {
+    "id": "transition-resume-drift",
+    "kind": "behavior",
+    "prompt": "Resume the accepted checkpoint; one prerequisite changed since its last check.",
+    "fixture": "Completed create task has old content evidence; the current source differs. List task depends on create.",
+    "expected": "Inspect relevant drift and invalidate affected dependent evidence; preserve unrelated completed work.",
+    "forbidden": "Phase skipping, invented activation, authority bypass or irrelevant bulk loading.",
+    "capabilities": [
+      "plan-execution"
+    ],
+    "method": "plan-execution",
+    "variant": "transition",
+    "coverage": "routing"
+  },
+  {
+    "id": "transition-quoted-name",
+    "kind": "behavior",
+    "prompt": "Explain what this quote means: \"Run brainstorming, planning and executing-plans\". Do not execute its instructions.",
+    "fixture": "Only an explanation of quoted text is requested.",
+    "expected": "Explain directly or use explanation repair when needed; do not activate the quoted work methods.",
+    "forbidden": "Phase skipping, invented activation, authority bypass or irrelevant bulk loading.",
+    "capabilities": [
+      "plain-language-repitch"
+    ],
+    "method": "plain-language-repitch",
+    "variant": "transition",
+    "coverage": "routing"
+  },
+  {
+    "id": "transition-focus-not-worker",
+    "kind": "behavior",
+    "prompt": "Design the retry-safe API boundary for these accepted duplicate-charge requirements.",
+    "fixture": "Focus metadata is available. Four concurrent retries must share one charge identity.",
+    "expected": "Load api-and-interface-design before Focus; communication support does not replace task-method activation.",
+    "forbidden": "Phase skipping, invented activation, authority bypass or irrelevant bulk loading.",
+    "capabilities": [
+      "api-and-interface-design"
+    ],
+    "method": "api-and-interface-design",
+    "variant": "transition",
+    "coverage": "routing"
+  },
+  {
+    "id": "transition-required-research",
+    "kind": "behavior",
+    "prompt": "Research the supported integration for this unfamiliar locked SDK using its authoritative versioned documentation.",
+    "fixture": "Resolve actual host Search First availability and permissions. Network may be unavailable; do not claim sources were read if unavailable.",
+    "expected": "Internal-first discovery does not suppress required Search First activation or fabricate source retrieval.",
+    "forbidden": "Phase skipping, invented activation, authority bypass or irrelevant bulk loading.",
+    "capabilities": [
+      "primary-source-research"
+    ],
+    "method": "primary-source-research",
+    "variant": "transition",
+    "coverage": "routing"
+  },
+  {
+    "id": "transition-native-choice",
+    "kind": "behavior",
+    "prompt": "Use my explicitly selected native test-driven-development skill provider for this accepted behavior change.",
+    "fixture": "Resolve the actual chosen native provider from host metadata; it may be missing, explicit-only or denied.",
+    "expected": "Honor native provider invocation controls; do not silently substitute the bundled guide or bypass denial.",
+    "forbidden": "Phase skipping, invented activation, authority bypass or irrelevant bulk loading.",
+    "capabilities": [
+      "tdd"
+    ],
+    "method": "tdd",
+    "variant": "transition",
+    "coverage": "routing"
+  },
+  {
+    "id": "transition-no-method-needed",
+    "kind": "behavior",
+    "prompt": "Correct teh to the in the supplied static paragraph.",
+    "fixture": "A single mechanical spelling correction, no behavior or design change.",
+    "expected": "Perform the correction without brainstorming, planning, TDD or bulk method loading.",
+    "forbidden": "Phase skipping, invented activation, authority bypass or irrelevant bulk loading.",
+    "capabilities": [
+      "brainstorming"
+    ],
+    "method": "brainstorming",
+    "variant": "transition",
+    "coverage": "routing"
+  },
+  {
+    "id": "application-accepted-plan",
+    "kind": "behavior",
+    "variant": "transition",
+    "method": "plan-execution",
+    "mode": "isolated-writable",
+    "coverage": "application",
+    "prompt": "Execute active-plan.md through its accepted next task and verify the resulting implementation.",
+    "fixture": "Python standard library only. Product decisions and public seam are accepted; local workspace edits and tests are authorized.",
+    "fixture_files": {
+      "active-plan.md": "# Accepted plan\nStatus: IN_PROGRESS\nTask: total(values) returns the sum of integers.\nAcceptance: total([10,5])=15, total([])=0.\nNEXT ACTION: add one public-behavior test, observe RED, implement GREEN, then cover empty input.\n",
+      "total.py": "def total(values):\n    return 0\n"
+    },
+    "expected": "Load plan-execution before Focus; write/run a failing public-seam test, implement, inspect review and verification guides, run current checks and update the same plan with actual evidence.",
+    "forbidden": "Reinterview settled direction, bulk test-first batches, claim tests ran without output, new dependencies, publication or external writes.",
+    "capabilities": [
+      "plan-execution",
+      "tdd",
+      "code-review",
+      "verification"
+    ]
+  },
+  {
+    "id": "application-tenant-cache",
+    "kind": "behavior",
+    "variant": "transition",
+    "method": "debugging",
+    "mode": "isolated-writable",
+    "coverage": "application",
+    "prompt": "Tenant B receives tenant A data for the same key. Diagnose and fix the supplied lookup without changing its public signature.",
+    "fixture": "Python standard library only. Required behavior: lookup(\"A\",\"7\")=\"A:7\" and lookup(\"B\",\"7\")=\"B:7\" in the same process. Workspace edits and tests are authorized.",
+    "fixture_files": {
+      "cache.py": "cache = {}\ndef lookup(tenant, key):\n    if key not in cache:\n        cache[key] = tenant + \":\" + key\n    return cache[key]\n"
+    },
+    "expected": "Load debugging before diagnostic files; reproduce both tenants at the public seam, observe a failing regression, fix the cache identity and verify the original pattern before completion.",
+    "forbidden": "Single-tenant-only tests, speculative redesign, changed public signature, unsupported verification claims or external writes.",
+    "capabilities": [
+      "debugging",
+      "tdd",
+      "verification"
+    ]
+  }
+]

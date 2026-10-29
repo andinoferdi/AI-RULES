@@ -1,0 +1,348 @@
+{
+  "result": "PASS",
+  "candidate_runtime_sha256": "af63474a8966cc8186ddf50882989c57c792b0a1bccb5e07b2eadc3b6f2bcfd9",
+  "records": [
+    {
+      "host": "codex",
+      "profile": "minimal",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "codex",
+      "profile": "engineering",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "codex",
+      "profile": "research-skripsi",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "codex",
+      "profile": "threejs",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "codex",
+      "profile": "everything",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "codex",
+      "profile": "custom",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "codex",
+      "scenario": "managed-user-edit",
+      "blocked": true,
+      "preserved": true
+    },
+    {
+      "host": "codex",
+      "scenario": "unmanaged-conflict",
+      "blocked": true,
+      "preserved": true
+    },
+    {
+      "host": "claude-code",
+      "profile": "minimal",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "claude-code",
+      "profile": "engineering",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "claude-code",
+      "profile": "research-skripsi",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "claude-code",
+      "profile": "threejs",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "claude-code",
+      "profile": "everything",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "claude-code",
+      "profile": "custom",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "claude-code",
+      "scenario": "managed-user-edit",
+      "blocked": true,
+      "preserved": true
+    },
+    {
+      "host": "claude-code",
+      "scenario": "unmanaged-conflict",
+      "blocked": true,
+      "preserved": true
+    },
+    {
+      "host": "opencode",
+      "profile": "minimal",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "opencode",
+      "profile": "engineering",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "opencode",
+      "profile": "research-skripsi",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "opencode",
+      "profile": "threejs",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "opencode",
+      "profile": "everything",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "opencode",
+      "profile": "custom",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "opencode",
+      "scenario": "managed-user-edit",
+      "blocked": true,
+      "preserved": true
+    },
+    {
+      "host": "opencode",
+      "scenario": "unmanaged-conflict",
+      "blocked": true,
+      "preserved": true
+    },
+    {
+      "host": "antigravity-cli",
+      "profile": "minimal",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "antigravity-cli",
+      "profile": "engineering",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "antigravity-cli",
+      "profile": "research-skripsi",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "antigravity-cli",
+      "profile": "threejs",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "antigravity-cli",
+      "profile": "everything",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "antigravity-cli",
+      "profile": "custom",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "antigravity-cli",
+      "scenario": "managed-user-edit",
+      "blocked": true,
+      "preserved": true
+    },
+    {
+      "host": "antigravity-cli",
+      "scenario": "unmanaged-conflict",
+      "blocked": true,
+      "preserved": true
+    },
+    {
+      "host": "antigravity-ide",
+      "profile": "minimal",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "antigravity-ide",
+      "profile": "engineering",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "antigravity-ide",
+      "profile": "research-skripsi",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "antigravity-ide",
+      "profile": "threejs",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "antigravity-ide",
+      "profile": "everything",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "antigravity-ide",
+      "profile": "custom",
+      "fresh": "PASS",
+      "repeat": "NO_OP",
+      "files": 130,
+      "native_identities": 1,
+      "verification": "STRUCTURAL VERIFIED; native live discovery NOT VERIFIED"
+    },
+    {
+      "host": "antigravity-ide",
+      "scenario": "managed-user-edit",
+      "blocked": true,
+      "preserved": true
+    },
+    {
+      "host": "antigravity-ide",
+      "scenario": "unmanaged-conflict",
+      "blocked": true,
+      "preserved": true
+    },
+    {
+      "host": "codex",
+      "scenario": "clean-update",
+      "updated": true,
+      "original_backup_verified": true,
+      "repeat": "NO_OP"
+    }
+  ],
+  "profiles": 5,
+  "host_surfaces": 5,
+  "upstream_sources_available_to_installer": false,
+  "network_source_used": false,
+  "limitation": "Bundled working-tree bytes and actual sibling exports; synthetic fixture version transitions are not publication pins. Host paths and invocation-file checks do not prove native discovery or model use."
+}

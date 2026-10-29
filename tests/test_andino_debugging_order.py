@@ -21,6 +21,9 @@ REF = os.environ.get('ANDINO_RUNTIME_REF', 'andino-workflow')
 
 
 def show(ref, path):
+    directory = os.environ.get('ANDINO_RUNTIME_DIR')
+    if directory and ref == REF:
+        return (Path(directory) / path).read_text(encoding='utf-8')
     result = subprocess.run(['git', 'show', f'{ref}:{path}'], cwd=ROOT, capture_output=True, text=True, encoding='utf-8')
     if result.returncode:
         raise unittest.SkipTest(f'{ref}:{path} unavailable')

@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-29",
+  "scope": "Implementation and offline verification; user performs AI-agent testing",
+  "runtime_base": "17ce784ad0aff4b6e299ff0f3ae7b4baa012a3a9",
+  "quality_base": "1a3b645336f5aa9edc065d9e5be863af5cda8584",
+  "runtime_hash": "af63474a8966cc8186ddf50882989c57c792b0a1bccb5e07b2eadc3b6f2bcfd9",
+  "full_offline_suite": {
+    "run": 336,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "scope": "Before final review fixes; all affected Andino tests rerun after fixes"
+  },
+  "final_andino_suite": {
+    "run": 108,
+    "failures": 0,
+    "errors": 0,
+    "scope": "Candidate working bytes after review fixes and case regeneration"
+  },
+  "skill_package_validation": {
+    "packages": 7,
+    "eval_schemas": 7,
+    "result": "PASS"
+  },
+  "capability_validation": {
+    "cases": 74,
+    "contracts": 60,
+    "result": "PASS"
+  },
+  "offline_installation": {
+    "result": "PASS",
+    "scenarios": 41,
+    "host_surfaces": 5,
+    "network_source_used": false
+  },
+  "manual_cases": 244,
+  "canonical_methods": 59,
+  "source_aliases": 53,
+  "alias_target_pairs": 57,
+  "export_matches_source": true,
+  "candidate_model_behavior": "NOT_VERIFIED",
+  "ai_test_actors_executed": 0,
+  "review_status": "No remaining actionable findings in reviewed areas after fixes",
+  "quality_sources_sha256": {
+    "scripts\\check_andino_reliability.py": "e5c718d38dd4873e83d304e1c5d4be7713a477b5820a28ff1cb7dbaef1fb728a",
+    "tests\\test_andino_reliability.py": "5cabcd6626b89a9047c7157af396c65da433f5f91f30a13bb98dfd9dbd9db879",
+    "evals\\andino-method-routing.json": "32ded62ed7e7786af7b5af87d7ab64806656811854cd2bf3b22e965cb5f7b150"
+  },
+  "publication": {
+    "runtime_commit": "65df26d182b3118e3f18ee46522eac83ea1036fb",
+    "runtime_remote_verified": true,
+    "release_sequence": 19,
+    "sibling_pins_unchanged": true,
+    "remote_default_latest_setup": "fresh/repeat and official upgrade/backup/repeat PASS",
+    "actual_installed_entrypoint": "fresh/repeat and official upgrade/backup/repeat PASS with no source/home/PYTHONPATH override",
+    "cli_repair": "Local non-editable wheel replaces broken editable package, no dependency/network install",
+    "global_skill_installations_modified": false,
+    "main_remote_verified": false,
+    "main_status": "Verified and ready for main commit/push",
+    "final_suite": {
+      "run": 339,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1,
+      "seconds": 191.798,
+      "scope": "Full current suite after release19 pin and all review fixes"
+    }
+  }
+}
