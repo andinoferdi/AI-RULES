@@ -1,81 +1,85 @@
 # Search First
 
-Finds existing solutions before you write custom code. It searches local code and online sources, judges how well each option fits, and recommends ADOPT, EXTEND, COMPOSE, or BUILD for implementation decisions. Pure research requests get a sourced synthesis instead.
+> **Research existing solutions before writing custom code.** Prevents reinventing the wheel by systematically evaluating libraries, framework utilities, and official APIs: `ADOPT`, `EXTEND`, `COMPOSE`, or `BUILD`.
 
-## When to use
+AI coding agents habitually jump straight to writing hundreds of lines of custom code for utilities that already exist in standard libraries or battle-tested packages. **Search First** forces an evidence-based research gate before non-trivial implementation decisions, ensuring every approach is grounded in authoritative documentation and current API contracts.
 
-- You are choosing a library, SDK, or integration.
-- You want to check whether a utility already exists before building it.
-- You work with a version-sensitive API, or you need an alternative after an approach failed.
-- You ask for technical research.
+---
 
-## Limits
+## The 4 Implementation Decisions
 
-Trivial edits, typo fixes, and settled local answers need no research. Unknown bugs belong to debugging. Without search or page-reading tools, unresolved online claims are marked UNKNOWN.
+Before writing custom functionality, Search First categorizes the path forward:
 
-## Requires
+| Decision | Action | When to Choose |
+|---|---|---|
+| **ADOPT** | Use as-is | An official library, built-in standard method, or established package already solves the problem. |
+| **EXTEND** | Build on top | An existing tool handles 80% of the need; customize cleanly via inheritance, plugin, or middleware. |
+| **COMPOSE** | Pipe together | Combine two or more modular utilities rather than authoring a monolith from scratch. |
+| **BUILD** | Write custom | No safe, maintained, or lightweight solution exists; write tailored, test-guarded code. |
 
-None. No search service, paid API, or MCP server is required.
+---
 
-## Install
+## When to Use
 
-Requirements: Python 3.11+, Git, and an installed agent for CLI setup.
+| ✅ Run Search First For | ❌ Do NOT Run Search First For |
+|---|---|
+| Selecting an unfamiliar library, SDK, or integration | Trivial local edits, syntax corrections, or typos |
+| Checking whether a utility already exists in the repo/ecosystem | Settled local questions with clear in-project answers |
+| Version-sensitive APIs or post-upgrade deprecations | Active debugging of known bugs (use `debugging`) |
+| Finding proven alternatives when an initial API path fails | Speculative research without concrete uncertainty |
 
-With the AI-RULES CLI (recommended):
+---
+
+## Quick Start
+
+### 1. Installation
+
+Install via the **AI-RULES CLI** (included automatically by default in all profiles alongside `andino-workflow`):
 
 ```sh
+# Install CLI
 git clone --branch main https://github.com/andinoferdi/AI-RULES.git
-cd AI-RULES
-python -m pip install .
+cd AI-RULES && python -m pip install .
+
+# Setup Search First for your host
 ai-rules setup --capability search-first --host <host>
 ```
 
-Pass `--host` with `codex`, `claude-code`, `opencode`, `antigravity-cli` or `antigravity-ide`. Without it, setup targets Codex. For a project install, add `--scope project --project-root <path>`. Run the same command again to update.
-
-Manual, for this skill only:
+<details>
+<summary>Manual Installation</summary>
 
 ```sh
-git clone --depth 1 --single-branch --branch search-first https://github.com/andinoferdi/AI-RULES.git "$HOME/.agents/skills/search-first"
+git clone --depth 1 --single-branch --branch search-first https://github.com/andinoferdi/AI-RULES.git "<skills-dir>/search-first"
 ```
 
-Install the whole folder, not only `SKILL.md`. The folder must keep the name `search-first`. For another host, change the destination to the folder in this table:
+| Host | Global Skills Directory | Project Skills Directory |
+|---|---|---|
+| **Codex** | `~/.agents/skills/search-first` | `.agents/skills/search-first` |
+| **Claude Code** | `~/.claude/skills/search-first` | `.claude/skills/search-first` |
+| **OpenCode** | `~/.config/opencode/skills/search-first` | `.agents/skills/search-first` |
+| **Antigravity** | `~/.gemini/antigravity-cli/skills/search-first` | `.agents/skills/search-first` |
 
-| Host | Global folder |
-| --- | --- |
-| Codex | `~/.agents/skills/search-first` |
-| OpenCode | `~/.config/opencode/skills/search-first` |
-| Claude Code | `~/.claude/skills/search-first` |
-| Antigravity IDE and 2.0 | `~/.gemini/config/skills/search-first` |
-| Antigravity CLI | `~/.gemini/antigravity-cli/skills/search-first` |
+</details>
 
-For project scope, use `.agents/skills/search-first` (Codex, OpenCode, Antigravity) or `.claude/skills/search-first` (Claude Code) in the project root. Keep one copy per skill, and reload the host session after installing.
+### 2. Usage Examples
 
-## Use
+- **Codex:** `$search-first compare schema validation libraries for this TypeScript project`
+- **Claude Code:** `/search-first research how Next.js 16 handles route caching before writing custom cache layers`
+- **OpenCode / Antigravity:** Ask your agent: `"Search first before implementing this auth flow"`
 
-- Codex: `$search-first <task>`
-- Claude Code: `/search-first <task>`
-- OpenCode: ask the agent to use `search-first`, or use the command that setup registers.
-- Antigravity: ask the agent to use `search-first`. In the IDE, check Customizations.
+---
 
-Example: `$search-first compare authentication options for this project's stack`
+## The Research Protocol
 
-Activating a skill grants no extra permission.
+1. **Local Sufficiency First:** Inspect local package manifests and existing utility directories before querying external sources.
+2. **Authoritative Sources Only:** Rely on official documentation, verified release notes, and high-trust repositories over unverified blog snippets.
+3. **Honest Unknowns:** If web browsing or search tools are unavailable or restricted, mark external compatibility claims as `UNKNOWN` rather than speculating.
+4. **Lifecycle Harmony:** Search First owns research methodology only; task planning and execution remain governed by the active workflow.
 
-## Notes
+---
 
-- With `andino-workflow`, Andino loads Search First when research is needed and the host permits it. Installing it does not run research on every task.
-- Adapted from [ECC Search First](https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md) by Affaan Mustafa under the MIT license. See the [retained notice](references/license.md).
+## References & Provenance
 
-## Verification and research limits
-
-Keep the complete folder and preserve local edits before updating. Setup verifies
-files, not actual research or native discovery. Reload the host, ask for a bounded
-integration comparison, and check that local evidence comes first. If online
-evidence is needed, expect actual authorized searches and supporting page reads;
-a missing tool must leave the external claim UNKNOWN. A typo fix needs no search.
-
-Read the [runtime contract](SKILL.md) and
-[online research playbook](references/online-research.md) for evidence and permission
-boundaries. The [main quality plane](https://github.com/andinoferdi/AI-RULES/tree/main)
-holds package, installer and research-contract tests. These checks do not establish
-that a host invoked a search service or followed the method on a real task.
+- [`SKILL.md`](SKILL.md) — Runtime contract, decision matrices, and fallback behavior.
+- [`references/online-research.md`](references/online-research.md) — Source vetting guidelines, query formulation, and evidence standards.
+- Adapted from [ECC Search First](https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md) by Affaan Mustafa under the MIT License ([license notice](references/license.md)).
