@@ -1,82 +1,90 @@
 # AI Codebase Rescue
 
-Stabilizes fragile, patch-heavy code and bounded subsystems. It chooses KEEP, REFACTOR, REMAKE, REMOVE, or INVESTIGATE for each part from engineering evidence, and it establishes regression protection. AI authorship alone never justifies a rewrite.
+> **Evidence-first codebase stabilization.** Rescue fragile, patch-heavy subsystems with proven regression protection and disciplined engineering dispositions: `KEEP`, `REFACTOR`, `REMAKE`, `REMOVE`, or `INVESTIGATE`.
 
-## When to use
+AI-generated code and rapid patching accelerate software entropy. When a subsystem breaks repeatedly, agents often guess or attempt blind rewrites that discard working edge-case behaviors. **AI Codebase Rescue** enforces an engineering-grade triage loop: establish baseline behavior $\rightarrow$ isolate regression tests $\rightarrow$ audit contract drift $\rightarrow$ apply targeted remediation.
 
-- Repeated regressions in the same area.
-- Technical-debt recovery in a bounded subsystem.
-- Production hardening of a fragile prototype.
-- A bounded remake, when the evidence supports one.
+---
 
-## Limits
+## The 5 Dispositions
 
-Not for routine local bugs, formatting, cosmetic cleanup, ordinary features, or code that is only described as AI-written. Use the normal workflow for these.
+Every inspected component receives an explicit, evidence-backed disposition:
 
-## Requires
+| Disposition | Meaning | Criteria |
+|---|---|---|
+| **KEEP** | Leave untouched | Stable, working, verified by tests; cosmetic ugliness does not justify edits. |
+| **REFACTOR** | Improve structure | Preserves exact public contracts and behaviors; clears tangled complexity. |
+| **REMAKE** | Clean reimplementation | Architectural dead-end; verified against strict regression test harnesses. |
+| **REMOVE** | Dead code elimination | Unused endpoints, zombie abstractions, or redundant helper drift. |
+| **INVESTIGATE** | Gather missing telemetry | Root cause or boundary behavior cannot yet be verified with available evidence. |
 
-None. It works standalone.
+---
 
-## Install
+## When to Use
 
-Requirements: Python 3.11+, Git, and an installed agent for CLI setup.
+| ✅ Use For | ❌ Do NOT Use For |
+|---|---|
+| Repeated regressions in the same module | Routine single-file bug fixes (use debugging) |
+| Fragile prototypes being hardened for production | Cosmetic cleanup, linting, or formatting |
+| Material contract, ownership, or boundary drift | Greenfield feature implementation |
+| Legacy technical-debt recovery with active consumers | Rewrites justified merely because "AI wrote it" |
 
-With the AI-RULES CLI (recommended):
+---
+
+## Quick Start
+
+### 1. Installation
+
+Install via the **AI-RULES CLI** (included in the `engineering` and `everything` profiles):
 
 ```sh
+# Install CLI
 git clone --branch main https://github.com/andinoferdi/AI-RULES.git
-cd AI-RULES
-python -m pip install .
+cd AI-RULES && python -m pip install .
+
+# Setup for your agent (codex, claude-code, opencode, antigravity-cli, antigravity-ide)
 ai-rules setup --capability ai-codebase-rescue --host <host>
 ```
 
-Pass `--host` with `codex`, `claude-code`, `opencode`, `antigravity-cli` or `antigravity-ide`. Without it, setup targets Codex. For a project install, add `--scope project --project-root <path>`. Run the same command again to update.
+<details>
+<summary>Manual Installation</summary>
 
-Manual, for this skill only:
+Clone directly into your harness's global skills directory:
 
 ```sh
-git clone --depth 1 --single-branch --branch ai-codebase-rescue https://github.com/andinoferdi/AI-RULES.git "$HOME/.agents/skills/ai-codebase-rescue"
+git clone --depth 1 --single-branch --branch ai-codebase-rescue https://github.com/andinoferdi/AI-RULES.git "<skills-dir>/ai-codebase-rescue"
 ```
 
-Install the whole folder, not only `SKILL.md`. The folder must keep the name `ai-codebase-rescue`. For another host, change the destination to the folder in this table:
+| Host | Global Skills Directory | Project Skills Directory |
+|---|---|---|
+| **Codex** | `~/.agents/skills/ai-codebase-rescue` | `.agents/skills/ai-codebase-rescue` |
+| **Claude Code** | `~/.claude/skills/ai-codebase-rescue` | `.claude/skills/ai-codebase-rescue` |
+| **OpenCode** | `~/.config/opencode/skills/ai-codebase-rescue` | `.agents/skills/ai-codebase-rescue` |
+| **Antigravity** | `~/.gemini/antigravity-cli/skills/ai-codebase-rescue` | `.agents/skills/ai-codebase-rescue` |
 
-| Host | Global folder |
-| --- | --- |
-| Codex | `~/.agents/skills/ai-codebase-rescue` |
-| OpenCode | `~/.config/opencode/skills/ai-codebase-rescue` |
-| Claude Code | `~/.claude/skills/ai-codebase-rescue` |
-| Antigravity IDE and 2.0 | `~/.gemini/config/skills/ai-codebase-rescue` |
-| Antigravity CLI | `~/.gemini/antigravity-cli/skills/ai-codebase-rescue` |
+</details>
 
-For project scope, use `.agents/skills/ai-codebase-rescue` (Codex, OpenCode, Antigravity) or `.claude/skills/ai-codebase-rescue` (Claude Code) in the project root. Keep one copy per skill, and reload the host session after installing.
+### 2. Usage
 
-## Use
+Invoke directly in your coding agent:
 
-- Codex: `$ai-codebase-rescue <task>`
-- Claude Code: `/ai-codebase-rescue <task>`
-- OpenCode: ask the agent to use `ai-codebase-rescue`, or use the command that setup registers.
-- Antigravity: ask the agent to use `ai-codebase-rescue`. In the IDE, check Customizations.
+- **Claude Code:** `/ai-codebase-rescue investigate repeated payment timeout regressions in the checkout module`
+- **Codex:** `$ai-codebase-rescue audit authentication session drift and protect token refresh`
+- **OpenCode / Antigravity:** Ask the agent to use `ai-codebase-rescue` or invoke via native skill tool.
 
-Example: `$ai-codebase-rescue investigate repeated checkout regressions within the payment module`
+---
 
-Activating a skill grants no extra permission. A rescue request alone does not authorize commits, pushes, publication, deployment or live-data operations.
+## Integration with Andino Workflow
 
-## Notes
+AI Codebase Rescue works standalone or seamlessly alongside **Andino Workflow**:
+- **With Andino Workflow:** Andino owns the overarching lifecycle, execution plan, and durable checkpoints. When a bounded codebase recovery need is identified, Andino delegates to `ai-codebase-rescue` for stabilization without spawning conflicting plans.
+- **Standalone:** Operates within the host's active session, creating bounded evidence and regression test suites.
 
-- To combine it with Andino, install `andino-workflow` as a separate folder under the same skill root. Andino coordinates the task and may route eligible rescue work here. Andino's plan stays the only lifecycle owner. Installing both does not activate both.
+---
 
-## Verify and explore
+## References & Verification
 
-Keep one complete skill directory and preserve local edits before re-running setup.
-Setup checks package files; native discovery and behavior need a separate session
-check. After reloading the host, try a bounded repeated-regression request and
-expect evidence before a KEEP/REFACTOR/REMAKE/REMOVE/INVESTIGATE decision. A request
-to fix a typo should stay a normal local edit.
-
-The [runtime contract](SKILL.md), [audit taxonomy](references/audit-taxonomy.md),
-[regression guidance](references/regression-and-verification.md), and
-[validation scenarios](references/validation-scenarios.md) explain the method.
-The [main quality plane](https://github.com/andinoferdi/AI-RULES/tree/main)
-owns installer tests and package validation; this branch distributes the entrypoint
-and focused references. Consult source history and any applicable resource notices
-for provenance; this README adds no license grant.
+- [`SKILL.md`](SKILL.md) — Runtime contract and activation rules.
+- [`references/audit-taxonomy.md`](references/audit-taxonomy.md) — Defect classification and disposition criteria.
+- [`references/regression-and-verification.md`](references/regression-and-verification.md) — Baseline capture and test verification protocols.
+- [`references/validation-scenarios.md`](references/validation-scenarios.md) — Representative triage scenarios.
