@@ -8,6 +8,7 @@ import copy
 import json
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
@@ -19,11 +20,40 @@ def runtime_text(path):
     if directory:
         target = Path(directory) / path
         return target.read_text(encoding='utf-8') if target.is_file() else ''
-    result = subprocess.run(['git', 'show', 'andino-workflow:' + path], cwd=ROOT,
+    result = subprocess.run(['git', 'show', 'origin/andino-workflow:' + path], cwd=ROOT,
                             capture_output=True, text=True, encoding='utf-8')
     if result.returncode:
         return ''
     return result.stdout
+
+
+class RuntimeTextSource(unittest.TestCase):
+    def test_reads_fetched_runtime_without_a_local_branch(self):
+        with tempfile.TemporaryDirectory() as directory:
+            repository = Path(directory)
+            def git(*args):
+                return subprocess.run(['git', *args], cwd=repository, check=True,
+                                      capture_output=True, text=True, encoding='utf-8')
+
+            git('init')
+            (repository / 'SKILL.md').write_text('# Remote runtime\n', encoding='utf-8')
+            git('add', 'SKILL.md')
+            git('-c', 'user.name=Test', '-c', 'user.email=test@example.invalid',
+                '-c', 'commit.gpgsign=false', 'commit', '-m', 'Runtime fixture')
+            git('update-ref', 'refs/remotes/origin/andino-workflow', 'HEAD')
+            self.assertNotIn('refs/heads/andino-workflow', git('show-ref').stdout)
+
+            with patch.dict(os.environ, {'ANDINO_RUNTIME_DIR': ''}), \
+                    patch(__name__ + '.ROOT', repository):
+                self.assertEqual('# Remote runtime\n', runtime_text('SKILL.md'))
+                self.assertEqual('', runtime_text('skills/absent/SKILL.md'))
+
+    def test_candidate_directory_takes_precedence_over_git(self):
+        with tempfile.TemporaryDirectory() as directory:
+            (Path(directory) / 'SKILL.md').write_text('# Candidate\n', encoding='utf-8')
+            with patch.dict(os.environ, {'ANDINO_RUNTIME_DIR': directory}):
+                self.assertEqual('# Candidate\n', runtime_text('SKILL.md'))
+                self.assertEqual('', runtime_text('missing.md'))
 
 
 class InternalDispatchContract(unittest.TestCase):
