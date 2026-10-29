@@ -1,86 +1,98 @@
 # Skripsi Skill
 
-A thesis and research workflow for AI agents. It guides topic, proposal, literature, methodology, analysis, revision, and defense preparation from your current stage. It keeps approved decisions and evidence limits explicit, and it follows institutional guidance.
+> **Structured academic research and thesis guidance for AI agents.** Guides undergraduate and graduate researchers from topic formulation through defense preparation, with strict evidence traceability and campus compliance.
 
-## When to use
+Writing a thesis (*skripsi*) requires systematic academic rigor: grounded literature synthesis, defensible methodology, honest empirical analysis, and responsive revisions. Generic AI assistants frequently hallucinate citations, fabricate survey numbers, or ignore institutional guidelines. **Skripsi Skill** provides a disciplined, stage-aware workflow that keeps all research claims anchored in verified academic evidence.
 
-- Planning a research topic or checking a title.
-- Writing a proposal or a thesis chapter.
-- Literature synthesis or a systematic review.
-- Revising a thesis after supervisor feedback.
-- Preparing for a defense.
+---
 
-## Limits
+## The 6 Research Stages
 
-Single-sentence polishing, unrelated coding, and ordinary conversation do not need the full workflow.
+```
+┌──────────────┐     ┌──────────────┐     ┌──────────────┐
+│ 1. Proposal  │ ──▶ │2. Literature │ ──▶ │3. Methodology│
+│ Title & Gaps │     │ Synthesis    │     │ Research Des.│
+└──────────────┘     └──────────────┘     └──────────────┘
+       │                                         │
+       ▼                                         ▼
+┌──────────────┐     ┌──────────────┐     ┌──────────────┐
+│  6. Defense  │ ◀── │ 5. Revisions │ ◀── │ 4. Analysis  │
+│ Q&A Prep     │     │ Supv. Feedback     │ Real Data    │
+└──────────────┘     └──────────────┘     └──────────────┘
+```
 
-## Requires
+1. **Proposal & Topic Formulation:** Formulates research questions, problem statements, and novelty gaps without reopening settled approvals.
+2. **Literature Review & Synthesis:** Structures thematic matrices and critical synthesis from verified papers (APA/IEEE/institutional standards).
+3. **Methodology Design:** Establishes rigorous quantitative, qualitative, or engineering design artifacts and validation protocols.
+4. **Data Analysis & Findings:** Interprets actual experimental data; never invents statistics, survey samples, or evaluation benchmarks.
+5. **Supervisor Revision Tracking:** Resolves feedback point-by-point, documenting exact thesis modifications for supervisor review.
+6. **Defense & Trial Preparation:** Prepares anticipated defense questions, slide talk tracks, and limitation rebuttals.
 
-None. It works standalone. The companion `andino-workflow` is optional (see Notes).
+---
 
-## Install
+## When to Use
 
-Requirements: Python 3.11+, Git, and an installed agent for CLI setup.
+| ✅ Use Skripsi Skill For | ❌ Do NOT Use Skripsi Skill For |
+|---|---|
+| Refining thesis titles, background, and research gaps | Superficial sentence rephrasing (use `focus`) |
+| Systematic literature reviews and citation matrices | Unrelated software engineering or generic coding |
+| Structuring chapters according to campus guidelines | Fabricating synthetic research data or fake surveys |
+| Preparing formal responses to supervisor review notes | Bypassing institutional ethics or thesis guidelines |
 
-With the AI-RULES CLI (recommended):
+---
+
+## Quick Start
+
+### 1. Installation
+
+Install via the **AI-RULES CLI** (included in the `research-skripsi` and `everything` profiles):
 
 ```sh
+# Install CLI
 git clone --branch main https://github.com/andinoferdi/AI-RULES.git
-cd AI-RULES
-python -m pip install .
+cd AI-RULES && python -m pip install .
+
+# Setup Skripsi Skill for your host
 ai-rules setup --capability skripsi-skill --host <host>
 ```
 
-Pass `--host` with `codex`, `claude-code`, `opencode`, `antigravity-cli` or `antigravity-ide`. Without it, setup targets Codex. For a project install, add `--scope project --project-root <path>`. Run the same command again to update.
-
-Manual, for this skill only:
+<details>
+<summary>Manual Installation</summary>
 
 ```sh
-git clone --depth 1 --single-branch --branch skripsi-skill https://github.com/andinoferdi/AI-RULES.git "$HOME/.agents/skills/skripsi-skill"
+git clone --depth 1 --single-branch --branch skripsi-skill https://github.com/andinoferdi/AI-RULES.git "<skills-dir>/skripsi-skill"
 ```
 
-Install the whole folder, including `references/` and `assets/`. The folder must keep the name `skripsi-skill`. For another host, change the destination to the folder in this table:
+| Host | Global Skills Directory | Project Skills Directory |
+|---|---|---|
+| **Codex** | `~/.agents/skills/skripsi-skill` | `.agents/skills/skripsi-skill` |
+| **Claude Code** | `~/.claude/skills/skripsi-skill` | `.claude/skills/skripsi-skill` |
+| **OpenCode** | `~/.config/opencode/skills/skripsi-skill` | `.agents/skills/skripsi-skill` |
+| **Antigravity** | `~/.gemini/antigravity-cli/skills/skripsi-skill` | `.agents/skills/skripsi-skill` |
 
-| Host | Global folder |
-| --- | --- |
-| Codex | `~/.agents/skills/skripsi-skill` |
-| OpenCode | `~/.config/opencode/skills/skripsi-skill` |
-| Claude Code | `~/.claude/skills/skripsi-skill` |
-| Antigravity IDE and 2.0 | `~/.gemini/config/skills/skripsi-skill` |
-| Antigravity CLI | `~/.gemini/antigravity-cli/skills/skripsi-skill` |
+</details>
 
-For project scope, use `.agents/skills/skripsi-skill` (Codex, OpenCode, Antigravity) or `.claude/skills/skripsi-skill` (Claude Code) in the project root. Keep one copy per skill, and reload the host session after installing.
+### 2. Usage Examples
 
-## Use
+- **Proposal Outline:**
+  `/skripsi-skill Judul saya sudah disetujui: 'Optimasi Routing Algoritma X'. Bantu susun latar belakang dan rumusan masalah Bab 1`
+- **Supervisor Revision:**
+  `/skripsi-skill Dosen meminta saya memperkuat perbandingan di Bab 2 dengan 5 studi terbaru 2024-2026. Ini catatan revisinya`
+- **Defense Preparation:**
+  `/skripsi-skill Simulasikan pertanyaan kritis penguji tentang keterbatasan metode pengujian data saya`
 
-- Codex: `$skripsi-skill <request>`
-- Claude Code: `/skripsi-skill <request>`
-- OpenCode: ask the agent to use `skripsi-skill`, or use the command that setup registers.
-- Antigravity: ask the agent to use `skripsi-skill`. In the IDE, check Customizations.
+---
 
-Example: `$skripsi-skill My title is approved. Help me outline the proposal for chapters 1 to 3.`
+## Academic Integrity Contract
 
-Activating a skill grants no extra permission. Skill activation does not authorize commits, pushes, merges, publication, deployment, live-data changes or unrelated external actions.
+- **Zero Hallucination:** If literature or empirical data is missing, the agent explicitly flags it as `DATA_REQUIRED` rather than generating plausible references.
+- **Traceable Attribution:** Every theoretical assertion must cite verifiable authors, years, and methodological contexts.
+- **Campus Precedence:** Your department's official thesis formatting guide (*Buku Panduan Skripsi*) strictly outranks default formatting.
 
-## Notes
+---
 
-- With `andino-workflow`, Andino owns the lifecycle, plan, and checkpoints. Skripsi Skill returns research findings and recommended actions without a competing plan. Install both as separate folders under the same skill root. Installing both does not activate both.
+## References & Assets
 
-## Research integrity and verification
-
-The [runtime contract](SKILL.md) and
-[evidence guidelines](references/evidence-guidelines-integrity.md) require traceable
-sources and honest limits. They do not supply missing literature, participant data,
-ethics approval, or campus requirements. Use your institution's actual guidance.
-The [research templates](assets/research-core-templates.md) support that work;
-they are not completed research evidence.
-
-Preserve the full references/assets directories and local edits before updating.
-After reloading the host, provide your approved topic and current stage: expect
-guidance for that stage without reopening settled decisions. A single-sentence
-polish should not start the full workflow. These are manual smoke cases; setup
-verifies files rather than academic correctness or live host behavior.
-
-The [main quality plane](https://github.com/andinoferdi/AI-RULES/tree/main)
-owns evaluation cases, requirement traceability and installer tests. Consult source
-history and applicable notices for provenance; this README adds no license grant.
+- [`SKILL.md`](SKILL.md) — Runtime contract, stage state machine, and integrity rules.
+- [`references/evidence-guidelines-integrity.md`](references/evidence-guidelines-integrity.md) — Source verification standards.
+- [`assets/research-core-templates.md`](assets/research-core-templates.md) — Standard proposal and chapter structures.
