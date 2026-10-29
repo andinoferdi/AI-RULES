@@ -1,54 +1,97 @@
 # Council
 
-An AI-RULES decision-analysis skill. The **Council** takes a real high-stakes question through five viewpoints, anonymized peer review, and a decision with one practical first move.
+> **Structured decision review for high-stakes choices.** Five deliberate perspectives, anonymized peer critique, and a synthesized verdict with exactly one actionable next step.
 
-Adapted as an independently written workflow inspired by [aiwithremy/claude-skills-llm-council](https://github.com/aiwithremy/claude-skills-llm-council). The original project credits Ole Lehmann and Andrej Karpathy's LLM Council approach. This is not a claim of upstream endorsement or a copy of upstream source text.
+When facing consequential architectural forks, technology migrations, or strategic trade-offs, individual agents easily develop tunnel vision or echo user bias. Inspired by Andrej Karpathy and Ole Lehmann's multi-perspective deliberation model, **Council** convenes five independent advisor lenses to stress-test your choice before you commit.
 
-## Scope and coexistence
+---
 
-Council evaluates decisions; it does not execute changes, replace Andino Workflow's routing or lifecycle, or act as a communication-style override. **Focus** supplies the current A. PRIORITAS and Indonesian/English human-language references. `ai-rules setup` installs Focus as Council's dependency. Use the normal host activation mechanism; installing a skill does not prove that an agent loaded or used it.
+## The 5 Deliberation Lenses
 
-Council is useful for competing technical approaches, a major product change, a hard research direction, or a consequential strategy. It is unnecessary for factual questions, minor preferences and ordinary text generation.
-
-## Install through AI-RULES
-
-From a clean checkout of the installer branch (`main`):
-
-```sh
-python -m pip install --editable .
-ai-rules setup --capability council --host codex
+```
+   ┌─────────────────────────────────────────────────────────────┐
+   │                    DECISION BRIEF                           │
+   └────────┬───────────┬───────────┬────────────┬───────────────┘
+            ▼           ▼           ▼            ▼               ▼
+       Contrarian  FirstPrinc.  Expansionist  Outsider        Executor
+       [Downsides] [Root Assump] [Upside/Scale] [Blind Spots]  [Feasibility]
+            └───────────┴───────────┼────────────┴───────────────┘
+                                    ▼
+                        ANONYMOUS PEER CRITIQUE
+                                    ▼
+                         ACTIONABLE VERDICT & NEXT STEP
 ```
 
-Use `--host claude-code`, `opencode`, `antigravity-cli`, or `antigravity-ide` when appropriate. `ai-rules setup` also offers Council in **Custom** selection and the **Everything** profile. For project scope, add `--scope project --project-root <path>`. Re-running setup checks the configured latest Council branch; user-modified and unrecognized skill directories are preserved.
+1. **Contrarian** — Uncovers failure modes, hidden costs, second-order risks, and disconfirming evidence.
+2. **First Principles** — Strips away false assumptions and challenges whether the right question is being asked.
+3. **Expansionist** — Identifies realistic upside, compound benefits, and scalable opportunities.
+4. **Outsider** — Spots comprehension gaps, stakeholder friction, and assumptions insiders take for granted.
+5. **Executor** — Evaluates implementation constraints, reversibility, dependency risks, and concrete steps.
 
-For manual installation of Council and its full folder (not just `SKILL.md`):
+---
+
+## When to Use
+
+| ✅ Convene Council For | ❌ Do NOT Convene For |
+|---|---|
+| Irreversible architectural forks (e.g., monolith vs. microservices) | Simple factual questions or lookups |
+| Technology stack / library selection with material trade-offs | Minor code formatting or cosmetic preferences |
+| Subsystem replacement vs. refactoring decisions | Routine bug fixes or everyday drafting |
+| Critical thesis/research methodological choices | Tasks already settled with clear requirements |
+
+---
+
+## Quick Start
+
+### 1. Installation
+
+Install via the **AI-RULES CLI** (included in the `everything` profile and custom setup; automatically installs companion `focus`):
 
 ```sh
-git clone --depth 1 --single-branch --branch council https://github.com/andinoferdi/AI-RULES.git ~/.agents/skills/council
+# Install CLI
+git clone --branch main https://github.com/andinoferdi/AI-RULES.git
+cd AI-RULES && python -m pip install .
+
+# Setup Council for your host
+ai-rules setup --capability council --host <host>
 ```
 
-Choose the host's actual skill directory. For Claude Code use `~/.claude/skills/council`, OpenCode uses `~/.config/opencode/skills/council`, Antigravity IDE uses `~/.gemini/config/skills/council`, and Antigravity CLI uses `~/.gemini/antigravity-cli/skills/council`. For project scope, use `.agents/skills/council` in supported agents or `.claude/skills/council` for Claude Code. Install Focus separately if you do not use the CLI.
+<details>
+<summary>Manual Installation</summary>
 
-## Invocation and limitations
+```sh
+git clone --depth 1 --single-branch --branch council https://github.com/andinoferdi/AI-RULES.git "<skills-dir>/council"
+```
 
-- Codex: `$council <decision>`
-- Claude Code: `/council <decision>`
-- OpenCode or Antigravity: ask the agent to use `council` via its supported skill invocation
+| Host | Global Skills Directory | Project Skills Directory |
+|---|---|---|
+| **Codex** | `~/.agents/skills/council` | `.agents/skills/council` |
+| **Claude Code** | `~/.claude/skills/council` | `.claude/skills/council` |
+| **OpenCode** | `~/.config/opencode/skills/council` | `.agents/skills/council` |
+| **Antigravity** | `~/.gemini/antigravity-cli/skills/council` | `.agents/skills/council` |
 
-Example: `Council this: should we refactor the authentication service or replace it?`
+</details>
 
-A real independent Council needs a host that supports sub-agents. Without them the skill must disclose a **single-agent perspective review**; it cannot claim that five independent advisors or anonymous peer reviewers ran. The method does not require five different commercial models. The agent must use only authorized tools and material.
+### 2. Usage
 
-## Quick checks
+- **Claude Code:** `/council Should we rebuild the billing pipeline in Go or optimize the existing Node service?`
+- **Codex:** `$council evaluate trade-offs between PostgreSQL partitioning and sharding for our telemetry data`
+- **OpenCode / Antigravity:** Ask your agent to "Council this decision" or run a war room review.
 
-**Positive:** Ask Council to compare three migration paths with cost, reversibility and time limits. Expect independent advice if supported, anonymized reviews, a justified verdict, and one next action.
+---
 
-**Positive (Indonesian):** `Council, lebih baik skripsi ini pakai pendekatan A atau B dengan data yang tersedia?` Expect natural Indonesian, the actual evidence limits, and preserved Andino/Fokus boundaries.
+## Verdict Output Format
 
-**Negative:** `Berapa 2 + 2?`, `ringkas artikel ini`, or `ganti warna tombol` should not invoke Council implicitly.
+Council returns a structured, actionable decision artifact:
+- **Titik Temu / Agreement:** Where the advisors independently converged.
+- **Perbedaan / Disagreement:** Disputed assumptions and real trade-offs.
+- **Hal Terlewat / Blind Spots:** Crucial risks uncovered during anonymous peer review.
+- **Rekomendasi / Recommendation:** Justified decision and residual uncertainty.
+- **Langkah Pertama / First Action:** Exactly one practical, immediate next move.
 
-**Fidelity:** On a host without sub-agents, the response must not claim five agents or peer review ran.
+---
 
-## Package and verification
+## References
 
-This distribution branch contains only `README.md` and `SKILL.md`. The source, tests, and packaging checks live in the [AI-RULES main branch](https://github.com/andinoferdi/AI-RULES/tree/main); the [family standard](https://github.com/andinoferdi/AI-RULES/blob/main/docs/agent-skill-family-standard.md) defines package and release quality expectations. CLI setup verifies installed artifacts; native host discovery and actual behavior require separate observation.
+- [`SKILL.md`](SKILL.md) — Runtime contract, advisor prompts, and host fidelity constraints.
+- [AI-RULES Main](https://github.com/andinoferdi/AI-RULES/tree/main) — Validator suite, release manifest, and test harnesses.
