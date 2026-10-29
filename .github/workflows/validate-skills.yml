@@ -5,15 +5,22 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
+  workflow_call:
   schedule:
     - cron: '17 3 * * *'
+permissions:
+  contents: read
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - name: Fetch skill branches
         run: git fetch --no-tags origin andino-workflow:refs/remotes/origin/andino-workflow ai-codebase-rescue:refs/remotes/origin/ai-codebase-rescue skripsi-skill:refs/remotes/origin/skripsi-skill focus:refs/remotes/origin/focus search-first:refs/remotes/origin/search-first council:refs/remotes/origin/council natural-writing:refs/remotes/origin/natural-writing WebBased:refs/remotes/origin/WebBased threejs-skills:refs/remotes/origin/threejs-skills
       - name: Install AI-RULES package
@@ -24,7 +31,35 @@ jobs:
         run: python3 scripts/validate_threejs_family.py --runtime-ref origin/threejs-skills
       - name: Validate capability evaluation schemas
         run: python3 scripts/validate_andino_capabilities.py --runtime-ref origin/andino-workflow
-      - name: Test validator failure cases
+      - name: Test validators and installer regressions
         run: python3 -m unittest discover -s tests
       - name: Audit skripsi requirement ownership
         run: python3 scripts/validate_skripsi_traceability.py
+      - name: Validate frozen release bundles
+        run: python3 scripts/build_release.py --stage-only --output "${{ runner.temp }}/frozen-bundles"
+
+  installer:
+    name: Installer (${{ matrix.os }}, Python ${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python: '3.11'
+          - os: windows-latest
+            python: '3.12'
+          - os: macos-latest
+            python: '3.12'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install AI-RULES package
+        run: python -m pip install --editable .
+      - name: Test installer regressions
+        run: python -m unittest discover -s tests/installer

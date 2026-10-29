@@ -13,9 +13,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 from ai_rules.release.bundles import export_git_ref, validate_subpath
+from validate_skills import directory_files, package_files
 
 
 def stage_bundles(targets: dict, destination: Path, repo_root: Path) -> dict:
+    if not targets:
+        raise ValueError('release manifest has no first-party bundles')
     for identifier in targets:
         validate_subpath(identifier)
         if '/' in identifier:
@@ -28,6 +31,10 @@ def stage_bundles(targets: dict, destination: Path, repo_root: Path) -> dict:
         body = (package / 'SKILL.md').read_text(encoding='utf-8')
         if not re.search(rf'^name:\s*{re.escape(identifier)}\s*$', body, re.M):
             raise ValueError(f'release bundle identity mismatch: {identifier}')
+        files, modes = directory_files(package)
+        errors = package_files(files, identifier, modes)
+        if errors:
+            raise ValueError(f'invalid release bundle {identifier}:\n' + '\n'.join(errors))
     return targets
 
 

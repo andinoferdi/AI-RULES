@@ -283,6 +283,7 @@ publication step. Historical evaluations remain tied to the revisions they teste
 
 - [Package and release contract](docs/agent-skill-family-standard.md)
 - [Capability evaluation guide](evals/README.md)
+- [CI coverage, release gates and human testing](docs/ci-coverage.md)
 - [Unified Andino evidence and live-host limits](docs/validation/andino-unified/README.md)
 - [Andino evolution, setup verification and live-host limits](docs/validation/andino-evolution/README.md)
 - [Three.js inventory, provenance and verification](docs/threejs/README.md)

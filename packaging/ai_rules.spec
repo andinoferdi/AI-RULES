@@ -6,7 +6,8 @@ from PyInstaller.utils.hooks import collect_data_files
 ROOT = Path(SPECPATH).parent
 datas = []
 for package in ("ai_rules.catalog", "ai_rules.profiles", "ai_rules.release"):
-    datas.extend(collect_data_files(package))
+    # Skill Python resources are installed as files, not imported by the CLI.
+    datas.extend(collect_data_files(package, include_py_files=package == "ai_rules.release"))
 
 a = Analysis(
     [str(ROOT / "packaging" / "entrypoint.py")],

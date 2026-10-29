@@ -95,16 +95,50 @@ class SourceSubpathTests(unittest.TestCase):
         import sys
         sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'scripts'))
         from build_release import stage_bundles
-        commit = self.git('rev-parse', 'HEAD')
+        for name in ('focus', 'search-first'):
+            package = self.remote / 'skills' / name
+            (package / 'README.md').write_text(f'# {name}\n', encoding='utf-8')
+            (package / 'references/data.bin').unlink()
+            (package / 'references/data.md').write_bytes(b'# Resource\n')
+        commit = self.commit('valid release packages')
         targets = {name: {'branch': 'family', 'commit': commit, 'subpath': f'skills/{name}'}
                    for name in ('focus', 'search-first')}
+        with (self.remote / 'skills/focus/SKILL.md').open('a', encoding='utf-8') as source:
+            source.write('\n[Broken on branch head](references/missing.md)\n')
+        self.commit('branch changes after frozen release')
         stage = self.root / 'stage'
         evidence = stage_bundles(targets, stage, self.remote)
         self.assertEqual(targets, evidence)
-        self.assertEqual(b'\x00\xff\x01', (stage / 'focus/references/data.bin').read_bytes())
+        self.assertEqual(b'# Resource\n', (stage / 'focus/references/data.md').read_bytes())
+        self.assertNotIn('Broken on branch head', (stage / 'focus/SKILL.md').read_text())
         self.assertIn('name: search-first', (stage / 'search-first/SKILL.md').read_text())
         with self.assertRaises(FileExistsError):
             stage_bundles(targets, stage, self.remote)
+
+    def test_release_staging_rejects_broken_links_at_frozen_commit(self):
+        import sys
+        sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'scripts'))
+        from build_release import stage_bundles
+        package = self.remote / 'skills/focus'
+        (package / 'README.md').write_text('# Focus fixture\n', encoding='utf-8')
+        (package / 'references/data.bin').unlink()
+        with (package / 'SKILL.md').open('a', encoding='utf-8') as source:
+            source.write('\n[Required guide](references/missing.md)\n')
+        frozen = self.commit('release with missing resource')
+        (package / 'references/missing.md').write_text('# Fixed on branch head\n', encoding='utf-8')
+        self.commit('fix resource after frozen release')
+
+        with self.assertRaisesRegex(ValueError, 'broken link: references/missing.md'):
+            stage_bundles({'focus': {'commit': frozen, 'subpath': 'skills/focus'}},
+                          self.root / 'stage', self.remote)
+
+    def test_release_staging_rejects_empty_manifest_targets(self):
+        import sys
+        sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'scripts'))
+        from build_release import stage_bundles
+        with self.assertRaisesRegex(ValueError, 'no first-party bundles'):
+            stage_bundles({}, self.root / 'stage', self.remote)
+        self.assertFalse((self.root / 'stage').exists())
 
     def test_unsafe_subpaths_fail_before_export(self):
         for value in ('../focus', '/skills/focus', 'C:/skills', 'skills\\focus',

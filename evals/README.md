@@ -1,5 +1,9 @@
 # Skill evaluation cases
 
+See the [CI coverage map and human acceptance protocol](../docs/ci-coverage.md)
+for automated checks, release gates and targeted manual testing. Live-model
+evaluations are not part of CI.
+
 Each JSON file contains prompts with an expected decision and a forbidden failure signal. `behavior` cases exercise core rules; `negative-trigger` cases probe over-activation. The validator checks case shape and package structure only.
 
 For a live evaluation, give the tested agent the relevant skill and one prompt at a time in an isolated context. Use a disposable repository only when the scenario requires one. Keep expected, forbidden and evaluator conclusions hidden. Materialize scenario fixture facts as raw artifacts/tool evidence; do not give the actor an evaluator's root-cause summary. Record model and host, loaded skill path and commit, prompt, fixture state, observable inspection sequence, questions, changes, verification, output and reviewer verdict. Compare actual behavior with both oracle fields; do not score wording alone. For negative cases, check whether the skill was invoked unnecessarily. Live execution requires host-specific access. Andino's capability records distinguish isolated behavioral runs from MCP service smoke checks; Rescue has no recorded behavioral runs here. Skripsi has historical revision-scoped records. No cross-host behavioral parity is claimed.
