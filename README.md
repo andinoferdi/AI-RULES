@@ -93,7 +93,7 @@ across sessions or an explicit request.
 
 ## Notes
 
-- `focus` is the default communication style for every invocation, including direct answers.
+- Andino selects and loads relevant internal work methods before Focus or optional external skill discovery. Focus remains the default communication layer; required domain/research supports and explicit native providers retain their roles.
 - Andino loads other installed skills only when the task needs them, for example `search-first` for research or `ai-codebase-rescue` for codebase stabilization.
 - To combine it with a specialist, install `ai-codebase-rescue` or `skripsi-skill` as a separate folder under the same skill root. Andino coordinates the work, and its plan stays the only lifecycle owner. Neither package installs the other.
 

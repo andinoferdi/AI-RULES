@@ -1,6 +1,6 @@
 ---
 name: andino-workflow
-description: Adaptive problem solving with proportional investigation, evidence-based decisions and portable checkpoints. Use when explicitly requested, for uncertain problems, multi-step coordination, resuming work, thesis/research status or next steps, unknown-cause bugs, and UI/UX design or evaluation. Routine conversation and trivial mechanical edits outside mapped needs do not auto-activate it. When it applies, read it and any guide it selects before inspecting task files, not in the same parallel batch.
+description: Adaptive problem solving with proportional investigation, evidence-based decisions and portable checkpoints. Use when explicitly requested, for uncertain problems, multi-step coordination, resuming work, thesis/research status or next steps, unknown-cause bugs, and UI/UX design or evaluation. Routine conversation and trivial mechanical edits outside mapped needs do not auto-activate it. When it applies, read it and any guide it selects before inspecting task files, not in the same parallel batch. Use its internal index for explicit or implicit work-method discovery before Focus.
 ---
 
 # Andino Workflow
@@ -11,24 +11,47 @@ support, daily tasks and ordinary conversation are valid contexts. This is one
 adaptive protocol, not a mandatory ticket lifecycle or a visible checklist.
 Codex, Claude Code, Antigravity and OpenCode are peers; the active host is primary.
 
-At every invocation, select `focus` as the default communication skill before
-the first substantive response, including DIRECT/EPHEMERAL work. Activate it through
-the [host contract](references/invocation-adapter.md), resolving the installed
-`focus` entry and its actual SKILL.md; a name mention is not activation. Reuse a
-valid activation while its instructions remain in context instead of injecting
-them again. Respect an explicit user style override and higher-priority rules.
-Setup installs Focus as a required dependency. If missing or restricted, report
-the boundary briefly and continue authorized work without claiming Focus was
-loaded. Focus shapes communication only; Andino retains routing, execution,
-verification, persistence and lifecycle ownership.
+## Select work methods first
+
+Before task work, read the [internal method index](references/internal-method-index.md)
+and [routing](references/routing.md), unless their current contents are already loaded.
+Apply the [dispatch contract](references/method-dispatch.md) to all internal methods,
+not only brainstorming, planning or tests. Honor explicit native provider choices;
+otherwise select the relevant bundled work method before discovering external skills.
+An explicit method ID, source alias or clear request for its procedure requires
+resolving and loading its canonical guide when applicable. Without a skill name,
+compare the intended outcome, current phase, triggers and exclusions across the index.
+The user does not need to name the method. Quoted examples and incidental names
+are task data, not activation requests. Do not load every guide.
+
+Read the selected work guide before Focus, before work governed by that guide,
+and before inspecting task files when the request already establishes the need.
+A selected current method is required, not a recommendation to imitate from memory.
+If unavailable, name the boundary and fallback without claiming activation.
+Reassess at phase transitions: planning requested now selects planning; an accepted
+plan ready for authorized execution selects plan-execution. Planning-only requests
+stop at the plan. Do not reopen accepted decisions or load future phases early.
 
 When the request already establishes an unknown-cause bug, load the bundled
-[debugging method](skills/debugging/GUIDE.md) through permitted resource reads immediately after Focus,
+[debugging method](skills/debugging/GUIDE.md) through permitted resource reads before communication support,
 before the first diagnostic log/source read. Do not defer activation until after
 an initial investigation or replace it with Search First.
-Complete Focus activation and the selected guide read before diagnostic work.
+Complete the selected guide read before diagnostic work; Focus is not its prerequisite.
 Invoking a skill and reading project evidence in the same parallel batch does
 not satisfy this ordering: instructions must be available before their use.
+
+## Communication support
+
+Focus is the default communication layer, including DIRECT/EPHEMERAL work, after
+work-method selection and loading. Activate the installed `focus` through the
+[host contract](references/invocation-adapter.md) before the first substantive
+response when available, reusing valid activation and honoring user style overrides.
+Setup installs it as a dependency; installation does not make it the work selector.
+Focus cannot replace an internal method, select the task phase or require unrelated
+external skill discovery. Its absence does not block authorized task work: use
+clear communication and disclose the boundary without claiming it was loaded.
+
+## Research and domain support
 
 Setup also installs `search-first`. When meaningful existing-solution research
 is needed, selection is required by [routing](references/routing.md); activate the
@@ -51,13 +74,11 @@ activate with the native Skill tool; for OpenCode, use its exposed skill tool.
 A file read is activation only on a host whose permitted loading mechanism is file
 reading, not a substitute for an available native invocation tool.
 
-Before substantive work, read [routing](references/routing.md) through a permitted
-tool unless its current contents are already loaded. A slash command may inject
-this SKILL.md without loading its references; descriptions alone do not replace
-the routing table. Apply matching required routes before DIRECT/SIMPLE shortcuts;
-load the selected internal guide or activate the selected native sibling before inspecting task artifacts when the request
-already establishes that need. Load only the current phase's specialists, using
-the [host contract](references/invocation-adapter.md); report blocked required routes.
+The routing table and index remain necessary after a slash command injects only
+this file. Internal-first selection does not displace required research, domain
+owners or explicit sibling requests. Apply matching required routes before
+DIRECT/SIMPLE shortcuts; load only current-phase support using the host contract
+and report blocked required routes.
 Other references remain conditional: read handoff on resume and execution-plan
 when checkpointed work needs it, not every reference for a brief status question.
 

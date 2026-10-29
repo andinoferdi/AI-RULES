@@ -1147,7 +1147,7 @@ Contracts use inspected installed skill IDs and actual host tool metadata. Upstr
 - Avoid when: The user explicitly overrides the preference; never override higher instructions or output requirements.
 - Availability check: Resolve the actual installed focus entry and native invocation permissions; setup supplies the dependency.
 - Invocation method: Activate the actual SKILL.md through the host contract; reuse valid activation evidence.
-- First-call/preflight: Check whether the current Focus instructions are already loaded; load once if permitted and needed.
+- First-call/preflight: Select and load relevant internal work guides first; then reuse current Focus activation or load it once if permitted and needed. Focus is not a work-selection prerequisite.
 - Fallback: Report missing or denied activation briefly and continue authorized work without claiming Focus use.
 - Coexistence/conflicts: Complements A. PRIORITAS; Andino remains lifecycle owner. Do not duplicate the prompt body.
 - Mutation/permission boundary: Communication only; no new authority or limits on task execution.

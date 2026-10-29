@@ -47,6 +47,12 @@ work, and do not claim external worker use.
 
 ## Activate, use, reroute, release
 
+For Andino task selection, resolve applicable bundled methods through the complete
+index before optional external discovery, following [dispatch](method-dispatch.md).
+Load selected current work guides before Focus. Explicit native provider choices,
+required domain/research supports and their invocation controls remain authoritative.
+Communication activation never proves that a work method was selected or applied.
+
 Before work governed by a selected skill, activate it through the actual permitted
 host mechanism. Claude Code uses the Skill tool for model-initiated activation;
 OpenCode uses its exposed skill tool. On hosts whose supported mechanism is reading

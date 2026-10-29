@@ -1,6 +1,6 @@
 # Internal method index
 
-These are bundled Andino resources, not native skills or a second router. Select by actual intent, current evidence and the present phase. A name in quoted text, a filename or this inventory is not a trigger. Ordinary sufficient tasks need no method.
+These are bundled Andino resources, not native skills or a second router. Read this index for work-method discovery before Focus or optional external skill search. Apply [dispatch](method-dispatch.md) to every row: explicit requests and source aliases require canonical loading when applicable; implicit requests select by outcome, trigger, exclusion and current phase. A name in quoted text, a filename or this inventory is not a trigger. Ordinary sufficient tasks need no method.
 
 An explicit relevant internal method ID is enough: read its linked GUIDE.md through the permitted resource tool, then only the local resources it needs. For implicit selection use the trigger and exclusion together; choose the minimum useful set. Do not load all guides. If the requested outcome is prohibited or excluded, resolve that boundary in the root contract without loading methods just to refuse. No guide grants additional action authority.
 

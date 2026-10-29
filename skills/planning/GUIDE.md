@@ -29,6 +29,11 @@ Locate active Andino plan/checkpoint/spec/constraints, existing evidence and dri
 
 ## Ownership
 
+When this plan is accepted and execution is authorized, hand off to
+[plan-execution](../plan-execution/GUIDE.md) for the next dependency-ready task.
+A planning-only request ends with the plan; acceptance of a plan does not by itself
+grant implementation or publication authority. Reuse the same Andino checkpoint.
+
 Andino owns selection, depth, scope, the existing durable checkpoint, delegation and DONE. Parent owns shared artifacts/final acceptance. This guide cannot invoke denied/manual siblings or establish another lifecycle.
 
 ## Permission boundary

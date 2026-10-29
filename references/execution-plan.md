@@ -108,3 +108,8 @@ Where the repository provides validation, check at least:
 
 Mechanical checks complement review: they cannot prove technical truth, sufficient
 evidence, or handoff clarity.
+
+When method use is part of acceptance, retain the compact outcome/method/load/action/
+next-condition evidence from [dispatch](method-dispatch.md) in the existing phase
+result. Keep planned methods distinct from observed loading and actual application.
+No second skill ledger or compulsory per-turn checklist is needed.

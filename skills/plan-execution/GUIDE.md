@@ -24,7 +24,7 @@ Locate plan identity/checkpoint; inspect branch/worktree/diff/spec/task graph an
 4. Implement one slice using canonical TDD for behavior and suitable targeted verification for static content. Compare each actual command result to its expected signal; retain failures and material limitations.
 5. Resolve bounded plan/spec/interface conflicts from accepted requirements and current evidence, recording the decision and reason in the same checkpoint. Continue independent authorized work; ask only when a material user-owned decision or policy requires it.
 6. Inspect worker reports and actual output before integration. Check owned paths, consumed/produced interfaces, review findings and current verification; a worker success message does not establish acceptance.
-7. Record completion only after current acceptance checks ran. Append evidence identity, commands/results, review residuals, blockers and the next frontier to the same plan.
+7. Before accepting implementation, load [code-review](../code-review/GUIDE.md) for Spec/Standards review and [verification](../verification/GUIDE.md) for the consequential completion claim, unless their valid current activation/evidence can be reused. Record completion only after current acceptance checks ran. Append evidence identity, commands/results, review residuals, blockers and the next frontier to the same plan.
 8. Perform cross-task/final acceptance and prepare delivery. Andino owns DONE; preserve durable evidence instead of deleting it as scratch.
 
 ## Ownership

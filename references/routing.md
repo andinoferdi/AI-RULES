@@ -2,11 +2,13 @@
 
 ## Plan depth is not capability routing
 
-`focus` is the required default communication layer for every Andino invocation,
-including direct answers. Activate it using the host contract unless already
-loaded with valid context. Honor explicit user overrides and invocation controls;
-report unavailability without duplicating Focus's body here. This adds no task
-lifecycle or domain-specialist requirement.
+First select relevant bundled work methods using the [index](internal-method-index.md)
+and [dispatch contract](method-dispatch.md). This covers every internal method and
+source alias, including implicit requests with no skill name. Load selected current
+work guides before Focus or optional external discovery. Explicit native providers,
+required research/domain owners and invocation controls retain their authority.
+Focus remains the default communication layer after this selection/loading; honor
+style overrides and report unavailability without blocking authorized work.
 
 Select capabilities by the current unresolved need, not by a compulsory planning
 stage or coding taxonomy. DIRECT may need no tools; GROUNDED needs bounded context;
@@ -92,7 +94,8 @@ Antigravity's scoped descriptions are behavioral guidance, not a native hard swi
 | Consequential claim that implementation, repair or a mapped deliverable meets acceptance | REQUIRED: bundled [verification](../skills/verification/GUIDE.md) | read before the claim; use actual current evidence; excludes ordinary replies/trivial edits; no repeated unchanged suites |
 | Review | bundled [code-review](../skills/code-review/GUIDE.md) | explicit current diff including owned untracked bytes; Spec and Standards axes; no unsolicited rewrite |
 | Unclear product requirements | inspect evidence, then REQUIRED: [decision-interview](../skills/decision-interview/GUIDE.md) if a material user-owned choice remains | inspect existing behavior first; no reinterview of locked decisions or environment facts |
-| Large implementation ordering | bundled [planning](../skills/planning/GUIDE.md) if useful | existing Andino plan remains durable state; task decomposition/decision maps are supporting artifacts |
+| Large implementation ordering | REQUIRED when requested or accepted multi-step work lacks dependency/verification detail: bundled [planning](../skills/planning/GUIDE.md) | existing Andino plan remains durable state; skip already complete accepted ordering; task decomposition/decision maps are supporting artifacts |
+| Accepted plan ready or interrupted execution resumes | REQUIRED: bundled [plan-execution](../skills/plan-execution/GUIDE.md) | inspect checkpoint and relevant drift; execute only authorized dependency-ready work; planning-only requests stop at the plan |
 | Structural relationship | existing Graphify or symbol/reference search | verify current source; no automatic graph generation |
 | Historical decisions | claude-mem targeted search → timeline → selected detail | any working host integration; no automatic per-prompt retrieval |
 | New visual direction or generation: landing, portfolio, redesign, typography, composition | REQUIRED once the product direction is resolved or delegated: design-taste-frontend (`taste-skill` alias) | Taste generates one design direction recorded in the project's DESIGN.md; dials are stated explicitly from the brief, never inferred from adjectives such as "minimal" or "professional" |
