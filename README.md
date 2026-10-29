@@ -1,86 +1,88 @@
 # Natural Writing
 
-A writing skill for Indonesian and English prose. It writes, rewrites and reviews requested documents so they read naturally and fit their reader, while keeping facts, numbers, citations, technical terms and the required depth intact.
+> **Human prose without robotic AI tells.** Writes, rewrites, and reviews Indonesian and English documents so they read naturally, while preserving exact technical terms, citations, numbers, and conceptual depth.
 
-## When to use
+AI writing frequently sounds formulaic: overusing dramatic reveals ("It's not just X, it's Y"), repetitive tripartite lists, bloated adjectives, and artificial transitions. **Natural Writing** strips away these AI tells across three specialized operational modes, ensuring your essays, technical articles, and academic papers sound authoritative and human.
 
-- You want an essay, article, report, email draft, documentation prose or an academic section written well.
-- You want existing text rewritten for clarity and naturalness without changing what it says.
-- You want a review of writing quality without the file being changed.
+---
 
-## Limits
+## The 3 Operational Modes
 
-Natural Writing governs prose inside writing artifacts. It does not handle ordinary chat answers, code, JSON or other machine-readable output, statistics, research validity or task orchestration. It never promises that text will pass AI detectors.
+| Mode | Purpose | Invariant Guarantee |
+|---|---|---|
+| **Write** | Generates fresh prose from supplied notes or outline | Adheres to genre depth, natural vocabulary, and evidence limits. |
+| **Rewrite** | Polishes existing text for clarity and natural flow | **Meaning-preserving:** numbers, citations, and terminology survive 100%. |
+| **Review** | Evaluates prose quality without changing the file | Delivers prioritized critique on repetition, tone drift, and AI clichés. |
 
-An artifact is classified by purpose, not location: an essay written in chat is still an artifact. Its length, structure and depth follow the request and the genre, not conversational brevity.
+---
 
-## Requires
+## When to Use
 
-None. It works standalone. With other AI-RULES skills:
+| ✅ Use For | ❌ Do NOT Use For |
+|---|---|
+| Technical articles, essays, and documentation prose | Conversational chat replies (use `focus`) |
+| Academic sections, literature reviews, thesis chapters | Code, JSON, or machine-readable outputs |
+| Polishing rough drafts without altering their meaning | Bypassing AI detectors (no gimmicky bypass promises) |
+| Reviewing tone, cadence, and register inconsistencies | Task planning or lifecycle management |
 
-- Focus keeps the surrounding communication (progress, explanations, completion reports) concise and never shortens the artifact body.
-- Skripsi Skill keeps authority over academic research, evidence and campus rules; Natural Writing only refines how supported content is expressed.
-- Andino Workflow routes to it as a native sibling when the task needs artifact prose work, and keeps the lifecycle.
+---
 
-## Install
+## Quick Start
 
-Requirements: Python 3.11+, Git, and an installed agent for CLI setup.
+### 1. Installation
 
-With the AI-RULES CLI (recommended):
+Install via the **AI-RULES CLI** (included in the `research-skripsi` and `everything` profiles):
 
 ```sh
+# Install CLI
 git clone --branch main https://github.com/andinoferdi/AI-RULES.git
-cd AI-RULES
-python -m pip install .
+cd AI-RULES && python -m pip install .
+
+# Setup Natural Writing for your host
 ai-rules setup --capability natural-writing --host <host>
 ```
 
-Pass `--host` with `codex`, `claude-code`, `opencode`, `antigravity-cli` or `antigravity-ide`. Without it, setup targets Codex. For a project install, add `--scope project --project-root <path>`. Run the same command again to update. The `everything` and `research-skripsi` profiles include it; installing it does not activate it on every task.
-
-Manual, for this skill only:
+<details>
+<summary>Manual Installation</summary>
 
 ```sh
-git clone --depth 1 --single-branch --branch natural-writing https://github.com/andinoferdi/AI-RULES.git "$HOME/.agents/skills/natural-writing"
+git clone --depth 1 --single-branch --branch natural-writing https://github.com/andinoferdi/AI-RULES.git "<skills-dir>/natural-writing"
 ```
 
-Install the whole folder, not only `SKILL.md`. The folder must keep the name `natural-writing`. For another host, change the destination to the folder in this table:
+| Host | Global Skills Directory | Project Skills Directory |
+|---|---|---|
+| **Codex** | `~/.agents/skills/natural-writing` | `.agents/skills/natural-writing` |
+| **Claude Code** | `~/.claude/skills/natural-writing` | `.claude/skills/natural-writing` |
+| **OpenCode** | `~/.config/opencode/skills/natural-writing` | `.agents/skills/natural-writing` |
+| **Antigravity** | `~/.gemini/antigravity-cli/skills/natural-writing` | `.agents/skills/natural-writing` |
 
-| Host | Global folder |
-| --- | --- |
-| Codex | `~/.agents/skills/natural-writing` |
-| OpenCode | `~/.config/opencode/skills/natural-writing` |
-| Claude Code | `~/.claude/skills/natural-writing` |
-| Antigravity IDE and 2.0 | `~/.gemini/config/skills/natural-writing` |
-| Antigravity CLI | `~/.gemini/antigravity-cli/skills/natural-writing` |
+</details>
 
-For project scope, use `.agents/skills/natural-writing` (Codex, OpenCode, Antigravity) or `.claude/skills/natural-writing` (Claude Code) in the project root. Keep one copy per skill, and reload the host session after installing.
+### 2. Usage Examples
 
-## Use
+- **Rewrite (English):**
+  `/natural-writing rewrite this technical architecture document for flow and conciseness; preserve API names, benchmarks, and citations`
+- **Review (Indonesian):**
+  `/natural-writing review artikel ini untuk mendeteksi repetisi, gaya bahasa kaku, dan pola formulaik khas AI; jangan ubah filenya`
+- **Write (Academic with Siblings):**
+  `Use andino-workflow, skripsi-skill, and natural-writing to draft Chapter 2 from the verified literature notes in formal Indonesian academic prose`
 
-- Codex: `$natural-writing <request>`
-- Claude Code: `/natural-writing <request>`
-- OpenCode: ask the agent to use `natural-writing`, or use the command that setup registers.
-- Antigravity: ask the agent to use `natural-writing`. In the IDE, check Customizations.
+---
 
-Examples:
+## Protected Content Contract
 
-- Rewrite: `/natural-writing rewrite this English technical report for clarity; keep claims, numbers, API names, code and citations`
-- Review: `/natural-writing review this Indonesian article for repetition and inconsistent register; do not modify the file`
-- Write, with other skills: `use andino-workflow, skripsi-skill, search-first, natural-writing and focus to write this thesis section from verified sources in natural Indonesian academic prose`
+In **Rewrite** mode, Natural Writing enforces strict semantic preservation:
+1. **Facts & Numbers:** Statistical values, sample sizes, and timestamps remain untouched.
+2. **Citations & References:** APA/IEEE keys, quotes, and author names are preserved verbatim.
+3. **Domain Vocabulary:** Exact framework names, method signatures, and technical terms are never substituted for generic synonyms.
 
-The three modes are Write (new prose from supplied facts), Rewrite (meaning-preserving edits) and Review (prioritized findings, original unchanged). Activating a skill grants no extra permission.
+---
 
-## Package
+## References & Provenance
 
-- [SKILL.md](SKILL.md): activation, modes, ownership, protected content and verification.
-- [references/indonesian-writing.md](references/indonesian-writing.md) and [references/english-writing.md](references/english-writing.md): independent guidance per language.
-- [references/academic-writing.md](references/academic-writing.md): claim strength, citation integrity and institutional precedence.
-- [references/editing-and-review.md](references/editing-and-review.md): Rewrite and Review procedures.
-
-## Verify
-
-After reloading, invoke it with a short paragraph that contains a number and a citation and ask for a rewrite: both must survive unchanged. Ask for a review: the file must stay unchanged. Ask an unrelated coding question: the skill should not be used. These are manual checks; main's validators and semantic-preservation tests live in the [main branch](https://github.com/andinoferdi/AI-RULES/tree/main).
-
-## Provenance
-
-Original AI-RULES work by Andino Ferdiansah under the [MIT license](references/license.md). The idea of a writing skill that removes formulaic AI patterns was inspired by [mchardyan/anti-ai-writer](https://github.com/mchardyan/anti-ai-writer) (inspected at main `bdbcad4` and references `3a86ca0`). That repository publishes no license, so none of its text, word lists or examples are reused here, and no endorsement is implied.
+- [`SKILL.md`](SKILL.md) — Mode selection, protected content rules, and verification checklist.
+- [`references/indonesian-writing.md`](references/indonesian-writing.md) — Natural Indonesian patterns and vocabulary guide.
+- [`references/english-writing.md`](references/english-writing.md) — Natural English patterns and AI-tell removal guide.
+- [`references/academic-writing.md`](references/academic-writing.md) — Claim strength, citation rigor, and academic registers.
+- [`references/editing-and-review.md`](references/editing-and-review.md) — Structured editorial procedures.
+- Created by Andino Ferdiansah under the [MIT License](references/license.md).
