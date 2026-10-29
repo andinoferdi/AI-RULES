@@ -159,6 +159,13 @@ class Executor:
             raise ValueError(f"first-party bundle is missing SKILL.md: {bundle}")
         target = skill_root / operation.capability_id
         copy_tree_atomic(bundle, target, self.state_dir / "backups", reporter=self.reporter)
+        if operation.capability_id == "andino-workflow":
+            skills_dir = bundle / "skills"
+            if skills_dir.is_dir():
+                for member in sorted(skills_dir.iterdir()):
+                    if member.is_dir() and (member / "SKILL.md").is_file():
+                        member_target = skill_root / f"andino-{member.name}"
+                        copy_tree_atomic(member, member_target, self.state_dir / "backups", reporter=self.reporter)
         return target
 
 

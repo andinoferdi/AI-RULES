@@ -111,10 +111,42 @@ def package_files(files, expected_name, modes=None):
                 for part in parts)
             method_resource = (len(parts) >= 3 and parts[0] == 'skills'
                                and NAME.fullmatch(parts[1]) and len(parts[1]) <= 64
-                               and (parts[2:] == ['GUIDE.md'] or
+                               and (parts[2:] in (['GUIDE.md'], ['SKILL.md']) or
                                     len(parts) >= 4 and parts[2] in {'references', 'resources', 'templates', 'examples'}
-                                    and name.endswith('.md') and parts[-1] != 'SKILL.md'))
-            allowed = safe and (allowed or bool(method_resource)) and (name == 'SKILL.md' or parts[-1].casefold() != 'skill.md')
+                                    and name.endswith('.md')))
+            allowed = safe and (allowed or bool(method_resource))
+            if parts[0] == 'references' and (parts[-1].casefold() == 'skill.md' or (len(parts) > 2 and parts[1] != 'legal')):
+                allowed = False
+            if safe and len(parts) == 3 and parts[0] == 'skills' and parts[2] == 'SKILL.md':
+                member_name = f'andino-{parts[1]}'
+                body = files[name]
+                if not body.startswith('---\n'):
+                    errors.append(f'{member_name}: missing YAML frontmatter')
+                else:
+                    m_parts = body.split('\n---\n', 1)
+                    if len(m_parts) != 2:
+                        errors.append(f'{member_name}: unterminated YAML frontmatter')
+                    else:
+                        fields = {}
+                        for line in m_parts[0].splitlines()[1:]:
+                            match = FIELD.fullmatch(line)
+                            if not match or match[1] in fields:
+                                errors.append(f'{member_name}: invalid or duplicate frontmatter field: {line}')
+                                continue
+                            value = match[2].strip()
+                            if (value.startswith(("[", "{", "'", '"', "|", ">", "&", "*", "!", "#"))
+                                    or ": " in value or "\t" in value or " #" in value
+                                    or value.lower() in ("null", "~", "true", "false", "yes", "no", "on", "off")
+                                    or re.fullmatch(r"[+-]?(?:[0-9][0-9._eE+-]*|\.(?:inf|nan))", value, re.I)):
+                                errors.append(f'{member_name}: unsupported frontmatter scalar: {line}')
+                                continue
+                            fields[match[1]] = value
+                        if fields.get('name') != member_name:
+                            errors.append(f'{member_name}: wrong or missing name: {fields.get("name")}')
+                        if not fields.get('description'):
+                            errors.append(f'{member_name}: missing description')
+                        elif len(fields['description']) > 1024:
+                            errors.append(f'{member_name}: description exceeds 1024 characters')
         if threejs:
             scaffold_ignore = name == 'assets/threejs-vite-game/.gitignore'
             safe = '\\' not in name and ':' not in name and all(

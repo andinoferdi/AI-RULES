@@ -77,4 +77,11 @@ def install_first_party_bundle(bundle_root: Path, target_skill_root: Path, capab
         raise ValidationError(f"bundle root is missing SKILL.md: {bundle_root}")
     target = target_skill_root / capability_id
     copy_tree_atomic(bundle_root, target, backup_root)
+    if capability_id == "andino-workflow":
+        skills_dir = bundle_root / "skills"
+        if skills_dir.is_dir():
+            for member in sorted(skills_dir.iterdir()):
+                if member.is_dir() and (member / "SKILL.md").is_file():
+                    member_target = target_skill_root / f"andino-{member.name}"
+                    copy_tree_atomic(member, member_target, backup_root)
     return target

@@ -253,6 +253,10 @@ def cmd_remove(args: argparse.Namespace) -> int:
             if path is not None and path.exists():
                 import shutil
                 shutil.rmtree(path)
+                if capability_id == "andino-workflow" and root is not None:
+                    for member_path in sorted(root.glob("andino-*")):
+                        if member_path.is_dir() and (member_path / "SKILL.md").is_file():
+                            shutil.rmtree(member_path)
             records.pop(key, None)
             removed += 1
             print(f"{capability_id} -> {host_id}: APPLIED REMOVE")

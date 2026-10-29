@@ -253,6 +253,13 @@ class LatestSources:
             else:
                 copy_tree_atomic(self.sources[identifier], destination, state_dir / "backups",
                                  verify=lambda path: contents(path) == expected, reporter=self.reporter)
+                if identifier == "andino-workflow":
+                    skills_dir = self.sources[identifier] / "skills"
+                    if skills_dir.is_dir():
+                        for member in sorted(skills_dir.iterdir()):
+                            if member.is_dir() and (member / "SKILL.md").is_file():
+                                member_target = destination.parent / f"andino-{member.name}"
+                                copy_tree_atomic(member, member_target, state_dir / "backups", reporter=self.reporter)
             emit(self.reporter, "Verifying installed content", capability=identifier)
             if contents(destination) != expected:
                 raise ValueError("Installed content differs from the resolved source; backup retained")
