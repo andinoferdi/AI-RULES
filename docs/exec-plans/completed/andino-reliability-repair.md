@@ -1,12 +1,12 @@
 # Andino reliability repair
 
-Status: IN_PROGRESS
+Status: DONE
 Depth: STANDARD
 Current Phase: Publication
 
 ## Executive Snapshot
 
-Completed2026-10-29: internal-first dispatch/handoffs implemented across59 canonical methods and53 aliases.108 final Andino tests and41 offline installer scenarios pass; the full336-test suite passed before final review fixes.244 manual cases and a byte-matched candidate export are ready in build/andino-reliability-manual-final/. Required domain/native/permission/UI contracts remain intact. No AI actor tests ran; the user owns model testing. Details and exact hashes: docs/validation/andino-reliability/verification.json.
+Completed2026-10-29: internal-first dispatch/handoffs across59 methods/53 aliases published as runtime65df26d. Main delivery37a8712 publishes the quality tooling and release19 pin; both remote SHAs verified. Full final339-test suite passes (one optional skip); real remote and actual repaired ai-rules.exe fresh/repeat/upgrade/backup/repeat pass.244 manual AI cases remain available; no model testing was performed. Details: docs/validation/andino-reliability/verification.json.
 
 ## Objective
 
@@ -40,7 +40,7 @@ Make internal method selection, loading, handoffs and acceptance explicit, obser
 | Runtime dispatch and handoffs | DONE | Internal-first entry/index/routing/adapter; explicit accepted-plan execution; planning-to-execution and review/verification handoffs. Permission/domain/UI contracts retained. |
 | Coverage and manual evaluation | DONE |59 methods,53 aliases/57 target pairs,19 sibling declarations,9 instrument/native entries and244 manual cases pass offline catalog/fixture/package checks. Two fixture applications plus routing/priority/handoff controls exported. Model behavior NOT_VERIFIED. |
 | Verification and review | DONE |336 general tests pass (one optional skip);108 affected Andino tests pass after review fixes;7 package/74 capability schemas pass;41 offline installer scenarios pass. Independent review findings fixed and rechecked. Source/export/install hashes match. |
-| Publication | IN_PROGRESS | Runtime65df26d pushed and exact remote SHA verified. Main release19 pins that commit with sibling pins unchanged. Remote default-latest and actual installed CLI fresh/repeat/upgrade/backup/repeat PASS. Full final339-test suite PASS (one optional skip); main commit/push pending. |
+| Publication | DONE | Runtime65df26d and main delivery37a8712 pushed normally and exact remote SHAs verified. Release19 pins runtime with sibling pins unchanged. Remote default-latest and actual installed CLI fresh/repeat/upgrade/backup/repeat PASS. Full final339-test suite PASS (one optional skip). |
 
 ## Publication continuation — 2026-10-29
 
@@ -63,4 +63,4 @@ The user authorizes full implementation and identifies three requirements: expli
 
 ## NEXT ACTION
 
-Commit reviewed quality/evaluation/publication evidence and release19 manifest to main, push normally and verify exact remote SHA. Then record the actual main delivery in this same plan and finish publication.
+None — requested commit/push and ai-rules setup availability complete. User may run ai-rules setup and reload the agent session. Manual AI behavior testing remains the user's separate follow-up.

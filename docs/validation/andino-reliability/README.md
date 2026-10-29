@@ -73,3 +73,5 @@ ai-rules setup
 Default latest mengambil branch runtime yang sudah dipublikasikan. Tidak diperlukan tagged binary release untuk jalur ini; wheel lokal juga berisi pin rilis19 untuk penggunaan bundled. Setelah pengguna menjalankan setup, mulai ulang sesi agent agar skill baru ditemukan. Pengujian file/instalasi ini tidak membuktikan pemilihan metode oleh model.
 
 Suite penuh setelah pin rilis19 dan seluruh perbaikan review:339 tes lulus dalam191.798 detik, nol kegagalan/error dan satu skip integrasi opsional. Log aktual tersimpan di publication-suite.log. Delapan bundle rilis diekspor dari commit resmi masing-masing; hash Andino identik dengan kandidat yang diuji.
+
+Publikasi selesai: runtime65df26d dan main delivery37a8712188433d80263a2d96a0c4497fefab7a5d sudah dipush normal; git ls-remote mengonfirmasi SHA tepat keduanya. Commit dokumentasi penutup hanya merekam keberhasilan ini, tanpa mengubah runtime, installer atau pin yang diuji.

@@ -55,8 +55,8 @@
     "actual_installed_entrypoint": "fresh/repeat and official upgrade/backup/repeat PASS with no source/home/PYTHONPATH override",
     "cli_repair": "Local non-editable wheel replaces broken editable package, no dependency/network install",
     "global_skill_installations_modified": false,
-    "main_remote_verified": false,
-    "main_status": "Verified and ready for main commit/push",
+    "main_remote_verified": true,
+    "main_status": "PUBLISHED",
     "final_suite": {
       "run": 339,
       "failures": 0,
@@ -64,6 +64,7 @@
       "skipped": 1,
       "seconds": 191.798,
       "scope": "Full current suite after release19 pin and all review fixes"
-    }
+    },
+    "main_delivery_commit": "37a8712188433d80263a2d96a0c4497fefab7a5d"
   }
 }
