@@ -59,12 +59,19 @@ For project scope, use `.agents/skills/andino-workflow` (Codex, OpenCode, Antigr
 
 ## Use
 
-- Codex: `$andino-workflow <task>`
-- Claude Code: `/andino-workflow <task>`
-- OpenCode: ask the agent to use `andino-workflow`, or use the command that setup registers.
-- Antigravity: ask the agent to use `andino-workflow`. In the IDE, check Customizations.
+- Codex: `$andino-workflow <task>` or individual member skills `$andino-<method>` (e.g. `$andino-brainstorming`, `$andino-tdd`)
+- Claude Code: `/andino-workflow <task>` or `/andino-<method>` (e.g. `/andino-brainstorming`, `/andino-tdd`, `/andino-debugging`)
+- OpenCode: `/andino-workflow <task>` or `/andino-<method>`
+- Antigravity: ask the agent to use `andino-workflow` or invoke specific member skills via slash command or tool.
+
+### Bidirectional Workflow & Member Skills
+
+`andino-workflow` includes 59 first-class, namespaced member skills (`andino-*`).
+- **Orchestrated Mode:** Invoking `/andino-workflow` coordinates the required member skills based on task phase (discovery, planning, tdd, debugging, verification).
+- **Direct Mode:** Invoking an individual skill (e.g. `/andino-brainstorming`) immediately activates that technique while automatically enforcing Andino's discipline (proportional investigation, evidence-based decisions, checkpoints, anti-loop). When finished, it hands off cleanly to subsequent phases.
 
 Example: `$andino-workflow resume the existing task plan and check repository drift`
+Example: `/andino-tdd implement user authentication endpoints with red-green-refactor loop`
 
 Activating a skill grants no extra permission.
 

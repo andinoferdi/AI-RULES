@@ -82,23 +82,36 @@ and report blocked required routes.
 Other references remain conditional: read handoff on resume and execution-plan
 when checkpointed work needs it, not every reference for a brief status question.
 
-## Use bundled methods on demand
+## Use member skills on demand
 
 The [internal method index](references/internal-method-index.md) contains the
 adapted engineering, requirements, productivity and collaboration techniques.
-They are local GUIDE.md resources, not additional native skills. This package has
-one root SKILL.md. No Addy, Matt or Superpowers installation, bootstrap, plugin,
-startup hook, upstream checkout or runtime fetch is required.
+Each method is a native skill (`andino-<name>`, with aliases such as `brainstorming`,
+`tdd`, `debugging`) bundled with its canonical `SKILL.md` and `GUIDE.md` resources.
+When installed via `ai-rules setup`, all 59 skills are discoverable, invokable,
+and executable directly across AI agents (via `/` or `$`) or coordinated through Andino.
+
+### Bidirectional workflow contract
+
+1. **Workflow to Skill:** When `andino-workflow` coordinates a task, it activates
+   the matching native member skill `andino-<name>` (or its local guide) according
+   to the current task phase, preserving the overarching lifecycle, execution plan,
+   and definition of done.
+2. **Skill to Workflow:** When an individual member skill is invoked directly (e.g.,
+   `/andino-brainstorming` or `$andino-tdd`), it operates under the Andino Workflow
+   protocol (proportional investigation, evidence-based decisions, single durable
+   checkpoints, and anti-loop guards). When completed, it hands off cleanly to the
+   next relevant method or the active task.
 
 Select by actual intent, evidence and the current phase; honor an explicitly named
-relevant internal method. Read only its guide, then the resources needed now.
-Original source names resolve through the index to one canonical procedure:
-TDD aliases select `tdd`, debugging aliases `debugging`, review aliases `code-review`.
-Do not load competing source providers or invoke Andino recursively. A metadata
-lookup is DISCOVERED; an authorized guide read is ACTIVE; USED also needs a meaningful
-action/result. Unavailable or denied resources remain UNAVAILABLE, with no alternate
-copy bypass. An irrelevant method is NOT_NEEDED. Reassess rather than accumulating
-all methods in context.
+relevant method. Read only the selected skill's `SKILL.md` or guide, then the
+resources needed now. Original source names resolve through the index to one
+canonical procedure: TDD aliases select `andino-tdd`, debugging aliases `andino-debugging`,
+review aliases `andino-code-review`. Do not load competing source providers or
+invoke Andino recursively. A metadata lookup is DISCOVERED; an authorized skill/guide
+read is ACTIVE; USED also needs a meaningful action/result. Unavailable or denied
+resources remain UNAVAILABLE, with no alternate copy bypass. An irrelevant method is
+NOT_NEEDED. Reassess rather than accumulating all methods in context.
 
 For an executable behavior change load [tdd](skills/tdd/GUIDE.md) before implementation;
 when the requested change, seam and acceptance facts are settled, select TDD for

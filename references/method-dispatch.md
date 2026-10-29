@@ -14,7 +14,7 @@ a second catalog, a new plan or an instruction to activate every method.
 3. Check applicability, accepted decisions, phase and resource permissions. For an
    alias with several destinations, choose the relevant procedure(s), not every target.
    An explicit native provider choice retains the host invocation contract.
-4. Load the selected canonical GUIDE.md before Focus and before governed work.
+4. Load the selected native skill `andino-<name>` (or canonical `SKILL.md`/`GUIDE.md`) before Focus and before governed work.
    Read needed supporting resources, then apply the procedure. A name mention,
    metadata lookup or remembered technique is not activation.
 5. If a requested method is excluded, explain the material conflict and route to the

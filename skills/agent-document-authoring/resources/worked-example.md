@@ -47,7 +47,7 @@ Ordered execution sequence for production deployment.
 2. Inspect working tree: ensure working directory is clean. Done when `git status --porcelain` produces zero output lines.
 3. Build artifact:
    - For standard Node builds: execute `npm run build`. Done when `dist/server.js` exists.
-   - For containerized builds: consult [Docker build specification](resources/docker-build.md). Read only when building container targets.
+   - For containerized builds: consult [`docker-build.md`](#docker-build). Read only when building container targets.
 4. Execute release: trigger deployment pipeline via `npm run deploy:prod`. Done when output confirms production deployment ID and HTTP health probe returns 200 OK.
 ```
 
