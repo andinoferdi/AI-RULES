@@ -1,14 +1,14 @@
 # Three.js Skills for AI-RULES
 
-> **45 specialized Three.js & NixieFX engineering methods in one installable family.** Production-grade 3D graphics, custom GLSL/WGSL shaders, lighting, skeletal animation, physics, particle systems, and WebGL/WebGPU optimization.
+> **45 specialized Three.js & NixieFX engineering methods in one installable family.** Covers 3D graphics, custom GLSL/WGSL shaders, lighting, skeletal animation, physics, particle systems, and WebGL/WebGPU optimization.
 
-Building advanced 3D web applications requires deep mathematical and rendering discipline: shader pipelines, draw-call budgets, shadow-map cascades, matrix transformations, and asset management. **Three.js Skills** packages 45 battle-tested graphics specialist methods into a single unified capability, giving your agent expert guidance without polluting your system prompt with 45 separate skill registrations.
+Building advanced 3D web applications involves shader pipelines, draw-call budgets, shadow-map cascades, matrix transformations, and asset management. **Three.js Skills** packages 45 graphics specialist methods into one capability, giving your agent domain guidance through one registration rather than adding 45 separate skill registrations to the system prompt.
 
 ---
 
 ## The Specialist Catalog (45 Methods)
 
-The family covers the complete 3D interactive graphics stack:
+The family covers these areas of 3D interactive graphics:
 
 | Domain | Key Specialists | What They Handle |
 |---|---|---|
@@ -25,7 +25,7 @@ Consult the complete [Specialist Index](references/specialists.md) for detailed 
 
 ## When to Use
 
-| ✅ Use Three.js Skills For | ❌ Do NOT Use For |
+| Use Three.js Skills For | Do NOT Use For |
 |---|---|
 | WebGL/WebGPU 3D scenes, models, and canvases | Standard 2D DOM / HTML / CSS web development |
 | Custom vertex/fragment shaders and visual effects | Routine React / Tailwind frontend component styling |
@@ -83,9 +83,9 @@ Invoke the family name, and optionally name a specific specialist method:
 
 ## Architecture & Integration
 
-- **Single Host Registration:** Installs as one clean directory (`threejs-skills`) containing one root `SKILL.md`. Internal specialist guides are loaded selectively on demand from `skills/<method-id>/GUIDE.md`.
+- **Single Host Registration:** Installs as one directory (`threejs-skills`) containing one root `SKILL.md`. Internal specialist guides are loaded as needed from `skills/<method-id>/GUIDE.md`.
 - **With Andino Workflow:** When Andino is active, it retains the overall lifecycle, execution plan, and checkpointing. `threejs-skills` provides technical domain execution within that task.
-- **Standalone:** Functions autonomously within the host's normal task context.
+- **Standalone:** Works within the host's normal task context.
 
 ---
 

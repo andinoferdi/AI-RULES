@@ -1,6 +1,6 @@
 # threejs-procedural-geometry
 
-Build well-crafted production procedural meshes in Three.js. Use for complete hard-surface assemblies and humanoid robots, profile extrusion, parameter-curve and spine lofts, pillow panels, exact polygon cuts, inset, revolve, sweep, solidify, bevels and fillets, shell thickness, direct-topology apertures, semantic mesh writers, or diagnosing primitive-built forms, coplanar flicker, loose/non-manifold geometry, detached parts, interpenetration, support, clearance, and swept-envelope defects.
+Build procedural meshes for production in Three.js. Use for complete hard-surface assemblies and humanoid robots, profile extrusion, parameter-curve and spine lofts, pillow panels, exact polygon cuts, inset, revolve, sweep, solidify, bevels and fillets, shell thickness, direct-topology apertures, semantic mesh writers, or diagnosing primitive-built forms, coplanar flicker, loose/non-manifold geometry, detached parts, interpenetration, support, clearance, and swept-envelope defects.
 
 This is an internal method bundled in `threejs-skills`, not an individual installer
 choice or native skill. Read [GUIDE.md](GUIDE.md) for the method; its supporting
