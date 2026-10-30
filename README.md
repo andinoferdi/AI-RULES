@@ -1,8 +1,8 @@
 # Search First
 
-> **Research existing solutions before writing custom code.** Prevents reinventing the wheel by systematically evaluating libraries, framework utilities, and official APIs: `ADOPT`, `EXTEND`, `COMPOSE`, or `BUILD`.
+Search First evaluates existing libraries, framework utilities, and official APIs before custom code, leading to one of four implementation decisions: `ADOPT`, `EXTEND`, `COMPOSE`, or `BUILD`.
 
-AI coding agents habitually jump straight to writing hundreds of lines of custom code for utilities that already exist in standard libraries or battle-tested packages. **Search First** forces an evidence-based research gate before non-trivial implementation decisions, ensuring every approach is grounded in authoritative documentation and current API contracts.
+Before writing custom utilities, check whether standard libraries or maintained packages already meet the need. **Search First** uses a research gate for non-trivial implementation decisions, checking approaches against authoritative documentation and current API contracts.
 
 ---
 
@@ -21,7 +21,7 @@ Before writing custom functionality, Search First categorizes the path forward:
 
 ## When to Use
 
-| ✅ Run Search First For | ❌ Do NOT Run Search First For |
+| Run Search First For | Do NOT Run Search First For |
 |---|---|
 | Selecting an unfamiliar library, SDK, or integration | Trivial local edits, syntax corrections, or typos |
 | Checking whether a utility already exists in the repo/ecosystem | Settled local questions with clear in-project answers |
@@ -74,7 +74,7 @@ git clone --depth 1 --single-branch --branch search-first https://github.com/and
 1. **Local Sufficiency First:** Inspect local package manifests and existing utility directories before querying external sources.
 2. **Authoritative Sources Only:** Rely on official documentation, verified release notes, and high-trust repositories over unverified blog snippets.
 3. **Honest Unknowns:** If web browsing or search tools are unavailable or restricted, mark external compatibility claims as `UNKNOWN` rather than speculating.
-4. **Lifecycle Harmony:** Search First owns research methodology only; task planning and execution remain governed by the active workflow.
+4. **Lifecycle Boundary:** Search First owns research methodology only; task planning and execution remain governed by the active workflow.
 
 ---
 
