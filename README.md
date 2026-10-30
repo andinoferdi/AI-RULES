@@ -11,7 +11,7 @@
 1. **Aturan Dasar (Wajib):** Sertakan modul **[A. PRIORITAS](#a-prioritas)** di awal sesi untuk mengarahkan AI agar menjawab langsung, memakai bahasa alami, dan menghindari basa-basi klise.
 2. **Pilih Spesialis:** Gabungkan modul **A** dengan salah satu modul spesialis (B, D–V, X, Y) sesuai kebutuhan tugas Anda.
 3. **Reset Konteks:** Gunakan modul **[Z](#z-reset-konteks-dan-arah-percakapan)** saat percakapan mulai menyimpang dari tujuan.
-4. **Untuk Proyek Koding Mandiri:** Gunakan berkas konfigurasi di folder put-in-your-projects/ (chat-rules.md, code-rules.md, e/fe-rules.md, dll.).
+4. **Untuk Proyek Koding Mandiri:** Gunakan berkas konfigurasi di folder put-in-your-projects/ (chat-rules.md, code-rules.md, Be/fe-rules.md, dll.).
 
 ---
 
