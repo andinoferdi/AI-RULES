@@ -48,7 +48,7 @@ read [the worked example](resources/worked-example.md).
 - **Single durable checkpoint**: Mutate the canonical plan in-place. No dual-ledger
   or external bash script dependencies.
 - **Two-Phase Signal Gate**:
-  - Behavioral code: Canonical [tdd](../tdd/GUIDE.md) (watch RED fail -> minimal
+  - Behavioral code: Canonical TDD (`skills/tdd/GUIDE.md`) (watch RED fail -> minimal
     change -> watch GREEN pass).
   - Static content/config: Targeted Verification Contract (linter, schema, visual
     diff, or artifact check).
@@ -80,7 +80,7 @@ read [the worked example](resources/worked-example.md).
    `IN_PROGRESS` and update the Execution Board before editing code.
 
 4. **Execute through the Two-Phase Signal Gate**:
-   - **For behavioral code ([tdd](../tdd/GUIDE.md))**:
+   - **For behavioral code (canonical TDD, `skills/tdd/GUIDE.md`)**:
      1. *Phase 1 (RED)*: Add or locate the test case. Run the test command. Observe
         and verify the failing signal (discriminating assertion failure, not syntax error).
      2. *Phase 2 (GREEN)*: Write the minimal implementation satisfying the test.
@@ -111,7 +111,7 @@ read [the worked example](resources/worked-example.md).
 7. **Whole-branch final review gate**:
    Before declaring completion of the plan:
    - If a subagent tool is available, dispatch a fresh reviewer on the diff against
-     merge base using [code-review](../code-review/GUIDE.md) and [verification](../verification/GUIDE.md).
+     merge base using code-review (`skills/code-review/GUIDE.md`) and verification (`skills/verification/GUIDE.md`).
    - If no subagent tool is available, perform a structured self-review against the
      specification, acceptance criteria, and full test suite.
    - Re-grade findings by impact:
@@ -131,6 +131,12 @@ read [the worked example](resources/worked-example.md).
 Andino owns selection, depth, scope, the existing durable checkpoint, delegation and DONE.
 Parent owns shared artifacts/final acceptance. This guide cannot invoke denied/manual
 siblings or establish another lifecycle.
+
+Resolve workflow-wide resources from the installed `andino-workflow` root: for a nested
+member, use its containing workflow package; for standalone `andino-plan-execution`,
+use the sibling `andino-workflow` package. The canonical paths are
+`references/execution-plan.md`, `skills/tdd/GUIDE.md`, `skills/code-review/GUIDE.md`
+and `skills/verification/GUIDE.md`. Load only the current phase's needed guide.
 
 ## Permission boundary
 
