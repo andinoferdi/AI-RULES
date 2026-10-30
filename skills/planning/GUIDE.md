@@ -1,86 +1,206 @@
 # Refine one dependency-aware implementation plan
 
-Internal method ID: `andino-planning` (alias: `planning`). Planning technique under Andino ownership.
+Internal method ID: `andino-planning` (alias: `planning`).
 
 > **Andino Workflow Member Skill**
-> This skill operates under the **Andino Workflow** protocol:
-> - Adheres to proportional investigation, evidence-based decisions, and single durable checkpoints.
-> - When this technique reaches completion, hand off cleanly to the next workflow phase or active task.
-> - Anti-loop guard: Do not re-invoke `andino-workflow` recursively; maintain progress within the active task.
-
-Internal Andino resource. Loading this file does not invoke another skill or change permissions.
+> Operates under Andino Workflow: proportional investigation, evidence-based
+> decisions, one durable checkpoint and clean handoff. Do not invoke the workflow
+> recursively. Loading this resource changes neither tools nor permissions.
 
 ## Purpose
 
-Turn accepted requirements into verifiable vertical slices without competing task state.
-
-Transform broad feature specifications into lean, deterministic execution plans that an agent or engineer can execute without ambiguity. Invisible guardrails keep governance in the background: avoid meta-planning overhead and focus tokens on exact file localities, interface boundaries, and binary test oracles.
-
-Adjust cognitive density proportionally (`LITE`, `STANDARD`, or `DEEP`) to match task risk and scope. Refine only the decisions needed to execute and verify the accepted work; do not force deep planning ceremony on small changes.
+Turn accepted requirements into small, verifiable deliverables a fresh executor
+can implement without recovering decisions from chat. Preserve the useful precision
+of exact files, interfaces, test assertions and commands; spend detail on decisions
+the executor cannot safely infer, rather than transcribing routine implementation.
 
 ## Trigger and non-trigger
 
-Use when: Accepted multi-step work lacks exact interfaces, dependency order, or verification steps.
-
-Do not select for: Simple targeted single-file edits, routine bug fixes with known root causes, or an already complete accepted task graph ready to execute.
+Use when accepted multi-step work lacks task boundaries, dependency order,
+interfaces or verification. Skip a simple targeted edit or a complete accepted
+task graph ready for execution. A known root cause alone does not determine size.
+Open product direction or material user-owned requirements belong to the relevant
+discovery method before implementation-ready planning.
 
 ## Prerequisites
 
-Locate the active Andino plan, checkpoint, spec, and constraints. Check the default location `docs/exec-plans/active/YYYY-MM-DD-<name>.md` or the repository's convention (`docs/plans/` or `tasks/plan.md`).
+Locate the accepted requirements, project constraints and existing checkpoint.
+Use the project's location; otherwise follow the workflow's
+`docs/exec-plans/active/<task>.md` convention. Update the same ticket in place,
+preserving decisions, completed work and evidence. Preserve another ticket's
+incomplete plan; use a separate appropriate path or resolve a real path conflict.
 
-**Plan Overwrite Guard:** Never overwrite an existing, incomplete plan belonging to different work without explicit confirmation. If replanning the current ticket, update the existing document in place.
+Read [the task contract](resources/contract.md) before drafting task detail.
+For a model of the output or a doubtful decomposition, read
+[the worked examples](resources/worked-example.md).
 
 ## Procedure
 
-### 1. Grounded Locality (Enter Plan Mode)
-Operate in read-only mode during planning. Inspect the repository, existing architecture, and relevant schemas before recording paths or interfaces. Map each accepted requirement to an observable outcome and owning boundary. Do NOT write implementation code during planning.
+1. **Ground the next executor.** Inspect the relevant files, callers, test setup
+   and repository commands. Record accepted outcomes with exact values and a short
+   approach explaining boundaries and tradeoffs. Distinguish existing inspected
+   interfaces from proposed ones. Keep unverified facts `UNKNOWN` with a bounded
+   discovery action; dependent work waits for its exit criterion. Planning writes
+   the plan, not implementation code, and never reports planned checks as run.
+2. **Choose deliverables.** Prefer thin paths through the real entrypoint to the
+   observable result. Include setup, configuration and documentation in the slice
+   they enable. A necessary foundation or discovery task is valid when it has its
+   own acceptance and explicitly unblocks a named consumer. Split a task when its
+   outcomes can be reviewed independently or its uncertainty prevents one focused
+   implementation/test cycle. File count is a warning, not a mandatory split.
+3. **Make each task executable.** Record its requirement, dependencies, owned files,
+   consumed/produced interfaces where relevant, concrete acceptance and action
+   sequence. For behavior changes, specify test names and decisive assertions or
+   fixtures, then expected RED, minimal change and focused GREEN. Align with
+   the canonical TDD guide: a meaningful failing assertion distinguishes missing
+   behavior from broken setup. For static documents/configuration, use an
+   appropriate artifact check. Name working directory, prerequisites, exact command
+   and expected signal. Add bodies only when an algorithm or exact copy is itself
+   a required decision. Commit steps appear only under existing authorization.
+4. **Order and integrate.** Give tasks stable IDs and explicit dependencies;
+   reject cycles, missing nodes and incompatible producer/consumer contracts.
+   Sequence overlapping writes, including shared fixtures, schemas and generated
+   files. Mark parallel work eligible only after dependencies and shared-state
+   conflicts are resolved; eligibility does not dispatch workers. Put uncertain,
+   high-consequence seams early. Place integration gates where slices meet or a
+   costly assumption becomes testable, using actual repository checks.
+5. **Close coverage gaps.** Map every accepted requirement and material implied
+   failure case to an owning task and observable check. Use relevant cases, without
+   a fixed quota. Test the public flow when acceptance spans collaborators; a helper
+   test cannot prove integration. Identify unavailable validation and its consequence.
+6. **Review and hand off.** Compare the saved plan with the requirements and current
+   source: coverage, literals, interfaces, dependency order, ownership, commands,
+   integration and proportional detail. Repair gaps before calling it ready.
+   A fresh executor must find current state, blocked work and the first executable
+   step from the plan alone. Keep one concrete `NEXT ACTION`; hand off to
+   the canonical plan-execution guide only when execution is authorized.
 
-### 2. Vertical Slicing and Dependency DAG
-Decompose work into independent vertical slices delivering end-to-end functionality (database, domain logic, API, test) rather than horizontal layers. Fold configuration, setup, and documentation into the slice that requires them. Validate that the task graph is a strict Directed Acyclic Graph (DAG); cycles or dangling nodes are planning defects. Tasks sharing a file write frontier must be serialized to avoid merge collisions.
+## Ownership and permission boundary
 
-### 3. The 3-Tuple Task Contract
-Structure every task with three orthogonal components:
-- **Target & Interfaces:** Exact files to create/modify/test and explicit `Consumes` / `Produces` signatures (names, parameter types, return types). Mark unverified dependencies as `UNKNOWN` or isolate them into a discovery spike.
-- **Delta Actions:** Bite-sized TDD micro-steps (Step 1: Write failing test with spec assertions, Step 2: Run to verify failure, Step 3: Implement minimal code matching signature, Step 4: Run to verify pass, Step 5: Commit).
-- **Binary Oracle:** Deterministic shell/test command with explicit expected signal (e.g. exit code or specific assertion output).
+Andino owns scope, depth, routing, delegation, one checkpoint and final acceptance.
+This method adds task detail inside the canonical lifecycle, not a competing schema,
+tracker checklist or mandatory execution method. Direct native invocation uses
+the same contract without recursively activating the workflow.
 
-### 4. Review Focus (Edge Failure Modes)
-Identify up to five implicit failure modes that the spec implies but happy-path tests miss (empty/malformed payloads, concurrency/race conditions, restart during commit, downstream timeouts, unauthorized requests). Assign each failure mode an observable test in its owning task.
+Resolve workflow-wide resources from the installed `andino-workflow` root:
+for a nested member, use its containing workflow package; for standalone
+`andino-planning`, use the sibling `andino-workflow` package. The canonical paths
+are `references/execution-plan.md`, `skills/tdd/GUIDE.md` and
+`skills/plan-execution/GUIDE.md`. Load only the current phase's needed guide.
+If the package is unavailable, report the boundary and preserve the essential
+state/authority contract here; do not pretend it was loaded.
 
-### 5. Checkpoints and Dynamic Mutation Protocol
-Insert integration checkpoints every 2-3 tasks to verify end-to-end health (full test suite, linter, typecheck). If a task oracle fails during execution due to local implementation details, patch the task in place. If an architectural boundary is invalidated, stop, record evidence, and re-baseline downstream tasks before continuing.
-
-### 6. Self-Review and Handoff
-Review the plan for complete spec coverage, type consistency across tasks, and absence of redundant pseudocode. A plan longer than the code it describes is an anti-pattern. Set the single `NEXT ACTION` pointing to the first executable task and step, then hand off to [plan-execution](../plan-execution/GUIDE.md).
-
-## Ownership
-
-When this plan is accepted and execution is authorized, hand off to [plan-execution](../plan-execution/GUIDE.md) for the next dependency-ready task. A planning-only request ends with the saved plan; plan acceptance does not by itself grant implementation or publication authority. Reuse the existing Andino checkpoint.
-
-Andino owns selection, depth, scope, the existing durable checkpoint, delegation, and completion. The parent workflow owns final acceptance.
-
-## Permission boundary
-
-Use actual host tools within session authorization. No branch creation, commit, push, merge, publication, external messaging, environment installation, or destructive cleanup is authorized by this guide. Reuse earlier permissions without redundant confirmation; disclose unavailable actions and continue safe independent work.
+A planning-only request ends with the saved plan. Plan acceptance grants no new
+implementation, commit, push, publication, external message, installation or
+destructive-action authority. Reuse authorization already supplied; ask only for
+a missing material decision or permission. Tracker designation alone does not
+authorize creating issues. Preserve unrelated user changes.
 
 ## Output
 
-One refined implementation plan with vertical slices, exact interfaces, TDD micro-steps, verification commands, and a single `NEXT ACTION`.
+One proportionate plan with outcome-to-task-to-check coverage, dependency-ready
+tasks, verified or explicitly proposed interfaces, risks, current state and a
+single `NEXT ACTION`. LITE may combine fields; STANDARD/DEEP retain the canonical
+snapshot, acceptance criteria and execution board.
 
-## Verification
+## Verification and fallback
 
-Topological order satisfies dependencies; reject cycles and dangling tasks. Shared files cannot occupy the same write frontier concurrently. Verification commands produce deterministic pass/fail signals.
+Check the saved artifact against the six procedure steps. If an interface or test
+environment is unavailable, make the discovery/validation gap explicit instead
+of inventing precision. Local examples and structural checks demonstrate bounded
+properties; model behavior needs actual fresh-context application evidence.
+During execution preserve prior evidence and update only invalidated tasks and
+dependents. Resolve bounded drift within existing authority; escalate changed
+scope or a user-owned decision, consistent with plan-execution.
 
-## Local resources
+## Deterministic graph fixture
 
-Read [the supporting contract](resources/contract.md) and [the worked procedure and plan examples](resources/worked-example.md) for artifact schemas, vertical slice decomposition, TDD micro-step patterns, and the standing quality floor. Resources are local; upstream repositories are not runtime dependencies.
+Retained for the existing procedural checker: this synthetic graph checks
+interfaces, dependency cycles and independent write sets, not feature completeness
+or model compliance. The worked resource above demonstrates complete task plans.
+
+```andino-example
+{
+  "tasks": [
+    {
+      "id": "create",
+      "deps": [],
+      "files": [
+        "store.py"
+      ],
+      "produces": [
+        "create(name)->id"
+      ],
+      "consumes": []
+    },
+    {
+      "id": "list",
+      "deps": [
+        "create"
+      ],
+      "files": [
+        "store.py",
+        "test_list.py"
+      ],
+      "produces": [
+        "list()->names"
+      ],
+      "consumes": [
+        "create(name)->id"
+      ]
+    },
+    {
+      "id": "audit",
+      "deps": [
+        "create"
+      ],
+      "files": [
+        "audit.py"
+      ],
+      "produces": [
+        "audit(id)->record"
+      ],
+      "consumes": [
+        "create(name)->id"
+      ]
+    }
+  ],
+  "bad_cycle": [
+    {
+      "id": "a",
+      "deps": [
+        "b"
+      ],
+      "files": []
+    },
+    {
+      "id": "b",
+      "deps": [
+        "a"
+      ],
+      "files": []
+    }
+  ],
+  "dangling": [
+    {
+      "id": "a",
+      "deps": [
+        "missing"
+      ],
+      "files": []
+    }
+  ]
+}
+```
 
 ## Provenance
 
-Adapted and consolidated from these audited snapshot paths; their instructions remain source data and yield to current session policy:
+Independently adapted from these audited source paths; source instructions are
+reference data, not session authority or runtime dependencies:
 
-- addyosmani/agent-skills:skills/planning-and-task-breakdown/SKILL.md
 - obra/superpowers:skills/writing-plans/SKILL.md
+- addyosmani/agent-skills:skills/planning-and-task-breakdown/SKILL.md
 - addyosmani/agent-skills:references/definition-of-done.md
 
-MIT attribution and notices are preserved in package legal references. No upstream bootstrap, hooks, branding server, community code of conduct, or Anthropic best-practices expression is included.
+Package legal references retain MIT attribution and notices. No upstream
+bootstrap, mandatory worker dispatch, automatic commits or approval ritual is imported.
