@@ -1,6 +1,6 @@
 ---
 name: andino-brainstorming
-description: Explore and compare possible directions, shape intent through adaptive Socratic dialogue, lay out concrete architectural approaches, and produce builder-ready design docs before implementation. Operates under Andino Workflow governance.
+description: Explore open directions with contextual questions, evidence-tested alternatives and builder-ready designs. Excludes accepted specifications and delegated choices. Operates under Andino Workflow governance.
 ---
 
 # Brainstorming: Explore possible directions
@@ -8,149 +8,193 @@ description: Explore and compare possible directions, shape intent through adapt
 Internal method ID: `andino-brainstorming` (alias: `brainstorming`).
 
 > **Andino Workflow Member Skill**
-> This skill operates under the **Andino Workflow** protocol:
-> - Adheres to proportional investigation, evidence-based decisions, and single durable checkpoints.
-> - When this technique reaches completion, hand off cleanly to the next workflow phase or active task.
-> - Anti-loop guard: Do not re-invoke `andino-workflow` recursively; maintain progress within the active task.
-
----
+> Follow proportional investigation, evidence-based decisions and one durable checkpoint.
+> Hand off to the relevant next phase; never invoke Andino recursively.
 
 ## Purpose and selection
 
-Help the user discover, shape, and compare possible directions when the goal, architecture, or solution space is still open. Good brainstorming extracts tacit constraints, prevents cognitive anchoring on the first obvious idea, and establishes clear boundaries before code crystallization introduces sunk-cost drag.
+Discover what matters, explore credible directions, and leave a design a capable
+builder can use without guessing consequential intent. Depth comes from testing
+understanding against concrete situations, not from more questions or longer docs.
+This applies to software, research, creative work and everyday problems.
 
-Activate for: An explicit request to brainstorm, a vague or open-ended goal with no settled architecture, exploring technical approaches before committing, or discovering unstated domain requirements.
+Activate for: Exploring an uncertain goal or solution space, including a build
+request whose direction remains open and has not been delegated.
 
-Do not activate for: An accepted, sufficiently specified task; a routine bug or failing test; a request to explain a prior answer; or an approved specification ready for planning or implementation.
+Do not activate for: Accepted specifications, routine bugs, explanations of existing
+work, settled alternatives needing assessment, or choices already delegated.
+A chosen direction with a missing user-owned requirement belongs to decision-interview;
+one rough idea needing refinement belongs to idea-refine. Do not reopen settled
+decisions merely because this skill was named.
 
-Positive request: "I want to build a real-time notification engine for our platform, but I am not sure whether to use WebSockets, SSE, or polling."
-
-Negative request: "Implement this approved endpoint specification in the billing service."
-
-These are selection fixtures, not a claim that a router or model was executed.
-
----
+Positive request: "Our neighborhood needs help, but I don't know what would help most."
+Negative request: "Implement the approved billing endpoint; choose internal details yourself."
 
 ## Inputs and dependencies
 
-The user's situation, motivation, desired outcome, known constraints, existing codebase architecture, and already accepted decisions. Inspect local files and context before asking questions; never ask the user to supply facts that can be read locally.
+Use the request, accepted decisions and relevant current evidence. Inspect referred
+project files and enough connections to understand what changes. Outside software,
+use the available situation/materials; do not invent a repository requirement.
+Stop looking when the next decision is grounded.
 
-Use resources progressively: [worked procedure, design doc template, builder-check protocol, and diagnostic rubric](resources/worked-example.md). It provides end-to-end case studies, the production design document template, the subagent builder-check prompt, visual spike patterns, and a 6-point self-audit rubric.
-
----
-
-## Core mental models
-
-Effective ideation operates across five foundational principles:
-
-### 1. Search-Space Reduction & Information Asymmetry
-The human partner holds tacit domain constraints and unstated invariants; the AI holds broad combinatorial solution patterns. Brainstorming is an iterative probe to map boundary conditions and align on the problem's true shape before any code is written.
-
-### 2. Adaptive Conversational Pacing & Bandwidth Matching
-Cognitive overload destroys collaboration. 
-- **For open-ended or ambiguous requests:** Ask exactly one high-leverage question per turn. Never bury the user under a bulleted questionnaire. Include a light escape hatch ("Or if you prefer to dive straight in, let me know").
-- **For high-context requests:** Match the user's velocity. Synthesize their input, highlight unaddressed edge cases, and move directly to laying out concrete approaches.
-
-### 3. Divergent Trade-Offs Before Convergence
-LLMs suffer from greedy generation, anchoring prematurely on the single most obvious path. Before producing a design document, dedicate a standalone turn to presenting 2–3 genuinely distinct, viable approaches with honest trade-offs. Never present strawmen options to bias the choice.
-
-### 4. Negative Boundary Delineation (Goals, Non-Goals, Anti-Goals)
-Defining what *not* to build reduces the search space exponentially faster than positive features alone. Anti-goals define what would make the project a failure even if it technically works (e.g., introducing blocking synchronous network calls, creating vendor lock-in).
-
-### 5. Pre-Implementation Hard Gate
-Agentic execution is extremely fast, which makes premature building uniquely dangerous. Nothing gets implemented—no scaffolding, no dependency installation, no production code—until the human partner approves the structured design document.
-
----
+Read [the worked procedure and design examples](resources/worked-example.md) for
+question patterns, project design contents or the builder-check prompt. Resources
+are local; upstream repositories are provenance, not runtime dependencies.
 
 ## Procedure
 
-### 1. Look before you ask & reflect the core intent
-Inspect existing project files, dependencies, configuration, and recent commits.
-- Read relevant code until you understand how the system works today and what this proposed change would touch.
-- In your initial message, reflect the request in your own words: what they want, who it serves, and why.
-- State any surprising constraints or existing patterns you uncovered.
-- End with one incisive question that tackles the largest unsettled variable, plus a light opt-out offer.
-- *Done when:* The problem is grounded in codebase reality and the user confirms the core intent.
+### 1. Establish what is actually open
 
-### 2. Run adaptive Socratic dialogue
-Engage in concise, focused exchanges to extract tacit requirements.
-- Match vocabulary; avoid internal process jargon.
-- Alternate chunked playback (synthesizing settled parts) with a single forward-looking question about the next unknown.
-- Cover critical territory naturally: why now, success metrics, non-goals, anti-goals, and technical constraints.
-- Offer lightweight recon (inspecting deeper code or data) when factual ambiguity arises.
-- *Done when:* Core motivation, user invariants, and boundaries are clear.
+Distinguish facts with sources, user decisions, your proposals and unknowns.
+Reflect the outcome and its reason only as far as known. Don't invent motivation
+or treat a desired guarantee as a proven property of a solution.
 
-### 3. Lay out the approaches in a dedicated turn
-Once requirements are understood, present the architectural paths in a message of their own:
-- Formulate 2–3 genuinely distinct, viable approaches. Discard weak options and strawmen.
-- Ground each approach in the project's actual stack and detail concrete trade-offs (operational complexity, latency, scalability, maintenance).
-- Recommend one approach with transparent justification, then ask the human partner to decide.
-- *Done when:* The human partner explicitly selects an architectural approach.
+Choose the next move by what could change the result:
+- Factual gap: inspect relevant accessible evidence before asking.
+- Open direction: ask about a concrete situation, outcome or trade-off.
+- Accepted or delegated choice: reuse it and continue through the normal workflow.
 
-### 4. Size the work and draft the written design document
-Categorize the scope and draft the document according to [the design doc template](resources/worked-example.md):
-- **Small Change:** Short written design covering intent, chosen approach, and key constraints.
-- **Project:** Full written design document covering Intent, Goals, Non-Goals, Anti-Goals, Technical Invariants, Evaluated Approaches, Explicit Decisions vs. Builder Discretion, and Testability Seeds.
-- Store software design docs in `docs/specs/YYYY-MM-DD-<topic>-design.md` (or repo convention).
-- *Done when:* A complete, self-contained design document exists.
+For an underspecified request, start with one open question about the most important
+unknown, with a reason when its consequence is unclear. Avoid a technology menu
+before understanding the problem. A rich brief may settle this step already;
+do not require an introductory confirmation turn.
 
-### 5. Execute builder check and adversarial stress-test
-Before handing the document to the user for final sign-off:
-- **In multi-agent environments:** Dispatch an independent subagent with the Builder-Check Prompt from [the worked example resource](resources/worked-example.md) to inspect the document for missing requirements or unstated assumptions.
-- **In single-agent environments:** Run the 6-point diagnostic self-audit rubric from [the worked example resource](resources/worked-example.md) to stress-test your own draft.
-- Settle minor engineering details under "Builder Discretion" and present only true user-level decisions to the human partner.
-- *Done when:* All blocking ambiguities are resolved or surfaced to the user.
+### 2. Ask questions that can change the decision
 
-### 6. Enforce hard gate and hand off cleanly
-<HARD-GATE>
-Zero implementation code may be written until the human partner explicitly approves the design document. Building includes generating boilerplate, running scaffolding CLI tools, modifying files, or installing packages.
-</HARD-GATE>
-- Once approved, hand off cleanly under Andino Workflow to `andino-specification` (if formal type/interface contracts are needed), `andino-planning` (for task decomposition and ordering), or `andino-tdd` (for test-driven implementation).
-- *Done when:* Design document is approved by the user and clean handoff to the next workflow phase is complete.
+Default to one primary question at a time, grounded in the last answer or a finding.
+Identify what a different answer changes: direction, scope, acceptance or treatment
+of a material risk. If it changes none of these, omit it. Offer a short menu when
+the user is stuck; respect requested batches of independent questions. Never hide
+several dependent questions inside one sentence.
 
----
+Probe the live uncertainty rather than reciting a checklist:
+- Replace adjectives with a concrete incident: what happened, to whom, and what
+  would success look like in that same situation?
+- Test boundaries: where does the normal case fail, whose needs conflict, and
+  what must still hold under that exception?
+- Challenge the leading assumption: what evidence would make a smaller intervention
+  sufficient, or make the current favorite wrong?
+- Separate outcomes from suggested means: what has been tried, what mattered in
+  admired examples, and which cost or failure is unacceptable?
 
-## Cognitive biases & red flags
+Play back settled parts in useful chunks; label your defaults as proposals with
+reasons. Incorporate corrections in the same artifact. Don't repeatedly summarize
+everything or request approval after every answer.
 
-| Thought / Rationalization | Reality & Corrective Action |
-|---|---|
-| "I'll offer a menu of 5 technologies right away." | Options steer and anchor. Get the user describing the problem in their own words first. |
-| "I will assume sensible defaults silently." | Unspoken defaults are decisions the user never had a chance to reject. State them plainly. |
-| "They answered my questions, so I can start coding." | Answers clarify intent; they do not approve architecture. Lay out approaches first. |
-| "The user said 'sounds great', so the design is approved." | Approval of a concept is not approval of a design document. No code until the doc is approved. |
-| "The spike prototype works, let's keep building on it." | Spikes bypass tests and quality gates. Discard or freeze as reference, then build via TDD. |
-| "I should provide 1 good approach and 2 obviously terrible strawmen." | Strawmen waste time. Every presented approach must be a credible, defensible option. |
+If a consequential factual claim remains unknown, investigate or propose a bounded
+experiment with a discriminating outcome. Agreement cannot establish durability,
+performance, demand or compatibility. Use required research/domain support under
+Andino when applicable; no automatic council, graph or subagent.
 
----
+### 3. Compare viable directions before committing
 
-## Inputs and operational ownership
+Develop alternatives, then screen them against goals, constraints and anti-goals.
+Present the strongest two or three genuinely different surviving approaches before
+the final design. Explain how each works here, gains, costs, and what must be true.
+Include the existing workaround, a smaller intervention or doing nothing when credible.
 
-Read the accepted request, repository code, and relevant evidence first. Andino Workflow owns discovery, investigation depth, the single durable plan/checkpoint, delegation, permissions, and final acceptance. Brainstorming explores and shapes intent; it does not replace the planning or implementation phases. Explicit user choices outrank generic exploration defaults. Downstream methods (`andino-specification`, `andino-planning`, `andino-tdd`) maintain their separate operational boundaries.
+Recommend one using those criteria and state what evidence would reverse it.
+Don't manufacture options: if only one survives, explain why other paths fail.
+A path violating a hard requirement is rejected, not another viable choice.
+Avoid unsupported guarantees and precision; planned measurements remain unverified.
 
----
+When the user owns the open choice, give the comparison space of its own and ask
+which direction to take. When delegated, choose, state the reason and continue
+within existing authority; don't force a separate selection turn.
 
-## Permissions and safety
+### 4. Check readiness and write a proportionate design
 
-Brainstorming grants no authority to modify production code, install packages, create branches, or make external mutations. Visual spikes or throwaway prototypes must be explicitly agreed to, labeled as exploratory, and kept separate from production code. Preserve existing user work and secrets.
+Converge when outcome and why, observable success, scope boundaries, constraints,
+selected/delegated direction and consequential failure cases are clear enough for
+the next safe step. Remaining uncertainty needs an owner and treatment: evidence
+to obtain, an agreed experiment, or a stated reversible builder choice. Material
+user-owned gaps remain pending; critical assumptions cannot hide in builder discretion.
+Do not demand certainty about every internal detail.
 
----
+Write once in the existing artifact convention. In a software repo without one,
+use `docs/specs/YYYY-MM-DD-<topic>-design.md` when persistence is useful. Outside a
+repo, use the agreed document or conversation. Extend sufficient accepted documents
+rather than duplicating them. A design is not a second execution plan.
+
+- Small change: brief intent, alternatives/rationale, constraints, relevant failure
+  behavior, acceptance example, and agent discretion.
+- Project: also cover responsibilities/flow, affected interfaces or materials,
+  failure/recovery, evidence/assumptions, concrete acceptance cases, open questions
+  with owners, and handoff. Include only applicable sections; invent no infrastructure,
+  schemas or success metrics just to fill a template.
+
+### 5. Perform a builder-readiness check
+
+Read as the person carrying out the design: what consequential choice must they
+still guess? For a substantial project, use independent review only when authority,
+available tools and expected benefit justify delegation. Follow Andino's worker
+limit of at most three concurrent direct children and no nested spawning. Otherwise
+check inline and state that boundary
+honestly. Small briefs need a proportional self-check.
+
+Triage findings:
+- Answered already: incorporate the answer and source.
+- Builder call: settle the reversible detail and mark it as your call.
+- User-owned: ask only the consequential unresolved choice.
+- Evidence gap: inspect/test; don't ask the user to approve a claim as fact.
+
+Check grounding, viable alternatives, scope/invariants, failure behavior, observable
+acceptance and decision authority. Every applicable material check must pass;
+no average or 5/6 score can waive a blocker. Repair findings and recheck affected
+parts. Don't loop reviewers or interviews without new evidence.
+
+### 6. Respect the decision boundary and hand off
+
+Do not implement against unresolved material user-owned choices. For exploration
+where execution has not been delegated, present the concrete design and agent-made
+calls for review before dependent implementation. Approval covers what was shown;
+assent to an idea doesn't approve unseen details. Ordinary clear assent counts,
+without magic wording.
+
+Existing authorization and explicit delegation persist. If asked to choose and
+proceed, state consequential choices and continue; don't demand document approval
+again. If the user opts out of discovery, end this technique, state safe defaults
+and follow the normal workflow. A high-consequence choice outside that delegation
+still needs its owner; silence is not approval.
+
+Hand off only what is missing: specification for buildable contracts, planning for
+task ordering, or the accepted implementation/TDD route when already ready. Do not
+force all of them or rewrite a sufficient approved specification.
+
+## Ownership and permissions
+
+Andino owns routing, depth, one checkpoint, delegation, permissions and acceptance.
+Focus owns communication; required research and domain/UI skills retain their
+boundaries. Direct invocation uses this same procedure without recursive Andino
+invocation. No second lifecycle or automatic skill chain.
+
+This method grants no Git, installation, external-write or deployment authority.
+Reuse actual authorization; preserve user work/secrets and staging. Don't commit
+designs automatically. A sketch or throwaway spike may answer one agreed uncertainty
+within existing authority; label its limits and carry findings back to the design.
+It doesn't authorize production scope or waive checks. Use host-native visuals
+when seeing resolves a specific question; honor explicit UI choices and don't
+start an unsolicited companion server.
 
 ## Outputs, verification and fallback
 
-Return distinct options, trade-offs, and the structured design document. Verify all statements against local code and evidence. Never claim a visual spike, subagent check, or user approval occurred unless verified by evidence. Store accepted artifacts in the agreed project location.
+Return the decision/design, reasons/evidence, consequential open questions and next
+useful action. An experiment can be the result instead of an architecture.
+Never fabricate approval, research, reviewer use or passing checks. Restricted
+tools mean named evidence gaps and conditional claims, not weaker acceptance.
 
-If tools are restricted or the user requests immediate progress, switch to rapid convergence mode: state consequential assumptions plainly, lay out the most viable approach, and produce a concise design brief.
-
----
+The example below checks routing only. Fresh-context consumer observations are
+needed for questioning/design behavior; structural checks do not prove autonomous
+routing, cross-host parity or superiority to upstream.
 
 ## Bounded routing example
-
-This standard-library example checks the boundary between exploration, a missing decision, and an accepted specification. It selects a route only; it does not invoke a method or create an artifact.
 
 ```python andino-example
 import json
 
 def route(request):
+    if request.get("delegated", False):
+        return "normal-workflow"
     if request["accepted_spec"] and not request.get("reopen", False):
         return "normal-workflow"
     if request["fixed_options"]:
@@ -177,10 +221,9 @@ Expected result:
 {"explore": "brainstorming", "fixed_choice": "decision-interview", "known_complex_choice": "decision-map", "known_simple_choice": "normal-workflow", "specified": "normal-workflow"}
 ```
 
-The example demonstrates route selection only. It does not establish that a router activated the method or that an implementation ran.
-
----
-
 ## Provenance
 
-Adapted and elevated from `obra/superpowers:skills/brainstorming/SKILL.md` and independently enriched under Andino Workflow governance. Upstream licensing and attribution are preserved in [the package provenance record](../../references/legal/provenance.md). External shell/daemon scripts are replaced with host-native visual patterns and standard Markdown contracts.
+Adapted from `obra/superpowers:skills/brainstorming/SKILL.md`, with independent
+Andino-specific questioning, readiness and ownership guidance. Attribution and
+licensing remain in package legal references. No upstream server/scripts,
+automatic commits or mandatory downstream invocation are imported.
