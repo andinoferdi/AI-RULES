@@ -94,6 +94,18 @@ class SearchFirstSetupTests(unittest.TestCase):
         self.git("config", "user.email", "fixture@example.invalid")
         manifest = json.loads((self.repo / "src/ai_rules/release/data/release_manifest.json").read_text())
         self.pins = manifest["first_party"]
+        member_paths = subprocess.check_output(
+            ["git", "ls-tree", "-r", "--name-only", self.pins["andino-workflow"]["commit"]],
+            cwd=self.repo, text=True, encoding="utf-8",
+        ).splitlines()
+        self.workflow_members = {
+            "andino-" + path.split("/")[1]
+            for path in member_paths
+            if path.startswith("skills/") and path.endswith("/SKILL.md")
+            and len(path.split("/")) == 3
+        }
+        self.assertEqual(59, len(self.workflow_members))
+        self.workflow_installation = {"andino-workflow", "focus", "search-first"} | self.workflow_members
         self.catalog = load_catalog()
         for identifier in ("search-first", "focus", "andino-workflow"):
             if identifier != "search-first":
@@ -129,7 +141,7 @@ class SearchFirstSetupTests(unittest.TestCase):
                     project = self.root / source / host
                     self.run_setup(project, "--capability", "andino-workflow", host=host, source=source)
                     root = adapter.skill_target(Scope.PROJECT, project)
-                    self.assertEqual({"andino-workflow", "focus", "search-first"},
+                    self.assertEqual(self.workflow_installation,
                                      {p.name for p in root.iterdir()})
                     skill = root / "search-first"
                     expected_files = set(self.git("ls-tree", "-r", "--name-only", "search-first").splitlines())
@@ -196,5 +208,5 @@ class SearchFirstSetupTests(unittest.TestCase):
     def test_default_profile_uses_normal_setup_dependency_resolution(self):
         project = self.root / "default"
         self.run_setup(project)
-        self.assertEqual({"andino-workflow", "focus", "search-first"},
+        self.assertEqual(self.workflow_installation,
                          {p.name for p in (project / ".agents/skills").iterdir()})

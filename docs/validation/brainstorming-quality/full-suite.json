@@ -1,0 +1,23 @@
+{
+  "command": "python -m unittest discover -s tests -q",
+  "date": "2026-10-30",
+  "result": "PASS",
+  "tests_run": 350,
+  "skipped": [
+    {
+      "id": "test_candidate_reference_installs_on_all_hosts_and_user_edit_is_preserved (installer.test_search_first.SearchFirstSetupTests.test_candidate_reference_installs_on_all_hosts_and_user_edit_is_preserved)",
+      "reason": "Opt-in uncommitted distribution installation check"
+    }
+  ],
+  "failures": [],
+  "errors": [],
+  "duration_seconds": 306.078,
+  "limits": "Windows Python 3.12 test suite; one opt-in candidate-installation test may be skipped. No native host/model parity claim.",
+  "inputs": {
+    "tests/installer/test_brainstorming_distribution.py": "c8112c6eaa359bff8af893a0442429f63d6e41448ef42bd84394bf7b6d83def6",
+    "tests/installer/test_search_first.py": "3f46ba5434d6224a6e069ca94f6dfcaa6aacefea445c98772578101317abe0bd",
+    "tests/test_andino_reliability.py": "67814910d1933bf099e327e4cd09e5de53ba4358f9cad74aa452a6400d80e7cf",
+    "scripts/check_andino_evolution_methods.py": "b732185ede505cb000e9c30b0dcf3a61ce717ab44775f0dbdff6e6aaaff2da57",
+    "src/ai_rules/release/data/release_manifest.json": "90418be2da61dbceba996353b8ca6eb632567d336e5417bedcda94a3c5c44d9f"
+  }
+}

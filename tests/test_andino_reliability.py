@@ -88,15 +88,16 @@ class InternalDispatchContract(unittest.TestCase):
         self.assertIn('../plan-execution/GUIDE.md', guide)
         self.assertIn('execution is authorized', guide)
 
-    def test_no_native_skill_expansion_or_missing_canonical_guide(self):
+    def test_all_native_members_keep_canonical_guides(self):
         index = runtime_text('references/internal-method-index.md').split('## Source-name compatibility')[0]
-        ids = re.findall(r'\[([^]]+)\]\(\.\./skills/([^/]+)/GUIDE.md\)', index)
+        ids = re.findall(r'\[([^]]+)\]\(\.\./skills/([^/]+)/SKILL.md\)', index)
         self.assertEqual(59, len(ids))
         self.assertEqual(59, len({identity for identity, _ in ids}))
         for identity, directory in ids:
             self.assertEqual(identity, directory)
             self.assertTrue(runtime_text(f'skills/{identity}/GUIDE.md'), identity)
-            self.assertFalse(runtime_text(f'skills/{identity}/SKILL.md'), identity)
+            self.assertIn(f'name: andino-{identity}',
+                          runtime_text(f'skills/{identity}/SKILL.md'), identity)
 
 
 class CatalogIntegrity(unittest.TestCase):

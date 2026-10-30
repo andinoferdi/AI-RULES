@@ -1,0 +1,329 @@
+{
+  "source_family": "evolution",
+  "records": [
+    {
+      "id": "brainstorming",
+      "status": "PASS",
+      "observed": [
+        "normal-workflow",
+        "normal-workflow",
+        "brainstorming",
+        "decision-interview",
+        "normal-workflow",
+        "brainstorming"
+      ],
+      "mutant_observed": [
+        "brainstorming",
+        "normal-workflow",
+        "brainstorming",
+        "decision-interview",
+        "normal-workflow",
+        "brainstorming"
+      ],
+      "mutation_killed": true,
+      "guide_sha256": "ed5a0eeee6aec572e9d05925aaa33fb34dcb4409b39a95c77157350462e65a77",
+      "metadata_sha256": "c39b7947d6b1b9e23252ce47bed8a2c549301a9da54e3469040f61031f38d956"
+    },
+    {
+      "id": "workflow-advisor",
+      "status": "PASS",
+      "observed": [
+        {
+          "availability": "UNKNOWN",
+          "invoked": false,
+          "next": "check current host availability and invocation permission",
+          "recommendation": "council"
+        },
+        {
+          "availability": "UNKNOWN",
+          "invoked": false,
+          "recommendation": "inspect-relevant-options"
+        }
+      ],
+      "mutant_observed": [
+        {
+          "availability": "UNKNOWN",
+          "invoked": true,
+          "next": "check current host availability and invocation permission",
+          "recommendation": "council"
+        },
+        {
+          "availability": "UNKNOWN",
+          "invoked": true,
+          "recommendation": "inspect-relevant-options"
+        }
+      ],
+      "mutation_killed": true,
+      "guide_sha256": "1d96d7b5017c80dd143c3b6bcd980c5542b30c5b27b64fe09cb137bbf993c5de",
+      "metadata_sha256": "db80a84fec61b3fa8e7d93f33451ff4ebaec6b92b286cb0892569ca070ec1202"
+    }
+  ],
+  "policy_checks": [
+    {
+      "id": "learning-workspace",
+      "observed": [
+        {
+          "mode": "direct-answer",
+          "persistent_goal": false
+        },
+        {
+          "mode": "quick",
+          "persistent_goal": false
+        },
+        {
+          "mode": "structured",
+          "persistent_goal": true
+        },
+        {
+          "mode": "repair",
+          "persistent_goal": false
+        }
+      ],
+      "mutant_observed": [
+        {
+          "mode": "direct-answer",
+          "persistent_goal": false
+        },
+        {
+          "mode": "quick",
+          "persistent_goal": false
+        },
+        {
+          "mode": "quick",
+          "persistent_goal": false
+        },
+        {
+          "mode": "repair",
+          "persistent_goal": false
+        }
+      ],
+      "mutation_killed": true,
+      "guide_sha256": "df9b425ce678f431f67b520ae1e1ab4befb15ff7d5c86b72ed809900b2e980a9"
+    },
+    {
+      "id": "session-diagnostics",
+      "observed": [
+        "UNKNOWN",
+        "UNKNOWN",
+        0,
+        "UNKNOWN",
+        "CONFIRMED",
+        "UNKNOWN"
+      ],
+      "mutant_observed": [
+        "UNKNOWN",
+        "UNKNOWN",
+        "UNKNOWN",
+        "UNKNOWN",
+        "CONFIRMED",
+        "UNKNOWN"
+      ],
+      "mutation_killed": true,
+      "guide_sha256": "45e0bbd2c2508fbd9831e36a0fabc1628bbf590c46ba23969c34384f84232773"
+    },
+    {
+      "id": "delegation",
+      "observed": [
+        "parallel",
+        "inline",
+        "subagent-driven",
+        "inline",
+        {
+          "identity": "exposed-1",
+          "selection": "host-confirmed"
+        },
+        {
+          "selection": "host-default"
+        },
+        {
+          "selection": "host-default"
+        }
+      ],
+      "mutant_observed": [
+        "parallel",
+        "parallel",
+        "subagent-driven",
+        "inline",
+        {
+          "identity": "exposed-1",
+          "selection": "host-confirmed"
+        },
+        {
+          "selection": "host-default"
+        },
+        {
+          "selection": "host-default"
+        }
+      ],
+      "mutation_killed": true,
+      "guide_sha256": "d7cd174d3c35d871f93f9aaa4e11d850f945981875bbb07ae367bb3e22a0aee4"
+    },
+    {
+      "id": "plan-execution",
+      "observed": [
+        {
+          "rerun": [
+            "ui"
+          ],
+          "reusable": [
+            "base",
+            "docs"
+          ]
+        },
+        {
+          "rerun": [],
+          "reusable": [
+            "base",
+            "docs",
+            "ui"
+          ]
+        },
+        {
+          "rerun": [
+            "base",
+            "docs",
+            "ui"
+          ],
+          "reusable": []
+        },
+        {
+          "rerun": [
+            "base",
+            "docs",
+            "ui"
+          ],
+          "reusable": []
+        }
+      ],
+      "mutant_observed": [
+        {
+          "rerun": [],
+          "reusable": [
+            "base",
+            "docs",
+            "ui"
+          ]
+        },
+        {
+          "rerun": [],
+          "reusable": [
+            "base",
+            "docs",
+            "ui"
+          ]
+        },
+        {
+          "rerun": [
+            "base",
+            "docs",
+            "ui"
+          ],
+          "reusable": []
+        },
+        {
+          "rerun": [
+            "base",
+            "docs",
+            "ui"
+          ],
+          "reusable": []
+        }
+      ],
+      "mutation_killed": true,
+      "guide_sha256": "d8df34e9d7bff61e360fa9b0998d730607a72d2de52ff5ac294d99155b513c8b"
+    },
+    {
+      "id": "browser-testing-with-devtools",
+      "observed": [
+        {
+          "missing": [],
+          "tools": [
+            "native"
+          ]
+        },
+        {
+          "missing": [],
+          "tools": [
+            "native",
+            "instrument"
+          ]
+        },
+        {
+          "missing": [
+            "screenshot"
+          ],
+          "tools": []
+        },
+        {
+          "missing": [
+            "network"
+          ],
+          "tools": [
+            "capture"
+          ]
+        },
+        {
+          "missing": [],
+          "tools": [
+            "instrument"
+          ]
+        },
+        {
+          "missing": [],
+          "tools": [
+            "existing-tests"
+          ]
+        }
+      ],
+      "mutant_observed": [
+        {
+          "missing": [],
+          "tools": [
+            "native"
+          ]
+        },
+        {
+          "missing": [],
+          "tools": [
+            "native",
+            "instrument"
+          ]
+        },
+        {
+          "missing": [
+            "screenshot"
+          ],
+          "tools": []
+        },
+        {
+          "missing": [
+            "network"
+          ],
+          "tools": [
+            "capture"
+          ]
+        },
+        {
+          "missing": [],
+          "tools": [
+            "native"
+          ]
+        },
+        {
+          "missing": [],
+          "tools": [
+            "existing-tests"
+          ]
+        }
+      ],
+      "mutation_killed": true,
+      "guide_sha256": "d2b79eab2269e98bfb39bc0b8249656e59221a5ae1a75167ba446abe413d50ab"
+    }
+  ],
+  "inputs": {
+    "scripts/check_andino_evolution_methods.py": "b732185ede505cb000e9c30b0dcf3a61ce717ab44775f0dbdff6e6aaaff2da57",
+    "scripts/check_andino_addy_methods.py": "d3ce23abad39a4dca4beee01730976db68ecf625efeb69354965c4709fdbbd64",
+    "docs/validation/andino-evolution/evolution-methods.json": "5bd6b13b3435cbf738dec1b5f1b9c11bcdbab40526f0fea80f5effa7695f61de"
+  },
+  "limits": "Executed isolated guide procedures and faulty-copy mutations; no autonomous LLM routing or cross-host parity claim."
+}

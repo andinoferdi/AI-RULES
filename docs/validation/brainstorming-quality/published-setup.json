@@ -1,0 +1,132 @@
+{
+  "result": "PASS",
+  "source": "real default latest; no source/catalog/network override",
+  "repository": "https://github.com/andinoferdi/AI-RULES.git",
+  "published_runtime_commit": "91d1f186700cf5945e638504ad49f030cc993c9d",
+  "previous_commit": "46b3bc3868df0e2c6df6d35bc4bc555dc9cce045",
+  "sibling_pins_unchanged": true,
+  "global_installation_modified": false,
+  "records": [
+    {
+      "scenario": "fresh",
+      "attempt": "first",
+      "exit_code": 0,
+      "command": [
+        "python",
+        "-m",
+        "ai_rules",
+        "setup",
+        "--host",
+        "codex",
+        "--scope",
+        "project",
+        "--project-root",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-bt4fum94\\fresh",
+        "--state-dir",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-bt4fum94\\fresh-state",
+        "--capability",
+        "andino-workflow",
+        "--yes",
+        "--non-interactive"
+      ],
+      "installed_runtime_hash": "6d5a8e76e9fc12f53ce55f5b95417fcd7a9aba0b1a96b1a7e584d1b78c91a81b",
+      "actions": [
+        "INSTALL",
+        "INSTALL",
+        "INSTALL"
+      ],
+      "output": "AI-RULES Setup\n\nProfile       Custom                                                            \nScope         Project                                                           \nHosts         1 selected: Codex                                                 \nCapabilities  1 selected (dependencies included in plan)                        \nProject root  C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-bt4fum9\u2026\nChecking sources and configuration\nInspecting installed state\nResolving dependencies and initial plan\nChecking source configuration\nFetching remote branches | 0 / 1\nRemote branches fetched | 1 / 1\nPreparing source bundle | focus | 0 / 3\nSource bundle prepared | focus | 1 / 3\nPreparing source bundle | search-first | 1 / 3\nSource bundle prepared | search-first | 2 / 3\nPreparing source bundle | andino-workflow | 2 / 3\nSource bundle prepared | andino-workflow | 3 / 3\nReconciling source revisions\nReconciling installed content | codex / focus | 0 / 3\nReconciliation complete | 3 / 3\nBuilding installation plan and invocation checks\nINSTALLATION PLAN\n Host  Install Update Current Blocked \n Codex       3      0       0       0 \n3 targets\n3 INSTALL | 0 UPDATE | 0 NO_OP\n0 BLOCKED | 0 MANUAL_ACTION\nUp to 0 targets need backup if existing files are replaced.\nOperation details: --verbose\nPreparing execution bundles\nApplying approved changes | 0 / 3\n1/3 targets | codex / focus | APPLIED INSTALL\n2/3 targets | codex / search-first | APPLIED INSTALL\n3/3 targets | codex / andino-workflow | APPLIED INSTALL\nSetup summary (6.1s elapsed)\n3 installed | 0 updated | 0 already current\n0 failed | 0 blocked | 0 skipped | 0 manual\n0 unfinished\nInstallation records: <disposable-root>\\fresh-state\n\nFile verification only; native session discovery and skill use are not verified by setup.\n\nManual invocation: start a new agent session or reload its window.\n  Codex: $focus, $search-first, $andino-workflow\n"
+    },
+    {
+      "scenario": "fresh",
+      "attempt": "repeat",
+      "exit_code": 0,
+      "command": [
+        "python",
+        "-m",
+        "ai_rules",
+        "setup",
+        "--host",
+        "codex",
+        "--scope",
+        "project",
+        "--project-root",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-bt4fum94\\fresh",
+        "--state-dir",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-bt4fum94\\fresh-state",
+        "--capability",
+        "andino-workflow",
+        "--yes",
+        "--non-interactive"
+      ],
+      "installed_runtime_hash": "6d5a8e76e9fc12f53ce55f5b95417fcd7a9aba0b1a96b1a7e584d1b78c91a81b",
+      "actions": [
+        "NO_OP",
+        "NO_OP",
+        "NO_OP"
+      ],
+      "output": "AI-RULES Setup\n\nProfile       Custom                                                            \nScope         Project                                                           \nHosts         1 selected: Codex                                                 \nCapabilities  1 selected (dependencies included in plan)                        \nProject root  C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-bt4fum9\u2026\nChecking sources and configuration\nInspecting installed state\nResolving dependencies and initial plan\nChecking source configuration\nFetching remote branches | 0 / 1\nRemote branches fetched | 1 / 1\nPreparing source bundle | focus | 0 / 3\nSource bundle prepared | focus | 1 / 3\nPreparing source bundle | search-first | 1 / 3\nSource bundle prepared | search-first | 2 / 3\nPreparing source bundle | andino-workflow | 2 / 3\nSource bundle prepared | andino-workflow | 3 / 3\nReconciling source revisions\nReconciling installed content | codex / focus | 0 / 3\nReconciliation complete | 3 / 3\nBuilding installation plan and invocation checks\nINSTALLATION PLAN\n Host  Install Update Current Blocked \n Codex       0      0       3       0 \n3 targets\n0 INSTALL | 0 UPDATE | 3 NO_OP\n0 BLOCKED | 0 MANUAL_ACTION\nUp to 0 targets need backup if existing files are replaced.\nOperation details: --verbose\nPreparing execution bundles\nApplying approved changes | 0 / 3\n1/3 targets | codex / focus | VERIFIED NO_OP (current)\n2/3 targets | codex / search-first | VERIFIED NO_OP (current)\n3/3 targets | codex / andino-workflow | VERIFIED NO_OP (current)\nSetup summary (4.0s elapsed)\n0 installed | 0 updated | 3 already current\n0 failed | 0 blocked | 0 skipped | 0 manual\n0 unfinished\nInstallation records: <disposable-root>\\fresh-state\n\nFile verification only; native session discovery and skill use are not verified by setup.\n\nManual invocation: start a new agent session or reload its window.\n  Codex: $focus, $search-first, $andino-workflow\n"
+    },
+    {
+      "scenario": "upgrade",
+      "attempt": "first",
+      "exit_code": 0,
+      "command": [
+        "python",
+        "-m",
+        "ai_rules",
+        "setup",
+        "--host",
+        "codex",
+        "--scope",
+        "project",
+        "--project-root",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-bt4fum94\\upgrade",
+        "--state-dir",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-bt4fum94\\upgrade-state",
+        "--capability",
+        "andino-workflow",
+        "--yes",
+        "--non-interactive"
+      ],
+      "installed_runtime_hash": "6d5a8e76e9fc12f53ce55f5b95417fcd7a9aba0b1a96b1a7e584d1b78c91a81b",
+      "actions": [
+        "INSTALL",
+        "INSTALL",
+        "UPDATE"
+      ],
+      "output": "AI-RULES Setup\n\nProfile       Custom                                                            \nScope         Project                                                           \nHosts         1 selected: Codex                                                 \nCapabilities  1 selected (dependencies included in plan)                        \nProject root  C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-bt4fum9\u2026\nChecking sources and configuration\nInspecting installed state\nResolving dependencies and initial plan\nChecking source configuration\nFetching remote branches | 0 / 1\nRemote branches fetched | 1 / 1\nPreparing source bundle | focus | 0 / 3\nSource bundle prepared | focus | 1 / 3\nPreparing source bundle | search-first | 1 / 3\nSource bundle prepared | search-first | 2 / 3\nPreparing source bundle | andino-workflow | 2 / 3\nSource bundle prepared | andino-workflow | 3 / 3\nReconciling source revisions\nReconciling installed content | codex / focus | 0 / 3\nReconciliation complete | 3 / 3\nBuilding installation plan and invocation checks\nINSTALLATION PLAN\n Host  Install Update Current Blocked \n Codex       2      1       0       0 \n3 targets\n2 INSTALL | 1 UPDATE | 0 NO_OP\n0 BLOCKED | 0 MANUAL_ACTION\nUp to 1 targets need backup if existing files are replaced.\nOperation details: --verbose\nPreparing execution bundles\nApplying approved changes | 0 / 3\n1/3 targets | codex / focus | APPLIED INSTALL\n2/3 targets | codex / search-first | APPLIED INSTALL\n3/3 targets | codex / andino-workflow | APPLIED UPDATE\nSetup summary (13.0s elapsed)\n2 installed | 1 updated | 0 already current\n0 failed | 0 blocked | 0 skipped | 0 manual\n0 unfinished\nInstallation records: <disposable-root>\\upgrade-state\nBackups: <disposable-root>\\upgrade-state\\backups\n\nFile verification only; native session discovery and skill use are not verified by setup.\n\nManual invocation: start a new agent session or reload its window.\n  Codex: $focus, $search-first, $andino-workflow\n"
+    },
+    {
+      "scenario": "upgrade",
+      "attempt": "repeat",
+      "exit_code": 0,
+      "command": [
+        "python",
+        "-m",
+        "ai_rules",
+        "setup",
+        "--host",
+        "codex",
+        "--scope",
+        "project",
+        "--project-root",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-bt4fum94\\upgrade",
+        "--state-dir",
+        "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-bt4fum94\\upgrade-state",
+        "--capability",
+        "andino-workflow",
+        "--yes",
+        "--non-interactive"
+      ],
+      "installed_runtime_hash": "6d5a8e76e9fc12f53ce55f5b95417fcd7a9aba0b1a96b1a7e584d1b78c91a81b",
+      "actions": [
+        "NO_OP",
+        "NO_OP",
+        "NO_OP"
+      ],
+      "output": "AI-RULES Setup\n\nProfile       Custom                                                            \nScope         Project                                                           \nHosts         1 selected: Codex                                                 \nCapabilities  1 selected (dependencies included in plan)                        \nProject root  C:\\Users\\Lenovo\\AppData\\Local\\Temp\\andino-published-proof-bt4fum9\u2026\nChecking sources and configuration\nInspecting installed state\nResolving dependencies and initial plan\nChecking source configuration\nFetching remote branches | 0 / 1\nRemote branches fetched | 1 / 1\nPreparing source bundle | focus | 0 / 3\nSource bundle prepared | focus | 1 / 3\nPreparing source bundle | search-first | 1 / 3\nSource bundle prepared | search-first | 2 / 3\nPreparing source bundle | andino-workflow | 2 / 3\nSource bundle prepared | andino-workflow | 3 / 3\nReconciling source revisions\nReconciling installed content | codex / focus | 0 / 3\nReconciliation complete | 3 / 3\nBuilding installation plan and invocation checks\nINSTALLATION PLAN\n Host  Install Update Current Blocked \n Codex       0      0       3       0 \n3 targets\n0 INSTALL | 0 UPDATE | 3 NO_OP\n0 BLOCKED | 0 MANUAL_ACTION\nUp to 0 targets need backup if existing files are replaced.\nOperation details: --verbose\nPreparing execution bundles\nApplying approved changes | 0 / 3\n1/3 targets | codex / focus | VERIFIED NO_OP (current)\n2/3 targets | codex / search-first | VERIFIED NO_OP (current)\n3/3 targets | codex / andino-workflow | VERIFIED NO_OP (current)\nSetup summary (4.1s elapsed)\n0 installed | 0 updated | 3 already current\n0 failed | 0 blocked | 0 skipped | 0 manual\n0 unfinished\nInstallation records: <disposable-root>\\upgrade-state\nBackups: <disposable-root>\\upgrade-state\\backups\n\nFile verification only; native session discovery and skill use are not verified by setup.\n\nManual invocation: start a new agent session or reload its window.\n  Codex: $focus, $search-first, $andino-workflow\n"
+    }
+  ],
+  "limit": "Actual remote acquisition and disposable file/state verification; native host discovery/use is not proved."
+}

@@ -1,0 +1,12 @@
+{
+  "from_commit": "46b3bc3868df0e2c6df6d35bc4bc555dc9cce045",
+  "to_commit": "91d1f186700cf5945e638504ad49f030cc993c9d",
+  "from_runtime_hash": "a80a4e20834b842a39898730bf53b9a2d43ce7f30045e0fb6628367e6413a4ad",
+  "to_runtime_hash": "6d5a8e76e9fc12f53ce55f5b95417fcd7a9aba0b1a96b1a7e584d1b78c91a81b",
+  "files": {
+    "SKILL.md": "5744fe2cb39e42a03a70528e30946036b3bcd8410dd57b4ee7ef3011c4e5746a",
+    "GUIDE.md": "ed5a0eeee6aec572e9d05925aaa33fb34dcb4409b39a95c77157350462e65a77",
+    "resources/worked-example.md": "80f3bd856d7120f091c2bf1fb34d24e353173abe0700fcadbbb4136fb1635632"
+  },
+  "limits": "Content identities and frozen stage validation; not model behavior or published release binaries."
+}

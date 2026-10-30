@@ -50,8 +50,8 @@ def check_new_method(runtime, method):
     identity = method['id']
     code = procedure(runtime, identity, 'andino-example')
     if identity == 'brainstorming':
-        expression = "[route({'accepted_spec': True, 'fixed_options': False, 'material_criteria_missing': False}), route({'accepted_spec': False, 'fixed_options': True, 'material_criteria_missing': False}), route({'accepted_spec': False, 'fixed_options': False, 'material_criteria_missing': False}), route({'accepted_spec': False, 'fixed_options': True, 'material_criteria_missing': True})]"
-        expected = ['normal-workflow', 'normal-workflow', 'brainstorming', 'decision-interview']
+        expression = "[route({'accepted_spec': True, 'fixed_options': False, 'material_criteria_missing': False}), route({'accepted_spec': False, 'fixed_options': True, 'material_criteria_missing': False}), route({'accepted_spec': False, 'fixed_options': False, 'material_criteria_missing': False}), route({'accepted_spec': False, 'fixed_options': True, 'material_criteria_missing': True}), route({'accepted_spec': False, 'fixed_options': False, 'material_criteria_missing': False, 'delegated': True}), route({'accepted_spec': True, 'fixed_options': False, 'material_criteria_missing': False, 'reopen': True})]"
+        expected = ['normal-workflow', 'normal-workflow', 'brainstorming', 'decision-interview', 'normal-workflow', 'brainstorming']
         mutation = ("request['accepted_spec']", 'False')
     elif identity == 'workflow-advisor':
         expression = "[advise('independent-perspectives', {'id': 'council', 'fit': 'independent-perspectives'}), advise('repair', {'id': 'council', 'fit': 'independent-perspectives'})]"
