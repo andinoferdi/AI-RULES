@@ -1,176 +1,189 @@
 ---
 name: andino-plan-execution
-description: Execute accepted implementation plans inline with continuous execution, two-phase verification gating, recorded rulings and durable in-place checkpointing under Andino Workflow governance.
+description: Execute accepted plans with continuous authorized progress, current acceptance evidence and one durable checkpoint under Andino Workflow.
 ---
 
-# Execute the accepted graph and preserve recovery evidence
+# Execute accepted tasks against current evidence
 
 Internal method ID: `andino-plan-execution` (alias: `plan-execution`).
 
 > **Andino Workflow Member Skill**
-> This skill operates under the **Andino Workflow** protocol:
-> - Adheres to proportional investigation, evidence-based decisions, and single durable checkpoints.
-> - When this technique reaches completion, hand off cleanly to the next workflow phase or active task.
-> - Anti-loop guard: Do not re-invoke `andino-workflow` recursively; maintain progress within the active task.
-
-Internal Andino resource. Loading this file does not invoke another skill or change permissions.
+> Apply proportional investigation, evidence-based decisions and one durable checkpoint.
+> Hand off to the next relevant phase without recursively invoking the workflow.
 
 ## Purpose
 
-Carry accepted tasks to evidenced outcomes without repeating verified work, stalling
-on unneeded check-ins, or losing state.
+Carry accepted tasks to observable outcomes without repeating verified work, stalling
+on unnecessary check-ins, or losing the evidence needed to resume.
 
 ## Trigger and non-trigger
 
-Use when: Accepted plan ready or interrupted execution resumes.
+Use when: An accepted plan is ready for authorized execution, or interrupted execution resumes.
 
-Do not select for: Unresolved product intent or unapproved redesign.
+Do not select for: Unresolved product intent, planning-only requests or unapproved redesign.
 
 ## Prerequisites
 
-Locate plan identity/checkpoint (`docs/exec-plans/active/<task>.md` or project convention);
-inspect branch/worktree/diff/spec/task graph and compare evidence with current bytes.
+Locate the authoritative plan, accepted requirements and current worktree. Read
+[the execution contract](resources/contract.md) before executing. Consult
+[the worked example](resources/worked-example.md) for a concrete trace and pressure cases.
+Reuse the plan's LITE/STANDARD/DEEP shape and equivalent project fields.
 
-Read [the contract](resources/contract.md) before execution. For an end-to-end trace,
-read [the worked example](resources/worked-example.md).
+## Execution principles
 
-## Core principles
+- **Specification before steps**: Session instructions and accepted requirements
+  govern the outcome; the plan supplies the route. Follow valid steps and correct
+  demonstrated defects with recorded rulings while preserving locked decisions.
+- **Continuous execution**: Carry dependency-ready work through acceptance without
+  repeated permission check-ins. Reuse existing scoped authorization, including
+  authorized commit, push or setup; the skill itself grants none.
+- **One checkpoint**: Keep actual progress, decisions and evidence in the existing
+  plan. No second ledger, mandatory workspace script or conversation-memory dependency.
+- **Observed signals**: Compare expected results with actual output and exercised
+  scope. Exit 0, checklist marks and worker reports cannot substitute for acceptance.
+- **Bounded context**: Read the current task and relevant rulings; filter long logs
+  to the useful result. Give concise progress updates and material decisions.
 
-- **The plan already did the thinking**: Execute it exactly, prove each step with
-  verified observations, and update the durable checkpoint in-place.
-- **Continuous execution**: Do not pause between tasks to ask "should I continue?".
-  Execute dependency-ready tasks without stopping unless encountering one of the
-  Four Hard Stops.
-- **Rulings, not stalls**: Resolve ambiguities, plan defects, and bounded conflicts
-  immediately. Record `Ruling: <decision> — <reason> — <cost if wrong>`.
-- **Narration discipline**: Keep commentary between tool calls concise (1-2 lines);
-  state the action and comparison against expected signals.
-- **Single durable checkpoint**: Mutate the canonical plan in-place. No dual-ledger
-  or external bash script dependencies.
-- **Two-Phase Signal Gate**:
-  - Behavioral code: Canonical TDD (`skills/tdd/GUIDE.md`) (watch RED fail -> minimal
-    change -> watch GREEN pass).
-  - Static content/config: Targeted Verification Contract (linter, schema, visual
-    diff, or artifact check).
-- **Blast radius hard-gating**: Continuous execution applies strictly to authorized
-  local reversible work.
-- **Four Hard Stops**:
-  1. Irreversible or destructive operations (e.g. deleting branches, dropping tables).
-  2. Security-sensitive perimeters (credentials, auth secrets).
-  3. Crossing worktree/session boundaries without explicit prior authorization
-     (git push, remote publish, external messaging).
-  4. Rencana fundamentally broken where every path forward is guesswork.
+Pause the affected action for missing authority, an unresolved material user-owned
+decision, inaccessible required evidence, or a broken plan with no grounded route.
+Check the exact scope of prior authorization for destructive, security-sensitive or
+external actions. Ask only for what remains missing, checkpoint the blocker and next
+check, and continue independent authorized work. Available tools do not grant authority.
 
 ## Procedure
 
-1. **Establish task and checkpoint identity**:
-   Locate the authoritative plan file (`docs/exec-plans/active/<task>.md`). Inspect
-   the current branch/worktree, `git status --short`, and baseline commit (`HEAD`).
-   Ensure working tree is clean or uncommitted changes are strictly accounted for.
+1. **Establish identity and preflight**. Read plan, reachable specification and
+   constraints. Inspect branch/worktree, `git status --short` and accepted task BASE.
+   Attribute existing changes without requiring a clean tree. If a referenced spec
+   is unavailable, record whether current accepted requirements suffice; block only
+   decisions that need missing evidence. Inspect shared producer/consumer interfaces
+   and dependency readiness. Record mismatches and disposition in the same plan,
+   or one short note when there are no shared interfaces.
 
-2. **Audit drift and invalidate affected dependents**:
-   Compare completed-task evidence with current outputs, dependencies, test identity,
-   and freshness. Reuse work only when its evidence still supports the same acceptance;
-   invalidate drifted evidence and affected dependents, not unrelated completed work.
-   A checkbox or old commit alone is insufficient.
+2. **Audit drift and recover**. Compare completed-task evidence with current inputs,
+   outputs, checks, environment and dependencies. Reuse evidence only when required
+   identities are present and still match; invalidate affected tasks and dependents,
+   preserving unrelated verified work. For partial work, inspect and attribute current
+   bytes, preserve user changes and run missing checks. Never revert unknown work as
+   a recovery shortcut.
 
-3. **Select task and claim in-place**:
-   Select a dependency-ready task. Read its exact contract, verified interfaces, and
-   recorded rulings from the plan. Mutate the plan in-place: set task status to
-   `IN_PROGRESS` and update the Execution Board before editing code.
+3. **Take a ready task**. Re-read its exact acceptance, commands, interfaces and relevant
+   rulings rather than a remembered summary. Set `IN_PROGRESS` and synchronize the
+   board when present before editing owned artifacts. Use parallel work only when
+   useful, authorized and independently owned; serialize shared writes. Andino retains
+   delegation and integration ownership.
 
-4. **Execute through the Two-Phase Signal Gate**:
-   - **For behavioral code (canonical TDD, `skills/tdd/GUIDE.md`)**:
-     1. *Phase 1 (RED)*: Add or locate the test case. Run the test command. Observe
-        and verify the failing signal (discriminating assertion failure, not syntax error).
-     2. *Phase 2 (GREEN)*: Write the minimal implementation satisfying the test.
-        Rerun test command. Observe and verify passing signal (exit 0).
-     3. *Regression pass*: Run the module test suite to verify no collateral breakage.
-   - **For static artifacts (Documentation, Configuration, Schemas)**:
-     1. Run targeted validator (linter, schema validator, build command).
-     2. Compare actual output against expected signal.
-     3. Confirm exit 0 and matching output.
+4. **Execute and compare each signal**.
+   - **Behavior changes**: Load canonical TDD before implementation. Observe one
+     discriminating RED assertion, make the minimal change, then observe focused
+     GREEN. Syntax/import/tooling/fixture errors are setup failures. If already GREEN,
+     inspect the assertion and real behavior: reuse adequate existing coverage or
+     strengthen an inadequate test. Preserve correct code; do not manufacture RED
+     or reimplement already-satisfied behavior.
+   - **Static artifacts**: Inspect/change/validate against observable acceptance.
+     Configuration/schema changes affecting runtime behavior need behavioral checks.
+     Content checks prove content properties, not future model compliance.
+   - **Each required check**: Run with its recorded directory and prerequisites,
+     read output and compare expected values, exercised cases and scope. Empty or
+     wholly skipped test discovery is a gap. Select regression/integration checks
+     by affected behavior, risk and the standing project quality floor; reuse
+     unaffected evidence instead of rerunning broad suites after every small step.
+   - **Mismatch**: Diagnose code failures with canonical debugging before patching;
+     correct defective plan steps through bounded rulings. Unavailable checks leave
+     their criterion `NOT_VERIFIED`, not silently waived.
 
-5. **Apply Rulings, not stalls**:
-   If a plan defect, interface ambiguity, or bounded conflict arises:
-   - Decide the smallest change satisfying the specification.
-   - Record the ruling directly in the owning task within the plan:
-     `Ruling: <what was decided> — <why this satisfies spec> — <cost if wrong>`
-   - Continue execution immediately. Do not pause to ask permission for decisions
-     within session authority.
-   - Only halt on the Four Hard Stops.
+5. **Record grounded rulings**. Resolve routine implementation choices within authority.
+   For a plan defect or conflict, record in its owning task:
+   `Ruling: <decision> — <evidence/spec basis> — <cost and scope if wrong>`.
+   Propagate changed interfaces to consumers and invalidate affected evidence. A ruling
+   cannot waive acceptance or silently change a material user-owned requirement.
+   Rebaseline dependent work when needed and continue independent ready tasks.
 
-6. **In-place checkpoint update**:
-   Before taking the next task, update the plan in-place:
-   - Mark task actions complete `[x]`.
-   - Update task status to `DONE`.
-   - Append to `Result / Evidence`: exact command, exit status, terminal output summary,
-     and commit hash range (`base..head`).
-   - Update the Execution Board and update `NEXT ACTION`.
+6. **Complete and checkpoint the task**. Load canonical verification before acceptance.
+   Confirm every required action/check has its observed result and every deviation its
+   disposition. Record acceptance-to-check mapping, command/action, working directory,
+   exit/result, relevant environment, tested identity and limits in `Result / Evidence`.
+   A commit range identifies committed content only; include hashes or a scoped diff
+   snapshot for WIP and owned new files. Mark `DONE` only with current acceptance
+   evidence, synchronize actual board/detail state and set concrete `NEXT ACTION`
+   before proceeding. Use `BLOCKED` with its dependency, or `SKIPPED` with an accepted
+   replacement, when appropriate; preserve equivalent project representations.
 
-7. **Whole-branch final review gate**:
-   Before declaring completion of the plan:
-   - If a subagent tool is available, dispatch a fresh reviewer on the diff against
-     merge base using code-review (`skills/code-review/GUIDE.md`) and verification (`skills/verification/GUIDE.md`).
-   - If no subagent tool is available, perform a structured self-review against the
-     specification, acceptance criteria, and full test suite.
-   - Re-grade findings by impact:
-     - *Critical and Important*: Enter ONE TDD fix pass. Each fix must be verified
-       RED -> GREEN with tests before advancing.
-     - *Minor*: Record as deferred in the final summary. Minors never trigger an
-       extra fix pass.
+7. **Review the complete owned change**. Load canonical code-review and verification.
+   Pin accepted BASE plus committed, staged, unstaged and task-owned untracked bytes.
+   Supply spec, acceptance map, check results, rulings and untested failure cases.
+   Diff statistics are an index, not substantive review. Use a fresh reviewer when
+   useful, authorized and available; otherwise perform a distinct structured self-review
+   and disclose its limitation. Preserve separate Spec and Standards verdicts.
+   Re-grade findings, including issues a reviewer declined to judge, by user effect.
+   Resolve material findings with behavioral or static checks as appropriate, rerun
+   affected integration and scope re-review to changed risk. Bound loops by new
+   evidence using canonical anti-loop rules. A pass limit never makes unresolved
+   material findings DONE; retain failed acceptance, blocker and NEXT ACTION.
+   Defer optional polish with a reason instead of expanding scope automatically.
 
-8. **Final delivery and handoff**:
-   - Confirm all Acceptance Criteria boxes are checked with supporting evidence.
-   - Record final review summary, list of rulings made, and deferred minors.
-   - Set overall plan status to `DONE` and `NEXT ACTION: None — task complete`.
-   - Andino owns DONE; preserve durable evidence in the plan instead of deleting it.
+8. **Deliver and hand off**. Account for every in-scope acceptance criterion and
+   material review finding. Finish authorized commit/push/setup steps and check
+   their resulting state. Distinguish local verification, remote publication and
+   installed activation; compare installed content with the reviewed source when
+   distribution is in scope. Report results, material rulings, deferred findings
+   and verification limits. Andino owns DONE. Preserve the checkpoint and set
+   `NEXT ACTION: None — task complete` only when no required work remains.
 
-## Ownership
+## Ownership and resource resolution
 
-Andino owns selection, depth, scope, the existing durable checkpoint, delegation and DONE.
-Parent owns shared artifacts/final acceptance. This guide cannot invoke denied/manual
-siblings or establish another lifecycle.
+Andino owns selection, depth, scope, the existing checkpoint, delegation and DONE.
+The parent owns shared artifacts and final acceptance. Loading this resource does
+not invoke another skill or override native resource permissions.
 
-Resolve workflow-wide resources from the installed `andino-workflow` root: for a nested
-member, use its containing workflow package; for standalone `andino-plan-execution`,
-use the sibling `andino-workflow` package. The canonical paths are
-`references/execution-plan.md`, `skills/tdd/GUIDE.md`, `skills/code-review/GUIDE.md`
-and `skills/verification/GUIDE.md`. Load only the current phase's needed guide.
+Resolve workflow-wide resources from the installed `andino-workflow` root: a nested
+member uses its containing workflow; standalone `andino-plan-execution` uses the
+sibling `andino-workflow` package. Canonical workflow-root paths are:
+
+- `references/execution-plan.md` and `references/anti-loop.md` for lifecycle/recovery.
+- `skills/tdd/GUIDE.md` for behavior changes.
+- `skills/debugging/GUIDE.md` for code failures with unknown cause.
+- `skills/code-review/GUIDE.md` and `skills/verification/GUIDE.md` for acceptance.
+
+These are workflow-root paths, not member-relative Markdown links. Load only the
+current phase's needed guides through the host's permitted mechanism. Missing
+resources remain unavailable; record the gap and use an honest bounded fallback.
 
 ## Permission boundary
 
 Use actual host tools within session authorization. No branch creation, commit, push,
-merge, publication, external message, environment installation or destructive cleanup
-is authorized by this guide. Reuse earlier permission without repeated confirmation;
-disclose denied/unavailable actions and continue independent safe work.
+merge, publication, external message, installation or destructive cleanup is authorized
+by this guide. Reuse earlier permission without repeated confirmation; disclose denied
+or unavailable actions and continue independent safe work. Preserve user changes/secrets.
 
-## Output
+## Output and verification
 
-Current task states/evidence, deviations, exact checks, unresolved acceptance and one NEXT ACTION.
-
-## Verification
-
-Unchanged completed output is skipped; drift reopens its verification and blocks dependents.
+Current task states, acceptance evidence, rulings, unresolved findings and one NEXT ACTION.
+Unchanged verified work is reused; changed or incomplete identity reopens affected
+verification. Record actual command/action and result, never inferred success.
 
 ## Common rationalizations
 
-| Excuse | Reality |
+| Shortcut | Required response |
 | --- | --- |
-| "I remember what Task N says without reading" | You remember a vague summary. The plan has exact values, paths, and assertions. Read it. |
-| "The plan's code looks right, skip watching RED fail" | A test you never saw fail proves nothing. It could pass unconditionally or test nothing. Run it. |
-| "I'll run the full suite at the end instead of per step" | Per-step checks pinpoint what broke. End-of-task runs verify integration, they don't replace step gates. |
-| "The plan is wrong here, I'll just quietly do the right thing" | Do the right thing AND record the ruling in the plan. Unrecorded deviation is secret drift. |
-| "I'll update the plan checkpoint after finishing several tasks" | Context compaction can happen anytime. Update the plan in-place immediately after each task. |
-| "Let me check in with the user before starting the next task" | The user authorized plan execution. Continuous execution is required. Only the Four Hard Stops stop you. |
-| "I read my own diff carefully; final review is redundant" | Same author, same blind spots. Fresh reviewer or structured self-review against the spec is mandatory. |
-| "Tests should pass, the change was trivial" | "Should" is an unverified assumption. Real commands and terminal output are the only acceptable evidence. |
-| "The reviewer labeled it Minor, so I'll leave it as Minor" | Reviewers often grade spec silence rather than user impact. Re-grade by real effect on users, then gate. |
-| "The fix is obvious, no need for a failing test first" | A failing test is the only proof the defect existed and is now resolved. Without it you have a guess. |
-| "I'll fix all minor suggestions while I'm editing" | Fixing minors unprompted wastes tokens and risks regressing stable code. Defer minors to the report. |
-| "I'll create a second ledger file to track progress" | Prohibited. The plan file is the single durable checkpoint. Never maintain dual ledgers. |
+| "I remember Task N" | Re-read exact acceptance, commands, interfaces and rulings. |
+| "It already passes, so break code to get RED" | Inspect coverage and preserve satisfied behavior. |
+| "The command exited 0" | Check actual cases, expected values and exercised scope. |
+| "The plan is wrong; quietly fix it" | Record the smallest spec-grounded ruling and affected consumers. |
+| "HEAD contains the work" | Include staged, unstaged and owned untracked bytes in review identity. |
+| "The reviewer said Minor" | Grade real user effect, not silence in the spec. |
+| "One repair pass ended" | Remaining material acceptance is still incomplete. |
+| "Recovery means reverting the diff" | Attribute and preserve changes, then verify current bytes. |
+| "Push/setup always needs another question" | Reuse exact existing authority; verify the result. |
+
+## Fallback
+
+Reconstruct missing evidence narrowly from current artifacts; keep provisional claims
+and unavailable checks explicit. Do not change worktrees, erase work or fabricate
+dispatch/results to satisfy the procedure.
 
 ## Worked example and anti-pattern
+
 
 The synthetic offline example is applied in temporary isolation. Its independent expected
 values describe the contract; its execution is procedural evidence, not a benchmark of
@@ -216,6 +229,9 @@ def reusable_tasks(tasks, prior, current):
         now = current.get(task_id)
         return bool(old and now
                     and old.get("result") == "PASS"
+                    and all(isinstance(record.get(key), str) and record[key].strip()
+                            for record in (old, now)
+                            for key in ("source", "check", "environment"))
                     and old.get("source") == now.get("source")
                     and old.get("check") == now.get("check")
                     and old.get("environment") == now.get("environment"))
@@ -264,8 +280,3 @@ Expected output:
 ```json
 {"local_drift": {"rerun": ["ui"], "reusable": ["base", "docs"]}, "producer_drift": {"rerun": ["base", "docs", "ui"], "reusable": []}}
 ```
-
-## Fallback
-
-Reconstruct missing evidence narrowly from current source/artifacts, label provisional
-claims; no fallback into wrong branch checkout.
