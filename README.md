@@ -1,8 +1,8 @@
 # Council
 
-> **Structured decision review for high-stakes choices.** Five deliberate perspectives, anonymized peer critique, and a synthesized verdict with exactly one actionable next step.
+Council reviews consequential choices through five perspectives, anonymized peer critique, and a synthesized recommendation with exactly one actionable next step.
 
-When facing consequential architectural forks, technology migrations, or strategic trade-offs, individual agents easily develop tunnel vision or echo user bias. Inspired by Andrej Karpathy and Ole Lehmann's multi-perspective deliberation model, **Council** convenes five independent advisor lenses to stress-test your choice before you commit.
+For architectural forks, technology migrations, or strategic trade-offs, **Council** uses independent advisors to examine assumptions and challenge the initial framing. Inspired by Andrej Karpathy and Ole Lehmann's multi-perspective deliberation model, it reviews the choice before you commit.
 
 ---
 
@@ -32,7 +32,7 @@ When facing consequential architectural forks, technology migrations, or strateg
 
 ## When to Use
 
-| ✅ Convene Council For | ❌ Do NOT Convene For |
+| Convene Council For | Do NOT Convene For |
 |---|---|
 | Irreversible architectural forks (e.g., monolith vs. microservices) | Simple factual questions or lookups |
 | Technology stack / library selection with material trade-offs | Minor code formatting or cosmetic preferences |
@@ -82,10 +82,10 @@ git clone --depth 1 --single-branch --branch council https://github.com/andinofe
 
 ## Verdict Output Format
 
-Council returns a structured, actionable decision artifact:
+Council returns a decision artifact:
 - **Titik Temu / Agreement:** Where the advisors independently converged.
 - **Perbedaan / Disagreement:** Disputed assumptions and real trade-offs.
-- **Hal Terlewat / Blind Spots:** Crucial risks uncovered during anonymous peer review.
+- **Hal Terlewat / Blind Spots:** Risks uncovered during anonymous peer review.
 - **Rekomendasi / Recommendation:** Justified decision and residual uncertainty.
 - **Langkah Pertama / First Action:** Exactly one practical, immediate next move.
 
