@@ -13,7 +13,7 @@ Rencana yang diterima dan siap dieksekusi memiliki route langsung ke plan-execut
 - Validator paket: tujuh paket skill, metadata, relative links dan tujuh schema eval lulus.
 - Validator capability: 74 schema dan 60 kontrak lulus pada hash kandidat yang sama.
 - Instalasi kandidat: 41 skenario offline pada lima permukaan path host lulus, tanpa sumber jaringan. Ini tidak membuktikan discovery native atau perilaku model.
-- Checker baru merekonsiliasi 59 metode, 53 alias, 19 rujukan sibling/family dan sembilan entri instrumen/native.244 definisi kasus mencakup eksplisit, implisit, negatif, seluruh target alias majemuk, transisi dan dua fixture aplikasi.
+- Checker baru merekonsiliasi 59 metode, 53 alias, 19 rujukan sibling/family dan sembilan entri instrumen/native. 244 definisi kasus mencakup eksplisit, implisit, negatif, seluruh target alias majemuk, transisi dan dua fixture aplikasi.
 - Ekspor kandidat identik dengan sumber runtime yang diperiksa. Hash konten: `af63474a8966cc8186ddf50882989c57c792b0a1bccb5e07b2eadc3b6f2bcfd9`.
 - `coverage.json` memetakan kasus serta rujukan guide pada arsip trace. Referensi path di panggilan bukan bukti pemuatan berhasil atau metode diterapkan. Bukti arsip tetap terikat hash/host/cakupannya; model kandidat tetap NOT_VERIFIED.
 
@@ -58,9 +58,9 @@ Perintah tersebut hanya mengekspor kasus dan kandidat; tidak menjalankan evaluas
 
 ## Publikasi yang diotorisasi — 29 Oktober 2026
 
-Pengguna kemudian meminta commit/push ke origin/andino-workflow dan memastikan ai-rules setup tersedia. Runtime commit `65df26d182b3118e3f18ee46522eac83ea1036fb` sudah dipush normal dan SHA remote diverifikasi. Manifest main menaikkan release sequence menjadi19 dan mem-pin commit tersebut; seluruh pin sibling identik dengan manifest resmi sebelumnya.
+Pengguna kemudian meminta commit/push ke origin/andino-workflow dan memastikan ai-rules setup tersedia. Runtime commit `65df26d182b3118e3f18ee46522eac83ea1036fb` sudah dipush normal dan SHA remote diverifikasi. Manifest main menaikkan release sequence menjadi 19 dan mem-pin commit tersebut; seluruh pin sibling identik dengan manifest resmi sebelumnya.
 
-published-setup.json mencatat akuisisi remote default-latest yang sebenarnya: fresh/repeat serta upgrade versi resmi17ce784/backup/repeat lulus. Tidak ada source/catalog/network mock; hanya home path pengujian module diarahkan ke lokasi disposable.
+published-setup.json mencatat akuisisi remote default-latest yang sebenarnya: fresh/repeat serta upgrade versi resmi 17ce784/backup/repeat lulus. Tidak ada source/catalog/network mock; hanya home path pengujian module diarahkan ke lokasi disposable.
 
 CLI yang terpasang semula rusak karena editable installation menunjuk checkout runtime yang tidak berisi ai_rules.cli. Paket wheel non-editable dibangun lokal dengan delapan bundle resmi, tanpa jaringan/dependensi tambahan, lalu menggantikan editable install. entrypoint-setup.json membuktikan ai-rules.exe asli bekerja dari cwd non-repository pada empat percobaan fresh/repeat/upgrade/repeat, tanpa override source, home atau PYTHONPATH. Instalasi skill global tidak dimodifikasi oleh pengujian.
 
@@ -70,8 +70,8 @@ Perintah pengguna tetap:
 ai-rules setup
 ```
 
-Default latest mengambil branch runtime yang sudah dipublikasikan. Tidak diperlukan tagged binary release untuk jalur ini; wheel lokal juga berisi pin rilis19 untuk penggunaan bundled. Setelah pengguna menjalankan setup, mulai ulang sesi agent agar skill baru ditemukan. Pengujian file/instalasi ini tidak membuktikan pemilihan metode oleh model.
+Default latest mengambil branch runtime yang sudah dipublikasikan. Tidak diperlukan tagged binary release untuk jalur ini; wheel lokal juga berisi pin rilis 19 untuk penggunaan bundled. Setelah pengguna menjalankan setup, mulai ulang sesi agent agar skill baru ditemukan. Pengujian file/instalasi ini tidak membuktikan pemilihan metode oleh model.
 
-Suite penuh setelah pin rilis19 dan seluruh perbaikan review:339 tes lulus dalam191.798 detik, nol kegagalan/error dan satu skip integrasi opsional. Log aktual tersimpan di publication-suite.log. Delapan bundle rilis diekspor dari commit resmi masing-masing; hash Andino identik dengan kandidat yang diuji.
+Suite penuh setelah pin rilis 19 dan seluruh perbaikan review: 339 tes lulus dalam 191.798 detik, nol kegagalan/error dan satu skip integrasi opsional. Log aktual tersimpan di publication-suite.log. Delapan bundle rilis diekspor dari commit resmi masing-masing; hash Andino identik dengan kandidat yang diuji.
 
-Publikasi selesai: runtime65df26d dan main delivery37a8712188433d80263a2d96a0c4497fefab7a5d sudah dipush normal; git ls-remote mengonfirmasi SHA tepat keduanya. Commit dokumentasi penutup hanya merekam keberhasilan ini, tanpa mengubah runtime, installer atau pin yang diuji.
+Publikasi selesai: runtime 65df26d dan main delivery 37a8712188433d80263a2d96a0c4497fefab7a5d sudah dipush normal; git ls-remote mengonfirmasi SHA tepat keduanya. Commit dokumentasi penutup hanya merekam keberhasilan ini, tanpa mengubah runtime, installer atau pin yang diuji.
