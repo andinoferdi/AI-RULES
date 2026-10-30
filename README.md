@@ -1,6 +1,6 @@
 # AI Rules Template (Web Chatbot Edition)
 
-> **Koleksi prompt sistem & persona siap pakai untuk AI Chatbot berbasis web** (Claude Web, ChatGPT, Gemini Web, Perplexity, DeepSeek). Cukup salin (*copy-paste*) modul prompt yang relevan langsung ke kolom chat Anda.
+> **Kumpulan prompt sistem dan persona untuk chatbot AI berbasis web** (Claude Web, ChatGPT, Gemini Web, Perplexity, DeepSeek). Salin (*copy-paste*) modul prompt yang sesuai dengan tugas Anda ke kolom chat.
 >
 > *Catatan:* Jika Anda menggunakan **AI Coding Agent CLI** (Claude Code, Codex, OpenCode, Antigravity), gunakan branch [ndino-workflow](https://github.com/andinoferdi/AI-RULES/tree/andino-workflow) dan branch [main](https://github.com/andinoferdi/AI-RULES/tree/main).
 
@@ -8,43 +8,43 @@
 
 ## Panduan Cepat Penggunaan
 
-1. **Aturan Dasar (Wajib):** Selalu sertakan modul **[A. PRIORITAS](#a-prioritas)** di awal sesi obrolan Anda agar jawaban AI to-the-point, alami, dan bebas basa-basi klise.
+1. **Aturan Dasar (Wajib):** Sertakan modul **[A. PRIORITAS](#a-prioritas)** di awal sesi untuk mengarahkan AI agar menjawab langsung, memakai bahasa alami, dan menghindari basa-basi klise.
 2. **Pilih Spesialis:** Gabungkan modul **A** dengan salah satu modul spesialis (B, D–V, X, Y) sesuai kebutuhan tugas Anda.
-3. **Reset Konteks:** Gunakan modul **[Z](#z-reset-konteks-dan-arah-percakapan)** kapan saja Anda ingin membersihkan arah percakapan yang mulai menyimpang.
-4. **Untuk Proyek Koding Mandiri:** Manfaatkan berkas konfigurasi di folder put-in-your-projects/ (chat-rules.md, code-rules.md, e/fe-rules.md, dll.).
+3. **Reset Konteks:** Gunakan modul **[Z](#z-reset-konteks-dan-arah-percakapan)** saat percakapan mulai menyimpang dari tujuan.
+4. **Untuk Proyek Koding Mandiri:** Gunakan berkas konfigurasi di folder put-in-your-projects/ (chat-rules.md, code-rules.md, e/fe-rules.md, dll.).
 
 ---
 
 ## Daftar Navigasi Prompt
 
-### 🎯 Aturan Inti & Gaya Komunikasi
+### Aturan Inti & Gaya Komunikasi
 - **[A. PRIORITAS](#a-prioritas)** — *Wajib di setiap sesi: menghapus basa-basi, kalimat aktif, to-the-point, bahasa alami.*
 - **[B. PENASEHAT KRITIS](#b-penasehat-kritis)** — *Persona penantang asumsi, analisis risiko objektif, dan penguji argumen.*
-- **[X. FOCUS](#x-focus)** — *Format jawaban ultra-ringkas, berbasis tindakan langsung, minim jargon.*
-- **[Y. NATURAL WRITING](#y-natural-writing-opsional)** — *Gaya penulisan esai & dokumen tanpa pola klise formulaik khas AI.*
-- **[Z. RESET KONTEKS](#z-reset-konteks-dan-arah-percakapan)** — *Pembersih arah percakapan & pengembali fokus.*
+- **[X. FOCUS](#x-focus)** — *Format jawaban ringkas dengan tindakan yang jelas dan sedikit jargon.*
+- **[Y. NATURAL WRITING](#y-natural-writing-opsional)** — *Panduan penulisan esai dan dokumen yang menghindari pola klise khas AI.*
+- **[Z. RESET KONTEKS](#z-reset-konteks-dan-arah-percakapan)** — *Pemeriksaan konteks untuk mengembalikan percakapan ke tujuan.*
 
-### 🛠️ Asisten Spesialis & Produktivitas
+### Asisten Spesialis & Produktivitas
 - **[D. Asisten Parafrase Multibahasa](#d-asisten-parafrase-multibahasa)** — Parafrase alami multi-register tanpa merusak arti.
 - **[E. Riset Jalur Pendakian](#e-asisten-riset-jalur-pendakian-gunung)** — Manajemen risiko, estimasi waktu, & logistik pendakian.
 - **[F. Penjelas Dari Nol](#f-penjelas-dari-nol)** — Penjelasan konsep rumit dengan analogi bertahap.
 - **[G. Kalori & Komposisi Tubuh](#g-penghitung-kalori-dan-komposisi-tubuh-berbasis-bukti)** — Perhitungan gizi & nutrisi berbasis bukti sains.
 - **[H. Penjawab Ujian Tulis](#h-penjawab-ujian-tulis)** — Strategi pengerjaan soal ujian secara terstruktur.
-- **[I. Pembelajaran Ala Feynman](#i-pembelajaran-ala-feynman)** — Menguji pemahaman konsep hingga ke akar.
+- **[I. Pembelajaran Ala Feynman](#i-pembelajaran-ala-feynman)** — Menguji pemahaman konsep secara mendalam.
 - **[J. Persona Gen Z](#j-persona-gen-z)** — Gaya obrolan santai, luwes, dan bahasa gaul alami.
 - **[K. Jawaban Lisan ke Dosen](#k-jawaban-lisan-ke-dosen)** — Etika dan artikulasi argumen akademis saat berhadapan dengan dosen.
 - **[L. Skripsi D4 TI UNAIR](#l-penulisan-skripsi-d4-teknik-informatika-unair)** — Template khusus kepatuhan format & metodologi skripsi.
 - **[M. Build NFS Unbound](#m-asisten-build-nfs-unbound)** — Tuning performa & handling mobil balap game.
 - **[N. Benchmark Game YouTube](#n-pencari-benchmark-game-youtube)** — Analisis perbandingan FPS & hardware game nyata.
-- **[O. Desain Web Non-AI-Looking](#o-asisten-desain-web-non-ai-looking)** — Arahan visual web berkarakter tanpa estetika template generic AI.
+- **[O. Desain Web Non-AI-Looking](#o-asisten-desain-web-non-ai-looking)** — Arahan visual web berkarakter yang menghindari tampilan generik hasil AI.
 - **[P. Guru Adaptif & Pembuat Soal](#p-guru-adaptif-pembuat-soal-dan-tracking-progres)** — Bank soal interaktif berjenjang.
 - **[Q. Hemat Token & Biaya AI](#q-hemat-token-credits-dan-biaya-ai)** — Teknik kompresi prompt & efisiensi credit LLM.
-- **[R. Pengoptimal Prompt Multibahasa](#r-pengoptimal-prompt-multibahasa)** — Meningkatkan kejernihan instruksi prompt.
+- **[R. Pengoptimal Prompt Multibahasa](#r-pengoptimal-prompt-multibahasa)** — Memperjelas instruksi prompt.
 - **[S. Alur Cerita Game/Film](#s-pembuat-alur-cerita-gamefilm)** — Struktur naratif 3-babak, penokohan, & konflik plot.
 - **[T. Full Vocal Chain](#t-asisten-full-vocal-chain)** — Rekayasa mixing & mastering rantai vokal audio.
 - **[U. Pencari Penantang Terbaik](#u-pencari-penantang-terbaik)** — Evaluasi kompetitor alternatif dari produk apa pun.
 - **[V. Pembuat Grand-Plan Project](#v-pembuat-grand-plan-project)** — Pemetaan rencana proyek jangka panjang yang terukur.
-- **[W. Kolaborasi AI Web <-> Coding Agent](#w-kolaborasi-ai-web--coding-agent)** — Jembatan komunikasi hasil analisis web ke coding agent.
+- **[W. Kolaborasi AI Web <-> Coding Agent](#w-kolaborasi-ai-web--coding-agent)** — Panduan menyampaikan hasil analisis AI web ke coding agent.
 
 ---
 
