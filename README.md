@@ -1,8 +1,8 @@
 # AI Codebase Rescue
 
-> **Evidence-first codebase stabilization.** Rescue fragile, patch-heavy subsystems with proven regression protection and disciplined engineering dispositions: `KEEP`, `REFACTOR`, `REMAKE`, `REMOVE`, or `INVESTIGATE`.
+AI Codebase Rescue stabilizes fragile, patch-heavy subsystems through regression protection and explicit engineering decisions: `KEEP`, `REFACTOR`, `REMAKE`, `REMOVE`, or `INVESTIGATE`.
 
-AI-generated code and rapid patching accelerate software entropy. When a subsystem breaks repeatedly, agents often guess or attempt blind rewrites that discard working edge-case behaviors. **AI Codebase Rescue** enforces an engineering-grade triage loop: establish baseline behavior $\rightarrow$ isolate regression tests $\rightarrow$ audit contract drift $\rightarrow$ apply targeted remediation.
+When a subsystem breaks repeatedly, guessing or rewriting without a baseline risks discarding working edge-case behaviors. **AI Codebase Rescue** uses a triage loop to investigate accumulated patches and regressions: establish baseline behavior $\rightarrow$ isolate regression tests $\rightarrow$ audit contract drift $\rightarrow$ apply targeted remediation.
 
 ---
 
@@ -22,7 +22,7 @@ Every inspected component receives an explicit, evidence-backed disposition:
 
 ## When to Use
 
-| ✅ Use For | ❌ Do NOT Use For |
+| Use For | Do NOT Use For |
 |---|---|
 | Repeated regressions in the same module | Routine single-file bug fixes (use debugging) |
 | Fragile prototypes being hardened for production | Cosmetic cleanup, linting, or formatting |
@@ -76,8 +76,8 @@ Invoke directly in your coding agent:
 
 ## Integration with Andino Workflow
 
-AI Codebase Rescue works standalone or seamlessly alongside **Andino Workflow**:
-- **With Andino Workflow:** Andino owns the overarching lifecycle, execution plan, and durable checkpoints. When a bounded codebase recovery need is identified, Andino delegates to `ai-codebase-rescue` for stabilization without spawning conflicting plans.
+AI Codebase Rescue works standalone or alongside **Andino Workflow**:
+- **With Andino Workflow:** Andino owns the lifecycle, execution plan, and durable checkpoints. When a bounded codebase recovery need is identified, Andino delegates to `ai-codebase-rescue` for stabilization within the existing plan.
 - **Standalone:** Operates within the host's active session, creating bounded evidence and regression test suites.
 
 ---
