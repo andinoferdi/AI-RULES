@@ -45,7 +45,7 @@ def contents(root: Path) -> dict[str, str]:
             if parent == root and name == ".git":
                 continue
             data = path.read_bytes()
-            if path.suffix.lower() in {".md", ".json", ".txt", ".yaml", ".yml"}:
+            if path.suffix.lower() in {".md", ".json", ".txt", ".yaml", ".yml", ".py"}:
                 data = data.replace(b"\r\n", b"\n")
             result[path.relative_to(root).as_posix()] = hashlib.sha1(
                 b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()

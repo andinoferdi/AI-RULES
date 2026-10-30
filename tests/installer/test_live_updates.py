@@ -162,6 +162,18 @@ class LiveUpdateTests(unittest.TestCase):
         self.assertEqual(self.git(self.remote, "rev-parse", "HEAD"), self.git(self.target, "rev-parse", "HEAD"))
         self.assertEqual(str(self.remote), self.git(self.target, "remote", "get-url", "origin").strip())
 
+    def test_crlf_python_resource_matches_source_but_changed_code_does_not(self):
+        from ai_rules.release.latest import contents
+
+        first, second = self.root / "lf-resource", self.root / "crlf-resource"
+        first.mkdir()
+        second.mkdir()
+        (first / "check.py").write_bytes(b"print('verified')\n")
+        (second / "check.py").write_bytes(b"print('verified')\r\n")
+        self.assertEqual(contents(first), contents(second))
+        (second / "check.py").write_bytes(b"print('different')\r\n")
+        self.assertNotEqual(contents(first), contents(second))
+
     def test_git_workflow_refreshes_native_member_on_update_and_current_parent(self):
         member = self.remote / "skills/plan-execution"
         member.mkdir(parents=True)
