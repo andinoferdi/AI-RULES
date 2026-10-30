@@ -118,6 +118,46 @@ Use andino-workflow, skripsi-skill, and natural-writing to draft Chapter 2 liter
 
 ---
 
+## External resources: manual installation
+
+These optional skills and MCP tools are installed separately from AI-RULES profiles.
+Follow each project's setup instructions and connection requirements.
+
+- **UI and specialist skills:** [Taste Skill](https://www.tasteskill.dev/),
+  [Impeccable](https://github.com/pbakaus/impeccable),
+  [AI Website Cloner](https://github.com/JCodesMore/ai-website-cloner-template),
+  [Anti-Slop](https://github.com/miqdadbadjuber/anti-slop),
+  [Ponytail](https://github.com/DietrichGebert/ponytail), and
+  [Graphify](https://graphify.net/).
+- **Marketing and branding:** [LinkedIn Skills](https://github.com/sergebulaev/linkedin-skills)
+  and [Logo Design Skill](https://github.com/kaankiziltug/logo-design-skill).
+- **Web and social content:** [Agent-Reach](https://github.com/Panniantong/Agent-Reach).
+- **Shell command proxy:** [RTK](https://github.com/rtk-ai/rtk).
+- **Reverse engineering:** [REA's `reverse-engineer-anything`](https://github.com/morluto/rea/tree/main/.agents/skills/reverse-engineer-anything)
+  from [morluto/rea](https://github.com/morluto/rea). The
+  [skill-only installation](https://github.com/morluto/rea/blob/main/docs/installation.md#skill-only-installation)
+  installs the skill and bundled references, without registering the REA MCP server
+  or installing analysis engines:
+
+  ```sh
+  npx skills add morluto/rea --skill reverse-engineer-anything
+  ```
+
+- **Documentation and browser MCP tools:** [Context7](https://github.com/upstash/context7),
+  [Playwright MCP](https://github.com/microsoft/playwright-mcp), and
+  [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp).
+- **Task-specific MCP tools:** [Git MCP](https://github.com/modelcontextprotocol/servers/tree/main/src/git),
+  [Draw.io MCP](https://www.npmjs.com/package/@drawio/mcp),
+  [StarUML MCP](https://www.npmjs.com/package/staruml-mcp-server),
+  [Premiere Pro MCP](https://github.com/hetpatel-11/Adobe_Premiere_Pro_MCP), and
+  [Cheat Engine MCP bridge](https://github.com/miscusi-peek/cheatengine-mcp-bridge).
+
+Install only what your task needs. Bundled Addy/Matt/Superpowers methods do not
+require their upstream bootstrap plugins. External services require their own tools
+and permissions.
+
+---
+
 ## Provenance & Licenses
 
 - AI-RULES-authored code, installer engines, and documentation on `main` are licensed under the **[MIT License](LICENSE)**, copyright 2026 andinoferdi.
