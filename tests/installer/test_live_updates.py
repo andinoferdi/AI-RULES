@@ -162,6 +162,32 @@ class LiveUpdateTests(unittest.TestCase):
         self.assertEqual(self.git(self.remote, "rev-parse", "HEAD"), self.git(self.target, "rev-parse", "HEAD"))
         self.assertEqual(str(self.remote), self.git(self.target, "remote", "get-url", "origin").strip())
 
+    def test_git_workflow_refreshes_native_member_on_update_and_current_parent(self):
+        member = self.remote / "skills/plan-execution"
+        member.mkdir(parents=True)
+        (member / "SKILL.md").write_text("---\nname: andino-plan-execution\n---\nold member\n")
+        self.commit("with member")
+        self.target.parent.mkdir(parents=True)
+        self.git(self.root, "clone", str(self.remote), str(self.target))
+        native = self.target.parent / "andino-plan-execution"
+        shutil.copytree(member, native)
+        (member / "SKILL.md").write_text("---\nname: andino-plan-execution\n---\nnew member\n")
+        self.commit("new member")
+        result, output = self.run_cli()
+        self.assertEqual(0, result, output)
+        self.assertEqual((member / "SKILL.md").read_text(), (native / "SKILL.md").read_text())
+        self.assertTrue(list((self.state / "backups").glob("*/andino-plan-execution/SKILL.md")))
+        shutil.rmtree(native)
+        result, output = self.run_cli("--dry-run")
+        self.assertEqual(0, result, output)
+        self.assertFalse(native.exists())
+        result, output = self.run_cli()
+        self.assertEqual(0, result, output)
+        self.assertEqual((member / "SKILL.md").read_text(), (native / "SKILL.md").read_text())
+        result, output = self.run_cli()
+        self.assertEqual(0, result, output)
+        self.assertIn("NO_OP", output)
+
     def test_user_edits_are_preserved_and_never_reported_current(self):
         self.copy_old()
         (self.target / "SKILL.md").write_text("personal edits\n", encoding="utf-8")
@@ -170,6 +196,48 @@ class LiveUpdateTests(unittest.TestCase):
         self.assertNotEqual(0, result)
         self.assertIn("BLOCK", output)
         self.assertEqual("personal edits\n", (self.target / "SKILL.md").read_text())
+
+    def test_modified_native_member_blocks_parent_update_without_overwriting(self):
+        member = self.remote / "skills/plan-execution"
+        member.mkdir(parents=True)
+        (member / "SKILL.md").write_text("---\nname: andino-plan-execution\n---\nold\n")
+        self.commit("with member")
+        self.target.parent.mkdir(parents=True)
+        self.git(self.root, "clone", str(self.remote), str(self.target))
+        native = self.target.parent / "andino-plan-execution"
+        shutil.copytree(member, native)
+        (native / "SKILL.md").write_text("personal member edits\n")
+        installed = self.git(self.target, "rev-parse", "HEAD")
+        (member / "SKILL.md").write_text("---\nname: andino-plan-execution\n---\nnew\n")
+        self.commit("member update")
+        result, output = self.run_cli()
+        self.assertNotEqual(0, result, output)
+        self.assertIn("modified or unrecognized", output)
+        self.assertEqual("personal member edits\n", (native / "SKILL.md").read_text())
+        self.assertEqual(installed, self.git(self.target, "rev-parse", "HEAD"))
+
+    def test_native_member_drift_after_planning_fails_activation_verification(self):
+        member = self.remote / "skills/plan-execution"
+        member.mkdir(parents=True)
+        (member / "SKILL.md").write_text("---\nname: andino-plan-execution\n---\ncurrent\n")
+        self.commit("with member")
+        result, output = self.run_cli()
+        self.assertEqual(0, result, output)
+        native = self.target.parent / "andino-plan-execution/SKILL.md"
+        executor = cli._executor_for_plan
+
+        def edit_after_plan(*args, **kwargs):
+            native.write_text("user edit after planning\n")
+            return executor(*args, **kwargs)
+
+        with patch.object(cli, "_executor_for_plan", side_effect=edit_after_plan):
+            result, output = self.run_cli()
+        self.assertNotEqual(0, result, output)
+        self.assertEqual("user edit after planning\n", native.read_text())
+        lock = json.loads((self.state / "lock.json").read_text())
+        workflow = next(t for t in lock['targets'] if t['capability'] == 'andino-workflow')
+        self.assertNotEqual("PASS", workflow['verification']['outcome'])
+        self.assertNotEqual("VERIFIED", workflow['status'])
 
     def test_failed_source_lookup_is_not_a_successful_noop(self):
         self.copy_old()

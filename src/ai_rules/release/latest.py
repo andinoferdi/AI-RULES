@@ -68,6 +68,7 @@ class LatestSources:
         self.entries = {}
         self.installers = {}
         self.expected = {}
+        self.expected_members = {}
         self._trees = {}
         self.subpaths = {}
         try:
@@ -151,6 +152,16 @@ class LatestSources:
                 return commit
         return None
 
+    def known_member(self, local, head, name, actual):
+        for revision in git(local, "rev-list", "--max-count=256", head).splitlines():
+            try:
+                if actual == self.tree(local, revision, f"skills/{name}"):
+                    return True
+            except ValueError:
+                # A member may not exist in older revisions of the workflow.
+                continue
+        return False
+
     def reconcile(self, plan, catalog, args):
         adapters = build_host_adapters(catalog.hosts)
         targets = []
@@ -202,7 +213,23 @@ class LatestSources:
                 else:
                     action, reason = ReconciliationAction.UPDATE, "clean official installation is behind the source branch"
                 self.expected[key] = self.tree(local, head, self.subpaths[identifier])
-                self.installers[key] = self._installer(identifier, original, destination, before, is_git, installed, args.state_dir)
+                members = {}
+                if identifier == "andino-workflow":
+                    for member in sorted((self.sources[identifier] / "skills").glob("*")):
+                        if not (member / "SKILL.md").is_file():
+                            continue
+                        native = destination.parent / f"andino-{member.name}"
+                        observed = contents(native)
+                        desired = contents(member)
+                        if observed != desired:
+                            if native.exists():
+                                if (native / ".git").exists() or not self.known_member(local, head, member.name, observed):
+                                    raise ValueError(f"Native member {native.name} is modified or unrecognized; preserved")
+                        members[native] = (member, observed, desired)
+                    if any(observed != desired for _, observed, desired in members.values()) and action == ReconciliationAction.NO_OP:
+                        action, reason = ReconciliationAction.UPDATE, "native workflow members need synchronization"
+                self.expected_members[key] = {native: desired for native, (_, _, desired) in members.items()}
+                self.installers[key] = self._installer(identifier, original, destination, before, is_git, installed, args.state_dir, members)
                 actual = ActualState(exists=destination.exists(), ownership=InstalledOwnership.MANAGED_BY_AI_RULES,
                                      installed_version=self.version(identifier, installed) if installed else None,
                                      healthy=bool(before), content_matches=action == ReconciliationAction.NO_OP)
@@ -220,7 +247,16 @@ class LatestSources:
         emit(self.reporter, "Reconciliation complete", completed=len(targets), total=len(plan.targets))
         return InstallationPlan(plan.schema_version, plan.profile_id, tuple(targets))
 
-    def _installer(self, identifier, original, destination, before, is_git, installed, state_dir):
+    def matches(self, identifier, host, destination):
+        key = (identifier, host)
+        try:
+            return (contents(destination) == self.expected[key]
+                    and all(contents(native) == desired
+                            for native, desired in self.expected_members.get(key, {}).items()))
+        except (ValueError, OSError):
+            return False
+
+    def _installer(self, identifier, original, destination, before, is_git, installed, state_dir, members):
         def install():
             emit(self.reporter, "Checking target before installation", capability=identifier)
             local, _, branch, commit = self.entries[identifier]
@@ -235,8 +271,19 @@ class LatestSources:
                 if git(destination, "status", "--porcelain", "--untracked-files=all", "--ignored=matching"):
                     raise ValueError("Git checkout is no longer clean")
             current = contents(destination)
+            for native, (_, observed, desired) in members.items():
+                if contents(native) not in (observed, desired):
+                    raise ValueError("Native member changed after planning; preserved")
+
+            def sync_members():
+                for native, (source, _, desired) in members.items():
+                    if contents(native) != desired:
+                        copy_tree_atomic(source, native, state_dir / "backups",
+                                         verify=lambda path, wanted=desired: contents(path) == wanted,
+                                         reporter=self.reporter)
             # Another selected host may share this exact path through a junction.
             if current == expected and (not is_git or git(destination, "rev-parse", "HEAD") == commit):
+                sync_members()
                 return original
             if current != before:
                 raise ValueError("Skill changed after planning; rerun setup after reviewing local edits")
@@ -253,13 +300,7 @@ class LatestSources:
             else:
                 copy_tree_atomic(self.sources[identifier], destination, state_dir / "backups",
                                  verify=lambda path: contents(path) == expected, reporter=self.reporter)
-                if identifier == "andino-workflow":
-                    skills_dir = self.sources[identifier] / "skills"
-                    if skills_dir.is_dir():
-                        for member in sorted(skills_dir.iterdir()):
-                            if member.is_dir() and (member / "SKILL.md").is_file():
-                                member_target = destination.parent / f"andino-{member.name}"
-                                copy_tree_atomic(member, member_target, state_dir / "backups", reporter=self.reporter)
+            sync_members()
             emit(self.reporter, "Verifying installed content", capability=identifier)
             if contents(destination) != expected:
                 raise ValueError("Installed content differs from the resolved source; backup retained")

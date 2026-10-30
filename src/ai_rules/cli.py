@@ -606,7 +606,8 @@ def _write_verified_lock(plan, result, args: argparse.Namespace) -> bool | None:
         status = item.status
         if getattr(args, "_latest", None) and item.status in {"APPLIED", "VERIFIED"}:
             root = adapters[target.host_id].skill_target(target.scope, args.project_root)
-            matches = root is not None and contents((root / target.capability_id).resolve()) == args._latest.expected[(target.capability_id, target.host_id)]
+            matches = root is not None and args._latest.matches(
+                target.capability_id, target.host_id, (root / target.capability_id).resolve())
             status = TargetStatus.VERIFIED.value if matches else TargetStatus.FAILED.value
             verification = {"outcome": "PASS" if matches else "FAIL", "check": "full-source-content"}
         elif item.status == "APPLIED" and capability.ownership.value == "FIRST_PARTY":
