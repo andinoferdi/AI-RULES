@@ -85,7 +85,8 @@ class InternalDispatchContract(unittest.TestCase):
 
     def test_planning_handoff_does_not_grant_execution_authority(self):
         guide = runtime_text('skills/planning/GUIDE.md')
-        self.assertIn('../plan-execution/GUIDE.md', guide)
+        self.assertIn('skills/plan-execution/GUIDE.md', guide)
+        self.assertIn('sibling `andino-workflow` package', guide)
         self.assertIn('execution is authorized', guide)
 
     def test_all_native_members_keep_canonical_guides(self):
