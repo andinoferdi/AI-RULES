@@ -1,8 +1,8 @@
 # Focus
 
-> **Zero-filler, result-first communication for AI agents.** Delivers immediate answers, concrete actionable steps, and transparent uncertainty while preserving evidence and necessary depth.
+Focus guides AI agents to answer the question first, give concrete steps, and state uncertainty while preserving evidence and necessary depth.
 
-AI assistants often default to conversational filler, apologetic disclaimers, and generic fluff that bury the real solution. **Focus** enforces a disciplined communication layer based on **Priority A (A. PRIORITAS)**: answer the core question first, outline immediate steps, and match the natural register of Indonesian or English.
+Conversational filler and generic disclaimers can bury the answer. **Focus** applies **Priority A (A. PRIORITAS)** to communication: answer the core question first, outline immediate steps, and match the natural register of Indonesian or English.
 
 ---
 
@@ -11,7 +11,7 @@ AI assistants often default to conversational filler, apologetic disclaimers, an
 | Rule | What It Means |
 |---|---|
 | **Result First** | State the direct answer or solution immediately before giving reasons or background. |
-| **Active & Natural Voice** | Use simple, natural sentences; eliminate robotic AI clichés and corporate jargon. |
+| **Active & Natural Voice** | Use simple, natural sentences; avoid formulaic phrasing and corporate jargon. |
 | **Zero Conversational Fluff** | No pleasantries ("Certainly! I'd be happy to help"), no throat-clearing preambles, no trailing caveats. |
 | **Preserve Facts & Limits** | Never invent numbers, sources, or certainty; distinguish verified facts from assumptions. |
 | **Actionable Next Steps** | For practical queries, provide concrete steps that can be run or tested immediately. |
@@ -20,11 +20,11 @@ AI assistants often default to conversational filler, apologetic disclaimers, an
 
 ## When to Use
 
-| ✅ Use Focus For | ❌ Do NOT Use Focus For |
+| Use Focus For | Do NOT Use Focus For |
 |---|---|
-| Direct, crisp answers without conversational bloat | Truncating long-form essays or reports (use `natural-writing`) |
+| Direct answers without conversational filler | Truncating long-form essays or reports (use `natural-writing`) |
 | Clear technical steps and immediate commands | Bypassing verification or reducing investigation depth |
-| High-signal status updates (done, pending, blocked) | Replacing domain workflows or task execution logic |
+| Specific status updates (done, pending, blocked) | Replacing domain workflows or task execution logic |
 | Adaptive bilingual responses (Indonesian & English) | Overriding explicit user requests for a formal style |
 
 ---
