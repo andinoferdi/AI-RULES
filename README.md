@@ -133,16 +133,7 @@ Follow each project's setup instructions and connection requirements.
   and [Logo Design Skill](https://github.com/kaankiziltug/logo-design-skill).
 - **Web and social content:** [Agent-Reach](https://github.com/Panniantong/Agent-Reach).
 - **Shell command proxy:** [RTK](https://github.com/rtk-ai/rtk).
-- **Reverse engineering:** [REA's `reverse-engineer-anything`](https://github.com/morluto/rea/tree/main/.agents/skills/reverse-engineer-anything)
-  from [morluto/rea](https://github.com/morluto/rea). The
-  [skill-only installation](https://github.com/morluto/rea/blob/main/docs/installation.md#skill-only-installation)
-  installs the skill and bundled references, without registering the REA MCP server
-  or installing analysis engines:
-
-  ```sh
-  npx skills add morluto/rea --skill reverse-engineer-anything
-  ```
-
+- **Reverse Engineer Anything:** [REA]([https://github.com/rtk-ai/rtk](https://github.com/morluto/rea)).
 - **Documentation and browser MCP tools:** [Context7](https://github.com/upstash/context7),
   [Playwright MCP](https://github.com/microsoft/playwright-mcp), and
   [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp).
