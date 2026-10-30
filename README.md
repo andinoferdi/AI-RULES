@@ -1,8 +1,8 @@
 # Skripsi Skill
 
-> **Structured academic research and thesis guidance for AI agents.** Guides undergraduate and graduate researchers from topic formulation through defense preparation, with strict evidence traceability and campus compliance.
+Skripsi Skill guides undergraduate and graduate researchers from topic formulation through defense preparation, with evidence traceability and attention to campus requirements.
 
-Writing a thesis (*skripsi*) requires systematic academic rigor: grounded literature synthesis, defensible methodology, honest empirical analysis, and responsive revisions. Generic AI assistants frequently hallucinate citations, fabricate survey numbers, or ignore institutional guidelines. **Skripsi Skill** provides a disciplined, stage-aware workflow that keeps all research claims anchored in verified academic evidence.
+Writing a thesis (*skripsi*) requires grounded literature synthesis, defensible methodology, honest empirical analysis, and revisions that address feedback. **Skripsi Skill** provides guidance for the current research stage, requiring verified academic evidence for research claims and adherence to institutional guidelines. Its integrity rules prohibit fabricated citations and survey numbers.
 
 ---
 
@@ -32,7 +32,7 @@ Writing a thesis (*skripsi*) requires systematic academic rigor: grounded litera
 
 ## When to Use
 
-| ✅ Use Skripsi Skill For | ❌ Do NOT Use Skripsi Skill For |
+| Use Skripsi Skill For | Do NOT Use Skripsi Skill For |
 |---|---|
 | Refining thesis titles, background, and research gaps | Superficial sentence rephrasing (use `focus`) |
 | Systematic literature reviews and citation matrices | Unrelated software engineering or generic coding |
@@ -85,7 +85,7 @@ git clone --depth 1 --single-branch --branch skripsi-skill https://github.com/an
 
 ## Academic Integrity Contract
 
-- **Zero Hallucination:** If literature or empirical data is missing, the agent explicitly flags it as `DATA_REQUIRED` rather than generating plausible references.
+- **Missing Evidence:** If literature or empirical data is missing, the agent explicitly flags it as `DATA_REQUIRED` rather than generating plausible references.
 - **Traceable Attribution:** Every theoretical assertion must cite verifiable authors, years, and methodological contexts.
 - **Campus Precedence:** Your department's official thesis formatting guide (*Buku Panduan Skripsi*) strictly outranks default formatting.
 
