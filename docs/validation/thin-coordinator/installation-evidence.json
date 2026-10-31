@@ -1,0 +1,22 @@
+{
+  "runtime_ref": "afc2f4496b2314559ef44828d35c33428dc766fd",
+  "source_files": 193,
+  "source_content_manifest_sha256": "0a03af128c48fae373555cd1df3f5f6f4c62613cca7faffaa1c3a325bd835f28",
+  "checked_files": 1840,
+  "per_host_checked_files": {
+    "codex": 368,
+    "claude-code": 368,
+    "opencode": 368,
+    "antigravity-cli": 368,
+    "antigravity-ide": 368
+  },
+  "host_revisions": {
+    "codex": "afc2f4496b2314559ef44828d35c33428dc766fd",
+    "claude-code": "afc2f4496b2314559ef44828d35c33428dc766fd",
+    "opencode": "afc2f4496b2314559ef44828d35c33428dc766fd",
+    "antigravity-cli": "afc2f4496b2314559ef44828d35c33428dc766fd",
+    "antigravity-ide": "afc2f4496b2314559ef44828d35c33428dc766fd"
+  },
+  "profile_unchanged": true,
+  "limits": "File equality/revision evidence; native host loading and future skill use are not proved."
+}

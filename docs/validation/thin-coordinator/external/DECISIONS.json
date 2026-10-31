@@ -1,0 +1,12 @@
+[
+  {"id":"G01","next":"reuse","reason":"The previous successful result has identical arguments and unchanged inputs; reuse that evidence."},
+  {"id":"G02","next":"change_hypothesis","reason":"Two unchanged tool cycles added no evidence; select a different hypothesis or discriminating approach."},
+  {"id":"G03","next":"record_boundary","reason":"Permission denial with unchanged authority is a boundary, not a transient failure to retry."},
+  {"id":"G04","next":"checkpoint_blocker","reason":"The initial call and two transient retries with backoff exhausted the unchanged-operation retry allowance."},
+  {"id":"G05","next":"query_R7_relevant_fields","reason":"Only R7's error is needed; bound the query to its relevant fields rather than dumping all rows."},
+  {"id":"G06","next":"load_one_relevant_schema","reason":"Load the schema for the single required read-only operation; unrelated schemas add no needed signal."},
+  {"id":"G07","next":"low_effort_inline","reason":"A known exact one-line typo needs minimal inline effort; uncertainty and risk do not justify delegation."},
+  {"id":"G08","next":"full_spec_link_from_checkpoint","reason":"LITE sets checkpoint density; the selected skill still requires all 12 cases in the complete saved specification."},
+  {"id":"G09","next":"use_explicit_external_method","reason":"The explicit relevant external provider choice governs this concern; an internal alias does not override it."},
+  {"id":"G10","next":"rerun_affected_check","reason":"The implementation changed after failure, so the affected regression must be checked against the new state."}
+]

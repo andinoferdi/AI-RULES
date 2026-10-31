@@ -25,9 +25,26 @@ def main():
     for mid in expected:
         if not (args.runtime/f'skills/{mid}/GUIDE.md').is_file():
             raise ValueError(f'Missing implemented method: {mid}')
+    # Current reviewed runtime rows take precedence over historical source audits,
+    # including later native members and readiness corrections to existing rows.
+    current_index = (args.runtime/'references/internal-method-index.md').read_text(encoding='utf-8')
+    index_methods = dict(by_id)
+    for mid, trigger, exclusion in re.findall(
+            r'^\| \[([^]]+)\]\(\.\./skills/[^/]+/(?:SKILL|GUIDE)\.md\) \| ([^\n]+?) \| ([^\n]+?) \|$',
+            current_index.split('## Source-name compatibility')[0], re.M):
+        if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', mid):
+            raise ValueError(f'Invalid native method identity: {mid}')
+        for filename in ('SKILL.md', 'GUIDE.md'):
+            if not (args.runtime/f'skills/{mid}/{filename}').is_file():
+                raise ValueError(f'Missing native member resource: {mid}/{filename}')
+        index_methods[mid] = {**index_methods.get(mid, {}),
+                             'trigger': trigger, 'non_trigger': exclusion}
     index = [
         '# Internal method index', '',
-        'These are bundled Andino resources, not native skills or a second router. '
+        f'These {len(index_methods)} bundled methods have native andino-* SKILL.md entrypoints and canonical GUIDE.md resources. '
+        'They are not upstream provider activation or a second router. Consult relevant entries '
+        'before Focus or optional external discovery; resolve an explicit native provider directly. '
+        'Apply the [dispatch contract](method-dispatch.md) to all internal methods and source aliases. '
         'Select by actual intent, current evidence and the present phase. A name in quoted text, '
         'a filename or this inventory is not a trigger. Ordinary sufficient tasks need no method.', '',
         'An explicit relevant internal method ID is enough: read its linked GUIDE.md through '
@@ -40,13 +57,15 @@ def main():
         'action/result. Missing or denied resources are UNAVAILABLE; irrelevant methods are NOT_NEEDED. '
         'A denied resource cannot be loaded from another copy. Do not claim native upstream invocation.', '',
         'Focus owns communication, Search First owns required solution/external research; domain siblings '
-        'and the accepted UI policy retain their boundaries. Andino alone owns routing, one plan, '
-        'delegation and acceptance. Conditional beta/misc methods state their limits in their guide.', '',
+        'and the accepted UI policy retain their boundaries. Selected skills own their full procedures, '
+        'required resources, artifact detail and technical checks. Andino coordinates routing, '
+        'one authoritative progress source, delegation and evidence-based final status. '
+        'Linked full specialist artifacts are valid. Conditional beta/misc methods state their limits in their guide.', '',
         '| Method | Select for | Exclude |', '| --- | --- | --- |',
     ]
-    for mid, method in sorted(by_id.items()):
+    for mid, method in sorted(index_methods.items()):
         clean = lambda value: str(value).replace('|', '/').replace('\n', ' ')
-        index.append(f"| [{mid}](../skills/{mid}/GUIDE.md) | {clean(method['trigger'])} | {clean(method['non_trigger'])} |")
+        index.append(f"| [{mid}](../skills/{mid}/SKILL.md) | {clean(method['trigger'])} | {clean(method['non_trigger'])} |")
     aliases = {}
     for row in coverage['rows']:
         if row['source_status'] != 'deprecated' and row['original_skill_name'] not in {
@@ -54,13 +73,22 @@ def main():
             aliases.setdefault(row['original_skill_name'], set()).update(
                 m['id'] for m in row['andino_method_ids_and_paths'] if m['id'] != 'root-contract')
     aliases['agent-skills-test-driven-development'] = {'tdd'}
+    if '## Source-name compatibility' in current_index:
+        for alias, destinations in re.findall(r'^\| ([^|]+?) \| ([^\n]+?) \|$',
+                current_index.split('## Source-name compatibility', 1)[1], re.M):
+            mids = set(re.findall(r'\(\.\./skills/([^/]+)/(?:SKILL|GUIDE)\.md\)', destinations))
+            if mids:
+                if not mids <= index_methods.keys():
+                    raise ValueError(f'Alias points to an absent native method: {alias}')
+                aliases[alias] = mids
     index += ['', '## Source-name compatibility', '',
               'Original names below are internal aliases/provenance, not installation requirements. '
               'For a multi-method alias load only the distinct techniques needed now. '
               'Bootstrap names have no callable alias: Andino already supplies discovery.', '',
               '| Original name | Internal destination |', '| --- | --- |']
     for alias, mids in sorted(aliases.items()):
-        if mids and (len(mids) != 1 or alias not in mids):
+        if mids and (len(mids) != 1 or alias not in mids or
+                     f'| {alias} |' in current_index.split('## Source-name compatibility')[-1]):
             index.append(f"| {alias} | " + ', '.join(f'[{m}](../skills/{m}/GUIDE.md)' for m in sorted(mids)) + ' |')
     index += ['', 'See [provenance and notices](legal/provenance.md). Updates require manual source '
               'review and regressions on main; no upstream checkout, plugin, hook or runtime fetch is needed.', '']
@@ -82,9 +110,9 @@ def main():
             'Aliases': f'{alias} resolves to canonical {mid}; no upstream native registration required',
             'Availability check': f'Check local skills/{mid}/GUIDE.md and selected resources plus actual resource permissions.',
             'Invocation method': f'Read [{mid}](../skills/{mid}/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.',
-            'First-call/preflight': 'Read accepted task/project evidence and only the selected guide; retain one Andino plan.',
+            'First-call/preflight': 'Load the selected guide and its required resources before governed work; inspect accepted task/project evidence and retain one authoritative progress source with linked full artifacts.',
             'Fallback': 'Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.',
-            'Coexistence/conflicts': 'Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.',
+            'Coexistence/conflicts': 'Honor explicit native provider choices; otherwise use the single canonical guide and current sibling contracts. Selected skills own full methods/artifacts; do not run duplicate providers for one concern or start competing progress tracking.',
             'Verification requirement': 'Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.',
         }
         for key, value in fields.items():
@@ -135,7 +163,7 @@ def main():
             assets.extend(found)
     (AUDIT/'coverage.json').write_text(json.dumps(coverage, indent=2, ensure_ascii=False)+'\n', encoding='utf-8')
     (AUDIT/'resource-map.json').write_text(json.dumps({'schema_version': 1, 'resources': assets}, indent=2)+'\n', encoding='utf-8')
-    print(f'Rendered {len(by_id)} internal guides; {len(assets)} source-resource mappings; native siblings/instruments preserved.')
+    print(f'Rendered {len(index_methods)} native method entries ({len(by_id)} source-audited); {len(assets)} source-resource mappings; native siblings/instruments preserved.')
 
 
 if __name__ == '__main__':

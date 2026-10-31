@@ -122,6 +122,10 @@ Use andino-workflow, skripsi-skill, and natural-writing to draft Chapter 2 liter
 
 These optional skills and MCP tools are installed separately from AI-RULES profiles.
 Follow each project's setup instructions and connection requirements.
+Andino can select a relevant installed skill or connected tool from these resources;
+their listing alone does not activate, install or connect them. Selected skills own
+their complete methods and deliverables; Andino coordinates progress and resource
+guards. One compact progress source can link full specs, plans, designs and reports.
 
 - **UI and specialist skills:** [Taste Skill](https://www.tasteskill.dev/),
   [Impeccable](https://github.com/pbakaus/impeccable),

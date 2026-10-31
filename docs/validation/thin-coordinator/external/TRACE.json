@@ -1,0 +1,12 @@
+[
+  {"id":"G01","state":"Same tool arguments and unchanged files; previous successful result is present.","actions":["rerun","reuse"]},
+  {"id":"G02","state":"Playwright -> DevTools -> Playwright -> DevTools produced the same observation twice, no state change.","actions":["repeat_cycle","change_hypothesis"]},
+  {"id":"G03","state":"Tool denied permission. No new authorization or changed input.","actions":["retry","record_boundary"]},
+  {"id":"G04","state":"Initial request and two transient retries already timed out with backoff; state unchanged.","actions":["retry_again","checkpoint_blocker"]},
+  {"id":"G05","state":"Database has 10000 rows; current question is the error for receipt R7 only.","actions":["dump_all_rows","query_R7_relevant_fields"]},
+  {"id":"G06","state":"Catalog has 200 MCP operations; task needs one read-only file operation and its schema is not loaded.","actions":["load_all_schemas","load_one_relevant_schema"]},
+  {"id":"G07","state":"Known one-line README typo, exact replacement already supplied; no uncertainty or risk. Host allows low/high effort and agent delegation.","actions":["low_effort_inline","high_effort_four_agents"]},
+  {"id":"G08","state":"Selected skill requires 12 cases in a saved spec; coordinator checkpoint density is LITE.","actions":["three_case_summary","full_spec_link_from_checkpoint"]},
+  {"id":"G09","state":"User explicitly chose installed external-contract-notebook; a generic internal spec method is also present.","actions":["use_explicit_external_method","silently_replace_with_internal_alias"]},
+  {"id":"G10","state":"Focused regression failed; implementation has now changed to address it.","actions":["rerun_affected_check","reuse_old_failure_as_final"]}
+]

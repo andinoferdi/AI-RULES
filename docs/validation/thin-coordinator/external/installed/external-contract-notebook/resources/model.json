@@ -1,0 +1,11 @@
+{
+  "service": "receipt-sync",
+  "endpoint": "/receipts/sync",
+  "method": "POST",
+  "payload": {
+    "id": {"type": "string", "minLength": 1},
+    "attempt": {"type": "integer", "minimum": 0, "maximum": 2}
+  },
+  "phases": ["queued", "processing", "succeeded", "failed"],
+  "errors": {"duplicate": "Already queued", "invalid": "Invalid receipt"}
+}

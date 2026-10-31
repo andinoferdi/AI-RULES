@@ -1,0 +1,14 @@
+[
+  {"id":"C01","input":"new valid receipt, attempt 0","expected":"queued"},
+  {"id":"C02","input":"same id while queued","expected":"Already queued; no duplicate job"},
+  {"id":"C03","input":"same id while processing","expected":"Already queued; no duplicate job"},
+  {"id":"C04","input":"queued job starts","expected":"processing"},
+  {"id":"C05","input":"processing job succeeds","expected":"succeeded"},
+  {"id":"C06","input":"processing job fails","expected":"failed"},
+  {"id":"C07","input":"empty id","expected":"Invalid receipt"},
+  {"id":"C08","input":"attempt -1","expected":"Invalid receipt"},
+  {"id":"C09","input":"attempt 3","expected":"Invalid receipt"},
+  {"id":"C10","input":"failed receipt resubmitted, attempt 1","expected":"queued"},
+  {"id":"C11","input":"failed receipt resubmitted, attempt 2","expected":"queued"},
+  {"id":"C12","input":"attempt 1.5","expected":"Invalid receipt"}
+]

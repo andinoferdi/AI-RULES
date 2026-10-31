@@ -83,10 +83,17 @@ class PhaseReadinessContractTest(unittest.TestCase):
             self.assertRegex(line, r'(?i)resolved or delegated')
 
     def test_entrypoint_separates_discoverable_facts_from_user_owned_direction(self):
-        asking = section(self.skill, 'Investigate before asking')
-        self.assertRegex(asking, r'(?i)phase readiness')
-        self.assertRegex(asking, r'(?i)user-owned')
-        self.assertRegex(asking, r'(?i)does not override phase readiness')
+        if '## Coordinate progress and evidence' in self.skill:
+            asking = section(self.skill, 'Coordinate progress and evidence')
+            selection = section(self.skill, 'Select work methods first')
+            self.assertRegex(asking, r'(?i)Resolve discoverable facts before asking')
+            self.assertRegex(asking, r'(?i)missing material user-owned')
+            self.assertRegex(selection, r'(?i)does not override phase readiness')
+        else:
+            asking = section(self.skill, 'Investigate before asking')
+            self.assertRegex(asking, r'(?i)phase readiness')
+            self.assertRegex(asking, r'(?i)user-owned')
+            self.assertRegex(asking, r'(?i)does not override phase readiness')
 
     def test_method_index_covers_mixed_execution_and_uncertainty(self):
         self.assertRegex(row(self.index, '[brainstorming]'), r'(?i)build request')
@@ -111,8 +118,16 @@ class UnchangedContractsTest(unittest.TestCase):
             self.assertEqual(row(self.base_routing, first_cell), row(self.routing, first_cell))
 
     def test_research_contract_preserved_and_task_guides_precede_focus(self):
-        for paragraph in ('Setup also installs `search-first`',):
-            start = self.base_skill.index(paragraph)
+        if '## Ownership and precedence' in self.skill:
+            # Thin entry delegates the full research procedure to its real owner.
+            # Required route rows remain separately protected above.
+            communication = section(self.skill, 'Communication support')
+            self.assertIn('Setup also installs `search-first`', communication)
+            self.assertRegex(communication, r'Select and activate it.*before.*solution research')
+            self.assertIn('actual procedure and resource requirements', communication)
+            self.assertIn('unavailable access leaves external claims unverified', communication)
+        else:
+            start = self.base_skill.index('Setup also installs `search-first`')
             end = self.base_skill.index('\n\n', start)
             self.assertIn(self.base_skill[start:end], self.skill)
         # Older immutable snapshots retain their historical order. Candidate checks
