@@ -1,9 +1,9 @@
 # Local CSV export and archived state
 
-Plan Depth: LITE  
-Planning status: DONE — saved planning deliverable; implementation has not started.  
-Execution status: TODO  
-Current phase: Phase 1 — local exports  
+Plan Depth: LITE
+Planning status: DONE — saved planning deliverable; implementation has not started.
+Execution status: TODO
+Current phase: Phase 1 — local exports
 Updated: 2026-10-31
 
 ## Objective, current state and authority

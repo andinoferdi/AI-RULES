@@ -1,6 +1,6 @@
 # Thin Andino coordinator with full skill execution
 
-Status: IN_PROGRESS
+Status: DONE
 Plan Depth: STANDARD
 Current Phase: P3 - Setup and delivery
 Last Updated: 2026-10-31
@@ -14,6 +14,8 @@ actual host controls. Keep all ten efficiency guards without truncating required
 artifacts or weakening verification. Prior planning fix 69e797e remains valid.
 Main starts at 62d07c7. Preserve unrelated untracked runtime build/ and src/.
 Existing authorization covers implementation, commit/push and setup integration.
+Runtime afc2f44 and main a25a1a5 are published; all functional delivery is complete.
+Final checkpoint closes publication evidence and normalizes copied Markdown output.
 
 ## Objective
 
@@ -32,7 +34,7 @@ while preventing unproductive loops, context/tool/output bloat and unnecessary a
 - [x] Existing planning readiness/authority, research/domain routes and verification survive.
 - [x] Fresh-context pressure cases preserve full detail and stop unproductive work;
   structural checks are reported separately from actor evidence.
-- [ ] Setup pin/distribution/local readback verified; scoped commits pushed.
+- [x] Setup pin/distribution/local readback verified; scoped commits pushed.
 
 ## Execution Board
 
@@ -40,7 +42,7 @@ while preventing unproductive loops, context/tool/output bloat and unnecessary a
 | --- | --- | --- | --- |
 | P1 - Contract assessment | DONE | grounded ownership/change map | two independent audits; 59 overbroad ownership paragraphs and native-identity conflicts confirmed |
 | P2 - Implement and verify | DONE | thin root, coherent references/member boundaries and pressure evidence | 79 regressions; 7-package/schema validator; full artifact/trace evidence and limits recorded |
-| P3 - Setup and delivery | IN_PROGRESS | published runtime, main integration and installed resources | runtime afc2f44 published; 9 installer tests and 1840 installed file comparisons pass; main publication pending |
+| P3 - Setup and delivery | DONE | published runtime, main integration and installed resources | runtime afc2f44/main a25a1a5 published; 9 installer tests and 1840 installed file comparisons pass |
 
 ## Detailed Execution
 
@@ -131,7 +133,7 @@ Observed evidence:
   are covered by structural comparisons and independent scoped review, not those actors.
 
 ### P3 - Setup and delivery
-Status: IN_PROGRESS
+Status: DONE
 Use existing installer paths. Advance immutable manifest pin only after reviewed
 runtime is committed. Test bundled nested/native/root references; update current
 local CLI and scoped installed workflow, preserving the saved profile and user files.
@@ -143,9 +145,12 @@ stage validates. Local CLI rebuilt/installed with no dependency changes, and its
 installed manifest pins26/afc2f44. Scoped latest update applied5 workflow updates,
 kept10 dependencies current; all15 lock targets VERIFIED. Entire runtime plus all
 59 native member resources compared on5 hosts:1840 comparisons PASS. Saved profile
-matches pre-update bytes exactly. Installer backups retained. Main push pending;
+matches pre-update bytes exactly. Installer backups retained. Main a25a1a5 pushed;
 no new frozen-executable release, runtime-hard-limit enforcement or native loading
-in a future session is claimed.
+in a future session is claimed. Cached whitespace check found four Markdown
+hard-break lines in the copied consumer PLAN; its saved copy is normalized for
+repository whitespace checks, original temporary artifact is unchanged. No source
+or artifact meaning changed; final checkpoint documents this formatting correction.
 
 ## Decisions
 
@@ -158,5 +163,4 @@ in a future session is claimed.
 
 ## NEXT ACTION
 
-Commit/push the main generator, tests, pin and evidence; verify remote identities
-and close this checkpoint with actual publication results.
+None - task complete.

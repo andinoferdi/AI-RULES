@@ -61,6 +61,9 @@ The rubric was saved before outputs in
 contexts of the available model consumed the candidate snapshot without parent
 oracles. Their actual inputs/outputs are preserved here.
 
+The internal PLAN copy normalizes four Markdown trailing-space hard breaks for
+repository whitespace checks; its original temporary output remains unchanged.
+
 Internal planning under LITE produced a complete plan with file/symbol changes,
 code, assertion/fixture blocks, commands, exact schema/copy and a separate unready
 provider consumer. Parent reviewed its task contracts; all 8 original input hashes
@@ -104,6 +107,8 @@ refreshed. Scoped latest update applied 5 workflow updates and retained 10 curre
 dependencies, all 15 targets VERIFIED. Entire native/nested/root readback passed
 1840 file comparisons on five hosts, with the saved profile byte-for-byte unchanged.
 Readback is in installation-evidence.json; publication details are in the checkpoint.
+Runtime changes are published as afc2f44 and main setup/generator/evidence as
+a25a1a5; final checkpoint/Markdown normalization follows that implementation commit.
 Previously downloaded frozen installers are not rebuilt by changing this manifest;
 their default latest-source setup path reads the published branch. File equality
 does not establish future native host loading or skill use.
