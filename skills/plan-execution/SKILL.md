@@ -57,7 +57,17 @@ check, and continue independent authorized work. Available tools do not grant au
    Attribute existing changes without requiring a clean tree. If a referenced spec
    is unavailable, record whether current accepted requirements suffice; block only
    decisions that need missing evidence. Inspect shared producer/consumer interfaces
-   and dependency readiness. Record mismatches and disposition in the same plan,
+   and dependency readiness. Check **specification readiness**, too: each next
+   implementation task needs exact file/symbol anchors, its Change Specification
+   (what changes into what, including decision-bearing code/text and literals),
+   and concrete acceptance checks. A milestone or a detailed but stale/conflicting
+   snippet is not sufficient. Within existing authority, resolve discoverable gaps
+   from current source and write the smallest correction into the task before
+   editing; use canonical planning when task decomposition/detail is missing.
+   Unknown material contracts block only their consumers until bounded discovery
+   populates them. Preserve locked decisions and completed valid evidence; ask
+   only for a genuinely missing user-owned decision or authority.
+   Record mismatches and disposition in the same plan,
    or one short note when there are no shared interfaces.
 
 2. **Audit drift and recover**. Compare completed-task evidence with current inputs,

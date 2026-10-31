@@ -109,7 +109,43 @@ Postconditions / invariants: [what remains true]
 
 ### Action Steps
 
-1. [Concrete evidence-backed step.]
+<!-- For implementation, expand each deliverable below using
+skills/planning/resources/contract.md and its worked example. A milestone plus
+acceptance is only a roadmap; it does not replace task-level change instructions.
+For research/decision work use concrete source/artifact operations instead. -->
+
+#### T1 - [Observable deliverable]
+
+Status: TODO
+Readiness: [READY only after detail below; otherwise NEEDS_DETAIL / WAITING_ON D1]
+Requirements: [accepted requirement IDs and exact values]
+Depends on: [task IDs or none]
+Owns: [Create/Modify/Delete exact paths and symbol/section anchors]
+Interfaces: [consumed/produced names, signatures and producer reference; or none]
+Acceptance: [input/state -> literal output/side effects and relevant failure case]
+
+Change Specification:
+
+- [Inspected current state at file::anchor; add/replace/remove what, into what.]
+- [Exact names/imports/values/error behavior; named pattern and differences if reused.]
+
+```text
+[Decision-bearing code/diff/config or exact before/after text, not "implement here".
+Use the appropriate language fence. Omit routine bodies, retain actual decisions.]
+```
+
+- [ ] [Add named regression with decisive fixture/assertion code; for static work inspect exact old text.]
+- [ ] [Run exact focused command from directory with prerequisites; expected missing-behavior signal.]
+- [ ] [Apply the Change Specification at its exact file/symbol anchors.]
+- [ ] [Rerun command; expected assertions/output, nonempty test count and exit 0.]
+
+Verification prerequisites: [runtime/fixtures/services or none beyond repo setup]
+Integration gate: [public-flow command/observation at the task boundary when applicable]
+Result / Evidence: Not run - planned checks only.
+
+<!-- Include decisive assertion code for executable checks. Static artifacts use
+inspect/change/validate; no invented test runner. Discovery names source/experiment,
+decision artifact, exit criterion and blocked tasks, then fills their details. -->
 
 ### Verification
 

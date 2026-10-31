@@ -50,11 +50,23 @@ reasoning, large logs or diffs, copied source, credentials, repeated repository 
 and repeated facts. Compact completed phases once evidence and material decisions
 remain sufficient to resume.
 
-For implementation-ready dependent work, bind each task to its accepted requirement,
-verified file ownership, consumed/produced interface and observable acceptance.
-Record exact inspected signatures only where callers need them; unresolved interfaces
-stay UNKNOWN with a discovery action. Include relevant edge/failure cases and the
-actual verification command. Routine coding choices need no pseudocode transcript.
+For implementation-ready work, use the planning task contract at
+`skills/planning/resources/contract.md` and read its worked examples. Bind each
+task to its accepted requirement, verified file/symbol anchors, consumed/produced
+interfaces, a **Change Specification** and observable acceptance. The specification
+says what to add/replace/remove in each owned file, with exact values and small
+code/diff/text blocks where they fix decisions. Include decisive assertion code
+and actual verification commands with directory/prerequisites; static artifacts
+use precise replacement text and appropriate checks. Routine bodies need no transcript.
+
+An Execution Board or milestone roadmap alone is not an implementation plan.
+Readiness is separate from work status: mark ready tasks explicitly, and leave
+unresolved work NEEDS_DETAIL or WAITING_ON a named discovery task. UNKNOWN and
+TBD are honest checkpoint state, never sufficient instructions for a ready edit.
+Resolve discoverable facts and write decisions into dependent tasks before they
+start. Planning-only ends at the saved plan; already-authorized execution continues
+after readiness is established without a new approval ritual. Non-implementation
+research/decision checkpoints keep their appropriate artifact/action contracts.
 
 ## Phase, debugging and gate semantics
 

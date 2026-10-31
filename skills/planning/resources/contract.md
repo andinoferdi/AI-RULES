@@ -21,6 +21,21 @@ File counts, a fixed number of failure cases or a fixed checkpoint cadence do no
 select a tier. Include architecture/stack only when they constrain the work.
 More detail is useful when it removes a consequential choice for the executor.
 
+## Execution readiness
+
+Work status tracks progress; readiness describes whether a task is specified
+enough to begin. Keep the canonical statuses unchanged. For implementation tasks,
+record `Readiness: READY` only after source grounding, a complete Change
+Specification and concrete proof. Otherwise use `Readiness: NEEDS_DETAIL` or
+`Readiness: WAITING_ON D1` with the exact gap. Equivalent explicit project fields
+are fine. A roadmap can mix ready and unresolved work, but cannot be handed off
+as wholly implementation-ready. A discovery task can itself be READY when its
+source/experiment, output artifact, exit criterion and blocked consumers are exact.
+
+Discovery completion must replace dependent unknowns with decisions and change
+instructions in this same plan. Do not merely mark D1 DONE and let consumers infer
+what it discovered. Keep independent ready tasks moving within existing authority.
+
 ## Grounded task template
 
 Use this inside the canonical plan, combining fields for simple tasks. Replace
@@ -31,16 +46,28 @@ proposed, not falsely described as already present.
 ````markdown
 ### T1 — Observable deliverable
 Status: TODO
+Readiness: READY / NEEDS_DETAIL / WAITING_ON D1 [resolve before handoff]
 Requirements: R1 (exact accepted outcome/value)
 Depends on: none
 Owns: Modify `verified/path.py` (`inspected_symbol`); Test `tests/test_path.py`
 Interfaces: consumes [inspected name/signature + source]; produces [proposed name/signature]
 Acceptance: [literal input/state -> expected output/side effect; relevant failure case]
 
+Change Specification:
+- `verified/path.py::inspected_symbol`: currently [observed state];
+  [add/replace/remove exact code/behavior, signatures and literal values].
+- [Each other owned file: anchor, operation, resulting state; reference concrete
+  pattern file/symbol if reused. Include the decisive code/diff/replacement below.]
+
+```python
+# Task-specific change, not generic "implement here" or an entire unrelated module.
+[replace with the actual decision-bearing snippet before handoff]
+```
+
 Actions:
-- [ ] Add `test_case_name` using [fixture/setup] and assertions [exact values].
+- [ ] Add `test_case_name` using [fixture/setup]; include its decisive assertion code.
 - [ ] Run [focused command] from [working directory]; expect [specific missing-behavior assertion].
-- [ ] Change [owning entrypoint/boundary and decided approach] to satisfy acceptance.
+- [ ] Apply the specified changes at [exact anchors], using the change block above.
 - [ ] Rerun [focused command]; expect [assertions pass, exit 0, nonzero test count].
 
 Verification prerequisites: [runtime, fixture/service, environment; or none beyond repo setup]
@@ -55,10 +82,23 @@ missing tooling and broken imports are setup failures, not behavioral proof.
 If RED may already pass, investigate existing coverage before inventing new code.
 Static artifact tasks substitute inspect/change/validate for TDD.
 
-Each task must let an executor locate the change, understand the required result
-and run a discriminating check without redesigning a boundary. Exact test code is
-useful for unusual fixtures or easy-to-misread assertions; a test name plus literal
-assertions is enough when setup is already established. Avoid duplicate bodies.
+Each ready task must let an executor locate the change, understand what to write
+and run a discriminating check without redesigning a boundary. Write decisive
+test assertions as code, using the repository's actual fixtures/imports. Full
+test setup is needed only when it is not established by a named local reference.
+
+Choose the smallest change block that fixes the actual decisions: a schema field
+and enum values; a branch/formula with its boundary condition; exact old/new copy;
+a config key/value; or a signature plus decided data flow. A signature alone cannot
+settle an algorithm or failure policy. Use a complete small body when that is the
+clearest specification. Avoid duplicate routine bodies and redundant copies of
+producer code. Never require a full executable patch before source is known.
+
+"Implement feature", "restore old behavior", "handle edge cases", "write tests"
+or "use the existing pattern" without their exact change/test/reference are not
+Change Specifications. These phrases can label a milestone, not authorize a ready
+task. A fresh executor may choose routine local mechanics; it must not have to
+guess product behavior, cross-task contracts, exact values or the changed areas.
 
 ## Coverage and integration
 

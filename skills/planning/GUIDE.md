@@ -31,8 +31,39 @@ preserving decisions, completed work and evidence. Preserve another ticket's
 incomplete plan; use a separate appropriate path or resolve a real path conflict.
 
 Read [the task contract](resources/contract.md) before drafting task detail.
-For a model of the output or a doubtful decomposition, read
-[the worked examples](resources/worked-example.md).
+Before drafting implementation task detail, read
+[the worked examples](resources/worked-example.md), including the change blocks.
+They show the required output shape, not optional inspiration.
+
+## Ready tasks carry the change
+
+A milestone such as "build the API", "restore the scene" or "add validation"
+is a roadmap item, even with an acceptance paragraph. For every implementation
+task offered as ready, the saved plan must answer **where, what changes into what,
+and how will we know?** Write a task-local **Change Specification**:
+
+- Inspected starting state: exact file and symbol/section anchor, with relevant
+  existing behavior. Mark new files/interfaces as proposed. Lines are optional
+  navigation aids; use an anchor that survives nearby edits.
+- Operation and result for each owned file: add/replace/remove which code, config
+  or text; exact names, signatures, imports, literals and error/side-effect rules
+  that constrain the change. "Follow the existing pattern" names the reference
+  file/symbol and the differences, not an instruction to redesign the task.
+- Decision-bearing change blocks: small before/after snippets, a diff, replacement
+  text or a code skeleton with the non-obvious logic filled in. Include them for
+  algorithms, formulas, schema/enums, exact copy/config and other choices that
+  prose plus signatures leaves open. Include concrete test assertions/fixtures
+  as code for executable checks. Routine bodies need no transcription.
+- Ordered actions and runnable proof: working directory, prerequisites, exact
+  commands/manual operations, inputs and observable expected results.
+
+Plan density never relaxes these essentials. A task is not ready while a material
+behavior, interface or change is still "appropriate", "as needed" or UNKNOWN.
+State that readiness separately from TODO/IN_PROGRESS work status. For unresolved
+work keep a roadmap/discovery item, its missing decision and a bounded exit check;
+populate dependent Change Specifications with the resolved contract before calling
+them ready. Known decisions must not be postponed to the executor merely to keep
+the plan short. Proportional detail means removing repeated context, not decisions.
 
 ## Procedure
 
@@ -40,8 +71,9 @@ For a model of the output or a doubtful decomposition, read
    and repository commands. Record accepted outcomes with exact values and a short
    approach explaining boundaries and tradeoffs. Distinguish existing inspected
    interfaces from proposed ones. Keep unverified facts `UNKNOWN` with a bounded
-   discovery action; dependent work waits for its exit criterion. Planning writes
-   the plan, not implementation code, and never reports planned checks as run.
+   discovery action; dependent work waits for its exit criterion. During planning,
+   edit the plan rather than application source; code snippets inside the plan are
+   encouraged when they specify the change. Never report planned checks as run.
 2. **Choose deliverables.** Prefer thin paths through the real entrypoint to the
    observable result. Include setup, configuration and documentation in the slice
    they enable. A necessary foundation or discovery task is valid when it has its
@@ -49,14 +81,16 @@ For a model of the output or a doubtful decomposition, read
    outcomes can be reviewed independently or its uncertainty prevents one focused
    implementation/test cycle. File count is a warning, not a mandatory split.
 3. **Make each task executable.** Record its requirement, dependencies, owned files,
-   consumed/produced interfaces where relevant, concrete acceptance and action
-   sequence. For behavior changes, specify test names and decisive assertions or
-   fixtures, then expected RED, minimal change and focused GREEN. Align with
+   consumed/produced interfaces where relevant, concrete acceptance, Change
+   Specification and action sequence. For behavior changes, include named tests
+   with decisive assertion/fixture code, then expected RED, the specified change
+   and focused GREEN. Align with
    the canonical TDD guide: a meaningful failing assertion distinguishes missing
    behavior from broken setup. For static documents/configuration, use an
    appropriate artifact check. Name working directory, prerequisites, exact command
-   and expected signal. Add bodies only when an algorithm or exact copy is itself
-   a required decision. Commit steps appear only under existing authorization.
+   and expected signal. A missing test suite calls for a concrete supported check
+   or justified test-setup task, never invented scripts or silently omitted proof.
+   Commit steps appear only under existing authorization.
 4. **Order and integrate.** Give tasks stable IDs and explicit dependencies;
    reject cycles, missing nodes and incompatible producer/consumer contracts.
    Sequence overlapping writes, including shared fixtures, schemas and generated
@@ -71,6 +105,11 @@ For a model of the output or a doubtful decomposition, read
 6. **Review and hand off.** Compare the saved plan with the requirements and current
    source: coverage, literals, interfaces, dependency order, ownership, commands,
    integration and proportional detail. Repair gaps before calling it ready.
+   Run a **fresh-executor check**: using only the saved plan and its reachable
+   repository/spec references, can someone locate each ready edit, write it without
+   choosing material behavior, and verify it? Fix missing changes/assertions inline.
+   A detailed snippet must still agree with current source and accepted requirements;
+   detail alone is not correctness. Label remaining roadmap items honestly.
    A fresh executor must find current state, blocked work and the first executable
    step from the plan alone. Keep one concrete `NEXT ACTION`; hand off to
    the canonical plan-execution guide only when execution is authorized.
@@ -99,7 +138,8 @@ authorize creating issues. Preserve unrelated user changes.
 ## Output
 
 One proportionate plan with outcome-to-task-to-check coverage, dependency-ready
-tasks, verified or explicitly proposed interfaces, risks, current state and a
+tasks containing concrete change instructions and code/text where decisions need
+it, verified or explicitly proposed interfaces, risks, current state and a
 single `NEXT ACTION`. LITE may combine fields; STANDARD/DEEP retain the canonical
 snapshot, acceptance criteria and execution board.
 

@@ -41,7 +41,7 @@ All 59 methods are installed as native, discoverable skills with the `andino-` p
 ### 2. Architecture & Planning
 | Skill | What It Does |
 |---|---|
-| `andino-planning` | Orders implementation tasks and defines acceptance criteria. |
+| `andino-planning` | Specifies exact code/artifact changes, snippets, interfaces and checks for a fresh executor; separates ready tasks from a roadmap. |
 | `andino-plan-execution` | Executes accepted plans inline with progress checkpointing. |
 | `andino-task-decomposition` | Breaks features into small tasks ordered by dependency. |
 | `andino-api-and-interface-design` | Designs contract-first APIs, error semantics, and module boundaries. |

@@ -9,6 +9,21 @@ SKIPPED records an accepted replacement. Drift can reopen DONE and affected cons
 preserve unrelated valid evidence. Recovery attributes current bytes and preserves
 user changes before rerunning missing checks; never revert unknown work.
 
+## Task specification readiness
+
+Before an implementation task starts, check its inspected file/symbol anchors,
+Change Specification (add/replace/remove what into what, with decision-bearing
+snippets/text and exact values), interfaces and concrete proof. Work status alone
+does not establish readiness. A roadmap, "implement as needed", or an UNKNOWN
+consumer contract requires detail/discovery first. Compare snippets with current
+source and accepted requirements; precision cannot excuse a stale or wrong edit.
+Resolve bounded discoverable gaps in the same checkpoint within existing authority,
+loading canonical planning when decomposition or task detail is missing. Record
+the correction/ruling and update consumers before source edits. Reuse authorized
+execution without a new permission gate; user-owned decisions and unavailable
+evidence block only dependent work. Do not retrofit detail onto completed tasks
+whose current acceptance evidence is still valid.
+
 ## Acceptance and evidence
 
 DONE requires current acceptance observations: command/action, directory, exit/result,
