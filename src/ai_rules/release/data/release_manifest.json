@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
   "channel": "stable",
-  "release_sequence": 24,
-  "verified_at": "2026-10-30",
+  "release_sequence": 25,
+  "verified_at": "2026-10-31",
   "first_party": {
     "andino-workflow": {
       "branch": "andino-workflow",
       "ref": "origin/andino-workflow",
-      "commit": "b2237614798074805741e1ab5f65227e2588663f",
-      "release_sequence": 24,
+      "commit": "69e797e112ce6c2a48d3e767d0c2c7eb4c7f5ff3",
+      "release_sequence": 25,
       "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "ai-codebase-rescue": {

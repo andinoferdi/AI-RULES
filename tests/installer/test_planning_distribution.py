@@ -16,16 +16,22 @@ ROOT = Path(__file__).resolve().parents[2]
 PLANNING_PATHS = (
     'SKILL.md', 'GUIDE.md', 'resources/contract.md', 'resources/worked-example.md',
 )
+WORKFLOW_PATHS = (
+    'references/execution-plan.md', 'references/execution-plan-template.md',
+)
 
 
 class PlanningDistributionTests(unittest.TestCase):
-    def planning_bytes(self, ref, path):
+    def workflow_bytes(self, ref, path):
         result = subprocess.run(
-            ['git', 'show', f'{ref}:skills/planning/{path}'], cwd=ROOT,
+            ['git', 'show', f'{ref}:{path}'], cwd=ROOT,
             capture_output=True,
         )
         self.assertEqual(0, result.returncode, result.stderr.decode('utf-8'))
         return result.stdout
+
+    def planning_bytes(self, ref, path):
+        return self.workflow_bytes(ref, f'skills/planning/{path}')
 
     def test_setup_preserves_both_entrypoints_and_resolves_local_links(self):
         manifest = json.loads(
@@ -43,6 +49,12 @@ class PlanningDistributionTests(unittest.TestCase):
                 content, self.planning_bytes(commit, path),
                 f'manifest pin {commit}: skills/planning/{path}',
             )
+        workflow_expected = {
+            path: self.workflow_bytes(expected_ref, path) for path in WORKFLOW_PATHS
+        }
+        for path, content in workflow_expected.items():
+            self.assertEqual(content, self.workflow_bytes(commit, path),
+                             f'manifest pin {commit}: {path}')
 
         hosts = {
             'codex': '.agents/skills',
@@ -65,6 +77,9 @@ class PlanningDistributionTests(unittest.TestCase):
                         ])
                     self.assertEqual(0, result)
                     skills = project / relative
+                    for path, content in workflow_expected.items():
+                        installed = skills / 'andino-workflow' / path
+                        self.assertEqual(content, installed.read_bytes(), str(installed))
                     for entrypoint in (skills / 'andino-planning',
                                        skills / 'andino-workflow/skills/planning'):
                         for path, content in expected.items():

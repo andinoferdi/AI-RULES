@@ -1,0 +1,394 @@
+{
+  "runtime_ref": "69e797e112ce6c2a48d3e767d0c2c7eb4c7f5ff3",
+  "checked_files": 90,
+  "host_revisions": {
+    "codex": "69e797e112ce6c2a48d3e767d0c2c7eb4c7f5ff3",
+    "claude-code": "69e797e112ce6c2a48d3e767d0c2c7eb4c7f5ff3",
+    "opencode": "69e797e112ce6c2a48d3e767d0c2c7eb4c7f5ff3",
+    "antigravity-cli": "69e797e112ce6c2a48d3e767d0c2c7eb4c7f5ff3",
+    "antigravity-ide": "69e797e112ce6c2a48d3e767d0c2c7eb4c7f5ff3"
+  },
+  "resources": [
+    {
+      "host": "codex",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\andino-workflow\\skills\\planning\\SKILL.md"
+    },
+    {
+      "host": "codex",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\andino-planning\\SKILL.md"
+    },
+    {
+      "host": "codex",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\andino-workflow\\skills\\planning\\GUIDE.md"
+    },
+    {
+      "host": "codex",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\andino-planning\\GUIDE.md"
+    },
+    {
+      "host": "codex",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\andino-workflow\\skills\\planning\\resources\\contract.md"
+    },
+    {
+      "host": "codex",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\andino-planning\\resources\\contract.md"
+    },
+    {
+      "host": "codex",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\andino-workflow\\skills\\planning\\resources\\worked-example.md"
+    },
+    {
+      "host": "codex",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\andino-planning\\resources\\worked-example.md"
+    },
+    {
+      "host": "codex",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\andino-workflow\\skills\\plan-execution\\SKILL.md"
+    },
+    {
+      "host": "codex",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\andino-plan-execution\\SKILL.md"
+    },
+    {
+      "host": "codex",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\andino-workflow\\skills\\plan-execution\\GUIDE.md"
+    },
+    {
+      "host": "codex",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\andino-plan-execution\\GUIDE.md"
+    },
+    {
+      "host": "codex",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\andino-workflow\\skills\\plan-execution\\resources\\contract.md"
+    },
+    {
+      "host": "codex",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\andino-plan-execution\\resources\\contract.md"
+    },
+    {
+      "host": "codex",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\andino-workflow\\skills\\plan-execution\\resources\\worked-example.md"
+    },
+    {
+      "host": "codex",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\andino-plan-execution\\resources\\worked-example.md"
+    },
+    {
+      "host": "codex",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\andino-workflow\\references\\execution-plan.md"
+    },
+    {
+      "host": "codex",
+      "path": "C:\\Users\\Lenovo\\.agents\\skills\\andino-workflow\\references\\execution-plan-template.md"
+    },
+    {
+      "host": "claude-code",
+      "path": "C:\\Users\\Lenovo\\.claude\\skills\\andino-workflow\\skills\\planning\\SKILL.md"
+    },
+    {
+      "host": "claude-code",
+      "path": "C:\\Users\\Lenovo\\.claude\\skills\\andino-planning\\SKILL.md"
+    },
+    {
+      "host": "claude-code",
+      "path": "C:\\Users\\Lenovo\\.claude\\skills\\andino-workflow\\skills\\planning\\GUIDE.md"
+    },
+    {
+      "host": "claude-code",
+      "path": "C:\\Users\\Lenovo\\.claude\\skills\\andino-planning\\GUIDE.md"
+    },
+    {
+      "host": "claude-code",
+      "path": "C:\\Users\\Lenovo\\.claude\\skills\\andino-workflow\\skills\\planning\\resources\\contract.md"
+    },
+    {
+      "host": "claude-code",
+      "path": "C:\\Users\\Lenovo\\.claude\\skills\\andino-planning\\resources\\contract.md"
+    },
+    {
+      "host": "claude-code",
+      "path": "C:\\Users\\Lenovo\\.claude\\skills\\andino-workflow\\skills\\planning\\resources\\worked-example.md"
+    },
+    {
+      "host": "claude-code",
+      "path": "C:\\Users\\Lenovo\\.claude\\skills\\andino-planning\\resources\\worked-example.md"
+    },
+    {
+      "host": "claude-code",
+      "path": "C:\\Users\\Lenovo\\.claude\\skills\\andino-workflow\\skills\\plan-execution\\SKILL.md"
+    },
+    {
+      "host": "claude-code",
+      "path": "C:\\Users\\Lenovo\\.claude\\skills\\andino-plan-execution\\SKILL.md"
+    },
+    {
+      "host": "claude-code",
+      "path": "C:\\Users\\Lenovo\\.claude\\skills\\andino-workflow\\skills\\plan-execution\\GUIDE.md"
+    },
+    {
+      "host": "claude-code",
+      "path": "C:\\Users\\Lenovo\\.claude\\skills\\andino-plan-execution\\GUIDE.md"
+    },
+    {
+      "host": "claude-code",
+      "path": "C:\\Users\\Lenovo\\.claude\\skills\\andino-workflow\\skills\\plan-execution\\resources\\contract.md"
+    },
+    {
+      "host": "claude-code",
+      "path": "C:\\Users\\Lenovo\\.claude\\skills\\andino-plan-execution\\resources\\contract.md"
+    },
+    {
+      "host": "claude-code",
+      "path": "C:\\Users\\Lenovo\\.claude\\skills\\andino-workflow\\skills\\plan-execution\\resources\\worked-example.md"
+    },
+    {
+      "host": "claude-code",
+      "path": "C:\\Users\\Lenovo\\.claude\\skills\\andino-plan-execution\\resources\\worked-example.md"
+    },
+    {
+      "host": "claude-code",
+      "path": "C:\\Users\\Lenovo\\.claude\\skills\\andino-workflow\\references\\execution-plan.md"
+    },
+    {
+      "host": "claude-code",
+      "path": "C:\\Users\\Lenovo\\.claude\\skills\\andino-workflow\\references\\execution-plan-template.md"
+    },
+    {
+      "host": "opencode",
+      "path": "C:\\Users\\Lenovo\\.config\\opencode\\skills\\andino-workflow\\skills\\planning\\SKILL.md"
+    },
+    {
+      "host": "opencode",
+      "path": "C:\\Users\\Lenovo\\.config\\opencode\\skills\\andino-planning\\SKILL.md"
+    },
+    {
+      "host": "opencode",
+      "path": "C:\\Users\\Lenovo\\.config\\opencode\\skills\\andino-workflow\\skills\\planning\\GUIDE.md"
+    },
+    {
+      "host": "opencode",
+      "path": "C:\\Users\\Lenovo\\.config\\opencode\\skills\\andino-planning\\GUIDE.md"
+    },
+    {
+      "host": "opencode",
+      "path": "C:\\Users\\Lenovo\\.config\\opencode\\skills\\andino-workflow\\skills\\planning\\resources\\contract.md"
+    },
+    {
+      "host": "opencode",
+      "path": "C:\\Users\\Lenovo\\.config\\opencode\\skills\\andino-planning\\resources\\contract.md"
+    },
+    {
+      "host": "opencode",
+      "path": "C:\\Users\\Lenovo\\.config\\opencode\\skills\\andino-workflow\\skills\\planning\\resources\\worked-example.md"
+    },
+    {
+      "host": "opencode",
+      "path": "C:\\Users\\Lenovo\\.config\\opencode\\skills\\andino-planning\\resources\\worked-example.md"
+    },
+    {
+      "host": "opencode",
+      "path": "C:\\Users\\Lenovo\\.config\\opencode\\skills\\andino-workflow\\skills\\plan-execution\\SKILL.md"
+    },
+    {
+      "host": "opencode",
+      "path": "C:\\Users\\Lenovo\\.config\\opencode\\skills\\andino-plan-execution\\SKILL.md"
+    },
+    {
+      "host": "opencode",
+      "path": "C:\\Users\\Lenovo\\.config\\opencode\\skills\\andino-workflow\\skills\\plan-execution\\GUIDE.md"
+    },
+    {
+      "host": "opencode",
+      "path": "C:\\Users\\Lenovo\\.config\\opencode\\skills\\andino-plan-execution\\GUIDE.md"
+    },
+    {
+      "host": "opencode",
+      "path": "C:\\Users\\Lenovo\\.config\\opencode\\skills\\andino-workflow\\skills\\plan-execution\\resources\\contract.md"
+    },
+    {
+      "host": "opencode",
+      "path": "C:\\Users\\Lenovo\\.config\\opencode\\skills\\andino-plan-execution\\resources\\contract.md"
+    },
+    {
+      "host": "opencode",
+      "path": "C:\\Users\\Lenovo\\.config\\opencode\\skills\\andino-workflow\\skills\\plan-execution\\resources\\worked-example.md"
+    },
+    {
+      "host": "opencode",
+      "path": "C:\\Users\\Lenovo\\.config\\opencode\\skills\\andino-plan-execution\\resources\\worked-example.md"
+    },
+    {
+      "host": "opencode",
+      "path": "C:\\Users\\Lenovo\\.config\\opencode\\skills\\andino-workflow\\references\\execution-plan.md"
+    },
+    {
+      "host": "opencode",
+      "path": "C:\\Users\\Lenovo\\.config\\opencode\\skills\\andino-workflow\\references\\execution-plan-template.md"
+    },
+    {
+      "host": "antigravity-cli",
+      "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\andino-workflow\\skills\\planning\\SKILL.md"
+    },
+    {
+      "host": "antigravity-cli",
+      "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\andino-planning\\SKILL.md"
+    },
+    {
+      "host": "antigravity-cli",
+      "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\andino-workflow\\skills\\planning\\GUIDE.md"
+    },
+    {
+      "host": "antigravity-cli",
+      "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\andino-planning\\GUIDE.md"
+    },
+    {
+      "host": "antigravity-cli",
+      "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\andino-workflow\\skills\\planning\\resources\\contract.md"
+    },
+    {
+      "host": "antigravity-cli",
+      "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\andino-planning\\resources\\contract.md"
+    },
+    {
+      "host": "antigravity-cli",
+      "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\andino-workflow\\skills\\planning\\resources\\worked-example.md"
+    },
+    {
+      "host": "antigravity-cli",
+      "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\andino-planning\\resources\\worked-example.md"
+    },
+    {
+      "host": "antigravity-cli",
+      "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\andino-workflow\\skills\\plan-execution\\SKILL.md"
+    },
+    {
+      "host": "antigravity-cli",
+      "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\andino-plan-execution\\SKILL.md"
+    },
+    {
+      "host": "antigravity-cli",
+      "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\andino-workflow\\skills\\plan-execution\\GUIDE.md"
+    },
+    {
+      "host": "antigravity-cli",
+      "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\andino-plan-execution\\GUIDE.md"
+    },
+    {
+      "host": "antigravity-cli",
+      "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\andino-workflow\\skills\\plan-execution\\resources\\contract.md"
+    },
+    {
+      "host": "antigravity-cli",
+      "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\andino-plan-execution\\resources\\contract.md"
+    },
+    {
+      "host": "antigravity-cli",
+      "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\andino-workflow\\skills\\plan-execution\\resources\\worked-example.md"
+    },
+    {
+      "host": "antigravity-cli",
+      "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\andino-plan-execution\\resources\\worked-example.md"
+    },
+    {
+      "host": "antigravity-cli",
+      "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\andino-workflow\\references\\execution-plan.md"
+    },
+    {
+      "host": "antigravity-cli",
+      "path": "C:\\Users\\Lenovo\\.gemini\\antigravity-cli\\skills\\andino-workflow\\references\\execution-plan-template.md"
+    },
+    {
+      "host": "antigravity-ide",
+      "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-workflow\\skills\\planning\\SKILL.md"
+    },
+    {
+      "host": "antigravity-ide",
+      "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-planning\\SKILL.md"
+    },
+    {
+      "host": "antigravity-ide",
+      "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-workflow\\skills\\planning\\GUIDE.md"
+    },
+    {
+      "host": "antigravity-ide",
+      "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-planning\\GUIDE.md"
+    },
+    {
+      "host": "antigravity-ide",
+      "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-workflow\\skills\\planning\\resources\\contract.md"
+    },
+    {
+      "host": "antigravity-ide",
+      "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-planning\\resources\\contract.md"
+    },
+    {
+      "host": "antigravity-ide",
+      "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-workflow\\skills\\planning\\resources\\worked-example.md"
+    },
+    {
+      "host": "antigravity-ide",
+      "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-planning\\resources\\worked-example.md"
+    },
+    {
+      "host": "antigravity-ide",
+      "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-workflow\\skills\\plan-execution\\SKILL.md"
+    },
+    {
+      "host": "antigravity-ide",
+      "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-plan-execution\\SKILL.md"
+    },
+    {
+      "host": "antigravity-ide",
+      "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-workflow\\skills\\plan-execution\\GUIDE.md"
+    },
+    {
+      "host": "antigravity-ide",
+      "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-plan-execution\\GUIDE.md"
+    },
+    {
+      "host": "antigravity-ide",
+      "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-workflow\\skills\\plan-execution\\resources\\contract.md"
+    },
+    {
+      "host": "antigravity-ide",
+      "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-plan-execution\\resources\\contract.md"
+    },
+    {
+      "host": "antigravity-ide",
+      "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-workflow\\skills\\plan-execution\\resources\\worked-example.md"
+    },
+    {
+      "host": "antigravity-ide",
+      "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-plan-execution\\resources\\worked-example.md"
+    },
+    {
+      "host": "antigravity-ide",
+      "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-workflow\\references\\execution-plan.md"
+    },
+    {
+      "host": "antigravity-ide",
+      "path": "C:\\Users\\Lenovo\\.gemini\\config\\skills\\andino-workflow\\references\\execution-plan-template.md"
+    }
+  ],
+  "profile_preserved": {
+    "profile": "everything",
+    "capabilities": [
+      "andino-workflow",
+      "focus",
+      "search-first",
+      "ai-codebase-rescue",
+      "skripsi-skill",
+      "council",
+      "threejs-skills",
+      "natural-writing"
+    ],
+    "hosts": [
+      "codex",
+      "claude-code",
+      "opencode",
+      "antigravity-cli",
+      "antigravity-ide"
+    ]
+  },
+  "limits": "File/content evidence only; future native session loading/use is not proved."
+}

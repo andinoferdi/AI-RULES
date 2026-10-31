@@ -1,0 +1,33 @@
+{
+  "old-plan-after-execution.md": "cf7472b9c8a3b2895d21806d24c261d881048c315caf9a49d8ad5b91af142611",
+  "old-execution.md": "9ff43371c5f4d29587bf0157fa7cd0bf98f5a201d426e75719eb8cfc336c60ce",
+  "candidate-plan.md": "f32634e685681bd37af74e1db863149635913b92f5a8669c32cc962949702199",
+  "candidate-plan-after-execution.md": "ad990181977881365d8d7be09da1935891fb9f4f0e5c07c7c2412e2a62447285",
+  "candidate-execution.md": "31085a881ec6978f4290584c6a855765abe6420257954347fdc5c52ae892dae3",
+  "stale-preflight.md": "996c93909e2a703ed6f5914e542e24dc2fe2d4cef95f7b9dd1d7c40d91091997",
+  "runtime_commit": "69e797e112ce6c2a48d3e767d0c2c7eb4c7f5ff3",
+  "consumer_input_sha256": {
+    "old": {
+      "SKILL.md": "8c012b91bb48ce338d0ca8dbe2bc4c18993c52778826aa62ffece311d115ede1",
+      "GUIDE.md": "d29a0a879303d64617aaa105a63014db56928d94a91104a61a881e8d468676ba",
+      "resources/contract.md": "b3cb8a40e5098a3608bb7f045d119e19b3c46cca985d489e0518d07f4d4ff1dd",
+      "resources/worked-example.md": "6b51d548389b38ad8c67f65c42df63b68310d5c6514f39e1bbd5d892f6ddd773"
+    },
+    "candidate": {
+      "SKILL.md": "dd4db37d75344814c32e01822df95375a58c2cedd4b207b1b911bf490ea873fb",
+      "GUIDE.md": "0d9d6ccff5422ffbaaed038ce1d91d4bbdc6f2d126006e3f06c0c5204fb62868",
+      "resources/contract.md": "60a1574a140e8e30b7fef4e0e3e4b423788d0dd20ca34734ba3764f0aa2b8936",
+      "resources/worked-example.md": "62946090289550971320aca43ca48b8d4a37459fa47206b32014be71f2b01509"
+    }
+  },
+  "final_runtime_sha256": {
+    "SKILL.md": "4147967360db411559b29adf4ce9c553b7a6b8650ab6c1fc876a62369dcd28f6",
+    "GUIDE.md": "253a1a118076ac0e5d5ff76218890288677ba53c740473bb38e109b6e3ca2d3a",
+    "resources/contract.md": "a605ff9804a9e10e5d4b4d0987189822faa78c9a60133651bef4d894101f7be2",
+    "resources/worked-example.md": "aa626fc8bc1ee1da2b2b2cfb23825f98c5e7cf872095dcc7cb25c3bdec30bd91"
+  },
+  "post_consumer_adjustments": [
+    "Planning SKILL description clarified; guide body unchanged.",
+    "Worked example csv.writer explicitly uses LF to avoid Windows stdout CRLF translation; final literal example verified with 3 then 6 passing tests."
+  ]
+}
