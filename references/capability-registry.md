@@ -1,5 +1,11 @@
 # Capability registry
 
+Andino coordinates selection/progress and resource guards; the selected skill
+owns its complete method, required resources and artifact detail. Registry entries
+are discovery metadata, not activation, a cap on specialist output, or authority
+to install/connect a provider. Explicit relevant native provider choices take
+precedence over default source aliases; consult the host/coexistence contracts.
+
 This is on-demand contract metadata, not a second router or a full-load requirement. Select a heading by the current unresolved need; do not load every skill/schema. Bundled method aliases resolve to the [canonical index](internal-method-index.md); native sibling/tool provenance is resolved through the host. Metadata is DISCOVERED, not proof of AVAILABLE, INVOKABLE or USED. See [invocation](invocation-adapter.md) and [coexistence](capability-coexistence.md).
 
 Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs their routing role; invoking them would create a competing lifecycle. Other installed skills remain discoverable through the host catalog when a real need warrants them. Registry does not install, enable or health-check every capability.

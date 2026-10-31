@@ -1,12 +1,12 @@
 # Internal method index
 
-These are bundled Andino resources, not native skills or a second router. Read this index for work-method discovery before Focus or optional external skill search. Apply [dispatch](method-dispatch.md) to every row: explicit requests and source aliases require canonical loading when applicable; implicit requests select by outcome, trigger, exclusion and current phase. A name in quoted text, a filename or this inventory is not a trigger. Ordinary sufficient tasks need no method.
+These 59 bundled methods have native `andino-*` SKILL.md entrypoints and canonical GUIDE.md resources. They are not upstream provider activation or a second router. Consult relevant entries for discovery before Focus or optional external skill search; resolve an explicit native provider directly. Apply [dispatch](method-dispatch.md) to every row: explicit requests and source aliases require canonical loading when applicable; implicit requests select by outcome, trigger, exclusion and current phase. A name in quoted text, a filename or this inventory is not a trigger. Ordinary sufficient tasks need no method.
 
 An explicit relevant internal method ID is enough: read its linked GUIDE.md through the permitted resource tool, then only the local resources it needs. For implicit selection use the trigger and exclusion together; choose the minimum useful set. Do not load all guides. If the requested outcome is prohibited or excluded, resolve that boundary in the root contract without loading methods just to refuse. No guide grants additional action authority.
 
 DISCOVERED is metadata; AVAILABLE requires the guide/resources; INVOKABLE also requires current permissions; ACTIVE requires the actual guide read; USED also requires a relevant action/result. Missing or denied resources are UNAVAILABLE; irrelevant methods are NOT_NEEDED. A denied resource cannot be loaded from another copy. Do not claim native upstream invocation.
 
-Focus owns communication, Search First owns required solution/external research; domain siblings and the accepted UI policy retain their boundaries. Andino alone owns routing, one plan, delegation and acceptance. Conditional beta/misc methods state their limits in their guide.
+Selected skills own their full procedures, required resources, artifact detail and technical checks. Focus owns surrounding communication, Search First owns required solution/external research; domain siblings and the accepted UI policy retain their boundaries. Andino coordinates routing, one authoritative progress source, delegation and evidence-based final status. Linked full specialist artifacts are valid. Conditional beta/misc methods state their limits in their guide.
 
 | Method | Select for | Exclude |
 | --- | --- | --- |

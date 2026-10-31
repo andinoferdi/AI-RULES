@@ -89,7 +89,11 @@ Verify the document against positive and negative test cases:
 
 ## Ownership, precedence and permissions
 
-Andino Workflow governs overall lifecycle, task routing, reasoning depth, execution checkpoints, and final acceptance. This method contributes the instruction authoring technique; it is not a standalone native skill, host router, or competing lifecycle. Focus owns human-language communication and tone; Search First owns external solution research.
+Andino coordinates selection, shared progress, resource guards and final status from evidence.
+This skill owns its full procedure, required resources, artifact detail and technical
+checks. Coordinator brevity/density never truncates these. User/project authority,
+Focus/research/domain boundaries and real invocation controls still apply. Native
+`andino-agent-document-authoring` and this guide expose one method, without recursive workflow invocation.
 
 All authoring operations respect existing repository permissions. Examples use temporary, disposable data. Real git mutations, external writes, credential modifications, and global installations require explicit user authorization.
 

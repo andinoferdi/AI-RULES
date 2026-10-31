@@ -47,11 +47,15 @@ work, and do not claim external worker use.
 
 ## Activate, use, reroute, release
 
-For Andino task selection, resolve applicable bundled methods through the complete
-index before optional external discovery, following [dispatch](method-dispatch.md).
+For Andino task selection, resolve applicable methods through relevant entries of
+the index before optional external discovery, following [dispatch](method-dispatch.md).
+An explicit native provider is resolved directly, not replaced by a source alias.
 Load selected current work guides before Focus. Explicit native provider choices,
 required domain/research supports and their invocation controls remain authoritative.
 Communication activation never proves that a work method was selected or applied.
+After loading, follow the selected method's complete procedure and required
+resources; wrapper loading alone cannot stand in for its deliverable. This applies
+to members, siblings and installed external skills under the same real controls.
 
 Before work governed by a selected skill, activate it through the actual permitted
 host mechanism. Claude Code uses the Skill tool for model-initiated activation;
@@ -111,8 +115,9 @@ use remains NOT_VERIFIED until actually executed on each claimed host.
 Once Andino is legitimately ACTIVE, resolve a relevant canonical ID or source-name
 alias in the [internal index](internal-method-index.md). Confirm the bundled
 `skills/<id>/GUIDE.md` and needed local resources are present and permitted; read
-only those selected resources. These are internal documents, not native skills,
-agents or tools. Do not call a fictitious universal method loader, require an
+only those selected resources. Each member also has a native `andino-<id>` SKILL.md
+entrypoint; its GUIDE.md is the canonical procedure, not a separate agent/tool or
+an upstream provider invocation. Do not call a fictitious universal method loader, require an
 upstream installation, or claim native Superpowers/Agent Skills/Matt invocation.
 
 A guide read establishes ACTIVE; USED also needs a relevant action/output. Name
@@ -124,7 +129,7 @@ generic engineering methods do not replace domain owners. Explicit native siblin
 requests still follow their actual host invocation controls above.
 
 Real delegation tools are host-conditional. Parallel implementation requires at least
-two independent tasks, benefit, authority and disjoint file scopes; at most three direct children,
+two independent tasks, benefit, authority and disjoint file scopes; at most three concurrently active direct children,
 no nested spawning, no concurrent shared writes. Parent inspects artifacts and
 reruns relevant checks. Sequential fallback is valid; do not imitate absent agents.
 
@@ -132,7 +137,8 @@ Independent review can justify a single child; parallel implementation still nee
 independent scopes. Select inline, independent parallel or scoped implementer/reviewer
 execution using the [delegation method](../skills/delegation/GUIDE.md). Discover actual
 model and reasoning controls before using them. Respect a supported user selection;
-otherwise use host defaults and report unknown controls honestly. Consider brief size,
+otherwise choose the least costly adequate supported setting when selection is
+authorized, or retain host defaults and report unknown controls honestly. Consider brief size,
 retries, review and integration overhead along with capability fit. No model names,
 prices or fixed escalation policy are portable defaults; claim savings only with
 measured evidence. A missing model selector does not make delegation itself unavailable.

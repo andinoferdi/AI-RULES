@@ -154,10 +154,11 @@ force all of them or rewrite a sufficient approved specification.
 
 ## Ownership and permissions
 
-Andino owns routing, depth, one checkpoint, delegation, permissions and acceptance.
-Focus owns communication; required research and domain/UI skills retain their
-boundaries. Direct invocation uses this same procedure without recursive Andino
-invocation. No second lifecycle or automatic skill chain.
+Andino coordinates selection, shared progress, resource guards and final status from evidence.
+This skill owns its full procedure, required resources, artifact detail and technical
+checks. Coordinator brevity/density never truncates these. User/project authority,
+Focus/research/domain boundaries and real invocation controls still apply. Native
+`andino-brainstorming` and this guide expose one method, without recursive workflow invocation.
 
 This method grants no Git, installation, external-write or deployment authority.
 Reuse actual authorization; preserve user work/secrets and staging. Don't commit

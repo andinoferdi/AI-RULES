@@ -27,7 +27,7 @@ Do not select for: Related unknown failures, shared write state, missing authori
 
 ## Prerequisites
 
-Read the accepted graph/checkpoint; inspect the current host's actually exposed, authorized worker and model-selection capabilities and the task's expected benefit. Maximum three direct children, no nested spawning; pin workspace and ownership. A tool or model name in a registry or upstream guide is not evidence that the current host can invoke it.
+Read the accepted graph/checkpoint; inspect the current host's actually exposed, authorized worker and model-selection capabilities and the task's expected benefit. Maximum three concurrently active direct children, no nested spawning; pin workspace and ownership. A tool or model name in a registry or upstream guide is not evidence that the current host can invoke it.
 
 ## Execution strategies
 
@@ -48,7 +48,7 @@ Inspect the current host's real worker interface, limits, isolation options, and
 ## Procedure
 
 1. Compute the ready frontier from current producer evidence. Group failures that may share a cause; normalize write paths and reject exact or ancestor overlap before choosing parallel work.
-2. Select inline, parallel, or subagent-driven execution using the criteria above. Dispatch at most three direct workers, only for ready tasks, with no nested spawning.
+2. Select inline, parallel, or subagent-driven execution using the criteria above. Dispatch at most three concurrently active direct workers, only for ready tasks, with no nested spawning.
 3. Give each worker a brief containing the accepted outcome and spec/plan pointer, exact owned paths, verified consumed/produced interfaces, dependencies, known decisions and constraints, concrete acceptance and verification commands with expected signals, report location, and explicit no-nested-agent and no-unapproved-mutation boundaries. Mark any interface that is still uncertain; do not invent it.
 4. Track worker identity and status in the same parent plan/checkpoint. Require `DONE`, `DONE_WITH_CONCERNS`, `NEEDS_CONTEXT`, or `BLOCKED`, plus changed paths, actual commands/results, evidence and remaining work. Avoid whole-history prompts.
 5. Keep useful independent work moving while workers run; use bounded waits, not repeated short polling. A denied or missing tool means honest inline fallback, not fabricated dispatch or another-host bypass.
@@ -57,7 +57,11 @@ Inspect the current host's real worker interface, limits, isolation options, and
 
 ## Ownership
 
-Andino owns selection, depth, scope, the existing durable checkpoint, delegation and DONE. Parent owns shared artifacts/final acceptance. This guide cannot invoke denied/manual siblings or establish another lifecycle.
+Andino coordinates selection, shared progress, resource guards and final status from evidence.
+This skill owns its full procedure, required resources, artifact detail and technical
+checks. Coordinator brevity/density never truncates these. User/project authority,
+Focus/research/domain boundaries and real invocation controls still apply. Native
+`andino-delegation` and this guide expose one method, without recursive workflow invocation.
 
 ## Permission boundary
 

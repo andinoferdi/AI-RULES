@@ -4,6 +4,25 @@ This contract covers all internal methods in the [index](internal-method-index.m
 and its source-name aliases. It is a loading and handoff procedure, not a runtime router,
 a second catalog, a new plan or an instruction to activate every method.
 
+## Method ownership
+
+Andino coordinates selection, dependency handoff, shared progress, permissions and
+resource guards. The selected skill owns its complete procedure, required resource
+reads, artifact structure/detail and technical checks. This applies equally to
+native Andino members, AI-RULES siblings and relevant installed external skills.
+MCP/native tools execute actual operations; they do not replace a selected method.
+
+Follow the loaded method rather than just announcing it or producing a coordinator
+summary. Resolve output/detail conflicts in favor of the selected method and user
+requirements. Checkpoint density, Focus and acquisition/output limits cannot remove
+required decisions or proof. Permission, concurrency and evidence guards still
+apply; a method does not gain authority by being selected.
+
+Use one authoritative progress source, which may link complete skill artifacts.
+No compulsory shared artifact schema or second routing/planning ceremony is added.
+Release the method when its need ends; select the next only for an actual phase
+change or distinct evidenced concern, not to complete a skill chain.
+
 ## Explicit requests
 
 1. Distinguish a user instruction from quoted text, filenames, examples and an inventory.

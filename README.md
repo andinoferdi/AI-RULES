@@ -1,6 +1,6 @@
 # Andino Workflow
 
-Andino Workflow coordinates problem solving for AI coding agents, with 59 member skills for development, troubleshooting, and research. It adjusts investigation to the task, checks decisions against evidence, and keeps one durable checkpoint when work needs to continue across sessions.
+Andino Workflow is a thin coordinator for 59 member skills, AI-RULES siblings and relevant installed external skills/tools. It selects capabilities, coordinates progress and preserves execution guards. Selected skills own their full methods, required resources, artifact detail and technical checks. A compact checkpoint can link a complete spec, plan, design or report.
 
 Use it with Claude Code, Codex, OpenCode, or Antigravity to select the relevant method, track ongoing work, and verify changes before calling a task complete. The member skills use the `andino-*` prefix.
 

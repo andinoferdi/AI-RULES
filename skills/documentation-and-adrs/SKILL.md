@@ -27,7 +27,11 @@ These are declared activation fixtures, not a claim that a model/router was exec
 
 ## Inputs and operational ownership
 
-Read the accepted task/contract, current repository and relevant evidence first. Andino owns discovery, depth, the single durable plan/checkpoint, delegation, permissions and final acceptance. This internal guide has no native skill entrypoint, bootstrap, installer or automatic downstream invocation. Existing accepted decisions and current user authority take precedence. Canonical tdd/debugging/planning/code-review retain their shared operational ownership; this guide contributes the specific technique only. Focus/Search First and domain siblings retain their established boundaries. Explicit single-skill UI choices and denied/manual-only controls cannot be bypassed through an internal method.
+Andino coordinates selection, shared progress, resource guards and final status from evidence.
+This skill owns its full procedure, required resources, artifact detail and technical
+checks. Coordinator brevity/density never truncates these. User/project authority,
+Focus/research/domain boundaries and real invocation controls still apply. Native
+`andino-documentation-and-adrs` and this guide expose one method, without recursive workflow invocation.
 
 Use actual available host tools and repository commands. Required external capability that is absent is UNVERIFIED/UNAVAILABLE; do useful bounded local work and name the missing evidence. Never invent tool execution or a passing gate.
 

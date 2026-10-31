@@ -121,10 +121,11 @@ the plan short. Proportional detail means removing repeated context, not decisio
 
 ## Ownership and permission boundary
 
-Andino owns scope, depth, routing, delegation, one checkpoint and final acceptance.
-This method adds task detail inside the canonical lifecycle, not a competing schema,
-tracker checklist or mandatory execution method. Direct native invocation uses
-the same contract without recursively activating the workflow.
+Andino coordinates selection, shared progress, resource guards and final status from evidence.
+This skill owns its full procedure, required resources, artifact detail and technical
+checks. Coordinator brevity/density never truncates these. User/project authority,
+Focus/research/domain boundaries and real invocation controls still apply. Native
+`andino-planning` and this guide expose one method, without recursive workflow invocation.
 
 Resolve workflow-wide resources from the installed `andino-workflow` root:
 for a nested member, use its containing workflow package; for standalone

@@ -2,7 +2,7 @@
 
 ## Plan depth is not capability routing
 
-First select relevant bundled work methods using the [index](internal-method-index.md)
+First select relevant work methods using the [index](internal-method-index.md)
 and [dispatch contract](method-dispatch.md). This covers every internal method and
 source alias, including implicit requests with no skill name. Load selected current
 work guides before Focus or optional external discovery. Explicit native providers,
@@ -15,6 +15,16 @@ stage or coding taxonomy. DIRECT may need no tools; GROUNDED needs bounded conte
 INVESTIGATIVE may need hypothesis testing. Independently choose EPHEMERAL or
 CHECKPOINTED persistence. Only the latter needs LITE/STANDARD/DEEP plan density;
 record material density changes in an existing plan. This creates no second router.
+Density describes progress tracking, never a cap on specialist method or artifact
+detail. The selected skill owns its full procedure and required resources/checks.
+Andino coordinates their handoff without rewriting them into a generic workflow.
+
+The pool includes native members, AI-RULES siblings, relevant installed manual
+external skills and actual MCP/native tools. Internal-first is a default for an
+equivalent unresolved method, not exclusivity. Honor an explicit relevant provider
+directly; discover an external method when it better fits an uncovered need. Do
+not activate an entire catalog, install/connect tools merely because listed, or
+load a second skill for the same concern. Host controls still determine invocation.
 
 Select from task intent, current evidence, unresolved need, phase, consequence and
 actual host availability, not keywords or an unverified diagnosis. Native
@@ -132,7 +142,7 @@ selection within that condition, not an optional name mention. Use Claude Code's
 Skill tool or OpenCode's exposed skill tool where applicable; do not substitute
 file reads for those native invocations. Do not substitute
 this routing row for its instructions. Use its sourced recommendation in Andino's
-existing task/plan. Andino owns scope, execution, verification and checkpoints;
+existing task/plan. Andino coordinates scope, execution, acceptance evidence and checkpoints;
 Search First owns discovery and ADOPT / EXTEND / COMPOSE / BUILD recommendations.
 Focus continues to shape communication. Systematic Debugging retains unknown-cause
 investigation; failed attempts justify Search First only when a distinct question

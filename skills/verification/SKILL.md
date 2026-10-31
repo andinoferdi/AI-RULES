@@ -40,7 +40,11 @@ Map claim/current artifact to accepted criteria and existing valid evidence.
 
 ## Ownership
 
-Andino owns selection, depth, scope, the existing durable checkpoint, delegation and DONE. Parent owns shared artifacts/final acceptance. This guide cannot invoke denied/manual siblings or establish another lifecycle.
+Andino coordinates selection, shared progress, resource guards and final status from evidence.
+This skill owns its full procedure, required resources, artifact detail and technical
+checks. Coordinator brevity/density never truncates these. User/project authority,
+Focus/research/domain boundaries and real invocation controls still apply. Native
+`andino-verification` and this guide expose one method, without recursive workflow invocation.
 
 ## Permission boundary
 

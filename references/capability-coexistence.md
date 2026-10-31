@@ -1,6 +1,8 @@
 # Capability coexistence and provenance
 
-Andino is the sole selector and lifecycle owner. A methodology skill, an MCP
+Andino coordinates selection, shared progress and resource guards. The selected
+member, AI-RULES sibling or installed external skill owns its full method,
+required resources, artifact structure/detail and technical checks. A methodology skill, an MCP
 instrument and local verification may complement one another when each answers a
 distinct actual need. Availability is not a reason to load a second discipline.
 Project constraints and explicit user choices precede generic specialist defaults.
@@ -14,11 +16,13 @@ Project constraints and explicit user choices precede generic specialist default
    selection, host's declared authoritative skill root, then another accessible
    copy with matching identity/content. Record the actual selected path. Never
    silently choose a different provider by directory order.
-4. For the integrated upstream disciplines use the bundled canonical method in
+4. Without an explicit provider choice, for integrated upstream disciplines use the bundled canonical method in
    the [internal index](internal-method-index.md). Original names are internal
    aliases, not preferred external providers: both TDD source names resolve to
    `tdd`, debugging to `debugging`, and reviews to `code-review`. Read one selected
    local guide, without a native upstream invocation or second lifecycle.
+   An explicitly requested native provider is not just an alias and takes the
+   provider-resolution path above; do not silently replace it with a member.
 5. Explicit native sibling/provider requests retain their actual host controls.
    If an internal resource is missing or denied, record UNAVAILABLE and use
    sufficient permitted native reasoning; do not fetch an upstream copy or read
@@ -51,3 +55,8 @@ Independent worker/agent concurrency needs actual independent scopes and applica
 user/host authorization. No specialist's broad delegation, full-scan or install
 default overrides Andino's current-need boundaries. Specialist use never grants
 consent to commit, push, deploy, publish, write live data or mutate another process.
+
+Current-need boundaries choose when to use a method; they do not permit partial
+execution after selection. Generic brevity/density limits apply to repeated
+context and coordinator messages, never the selected skill's required artifact.
+One progress source may link complete specs, plans, designs and research reports.

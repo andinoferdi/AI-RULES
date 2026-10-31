@@ -26,12 +26,20 @@ Use the user's path or existing project/artifact convention; for repository work
 the fallback is `docs/exec-plans/active/<task>.md`. Outside a repository, use an
 available durable document or workspace artifact; do not create a repository just
 to persist state. Reuse an existing task plan rather than
-starting a parallel lifecycle. Start from [the adaptive template](execution-plan-template.md),
+starting a parallel lifecycle. One authoritative progress source may link a complete
+specification, implementation plan, design, report or provider journal. These are
+deliverables, not competing lifecycles; do not merge away their required detail.
+The selected skill/project/user owns artifact structure and content. Use equivalent
+progress fields there, or a compact linked checkpoint when formats differ.
+Start from [the adaptive template](execution-plan-template.md) when useful,
 remove optional sections that add no handoff value, and replace placeholders with
 facts or explicit `UNKNOWN` or `TBD AFTER INVESTIGATION`.
 
 The header, Executive Snapshot, Objective, Acceptance Criteria, Execution Board and
-NEXT ACTION are required for an active STANDARD or DEEP plan. LITE may combine the
+NEXT ACTION are required for a standalone coordinator STANDARD or DEEP checkpoint;
+an established specialist/project format may represent equivalent state instead.
+Checkpoint density does not set specialist artifact depth or waive its steps/checks.
+LITE may combine the
 snapshot with Current State and omit detailed phase sections. Add scope, user
 decisions, domain context, baseline, approach, artifact impact, findings,
 revisions, verification matrix, approval gates, Git information or limitations only
@@ -46,9 +54,11 @@ Keep planned and actual state distinct:
 
 Do not invent files, symbols, commands, branches, root causes, metrics or steps before
 inspection. Prefer a bounded unknown over professional-looking fiction. Exclude raw
-reasoning, large logs or diffs, copied source, credentials, repeated repository rules
+reasoning, bulk logs/diffs/source dumps, credentials, repeated repository rules
 and repeated facts. Compact completed phases once evidence and material decisions
-remain sufficient to resume.
+remain sufficient to resume. Keep decision-bearing code/diffs, exact replacement
+text and assertion fixtures required by the skill. Bound transport by writing/linking
+the complete artifact, not by deleting material content to make the checkpoint short.
 
 For implementation-ready work, use the planning task contract at
 `skills/planning/resources/contract.md` and read its worked examples. Bind each

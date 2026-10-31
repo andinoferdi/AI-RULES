@@ -6,7 +6,10 @@ Current Phase: Phase 1 — [name]
 Last Updated: YYYY-MM-DD
 Active Agent: [optional context only; never an ownership lock]
 
-<!-- Only for CHECKPOINTED work. Keep the minimum fields required by the selected
+<!-- Optional coordinator checkpoint scaffold, not an override for a selected
+skill's artifact format or depth. One progress source may link full specs, plans,
+designs and reports; these are deliverables, not duplicate lifecycle tracking.
+Only for CHECKPOINTED work. Keep the minimum fields required by the selected
 plan density in execution-plan.md; remove optional sections that do not help this
 task. Research, daily work and decisions do not require code or file-edit phases. -->
 

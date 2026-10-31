@@ -130,7 +130,11 @@ Record the chosen candidate, identified files, and target seam into the active A
 
 ## Ownership, precedence and permissions
 
-Andino retains discovery, reasoning depth, the single durable plan/checkpoint, delegation, permission decisions, and final acceptance. This guide contributes the survey technique; it is not a native skill, router, or second lifecycle. Focus owns communication style; Search First owns external library/pattern research; domain siblings and manual controls remain authoritative.
+Andino coordinates selection, shared progress, resource guards and final status from evidence.
+This skill owns its full procedure, required resources, artifact detail and technical
+checks. Coordinator brevity/density never truncates these. User/project authority,
+Focus/research/domain boundaries and real invocation controls still apply. Native
+`andino-architecture-survey` and this guide expose one method, without recursive workflow invocation.
 
 The survey phase is non-destructive: it inspects code and writes a report to temporary OS storage only. Product files, Git state, and project configuration are never mutated during an architecture survey.
 

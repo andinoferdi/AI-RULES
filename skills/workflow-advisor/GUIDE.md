@@ -57,11 +57,12 @@ invokable or active.
 
 ## Ownership, precedence and permissions
 
-Andino remains the automatic capability router and sole lifecycle owner. This
-guide answers explicit advisory questions; it is not a required prerequisite,
-secondary router, recursive dependency or source of automatic execution. Current
-project rules and explicit user choices take precedence. Specialists retain
-their established boundaries.
+Andino coordinates selection, shared progress, resource guards and final status from evidence.
+This skill owns its full procedure, required resources, artifact detail and technical
+checks. Coordinator brevity/density never truncates these. User/project authority,
+Focus/research/domain boundaries and real invocation controls still apply. Native
+`andino-workflow-advisor` and this guide expose one method, without recursive workflow invocation.
+This is advisory support, not an automatic prerequisite or execution authority.
 
 Read-only registry and guide inspection is limited to what is relevant. A
 recommendation grants no extra authority to invoke a skill, install a tool, use

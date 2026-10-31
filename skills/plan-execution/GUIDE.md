@@ -137,9 +137,11 @@ check, and continue independent authorized work. Available tools do not grant au
 
 ## Ownership and resource resolution
 
-Andino owns selection, depth, scope, the existing checkpoint, delegation and DONE.
-The parent owns shared artifacts and final acceptance. Loading this resource does
-not invoke another skill or override native resource permissions.
+Andino coordinates selection, shared progress, resource guards and final status from evidence.
+This skill owns its full procedure, required resources, artifact detail and technical
+checks. Coordinator brevity/density never truncates these. User/project authority,
+Focus/research/domain boundaries and real invocation controls still apply. Native
+`andino-plan-execution` and this guide expose one method, without recursive workflow invocation.
 
 Resolve workflow-wide resources from the installed `andino-workflow` root: a nested
 member uses its containing workflow; standalone `andino-plan-execution` uses the
