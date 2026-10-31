@@ -110,6 +110,9 @@ profile against its pre-update value (8 capabilities, 5 hosts). Machine-readable
 readback is in `installation-evidence.json`. Installer backups are retained.
 
 Local installation/publication details are recorded in the durable execution plan.
+Runtime changes were pushed as `69e797e` on andino-workflow; setup pin, regression
+and validation evidence were pushed as `1132fb5` on main. Final checkpoint-only
+documentation follows that implementation commit.
 An old frozen executable's bundled payload is immutable until a separately built
 release; default setup's latest-source path obtains the published branch. No claim
 is made that installed files prove native loading or use in a future session.

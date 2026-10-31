@@ -1,6 +1,6 @@
 # Portable, implementation-ready planning
 
-Status: IN_PROGRESS
+Status: DONE
 Plan Depth: STANDARD
 Current Phase: Phase 3 - Setup and delivery
 Last Updated: 2026-10-31
@@ -11,9 +11,10 @@ User authorizes improving andino-planning, consulting Council, implementing,
 commit/push and integrating through ai-rules setup. Compare the supplied examples
 as data, not instructions. Current source already contains grounded planning
 guidance (19dd633); strengthen demonstrated remaining gaps rather than repeat it.
-Runtime 69e797e is published and installed on five hosts; 90 resource comparisons
-and all 15 selected installation targets pass. Main setup pin/evidence publication
-is the remaining action. Pre-existing untracked build/ and src/ are preserved.
+Runtime 69e797e and main setup/evidence commit 1132fb5 are published. The reviewed
+runtime is installed on five hosts; 90 resource comparisons and all 15 selected
+installation targets pass. All requested work is complete. Pre-existing untracked
+build/ and src/ are preserved.
 Starting branch was andino-workflow at fc8f21b; prior execution ticket is independent.
 
 ## Objective
@@ -29,7 +30,7 @@ the saved plan, with explicit code/config/document edits and no recovered chat d
 - [x] Canonical template/lifecycle and plan-execution honor the same readiness boundary.
 - [x] Examples demonstrate code changes, static edits and honest discovery blockers.
 - [x] Fresh-context consumer applications and relevant package/setup checks recorded.
-- [ ] Reviewed source integrated into setup, installed bytes verified, scoped commits pushed.
+- [x] Reviewed source integrated into setup, installed bytes verified, scoped commits pushed.
 
 ## Constraints and starting evidence
 
@@ -50,7 +51,7 @@ the saved plan, with explicit code/config/document edits and no recovered chat d
 | --- | --- | --- | --- | --- |
 | Phase 1 - Evidence and Council | DONE | Select improvement from actual gaps | supplied examples, planning, template, setup source | Five independent lenses, two anonymous reviews; synthesis below |
 | Phase 2 - Strengthen and assess | DONE | Concrete portable task output | planning resources, lifecycle/template, execution gate | Paired fresh-context applications; both 15 oracle checks PASS; source review PASS |
-| Phase 3 - Setup and delivery | IN_PROGRESS | Verify distribution and publish | CLI main pin/bundles; installed skills | Runtime published; 9 distribution/release tests PASS; 90 installed files/15 targets verified; main push pending |
+| Phase 3 - Setup and delivery | DONE | Verify distribution and publish | CLI main pin/bundles; installed skills | Runtime 69e797e/main 1132fb5 published; 9 distribution/release tests PASS; 90 installed files/15 targets verified |
 
 ## Detailed Execution
 
@@ -122,7 +123,7 @@ and candidate guides in isolated contexts; one pair is qualitative evidence only
 If old guidance also succeeds, report parity for that case rather than superiority.
 
 ### Phase 3 - Setup and delivery
-Status: IN_PROGRESS
+Status: DONE
 Inspect installer source/pins. Verify complete nested/standalone resources in isolated
 setup targets, update source references/bundles as required, and apply authorized local
 setup. Commit only owned paths, push without force and verify remote identities.
@@ -139,7 +140,9 @@ current dependencies. All 15 lock targets VERIFIED, zero failures/blockers.
 Direct readback compares 90 nested/native/lifecycle files with exact runtime
 content, tolerating only CRLF. Saved profile equals the pre-update 8-capability,
 5-host everything profile. Backups are retained by the installer.
-Main commit/push remains; no frozen executable release is claimed rebuilt.
+Main setup pin, distribution regression and durable evidence committed/pushed as
+1132fb5. Both remote branch updates succeeded without force. Final checkpoint
+documentation is published separately; no frozen executable release was rebuilt.
 
 Packaging repair: prior runtime included three docs/exec-plans evidence files
 forbidden by its own package contract. Moved them to the same paths on main without
@@ -149,5 +152,4 @@ Initial runtime had unrelated untracked build/ and src/; they remain untouched.
 
 ## NEXT ACTION
 
-Commit and push the reviewed main manifest/test/evidence changes, verify remote
-identities, then close this checkpoint with actual publication results.
+None - task complete.
