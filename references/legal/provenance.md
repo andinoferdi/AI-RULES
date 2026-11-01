@@ -72,3 +72,12 @@ catalogs across TypeScript/JavaScript, Python, and React) with Andino Workflow g
 SHA-256 byte-exact protected regions across multi-language comment syntaxes, subagent safety
 protocols with the Simplification Ledger, and offline deterministic Python test verification).
 
+The 2026-11-01 elevation of `constraint-driven-development` synthesizes the generative craft
+of Addy Osmani's `constraint-driven-development` (4-question intake discipline with sane defaults,
+3-tier circularity hierarchy, 4-stage lifecycle integration, monotonic ratchets, and diff-scoped
+floor guard catching 5 evasion moves) with Andino Workflow governance (high-density operational
+contract `SKILL.md`, deep craft `GUIDE.md`, dual-runtime Python stdlib and Node.js diff-scoped
+floor guards with cross-platform CRLF/path normalization, third-party scanner exit code
+normalization protocols, multi-ecosystem catalogs across TS/JS, Python, Go, Rust, and Web UI,
+and offline deterministic Python stdlib verification).
+
