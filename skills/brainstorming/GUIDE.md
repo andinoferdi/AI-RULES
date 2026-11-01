@@ -1,221 +1,150 @@
-# Brainstorming: Explore possible directions
+# Brainstorming & Decision Refinery: Craft Guide
 
-Internal method ID: `brainstorming`. Exploratory technique under Andino ownership.
+Internal method ID: `andino-brainstorming` (alias: `brainstorming`). Stable technique adapted to Andino Workflow governance. Consolidates and elevates `decision-interview`.
 
-## Purpose and selection
+---
 
-Discover what matters, explore credible directions, and leave a design a capable
-builder can use without guessing consequential intent. Depth comes from testing
-understanding against concrete situations, not from more questions or longer docs.
-This applies to software, research, creative work and everyday problems.
+## 1. Operational Architecture: Divergent Exploration to Convergent Grilling
 
-Activate for: Exploring an uncertain goal or solution space, including a build
-request whose direction remains open and has not been delegated.
+Brainstorming turns ambiguous goals into builder-ready designs without guessing user intent. It resolves the classic tension between **divergence** (expanding the solution space) and **convergence** (eliminating unviable options) by structuring discovery into four discrete, ordered phases:
 
-Do not activate for: Accepted specifications, routine bugs, explanations of existing
-work, settled alternatives needing assessment, or choices already delegated.
-A chosen direction with a missing user-owned requirement belongs to decision-interview;
-one rough idea needing refinement belongs to idea-refine. Do not reopen settled
-decisions merely because this skill was named.
-
-Positive request: "Our neighborhood needs help, but I don't know what would help most."
-Negative request: "Implement the approved billing endpoint; choose internal details yourself."
-
-## Inputs and dependencies
-
-Use the request, accepted decisions and relevant current evidence. Inspect referred
-project files and enough connections to understand what changes. Outside software,
-use the available situation/materials; do not invent a repository requirement.
-Stop looking when the next decision is grounded.
-
-Read [the worked procedure and design examples](resources/worked-example.md) for
-question patterns, project design contents or the builder-check prompt. Resources
-are local; upstream repositories are provenance, not runtime dependencies.
-
-## Procedure
-
-### 1. Establish what is actually open
-
-Distinguish facts with sources, user decisions, your proposals and unknowns.
-Reflect the outcome and its reason only as far as known. Don't invent motivation
-or treat a desired guarantee as a proven property of a solution.
-
-Choose the next move by what could change the result:
-- Factual gap: inspect relevant accessible evidence before asking.
-- Open direction: ask about a concrete situation, outcome or trade-off.
-- Accepted or delegated choice: reuse it and continue through the normal workflow.
-
-For an underspecified request, start with one open question about the most important
-unknown, with a reason when its consequence is unclear. Avoid a technology menu
-before understanding the problem. A rich brief may settle this step already;
-do not require an introductory confirmation turn.
-
-### 2. Ask questions that can change the decision
-
-Default to one primary question at a time, grounded in the last answer or a finding.
-Identify what a different answer changes: direction, scope, acceptance or treatment
-of a material risk. If it changes none of these, omit it. Offer a short menu when
-the user is stuck; respect requested batches of independent questions. Never hide
-several dependent questions inside one sentence.
-
-Probe the live uncertainty rather than reciting a checklist:
-- Replace adjectives with a concrete incident: what happened, to whom, and what
-  would success look like in that same situation?
-- Test boundaries: where does the normal case fail, whose needs conflict, and
-  what must still hold under that exception?
-- Challenge the leading assumption: what evidence would make a smaller intervention
-  sufficient, or make the current favorite wrong?
-- Separate outcomes from suggested means: what has been tried, what mattered in
-  admired examples, and which cost or failure is unacceptable?
-
-Play back settled parts in useful chunks; label your defaults as proposals with
-reasons. Incorporate corrections in the same artifact. Don't repeatedly summarize
-everything or request approval after every answer.
-
-If a consequential factual claim remains unknown, investigate or propose a bounded
-experiment with a discriminating outcome. Agreement cannot establish durability,
-performance, demand or compatibility. Use required research/domain support under
-Andino when applicable; no automatic council, graph or subagent.
-
-### 3. Compare viable directions before committing
-
-Develop alternatives, then screen them against goals, constraints and anti-goals.
-Present the strongest two or three genuinely different surviving approaches before
-the final design. Explain how each works here, gains, costs, and what must be true.
-Include the existing workaround, a smaller intervention or doing nothing when credible.
-
-Recommend one using those criteria and state what evidence would reverse it.
-Don't manufacture options: if only one survives, explain why other paths fail.
-A path violating a hard requirement is rejected, not another viable choice.
-Avoid unsupported guarantees and precision; planned measurements remain unverified.
-
-When the user owns the open choice, give the comparison space of its own and ask
-which direction to take. When delegated, choose, state the reason and continue
-within existing authority; don't force a separate selection turn.
-
-### 4. Check readiness and write a proportionate design
-
-Converge when outcome and why, observable success, scope boundaries, constraints,
-selected/delegated direction and consequential failure cases are clear enough for
-the next safe step. Remaining uncertainty needs an owner and treatment: evidence
-to obtain, an agreed experiment, or a stated reversible builder choice. Material
-user-owned gaps remain pending; critical assumptions cannot hide in builder discretion.
-Do not demand certainty about every internal detail.
-
-Write once in the existing artifact convention. In a software repo without one,
-use `docs/specs/YYYY-MM-DD-<topic>-design.md` when persistence is useful. Outside a
-repo, use the agreed document or conversation. Extend sufficient accepted documents
-rather than duplicating them. A design is not a second execution plan.
-
-- Small change: brief intent, alternatives/rationale, constraints, relevant failure
-  behavior, acceptance example, and agent discretion.
-- Project: also cover responsibilities/flow, affected interfaces or materials,
-  failure/recovery, evidence/assumptions, concrete acceptance cases, open questions
-  with owners, and handoff. Include only applicable sections; invent no infrastructure,
-  schemas or success metrics just to fill a template.
-
-### 5. Perform a builder-readiness check
-
-Read as the person carrying out the design: what consequential choice must they
-still guess? For a substantial project, use independent review only when authority,
-available tools and expected benefit justify delegation. Follow Andino's worker
-limit of at most three concurrent direct children and no nested spawning. Otherwise
-check inline and state that boundary
-honestly. Small briefs need a proportional self-check.
-
-Triage findings:
-- Answered already: incorporate the answer and source.
-- Builder call: settle the reversible detail and mark it as your call.
-- User-owned: ask only the consequential unresolved choice.
-- Evidence gap: inspect/test; don't ask the user to approve a claim as fact.
-
-Check grounding, viable alternatives, scope/invariants, failure behavior, observable
-acceptance and decision authority. Every applicable material check must pass;
-no average or 5/6 score can waive a blocker. Repair findings and recheck affected
-parts. Don't loop reviewers or interviews without new evidence.
-
-### 6. Respect the decision boundary and hand off
-
-Do not implement against unresolved material user-owned choices. For exploration
-where execution has not been delegated, present the concrete design and agent-made
-calls for review before dependent implementation. Approval covers what was shown;
-assent to an idea doesn't approve unseen details. Ordinary clear assent counts,
-without magic wording.
-
-Existing authorization and explicit delegation persist. If asked to choose and
-proceed, state consequential choices and continue; don't demand document approval
-again. If the user opts out of discovery, end this technique, state safe defaults
-and follow the normal workflow. A high-consequence choice outside that delegation
-still needs its owner; silence is not approval.
-
-Hand off only what is missing: specification for buildable contracts, planning for
-task ordering, or the accepted implementation/TDD route when already ready. Do not
-force all of them or rewrite a sufficient approved specification.
-
-## Ownership and permissions
-
-Andino coordinates selection, shared progress, resource guards and final status from evidence.
-This skill owns its full procedure, required resources, artifact detail and technical
-checks. Coordinator brevity/density never truncates these. User/project authority,
-Focus/research/domain boundaries and real invocation controls still apply. Native
-`andino-brainstorming` and this guide expose one method, without recursive workflow invocation.
-
-This method grants no Git, installation, external-write or deployment authority.
-Reuse actual authorization; preserve user work/secrets and staging. Don't commit
-designs automatically. A sketch or throwaway spike may answer one agreed uncertainty
-within existing authority; label its limits and carry findings back to the design.
-It doesn't authorize production scope or waive checks. Use host-native visuals
-when seeing resolves a specific question; honor explicit UI choices and don't
-start an unsolicited companion server.
-
-## Outputs, verification and fallback
-
-Return the decision/design, reasons/evidence, consequential open questions and next
-useful action. An experiment can be the result instead of an architecture.
-Never fabricate approval, research, reviewer use or passing checks. Restricted
-tools mean named evidence gaps and conditional claims, not weaker acceptance.
-
-The example below checks routing only. Fresh-context consumer observations are
-needed for questioning/design behavior; structural checks do not prove autonomous
-routing, cross-host parity or superiority to upstream.
-
-## Bounded routing example
-
-```python andino-example
-import json
-
-def route(request):
-    if request.get("delegated", False):
-        return "normal-workflow"
-    if request["accepted_spec"] and not request.get("reopen", False):
-        return "normal-workflow"
-    if request["fixed_options"]:
-        if request["material_criteria_missing"]:
-            return "decision-interview"
-        if request.get("complex_choice", False):
-            return "decision-map"
-        return "normal-workflow"
-    return "brainstorming"
-
-RESULT = {
-    "explore": route({"accepted_spec": False, "fixed_options": False, "material_criteria_missing": False}),
-    "fixed_choice": route({"accepted_spec": False, "fixed_options": True, "material_criteria_missing": True}),
-    "known_complex_choice": route({"accepted_spec": False, "fixed_options": True, "material_criteria_missing": False, "complex_choice": True}),
-    "known_simple_choice": route({"accepted_spec": False, "fixed_options": True, "material_criteria_missing": False}),
-    "specified": route({"accepted_spec": True, "fixed_options": False, "material_criteria_missing": False}),
-}
-print(json.dumps(RESULT, sort_keys=True))
+```
+┌─────────────────────────┐
+│ 1. Intent & Buzzwords   │ ──▶ Uncover unvarnished motivation; confidence score <70%.
+└───────────┬─────────────┘
+            ▼
+┌─────────────────────────┐
+│ 2. Three-Path Scoping   │ ──▶ Spike vs. Bounded vs. Architectural (governance matches risk).
+└───────────┬─────────────┘
+            ▼
+┌─────────────────────────┐
+│ 3. Frontier Grilling    │ ──▶ Relentless DAG frontier questioning with reasoned defaults.
+└───────────┬─────────────┘
+            ▼
+┌─────────────────────────┐
+│ 4. Specs, ADRs & Terms  │ ──▶ Lazy emission of ADRs, Domain Glossary, and Builder Spec.
+└─────────────────────────┘
 ```
 
-Expected result:
+---
 
-```json
-{"explore": "brainstorming", "fixed_choice": "decision-interview", "known_complex_choice": "decision-map", "known_simple_choice": "normal-workflow", "specified": "normal-workflow"}
-```
+## 2. Phase 1: Intent Hypothesis & De-buzzwording
 
-## Provenance
+### The Intent Hypothesis
+Before proposing approaches, formulate a single-sentence hypothesis of the desired outcome and assign an explicit confidence score:
+- If confidence is `< 70%`, explicitly enumerate what is unknown (persona, scale, latency, security boundary, operational limits).
+- Distinguish discoverable repository facts (inspectable directly from code/configs) from user-owned decisions. Never interrogate the user on facts that can be read from files.
 
-Adapted from `obra/superpowers:skills/brainstorming/SKILL.md`, with independent
-Andino-specific questioning, readiness and ownership guidance. Attribution and
-licensing remain in package legal references. No upstream server/scripts,
-automatic commits or mandatory downstream invocation are imported.
+### De-buzzwording Rule
+Users frequently describe intent using generic industry buzzwords ("scalable", "enterprise-grade", "flexible", "intuitive"). These abstractions conceal architectural risk:
+- Challenge every adjective with a concrete operational scenario: *"What breaks first under load?"*, *"Whose workflow fails if this is missing?"*
+- Convert adjectives into observable acceptance metrics before designing subsystems.
+
+---
+
+## 3. Phase 2: Friction-Proportional Three-Path Scoping
+
+Governance must match epistemic risk. Announce the classification aloud at the start:
+
+### 1. Spike (Throwaway Feasibility Probe)
+- **Trigger**: Feasibility questions (*"Can we...", "Is it possible to...", "Spike out X"*).
+- **Process**: Formulate question and 2-sentence probe plan; get a quick nod; execute as cheaply as possible.
+- **Output**: An empirical answer and recommendation. Anything built remains strictly labeled throwaway. No spec file, no ADR.
+
+### 2. Bounded (Scoped Edit to Existing Flow)
+- **Trigger**: Changes to existing code, flags, one-file fixes, or localized endpoints where the affected flow already exists.
+- **Process**: Inspect current code; ask only 1-2 clarifying questions if necessary; present a concise in-chat design (approach, files touched, test assertion); **STOP and wait for explicit approval**.
+- **Output**: In-chat approval. Proceeds directly to TDD implementation. No external spec or planning doc.
+
+### 3. Architectural (New Subsystems, Altered Interfaces, New Domains)
+- **Trigger**: New repositories, new multi-file components, altered database models, or changes that restructure how subsystems interact.
+- **Process**: Full frontier grilling, 2-3 alternative approaches with trade-off matrices, lazy in-flight ADR capture, and builder-ready specification.
+- **Ratchet Rule**: One-way complexity ratchet. If a Bounded task uncovers hidden architectural friction, announce the escalation immediately and upgrade to Architectural. Tasks never downgrade mid-flight.
+- **Multi-Session Decision Mapping Escalation**: If an Architectural exploration uncovers that the initiative cannot be resolved within a single session, or involves multiple branching technical forks (e.g., storage engine, auth protocol, cutover strategy), escalate directly to `andino-decision-map` (`skills/decision-map/SKILL.md`). `andino-decision-map` structures the multi-session effort into an explicit map (`map.md`), unblocking research tickets, and fog of war, preventing premature implementation while managing multi-session durability.
+
+---
+
+## 4. Phase 3: Frontier-Based Relentless Grilling
+
+Adapts Matt Pocock's `grilling` and Addy Osmani's `interview-me`:
+
+### The Decision DAG & Unblocked Frontier
+Discovery decisions form a Directed Acyclic Graph (DAG). Dependencies must be respected:
+- Identify the **unblocked frontier**: the set of decision nodes whose parent choices have all been resolved.
+- Ask questions **only** on the active frontier. Asking about low-level leaf details while the root architecture remains undecided is prohibited.
+
+### The 1-Question Turn Contract
+Every grilling turn must maintain high cognitive momentum:
+1. **Context Anchor**: 1 sentence summarizing the current fact or previous answer.
+2. **Discriminating Question**: Exactly one focused question probing the live decision frontier.
+3. **Reasoned Default Recommendation**: Always propose a high-conviction default with technical justification:
+   *"Recommended default: [Option A] because [concrete reason]. Reply 'agree' (or press Enter) to confirm, or provide your constraint."*
+
+### Fatigue Breakers & Impatience Detection
+Interrogation must never become an interrogation trial:
+- Never exceed 3 sequential questions on the same architectural branch without a checkpoint.
+- If the user provides terse answers (`< 10` words) or expresses impatience, immediately halt 1-question dialogue, summarize all remaining frontier nodes in a table with recommended defaults, and seek single-turn bulk consensus.
+
+---
+
+## 5. Phase 4: In-Flight Documentation & Lazy Emission
+
+Adapts `mattpocock/skills:engineering/grill-with-docs` and `domain-modeling`:
+
+### Lazy Emission
+- Track emerging decisions and domain terminology mentally during the dialogue.
+- Do not clutter turns with verbose Markdown files mid-interview.
+- Once design consensus is reached, formally emit:
+  1. **Architectural Decision Record (ADR)**: Context, Decision, Alternatives Considered, Trade-offs, Consequences, and Floor Invariants.
+  2. **Domain Glossary**: Ubiquitous language mapping, anti-terms (confusing synonyms to avoid), and code-level symbol mappings.
+  3. **Builder-Ready Design Specification**: Stored under `docs/specs/YYYY-MM-DD-<topic>-design.md`.
+
+### Deterministic Exit Conditions
+Terminate the discovery interview when:
+1. All material nodes on the decision frontier are resolved; OR
+2. The agent achieves **3-Question Predictability** (>90% certainty on the user's reaction to the next 3 hypothetical questions).
+
+---
+
+## 6. Anti-Rationalization Refutations
+
+| Rationalization Shortcut | Required Operational Response |
+|---|---|
+| *"The task is simple, I'll skip the path classification."* | Every request must be classified into Spike, Bounded, or Architectural before implementation code is written. |
+| *"I already know how to implement this, no need to interview."* | Knowing a solution does not equal knowing the user's operational constraints, scale, or anti-goals. Validate the hypothesis. |
+| *"I'll dump 5 questions at once to save turns."* | Cognitive flooding causes shallow answers. Ask exactly 1 question on the active frontier with a recommended default. |
+| *"I'll start scaffolding while they review the design."* | Hard gate violation. Zero code, scaffolding, or dependency installation before explicit design consensus. |
+| *"The user gave a one-word answer, so I'll keep interrogating."* | Terse answers trigger the Fatigue Breaker: halt questioning, present remaining defaults in a table, and request bulk confirmation. |
+| *"I will write the ADR file before we agree on the approach."* | Premature formalization anchors on unverified assumptions. Use lazy emission: emit ADRs only after consensus. |
+| *"The user asked for a quick script, I'll create a full ADR and spec."* | Governance must match risk. Spikes and small bounded fixes do not get formal ADR files. |
+| *"I will ask the user which files need to be changed."* | Inspect discoverable repository facts directly. Never ask users to enumerate files or commands you can read. |
+
+---
+
+## 7. Diagnostic Red Flags (Stop Immediately)
+
+1. **Premature Implementation**: Agent starts editing code or running scaffold commands before the user confirms the design.
+2. **Checklist Theater**: Agent recites a static generic questionnaire instead of following the decision DAG frontier.
+3. **Empty Recommendations**: Agent asks open-ended exam questions without providing a reasoned default option.
+4. **Bureaucratic Flooding**: Agent generates 100-line Markdown documents for a one-line bug fix.
+5. **Ignoring Codebase Evidence**: Agent asks the user what frameworks or database versions are used instead of inspecting `package.json`, `pyproject.toml`, or configuration files.
+6. **Endless Drift**: Agent continues asking questions after 3-question predictability has been achieved.
+
+---
+
+## 8. Handoff to Downstream Skills
+
+- **andino-planning**: Receives the approved Builder-Ready Design Spec, ADR, and unblocked frontier to produce an executable, dependency-ordered task plan.
+- **andino-tdd**: Uses the Domain Glossary and Floor Invariants to author failing test assertions (RED) before writing code.
+- **andino-code-review**: Verifies that the delivered PR adheres strictly to the ADR's *Consequences & Invariants*.
+
+---
+
+## 9. Provenance & Attribution
+
+This skill adapts operational techniques and structural patterns from:
+- `addyosmani/agent-skills:skills/interview-me` (MIT License, Addy Osmani 2025)
+- `mattpocock/skills:skills/productivity/grilling`, `grill-me`, and `engineering/grill-with-docs` (MIT License, Matt Pocock 2026)
+- `obra/superpowers:skills/brainstorming` (MIT License, Jesse Vincent 2025)
+
+Upstream repositories serve as provenance. All code and operational contracts are independently implemented for Andino Workflow governance.

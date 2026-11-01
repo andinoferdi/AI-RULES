@@ -14,7 +14,7 @@ Selected skills own their full procedures, required resources, artifact detail a
 | [api-and-interface-design](../skills/api-and-interface-design/SKILL.md) | A new or changed API/module boundary, inconsistent errors or a retryable state-changing operation. | Pure private renaming or a request only to format code. |
 | [architecture-survey](../skills/architecture-survey/SKILL.md) | A named architecture pain point or bounded request to find maintainability/testability friction. | A routine feature fix, arbitrary whole-repo scan, or repeated search for findings after no worthwhile candidate. |
 | [article-shaping](../skills/article-shaping/SKILL.md) | An explicit writing request with existing raw material ready to be shaped. | Open fragment exploration, editing raw input without permission or publishing finished copy. |
-| [brainstorming](../skills/brainstorming/SKILL.md) | Explore possible directions for an uncertain goal, creative idea, research topic or everyday problem, including a build request whose direction the user says is unclear and has not delegated. | Accepted specifications, settled alternatives needing assessment, missing requirements alone, delegated choices, or confusion about running or understanding something already specified. |
+| [brainstorming](../skills/brainstorming/SKILL.md) | Explore open goals, relentlessly grill decision frontiers, capture in-flight ADRs and domain glossaries, and produce builder-ready designs before implementation. | Accepted specifications, settled alternatives needing assessment, routine bug fixes, or minor mechanical edits. |
 | [browser-testing-with-devtools](../skills/browser-testing-with-devtools/SKILL.md) | Browser-rendered behavior, console/network failure, layout/a11y regression or performance trace investigation. | Backend-only changes with no browser surface. |
 | [ci-cd-and-automation](../skills/ci-cd-and-automation/SKILL.md) | CI/build/test pipeline configuration, automated checks, slow/flaky CI or deployment-strategy preparation. | A request to manually deploy without an accepted verification contract. |
 | [code-review](../skills/code-review/SKILL.md) | Review PR, branch, WIP/untracked changes, pasted diff or completed feature. | Conceptual question with no change or unrequested cosmetic nit hunt. |
@@ -22,7 +22,7 @@ Selected skills own their full procedures, required resources, artifact detail a
 | [constraint-driven-development](../skills/constraint-driven-development/SKILL.md) | Missing or changing quality contract, weakened thresholds, skips/suppressions or requested quality gates. | An established unchanged contract that only needs to be followed, or a throwaway nonbehavioral edit. |
 | [context-engineering](../skills/context-engineering/SKILL.md) | Session restart, degraded context, task switch or a large evidence set needing a focused handoff. | A tiny self-contained request already supplied with all required context. |
 | [debugging](../skills/debugging/SKILL.md) | Tests/build fail, runtime output is wrong, a regression slows down or a bug is reported. | Healthy code explanation or speculative diagnosis without an observed issue. |
-| [decision-interview](../skills/decision-interview/SKILL.md) | An ambiguous ask, explicit interview request, or consequential choice with missing intent, including a known direction whose material user-owned requirement is open. | A clear accepted ticket, informational question, simple mechanical edit, or an open product direction that brainstorming should explore first. |
+| [decision-interview](../skills/decision-interview/SKILL.md) | Clarify missing requirements and grill decision frontiers (consolidated into [brainstorming](../skills/brainstorming/SKILL.md)). | A clear accepted ticket, informational question, simple mechanical edit, or an already settled specification. |
 | [decision-map](../skills/decision-map/SKILL.md) | A destination is clear but several consequential questions cannot be resolved in one context. | A small settled feature, routine task list or a second execution plan. |
 | [deep-module-design](../skills/deep-module-design/SKILL.md) | A known module interface is hard to use, hard to verify or spreads changes across callers. | A request for a whole-codebase survey or speculative abstraction without observed friction. |
 | [delegation](../skills/delegation/SKILL.md) | Bounded independent tasks or materially useful independent review. | Related unknown failures, shared write state, missing authority/tool or cheaper inline work. |
@@ -40,7 +40,7 @@ Selected skills own their full procedures, required resources, artifact detail a
 | [git-workflow-and-versioning](../skills/git-workflow-and-versioning/SKILL.md) | Change grouping, dirty-tree hygiene, version/changelog decision or support for accepted Git isolation. | Automatic branch creation, destructive reset or publishing without authority. |
 | [handoff](../skills/handoff/SKILL.md) | Work moves to another host/directory/person or requires an explicit portable continuation. | Routine continuation in the same context with enough room, or duplicating the existing Andino checkpoint. |
 | [human-procedure](../skills/human-procedure/SKILL.md) | A required step needs human dashboard access, secret entry or another action the agent cannot perform. | A task the agent can already safely execute or an unrequested setup wizard. |
-| [idea-refine](../skills/idea-refine/SKILL.md) | Rough idea needs distinct options, value/feasibility trade-offs or assumption testing. | Accepted scope already has a direction/spec, or intent is so missing that decision-interview must clarify it first. |
+| [idea-refine](../skills/idea-refine/SKILL.md) | Rough idea needs distinct options, value/feasibility trade-offs or assumption testing. | Accepted scope already has a direction/spec, or intent is so missing that brainstorming/interviewing must clarify it first. |
 | [implementation](../skills/implementation/SKILL.md) | A concrete accepted specification or ready task with implementation authorization. | Unresolved material product decisions, research-only requests or permission-denied live changes. |
 | [incremental-implementation](../skills/incremental-implementation/SKILL.md) | Multi-file accepted feature/change or the next dependency-ready implementation task. | Tiny isolated edit, unclear scope requiring decision/specification, or permission to skip failed gates. |
 | [issue-triage](../skills/issue-triage/SKILL.md) | A maintainer requests evaluation of incoming issues or opted-in external PRs. | Already accepted implementation tasks, self-generated tickets needing no new triage, or unauthorized bulk tracker changes. |
@@ -90,13 +90,13 @@ Original names below are internal aliases/provenance, not installation requireme
 | executing-plans | [plan-execution](../skills/plan-execution/SKILL.md) |
 | finishing-a-development-branch | [delivery](../skills/delivery/SKILL.md) |
 | git-guardrails-claude-code | [git-operation-guard](../skills/git-operation-guard/SKILL.md) |
-| grill-me | [decision-interview](../skills/decision-interview/SKILL.md) |
-| grill-with-docs | [decision-interview](../skills/decision-interview/SKILL.md), [domain-modeling](../skills/domain-modeling/SKILL.md) |
-| grilling | [decision-interview](../skills/decision-interview/SKILL.md) |
+| grill-me | [brainstorming](../skills/brainstorming/SKILL.md) |
+| grill-with-docs | [brainstorming](../skills/brainstorming/SKILL.md), [domain-modeling](../skills/domain-modeling/SKILL.md) |
+| grilling | [brainstorming](../skills/brainstorming/SKILL.md) |
 | implement | [implementation](../skills/implementation/SKILL.md) |
 | implement-spec | [delegation](../skills/delegation/SKILL.md), [implementation](../skills/implementation/SKILL.md) |
 | improve-codebase-architecture | [architecture-survey](../skills/architecture-survey/SKILL.md), [deep-module-design](../skills/deep-module-design/SKILL.md) |
-| interview-me | [decision-interview](../skills/decision-interview/SKILL.md) |
+| interview-me | [brainstorming](../skills/brainstorming/SKILL.md) |
 | loop-me | [workflow-specification](../skills/workflow-specification/SKILL.md) |
 | migrate-to-shoehorn | [test-fixture-migration](../skills/test-fixture-migration/SKILL.md) |
 | planning-and-task-breakdown | [planning](../skills/planning/SKILL.md) |

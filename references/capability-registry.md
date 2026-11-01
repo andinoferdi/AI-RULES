@@ -137,11 +137,11 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 
 - Type: method
 - Family/provider: Andino internal; adapted source provenance in package legal records
-- Aliases: brainstorming resolves to canonical brainstorming; no upstream native registration required
-- Primary purpose: Explore possible directions across software, research, creative and everyday problems
-- Trigger: The goal or possible directions remain uncertain and exploration would help.
-- Preferred when: User situation, motivation and alternatives need exploration before selecting a solution.
-- Avoid when: Accepted specifications, settled alternatives needing assessment, repository-answerable details or only missing requirements.
+- Aliases: brainstorming, decision-interview, interview-me, grilling, grill-me, grill-with-docs resolve to canonical brainstorming; no upstream native registration required
+- Primary purpose: Explore open directions, relentlessly grill decision frontiers, capture in-flight ADRs and domain glossaries, and refine decisions
+- Trigger: The goal, architecture, or requirements remain uncertain and exploration or grilling would help.
+- Preferred when: User situation, motivation, trade-offs, and unblocked decision frontiers need exploration before implementation.
+- Avoid when: Accepted specifications, settled alternatives needing assessment, repository-answerable details, or routine mechanical fixes.
 - Availability check: Check local skills/brainstorming/GUIDE.md and selected resources plus actual resource permissions.
 - Invocation method: Read [brainstorming](../skills/brainstorming/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
 - First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
@@ -308,20 +308,20 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 
 - Type: method
 - Family/provider: Andino internal; adapted source provenance in package legal records
-- Aliases: interview-me resolves to canonical decision-interview; no upstream native registration required
-- Primary purpose: Resolve material human intent
+- Aliases: interview-me and decision-interview resolve to canonical brainstorming; no upstream native registration required
+- Primary purpose: Resolve material human intent, grill decision frontiers, and capture in-flight ADRs
 - Trigger: Targeted project inspection leaves material who/why/success/constraint choices unresolved.
-- Preferred when: Ask focused consequential questions or honor explicit interview request.
-- Avoid when: Repository-answerable questions, already clear intent, mandatory confidence ceremony or a second plan.
-- Availability check: Check local skills/decision-interview/GUIDE.md and selected resources plus actual resource permissions.
-- Invocation method: Read [decision-interview](../skills/decision-interview/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- Preferred when: Ask focused consequential questions with reasoned defaults or honor explicit interview/grilling requests.
+- Avoid when: Repository-answerable questions, already clear intent, settled specifications, or routine mechanical fixes.
+- Availability check: Check local skills/brainstorming/GUIDE.md and selected resources plus actual resource permissions.
+- Invocation method: Read [brainstorming](../skills/brainstorming/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
 - First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.
 - Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
 - Coexistence/conflicts: Use the single canonical guide and current sibling contracts; do not load competing upstream providers or start another lifecycle.
 - Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
 - Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
-- Internal method: skills/decision-interview/GUIDE.md
+- Internal method: skills/brainstorming/GUIDE.md
 
 ## api-and-interface-design
 

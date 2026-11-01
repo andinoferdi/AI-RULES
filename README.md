@@ -32,8 +32,8 @@ All 59 methods are installed as native, discoverable skills with the `andino-` p
 ### 1. Define & Explore
 | Skill | What It Does |
 |---|---|
-| `andino-brainstorming` | Explores possible directions for open-ended or uncertain goals. |
-| `andino-decision-interview` | Clarifies missing requirements one focused question at a time. |
+| `andino-brainstorming` | Explores open goals, relentlessly grills decision frontiers, captures in-flight ADRs and domain glossaries, and refines decisions. |
+| `andino-decision-interview` | Clarifies missing requirements and grills decision frontiers (consolidated into `andino-brainstorming`). |
 | `andino-idea-refine` | Refines rough concepts by considering feasibility and value trade-offs. |
 | `andino-specification` | Defines requirements clearly enough to guide implementation. |
 | `andino-design-prototype` | Builds throwaway visual or logic spikes to resolve design questions. |

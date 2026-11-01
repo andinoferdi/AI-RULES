@@ -1,160 +1,125 @@
-# Brainstorming: questions, decisions and builder readiness
+# End-to-End Brainstorming & Grilling Worked Example
 
-Use the relevant section, not the whole resource as a conversation script.
-Scenarios are synthetic. Project observations and stakeholder answers below are
-fixture facts, not claims about a live service or an executed model evaluation.
+Internal resource for `andino-brainstorming`. Demonstrates an end-to-end scenario elevating a vague, buzzword-heavy request into a builder-ready specification, in-flight ADR, and domain glossary.
 
-## A question that reveals the real requirement
+---
 
-User: "We need reliable payment webhooks, perhaps a queue. I don't know the design."
+## Scenario Context
 
-Available project facts: PostgreSQL and Redis pub/sub; no durable Redis configuration
-or delivery contract established.
+- **User**: "We need to make our project search engine scalable and flexible for new multi-tenant enterprise customers."
+- **Current Codebase**: Single-tenant SQLite with basic SQL `LIKE` queries.
+- **Problem**: "Scalable" and "flexible" are buzzwords hiding massive architectural divergence (Elasticsearch cluster vs. PostgreSQL tsvector vs. SQLite FTS5 with tenant schemas).
 
-Weak reply: "Do you need bursts handled by a queue or can direct writes suffice?"
-This embeds the solution in the question. Volume alone doesn't decide delivery
-semantics; pub/sub does not establish durable storage.
+---
 
-Better first reply: "What happened the last time a webhook failed, and what should
-the customer have experienced instead?" Ask about one concrete episode before options.
+## Turn 1: Intent Hypothesis & Buzzword Challenge
 
-User: "During a ten-minute DB restart a dispute disappeared. We thought a 200 meant
-it was saved. Bursts reach 5,000 events in two minutes."
+**Agent**:
+> **Intent Hypothesis (Confidence: 45%)**: You want multi-tenant data isolation and faster search queries as new customers onboard, but tenant scale, isolation boundaries, and query latency requirements are currently unknown.
+>
+> To design the right architecture without over-engineering:
+>
+> 1. **De-buzzwording "Scalable"**: Are we expecting 10 enterprise tenants with 10M records each (requiring distributed indexing), or 500 small tenants with 50k records each (where single-node indexing suffices)?
+>
+> **Recommended default**: Based on our current codebase and infrastructure, I assume we are targeting up to 100 tenants with ~100k records each over the next 12 months.
+>
+> *Path Classification*: This is **Architectural** because it alters data isolation and search indexing boundaries.
+>
+> Do you confirm this scale target, or is your tenant volume higher?
 
-Agent: "The important boundary is when we tell the sender it can stop retrying.
-The burst count alone doesn't tell us we need a queue. I'll inspect the handler
-and documented delivery contract before comparing designs."
+**User**:
+> "Definitely under 100 tenants with maybe 50k docs each for now. We don't have k8s or a dedicated ops team, so no heavyweight Java clusters like Elasticsearch."
 
-Supplied investigation result: handler responds 200 before commit; vendor retries
-non-2xx for 24 hours; event_id already has a uniqueness constraint. Burst capacity
-is NOT_VERIFIED.
+---
 
-Agent: "There is a possible loss path in acknowledging before saving. The sender
-can retry while the DB is down. During maintenance, must events appear immediately
-in the product, or is delayed processing acceptable?"
+## Turn 2: Frontier Grilling with Reasoned Default
 
-User: "Delay is fine. Never report success before saving. We cannot operate another
-service this quarter."
+**Agent**:
+> Tenant volume (<100 tenants, 50k docs) and operational constraint (zero dedicated ops, no Elasticsearch) are locked.
+>
+> The next unblocked frontier node on our Decision DAG is **Tenant Isolation vs. Query Performance**:
+>
+> 1. **Option A (Shared Database with `tenant_id` filtering)**: Low ops, single database, shared SQLite/Postgres FTS5 index. Low blast-radius isolation depends on query filters.
+> 2. **Option B (Database-per-tenant isolation)**: Hard cryptographic filesystem boundary per tenant, zero risk of data leakage, trivial tenant backup/deletion, but cross-tenant analytics are impossible.
+>
+> **Recommended default**: I recommend **Option B (Database-per-tenant SQLite with FTS5)**. In our existing architecture, SQLite databases are zero-cost files, giving enterprise customers strict tenant isolation without any database server overhead.
+>
+> Does Database-per-tenant SQLite fit your operational model, or do you need cross-tenant queries?
 
-New evidence changes the leading hypothesis: a queue was plausible before the retry
-contract was known; direct transactional ingestion now deserves priority. If these
-facts were in the original brief, reuse them rather than repeating this interview.
+**User**:
+> "Database-per-tenant SQLite is genius for us. We never query across tenants. Let's do that."
 
-## Compare against actual constraints
+---
 
-Present this comparison before the final design:
+## Turn 3: Edge Case & Termination Check
 
-| Direction | Fit and cost | What must be true |
-| --- | --- | --- |
-| Direct transactional PostgreSQL | Reuses service; non-2xx during downtime; sender retries. Candidate recommendation because delay is acceptable. | Retry contract covers outages; duplicates are safe; measured capacity meets agreed targets. |
-| Durable buffer and worker | Decouples acceptance from DB availability; adds another component to operate/recover. Rejected for this release's operating constraint. | Persistence, overflow, retention, recovery and acknowledgment established; current pub/sub is not evidence. |
+**Agent**:
+> Data isolation locked: Database-per-tenant SQLite with local FTS5 indexing.
+>
+> The final decision frontier node is **Tenant Provisioning & Migration**:
+>
+> How should tenant database schema migrations be synchronized when the application updates?
+>
+> **Recommended default**: Apply embedded migrations lazily on tenant database connection open (with schema version pragma check). It avoids central migration bottlenecks and handles dormant tenants transparently.
+>
+> Can I proceed with this migration approach?
 
-Don't force a third option. Direct storage would also fail if acceptance during DB
-downtime were required with no durable external retry source. The same technology
-can be credible in one context and wrong in another.
+**User**:
+> "Yes, that's simple and reliable."
 
-Recommendation: direct storage, conditional on capacity validation. Reverse if retry
-coverage fails or immediate independent acceptance becomes a requirement. Don't
-promise latency, unlimited scale or zero loss based on architecture names.
+---
 
-If the user owns the choice, ask here. If they said "choose and implement", record
-your choice and proceed under that authority; don't collect approval again.
+## Turn 4: Predictability Termination & Artifact Emission
 
-## A compact design with substantive decisions
+**Agent**:
+> **Termination Trigger**: 3-Question Predictability Reached (>95% confidence). The architectural direction, storage engine, isolation boundary, and migration lifecycle are fully resolved.
+>
+> Emitting the agreed **Builder-Ready Design Specification**, **ADR-0001**, and **Domain Glossary**:
 
-Example status: PROPOSED. Delivery contract and observations above are fixture
-evidence; capacity validation is pending. This isn't implementation-ready until the
-gate is resolved or an appropriately bounded next step is agreed.
+```markdown
+# Architectural Specification: Multi-Tenant Search Engine
 
-- Intent: prevent acknowledged events disappearing during DB restart.
-- Success: new events receive 2xx only after commit; retry cannot duplicate the
-  business effect. Stakeholders accept maintenance delay within sender retries.
-- Scope: retain application and PostgreSQL; no new service or changed billing
-  semantics. Failure even if functional: success before durable transaction completion.
-- Alternatives: direct storage selected for operating fit; durable buffering rejected
-  this release, reconsidered if acceptance must survive DB outages.
-- Flow: reuse vendor authentication/validation; commit event and required local effect
-  atomically where supported, then acknowledge. Inspect seams before naming APIs.
-- Recovery: transient DB failure returns non-2xx and relies on the verified retry
-  contract. Commit followed by response loss is safe through event_id uniqueness.
-  Distinguish a previously committed duplicate from a conflicting payload; don't
-  suppress uniqueness errors without checking the committed record.
-- Acceptance: DB down causes no success; concurrent delivery produces one effect;
-  retry after response loss succeeds for the stored event; invalid authentication
-  follows documented vendor behavior.
-- Ownership: maintenance delay/no new services are user constraints. Internal names
-  and reuse of transaction helpers are builder calls.
-- Evidence gap: agree and measure capacity/acknowledgment targets at the existing
-  public seam. A burst count is an input, not a passing load test.
-- Next: validate capacity, then use existing planning/implementation contracts.
+## 1. Overview & Business Goal
+Provide enterprise-grade search capabilities for up to 100 tenants (each ~50k documents) with zero dedicated infrastructure ops overhead and guaranteed tenant data isolation.
 
-## Project design contents
+## 2. Architecture & Components
+- **Storage & Indexing**: Database-per-tenant SQLite database located at `data/tenants/{tenant_id}/search.db`.
+- **Search Engine**: SQLite FTS5 virtual tables (`documents_fts`) with BM25 ranking.
+- **Connection Manager**: `TenantSearchPool` cache maintaining LRU open connections to active tenant DBs.
+- **Migration Engine**: Lazy pragmas on connection acquisition (`PRAGMA user_version`).
 
-Record these in the existing design; omit irrelevant sections and reuse sufficient
-contracts. This is a content aid, not a mandatory second document.
+## 3. Floor Invariants (Hard Non-Negotiables)
+1. Under NO circumstances may a query execute without an authenticated, validated `tenant_id`.
+2. Cross-tenant reads are structurally impossible (no shared SQLite database file).
+3. Database files must be created with `0600` POSIX permissions.
 
-1. Intent/evidence: concrete problem, stakeholder, why, current state; distinguish
-   code/source facts, reported claims and proposals.
-2. Success/boundaries: observable outcomes, goals, non-goals, anti-goals and binding
-   resource, privacy, operational or domain constraints.
-3. Alternatives/decision: credible paths, screening reasons, selected/delegated
-   direction, accepted costs and evidence that would reverse the recommendation.
-4. Responsibilities/flow: components or people, inputs/outputs/dependencies;
-   applicable interfaces/data, permissions and error semantics for software.
-5. Failure/recovery: realistic exceptions, interrupted/duplicate work, ownership,
-   recovery and relevant migration/compatibility; clearly named unknowns.
-6. Acceptance: normal/failure examples, observable signals, test seams or validation
-   actions and their limits. Proposed checks aren't test results.
-7. Ownership/handoff: user choices, agent defaults with reasons, unresolved assumptions
-   with owners and treatment, and only the next method actually needed.
+## 4. ADR-0001: Database-per-Tenant SQLite Architecture
+- **Status**: Accepted
+- **Context**: Need multi-tenant search for <=100 tenants with <50k docs each, with no dedicated ops team or heavyweight clusters.
+- **Decision**: Adopt database-per-tenant SQLite with native FTS5 full-text indexing.
+- **Alternatives Rejected**:
+  - Elasticsearch / Opensearch: Rejected due to operational complexity and lack of k8s cluster.
+  - Shared DB with `tenant_id` column: Rejected due to enterprise data co-mingling risk.
+- **Consequences**: Strict tenant isolation achieved; zero server operational overhead. Cross-tenant aggregation is not supported by design.
 
-Readiness means no guessing at consequential intent, not specifying every internal
-detail. An agreed investigation can be the next deliverable while a claim is unverified.
+## 5. Domain Glossary
+| Domain Term | Canonical Definition | Anti-Terms | Code Identifier |
+|---|---|---|---|
+| **Tenant DB** | Isolated SQLite database file holding a single tenant's search index. | "Main DB", "Shared Index" | `data/tenants/{tenant_id}/search.db` |
+| **Tenant Pool** | Thread-safe LRU cache managing active tenant SQLite handles. | "Connection Pool", "Server" | `TenantSearchPool` |
+| **FTS Index** | SQLite FTS5 virtual table indexing document title and body. | "Cluster", "ES Index" | `documents_fts` |
 
-## Builder-check prompt
-
-Independent review is conditional on benefit, authority and capacity. No nested
-delegation. Otherwise check inline and state the actual mode. Review adds no authority.
-
-```text
-Read the supplied design and relevant permitted evidence. You must carry it out
-without the author's unstated intent. Find consequential ambiguities, contradictions,
-infeasible options and unsupported claims. For each, cite the passage/evidence,
-explain the wrong outcome a builder could produce, and give the smallest resolution.
-Separate:
-- ANSWERED: answer exists; cite and incorporate it.
-- BUILDER_CALL: reversible detail within delegation; propose a default.
-- USER_DECISION: outcome/trade-off outside delegation; name the actual choice.
-- EVIDENCE_GAP: needs source inspection/experiment; specify the check.
-Report blockers and owners first. Invent no objections to meet a quota.
-If none remain, report no material blocker found and the evidence limits.
-Do not edit, spawn, approve for the user or claim a check ran.
+## 6. Handoff to Implementation
+- Next Phase: Invoke `andino-planning` to break down `TenantSearchPool`, FTS5 schema migration, and repository query interfaces.
 ```
 
-Fix findings using evidence, not a vote. Ask the actual owner only when necessary.
-Recheck affected findings; another review without new evidence is not progress.
+---
 
-## Stress cases and stopping rules
+## Anti-Pattern Contrast: What We Prevented
 
-- Vague nonsoftware goal: "Help our elderly neighbors." Ask about a recent difficulty
-  before assuming an app. A ride rota and a phone check-in solve different problems;
-  don't invent preferences or success numbers.
-- Rich brief: reuse supplied outcomes/constraints. Probe missing consequences only;
-  don't restart with "what is your goal?"
-- Delegated choice: choose a viable default and mark it yours. No forced vote,
-  mandatory subagent or repeated approval.
-- Polished incomplete design: "Always return 200 after enqueue; Redis exists."
-  Fails readiness without persistence, overflow and recovery evidence. Good prose
-  cannot average away this gap.
-- One viable path: explain why others fail constraints; don't offer rejected paths
-  as viable to meet a quota.
-- No tools: distinguish supplied facts/assumptions; return a conditional brief or
-  experiment without fabricated inspection/review.
-- Visual uncertainty: a sketch, diagram or agreed throwaway prototype answers one
-  question. Record finding/limits before production; preserve UI choice/permissions.
-- Stop exploration: if another answer cannot materially change the next safe,
-  reversible action, state a default and proceed. Otherwise resolve the decision
-  or evidence gap. Theoretical completeness is not a blocker.
-
-These are application examples, not executed behavioral benchmarks. The parent
-workflow owns actual evaluation and completion evidence.
+| Typical AI Assistant Failure | Elevated `andino-brainstorming` Behavior |
+|---|---|
+| Immediately spits out 500 lines of Elasticsearch Docker Compose code. | Challenges the user's operational constraints; learns they have no ops team and avoids Elasticsearch completely. |
+| Recites an exhaustive 10-question checklist all at once. | Asks exactly 1 question on the unblocked frontier, pairing it with a high-conviction recommended default. |
+| Lets "scalable and flexible" pass without definition. | Decomposes buzzwords into exact numbers (100 tenants, 50k docs) and concrete failure limits. |
+| Starts writing production code before the user approves the architecture. | Hard pre-implementation gate: stops and presents design, ADR, and glossary for explicit user consensus. |
