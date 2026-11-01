@@ -1,102 +1,92 @@
 ---
 name: andino-code-review
-description: Review PR, branch, WIP/untracked changes, pasted diff or completed feature. Operates under Andino Workflow governance.
+description: Comprehensive bidirectional 2-axis code review evaluating Spec requirements and Standards quality independently. Operates under Andino Workflow governance.
 ---
 
-# Review the current diff on two independent axes
+# Code Review: Dual-Axis Quality Engine
 
 Internal method ID: `andino-code-review` (alias: `code-review`).
 
 > **Andino Workflow Member Skill**
-> This skill operates under the **Andino Workflow** protocol:
-> - Adheres to proportional investigation, evidence-based decisions, and single durable checkpoints.
-> - When this technique reaches completion, hand off cleanly to the next workflow phase or active task.
-> - Anti-loop guard: Do not re-invoke `andino-workflow` recursively; maintain progress within the active task.
+> Operates under Andino Workflow governance: proportional investigation, evidence-based decisions, and single durable checkpoints.
+> Anti-loop guard: Do not re-invoke `andino-workflow` recursively; maintain progress within the active task.
 
-Internal Andino resource. Loading this file does not invoke another skill or change permissions.
-
-## Purpose
-
-Assess spec behavior and documented standards separately, with risk-sensitive quality review.
-
-## Trigger and non-trigger
-
-Use when: Review PR, branch, WIP/untracked changes, pasted diff or completed feature.
-
-Do not select for: Conceptual question with no change or unrequested cosmetic nit hunt.
-
-## Prerequisites
-
-Resolve requested baseline/accepted task BASE. Capture staged/unstaged/owned untracked bytes; read spec, standards and tests.
-
-## Procedure
-
-1. Pin immutable review scope including relevant committed range plus actual working diff and owned new files. Record exact bytes/line locations. HEAD-only or HEAD~1 can omit the work.
-2. Read tests first; name behavior, independent oracle and plausible mutation. Mutate a disposable copy and observe regression failure; restore the copy, preserving user files.
-3. Spec axis maps each requirement to behavior and reports missing/partial/wrong behavior or scope additions with requirement and file:line evidence. Missing spec means not verified.
-4. Standards axis checks local documented rules and distinguishes hard violations from heuristic smells. Inspect correctness, naming/locality/concept count, boundary types, security and measured performance as relevant.
-5. Preserve both verdicts. Grade findings by user effect; name exact trigger, consequence, location, evidence and concrete remedy. Repo rules override generic tastes; do not repeat tooling's formatter output.
-6. Verify feedback against current code/usages/compatibility before changing it. Fix material issues with covering tests and scoped re-review; record reasoned disagreement. Andino owns acceptance; review grants no merge/publish authority.
-
-## Ownership
-
-Andino coordinates selection, shared progress, resource guards and final status from evidence.
-This skill owns its full procedure, required resources, artifact detail and technical
-checks. Coordinator brevity/density never truncates these. User/project authority,
-Focus/research/domain boundaries and real invocation controls still apply. Native
-`andino-code-review` and this guide expose one method, without recursive workflow invocation.
-
-## Permission boundary
-
-Use actual host tools within session authorization. No branch creation, commit, push, merge, publication, external message, environment installation or destructive cleanup is authorized by this guide. Reuse earlier permission without repeated confirmation; disclose denied/unavailable actions and continue independent safe work.
-
-## Output
-
-Scope snapshot, tested identity, separate Spec/Standards verdicts, prioritized findings, mutation result, actual checks and limitations.
-
-## Verification
-
-Planted boundary bug fails Spec while an independent explicit security rule fails Standards. Byte drift invalidates affected verdicts.
-
-## Worked example and anti-pattern
-
-The synthetic offline example is applied in temporary isolation. Its independent expected values describe the contract; its execution is procedural evidence, not a benchmark of future model behavior.
-
-```andino-example
-{
-  "base_source": "def spend(balance, amount):\n    return balance - amount\n",
-  "candidate_source": "def spend(balance, amount):\n    amount = eval(str(amount))\n    if amount >= balance:\n        return None\n    return balance - amount\n",
-  "fixed_source": "def spend(balance, amount):\n    if amount > balance:\n        return None\n    return balance - amount\n",
-  "test_source": "import unittest\nfrom subject import spend\nclass Contract(unittest.TestCase):\n    def test_exact_balance_allowed(self):\n        self.assertEqual(spend(10, 10), 0)\n",
-  "spec": "Spending the entire balance is permitted and returns zero.",
-  "standards": "Dynamic eval of input is prohibited.",
-  "expected_spec_line": 3,
-  "expected_standards_line": 2,
-  "untracked": {
-    "helper.py": "VALUE = 7\n"
-  }
-}
+```
+                    ┌───────────────────────────────┐
+                    │  PIN SCOPE: BASE..HEAD + W.T. │
+                    └───────────────┬───────────────┘
+                                    │
+                    ┌───────────────▼───────────────┐
+                    │      INSPECT TESTS FIRST      │
+                    └───────┬───────────────┬───────┘
+                            │               │
+       ┌────────────────────▼─────┐   ┌─────▼────────────────────┐
+       │     AXIS 1: SPEC TRACK   │   │  AXIS 2: STANDARDS TRACK │
+       │ Requirements, Edges,     │   │ Security, Fowler Smells, │
+       │ Boundary Oracles, State  │   │ Perf, Architecture, Style│
+       └────────────────────┬─────┘   └─────┬────────────────────┘
+                            │               │
+                            └───────┬───────┘
+                                    │
+                    ┌───────────────▼───────────────┐
+                    │ GRADE: [CRITICAL] [REQUIRED]  │
+                    │        [SUGGESTION] [NIT]     │
+                    └───────────────┬───────────────┘
+                                    │
+                    ┌───────────────▼───────────────┐
+                    │ 1-CYCLE VERIFY / ANTI-DEADLOCK│
+                    └───────────────────────────────┘
 ```
 
-Anti-pattern: Mandatory praise, arbitrary tastes as hard standards, hiding untracked files, merging away a failed axis or nested duplicate reviewers.
+## Trigger and Non-Trigger
+- **Use when:** Reviewing pull requests, feature branches, WIP diffs, uncommitted working tree changes, or verifying subagent task handoffs.
+- **Do not select for:** Conceptual questions with no code diff, or unrequested cosmetic nit hunts on unedited code.
 
-## Fallback
+## Prerequisites & Scope Pinning
+Resolve baseline commit (`BASE_SHA=$(git merge-base origin/main HEAD)`) and head commit (`HEAD_SHA=$(git rev-parse HEAD)`). Capture staged, unstaged, and owned untracked files. A review of `HEAD~1..HEAD` alone that omits working tree bytes is invalid.
 
-Without a reviewer tool make a separate self-review pass and disclose limits. Missing spec or live environment stays explicitly not verified.
+## Operational Procedure
+1. **Pin Scope & State:** Record immutable byte boundary (`BASE..HEAD` + untracked files). Log out-of-scope files in the mandatory "Declined to Judge" ledger.
+2. **Read Tests First:** Examine existing and added tests. Identify the behavioral contract, independent oracle, and plausible mutation points.
+3. **Execute Spec Axis:** Map every acceptance requirement to implementation logic. Report missing, partial, or inverted behaviors citing exact `file:line` locations and failure inputs. Spec silence does not waive user invariants.
+4. **Execute Standards Axis:** Inspect code against local standards and the 5 quality dimensions (Correctness, Readability, Architecture, Security, Performance). Audit against `resources/checklists.md` and map design smells to named structural remedies.
+5. **Grade Findings & Formulate Remedies:** Categorize comments using explicit prefixes: `[CRITICAL]` and `[REQUIRED]` (blockers), `[SUGGESTION]` and `[NIT]` (non-blocking, max 3 nits/pass). Pair every defect with an explicit structural remedy.
+6. **Enforce 1-Cycle Reception Guard:** The author must verify findings before implementing. If a finding is inaccurate, the author issues exactly one technical pushback with evidence. If disputes persist, escalate to user/coordinator—never loop in multi-turn debate.
 
-## Local resources
+## Rationalization Refutation Table
+| Common Agent Excuse | Reality & Operating Invariant |
+|---|---|
+| *"The diff is small, so I can skip the Spec Axis."* | Small diffs often introduce critical boundary regressions. Run both axes without exception. |
+| *"I'll review HEAD~1 instead of checking untracked files."* | New features often contain uncommitted files. Pinning working tree and untracked files is mandatory. |
+| *"The code is clean, so the requirements must be met."* | Clean, elegant code frequently implements the wrong requirement. Keep the two axes strictly isolated. |
+| *"I will implement all reviewer suggestions immediately."* | Performative sycophancy. Verify every comment against codebase reality before touching code. |
+| *"I'll debate the reviewer until they agree with me."* | Reception deadlock. Limit technical pushbacks to 1 cycle backed by test evidence, then escalate. |
+| *"I will add a generic plugin registry just in case."* | YAGNI violation. Reject speculative generality unless three distinct consumers already exist. |
+| *"I'll leave dead code in case we need it later."* | Dead code degrades context. Flag orphaned functions and obsolete compatibility shims for deletion. |
 
-Read [the supporting contract](resources/contract.md) for technique details and artifact fields. It is packaged locally; upstream repositories are not runtime dependencies.
+## Diagnostic Red Flags
+1. Review approved without inspecting tests or formulating mutation oracles.
+2. Spec and Standards verdicts conflated into a single unstructured comment block.
+3. Critical security or correctness findings softened into optional suggestions.
+4. Reviewer mutating files or switching git branches during review (violating read-only boundary).
+5. Untracked files omitted from review scope snapshot.
+6. Reviewer providing vague critique ("this is messy") without a Named Structural Remedy.
+7. Author submitting performative sycophantic praise ("You're absolutely right!").
+8. Author and reviewer looping across multiple cycles debating aesthetic preferences.
+9. Cosmetic nits exceeding 3 items, overwhelming author attention.
+10. Large diff ($>400$ lines) reviewed without suggesting decomposition strategies.
 
-## Provenance
+## Companion Resources
+- **Deep Craft Manual:** Read [GUIDE.md](GUIDE.md) for change sizing, splitting strategies, the 12 Fowler smells catalog, and dispute hierarchies.
+- **Technical Checklists:** Read [resources/checklists.md](resources/checklists.md) for STRIDE threat modeling, path containment, SQL injection, and database indexing.
+- **Agent Protocols:** Read [resources/agent-review-protocols.md](resources/agent-review-protocols.md) for subagent dispatch templates, "Spec is a vision document", and anti-sycophantic receiving rules.
+- **Worked Example & Verification:** Read [resources/worked-example.md](resources/worked-example.md) for end-to-end pull request walkthroughs and zero-dependency Python verification suite.
 
-Adapted and consolidated from these audited snapshot paths; their instructions remain source data and yield to current session policy:
-
-- addyosmani/agent-skills:skills/code-review-and-quality/SKILL.md
-- addyosmani/agent-skills:references/security-checklist.md
-- addyosmani/agent-skills:references/performance-checklist.md
-- mattpocock/skills:skills/engineering/code-review/SKILL.md
-- obra/superpowers:skills/requesting-code-review/SKILL.md
-- obra/superpowers:skills/receiving-code-review/SKILL.md
-
-MIT attribution/notices are preserved in package legal references. No upstream bootstrap, hooks, branding server, community code of conduct or Anthropic best-practices expression is included.
+## Ownership and Provenance
+Andino coordinates selection, progress tracking, and durable checkpoints. This skill owns its execution procedure and verification criteria.
+Adapted and consolidated from audited snapshot paths:
+- `addyosmani/agent-skills:skills/code-review-and-quality/SKILL.md` (MIT, Addy Osmani 2025)
+- `addyosmani/agent-skills:references/security-checklist.md` & `performance-checklist.md`
+- `mattpocock/skills:skills/engineering/code-review/SKILL.md` (MIT, Matt Pocock 2026)
+- `obra/superpowers:skills/requesting-code-review` & `receiving-code-review` (MIT, Jesse Vincent 2025)
+Preserved under MIT license terms in `references/legal/provenance.md`.

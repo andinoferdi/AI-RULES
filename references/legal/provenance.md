@@ -53,3 +53,14 @@ ready GitHub Actions workflows, service container isolation, feature flag lifecy
 and rationalization refutations) with Andino Workflow's deterministic agent error
 reflection loop, token-efficient log filtering, staged canary rollouts, and offline DAG
 dependency evaluation.
+
+The 2026-11-01 elevation of `code-review` synthesizes the multi-axis quality craft
+of Addy Osmani's `code-review-and-quality` (5-axis review, named structural remedies,
+change sizing, dead code hygiene, dependency discipline, and deep security/performance
+checklists) with Matt Pocock's `engineering/code-review` (strict 2-track isolation
+of Spec Axis vs Standards Axis, 12 Martin Fowler smells catalog) and Obra Superpowers
+(`requesting-code-review` and `receiving-code-review` bidirectional lifecycle protocols,
+context window isolation, "Spec is a vision document" philosophy, "Declined to judge"
+logging, and anti-sycophantic receiving rules with 1-cycle deadlock prevention),
+verified through deterministic two-axis Python test evaluation.
+

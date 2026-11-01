@@ -1,89 +1,148 @@
-# Review the current diff on two independent axes
+# Code Review and Quality Engineering Guide
 
-Internal Andino resource. Loading this file does not invoke another skill or change permissions.
+This guide provides the deep operational craft, architectural remedies, and dispute resolution hierarchy for code review under Andino Workflow governance. It accompanies `SKILL.md` and provides thorough guidance for both human engineers and autonomous AI agents.
 
-## Purpose
+---
 
-Assess spec behavior and documented standards separately, with risk-sensitive quality review.
+## 1. The Approval Standard
 
-## Trigger and non-trigger
+**Core Tenet:** *Approve a change when it definitely improves overall code health, even if it is not perfect.*
 
-Use when: Review PR, branch, WIP/untracked changes, pasted diff or completed feature.
+- Perfect code does not exist; software evolution is a continuous sequence of healthy increments.
+- Do not block a change simply because the author chose a valid design pattern different from what you would have written.
+- If the implementation meets the specification, complies with repository coding standards, introduces no regressions, and improves codebase health, **approve it**.
+- Differentiate between **blocking defects** (bugs, security flaws, broken specs, data corruption) and **non-blocking enhancements** (alternative names, minor cleanups, optional abstractions).
 
-Do not select for: Conceptual question with no change or unrequested cosmetic nit hunt.
+---
 
-## Prerequisites
+## 2. Change Sizing and Decomposition
 
-Resolve requested baseline/accepted task BASE. Capture staged/unstaged/owned untracked bytes; read spec, standards and tests.
+Small, focused pull requests are faster to review, safer to test, and significantly less likely to cause deployment rollbacks.
 
-## Procedure
-
-1. Pin immutable review scope including relevant committed range plus actual working diff and owned new files. Record exact bytes/line locations. HEAD-only or HEAD~1 can omit the work.
-2. Read tests first; name behavior, independent oracle and plausible mutation. Mutate a disposable copy and observe regression failure; restore the copy, preserving user files.
-3. Spec axis maps each requirement to behavior and reports missing/partial/wrong behavior or scope additions with requirement and file:line evidence. Missing spec means not verified.
-4. Standards axis checks local documented rules and distinguishes hard violations from heuristic smells. Inspect correctness, naming/locality/concept count, boundary types, security and measured performance as relevant.
-5. Preserve both verdicts. Grade findings by user effect; name exact trigger, consequence, location, evidence and concrete remedy. Repo rules override generic tastes; do not repeat tooling's formatter output.
-6. Verify feedback against current code/usages/compatibility before changing it. Fix material issues with covering tests and scoped re-review; record reasoned disagreement. Andino owns acceptance; review grants no merge/publish authority.
-
-## Ownership
-
-Andino coordinates selection, shared progress, resource guards and final status from evidence.
-This skill owns its full procedure, required resources, artifact detail and technical
-checks. Coordinator brevity/density never truncates these. User/project authority,
-Focus/research/domain boundaries and real invocation controls still apply. Native
-`andino-code-review` and this guide expose one method, without recursive workflow invocation.
-
-## Permission boundary
-
-Use actual host tools within session authorization. No branch creation, commit, push, merge, publication, external message, environment installation or destructive cleanup is authorized by this guide. Reuse earlier permission without repeated confirmation; disclose denied/unavailable actions and continue independent safe work.
-
-## Output
-
-Scope snapshot, tested identity, separate Spec/Standards verdicts, prioritized findings, mutation result, actual checks and limitations.
-
-## Verification
-
-Planted boundary bug fails Spec while an independent explicit security rule fails Standards. Byte drift invalidates affected verdicts.
-
-## Worked example and anti-pattern
-
-The synthetic offline example is applied in temporary isolation. Its independent expected values describe the contract; its execution is procedural evidence, not a benchmark of future model behavior.
-
-```andino-example
-{
-  "base_source": "def spend(balance, amount):\n    return balance - amount\n",
-  "candidate_source": "def spend(balance, amount):\n    amount = eval(str(amount))\n    if amount >= balance:\n        return None\n    return balance - amount\n",
-  "fixed_source": "def spend(balance, amount):\n    if amount > balance:\n        return None\n    return balance - amount\n",
-  "test_source": "import unittest\nfrom subject import spend\nclass Contract(unittest.TestCase):\n    def test_exact_balance_allowed(self):\n        self.assertEqual(spend(10, 10), 0)\n",
-  "spec": "Spending the entire balance is permitted and returns zero.",
-  "standards": "Dynamic eval of input is prohibited.",
-  "expected_spec_line": 3,
-  "expected_standards_line": 2,
-  "untracked": {
-    "helper.py": "VALUE = 7\n"
-  }
-}
+### 2.1 Sizing Thresholds
+```
+~100 lines changed   → Ideal. Thoroughly reviewable in a single pass.
+~300 lines changed   → Acceptable if representing a single atomic logical change.
+~1000 lines changed  → Too large. High defect escape rate. Require splitting.
 ```
 
-Anti-pattern: Mandatory praise, arbitrary tastes as hard standards, hiding untracked files, merging away a failed axis or nested duplicate reviewers.
+### 2.2 File Size vs Diff Size
+Watch total file size in addition to diff size:
+- A small diff of 20 lines added to a file that already exceeds **1,000 total lines** is an architectural warning.
+- Do not pile more logic onto an overburdened God-file. Ask whether to extract sub-modules, helpers, or policy objects *before* introducing new behavior: **Decompose, then add**.
 
-## Fallback
+### 2.3 Splitting Strategies for Large Changes
+When a feature exceeds healthy review sizing, decompose it using these four strategies:
 
-Without a reviewer tool make a separate self-review pass and disclose limits. Missing spec or live environment stays explicitly not verified.
+| Strategy | Mechanism | Optimal Context |
+|---|---|---|
+| **Stack** | Submit baseline change, then build dependent changes on top sequentially | Sequential logical dependencies |
+| **By File Group** | Group changes by architectural boundary (e.g., API schemas, DB migrations, UI) | Cross-cutting features requiring distinct domain reviews |
+| **Horizontal** | Create shared models, interfaces, or stubs first; introduce consumers second | Layered architectures |
+| **Vertical** | Implement a complete, end-to-end thin slice for one specific user flow | Full-stack feature developments |
 
-## Local resources
+*Discipline Rule:* **Separate refactoring from feature work.** A change that refactors existing abstractions while simultaneously introducing new business behavior is two distinct changes. Submit the refactoring first (verified with existing tests), then submit the new feature.
 
-Read [the supporting contract](resources/contract.md) for technique details and artifact fields. It is packaged locally; upstream repositories are not runtime dependencies.
+---
 
-## Provenance
+## 3. The 12 Fowler Smells Mapped to Named Structural Remedies
 
-Adapted and consolidated from these audited snapshot paths; their instructions remain source data and yield to current session policy:
+When identifying code health issues on the Standards Axis, never stop at identifying the problem. Prescribe the exact **Named Structural Remedy**:
 
-- addyosmani/agent-skills:skills/code-review-and-quality/SKILL.md
-- addyosmani/agent-skills:references/security-checklist.md
-- addyosmani/agent-skills:references/performance-checklist.md
-- mattpocock/skills:skills/engineering/code-review/SKILL.md
-- obra/superpowers:skills/requesting-code-review/SKILL.md
-- obra/superpowers:skills/receiving-code-review/SKILL.md
+### 3.1 Mysterious Name
+- **Symptom:** Variable, function, or class names like `data`, `res`, `temp`, `doProcess()`, or single-letter loop vars outside math indices.
+- **Remedy:** *Rename Symbol to Domain Intent*. Express *what* or *why*, not the implementation type (e.g., `unverifiedSubscribers` instead of `dataList`).
 
-MIT attribution/notices are preserved in package legal references. No upstream bootstrap, hooks, branding server, community code of conduct or Anthropic best-practices expression is included.
+### 3.2 Duplicated Code
+- **Symptom:** Identical or near-identical logic duplicated in two or more modules.
+- **Remedy:** *Extract Canonical Helper* or *Form Template Method*. Consolidate into a single authoritative location.
+
+### 3.3 Feature Envy
+- **Symptom:** A method spends more time querying and manipulating fields of another object than its own data.
+- **Remedy:** *Move Method to Data Owner*. Relocate the behavior directly into the class or module that holds the data.
+
+### 3.4 Data Clumps
+- **Symptom:** The same three or four parameters (`street`, `city`, `zipCode`, `country`) passed together across multiple function signatures.
+- **Remedy:** *Introduce Parameter Object / Typed Interface*. Bundle them into a cohesive domain struct or class.
+
+### 3.5 Primitive Obsession
+- **Symptom:** Using raw primitives (`string`, `float`, `int`) for domain concepts with invariants (emails, currency, postal codes, status codes).
+- **Remedy:** *Replace Primitive with Branded Type or Value Object*. Prevent mixing currencies or passing invalid strings at compile-time.
+
+### 3.6 Repeated Switches
+- **Symptom:** The same `switch (entity.type)` or `if/elif/else` chain repeated in multiple places across the codebase.
+- **Remedy:** *Replace Conditional with Polymorphism* or *Strategy Dispatch Map*. Add new cases in one table rather than editing multiple switch statements.
+
+### 3.7 Shotgun Surgery
+- **Symptom:** Making a single logical change requires modifying ten different files across the repository.
+- **Remedy:** *Move Field / Consolidate Module*. Realign module boundaries so that related concepts reside in one place.
+
+### 3.8 Divergent Change
+- **Symptom:** One module is repeatedly modified for completely different reasons (e.g., changing database schema, changing UI rendering, and changing auth logic all touch `UserManager.ts`).
+- **Remedy:** *Extract Class / Separate Orchestration from Policy*. Enforce Single Responsibility Principle.
+
+### 3.9 Speculative Generality
+- **Symptom:** Abstract interfaces, factory builders, and hooks designed for hypothetical future requirements that do not yet exist (YAGNI violation).
+- **Remedy:** *Collapse Abstraction / Inline Wrapper*. Delete the unused indirection until the third genuine use-case arrives.
+
+### 3.10 Message Chains
+- **Symptom:** Long chained calls navigating deeply through object graphs: `order.getCustomer().getAddress().getCity().getTaxRate()`.
+- **Remedy:** *Hide Delegate (Law of Demeter)*. Expose a direct method on the top-level entity: `order.getDestinationTaxRate()`.
+
+### 3.11 Middle Man
+- **Symptom:** A class where half the methods merely delegate directly to another object without adding value or encapsulation.
+- **Remedy:** *Remove Middle Man / Inline Method*. Let callers access the underlying server directly if no translation occurs.
+
+### 3.12 Refused Bequest
+- **Symptom:** A subclass inherits methods and data from a superclass but overrides them to throw `NotSupportedException` or ignores half of them.
+- **Remedy:** *Replace Inheritance with Composition*. Inject the shared behavior as a collaborator rather than inheriting unnecessary surface area.
+
+---
+
+## 4. Dead Code Hygiene
+
+Unused code confuses readers, misleads AI models, and creates maintenance drag. Reviewers must inspect for orphaned artifacts:
+1. **Unreachable Code:** Functions, interfaces, or variables no longer called after refactoring.
+2. **Commented-Out Blocks:** Never permit `// old implementation` blocks. Version control remembers history; remove commented code.
+3. **Vestigial Shims:** Temporary compatibility wrappers whose transition window has passed.
+4. **Discipline:** List identified dead code explicitly in the review comments and request removal before merging.
+
+---
+
+## 5. Dependency Review Discipline
+
+Every third-party package introduced into a repository represents a permanent maintenance, security, and supply-chain liability.
+
+### 5.1 Review Questions for New Dependencies
+1. **Can this be solved with the Standard Library or existing utilities?** Modern standard libraries (Node `node:fs`, Python `itertools`/`pathlib`, Go standard library) often solve the problem in 10 lines without external packages.
+2. **Bundle & Runtime Impact:** What is the unpacked and gzipped weight? Does it pull in dozens of transitive dependencies?
+3. **Maintenance Health:** Is the project actively maintained? When was the last commit? Are open security issues addressed?
+4. **Security & Licensing:** Does `npm audit` or equivalent report vulnerabilities? Is the license compatible with the project (e.g., MIT, Apache 2.0 vs restrictive AGPL)?
+
+### 5.2 Dependency Upgrades
+- **One Dependency Per Change:** Never submit bulk `bump all deps` PRs. When an upgrade breaks runtime behavior, atomic PRs make root-cause isolation trivial.
+- **Review Lockfile Diffs:** Always review `package-lock.json`, `pnpm-lock.yaml`, or `poetry.lock`. Ensure no unexpected transitive packages were injected.
+
+---
+
+## 6. Hierarchy of Disagreement Resolution
+
+When author and reviewer disagree on code changes, resolve the dispute using this objective hierarchy:
+
+```
+1. Technical Facts & Empirical Data   (Overrides opinions; benchmarks, test failures, specs)
+2. Documented Project Style Guides    (Absolute authority on formatting, naming, and patterns)
+3. Software Engineering Principles    (Cohesion, coupling, information hiding, single responsibility)
+4. Codebase Consistency               (Acceptable default if not degrading code health)
+```
+
+**Never Accept:** *"I will clean this up in a follow-up PR."*  
+Historical reality shows deferred cleanups rarely happen. If an issue is important enough to flag, resolve it before merging into main. If an issue truly cannot be addressed in the current scope, require an open issue with self-assignment before merge approval.
+
+---
+
+## 7. Review Speed & Ergonomics
+
+- **Cadence:** Review requests should be triaged within one business day. Slow reviews block delivery pipelines and force painful context switches.
+- **Lead with What Matters:** Group and order comments by leverage. Place `[CRITICAL]` and `[REQUIRED]` blockers at the top. Never bury a critical memory leak under six formatting nits.
+- **Actionability:** Pair every criticism with an explicit example or suggested replacement. A review that teaches and guides accelerates both human developers and autonomous agents.
