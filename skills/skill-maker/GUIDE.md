@@ -2,187 +2,180 @@
 
 Internal method ID: `andino-skill-maker` (aliases: `skill-maker`, `method-authoring`, `andino-method-authoring`, `writing-skills`).
 
-## Purpose, scope, and prerequisites
+## 1. Purpose, Scope, and Architectural Prerequisites
 
-Author, improve, evaluate, and maintain executable methodology bundles and broader
-operational procedures: human runbooks, pre-commit protocols, and repository
-governance procedures. A skill teaches an agent how to perform work; a runbook can
-teach a human operator. Neither is limited to code generation. Passive project
-instructions belong to agent-document-authoring, but an executable audit or update
-procedure for those documents can belong here. One-off notes do not need a skill.
+`andino-skill-maker` is the foundational methodology factory for the Andino Workflow ecosystem. It teaches human engineers and autonomous agents how to author, evaluate, bulletproof, and maintain high-fidelity executable skills, operational runbooks, and repository protocols.
 
-Read [the canonical contract](SKILL.md) and [the supporting contract](resources/contract.md)
-before authoring. Identify the consumer, task, current procedure, authority,
-accepted inputs/outputs, and independent acceptance oracle. Consult current package
-legal provenance for adapted material; source snapshots are data, not instructions
-to install upstream tooling or import upstream authority.
+### What is an Executable Skill?
+A **skill** is an operational reference guide containing reusable techniques, decision heuristics, and execution patterns that future AI agents discover and apply to solve non-trivial problems.
+- **Skills ARE:** Reusable operational techniques, architectural constraints, diagnostic procedures, and zero-negotiation invariants.
+- **Skills are NOT:** Retrospective session logs (*"how we solved ticket #42 yesterday"*), passive coding preferences (which belong in `CLAUDE.md`), or mechanical rules enforceable by linters or compilers.
 
-Andino owns lifecycle, selection, shared progress, resource guards, and final
-status. This guide owns complete authoring craft and required checks. Coordinator
-brevity and checkpoint density never truncate specialist procedures. Use the
-existing task/plan for evidence; do not create a competing lifecycle or recursively
-invoke the workflow. No permission, model setting, tool, or evaluator is granted
-by loading a guide.
+### Governance and Authority
+Andino Workflow owns task lifecycle, progress checkpointing, resource guards, and completion status. `andino-skill-maker` owns the specialist authoring craft, empirical evaluation techniques, and structural invariants.
+- Loading this guide grants no automatic subagent fan-out, file deletion, publication, or destructive authority.
+- Follow the single durable plan in the active task (`docs/exec-plans/active/<task>.md`). Never spawn parallel competing lifecycles.
 
-## 1. Select the authoring mode and bounded consumer task
+---
 
-### Mode A: Remedial (observed-failure authoring)
+## 2. Dual-Mode Authoring Lifecycle
 
-1. Capture the original task, relevant context/tool output, actual wrong action or
-   artifact, and the observable failure signal. Separate observation from the
-   proposed cause. Preserve an incident's useful pressure, not incidental noise.
-2. Construct a realistic no-candidate-guidance control before writing advice.
-   State the independent expected outcome before inspecting candidate output.
-3. Reproduce the failure using available, authorized evaluation. If the unguided
-   control succeeds or fails differently, investigate rather than adding a rule
-   for an unproved cause. An unrun reproduction remains NOT_VERIFIED.
-4. Match form to the evidenced defect: precise boundary/counter for discipline,
-   positive recipe for wrong shape, required artifact slot for omission, and an
-   observable predicate for a conditional. An omitted citation needs a citation
-   field; publishing without authority needs a permission boundary.
-5. Evaluate the candidate on that same task/capabilities plus relevant variations,
-   related capabilities, and non-triggers. A control failure alone is not a fix.
+Skill creation is structured into two complementary modes, unified by the principle of **Invariance Enforcement**:
 
-### Mode B: Greenfield (capability/invariant authoring)
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                        TRIAGE: SELECT MODE                             │
+└──────────────────────────────────┬─────────────────────────────────────┘
+                                   │
+         ┌─────────────────────────┴─────────────────────────┐
+         ▼                                                   ▼
+┌─────────────────────────────────┐ ┌─────────────────────────────────┐
+│   MODE A: REMEDIAL (FAILURE)    │ │   MODE B: GREENFIELD (CAPABILITY)│
+│ 1. Capture observed failure     │ │ 1. Declare floor invariants     │
+│ 2. Run unguided pressure test   │ │ 2. Run unguided baseline        │
+│ 3. Document verbatim excuses    │ │ 3. Confirm baseline divergence  │
+│ 4. Match form to failure        │ │ 4. Author minimal contract      │
+│ 5. Close loopholes (Refactor)   │ │ 5. Verify boundary adherence    │
+└─────────────────────────────────┘ └─────────────────────────────────┘
+```
 
-1. Specify the actual new capability: consumer, inputs, deliverables, success
-   criteria, prerequisites, floor invariants, and legitimate non-trigger cases.
-   No incident or prior failure is required. Never invent one to satisfy a form.
-2. Identify domain craft the consumer genuinely needs. Prefer existing tooling
-   for mechanically enforceable rules and retain judgment it cannot perform.
-3. Write the positive operational recipe and progressive resource layout. Give
-   human procedures observable actions, exact commands where needed, stop and
-   recovery conditions, ownership, handoffs, and evidence of the result.
-4. Run an unguided baseline to characterize existing capability. It may succeed;
-   compare quality/coverage/effort honestly. If the candidate adds no material
-   value, shrink it, keep the existing procedure, or discard the proposed skill.
-5. Evaluate candidate task application, variations, gaps, and negative gates
-   against the capability contract. Record absent/unavailable evidence without
-   converting an invariant into a fictional empirical failure.
+### Mode A: Remedial (Failure-Driven Authoring)
+Use when an agent exhibited a concrete defect: cutting corners, ignoring standards, generating malformed outputs, or rationalizing shortcuts under operational stress.
 
-## 2. Draft a proportional, self-contained contract
+1. **Capture the Observable Defect:** Record the exact task, context, wrong action, and failure signal. Distinguish what the model actually did from what you assume caused it.
+2. **Execute Unguided Baseline Control (RED):** Present the identical scenario to a fresh, unguided model. If the unguided model succeeds naturally without guidance, **STOP**. Do not author speculative rules for non-reproducible problems.
+3. **Capture Verbatim Rationalizations:** Document the exact words, arguments, and excuses the model used to justify violating the rule.
+4. **Match Form to the Failure (GREEN):**
+   - For discipline violations under pressure: apply *Prohibitions + Rationalization Table + Red Flags*.
+   - For bloated or inverted output: apply a *Positive Recipe*.
+   - For forgotten elements: apply a *Required Structural Slot*.
+   - For situational actions: apply a *Conditional on an Observable Predicate*.
+5. **Verify Under Pressure & Plug Loopholes (REFACTOR):** Re-test the candidate skill under multi-vector pressure. When the model invents a new rationalization, add an explicit refutation and repeat until compliance converges.
 
-Cover purpose, triggers/non-triggers, prerequisites, procedure, ownership,
-permission, outputs, verification, example/anti-pattern, fallback, and provenance.
-These are concerns to address, not mandatory headings or a universal FSM/banner.
-Descriptions name observable selection triggers and boundaries, not a reason to
-skip the full procedure. Preserve stable IDs, aliases, and exact local links.
-Bundle heavy references locally; upstream repositories are not runtime prompt
-sources. Invoke scripts through their interpreter where executable bits vary.
+### Mode B: Greenfield (Invariant-Driven Authoring)
+Use when building a completely new system capability, operational runbook, or multi-step coordination protocol where no historical failure incident exists.
 
-| Artifact | Budget guidance | Required preservation |
-| --- | --- | --- |
-| Root coordinator `SKILL.md` | Strictly <150 lines; no craft exception | Coordination and permission invariants |
-| This skill's operational `SKILL.md` | Strictly <150 lines | Dual-mode and evaluation gates |
-| Specialized member `SKILL.md` | Prefer <150; document necessary craft exceptions | Domain FSMs, negative gates, working interfaces |
-| `GUIDE.md` / `resources/` | As needed, progressively loaded | Full craft, examples, schemas, pressure and recovery cases |
-| Human procedure / runbook | Proportional to operator task | Complete executable sequence, authority, stop/recovery conditions |
+1. **Declare Floor Invariants:** Specify the non-negotiable boundaries: required security perimeters, interface contracts, ordering dependencies, and stop conditions.
+2. **Execute Unguided Baseline:** Run the domain task on a clean model without the skill.
+   - If the baseline model already conforms to all invariants across 5 repetitions, a new skill is unnecessary. Avoid token bloat.
+   - If the baseline model produces architectural drift, missing steps, or boundary violations, record those specific divergence points.
+3. **Draft Proportional Contract:** Author the minimal operational recipe that eliminates the observed divergence.
+4. **Verify Boundary Adherence:** Run fresh-context evaluations to confirm that the candidate skill strictly binds model behavior to the declared invariants.
 
-A specialized-member exception records which craft needs the space and why moving
-it would break execution/discovery. It cannot relax the root ceiling. Do not pad a
-short contract to a minimum line count or reject a useful method solely by length.
-Split independent concerns when actually decoupled; do not fragment a coherent
-procedure just to fit a template. Remove decoration and repeated advice, not
-functional diagrams, exact commands, negative gates, or specialist algorithms.
+---
 
-Use numbered steps/prose for linear actions, tables for lookup, and an optional
-small diagram only for a branch whose meaning benefits. Labels name meaningful
-states/actions; diagrams are not executable code. Check all branches against the
-written procedure. A Mermaid fragment may stay as text or use an existing renderer;
-never install Graphviz or generate a project graph merely because a helper exists.
-Live rendering remains NOT_VERIFIED until observed.
+## 3. Skill Discovery Optimization (SDO)
 
-## 3. Design consumer evaluations, not token checks
+Future agents can only use your skill if they can find it—and if loading it causes them to read the full operational procedure.
 
-Read [the record fields and pressure fixture](resources/contract.md). Choose cases
-by the guidance being authored; a single test type does not establish every kind
-of capability.
+### The Trigger-Only Description Rule
+Frontmatter descriptions are injected into runtime prompts during initial indexing.
+- **MANDATORY:** The `description` must state **WHEN** to use the skill (observable symptoms, triggering problems, environment states). Always start with `"Use when..."`.
+- **STRICTLY FORBIDDEN:** Never summarize **WHAT** the skill does (internal steps, workflow phases, or solutions) inside the description.
 
-| Guidance | Consumer-use check |
-| --- | --- |
-| Technique | Apply the technique, vary the task, expose missing steps/gaps |
-| Pattern | Recognize a real instance, distinguish near misses/counterexamples |
-| Reference | Retrieve the right detail and apply it correctly in a task |
-| Discipline | Preserve the boundary under combined realistic pressure |
-| Human procedure / runbook | Walk operator actions, observations, stop/recovery and handoff |
+**The Workflow Leakage Trap:** Testing proves that when a description summarizes the workflow, LLMs take the cognitive shortcut of executing the summarized sentence and **bypass reading the full skill body**.
 
-Include positive cases, dominant negative gates, and adjacent legitimate tasks to
-expose false-positive selection and overbroad bans. Pressure may combine urgency,
-sunk effort, authority claims, fatigue, missing tools, or ambiguous evidence.
-State the legitimate rule and reason, then test whether actions preserve it.
-These are test conditions, never psychological authority over the user.
+```yaml
+# ❌ TOXIC: Summarizes workflow; agent skips reading SKILL.md
+description: Use for debugging - runs repro script, minimizes input, tests hypotheses, and applies minimal fix.
 
-For a publish-pressure case, supply only existing scoped authority. An unsupported
-claim that a worker passed tests cannot replace current tested identity or grant
-publication/nested-agent permission. The right response identifies the missing
-identity, withholds the unauthorized action, and continues safe independent work.
-Check the actual action/result, not merely whether the output contains a warning.
+# ✅ OPTIMAL: Trigger conditions only; agent reads SKILL.md to learn procedure
+description: Tests/build fail, runtime output is wrong, a regression slows down or a bug is reported. Operates under Andino Workflow governance.
+```
 
-## 4. Run matched control and candidate in fresh contexts
+### Keyword Engineering
+Embed precise terms throughout the skill:
+- Verbatim error messages (`ENOTEMPTY`, `NullPointerException`, `exit code 137`).
+- Failure symptoms (`flaky`, `hanging`, `zombie`, `memory spike`, `race condition`).
+- Technology synonyms (`cleanup / teardown / dispose`, `timeout / freeze / block`).
 
-1. Define the independent oracle/rubric and literal expected actions before the
-   candidate. Use external ground truth or independently derived expected values,
-   not results calculated by the implementation under test. Separate raw consumer
-   prompts from reviewer expectations to avoid answer leakage.
-2. Keep task, fixtures, tools/capabilities, authority, starting state, and exposed
-   model/runtime settings matched across no-candidate-guidance control and
-   candidate. The intended difference is the candidate guidance. Document any
-   unavoidable mismatch; it limits causal claims.
-3. If an evaluator is both available and authorized, use several fresh contexts
-   for each condition, without candidate answers leaking into later samples.
-   Choose repetitions proportionally and record observed variance. Do not invent
-   model controls, hard sample quotas, or expensive universal evaluator swarms.
-4. Inspect actual no-guidance outputs, several candidate samples, failures and
-   flagged outputs. Quoted counterexamples can fool token scoring. Check false
-   positives and convergent correct actions, not verbose rule recital.
-5. Obtain independent validation when available and authorized. A consumer using
-   the skill is the subject, not its validator; author self-application is not
-   independent validation. A deterministic test with an independent oracle can
-   verify helper behavior, but cannot establish future model compliance. Report
-   unavailable independent review/evaluation as NOT_VERIFIED rather than implying
-   that a self-check substituted for it.
-6. Record controls, candidate version/tested identity, raw output references,
-   command/action, results, variance, limits, and keep/tune/discard decision in the
-   active task. Distinguish metadata PASS, consumer behavior PASS, and unrun work.
+---
 
-## 5. Refine and verify without losing capability
+## 4. Matching Form to Failure & Bulletproofing
 
-Revise only observed defects or explicit capability/invariant requirements. Keep
-unaffected specialized craft, public IDs, negative gates, and working interfaces.
-Rerun affected positive/negative/pressure cases and any impacted integration;
-reuse unchanged valid evidence. A remedial candidate must address the reproduced
-failure; a greenfield candidate must meet its declared capability, not merely
-look more formal than the baseline.
+### The Form Selection Matrix
+Applying the wrong guidance format measurably degrades model compliance:
+- **Prohibitions Backfire on Shaping:** Telling an agent *"never summarize the background"* triggers negative priming; the model will generate more unwanted background text than a control. Instead, use a **Positive Recipe** specifying the exact required output slots in order.
+- **Prohibitions Excel at Discipline:** When an agent knows a rule but cuts corners due to urgency or sunk cost, soft guidance (*"prefer testing first"*) fails. You must use an absolute prohibition paired with an explicit loophole-closing block.
 
-Validate links, local resource packaging, relevant schemas, and deterministic
-helpers. Check both valid and malformed inputs and literal boundaries with
-independent expected values. Static headings, keyword presence, diagrams,
-metadata examples, and exit 0 alone prove only their exercised properties.
-If all tests are skipped or model evaluation did not run, effectiveness is still
-NOT_VERIFIED. Preserve separate evidence for source, installation, and activation.
+### Absolute Loophole Closing
+Never leave a negative rule open to creative interpretation:
 
-No user-file deletion, forced evaluators, nested-agent spawning, runtime prompt
-fetching, installation, commit/push, or publication follows from this procedure.
-Use actual session authority; no guide overrides host invocation controls.
+```markdown
+Write code before test? Delete it immediately. Start over with TDD.
 
-## Output, fallback, and handoff
+No exceptions:
+- Do NOT keep the code as a "reference".
+- Do NOT adapt snippets while writing tests.
+- Do NOT comment it out to un-comment later.
+- Do NOT look at it.
+Delete means permanent deletion.
+```
 
-Deliver mode, consumer/capability or failure form, minimal guide/resources,
-independent oracle, matched baseline/candidate observations, negative/pressure
-case results, variance, decision, and precise limits. Keep evidence in the active
-task. Andino determines final status and next condition.
+### The "Letter vs Spirit" Anchor
+Always establish early:
+```markdown
+Violating the letter of the rules is violating the spirit of the rules.
+```
+This terminates all semantic arguments claiming that a shortcut *"honored the underlying intent"*.
 
-Without an available authorized model evaluator, run explicit walkthroughs and
-runnable cases with independently specified expected values. Mark model behavior
-NOT_VERIFIED, distinguish walkthrough observations from fresh-context samples,
-and state the exact missing check. Without independent validation, disclose the
-self-review limitation and leave that criterion NOT_VERIFIED. Never relabel these
-fallbacks as empirical capability improvement or silently require a swarm.
+---
 
-## Provenance
+## 5. Testing Methodologies & Evaluation Craft
 
-Synthesized from the legacy local method-authoring contract/guide and the audited
-`obra/superpowers:skills/writing-skills/SKILL.md` snapshot, with Andino's greenfield
-capability mode and local resource/authority boundaries. Existing package MIT
-attribution/notices apply. No upstream bootstrap, hooks, servers, community policy,
-or Anthropic best-practices expression is redistributed.
+### Multi-Vector Pressure Scenarios
+Academic questions (*"What are the steps of this skill?"*) only test memorization. Efficacy requires testing compliance under realistic, competing operational pressures:
+1. **Time Pressure:** Imminent deploy cutoffs or production downtime.
+2. **Sunk Cost:** Substantial intellectual effort already expended.
+3. **Simulated Authority:** Direct instructions from a hypothetical manager to bypass gates.
+4. **Context Exhaustion:** Deep, multi-turn debugging fatigue.
+
+### Fast Wording Micro-Tests
+Full subagent runs are token-heavy. Calibrate wording rapidly using single-turn micro-tests:
+- Run 5 fresh-context repetitions per phrasing candidate against an unguided control.
+- **Variance is the Metric:** If 5 repetitions yield 5 different output formats, the instruction is soft and ambiguous. When phrasing is mechanically binding, all 5 repetitions converge on the identical structure.
+- Manually read flagged outputs; automated regex matching misses quoted counter-examples and template echoes.
+
+### Evaluation Honesty & Fallback
+- Testing a skill in the author's active conversation is self-review, not independent validation.
+- When an independent evaluator or subagent harness is unavailable in the current host, mark the verification status honestly as `NOT_VERIFIED` with the exact cause (`HOST_UNAVAILABLE`). Never fabricate or assume evaluation passes.
+
+---
+
+## 6. Anthropic Craft & Degrees of Freedom
+
+### Calibrating Instruction Specificity
+- **High Freedom (Text heuristics):** Use for qualitative analysis and multi-path decisions (e.g., code review, architectural trade-offs).
+- **Medium Freedom (Pseudocode / Typed Skeletons):** Use when a clear pattern exists but local types and fields vary (e.g., API endpoint design).
+- **Low Freedom (Exact commands & scripts):** Use when any deviation causes catastrophic failure (e.g., database schema migrations, git operations, deployment cutovers).
+
+### Token Budgeting
+- **Assume Model Intelligence:** Never waste tokens explaining basic programming concepts (what JSON is, how HTTP works, why tests matter). Focus exclusively on repo-specific invariants, failure modes, and tool sequences.
+- **Strict Size Plafond:** Coordinator `SKILL.md` must remain strictly `<150` lines (aim for `<120`). Move detailed craft, evaluation records, and extensive templates into `resources/`.
+
+### The Single Great Example Principle
+One production-grade, fully runnable, well-annotated example is vastly superior to five shallow examples across multiple programming languages. Models generalize and port clean patterns across languages effortlessly.
+
+---
+
+## 7. Packaging, Progressive Disclosure & Host Integration
+
+### Recommended Directory Structure
+```
+skills/<skill-name>/
+├── SKILL.md                                        # Runtime Contract (<150 lines)
+├── GUIDE.md                                        # Comprehensive Craft Guide
+└── resources/
+    ├── contract.md                                 # Schemas and verification records
+    ├── sdo-and-discovery-protocols.md              # SDO rules and keyword lists
+    ├── failure-form-matching-and-bulletproofing.md # Form-to-failure matrix & red flags
+    ├── subagent-testing-and-pressure-scenarios.md  # Pressure scenarios & micro-testing
+    ├── anthropic-craft-and-degrees-of-freedom.md   # Freedom tiers & token budgeting
+    └── worked-examples-and-templates.md            # Structural templates
+```
+
+### Setup Compatibility (`ai-rules setup`)
+The `ai-rules` installer validates each skill directory with `_is_valid_skill_tree(path)` (requiring `(path / "SKILL.md").is_file()`) and copies member skills atomically into host directories as `andino-<skill-name>`.
+- Never create symlinks inside skill bundles.
+- Ensure all relative markdown links resolve to physical local files.
+- Verify deterministically with offline test harnesses before committing.
