@@ -174,6 +174,18 @@ class LiveUpdateTests(unittest.TestCase):
         (second / "check.py").write_bytes(b"print('different')\r\n")
         self.assertNotEqual(contents(first), contents(second))
 
+    def test_crlf_extensionless_script_matches_source_but_changed_code_does_not(self):
+        from ai_rules.release.latest import contents
+
+        first, second = self.root / "lf-script", self.root / "crlf-script"
+        first.mkdir()
+        second.mkdir()
+        (first / "run-check").write_bytes(b"#!/usr/bin/env bash\necho ok\n")
+        (second / "run-check").write_bytes(b"#!/usr/bin/env bash\r\necho ok\r\n")
+        self.assertEqual(contents(first), contents(second))
+        (second / "run-check").write_bytes(b"#!/usr/bin/env bash\r\necho different\r\n")
+        self.assertNotEqual(contents(first), contents(second))
+
     def test_git_workflow_refreshes_native_member_on_update_and_current_parent(self):
         member = self.remote / "skills/plan-execution"
         member.mkdir(parents=True)

@@ -45,7 +45,12 @@ def contents(root: Path) -> dict[str, str]:
             if parent == root and name == ".git":
                 continue
             data = path.read_bytes()
-            if path.suffix.lower() in {".md", ".json", ".txt", ".yaml", ".yml", ".py"}:
+            if (path.suffix.lower() in {
+                ".md", ".json", ".jsonl", ".txt", ".yaml", ".yml", ".py",
+                ".sh", ".bash", ".ps1", ".cmd", ".bat", ".js", ".ts",
+                ".html", ".css", ".toml", ".xml", ".csv", ".svg",
+                ".gitignore", ".gitattributes", ".editorconfig",
+            } or path.suffix == "") and b"\0" not in data:
                 data = data.replace(b"\r\n", b"\n")
             result[path.relative_to(root).as_posix()] = hashlib.sha1(
                 b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
