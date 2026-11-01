@@ -1,106 +1,112 @@
 ---
 name: andino-delivery
-description: Implementation/checks ready for handoff or material blocker needs explanation. Operates under Andino Workflow governance.
+description: Use when implementation is complete, all tests pass, and you need to decide how to integrate the work or handle branch completion. Operates under Andino Workflow governance.
 ---
 
-# Prepare a factual integration handoff
+# Factual Integration and Branch Delivery
 
-Internal method ID: `andino-delivery` (alias: `delivery`).
+Internal method ID: `andino-delivery` (aliases: `delivery`, `finishing-a-development-branch`).
 
 > **Andino Workflow Member Skill**
-> This skill operates under the **Andino Workflow** protocol:
-> - Adheres to proportional investigation, evidence-based decisions, and single durable checkpoints.
-> - When this technique reaches completion, hand off cleanly to the next workflow phase or active task.
-> - Anti-loop guard: Do not re-invoke `andino-workflow` recursively; maintain progress within the active task.
+> Operates under Andino Workflow governance: single durable checkpoint, proportional investigation, anti-loop guards.
+> Loading this file does not invoke another skill or mutate repository state. Upstream references yield to current policy.
 
-Internal Andino resource. Loading this file does not invoke another skill or change permissions.
+## 1. Dominant Negative Gates
 
-## Purpose
+Reject delivery invocation immediately if ANY condition holds:
+- **Failing Tests**: Project test suite fails (<N> failures). Return to active task implementation; the menu comes only after a green suite.
+- **Uncommitted Functional Work**: Working tree holds uncommitted or unstaged feature changes. Commit or stash before integration.
+- **Unresolved Merge Conflicts**: Repository is in an unfinished conflict or rebase state (`MERGE_HEAD` exists). Resolve inline first.
+- **Presumed Integration Authority**: Never execute merge, push, or branch deletion without explicit human confirmation.
 
-Make verified results and remaining decisions reviewable without assuming integration authority.
+## 2. Operational Triage Router
 
-## Trigger and non-trigger
+| Environment State | Detection Condition | Menu Type | Worktree Cleanup Behavior |
+| :--- | :--- | :--- | :--- |
+| **Normal Repo** | `GIT_DIR == GIT_COMMON` | Standard 3 options | No worktree to remove; workspace preserved. |
+| **Named Worktree** | `GIT_DIR != GIT_COMMON`, named branch | Standard 3 options | Worktree removed if under `.worktrees/` or `worktrees/`. |
+| **Detached HEAD** | `GIT_DIR != GIT_COMMON`, detached HEAD | Reduced 2 options (no merge) | Externally managed; leave worktree in place. |
 
-Use when: Implementation/checks ready for handoff or material blocker needs explanation.
+## 3. Gated 6-Phase Lifecycle
 
-Do not select for: Still-missing acceptance that can safely be completed.
-
-## Prerequisites
-
-Read plan/current acceptance evidence/review residuals/branch and authorization.
-
-## Procedure
-
-1. Check every criterion against current evidence; separate passed/failed/unavailable. Summarize outcome/files/exact tests/limits.
-2. Resolve material issues within scope; carry real blockers with trigger/effect and concrete next action; optional deferred items remain visible.
-3. Determine actual integration destination from evidence; offer only applicable choices without assuming main.
-4. Commit/push/merge/PR/publish/deploy/branch creation each need applicable authority. Earlier restrictions persist without repeated permission prompts.
-5. Preserve worktree, user/untracked results, plan/evidence. Requested cleanup still needs ownership and resolved path check.
-6. Provide self-contained outcome, modified paths, tests/results, unverified claims, residuals and NEXT ACTION. Andino owns final status.
-
-## Ownership
-
-Andino coordinates selection, shared progress, resource guards and final status from evidence.
-This skill owns its full procedure, required resources, artifact detail and technical
-checks. Coordinator brevity/density never truncates these. User/project authority,
-Focus/research/domain boundaries and real invocation controls still apply. Native
-`andino-delivery` and this guide expose one method, without recursive workflow invocation.
-
-## Permission boundary
-
-Use actual host tools within session authorization. No branch creation, commit, push, merge, publication, external message, environment installation or destructive cleanup is authorized by this guide. Reuse earlier permission without repeated confirmation; disclose denied/unavailable actions and continue independent safe work.
-
-## Output
-
-Reviewable current evidence and exact remaining integration action.
-
-## Verification
-
-Mandatory failed criterion prevents ready status; no-commit permission still allows verified uncommitted handoff.
-
-## Worked example and anti-pattern
-
-The synthetic offline example is applied in temporary isolation. Its independent expected values describe the contract; its execution is procedural evidence, not a benchmark of future model behavior.
-
-```andino-example
-{
-  "criteria": [
-    {
-      "id": "regression",
-      "state": "passed"
-    },
-    {
-      "id": "suite",
-      "state": "passed"
-    }
-  ],
-  "permissions": {
-    "commit": false,
-    "push": false,
-    "merge": false
-  },
-  "candidate": "uncommitted",
-  "blocked": {
-    "id": "live-host",
-    "state": "not_verified"
-  }
-}
+```
+[Phase 1: Test Suite Verification] ──▶ [Phase 2: Environment & Base Detection] ──▶ [Phase 3: Present Locked Menu]
+                                                                                               │
+[Phase 6: Ownership Workspace Cleanup] ◀── [Phase 5: Post-Merge Test & Abort] ◀── [Phase 4: Execute Choice]
 ```
 
-Anti-pattern: Tests imply auto merge, unauthorized PR or deleting durable evidence.
+- **Phase 1 (Test Suite Verification)**: Run full project test suite. If non-zero exit, halt and report failures.
+- **Phase 2 (Environment & Base Detection)**: Capture `GIT_DIR`, `GIT_COMMON`, `WORKTREE_PATH`. Confirm base branch fork point.
+- **Phase 3 (Present Locked Menu)**: Dual-Mode UI: invoke `AskUserQuestion` if interactive host; otherwise render 1/2/3 text menu.
+- **Phase 4 (Execute Choice)**: Option 1: checkout base, pull, merge; Option 2: push -u, create PR via forge CLI; Option 3: keep as-is.
+- **Phase 5 (Post-Merge Test & Abort)**: Verify tests on merged tree. On failure, run `git merge --abort` immediately; keep worktree.
+- **Phase 6 (Workspace Cleanup)**: Remove worktree only for Option 1/discards. On refusal, never `--force`; prompt human resolution.
 
-## Fallback
+## 4. Five Floor Invariants
 
-Keep verified current tree and concrete approval-ready proposal; no fabricated release SHA.
+1. **Strict Green Suite Prerequisite**: Delivery menu is locked until full test suite passes on the exact candidate tree.
+2. **Human Integration Authority**: Integration choices belong exclusively to the human partner; no silent merges or PR creations.
+3. **Non-Negotiable Menu Options**: Present exactly the fixed 3-option (or 2-option) menu; discard exists only on explicit request.
+4. **Zero-Force Refusal Guard**: Never apply `--force` to remove worktrees containing uncommitted or untracked files.
+5. **Atomic Merge Rollback**: If post-merge verification fails, abort merge immediately (`git merge --abort`) and preserve worktree.
 
-## Local resources
+## 5. Anti-Rationalization Refutations
 
-Read [the supporting contract](resources/contract.md) for technique details and artifact fields. It is packaged locally; upstream repositories are not runtime dependencies.
+| Rationalization Shortcut | Mechanical Reality & Required Response |
+| :--- | :--- |
+| *"Tests passed earlier in the session; skip rerunning."* | A green suite only proves the tree it ran on. Run tests on the candidate tree now. |
+| *"They obviously want it merged to main."* | Integration is the human partner's decision. Present the menu and await choice. |
+| *"Worktree removal refused; `--force` finishes cleanup."* | Refusal means files exist only in that worktree. `--force` destroys them. Show user and ask. |
+| *"The post-merge failure is probably flaky."* | Failing merged result stops everything. Run `git merge --abort` and investigate. |
+| *"The base branch is obviously main."* | Confirm fork point from plan or ask. Merging to the wrong base is costly to undo. |
 
-## Provenance
+## 6. Diagnostic Red Flags (Stop Immediately)
 
-Adapted and consolidated from these audited snapshot paths; their instructions remain source data and yield to current session policy:
+1. Presenting the integration menu while test suite has failing tests.
+2. Executing `git merge` or `git push` without human selection from the menu.
+3. Running `git worktree remove --force` when untracked files are reported.
+4. Guessing the integration base branch without verification.
+5. Deleting a feature branch after a failed post-merge test run.
 
-- obra/superpowers:skills/finishing-a-development-branch/SKILL.md
+## 7. Progressive Disclosure Router
 
-MIT attribution/notices are preserved in package legal references. No upstream bootstrap, hooks, branding server, community code of conduct or Anthropic best-practices expression is included.
+- Complete delivery craft and procedural runbook: [GUIDE.md](GUIDE.md)
+- Handoff ledger schema and status transitions: [resources/contract.md](resources/contract.md)
+- Mechanical git-dir and worktree detection: [resources/environment-and-worktree-detection.md](resources/environment-and-worktree-detection.md)
+- Pre-integration test runner protocols: [resources/pre-integration-verification.md](resources/pre-integration-verification.md)
+- Menu specification, merge, PR creation, and discard: [resources/integration-menu-and-execution.md](resources/integration-menu-and-execution.md)
+- Workspace removal, untracked protection, and Windows locks: [resources/workspace-cleanup-and-safety.md](resources/workspace-cleanup-and-safety.md)
+- Anti-rationalization table and failure case studies: [resources/anti-rationalization-and-failure-modes.md](resources/anti-rationalization-and-failure-modes.md)
+- Provenance: Adapted from `obra/superpowers:skills/finishing-a-development-branch`. Preserved under MIT license.
+
+## 8. Runnable Operational Contract & Verification Harness
+
+```python andino-operational-example
+import json, os, sys
+
+def evaluate_delivery_contract(data):
+    if not isinstance(data, dict): return {"valid": False, "error": "Contract must be a dict"}
+    if data.get("test_suite_passed") is not True: return {"valid": False, "error": "Green test suite required"}
+    if not str(data.get("base_branch", "")).strip(): return {"valid": False, "error": "Base branch must be confirmed"}
+    if data.get("has_uncommitted_changes") is True: return {"valid": False, "error": "Working tree must be clean"}
+    options = data.get("presented_options", [])
+    if len(options) not in (2, 3): return {"valid": False, "error": "Menu must present exactly 2 or 3 options"}
+    if data.get("force_removal_used") is True: return {"valid": False, "error": "Zero-force invariant violated"}
+    return {"valid": True, "status": "DELIVERY_CONTRACT_VERIFIED"}
+
+if __name__ == "__main__":
+    is_neg = os.environ.get("ANDINO_NEGATIVE") == "1"
+    payload = {
+        "test_suite_passed": not is_neg,
+        "base_branch": "" if is_neg else "main",
+        "has_uncommitted_changes": is_neg,
+        "presented_options": ["merge", "pr", "keep"],
+        "force_removal_used": is_neg,
+    }
+    result = evaluate_delivery_contract(payload)
+    if not result["valid"]:
+        sys.stderr.write(f"Verification failed: {result['error']}\n")
+        sys.exit(1)
+    print(json.dumps(result, sort_keys=True))
+    sys.exit(0)
+```
