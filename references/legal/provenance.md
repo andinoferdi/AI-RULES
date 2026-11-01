@@ -140,6 +140,23 @@ Fast-Path Deterministic and Deep Forensic Investigation, deep craft `GUIDE.md`, 
 catalogs, dual-runtime cross-platform portability in Bash POSIX and Python 3.8+ stdlib, offline
 deterministic Python stdlib verification, and complete integration with `ai-rules setup`).
 
+The 2026-11-01 elevation of `delegation` synthesizes the generative multi-agent delegation craft of
+Matt Pocock's `engineering/implement-spec` (task graph DAG modeling, active unblocked frontier tracking,
+context pointers replacing conversational chat dumps, and clean integration branch lifecycles),
+Jesse Vincent's Obra Superpowers `dispatching-parallel-agents` (problem domain independence verification,
+single-turn multi-dispatch concurrency, zero context pollution, and cross-domain integration verification),
+and Jesse Vincent's Obra Superpowers `subagent-driven-development` (fresh subagent per task, two-track
+review gates across Spec Compliance and Code Quality, 5-round escalating fix loop with Rounds 1–3 resume
+and Rounds 4–5 model tier escalation, Rule of 5 circuit breaker with durable `Ruling: ...` taxonomy,
+compaction-proof append-only progress ledger, and isolated brief/diff packaging) with Andino Workflow
+governance (high-density <150 line operational contract `SKILL.md` structured as a Gated Finite State
+Machine, tri-modal triage across Inline, Parallel Dispatch, and Subagent-Driven modes, deep craft `GUIDE.md`,
+modular progressive disclosure resources, dual-runtime cross-platform helper scripts in Python 3.8+ stdlib
+and POSIX shell wrappers for Windows/Linux/macOS, dual-mode workspace isolation with in-tree `.andino/delegation/`
+fallback and self-protecting `.gitignore`, offline deterministic Python stdlib verification, and complete
+integration with `ai-rules setup`). MIT notices for Matt Pocock and Jesse Vincent remain preserved.
+
+
 
 
 

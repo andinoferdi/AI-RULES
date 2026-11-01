@@ -232,11 +232,11 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 
 - Type: method
 - Family/provider: Andino internal; adapted source provenance in package legal records
-- Aliases: dispatching-parallel-agents resolves to canonical delegation; no upstream native registration required
-- Primary purpose: Bounded concurrent work
-- Trigger: Independent tasks justify concurrency AND user/host authorizes delegation.
-- Preferred when: Separate scopes reduce a demonstrated bottleneck.
-- Avoid when: Default fan-out, shared mutable scopes or absent authorization.
+- Aliases: dispatching-parallel-agents, subagent-driven-development, implement-spec resolve to canonical delegation; no upstream native registration required
+- Primary purpose: Bounded concurrent work and subagent-driven implementation
+- Trigger: Independent tasks justify concurrency or multi-task plan benefits from subagent-driven review gates AND user/host authorizes delegation.
+- Preferred when: Separate scopes reduce a demonstrated bottleneck or fresh context per task ensures quality.
+- Avoid when: Trivial mechanical edits, shared unresolved failure root causes, write collisions, or absent host worker tools.
 - Availability check: Check local skills/delegation/GUIDE.md and selected resources plus actual resource permissions.
 - Invocation method: Read [delegation](../skills/delegation/GUIDE.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
 - First-call/preflight: Read accepted task/project evidence and only the selected guide; retain one Andino plan.

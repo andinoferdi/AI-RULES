@@ -1,195 +1,166 @@
-# Delegate disjoint work under parent ownership
+# Delegate Disjoint Work Under Parent Ownership — Deep Craft Guide
 
-Internal Andino resource. Loading this file does not invoke another skill or change permissions.
+Internal Andino resource for `andino-delegation`. Operates under Andino Workflow governance.
 
-## Purpose
+---
 
-Use actual children only when independence, authority and benefit justify their cost.
+## 1. Architectural Overview & Synthesis
 
-## Trigger and non-trigger
+This guide elevates the engineering discipline of multi-agent delegation and task decomposition by synthesizing the proven craft of leading industry authorities into a machine-enforceable, agent-runnable engine:
 
-Use when: Bounded independent tasks or materially useful independent review.
+1. **Matt Pocock (`implement-spec`)**: Task graph DAG modeling, active unblocked frontier tracking, context pointers replacing conversational chat dumps, and clean integration branch lifecycles.
+2. **Jesse Vincent / Obra (`dispatching-parallel-agents`)**: Problem domain independence verification, single-turn multi-dispatch concurrency, zero context pollution, and cross-domain integration verification.
+3. **Jesse Vincent / Obra (`subagent-driven-development`)**: Fresh subagent per task, two-track review gates (Spec Compliance vs Code Quality), 5-round escalating fix loop (Rounds 1–3 resume, Rounds 4–5 model tier bump), Rule of 5 circuit breaker with durable `Ruling: ...` taxonomy, compaction-proof append-only progress ledger, and isolated brief/diff packaging.
+4. **Andino Workflow Governance**: High-density operational contract `SKILL.md` (<150 lines) structured as a Gated Finite State Machine (Gated FSM) with tri-modal triage (Inline vs Parallel Dispatch vs Subagent-Driven), dual-runtime (Python 3 stdlib + POSIX shell) cross-platform portability for Windows/Linux/macOS, dual-mode workspace isolation (Git worktree + in-tree directory fallback), offline deterministic verification (<0.2s), host synchronization, and full compatibility with `ai-rules setup`.
 
-Do not select for: Related unknown failures, shared write state, missing authority/tool or cheaper inline work.
+---
 
-## Prerequisites
+## 2. Tri-Modal Operational Triage
 
-Read the accepted graph/checkpoint; inspect the current host's actually exposed, authorized worker and model-selection capabilities and the task's expected benefit. Maximum three concurrently active direct children, no nested spawning; pin workspace and ownership. A tool or model name in a registry or upstream guide is not evidence that the current host can invoke it.
+To prevent delegation overhead on trivial edits while guaranteeing rigorous orchestration on complex multi-task implementations, apply tri-modal triage:
 
-## Execution strategies
-
-Choose one strategy for each ready task group:
-
-| Strategy | Use when | Execution |
-| --- | --- | --- |
-| Inline | Work is small or tightly coupled, workers would repeat context, delegation overhead exceeds its benefit, a suitable worker is unavailable, or the user/contract requires inline work. | Parent executes directly and keeps the same acceptance and evidence contract. |
-| Parallel independent work | At least two ready tasks can proceed without a shared unresolved cause, dependency, or write conflict, and the host exposes authorized workers. | Give each worker a disjoint scope and explicit producer/consumer interface. Parent owns integration and cross-task verification. |
-| Subagent-driven implementation | A sufficiently defined implementation plan benefits from scoped implementers and separate specification/quality review, and the host supports the needed worker workflow. | Dispatch within the same plan and worker cap. Run review at the smallest useful gate; use focused correction and re-review, then parent-level acceptance. |
-
-Multiple files or failures alone do not justify concurrency. Investigate failures with a plausible shared cause together. If a plan is ready but workers add no value or are unavailable, continue inline with the plan-execution method rather than pretending to dispatch.
-
-## Capability-aware selection
-
-Inspect the current host's real worker interface, limits, isolation options, and exposed model-selection metadata. Choose a model only when the host exposes the control, the selection is authorized, and its supported capabilities fit the role. Use the least demanding exposed option that can meet the task's requirements when this can be established from host metadata. If model selection is absent or capabilities are unclear, use the host default and record that selection as unavailable or unknown; never invent a model identity, setting, price, token budget, or cost saving. Consider total effort, including context transfer, retries, review, verification, and integration risk.
-
-## Procedure
-
-1. Compute the ready frontier from current producer evidence. Group failures that may share a cause; normalize write paths and reject exact or ancestor overlap before choosing parallel work.
-2. Select inline, parallel, or subagent-driven execution using the criteria above. Dispatch at most three concurrently active direct workers, only for ready tasks, with no nested spawning.
-3. Give each worker a brief containing the accepted outcome and spec/plan pointer, exact owned paths, verified consumed/produced interfaces, dependencies, known decisions and constraints, concrete acceptance and verification commands with expected signals, report location, and explicit no-nested-agent and no-unapproved-mutation boundaries. Mark any interface that is still uncertain; do not invent it.
-4. Track worker identity and status in the same parent plan/checkpoint. Require `DONE`, `DONE_WITH_CONCERNS`, `NEEDS_CONTEXT`, or `BLOCKED`, plus changed paths, actual commands/results, evidence and remaining work. Avoid whole-history prompts.
-5. Keep useful independent work moving while workers run; use bounded waits, not repeated short polling. A denied or missing tool means honest inline fallback, not fabricated dispatch or another-host bypass.
-6. Inspect the report and actual changed bytes. Run a specification-compliance review against the accepted outcome and a code-quality review against project conventions; scale these reviews to risk and avoid repeating unchanged checks. Parent owns integration and final acceptance.
-7. Correct only supported findings and re-review the affected diff. At most two transient retries; three unsuccessful correction attempts require architecture reassessment. A retry cap never satisfies failed material acceptance.
-
-## Ownership
-
-Andino coordinates selection, shared progress, resource guards and final status from evidence.
-This skill owns its full procedure, required resources, artifact detail and technical
-checks. Coordinator brevity/density never truncates these. User/project authority,
-Focus/research/domain boundaries and real invocation controls still apply. Native
-`andino-delegation` and this guide expose one method, without recursive workflow invocation.
-
-## Permission boundary
-
-Use actual host tools within session authorization. No branch creation, commit, push, merge, publication, external message, environment installation or destructive cleanup is authorized by this guide. Reuse earlier permission without repeated confirmation; disclose denied/unavailable actions and continue independent safe work.
-
-## Output
-
-Dispatch/no-dispatch rationale, graph/ownership, identities, reports, parent verification and residuals.
-
-## Verification
-
-Safe pair can run; dependency-not-ready, ancestor path collision, missing authority/tool cannot. No nested agents.
-
-## Worked example and anti-pattern
-
-The synthetic offline example is applied in temporary isolation. Its independent expected values describe the contract; its execution is procedural evidence, not a benchmark of future model behavior.
-
-```andino-example
-{
-  "tasks": [
-    {
-      "id": "api",
-      "deps": [],
-      "files": [
-        "src/api.py"
-      ]
-    },
-    {
-      "id": "docs",
-      "deps": [],
-      "files": [
-        "docs/api.md"
-      ]
-    },
-    {
-      "id": "ui",
-      "deps": [
-        "api"
-      ],
-      "files": [
-        "src/ui.py"
-      ]
-    }
-  ],
-  "overlap": [
-    {
-      "id": "a",
-      "deps": [],
-      "files": [
-        "src/shared"
-      ]
-    },
-    {
-      "id": "b",
-      "deps": [],
-      "files": [
-        "src/shared/config.py"
-      ]
-    }
-  ],
-  "max_children": 3,
-  "capability": true,
-  "authorized": true
-}
+```
+Task Intake:
+├── MODE 1: INLINE EXECUTION
+│   ├── Criteria: Small edit (<2 files, <50 LOC diff), tightly coupled changes, exploratory
+│   │             debugging with shared unknown root cause, or host lacks worker capabilities.
+│   └── Action: Parent agent executes directly; retains full verification and test evidence.
+├── MODE 2: PARALLEL DISPATCH (Single-Turn Concurrency)
+│   ├── Criteria: 2+ completely independent problem domains, zero shared state, separate test files,
+│   │             and no common root cause.
+│   └── Action: Multi-dispatch in a single turn; parent collects summaries, checks for conflicts, and integrates.
+└── MODE 3: SUBAGENT-DRIVEN IMPLEMENTATION (Gated FSM)
+    ├── Criteria: Multi-task implementation plan with clear specifications, where isolated context
+    │             per task and two-track review ensure quality.
+    └── Action: Fresh subagent per task, task brief via file pointer, two-track review,
+                fix loop escalation, parent ledger tracking.
 ```
 
-Anti-pattern: One child per failure count, shared-manifest concurrent writes, inherited permission escalation or automatic source implement-spec branches/merges.
+---
 
-## Capability and strategy example
+## 3. The 6-Phase Gated Finite State Machine (FSM)
 
-This example chooses only from the worker and model capabilities supplied by a hypothetical host. It demonstrates fallback and selection logic; it does not invoke a worker.
+When executing under Mode 3 (Subagent-Driven), the parent controller MUST complete each phase and satisfy its **Mechanical Exit Condition** before advancing.
 
-```python evolution-example
-import json
-
-def strategy(task, host):
-    if task["small"] or task["coupled"] or not task["delegation_value"]:
-        return "inline"
-    if not host["worker_available"] or not host["authorized"] or host["direct_limit"] <= 0:
-        return "inline"
-    if task["implementation"] and task["review_value"]:
-        return "subagent-driven"
-    if task["independent"]:
-        return "parallel"
-    return "inline"
-
-def model_choice(required, host):
-    if not host["model_selection_exposed"] or not host["authorized"]:
-        return {"selection": "host-default"}
-    for option in host["models"]:
-        if set(required) <= set(option["capabilities"]):
-            return {"selection": "host-confirmed", "identity": option["identity"]}
-    return {"selection": "host-default"}
-
-def direct_workers(requested, host):
-    if not host["worker_available"] or not host["authorized"]:
-        return 0
-    return min(requested, host["direct_limit"], 3)
-
-host = {
-    "worker_available": True,
-    "authorized": True,
-    "direct_limit": 3,
-    "model_selection_exposed": True,
-    "models": [{"identity": "exposed-1", "capabilities": ["implementation"]}],
-}
-result = {
-    "small_task": strategy({"small": True, "coupled": False, "delegation_value": True,
-                             "implementation": False, "review_value": False, "independent": True}, host),
-    "independent_task": strategy({"small": False, "coupled": False, "delegation_value": True,
-                                   "implementation": False, "review_value": False, "independent": True}, host),
-    "model": model_choice(["implementation"], host),
-    "unsupported_model": model_choice(["architecture"], host),
-    "direct_workers": direct_workers(4, {**host, "direct_limit": 4}),
-    "inline_fallback": strategy({"small": False, "coupled": False, "delegation_value": True,
-                                  "implementation": False, "review_value": False, "independent": True},
-                                 {**host, "worker_available": False}),
-}
-print(json.dumps(result, sort_keys=True))
+```
+┌──────────────┐     ┌──────────────┐     ┌──────────────┐
+│   PHASE 1    │ ──▶ │   PHASE 2    │ ──▶ │   PHASE 3    │
+│ Workspace &  │     │Frontier Calc │     │Brief Pointer │
+│ Ledger Setup │     │ & Path Lock  │     │ & Dispatch   │
+└──────────────┘     └──────────────┘     └──────────────┘
+       ▲                                         │
+       │ (Advance Frontier / Next Wave)          ▼
+┌──────────────┐     ┌──────────────┐     ┌──────────────┐
+│   PHASE 6    │ ◀── │   PHASE 5    │ ◀── │   PHASE 4    │
+│ Integrate &  │     │ Two-Track    │     │ Status Check │
+│ Final Review │     │ Review Loop  │     │ & Diff Pack  │
+└──────────────┘     └──────────────┘     └──────────────┘
 ```
 
-Expected output:
+### Phase 1: Workspace & Ledger Setup
+- **Objective**: Establish the isolated scratch workspace and compaction-resistant progress ledger.
+- **Rules**:
+  - Run `delegation_workspace.py PLAN_FILE` to establish `.andino/delegation/<plan-slug>/`.
+  - Ensure `.andino/.gitignore` protects against accidental tracking.
+  - Read `<workspace>/progress.md` if resuming; never re-dispatch tasks already marked `complete`.
+- **Mechanical Exit Condition**: Workspace directory confirmed and `progress.md` initialized on disk.
 
-```json
-{"direct_workers": 3, "independent_task": "parallel", "inline_fallback": "inline", "model": {"identity": "exposed-1", "selection": "host-confirmed"}, "small_task": "inline", "unsupported_model": {"selection": "host-default"}}
-```
+### Phase 2: Active Frontier Calculation & Disjoint Path Lock
+- **Objective**: Determine which uncompleted tasks are unblocked and guarantee zero write collision.
+- **Rules**:
+  - Calculate $\mathcal{F}_t = \{ T \in V \setminus C_t \mid \text{deps}(T) \subseteq C_t \}$.
+  - Verify $W(T_A) \cap W(T_B) = \emptyset$ and no ancestor path collision for all candidates.
+  - Apply concurrency ceiling: maximum 3 concurrently active direct workers.
+- **Mechanical Exit Condition**: Validated list of unblocked, collision-free tasks ready for dispatch.
 
-## Fallback
+### Phase 3: Brief Pointer & Dispatch
+- **Objective**: Generate isolated task briefs and dispatch workers with Zero Context Bleed.
+- **Rules**:
+  - Extract brief via `task_brief.py PLAN_FILE TASK_ID`.
+  - Pass brief path, report path, and contract pointers.
+  - Do NOT paste conversation history, prior task debates, or whole plan files.
+  - Record pre-dispatch `BASE` commit (`git rev-parse HEAD`).
+- **Mechanical Exit Condition**: Task brief on disk and subagent dispatched.
 
-Do work inline with same contract when benefit/tool/authority is absent. Supply missing evidence to blocked child; never redispatch unchanged repeatedly.
+### Phase 4: Worker Execution & Status Check
+- **Objective**: Collect implementer output and generate scoped diff package.
+- **Rules**:
+  - Worker returns short status contract (<15 lines).
+  - Verify detailed report exists at `task-[N]-report.md`.
+  - Record post-implementation `HEAD` commit.
+  - Generate diff package via `review_package.py PLAN_FILE BASE HEAD`.
+- **Mechanical Exit Condition**: Clean diff package written to `review-<base7>..<head7>.diff`.
 
-## Local resources
+### Phase 5: Two-Track Review & Fix Loop
+- **Objective**: Enforce independent gates for Spec Compliance (Track 1) and Code Quality (Track 2).
+- **Rules**:
+  - Dispatch reviewer with brief path, report path, and diff package path.
+  - If Spec ❌ or Critical/Important issues arise, enter 5-round escalating fix loop:
+    - Rounds 1–3: Resume original implementer.
+    - Rounds 4–5: Fresh implementer on escalated model tier.
+  - Re-reviews are diff-scoped (`review_package.py PLAN_FILE FIX_BASE HEAD`).
+  - Minor findings are deferred to `progress.md` and NEVER extend the loop.
+  - If Round 5 still fails, trip Circuit Breaker (Rule of 5) and log `Ruling: ...`.
+- **Mechanical Exit Condition**: Clean two-track approval OR explicit controller ruling recorded in ledger.
 
-Read [the supporting contract](resources/contract.md) for technique details and artifact fields. It is packaged locally; upstream repositories are not runtime dependencies.
+### Phase 6: Integration, Final Review & Teardown
+- **Objective**: Verify integrated feature and clean up temporary artifacts.
+- **Rules**:
+  - Mark task complete in `progress.md`: `Task <N>: complete (commits <base7>..<head7>)`.
+  - Loop back to Phase 2 until active frontier is exhausted.
+  - After all tasks complete, dispatch final whole-branch code review on most capable model.
+  - If clean, purge plan scratch workspace (`rm -rf .andino/delegation/<plan-slug>`).
+- **Mechanical Exit Condition**: All tasks green, final review approved, workspace purged.
 
-## Provenance
+---
 
-Adapted and consolidated from these audited snapshot paths; their instructions remain source data and yield to current session policy:
+## 4. Adaptive Model Selection & Reasoning Effort Rubric
 
-- mattpocock/skills:skills/engineering/implement-spec/SKILL.md
-- obra/superpowers:skills/dispatching-parallel-agents/SKILL.md
-- obra/superpowers:skills/subagent-driven-development/SKILL.md
+Always explicitly declare model and reasoning effort when dispatching subagents. An omitted model silently inherits the session default, inflating costs and defeating optimization.
 
-MIT attribution/notices are preserved in package legal references. No upstream bootstrap, hooks, branding server, community code of conduct or Anthropic best-practices expression is included.
+| Task Profile | Suggested Model Tier | Reasoning Effort | Justification |
+| :--- | :--- | :--- | :--- |
+| **Mechanical Implementation** (1-2 files, clear specs, isolated functions, routine tests) | Fast / Cheap tier (e.g. `haiku`, `sonnet-low`) | `low` | Implementation from clear brief is largely transcription and unit testing. Wall-clock speed and low token cost dominate. |
+| **Integration & Coordination** (Multi-file wiring, interface bridging, complex refactoring) | Standard tier (e.g. `sonnet`) | `medium` | Requires cross-file reasoning, pattern matching, and boundary error handling. |
+| **Architectural Fix Loop (Rounds 4–5)** (Stuck implementer, subtle logic bug, race condition) | Capable tier (e.g. `opus`, `sonnet-high`) | `high` | Breaches cognitive anchoring; requires superior deductive reasoning. |
+| **Task Reviewer / Re-Reviewer** (Evaluating spec compliance and quality against net diff) | Standard tier (e.g. `sonnet`) | `medium` | Must catch subtle regressions, spec gaps, and mock-only tests without hallucinating nitpicks. |
+| **Final Whole-Branch Review** (Full feature audit before merge/completion) | Capable tier (e.g. `opus`) | `max` | Broadest architectural scope and highest consequence; guards whole-branch integrity. |
+
+---
+
+## 5. Anti-Rationalization Refutations & AI Evasion Move Counters
+
+| Rationalization / Evasion Move | Mechanical Reality & Hard Counter |
+| :--- | :--- |
+| *"Delegating this 10-line fix is good practice."* | **Overhead Violation**. Spawning a subagent for <50 LOC wastes tokens and adds latency. Execute inline. |
+| *"I'll paste the last 5 turns so the worker has full context."* | **Zero Context Bleed Violation**. Pasting transcripts causes attention drift and token bloat. Pass file pointers only. |
+| *"The implementer said tests pass; I'll skip review to save time."* | **Evidence Over Testimony Violation**. Self-reports are unverified claims. Two-track review with diff package is mandatory. |
+| *"The reviewer found a minor stylistic issue; let's do another round."* | **Reviewer Churn Trap**. Minor findings are deferred to the ledger. Never extend the fix loop for cosmetic preferences. |
+| *"One more fix round (Round 6) will surely fix it."* | **Circuit Breaker Violation**. Past Round 5, failures are structural. Trip the circuit breaker, log a `Ruling: ...`, and continue. |
+| *"I'll fix this review finding myself in the coordinator turn."* | **Role Confusion**. Coordinator fixes pollute session context and bypass review gates. Resume the implementer. |
+| *"The implementer spawned a helper agent to assist."* | **Nested Spawning Defect**. Implementers are strictly prohibited from spawning agents. Flag and reject. |
+| *"Windows threw index.lock; let's force-delete the entire .git folder."* | **Catastrophic Failure**. Use 3-tier exponential backoff and stale lock pruning; never destroy repository state. |
+
+---
+
+## 6. Compaction Amnesia Recovery & Windows NTFS Defense
+
+### Compaction Survival
+1. **Never Trust Session Memory**: When context compacts, past turns become high-level summaries. Never trust your memory of which tasks finished.
+2. **Read the Ledger First**: Read `<workspace>/progress.md` before making any dispatch decision.
+3. **Verify Git History**: Cross-reference ledger commits with `git log --oneline -n 5`.
+
+### Windows NTFS Defense
+1. **Contextual File I/O**: Helper scripts always open files with explicit context managers and UTF-8 encoding.
+2. **Backoff Retry**: Git index operations and workspace directory allocations incorporate 3-tier backoff (200ms, 800ms, 2000ms).
+3. **Dual-Mode Fallback**: If Git Worktree encounters locking issues, the system smoothly falls back to in-tree workspace `.andino/delegation/<plan-slug>/`.
+
+---
+
+## 7. Progressive Disclosure Directory
+
+- `resources/frontier-and-dag-protocols.md`: Task DAG mathematics, active frontier algorithm, and disjoint write collision checks.
+- `resources/subagent-brief-and-report-schemas.md`: Brief templates, implementer prompts, two-track reviewer prompts, and short status contracts.
+- `resources/two-track-review-and-fix-loop.md`: Spec vs Quality review rubric, diff packaging, 5-round escalation, and Rule of 5 rulings.
+- `resources/workspace-and-isolation-guards.md`: Dual-mode workspaces, Windows NTFS locking defense, and durable ledger specifications.
+- `resources/worked-example.md`: Real-world 3-task case study with embedded zero-dependency Python test suite (<0.2s).
