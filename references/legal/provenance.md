@@ -123,6 +123,24 @@ ADR templates, and worked examples, 100% backward-compatible forwarding shims in
 `skills/decision-interview/`, zero-dependency offline Python stdlib verification, and complete
 integration with `ai-rules setup`).
 
+The 2026-11-01 elevation of `debugging` synthesizes the generative craft of
+Addy Osmani's `debugging-and-error-recovery` (Stop-the-Line Rule, structured failure triage trees
+for test, build, runtime, and intermittent bugs, untrusted error/log data quarantine, and safe
+production fallbacks), Matt Pocock's `engineering/diagnosing-bugs` (strict secret redaction
+`<REDACTED>`, 10-tier automated red-capable feedback loop catalog, repro-rate raising for flaky bugs,
+load-bearing minimization, 3-5 ranked falsifiable hypotheses with explicit prediction syntax,
+uniquely-tagged isolated instrumentation `[DEBUG-uuid]`, architectural seam identification, and
+HITL driver templates), and Jesse Vincent's Obra Superpowers `systematic-debugging` (The Iron Law:
+no production code edits without verified root cause, backward data-flow tracing through call stacks,
+multi-component boundary logging, Circuit Breaker Rule of 3 with safe state rollback and user
+escalation, defense-in-depth post-root-cause validation, condition-based waiting vs arbitrary sleeps,
+and cross-platform test polluter isolation) with Andino Workflow governance (high-density <150 line
+operational contract `SKILL.md` structured as a Gated Finite State Machine, two-tier triage across
+Fast-Path Deterministic and Deep Forensic Investigation, deep craft `GUIDE.md`, modular `resources/`
+catalogs, dual-runtime cross-platform portability in Bash POSIX and Python 3.8+ stdlib, offline
+deterministic Python stdlib verification, and complete integration with `ai-rules setup`).
+
+
 
 
 
