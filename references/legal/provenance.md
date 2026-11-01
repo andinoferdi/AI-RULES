@@ -110,6 +110,20 @@ multi-ecosystem deep module transformation catalogs across TypeScript/JavaScript
 Rust, cognitive compression for AI-navigability and hallucination suppression, and offline
 deterministic Python stdlib verification).
 
+The 2026-11-01 elevation of `brainstorming` and consolidation of `decision-interview` synthesizes
+the generative craft of Addy Osmani's `interview-me` (1-question dialogue, confidence hypothesis
+`<70%`, buzzword stripping, 3-question predictability exit condition), Matt Pocock's `grilling`,
+`grill-me`, and `grill-with-docs` (relentless decision-tree grilling to mutual consensus, DAG-based
+unblocked frontiers, proposed default recommendations for rapid steering, in-flight ADR and
+ubiquitous domain glossary generation), and Jesse Vincent's Obra Superpowers `brainstorming`
+(strict 3-path classification: Spike, Bounded, Architectural, hard gates before coding, 2-3
+approaches with trade-off matrices) with Andino Workflow governance (high-density <150 line operational
+contract `SKILL.md`, deep craft `GUIDE.md`, progressive disclosure `resources/` for grilling protocols,
+ADR templates, and worked examples, 100% backward-compatible forwarding shims in
+`skills/decision-interview/`, zero-dependency offline Python stdlib verification, and complete
+integration with `ai-rules setup`).
+
+
 
 
 

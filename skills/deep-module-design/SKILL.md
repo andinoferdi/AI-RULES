@@ -1,79 +1,83 @@
 ---
 name: andino-deep-module-design
-description: A known module interface is hard to use, hard to verify or spreads changes across callers. Operates under Andino Workflow governance.
+description: Designs high-leverage interfaces that hide internal complexity behind clean seams. Operates under Andino Workflow governance.
 ---
 
-# Design a deep module
+# Design a Deep Module
 
 Internal method ID: `andino-deep-module-design` (alias: `deep-module-design`).
 
 > **Andino Workflow Member Skill**
-> This skill operates under the **Andino Workflow** protocol:
-> - Adheres to proportional investigation, evidence-based decisions, and single durable checkpoints.
-> - When this technique reaches completion, hand off cleanly to the next workflow phase or active task.
-> - Anti-loop guard: Do not re-invoke `andino-workflow` recursively; maintain progress within the active task.
+> Operates under Andino Workflow governance: proportional investigation, evidence-based decisions, single durable checkpoints, and anti-loop guards. Selected skills own their full procedures, resource contracts, and verification checks. Do not re-invoke `andino-workflow` recursively.
 
-## Purpose and selection
+Concentrate significant domain behavior behind a compact, intuitive interface at a justified seam. The benchmark is **Caller Leverage**: *"Does this module maximize capability while minimizing the concepts a caller must learn?"*
 
-Concentrate behavior behind a small useful interface at a justified seam.
+## Activation & Negative Gates
 
-Activate for: A known module interface is hard to use, hard to verify or spreads changes across callers.
+- **Use when**:
+  - Callers repeatedly duplicate policy, orchestration, or error compensation across multiple call sites.
+  - An interface is shallow—nearly as complex to learn and configure as the underlying code.
+  - Testing is brittle because tests mock internal helpers rather than testing observable outcomes.
+  - Refactoring micro-modules into a cohesive domain facade to improve AI-navigability.
+- **Do NOT use when**:
+  - Request is for a whole-codebase macro survey (use `andino-architecture-survey`).
+  - Speculative abstraction where only one caller exists and no variation is planned.
+  - Pure in-process utility code with zero observed caller friction.
 
-Do not activate for: A request for a whole-codebase survey or speculative abstraction without observed friction.
+## The Five Deep Design Invariants
 
-## Inputs and dependencies
+1. **Depth is Leverage, Not Line Count**: Maximize functionality per interface concept. Padding implementation lines does not create depth.
+2. **The 2-Adapter Invariant**: A seam requires at least two concrete adapters (e.g. production transport + in-memory test fake). One adapter is useless indirection.
+3. **The Deletion Test**: If deleting the module causes complexity to return across N callers, it is deep. If complexity vanishes, it was a pass-through wrapper.
+4. **The Interface is the Test Surface**: Callers and tests cross the exact same external seam. Never expose internal seams merely to enable unit tests.
+5. **Replace, Don't Layer**: When deepening shallow modules, delete their superseded unit tests once the new interface tests pass.
 
-Actual callers and obligations, observable behaviors, current tests, domain terms, relevant ADRs and dependency facts.
+## Anti-Rationalization Refutations
 
-Use resources progressively: [worked procedure and example](resources/worked-example.md). It is local and self-contained. Optional project tools are discovered when needed, never installed merely to load this method.
+| Rationalization | Mandated Reality |
+|---|---|
+| *"More micro-files make the codebase more modular."* | **False.** Fragmented files destroy locality, force callers to orchestrate policy, and blow up AI context windows. |
+| *"We need an interface port in case we change databases."* | **False.** Until a second concrete adapter exists, an interface is speculative indirection. Program to the concrete class. |
+| *"We must export internal helpers to unit test them."* | **False.** Testing private implementation details creates brittle tests. Test observable outcomes through the public interface. |
+| *"A smaller class is always a better class."* | **False.** Classes with 10 lines that require 8 parameters and 4 sister classes create shallow architecture. Deep classes hide complexity. |
+| *"We should keep old unit tests alongside new interface tests."* | **False.** Layering obsolete tests locks in dead abstractions. Delete superseded unit tests ("Replace, Don't Layer"). |
 
-## Procedure
+## Diagnostic Red Flags (Stop Immediately)
 
-1. Describe the module, interface and implementation separately. Interface means signatures plus invariants, ordering, errors, configuration and performance obligations; depth means caller leverage, never a line-count ratio.
+- [ ] Creating an interface (`IOrderRepo`) with only one concrete implementation across the entire codebase.
+- [ ] Exporting an internal class, helper function, or private state variable purely to write a unit test.
+- [ ] Asking a caller to pass more than 3 mandatory configuration parameters for the 90% common case.
+- [ ] Maintaining unit tests that assert on internal method execution order rather than returned domain values.
+- [ ] Introducing a deep module wrapper without running the Deletion Test.
 
-2. Apply the deletion test: if the module disappears, does complexity vanish or return in every caller? Identify evidence of leakage, scattered changes and tests reaching through private parts.
+## Progressive Disclosure Resources
 
-3. Choose the external seam callers and tests should cross. Hide internal organization unless something genuinely varies. Name the second concrete adapter before introducing a port; a single hypothetical adapter earns no indirection.
+- [resources/dependency-and-seam-discipline.md](resources/dependency-and-seam-discipline.md) — The 4 dependency categories, seam rules, and testing surface alignment.
+- [resources/design-it-twice-protocols.md](resources/design-it-twice-protocols.md) — Parallel subagent exploration across divergent constraints and synthesis rubric.
+- [resources/leverage-rubric-and-catalogs.md](resources/leverage-rubric-and-catalogs.md) — Leverage Index formula, terminal visual cards, and TS/Python/Go/Rust catalogs.
+- [resources/worked-example.md](resources/worked-example.md) — End-to-end checkout refactoring walkthrough and runnable verification harness.
 
-4. Classify each dependency: pure in-process; locally substitutable infrastructure; remote-but-owned transport behind a port; true third-party dependency behind an injected external adapter. Prefer real local stand-ins where useful.
+## Operational Example (Offline)
 
-5. For a consequential interface choice, frame constraints and compare radically different designs: minimal entrypoints, maximum extension, common-caller simplicity, optionally ports/adapters. For each give signatures, invariants, ordering/errors, usage, hidden behavior and dependency strategy.
+```python andino-operational-example
+import json, os
+def eval_module(methods, params, hidden_behaviors, seams):
+    burden = len(methods) + params
+    if burden == 0: return {"status": "REJECTED", "error": "zero entrypoints"}
+    leverage = round(hidden_behaviors / burden, 2)
+    hypothetical = [s["name"] for s in seams if len(s.get("adapters", [])) < 2]
+    is_deep = leverage >= 2.5 and len(hypothetical) == 0
+    return {"deep": is_deep, "hypothetical_seams": hypothetical, "leverage": leverage, "status": "VERIFIED" if is_deep else "REJECTED"}
+def probe():
+    if os.getenv("ANDINO_NEGATIVE"):
+        return eval_module(["v", "t", "r", "s", "p"], 5, 2, [{"name": "SinglePort", "adapters": ["ProdOnly"]}])
+    return eval_module(["processOrder"], 1, 6, [{"name": "ShippingPort", "adapters": ["Prod", "InMemory"]}])
+print(json.dumps(probe(), sort_keys=True))
+```
 
-6. Recommend using depth, locality and seam placement. Implement only within accepted scope; prove new public-interface tests preserve behavior before removing superseded shallow tests. Keep internal seams private.
+Default output: `{"deep": true, "hypothetical_seams": [], "leverage": 3.0, "status": "VERIFIED"}`  
+Adversarial output (`ANDINO_NEGATIVE=1`): `{"deep": false, "hypothetical_seams": ["SinglePort"], "leverage": 0.2, "status": "REJECTED"}`
 
-## Ownership, precedence and permissions
+## Output & Verification
 
-Andino coordinates selection, shared progress, resource guards and final status from evidence.
-This skill owns its full procedure, required resources, artifact detail and technical
-checks. Coordinator brevity/density never truncates these. User/project authority,
-Focus/research/domain boundaries and real invocation controls still apply. Native
-`andino-deep-module-design` and this guide expose one method, without recursive workflow invocation.
-
-Existing scope authorization persists. Local examples use disposable data; real Git mutations, external messages/tracker writes, credentials, global setup, deployments and recurring jobs require their actual authority. A source example never grants it. Preserve user edits, secrets and current staging.
-
-## Outputs and verification
-
-A real caller can exercise the required behavior without internal knowledge; dependency strategy is testable and justified; no coverage disappears during test replacement.
-
-Apply the worked example to observe an artifact and independent expected outcomes. Its deterministic result proves only that bounded procedure; it does not prove model routing, live host parity or optional external tool execution. Record actual command/tool, current content identity, result and unresolved limits before claiming success.
-
-## Example and anti-patterns
-
-Positive request: “Callers repeat order policy in six places. Compare smaller interfaces.”
-
-Negative request: “List all files in the repository.”
-
-A pass-through wrapper, implementation-line padding, giant barrel export, port with no real variation, or deleting old tests before equivalent interface coverage.
-
-## Fallback
-
-Compare designs sequentially when delegation is unavailable. If the interface is already sound, record no change rather than invent depth work.
-
-## Provenance
-
-Independently adapted from these audited local snapshot paths (provenance only; runtime never reads or installs those repositories):
-
-- `mattpocock/skills:skills/engineering/codebase-design/SKILL.md`
-- `mattpocock/skills:skills/engineering/improve-codebase-architecture/SKILL.md`
-
-Snapshot identities and licensing are recorded in the package provenance/legal records. Upstream bootstrap, automatic commit/push, hooks and installers are not imported as authority.
+Return the concrete module interface specification, dependency classification matrix, Design-It-Twice trade-off scorecard, and one `NEXT ACTION` in the active Andino ticket. Never claim completion without test evidence.
