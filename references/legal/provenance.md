@@ -38,3 +38,11 @@ craft of `writing-beats` and the structural hook generation of `writing-shape`
 into a unified high-retention authoring procedure while maintaining Andino Workflow
 contract isolation, read-only raw note preservation, and deterministic concept
 grounding verification.
+
+The 2026-11-01 elevation of `browser-testing-with-devtools` synthesizes the generative
+craft of Addy Osmani's `browser-testing-with-devtools` (structured test plan schemas,
+triple ASCII diagnostic flowcharts, clean console standard, untrusted prompt injection
+quarantine, and rationalization refutations) with Andino Workflow dual-mode tool
+capability negotiation (Chrome DevTools MCP primary, Playwright MCP adaptive fallback),
+tri-viewport responsive testing standards (360px, 768px, 1440px), and offline deterministic
+verification.
