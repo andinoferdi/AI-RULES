@@ -95,7 +95,7 @@ When executing under Mode 3 (Subagent-Driven), the parent controller MUST comple
 - **Objective**: Enforce independent gates for Spec Compliance (Track 1) and Code Quality (Track 2).
 - **Rules**:
   - Dispatch reviewer with brief path, report path, and diff package path.
-  - If Spec ❌ or Critical/Important issues arise, enter 5-round escalating fix loop:
+  - If Spec FAILED or Critical/Important issues arise, enter 5-round escalating fix loop:
     - Rounds 1–3: Resume original implementer.
     - Rounds 4–5: Fresh implementer on escalated model tier.
   - Re-reviews are diff-scoped (`review_package.py PLAN_FILE FIX_BASE HEAD`).

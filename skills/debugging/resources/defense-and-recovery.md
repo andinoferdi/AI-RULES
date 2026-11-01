@@ -32,14 +32,14 @@ When debugging, LLMs frequently fall into a **sunk-cost hallucination spiral**: 
 ### The Strict 3-Strike Rule
 
 ```
-Fix Attempt #1 Fails → Revert changes immediately. Formulate Hypothesis #2.
-Fix Attempt #2 Fails → Revert changes immediately. Formulate Hypothesis #3.
+Fix Attempt #1 Fails → Restore only owned attempt changes. Formulate Hypothesis #2.
+Fix Attempt #2 Fails → Restore only owned attempt changes. Formulate Hypothesis #3.
 Fix Attempt #3 Fails → STOP IMMEDIATELY. TRIP THE CIRCUIT BREAKER.
 ```
 
 ### Circuit Breaker Actions (Mandatory Halt)
-1. **Hard Rollback**:
-   Revert all working-tree edits introduced during the 3 attempts (`git checkout .`). Do not leave lingering partial patches.
+1. **Ownership-Safe Recovery**:
+   Compare the current diff with the recorded pre-attempt baseline. Restore only verified changes introduced by the failed attempts, preserving pre-existing and user edits. Never run a whole-tree checkout/reset/clean. If ownership cannot be established or changes overlap, retain the diff, stop, and report the recovery boundary instead of guessing.
 2. **Halt Autonomous Mutation**:
    Do NOT attempt Fix #4.
    Do NOT launch a spontaneous "refactoring" or rewrite of the architecture.

@@ -22,7 +22,7 @@ This catalog provides concrete, multi-language transformation recipes and anti-p
 ### 2.1 Nested Ternary vs Lookup Mapping
 
 ```typescript
-// ❌ UNCLEAR: Dense ternary chain requiring mental stack parsing
+// [UNCLEAR]: Dense ternary chain requiring mental stack parsing
 const badgeColor = status === 'active' 
   ? 'green' 
   : status === 'pending' 
@@ -31,7 +31,7 @@ const badgeColor = status === 'active'
   ? 'red' 
   : 'gray';
 
-// ✅ CLEAR: Declarative lookup table with constant-time retrieval
+// [CLEAR]: Declarative lookup table with constant-time retrieval
 const STATUS_COLORS: Record<string, string> = {
   active: 'green',
   pending: 'amber',
@@ -43,13 +43,13 @@ const badgeColor = STATUS_COLORS[status] ?? 'gray';
 ### 2.2 Unreadable Reduce vs Explicit Iteration
 
 ```typescript
-// ❌ UNCLEAR: Chained reduce mutating accumulators or spreading objects
+// [UNCLEAR]: Chained reduce mutating accumulators or spreading objects
 const userById = users.reduce((acc, user) => ({
   ...acc,
   [user.id]: user.roles.filter(r => r.isActive).map(r => r.name)
 }), {});
 
-// ✅ CLEAR: Readable, linear iteration with zero garbage-collection overhead
+// [CLEAR]: Readable, linear iteration with zero garbage-collection overhead
 const userById = new Map<string, string[]>();
 for (const user of users) {
   const activeRoles = user.roles
@@ -62,7 +62,7 @@ for (const user of users) {
 ### 2.3 Redundant Boolean Branching
 
 ```typescript
-// ❌ UNCLEAR: Explicitly returning boolean literals
+// [UNCLEAR]: Explicitly returning boolean literals
 function canAccess(user: User): boolean {
   if (user.isVerified && !user.isBanned) {
     return true;
@@ -71,7 +71,7 @@ function canAccess(user: User): boolean {
   }
 }
 
-// ✅ CLEAR: Direct predicate expression
+// [CLEAR]: Direct predicate expression
 function canAccess(user: User): boolean {
   return Boolean(user.isVerified && !user.isBanned);
 }
@@ -80,12 +80,12 @@ function canAccess(user: User): boolean {
 ### 2.4 Unnecessary Async Wrappers
 
 ```typescript
-// ❌ UNCLEAR: Redundant async/await on direct return without error transformation
+// [UNCLEAR]: Redundant async/await on direct return without error transformation
 async function fetchConfig(key: string): Promise<Config> {
   return await configService.get(key);
 }
 
-// ✅ CLEAR: Return the promise directly (caveat: keep async if inside try/catch)
+// [CLEAR]: Return the promise directly (caveat: keep async if inside try/catch)
 function fetchConfig(key: string): Promise<Config> {
   return configService.get(key);
 }
@@ -98,7 +98,7 @@ function fetchConfig(key: string): Promise<Config> {
 ### 3.1 Flattening Deep Nested Trees into Guard Clauses
 
 ```python
-# ❌ UNCLEAR: Deep pyramid of nested conditionals
+# [UNCLEAR]: Deep pyramid of nested conditionals
 def process_order(order):
     if order is not None:
         if order.is_paid():
@@ -115,7 +115,7 @@ def process_order(order):
     else:
         raise TypeError("Order cannot be None")
 
-# ✅ CLEAR: Linear guard clauses with immediate exits
+# [CLEAR]: Linear guard clauses with immediate exits
 def process_order(order):
     if order is None:
         raise TypeError("Order cannot be None")
@@ -133,13 +133,13 @@ def process_order(order):
 ### 3.2 Verbose Dictionary Building vs Comprehension
 
 ```python
-# ❌ UNCLEAR: Imperative dictionary population
+# [UNCLEAR]: Imperative dictionary population
 active_names = {}
 for user in users:
     if user.is_active:
         active_names[user.id] = user.display_name.strip()
 
-# ✅ CLEAR: Clean dictionary comprehension
+# [CLEAR]: Clean dictionary comprehension
 active_names = {
     user.id: user.display_name.strip()
     for user in users
@@ -150,14 +150,14 @@ active_names = {
 ### 3.3 Context Managers vs Manual Cleanup
 
 ```python
-# ❌ UNCLEAR: Error-prone manual file handling
+# [UNCLEAR]: Error-prone manual file handling
 f = open("data.json", "r")
 try:
     content = json.load(f)
 finally:
     f.close()
 
-# ✅ CLEAR: Idiomatic context manager ensuring resource release
+# [CLEAR]: Idiomatic context manager ensuring resource release
 with open("data.json", "r", encoding="utf-8") as f:
     content = json.load(f)
 ```
@@ -169,7 +169,7 @@ with open("data.json", "r", encoding="utf-8") as f:
 ### 4.1 Conditional Render Spaghetti vs Extracted Subcomponents
 
 ```tsx
-// ❌ UNCLEAR: Nested JSX ternaries inside template body
+// [UNCLEAR]: Nested JSX ternaries inside template body
 function ProfileCard({ user, isLoading, error }: Props) {
   return (
     <div className="card">
@@ -190,7 +190,7 @@ function ProfileCard({ user, isLoading, error }: Props) {
   );
 }
 
-// ✅ CLEAR: Guard returns or computed content variable
+// [CLEAR]: Guard returns or computed content variable
 function ProfileCard({ user, isLoading, error }: Props) {
   if (isLoading) return <div className="card"><Spinner /></div>;
   if (error) return <div className="card"><ErrorMessage error={error} /></div>;

@@ -9,9 +9,9 @@ A robust review gate must evaluate two orthogonal dimensions independently:
 ```
 Task Diff Ready:
 ├── Track 1: Spec Compliance (Binding Contract)
-│   ├── ✅ Spec Compliant: Exact criteria met, nothing unrequested built.
-│   ├── ❌ Issues Found: Requirements missing, extra features (YAGNI), or misunderstood intent.
-│   └── ⚠️ Cannot Verify: Invariants dependent on external/cross-task state.
+│   ├── PASS (Spec Compliant): Exact criteria met, nothing unrequested built.
+│   ├── FAIL (Issues Found): Requirements missing, extra features (YAGNI), or misunderstood intent.
+│   └── UNVERIFIED (Cannot Verify): Invariants dependent on external/cross-task state.
 └── Track 2: Code Quality (Craft & Maintainability)
     ├── Approved: Clean separation, robust error handling, authentic behavioral tests.
     └── Needs Fixes: Fragile abstractions, mock-only tests, unhandled edge cases.
@@ -45,7 +45,7 @@ Before dispatching a task reviewer or re-reviewer, the controller captures the e
 
 ## 3. The 5-Round Escalating Fix Loop
 
-When Track 1 reports ❌ or Track 2 identifies Critical/Important issues, the fix loop initiates:
+When Track 1 reports FAIL or Track 2 identifies Critical/Important issues, the fix loop initiates:
 
 ```dot
 digraph fix_loop {

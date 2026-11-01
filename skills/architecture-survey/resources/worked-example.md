@@ -203,7 +203,7 @@ The report employs a **Hybrid Progressive Enhancement** strategy:
     .shallow-box { border: 1px solid #94a3b8; background: #ffffff; padding: 0.5rem; border-radius: 0.25rem; font-family: monospace; font-size: 0.85rem; margin-bottom: 0.5rem; }
     .wins-list { list-style-type: none; padding-left: 0; }
     .wins-list li { margin-bottom: 0.4rem; padding-left: 1.2rem; position: relative; font-weight: 500; }
-    .wins-list li::before { content: "✓"; position: absolute; left: 0; color: #16a34a; }
+    .wins-list li::before { content: "+"; position: absolute; left: 0; color: #16a34a; font-weight: bold; }
   </style>
 </head>
 <body>

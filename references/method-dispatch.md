@@ -49,11 +49,71 @@ Select the narrowest method(s) covering distinct current needs and load their gu
 If no internal method fits, retain direct work or resolve appropriate native support.
 Do not search all external skill bodies before checking the bundled index.
 
-Examples: ambiguous product direction selects brainstorming; a chosen direction with
-a material missing requirement selects decision-interview; accepted work with unresolved
-dependencies selects planning; an accepted executable plan selects plan-execution;
-a known API boundary problem selects api-and-interface-design. An explanation of
-how to run an existing app does not reopen ideation. A simple typo needs no work method.
+### Situation-to-Outcome Decision Lens
+
+| User Situation / Task Trigger | Active Phase | Primary Specialist | Direct Bypass / Negative Gate |
+|---|---|---|---|
+| Open idea, ambiguous goal, exploring direction | Inception | `andino-brainstorming` | If plan already approved, bypass to `plan-execution`. |
+| Architecture settled, breaking into actionable tasks | Planning | `andino-planning` | If tasks are single-file/trivial (<50 LOC), execute inline. |
+| Approved plan ready for sequential execution | Execution | `andino-plan-execution` | If scope is newly ambiguous, reopen `brainstorming`. |
+| Unexplained test failure, crash, regression | Diagnostic | `andino-debugging` | If cause is confirmed and fix is small, execute inline. |
+| Choosing external library, unfamiliar API | Investigation | `search-first` | If local code already provides utility, adopt local code. |
+| Decoupled tasks across disjoint write paths | Implementation | `andino-delegation` | If tasks share state or common cause, execute inline. |
+| Fragile subsystem, repeated regressions | Remediation | `ai-codebase-rescue` | If code is merely ugly but passing, keep unchanged. |
+| Code or behavioral contract ready for correctness review | Verification | `andino-code-review` | Use `natural-writing` only for prose/style review, not execution or safety contracts. |
+| Authoring or maintaining a skill or procedure | Meta-Authoring | `skill-maker` | For passive repository guidance, use `agent-document-authoring`; auditing such files can still be an executable skill. |
+| Routine question, code explanation, typo | General Work | **Direct Execution** | **Zero method loading: execute directly without ceremony.** |
+
+### Contrastive Near-Miss Pairs
+
+1. **Code Explanation vs Debugging**:
+   - *"How does auth token signing work?"* -> **Direct Execution** (pure factual explanation).
+   - *"Why does test_auth fail intermittently with 500?"* -> `andino-debugging` (behavioral defect with unknown cause).
+2. **Mechanical Edit vs Method Loading**:
+   - *"Fix typo on line 42 of README.md"* -> **Direct Execution** (<50 LOC, zero ceremony).
+   - *"Restructure the skill discovery matrix across 5 files"* -> `andino-planning` / `andino-plan-execution`.
+3. **Spec Formulation vs Ideation**:
+   - *"We need search but don't know the scale or storage engine"* -> `andino-brainstorming` (exploring architecture).
+   - *"The search spec is approved; break down tasks"* -> `andino-planning` (task breakdown).
+4. **Library Evaluation vs Custom Implementation**:
+   - *"Should we use PyJWT or Authlib?"* -> `search-first` (compare external packages).
+   - *"Write custom JWT validation logic from scratch"* -> `andino-tdd` (if approved) or `search-first` (to check existing code first).
+5. **Executable Skill vs Passive Rules**:
+   - *"Create a new skill for database migration auditing"* -> `skill-maker` (executable procedure, test harness).
+   - *"Update CLAUDE.md with a new rtk command rule"* -> `agent-document-authoring` (passive markdown guidance).
+6. **Parallel Delegation vs Inline Execution**:
+   - *"Implement 3 independent microservices with disjoint paths"* -> `andino-delegation` (disjoint write sets).
+   - *"Fix 3 tests that all fail due to the same database connection timeout"* -> `andino-debugging` inline (shared root cause).
+
+7. **Correctness Contract vs Prose Polish**:
+   - *"Review this Markdown execution contract for lost permission gates"* -> `andino-code-review` (behavior and authority).
+   - *"Polish the wording of this release note"* -> `natural-writing` (prose/style only).
+8. **Failure Diagnosis vs Factual Explanation**:
+   - *"What is causing the crash in production?"* -> `andino-debugging`, not the routine-question bypass.
+   - *"What is this middleware's purpose?"* -> **Direct Execution** when only explanation is requested.
+9. **Authoring Intent vs Filename Mention**:
+   - *"Author a skill that audits CLAUDE.md for syntax mistakes"* -> `skill-maker` (an executable auditing procedure).
+   - *"Edit CLAUDE.md with our new rule"* -> `agent-document-authoring` (the passive guidance is the deliverable).
+10. **Requested Parallelism vs Negated Parallelism**:
+   - *"Implement independent modules in parallel"* -> `andino-delegation` after authority and write-independence checks.
+   - *"Do not implement in parallel; inspect the approved plan only"* -> inspect/review the plan; do not dispatch workers or start implementation.
+
+### Low Ceremony Interaction Standard
+
+When selecting a governed specialist method, maintain low-ceremony communication:
+- **Single-Line Rationale**: Announce the activation in chat with one clean line:
+  `[andino-workflow] Active method: <method-name> — <reason>.`
+- **Zero Banner Spam**: Never emit multi-turn status banners, progress ascii boxes, or decorative emoji headers.
+- **Zero Persistent Ledgers**: Execute discovery decisions immediately; never write temporary `discovery.md` files or external prompt logs.
+
+### Selection-to-Loading Enforcement
+
+The 5-state lifecycle (`DISCOVERED -> AVAILABLE -> INVOKABLE -> ACTIVE -> USED`) is an **internal cognitive verification discipline**:
+1. `DISCOVERED`: Known in index or catalog.
+2. `AVAILABLE`: File exists on disk and is readable.
+3. `INVOKABLE`: Tool/permissions allow execution.
+4. `ACTIVE`: The coordinator has issued an explicit host tool call (`Skill`) or read the canonical `SKILL.md` before governed work begins. (Text mentions alone are rejected).
+5. `USED`: The specific procedural invariants of the method (e.g. hypothesis testing in debugging, two-track review in delegation) were observed in execution evidence.
 
 Internal-first is a default provider preference, not a veto on required domain owners,
 required Search First research, explicit native provider requests or the accepted UI

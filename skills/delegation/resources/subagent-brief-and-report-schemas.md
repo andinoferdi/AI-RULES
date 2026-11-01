@@ -98,7 +98,7 @@ Subagent (general-purpose):
       - Missing: features required but absent.
       - Extra: unrequested scope, speculative abstractions, or over-engineering (YAGNI).
       - Misunderstood: wrong problem solved or broken semantics.
-    - Verdict: ✅ Spec Compliant | ❌ Issues Found | ⚠️ Cannot Verify From Diff
+    - Verdict: PASS (Spec Compliant) | FAIL (Issues Found) | UNVERIFIED (Cannot Verify From Diff)
 
     ## Track 2: Code Quality Verdict
     - Clean separation of concerns, proper error propagation, naming discipline.
@@ -113,7 +113,7 @@ Subagent (general-purpose):
 
     ## Output Format
     Start immediately with the verdicts:
-    - Spec Compliance: [✅ / ❌ / ⚠️] [Summary]
+    - Spec Compliance: [PASS / FAIL / UNVERIFIED] [Summary]
     - Task Quality: [Approved / Needs Fixes] [Summary]
     - Issues:
       - Critical: [file:line, defect, consequence, suggested fix]

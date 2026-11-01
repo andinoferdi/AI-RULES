@@ -1,0 +1,34 @@
+{
+  "evidence_kind": "static-document-contract",
+  "live_model_routing": "NOT_VERIFIED",
+  "matrix": [
+    ["Open idea, ambiguous goal, exploring direction", "Inception", "andino-brainstorming", "If plan already approved, bypass to plan-execution."],
+    ["Architecture settled, breaking into actionable tasks", "Planning", "andino-planning", "If tasks are single-file/trivial (<50 LOC), execute inline."],
+    ["Approved plan ready for sequential execution", "Execution", "andino-plan-execution", "If scope is newly ambiguous, reopen brainstorming."],
+    ["Unexplained test failure, crash, regression", "Diagnostic", "andino-debugging", "If cause is confirmed and fix is small, execute inline."],
+    ["Choosing external library, unfamiliar API", "Investigation", "search-first", "If local code already provides utility, adopt local code."],
+    ["Decoupled tasks across disjoint write paths", "Implementation", "andino-delegation", "If tasks share state or common cause, execute inline."],
+    ["Fragile subsystem, repeated regressions", "Remediation", "ai-codebase-rescue", "If code is merely ugly but passing, keep unchanged."],
+    ["Code or behavioral contract ready for correctness review", "Verification", "andino-code-review", "Use natural-writing only for prose/style review, not execution or safety contracts."],
+    ["Authoring or maintaining a skill or procedure", "Meta-Authoring", "skill-maker", "For passive repository guidance, use agent-document-authoring; auditing such files can still be an executable skill."],
+    ["Routine question, code explanation, typo", "General Work", "Direct Execution", "Zero method loading: execute directly without ceremony."]
+  ],
+  "case_annotations": [
+    {"id": 1, "phase": "General Work", "route": "Direct Execution"},
+    {"id": 2, "phase": "General Work", "route": "Direct Execution"},
+    {"id": 3, "phase": "Inception", "route": "andino-brainstorming"},
+    {"id": 4, "phase": "Planning", "route": "andino-planning"},
+    {"id": 5, "phase": "Execution", "route": "andino-plan-execution"},
+    {"id": 6, "phase": "Diagnostic", "route": "andino-debugging"},
+    {"id": 7, "phase": "Investigation", "route": "search-first"},
+    {"id": 8, "phase": "Implementation", "route": "andino-delegation"},
+    {"id": 9, "phase": "Meta-Authoring", "route": "skill-maker"},
+    {"id": 10, "phase": "Meta-Authoring", "route": "agent-document-authoring", "negative_gate": true}
+  ],
+  "collisions": [
+    {"prompt": "What is causing the crash in production?", "documented_outcome": "`andino-debugging`, not the routine-question bypass."},
+    {"prompt": "Author a skill that audits CLAUDE.md for syntax mistakes", "documented_outcome": "`skill-maker` (an executable auditing procedure)."},
+    {"prompt": "Review this Markdown execution contract for lost permission gates", "documented_outcome": "`andino-code-review` (behavior and authority)."},
+    {"prompt": "Do not implement in parallel; inspect the approved plan only", "documented_outcome": "inspect/review the plan; do not dispatch workers or start implementation."}
+  ]
+}

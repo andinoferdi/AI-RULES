@@ -28,34 +28,23 @@ If two capabilities overlap, resolve their concern/provider through
 
 ## Select work methods first
 
-Use the relevant entries of the [internal method index](references/internal-method-index.md),
-[routing](references/routing.md) and [dispatch contract](references/method-dispatch.md).
-Honor explicit relevant user/provider choices. Otherwise select by outcome,
-current phase, triggers, exclusions and actual availability, not incidental names.
-An explicit native provider can be resolved directly; no unrelated catalog scan.
+Use [routing](references/routing.md), [dispatch](references/method-dispatch.md), and [internal method index](references/internal-method-index.md).
+Honor explicit provider choices and current phase readiness first; then select by outcome and negative gates. Mapped specialist needs take precedence over size-only shortcuts; routine, unmapped tasks execute directly.
 
-The capability pool includes all 59 native `andino-*` members, AI-RULES sibling
-skills, relevant installed manual external skills, and available MCP/native tools.
-An internal alias selects its canonical member by default; it does not override
-an explicitly chosen external provider. Installation catalogs are discovery aids,
-not activation requests or permission to install/connect everything.
+| User Situation / Task Trigger | Active Phase | Primary Specialist | Direct Bypass / Negative Gate |
+|---|---|---|---|
+| Open idea, ambiguous goal, exploring direction | Inception | `andino-brainstorming` | If plan already approved, bypass to `plan-execution`. |
+| Architecture settled, breaking into actionable tasks | Planning | `andino-planning` | If tasks are single-file/trivial (<50 LOC), execute inline. |
+| Approved plan ready for sequential execution | Execution | `andino-plan-execution` | If scope is newly ambiguous, reopen `brainstorming`. |
+| Unexplained test failure, crash, regression | Diagnostic | `andino-debugging` | If cause is confirmed and fix is small, execute inline. |
+| Choosing external library, unfamiliar API | Investigation | `search-first` | If local code already provides utility, adopt local code. |
+| Decoupled tasks across disjoint write paths | Implementation | `andino-delegation` | If tasks share state or common cause, execute inline. |
+| Fragile subsystem, repeated regressions | Remediation | `ai-codebase-rescue` | If code is merely ugly but passing, keep unchanged. |
+| Code or behavioral contract ready for correctness review | Verification | `andino-code-review` | Use `natural-writing` only for prose/style review, not execution or safety contracts. |
+| Authoring or maintaining a skill or procedure | Meta-Authoring | `skill-maker` | For passive repository guidance, use `agent-document-authoring`; auditing such files can still be an executable skill. |
+| Routine question, code explanation, typo | General Work | **Direct Execution** | **Zero method loading: execute directly without ceremony.** |
 
-Load the selected current guide before governed work and before Focus; then load
-the resources its procedure requires. Follow that procedure fully. A remembered
-method, wrapper or metadata entry is not activation. Read the relevant registry
-entry or external catalog only when the choice remains unresolved. Do not load
-all guides, MCP schemas or future phases in anticipation.
-Reading the guide and task evidence in the same parallel batch does not satisfy this ordering.
-
-An unknown-cause bug selects the [debugging method](skills/debugging/GUIDE.md)
-before the first diagnostic log/source read.
-Accepted requirements needing task detail select planning; an accepted ready plan
-with execution authority selects plan-execution. Other phase/domain needs use the
-matching routing rows. Do not reopen locked decisions, force a lifecycle for
-ordinary conversation or turn a planning-only request into implementation.
-Reassess methods when the actual need changes.
-Selection follows [phase readiness](references/routing.md#phase-readiness);
-explicit workflow invocation does not override phase readiness or settled intent.
+Load the selected guide before governed work. Follow its procedure fully. An unknown-cause bug selects debugging before reading code. Accepted requirements needing detail select planning; an approved plan selects plan-execution.
 
 ## Communication support
 
@@ -101,24 +90,11 @@ it does not recursively invoke Andino or start competing progress tracking.
 
 ## Bounded execution
 
-Apply [the ten progress/resource guards](references/anti-loop.md): loop exits,
-context reuse, narrow tool schemas, proportional reasoning, no tool ping-pong,
-bounded transient retries, bounded tool output, deliberate response/artifact
-delivery, one method per concern and bounded delegation. These guards prevent
-waste; they never turn missing acceptance into DONE or cap a required artifact.
+Apply [ten anti-loop guards](references/anti-loop.md): context reuse, narrow schemas, proportional reasoning, no ping-pong, bounded retries/output, one method per concern, and bounded delegation. Guards prevent waste; they never waive acceptance or truncate artifacts.
 
-Default subagents: zero. Delegate when the selected method requires independence
-or a bounded independent task materially helps and actual authority/tools permit it.
-Use at most three concurrently active direct workers, no nested spawning, disjoint write scopes and
-parent integration. Schedule a method's required participants in waves rather
-than dropping required perspectives to fit concurrency. Choose supported models/
-effort by task need; do not create an automatic planner/reviewer/verifier swarm.
+Default subagents: zero. Delegate only when the method requires independence and authority permits: max 3 direct workers, zero nested spawning, disjoint write scopes, and parent integration. Schedule in waves; avoid automatic swarms.
 
-Host permissions and invocation controls remain real boundaries. DISCOVERED,
-AVAILABLE, INVOKABLE, ACTIVE and USED are different; denied/missing capabilities
-remain UNAVAILABLE. Use an honest sufficient fallback without impersonating the
-unavailable skill, or retain the precise blocker. No alternate-copy denial bypass,
-automatic bootstrap, memory retrieval, graph generation or blanket installation.
+Host boundaries are absolute: DISCOVERED, AVAILABLE, INVOKABLE, ACTIVE, and USED are distinct. Tool-mediated loading must precede governed work. Denied capabilities stay UNAVAILABLE; use honest fallbacks without impersonation, bootstrap, or unapproved installations.
 
 ## Verify and deliver
 

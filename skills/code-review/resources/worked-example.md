@@ -43,7 +43,7 @@ def fetch_transaction_history(account_id: str, filter_type: str):
 # Code Review: PR #104 — Subscription Refund and Calculation Engine
 
 **Scope:** `git diff a81f20b..9e24bc1` + untracked `services/audit_logger.py`  
-**Verdict:** ❌ CHANGES REQUESTED (2 Blockers identified)
+**Verdict:** CHANGES REQUESTED (2 Blockers identified)
 
 ### Declined to Judge
 - `services/audit_logger.py`: Untracked helper file contains stubbed telemetry endpoints. Deferred to subsequent observability task as it does not affect refund financial invariants.

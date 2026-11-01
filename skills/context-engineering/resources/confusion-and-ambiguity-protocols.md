@@ -15,13 +15,13 @@ Before asking any question or choosing an implementation path, classify the unce
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │ Tier 1: Trivial Detail with Clear Codebase Precedent         │
-│ ➔ ACTION: Follow precedent silently. Record in ticket.     │
+│ -> ACTION: Follow precedent; note material decisions.        │
 ├─────────────────────────────────────────────────────────────┤
 │ Tier 2: Material Missing Requirement with Viable Options    │
-│ ➔ ACTION: Present Structured A/B/C Triage with recommendation│
+│ -> ACTION: Ask only for a missing user-owned decision.       │
 ├─────────────────────────────────────────────────────────────┤
 │ Tier 3: Direct Contradiction Between Authoritative Sources   │
-│ ➔ ACTION: Hard Stop. Surface contradiction. Do not guess.   │
+│ -> ACTION: Resolve precedence; pause unresolved consumers.   │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -36,7 +36,7 @@ Before asking any question or choosing an implementation path, classify the unce
 
 ### Tier 3: Direct Contradiction (Hard Stop)
 - **Scenario**: The task prompt says "Use REST endpoints for the billing webhook", but `CLAUDE.md` and the existing codebase enforce GraphQL with strict schema validation.
-- **Rule**: STOP IMMEDIATELY. Never silently prioritize one document over another. Surface the exact conflict and wait for human guidance.
+- **Rule**: Check instruction precedence, accepted decisions, and current repository evidence first. Record a grounded resolution when those sources settle the conflict. If a material user-owned decision remains unresolved, pause only its dependent actions, surface the exact conflict, and continue independent authorized work. Do not treat stale documentation as equal to a current authoritative instruction.
 
 ---
 
@@ -59,7 +59,7 @@ OPTIONS:
 - Option C: [Escalation / Deferral approach]
 
 NEXT STEP:
-"Proceeding with Option A unless you redirect, or select [A / B / C]."
+"Dependent action is paused pending [A / B / C]; independent authorized work can continue."
 ```
 
 ### Real-World Example: Database Uniqueness Conflict

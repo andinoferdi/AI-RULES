@@ -112,16 +112,16 @@ When operating under Tier B, an agent MUST complete each phase and satisfy its *
 LLMs exhibit an escalating failure spiral when hypotheses fail: models generate increasingly desperate, broad, and destructive mutations.
 
 ```
-Failed Attempt 1 ──▶ Revert. Move to Hypothesis 2.
-Failed Attempt 2 ──▶ Revert. Move to Hypothesis 3.
+Failed Attempt 1 ──▶ Restore owned attempt changes. Move to Hypothesis 2.
+Failed Attempt 2 ──▶ Restore owned attempt changes. Move to Hypothesis 3.
 Failed Attempt 3 ──▶ TRIP CIRCUIT BREAKER:
-                     1. Revert working tree to clean base (git checkout .)
+                     1. Preserve user edits; restore only verified attempt-owned changes.
                      2. STOP all autonomous mutations.
                      3. Prohibit silent codebase refactoring.
                      4. Escalate disproven evidence and architectural gap to user.
 ```
 
-The Rule of 3 protects against burning tokens and breaking working features. Tripping the breaker is a successful defense against compounding damage.
+The Rule of 3 limits compounding damage. Record the pre-attempt baseline and compare exact changes before recovery. Whole-tree checkout/reset/clean is forbidden; overlapping or uncertain ownership means preserve the diff and report the boundary, not discard it.
 
 ---
 

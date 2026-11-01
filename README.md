@@ -1,6 +1,6 @@
 # Andino Workflow
 
-Andino Workflow is a thin coordinator for 59 member skills, AI-RULES siblings and relevant installed external skills/tools. It selects capabilities, coordinates progress and preserves execution guards. Selected skills own their full methods, required resources, artifact detail and technical checks. A compact checkpoint can link a complete spec, plan, design or report.
+Andino Workflow is a thin coordinator for 60 member skill directories, including compatibility shims, AI-RULES siblings and relevant installed external skills/tools. It selects capabilities, coordinates progress and preserves execution guards. Selected skills own their full methods, required resources, artifact detail and technical checks. A compact checkpoint can link a complete spec, plan, design or report.
 
 Use it with Claude Code, Codex, OpenCode, or Antigravity to select the relevant method, track ongoing work, and verify changes before calling a task complete. The member skills use the `andino-*` prefix.
 
@@ -25,9 +25,9 @@ You can invoke the workflow or a member skill directly:
 
 ---
 
-## Member Skills Catalog (59 Skills)
+## Member Skills Catalog (60 Directories)
 
-All 59 methods are installed as native, discoverable skills with the `andino-` prefix:
+The installer exposes all 60 member directories as native, discoverable `andino-` skills. This includes the `decision-interview` and `method-authoring` compatibility shims; they forward to canonical methods rather than adding separate procedures:
 
 ### 1. Define & Explore
 | Skill | What It Does |
@@ -63,7 +63,7 @@ All 59 methods are installed as native, discoverable skills with the `andino-` p
 ### 4. Verification & Debugging
 | Skill | What It Does |
 |---|---|
-| `andino-debugging` | Uses 5 steps to investigate the root cause of failing tests or bugs. |
+| `andino-debugging` | Uses a targeted fast path for obvious failures and a 6-phase systematic FSM for deeper bugs: Loop -> Minimize -> Hypothesize -> Probe -> Fix -> Clean. |
 | `andino-verification` | Requires evidence that can be checked before declaring a task complete. |
 | `andino-browser-testing-with-devtools` | Live runtime DOM, console, network, and performance profiling. |
 | `andino-performance-optimization` | Measures performance, locates bottlenecks, and checks improvements. |
@@ -78,6 +78,13 @@ All 59 methods are installed as native, discoverable skills with the `andino-` p
 | `andino-git-workflow-and-versioning` | Atomic commits, trunk-based development, and changelog management. |
 | `andino-handoff` | Records the state another agent or session needs to continue the task. |
 | `andino-pr-description` | Writes pull request summaries that explain the changes, affected areas, and verification. |
+
+### 6. Skill & Guidance Authoring
+| Skill | What It Does |
+|---|---|
+| `andino-skill-maker` | Creates and maintains executable skills, procedures and runbooks using remedial or greenfield evaluation. |
+| `andino-method-authoring` | Compatibility shim forwarding legacy authoring requests to `andino-skill-maker`. |
+| `andino-agent-document-authoring` | Designs passive repository guidance such as `CLAUDE.md` and `AGENTS.md`. |
 
 *View the complete index with trigger/exclusion rules in [`references/internal-method-index.md`](references/internal-method-index.md).*
 
@@ -94,7 +101,7 @@ Install via the **AI-RULES CLI** (included in all profiles):
 git clone --branch main https://github.com/andinoferdi/AI-RULES.git
 cd AI-RULES && python -m pip install .
 
-# Setup Andino Workflow (installs the master orchestrator + all 59 member skills)
+# Setup Andino Workflow (installs the coordinator + all member skill directories)
 ai-rules setup --capability andino-workflow --host <host>
 ```
 
@@ -142,6 +149,6 @@ Andino coordinates with these AI-RULES capabilities:
 ## References
 
 - [`SKILL.md`](SKILL.md): Runtime contract and rules for workflow and direct invocation.
-- [`references/internal-method-index.md`](references/internal-method-index.md): Complete catalog of all 59 member skills.
+- [`references/internal-method-index.md`](references/internal-method-index.md): Complete member catalog and compatibility mappings.
 - [`references/method-dispatch.md`](references/method-dispatch.md): Rules for explicit and implicit method selection.
 - [`references/execution-plan-template.md`](references/execution-plan-template.md): Portable task checkpoint structure.

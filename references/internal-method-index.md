@@ -45,7 +45,8 @@ Selected skills own their full procedures, required resources, artifact detail a
 | [incremental-implementation](../skills/incremental-implementation/SKILL.md) | Multi-file accepted feature/change or the next dependency-ready implementation task. | Tiny isolated edit, unclear scope requiring decision/specification, or permission to skip failed gates. |
 | [issue-triage](../skills/issue-triage/SKILL.md) | A maintainer requests evaluation of incoming issues or opted-in external PRs. | Already accepted implementation tasks, self-generated tickets needing no new triage, or unauthorized bulk tracker changes. |
 | [learning-workspace](../skills/learning-workspace/SKILL.md) | An explicit request for learning across sessions or a structured lesson tied to a concrete mission. | A one-off factual answer or an assumption the user wants recurring lessons/automation. |
-| [method-authoring](../skills/method-authoring/SKILL.md) | Create/change method or recurring observed procedural failure needs guidance. | One-off note, mechanically enforceable rule or imagined problem. |
+| [skill-maker](../skills/skill-maker/SKILL.md) | Create/improve executable skills, operational procedures, or recurring procedural failures. | One-off note, mechanically enforceable rule, or passive project guidance (`CLAUDE.md`). |
+| [method-authoring](../skills/method-authoring/SKILL.md) | Compatibility forwarding shim resolving legacy authoring requests to `skill-maker`. | Direct use should point to canonical `skill-maker`. |
 | [observability-and-instrumentation](../skills/observability-and-instrumentation/SKILL.md) | New production I/O, endpoint/job/retry/queue, missing incident evidence or alert/runbook design. | Diagnosing one current failure only (debugging owns that) or unmeasured performance tuning. |
 | [performance-optimization](../skills/performance-optimization/SKILL.md) | Measured slowness, budget regression, slow query/pool/cache issue or provided performance artifacts. | Speculative memoization/index/cache work without evidence of a bottleneck. |
 | [plain-language-repitch](../skills/plain-language-repitch/SKILL.md) | The user says the last explanation did not land or asks what a technical message means. | A new research/implementation task or an opportunity to change project files. |
@@ -128,6 +129,8 @@ Original names below are internal aliases/provenance, not installation requireme
 | writing-for-agents | [agent-document-authoring](../skills/agent-document-authoring/SKILL.md) |
 | writing-plans | [planning](../skills/planning/SKILL.md) |
 | writing-shape | [article-shaping](../skills/article-shaping/SKILL.md) |
-| writing-skills | [method-authoring](../skills/method-authoring/SKILL.md) |
+| writing-skills | [skill-maker](../skills/skill-maker/SKILL.md) |
+| method-authoring | [skill-maker](../skills/skill-maker/SKILL.md) |
+| skill-maker | [skill-maker](../skills/skill-maker/SKILL.md) |
 
 See [provenance and notices](legal/provenance.md). Updates require manual source review and regressions on main; no upstream checkout, plugin, hook or runtime fetch is needed.

@@ -156,9 +156,13 @@ and POSIX shell wrappers for Windows/Linux/macOS, dual-mode workspace isolation 
 fallback and self-protecting `.gitignore`, offline deterministic Python stdlib verification, and complete
 integration with `ai-rules setup`). MIT notices for Matt Pocock and Jesse Vincent remain preserved.
 
-
-
-
-
-
-
+The 2026-11-01 elevation of the Skill System, `skill-maker`, and Coordinator Discovery synthesizes
+Jesse Vincent's Obra Superpowers `writing-skills` (minimal contracts, testing guidance on fresh subagent
+contexts, failure-grounded rules, and progressive reference extraction) and Addy Osmani's `agent-skills`
+`using-agent-skills` (situation-to-outcome mapping, contrastive near-miss classification, and progressive
+tool loading) with Andino Workflow governance (dual-mode authoring across Mode A Remedial failure baselines
+and Mode B Greenfield capability contracts, compact <40 lines decision lens in root `SKILL.md` strictly <150
+lines, low-ceremony single-line rationales without discovery ledgers or banner spam, physical forwarding
+shims preserving legacy invocations and catalog counts, zero-deletion workspace overrides in test runners,
+deterministic offline test fixtures in `tests/fixtures/decision_lens_cases.json`, and comprehensive multi-tier
+verification). All source attributions remain preserved under their respective MIT licenses.

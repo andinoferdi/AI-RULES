@@ -4,7 +4,7 @@ Internal Andino resource for `andino-delegation`. Operates under Andino Workflow
 
 ## 1. Dual-Mode Workspace Architecture
 
-To ensure flawless execution across Linux, macOS, and Windows (PowerShell / Git Bash), the workspace engine operates in **Dual-Mode**:
+The workspace protocol supports two isolation strategies across Linux, macOS, and Windows. The helper resolves scratch storage; it does not create a Git worktree or grant authority to do so:
 
 ```
 Workspace Resolution:
@@ -25,7 +25,11 @@ Upon initialization, the workspace creator ensures that `.andino/.gitignore` con
 *
 !.gitignore
 ```
-This guarantees that all generated briefs, raw reports, and review packages remain untracked by `git status` and immune to accidental commits.
+The ignore rule hides generated contents from normal untracked-file discovery; it does not prevent an explicit forced add. Inspect the staged diff before committing.
+
+### Isolated helper verification
+
+For disposable tests, set `ANDINO_WORKSPACE_OVERRIDE` to a newly created temporary directory. `delegation_workspace.py`, `task_brief.py`, and `review_package.py` resolve plan workspaces beneath that override and do not create the repository `.andino/.gitignore`. Preserve the `plan-path` ownership marker and sibling workspaces. Pass `-B` or `PYTHONDONTWRITEBYTECODE=1` to every Python descendant so imports cannot leave caches in the checkout. Tests own only their temporary root; teardown never deletes the repository `.andino` directory.
 
 ---
 
@@ -38,12 +42,11 @@ On Windows systems, background processes (Windows Defender, IDE indexers, shell 
 
 ### Mechanical Invariants for Windows Survival
 
-1. **Exponential Backoff Retry**: Any file write, directory deletion, or git index mutation must wrap in a 3-tier retry with jitter (200ms, 800ms, 2000ms).
-2. **Explicit File Closure**: All file reads/writes in helper scripts must use contextual managers (`with open(...) as f:`) to guarantee instant file handle release.
-3. **Stale Lock Pruning**:
-   - Before failing on `index.lock`, check lock file modification time.
-   - If `index.lock` is older than 10 seconds and no active git process exists in the process table, safely prune the lock file.
-4. **Universal Path Normalization**: All paths in briefs and commands must use forward slashes (`/`) and `pathlib.Path.resolve()`, avoiding backslash escape corruptions in JSON/Markdown.
+1. **Bounded Retry**: Retry only an observed transient error, at most twice with backoff. Do not retry denied actions or conceal persistent failures.
+2. **Explicit File Closure**: Close owned handles with context managers or `Path` convenience methods. Another process can still retain a handle; do not promise cleanup of actively locked files.
+3. **Lock Preservation**: Lock age alone is not evidence that a Git lock is stale. Do not prune `index.lock` automatically. Diagnose ownership and retain the blocked state unless removal is separately authorized and safe.
+4. **Path Containment**: Resolve paths with `pathlib.Path`, verify actual ancestry rather than substring containment, and use forward slashes in emitted JSON/Markdown.
+5. **Temporary Cleanup**: Use `TemporaryDirectory` for owned test roots and exercise read-only-file cleanup on Windows. Its permission reset does not release an active external handle; report that failure instead of deleting a parent or sibling workspace.
 
 ---
 
@@ -88,7 +91,6 @@ Current State: ACTIVE
 
 ## 4. Workspace Teardown and Cleanup
 
-1. **Selective Deletion**: When all tasks and the final branch review pass, the controller purges the plan-specific directory:
-   `rm -rf .andino/delegation/<plan-slug>`
+1. **Selective Deletion**: After final review, retain the ledger unless teardown is authorized. Before deleting an owned plan-specific directory, inspect its resolved path and `plan-path` marker, verify that it belongs to this plan, and preserve acceptance evidence in the authoritative plan. Never execute a deletion from an unchecked slug or a path copied from untrusted output.
 2. **Sibling Isolation**: Never delete parent `.andino/delegation/` or sibling plan directories (`.andino/delegation/<other-plan>/`), which may belong to concurrent or paused tasks.
 3. **Emergency Eject**: If a plan is aborted or circuit breaker trips, leave the workspace and ledger intact to allow human post-mortem and manual resumption.

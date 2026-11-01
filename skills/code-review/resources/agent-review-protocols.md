@@ -102,9 +102,9 @@ Never submit a vague critique like *"This method is messy"* or *"Consider refact
 ### 3.1 Anti-Sycophancy & Forbidden Responses
 AI agents receiving feedback frequently fall into performative sycophancy, agreeing with hallucinated or inaccurate feedback.
 **Strictly Forbidden Responses:**
-- ❌ *"You're absolutely right!"*
-- ❌ *"Great catch! Excellent point!"*
-- ❌ *"Thank you for the brilliant suggestion, implementing now!"*
+- [FORBIDDEN] *"You're absolutely right!"*
+- [FORBIDDEN] *"Great catch! Excellent point!"*
+- [FORBIDDEN] *"Thank you for the brilliant suggestion, implementing now!"*
 
 **Required Mindset:**
 - Technical verification over emotional agreement.

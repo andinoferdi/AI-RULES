@@ -52,12 +52,12 @@ Diff packages generated via `review_package.py`.
 
 ### Step 4: Two-Track Review Execution
 Reviewer 1 (for Task 1):
-- Track 1 (Spec Compliance): ✅ Spec Compliant
+- Track 1 (Spec Compliance): PASS (Spec Compliant)
 - Track 2 (Code Quality): Approved
 - Ledger updated: `Task 1: complete (commits f0a1b2c..a1b2c3d, review clean)`
 
 Reviewer 2 (for Task 2):
-- Track 1 (Spec Compliance): ❌ Issues Found: Missing TTL expiry validation.
+- Track 1 (Spec Compliance): FAIL (Issues Found): Missing TTL expiry validation.
 - Track 2 (Code Quality): Needs Fixes (Important: unhandled expired token lookup).
 - Ledger updated: `Task 2: review failed (1 Important finding: missing TTL validation)`
 

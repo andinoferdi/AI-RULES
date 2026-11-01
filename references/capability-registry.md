@@ -54,6 +54,7 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 | [source-driven-development](#source-driven-development) | method | Andino internal | Ground technical decisions |
 | [spec-driven-development](#spec-driven-development) | method | Andino internal | Specify consequential behavior |
 | [agent-skills-test-driven-development](#agent-skills-test-driven-development) | method | Andino internal | Executable regression contract |
+| [skill-maker](#skill-maker) | method | Andino internal | Author and maintain executable skills and procedures |
 | [ponytail](#ponytail) | skill | Ponytail | Minimal correct implementation |
 | [claude-mem](#claude-mem) | skill | Claude-Mem | Targeted historical decisions |
 | [impeccable](#impeccable) | skill | Impeccable | UI critique, polish and anti-slop detection |
@@ -740,6 +741,25 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 - Verification requirement: Actual local guide read plus meaningful observed task action for USED; metadata/example similarity alone is not live routing proof.
 - Activation policy: CONDITIONAL_AUTO
 - Internal method: skills/tdd/GUIDE.md
+
+## skill-maker
+
+- Type: method
+- Family/provider: Andino internal; adapted source provenance in package legal records
+- Aliases: skill-maker, method-authoring, writing-skills resolve to canonical skill-maker; no upstream native registration required
+- Primary purpose: Author and maintain executable skills, procedures, and runbooks
+- Trigger: Authoring a new skill, refining an existing skill, establishing dual-mode evaluation baselines, or codifying recurring procedural failures.
+- Preferred when: Executable guidance or operational procedure is needed.
+- Avoid when: Editing passive repository instructions (`CLAUDE.md`, `AGENTS.md`) — use `agent-document-authoring`.
+- Availability check: Check local skills/skill-maker/SKILL.md and skills/skill-maker/GUIDE.md plus actual resource permissions.
+- Invocation method: Read [skill-maker](../skills/skill-maker/SKILL.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
+- First-call/preflight: Read target craft and establish either Mode A (Remedial failure baseline) or Mode B (Greenfield capability contract).
+- Fallback: Missing or denied guide is UNAVAILABLE; use sufficient permitted native reasoning without claiming method use or reading an alternate denied copy.
+- Coexistence/conflicts: Replaces legacy `method-authoring` while maintaining on-disk forwarding shim for backward compatibility.
+- Mutation/permission boundary: Skill loading grants no new action authority. Local changes must serve authorized scope; external, destructive or live mutations require applicable user authorization.
+- Verification requirement: Actual local guide read plus verified operational example execution.
+- Activation policy: CONDITIONAL_AUTO
+- Internal method: skills/skill-maker/SKILL.md
 
 ## ponytail
 

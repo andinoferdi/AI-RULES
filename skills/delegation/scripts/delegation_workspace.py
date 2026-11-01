@@ -36,16 +36,21 @@ def resolve_workspace(plan_path_str: str) -> Path:
         sys.exit(2)
 
     repo_root = get_repo_root()
-    base_dir = repo_root / ".andino" / "delegation"
+    override = os.environ.get("ANDINO_WORKSPACE_OVERRIDE")
+    if override:
+        base_dir = Path(override).resolve()
+    else:
+        base_dir = repo_root / ".andino" / "delegation"
     base_dir.mkdir(parents=True, exist_ok=True)
 
-    # Ensure self-protecting .gitignore
-    gitignore = repo_root / ".andino" / ".gitignore"
-    if not gitignore.exists() or "*" not in gitignore.read_text(encoding="utf-8", errors="ignore"):
-        try:
-            gitignore.write_text("*\n!.gitignore\n", encoding="utf-8")
-        except Exception:
-            pass
+    # Ensure self-protecting .gitignore (repo root only, not when overridden)
+    if not override:
+        gitignore = repo_root / ".andino" / ".gitignore"
+        if not gitignore.exists() or "*" not in gitignore.read_text(encoding="utf-8", errors="ignore"):
+            try:
+                gitignore.write_text("*\n!.gitignore\n", encoding="utf-8")
+            except Exception:
+                pass
 
     slug = plan_file.stem
     if not slug or slug in (".", ".."):
