@@ -46,3 +46,10 @@ quarantine, and rationalization refutations) with Andino Workflow dual-mode tool
 capability negotiation (Chrome DevTools MCP primary, Playwright MCP adaptive fallback),
 tri-viewport responsive testing standards (360px, 768px, 1440px), and offline deterministic
 verification.
+
+The 2026-11-01 elevation of `ci-cd-and-automation` synthesizes the generative craft
+of Addy Osmani's `ci-cd-and-automation` (strict quality gate sequencing, copy-paste
+ready GitHub Actions workflows, service container isolation, feature flag lifecycles,
+and rationalization refutations) with Andino Workflow's deterministic agent error
+reflection loop, token-efficient log filtering, staged canary rollouts, and offline DAG
+dependency evaluation.
