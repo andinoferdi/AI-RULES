@@ -81,3 +81,35 @@ floor guards with cross-platform CRLF/path normalization, third-party scanner ex
 normalization protocols, multi-ecosystem catalogs across TS/JS, Python, Go, Rust, and Web UI,
 and offline deterministic Python stdlib verification).
 
+The 2026-11-01 elevation of `decision-map` synthesizes the epistemic navigation and multi-session
+architectural mapping craft of Matt Pocock's `engineering/wayfinder` ("Produce decisions, not
+deliverables" law, 6-part map body anatomy, 4-tier ticket taxonomy across research, interview/grilling,
+prototype, and prerequisite task, dual operational modes of Charting and Working through the map,
+and 2-pass dependency wiring) with Andino Workflow governance (high-density <150 line operational
+contract `SKILL.md`, deep craft `GUIDE.md`, local-first single-canvas default with zero external
+dependencies, optional read/propose-first GitHub Issues `gh` adapter, bidirectional cross-wiring
+with `andino-brainstorming`, anti-analysis paralysis circuit breakers, and offline deterministic
+Python stdlib DAG verification).
+
+The 2026-11-01 elevation of `context-engineering` synthesizes the generative craft
+of Addy Osmani's `context-engineering` (5-level context hierarchy, trust-level boundaries,
+multi-harness rules-file templates, selective include/brain dump/project map packing patterns,
+lost-in-the-middle recency ordering, context budget management, and confusion triage protocols)
+with Andino Workflow governance (high-density <150 line operational contract `SKILL.md`,
+deep craft `GUIDE.md`, prefix-stable KV-cache alignment, untrusted prompt injection quarantine,
+multi-harness rules catalogs across Claude Code, Codex, Cursor, and Windsurf, and offline
+deterministic Python stdlib verification).
+
+The 2026-11-01 elevation of `deep-module-design` synthesizes the generative architectural
+craft of Matt Pocock's `engineering/codebase-design` and `engineering/improve-codebase-architecture`
+(The 8 Absolute Glossary Terms, The Deletion Test, The 2-Adapter Invariant, 4 Dependency Categories
+in `DEEPENING.md`, parallel subagent `DESIGN-IT-TWICE.md` exploration across divergent constraints,
+and terminal-native visual mass/cross-section cards) with Andino Workflow governance (high-density
+<150 line operational contract `SKILL.md`, deep craft `GUIDE.md`, quantified Leverage Scorecard,
+multi-ecosystem deep module transformation catalogs across TypeScript/JavaScript, Python, Go, and
+Rust, cognitive compression for AI-navigability and hallucination suppression, and offline
+deterministic Python stdlib verification).
+
+
+
+
