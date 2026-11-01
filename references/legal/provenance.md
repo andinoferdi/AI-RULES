@@ -64,3 +64,11 @@ context window isolation, "Spec is a vision document" philosophy, "Declined to j
 logging, and anti-sycophantic receiving rules with 1-cycle deadlock prevention),
 verified through deterministic two-axis Python test evaluation.
 
+The 2026-11-01 elevation of `code-simplification` synthesizes the generative craft
+of Addy Osmani's `code-simplification` (The Five Principles, Chesterton's Fence, Rule of 500,
+Anti-Rationalization Refutation Table, 8 Diagnostic Red Flags, and multi-language Before/After
+catalogs across TypeScript/JavaScript, Python, and React) with Andino Workflow governance
+(lossless cognitive compression, semantic invariance, dominant negative gates, cryptographic
+SHA-256 byte-exact protected regions across multi-language comment syntaxes, subagent safety
+protocols with the Simplification Ledger, and offline deterministic Python test verification).
+
