@@ -31,6 +31,10 @@ The 2026-10-19 evolution reuses these pinned revisions for comparison. The new
 brainstorming method separates exploration from requirements interviews; the
 workflow-advisor adapts ask-matt's definition-backed advice without its secondary
 router, mandatory phase resets or tracker conventions. Existing legal notices
-remain applicable. The candidate assessment and current procedure evidence live
-under docs/validation/andino-evolution on the main quality plane; earlier unified
-evidence remains historical and is not a passing claim for changed guide bytes.
+remain applicable.
+
+The 2026-11-01 elevation of `article-shaping` integrates the full rhetorical beat
+craft of `writing-beats` and the structural hook generation of `writing-shape`
+into a unified high-retention authoring procedure while maintaining Andino Workflow
+contract isolation, read-only raw note preservation, and deterministic concept
+grounding verification.

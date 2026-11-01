@@ -1,70 +1,175 @@
-# Shape raw material into an article
+# Shape raw material into an article: Craft and Reference Guide
 
-Internal method ID: `article-shaping`. Conditional adaptation: use only for the concrete requested context; upstream beta/frozen status does not imply general readiness.
+Internal method ID: `article-shaping` (alias: `andino-article-shaping`).
 
-## Purpose and selection
+This guide details the complete authoring discipline for transforming raw thoughts, unstructured notes, and fragmented observations into a compelling, high-retention essay or article. It combines the rigorous rhetorical architecture of **Writing Beats** with the sculpting mastery and hook craftsmanship of **Writing Shape**.
 
-Develop a coherent argument whose reader meets prerequisite concepts before later claims depend on them.
+---
 
-Activate for: An explicit writing request with existing raw material ready to be shaped.
+## 1. The Core Philosophy: Grounding & Movement
 
-Do not activate for: Open fragment exploration, editing raw input without permission or publishing finished copy.
+Weak AI writing suffers from two fatal flaws:
+1. **Cognitive Disconnection**: Concepts appear out of nowhere. The reader is hit with ungrounded jargon or abstract principles before understanding why they matter.
+2. **Static Homogeneity**: Every paragraph has the same weight, the same tone, and the same length. The writing describes rather than *moves*.
 
-## Inputs and dependencies
+High-craft article shaping fixes this through two non-negotiable disciplines:
+- **Concept Grounding**: A strict dependency graph where every new idea builds only on audience prerequisites or previously grounded concepts.
+- **Rhetorical Beats**: Pacing the piece as an intentional sequence of dramatic moves where every unit has a single job and produces a tangible state change in the reader.
 
-Full raw-material file, separate output path, audience prerequisites, user's chosen thesis/feedback and existing style constraints.
+---
 
-Use resources progressively: [worked procedure and example](resources/worked-example.md). It is local and self-contained. Optional project tools are discovered when needed, never installed merely to load this method.
+## 2. Anatomy of a Rhetorical Beat
 
-## Procedure
+A **beat** is the atomic unit of rhetorical momentum. It can span a single punchy sentence or several interconnected paragraphs, but it must perform **exactly one primary job**.
 
-1. Read the raw pile end to end and keep it read-only. Confirm or reuse the separate article destination; preserve edits by rereading output before every write.
+### The 6 Beat Types
 
-2. Establish what concepts the audience already knows. Track grounded concepts from prerequisites plus introduced concepts; a later block may depend only on that set.
+| Beat Type | Primary Job | Emotional / Conceptual Delta | When to Use |
+| :--- | :--- | :--- | :--- |
+| `scene` | Visceral grounding in physical reality or concrete moment | Observer → Witness | In openings, before abstract theory, or after heavy exposition to re-anchor reality. |
+| `claim` | Stating an authoritative argument, rule, or core proposition | Curious → Informed | When establishing the central thesis or key milestone in the argument. |
+| `question` | Opening a curiosity gap or destabilizing existing belief | Settled → Questioning | To pull the reader into the next section or challenge accepted dogma. |
+| `aside` | Sharing a candid nuance, authorial doubt, or practical boundary | Formal → Intimate | To build trust, address counter-arguments, or prevent misapplication. |
+| `pivot` | Executing a sharp directional or conceptual turn | Expectant → Surprised | When revealing the non-obvious solution, twist, or hidden failure mode. |
+| `payoff` | Delivering the promised resolution, insight, or lasting punchline | Tense → Satisfied | Climax of a section or concluding note of the entire piece. |
 
-3. Offer two or three genuinely different openings/angles. The user chooses or combines; do not silently substitute the agent's preference for a requested collaborative choice.
+### The Beat State Contract
+For every beat drafted, ensure:
+1. **Preconditions**: What concepts must the reader already know? If an ungrounded concept is required, pause and insert an introductory beat first.
+2. **Grounds**: What new concept, principle, or mental model does this beat permanently establish?
+3. **Pacing Delta**: How did the reader's state change? (e.g., from skepticism to realization, or from confusion to clarity).
 
-4. Choose a paragraph/block path when developing an argument or a beat path when exploring a sequence of moves. Keep their distinctive rhythms: one agreed block, or two/three reachable next beats showing newly grounded concepts.
+---
 
-5. For each next move ask what it adds and whether removing it loses anything. Deliberately choose prose versus parallel list, repeated-field table, quote/paraphrase, inline/callout or code form.
+## 3. The 3-Hook Generation Engine
 
-6. Mine/split/combine raw material without inventing missing lived evidence. Name gaps and request the needed example or remove the section.
+Never begin drafting body paragraphs until the opening hook is deliberately chosen. The opening hook dictates voice, stakes, and narrative velocity.
 
-7. Append only the agreed move, reread, update grounded concepts and allow targeted rewrites. End when the argument/journey is complete or user chooses, not when every fragment is consumed.
+When presented with raw material, formulate **three genuinely different hooks**, providing **1-2 sentences of full, finished prose** for each:
 
-## Ownership, precedence and permissions
+### Angle 1: Narrative / In Media Res (The Vignette)
+- **Mechanism**: Drops the reader directly into a moment of sensory crisis, specific dialogue, or a high-stakes turning point without preamble.
+- **Formula**: `[Specific physical setting/timestamp] + [immediate tactile conflict or failure]`.
+- **Example**:
+  > *"At 3:14 AM on a freezing Tuesday in November, our primary Postgres cluster stopped accepting writes. The issue wasn't disk space or network partitioning—it was a single five-character line in a background worker."*
 
-Andino coordinates selection, shared progress, resource guards and final status from evidence.
-This skill owns its full procedure, required resources, artifact detail and technical
-checks. Coordinator brevity/density never truncates these. User/project authority,
-Focus/research/domain boundaries and real invocation controls still apply. Native
-`andino-article-shaping` and this guide expose one method, without recursive workflow invocation.
+### Angle 2: Provocative / Counter-Intuitive Claim (The Gauntlet)
+- **Formula**: `[Direct refutation of accepted dogma] + [uncomfortable reality]`.
+- **Mechanism**: Forces the reader to stop scrolling by declaring that the standard way they do things is fundamentally backwards.
+- **Example**:
+  > *"Most software teams don't have a communication problem; they have an excess of consensus. The fastest way to kill engineering momentum is inviting everyone into the decision room."*
 
-Existing scope authorization persists. Local examples use disposable data; real Git mutations, external messages/tracker writes, credentials, global setup, deployments and recurring jobs require their actual authority. A source example never grants it. Preserve user edits, secrets and current staging.
+### Angle 3: Tension / Paradoxical Question (The Curiosity Gap)
+- **Formula**: `[Two irreconcilable facts] + [the urgent question they create]`.
+- **Mechanism**: Highlights an obvious contradiction that the reader experiences daily but has never heard articulated clearly.
+- **Example**:
+  > *"Every startup preaches agile velocity, yet the average developer spends 60% of their week waiting on CI pipelines and PR approvals. If speed is our highest virtue, why do we build systems optimized for waiting?"*
 
-## Outputs and verification
+**Author Collaboration Rule**: Present these three options to the author. Ask: *"Which hook best captures your natural voice, or would you like to fuse elements of two?"* Never pick silently.
 
-Raw source stays unchanged, argument fulfills its opening, concept dependencies are grounded, writes preserve user edits and no future blocks are prewritten against uncertain feedback.
+---
 
-Apply the worked example to observe an artifact and independent expected outcomes. Its deterministic result proves only that bounded procedure; it does not prove model routing, live host parity or optional external tool execution. Record actual command/tool, current content identity, result and unresolved limits before claiming success.
+## 4. The 4 Structural Shapes
 
-## Example and anti-patterns
+Raw notes are not shaped into articles by organizing headings sequentially; they are shaped by matching the material to an archetypal narrative curve:
 
-Positive request: “Shape this fixed raw material into a separate article with grounded concepts.”
+```
+1. The Mountain (Narrative Arc)
+       /\ Climax / Core Revelation
+      /  \
+     /    \
+____/      \____ Resolution / Next Steps
 
-Negative request: “Overwrite my raw interview transcript.”
+2. The Inverted Pyramid (Insight-First)
+\=======================/ Core Claim / The News
+ \                     / Context & Mechanics
+  \                   / Edge Cases & Nuance
+   \                 /
+    \_______________/ Call to Action
 
-Using undefined concepts, forcing every fragment into the piece, template filler, colorless paraphrase of quotations whose wording matters or automatic publication.
+3. Tension and Resolution (Problem-Agitation-Solution)
+[Status Quo] ---> [The Hidden Fracture] ---> [Crisis / Agitation] ---> [The Breakthrough]
 
-## Fallback
+4. Idea Escalation (Micro to Macro)
+[Small Everyday Detail] ---> [Underlying Pattern] ---> [Universal Principle]
+```
 
-Prepare a grounded outline/opening choices when live feedback is unavailable and label them proposed, not user-selected. Beta paths are conditional on a writing request.
+- **The Mountain**: Ideal for war stories, personal journeys, and case studies. Builds tension progressively toward a single breakthrough moment.
+- **The Inverted Pyramid**: Ideal for tactical developer guides, architectural decisions, and announcements. Front-loads the conclusion, then deepens understanding.
+- **Tension and Resolution**: Ideal for persuasive essays and reframing industry trends. Shows why current solutions are breaking before revealing the alternative.
+- **Idea Escalation**: Ideal for philosophical or conceptual essays. Starts with an ultra-specific, familiar observation and scales it into a broad law of work or craft.
 
-## Provenance
+---
 
-Independently adapted from these audited local snapshot paths (provenance only; runtime never reads or installs those repositories):
+## 5. Concept Grounding Graph
 
-- `mattpocock/skills:skills/in-progress/writing-beats/SKILL.md`
-- `mattpocock/skills:skills/in-progress/writing-shape/SKILL.md`
+To guarantee that the reader never gets lost, treat concepts as nodes in a directed acyclic graph:
 
-Snapshot identities and licensing are recorded in the package provenance/legal records. Upstream bootstrap, automatic commit/push, hooks and installers are not imported as authority.
+1. **Audience Baseline ($P$)**: Concepts the target reader already understands prior to reading (e.g., for senior backend engineers: HTTP, SQL queries, thread pools).
+2. **Current Grounded Set ($G_t$)**: $G_0 = P$. As each beat is accepted, any concept it successfully introduces and explains is unioned into the grounded set:
+   $$G_{t+1} = G_t \cup \text{grounds}(\text{beat}_t)$$
+3. **Reachability Condition**: A beat $\text{beat}_k$ can be introduced if and only if:
+   $$\text{requires}(\text{beat}_k) \subseteq G_t$$
+4. **Cognitive Trap Prevention**: If a desired claim requires concept $X$, and $X \notin G_t$, do not attempt to write the claim. Either:
+   - Introduce an explicit explanatory beat to ground $X$.
+   - Re-evaluate audience prerequisites (if $X$ is actually common knowledge for this reader).
+   - Cut $X$ and rephrase the claim using currently grounded terminology.
+
+---
+
+## 6. Collaborative Drafting Cadence
+
+The shaping process is a partnership with the author, conducted in clear iterative loops:
+
+1. **Intake & Filter**: Read raw notes. Identify gold (sharp phrasing, lived observations, unique stances) and separate it from gravel (redundancies, half-baked tangents). Keep raw files strictly read-only.
+2. **Angle Selection**: Present the 3 radical hook choices. Wait for author selection or direction.
+3. **Beat Mapping**: Present 3-5 sequenced beats forming the spine of the chosen shape. Show reachable beats and the concepts they unlock.
+4. **Drafting Moves**:
+   - Offer the author a choice of path:
+     - **Beat Path**: Draft beat-by-beat, checking each transition and grounding milestone.
+     - **Block Path**: Draft full thematic sections, maintaining internal beat rhythm.
+5. **Handling Lived Evidence Gaps**:
+   - If an argument requires a real-world failure, metric, or personal quote:
+   - **Do**: Mark it explicitly: `[GAP: Need a real example of what broke when cache invalidated]`.
+   - **Do NOT**: Make up a story about a fictional company or fabricate numbers.
+
+---
+
+## 7. Anti-Slop & Prose Vitality Discipline
+
+Elevating output above typical AI writing requires ruthless enforcement of vitality standards:
+
+### Banned Patterns (The AI Slop Index)
+- **Throat-Clearing Openings**:
+  - *Slop*: "In today's fast-paced digital world...", "It goes without saying that..."
+  - *Fix*: Start on the action or the claim immediately.
+- **Empty Intensifiers and Buzzwords**:
+  - *Slop*: "Leveraging cutting-edge paradigms to seamlessly orchestrate synergies."
+  - *Fix*: "Using Redis queues to stop requests from dropping."
+- **Passive Drone Cadence**:
+  - *Slop*: "It has been demonstrated by numerous practitioners that performance can be improved..."
+  - *Fix*: "Teams that cache early cut latency in half."
+- **Predictable Symmetric Triads**:
+  - *Slop*: "It requires diligence, dedication, and determination."
+  - *Fix*: Use the exact right word; stop grouping adjectives in threes.
+- **The Sychophantic Summary Wrap-up**:
+  - *Slop*: "In conclusion, by embracing these transformative strategies, we can unlock..."
+  - *Fix*: End on a punchline, an open challenge, or a sharp memorable sentence.
+
+### Vitality Levers
+- **Noun-Verb Precision**: Prioritize strong physical verbs over weak verbs burdened with adverbs (*"shattered"* instead of *"broke very quickly"*).
+- **Sentence Cadence Variation**: Alternating short staccato sentences (3-6 words) with flowing, textured observations (20-30 words) creates natural reading cadence.
+- **Preserve the Author's Idiom**: When the author uses a colloquialism, a dry technical quip, or an unusual metaphor in their raw notes, protect and foreground it.
+
+---
+
+## 8. Summary Checklist for High-Quality Output
+
+Before declaring an article shaped:
+- [ ] Raw source files remain untouched.
+- [ ] Opening hook hooks the reader within 3 seconds using concrete prose.
+- [ ] Every technical or domain concept is grounded before being relied upon.
+- [ ] Each section contains distinct rhetorical beats (scene, claim, question, aside, pivot, payoff).
+- [ ] Zero fabricated lived experiences, metrics, or quotes.
+- [ ] Slop-free: no throat-clearing, no passive filler, varied sentence rhythms.
+- [ ] The ending pays off the promise made in the opening.
