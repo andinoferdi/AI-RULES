@@ -84,7 +84,7 @@ the extractor. No agent evaluation is substituted by a synthetic Python oracle.
 | --- | --- | --- | --- | --- |
 | G0 / T1 Baseline and extractor | DONE | none | helper + focused tests | 6 tests, 9 baseline assertion failures -> all pass |
 | G1 / T2 Procedure quality | DONE | T1 | delegation documents + contract checks | static 0 issues; cost 7/7; portfolio 6/6; example 5/5 |
-| G2 / T3 Setup distribution | IN_PROGRESS | T2 | main distribution test + manifest | real-entrypoint regression added; pin not updated |
+| G2 / T3 Setup distribution | IN_PROGRESS | T2 | main distribution test + manifest | bundled all 5 hosts PASS; related 5 tests PASS; validator 37 PASS |
 | G3 / T4 Review and publish | TODO | T3 | owned changes only, two pushes | not run |
 
 ## Detailed Execution
@@ -158,7 +158,9 @@ Status: IN_PROGRESS
 Readiness: READY
 Depends on: T2
 Owns in main: new `tests/installer/test_delegation_distribution.py`,
-`src/ai_rules/release/data/release_manifest.json`.
+`src/ai_rules/release/data/release_manifest.json`, `scripts/validate_skills.py` and
+`tests/test_validate_skills.py`. In workflow: one case-correct link in
+`skills/handoff/resources/context-packing/contract.md` needed for package validity.
 Inspected pattern: `test_plan_execution_distribution.py` uses cli.main setup with
 bundled source in temporary projects and compares bytes from manifest Git commit.
 Change Specification: reuse this real entrypoint for codex, claude-code, opencode,
@@ -176,6 +178,30 @@ planning/plan-execution distribution tests and package validation as applicable.
 Evidence: repositories are separate clones (`.git` in each), not linked worktrees.
 Import the owned workflow commit into main with a local Git fetch before byte
 comparison; do not assume shared objects or alter either worktree's unrelated edits.
+Bundled setup now passes for all five adapters. Full release validation found 34
+pre-existing issues plus 3 rejected new maintainer files. Ruling: repair this
+distribution seam before publishing the new manifest pin; do not waive validation.
+Extend the existing safe-path allowlist only for current portfolio metadata,
+project-setup/workflow-advice Markdown resources, plan Markdown, root test/verify
+Python helpers and the six named delegation scripts. Preserve nonregular-file,
+path-escape and nested-entrypoint rejection. Ignore fenced Markdown examples when
+checking local links (their paths belong to the displayed template), while still
+checking real links after the fence. Correct the genuine handoff `GUIDE.md` link
+to existing lowercase `guide.md`. Add fixtures with exact accepted paths and
+negative unknown scripts/JSON/executables/unsafe paths, plus fence-boundary cases.
+Run `python -B -m unittest discover -s tests -p test_validate_skills.py -v` before
+and after the validator edit. Revalidate the full committed workflow package;
+all errors must be zero before main is committed.
+Validator baseline tests also exposed Focus's existing consolidation metadata;
+allow its one exact JSON resource path and retain nonregular-file rejection.
+Actual evidence: setup regression first failed on stale manifest GUIDE bytes,
+then passed for both entrypoints across five adapters (49.1s). Related family,
+planning and plan-execution distribution: 5 tests PASS (125.5s). Validator suite:
+new layout/fence cases failed before the edit; all 37 tests PASS afterward (1.6s),
+including unsafe paths, unknown files, nonregular entries and real broken links.
+One early nested-PowerShell environment assignment failed; it was a setup error,
+not RED evidence. The corrected Python environment runner produced the recorded
+stale-byte RED above. No model evaluation or global host installation occurred.
 
 ### T4 — review, push and verify publication
 Status: TODO
@@ -192,5 +218,6 @@ Evidence: Not run.
 
 ## NEXT ACTION
 
-T3: commit the verified workflow-owned slices, fetch their objects into main,
-observe the stale bundled pin failure, update that pin and run real setup checks.
+T3: validate the corrected full workflow package, commit the one-link integration
+repair and checkpoint, update main's pin, then publish workflow and smoke-test
+remote latest setup before the main commit/push.

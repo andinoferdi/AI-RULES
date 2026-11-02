@@ -50,7 +50,7 @@ Answer before loading context into an active turn:
 
 ## Progressive Disclosure Router
 
-- Full architectural guide, attention theory, and recency physics: [`GUIDE.md`](GUIDE.md)
+- Full architectural guide, attention theory, and recency physics: [`guide.md`](guide.md)
 - Token budget math, 3 packing strategies, and log sanitization: [`resources/context-budget-and-packing.md`](resources/context-budget-and-packing.md)
 - Multi-harness rules templates (Claude Code, Codex, Cursor, Windsurf): [`resources/rules-file-catalog.md`](resources/rules-file-catalog.md)
 - Ambiguity triage (A/B/C schema), inline planning, and quarantine: [`resources/confusion-and-ambiguity-protocols.md`](resources/confusion-and-ambiguity-protocols.md)
