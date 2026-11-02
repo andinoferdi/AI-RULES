@@ -1,145 +1,96 @@
 ---
 name: andino-article-shaping
-description: An explicit writing request with existing raw material ready to be shaped into a cohesive article or essay. Operates under Andino Workflow governance.
+description: Use when an explicit writing request with existing raw material is ready to be shaped into an article or essay. Operates under Andino Workflow governance.
 ---
 
-# Shape raw material into an article
+# Shape Raw Material into an Article
 
-Internal method ID: `andino-article-shaping` (alias: `article-shaping`).
+Internal method ID: `andino-article-shaping` (aliases: `article-shaping`, `writing-beats`, `writing-shape`).
 
 > **Andino Workflow Member Skill**
-> This skill operates under the **Andino Workflow** protocol:
-> - Adheres to proportional investigation, evidence-based decisions, and single durable checkpoints.
-> - When this technique reaches completion, hand off cleanly to the next workflow phase or active task.
-> - Anti-loop guard: Do not re-invoke `andino-workflow` recursively; maintain progress within the active task.
+> Operates under Andino Workflow protocol: single durable checkpoint, proportional investigation, anti-loop guards.
+> Loading this file does not invoke another skill or mutate repository state. Upstream references yield to current policy.
 
-## Purpose and selection
+## 1. Dominant Negative Gates (When NOT to Use)
 
-Transform an unstructured collection of notes, observations, or raw fragments into a compelling, high-retention article where every concept is grounded before subsequent claims depend on it, and every beat delivers a distinct rhetorical move.
+Reject shaping immediately if ANY condition holds:
+- **Open Fragment Exploration**: Raw, unformed thoughts without intention to structure belong to [raw-capture](resources/raw-capture/guide.md).
+- **Direct Source Mutation**: Never edit, truncate, or overwrite the author's raw notes file in place.
+- **Evidence Fabrication**: Never invent lived anecdotes, synthetic statistics, or fake quotes when material is missing.
+- **Automatic Publishing**: Never push or publish completed copy without explicit author review and authorization.
 
-Activate for:
-- An explicit writing request with existing raw notes, interview transcripts, or fragments ready to be shaped.
-- Structuring an article's narrative arc, sequencing dramatic/rhetorical beats, or generating distinct opening hooks.
-- Refining a draft's concept dependencies, pacing, and eliminating conversational slop.
+## 2. Operational Pacing Router
 
-Do not activate for:
-- Open-ended fragment exploration without an intention to structure (select [raw-capture](resources/raw-capture/guide.md)).
-- Overwriting or editing raw source material in place without explicit permission.
-- Fabricating personal anecdotes or hallucinating evidence not found in the raw pile.
-- Automatic copy-publishing without collaborative user review.
-
-## Select a resource, not a second lifecycle
-
-Load only the resource matching the current need. A direct resource selection uses
-that procedure and current authority; it does not run this parent's other modes,
-reopen accepted requirements or require a second execution plan.
-
-| Current need | Resource | Exclusion |
+| Mode | Trigger Condition | Operational Protocol |
 | :--- | :--- | :--- |
-| Capturing raw observations, unstructured fragments, rough notes | [raw-capture](resources/raw-capture/guide.md) | Structured article shaping or narrative sequencing |
+| **Mode A: Interactive CYOA** (Default) | Standard article shaping from raw notes or transcripts. | **One Beat at a Time**: Agree on hook -> propose 2-3 reachable next beats -> write agreed beat to disk -> re-read disk -> repeat. |
+| **Mode B: Cohesive Cluster** | Author explicitly requests rapid drafting or section flow. | **Functional Slice**: Draft cohesive 2-3 beat section -> verify grounding invariants -> write section to disk -> pause for critique. |
 
-## Inputs and dependencies
+## 3. The 5 Floor Invariants
 
-- Raw material source: notes, fragments, outline fragments, or interview transcripts.
-- Separate destination path for the shaped article (never overwrite raw inputs).
-- Target audience definition and baseline concept prerequisites.
-- Author's desired thesis, tone, and format constraints.
+1. **Iron Law of Non-Mutation**: The raw source file is read-only. The shaped article lives exclusively in a separate destination file.
+2. **Grounding Invariant**: A claim or beat cannot introduce cognitive friction by using a concept before it has been grounded.
+3. **Single Job per Beat**: Every beat executes exactly one rhetorical move (`scene`, `claim`, `question`, `aside`, `pivot`, or `payoff`).
+4. **Zero Fabricated Evidence**: When lived details or metrics are missing, name the gap explicitly (`[GAP: ...]`); never invent facts.
+5. **Durable Disk Checkpoint**: Commit agreed beats to disk incrementally before proposing next moves; never write ahead in memory.
 
-Use resources progressively: [worked procedure and example](resources/worked-example.md) and [detailed craft guide](GUIDE.md). Resources are local and self-contained; upstream repositories are provenance, not runtime dependencies.
+## 4. Anti-Rationalization Refutations
 
-## Procedure
+| Rationalization Shortcut | Mechanical Reality & Required Response |
+| :--- | :--- |
+| *"I will write the entire draft at once to save turns."* | Writing long batch drafts causes regression to the mean and bland AI slop. Draft beat-by-beat or in small clusters. |
+| *"The author won't notice if I invent a small anecdote."* | Fabricated stories destroy trust and violate epistemic grounding. Name the gap and demand the real example. |
+| *"I don't need to write to disk until the whole article is done."* | Uncommitted drafts are vulnerable to context compaction and session loss. Write each agreed beat to disk immediately. |
+| *"A negative rule ('never use slop') is enough to ensure quality."* | Prohibitions backfire on shaping. Use the ruthless editor questions and active sentence cadence in [grilling protocol](resources/grilling-and-cadence-protocol.md). |
+| *"Technical DAG terms explain grounding best to the user."* | Jargon causes cognitive friction. Speak natural editorial language; enforce mathematical grounding under the hood. |
 
-1. **Ingest Raw Material Read-Only**
-   - Read the raw pile end to end without modifying it.
-   - Confirm or establish a separate destination file for the article.
-   - Extract the core tension, central thesis, and memorable original phrases.
+## 5. Diagnostic Red Flags (Stop Immediately)
 
-2. **Map Concept Prerequisites and Grounding**
-   - Identify what the target audience already understands (prerequisites).
-   - Initialize the `grounded_concepts` set with audience prerequisites.
-   - Enforce the Grounding Invariant: A claim or beat cannot introduce cognitive friction by relying on a concept before that concept has been introduced and grounded.
+1. Overwriting or modifying the raw input source file.
+2. Drafting multiple downstream sections into the article file before the author selects an opening hook.
+3. Inventing synthetic company names, metrics, or personal experiences not found in the raw material.
+4. Continuing to write ahead when an ungrounded concept or weak logical transition has been detected.
+5. Using corporate throat-clearing, symmetric triads, or passive drone wrap-ups.
 
-3. **Generate Three Radically Distinct Opening Hooks**
-   - Offer the author 2 to 3 genuinely different openings, providing 1-2 sentences of *actual sample prose* for each, not merely descriptive bullet points:
-     - *Angle A: Narrative / In Media Res* (drops the reader into a specific incident, visual scene, or sensory moment).
-     - *Angle B: Provocative / Counter-Intuitive Claim* (directly confronts common wisdom or states a bold, defensible truth).
-     - *Angle C: Tension / Problem-Driven Question* (surfaces an unresolved dilemma, paradox, or urgent reader stakes).
-   - Let the author choose, combine, or calibrate voice. Never substitute the agent's preferred opening silently.
+## 6. Progressive Disclosure Router
 
-4. **Choose the Drafting Path: Beat-by-Beat vs. Paragraph Flow**
-   - *Beat Path*: Best for complex conceptual journeys, essays, and technical narratives. Structure the piece as discrete rhetorical moves with explicit concept tracking and reachability.
-   - *Paragraph Flow*: Best for straightforward opinion pieces or linear narrative arcs. Draft in cohesive blocks while respecting beat transitions.
+- Complete master craft guide: [GUIDE.md](GUIDE.md)
+- Formal schemas, reachability states, and invariants: [resources/contract.md](resources/contract.md)
+- Ruthless editor interrogation and cadence engineering: [resources/grilling-and-cadence-protocol.md](resources/grilling-and-cadence-protocol.md)
+- Concept grounding DAG, reachability rules, and gap naming: [resources/concept-grounding-graph.md](resources/concept-grounding-graph.md)
+- Visual format debates and anti-slop banned index: [resources/format-tradeoffs-and-anti-slop.md](resources/format-tradeoffs-and-anti-slop.md)
+- 3-hook generation engine, 6 beat types, and 4 narrative curves: [resources/beat-progression-and-hooks.md](resources/beat-progression-and-hooks.md)
+- End-to-end worked example and verification harness: [resources/worked-example.md](resources/worked-example.md)
+- Unstructured raw fragments intake: [resources/raw-capture/guide.md](resources/raw-capture/guide.md)
 
-5. **Execute Beats as Discrete Rhetorical Moves**
-   - Each beat must perform exactly **one job**:
-     - `scene`: Grounds the reader in a concrete setting, event, or sensory snapshot.
-     - `claim`: Advances a core argument, insight, or proposition.
-     - `question`: Opens a curiosity gap or challenges an assumption.
-     - `aside`: Shares a personal reflection, nuance, or boundary caveat.
-     - `pivot`: Shifts direction, reframes the premise, or introduces a surprising turn.
-     - `payoff`: Resolves tension, cements the lesson, or lands the central insight.
-   - Verify state change: Each beat must alter the reader's understanding, emotional tension, or concept state (delta != 0).
+## 7. Runnable Operational Contract & Verification Harness
 
-6. **Ground Missing Links & Name Gaps Faithfully**
-   - Mine, split, and re-order raw material freely to serve narrative clarity.
-   - When a transition or beat requires an example or lived detail not present in the raw notes, **name the gap** explicitly and request it from the author: *"We need a concrete example of when this failed in production."*
-   - Never invent personal stories, synthetic numbers, or fake quotes.
+```python andino-operational-example
+import json, os, sys
 
-7. **Apply Anti-Slop and Cadence Polish**
-   - Cut throat-clearing openings (*"In the ever-evolving landscape of...", "It is important to understand that..."*).
-   - Replace abstract nouns with specific, visceral verbs and objects.
-   - Vary sentence lengths deliberately: interlock short punchy declarations with rhythmic multi-clause explanations.
-   - Review draft collaboratively, append agreed blocks, update the grounded concept set, and stop when the journey is complete.
+negative = os.environ.get("ANDINO_NEGATIVE", "0") == "1"
 
-## Ownership, precedence and permissions
+grounded = {"request"}
+beats = {
+    "1_scene": {"requires": {"request"}, "grounds": {"error_state"}},
+    "2_claim": {"requires": {"request", "error_state"}, "grounds": {"core_concept"}},
+    "3_pivot": {"requires": {"core_concept"}, "grounds": {"breakthrough"}}
+}
 
-Andino coordinates selection, shared progress, resource guards and final status from evidence.
-This skill owns its full procedure, required resources, artifact detail and technical checks.
-Coordinator brevity/density never truncates these. User/project authority, Focus/research/domain
-boundaries and real invocation controls still apply. Native `andino-article-shaping` and this guide
-expose one method, without recursive workflow invocation.
+if negative:
+    beats["2_claim"]["requires"] = {"request", "ungrounded_leap"}
 
-Existing scope authorization persists. Local examples use disposable data; real Git mutations,
-external messages/tracker writes, credentials, global setup, deployments and recurring jobs require
-their actual authority. A source example never grants it. Preserve user edits, secrets and current staging.
+for b_id, b_data in beats.items():
+    if not b_data["requires"].issubset(grounded):
+        sys.exit(1)
+    grounded.update(b_data["grounds"])
 
-## Outputs and verification
+print(json.dumps({"valid": True, "status": "CONTRACT_VERIFIED", "grounded": sorted(grounded)}))
+sys.exit(0)
+```
 
-- The raw material source file remains byte-for-byte unchanged.
-- The shaped article clearly fulfills the chosen opening hook and thesis.
-- Concept dependencies are logically ordered with zero ungrounded prerequisites.
-- Every beat executes a defined rhetorical job with varied rhythm and zero AI slop.
-- Output respects the author's authentic voice and decisions.
+## 8. Provenance
 
-Apply the worked example to observe an artifact and independent expected outcomes. Its deterministic
-result proves only that bounded procedure; it does not prove model routing, live host parity or
-optional external tool execution. Record actual command/tool, current content identity, result and
-unresolved limits before claiming success.
-
-## Example and anti-patterns
-
-Positive request:
-- *"Here is my raw brain-dump on database migrations; shape it into a tight essay with grounded concepts and 3 distinct opening hook options."*
-- *"Take these rough interview notes and sequence them into dramatic beats that build to our architectural breakthrough."*
-
-Negative request:
-- *"Rewrite my raw fragment notes file directly and publish it without asking."*
-
-Anti-patterns:
-- Introducing specialized jargon (e.g., "idempotency keys", "vector embeddings") without grounding the concept first.
-- Forcing every single raw fragment into the article even when it dilutes focus or disrupts narrative flow.
-- Homogeneous AI boilerplate: uniform sentence length, passive voice, predictable "In conclusion" summaries, or sycophantic padding.
-- Inventing anecdotes or attributing experiences to the author that were never stated in the source notes.
-
-## Fallback
-
-When live interactive feedback is unavailable, generate a grounded beat outline alongside 3 proposed hook variations clearly labeled as `[PROPOSED - PENDING AUTHOR SELECTION]`, and draft the first two grounded beats as a working proof-of-concept.
-
-## Provenance
-
-Independently adapted from these audited local snapshot paths (provenance only; runtime never reads or installs those repositories):
-
-- `mattpocock/skills:skills/in-progress/writing-beats/SKILL.md`
-- `mattpocock/skills:skills/in-progress/writing-shape/SKILL.md`
-
-Snapshot identities and licensing are recorded in the package provenance/legal records ([references/license.md](references/license.md)). Upstream bootstrap, automatic commit/push, hooks and installers are not imported as authority.
+Independently adapted from audited local snapshot paths under MIT license ([references/license.md](references/license.md)):
+- `mattpocock/skills:skills/in-progress/writing-beats` (Matt Pocock 2026)
+- `mattpocock/skills:skills/in-progress/writing-shape` (Matt Pocock 2026)

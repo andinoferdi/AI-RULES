@@ -1,4 +1,6 @@
-# Shape raw material into an article: Worked Procedure and Example
+# Shape Raw Material into an Article: Worked Procedure and Example
+
+Internal method ID: `andino-article-shaping/worked-example`.
 
 This resource demonstrates the complete article shaping lifecycle—from raw, unorganized fragments to a sequenced beat journey, three concrete opening hooks, and an engaging shaped draft with zero AI slop.
 
@@ -39,11 +41,11 @@ Before drafting, generate three radically distinct opening angles with full samp
 
 | Beat ID | Type | Job | Preconditions | Grounds | Reader Delta |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `1_incident` | `scene` | Visually ground the double-charge nightmare in real life | `request` | `retry_failure` | Casual → Startled |
-| `2_idempotency` | `claim` | Introduce idempotency keys and explain standard belief | `request`, `retry_failure` | `idempotency_key` | Startled → Informed |
-| `3_race_hazard` | `pivot` | Reveal the concurrent multi-pod race condition | `idempotency_key` | `concurrency_gap` | Confident → Shocked |
-| `4_solution` | `claim` | Present atomic unique constraints and insert-first pattern | `concurrency_gap` | `atomic_dedup` | Shocked → Enlightened |
-| `5_takeaway` | `payoff` | Deliver the memorable engineering rule | `atomic_dedup` | `retry_safety` | Enlightened → Armed |
+| `1_incident` | `scene` | Visually ground the double-charge nightmare in real life | `request` | `retry_failure` | Casual -> Startled |
+| `2_idempotency` | `claim` | Introduce idempotency keys and explain standard belief | `request`, `retry_failure` | `idempotency_key` | Startled -> Informed |
+| `3_race_hazard` | `pivot` | Reveal the concurrent multi-pod race condition | `idempotency_key` | `concurrency_gap` | Confident -> Shocked |
+| `4_solution` | `claim` | Present atomic unique constraints and insert-first pattern | `concurrency_gap` | `atomic_dedup` | Shocked -> Enlightened |
+| `5_takeaway` | `payoff` | Deliver the memorable engineering rule | `atomic_dedup` | `retry_safety` | Enlightened -> Armed |
 
 ---
 
@@ -60,7 +62,7 @@ Here is the flaw: network retries are not polite, sequential inquiries. When a f
 
 Caching a response after the fact is not idempotency. True idempotency requires an atomic barrier at the very start of the pipeline.
 
-By enforcing a unique database constraint on the idempotency key and executing an atomic insert *before* calling downstream services, the second request immediately halts on constraint violation. The race condition vanishes.
+By enforcing a unique database constraint on the idempotency key and executing an atomic insert before calling downstream services, the second request immediately halts on constraint violation. The race condition vanishes.
 
 The rule is simple: retrying failed operations without atomic deduplication isn't resilience. It's just multiplying your bugs under pressure.
 ```
