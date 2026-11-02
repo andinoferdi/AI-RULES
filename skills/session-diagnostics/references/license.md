@@ -1,5 +1,7 @@
 # License Notice
 
+**Original Source:** [obra/superpowers: skills/diagnosing-superpowers](https://github.com/obra/superpowers/tree/main/skills/diagnosing-superpowers)
+
 Substantive adapted material in this skill is covered by the following notice:
 
 MIT License

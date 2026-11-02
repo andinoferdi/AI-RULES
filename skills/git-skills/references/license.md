@@ -3,6 +3,7 @@
 Substantive adapted material in this skill is covered by the following notices:
 
 ## Jesse Vincent (superpowers)
+- **Original Source:** [obra/superpowers: skills/using-git-worktrees](https://github.com/obra/superpowers/tree/main/skills/using-git-worktrees) & [skills/finishing-a-development-branch](https://github.com/obra/superpowers/tree/main/skills/finishing-a-development-branch)
 
 MIT License
 
@@ -27,6 +28,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ## Matt Pocock (skills)
+- **Original Source:** [mattpocock/skills: skills/engineering/git-interactive](https://github.com/mattpocock/skills/tree/main/skills/engineering/git-interactive) & [skills/engineering/create-pr](https://github.com/mattpocock/skills/tree/main/skills/engineering/create-pr)
 
 MIT License
 

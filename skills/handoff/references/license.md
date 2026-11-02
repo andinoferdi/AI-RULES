@@ -3,6 +3,7 @@
 Substantive adapted material in this skill is covered by the following notices:
 
 ## Matt Pocock (skills)
+- **Original Source:** [mattpocock/skills: skills/productivity/handoff](https://github.com/mattpocock/skills/tree/main/skills/productivity/handoff) & [skills/engineering/ask-matt](https://github.com/mattpocock/skills/tree/main/skills/engineering/ask-matt)
 
 MIT License
 
@@ -27,6 +28,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ## Addy Osmani (agent-skills)
+- **Original Source:** [addyosmani/agent-skills: skills/context-engineering](https://github.com/addyosmani/agent-skills/tree/main/skills/context-engineering)
 
 MIT License
 

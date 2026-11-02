@@ -3,6 +3,7 @@
 Substantive adapted material in this skill is covered by the following notices:
 
 ## Matt Pocock (skills)
+- **Original Source:** [mattpocock/skills: skills/engineering/executing-plans](https://github.com/mattpocock/skills/tree/main/skills/engineering/executing-plans)
 
 MIT License
 
@@ -27,6 +28,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ## Addy Osmani (agent-skills)
+- **Original Source:** [addyosmani/agent-skills: skills/incremental-implementation](https://github.com/addyosmani/agent-skills/tree/main/skills/incremental-implementation)
 
 MIT License
 
@@ -51,6 +53,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ## Jesse Vincent (superpowers)
+- **Original Source:** [obra/superpowers: skills/executing-plans](https://github.com/obra/superpowers/tree/main/skills/executing-plans)
 
 MIT License
 

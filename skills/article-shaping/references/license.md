@@ -1,5 +1,7 @@
 # License Notice
 
+**Original Source:** [mattpocock/skills: skills/in-progress/writing-beats](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-beats) & [writing-shape](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-shape)
+
 Substantive adapted material in this skill is covered by the following notice:
 
 MIT License

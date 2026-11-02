@@ -1,5 +1,7 @@
 # License Notice
 
+**Original Source:** [mattpocock/skills: skills/engineering/triage](https://github.com/mattpocock/skills/tree/main/skills/engineering/triage)
+
 Substantive adapted material in this skill is covered by the following notice:
 
 MIT License

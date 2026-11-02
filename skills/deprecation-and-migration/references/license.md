@@ -1,5 +1,7 @@
 # License Notice
 
+**Original Source:** [addyosmani/agent-skills: skills/deprecation-and-migration](https://github.com/addyosmani/agent-skills/tree/main/skills/deprecation-and-migration)
+
 Substantive adapted material in this skill is covered by the following notice:
 
 MIT License

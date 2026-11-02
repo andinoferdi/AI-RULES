@@ -1,5 +1,7 @@
 # License Notice
 
+**Original Source:** [mattpocock/skills: skills/engineering/wizard](https://github.com/mattpocock/skills/tree/main/skills/engineering/wizard)
+
 Substantive adapted material in this skill is covered by the following notice:
 
 MIT License

@@ -1,5 +1,7 @@
 # License Notice
 
+**Original Source:** [addyosmani/agent-skills: skills/performance-optimization](https://github.com/addyosmani/agent-skills/tree/main/skills/performance-optimization)
+
 Substantive adapted material in this skill is covered by the following notice:
 
 MIT License

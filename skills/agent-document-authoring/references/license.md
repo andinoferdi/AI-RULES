@@ -1,5 +1,7 @@
 # License Notice
 
+**Original Source:** [mattpocock/skills: skills/productivity/writing-for-agents](https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-for-agents)
+
 Substantive adapted material in this skill is covered by the following notice:
 
 MIT License

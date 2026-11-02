@@ -3,6 +3,7 @@
 Substantive adapted material in this skill is covered by the following notices:
 
 ## Addy Osmani (agent-skills)
+- **Original Source:** [addyosmani/agent-skills: skills/debugging-and-error-recovery](https://github.com/addyosmani/agent-skills/tree/main/skills/debugging-and-error-recovery)
 
 MIT License
 
@@ -27,6 +28,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ## Matt Pocock (skills)
+- **Original Source:** [mattpocock/skills: skills/engineering/debugging](https://github.com/mattpocock/skills/tree/main/skills/engineering/debugging)
 
 MIT License
 
@@ -51,6 +53,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ## Jesse Vincent (superpowers)
+- **Original Source:** [obra/superpowers: skills/systematic-debugging](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging)
 
 MIT License
 

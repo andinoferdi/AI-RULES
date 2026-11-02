@@ -3,6 +3,7 @@
 Substantive adapted material in this skill is covered by the following notices:
 
 ## Jesse Vincent (superpowers)
+- **Original Source:** [obra/superpowers: skills/writing-skills](https://github.com/obra/superpowers/tree/main/skills/writing-skills)
 
 MIT License
 
@@ -27,6 +28,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ## Addy Osmani (agent-skills)
+- **Original Source:** [addyosmani/agent-skills: skills/using-agent-skills](https://github.com/addyosmani/agent-skills/tree/main/skills/using-agent-skills)
 
 MIT License
 

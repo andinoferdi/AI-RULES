@@ -3,6 +3,7 @@
 Substantive adapted material in this skill is covered by the following notices:
 
 ## Addy Osmani (agent-skills)
+- **Original Source:** [addyosmani/agent-skills: skills/test-driven-development](https://github.com/addyosmani/agent-skills/tree/main/skills/test-driven-development)
 
 MIT License
 
@@ -27,6 +28,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ## Matt Pocock (skills)
+- **Original Source:** [mattpocock/skills: skills/engineering/tdd](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)
 
 MIT License
 
@@ -51,6 +53,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ## Jesse Vincent (superpowers)
+- **Original Source:** [obra/superpowers: skills/test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)
 
 MIT License
 

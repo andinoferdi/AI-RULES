@@ -1,5 +1,7 @@
 # License Notice
 
+**Original Source:** [mattpocock/skills: skills/engineering/improve-codebase-architecture](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)
+
 Substantive adapted material in this skill is covered by the following notice:
 
 MIT License

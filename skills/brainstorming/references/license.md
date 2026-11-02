@@ -3,6 +3,7 @@
 Substantive adapted material in this skill is covered by the following notices:
 
 ## Addy Osmani (agent-skills)
+- **Original Source:** [addyosmani/agent-skills: skills/interview-me](https://github.com/addyosmani/agent-skills/tree/main/skills/interview-me)
 
 MIT License
 
@@ -27,6 +28,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ## Matt Pocock (skills)
+- **Original Source:** [mattpocock/skills: skills/productivity/grilling](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) & [skills/engineering/grill-with-docs](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)
 
 MIT License
 
@@ -51,6 +53,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ## Jesse Vincent (superpowers)
+- **Original Source:** [obra/superpowers: skills/brainstorming](https://github.com/obra/superpowers/tree/main/skills/brainstorming)
 
 MIT License
 

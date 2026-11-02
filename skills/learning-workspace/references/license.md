@@ -1,5 +1,7 @@
 # License Notice
 
+**Original Source:** [mattpocock/skills: skills/productivity/teach](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach)
+
 Substantive adapted material in this skill is covered by the following notice:
 
 MIT License

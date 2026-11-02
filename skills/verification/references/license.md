@@ -1,5 +1,7 @@
 # License Notice
 
+**Original Source:** [obra/superpowers: skills/verification-before-completion](https://github.com/obra/superpowers/tree/main/skills/verification-before-completion)
+
 Substantive adapted material in this skill is covered by the following notice:
 
 MIT License
