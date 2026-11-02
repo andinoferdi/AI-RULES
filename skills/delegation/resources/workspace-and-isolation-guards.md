@@ -52,7 +52,9 @@ On Windows systems, background processes (Windows Defender, IDE indexers, shell 
 
 ## 3. Compaction-Resistant Durable Progress Ledger
 
-**Core Law**: The progress ledger on disk is the authoritative source of truth, outranking conversational recall.
+**Core Law**: The execution plan owns task status, decisions, acceptance evidence
+and NEXT ACTION. A plan-specific journal supports detailed worker history; it does
+not override the plan or create a second lifecycle. Both outrank conversational recall.
 - In long-running sessions, Claude Code triggers automatic context compaction.
 - Controllers that rely on memory routinely re-dispatch completed tasks, wasting hundreds of thousands of tokens and overwriting git commits.
 
@@ -80,12 +82,17 @@ Current State: ACTIVE
 ```
 
 ### Post-Compaction Recovery Protocol
-1. Read `<workspace>/progress.md`.
-2. Inspect the last recorded line:
-   - If `Task <N>: complete`, advance to the next unblocked task on the active frontier.
-   - If `Task <N>: fix round <R>`, resume the fix loop at round $R+1$.
-3. Check `git log --oneline -n 5` to confirm recorded commits physically exist.
-4. Resume dispatch immediately without asking the human for permission or replaying completed history.
+1. Read the authoritative plan and this plan's supporting journal; reconcile any
+   disagreement against current source and actual acceptance evidence.
+2. Inspect live workers, partial reports and owned committed/staged/unstaged/new
+   bytes. A fix-round record does not prove that its worker is still running.
+3. Verify recorded commits and source/check/environment identities. Reuse valid
+   completion evidence; invalidate changed producers and affected dependents.
+4. Reuse only the exact still-valid approved wave. Failed, stopped or quota-limited
+   workers need go-ahead before resume/replacement. Never redispatch completed valid
+   tasks. Parent may continue inline after the worker relinquishes ownership.
+5. Update current state and NEXT ACTION in the plan. Checkpointing does not require
+   a context-reset command; use compaction only when actually exposed and useful.
 
 ---
 

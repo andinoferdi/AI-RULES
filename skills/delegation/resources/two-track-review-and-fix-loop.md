@@ -1,103 +1,80 @@
-# Two-Track Review and Escalating Fix Loop Protocols
+# Two-Track Review and Bounded Repair
 
-Internal Andino resource for `andino-delegation`. Operates under Andino Workflow governance.
+Internal Andino resource. Risk-scaled review is about useful proof, not a fixed
+number of reviewers or rounds. The parent owns final acceptance.
 
-## 1. Two-Track Review Architecture
+## 1. Inspect specification, then quality
 
-A robust review gate must evaluate two orthogonal dimensions independently:
+For each criterion record: requirement/value -> implementation path/symbol ->
+observed test/artifact evidence -> PASS / FAIL / UNVERIFIED. Check missing, extra
+and misunderstood behavior. Only then assess quality and material risks, including
+effects omitted from the spec. One approved reviewer covers both tracks.
 
-```
-Task Diff Ready:
-├── Track 1: Spec Compliance (Binding Contract)
-│   ├── PASS (Spec Compliant): Exact criteria met, nothing unrequested built.
-│   ├── FAIL (Issues Found): Requirements missing, extra features (YAGNI), or misunderstood intent.
-│   └── UNVERIFIED (Cannot Verify): Invariants dependent on external/cross-task state.
-└── Track 2: Code Quality (Craft & Maintainability)
-    ├── Approved: Clean separation, robust error handling, authentic behavioral tests.
-    └── Needs Fixes: Fragile abstractions, mock-only tests, unhandled edge cases.
-```
+Parent reads the owned diff and proof for every task. Risky state/security/race/
+renderer/data/money/migration changes add one approved independent reviewer.
+Other work uses parent review and appropriate tests/artifact checks. Review
+reports do not substitute for the parent's observation.
 
-### Triaging Findings: Halting Reviewer Churn
+UNVERIFIED means identify a focused proof action. If it cannot run, keep the
+affected criterion blocked and name the unavailable observation. It cannot be
+silently treated as approval or optional debt. DONE_WITH_CONCERNS gets the same
+consequence-based triage.
 
-To eliminate token thrashing and endless stylistic loops, findings are classified into 3 strict tiers:
+| Finding | Disposition |
+| --- | --- |
+| Critical: security/data loss, broken contract, required acceptance failure | Must resolve before acceptance. |
+| Important: real edge-case failure, fragile behavior/test with material consequence | Resolve with targeted proof before acceptance. |
+| Minor: optional naming, cosmetic polish or unsupported preference | Defer with reason; do not extend the loop. |
 
-| Severity | Definition | Handling Protocol |
-| :--- | :--- | :--- |
-| **Critical** | Spec contradiction, security flaw, data corruption, or broken public contract. | **Enters Fix Loop immediately.** Blocks task completion. |
-| **Important** | Fragile logic, unhandled edge case, brittle test assertion, or severe maintainability hazard. | **Enters Fix Loop immediately.** Blocks task completion. |
-| **Minor (Deferred)** | Naming preferences, cosmetic formatting, comment suggestions, or micro-optimizations. | **Bypasses Fix Loop entirely.** Appended to progress ledger as `Task <N>: minor (deferred): <finding>` for post-plan triage. |
+## 2. Pin the actual change
 
----
+`review_package.py PLAN BASE HEAD` verifies and packages a nonempty committed
+range (log, stat, unified diff). It does not include staged, unstaged or untracked
+changes and does not scope out another lane's commits automatically. Parent
+inspects ownership and supplies any missing current files as a pinned snapshot.
+Use it from the correct worktree; never manufacture commits just to feed a helper.
 
-## 2. Scoped Diff Packaging (`review-package`)
+Reviewers may inspect narrow related callers to validate a concrete interface.
+A diff package is an entry point, not a ban on checking consequential context.
 
-Reviewers must never be directed to perform broad filesystem explorations or execute ad-hoc git commands.
+## 3. Evidence-driven repair, at most five rounds
 
-### Mechanics
-Before dispatching a task reviewer or re-reviewer, the controller captures the exact commit range:
-1. **BASE**: The commit recorded immediately prior to dispatching the implementer (`git rev-parse HEAD`).
-2. **HEAD**: The current commit after implementation (`git rev-parse HEAD`).
-3. Package Generation: Write commit log, stat summary, and unified diff (`-U10`) to an isolated diff package on disk:
-   `.andino/delegation/<plan-id>/review-<base7>..<head7>.diff`
-4. The reviewer reads this file in a single tool call, preserving parent context.
+1. Identify the specific open criterion/finding and evidence behind it. Reject
+   demonstrated false positives with a grounded ruling; do not reject real failures
+   merely because a round budget is low.
+2. Select a targeted fix and covering test/artifact check. Prefer the same lane
+   worker/context when active and authorized. A stopped/failed/quota-limited child
+   requires go-ahead before resumption. No automatic relaunch or escalation.
+3. Parent can take over after the worker relinquishes ownership; record the
+   transfer, preserve partial edits and apply the same gates. No concurrent writers.
+4. Observe the focused check and review the fix diff plus impacted consumers.
+   Do not reopen untouched areas for cosmetic preferences.
+5. Update remaining findings, content identity, evidence and NEXT ACTION.
 
----
+Stop earlier if another round has no new evidence. Five is an upper ceiling, not
+an entitlement to five retries. An agent/model/effort replacement requires a new
+approved proposal; round four does not trigger one automatically.
 
-## 3. The 5-Round Escalating Fix Loop
+## 4. Circuit breaker and rulings
 
-When Track 1 reports FAIL or Track 2 identifies Critical/Important issues, the fix loop initiates:
+At the cap preserve unmet acceptance and stop that repair path. Continue unrelated
+ready work only when independent. Record:
+`Ruling: <decision> — <evidence/spec basis> — <cost and affected scope if wrong>`.
 
-```dot
-digraph fix_loop {
-    rankdir=LR;
-    "Review Failed" -> "Round 1-3: Resume Implementer";
-    "Round 1-3: Resume Implementer" -> "Scoped Re-Review";
-    "Scoped Re-Review" -> "Clean?" [label="eval"];
-    "Clean?" -> "Task Complete" [label="yes"];
-    "Clean?" -> "R <= 3?" [label="no"];
-    "R <= 3?" -> "Round 1-3: Resume Implementer" [label="yes"];
-    "R <= 3?" -> "Round 4-5: Fresh Implementer + Model Escalation" [label="no (R=4,5)"];
-    "Round 4-5: Fresh Implementer + Model Escalation" -> "Scoped Re-Review";
-    "Clean?" -> "R = 5 (Circuit Breaker)?" [label="no"];
-    "R = 5 (Circuit Breaker)?" -> "Controller Adjudication (Ruling)" [label="yes"];
-}
-```
+- Demonstrated false positive: close with concrete code/test evidence.
+- Optional improvement: defer with consequence and reason.
+- Real required defect: keep task incomplete, name the exact blocker, and revise
+  the grounded plan or ask for missing user-owned decision/authority.
+- Interface change: update producer/consumer contracts and invalidate affected
+  evidence before dependent execution.
 
-### Round 1–3: Resume Original Implementer
-- The original implementer maintains working context, active variable mappings, and understanding of its previous edits.
-- Pass open Critical/Important findings verbatim.
-- The implementer applies targeted fixes, re-runs covering tests, appends its fix report, and returns the short status contract.
+A ruling never waives required acceptance, security or data correctness.
 
-### Round 4–5: Fresh Implementer & Model Escalation
-- A model stuck for 3 rounds suffers from cognitive anchoring (*confirmation bias*).
-- Dispatch a **fresh implementer** with zero conversational baggage.
-- **Escalate One Step**: Move one tier up (Fast -> Standard -> Capable) OR one effort step up, never both at once, and announce it to the user first. Map tiers with [host-cost-calibration.md](host-cost-calibration.md).
-- Brief specifies: *"A previous implementer attempted this task 3 times and stalled. You own the clean resolution. Read the report file to see previous attempts."*
+## 5. Parent integration and final review
 
-### Scoped Re-Review Gate
-- Re-reviews are strictly diff-scoped (`FIX_BASE..HEAD`).
-- The re-reviewer evaluates only whether previously opened findings are `ADDRESSED` or `NOT ADDRESSED` and checks for regressions introduced by the fix itself.
-- New out-of-scope nitpicks are relegated to deferred minors and cannot extend the loop.
-
----
-
-## 4. Circuit Breaker (Rule of 5) & Rulings Taxonomy
-
-If round 5 concludes with findings still open, the fix loop **terminates immediately**. The parent controller trips the circuit breaker and adjudicates.
-
-### Adjudication Categories & Rulings Format
-The controller examines the full brief, diff, and review history, logging one of three explicit rulings in the progress ledger:
-
-1. **Reviewer Overreach (False Positive)**:
-   - When the reviewer is being pedantic or the design choice is valid:
-   - `Task <N>: parked — <finding> — Ruling: code stands — <rationale> — Cost if wrong: <risk>`
-2. **Real but Non-Blocking (Deferred Debt)**:
-   - When the defect is real but no downstream task depends on it:
-   - `Task <N>: parked — <finding> — Ruling: deferred to post-release — <rationale> — Cost if wrong: <risk>`
-3. **Load-Bearing Structural Gap (Plan Defect)**:
-   - When a downstream task depends on the broken interface:
-   - `Task <N>: Ruling: structural adjustment — <decision> — <corrective interface contract>`
-   - The ruling is injected directly into the next task's brief.
-
-### Hard Rule on Controller Discipline
-The controller **never writes production code fixes directly** inside its coordination session. Fixing code inline pollutes coordinator context, skips verification gates, and destroys auditability.
+Parent reruns the wave's public integration gate on current combined bytes before
+accepting the tasks. Capture source/check/environment identity; a worker's local
+PASS cannot establish the joint result. Review the whole owned change once tasks
+meet their gates. Choose a single approved final reviewer only when risk/utility
+justifies it; otherwise perform a distinct two-track self-review and disclose that
+it is not independent. Capable/high is a justified option, not a default.

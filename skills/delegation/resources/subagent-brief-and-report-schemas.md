@@ -1,169 +1,123 @@
 # Subagent Brief and Report Schemas
 
-Internal Andino resource for `andino-delegation`. Operates under Andino Workflow governance.
+Internal Andino resource. Use pointers for stable source material and include the
+specific facts a worker needs. Extracted task text alone is not a ready brief.
 
-## 1. The Zero Context Bleed Law
-
-**Iron Invariant**: Never paste chat history, multi-turn deliberations, or entire implementation plans into a subagent prompt.
-- **Why**: Pasting conversational history inflates token consumption, injects contradictory assumptions, distracts model attention, and degrades instruction adherence.
-- **Mechanism**: Use **Context Pointers**. Pass exact file paths, commit SHAs, interface contracts, and task-specific brief files extracted directly to disk.
-
----
-
-## 2. Structured Task Brief Schema
-
-Every dispatched worker receives a task brief containing strictly the following 8 fields:
+## 1. Ready brief recipe
 
 ```markdown
-# Task Brief: [TASK-ID] — [Task Title]
-
-1. **Task Outcome**: One clear sentence stating the observable deliverable.
-2. **Spec & Plan Anchor**: Pointer to specific heading in `[PLAN_FILE]` or `[SPEC_FILE]`.
-3. **Owned File Paths** (Disjoint Write Set):
-   - [exact/path/to/file1.py]
-   - [exact/path/to/test_file1.py]
-4. **Consumed Interfaces** (Dependencies):
-   - [Interface name, signature, exported symbol, or mock data from upstream tasks]
-5. **Produced Interfaces** (Deliverables):
-   - [Interface name, public API signature, or schema exported for downstream tasks]
-6. **Acceptance Test Command & Expected Signal**:
-   - Command: `pytest tests/test_file1.py -v`
-   - Expected Signal: `100% passing`, exit code `0`.
-7. **Report Destination Path**:
-   - `[WORKSPACE]/task-[N]-report.md`
-8. **Strict Operational Boundaries**:
-   - DO NOT spawn subagents (neither helpers nor reviewers).
-   - DO NOT mutate files outside the Owned File Paths list.
-   - DO NOT weaken existing assertions or delete failing test cases.
-   - DO NOT install global dependencies or modify package manifests without authorization.
+# Lane export / Task T1 — CSV listing
+Outcome: [observable user result]
+Spec & plan: [exact file paths and section anchors]
+Global Constraints: [spec sections plus exact task-relevant limits]
+Working directory / BASE: [absolute worktree, accepted commit, owned WIP identity]
+Owned paths: [source, tests, fixtures, generated files; exact boundaries]
+Dependencies: [parent-accepted producers and source/check identities]
+Consumed interfaces: [names, signatures, error/side-effect behavior]
+Produced interfaces: [exact consumer contract]
+Change specification: [what changes into what, decision-bearing values/snippets]
+Acceptance: [literal input -> expected output, relevant failure/empty cases]
+Proof: [commands, working directory, prerequisites, expected assertions/results]
+Prior decisions / uncertainties: [settled choices; material unknowns block dispatch]
+Report destination: [absolute path]
+Boundaries: no child agents, no writes outside ownership, no weakening tests,
+  no dependency installation/commit/push beyond existing scoped authority.
 ```
 
----
+Read back the brief before dispatch. Resolve material missing facts inline.
+`task_brief.py PLAN ID [OUTFILE]` copies a unique task section, including nested
+headings and fenced examples; it does not add spec pointers or global constraints.
 
-## 3. Implementer Prompt Template
+## 2. Implementer prompt
 
-```markdown
-Subagent (general-purpose):
-  description: "Implement Task [N]: [task_name]"
-  model: [MODEL_TIER — per Model Selection Rubric]
-  prompt: |
-    You are an isolated implementer for Task [N]: [task_name].
+Portable template; map fields to the host's real API. An unsupported control is
+a disclosed limitation, not an invented argument.
 
-    ## Task Brief
-    Read your task brief first: [BRIEF_FILE_PATH]
-    It contains your binding requirements, owned paths, and verification commands.
-
-    ## Context & Interfaces
-    [Scene-setting: upstream dependencies, interfaces, and architectural constraints]
-
-    ## Operational Directives
-    1. Implement strictly what the brief specifies.
-    2. Follow TDD: write a focused test first, verify failure, implement code, verify pass.
-    3. Run focused tests during iteration; run the task test suite before reporting.
-    4. Self-review your own git diff against the brief before writing the report.
-    5. Write your complete detailed report to: [REPORT_FILE_PATH].
-    6. Return ONLY the short status contract (<15 lines) in your final message.
-
-    ## Strict Prohibitions
-    - Never spawn subagents. You are the sole executor. Review is scheduled separately.
-    - Never touch files outside your owned paths list.
-    - Never weaken assertions or silence errors to simulate green tests.
-    - If stuck, uncertain, or blocked by ambiguous specs, halt and report BLOCKED or NEEDS_CONTEXT.
+```yaml
+role: implementer
+model: [explicit actual host model for the lane]
+effort: [explicit low / medium / high]
+prompt: |
+  Read [BRIEF_PATH] first; it binds your outcome, exact values and owned paths.
+  This task fits [one sentence of integration context].
+  Apply [accepted producer decisions/interface pointers not already in brief].
+  Implement only the ready task. For behavior changes observe intended RED then
+  GREEN; for static artifacts run the specified artifact checks. Tool/import
+  failures and zero tests do not establish RED/GREEN.
+  Ask before guessing a material interface or expanding scope: report
+  NEEDS_CONTEXT with the exact missing fact and safe partial work.
+  Run focused checks, self-review the full owned diff against acceptance, and
+  write [REPORT_PATH]. State failed/skipped checks and concrete concerns.
+  No child agents. Respect owned paths and publication authority.
+  Return the short status below; do not start another task before parent release.
 ```
 
----
+## 3. Worker status routing
 
-## 4. Two-Track Task Reviewer Prompt Template
+| Status / observed condition | Parent response |
+| --- | --- |
+| DONE | Inspect actual diff/report and rerun acceptance; then accept or request a scoped fix. |
+| DONE_WITH_CONCERNS | Grade every concern; missing required proof or real defects block acceptance. Optional polish can be deferred with reason. |
+| NEEDS_CONTEXT | Inspect the exact missing fact; supply a discoverable contract or obtain the user-owned decision. No automatic model upgrade. |
+| BLOCKED | Record command/error, partial output and next discriminating check; advance independent ready work. |
+| Failed, stopped, missing report, quota limited | Inspect live status/partial bytes. Report cause and ask before any relaunch/resume/replacement. Inline transfer needs exclusive ownership. |
 
-```markdown
-Subagent (general-purpose):
-  description: "Review Task [N] (Spec Compliance + Code Quality)"
-  model: [MODEL_TIER — per Model Selection Rubric]
-  prompt: |
-    You are an independent, adversarial reviewer for Task [N]: [task_name].
-    You inspect the task's net diff once and return two distinct verdicts.
+A normal in-flight clarification within an approved task is not a new wave. Once
+a child has stopped, sending a message that triggers work is a resume and needs
+applicable go-ahead. Status words never authorize extra tasks or spend.
 
-    ## Inputs
-    - Task Brief: [BRIEF_FILE_PATH]
-    - Implementer Report: [REPORT_FILE_PATH]
-    - Scoped Diff Package: [DIFF_FILE_PATH] (contains commits, stat, and unified diff)
+## 4. Detailed report and short return
 
-    ## Review Method
-    1. Read the diff package once. Do not crawl unrelated codebase areas unless checking a concrete exported contract.
-    2. Treat the implementer's report as unverified claims. Verify every claim against the actual diff.
-    3. Do not re-run full test suites. Run a focused test command only if reading the code exposes an unverified risk.
+Detailed report at the agreed path:
+- Acceptance map: each criterion -> file/symbol + real test/artifact observation.
+- Changes and produced interfaces, including deviations from the brief.
+- Content identity: BASE/HEAD plus owned dirty/new paths and hashes or snapshot.
+- Evidence: command, Working directory, environment, exit status, nonzero cases,
+  actual expected-vs-observed results, failed/skipped/unavailable checks.
+- Self-review findings, remaining concerns and proposed next action.
 
-    ## Track 1: Spec Compliance Verdict
-    - Compare diff against Task Brief:
-      - Missing: features required but absent.
-      - Extra: unrequested scope, speculative abstractions, or over-engineering (YAGNI).
-      - Misunderstood: wrong problem solved or broken semantics.
-    - Verdict: PASS (Spec Compliant) | FAIL (Issues Found) | UNVERIFIED (Cannot Verify From Diff)
-
-    ## Track 2: Code Quality Verdict
-    - Clean separation of concerns, proper error propagation, naming discipline.
-    - Edge cases covered by real behavioral tests (no vacuous or mock-only tests).
-    - Verdict: Approved | Needs Fixes
-
-    ## Finding Calibration
-    - Critical (Must Fix): Spec deviation, data corruption, silent error suppression, broken contract.
-    - Important (Should Fix): High fragility, unhandled edge case, brittle test assertion.
-    - Minor (Deferred): Stylistic preference, cosmetic naming, documentation polish.
-      (Minor findings are logged for deferred cleanup and NEVER block task completion).
-
-    ## Output Format
-    Start immediately with the verdicts:
-    - Spec Compliance: [PASS / FAIL / UNVERIFIED] [Summary]
-    - Task Quality: [Approved / Needs Fixes] [Summary]
-    - Issues:
-      - Critical: [file:line, defect, consequence, suggested fix]
-      - Important: [file:line, defect, consequence, suggested fix]
-      - Minor (Deferred): [file:line, suggestion]
-```
-
----
-
-## 5. Scoped Re-Reviewer Prompt Template
-
-```markdown
-Subagent (general-purpose):
-  description: "Re-review Task [N] Fix Round [R]"
-  model: [MODEL_TIER]
-  prompt: |
-    You are re-reviewing Task [N] after fix round [R].
-    Your scope is STRICTLY limited to verifying whether previous findings were addressed
-    and checking the fix diff for new regressions.
-
-    ## Inputs
-    - Task Brief: [BRIEF_FILE_PATH]
-    - Open Findings List: [OPEN_FINDINGS]
-    - Implementer Fix Report: [REPORT_FILE_PATH] (appended at end)
-    - Scoped Fix Diff: [FIX_DIFF_FILE_PATH]
-
-    ## Directives
-    1. For each finding in Open Findings, evaluate: ADDRESSED or NOT ADDRESSED with file:line proof.
-    2. Inspect the fix diff for newly introduced breakage.
-    3. Do NOT re-review untouched code or invent new out-of-scope nitpicks.
-
-    ## Output Format
-    - Finding 1: [ADDRESSED | NOT ADDRESSED] — [evidence]
-    - New Breakage in Fix Diff: [None | Critical/Important issues]
-    - Verdict: [All Findings Addressed | Findings Remain Open]
-```
-
----
-
-## 6. Standardized Short Status Contract (<15 Lines)
-
-Implementer and reviewer subagents report back to the parent controller using this compact format to eliminate conversation context bloat:
+Short return, under 15 lines:
 
 ```text
 Status: DONE | DONE_WITH_CONCERNS | NEEDS_CONTEXT | BLOCKED
-Commits:
-  - a1b2c3d feat(auth): implement token signer with HS256 validation
-Tests: 14/14 passing, exit code 0, 0 warnings
-Concerns: None
-Report File: .andino/delegation/auth-plan/task-1-report.md
+Task / lane: [identity]
+Content identity: [commit range and owned WIP snapshot/report pointer]
+Evidence: [focused command and observed result; failed/skipped checks]
+Concerns / blocker: [specific issue, affected criterion, needed fact/action]
+Report: [absolute path]
 ```
 
-If status is `BLOCKED` or `NEEDS_CONTEXT`, the subagent provides a 2-3 line concrete blocker statement directly in the message so the controller can make an immediate routing decision.
+## 5. One two-track reviewer
+
+```yaml
+role: reviewer
+model: [explicit actual host model justified by risk]
+effort: [explicit low / medium / high]
+prompt: |
+  Read [BRIEF], [REPORT] and [COMPLETE_OWNED_DIFF/SNAPSHOT].
+  Report claims are unverified. First inspect code against each criterion:
+  missing, extra or misunderstood behavior, exact values and global constraints.
+  For each criterion cite implementation + observed proof or mark UNVERIFIED.
+  Then inspect quality: correctness, edge cases, real collaborators, error paths,
+  maintainability and tests that can detect the claimed defect.
+  Read narrow callers when a concrete exported contract needs checking.
+  Run targeted proof if necessary; don't repeat a full suite without a new gap.
+  Return Spec: PASS / FAIL / UNVERIFIED; Quality: Approved / Needs Fixes /
+  UNVERIFIED; evidence and findings. Each finding names path:line, consequence,
+  severity, reproduction/proof and focused correction. Grade real user effect.
+  No writes or child agents. Minor cosmetic preferences do not extend repair.
+```
+
+## 6. Scoped re-review
+
+```yaml
+role: re-reviewer
+model: [explicit actual host model within approved review scope]
+effort: [explicit low / medium / high]
+prompt: |
+  Read [OPEN_FINDINGS], [BRIEF], [FIX_REPORT] and [FIX_DIFF/CONTENT_IDENTITY].
+  For each finding return ADDRESSED / NOT ADDRESSED / UNVERIFIED with evidence.
+  Check the fix for new regressions and changed consumer contracts.
+  Do not reopen untouched code for stylistic preferences.
+  Required missing proof remains open. Return both spec and quality verdicts.
+```

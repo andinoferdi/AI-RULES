@@ -1,157 +1,143 @@
-# Complete Verified Multi-Task Case Study and Test Harness
+# Worked Example: CSV Export in One Lane
 
-Internal Andino resource for `andino-delegation`. Operates under Andino Workflow governance.
+Internal Andino resource. This is a synthetic runnable example, not a report of a
+real agent run. It shows implementation and handoff detail, not a model benchmark.
 
-## 1. End-to-End Case Study: Auth Token System Refactor
+## 1. Cost decision and ready work
 
-### Scenario
-A monolithic authentication helper is being refactored into three modular components:
-- **Task 1 (`token-signer`)**: JWT signing and verification with expiration (`src/auth/signer.py`, `tests/test_signer.py`).
-- **Task 2 (`refresh-store`)**: Ephemeral refresh token cache with revocation (`src/auth/store.py`, `tests/test_store.py`).
-- **Task 3 (`auth-middleware`)**: HTTP request header bearer authentication middleware (`src/auth/middleware.py`, `tests/test_middleware.py`). Depends on `token-signer` and `refresh-store`.
+Accepted outcome: inventory listing supports JSON (default) and CSV. CSV quotes
+commas, preserves row order and emits only a header for no items. Export is pure:
+no persistence, dependency installation or network access.
 
----
+The task graph has T1 (render CSV/JSON) then T2 (wire the CLI format option).
+Both touch the same module/tests. They form one sequential lane. This small case
+is cheaper inline: zero agents, zero reviewer start-ups. For the same tasks inside
+an already approved larger lane, retain that lane's worker/model. Do not spawn two
+workers or a merger simply because two task IDs exist.
 
-## 2. Step-by-Step Execution Trace
+Ready brief:
+- Spec & Global Constraints: this accepted outcome; JSON remains default.
+- Working directory / source: approved checkout, recorded BASE and owned WIP.
+- Owned paths: `inventory_example.py`; in a real repo, name its exact test file too.
+- Consumed interface: items are ordered dictionaries with string `id` and `name`.
+- Produced interface: `main(argv, items, output)` returns 0, writes JSON or CSV.
+- T1 acceptance: comma-bearing name round-trips; empty CSV has header only.
+- T2 acceptance: CLI selects CSV; absent format selects JSON; invalid format errors.
+- Proof: save/run the complete example below with Python 3; all five tests pass.
+- Report: agreed plan-specific report path; no commit/push without scoped authority.
 
-### Step 1: Workspace Initialization & DAG Frontier Computation
-- Controller resolves workspace: `.andino/delegation/auth-refactor/`
-- Progress ledger initialized at `.andino/delegation/auth-refactor/progress.md`.
-- Dependency evaluation:
-  - `deps(Task 1) = []`
-  - `deps(Task 2) = []`
-  - `deps(Task 3) = [Task 1, Task 2]`
-- Write Path Check:
-  - $W(T_1) = \{\text{src/auth/signer.py}, \text{tests/test_signer.py}\}$
-  - $W(T_2) = \{\text{src/auth/store.py}, \text{tests/test_store.py}\}$
-  - $W(T_1) \cap W(T_2) = \emptyset$ (Disjoint write paths, no ancestor collision).
-- **Active Frontier**: $\{T_1, T_2\}$ are both unblocked. Concurrency cap is 3. Eligible for **Parallel Dispatch**.
+## 2. One complete runnable example
 
-### Step 2: Single-Turn Parallel Multi-Dispatch
-The controller dispatches both subagents in a single turn:
+The assertions use literal expected rows, not the renderer to calculate its own
+expected output. In a real implementation first run each relevant new assertion
+against the old behavior and observe the intended failure, then implement it.
 
-```text
-Subagent (general-purpose):
-  description: "Implement Task 1: token-signer"
-  prompt: "Read brief at .andino/delegation/auth-refactor/task-1-brief.md..."
+Save as `inventory_example.py`, run `python inventory_example.py`:
 
-Subagent (general-purpose):
-  description: "Implement Task 2: refresh-store"
-  prompt: "Read brief at .andino/delegation/auth-refactor/task-2-brief.md..."
-```
+```python
+import argparse
+import csv
+import io
+import json
+import unittest
 
-### Step 3: Implementers Report & Diff Packaging
-Both workers conclude with the standardized status contract:
-- Worker 1: `Status: DONE | Commits: a1b2c3d | Tests: 8/8 pass`
-- Worker 2: `Status: DONE | Commits: e4f5a6b | Tests: 6/6 pass`
-Controller records commit points:
-- `BASE = f0a1b2c`
-- `HEAD_1 = a1b2c3d`
-- `HEAD_2 = e4f5a6b`
-Diff packages generated via `review_package.py`.
 
-### Step 4: Two-Track Review Execution
-Reviewer 1 (for Task 1):
-- Track 1 (Spec Compliance): PASS (Spec Compliant)
-- Track 2 (Code Quality): Approved
-- Ledger updated: `Task 1: complete (commits f0a1b2c..a1b2c3d, review clean)`
+def render(items, format_name, output):
+    if format_name == "csv":
+        writer = csv.writer(output, lineterminator="\n")
+        writer.writerow(("id", "name"))
+        writer.writerows((row["id"], row["name"]) for row in items)
+    else:
+        output.write(json.dumps(items) + "\n")
 
-Reviewer 2 (for Task 2):
-- Track 1 (Spec Compliance): FAIL (Issues Found): Missing TTL expiry validation.
-- Track 2 (Code Quality): Needs Fixes (Important: unhandled expired token lookup).
-- Ledger updated: `Task 2: review failed (1 Important finding: missing TTL validation)`
 
-### Step 5: Fix Loop (Round 1) on Task 2
-- Controller resumes Worker 2 with the open finding.
-- Worker 2 fixes TTL validation, adds test case, commits `c7d8e9f`, and updates report.
-- Scoped re-reviewer verifies `c7d8e9f`: Finding `ADDRESSED`, no regressions.
-- Ledger updated:
-  - `Task 2: fix round 1/5 (1 addressed, 0 open; commits e4f5a6b..c7d8e9f)`
-  - `Task 2: complete (commits e4f5a6b..c7d8e9f, review clean)`
+def main(argv, items, output):
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--format", choices=("json", "csv"), default="json")
+    args = parser.parse_args(argv)
+    render(items, args.format, output)
+    return 0
 
-### Step 6: Advance Active Frontier to Task 3
-- Prerequisite check: $C = \{T_1, T_2\}$. Both dependencies of Task 3 are satisfied.
-- Active Frontier: $\{T_3\}$. Dispatched to a fresh subagent with brief pointing to verified interfaces from $T_1$ and $T_2$.
-- Task 3 implemented, reviewed clean, and committed.
 
-### Step 7: Final Whole-Branch Review & Teardown
-- Final reviewer evaluates net diff across all 3 tasks. Quality approved.
-- Workspace purged: `rm -rf .andino/delegation/auth-refactor`.
+class InventoryTests(unittest.TestCase):
+    def test_csv_quotes_comma(self):
+        output = io.StringIO()
+        render([{"id": "1", "name": "Tea, green"}], "csv", output)
+        self.assertEqual([["id", "name"], ["1", "Tea, green"]],
+                         list(csv.reader(io.StringIO(output.getvalue()))))
 
----
+    def test_csv_empty_header(self):
+        output = io.StringIO()
+        render([], "csv", output)
+        self.assertEqual("id,name\n", output.getvalue())
 
-## 3. Embedded Zero-Dependency Python Verification Harness
+    def test_cli_csv_integration(self):
+        output = io.StringIO()
+        self.assertEqual(0, main(["--format", "csv"],
+                                [{"id": "7", "name": "Coffee"}], output))
+        self.assertEqual("id,name\n7,Coffee\n", output.getvalue())
 
-This script verifies DAG frontier resolution, path collision rejection, and ledger integrity offline (<0.2 seconds).
+    def test_cli_json_default(self):
+        output = io.StringIO()
+        self.assertEqual(0, main([], [{"id": "7", "name": "Coffee"}], output))
+        self.assertEqual([{"id": "7", "name": "Coffee"}],
+                         json.loads(output.getvalue()))
 
-```python andino-worked-example-verification
-import os
-import sys
+    def test_cli_rejects_invalid_format(self):
+        import contextlib
+        with contextlib.redirect_stderr(io.StringIO()):
+            with self.assertRaises(SystemExit) as error:
+                main(["--format", "xml"], [], io.StringIO())
+        self.assertEqual(2, error.exception.code)
 
-def normalize_path(p: str) -> str:
-    return os.path.normpath(p).replace("\\", "/").strip("/")
-
-def has_write_collision(paths_a: list[str], paths_b: list[str]) -> bool:
-    norm_a = [normalize_path(p) for p in paths_a]
-    norm_b = [normalize_path(p) for p in paths_b]
-    for pa in norm_a:
-        for pb in norm_b:
-            if pa == pb or pa.startswith(pb + "/") or pb.startswith(pa + "/"):
-                return True
-    return False
-
-def compute_frontier(tasks: list[dict], completed: set[str]) -> list[str]:
-    frontier = []
-    for t in tasks:
-        if t["id"] in completed:
-            continue
-        if set(t.get("deps", [])).issubset(completed):
-            frontier.append(t["id"])
-    return sorted(frontier)
-
-def run_verification():
-    is_neg = os.environ.get("ANDINO_NEGATIVE", "0") == "1"
-
-    tasks = [
-        {"id": "t1", "deps": [], "paths": ["src/auth/signer.py"]},
-        {"id": "t2", "deps": [], "paths": ["src/auth/store.py"]},
-        {"id": "t3", "deps": ["t1", "t2"], "paths": ["src/auth/middleware.py"]},
-        {"id": "t4_collision", "deps": [], "paths": ["src/auth"]},
-    ]
-
-    # Test 1: Frontier Calculation
-    f0 = compute_frontier(tasks[:3], set())
-    if f0 != ["t1", "t2"]:
-        sys.exit(1)
-
-    f1 = compute_frontier(tasks[:3], {"t1"})
-    if f1 != ["t2"]:
-        sys.exit(1)
-
-    f2 = compute_frontier(tasks[:3], {"t1", "t2"})
-    if f2 != ["t3"]:
-        sys.exit(1)
-
-    # Test 2: Collision Detection
-    # Disjoint paths
-    if has_write_collision(tasks[0]["paths"], tasks[1]["paths"]):
-        sys.exit(1)
-
-    # Exact collision
-    if not has_write_collision(["src/shared.py"], ["src/shared.py"]):
-        sys.exit(1)
-
-    # Ancestor directory collision
-    if not has_write_collision(tasks[0]["paths"], tasks[3]["paths"]):
-        sys.exit(1)
-
-    if is_neg:
-        print("[ANDINO_NEGATIVE] Intentional failure triggered.")
-        sys.exit(1)
-
-    print("SUCCESS: Delegation DAG, frontier, and collision protocols verified.")
-    sys.exit(0)
 
 if __name__ == "__main__":
-    run_verification()
+    unittest.main(verbosity=2)
 ```
+
+## 3. Report, parent acceptance and review
+
+A worker's hypothetical short return might say:
+
+```text
+Status: DONE_WITH_CONCERNS
+Task / lane: export / T1
+Content identity: [actual BASE..HEAD or owned snapshot]
+Evidence: [actual command, directory, five tests observed; report pointer]
+Concerns: downstream command naming still needs confirmation for T2
+Report: [absolute agreed report path]
+```
+
+Parent first determines whether the concern affects T1. T1's render contract can
+be accepted only with current proof; T2 stays NEEDS_CONTEXT until its command is
+settled. The worker does not guess an option name or automatically start T2.
+
+Spec review checks quoting, empty output, row order, JSON default and exact option
+against code and observed tests. Quality review checks real renderer/CLI wiring
+and error behavior. Parent runs the integration cases on the combined current
+bytes. A mock-only assertion that render was called cannot prove CSV correctness.
+
+If the reviewer cannot inspect a required CLI result, mark that criterion
+UNVERIFIED and obtain focused proof; do not accept it because render tests pass.
+This small change needs parent self-review, disclosed as non-independent, rather
+than another agent. A larger risk-bearing lane can propose one approved reviewer.
+
+## 4. Recovery without hidden spend
+
+Suppose an authorized lane worker stopped after T1 during a larger plan:
+1. Read plan/report and inspect live status plus partial diff. Verify accepted T1
+   source/check/environment identity before reusing it.
+2. Record T2's exact missing contract and the stopped-worker condition.
+3. Resolve discoverable command facts inline. If a real user decision remains,
+   ask that single question and continue independent ready work.
+4. Present any proposed resume/replacement with count, task, actual model, effort
+   and planned review; wait for go-ahead. No automatic new child at round four.
+5. Alternatively transfer ownership inline after confirming the worker has
+   relinquished it, preserve edits and run the same gates.
+
+At a repair cap, a genuine broken required CLI behavior remains incomplete. A
+ruling may defer cosmetic naming; it cannot waive CSV correctness. Keep evidence
+and the concrete NEXT ACTION in the plan; no automatic scratch deletion.
+
+[Contract](contract.md) · [Brief/report recipes](subagent-brief-and-report-schemas.md)
+· [MIT notices](../references/license.md)

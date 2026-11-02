@@ -4,12 +4,18 @@ Internal Andino resource for `andino-delegation`. Records observed host facts; i
 
 The portable rules speak in tiers (Fast, Standard, Capable) and efforts (`low`, `medium`, `high`). This file maps them to what each host actually exposes and records what one child costs before it does any work. Only write a value here after observing it on that host; leave the rest `unmeasured`. Re-measure after adding or removing MCP servers, skills or large project rules, because those listings are part of every child's start-up context.
 
-## 1. Probe (one child, once per host)
+## 1. Observe existing usage first; probe only with go-ahead
 
-1. Dispatch one child on the Fast tier at `low` effort with the task "Reply with the single word OK. Do not use tools."
-2. Read the token usage the host reports for that child.
-3. Record host, date, tier/model, effort and tokens below. That number is the fixed start-up cost every child pays.
-4. Delegation pays off only when the work saved inline exceeds that cost plus briefing and review.
+1. Prefer usage from an already authorized representative child. Do not start an
+   agent just because this resource was loaded. Leave absent measurements unmeasured.
+2. If calibration changes a real delegation decision, propose one Fast/low probe,
+   state its actual model and effort, count it in the concurrency ceiling and wait
+   for the user's go-ahead. A probe is still a resource-consuming child.
+3. Record host/date/model/effort, reported usage and measurement method. Total usage
+   may include output, caching and runtime overhead; do not call all of it a fixed
+   prompt cost without telemetry separating those components.
+4. Compare expected saved work with start-up, briefing, integration, review and
+   likely retries. These figures are estimates, not measured savings for another host.
 
 ## 2. Host Map
 
