@@ -1,5 +1,10 @@
 # API and interface design: worked procedure, patterns, and diagnostic rubric
 
+Resource contract; selected directly under its canonical owner.
+
+> **Andino Workflow Member Skill**
+> Operates under Andino Workflow governance: single durable checkpoints, proportional investigation, and anti-loop guards.
+
 This resource provides a concrete before-and-after transformation case study, production-grade interface patterns, an idempotency engineering reference, common rationalizations, and an empirical diagnostic self-audit rubric for `api-and-interface-design`.
 
 ---
