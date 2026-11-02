@@ -44,7 +44,7 @@ Honor explicit provider choices and current phase readiness first; then select b
 | Authoring or maintaining a skill or procedure | Meta-Authoring | `skill-maker` | For passive repository guidance, use `agent-document-authoring`; auditing such files can still be an executable skill. |
 | Routine question, code explanation, typo | General Work | **Direct Execution** | **Zero method loading: execute directly without ceremony.** |
 
-Load the selected guide before governed work. Follow its procedure fully. An unknown-cause bug selects debugging before reading code. Accepted requirements needing detail select planning; an approved plan selects plan-execution.
+Public members and noncallable techniques are separate in the index. Load a selected resource directly without running its parent lifecycle, unrelated modes or a second plan. Retired IDs have no aliases or compatibility entrypoints. Load the selected guide before governed work. Follow its procedure fully. An unknown-cause bug selects debugging before reading code. Accepted requirements needing detail select planning; an approved plan selects plan-execution.
 
 ## Communication support
 

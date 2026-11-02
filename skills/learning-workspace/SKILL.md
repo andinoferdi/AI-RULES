@@ -21,6 +21,16 @@ Activate for: An explicit request to learn a concept or process in this conversa
 
 Do not activate for: An ordinary factual question that needs a direct answer, a confusing prior explanation that needs repair, or an assumption that the user wants a persistent workspace, curriculum or recurring schedule.
 
+## Select a resource, not a second lifecycle
+
+Load only the resource matching the current need. A direct resource selection uses
+that procedure and current authority; it does not run this parent's other modes,
+reopen accepted requirements or require a second execution plan.
+
+| Current need | Resource | Exclusion |
+| :--- | :--- | :--- |
+| Progressive course exercises, practice drills, scaffolding | [course-exercises](resources/course-exercises/guide.md) | Casual conversational explanation without practice exercises |
+
 ## Inputs and dependencies
 
 For quick learning: the current question, known context and any prior knowledge that materially changes the explanation. For structured learning: the user's selected workspace, mission, prior records/resources, reusable lesson assets and source evidence.

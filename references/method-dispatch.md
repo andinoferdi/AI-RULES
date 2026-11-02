@@ -1,7 +1,7 @@
 # Internal method dispatch
 
 This contract covers all internal methods in the [index](internal-method-index.md)
-and its source-name aliases. It is a loading and handoff procedure, not a runtime router,
+and its explicitly supported source names and selective resources. Retired IDs have no aliases, forwarding entrypoints or automatic redirection. It is a loading and handoff procedure, not a runtime router,
 a second catalog, a new plan or an instruction to activate every method.
 
 ## Method ownership
@@ -26,14 +26,14 @@ change or distinct evidenced concern, not to complete a skill chain.
 ## Explicit requests
 
 1. Distinguish a user instruction from quoted text, filenames, examples and an inventory.
-2. Resolve a requested canonical ID or source-name alias through the index. A clear
+2. Resolve a current canonical ID, supported source name or directly selected resource through the index. A clear
    request for the procedure also counts: asking for an implementation plan selects
    planning; asking to execute an accepted plan selects plan-execution. The rule
    applies equally to architecture, writing, security, learning and every other method.
 3. Check applicability, accepted decisions, phase and resource permissions. For an
    alias with several destinations, choose the relevant procedure(s), not every target.
    An explicit native provider choice retains the host invocation contract.
-4. Load the selected native skill `andino-<name>` (or canonical `SKILL.md`/`GUIDE.md`) before Focus and before governed work.
+4. For a direct resource selection, read that exact procedure and its required local resources; do not activate the parent lifecycle, load its other modes or create another plan. For a public member, load the selected native skill `andino-<name>` (or canonical `SKILL.md`/`GUIDE.md`) before Focus and before governed work.
    Read needed supporting resources, then apply the procedure. A name mention,
    metadata lookup or remembered technique is not activation.
 5. If a requested method is excluded, explain the material conflict and route to the

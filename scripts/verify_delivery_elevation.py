@@ -1,30 +1,28 @@
 #!/usr/bin/env python3
-"""Deterministic offline verifier for andino-delivery elevation.
+"""Deterministic offline verifier for elevated delivery craft under git-skills/branch-integration.
 
 Validates:
-1. Strict line-count ceiling (<150 lines) on root SKILL.md.
-2. SDO frontmatter rules (trigger-only, name: andino-delivery, no workflow leakage).
-3. Deterministic execution of embedded operational Python harness (exit 0 normal, exit 1 on ANDINO_NEGATIVE=1).
-4. Existence and integrity of all 6 modular resources in resources/*.
-5. Local markdown link resolution (zero broken links).
-6. Non-functional decorative emoji audit.
-7. Installer compatibility (_is_valid_skill_tree) and simulated host bundle installation.
+1. Hard retirement of legacy callable skill directory (skills/delivery must be absent).
+2. Strict line-count ceiling (<150 lines) on branch-integration contract.md.
+3. Resource isolation header contract (non-callable internal resource under canonical owner).
+4. Deterministic execution of embedded operational Python harness (exit 0 normal, exit 1 on ANDINO_NEGATIVE=1).
+5. Existence and integrity of all modular resources in resources/*.
+6. Local markdown link resolution (zero broken links).
+7. Non-functional decorative emoji audit.
 """
 
 from __future__ import annotations
 
-import hashlib
 import json
 import os
 import re
-import shutil
 import subprocess
 import sys
-import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SKILL_DIR = ROOT / "skills" / "delivery"
+SKILL_DIR = ROOT / "skills" / "git-skills" / "resources" / "branch-integration"
+RETIRED_DIR = ROOT / "skills" / "delivery"
 
 
 def extract_code_block(markdown_text: str, language_marker: str) -> str:
@@ -35,35 +33,34 @@ def extract_code_block(markdown_text: str, language_marker: str) -> str:
     return match.group(1)
 
 
+def test_retired_directory():
+    assert not RETIRED_DIR.exists(), f"Retired delivery skill directory must be absent: {RETIRED_DIR}"
+    print("PASS: Forwarder/standalone delivery directory confirmed hard-retired")
+
+
 def test_line_count():
-    skill_file = SKILL_DIR / "SKILL.md"
-    assert skill_file.is_file(), f"Missing {skill_file}"
-    lines = skill_file.read_text(encoding="utf-8").splitlines()
+    contract_file = SKILL_DIR / "contract.md"
+    assert contract_file.is_file(), f"Missing {contract_file}"
+    lines = contract_file.read_text(encoding="utf-8").splitlines()
     total_lines = len(lines)
-    assert total_lines < 150, f"SKILL.md exceeds strict 150 ceiling: {total_lines} lines"
-    print(f"PASS: SKILL.md line count budget ({total_lines} lines < 150)")
+    assert total_lines < 150, f"contract.md exceeds strict 150 ceiling: {total_lines} lines"
+    print(f"PASS: contract.md line count budget ({total_lines} lines < 150)")
 
 
-def test_sdo_frontmatter():
-    skill_file = SKILL_DIR / "SKILL.md"
-    content = skill_file.read_text(encoding="utf-8")
-    match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
-    assert match, "Missing YAML frontmatter in SKILL.md"
-    frontmatter = match.group(1)
-    assert len(frontmatter) < 1024, "Frontmatter exceeds 1024 char ceiling"
-    assert "name: andino-delivery" in frontmatter, "Missing canonical name andino-delivery"
-    assert "description: Use when" in frontmatter, "Description must start with 'Use when'"
-    desc_match = re.search(r"description:\s*(.+)", frontmatter)
-    assert desc_match, "Missing description"
-    desc = desc_match.group(1).lower()
-    for leak_word in ("first do", "step 1", "runs repro", "minimizes input", "phase 1"):
-        assert leak_word not in desc, f"Workflow leakage detected in description: {leak_word}"
-    print("PASS: SDO frontmatter rules strictly verified")
+def test_resource_isolation_header():
+    contract_file = SKILL_DIR / "contract.md"
+    content = contract_file.read_text(encoding="utf-8")
+    assert "Resource contract; selected directly under its canonical owner." in content, (
+        "Missing resource contract isolation header"
+    )
+    # Ensure no YAML frontmatter declaring an independent callable skill identity
+    assert not content.startswith("---\n"), "Resource contract must not have YAML frontmatter declaring a standalone skill"
+    print("PASS: Resource isolation header verified (non-callable internal procedure)")
 
 
 def test_operational_python_harness():
-    skill_file = SKILL_DIR / "SKILL.md"
-    code = extract_code_block(skill_file.read_text(encoding="utf-8"), "python andino-operational-example")
+    contract_file = SKILL_DIR / "contract.md"
+    code = extract_code_block(contract_file.read_text(encoding="utf-8"), "python andino-operational-example")
 
     # Run normal (exit 0 expected)
     proc_normal = subprocess.run(
@@ -89,6 +86,9 @@ def test_operational_python_harness():
 
 
 def test_modular_resources_and_link_integrity():
+    assert (SKILL_DIR / "guide.md").is_file(), f"Missing guide.md in {SKILL_DIR}"
+    assert (SKILL_DIR / "contract.md").is_file(), f"Missing contract.md in {SKILL_DIR}"
+
     required_resources = [
         "contract.md",
         "environment-and-worktree-detection.md",
@@ -128,50 +128,17 @@ def test_emoji_cleanliness():
         clean_content = re.sub(r"`.*?`", "", clean_content)
         matches = emoji_pattern.findall(clean_content)
         assert not matches, f"Decorative emoji detected in {md_file}: {matches}"
-    print("PASS: Zero decorative emojis detected across delivery suite")
-
-
-def test_setup_installer_compatibility():
-    assert (SKILL_DIR / "SKILL.md").is_file()
-    assert (SKILL_DIR / "GUIDE.md").is_file()
-
-    with tempfile.TemporaryDirectory(prefix="andino-delivery-setup-test-") as tmp:
-        tmp_path = Path(tmp)
-        host_roots = {
-            "claude-code": tmp_path / "claude" / "skills",
-            "codex": tmp_path / "agents" / "skills",
-            "opencode": tmp_path / "opencode" / "skills",
-            "antigravity-cli": tmp_path / "antigravity" / "skills",
-            "antigravity-ide": tmp_path / "antigravity-ide" / "skills",
-        }
-
-        source_hashes = {
-            p.relative_to(SKILL_DIR).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
-            for p in SKILL_DIR.rglob("*") if p.is_file()
-        }
-
-        for host, root in host_roots.items():
-            target_dir = root / "andino-delivery"
-            target_dir.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copytree(SKILL_DIR, target_dir)
-
-            for rel_path, expected_hash in source_hashes.items():
-                installed_file = target_dir / rel_path
-                assert installed_file.is_file(), f"Missing installed file: {installed_file}"
-                actual_hash = hashlib.sha256(installed_file.read_bytes()).hexdigest()
-                assert actual_hash == expected_hash, f"Hash mismatch in {installed_file}"
-
-    print("PASS: Installer setup compatibility verified byte-for-byte across 5 host targets")
+    print("PASS: Zero decorative emojis detected across branch-integration suite")
 
 
 def main():
-    print("Starting deterministic offline verification for andino-delivery elevation...")
+    print("Starting deterministic offline verification for git-skills/branch-integration elevation...")
+    test_retired_directory()
     test_line_count()
-    test_sdo_frontmatter()
+    test_resource_isolation_header()
     test_operational_python_harness()
     test_modular_resources_and_link_integrity()
     test_emoji_cleanliness()
-    test_setup_installer_compatibility()
     print("\nALL 6 VERIFICATION SUITES PASSED SUCCESSFULLY (100% PASS).")
 
 

@@ -1,154 +1,115 @@
 # Andino Workflow
 
-Andino Workflow is a thin coordinator for 60 member skill directories, including compatibility shims, AI-RULES siblings and relevant installed external skills/tools. It selects capabilities, coordinates progress and preserves execution guards. Selected skills own their full methods, required resources, artifact detail and technical checks. A compact checkpoint can link a complete spec, plan, design or report.
+Andino Workflow coordinates a **30-member public core** and selectively loaded internal techniques. It owns routing, one durable checkpoint, permissions and evidence-based acceptance; selected skills retain their full methods and checks. Codex, Claude Code, OpenCode and Antigravity are peers.
 
-Use it with Claude Code, Codex, OpenCode, or Antigravity to select the relevant method, track ongoing work, and verify changes before calling a task complete. The member skills use the `andino-*` prefix.
+## Public skills and internal resources
 
-```
-  DISCOVER          PLAN            BUILD           VERIFY          DELIVER
- ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
- │Brainstorm│ ─▶ │Architect │ ─▶ │   TDD    │ ─▶ │ DevTools │ ─▶ │  Review  │
- │Interview │    │Decompose │    │Increment.│    │Debug Loop│    │Handoff/PR│
- └──────────┘    └──────────┘    └──────────┘    └──────────┘    └──────────┘
-```
+Public members have native `andino-*` entrypoints. Specialized techniques live as ordinary Markdown resources: no nested native entrypoint, compatibility shim or old invocation alias. Load only the technique needed now. Selecting a resource does **not** start its parent's lifecycle, run other modes, reopen accepted decisions or create a second plan.
 
----
+The exact active and cumulative retired sets are in [the distribution manifest](references/portfolio.json). Selection triggers and exclusions are in [the method/resource index](references/internal-method-index.md).
 
-## Workflow and Direct Invocation
+### Direction, design and delivery of work
 
-You can invoke the workflow or a member skill directly:
+| Public member | Responsibility |
+| --- | --- |
+| `andino-brainstorming` | Open intent and choices; optional decision-frontier, feasibility-probe, idea-validation and async-question resources. |
+| `andino-planning` | Exact implementation changes, dependencies and proof; optional behavior-readiness, dependency-slicing and recurring-process resources. |
+| `andino-plan-execution` | Authorized dependency-ready execution; independently selectable task-implementation, vertical-slice and frontend-engineering resources. |
+| `andino-delegation` | Bounded independent work with disjoint write scopes and parent integration. |
+| `andino-api-and-interface-design` | Select module-depth, import-enforcement or HTTP-contract craft without forcing the other modes. |
+| `andino-architecture-survey` | Bounded observed architectural friction, not an unsolicited whole-repository rewrite. |
 
-1. **Orchestrated Mode (`/andino-workflow`):**
-   Andino checks the current task phase, selects the matching member skill (e.g., `andino-brainstorming` or `andino-tdd`), and maintains one durable execution plan as the work progresses.
-2. **Direct Mode (`/andino-<method>`):**
-   A directly invoked skill (e.g., `/andino-tdd` or `$andino-debugging`) runs its technique under Andino's rules for evidence, checkpoints, and avoiding repeated unsuccessful work. It does not invoke the workflow recursively.
+### Implementation and verification
 
----
+| Public member | Responsibility |
+| --- | --- |
+| `andino-tdd` | Executable RED/GREEN behavior guards; optional typed-fixture migration preserving invalid negative cases. |
+| `andino-debugging` | Reproduction and systematic investigation of an unknown cause. |
+| `andino-verification` | Observed acceptance evidence before consequential completion claims. |
+| `andino-browser-testing-with-devtools` | Rendered behavior, console/network and browser evidence; UI screenshots at 360, 768 and 1440 px. |
+| `andino-code-review` | Specification and standards review. |
+| `andino-code-simplification` | Evidenced simplification of green code without behavioral drift. |
+| `andino-constraint-driven-development` | Establish and preserve the quality floor. |
+| `andino-doubt-driven-development` | Fresh scrutiny of consequential assumptions and invariants. |
 
-## Member Skills Catalog (60 Directories)
+### Production boundaries
 
-The installer exposes all 60 member directories as native, discoverable `andino-` skills. This includes the `decision-interview` and `method-authoring` compatibility shims; they forward to canonical methods rather than adding separate procedures:
+| Public member | Responsibility |
+| --- | --- |
+| `andino-security-and-hardening` | External-input, authentication, data and dependency trust boundaries. |
+| `andino-deprecation-and-migration` | Consumer-aware interface/schema retirement and migration. |
+| `andino-observability-and-instrumentation` | Useful production evidence, monitoring and runbooks. |
+| `andino-performance-optimization` | Measured bottlenecks and verified improvements. |
+| `andino-ci-cd-and-automation` | Build/test/deployment automation; optional commit-check setup. |
+| `andino-shipping-and-launch` | Authorized release readiness, rollout and recovery planning. |
+| `andino-git-skills` | Select workspace, operation-safety, change-hygiene, branch-integration or PR-draft craft. No implicit commit, push or destructive recovery. |
 
-### 1. Define & Explore
-| Skill | What It Does |
-|---|---|
-| `andino-brainstorming` | Explores open goals, relentlessly grills decision frontiers, captures in-flight ADRs and domain glossaries, and refines decisions. |
-| `andino-decision-interview` | Clarifies missing requirements and grills decision frontiers (consolidated into `andino-brainstorming`). |
-| `andino-idea-refine` | Refines rough concepts by considering feasibility and value trade-offs. |
-| `andino-specification` | Defines requirements clearly enough to guide implementation. |
-| `andino-design-prototype` | Builds throwaway visual or logic spikes to resolve design questions. |
+### Knowledge and collaboration
 
-### 2. Architecture & Planning
-| Skill | What It Does |
-|---|---|
-| `andino-planning` | Specifies exact code/artifact changes, snippets, interfaces and checks for a fresh executor; separates ready tasks from a roadmap. |
-| `andino-plan-execution` | Executes accepted plans inline with progress checkpointing. |
-| `andino-delegation` | Orchestrates bounded independent tasks, parallel dispatch, or subagent-driven implementation under parent ownership. |
-| `andino-task-decomposition` | Breaks features into small tasks ordered by dependency. |
-| `andino-api-and-interface-design` | Designs contract-first APIs, error semantics, and module boundaries. |
-| `andino-deep-module-design` | Designs interfaces that hide internal complexity. |
-| `andino-architecture-survey` | Identifies architectural friction points and maintainability debt. |
-| `andino-domain-modeling` | Aligns code vocabulary with domain models and ADRs. |
+| Public member | Responsibility |
+| --- | --- |
+| `andino-agent-document-authoring` | Passive repository guidance such as CLAUDE.md and AGENTS.md. |
+| `andino-skill-maker` | Executable skill/procedure authoring with baseline and candidate evaluation. |
+| `andino-documentation-and-adrs` | Durable documentation and decisions; optional domain vocabulary. |
+| `andino-handoff` | Portable continuation and optional context packing. |
+| `andino-human-procedure` | Necessary steps requiring human-only access or authority. |
+| `andino-issue-triage` | Maintainer-requested issue/PR evaluation without unauthorized tracker writes. |
+| `andino-session-diagnostics` | Session-level failures; optional prevention review after causes are known. |
+| `andino-learning-workspace` | Intentional learning; optional course-exercise scaffolding. |
+| `andino-article-shaping` | Shape supplied writing material; optional raw capture without invented anecdotes. |
 
-### 3. Implementation & Testing
-| Skill | What It Does |
-|---|---|
-| `andino-tdd` | Enforces the strict RED-GREEN-REFACTOR cycle with automated tests. |
-| `andino-incremental-implementation` | Implements thin vertical slices with commit-as-save-point discipline. |
-| `andino-source-driven-development` | Grounds framework decisions in official, cited documentation. |
-| `andino-constraint-driven-development` | Defines quality requirements and prevents them from being weakened during implementation. |
-| `andino-doubt-driven-development` | Runs adversarial fresh-context reviews on critical invariants. |
-| `andino-frontend-ui-engineering` | Implements responsive, accessible (WCAG AA) component interfaces. |
+Workflow advice is a [workflow-owned resource](references/workflow-advice/guide.md), not a mandatory router. Project conventions use the [project-setup resource](references/project-setup/guide.md), not a prerequisite for every task.
 
-### 4. Verification & Debugging
-| Skill | What It Does |
-|---|---|
-| `andino-debugging` | Uses a targeted fast path for obvious failures and a 6-phase systematic FSM for deeper bugs: Loop -> Minimize -> Hypothesize -> Probe -> Fix -> Clean. |
-| `andino-verification` | Requires evidence that can be checked before declaring a task complete. |
-| `andino-browser-testing-with-devtools` | Live runtime DOM, console, network, and performance profiling. |
-| `andino-performance-optimization` | Measures performance, locates bottlenecks, and checks improvements. |
-| `andino-session-diagnostics` | Investigates agent misbehavior, ignored plans, or session loops. |
+## Invocation
 
-### 5. Review & Delivery
-| Skill | What It Does |
-|---|---|
-| `andino-code-review` | Reviews code against the specification, coding standards, and maintainability concerns. |
-| `andino-code-simplification` | Reduces cognitive complexity while preserving exact behavior. |
-| `andino-security-and-hardening` | Audits OWASP Top 10 vulnerabilities, auth, and trust boundaries. |
-| `andino-git-workflow-and-versioning` | Atomic commits, trunk-based development, and changelog management. |
-| `andino-handoff` | Records the state another agent or session needs to continue the task. |
-| `andino-pr-description` | Writes pull request summaries that explain the changes, affected areas, and verification. |
+Use the host's actual invocation mechanism, for example `/andino-workflow`, `/andino-tdd` or Codex's `$andino-debugging`. Availability and permissions must be checked on the current host; installed is not active or used.
 
-### 6. Skill & Guidance Authoring
-| Skill | What It Does |
-|---|---|
-| `andino-skill-maker` | Creates and maintains executable skills, procedures and runbooks using remedial or greenfield evaluation. |
-| `andino-method-authoring` | Compatibility shim forwarding legacy authoring requests to `andino-skill-maker`. |
-| `andino-agent-document-authoring` | Designs passive repository guidance such as `CLAUDE.md` and `AGENTS.md`. |
+Examples of narrow resource requests:
 
-*View the complete index with trigger/exclusion rules in [`references/internal-method-index.md`](references/internal-method-index.md).*
+- “Fix modal focus and loading states using the frontend-engineering resource.” Load `skills/plan-execution/resources/frontend-engineering/guide.md` from the installed workflow root; do not start the executor's full lifecycle.
+- “Check import boundaries for this accepted TypeScript layout.” Select API/interface's import-enforcement resource, not HTTP design.
+- “Advise which workflow fits, without executing it.” Read the workflow-advice resource and stop at advice.
+- “Integrate this branch.” Select Git branch-integration; reuse current authorization, verify before/after, and preserve the branch on failure. A completed merge cannot be undone with `merge --abort`.
 
----
+A nested member resolves shared resources from its containing workflow package; a standalone `andino-*` member resolves them from the sibling `andino-workflow` package. Relative local resource links remain within each member. Do not substitute an unrelated unprefixed provider or bypass denied loading.
 
-## Quick Start
+## Installation and migration
 
-### 1. Installation
-
-Install via the **AI-RULES CLI** (included in all profiles):
+The AI-RULES CLI lives on the repository's `main` branch:
 
 ```sh
-# Install CLI
 git clone --branch main https://github.com/andinoferdi/AI-RULES.git
-cd AI-RULES && python -m pip install .
-
-# Setup Andino Workflow (installs the coordinator + all member skill directories)
+cd AI-RULES
+python -m pip install .
 ai-rules setup --capability andino-workflow --host <host>
 ```
 
-<details>
-<summary>Manual Installation</summary>
+The consolidated bundle declares **installer protocol 1** in `references/portfolio.json`. Use a CLI release that implements that protocol. Older binaries and older frozen bundles do not acquire retirement behavior merely because this branch changed. Local uncommitted source verification is not release publication; the CLI's frozen bundle pins must be coordinated after corresponding revisions exist.
+
+Fresh setup must install the coordinator, the exact active public members and required Focus/Search First packages. Managed upgrades must retire only artifacts whose ownership and unchanged contents are proven. A matching `andino-` prefix is not proof. Modified/unrecognized files and user commands are preserved as conflicts; do not manually force-remove them. Family replacement is a recoverable coordinated transaction, not instantaneous atomic visibility across every directory.
+
+A manual coordinator clone alone does not expose all standalone members or safely retire prior installations. Prefer the protocol-aware setup for migration. Backups/staging belong outside host discovery roots. Refresh native discovery in a **new host session** after migration: deleting an entrypoint cannot remove instructions already loaded into a running conversation.
+
+## Sibling ownership
+
+- **Focus** supplies communication and optional lightweight explanation repair (`references/explanation-repair.md`). It does not start a lesson, research task or file edit merely to clarify an answer.
+- **Search First** supplies research-before-coding, source-backed answers (`references/sourced-answer/guide.md`) and version contracts (`references/version-contract/guide.md`): resolved dependency version → matching primary source → change → parity test.
+- **Council** supplies independent decision scrutiny when requested or justified.
+- **AI Codebase Rescue**, **Skripsi**, and **Three.js Skills** retain their separate eligible domain responsibilities.
+- Explicit Taste/Impeccable choices remain authoritative: Taste generates a direction; Impeccable critiques/refines it when selected by the accepted UI policy.
+
+Sibling resources require actual permitted sibling loading; a name in this README is not activation. No retired public ID silently redirects to an internal resource.
+
+## Verification and references
 
 ```sh
-git clone --depth 1 --single-branch --branch andino-workflow https://github.com/andinoferdi/AI-RULES.git "<skills-dir>/andino-workflow"
+python -I scripts/verify_portfolio.py
 ```
 
-| Host | Global Skills Directory | Project Skills Directory |
-|---|---|---|
-| **Codex** | `~/.agents/skills/andino-workflow` | `.agents/skills/andino-workflow` |
-| **Claude Code** | `~/.claude/skills/andino-workflow` | `.claude/skills/andino-workflow` |
-| **OpenCode** | `~/.config/opencode/skills/andino-workflow` | `.agents/skills/andino-workflow` |
-| **Antigravity** | `~/.gemini/antigravity-cli/skills/andino-workflow` | `.agents/skills/andino-workflow` |
+This independent structural oracle checks exact public/retired sets, resource existence, live routes and local links in nested/flat layouts. It does **not** prove real setup, native discovery or model behavior. Installer/public-flow tests and fresh-context consumer checks are separate obligations.
 
-</details>
-
-### 2. Usage Examples
-
-- **Master Orchestrator:**
-  - Claude Code: `/andino-workflow resume the existing task plan and implement the next slice`
-  - Codex: `$andino-workflow resolve database connection pool exhaustion under load`
-- **Individual Member Skills:**
-  - Claude Code: `/andino-brainstorming explore caching strategies for real-time leaderboards`
-  - Claude Code: `/andino-tdd implement the token refresh endpoint with failing tests first`
-  - Codex: `$andino-debugging diagnose why the WebSocket handshake drops on mobile clients`
-  - Codex: `$andino-code-review review staged changes for security and contract drift`
-
----
-
-## Integration with Sibling Skills
-
-Andino coordinates with these AI-RULES capabilities:
-- **`focus`:** Default communication layer (installed as a required dependency).
-- **`search-first`:** Researches APIs and external sources when the task needs that evidence.
-- **`council`:** Examines consequential decisions from multiple independent perspectives.
-- **`ai-codebase-rescue`:** Helps stabilize tangled legacy modules.
-- **`skripsi-skill`:** Guides work on academic thesis milestones.
-- **`threejs-skills`:** Supports 3D scene, shader, and WebGL rendering tasks.
-
----
-
-## References
-
-- [`SKILL.md`](SKILL.md): Runtime contract and rules for workflow and direct invocation.
-- [`references/internal-method-index.md`](references/internal-method-index.md): Complete member catalog and compatibility mappings.
-- [`references/method-dispatch.md`](references/method-dispatch.md): Rules for explicit and implicit method selection.
-- [`references/execution-plan-template.md`](references/execution-plan-template.md): Portable task checkpoint structure.
+- [Runtime coordination contract](SKILL.md)
+- [Method and selective-resource index](references/internal-method-index.md)
+- [Dispatch](references/method-dispatch.md) and [routing](references/routing.md)
+- [Portable checkpoint template](references/execution-plan-template.md)
+- [Provenance and notices](references/legal/provenance.md)

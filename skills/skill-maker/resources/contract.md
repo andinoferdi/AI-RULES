@@ -8,8 +8,8 @@ nor permission to launch evaluators or mutate a host.
 
 Canonical Andino members use stable `andino-<kebab-case-slug>` IDs and descriptions
 that identify observable selection triggers, scope, and relevant exclusions.
-Preserve `method-authoring`, `andino-method-authoring`, and `writing-skills` as
-compatibility IDs for `andino-skill-maker`. Existing valid host metadata follows
+Preserve `writing-skills` as compatibility alias for `andino-skill-maker`, with
+`method-authoring` and `andino-method-authoring` recorded in historical provenance. Existing valid host metadata follows
 the real host schema; do not ban extra keys merely to force a universal template.
 
 A typical member starts with YAML `name` and `description`, then covers purpose,

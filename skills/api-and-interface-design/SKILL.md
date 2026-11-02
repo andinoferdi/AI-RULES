@@ -26,6 +26,18 @@ Negative request: "Rename the private variable total to subtotal."
 
 These are declared activation fixtures, not a claim that a model/router was executed.
 
+## Select a resource, not a second lifecycle
+
+Load only the resource matching the current need. A direct resource selection uses
+that procedure and current authority; it does not run this parent's other modes,
+reopen accepted requirements or require a second execution plan.
+
+| Current need | Resource | Exclusion |
+| :--- | :--- | :--- |
+| Deep interface design, simple surface over complex subsystem | [module-depth](resources/module-depth/guide.md) | Shallow pass-through wrappers or trivial utilities |
+| Layer boundary enforcement, import path rules, dependency discipline | [import-enforcement](resources/import-enforcement/guide.md) | Single-file scripts without layer architecture |
+| HTTP endpoint contracts, REST semantics, atomic idempotency | [http-contracts](resources/http-contracts/guide.md) | Internal in-memory function or method contracts |
+
 ## Inputs and dependencies
 
 Consumer use cases and failure modes, existing provider/consumer schemas, error contracts, observed environmental quirks, and observable acceptance criteria.
@@ -190,4 +202,4 @@ Common anti-patterns to avoid:
 
 ## Provenance
 
-Adapted in original wording and elevated cognitive architecture from addyosmani/agent-skills, source `skills/api-and-interface-design/SKILL.md`, local snapshot `aeac41d4d005999432bb7312f7ff06383a91d59d`. Supporting resource provenance is recorded in the main quality manifest. Substantive adapted material is covered by the packaged [Addy MIT notice](../../references/legal/addy-license.md). Upstream is audit/build provenance only; runtime requires no upstream installation or network fetch.
+Adapted in original wording and elevated cognitive architecture from addyosmani/agent-skills, source `skills/api-and-interface-design/SKILL.md`, local snapshot `aeac41d4d005999432bb7312f7ff06383a91d59d`. Supporting resource provenance is recorded in the main quality manifest. Substantive adapted material is covered by the packaged Addy MIT notice (resolve references/legal/addy-license.md from the installed andino-workflow root). Upstream is audit/build provenance only; runtime requires no upstream installation or network fetch.

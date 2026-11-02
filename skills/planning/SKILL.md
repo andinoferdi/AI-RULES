@@ -27,6 +27,18 @@ task graph ready for execution. A known root cause alone does not determine size
 Open product direction or material user-owned requirements belong to the relevant
 discovery method before implementation-ready planning.
 
+## Select a resource, not a second lifecycle
+
+Load only the resource matching the current need. A direct resource selection uses
+that procedure and current authority; it does not run this parent's other modes,
+reopen accepted requirements or require a second execution plan.
+
+| Current need | Resource | Exclusion |
+| :--- | :--- | :--- |
+| Behavior readiness, executable criteria, given/when/then specs | [behavior-readiness](resources/behavior-readiness/guide.md) | High-level roadmap planning or rough initial idea exploration |
+| Dependency slicing, DAG decomposition, parallel execution waves | [dependency-slicing](resources/dependency-slicing/guide.md) | Single-step mechanical tasks without dependency order |
+| Recurring operational process, repeatable runbook specification | [recurring-process](resources/recurring-process/guide.md) | One-time engineering implementation plans |
+
 ## Prerequisites
 
 Locate the accepted requirements, project constraints and existing checkpoint.

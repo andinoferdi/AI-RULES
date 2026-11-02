@@ -1,0 +1,690 @@
+{
+  "schema_version": 1,
+  "mapping": {
+    "context-engineering": "skills/handoff/resources/context-packing",
+    "decision-map": "skills/brainstorming/resources/decision-frontier",
+    "design-prototype": "skills/brainstorming/resources/feasibility-probe",
+    "idea-refine": "skills/brainstorming/resources/idea-validation",
+    "stakeholder-questionnaire": "skills/brainstorming/resources/async-questions",
+    "deep-module-design": "skills/api-and-interface-design/resources/module-depth",
+    "typescript-boundary-enforcement": "skills/api-and-interface-design/resources/import-enforcement",
+    "implementation": "skills/plan-execution/resources/task-implementation",
+    "incremental-implementation": "skills/plan-execution/resources/vertical-slices",
+    "frontend-ui-engineering": "skills/plan-execution/resources/frontend-engineering",
+    "specification": "skills/planning/resources/behavior-readiness",
+    "task-decomposition": "skills/planning/resources/dependency-slicing",
+    "workflow-specification": "skills/planning/resources/recurring-process",
+    "domain-modeling": "skills/documentation-and-adrs/resources/domain-vocabulary",
+    "environment-retrospective": "skills/session-diagnostics/resources/prevention-review",
+    "test-fixture-migration": "skills/tdd/resources/typed-fixtures",
+    "exercise-scaffolding": "skills/learning-workspace/resources/course-exercises",
+    "writing-fragments": "skills/article-shaping/resources/raw-capture",
+    "git-isolation": "skills/git-skills/resources/workspace",
+    "git-operation-guard": "skills/git-skills/resources/operation-safety",
+    "git-workflow-and-versioning": "skills/git-skills/resources/change-hygiene",
+    "delivery": "skills/git-skills/resources/branch-integration",
+    "pr-description": "skills/git-skills/resources/pr-draft",
+    "pre-commit-setup": "skills/ci-cd-and-automation/resources/commit-checks",
+    "project-configuration": "references/project-setup",
+    "workflow-advisor": "references/workflow-advice"
+  },
+  "removed_forwarders": {
+    "decision-interview": "Hard-retired; craft consolidated under canonical andino-brainstorming",
+    "method-authoring": "Hard-retired; craft consolidated under canonical andino-skill-maker"
+  },
+  "files": [
+    {
+      "source": "skills/context-engineering/GUIDE.md",
+      "destination": "skills/handoff/resources/context-packing/guide.md",
+      "source_sha256": "a16c283ba64af26069756e52fd03b51fdf7276d4aff827b18c372d1033c8d439",
+      "destination_sha256": "4c240794dbb84211b18fdc35df4e7cebfc8d4365d8b61bebfb0daf429600c462"
+    },
+    {
+      "source": "skills/context-engineering/resources/confusion-and-ambiguity-protocols.md",
+      "destination": "skills/handoff/resources/context-packing/resources/confusion-and-ambiguity-protocols.md",
+      "source_sha256": "ff3a6e2fbd3a43693305eae64c3db6c45860858595d16079a0aff26563b3592f",
+      "destination_sha256": "ff3a6e2fbd3a43693305eae64c3db6c45860858595d16079a0aff26563b3592f"
+    },
+    {
+      "source": "skills/context-engineering/resources/context-budget-and-packing.md",
+      "destination": "skills/handoff/resources/context-packing/resources/context-budget-and-packing.md",
+      "source_sha256": "8f9b1127265218c5c4c4477209a78daff8709429577f314240decb243fdaaa19",
+      "destination_sha256": "f7b6a0a3b4707c7fec9c43da0ca9301d09c2e8c96ac6bec271185b1729caf06b"
+    },
+    {
+      "source": "skills/context-engineering/resources/rules-file-catalog.md",
+      "destination": "skills/handoff/resources/context-packing/resources/rules-file-catalog.md",
+      "source_sha256": "b56eab5886c9daf8b4a6f89ab4e51e1ea5e45393e2be8efffc8a700837f5041d",
+      "destination_sha256": "b56eab5886c9daf8b4a6f89ab4e51e1ea5e45393e2be8efffc8a700837f5041d"
+    },
+    {
+      "source": "skills/context-engineering/resources/worked-example.md",
+      "destination": "skills/handoff/resources/context-packing/resources/worked-example.md",
+      "source_sha256": "11d8102a25967f74c92abe3b73c98b9e1ac909e081749ab09c5a8be324c792f3",
+      "destination_sha256": "11d8102a25967f74c92abe3b73c98b9e1ac909e081749ab09c5a8be324c792f3"
+    },
+    {
+      "source": "skills/context-engineering/SKILL.md",
+      "destination": "skills/handoff/resources/context-packing/contract.md",
+      "source_sha256": "ac0ef8ab29a266b166c50759bfc9a5f81cf5a751f0e93063382e51d140488b07",
+      "destination_sha256": "1be1622235bf6dcf8cc91eed0116d118abb23460b0894523f8d903e6f82b250a"
+    },
+    {
+      "source": "skills/decision-map/GUIDE.md",
+      "destination": "skills/brainstorming/resources/decision-frontier/guide.md",
+      "source_sha256": "6e5fbf305e41b38b3341777ecda33fd0a8e6178bc239827a4227aab290b4bdc4",
+      "destination_sha256": "6e5fbf305e41b38b3341777ecda33fd0a8e6178bc239827a4227aab290b4bdc4"
+    },
+    {
+      "source": "skills/decision-map/resources/gh-adapter.md",
+      "destination": "skills/brainstorming/resources/decision-frontier/resources/gh-adapter.md",
+      "source_sha256": "dec6ba1cd08c1690061519fc4f8171aa6207352d0bcc5b0cada60c6414de694f",
+      "destination_sha256": "dec6ba1cd08c1690061519fc4f8171aa6207352d0bcc5b0cada60c6414de694f"
+    },
+    {
+      "source": "skills/decision-map/resources/map-and-ticket-protocols.md",
+      "destination": "skills/brainstorming/resources/decision-frontier/resources/map-and-ticket-protocols.md",
+      "source_sha256": "6e76da3abaea58be6893a6e2472db93af9f9c0327f5280c560f143edf100f610",
+      "destination_sha256": "6e76da3abaea58be6893a6e2472db93af9f9c0327f5280c560f143edf100f610"
+    },
+    {
+      "source": "skills/decision-map/resources/worked-example.md",
+      "destination": "skills/brainstorming/resources/decision-frontier/resources/worked-example.md",
+      "source_sha256": "8ce4bc332b8cb8fc9aff8423c2960945b9847b0ef24aa8b3bffc7f92d9429327",
+      "destination_sha256": "8ce4bc332b8cb8fc9aff8423c2960945b9847b0ef24aa8b3bffc7f92d9429327"
+    },
+    {
+      "source": "skills/decision-map/SKILL.md",
+      "destination": "skills/brainstorming/resources/decision-frontier/contract.md",
+      "source_sha256": "75cdb193d5f7ab66aa0ee393136a8f5a478e807cae73de88b25ce2e8e61f15d2",
+      "destination_sha256": "6d2d8bd7addbe19a92674ed85e8486718e131931b1fa724d650f21545a61f422"
+    },
+    {
+      "source": "skills/design-prototype/GUIDE.md",
+      "destination": "skills/brainstorming/resources/feasibility-probe/guide.md",
+      "source_sha256": "98bfb78fa418e855feb0348162e9583993f1fecb67d0401bed2aab04b225498f",
+      "destination_sha256": "98bfb78fa418e855feb0348162e9583993f1fecb67d0401bed2aab04b225498f"
+    },
+    {
+      "source": "skills/design-prototype/resources/worked-example.md",
+      "destination": "skills/brainstorming/resources/feasibility-probe/resources/worked-example.md",
+      "source_sha256": "8fcea94450a1892602d2881a4c6215fe00b264f0169f62d186204189f60e9cb7",
+      "destination_sha256": "8fcea94450a1892602d2881a4c6215fe00b264f0169f62d186204189f60e9cb7"
+    },
+    {
+      "source": "skills/design-prototype/SKILL.md",
+      "destination": "skills/brainstorming/resources/feasibility-probe/contract.md",
+      "source_sha256": "c65c48a4ced12cc27aa4087d1176f7181a761c0f2723ba892ebac862ccf419ea",
+      "destination_sha256": "a5f6040a318f13dc1784f76ccf82343aae9ec545af60fe5e9026061930be2346"
+    },
+    {
+      "source": "skills/idea-refine/GUIDE.md",
+      "destination": "skills/brainstorming/resources/idea-validation/guide.md",
+      "source_sha256": "a0d0317028bd1c91bf9ef3d7f5605e74c9d09a51921ad9a6624fef056be71481",
+      "destination_sha256": "950f2505034179bfecae90df35dd679435dc0db7dd7869e19ae141a9e90533f1"
+    },
+    {
+      "source": "skills/idea-refine/resources/ideation.md",
+      "destination": "skills/brainstorming/resources/idea-validation/resources/ideation.md",
+      "source_sha256": "73eff58d68251862bad1839cc549cb15c51a945f26ab6cba8a36d42f2b9e9975",
+      "destination_sha256": "73eff58d68251862bad1839cc549cb15c51a945f26ab6cba8a36d42f2b9e9975"
+    },
+    {
+      "source": "skills/idea-refine/SKILL.md",
+      "destination": "skills/brainstorming/resources/idea-validation/contract.md",
+      "source_sha256": "6ffd8ce52adc520eb965438806aabd70a11dea7ee0d1199ad6957f4271b8c47d",
+      "destination_sha256": "ba926adaf6fe84920802c92c7d0fa7832552e8c915ccb00041ed326121f4f5b4"
+    },
+    {
+      "source": "skills/stakeholder-questionnaire/GUIDE.md",
+      "destination": "skills/brainstorming/resources/async-questions/guide.md",
+      "source_sha256": "a0eedeb9559026512fda53fe93c68617a523daa0e20fd6dd2b8da6d0c1375959",
+      "destination_sha256": "a0eedeb9559026512fda53fe93c68617a523daa0e20fd6dd2b8da6d0c1375959"
+    },
+    {
+      "source": "skills/stakeholder-questionnaire/resources/worked-example.md",
+      "destination": "skills/brainstorming/resources/async-questions/resources/worked-example.md",
+      "source_sha256": "757c38590f2599800c34b249881df73947abc9cbeb8e4ee1e3277ee1f41f0830",
+      "destination_sha256": "757c38590f2599800c34b249881df73947abc9cbeb8e4ee1e3277ee1f41f0830"
+    },
+    {
+      "source": "skills/stakeholder-questionnaire/SKILL.md",
+      "destination": "skills/brainstorming/resources/async-questions/contract.md",
+      "source_sha256": "5805e4203fbc0d71fc492165ec7e0522dd842a25d0b282fe10d527833b803926",
+      "destination_sha256": "479f8a3d7741eddefab7e46869b71f77ad1f9360b5015dbf62b1e66d277a8a20"
+    },
+    {
+      "source": "skills/deep-module-design/GUIDE.md",
+      "destination": "skills/api-and-interface-design/resources/module-depth/guide.md",
+      "source_sha256": "08b64094f8f860e599a7054382ba254ae32c65a0b4dfbff4071175beada67970",
+      "destination_sha256": "08b64094f8f860e599a7054382ba254ae32c65a0b4dfbff4071175beada67970"
+    },
+    {
+      "source": "skills/deep-module-design/resources/dependency-and-seam-discipline.md",
+      "destination": "skills/api-and-interface-design/resources/module-depth/resources/dependency-and-seam-discipline.md",
+      "source_sha256": "4cfd9b27d42a03f3b7cb69b33992f9fcfe34f99c9e2e37a0c9f34ff04470cfb0",
+      "destination_sha256": "4cfd9b27d42a03f3b7cb69b33992f9fcfe34f99c9e2e37a0c9f34ff04470cfb0"
+    },
+    {
+      "source": "skills/deep-module-design/resources/design-it-twice-protocols.md",
+      "destination": "skills/api-and-interface-design/resources/module-depth/resources/design-it-twice-protocols.md",
+      "source_sha256": "a9a76bbbfb18eed970abb6fc98b090e4762db3d8dd51b59049927c48657a5f95",
+      "destination_sha256": "478cb39cd2cb8608bc0e71761b1dcf7e492fe12aaf2c3317b6bd5b50d32756f4"
+    },
+    {
+      "source": "skills/deep-module-design/resources/leverage-rubric-and-catalogs.md",
+      "destination": "skills/api-and-interface-design/resources/module-depth/resources/leverage-rubric-and-catalogs.md",
+      "source_sha256": "d2fb30262638fde0fe3b8702ae0b40c984bb1c73ccc25ec60fd9a93232679ac0",
+      "destination_sha256": "d2fb30262638fde0fe3b8702ae0b40c984bb1c73ccc25ec60fd9a93232679ac0"
+    },
+    {
+      "source": "skills/deep-module-design/resources/worked-example.md",
+      "destination": "skills/api-and-interface-design/resources/module-depth/resources/worked-example.md",
+      "source_sha256": "8f4764df0ba3e2ee4ec8235439bd15d6aeae663e20eb583f93473d3b60a46270",
+      "destination_sha256": "8f4764df0ba3e2ee4ec8235439bd15d6aeae663e20eb583f93473d3b60a46270"
+    },
+    {
+      "source": "skills/deep-module-design/SKILL.md",
+      "destination": "skills/api-and-interface-design/resources/module-depth/contract.md",
+      "source_sha256": "bab83d957b46fd25ae910b489a5038cf1258461b8f23bf36054ad093c6880bce",
+      "destination_sha256": "834a356b7614d632ca316d48f840d650eff96f53f36177bed878123392313473"
+    },
+    {
+      "source": "skills/typescript-boundary-enforcement/GUIDE.md",
+      "destination": "skills/api-and-interface-design/resources/import-enforcement/guide.md",
+      "source_sha256": "16b6f5db19028a22fda8e09bb63792730189fbc76f1633187b61478f7ce28712",
+      "destination_sha256": "16b6f5db19028a22fda8e09bb63792730189fbc76f1633187b61478f7ce28712"
+    },
+    {
+      "source": "skills/typescript-boundary-enforcement/resources/worked-example.md",
+      "destination": "skills/api-and-interface-design/resources/import-enforcement/resources/worked-example.md",
+      "source_sha256": "314ca431d93a7f29d99c81dad749e4a4653da8815d42a4a638586326a5eb4bf7",
+      "destination_sha256": "314ca431d93a7f29d99c81dad749e4a4653da8815d42a4a638586326a5eb4bf7"
+    },
+    {
+      "source": "skills/typescript-boundary-enforcement/SKILL.md",
+      "destination": "skills/api-and-interface-design/resources/import-enforcement/contract.md",
+      "source_sha256": "215ff8c774fd34a119fbd336ec47bce99c2aaba573d4982aba12347ba546894a",
+      "destination_sha256": "57f9be3d31fcc5cdc89db0f1e6c5afd15b5587209d877f1310587a1a11d0a9f0"
+    },
+    {
+      "source": "skills/implementation/GUIDE.md",
+      "destination": "skills/plan-execution/resources/task-implementation/guide.md",
+      "source_sha256": "daba472377bbf31ae7c7162422c6a8ac0efd1caf7f8b8ddb29ba69b7db932fe6",
+      "destination_sha256": "daba472377bbf31ae7c7162422c6a8ac0efd1caf7f8b8ddb29ba69b7db932fe6"
+    },
+    {
+      "source": "skills/implementation/resources/worked-example.md",
+      "destination": "skills/plan-execution/resources/task-implementation/resources/worked-example.md",
+      "source_sha256": "af80d38ec314e1d677b09651e2124705a2cc77c78c1ebf7fae8ed2772c251640",
+      "destination_sha256": "af80d38ec314e1d677b09651e2124705a2cc77c78c1ebf7fae8ed2772c251640"
+    },
+    {
+      "source": "skills/implementation/SKILL.md",
+      "destination": "skills/plan-execution/resources/task-implementation/contract.md",
+      "source_sha256": "eb74ef23bc0b9760eae3d1ef6a7ed85b06951dc956ed3056b42e3f965367a178",
+      "destination_sha256": "7a555e23c0dd21dd414463798ce7215c775788c1c88e8183f4990aa4d01b05fd"
+    },
+    {
+      "source": "skills/incremental-implementation/GUIDE.md",
+      "destination": "skills/plan-execution/resources/vertical-slices/guide.md",
+      "source_sha256": "b8f93dacfa4b5d104c268b71498ce937e51f3323a61506ac3e19e97a836da7fc",
+      "destination_sha256": "8b9fcf9bf24c1ab05477f4f6838f3b2fe1c2d63005577d594f8e6e3b73cc96c2"
+    },
+    {
+      "source": "skills/incremental-implementation/resources/completion.md",
+      "destination": "skills/plan-execution/resources/vertical-slices/resources/completion.md",
+      "source_sha256": "21cb2bb979712f4fc6fba9671caa9c0e5ba8f21b642d5a4258008410e78bc83c",
+      "destination_sha256": "21cb2bb979712f4fc6fba9671caa9c0e5ba8f21b642d5a4258008410e78bc83c"
+    },
+    {
+      "source": "skills/incremental-implementation/SKILL.md",
+      "destination": "skills/plan-execution/resources/vertical-slices/contract.md",
+      "source_sha256": "bf13d3b9b3750761cb10256b349130900981bdf50ce68875e0c14faa30e209a8",
+      "destination_sha256": "a5aba7fafccb164a18220187ccc08a930f62d031cd022c9b47fd9507b6ee1d78"
+    },
+    {
+      "source": "skills/frontend-ui-engineering/GUIDE.md",
+      "destination": "skills/plan-execution/resources/frontend-engineering/guide.md",
+      "source_sha256": "c2095629f55b59969d43d8efc7d4d4b428b763e312250eef90235fba22883c01",
+      "destination_sha256": "b469ef0fad6b30d40f961d0b80ad921b604d3f488d097c89d1cf68546d6a7585"
+    },
+    {
+      "source": "skills/frontend-ui-engineering/resources/accessibility.md",
+      "destination": "skills/plan-execution/resources/frontend-engineering/resources/accessibility.md",
+      "source_sha256": "c7e6ec1befc868030fbb3a86d00848abf4d545f90383afe948ef031fd0c64b36",
+      "destination_sha256": "c7e6ec1befc868030fbb3a86d00848abf4d545f90383afe948ef031fd0c64b36"
+    },
+    {
+      "source": "skills/frontend-ui-engineering/SKILL.md",
+      "destination": "skills/plan-execution/resources/frontend-engineering/contract.md",
+      "source_sha256": "c4bdafed462b151d7dff56f59cf67016d07e95e26a44bff1f0ec81ce93bcb68b",
+      "destination_sha256": "fad5db62a9e71c4ed3eea1cc860b60260ef1a7d1f6a8158ec9c8d81c278be4f4"
+    },
+    {
+      "source": "skills/specification/GUIDE.md",
+      "destination": "skills/planning/resources/behavior-readiness/guide.md",
+      "source_sha256": "532dbd2454ba41c9ea08d9746bda72b549a434b3f3de6d955bd891bb76760e3d",
+      "destination_sha256": "532dbd2454ba41c9ea08d9746bda72b549a434b3f3de6d955bd891bb76760e3d"
+    },
+    {
+      "source": "skills/specification/resources/worked-example.md",
+      "destination": "skills/planning/resources/behavior-readiness/resources/worked-example.md",
+      "source_sha256": "0371d4b2f1078777951045f693af1b4cae8144e638617e437caf0227c9664407",
+      "destination_sha256": "0371d4b2f1078777951045f693af1b4cae8144e638617e437caf0227c9664407"
+    },
+    {
+      "source": "skills/specification/SKILL.md",
+      "destination": "skills/planning/resources/behavior-readiness/contract.md",
+      "source_sha256": "00494dc7fe595f436f5878c0b13443028aec3e9482f0cd3ed928de479fd10bcb",
+      "destination_sha256": "bcad601a042e4f7b7bffda5fd8da7422b76fa6cbd63770ba2a335a2e71d1e8fb"
+    },
+    {
+      "source": "skills/task-decomposition/GUIDE.md",
+      "destination": "skills/planning/resources/dependency-slicing/guide.md",
+      "source_sha256": "bcf71a1d16f15c1f403be254719ac870b4b9890e94d94a7304876ed7cf1b8c4c",
+      "destination_sha256": "bcf71a1d16f15c1f403be254719ac870b4b9890e94d94a7304876ed7cf1b8c4c"
+    },
+    {
+      "source": "skills/task-decomposition/resources/worked-example.md",
+      "destination": "skills/planning/resources/dependency-slicing/resources/worked-example.md",
+      "source_sha256": "18fee9a680365a00a6a5440727fa58ebae4d8fef73bbaa176dc94b3015bbbc6b",
+      "destination_sha256": "18fee9a680365a00a6a5440727fa58ebae4d8fef73bbaa176dc94b3015bbbc6b"
+    },
+    {
+      "source": "skills/task-decomposition/SKILL.md",
+      "destination": "skills/planning/resources/dependency-slicing/contract.md",
+      "source_sha256": "399e281d8b54f7943c286c5878838523014bd09b4addb8b94d883d4edcc57b40",
+      "destination_sha256": "695a0521c4de3eaa997e3800df6ad5b98e61bbcb63d1e35368da25e0fda5aa8a"
+    },
+    {
+      "source": "skills/workflow-specification/GUIDE.md",
+      "destination": "skills/planning/resources/recurring-process/guide.md",
+      "source_sha256": "6469a299544fd7fabc982ce9542bcef07b886cddd88b1d1b80ee1963591ad1c1",
+      "destination_sha256": "6469a299544fd7fabc982ce9542bcef07b886cddd88b1d1b80ee1963591ad1c1"
+    },
+    {
+      "source": "skills/workflow-specification/resources/worked-example.md",
+      "destination": "skills/planning/resources/recurring-process/resources/worked-example.md",
+      "source_sha256": "2f35d4ee832bd6649a417d476d1ccffe2a9e10ea258f4e6d0dd5d2269ffc8f20",
+      "destination_sha256": "2f35d4ee832bd6649a417d476d1ccffe2a9e10ea258f4e6d0dd5d2269ffc8f20"
+    },
+    {
+      "source": "skills/workflow-specification/SKILL.md",
+      "destination": "skills/planning/resources/recurring-process/contract.md",
+      "source_sha256": "ba0c7b18e91fce3fefb4f0a78b7581a180c6d4fc512047af32b3d3d105e451ad",
+      "destination_sha256": "1519818a652aa93f0784e3e825deb3c59220df09a7af526d7ca2132a4a00bef0"
+    },
+    {
+      "source": "skills/domain-modeling/GUIDE.md",
+      "destination": "skills/documentation-and-adrs/resources/domain-vocabulary/guide.md",
+      "source_sha256": "16bd5fe14ba6e684164077bf2419cea600db3e23a8ef20e64ed36c17d4db7cc7",
+      "destination_sha256": "16bd5fe14ba6e684164077bf2419cea600db3e23a8ef20e64ed36c17d4db7cc7"
+    },
+    {
+      "source": "skills/domain-modeling/resources/worked-example.md",
+      "destination": "skills/documentation-and-adrs/resources/domain-vocabulary/resources/worked-example.md",
+      "source_sha256": "4678a20ca56c12263af61ecffca40a49af40d57871a27a56a74ea75dae29b704",
+      "destination_sha256": "4678a20ca56c12263af61ecffca40a49af40d57871a27a56a74ea75dae29b704"
+    },
+    {
+      "source": "skills/domain-modeling/SKILL.md",
+      "destination": "skills/documentation-and-adrs/resources/domain-vocabulary/contract.md",
+      "source_sha256": "f655c43d210d00566961e53cfeb4d9c914d579e87c9944b9a43a7d941b5a7991",
+      "destination_sha256": "eb1c4e7853ae946f0938bca0b957bf32a5dad7cc91c11a0be1307c6a28e52434"
+    },
+    {
+      "source": "skills/environment-retrospective/GUIDE.md",
+      "destination": "skills/session-diagnostics/resources/prevention-review/guide.md",
+      "source_sha256": "88494d0635750d7ec5eb051946b2a510b05f2aeb654f7deb72982c24c2d722d4",
+      "destination_sha256": "88494d0635750d7ec5eb051946b2a510b05f2aeb654f7deb72982c24c2d722d4"
+    },
+    {
+      "source": "skills/environment-retrospective/resources/worked-example.md",
+      "destination": "skills/session-diagnostics/resources/prevention-review/resources/worked-example.md",
+      "source_sha256": "ea1d4e561f49f8663d7ac4163921b78afd5bba372b9e3f77aae1ea9226538c0f",
+      "destination_sha256": "ea1d4e561f49f8663d7ac4163921b78afd5bba372b9e3f77aae1ea9226538c0f"
+    },
+    {
+      "source": "skills/environment-retrospective/SKILL.md",
+      "destination": "skills/session-diagnostics/resources/prevention-review/contract.md",
+      "source_sha256": "9fe3517b2bf91278e0151de4f4fdf44565a25158365e8006e73e3ef74826326b",
+      "destination_sha256": "b84774f31939ff889bdf64ed94063a2943b077ec20edccd37530b3cd474b3632"
+    },
+    {
+      "source": "skills/test-fixture-migration/GUIDE.md",
+      "destination": "skills/tdd/resources/typed-fixtures/guide.md",
+      "source_sha256": "718aed651452b24c674c2e7d2b450ce877afaa1ecef1d66eccd127768271bdd7",
+      "destination_sha256": "718aed651452b24c674c2e7d2b450ce877afaa1ecef1d66eccd127768271bdd7"
+    },
+    {
+      "source": "skills/test-fixture-migration/resources/worked-example.md",
+      "destination": "skills/tdd/resources/typed-fixtures/resources/worked-example.md",
+      "source_sha256": "4773248ed6239282446474abf1d35913a6d835fc820d19815c14ee90723e11b2",
+      "destination_sha256": "4773248ed6239282446474abf1d35913a6d835fc820d19815c14ee90723e11b2"
+    },
+    {
+      "source": "skills/test-fixture-migration/SKILL.md",
+      "destination": "skills/tdd/resources/typed-fixtures/contract.md",
+      "source_sha256": "f65ca3b12e7587cdc9d4d0370efee77258b8279f313b396952b74efb0bdbe133",
+      "destination_sha256": "53a890197cf714f2f4ae3f47e81f3916673d5d992c1bc760ad18600a3cfb4758"
+    },
+    {
+      "source": "skills/exercise-scaffolding/GUIDE.md",
+      "destination": "skills/learning-workspace/resources/course-exercises/guide.md",
+      "source_sha256": "1004bf4ea0f4dfb139b45363ae073e4ddfaa981fe4c7a5a0aa058833ef817b56",
+      "destination_sha256": "1004bf4ea0f4dfb139b45363ae073e4ddfaa981fe4c7a5a0aa058833ef817b56"
+    },
+    {
+      "source": "skills/exercise-scaffolding/resources/worked-example.md",
+      "destination": "skills/learning-workspace/resources/course-exercises/resources/worked-example.md",
+      "source_sha256": "650bda09aec46f70a44d1d362d2eb26a9516c83a7f4607d55f921e867410daff",
+      "destination_sha256": "650bda09aec46f70a44d1d362d2eb26a9516c83a7f4607d55f921e867410daff"
+    },
+    {
+      "source": "skills/exercise-scaffolding/SKILL.md",
+      "destination": "skills/learning-workspace/resources/course-exercises/contract.md",
+      "source_sha256": "919a6e0a255dd1f4fe2ab0d0d111feb065b33ab4e4d48a7b50fd17af3ef26991",
+      "destination_sha256": "a15812d058c439fe4cde8f5e84aea39423588be80989a461eda0b7b70e75db99"
+    },
+    {
+      "source": "skills/writing-fragments/GUIDE.md",
+      "destination": "skills/article-shaping/resources/raw-capture/guide.md",
+      "source_sha256": "b8e806c6c4c085bc1b4e26b309d1c3fd92f2d8a9d898626e9e5c215cdb1bc5f2",
+      "destination_sha256": "b8e806c6c4c085bc1b4e26b309d1c3fd92f2d8a9d898626e9e5c215cdb1bc5f2"
+    },
+    {
+      "source": "skills/writing-fragments/resources/worked-example.md",
+      "destination": "skills/article-shaping/resources/raw-capture/resources/worked-example.md",
+      "source_sha256": "dcb6aa68cc0846959d469c78796ca6d3c2ae01492edec0e020c5a04f8a811435",
+      "destination_sha256": "dcb6aa68cc0846959d469c78796ca6d3c2ae01492edec0e020c5a04f8a811435"
+    },
+    {
+      "source": "skills/writing-fragments/SKILL.md",
+      "destination": "skills/article-shaping/resources/raw-capture/contract.md",
+      "source_sha256": "e9f80e2de87f51b0316f4ff19198223a20f40484af48dd55597dddb22ab0c4ff",
+      "destination_sha256": "0d6c236a6f60956ea15456043a87dec5187b78b16923ec158fbf4f3ec932fb15"
+    },
+    {
+      "source": "skills/git-isolation/GUIDE.md",
+      "destination": "skills/git-skills/resources/workspace/guide.md",
+      "source_sha256": "daa215d9fc9a488b2cb81005a8357e886c68e9d7d629bdf8ac92d6b4c41ed856",
+      "destination_sha256": "daa215d9fc9a488b2cb81005a8357e886c68e9d7d629bdf8ac92d6b4c41ed856"
+    },
+    {
+      "source": "skills/git-isolation/resources/contract.md",
+      "destination": "skills/git-skills/resources/workspace/resources/contract.md",
+      "source_sha256": "d597ff4683793658ebffcf222f2670292564598d88592ed514a490c05dd01ba4",
+      "destination_sha256": "d597ff4683793658ebffcf222f2670292564598d88592ed514a490c05dd01ba4"
+    },
+    {
+      "source": "skills/git-isolation/SKILL.md",
+      "destination": "skills/git-skills/resources/workspace/contract.md",
+      "source_sha256": "71f3d605faa3aa5ced2dc13450630596f8e979a05726b10eb25d0177ab2629b1",
+      "destination_sha256": "7f7e18b16568dd830a551827fa553a801cfe14c8aeb763555c9272f16f4390bd"
+    },
+    {
+      "source": "skills/git-operation-guard/GUIDE.md",
+      "destination": "skills/git-skills/resources/operation-safety/guide.md",
+      "source_sha256": "237b9427ae1bb3ec3f9f1b23a24ecf98e1644e3aa673b3d1f1fb204533ca47e5",
+      "destination_sha256": "237b9427ae1bb3ec3f9f1b23a24ecf98e1644e3aa673b3d1f1fb204533ca47e5"
+    },
+    {
+      "source": "skills/git-operation-guard/resources/worked-example.md",
+      "destination": "skills/git-skills/resources/operation-safety/resources/worked-example.md",
+      "source_sha256": "bf015730d6fb3d936cb9aefb9d9a3e8c38bee66914443cdf10d130ace1640cbe",
+      "destination_sha256": "bf015730d6fb3d936cb9aefb9d9a3e8c38bee66914443cdf10d130ace1640cbe"
+    },
+    {
+      "source": "skills/git-operation-guard/SKILL.md",
+      "destination": "skills/git-skills/resources/operation-safety/contract.md",
+      "source_sha256": "495e7086af9bc33657fb537936a23e6b1da6c720d00e5bee5b5987170dd08acc",
+      "destination_sha256": "9336d31f11799475cf547c9e5f0c2593462902717995fa0c6e9829c6f76d139d"
+    },
+    {
+      "source": "skills/git-workflow-and-versioning/GUIDE.md",
+      "destination": "skills/git-skills/resources/change-hygiene/guide.md",
+      "source_sha256": "5e3a221aa352933489bf7ab23464f24434cdf46356a5b21aec8b29bffde04fbc",
+      "destination_sha256": "3a2ebce9208c33bc40f6ca469c39b23295b850516cf1a14236728aa3f98d76ec"
+    },
+    {
+      "source": "skills/git-workflow-and-versioning/SKILL.md",
+      "destination": "skills/git-skills/resources/change-hygiene/contract.md",
+      "source_sha256": "13b5d5361f233059f6320bac3779930b1dfe1b8fbec3dcc27993edfefdd97c87",
+      "destination_sha256": "8049d63b4745c8dbaf9f077d88606602bbc2b9ae0e1d5db615a17157dc7ff556"
+    },
+    {
+      "source": "skills/delivery/GUIDE.md",
+      "destination": "skills/git-skills/resources/branch-integration/guide.md",
+      "source_sha256": "019e0376b28239d913d4dcfa7fc94a913c142f79ba7ea3ac50de601442f2e908",
+      "destination_sha256": "58f316b10659309962f48d19cfae21dcd61d67e3195806358ef2c3c61cc10326"
+    },
+    {
+      "source": "skills/delivery/resources/anti-rationalization-and-failure-modes.md",
+      "destination": "skills/git-skills/resources/branch-integration/resources/anti-rationalization-and-failure-modes.md",
+      "source_sha256": "f6ba503cfe7afda7b5e7e480eb58334f34312d59020921dbf6d8050057e838dd",
+      "destination_sha256": "ad5ebb04753ba7e0d23672457b123d2d2aede6e9a4574bfb2ffdb875b0c97674"
+    },
+    {
+      "source": "skills/delivery/resources/contract.md",
+      "destination": "skills/git-skills/resources/branch-integration/resources/contract.md",
+      "source_sha256": "d7cd8e8e59699db7a2d225d072530a7b9bd65e28191cc52f883c22b012745f9d",
+      "destination_sha256": "ac871e734614f55055e388b88cb08f5441504103724941161afc8837901c7cce"
+    },
+    {
+      "source": "skills/delivery/resources/environment-and-worktree-detection.md",
+      "destination": "skills/git-skills/resources/branch-integration/resources/environment-and-worktree-detection.md",
+      "source_sha256": "6db246b9926c01a497e979af565fdacbe2965cb1abe9159590f1a0c88e1b87b2",
+      "destination_sha256": "6db246b9926c01a497e979af565fdacbe2965cb1abe9159590f1a0c88e1b87b2"
+    },
+    {
+      "source": "skills/delivery/resources/integration-menu-and-execution.md",
+      "destination": "skills/git-skills/resources/branch-integration/resources/integration-menu-and-execution.md",
+      "source_sha256": "a360b98eb31e829dd7941da9a22d79e92d605d22a009af6fae93e4507386d8bb",
+      "destination_sha256": "120dbad0ca8a3ee00b8694f5f022d2534e252b33bc739c34839add08381fbccf"
+    },
+    {
+      "source": "skills/delivery/resources/pre-integration-verification.md",
+      "destination": "skills/git-skills/resources/branch-integration/resources/pre-integration-verification.md",
+      "source_sha256": "7f1462d7db3e6b5df86ab8b3da81acf20b1829c160995549786c3e6505a6b18b",
+      "destination_sha256": "7f1462d7db3e6b5df86ab8b3da81acf20b1829c160995549786c3e6505a6b18b"
+    },
+    {
+      "source": "skills/delivery/resources/workspace-cleanup-and-safety.md",
+      "destination": "skills/git-skills/resources/branch-integration/resources/workspace-cleanup-and-safety.md",
+      "source_sha256": "1d597f08d46f720e5dba552b2fb377a155c1fc30b7731f840f7760c48f1180f9",
+      "destination_sha256": "d978e1e7e364e46abd3a0543255352d505ffd6b17411e9941862898aa98e806e"
+    },
+    {
+      "source": "skills/delivery/SKILL.md",
+      "destination": "skills/git-skills/resources/branch-integration/contract.md",
+      "source_sha256": "64a00cd33a16490fc71be7888a02c5d1306390b4e5c55c2a22a88af55dbb8dd3",
+      "destination_sha256": "47320bffa58827116af90a1b852e834edd28e6cfa617946f74f7aa92ed814e4d"
+    },
+    {
+      "source": "skills/pr-description/GUIDE.md",
+      "destination": "skills/git-skills/resources/pr-draft/guide.md",
+      "source_sha256": "5a2867dcc7568931f905ac15e9b64dd6425e5a4be11556a8b4466a2312c8c8c7",
+      "destination_sha256": "5a2867dcc7568931f905ac15e9b64dd6425e5a4be11556a8b4466a2312c8c8c7"
+    },
+    {
+      "source": "skills/pr-description/resources/credits.md",
+      "destination": "skills/git-skills/resources/pr-draft/resources/credits.md",
+      "source_sha256": "fb1c2402c3333ded991ba2d677960b2b8b4b6fc23afe6eefff48993221cbb099",
+      "destination_sha256": "fb1c2402c3333ded991ba2d677960b2b8b4b6fc23afe6eefff48993221cbb099"
+    },
+    {
+      "source": "skills/pr-description/resources/worked-example.md",
+      "destination": "skills/git-skills/resources/pr-draft/resources/worked-example.md",
+      "source_sha256": "4e0ea1ad0ad3b58ddcba2296bbddc321449a43c7790d293f78d1b4817a151e1f",
+      "destination_sha256": "4e0ea1ad0ad3b58ddcba2296bbddc321449a43c7790d293f78d1b4817a151e1f"
+    },
+    {
+      "source": "skills/pr-description/SKILL.md",
+      "destination": "skills/git-skills/resources/pr-draft/contract.md",
+      "source_sha256": "61ce4c1c82c841cc7774a4579a76aa8675119042f4e3e4dea6734f133383aea8",
+      "destination_sha256": "a469ed3504d673e653980575291e0b07508962d4ac01b036fedf17eb56eab5f2"
+    },
+    {
+      "source": "skills/pre-commit-setup/GUIDE.md",
+      "destination": "skills/ci-cd-and-automation/resources/commit-checks/guide.md",
+      "source_sha256": "c90550eec9267145bb3b8aebbb7629147a940743520b24ff77e82f70d07ae745",
+      "destination_sha256": "c90550eec9267145bb3b8aebbb7629147a940743520b24ff77e82f70d07ae745"
+    },
+    {
+      "source": "skills/pre-commit-setup/resources/worked-example.md",
+      "destination": "skills/ci-cd-and-automation/resources/commit-checks/resources/worked-example.md",
+      "source_sha256": "258ea887ac829f4a06f92c065d3144666b1507b0c45d4408937945540f2ce751",
+      "destination_sha256": "258ea887ac829f4a06f92c065d3144666b1507b0c45d4408937945540f2ce751"
+    },
+    {
+      "source": "skills/pre-commit-setup/SKILL.md",
+      "destination": "skills/ci-cd-and-automation/resources/commit-checks/contract.md",
+      "source_sha256": "1d0c7255542e661c68c93015a89c24bb8d616d9ad2999216b609921358942815",
+      "destination_sha256": "d2aa0b7b4b88cdf3731e75b73457acf67810ddb2fbfb0c80d5704458adf00c51"
+    },
+    {
+      "source": "skills/project-configuration/GUIDE.md",
+      "destination": "references/project-setup/guide.md",
+      "source_sha256": "c7c599fa8c5526ace636b98ec7463f0fce15f8d92bf8e6e04a3b4a9be5bacd2f",
+      "destination_sha256": "c7c599fa8c5526ace636b98ec7463f0fce15f8d92bf8e6e04a3b4a9be5bacd2f"
+    },
+    {
+      "source": "skills/project-configuration/resources/worked-example.md",
+      "destination": "references/project-setup/resources/worked-example.md",
+      "source_sha256": "f30fbe71a52f337450188de1ed6b1b7eac42542d1e3eeb60500aebfd1ac0900a",
+      "destination_sha256": "f30fbe71a52f337450188de1ed6b1b7eac42542d1e3eeb60500aebfd1ac0900a"
+    },
+    {
+      "source": "skills/project-configuration/SKILL.md",
+      "destination": "references/project-setup/contract.md",
+      "source_sha256": "b6ada9b943c05f9fa05ba421ee457efba8b645594104471a2ea971f056ff75fd",
+      "destination_sha256": "6d17d2c07da6612eede721ab245330812f85cd20ed20b989e513d83d3cefcf58"
+    },
+    {
+      "source": "skills/workflow-advisor/GUIDE.md",
+      "destination": "references/workflow-advice/guide.md",
+      "source_sha256": "06d74dd1eaa6113ed241132319d7a35ac84dc10c0d22d835364c6cfa0cb7077e",
+      "destination_sha256": "06d74dd1eaa6113ed241132319d7a35ac84dc10c0d22d835364c6cfa0cb7077e"
+    },
+    {
+      "source": "skills/workflow-advisor/SKILL.md",
+      "destination": "references/workflow-advice/contract.md",
+      "source_sha256": "a3d54b15073dd58183ce6b77456807dbf031cff73a7b5906e4ddae66faac5cf6",
+      "destination_sha256": "cd5bbcf23bb8924b6ee16299303a144561a06d5eb3946b1d74a8d937415221d4"
+    }
+  ],
+  "sibling_resources": [
+    {
+      "target_package": "focus",
+      "source": "skills/plain-language-repitch/GUIDE.md",
+      "destination": "references/explanation-repair.md",
+      "sha256": "72f78c582eb2a932178de4aa79709e98d21ee7fe373dd06be486d28a367152a3"
+    },
+    {
+      "target_package": "focus",
+      "source": "skills/plain-language-repitch/resources/worked-example.md",
+      "destination": "references/explanation-repair.md",
+      "sha256": "7defdf1dc55d2863e92742064c3a7eee7adc54cb00e4488869fa708fad90a168"
+    },
+    {
+      "target_package": "focus",
+      "source": "skills/plain-language-repitch/SKILL.md",
+      "destination": "references/explanation-repair.md",
+      "sha256": "8dbf3d7b5791824290ae6ff709af25e6e86efd77f933b8b922b75ea3bced7681"
+    },
+    {
+      "target_package": "focus",
+      "source": "references/legal/matt-license.md",
+      "destination": "references/matt-license.md",
+      "sha256": "4981c5f6a90eb3a969dacabb9350f5a75695ff3910b39b6534952908dfdc5ff7"
+    },
+    {
+      "target_package": "search-first",
+      "source": "skills/primary-source-research/GUIDE.md",
+      "destination": "references/sourced-answer/guide.md",
+      "sha256": "e73bbc14e8c34996576e4ebba9a860c3adee643e2f7ee6a887331ba116cf165a"
+    },
+    {
+      "target_package": "search-first",
+      "source": "skills/primary-source-research/resources/worked-example.md",
+      "destination": "references/sourced-answer/resources/worked-example.md",
+      "sha256": "418964830de41f22253ea25539505b2584757183c3a1b6d41eb220ff068d6741"
+    },
+    {
+      "target_package": "search-first",
+      "source": "skills/primary-source-research/SKILL.md",
+      "destination": "references/sourced-answer/contract.md",
+      "sha256": "881b9ec5dd3428b39707f3808b6f5bd8c7c8d5f99adb2432ca30d0022a35c5cd"
+    },
+    {
+      "target_package": "search-first",
+      "source": "skills/source-driven-development/GUIDE.md",
+      "destination": "references/version-contract/guide.md",
+      "sha256": "937b2c5d9c24b4ec5d15d4858605c088235e5d3a314b7a326cb485638f9f1191"
+    },
+    {
+      "target_package": "search-first",
+      "source": "skills/source-driven-development/resources/documentation-freshness.md",
+      "destination": "references/version-contract/resources/documentation-freshness.md",
+      "sha256": "c8871b4fbdf24eebfb3e4f1ea2ae61b3468c02001b923fc62a4acf60e91b04ed"
+    },
+    {
+      "target_package": "search-first",
+      "source": "skills/source-driven-development/SKILL.md",
+      "destination": "references/version-contract/contract.md",
+      "sha256": "ece1e42d391551c594f7c75182eb2cb08c0fdb5cc7e941dda834a13cf2c21a55"
+    },
+    {
+      "target_package": "search-first",
+      "source": "references/legal/matt-license.md",
+      "destination": "references/matt-license.md",
+      "sha256": "4981c5f6a90eb3a969dacabb9350f5a75695ff3910b39b6534952908dfdc5ff7"
+    },
+    {
+      "target_package": "search-first",
+      "source": "references/legal/addy-license.md",
+      "destination": "references/addy-license.md",
+      "sha256": "b88ef8718459d5b5aabb1943cb8f4fd57963422f2d98a801dac814fea53932c8"
+    }
+  ],
+  "retired_sources": [
+    "context-engineering",
+    "decision-interview",
+    "decision-map",
+    "deep-module-design",
+    "delivery",
+    "design-prototype",
+    "domain-modeling",
+    "environment-retrospective",
+    "exercise-scaffolding",
+    "frontend-ui-engineering",
+    "git-isolation",
+    "git-operation-guard",
+    "git-workflow-and-versioning",
+    "idea-refine",
+    "implementation",
+    "incremental-implementation",
+    "method-authoring",
+    "plain-language-repitch",
+    "pr-description",
+    "pre-commit-setup",
+    "primary-source-research",
+    "project-configuration",
+    "source-driven-development",
+    "specification",
+    "stakeholder-questionnaire",
+    "task-decomposition",
+    "test-fixture-migration",
+    "typescript-boundary-enforcement",
+    "workflow-advisor",
+    "workflow-specification",
+    "writing-fragments"
+  ],
+  "boundaries": [
+    "No commit/push/install home",
+    "Sibling source retirement confirmed after verifying sibling absorption in worktrees",
+    "All 31 retired sources confirmed hard-retired from skills/",
+    "Pre-edit source_sha256 and post-migration destination_sha256 verified"
+  ]
+}

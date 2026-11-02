@@ -1,6 +1,6 @@
 # Brainstorming & Decision Refinery: Craft Guide
 
-Internal method ID: `andino-brainstorming` (alias: `brainstorming`). Stable technique adapted to Andino Workflow governance. Consolidates and elevates `decision-interview`.
+Internal method ID: `andino-brainstorming` (alias: `brainstorming`). Stable technique adapted to Andino Workflow governance.
 
 ---
 

@@ -25,6 +25,16 @@ Negative request: "Add comments saying increment counter above every increment."
 
 These are declared activation fixtures, not a claim that a model/router was executed.
 
+## Select a resource, not a second lifecycle
+
+Load only the resource matching the current need. A direct resource selection uses
+that procedure and current authority; it does not run this parent's other modes,
+reopen accepted requirements or require a second execution plan.
+
+| Current need | Resource | Exclusion |
+| :--- | :--- | :--- |
+| Domain modeling, ubiquitous vocabulary, entity relationships | [domain-vocabulary](resources/domain-vocabulary/guide.md) | Routine code comments or generic documentation formatting |
+
 ## Inputs and operational ownership
 
 Andino coordinates selection, shared progress, resource guards and final status from evidence.
@@ -93,4 +103,4 @@ Do not replace this method with a name-only index, source checkout link, upstrea
 
 ## Provenance
 
-Adapted in original wording from addyosmani/agent-skills, source `skills/documentation-and-adrs/SKILL.md`, local snapshot `aeac41d4d005999432bb7312f7ff06383a91d59d`. Supporting resource provenance is recorded in the main quality manifest. Substantive adapted material is covered by the packaged [Addy MIT notice](../../references/legal/addy-license.md). Upstream is audit/build provenance only; runtime requires no upstream installation or network fetch.
+Adapted in original wording from addyosmani/agent-skills, source `skills/documentation-and-adrs/SKILL.md`, local snapshot `aeac41d4d005999432bb7312f7ff06383a91d59d`. Supporting resource provenance is recorded in the main quality manifest. Substantive adapted material is covered by the packaged Addy MIT notice (resolve references/legal/addy-license.md from the installed andino-workflow root). Upstream is audit/build provenance only; runtime requires no upstream installation or network fetch.

@@ -23,10 +23,20 @@ Activate for:
 - Refining a draft's concept dependencies, pacing, and eliminating conversational slop.
 
 Do not activate for:
-- Open-ended fragment exploration without an intention to structure (use `andino-writing-fragments`).
+- Open-ended fragment exploration without an intention to structure (select [raw-capture](resources/raw-capture/guide.md)).
 - Overwriting or editing raw source material in place without explicit permission.
 - Fabricating personal anecdotes or hallucinating evidence not found in the raw pile.
 - Automatic copy-publishing without collaborative user review.
+
+## Select a resource, not a second lifecycle
+
+Load only the resource matching the current need. A direct resource selection uses
+that procedure and current authority; it does not run this parent's other modes,
+reopen accepted requirements or require a second execution plan.
+
+| Current need | Resource | Exclusion |
+| :--- | :--- | :--- |
+| Capturing raw observations, unstructured fragments, rough notes | [raw-capture](resources/raw-capture/guide.md) | Structured article shaping or narrative sequencing |
 
 ## Inputs and dependencies
 

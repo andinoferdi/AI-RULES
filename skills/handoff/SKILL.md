@@ -21,6 +21,16 @@ Activate for: Work moves to another host/directory/person or requires an explici
 
 Do not activate for: Routine continuation in the same context with enough room, or duplicating the existing Andino checkpoint.
 
+## Select a resource, not a second lifecycle
+
+Load only the resource matching the current need. A direct resource selection uses
+that procedure and current authority; it does not run this parent's other modes,
+reopen accepted requirements or require a second execution plan.
+
+| Current need | Resource | Exclusion |
+| :--- | :--- | :--- |
+| Context window budgeting, prompt packing, attention discipline | [context-packing](resources/context-packing/guide.md) | Standard short sessions within normal context capacity |
+
 ## Inputs and dependencies
 
 Existing checkpoint/spec/diff/test evidence, destination focus, permissions, current revision/dirty state and durable artifact paths.

@@ -33,6 +33,16 @@ Automate quality gates so no change reaches production without passing tests, li
 **Positive request:** "Wire lint, unit, build, integration and release readiness so a failed ancestor prevents advancement."  
 **Negative request:** "Correct a README spelling error; do not change code or CI."
 
+## Select a resource, not a second lifecycle
+
+Load only the resource matching the current need. A direct resource selection uses
+that procedure and current authority; it does not run this parent's other modes,
+reopen accepted requirements or require a second execution plan.
+
+| Current need | Resource | Exclusion |
+| :--- | :--- | :--- |
+| Local pre-commit hook setup, fast commit-time lint/type gates | [commit-checks](resources/commit-checks/guide.md) | Remote multi-stage cloud CI/CD pipeline configuration |
+
 ---
 
 ## The Quality Gate Pipeline
@@ -160,4 +170,4 @@ Do not replace this method with a name-only index, source checkout link, upstrea
 
 ## Provenance
 
-Adapted in original wording from addyosmani/agent-skills, source `skills/ci-cd-and-automation/SKILL.md`, local snapshot `aeac41d4d005999432bb7312f7ff06383a91d59d`. Supporting resource provenance is recorded in the main quality manifest. Substantive adapted material is covered by the packaged [Addy MIT notice](../../references/legal/addy-license.md). Upstream is audit/build provenance only; runtime requires no upstream installation or network fetch.
+Adapted in original wording from addyosmani/agent-skills, source `skills/ci-cd-and-automation/SKILL.md`, local snapshot `aeac41d4d005999432bb7312f7ff06383a91d59d`. Supporting resource provenance is recorded in the main quality manifest. Substantive adapted material is covered by the packaged Addy MIT notice (resolve references/legal/addy-license.md from the installed andino-workflow root). Upstream is audit/build provenance only; runtime requires no upstream installation or network fetch.

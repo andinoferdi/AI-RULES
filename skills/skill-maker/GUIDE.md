@@ -1,6 +1,6 @@
 # Skill Maker: Author and Refine Executable Skills — Comprehensive Guide
 
-Internal method ID: `andino-skill-maker` (aliases: `skill-maker`, `method-authoring`, `andino-method-authoring`, `writing-skills`).
+Internal method ID: `andino-skill-maker` (aliases: `skill-maker`, `writing-skills`).
 
 ## 1. Purpose, Scope, and Architectural Prerequisites
 

@@ -22,6 +22,18 @@ Use when: An accepted plan is ready for authorized execution, or interrupted exe
 
 Do not select for: Unresolved product intent, planning-only requests or unapproved redesign.
 
+## Select a resource, not a second lifecycle
+
+Load only the resource matching the current need. A direct resource selection uses
+that procedure and current authority; it does not run this parent's other modes,
+reopen accepted requirements or require a second execution plan.
+
+| Current need | Resource | Exclusion |
+| :--- | :--- | :--- |
+| Direct task coding, bounded unit implementation | [task-implementation](resources/task-implementation/guide.md) | Architectural redesign or exploratory spikes |
+| Vertical-slice progression, end-to-end thin delivery | [vertical-slices](resources/vertical-slices/guide.md) | Horizontal bulk implementation across disconnected layers |
+| Frontend UI components, design tokens, responsive states, a11y | [frontend-engineering](resources/frontend-engineering/guide.md) | Headless backend or pure data-pipeline tasks |
+
 ## Prerequisites
 
 Locate the authoritative plan, accepted requirements and current worktree. Read

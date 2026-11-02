@@ -25,6 +25,16 @@ Use when: User identifies repeated work, ignored plan, unexpected tools, cost or
 
 Do not select for: Unscoped sweep of all history or directly reproducible code bug.
 
+## Select a resource, not a second lifecycle
+
+Load only the resource matching the current need. A direct resource selection uses
+that procedure and current authority; it does not run this parent's other modes,
+reopen accepted requirements or require a second execution plan.
+
+| Current need | Resource | Exclusion |
+| :--- | :--- | :--- |
+| Environment retrospective, tool failure analysis, recurrence prevention | [prevention-review](resources/prevention-review/guide.md) | In-flight code debugging or unguided raw transcript dump |
+
 ## Prerequisites
 
 Record target/range/expected-vs-actual/observable. Resolve authorized exact sources/lineage; current install is not historical proof.

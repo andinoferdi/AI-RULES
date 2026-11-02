@@ -25,6 +25,16 @@ Use when: A feature, bug fix or behavior change needs a regression guard, includ
 
 Do not select for: Pure prose/static content or reversible configuration without behavioral impact.
 
+## Select a resource, not a second lifecycle
+
+Load only the resource matching the current need. A direct resource selection uses
+that procedure and current authority; it does not run this parent's other modes,
+reopen accepted requirements or require a second execution plan.
+
+| Current need | Resource | Exclusion |
+| :--- | :--- | :--- |
+| Test fixture migration, strongly typed test factories, schema validation | [typed-fixtures](resources/typed-fixtures/guide.md) | Standard unit test creation without fixture migration |
+
 ## Prerequisites
 
 Discover manifests, CI, wrappers and neighboring tests; read glossary/ADRs. Record accepted seam, literal behavior, focused/suite commands. Reuse accepted seams; ask only about an unresolved material interface choice.

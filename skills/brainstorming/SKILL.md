@@ -5,7 +5,7 @@ description: Explore ambiguous goals, relentlessly grill decision frontiers, cap
 
 # Brainstorming: Explore, Grill & Refine Decisions
 
-Internal method ID: `andino-brainstorming` (aliases: `brainstorming`, `decision-interview`, `interview-me`, `grilling`, `grill-me`, `grill-with-docs`).
+Internal method ID: `andino-brainstorming` (aliases: `brainstorming`, `interview-me`, `grilling`, `grill-me`, `grill-with-docs`).
 
 > **Andino Workflow Member Skill**
 > Operates under Andino Workflow governance: proportional investigation, evidence-based decisions, and single durable checkpoints. Hand off to `andino-planning` or `andino-tdd`; do not re-invoke the workflow recursively.
@@ -14,8 +14,21 @@ Internal method ID: `andino-brainstorming` (aliases: `brainstorming`, `decision-
 
 Turn open-ended goals into builder-ready designs without guessing user intent. Synthesizes intent extraction, relentless decision-tree grilling, in-flight ADR generation, and 3-path classification.
 
-- **Activate for**: Ambiguous requests, open product directions, architectural decisions, missing intent, or explicit interview/grilling prompts. Multi-session initiatives with branching dependencies escalate to `andino-decision-map`.
+- **Activate for**: Ambiguous requests, open product directions, architectural decisions, missing intent, or explicit interview/grilling prompts. Multi-session initiatives with branching dependencies use [decision-frontier](resources/decision-frontier/guide.md).
 - **Do not activate for**: Clear accepted tickets, settled specifications, routine bug fixes, or minor mechanical edits. Never reopen settled decisions merely because this skill was named.
+
+## Select a resource, not a second lifecycle
+
+Load only the resource matching the current need. A direct resource selection uses
+that procedure and current authority; it does not run this parent's other modes,
+reopen accepted requirements or require a second execution plan.
+
+| Current need | Resource | Exclusion |
+| :--- | :--- | :--- |
+| Branching decision mapping, multi-session dependency tracking | [decision-frontier](resources/decision-frontier/guide.md) | Single-session linear decision exploration |
+| Fast throwaway spike, visual/interactive proof-of-concept | [feasibility-probe](resources/feasibility-probe/guide.md) | Settled architecture ready for production implementation |
+| Concept stress-testing, value proposition validation | [idea-validation](resources/idea-validation/guide.md) | Settled concept ready for engineering specification |
+| Structured async stakeholder questionnaire, boundary gathering | [async-questions](resources/async-questions/guide.md) | Active synchronous dialogue or settled requirements |
 
 ## Inputs and Progressive Resources
 
@@ -30,7 +43,7 @@ Inspect repository code, configs, and recent commits for discoverable facts befo
 2. **Three-Path Classification**: Announce path aloud before proposing solutions:
    - **Spike**: Feasibility probe (*"Can we..."*). 2-sentence plan, quick nod, throwaway output. No spec or ADR.
    - **Bounded**: Scoped edit to an existing flow. Short in-chat design (approach, touched files, test assertion). **STOP and wait for explicit approval**.
-   - **Architectural**: New subsystems, altered interfaces, or cross-cutting boundaries. Full grilling, trade-off matrix, lazy ADR, and formal written spec. For multi-session efforts with branching decisions, escalate to `andino-decision-map` to chart the map and manage the fog of war. Complexity ratchet is one-way: escalate upon discovering hidden scope.
+   - **Architectural**: New subsystems, altered interfaces, or cross-cutting boundaries. Full grilling, trade-off matrix, lazy ADR, and formal written spec. For multi-session efforts with branching decisions, select [decision-frontier](resources/decision-frontier/guide.md) to chart the map and manage the fog of war. Complexity ratchet is one-way: escalate upon discovering hidden scope.
 3. **Frontier Grilling with Reasoned Defaults**: Probe only unblocked nodes on the decision DAG. Present **one** question at a time, paired with a recommended default (*"Recommended default: [Option A] because [reason]. Reply 'agree' or steer"*). Cap sequential questions at 3. If user replies are terse (`<10` words), trip the **Fatigue Breaker**: halt questioning and present remaining defaults in a table for bulk confirmation.
 4. **Lazy Documentation & Predictability Exit**: Terminate upon frontier exhaustion or **3-Question Predictability** (>90% confidence in predicting next 3 answers). Emit:
    - **Builder-Ready Design Spec**: Context, components, failure modes, acceptance targets.

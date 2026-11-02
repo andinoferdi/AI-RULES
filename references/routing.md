@@ -4,7 +4,7 @@
 
 First select relevant work methods using the [index](internal-method-index.md)
 and [dispatch contract](method-dispatch.md). This covers every internal method and
-source alias, including implicit requests with no skill name. Load selected current
+supported source alias, including implicit requests with no skill name. Load selected current
 work guides before Focus or optional external discovery. Explicit native providers,
 required research/domain owners and invocation controls retain their authority.
 Focus remains the default communication layer after this selection/loading; honor
@@ -90,8 +90,8 @@ Antigravity's scoped descriptions are behavioral guidance, not a native hard swi
 | Current research or factual comparison | Authoritative current sources and supplied artifacts | distinguish source findings, inference and unknowns; cite evidence; no invented freshness |
 | Decision support | Existing constraints, options and consequence comparison | inspect available evidence; ask only for unresolved material human preferences |
 | Uncertain goal or request to explore possible directions | REQUIRED while the direction is open and not delegated: bundled [brainstorming](../skills/brainstorming/GUIDE.md) | see [phase readiness](#phase-readiness); explore before converging; accepted specifications bypass ideation; compare settled alternatives without reopening them; Council retains independent-perspective ownership |
-| Explicit advice on selecting or combining workflows | bundled [workflow-advisor](../skills/workflow-advisor/GUIDE.md) | consult current relevant definitions and availability; advice does not execute recommendations or become a routing prerequisite |
-| Intentional teaching or learning | bundled [learning-workspace](../skills/learning-workspace/GUIDE.md) | a bounded lesson can stay in chat; persist progress for deliberate cross-session learning; explanation repair uses plain-language-repitch; ordinary questions stay direct |
+| Explicit advice on selecting or combining workflows | workflow-owned [advice resource](workflow-advice/guide.md) | consult current relevant definitions and availability; advice does not execute recommendations or become a routing prerequisite |
+| Intentional teaching or learning | bundled [learning-workspace](../skills/learning-workspace/GUIDE.md) | a bounded lesson can stay in chat; persist progress for deliberate cross-session learning; explanation repair uses Focus’s `references/explanation-repair.md` resource; ordinary questions stay direct |
 | Explicit Council request or consequential multi-option decision seeking independent scrutiny | CONDITIONAL: council (AI-RULES Council skill) | honor explicit request and host invocation controls; five independent advisors with anonymous review only if real delegation is available; otherwise report single-agent limitation; Andino retains lifecycle, Focus controls language |
 | New feature with likely reusable solutions, dependency/integration choice, new utility, unfamiliar or version-sensitive API, material external uncertainty about reported problems, maintenance or alternatives, or evidence that an approach is unsuitable | REQUIRED: search-first when this research need remains, without waiting for a web-search request | activate actual instructions before research, even offline; its contract requires actual authorized search/read actions when external evidence is needed; local sufficiency stops research; no trigger from coding alone or trivial edits; unknown cause remains with debugging |
 | Thesis/research status, next steps, milestones or substantive research work | REQUIRED: skripsi-skill | activate before interpreting progress or giving research advice; preserve Andino ownership; no second plan |
@@ -103,7 +103,7 @@ Antigravity's scoped descriptions are behavioral guidance, not a native hard swi
 | Behavior change needing a regression or executable contract | CONDITIONAL: bundled [tdd](../skills/tdd/GUIDE.md) | read before implementation when an executable check distinguishes behavior; RED→GREEN per seam, optional separate GREEN-only refactor gate; skip text-only edits |
 | Consequential claim that implementation, repair or a mapped deliverable meets acceptance | REQUIRED: bundled [verification](../skills/verification/GUIDE.md) | read before the claim; use actual current evidence; excludes ordinary replies/trivial edits; no repeated unchanged suites |
 | Review | bundled [code-review](../skills/code-review/GUIDE.md) | explicit current diff including owned untracked bytes; Spec and Standards axes; no unsolicited rewrite |
-| Unclear product requirements or missing intent | inspect evidence, then REQUIRED: [brainstorming](../skills/brainstorming/GUIDE.md) (incorporating decision-interview) if a material user-owned choice remains | inspect existing behavior first; no reinterview of locked decisions or environment facts |
+| Unclear product requirements or missing intent | inspect evidence, then REQUIRED: [brainstorming](../skills/brainstorming/GUIDE.md) if a material user-owned choice remains | inspect existing behavior first; no reinterview of locked decisions or environment facts |
 | Large implementation ordering | REQUIRED when requested or accepted multi-step work lacks dependency/verification detail: bundled [planning](../skills/planning/GUIDE.md) | existing Andino plan remains durable state; skip already complete accepted ordering; task decomposition/decision maps are supporting artifacts |
 | Accepted plan ready or interrupted execution resumes | REQUIRED: bundled [plan-execution](../skills/plan-execution/GUIDE.md) | inspect checkpoint and relevant drift; execute only authorized dependency-ready work; planning-only requests stop at the plan |
 | Structural relationship | existing Graphify or symbol/reference search | verify current source; no automatic graph generation |
@@ -114,7 +114,7 @@ Antigravity's scoped descriptions are behavioral guidance, not a native hard swi
 | Fidelity clone | clone-website | preserve reference; redesign only when requested; clone then redesign means clone-website first, then Taste and Impeccable under UI coexistence |
 | Evidenced unnecessary dependency/abstraction, or existing avoidable complexity | CONDITIONAL: ponytail for proposed over-building; code-simplification for existing-code cleanup | choose one for the same concern; no activation merely because coding is involved |
 | Concrete generated UI/copy/code quality defect | CONDITIONAL: matching Anti-Slop core/subskill | select only the uncovered concern; accepted direction wins; no family-wide load |
-| Unresolved version-sensitive library behavior | REQUIRED evidence: version-matched official docs; CONDITIONAL instrument: Context7 | inspect dependency version first; use Context7 when available and useful, otherwise official docs; retrieving docs does not replace Search First activation for unfamiliar integration or alternatives after a failed approach; only an already-established solution's bounded API clarification skips that method |
+| Unresolved version-sensitive library behavior | REQUIRED evidence: version-matched official docs; CONDITIONAL instrument: Context7 | use Search First’s `references/version-contract/guide.md`: resolve manifest plus lock/environment version → matching official source → documented change → parity test; use Context7 when available and useful, otherwise official docs; retrieving docs does not replace Search First activation for unfamiliar integration or alternatives after a failed approach; only an already-established solution's bounded API clarification skips that method |
 | Acceptance needs browser interaction, rendered layout or responsive evidence; always for UI work before DONE | REQUIRED for UI work, otherwise CONDITIONAL: [browser verification](../skills/browser-testing-with-devtools/GUIDE.md), prefer sufficient authorized host-native capabilities or existing automated browser tests | map each required evidence item to actual exposed capabilities; add Playwright/DevTools only for a missing item, never infer instrumentation from a browser panel; UI needs inspected screenshots at 360, 768 and 1440 px; one surface; unavailable checks remain NOT_VERIFIED |
 | Missing console/network/performance evidence not supplied by the current surface | CONDITIONAL: Chrome DevTools MCP | add only for the distinct diagnostic gap, not redundant navigation |
 | Repository state where native Git unavailable/inadequate | Git MCP | native Git preferred; MCP mutations still need applicable authorization |
@@ -124,11 +124,13 @@ Antigravity's scoped descriptions are behavioral guidance, not a native hard swi
 | Authorized local memory/process investigation | Cheat Engine MCP bridge | actual connectivity/target evidence and reads first; mutation/injection/shell require explicit applicable authority |
 | Database/cloud/design/media operations | corresponding project MCP/plugin | enable only relevant service; authorization still applies |
 
+Specialized resource routes are listed separately in the [method/resource index](internal-method-index.md#selective-resources--not-public-entrypoints). For a narrow frontend state or accessibility repair, load `skills/plan-execution/resources/frontend-engineering/guide.md` directly from the workflow root: no full executor lifecycle, new plan or reopened discovery. Git operations select `git-skills` and only the matching mode. Advice loads `references/workflow-advice/guide.md` and stops at advice. Resource reading does not activate the parent skill.
+
 Integrated API, frontend, CI/CD, security, performance, migration, observability,
 specification, productivity and shipping techniques are local methods in the
 [internal index](internal-method-index.md). Select the guide matching the actual
 need; no upstream native skill installation or full-family pipeline. Explicit
-internal IDs and source-name aliases select the same canonical implementation.
+current internal IDs and supported source names select their canonical implementation; retired IDs have no callable alias.
 Method discovery/read/use remain separate; no executable keyword router is implied.
 Ponytail is
 useful for evidenced over-build risk, not automatic one-line ceremony. Graphify
@@ -190,16 +192,16 @@ is a signal to interpret, not a trigger.
 | What is open | Route |
 | --- | --- |
 | The product or goal direction, not delegated by the user | REQUIRED: bundled [brainstorming](../skills/brainstorming/GUIDE.md); explore distinct directions and leave the choice to the user |
-| A known direction with a material user-owned requirement | inspect evidence, then REQUIRED: [decision-interview](../skills/decision-interview/GUIDE.md) for what evidence cannot settle |
-| One rough direction that needs sharpening | [idea-refine](../skills/idea-refine/GUIDE.md) |
-| How to run, use or understand something already specified or built, or a previous explanation | direct guidance from evidence; [human-procedure](../skills/human-procedure/GUIDE.md), [learning-workspace](../skills/learning-workspace/GUIDE.md) or [plain-language-repitch](../skills/plain-language-repitch/GUIDE.md) when they fit; no ideation |
+| A known direction with a material user-owned requirement | inspect evidence, then REQUIRED: [brainstorming](../skills/brainstorming/GUIDE.md) for what evidence cannot settle; only clarify the remaining open choice |
+| One rough direction that needs sharpening | directly select [idea-validation](../skills/brainstorming/resources/idea-validation/guide.md), without reopening accepted requirements |
+| How to run, use or understand something already specified or built, or a previous explanation | direct guidance from evidence; [human-procedure](../skills/human-procedure/GUIDE.md), [learning-workspace](../skills/learning-workspace/GUIDE.md) for an actual lesson, or Focus’s `references/explanation-repair.md` for explanation repair; no ideation |
 | Nothing material: specified, accepted or explicitly delegated | proceed with stated defaults; never reopen accepted decisions |
 
 Do not start work that depends on an unresolved material user decision. Minor
 details get safe stated defaults, and independent authorized work continues.
 "Build a CRUD app, but I'm confused how" leaves the direction open unless context
-settles it; "pick any stack and just build it" delegates it. Brainstorming and
-decision-interview are alternatives chosen by what is open, not a sequence.
+settles it; "pick any stack and just build it" delegates it. Select brainstorming
+or its directly relevant resource by what remains open, not a compulsory sequence.
 Design (Taste, Impeccable) and implementation routes start once the direction is
 resolved or delegated. Bugs, research, writing, thesis, review and questions route
 directly; Focus activation, debugging timing, Search First research (which may run

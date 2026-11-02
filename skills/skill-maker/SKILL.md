@@ -5,7 +5,7 @@ description: Use when authoring, evaluating, or maintaining executable skills, o
 
 # Skill Maker: Author and Refine Executable Skills
 
-Internal method ID: `andino-skill-maker` (aliases: `skill-maker`, `method-authoring`, `andino-method-authoring`, `writing-skills`).
+Internal method ID: `andino-skill-maker` (aliases: `skill-maker`, `writing-skills`).
 
 > **Andino Workflow Member Skill**
 > Operates under Andino Workflow protocol: single durable checkpoint, proportional investigation, anti-loop guards.

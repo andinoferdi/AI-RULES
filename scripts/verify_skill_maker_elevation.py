@@ -139,19 +139,15 @@ def test_emoji_cleanliness():
 
 
 def test_forwarding_shim():
-    shim_file = SHIM_DIR / "SKILL.md"
-    assert shim_file.is_file(), f"Missing shim {shim_file}"
-    code = extract_code_block(shim_file.read_text(encoding="utf-8"), "python andino-operational-example")
-    proc = subprocess.run([sys.executable, "-B", "-I", "-c", code], capture_output=True, text=True)
-    assert proc.returncode == 0, f"Forwarding shim check failed: {proc.stderr}"
-    assert "FORWARDING_VERIFIED: andino-skill-maker" in proc.stdout
-    print("PASS: Forwarding shim (skills/method-authoring) verified")
+    # Method-authoring forwarding shim has been hard-retired under accepted Option B.
+    assert not SHIM_DIR.exists(), f"Retired forwarding shim directory must be absent: {SHIM_DIR}"
+    print("PASS: Forwarding shim (skills/method-authoring) confirmed hard-retired")
 
 
 def test_setup_installer_compatibility():
     # Verify _is_valid_skill_tree contract
     assert (SKILL_DIR / "SKILL.md").is_file()
-    assert (SHIM_DIR / "SKILL.md").is_file()
+    assert not SHIM_DIR.exists()
 
     with tempfile.TemporaryDirectory(prefix="andino-setup-test-") as tmp:
         tmp_path = Path(tmp)

@@ -18,7 +18,7 @@ Project constraints and explicit user choices precede generic specialist default
    silently choose a different provider by directory order.
 4. Without an explicit provider choice, for integrated upstream disciplines use the bundled canonical method in
    the [internal index](internal-method-index.md). Original names are internal
-   aliases, not preferred external providers: both TDD source names resolve to
+   supported selection names, not preferred external providers: both TDD source names resolve to
    `tdd`, debugging to `debugging`, and reviews to `code-review`. Read one selected
    local guide, without a native upstream invocation or second lifecycle.
    An explicitly requested native provider is not just an alias and takes the
@@ -38,10 +38,10 @@ not permission to bypass them. Evidence records include the resolved ID, provide
 
 | Overlap | Decision |
 | --- | --- |
-| Integrated Addy / Matt / Superpowers | Use the single canonical local guide and its source-name aliases; no upstream native registration or installation. Useful discovery, context and authoring techniques are internalized; upstream bootstrap/router hooks stay excluded. Andino's existing plan and authority remain sole lifecycle state. |
+| Integrated Addy / Matt / Superpowers | Use the current canonical guide or directly selected resource and only supported source names in the index; no retired-ID alias or upstream native registration/installation. Resources do not run their owner's full lifecycle. Upstream bootstrap/router hooks stay excluded; Andino's existing plan and authority remain sole lifecycle state. |
 | Ponytail / code-simplification | Prefer Ponytail for evidenced prospective over-build risk; bundled code-simplification for behavior-preserving cleanup of existing code. One discipline for the same concern. Ponytail's broad coding/persistence defaults do not make it active in every Andino task. |
 | Anti-Slop / Impeccable / Taste | Apply only relevant quality concern to the accepted direction. Core Anti-Slop does not activate all subskills. Functional accessibility, correctness and explicit design constraints win over style preferences. |
-| Natural Writing / Focus / antislop-copywriting / article-shaping | Natural Writing refines artifact prose; Focus shapes communication around it; antislop-copywriting covers UI/marketing copy; article-shaping and writing-fragments keep shaping/exploration duties; none truncates required artifact content. |
+| Natural Writing / Focus / antislop-copywriting / article-shaping | Natural Writing refines artifact prose; Focus shapes communication around it; antislop-copywriting covers UI/marketing copy; article-shaping owns shaping and its optional raw-capture resource owns exploration; none truncates required artifact content. |
 | Impeccable / Taste | Preserve [the accepted UI policy](ui-coexistence.md): explicit single-skill choice stands, Taste generates and Impeccable critiques and refines, one design direction, one DESIGN.md and existing stack/token source. |
 | clone-website / Taste / Impeccable | Fidelity clone preserves the reference; a requested redesign runs clone-website first, then Taste and Impeccable under the UI policy. |
 | Graphify / native references | Simple bounded lookup uses native symbol/reference search. Graph query is useful for unresolved complex relationships; verify freshness and actual tool semantics. No automatic generation or delegation. |
