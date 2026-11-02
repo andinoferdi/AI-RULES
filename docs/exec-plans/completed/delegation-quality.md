@@ -1,8 +1,8 @@
 # Delegation quality and setup distribution
 
-Status: IN_PROGRESS
+Status: DONE
 Plan Depth: STANDARD
-Current Phase: G2 — setup distribution
+Current Phase: G3 — delivered
 Last Updated: 2026-11-03
 
 ## Executive Snapshot
@@ -64,18 +64,18 @@ the extractor. No agent evaluation is substituted by a synthetic Python oracle.
 
 ## Acceptance Criteria
 
-- [ ] R1: Existing cost guard passes; all instructions honor wave/restart authority.
-- [ ] R2: Briefs bind spec/global constraints, exact changes, interfaces, worktree,
+- [x] R1: Existing cost guard passes; all instructions honor wave/restart authority.
+- [x] R2: Briefs bind spec/global constraints, exact changes, interfaces, worktree,
   actual model/effort, proof and report; status responses distinguish missing
   context, blocked work and completed work with concerns.
-- [ ] R3: Review checks spec before quality, resolves UNVERIFIED explicitly, verifies
+- [x] R3: Review checks spec before quality, resolves UNVERIFIED explicitly, verifies
   current bytes and public integration, and never parks failed required acceptance.
-- [ ] R4: Extractor accepts legacy and canonical plan headings; honors nested
+- [x] R4: Extractor accepts legacy and canonical plan headings; honors nested
   sections and fenced code; rejects duplicate/missing IDs without writing output.
-- [ ] R5: One worked example shows a realistic lane, evidence, blocker and recovery.
-- [ ] R6: Setup installs byte-identical nested/native delegation files for all five
+- [x] R5: One worked example shows a realistic lane, evidence, blocker and recovery.
+- [x] R6: Setup installs byte-identical nested/native delegation files for all five
   adapters; manifest pins the published workflow commit. Both branches pushed.
-- [ ] R7: Completion distinguishes deterministic checks, self-review, publication,
+- [x] R7: Completion distinguishes deterministic checks, self-review, publication,
   installed test targets and untested independent-model quality.
 
 ## Execution Board
@@ -84,13 +84,13 @@ the extractor. No agent evaluation is substituted by a synthetic Python oracle.
 | --- | --- | --- | --- | --- |
 | G0 / T1 Baseline and extractor | DONE | none | helper + focused tests | 6 tests, 9 baseline assertion failures -> all pass |
 | G1 / T2 Procedure quality | DONE | T1 | delegation documents + contract checks | static 0 issues; cost 7/7; portfolio 6/6; example 5/5 |
-| G2 / T3 Setup distribution | IN_PROGRESS | T2 | main distribution test + manifest | bundled all 5 hosts PASS; related 5 tests PASS; validator 37 PASS |
-| G3 / T4 Review and publish | TODO | T3 | owned changes only, two pushes | not run |
+| G2 / T3 Setup distribution | DONE | T2 | main distribution test + manifest | all 5 bundled hosts + live latest PASS; release 8 bundles PASS |
+| G3 / T4 Review and publish | DONE | T3 | owned changes only, two pushes | remote source 6ce1030 and main 41bad02 verified |
 
 ## Detailed Execution
 
 ### T1 — reliable task extraction
-Status: IN_PROGRESS
+Status: DONE
 Readiness: READY
 Owns: `skills/delegation/scripts/task_brief.py`, new
 `scripts/test_delegation_task_brief.py`.
@@ -154,7 +154,7 @@ Independent model tests require a separately approved wave;
 not scheduled and NOT_VERIFIED, not a release claim.
 
 ### T3 — setup integration
-Status: IN_PROGRESS
+Status: DONE
 Readiness: READY
 Depends on: T2
 Owns in main: new `tests/installer/test_delegation_distribution.py`,
@@ -202,9 +202,18 @@ including unsafe paths, unknown files, nonregular entries and real broken links.
 One early nested-PowerShell environment assignment failed; it was a setup error,
 not RED evidence. The corrected Python environment runner produced the recorded
 stale-byte RED above. No model evaluation or global host installation occurred.
+Final release staging through `build_release.stage_bundles` exported all 8
+manifest-pinned bundles into a TemporaryDirectory and fully validated them with
+zero errors. Generic validator regression checks: 37/37; Three.js validator
+regressions: 4/4. This proves source bundle construction, not a new executable release.
+Published workflow 6ce1030; `AI_RULES_DELEGATION_SETUP_SOURCE=latest` through the
+same distribution test fetched remote source and installed both delegation trees
+on a temporary Codex project, comparing every tracked byte: PASS (14.1s).
+The complete delegation subtree is identical in 2f0246b and 6ce1030, so the
+five-adapter bundled observations remain applicable after the ancillary link fix.
 
 ### T4 — review, push and verify publication
-Status: TODO
+Status: DONE
 Readiness: READY
 Depends on: T3
 Owns: scoped source commits and checkpoint evidence updates.
@@ -214,10 +223,30 @@ Push workflow commit then main commit normally, never force; verify remote SHAs
 with `git ls-remote`. Reuse authorized push, no unrelated release/tag side effects.
 Record deterministic evidence and independent-model limitation. A released old
 binary is distinct from source setup; report this boundary if no release is built.
-Evidence: Not run.
+Evidence: parent Spec PASS and Standards PASS after reviewing all owned documents,
+helper/tests, validator changes, manifest and distribution test. This is structured
+self-review, not independent evaluation. All material findings resolved.
+Workflow commits: bc2af0a (extractor), 2f0246b (quality), 6ce1030 (package link/checkpoint).
+Main commit: 41bad0220e531c732b43f42c29ebe046aa782657 (setup pin/validator/tests).
+Normal pushes to origin/andino-workflow and origin/main succeeded; `git ls-remote`
+returned the expected SHAs. Final plan archival is a documentation-only follow-up;
+manifest pins 6ce1030's identical runtime skill bytes. No force push, unrelated
+staging, global installation, executable release, panel or child agents.
+
+## Final evidence and limits
+
+Workflow cwd: `AI-RULES-andino-workflow`, Python stdlib with `-B`:
+extractor 6 tests PASS; isolated boundary mutation detected (7 failures, no errors);
+cost 7/7; static contract 0 issues; portfolio 6/6; runnable example 5/5.
+Main cwd: `AI-RULES-main`, source Python CLI:
+validator 37 tests PASS, related validator 4 PASS, related family/planning/execution
+distribution 5 PASS, bundled delegation all five adapters PASS, remote latest
+delegation Codex smoke PASS, release staging all 8 bundles fully validated.
+No project dependency added. Temporary projects were removed by their owned
+TemporaryDirectory contexts. Pre-existing user changes in both repos are preserved.
+Independent-model quality/parity, native skill activation in fresh host sessions,
+real-world delegation cost savings and a newly built installer binary are NOT_VERIFIED.
 
 ## NEXT ACTION
 
-T3: validate the corrected full workflow package, commit the one-link integration
-repair and checkpoint, update main's pin, then publish workflow and smoke-test
-remote latest setup before the main commit/push.
+None — task complete.
