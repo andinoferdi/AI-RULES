@@ -16,7 +16,7 @@ from ai_rules.domain.models import ActualState, InstallationPlan, Operation
 from ai_rules.domain.statuses import InstalledOwnership, ReconciliationAction, Scope, TargetStatus
 from ai_rules.execution import Executor
 from ai_rules.hosts.adapters import build_host_adapters
-from ai_rules.hosts.invocation import install_invocation, invocation_paths, invocation_ready, reconcile_invocations
+from ai_rules.hosts.invocation import all_invocation_paths, install_invocation, invocation_paths, invocation_ready, reconcile_invocations
 from ai_rules.interactive import prompt_confirmation, prompt_selection, render_setup_summary
 from ai_rules.planning import render_plan
 from ai_rules.platform import detect_environment, project_state_root, state_root
@@ -638,7 +638,7 @@ def _write_verified_lock(plan, result, args: argparse.Namespace) -> bool | None:
         else:
             verification = {"outcome": "NOT_RUN", "reason": item.message}
         if capability.ownership.value == "FIRST_PARTY" and status == TargetStatus.VERIFIED.value:
-            paths = invocation_paths(adapters[target.host_id], target.scope, target.capability_id, args.project_root)
+            paths = all_invocation_paths(adapters[target.host_id], target.scope, target.capability_id, args.project_root)
             if any(not invocation_ready(path) for path in paths):
                 status = TargetStatus.FAILED.value
                 verification = {"outcome": "FAIL", "check": "manual-invocation"}

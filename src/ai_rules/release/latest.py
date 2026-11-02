@@ -265,7 +265,10 @@ class LatestSources:
                         action, reason = ReconciliationAction.UPDATE, "native workflow members need synchronization"
                 self.expected_members[key] = {native: desired for native, (_, _, desired) in members.items()}
                 self.expected_retired[key] = tuple(retired_members.keys())
-                self.installers[key] = self._installer(identifier, original, destination, before, is_git, installed, args.state_dir, members, retired_members)
+                self.installers[key] = self._installer(
+                    identifier, original, destination, before, is_git, installed, args.state_dir, members, retired_members,
+                    adapter=adapters[target.host_id], scope=target.scope, project_root=args.project_root,
+                )
                 actual = ActualState(exists=destination.exists(), ownership=InstalledOwnership.MANAGED_BY_AI_RULES,
                                      installed_version=self.version(identifier, installed) if installed else None,
                                      healthy=bool(before), content_matches=action == ReconciliationAction.NO_OP)
@@ -294,7 +297,8 @@ class LatestSources:
         except (ValueError, OSError):
             return False
 
-    def _installer(self, identifier, original, destination, before, is_git, installed, state_dir, members, retired_members=None):
+    def _installer(self, identifier, original, destination, before, is_git, installed, state_dir, members, retired_members=None,
+                   adapter=None, scope=None, project_root=None):
         def install():
             emit(self.reporter, "Checking target before installation", capability=identifier)
             local, _, branch, commit = self.entries[identifier]
@@ -326,9 +330,16 @@ class LatestSources:
                             backup.parent.mkdir(parents=True, exist_ok=True)
                             shutil.copytree(native, backup)
                             shutil.rmtree(native)
+
+            def _sync_invocations():
+                if identifier == "andino-workflow" and adapter is not None and scope is not None:
+                    from ai_rules.hosts.invocation import install_invocation
+                    install_invocation(adapter, scope, identifier, project_root, source_dir=self.sources.get(identifier))
+
             # Another selected host may share this exact path through a junction.
             if current == expected and (not is_git or git(destination, "rev-parse", "HEAD") == commit):
                 sync_members()
+                _sync_invocations()
                 _record_family_inventory()
                 return original
             if current != before:
@@ -347,6 +358,7 @@ class LatestSources:
                 copy_tree_atomic(self.sources[identifier], destination, state_dir / "backups",
                                  verify=lambda path: contents(path) == expected, reporter=self.reporter)
             sync_members()
+            _sync_invocations()
             _record_family_inventory()
             emit(self.reporter, "Verifying installed content", capability=identifier)
             if contents(destination) != expected:
@@ -363,6 +375,11 @@ class LatestSources:
                 for native in members:
                     if native.exists():
                         artifacts[str(native)] = {'id': native.name, 'kind': 'tree', 'fingerprint': fingerprint(native)}
+                if adapter is not None and scope is not None:
+                    from ai_rules.hosts.invocation import all_invocation_paths
+                    for inv_file in all_invocation_paths(adapter, scope, identifier, project_root, source_dir=self.sources.get(identifier)):
+                        if inv_file.exists():
+                            artifacts[str(inv_file)] = {'id': inv_file.stem, 'kind': 'invocation', 'fingerprint': fingerprint(inv_file)}
                 inv_path.parent.mkdir(parents=True, exist_ok=True)
                 inv_path.write_text(json.dumps({'schema_version': 1, 'family': 'andino-workflow', 'root': str(root), 'artifacts': artifacts}, indent=2, sort_keys=True), encoding='utf-8')
 
