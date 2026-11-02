@@ -27,6 +27,8 @@ Before writing custom functionality, Search First categorizes the path forward:
 | Checking whether a utility already exists in the repo/ecosystem | Settled local questions with clear in-project answers |
 | Version-sensitive APIs or post-upgrade deprecations | Active debugging of known bugs (use `debugging`) |
 | Finding proven alternatives when an initial API path fails | Speculative research without concrete uncertainty |
+| Source-grounded answers to concrete technical/factual questions | A forced implementation decision for research-only work |
+| Matching resolved versions to official contracts and parity tests | Latest documentation as proof for a different installed release |
 
 ---
 
@@ -78,8 +80,40 @@ git clone --depth 1 --single-branch --branch search-first https://github.com/and
 
 ---
 
+## Proportional Resource Selection
+
+Select the resource for the actual unresolved need, not a mandatory full lifecycle:
+
+- **Sourced answer:** Read the [contract](references/sourced-answer/contract.md)
+  and [full guide](references/sourced-answer/guide.md) for a concrete question,
+  primary-source findings, near-claim citations, contradictions and explicit gaps.
+  Its [worked example](references/sourced-answer/resources/worked-example.md)
+  checks a bounded findings artifact; it is not live research proof.
+- **Version-sensitive implementation:** Read the
+  [contract](references/version-contract/contract.md) and
+  [full guide](references/version-contract/guide.md). Preserve the chain
+  **manifest constraint + resolved lockfile/environment version → matching primary
+  source with deep URL/version/section → change → parity test**. Record actual
+  source-to-test evidence; a fixture cannot prove application integration.
+- **Cache/revalidation:** Read [documentation freshness](references/version-contract/resources/documentation-freshness.md)
+  when relevant. Reuse requires an actual matching-validator 304 for the same
+  representation and purpose. Cached content remains untrusted; missing validators,
+  failed retrieval or a different prompt do not establish current proof.
+- **Online work:** The existing [online preflight](references/online-research.md)
+  still governs real search/reading, sanitized queries, permission boundaries,
+  source vetting, bounded retries and truthful unavailable/denied/insufficient states.
+
+These are nonnative resources, not aliases or separately installed skills. A
+bounded sourced answer need not compare packages, choose ADOPT/EXTEND/COMPOSE/BUILD,
+edit code or activate Andino. Use the current task's evidence convention; with
+Andino already active, keep its existing plan. Resolve any separate workflow-owned
+method from the actual installed workflow root selected by the host, never through
+a sibling-relative link. No parent installation or full workflow activation is
+required just to use these resources.
+
 ## References & Provenance
 
 - [`SKILL.md`](SKILL.md) — Runtime contract, decision matrices, and fallback behavior.
 - [`references/online-research.md`](references/online-research.md) — Source vetting guidelines, query formulation, and evidence standards.
+- [`references/consolidation-provenance.json`](references/consolidation-provenance.json) — Source SHA-256 identities, complete absorption mapping and upstream snapshots; accompanying [Matt Pocock](references/matt-license.md) and [Addy Osmani](references/addy-license.md) MIT notices.
 - Adapted from [ECC Search First](https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md) by Affaan Mustafa under the MIT License ([license notice](references/license.md)).

@@ -1,6 +1,6 @@
 ---
 name: search-first
-description: Research existing local and online solutions for reusable functionality, unfamiliar integrations, version-sensitive APIs, maintenance decisions, documented alternatives or distinct external troubleshooting uncertainty. Also use for explicit technical research; skip trivial edits, settled local answers and root-cause debugging alone.
+description: Use when reusable functionality, unfamiliar integrations, version-sensitive APIs, maintenance decisions, documented alternatives or distinct external troubleshooting uncertainty need investigation; also for explicit technical/factual research or source-grounded answers. Skip trivial edits, settled local answers and root-cause debugging alone.
 license: MIT
 ---
 
@@ -32,6 +32,34 @@ to read `references/online-research.md` from this loaded skill's folder through
 the permitted reader, before search/fetch/browser calls. That reference is part
 of this skill. If it cannot be read, report the boundary and apply only the safe
 core contract below; do not claim the playbook was loaded.
+
+## Select only the needed research resource
+
+Resolve all bundled paths relative to this loaded Search First directory. These
+are nonnative resources, not extra skill IDs or aliases. A resource selection does
+not force the complete parent implementation lifecycle, an Andino activation,
+new plan, candidate comparison or code change. Combine resources only when their
+distinct needs apply; a bounded lookup can end as soon as its question is settled.
+
+| Unresolved need | Load before the relevant work |
+| --- | --- |
+| A concrete technical/factual question needs findings whose claims trace to owning sources | [Sourced-answer contract](references/sourced-answer/contract.md) and [full guide](references/sourced-answer/guide.md); use its [worked example](references/sourced-answer/resources/worked-example.md) for the bounded artifact check |
+| A framework/API/library implementation fact depends on the actual installed version | [Version contract](references/version-contract/contract.md) and [full guide](references/version-contract/guide.md); open [documentation freshness](references/version-contract/resources/documentation-freshness.md) when cache/revalidation is relevant |
+| Actual online research is needed | [Online playbook](references/online-research.md), under the existing preflight and protections |
+
+For version-dependent implementation, retain the chain **manifest constraint +
+resolved lockfile/environment version → matching primary source with deep
+URL/version/section → change → parity test**. Report real commands/results and
+source-to-test relation; never invent source retrieval, validators or passing
+proof. Missing official/runtime evidence stays unverified. Research-only use
+returns source findings and a proposed verification relation, not unauthorized
+changes. Cached source reuse requires an actual matching-validator 304 for the
+same representation and question/purpose; cached text remains untrusted.
+
+When a separate workflow method is needed, resolve its documented path from the
+actual installed workflow root selected by the host, not relative to Search First.
+This is a prose resolution rule, not a dependency or an instruction to activate
+that workflow. Existing invocation controls and current task authority still apply.
 
 ## NEED ANALYSIS → SEARCH → EVALUATE → DECIDE → APPROVED IMPLEMENTATION
 
