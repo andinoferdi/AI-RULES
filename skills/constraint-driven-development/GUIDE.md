@@ -159,3 +159,10 @@ Coding agents rarely craft elaborate exploits. Instead, when faced with a red ch
 - [resources/quality-gate-protocols.md](resources/quality-gate-protocols.md) — Exit code normalization for Semgrep, Axe-core, and Lighthouse; redaction rules; exception schemas.
 - [resources/constraint-catalog.md](resources/constraint-catalog.md) — Tooling matrices and sane default presets for TypeScript, Python, Go, Rust, and Web UI.
 - [resources/worked-example.md](resources/worked-example.md) — End-to-end walkthrough from intake to anti-evasion rejection with embedded Python test script.
+
+---
+
+## 10. Provenance
+
+Adapted from addyosmani/agent-skills, source `skills/constraint-driven-development/SKILL.md`. Substantive adapted material is covered by the packaged Addy MIT notice ([references/license.md](references/license.md)). Upstream is audit/build provenance only; runtime requires no upstream installation or network fetch.
+

@@ -304,3 +304,7 @@ Expected output:
 ```json
 {"local_drift": {"rerun": ["ui"], "reusable": ["base", "docs"]}, "producer_drift": {"rerun": ["base", "docs", "ui"], "reusable": []}}
 ```
+
+## Provenance
+
+Adapted from `mattpocock/skills:skills/engineering/executing-plans`, `addyosmani/agent-skills:skills/incremental-implementation`, and `obra/superpowers:skills/executing-plans` under MIT license ([references/license.md](references/license.md)).

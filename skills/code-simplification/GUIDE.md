@@ -184,3 +184,10 @@ Adversarial variant (`ANDINO_NEGATIVE=1`):
 - [resources/protected-regions.md](resources/protected-regions.md) — Multi-language comment syntax and SHA-256 verification rules.
 - [resources/agent-simplification-protocols.md](resources/agent-simplification-protocols.md) — Subagent safety constraints and the Simplification Ledger.
 - [resources/worked-example.md](resources/worked-example.md) — Complete walkthrough with runnable verification script.
+
+---
+
+## 11. Provenance
+
+Adapted from addyosmani/agent-skills, source `skills/code-simplification/SKILL.md`. Substantive adapted material is covered by the packaged Addy MIT notice ([references/license.md](references/license.md)). Upstream is audit/build provenance only; runtime requires no upstream installation or network fetch.
+

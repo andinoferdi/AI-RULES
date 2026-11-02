@@ -7,4 +7,4 @@ Package audit: one installation boundary/manager/version/lockfile consistent wit
 PII: classify nonpersonal/personal/sensitive, minimum purpose and retention; actual export/delete from all copies/backups/indexes; applicable consent and third-party processing/region policy verified from current authority. Never expose real values in test/transcript.
 LLM: output schema/encoding not eval/SQL/shell/path; system prompt isn't boundary, tool args validated in code, minimum tool authority, tenant RAG isolation, sensitive context excluded, recursion/rate/token limits. Model claims need independent evidence.
 
-Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at ../../../references/legal/addy-license.md. No upstream installation or hook is required.
+Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at [../references/license.md](../references/license.md). No upstream installation or hook is required.

@@ -6,4 +6,4 @@ Error budget >20 normal,0–20 slow only, exhausted no feature release; high bur
 Rollback record: trigger, authorized executor, exact flag/redeploy command, candidate previous artifact, health/error verification, database recovery/data preservation, expected duration and escalation. Prepare safely; actual remote change and message require permission. Reverting code is not dropping schema/data backwards.
 First-hour authorized verification: health200, errors/types, p95, critical journey, logs/traces and dry-run rollback if possible. Offline readiness is not live deployment evidence.
 
-Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at ../../../references/legal/addy-license.md. No upstream installation or hook is required.
+Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at [../references/license.md](../references/license.md). No upstream installation or hook is required.

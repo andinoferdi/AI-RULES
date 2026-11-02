@@ -82,4 +82,4 @@ Test keyboard interactions purely using keyboard events in the browser:
 
 ## 6. Provenance & Attribution
 
-Adapted from Addy Osmani's `agent-skills`, source `skills/browser-testing-with-devtools/resources/accessibility.md` (Addy Osmani MIT Notice: `references/legal/addy-license.md`), with independent Andino Workflow WCAG 2.1 AA criteria and DevTools tree inspection rules.
+Adapted from Addy Osmani's `agent-skills`, source `skills/browser-testing-with-devtools/resources/accessibility.md` (Addy Osmani MIT Notice: [../references/license.md](../references/license.md)), with independent Andino Workflow WCAG 2.1 AA criteria and DevTools tree inspection rules.

@@ -76,4 +76,4 @@ Independently adapted from these audited local snapshot paths (provenance only; 
 - `addyosmani/agent-skills:skills/spec-driven-development/SKILL.md`
 - `mattpocock/skills:skills/engineering/to-spec/SKILL.md`
 
-Snapshot identities and licensing are recorded in the package provenance/legal records. Upstream bootstrap, automatic commit/push, hooks and installers are not imported as authority.
+Snapshot identities and licensing are recorded in [../../references/license.md](../../references/license.md). Upstream bootstrap, automatic commit/push, hooks and installers are not imported as authority.

@@ -253,6 +253,15 @@ Complete! Present final consolidation results, verification evidence, and verifi
    - Evaluated all 9 consumer cases in `references/portfolio-consumer-cases.json` against `references/portfolio-consumer-oracles.json`.
    - Verified that all 18 referenced resource contracts and guides exist on disk and enforce their required boundaries (e.g. direct frontend-engineering without full lifecycle, completed-merge failure without automatic hard reset, advice-only without execution, typed negative fixtures without silent dependency installation, retired IDs absent without forwarding shims).
 
+5. **Decentralized Skill-Local Licensing (`skills/*/references/license.md`)**:
+   - Added individual, self-contained `references/license.md` notices across all 30 active skills, attributing exact upstream author notices:
+     - Addy Osmani (12 skills): `api-and-interface-design`, `browser-testing-with-devtools`, `ci-cd-and-automation`, `code-simplification`, `constraint-driven-development`, `deprecation-and-migration`, `documentation-and-adrs`, `doubt-driven-development`, `observability-and-instrumentation`, `performance-optimization`, `security-and-hardening`, `shipping-and-launch`.
+     - Matt Pocock (6 skills): `agent-document-authoring`, `architecture-survey`, `article-shaping`, `human-procedure`, `issue-triage`, `learning-workspace`.
+     - Jesse Vincent (2 skills): `session-diagnostics`, `verification`.
+     - Multi-Author Composite (10 skills): `brainstorming`, `code-review`, `debugging`, `delegation`, `git-skills`, `handoff`, `plan-execution`, `planning`, `skill-maker`, `tdd`.
+   - Updated all Provenance sections in `SKILL.md`, `GUIDE.md`, and modular `resources/**` to link directly to local `references/license.md` with zero broken links.
+   - Verified 100% link resolution and integrity via `scripts/verify_portfolio.py`.
+
 ### D1 completion and execution allocation — 2026-11-02
 
 Completed workflow `wf_d4e12753-047`, 3 readers, no writes. Full evidence: task `wz9otbm7b.output` in session task directory. No live model-routing execution claimed. Main at `7c3c35f79c5a6a02079c0ca7a94199264006d9c3`; Focus at `dccf046b584b847d8a80fe7deacb05c9e66fe2f2`; Search First at `6a57788a1c1d99af073143df18c608025053ef3d`. Created separate worktrees on branches `portfolio-installer`, `portfolio-focus`, `portfolio-search-first` at `C:/Users/Lenovo/Downloads/AI-RULES-{main,focus,search-first}-consolidation`. No commit/push/install to user home.

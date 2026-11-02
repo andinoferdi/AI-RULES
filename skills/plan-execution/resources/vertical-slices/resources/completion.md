@@ -6,4 +6,4 @@ Per release: relevant security/trust/PII reviewed, critical telemetry works, rol
 Record exact tested file/environment identity, command/result and unresolved limits in Andino's existing plan. A successful unchanged test may be reused; changed inputs require fresh relevant evidence. User's unrelated dirty files are not a failure and no auto-commit/merge/deploy follows.
 Example: endpoint's unit tests green but worker retries not integrated→task unit proof exists, feature integration remains open. CLI docs-only typo→browser and telemetry N/A, link/content proof sufficient.
 
-Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at ../../../references/legal/addy-license.md. No upstream installation or hook is required.
+Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at [../../../references/license.md](../../../references/license.md). No upstream installation or hook is required.

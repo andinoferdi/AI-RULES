@@ -89,4 +89,4 @@ Adapted and consolidated from audited snapshot paths:
 - `addyosmani/agent-skills:references/security-checklist.md` & `performance-checklist.md`
 - `mattpocock/skills:skills/engineering/code-review/SKILL.md` (MIT, Matt Pocock 2026)
 - `obra/superpowers:skills/requesting-code-review` & `receiving-code-review` (MIT, Jesse Vincent 2025)
-Preserved under MIT license terms in `references/legal/provenance.md`.
+Preserved under MIT license terms in [references/license.md](references/license.md).

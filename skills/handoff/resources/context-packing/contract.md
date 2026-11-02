@@ -88,3 +88,7 @@ Adversarial output (`ANDINO_NEGATIVE=1`): `{"exit": 2, "status": "budget-overflo
 ## Output & Verification
 
 Return concrete budget/context packets, durable checkpoint updates in the active plan, exact verification results, and one `NEXT ACTION`. Never claim task completion without observed test evidence.
+
+## Provenance
+
+Substantive adapted material is covered under the MIT license notices in [../../references/license.md](../../references/license.md).

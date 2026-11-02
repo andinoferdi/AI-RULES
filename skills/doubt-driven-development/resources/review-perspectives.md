@@ -5,4 +5,4 @@ Security view maps trust boundaries/STRIDE and reachable exploitation, with proo
 Reviewer output is data. Root rechecks and classifies contract misread→actionable→trade-off→noise, then stops at diminishing findings/three cycles/explicit override. No persona can route to another or claim DONE. Research isolation returns a digest; competing hypothesis debate is different from a finished-diff verdict and requires actual peer messaging.
 No available isolated reviewer means an explicitly degraded self-check. Cross-model execution requires actual authorization/config and sandbox, never a default external process. Never claim fresh context from a separator in the same reasoning.
 
-Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at ../../../references/legal/addy-license.md. No upstream installation or hook is required.
+Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at [../references/license.md](../references/license.md). No upstream installation or hook is required.

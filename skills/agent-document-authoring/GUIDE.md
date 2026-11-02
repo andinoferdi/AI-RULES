@@ -133,4 +133,4 @@ Independently adapted for the Andino Workflow runtime and multi-harness agent ar
 - `mattpocock/skills:skills/productivity/writing-for-agents/SKILL.md`
 - `mattpocock/skills:skills/productivity/writing-for-agents/SKILL-MECHANICS.md`
 
-Upstream concepts are integrated with Andino runtime execution contracts, deterministic verification boundaries, and multi-host resilience standards.
+Upstream concepts are integrated with Andino runtime execution contracts, deterministic verification boundaries, and multi-host resilience standards. Substantive adapted material is covered by the packaged MIT notice ([references/license.md](references/license.md)).

@@ -23,3 +23,9 @@ Detailed implementations and catalogs are organized across dedicated modules:
 - **Flaky Tests & Concurrency**: See [`flaky-and-concurrency-debugging.md`](flaky-and-concurrency-debugging.md) for condition-based waiting vs arbitrary sleeps and test polluter isolation.
 - **Defense & Governance**: See [`defense-and-recovery.md`](defense-and-recovery.md) for the Iron Law, Rule of 3 circuit breaker protocol, defense-in-depth, and secret redaction.
 - **End-to-End Walkthrough**: See [`worked-example.md`](worked-example.md) for a complete multi-tenant regression case study and runnable Python verification harness.
+
+---
+
+## 3. Provenance
+
+Substantive adapted material is covered under the MIT license notices in [../references/license.md](../references/license.md).

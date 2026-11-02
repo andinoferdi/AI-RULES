@@ -104,6 +104,10 @@ and identities only after actual execution.
 }
 ```
 
+## Provenance
+
+Substantive adapted material is covered under the MIT license notices in [../references/license.md](../references/license.md).
+
 - Each executed sample identifies its fresh context, guidance condition, actual
   command/action, raw output, result, tested identity, environment, and limits.
 - A remedial record includes the observed failure and reproduction result. An

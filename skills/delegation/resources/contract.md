@@ -13,3 +13,7 @@ Recovery stays in the same parent checkpoint. For a worker failure or missing re
 Parent rechecks actual working diff including new files, accepted public seam tests and separate spec/quality verdicts. Scoped re-review covers addressed findings/new breakage, not unrelated polish. Shared unchanged suite evidence need not be repeated by every child.
 
 Workers and review templates are resources, never an alternate router or model policy. No automatic integration branch, worktree reset, merger agent or ticket closure from upstream defaults.
+
+## Provenance
+
+Substantive adapted material is covered under the MIT license notices in [../references/license.md](../references/license.md).

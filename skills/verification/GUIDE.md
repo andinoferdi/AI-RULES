@@ -74,4 +74,4 @@ Adapted and consolidated from these audited snapshot paths; their instructions r
 
 - obra/superpowers:skills/verification-before-completion/SKILL.md
 
-MIT attribution/notices are preserved in package legal references. No upstream bootstrap, hooks, branding server, community code of conduct or Anthropic best-practices expression is included.
+MIT attribution/notices are preserved in package legal references ([references/license.md](references/license.md)). No upstream bootstrap, hooks, branding server, community code of conduct or Anthropic best-practices expression is included.

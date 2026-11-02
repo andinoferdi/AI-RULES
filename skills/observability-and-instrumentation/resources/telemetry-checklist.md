@@ -6,4 +6,4 @@ Alert symptom + threshold/duration/SLO rationale + owner/runbook. Page for immed
 In authorized test environment emit a real failure; find by requestId and entryPoint, verify structured output and expected series, follow an unbroken trace and test alert delivery/runbook. Offline artifact inspection does not prove exporter or channel works. Recording external notification needs explicit authority.
 Output signal/question map, actual artifact identifiers, observed gaps and deployment limitations.
 
-Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at ../../../references/legal/addy-license.md. No upstream installation or hook is required.
+Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at [../references/license.md](../references/license.md). No upstream installation or hook is required.

@@ -85,3 +85,8 @@ Adversarial output (`ANDINO_NEGATIVE=1`): `{"behavior_equal": true, "cases": 7, 
 ## Output & Verification
 
 Return the concrete Simplification Ledger, modified file identifiers, exact test results, and one `NEXT ACTION` in the active Andino ticket. Never claim completion without test evidence.
+
+## Provenance
+
+Adapted from addyosmani/agent-skills, source `skills/code-simplification/SKILL.md`. Substantive adapted material is covered by the packaged Addy MIT notice ([references/license.md](references/license.md)). Upstream is audit/build provenance only; runtime requires no upstream installation or network fetch.
+

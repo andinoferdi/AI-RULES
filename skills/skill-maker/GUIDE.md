@@ -179,3 +179,13 @@ The `ai-rules` installer validates each skill directory with `_is_valid_skill_tr
 - Never create symlinks inside skill bundles.
 - Ensure all relative markdown links resolve to physical local files.
 - Verify deterministically with offline test harnesses before committing.
+
+---
+
+## 8. Provenance & Attribution
+
+Synthesized from:
+- `obra/superpowers:skills/writing-skills` (MIT, Jesse Vincent 2025)
+- Official Anthropic Skill Best Practices & `addyosmani/agent-skills` authoring patterns (MIT, Addy Osmani 2025)
+
+Substantive adapted material is covered under the MIT license terms in [references/license.md](references/license.md).

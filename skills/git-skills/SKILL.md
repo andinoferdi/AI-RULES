@@ -98,3 +98,7 @@ if __name__ == "__main__":
     print(json.dumps(result, sort_keys=True))
     sys.exit(0)
 ```
+
+## Provenance
+
+Adapted from `obra/superpowers:skills/{using-git-worktrees,finishing-a-development-branch}` and `mattpocock/skills:skills/engineering/{git-interactive,create-pr}` under MIT license ([references/license.md](references/license.md)).

@@ -287,3 +287,14 @@ Expected output:
 ```json
 {"local_drift": {"rerun": ["ui"], "reusable": ["base", "docs"]}, "producer_drift": {"rerun": ["base", "docs", "ui"], "reusable": []}}
 ```
+
+---
+
+## Provenance & Attribution
+
+Adapted from:
+- `mattpocock/skills:skills/engineering/executing-plans` (MIT, Matt Pocock 2026)
+- `addyosmani/agent-skills:skills/incremental-implementation` (MIT, Addy Osmani 2025)
+- `obra/superpowers:skills/executing-plans` (MIT, Jesse Vincent 2025)
+
+Substantive adapted material is covered under the MIT license terms in [references/license.md](references/license.md).

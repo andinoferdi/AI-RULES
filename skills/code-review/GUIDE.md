@@ -146,3 +146,15 @@ Historical reality shows deferred cleanups rarely happen. If an issue is importa
 - **Cadence:** Review requests should be triaged within one business day. Slow reviews block delivery pipelines and force painful context switches.
 - **Lead with What Matters:** Group and order comments by leverage. Place `[CRITICAL]` and `[REQUIRED]` blockers at the top. Never bury a critical memory leak under six formatting nits.
 - **Actionability:** Pair every criticism with an explicit example or suggested replacement. A review that teaches and guides accelerates both human developers and autonomous agents.
+
+---
+
+## 8. Provenance & Attribution
+
+Adapted and consolidated from audited snapshot paths:
+- `addyosmani/agent-skills:skills/code-review-and-quality/SKILL.md` (MIT, Addy Osmani 2025)
+- `addyosmani/agent-skills:references/security-checklist.md` & `performance-checklist.md`
+- `mattpocock/skills:skills/engineering/code-review/SKILL.md` (MIT, Matt Pocock 2026)
+- `obra/superpowers:skills/requesting-code-review` & `receiving-code-review` (MIT, Jesse Vincent 2025)
+
+Substantive adapted material is covered under the MIT license terms in [references/license.md](references/license.md).

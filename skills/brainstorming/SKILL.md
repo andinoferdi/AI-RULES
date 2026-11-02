@@ -106,4 +106,4 @@ if __name__ == "__main__":
 
 ## Provenance
 
-Adapted from `addyosmani/agent-skills:skills/interview-me`, `mattpocock/skills:skills/productivity/grilling`, `grill-me`, `engineering/grill-with-docs`, and `obra/superpowers:skills/brainstorming` under MIT license.
+Adapted from `addyosmani/agent-skills:skills/interview-me`, `mattpocock/skills:skills/productivity/grilling`, `grill-me`, `engineering/grill-with-docs`, and `obra/superpowers:skills/brainstorming` under MIT license ([references/license.md](references/license.md)).

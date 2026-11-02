@@ -85,3 +85,13 @@ Use when publishing a branch to a remote forge (GitHub, GitLab) for peer review.
 - Change Hygiene Guide: [resources/change-hygiene/guide.md](resources/change-hygiene/guide.md)
 - Branch Integration Guide: [resources/branch-integration/guide.md](resources/branch-integration/guide.md)
 - Pull Request Drafting Guide: [resources/pr-draft/guide.md](resources/pr-draft/guide.md)
+
+---
+
+## 5. Provenance & Attribution
+
+Adapted from:
+- `obra/superpowers:skills/using-git-worktrees` and `finishing-a-development-branch` (MIT, Jesse Vincent 2025)
+- `mattpocock/skills:skills/engineering/git-interactive` and `create-pr` (MIT, Matt Pocock 2026)
+
+Substantive adapted material is covered under the MIT license terms in [references/license.md](references/license.md).

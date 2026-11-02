@@ -4,4 +4,4 @@ The summary visual menu and placement technique are adapted from Dex Horthy / Hu
 
 Original notice links: [Dex Horthy](https://github.com/dexhorthy), [Humanlayer](https://github.com/humanlayer/humanlayer), [show-me source](https://github.com/humanlayer/skills/blob/main/plugins/show-me/skills/show-me/SKILL.md).
 
-This attribution is retained alongside adapted content. The source snapshot's MIT notice is preserved by the package legal records; no separately verified remote license is claimed here.
+This attribution is retained alongside adapted content. The source snapshot's MIT notice is preserved in [../../../references/license.md](../../../references/license.md); no separately verified remote license is claimed here.

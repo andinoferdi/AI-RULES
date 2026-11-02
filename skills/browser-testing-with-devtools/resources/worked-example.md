@@ -201,4 +201,4 @@ Expected output:
 
 ## 6. Provenance & Attribution
 
-Adapted from Addy Osmani's `agent-skills`, source `skills/browser-testing-with-devtools/SKILL.md` (Addy Osmani MIT Notice: `references/legal/addy-license.md`), elevated with Andino dual-mode capability negotiation, prompt injection quarantine defense, and offline standard library validation.
+Adapted from Addy Osmani's `agent-skills`, source `skills/browser-testing-with-devtools/SKILL.md` (Addy Osmani MIT Notice: [../references/license.md](../references/license.md)), elevated with Andino dual-mode capability negotiation, prompt injection quarantine defense, and offline standard library validation.

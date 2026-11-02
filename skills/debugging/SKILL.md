@@ -98,3 +98,12 @@ print("SUCCESS: Debugging operational contract verified.")
 sys.exit(0)
 '
 ```
+
+## Provenance
+
+Adapted and consolidated from:
+- `addyosmani/agent-skills:skills/debugging-and-error-recovery` (MIT, Addy Osmani 2025)
+- `mattpocock/skills:skills/engineering/debugging` (MIT, Matt Pocock 2026)
+- `obra/superpowers:skills/systematic-debugging` (MIT, Jesse Vincent 2025)
+
+Substantive adapted material is covered under the MIT license terms in [references/license.md](references/license.md).

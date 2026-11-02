@@ -5,4 +5,4 @@ Scorecard columns metric/value/unit/source/target/status. Illustrative good CWV:
 Review areas: CWV attribution/LCP image/layout shifts/long tasks, loading waterfall/TTFB/fonts/third-party facade, rendering/state duplication/re-render/effect loops/listeners/layout thrash/virtualization, network compression/cache/pagination/deduplication/waterfalls. Preserve bfcache where compatible; browser APIs such as speculation/view-transition/LoAF/yield need version/current support checks, not unconditional use.
 Finding: location, symptom/source, observed vs potential impact, likely cause and actionable next measurement/fix. A remote metric, live browser capture or platform API is optional and must be honestly unavailable rather than fabricated.
 
-Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at ../../../references/legal/addy-license.md. No upstream installation or hook is required.
+Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at [../references/license.md](../references/license.md). No upstream installation or hook is required.

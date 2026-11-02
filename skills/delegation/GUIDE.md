@@ -164,3 +164,13 @@ Always explicitly declare model and reasoning effort when dispatching subagents.
 - `resources/two-track-review-and-fix-loop.md`: Spec vs Quality review rubric, diff packaging, 5-round escalation, and Rule of 5 rulings.
 - `resources/workspace-and-isolation-guards.md`: Dual-mode workspaces, Windows NTFS locking defense, and durable ledger specifications.
 - `resources/worked-example.md`: Real-world 3-task case study with embedded zero-dependency Python test suite (<0.2s).
+
+---
+
+## 8. Provenance & Attribution
+
+Synthesized from:
+- `mattpocock/skills:implement-spec` (MIT, Matt Pocock 2026)
+- `obra/superpowers:skills/dispatching-parallel-agents` and `subagent-driven-development` (MIT, Jesse Vincent 2025)
+
+Substantive adapted material is covered under the MIT license terms in [references/license.md](references/license.md).

@@ -5,4 +5,4 @@ Use actual semantic tokens, headings, 4.5:1 normal/3:1 large and control contras
 Responsive checks require rendered screenshots at 360,768,1440 with overflow/tap/focus/states inspected; inspect 320/1024 only if additional risk. A parser/unit test cannot confirm responsive layout, screen-reader speech, contrast or focus.
 State-placement example: pagination filter belongs in URL if sharing/back navigation matters; fetched rows belong in server cache, local open/closed state stays local. Avoid mirroring the same selected state in multiple stores.
 
-Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at ../../../references/legal/addy-license.md. No upstream installation or hook is required.
+Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at [../../../references/license.md](../../../references/license.md). No upstream installation or hook is required.

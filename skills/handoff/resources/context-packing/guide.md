@@ -173,4 +173,4 @@ Deep dive resources are modularly isolated in `resources/` for progressive discl
 Synthesized and adapted from:
 - [Addy Osmani Agent Skills](https://github.com/addyosmani/agent-skills) (`skills/context-engineering/SKILL.md`), MIT License (c) 2025 Addy Osmani.
 - Nelson Liu et al. (2023), *Lost in the Middle: How Language Models Use Long Contexts*, Stanford University / UC Berkeley.
-- Andino Workflow Architecture, MIT License. Packaged legal notices reside in `../../references/legal/addy-license.md` (resolve references/legal/addy-license.md from the installed andino-workflow root).
+- Andino Workflow Architecture, MIT License. Packaged legal notices reside in [../../references/license.md](../../references/license.md).

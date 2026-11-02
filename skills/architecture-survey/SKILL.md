@@ -161,4 +161,4 @@ Independently adapted and elevated from these audited local snapshot paths:
 - `mattpocock/skills:skills/engineering/improve-codebase-architecture/HTML-REPORT.md`
 - `mattpocock/skills:skills/engineering/codebase-design/SKILL.md`
 
-Snapshot identities and licensing are recorded in package legal records (`references/legal/matt-license.md`). Upstream bootstrap, automatic commit/push, hooks, and installers are not imported as authority.
+Snapshot identities and licensing are recorded in package legal records ([references/license.md](references/license.md)). Upstream bootstrap, automatic commit/push, hooks, and installers are not imported as authority.

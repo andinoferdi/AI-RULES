@@ -102,4 +102,4 @@ if __name__ == "__main__":
 
 ## 8. Provenance
 
-Synthesized from `obra/superpowers:skills/writing-skills`, Anthropic official Skill Best Practices, and Andino dual-mode authoring. Preserved under MIT license.
+Synthesized from `obra/superpowers:skills/writing-skills`, Anthropic official Skill Best Practices, and Andino dual-mode authoring. Preserved under MIT license terms in [references/license.md](references/license.md).

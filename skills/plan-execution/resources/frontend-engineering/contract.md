@@ -93,4 +93,4 @@ Do not replace this method with a name-only index, source checkout link, upstrea
 
 ## Provenance
 
-Adapted in original wording from addyosmani/agent-skills, source `skills/frontend-ui-engineering/SKILL.md`, local snapshot `aeac41d4d005999432bb7312f7ff06383a91d59d`. Supporting resource provenance is recorded in the main quality manifest. Substantive adapted material is covered by the packaged Addy MIT notice (resolve references/legal/addy-license.md from the installed andino-workflow root). Upstream is audit/build provenance only; runtime requires no upstream installation or network fetch.
+Adapted in original wording from addyosmani/agent-skills, source `skills/frontend-ui-engineering/SKILL.md`, local snapshot `aeac41d4d005999432bb7312f7ff06383a91d59d`. Supporting resource provenance is recorded in the main quality manifest. Substantive adapted material is covered by the MIT notice ([../../references/license.md](../../references/license.md)). Upstream is audit/build provenance only; runtime requires no upstream installation or network fetch.

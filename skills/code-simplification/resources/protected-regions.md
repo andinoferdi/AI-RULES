@@ -81,4 +81,4 @@ If verification fails:
 
 ## 5. Provenance
 
-Independently authored for Andino Workflow under MIT license, adhering to the quality criteria established in `references/legal/addy-license.md`.
+Independently authored for Andino Workflow under MIT license, adhering to the quality criteria established in [../references/license.md](../references/license.md).

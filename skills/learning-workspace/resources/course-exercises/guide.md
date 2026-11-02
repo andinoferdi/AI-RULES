@@ -64,4 +64,4 @@ Independently adapted from these audited local snapshot paths (provenance only; 
 
 - `mattpocock/skills:skills/misc/scaffold-exercises/SKILL.md`
 
-Snapshot identities and licensing are recorded in the package provenance/legal records. Upstream bootstrap, automatic commit/push, hooks and installers are not imported as authority.
+Snapshot identities and licensing are recorded in the package provenance/legal records ([../../references/license.md](../../references/license.md)). Upstream bootstrap, automatic commit/push, hooks and installers are not imported as authority.

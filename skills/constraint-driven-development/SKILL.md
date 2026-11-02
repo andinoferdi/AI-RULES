@@ -97,3 +97,8 @@ Adversarial output (`ANDINO_NEGATIVE=1`): `{"exit": 2, "rules": ["baseline-unava
 ## Output & Verification
 
 Return the concrete `CONSTRAINTS.md`, modified script identifiers, exact check results, and one `NEXT ACTION` in the active Andino ticket. Never claim completion without test evidence.
+
+## Provenance
+
+Adapted from addyosmani/agent-skills, source `skills/constraint-driven-development/SKILL.md`. Substantive adapted material is covered by the packaged Addy MIT notice ([references/license.md](references/license.md)). Upstream is audit/build provenance only; runtime requires no upstream installation or network fetch.
+

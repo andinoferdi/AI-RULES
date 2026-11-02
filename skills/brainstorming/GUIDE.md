@@ -147,4 +147,4 @@ This skill adapts operational techniques and structural patterns from:
 - `mattpocock/skills:skills/productivity/grilling`, `grill-me`, and `engineering/grill-with-docs` (MIT License, Matt Pocock 2026)
 - `obra/superpowers:skills/brainstorming` (MIT License, Jesse Vincent 2025)
 
-Upstream repositories serve as provenance. All code and operational contracts are independently implemented for Andino Workflow governance.
+Substantive adapted material is covered under the MIT license notices in [references/license.md](references/license.md). Upstream repositories serve as provenance. All code and operational contracts are independently implemented for Andino Workflow governance.

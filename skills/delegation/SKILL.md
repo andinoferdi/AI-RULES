@@ -78,4 +78,4 @@ Reject delegation immediately if ANY condition holds:
 - Task brief & two-track review schemas: [resources/subagent-brief-and-report-schemas.md](resources/subagent-brief-and-report-schemas.md)
 - Review gates & circuit breaker rulings: [resources/two-track-review-and-fix-loop.md](resources/two-track-review-and-fix-loop.md)
 - Workspace isolation & ledger durability: [resources/workspace-and-isolation-guards.md](resources/workspace-and-isolation-guards.md)
-- Provenance: Synthesized from `mattpocock/skills:implement-spec` and `obra/superpowers:{dispatching-parallel-agents,subagent-driven-development}`. Preserved under MIT license.
+- Provenance: Synthesized from `mattpocock/skills:implement-spec` and `obra/superpowers:{dispatching-parallel-agents,subagent-driven-development}`. Preserved under MIT license terms in [references/license.md](references/license.md).

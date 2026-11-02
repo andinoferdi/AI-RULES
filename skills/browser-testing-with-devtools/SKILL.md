@@ -213,4 +213,4 @@ Return:
 
 ## Provenance
 
-Adapted from Addy Osmani's `agent-skills`, source `skills/browser-testing-with-devtools/SKILL.md` (Addy Osmani MIT Notice: `references/legal/addy-license.md`), elevated with Andino dual-mode capability negotiation, multi-viewport responsive testing standards, untrusted prompt injection defense, and offline deterministic verification.
+Adapted from Addy Osmani's `agent-skills`, source `skills/browser-testing-with-devtools/SKILL.md` (Addy Osmani MIT Notice: [references/license.md](references/license.md)), elevated with Andino dual-mode capability negotiation, multi-viewport responsive testing standards, untrusted prompt injection defense, and offline deterministic verification.

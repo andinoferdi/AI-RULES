@@ -286,4 +286,4 @@ Expected default output:
 
 ## 9. Provenance
 
-Adapted and elevated from Addy Osmani's `agent-skills`, source `skills/browser-testing-with-devtools/SKILL.md` (Addy Osmani MIT Notice: `references/legal/addy-license.md`). Enhancements include triple ASCII diagnostic flowcharts, 360/768/1440px multi-viewport standards, rapid interaction flakiness probing, and offline standard library validation.
+Adapted and elevated from Addy Osmani's `agent-skills`, source `skills/browser-testing-with-devtools/SKILL.md` (Addy Osmani MIT Notice: [references/license.md](references/license.md)). Enhancements include triple ASCII diagnostic flowcharts, 360/768/1440px multi-viewport standards, rapid interaction flakiness probing, and offline standard library validation.

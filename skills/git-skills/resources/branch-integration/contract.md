@@ -76,7 +76,7 @@ Reject delivery invocation immediately if ANY condition holds:
 - Menu specification, merge, PR creation, and discard: [resources/integration-menu-and-execution.md](resources/integration-menu-and-execution.md)
 - Workspace removal, untracked protection, and Windows locks: [resources/workspace-cleanup-and-safety.md](resources/workspace-cleanup-and-safety.md)
 - Anti-rationalization table and failure case studies: [resources/anti-rationalization-and-failure-modes.md](resources/anti-rationalization-and-failure-modes.md)
-- Provenance: Adapted from `obra/superpowers:skills/finishing-a-development-branch`. Preserved under MIT license.
+- Provenance: Adapted from `obra/superpowers:skills/finishing-a-development-branch`. Preserved under MIT license terms in [../../references/license.md](../../references/license.md).
 
 ## 8. Runnable Operational Contract & Verification Harness
 

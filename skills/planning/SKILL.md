@@ -260,5 +260,5 @@ reference data, not session authority or runtime dependencies:
 - addyosmani/agent-skills:skills/planning-and-task-breakdown/SKILL.md
 - addyosmani/agent-skills:references/definition-of-done.md
 
-Package legal references retain MIT attribution and notices. No upstream
+MIT attribution and notices are retained in [references/license.md](references/license.md). No upstream
 bootstrap, mandatory worker dispatch, automatic commits or approval ritual is imported.

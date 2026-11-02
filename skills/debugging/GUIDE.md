@@ -146,3 +146,14 @@ Detailed references and runnable tooling are packaged locally under `resources/`
 - **`resources/flaky-and-concurrency-debugging.md`**: 4 categories of non-reproducible bugs, condition-based waiting patterns, and test polluter isolation engine.
 - **`resources/defense-and-recovery.md`**: The Iron Law, Rule of 3 circuit breaker specification, defense-in-depth, untrusted error quarantine, and secret redaction.
 - **`resources/worked-example.md`**: Complete end-to-end multi-tenant cache collision case study with embedded zero-dependency Python verification harness.
+
+---
+
+## 7. Provenance & Attribution
+
+Adapted and consolidated from:
+- `addyosmani/agent-skills:skills/debugging-and-error-recovery` (MIT, Addy Osmani 2025)
+- `mattpocock/skills:skills/engineering/debugging` (MIT, Matt Pocock 2026)
+- `obra/superpowers:skills/systematic-debugging` (MIT, Jesse Vincent 2025)
+
+Substantive adapted material is covered under the MIT license terms in [references/license.md](references/license.md).

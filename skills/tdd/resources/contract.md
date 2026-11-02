@@ -13,3 +13,7 @@ The refactor gate starts from GREEN. Compare return values, exceptions, side eff
 Choose the lowest level that captures the real behavior. Inventory happy path, empty input, numeric/string boundaries, invalid input, external failure/timeout and concurrent/out-of-order calls; prioritize by data loss/security and core user flow. This is a risk map, not a rule to test every trivial function. Report current coverage, gaps, recommended case and what bug each catches.
 
 For components, locate controls by accessible role/name and assert user-visible validation or state. For HTTP boundaries, assert status and response contract for valid, malformed and unauthorized cases. For a critical browser path, exercise the full create/complete flow and visible result. Always await asynchronous success and rejection checks; isolate mutable test data and time. Snapshot only what a reviewer will inspect. Never skip a failing test just to make CI green. Upstream JS/TS syntax is illustrative: use the repository's native framework.
+
+## Provenance
+
+Substantive adapted material is covered under the MIT license notices in [../references/license.md](../references/license.md).

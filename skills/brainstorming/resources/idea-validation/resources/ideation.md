@@ -8,4 +8,4 @@ Worked example 1: restaurant owner wants direct orders; retention of existing re
 Example 2: editor with independent blocks and 2–5 collaborators may test presence/block locks before character CRDT/offline sync. Constraint is observed coordination need, not “modern apps should collaborate.”
 Example 3: stale retrospective may fail because action items never happen. One owned experiment with next meeting demo tests follow-through; anonymous input tests safety separately. New tooling is not assumed necessary.
 
-Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at ../../../references/legal/addy-license.md. No upstream installation or hook is required.
+Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at [../../../references/license.md](../../../references/license.md). No upstream installation or hook is required.
