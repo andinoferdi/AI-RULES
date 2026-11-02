@@ -46,6 +46,19 @@ def install_invocation(adapter, scope: Scope, identifier: str, project_root=None
     return paths[0] if paths else None
 
 
+def invocation_body(adapter, scope: Scope, identifier: str, project_root=None) -> str:
+    skill = adapter.skill_target(scope, project_root) / identifier / "SKILL.md"
+    description = json.dumps(f"Use the {identifier} skill", ensure_ascii=False)
+    body = (f"---\ndescription: {description}\n---\n\n"
+            f"Read `{skill.as_posix()}` and follow the {identifier} skill. "
+            "Resolve its references relative to the skill directory.\n")
+    if adapter.id == "opencode":
+        body += "\nUser request: $ARGUMENTS\n"
+    else:
+        body += "\nApply the skill to the user's request in this conversation.\n"
+    return body
+
+
 def _install_file(adapter, scope, identifier, project_root, path):
     if path is None:
         return None
@@ -56,14 +69,7 @@ def _install_file(adapter, scope, identifier, project_root, path):
     skill = adapter.skill_target(scope, project_root) / identifier / "SKILL.md"
     if not skill.is_file():
         raise ValueError(f"Cannot register invocation without installed skill: {skill}")
-    description = json.dumps(f"Use the {identifier} skill", ensure_ascii=False)
-    body = (f"---\ndescription: {description}\n---\n\n"
-            f"Read `{skill.as_posix()}` and follow the {identifier} skill. "
-            "Resolve its references relative to the skill directory.\n")
-    if adapter.id == "opencode":
-        body += "\nUser request: $ARGUMENTS\n"
-    else:
-        body += "\nApply the skill to the user's request in this conversation.\n"
+    body = invocation_body(adapter, scope, identifier, project_root)
     path.parent.mkdir(parents=True, exist_ok=True)
     try:
         with path.open("x", encoding="utf-8", newline="\n") as handle:

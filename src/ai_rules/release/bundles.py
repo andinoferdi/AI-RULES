@@ -75,13 +75,9 @@ def export_git_ref(ref: str, destination: Path, repo_root: Path | None = None,
 def install_first_party_bundle(bundle_root: Path, target_skill_root: Path, capability_id: str, backup_root: Path | None = None) -> Path:
     if not (bundle_root / "SKILL.md").exists():
         raise ValidationError(f"bundle root is missing SKILL.md: {bundle_root}")
+    if capability_id == "andino-workflow":
+        from ai_rules.release.family import install as install_family
+        return install_family(bundle_root, target_skill_root, backup_root)
     target = target_skill_root / capability_id
     copy_tree_atomic(bundle_root, target, backup_root)
-    if capability_id == "andino-workflow":
-        skills_dir = bundle_root / "skills"
-        if skills_dir.is_dir():
-            for member in sorted(skills_dir.iterdir()):
-                if member.is_dir() and (member / "SKILL.md").is_file():
-                    member_target = target_skill_root / f"andino-{member.name}"
-                    copy_tree_atomic(member, member_target, backup_root)
     return target

@@ -28,7 +28,14 @@ class AndinoFamilyInstallationTests(unittest.TestCase):
                 d for d in skills_root.iterdir()
                 if d.name.startswith("andino-") and d.name != "andino-workflow"
             ]
-            self.assertEqual(59, len(member_skills))
+            portfolio_file = skills_root / "andino-workflow" / "references" / "portfolio.json"
+            if portfolio_file.is_file():
+                import json
+                manifest_data = json.loads(portfolio_file.read_text(encoding="utf-8"))
+                expected_ids = set("andino-" + name for name in manifest_data["members"])
+                self.assertEqual(expected_ids, {d.name for d in member_skills})
+            else:
+                self.assertEqual(59, len(member_skills))
 
             for sample in ("andino-brainstorming", "andino-tdd", "andino-debugging"):
                 skill_file = skills_root / sample / "SKILL.md"

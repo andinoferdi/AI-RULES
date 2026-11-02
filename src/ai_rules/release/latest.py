@@ -2,6 +2,7 @@
 
 from dataclasses import replace
 import hashlib
+import json
 import os
 from pathlib import Path, PurePosixPath
 import re
@@ -74,6 +75,7 @@ class LatestSources:
         self.installers = {}
         self.expected = {}
         self.expected_members = {}
+        self.expected_retired = {}
         self._trees = {}
         self.subpaths = {}
         try:
@@ -219,22 +221,51 @@ class LatestSources:
                     action, reason = ReconciliationAction.UPDATE, "clean official installation is behind the source branch"
                 self.expected[key] = self.tree(local, head, self.subpaths[identifier])
                 members = {}
+                retired_members = {}
                 if identifier == "andino-workflow":
-                    for member in sorted((self.sources[identifier] / "skills").glob("*")):
-                        if not (member / "SKILL.md").is_file():
+                    from ai_rules.release.family import manifest as parse_manifest
+                    portfolio_file = self.sources[identifier] / "references/portfolio.json"
+                    if portfolio_file.is_file():
+                        portfolio = parse_manifest(self.sources[identifier])
+                        active_names = portfolio['members']
+                        retired_names = portfolio['retired']
+                    else:
+                        active_names = sorted(p.name for p in (self.sources[identifier] / "skills").glob("*/SKILL.md") for p in [p.parent])
+                        retired_names = []
+
+                    for name in active_names:
+                        member_path = self.sources[identifier] / "skills" / name
+                        if not (member_path / "SKILL.md").is_file():
                             continue
-                        native = destination.parent / f"andino-{member.name}"
+                        native = root / f"andino-{name}"
                         observed = contents(native)
-                        desired = contents(member)
+                        desired = contents(member_path)
                         if observed != desired:
                             if native.exists():
-                                if (native / ".git").exists() or not self.known_member(local, head, member.name, observed):
+                                if (native / ".git").exists() or not self.known_member(local, head, name, observed):
                                     raise ValueError(f"Native member {native.name} is modified or unrecognized; preserved")
-                        members[native] = (member, observed, desired)
-                    if any(observed != desired for _, observed, desired in members.values()) and action == ReconciliationAction.NO_OP:
+                        members[native] = (member_path, observed, desired)
+
+                    for name in retired_names:
+                        native = root / f"andino-{name}"
+                        if native.exists():
+                            observed = contents(native)
+                            if (native / ".git").exists() or not self.known_member(local, head, name, observed):
+                                raise ValueError(f"Native member {native.name} is modified or unrecognized; preserved")
+                            retired_members[native] = observed
+
+                    aliases = adapters[target.host_id].skill_discovery_roots(target.scope, args.project_root)[1:]
+                    for alias in aliases:
+                        for name in active_names + retired_names:
+                            alias_path = alias / f"andino-{name}"
+                            if alias_path.exists():
+                                raise ValueError(f"Native member in another discovery root is preserved; reconcile it explicitly: {alias_path}")
+
+                    if (any(observed != desired for _, observed, desired in members.values()) or bool(retired_members)) and action == ReconciliationAction.NO_OP:
                         action, reason = ReconciliationAction.UPDATE, "native workflow members need synchronization"
                 self.expected_members[key] = {native: desired for native, (_, _, desired) in members.items()}
-                self.installers[key] = self._installer(identifier, original, destination, before, is_git, installed, args.state_dir, members)
+                self.expected_retired[key] = tuple(retired_members.keys())
+                self.installers[key] = self._installer(identifier, original, destination, before, is_git, installed, args.state_dir, members, retired_members)
                 actual = ActualState(exists=destination.exists(), ownership=InstalledOwnership.MANAGED_BY_AI_RULES,
                                      installed_version=self.version(identifier, installed) if installed else None,
                                      healthy=bool(before), content_matches=action == ReconciliationAction.NO_OP)
@@ -257,11 +288,13 @@ class LatestSources:
         try:
             return (contents(destination) == self.expected[key]
                     and all(contents(native) == desired
-                            for native, desired in self.expected_members.get(key, {}).items()))
+                            for native, desired in self.expected_members.get(key, {}).items())
+                    and all(not native.exists()
+                            for native in self.expected_retired.get(key, ())))
         except (ValueError, OSError):
             return False
 
-    def _installer(self, identifier, original, destination, before, is_git, installed, state_dir, members):
+    def _installer(self, identifier, original, destination, before, is_git, installed, state_dir, members, retired_members=None):
         def install():
             emit(self.reporter, "Checking target before installation", capability=identifier)
             local, _, branch, commit = self.entries[identifier]
@@ -286,9 +319,17 @@ class LatestSources:
                         copy_tree_atomic(source, native, state_dir / "backups",
                                          verify=lambda path, wanted=desired: contents(path) == wanted,
                                          reporter=self.reporter)
+                if retired_members:
+                    for native in retired_members:
+                        if native.exists():
+                            backup = state_dir / "backups" / uuid.uuid4().hex / native.name
+                            backup.parent.mkdir(parents=True, exist_ok=True)
+                            shutil.copytree(native, backup)
+                            shutil.rmtree(native)
             # Another selected host may share this exact path through a junction.
             if current == expected and (not is_git or git(destination, "rev-parse", "HEAD") == commit):
                 sync_members()
+                _record_family_inventory()
                 return original
             if current != before:
                 raise ValueError("Skill changed after planning; rerun setup after reviewing local edits")
@@ -306,8 +347,23 @@ class LatestSources:
                 copy_tree_atomic(self.sources[identifier], destination, state_dir / "backups",
                                  verify=lambda path: contents(path) == expected, reporter=self.reporter)
             sync_members()
+            _record_family_inventory()
             emit(self.reporter, "Verifying installed content", capability=identifier)
             if contents(destination) != expected:
                 raise ValueError("Installed content differs from the resolved source; backup retained")
             return original
+
+        def _record_family_inventory():
+            if identifier == "andino-workflow":
+                from ai_rules.release.family import fingerprint
+                root = original.parent
+                inv_key = hashlib.sha256(str(root.resolve()).casefold().encode()).hexdigest()
+                inv_path = state_dir / "family-inventories" / (inv_key + ".json")
+                artifacts = {str(destination): {'id': 'andino-workflow', 'kind': 'tree', 'fingerprint': fingerprint(destination)}}
+                for native in members:
+                    if native.exists():
+                        artifacts[str(native)] = {'id': native.name, 'kind': 'tree', 'fingerprint': fingerprint(native)}
+                inv_path.parent.mkdir(parents=True, exist_ok=True)
+                inv_path.write_text(json.dumps({'schema_version': 1, 'family': 'andino-workflow', 'root': str(root), 'artifacts': artifacts}, indent=2, sort_keys=True), encoding='utf-8')
+
         return install

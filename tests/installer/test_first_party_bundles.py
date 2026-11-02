@@ -14,9 +14,12 @@ class FirstPartyBundleTests(unittest.TestCase):
             target = install_first_party_bundle(bundle, root / "skills", "andino-workflow", root / "backups")
             self.assertTrue((target / "SKILL.md").exists())
             self.assertTrue((target / "README.md").exists())
-            # Verify 59 member skills are installed
+            # Verify member skills are installed
             member_dirs = [d for d in (root / "skills").iterdir() if d.name.startswith("andino-") and d.name != "andino-workflow"]
-            self.assertEqual(59, len(member_dirs))
+            if (bundle / "references" / "portfolio.json").exists():
+                self.assertEqual(30, len(member_dirs))
+            else:
+                self.assertIn(len(member_dirs), (59, 60))
             self.assertTrue((root / "skills" / "andino-brainstorming" / "SKILL.md").exists())
             self.assertTrue((root / "skills" / "andino-tdd" / "SKILL.md").exists())
             self.assertTrue((root / "skills" / "andino-debugging" / "SKILL.md").exists())

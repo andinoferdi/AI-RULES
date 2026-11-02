@@ -237,7 +237,17 @@ def cmd_remove(args: argparse.Namespace) -> int:
             if record is None:
                 print(f"{capability_id} -> {host_id}: BLOCKED unmanaged target is preserved")
                 continue
-            if args.dry_run or not args.yes:
+            if capability_id == "andino-workflow" and root is not None:
+                from ai_rules.release.family import FamilyPlan
+                try:
+                    FamilyPlan(None, root, args.state_dir, adapter=adapters[host_id], scope=Scope(args.scope), project_root=args.project_root, remove=True)
+                except Exception as exc:
+                    print(f"{capability_id} -> {host_id}: BLOCKED {exc}")
+                    continue
+                if args.dry_run or not args.yes:
+                    print(f"{capability_id} -> {host_id}: PREVIEW REMOVE {record.get('path', '')}")
+                    continue
+            elif args.dry_run or not args.yes:
                 print(f"{capability_id} -> {host_id}: PREVIEW REMOVE {record.get('path', '')}")
                 continue
             path = Path(record["path"]) if record.get("path") else (root / capability_id if root else None)
@@ -250,13 +260,16 @@ def cmd_remove(args: argparse.Namespace) -> int:
             if path.exists() and (baseline is None or contents(path) != baseline):
                 print(f'{capability_id} -> {host_id}: BLOCKED local changes or unverified legacy content are preserved before removal')
                 continue
-            if path is not None and path.exists():
+            if capability_id == "andino-workflow" and root is not None:
+                from ai_rules.release.family import remove as remove_family
+                try:
+                    remove_family(root, args.state_dir, adapter=adapters[host_id], scope=Scope(args.scope), project_root=args.project_root)
+                except Exception as exc:
+                    print(f"{capability_id} -> {host_id}: BLOCKED {exc}")
+                    continue
+            elif path is not None and path.exists():
                 import shutil
                 shutil.rmtree(path)
-                if capability_id == "andino-workflow" and root is not None:
-                    for member_path in sorted(root.glob("andino-*")):
-                        if member_path.is_dir() and (member_path / "SKILL.md").is_file():
-                            shutil.rmtree(member_path)
             records.pop(key, None)
             removed += 1
             print(f"{capability_id} -> {host_id}: APPLIED REMOVE")

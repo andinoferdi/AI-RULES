@@ -18,7 +18,10 @@ from ai_rules.execution import Executor
 from ai_rules.execution.executor import copy_tree_atomic
 from ai_rules.progress import SetupProgress, WorkEvent
 from ai_rules.release import latest
-from tests.installer import test_live_updates as fixtures
+try:
+    from tests.installer import test_live_updates as fixtures
+except ImportError:
+    import test_live_updates as fixtures
 
 from ai_rules.catalog import load_catalog
 from ai_rules.capabilities.adapters import StaticCapabilityAdapter
