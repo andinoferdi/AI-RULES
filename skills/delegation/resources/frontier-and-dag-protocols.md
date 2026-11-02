@@ -105,7 +105,7 @@ Under Andino Workflow resource guard 10:
 | :--- | :--- | :--- |
 | **Inline** | Small edits (<2 files, <50 LOC), tightly coupled changes, exploratory debugging with shared unknown root cause, or host lacks worker capabilities. | Parent agent executes directly; retains full verification and test evidence. |
 | **Parallel Dispatch** | 2+ completely independent problem domains, zero shared state, separate test files, and no common root cause. | Multi-dispatch in a single turn; parent collects summaries, checks for conflicts, and integrates. |
-| **Subagent-Driven** | Multi-task implementation plan with clear specifications, where isolated context per task and two-track review ensure quality. | Fresh subagent per task; task brief via file pointer; two-track review; fix loop escalation; parent ledger tracking. |
+| **Subagent-Driven** | Multi-task implementation plan with clear specifications, where isolated context and risk-scaled review ensure quality. | One worker per lane (dependent tasks sharing a write set); task brief via file pointer; risk-scaled review; fix loop escalation; parent ledger tracking. |
 
 ## 6. Anti-Patterns & Failure Modes
 

@@ -71,7 +71,7 @@ digraph fix_loop {
 ### Round 4–5: Fresh Implementer & Model Escalation
 - A model stuck for 3 rounds suffers from cognitive anchoring (*confirmation bias*).
 - Dispatch a **fresh implementer** with zero conversational baggage.
-- **Escalate Model Tier**: Move from fast/cheap model to a standard or capable model tier (e.g., Sonnet -> Opus, or low effort -> medium/high effort).
+- **Escalate One Step**: Move one tier up (Fast -> Standard -> Capable) OR one effort step up, never both at once, and announce it to the user first. Map tiers with [host-cost-calibration.md](host-cost-calibration.md).
 - Brief specifies: *"A previous implementer attempted this task 3 times and stalled. You own the clean resolution. Read the report file to see previous attempts."*
 
 ### Scoped Re-Review Gate
