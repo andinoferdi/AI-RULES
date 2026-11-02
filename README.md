@@ -26,6 +26,7 @@ Conversational filler and generic disclaimers can bury the answer. **Focus** app
 | Clear technical steps and immediate commands | Bypassing verification or reducing investigation depth |
 | Specific status updates (done, pending, blocked) | Replacing domain workflows or task execution logic |
 | Adaptive bilingual responses (Indonesian & English) | Overriding explicit user requests for a formal style |
+| Repairing a confusing previous explanation with missing context and a concrete example | Starting research, a curriculum or file edits from explanation repair |
 
 ---
 
@@ -85,4 +86,6 @@ Focus triggers automatically when installed alongside Andino Workflow, or you ca
 - [`references/priority-a.md`](references/priority-a.md) — Canonical Priority A communication principles.
 - [`references/human-language-indonesia.md`](references/human-language-indonesia.md) — Indonesian conversational patterns.
 - [`references/human-language-english.md`](references/human-language-english.md) — English conversational patterns.
+- [`references/explanation-repair.md`](references/explanation-repair.md) — Load only for a confusing prior explanation; preserves meaning without a curriculum, research, file edits or a parent lifecycle.
+- [`references/consolidation-provenance.json`](references/consolidation-provenance.json) — Absorbed-source SHA-256 identities and mapping; [Matt Pocock MIT notice](references/matt-license.md).
 - Adapted from [i-have-adhd](https://github.com/ayghri/i-have-adhd) by Ayoub Ghriss under the MIT License ([license notice](references/license.md)).

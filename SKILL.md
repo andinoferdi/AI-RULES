@@ -1,6 +1,6 @@
 ---
 name: focus
-description: Clear, concise, actionable communication adapted to the task and reader. Use when explicitly requested or as the default communication layer of andino-workflow; preserve important detail, uncertainty, evidence and requested output formats.
+description: Use when explicitly requested, as the default communication layer of andino-workflow, or when the user says a previous explanation was confusing or asks what a technical message means.
 license: MIT
 ---
 
@@ -133,6 +133,18 @@ an explicit user override or a concrete task need, not habitual verbosity.
   Give a repair supported by the
   evidence when possible. Repeated failure calls for reassessing assumptions, not repetitive patches
   or an automatic question when available evidence can resolve it.
+
+## Explanation repair, only when needed
+
+When the user says an earlier explanation did not land or asks what a technical
+message means, read [explanation repair](references/explanation-repair.md) and
+apply it in the current conversation. Lead with the practical consequence, supply
+missing context and one concrete example, and preserve the original technical
+meaning and uncertainty. This resource adds no research, curriculum, file edits,
+plan or parent-workflow requirement. Resume the original authorized task after
+clarification; intentional learning and new investigation remain separate needs.
+The three communication references above still load under their unchanged rule;
+this conditional resource does not replace them or load for every answer.
 
 ## Completeness and exceptions
 
