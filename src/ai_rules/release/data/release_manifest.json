@@ -7,7 +7,7 @@
     "andino-workflow": {
       "branch": "andino-workflow",
       "ref": "origin/andino-workflow",
-      "commit": "afc2f4496b2314559ef44828d35c33428dc766fd",
+      "commit": "6ce1030ed95881d361ff588a261314219083a34d",
       "release_sequence": 26,
       "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },

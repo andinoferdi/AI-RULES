@@ -71,6 +71,60 @@ class FocusReferenceTest(unittest.TestCase):
 
 
 class PackageValidationTest(unittest.TestCase):
+    def test_current_andino_distribution_layout(self):
+        files = {
+            'README.md': '# Workflow',
+            'SKILL.md': '---\nname: andino-workflow\ndescription: Task workflow\n---\n',
+            'references/portfolio.json': '{}',
+            'references/portfolio-consumer-cases.json': '[]',
+            'references/portfolio-consumer-oracles.json': '{}',
+            'references/project-setup/relocation-evidence.json': '{}',
+            'references/project-setup/guide.md': '# Setup',
+            'references/workflow-advice/contract.md': '# Advice',
+            'docs/exec-plans/active/delegation-quality.md': '# Plan',
+            'scripts/verify_delegation_quality.py': 'pass',
+            'scripts/test_delegation_task_brief.py': 'pass',
+            'scripts/relocate_portfolio_resources.py': 'pass',
+        }
+        for script in ('delegation-workspace', 'delegation_workspace.py',
+                       'task-brief', 'task_brief.py', 'review-package', 'review_package.py'):
+            files[f'skills/delegation/scripts/{script}'] = '# helper'
+        self.assertEqual([], package_files(files, 'andino-workflow'))
+
+    def test_focus_consolidation_metadata_is_a_regular_resource(self):
+        files = {'README.md': '# Focus',
+                 'SKILL.md': '---\nname: focus\ndescription: Communication\n---\n',
+                 'references/consolidation-provenance.json': '{}'}
+        self.assertEqual([], package_files(files, 'focus'))
+        self.assertTrue(any('non-regular' in error for error in package_files(
+            files, 'focus', {'references/consolidation-provenance.json': '120000'})))
+
+    def test_andino_layout_expansion_still_rejects_unknown_or_unsafe_files(self):
+        for path in ('scripts/tool.exe', 'scripts/install.py', 'scripts/../private.py',
+                     'scripts/.cache/test_secret.py', 'references/private.json',
+                     'references/project-setup/SKILL.md', 'references/legal/skill.md',
+                     'skills/delegation/scripts/unknown.sh', 'docs/random.md'):
+            with self.subTest(path=path):
+                files = {'README.md': '# Workflow',
+                         'SKILL.md': '---\nname: andino-workflow\ndescription: Task workflow\n---\n',
+                         path: 'not allowed'}
+                self.assertTrue(any('unexpected runtime file' in error
+                                    for error in package_files(files, 'andino-workflow')))
+
+    def test_fenced_template_links_are_not_package_links(self):
+        for fence in ('```', '~~~', '````'):
+            with self.subTest(fence=fence):
+                inner = '```\n' if len(fence) == 4 else ''
+                files = {'README.md': '# Example',
+                         'SKILL.md': '---\nname: example\ndescription: Example\n---\n'
+                         + fence + 'markdown\n' + inner + '[template](missing.md)\n'
+                         + fence + '\n[real](references/a.md)\n',
+                         'references/a.md': '# Actual'}
+                self.assertEqual([], package_files(files, 'example'))
+                files['SKILL.md'] += '[broken](missing.md)\n'
+                self.assertTrue(any('broken link' in error
+                                    for error in package_files(files, 'example')))
+
     def test_cli_validates_uncommitted_search_and_workflow_directories(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

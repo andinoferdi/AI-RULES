@@ -54,6 +54,22 @@ def git(*args):
     return result.stdout
 
 
+def markdown_prose(text):
+    """Exclude fenced examples whose displayed links belong to a template."""
+    lines = []
+    fence = None
+    for line in text.splitlines(keepends=True):
+        marker = re.match(r'^ {0,3}(`{3,}|~{3,})(.*)$', line.rstrip('\r\n'))
+        if fence:
+            if marker and marker[1][0] == fence[0] and len(marker[1]) >= len(fence) and not marker[2].strip():
+                fence = None
+        elif marker:
+            fence = marker[1]
+        else:
+            lines.append(line)
+    return ''.join(lines)
+
+
 def package_files(files, expected_name, modes=None):
     errors = []
     threejs = expected_name in THREEJS_SKILLS
@@ -102,6 +118,8 @@ def package_files(files, expected_name, modes=None):
             expected_name == "skripsi-skill"
             and name.startswith("assets/") and name.endswith(".md")
         ))
+        if expected_name == 'focus' and name == 'references/consolidation-provenance.json':
+            allowed = True
         if expected_name == 'andino-workflow':
             parts = name.split('/')
             safe = '\\' not in name and ':' not in name and all(
@@ -114,8 +132,27 @@ def package_files(files, expected_name, modes=None):
                                and (parts[2:] in (['GUIDE.md'], ['SKILL.md']) or
                                     len(parts) >= 4 and parts[2] in {'references', 'resources', 'templates', 'examples'}
                                     and name.endswith('.md')))
-            allowed = safe and (allowed or bool(method_resource))
-            if parts[0] == 'references' and (parts[-1].casefold() == 'skill.md' or (len(parts) > 2 and parts[1] != 'legal')):
+            metadata = name in {
+                'references/portfolio.json', 'references/portfolio-consumer-cases.json',
+                'references/portfolio-consumer-oracles.json',
+                'references/project-setup/relocation-evidence.json',
+            }
+            workflow_resource = (name.startswith(('references/project-setup/',
+                                                  'references/workflow-advice/'))
+                                 and name.endswith('.md'))
+            maintainer_file = bool(re.fullmatch(
+                r'docs/exec-plans/(?:active|completed)/[a-z0-9-]+\.md|'
+                r'scripts/(?:(?:test|verify)_[a-z0-9_]+|relocate_portfolio_resources)\.py', name))
+            delegation_helper = (parts[:3] == ['skills', 'delegation', 'scripts']
+                                 and len(parts) == 4 and parts[3] in {
+                                     'delegation-workspace', 'delegation_workspace.py',
+                                     'task-brief', 'task_brief.py',
+                                     'review-package', 'review_package.py',
+                                 })
+            allowed = safe and (allowed or bool(method_resource) or metadata
+                                or workflow_resource or maintainer_file or delegation_helper)
+            if parts[0] == 'references' and (parts[-1].casefold() == 'skill.md' or
+                    len(parts) > 2 and parts[1] not in {'legal', 'project-setup', 'workflow-advice'}):
                 allowed = False
             if safe and len(parts) == 3 and parts[0] == 'skills' and parts[2] == 'SKILL.md':
                 member_name = f'andino-{parts[1]}'
@@ -203,7 +240,8 @@ def package_files(files, expected_name, modes=None):
     for name, content in files.items():
         if not name.endswith(".md"):
             continue
-        links = re.findall(r'!?\[[^]]*\]\(([^)]+)\)', content) if threejs or expected_name == 'andino-workflow' else LINK.findall(content)
+        prose = markdown_prose(content)
+        links = re.findall(r'!?\[[^]]*\]\(([^)]+)\)', prose) if threejs or expected_name == 'andino-workflow' else LINK.findall(prose)
         for raw in links:
             target = unquote(raw.split("#", 1)[0].strip().split(" ", 1)[0])
             if not target or re.match(r"^[a-z][a-z0-9+.-]*:", target, re.I):
