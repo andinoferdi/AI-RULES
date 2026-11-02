@@ -166,3 +166,69 @@ lines, low-ceremony single-line rationales without discovery ledgers or banner s
 shims preserving legacy invocations and catalog counts, zero-deletion workspace overrides in test runners,
 deterministic offline test fixtures in `tests/fixtures/decision_lens_cases.json`, and comprehensive multi-tier
 verification). All source attributions remain preserved under their respective MIT licenses.
+
+The 2026-11-02 elevation of `agent-document-authoring` synthesizes the generative cognitive craft
+of Matt Pocock's `writing-for-agents` and `SKILL-MECHANICS.md` (The Two Loads: Context vs Cognitive,
+the 3-Tier Hierarchy Ladder, Progressive Disclosure branching test, Co-location vs Scattering,
+Anti-Premature Completion through Demanding Observable Bounds, Defeating the Negation Trap through
+Positive Target Steering, Pretrained Leading Words recruitment, SSOT discipline, and sentence-by-sentence
+model-relative No-Op Hunting) with Andino Workflow governance (high-density <150 line operational contract
+in root `SKILL.md`, SDO trigger-only frontmatter, Dominant Negative Gates distinguishing passive guidance from
+executable `skill-maker`, Dual-Mode Triage across Remedial Audit and Greenfield authoring, 5 Floor Invariants,
+Anti-Rationalization Refutations Table, Diagnostic Red Flags, 6 modular deep craft resources in `resources/`,
+embedded Python operational harness testing invariant enforcement with `ANDINO_NEGATIVE` gate, zero-dependency
+offline Python stdlib verification via `scripts/verify_agent_document_authoring_elevation.py`, and complete
+integration with `ai-rules setup`). MIT notice for Matt Pocock remains preserved.
+
+The 2026-11-02 elevation of `architecture-survey` synthesizes the generative architectural
+craft of Matt Pocock's `engineering/improve-codebase-architecture`, `HTML-REPORT.md`, and
+`engineering/codebase-design` (The 10 Canonical Terms: module, interface, implementation,
+depth, deep, shallow, seam, adapter, leverage, locality; the Deletion Test for shallowness;
+the Two-Adapter Rule for seams; strict output shaping with 1-sentence problem, 1-sentence
+solution, and <=6 word glossary-grounded wins; the 5 visual Before/After diagram patterns
+across Mermaid graphs, hand-built CSS/SVG boxes & arrows, cross-sections, mass diagrams, and
+call-graph collapse; fresh subagent exploration brief protocols; and post-survey grilling loops
+with lazy `GLOSSARY.md` sync and durable ADR recording for enduring rejections) with Andino
+Workflow governance (high-density <150 line operational contract in root `SKILL.md` at 105 lines,
+SDO trigger-only frontmatter, Dominant Negative Gates distinguishing architectural surveys from
+cosmetic renames and unguided whole-repo scans, Tri-Mode Operational Triage across Hotspot
+Churn-Driven, Subsystem Bounded, and Cross-Seam Leakage modes, 5 Floor Invariants,
+Anti-Rationalization Refutations Table, Diagnostic Red Flags, 6 modular progressive disclosure
+resources in `resources/`, hybrid progressive enhancement HTML reporting with embedded offline
+CSS/SVG fallback in `$TMPDIR`/`%TEMP%`, terminal-native executive summary cards, zero-mutation
+non-destructive survey invariants, embedded Python operational harness testing invariant enforcement
+with `ANDINO_NEGATIVE` gate, zero-dependency offline Python stdlib verification via
+`scripts/verify_architecture_survey_elevation.py`, and complete integration with `ai-rules setup`).
+MIT notice for Matt Pocock remains preserved.
+
+The 2026-11-02 elevation of `article-shaping` synthesizes the generative writing craft of
+Matt Pocock's `writing-beats` and `writing-shape` (The Ruthless Editor stance with active grilling
+interrogation moves, one-beat-at-a-time choose-your-own-adventure drafting with disk pre-reading,
+verbal format debates across prose vs list vs table vs callout, 3 radically distinct finished-prose hook
+formulas across In Media Res, The Gauntlet, and The Curiosity Gap, 6 rhetorical beat types, 4 structural
+curves, staccato-legato cadence engineering, and the strict Name-the-Gap protocol eliminating lived evidence
+fabrication) with Andino Workflow governance (high-density <150 line operational contract in root `SKILL.md`
+at 96 lines, SDO trigger-only frontmatter, Dominant Negative Gates distinguishing shaping from raw exploration
+and unapproved publication, Dual-Pacing Operational Triage across Interactive CYOA and Cohesive Functional
+Cluster modes, 5 Floor Invariants, Anti-Rationalization Refutations Table, Diagnostic Red Flags, 6 modular
+progressive disclosure resources in `resources/`, preserved `raw-capture/` submodule integrity, embedded
+Python operational harness testing DAG grounding invariants with `ANDINO_NEGATIVE` gate, zero-dependency
+offline Python stdlib verification via `scripts/verify_article_shaping_elevation.py`, and complete
+integration with `ai-rules setup`). MIT notice for Matt Pocock remains preserved.
+
+The 2026-11-02 elevation of `api-and-interface-design` synthesizes the pragmatic interface
+and REST design craft of Addy Osmani's `addyosmani/agent-skills: skills/api-and-interface-design`
+(Contract-First specification, Perimeter Zod parsing trusting internal domain types, Uniform
+APIError envelope, Branded Types, Discriminated Unions, Additive Schema Evolution, Mandatory Pagination,
+the 10-point Common Rationalizations Table, the 11 Diagnostic Red Flags, and the 12-point Pre-Release
+Verification Checklist) with John Ousterhout deep-module theory (`module-depth`), strict architectural
+layer enforcement (`import-enforcement`), and Andino Workflow governance (high-density <150 line
+operational contract in root `SKILL.md` at 131 lines, SDO trigger-only frontmatter, Dominant Negative Gates
+rejecting cosmetic variable renames and unbounded macro surveys, Tri-Modal Selection Router across
+`http-contracts`, `module-depth`, and `import-enforcement`, 5 Floor Invariants, compact canonical
+TypeScript representation anchor, embedded Python operational harness testing atomic idempotency and
+SHA-256 payload mismatch conflict with `ANDINO_NEGATIVE` gate, zero-dependency offline Python stdlib
+verification via `scripts/verify_api_and_interface_design_elevation.py`, and complete integration with
+`ai-rules setup`). MIT notice for Addy Osmani remains preserved.
+
+

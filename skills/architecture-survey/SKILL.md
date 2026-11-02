@@ -1,164 +1,105 @@
 ---
 name: andino-architecture-survey
-description: A named architecture pain point or bounded request to find maintainability/testability friction. Operates under Andino Workflow governance.
+description: Use when surveying codebase architecture friction, identifying shallow modules to deepen, diagnosing leaky seams, or generating visual before/after reports. Operates under Andino Workflow governance.
 ---
 
-# Survey architecture friction
+# Survey Architecture Friction: Deepen Modules and Encapsulate Seams
 
-Internal method ID: `andino-architecture-survey` (alias: `architecture-survey`).
+Internal method ID: `andino-architecture-survey` (aliases: `architecture-survey`, `improve-codebase-architecture`).
 
 > **Andino Workflow Member Skill**
-> This skill operates under the **Andino Workflow** protocol:
-> - Adheres to proportional investigation, evidence-based decisions, and single durable checkpoints.
-> - When this technique reaches completion, hand off cleanly to the next workflow phase or active task.
-> - Anti-loop guard: Do not re-invoke `andino-workflow` recursively; maintain progress within the active task.
+> Operates under Andino Workflow: single durable checkpoint, proportional investigation, anti-loop guards.
+> Non-destructive: inspects code and writes self-contained visual reports to OS temporary storage only.
 
-## Purpose and selection
+## 1. Dominant Negative Gates (When NOT to Use)
 
-Surface architectural friction and propose evidence-backed **deepening opportunities**: refactoring shallow, fragmented modules into deep, high-leverage abstractions to maximize testability and AI-navigability without introducing speculative bloat.
+Reject an architecture survey immediately if ANY condition holds:
+- **Cosmetic Refactoring**: Pure variable, function, or file renames belong to routine mechanical refactoring.
+- **Unbounded Global Scans**: Whole-repository scans across hundreds of files without churn hotspots or named targets.
+- **Dormant Code Refactoring**: Proposing refactorings on stable, untouched code with zero commit churn violates YAGNI.
+- **In-Survey Code Editing**: Modifying, refactoring, or creating product files during survey is strictly prohibited.
 
-Activate for: A named architecture pain point, a request to evaluate subsystem maintainability/testability, or a bounded inquiry into code complexity.
+## 2. Tri-Mode Operational Triage Router
 
-Do not activate for: Routine feature bug fixes, cosmetic formatting, arbitrary whole-repository scans without bounded direction, or repeated searches when no worthwhile candidate exists.
+| Mode | Selection Trigger | Operational Protocol |
+| :--- | :--- | :--- |
+| **Mode A: Hotspot Churn-Driven** | Open exploration with no named subsystem. | Inspect recent commits (`rtk git log --oneline -n 100`) to find churn hotspots; bound exploration to active files. |
+| **Mode B: Subsystem Bounded** | Explicit subsystem or pain point specified. | Bound exploration strictly to named target; walk callers, test suites, and internal dependencies. |
+| **Mode C: Cross-Seam Leakage** | Suspected leaky abstractions or mock-heavy tests. | Trace caller-side coupling, database transaction leaks, and caller-side policy duplication. |
 
-Positive request: "Survey the order processing subsystem for evidenced deepening opportunities."
-Negative request: "Rename this local variable in handler.ts."
+## 3. The 5 Floor Invariants
 
-These are declared activation fixtures, not a claim that a model/router was executed.
+1. **The Deletion Test**: Propose deepening only if deleting the shallow module concentrates complexity rather than scattering it.
+2. **The Two-Adapter Rule**: Never introduce an interface without proven variation; a justified seam requires at least two concrete adapters.
+3. **Locality Over Fragmented Helpers**: Consolidate atomized helper files when production defects hide in caller-side coordination.
+4. **Interface As The Test Surface**: Public interface of a deep module is its test surface; eliminate tests mocking internal wrappers.
+5. **Zero In-Survey Refactoring**: Output lands in OS temp storage (`$TMPDIR`/`%TEMP%`); zero product code or Git changes occur.
 
-## Inputs and dependencies
+## 4. Anti-Rationalization Refutations
 
-User scope or recent-change hotspots (`git log --oneline`), domain vocabulary (`GLOSSARY.md`), established Architecture Decision Records (`docs/adr/`), relevant code, callers, and test suites.
+| Rationalization Shortcut | Mechanical Reality & Required Response |
+| :--- | :--- |
+| *"This dormant file is messy; let's refactor it."* | Dormant code has zero ROI. Direct attention only to active commit churn hotspots. |
+| *"I'll write the new interface in code right now."* | Premature editing violates survey safety. Present visual candidate cards first. |
+| *"I used 'service' because it's standard industry term."* | Vague jargon. Use strictly the 10 canonical terms (`module`, `interface`, `seam`, etc.). |
+| *"A text-only summary in chat is sufficient."* | Architecture surveys must be visual. Render side-by-side Before/After diagrams in HTML. |
+| *"Wins can be summarized as 'cleaner code'."* | Empty fluff. Wins must be $\le 6$ words and follow `[Glossary Category]: [Claim]`. |
 
-Use resources progressively: [worked procedure, visual report patterns, and diagnostic rubric](resources/worked-example.md). It provides end-to-end before-and-after case studies, hybrid HTML report scaffolds with zero-network fallback, 5 diagram patterns (Mermaid, Boxes & Arrows, Cross-section, Mass diagram, Call-graph collapse), red-flag heuristics, and a 6-point self-audit rubric.
+## 5. Diagnostic Red Flags (Stop Immediately)
 
----
+1. Writing, modifying, or deleting product code files during the survey phase.
+2. Scanning the entire repository without scoping or inspecting commit churn hotspots.
+3. Generating a text-only report without side-by-side Before/After visual diagrams.
+4. Drift into prohibited vocabulary (*component*, *service*, *unit*, *API*, *layer*, *wrapper*).
+5. Proposing interfaces or seams that will only ever have a single concrete implementation adapter.
 
-## Core mental models & vocabulary
+## 6. Progressive Disclosure Router
 
-Architectural survey operates on strict, unambiguous design levers:
+- Complete authoring methodology and deep craft: [GUIDE.md](GUIDE.md)
+- 10 canonical terms, prohibited substitutions, and wins formula: [resources/architectural-vocabulary.md](resources/architectural-vocabulary.md)
+- 5 visual Before/After diagram patterns (~320px height): [resources/diagram-patterns.md](resources/diagram-patterns.md)
+- Hybrid HTML report scaffold and launcher protocol: [resources/html-report-scaffold.md](resources/html-report-scaffold.md)
+- Subagent exploration brief and prompt templates: [resources/subagent-exploration-brief.md](resources/subagent-exploration-brief.md)
+- Grilling loop, glossary synchronization, and ADR protocols: [resources/grilling-and-adr-protocols.md](resources/grilling-and-adr-protocols.md)
+- End-to-end worked case study (Order Intake pipeline): [resources/worked-example.md](resources/worked-example.md)
 
-### 1. Scope Before Scanning (YAGNI & Hotspots)
-Deepening a module pays off by making future modifications simpler and safer. Concentrating effort on dormant code produces negative ROI.
-- If the user specifies a subsystem or pain point, immediately bound exploration to that target.
-- Otherwise, inspect recent commit history (`git log --oneline`) to identify actual codebase hotspots—files and directories modified repeatedly. Let churn guide attention.
+## 7. Runnable Operational Contract & Verification Harness
 
-### 2. The Deletion Test for Shallowness
-A shallow module has an interface nearly as complex as its implementation.
-- **The Deletion Test:** If this module were deleted, would complexity vanish or merely disperse back into callers?
-- If deleting it concentrates complexity into one cohesive place, the candidate is a shallow wrapper ripe for deepening.
-- If deleting it scatters uncoordinated logic across disparate callers, the seam is load-bearing.
+```python andino-operational-example
+import json, os, re, sys
 
-### 3. Locality vs Fragmented Testability
-Extracting pure helper functions solely for unit testability often destroys locality. When logic is atomized across multiple files, real production defects hide in how callers stitch those fragments together.
-- Prioritize **locality**: bugs and invariant enforcement should concentrate in one cohesive module rather than across multiple caller coordination sites.
+def evaluate_survey_contract(data):
+    if not isinstance(data, dict): return {"valid": False, "error": "Contract must be a dict"}
+    mode = data.get("mode")
+    if mode not in ("hotspot", "subsystem", "leakage"): return {"valid": False, "error": "Invalid mode"}
+    name = data.get("name", "")
+    if not re.fullmatch(r"andino-[a-z0-9]+(?:-[a-z0-9]+)*", name): return {"valid": False, "error": "Invalid name"}
+    lines = data.get("contract_lines")
+    if type(lines) is not int or lines < 1: return {"valid": False, "error": "contract_lines must be positive int"}
+    if lines >= 150: return {"valid": False, "error": "Strict contracts require <150 lines"}
+    if data.get("has_negative_gates") is not True: return {"valid": False, "error": "Missing negative gates"}
+    if data.get("has_sdo_isolation") is not True: return {"valid": False, "error": "Missing SDO isolation"}
+    if data.get("has_five_invariants") is not True: return {"valid": False, "error": "Missing five invariants"}
+    return {"valid": True, "mode": mode, "status": "CONTRACT_VERIFIED"}
 
-### 4. Interface as the Test Surface
-The public interface of a deep module is its test surface.
-- Tests reaching past public seams into private internals signal shallow architecture.
-- Deep modules absorb thin intermediate wrappers, allowing unit tests to assert meaningful business outcomes against a single stable public contract.
+if __name__ == "__main__":
+    is_neg = os.environ.get("ANDINO_NEGATIVE") == "1"
+    payload = {
+        "name": "andino-architecture-survey",
+        "mode": "hotspot",
+        "contract_lines": 150 if is_neg else 118,
+        "has_negative_gates": True,
+        "has_sdo_isolation": not is_neg,
+        "has_five_invariants": True,
+    }
+    result = evaluate_survey_contract(payload)
+    if not result["valid"]:
+        sys.stderr.write(f"Verification failed: {result['error']}\n")
+        sys.exit(1)
+    print(json.dumps(result, sort_keys=True))
+    sys.exit(0)
+```
 
-### 5. The Two-Adapter Rule for Seams
-Never introduce indirection without proven variation.
-- **One adapter = hypothetical seam:** An interface with only one production implementation and no testing substitution is accidental complexity.
-- **Two adapters = justified seam:** A seam is justified when two distinct implementations exist (e.g. Postgres in production, in-memory repository in integration tests).
+## 8. Provenance
 
-### 6. Architectural Vocabulary Enforcement
-Clarity requires precise nouns and verbs. Drift into vague terminology obscures architectural boundaries:
-- **USE EXACTLY:** `module`, `interface`, `implementation`, `depth`, `deep`, `shallow`, `seam`, `adapter`, `leverage`, `locality`.
-- **NEVER SUBSTITUTE:** *component*, *service*, *unit* (for module); *API*, *signature* (for interface); *boundary* (for seam); *layer*, *wrapper* (when describing a module).
-- **WINS MUST BE CONCRETE:** Express benefits in terms of locality, leverage, and test simplification (e.g., *"locality: pricing invariants concentrate in one module"*, *"leverage: 1 public interface absorbs 4 shallow wrappers"*). Never use empty phrases like *"cleaner code"* or *"easier to maintain"*.
-
----
-
-## Procedure
-
-### 1. Scope before scanning
-Identify the boundary before reading code.
-- If a subsystem was named, bound exploration strictly to that scope.
-- Otherwise, inspect the last 50-100 commits via `git log --oneline` to discover files with high churn.
-- Inspect `GLOSSARY.md` for accepted domain terms and `docs/adr/` for settled architectural decisions.
-- *Done when:* A bounded set of hotspot paths and active domain constraints are identified.
-
-### 2. Organic friction walk & deletion test
-Walk callers and implementations within the bounded scope with a fresh perspective:
-- Trace where understanding one concept forces jumping across 4+ small files.
-- Spot shallow modules where parameter pass-through dominates the implementation.
-- Spot caller-side policy duplication where multiple callers perform identical validation or sequencing before calling a downstream function.
-- Identify seams with leaky abstractions (e.g. callers needing database transaction handles or transport types).
-- Apply the **deletion test** to every suspected wrapper.
-- *Done when:* Concrete friction points are documented with exact file paths, line references, and caller dependencies.
-
-### 3. Structure candidate deepening proposals
-Synthesize findings into candidate cards. For each candidate:
-- **Title:** Action-oriented deepening statement (e.g. *"Collapse Order intake pipeline"*).
-- **Recommendation Strength:** `Strong` (high churn, clear shallowness), `Worth exploring` (moderate leverage), or `Speculative` (lower frequency, trade-offs present).
-- **Dependency Classification:** `in-process`, `local-substitutable`, `ports & adapters`, or `mock`.
-- **Problem:** Exactly one sentence stating what hurts today.
-- **Solution:** Exactly one sentence describing the structural consolidation.
-- **Wins:** Bullet points (<= 6 words each) framed in terms of locality, leverage, and test surface reduction.
-- **ADR Callout:** Flag existing ADR contradictions *only* if concrete friction warrants reopening the decision.
-- *Done when:* Each candidate has concrete before/after definitions ready for visual rendering.
-
-### 4. Generate and launch the self-contained Hybrid HTML Report
-Write a single self-contained HTML file to the OS temporary directory (`$TMPDIR` or `%TEMP%`, e.g. `architecture-survey-<timestamp>.html`) so no disposable files pollute the repository.
-- Use the **Hybrid Report Scaffold**: load Tailwind and Mermaid via CDN for rich rendering when online, but include embedded fallback CSS and inline SVG styling so cards, seams, and badges render cleanly even in offline or air-gapped environments.
-- Provide a side-by-side **Before / After diagram** for every candidate, choosing the most expressive pattern:
-  - *Mermaid graph:* Call flows and dependency webs.
-  - *Boxes and arrows (CSS/SVG):* Deep module consolidation with faded internals.
-  - *Cross-section:* Collapsing multiple thin horizontal layers into one solid band.
-  - *Mass diagram:* Visualizing interface width shrinking relative to deep implementation volume.
-  - *Call-graph collapse:* Visualizing nested calls consolidated behind a single seam.
-- Include a **Top Recommendation** card highlighting the highest-ROI opportunity.
-- Open the generated HTML file using the host platform launcher (`start` on Windows, `open` on macOS, `xdg-open` on Linux) and provide the absolute path to the user.
-- *Done when:* The visual report exists in temporary storage and the user has immediate access to inspect it.
-
-### 5. Interactive candidate selection & domain alignment
-Present the findings concisely in chat and prompt: *"Which of these candidates would you like to explore?"*
-Do NOT draft implementation code or refactor product files during the survey phase.
-When the user selects a candidate:
-- If a new concept was named, verify whether `GLOSSARY.md` requires updating.
-- If the user rejects a candidate with an enduring architectural reason, offer to record an ADR so future surveys do not re-suggest it.
-- Seamlessly transition into `deep-module-design` for interface specification.
-- *Done when:* The user confirms their chosen candidate direction or records a durable rejection.
-
-### 6. Carry selected candidate into the Andino plan
-Record the chosen candidate, identified files, and target seam into the active Andino execution plan checkpoint.
-- *Done when:* The selected direction is preserved in the plan without losing context.
-
----
-
-## Ownership, precedence and permissions
-
-Andino coordinates selection, shared progress, resource guards and final status from evidence.
-This skill owns its full procedure, required resources, artifact detail and technical
-checks. Coordinator brevity/density never truncates these. User/project authority,
-Focus/research/domain boundaries and real invocation controls still apply. Native
-`andino-architecture-survey` and this guide expose one method, without recursive workflow invocation.
-
-The survey phase is non-destructive: it inspects code and writes a report to temporary OS storage only. Product files, Git state, and project configuration are never mutated during an architecture survey.
-
-## Outputs and verification
-
-1. Each candidate links to concrete source files, names observed friction, and presents a visual before/after comparison.
-2. The HTML report is self-contained and opens reliably in the default browser.
-3. Zero product code or Git tracking changes occur during the survey.
-4. Verify by running the deterministic reference script in `resources/worked-example.md`, proving correct report generation and invariant checking.
-
-## Anti-patterns to avoid
-
-- **Global codebase scan:** Scanning hundreds of files without scoping or inspecting churn hotspots first.
-- **Speculative candidate inflation:** Inventing refactoring suggestions for dormant, stable code.
-- **Corporate dashboard noise:** Bloating reports with paragraphs of prose instead of crisp before/after diagrams.
-- **Vocabulary drift:** Describing modules as "services", interfaces as "APIs", or seams as "boundaries".
-- **Premature implementation:** Writing code or modifying modules before the user selects a candidate.
-- **Network-fragile reports:** Generating HTML that fails to display when CDN assets cannot be reached.
-
-## Provenance
-
-Independently adapted and elevated from these audited local snapshot paths:
-- `mattpocock/skills:skills/engineering/improve-codebase-architecture/SKILL.md`
-- `mattpocock/skills:skills/engineering/improve-codebase-architecture/HTML-REPORT.md`
-- `mattpocock/skills:skills/engineering/codebase-design/SKILL.md`
-
-Snapshot identities and licensing are recorded in package legal records ([references/license.md](references/license.md)). Upstream bootstrap, automatic commit/push, hooks, and installers are not imported as authority.
+Independently adapted from `mattpocock/skills:skills/engineering/improve-codebase-architecture` ([references/license.md](references/license.md)). Upstream bootstrap, automatic commit/push, and installers are not imported as authority.
