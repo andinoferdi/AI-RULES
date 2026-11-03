@@ -44,6 +44,22 @@ Use actual available host tools and repository commands. Required external capab
 5. Each migration needs a tested down/rollback or explicit irreversible-data recovery plan. Additive phases can preserve new data across code rollback; destructive drop cannot be undone by reverting code. Live data changes and deletion require current explicit authority.
 6. Remove old code/tests/config/notices only after measured zero use and migrated consumers, then search for remaining references. Output phase ledger, consumer map, expected coexistence, backfill verification, rollback and authorization boundaries. Without production metrics prepare/test local transitions and label live zero-use NOT VERIFIED.
 
+### Choose the transition by what must stay compatible
+
+| Situation | Transition | Evidence before advancing |
+| --- | --- | --- |
+| Consumers need the old interface | Adapter over the replacement | Compare responses, errors, side effects and ordering that callers rely on. |
+| Consumers can switch in known cohorts | Flag per cohort | Compare critical behavior and operational signals for the cohort. Confirm the flag can safely restore the old path against data written since cutover. |
+| Traffic can be routed by endpoint or tenant | Strangler routing | Measure both routes, including bypasses and background traffic. Move the next cohort only after the current one passes its agreed checks. |
+
+For a backfill, specify the authoritative value in each phase and how old binaries
+that write only the old field are handled. Gate read cutover on writer coverage
+and reconciliation. Make batches resumable and prevent a retry from overwriting a
+newer write. Record the cursor, mismatches and stop thresholds for lock time,
+write latency or replica lag where applicable. Before dropping the old shape,
+separately verify old readers and writers are gone and test the recovery path for
+the data that would be lost.
+
 ## Local resources
 
 The procedure and example are self-contained; no external package/resource is required.
@@ -54,7 +70,46 @@ Authorized reversible local edits/checks may continue. This guide grants no bran
 
 ## Output and verification
 
-Return the concrete artifact/decision, source/evidence identifiers, exact relevant commands/results, unresolved risks and NEXT ACTION in the existing Andino ticket. Check acceptance against current bytes/actions; do not claim completion from a checklist alone. Real temporary SQLite schema/data transitions; production traffic, online DDL, backfill locking and down migrations need target-engine evidence.
+Record the applicable outputs in the existing Andino ticket:
+
+- **Decision.** Choose keep, migrate or retire. Name the owner, remaining unique
+  value, replacement coverage, migration cost and maintenance risk. For advisory
+  or compulsory deprecation, give the reason, dates or exit conditions, and who
+  provides tooling and support.
+- **Consumer handoff.** For each consumer or cohort, give its owner, current
+  touchpoints and observed dependencies, replacement steps with a before/after
+  example, parity check, and migration status. For external consumers, draft a
+  notice with the affected interface, replacement, deadline or advisory status,
+  verification instructions and support contact. Mark unconfirmed details.
+- **Deployment ledger.** For each phase, give the allowed version combinations,
+  source of truth for reads and writes, advance and stop criteria, evidence
+  source, and the rollback action or recovery boundary. Include the observation
+  window and explain how it covers periodic and low-volume callers.
+- **Contract decision.** Mark removal ready, held, or done. Cite the checks and
+  their actual results for consumer migration, residual traffic, recovery and
+  remaining references. If evidence is missing, identify the owner and next
+  check. Record one NEXT ACTION.
+
+### Worked handoff: retiring an external API
+
+Keep `GET /v1/orders/{id}` advisory while partners validate
+`GET /v2/orders/{id}`. The API team owns the adapter and migration support.
+Draft a partner notice that shows the change from `GET /v1/orders/42` to
+`GET /v2/orders/42`. In the sandbox, check that order 42 returns the expected
+ID and status, and that a missing order returns HTTP 404 with the documented
+error body. Move one partner at a time. Record its parity results and compare error rates against the
+agreed threshold. Restore its route if parity fails, after confirming requests
+made on v2 have left data readable on v1.
+
+Contract is **held** when gateway logs show zero v1 calls for seven days but the
+consumer inventory includes a monthly job. Record the query and dates as
+evidence for that window. NEXT ACTION: the API owner checks the next scheduled
+run and verifies whether direct calls bypass the gateway before deciding on
+removal.
+
+Check acceptance against current bytes and actual results. The offline SQLite
+example exercises local schema and data transitions. Production traffic, online
+DDL, backfill locking and recovery require evidence from the target environment.
 
 ## Operational example (offline)
 
