@@ -44,7 +44,7 @@ Not all constraints provide equal protection. If an agent writes both the implem
 ```
 
 ### The Rule of External Opinions
-A quality bar made entirely of Tier 3 checks (the project's own tests) can pass while the application is fundamentally broken or insecure. **A production `CONSTRAINTS.md` must enforce at least one Tier 1 or Tier 2 external constraint.**
+A quality bar made entirely of Tier 3 checks (the project's own tests) can pass while the application is fundamentally broken or insecure. **A production `CONSTRAINTS.md` must enforce at least one independently maintained Tier 1 or Tier 2 check.** During initial setup, enforce the floor and record any missing independent check as pending with its prerequisite.
 
 ---
 
@@ -105,14 +105,14 @@ The ratchet solves this without negotiation: **record where the project is today
 Metric: Project Test Coverage
 Recorded Today: 64.2%
 Direction: must not fall
-Tolerance: 0.5% (absorbs floating-point and unrelated file drift)
+Comparison: same command, scope, configuration, and reporting precision
 
 Commit 1 (Agent adds feature without tests): Coverage drops to 62.8% -> BLOCKED.
 Commit 2 (Agent adds proper tests): Coverage rises to 66.1% -> PASSED.
-RATCHET TIGHTENED: Update CONSTRAINTS.md baseline to 66.1%.
+RATCHET CANDIDATE: Propose 66.1% in a separate reviewed policy change.
 ```
 
-Ratcheting turns technical debt repayment into an automated, monotonic side-effect of daily feature delivery.
+Compare only complete, passing measurements. If a configuration or scope change invalidates the comparison, remeasure the clean reference before proposing a new baseline. Keep the current gate in force while the policy change is reviewed.
 
 ---
 
@@ -124,7 +124,7 @@ Coding agents rarely craft elaborate exploits. Instead, when faced with a red ch
 2. **Test Made Easier**: Adding `.skip()`, deleting test files, or removing assertions (`expect()`, `assert`) from surviving test files.
 3. **Checker Silenced**: Introducing suppression comments (`@ts-ignore`, `@ts-nocheck`, `eslint-disable`, `biome-ignore`, `# noqa`, `istanbul ignore`, `Stryker disable`, `nosemgrep`).
 4. **Unfinished Work**: Adding stub functions with `throw new Error("Not implemented")`, empty `catch {}` blocks, or `TODO` markers.
-5. **Unauthorized Exceptions**: Adding a row to the `Exceptions` table without documented authority, ticket reference, and explicit expiry date.
+5. **New Exceptions**: The reference guard flags added exception rows for review. A trusted review or an enforcing gate must verify authority, ticket, scope, and expiry before any waiver takes effect.
 
 ---
 

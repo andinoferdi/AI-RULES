@@ -41,23 +41,40 @@ Diff-scoped against `merge-base -> working-tree + untracked`. Always enforced:
 4. **No Weakened Rules**: Zero lowered minimums, raised maximums, or deleted constraint rows in `CONSTRAINTS.md`.
 5. **No Leaked Secrets**: All secret scanning must mandate `--redact`. Never leak credential tokens into agent transcripts.
 
-## Anti-Rationalization Refutations
+## Procedure
 
-| Rationalization | Mandated Reality |
-|---|---|
-| *"We'll add constraints once the code settles."* | **False.** Code settles around whatever was permitted while moving. Enforce the floor on day one. |
-| *"Our unit tests are our constraints."* | **False.** Tests prove you agree with yourself. Enforce at least one external constraint (WCAG, CVE, Lighthouse). |
-| *"We can't hit 80% coverage on legacy code."* | **False.** Measure today's number (e.g. 52%) and enforce that it must not fall. |
-| *"Checks slow down the agent too much."* | **False.** Scope checks to the diff; keep edit checks <5s and task checks <90s. |
-| *"I need to bypass a gate for an urgent hotfix."* | **False.** Register an owned Exception row with a 90-day expiry. Never lower the global rule. |
+1. **Read the existing contract.** Check repository instructions, `CONSTRAINTS.md`, existing gate scripts, coverage configuration, and required CI jobs. Identify the merge target and usable tools at each stage. Keep established requirements and ask only the unresolved intake questions.
+2. **Establish a comparable baseline.** Measure a clean reference revision with the same command, scope, configuration, and reporting precision that will enforce the rule. Record the reference and result. A failed, partial, or incomparable run leaves that metric pending. Keep existing gates in force. For a legacy metric with no agreed target, start from the measured baseline and tighten it in a separate reviewed policy change.
+3. **Write the contract.** Use stable IDs, explicit minimums or maximums, and exact runnable commands from the repository root. Keep whole-project and changed-line coverage separate. Point the existing agent instructions at the contract when wiring a new one.
 
-## Diagnostic Red Flags (Stop Immediately)
+   ```markdown
+   # Constraints
 
-- [ ] Modifying `CONSTRAINTS.md` in the same commit as a failing feature implementation.
-- [ ] Running an intake past 4 questions or asking what was already readable in `package.json`.
-- [ ] Writing a constraint number without an executable command in the `Checked by` column.
-- [ ] An exception row lacking an individual owner (`@user`) or expiring beyond 90 days.
-- [ ] Running secret scanners without `--redact` or letting scanner errors (exit 2) pass as clean (exit 0).
+   ## Floor
+   Run the diff guard against the merge target. Block on a violation or an unavailable required check.
+
+   ## Enforced
+   | ID | Rule | Checked by | Runs at |
+   |---|---|---|---|
+   | F1 | Diff passes the floor guard | <exact command> | Edit, task end, CI |
+   | Q1 | <metric, scope, and threshold> | <exact command> | <stage> |
+
+   ## Measured or pending
+   Record each pending metric, the evidence or tool needed, and the condition for enforcement.
+
+   ## Exceptions
+   Record approved exceptions here. If none exist, state that explicitly.
+   ```
+
+4. **Wire the smallest useful gate.** Reuse existing scripts and CI jobs. Run the diff guard at edit, task end, and required CI, with staged, unstaged, and untracked changes included locally and target history available in CI. Time the fast path. Move slower tests and scans to later stages. Place CI-only tools in CI. A first setup can enforce the floor while optional metrics await tooling. Before production readiness, include a check whose rules or data are independently maintained, such as a reviewed linter policy or vulnerability scanner.
+5. **Prove the wiring.** In a disposable fixture, run the exact entrypoints on a clean diff, a deliberate violation, and an unavailable prerequisite. For a numeric gate, test at the threshold and on its failing side. Verify CI uses the intended scope and blocks on required-check errors. Record checks you could not run as unavailable, with the next step to obtain evidence.
+6. **Respond to a red gate.** Fix the behavior and rerun the relevant check. Preserve the original threshold and assertions. If the deadline arrives first, hand off the failing evidence and keep the change blocked while any exception is considered.
+
+## Permissions and safety
+
+- Keep policy and gate changes separate from the failing feature. Require maintainer review for changes to the contract, gate scripts, CI jobs, or measurement configuration.
+- Apply an exception only after explicit authorization. Record the rule ID, narrow scope, reason, ticket, individual `@owner`, and expiry within 90 days. Keep the global rule and enforce the expiry. The reference guard can flag a new exception row. Approval and expiry still require a trusted review or an enforcing gate.
+- Use `--redact` for secret scans and keep raw findings out of transcripts. Treat floor guard exit 0 as clean, 1 as a violation, and 2 as unavailable. Preserve scanner failures as failures.
 
 ## Progressive Disclosure Resources
 
@@ -94,9 +111,9 @@ print(json.dumps(probe(), sort_keys=True))
 Default output: `{"exit": 1, "rules": ["assertion-removed", "silenced-or-skipped", "threshold-loosened", "unfinished-work"]}`  
 Adversarial output (`ANDINO_NEGATIVE=1`): `{"exit": 2, "rules": ["baseline-unavailable"]}`
 
-## Output & Verification
+## Output and verification
 
-Return the concrete `CONSTRAINTS.md`, modified script identifiers, exact check results, and one `NEXT ACTION` in the active Andino ticket. Never claim completion without test evidence.
+Return the concrete `CONSTRAINTS.md`, entrypoints and prerequisites by stage, and a check record with the tested revision or diff, command, result, and observed duration where budgeted. Keep proposed commands and unrun checks separate from observed results. Record the blocking gate and one `NEXT ACTION` in the active Andino ticket when work remains.
 
 ## Provenance
 
