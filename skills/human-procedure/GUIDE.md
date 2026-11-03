@@ -8,7 +8,7 @@ Make manual prerequisite steps concrete, resumable and safe without asking the a
 
 Activate for: A required step needs human dashboard access, secret entry or another action the agent cannot perform.
 
-Do not activate for: A task the agent can already safely execute or an unrequested setup wizard.
+Do not activate for: A task the agent can already safely execute or generic setup guidance with no human-only prerequisite.
 
 ## Inputs and dependencies
 
@@ -18,19 +18,42 @@ Use resources progressively: [worked procedure and example](resources/worked-exa
 
 ## Procedure
 
-1. Inspect safe configuration names and CI references, not secret values, to discover prerequisites. Name every stage in dependency order and each produced value's source, destination and secret/public classification.
-
-2. Use actual current documentation or user-confirmed dashboard journeys. Never invent a UI path, provisioning command or irreversible cutover step.
-
-3. Prepare a local reviewable checklist or native-shell script with stage progress, open-before-request instruction, hidden secret input, explicit confirmation before irreversible actions and no secret echo.
-
-4. Keep credentials in the human's terminal/environment and storage approved for them; never ask the user to paste secrets into chat. Persist only needed values with path/permission checks and safe idempotent update.
-
-5. Preserve existing dotenv bytes/permissions and reject a symlink or destination escaping the agreed directory. External secret/variable writes are separate actions needing explicit authority.
-
-6. Statically trace every input to its intended destination, check script syntax with an available interpreter and report skipped dependencies. Do not run an interactive wizard end-to-end as the agent.
-
-7. Hand over exact run instructions and summary of intended effects. Reuse saved values only without revealing them; cancellation/restart must not claim a stage completed.
+1. **Scope the handoff.** Identify current and target state, account, project,
+   environment and the human-owned actions. Inspect config schemas, examples
+   and CI references for names only. Map each stage's value from source to
+   approved destination and consumer, with its sensitivity. Include actions
+   that produce no value. Resolve consequential unknowns before authoring
+   executable steps and carry forward existing decisions and authority.
+2. **Map the journey.** Use one outcome per stage. Start with Stage N of M,
+   purpose, prerequisites and a verified URL or command. Give the exact click
+   path or command, what to select or enter, and the observable success signal.
+   Show the URL before requesting input and provide a manual-open path. Verify
+   labels against current sources or the user's view. If a path is unknown,
+   name the missing observation and stop dependent steps there.
+3. **Choose the format.** Use a checklist for short or dashboard-only tasks
+   and when secure automation is unavailable. Use a native-shell wizard when
+   requested and guided prompts or safe persistence add value. Preview the
+   effects, show one stage at a time and offer a way to stop. Keep one-off
+   artifacts in an agreed scratch location. A reusable repository artifact
+   requires separate scope.
+4. **Protect inputs and effects.** Use hidden terminal input for script-collected
+   secrets. Keep values out of chat, logs, command arguments and checkpoints.
+   For dotenv writes, preserve unrelated bytes and existing permissions, reject
+   symlinks and paths outside the agreed directory, and use a safe idempotent
+   update. Fall back to human entry when those guarantees cannot be established.
+   Name exact external targets and require explicit authority for writes.
+   Describe irreversible effects and require affirmative confirmation at the
+   point of action.
+5. **Make progress resumable.** Record stage status and applied effects using
+   names only. Cancellation, EOF or failure leaves the current stage incomplete
+   until its success signal is observed. On resume, recheck target and signals,
+   reuse saved values privately and reconcile ambiguous effects before retrying.
+   Never replay a completed irreversible action.
+6. **Verify and hand off.** Trace each input to its destination and consumer.
+   Check target-shell syntax and test safe local branches with disposable data.
+   Leave live interactive steps to the human. Provide the exact run location
+   and command or first checklist action, intended effects, pending stages and
+   next action. Request only non-sensitive evidence of completion.
 
 ## Ownership, precedence and permissions
 
