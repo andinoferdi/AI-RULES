@@ -1,8 +1,8 @@
 # Deprecation and migration skill quality
 
 - Base: `8ecb810`
-- State: IN_PROGRESS
-- Phase: Execution
+- State: Published and setup verified; model comparison open
+- Phase: Verification
 
 ## Decision and evidence
 
@@ -16,11 +16,12 @@ The current guide specifies what evidence matters but compresses the handoff int
 
 ## NEXT ACTION
 
-Push the scoped commit, then run project-scoped setup against the published revision and compare the installed guide with the branch.
+When a model comparison is available, run the three scenarios on the same model with isolated contexts for the baseline, reference and revision. Score the outputs against the handoff and contract criteria above.
 
 ## Verification evidence
 
 - Static review: the external API case now has a consumer handoff and notice fields, the mixed-version case has writer coverage and reconciliation gates, and the incomplete-usage case holds contract until the missing observation is checked.
 - Both embedded SQLite variants matched the documented JSON values. One allowed contract with zero old consumers, and the other held contract with one old consumer.
 - The project-scoped Codex setup installed the prior published bundle in a disposable project. Use that project for the upgrade check.
+- Published skill revision `63718b8`. Default-source project-scoped setup applied an update in the disposable project and installed the skill in a fresh project, with zero failed or blocked targets. Both installed guides had identical SHA-256 `b3d6f2b2835c96d856967f198116ae2a372ed712ddeece7bc122c7914b106926`. The installed guide matched the checkout after normalizing line endings.
 - The scenario review covers the written procedure. Independent model output quality remains unmeasured.
