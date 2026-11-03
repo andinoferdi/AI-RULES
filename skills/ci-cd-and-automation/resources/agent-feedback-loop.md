@@ -99,6 +99,14 @@ AI agents are susceptible to "shotgun debugging" — making random edits across 
 ## 5. Anti-Hallucination & Anti-Flakiness Guardrails
 
 ### Flaky Test Detection:
+
+Compare the original failure and a diagnostic pass at the same commit. Capture
+the run and attempt IDs, runner and service versions, shard/seed, first failing
+step, and available logs. Separate service startup, migration, and test
+execution. Use the first divergent signal to test one hypothesis (readiness,
+shared state, ordering, resource pressure, or infrastructure). Reproduce under
+matching conditions, then repeat the targeted check after the fix and report
+the number of attempts and failures. A passing rerun alone leaves the cause open.
 If a test passes locally but failed in CI (or vice-versa), do not dismiss it as "just flaky" or re-run until it passes.
 - Check for shared state across test suites (e.g. global variables, database records not cleaned in `afterEach`).
 - Check for race conditions, unresolved Promises, or timezone/locale dependencies.

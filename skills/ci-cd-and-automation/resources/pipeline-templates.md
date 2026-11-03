@@ -1,6 +1,10 @@
 # Production CI/CD Pipeline Templates
 
-This resource provides production-ready, security-audited workflow configurations for modern software delivery. Use these templates as foundational scaffolding, adapting runtime versions, package managers, and secret names to match your repository.
+These GitHub Actions examples assume npm, Node, and the named scripts. Start
+with the repository's lockfile, runtime, script names, and check identities.
+Verify provider syntax and pin action revisions under repository policy before
+publishing. Scope permissions to what each job needs. See the
+[GitHub secure-use reference](https://docs.github.com/en/actions/reference/security/secure-use).
 
 ---
 
@@ -61,7 +65,10 @@ jobs:
 
 ## 2. Database Integration Testing (PostgreSQL Service Container)
 
-For applications requiring real database interactions during automated testing, use isolated service containers. Never hardcode credentials; always use GitHub Secrets or workflow environment variables.
+Use an isolated, disposable PostgreSQL service for integration tests. The
+literal below is a public test fixture value scoped to that service. It lets
+fork PRs exercise the same gate without secrets. Use secret storage for actual
+credentials to external systems.
 
 ```yaml
 # .github/workflows/integration.yml
@@ -83,7 +90,7 @@ jobs:
         env:
           POSTGRES_DB: testdb
           POSTGRES_USER: ci_user
-          POSTGRES_PASSWORD: ${{ secrets.CI_DB_PASSWORD || 'ci_secure_test_password' }}
+          POSTGRES_PASSWORD: ci_fixture_only
         ports:
           - 5432:5432
         options: >-
@@ -107,12 +114,12 @@ jobs:
 
       - name: Run Database Migrations
         env:
-          DATABASE_URL: postgresql://ci_user:${{ secrets.CI_DB_PASSWORD || 'ci_secure_test_password' }}@localhost:5432/testdb
+          DATABASE_URL: postgresql://ci_user:ci_fixture_only@localhost:5432/testdb
         run: npx prisma migrate deploy
 
       - name: Execute Integration Test Suite
         env:
-          DATABASE_URL: postgresql://ci_user:${{ secrets.CI_DB_PASSWORD || 'ci_secure_test_password' }}@localhost:5432/testdb
+          DATABASE_URL: postgresql://ci_user:ci_fixture_only@localhost:5432/testdb
         run: npm run test:integration
 ```
 
@@ -171,7 +178,10 @@ jobs:
 
 ## 4. PR Preview Deployments (Vercel / Cloud Platforms)
 
-Deploy ephemeral preview instances for every active pull request to enable manual visual inspection and stakeholder review before merging to production.
+This credentialed example assumes same-repository PR authors are trusted to
+run repository code with preview credentials. Use the ordinary unprivileged
+CI workflow for fork PRs. Reassess this boundary if your repository grants
+branch creation to contributors who lack deployment trust.
 
 ```yaml
 # .github/workflows/preview.yml
@@ -183,6 +193,7 @@ on:
 
 jobs:
   deploy-preview:
+    if: github.event.pull_request.head.repo.full_name == github.repository
     name: Deploy Ephemeral Preview
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -214,7 +225,7 @@ jobs:
 
 ---
 
-## 5. Parameterized Rollback Workflow (Shell-Injection Immune)
+## 5. Parameterized Rollback Workflow (Quoted Input)
 
 Every deployment pipeline must have an immediate, reversible rollback mechanism. Inputs must always be passed via environment variables to defend against shell command injection.
 

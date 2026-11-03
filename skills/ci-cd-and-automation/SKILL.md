@@ -47,7 +47,10 @@ reopen accepted requirements or require a second execution plan.
 
 ## The Quality Gate Pipeline
 
-Every code change must pass through these sequential, fail-closed gates before merge:
+Use this gate inventory to select checks for the repository. Preserve every
+existing required gate. Each applicable required check must succeed before merge
+or promotion. Independent checks can run in parallel, with explicit dependencies
+where a job consumes an artifact or must wait for a gate.
 
 ```text
 Pull Request Opened
@@ -77,6 +80,22 @@ Ready for Review & Staging Deploy
 
 ---
 
+## Procedure
+
+1. **Establish the current contract.** Inspect workflows, branch and merge-queue
+   rules when readable, release consumers, lockfiles, pinned runtimes, workspace
+   layout, and scripts. Record observed commands and check names. Identify missing
+   evidence explicitly before proposing a change that depends on it.
+2. **Select one mode.** For new CI, run existing commands from a clean install
+   using the repository toolchain and add the smallest workflow that enforces
+   them. For a failing run, preserve the first failing evidence and reproduce
+   the suspected cause. For a gate change, map current and proposed producers,
+   required check identities, and downstream consumers before editing.
+3. **Verify the gate.** Check that the success case runs the intended work and
+   that a controlled failure blocks the dependent stage. For filtering or trigger
+   changes, cover eligible skips and missing, failed, or canceled prerequisites.
+   Match hosted evidence to the applicable PR or merge-group commit and check.
+
 ## Operational Resources & Directives
 
 To keep this operational contract dense while providing deep technical craft, specific implementations are maintained in modular resources. **Agents must load the relevant resource based on the task need:**
@@ -94,11 +113,11 @@ To keep this operational contract dense while providing deep technical craft, sp
 |---|---|
 | *"CI is too slow; let's skip checks for this PR."* | **Refutation:** Optimize the pipeline (caching, parallel jobs, path filtering). A 5-minute pipeline prevents hours of production debugging. Skipping checks breaks production. |
 | *"This change is trivial (one line), skip CI."* | **Refutation:** Trivial changes frequently break builds (syntax errors, missing commas, broken imports). CI is fastest on trivial changes anyway. |
-| *"The test is flaky; just re-run the pipeline until it turns green."* | **Refutation:** Flaky tests mask real regressions and erode team trust. Quarantine the test with a tracked issue or fix the race condition; never blind-rerun. |
+| *"The test is flaky; just re-run the pipeline until it turns green."* | **Refutation:** Flaky tests mask real regressions and erode team trust. Preserve the failing attempt and test a specific cause. Any quarantine needs an explicit change to the gate contract and a tracked exit condition. |
 | *"We'll add CI and automated checks later when the feature is ready."* | **Refutation:** Projects without CI accumulate broken states from day one. Retrofitting CI onto an unstable codebase takes 10x more effort than starting with it. |
 | *"Manual testing in the browser is enough."* | **Refutation:** Manual testing does not scale, is not reproducible, and cannot catch subtle regression side-effects across untested modules. |
 | *"Just add `@ts-ignore` or `eslint-disable` to unblock merge."* | **Refutation:** Suppressing the warning silences the diagnostic alarm without fixing the defect. Fix the underlying type or interface contract. |
-| *"The test database doesn't need secrets; hardcoding is fine."* | **Refutation:** Hardcoded credentials leak into logs and build artifacts, and encourage unsafe credential reuse. Always use environment variables or secret vaults. |
+| *"The test database doesn't need secrets; hardcoding is fine."* | **Refutation:** Hardcoded credentials leak into logs and build artifacts, and encourage unsafe credential reuse. Keep real credentials in secret storage and scope public test values to disposable fixtures. |
 
 ---
 
@@ -127,7 +146,12 @@ Authorized reversible local edits and checks may continue. This skill grants no 
 
 ## Output and Verification
 
-Return the concrete artifact/decision, source/evidence identifiers, exact relevant commands and results, unresolved risks, and NEXT ACTION in the existing Andino ticket. Offline dependency/gate execution model; hosted CI, branch protection rules, and remote deployments remain unverified unless confirmed with explicit evidence.
+Return the change and its repository basis. For gate changes, list each gate's
+trigger, command, required check name, and downstream dependency. For triage,
+list the failing attempt, first failing step, supported cause or open hypothesis,
+and targeted reproduction. Report commands and observed results separately for
+local checks, hosted CI, merge enforcement, and deployment. Include run/attempt
+and commit identifiers where available and record the next action in the ticket.
 
 ---
 

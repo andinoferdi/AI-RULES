@@ -9,7 +9,7 @@ This guide provides deep technical craft, architectural patterns, and operationa
 While syntax varies across CI/CD providers (GitHub Actions, GitLab CI, Buildkite, CircleCI), the core architectural invariants of quality automation remain universal:
 
 1. **Deterministic Local Parity:** Every automated check executed in remote CI must be runnable locally by developers and AI agents using standard project commands (e.g. `npm run lint`, `npm test`, `npm run build`).
-2. **Directed Acyclic Graph (DAG) Execution:** Stages must adhere to strict dependency order: inexpensive static gates run first; heavy integration and builds run only after static checks pass. A failure in an ancestor gate strictly blocks downstream jobs.
+2. **Directed Acyclic Graph (DAG) Execution:** Order real dependencies explicitly. Run independent gates concurrently when runner capacity and measured latency justify it. A failed required ancestor blocks promotion.
 3. **Fail-Closed Gate Enforcement:** Any unhandled error, failing exit code, or unmet threshold fails the job immediately. Never allow `continue-on-error: true` on critical quality gates.
 4. **Isolated Ephemeral Environments:** Every job runs in a clean, isolated container or virtual machine. Tests requiring database or cache services must use isolated service containers, not shared remote staging instances.
 5. **Immutable Build Artifacts:** Build once, deploy across stages. Never recompile the application binary or bundle between staging and production; promote the identical compiled artifact.
@@ -18,30 +18,37 @@ While syntax varies across CI/CD providers (GitHub Actions, GitLab CI, Buildkite
 
 ## 2. CI Optimization & Performance Tuning
 
-When the CI pipeline duration exceeds **10 minutes**, developer feedback loops degrade and AI agents suffer prolonged cycle latency. Apply these optimization strategies in strict hierarchical order of impact:
+Measure queue time and job duration on comparable runs and identify the critical
+path. Choose one change against that bottleneck and compare results under similar
+runner and cache conditions. Cache the package-manager store using lockfile-aware
+keys for repeated installs. Split independent work or shard slow suites when
+runner capacity outweighs added startup cost. Move only checks explicitly
+classified as advisory to scheduled runs.
 
-```text
-Pipeline Exceeds 10 Minutes?
-    │
-    ├── 1. CACHE DEPENDENCIES
-    │   └── Cache package manager store (npm, pnpm, yarn, pip), NOT node_modules or venv.
-    │
-    ├── 2. PARALLELIZE INDEPENDENT JOBS
-    │   └── Split monolithic jobs into concurrent jobs: lint, typecheck, test, and build run in parallel.
-    │
-    ├── 3. PATH-BASED CONDITIONAL EXECUTION
-    │   └── Skip documentation-only PRs from running backend integration or browser E2E suites.
-    │
-    ├── 4. MATRIX BUILDS & TEST SHARDING
-    │   └── Shard long-running test suites across N parallel runners:
-    │       strategy: { matrix: { shard: [1, 2, 3, 4] } }
-    │
-    ├── 5. TEST SUITE OPTIMIZATION
-    │   └── Relocate slow, non-critical integration tests or nightly benchmarks to scheduled runs.
-    │
-    └── 6. RUNNER SIZING
-        └── Scale to GitHub-hosted larger runners or dedicated self-hosted runners for CPU/RAM heavy builds.
-```
+### Preserve required check identity
+
+1. Record the exact emitted check name, expected provider, relevant trigger, and
+   rule and release consumers. Preserve the public name when only internal jobs
+   need renaming. If the public name must change, emit both names, observe the
+   new check on a representative commit, then coordinate the consumer switch
+   before retiring the old check.
+2. Keep the required workflow eligible on every protected event, including
+   `merge_group` where a GitHub merge queue uses it. Filter optional work inside
+   the workflow. Treat classification errors and uncertain diffs as requiring
+   the checks or failing the gate.
+3. If a required GitHub job aggregates dependencies, give it `needs` and
+   `if: ${{ always() }}`. Evaluate each dependency's result explicitly. Accept
+   `success` or an explicitly permitted `skipped` backed by a successful
+   eligibility decision. Fail on failure, cancellation, missing evidence, or
+   an unexpected skip. Make release consumers depend on the aggregate and any
+   required build and artifact checks. A docs-only merge pass does not establish
+   that a deployable artifact exists.
+4. Observe a code pass, controlled code failure, and eligible docs-only change.
+   Confirm the check is emitted for the commit GitHub evaluates and that the
+   configured rule blocks merge on failure. Local simulations cover decision
+   logic only.
+
+[GitHub required-check troubleshooting](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks)
 
 ### High-Impact Pattern: Caching & Parallel Job Splitting
 
@@ -91,7 +98,7 @@ Production Secrets  → Stored in Production Cloud Platform / KMS (Never accessi
 ```
 
 ### Golden Rules for Secrets:
-1. **Never Hardcode Credentials:** Even for throwaway local test containers, reference variables from environment configurations or GitHub Secrets.
+1. **Separate fixtures from credentials:** Public, disposable test values can be declared with the fixture. Store credentials for external or persistent systems in secret storage.
 2. **Restrict Fork Permissions:** Never expose production secrets to pull requests originating from public forks. Use `pull_request_target` only with extreme caution and never with an unreviewed checkout.
 3. **Audit Log Masking:** Ensure sensitive tokens are registered as secrets so the CI runner automatically masks them with `***` in execution logs.
 
@@ -100,7 +107,7 @@ Production Secrets  → Stored in Production Cloud Platform / KMS (Never accessi
 ## 4. Release & Deployment Strategies
 
 ### A. Ephemeral Preview Deployments
-Every active pull request should generate an isolated preview environment. This allows stakeholders, designers, and automated browser agents to verify visual and interactive state before merging to `main`.
+Use an isolated preview when the repository needs one and the event and code are trusted for its credentials. Keep fork verification on the unprivileged CI path. This allows stakeholders, designers, and automated browser agents to verify visual and interactive state before merging to `main`.
 
 ### B. Feature Flags: Decoupling Deployment from Release
 Feature flags allow code to be continuously merged to `main` and deployed to production without immediately exposing unfinished features to users:
