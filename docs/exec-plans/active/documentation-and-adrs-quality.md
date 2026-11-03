@@ -1,7 +1,7 @@
 # Documentation and ADR quality
 
-Status: IN_PROGRESS
-Current phase: Setup distribution
+Status: DONE
+Current phase: Delivered
 Base: workflow 8ecb810, main d6aa6fa.
 
 ## Decisions
@@ -45,7 +45,7 @@ and execution. The Addy guide also gives a full README and OpenAPI specimen.
 
 ## T2 — Setup distribution
 
-Readiness: READY. Dependencies: T1. Status: IN_PROGRESS.
+Readiness: READY. Dependencies: T1. Status: DONE.
 
 Commit and push the skill and checkpoint to `origin/andino-workflow`. In an
 isolated worktree from `origin/main`, update
@@ -56,6 +56,18 @@ Codex project roots for bundled and latest. Compare both installed entrypoints
 and worked example against the workflow source, normalizing CRLF only.
 Commit and push the manifest. Record exact setup evidence here.
 
+Evidence: Skill revision `3dab36db3432a4d33aaedfb526d5b2e5dc249217`
+was pushed to `andino-workflow`. Both `bundled` and `latest` setup completed
+with three installations and zero failed or blocked targets in disposable
+Codex projects. Each source installed six matching files across the native
+and nested copies, with CRLF normalized.
+
+Main advanced during setup. Rebased the publication change by rebuilding the
+manifest edit from `1af1734`, verifying that its workflow pin was an ancestor
+of the ADR revision, and rerunning the bundled setup at sequence 30. The
+verified manifest was pushed to `main` at `0a3ae18`. The package comparison
+covers installation, not fresh-session discovery or model output quality.
+
 ## NEXT ACTION
 
-Publish the scoped workflow change, then verify and publish its setup pin.
+None. Delivery complete.
