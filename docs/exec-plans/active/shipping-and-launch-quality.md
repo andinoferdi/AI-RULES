@@ -1,7 +1,7 @@
 # Shipping and launch quality
 
-Status: IN PROGRESS
-Phase: Publication
+Status: DONE
+Phase: Verified publication
 
 The accepted direction preserves the member layout, offline checker, repository evidence and authorization boundaries. Keep distribution on the existing latest setup path.
 
@@ -31,6 +31,10 @@ Direct walkthrough of the instructions before editing:
 
 This was a direct walkthrough against the same scenario and rubric for each source. It did not run independent model sessions. Both existing Python fixture variants returned the expected JSON. Entry points share the same procedure, relative links resolve and Git whitespace checks passed.
 
+## Publication evidence
+
+Skill commit `b38cc4e` was pushed to `origin/andino-workflow`. A fresh project-scope Codex setup with `--source latest` installed all three targets with zero failures or blocks. The four shipping skill files matched in both the native and nested member installations after line-ending normalization. This verifies distribution; native session discovery was outside the smoke test.
+
 ## NEXT ACTION
 
-Push the scoped commit and verify isolated latest setup against the published files.
+None. The latest setup source includes the published improvement.
