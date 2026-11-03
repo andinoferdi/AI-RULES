@@ -37,13 +37,30 @@ Use actual available host tools and repository commands. Required external capab
 
 ## Procedure
 
-1. Map authors/trust boundaries (requests, uploads, API/queue/LLM output, local filenames/process arguments), name assets and run STRIDE per boundary. Trust follows who wrote the value, not whether the OS delivered it. Write abuse cases beside legitimate use cases and prioritize exploitable impact.
-2. Validate allowlisted shape/range/length at external edges; parameterize SQL/NoSQL/shell boundaries, encode framework output; raw HTML needs vetted allowlist sanitization. Authenticate and authorize every protected resource/tenant, not just the route. Session cookies need bounded expiry, httpOnly/secure/sameSite policy; secrets never enter logs/diffs. Existing approved auth scope avoids redundant confirmation.
-3. SSRF: allowlist HTTPS scheme/host/port, reject credentials, resolve ALL A/AAAA and reject nonpublic/reserved ranges; forbid redirects. Rebinding still needs pinned resolution or filtering transport for high risk. Shape validation alone is not a network boundary.
-4. Destructive derived paths: resolve symlinks then require allowlisted root, strict descendant depth and authenticated ownership evidence read before teardown. Marker alone is self-attestation; integrity protection matters. Path-name check/use can race; immutable hierarchy or descriptor-relative no-follow operations are needed under adversarial concurrency. Refuse safely, never fallback to broader root. Example performs no deletion.
-5. Locate installation/workspace boundary, corroborate manager/version, authoritative lockfile and CI; competing files/conflicts require resolution. Block install scripts before first execution, inspect exact pending version/source, approve narrow native policy and verify clean frozen install. Native audit known advisories; triage runtime/build/test/deploy reachability and dated deferrals. No automatic force-fix; review changelog/transitives/provenance/typosquat risks.
-6. Classify personal fields, minimize stated purpose, define retention and actual export/deletion across stores/cache/index/backups; third-party sharing needs applicable consent/contract authority. Verify current jurisdiction-specific requirements when used, don't treat snapshot prose as legal advice.
-7. LLM output is untrusted: parse/schema/encode, enforce tools in code, isolate tenants/RAG, exclude secrets, cap tokens/rate/recursion and confirm destructive acts under Andino authority. Output exploitable findings with location/scenario/mitigation and abuse-test evidence. No disabled controls or fabricated scanner results.
+1. Scope the review or change. Identify exposed entry points, protected assets,
+   identities, tenants and deployment assumptions. For each changed boundary,
+   trace the value from its writer through parsing and permission checks to the
+   read, write, fetch or execution it can trigger. Process arguments, queue
+   messages and model output can carry attacker-controlled values.
+2. Write one legitimate case and one reachable abuse case per material
+   boundary. Use STRIDE where it helps find missing cases. Record what an
+   attacker needs, the effect, and which control should stop it. Follow real
+   callers and alternate entry points before rating severity.
+3. Apply the controls that match the traced effects. Use the relevant section
+   of the [hardening patterns](resources/hardening-patterns.md) for a concrete
+   check. Validate once at the boundary and use only parsed values. Enforce
+   authorization where the protected effect occurs, including tenant and object
+   ownership. Keep credentials and raw sensitive inputs out of evidence.
+4. In an authorized fix, enforce the smallest shared guard that protects the
+   affected entry points and preserves legitimate calls. For a review, give the
+   first concrete fix and the test that would prove it. Verify allowed and
+   denied cases through the normal entry point in a controlled environment.
+   Check that rejection prevents the protected effect, including queued writes
+   or outbound connections. Separate observed behavior from code inference.
+5. Report confirmed findings in severity order. Base severity on reachability,
+   attacker prerequisites and impact. Keep suspected issues separate and name
+   the missing evidence. Carry unresolved risks and the next action into the
+   existing Andino checkpoint.
 
 ## Local resources
 
@@ -55,7 +72,17 @@ Authorized reversible local edits/checks may continue. This guide grants no bran
 
 ## Output and verification
 
-Return the concrete artifact/decision, source/evidence identifiers, exact relevant commands/results, unresolved risks and NEXT ACTION in the existing Andino ticket. Check acceptance against current bytes/actions; do not claim completion from a checklist alone. Real resolved-path/ownership and parameterized SQLite checks; no destructive call, attacker race simulation, SSRF network or live scanner/auth/privacy proof.
+For each material finding give **severity and confidence**, **location and
+entry point**, **attacker prerequisites and impact**, **specific fix**, and
+**verification**. Include test inputs as sanitized shapes or synthetic IDs.
+State which checks ran, their observed result, and any scope left unverified.
+If no findings are confirmed, state which boundaries and cases were examined.
+
+A passing check supports only the boundary and environment it exercised. The
+offline example checks resolved paths, synthetic owner markers and parameterized
+SQLite. It exercises no destructive call, race, network, live scanner or
+production authorization. See the [worked finding](resources/hardening-patterns.md#worked-finding)
+for the expected level of evidence.
 
 ## Operational example (offline)
 
