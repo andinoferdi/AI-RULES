@@ -8,6 +8,14 @@ from ai_rules.domain.models import Host, HostDetection, Operation, VerificationC
 from ai_rules.domain.statuses import DetectionStatus, Mechanism, ReconciliationAction, Scope, VerificationOutcome
 
 
+HOST_COMMANDS = {
+    "codex": "codex",
+    "claude-code": "claude",
+    "opencode": "opencode",
+    "antigravity-cli": "agy",
+}
+
+
 @dataclass(frozen=True)
 class StaticHostAdapter:
     host: Host
@@ -18,12 +26,7 @@ class StaticHostAdapter:
         return self.host.id
 
     def detect(self) -> HostDetection:
-        command = {
-            "codex": "codex",
-            "claude-code": "claude",
-            "opencode": "opencode",
-            "antigravity-cli": "agy",
-        }.get(self.host.id)
+        command = HOST_COMMANDS.get(self.host.id)
         path = shutil.which(command) if command else None
         status = DetectionStatus.PRESENT if path else DetectionStatus.UNKNOWN
         reason = None if path else "host command not found; file-based planning remains available"
