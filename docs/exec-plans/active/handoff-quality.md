@@ -1,8 +1,11 @@
 # Portable handoff quality
 
-Status: IN_PROGRESS  
-Depth: STANDARD  
-Current Phase: Publish and install  
+Status: DONE
+
+Depth: STANDARD
+
+Current Phase: Complete
+
 Base: `a6b876482eedea7198dbf579fc2235a23484d86d`
 
 ## Executive Snapshot
@@ -26,7 +29,7 @@ check. Keep the existing authorization, drift and single-checkpoint rules.
 | --- | --- | --- |
 | Audit | DONE | Executed the original example in a temp directory and inspected the generated handoff. Compared upstream portability, phase selection and context curation. |
 | Author and verify | DONE | Existing handoff oracle passed. Native and nested procedure/output sections matched. The check passed at both roots and failed on the missing patch at the relocated root. The blocked variation was reviewed as a written scenario. |
-| Publish and install | IN_PROGRESS | Push the workflow branch, run latest setup for an isolated Codex project, compare installed content. |
+| Publish and install | DONE | Pushed `6757d66`. Default `ai-rules setup` installed all three targets in a disposable Codex project. Readback matched both installed entrypoints and their worked example, including the nested guide. |
 
 ## Change specification
 
@@ -44,5 +47,10 @@ check. Keep the existing authorization, drift and single-checkpoint rules.
 
 ## NEXT ACTION
 
-Push the reviewed workflow change, then run latest setup for an isolated Codex
-project and compare the installed entrypoints and worked example with source.
+None. Task complete.
+
+## Verification limits
+
+Review was performed in the authoring session. The fixture and installation
+checks cover artifact usability and distribution. Relative live model quality,
+native activation, and frozen release builds were outside those checks.
