@@ -8,7 +8,7 @@ Bind each status claim to actual complete observations and tested state.
 
 ## Trigger and non-trigger
 
-Use when: About to report fixed/passing/complete or accept worker output.
+Use when: About to claim success, accept delegated work, hand off a completed task, or deliver verified work.
 
 Do not select for: No change/claim needing proof; do not rerun unchanged checks ritualistically.
 
@@ -18,12 +18,31 @@ Map claim/current artifact to accepted criteria and existing valid evidence.
 
 ## Procedure
 
-1. Map claims to proving observation: regression, suite, build, lint, security, interaction or review. Lint cannot prove build/user flow.
-2. Pin relevant bytes/state and run missing/stale checks with native commands. Capture command/environment/exit/result and safe log location.
-3. Read relevant output and named baseline failures. Zero exit with no cases or skipped scope is not success; distinguish failed/passed/not checked.
-4. Test regression sensitivity using isolated faulty copy/mutation. Inspect actual delegated changes and integration evidence, not only self-report.
-5. Invalidate affected evidence after bytes/state change. Reuse unaffected evidence; broaden checks only for new risk/failure.
-6. Report exact scope/results/limits. Lists of test names or requirements are indexes, not proof.
+**Require current proof for every success claim.** Apply this gate before reporting
+success, accepting delegated work, handing off a completed task, or taking an
+authorized delivery action. Apply it again to claims about the delivery result.
+
+1. **Choose proof.** Name the claim, its acceptance criterion, and the command
+   or observation that could establish it. For task completion, cover each
+   required criterion. For delegated work, inspect the actual diff and verify
+   the integrated result. For regression sensitivity, confirm the expected
+   failure in an isolated faulty copy and the pass with the fix.
+2. **Check currency.** Identify the artifact, inputs, environment, and scope
+   the evidence covers. Reuse a prior result when those conditions and any
+   required freshness window still match. Rerun affected checks when they
+   change or cannot be established.
+3. **Run and read.** Execute the complete check for the intended scope. Inspect
+   the exit status, exercised cases, assertions, failures, and skips. A zero
+   exit with no relevant cases leaves the claim unverified. Name any observed
+   baseline failures and show the comparison that establishes them.
+4. **Decide and report.** If the observation proves the criterion, report the
+   supported scope and result. If it fails, report the observed failure. If
+   evidence is missing, partial, or unavailable, state the exact unverified
+   scope and what would establish it. Withhold completion while any required
+   criterion lacks passing evidence.
+
+Record the command or action, working environment, tested identity, outcome,
+and relevant exclusions. See the supporting contract for claim-specific checks.
 
 ## Ownership
 
