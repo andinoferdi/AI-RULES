@@ -1,6 +1,6 @@
 # Session diagnostics report quality
 
-Phase: execution. Scope: report quality, verification and public setup.
+Phase: complete. Scope: report quality, verification and public setup.
 
 Decision: use a complaint-led report with a compact answer for one event and a
 structured report for multiple events or an explicitly requested report. Keep
@@ -52,4 +52,20 @@ model-run scores or general quality parity claim. T1 artifact review found
 the same output and verification instructions in the native and nested
 entrypoints. `git diff --check` passed in the runtime worktree.
 
-NEXT ACTION: commit and publish the reviewed runtime, then advance the stable setup pin and verify a fresh installation.
+T2: runtime `f06888212814f68a95ed7711f8a2a4aff9662cab` was pushed to
+andino-workflow. Main `b3ad4d230c45300ea13801b567b88814a1ab1e35` published
+stable sequence 34 with the reviewed pin and unchanged sibling pins. The new
+workflow pin also includes intervening commits already on the remote workflow
+branch. Original worktrees were left intact.
+
+Fresh public-source Codex project setup ran in the isolated release worktree
+with `python -m ai_rules setup --host codex --scope project --project-root
+<temporary-project> --state-dir <temporary-state> --capability andino-workflow
+--yes --non-interactive`. Exit 0, three installs, zero failures. The installed
+native entrypoint and report resource matched the reviewed source after CRLF
+normalization. Installed SHA-256 for report.md:
+`373ea595175dac49b9feb4538df568667526d1deeb7d16ff0467686d02262899`.
+This verifies installation and file content. Native invocation and independent
+model performance were outside the executed checks.
+
+NEXT ACTION: None — delivery complete.
