@@ -1,6 +1,6 @@
 ---
 name: andino-brainstorming
-description: Explore ambiguous goals, relentlessly grill decision frontiers, capture in-flight ADRs and domain glossaries, and produce builder-ready designs before implementation. Operates under Andino Workflow governance.
+description: Use for ambiguous goals, unclear success criteria, open product or architecture decisions, or requests to interview, grill or stress-test a design.
 ---
 
 # Brainstorming: Explore, Grill & Refine Decisions
@@ -39,69 +39,54 @@ Inspect repository code, configs, and recent commits for discoverable facts befo
 
 ## Procedure
 
-1. **Hypothesis & De-buzzwording**: State a 1-sentence hypothesis of desired intent with an explicit confidence score. If `<70%`, state missing variables. Decompose buzzwords ("scalable", "flexible", "intuitive") into falsifiable criteria. Read repo facts directly; never ask users for discoverable code details.
-2. **Three-Path Classification**: Announce path aloud before proposing solutions:
-   - **Spike**: Feasibility probe (*"Can we..."*). 2-sentence plan, quick nod, throwaway output. No spec or ADR.
-   - **Bounded**: Scoped edit to an existing flow. Short in-chat design (approach, touched files, test assertion). **STOP and wait for explicit approval**.
-   - **Architectural**: New subsystems, altered interfaces, or cross-cutting boundaries. Full grilling, trade-off matrix, lazy ADR, and formal written spec. For multi-session efforts with branching decisions, select [decision-frontier](resources/decision-frontier/guide.md) to chart the map and manage the fog of war. Complexity ratchet is one-way: escalate upon discovering hidden scope.
-3. **Frontier Grilling with Reasoned Defaults**: Probe only unblocked nodes on the decision DAG. Present **one** question at a time, paired with a recommended default (*"Recommended default: [Option A] because [reason]. Reply 'agree' or steer"*). Cap sequential questions at 3. If user replies are terse (`<10` words), trip the **Fatigue Breaker**: halt questioning and present remaining defaults in a table for bulk confirmation.
-4. **Lazy Documentation & Predictability Exit**: Terminate upon frontier exhaustion or **3-Question Predictability** (>90% confidence in predicting next 3 answers). Emit:
-   - **Builder-Ready Design Spec**: Context, components, failure modes, acceptance targets.
-   - **In-Flight ADR**: Context, chosen approach, alternatives rejected, and floor invariants.
-   - **Domain Glossary**: Ubiquitous terms, anti-terms (synonyms to avoid), and code mappings.
+1. **Ground the intent.** Inspect the relevant code, configuration and project vocabulary. Play back the likely outcome, who benefits and the constraint that matters, using the user's terms. Distinguish observed facts from your assumptions. Translate vague goals into observable behavior. When the goal itself is unclear, offer a tentative interpretation and ask about the outcome before choosing technology.
+2. **Choose a path.** Use a **Spike** for a feasibility question, **Bounded** for a scoped change to an existing flow, and **Architectural** for new subsystems or changed boundaries. Escalate if discovery reveals a wider impact. Explain the practical consequence of the path when it affects what the user needs to decide.
+3. **Resolve the next material decision.** Read the [grilling protocol](resources/grilling-protocol.md). Anchor each turn in a repo finding or the user's last answer. Ask one question whose answer changes the design. Give a revisable recommendation and its reason. When multiple viable approaches remain, explain the concrete trade-off between them. Accept a clear short answer and recompute which decisions are ready to discuss.
+4. **Play back and confirm.** Summarize settled decisions when they change the design, after three questions on the same branch, or when the user asks to accelerate. Separate confirmed decisions, delegated choices and open decisions. Offer defaults for independent choices when useful. Material open decisions stay open until answered or explicitly delegated. Ask the user to confirm the resulting design before starting production work. Reuse design confirmation and downstream authorization already given for the same scope.
 
-<HARD-GATE>
-Zero production code, scaffolding, or dependency installation before explicit user consensus on the design. Conversational design approval permits writing the spec; written spec approval permits invoking `andino-planning`.
-</HARD-GATE>
+## Outputs, verification and handoff
 
-## Anti-Rationalization Refutations
+| Path | Output | Handoff |
+| --- | --- | --- |
+| Spike | Question, success signal, and a short throwaway probe plan. Report the observation and its design implication. | Obtain authorization for the probe. Use the result to resolve the design question. |
+| Bounded | Short design with the intended behavior, affected area and an observable acceptance check. | Confirm the design, then continue through the authorized execution route. |
+| Architectural | Builder-ready design covering goal, scope, component boundaries, failure behavior and acceptance scenarios. Capture a consequential decision in an ADR and ambiguous domain terms in a glossary when they affect the build. | Confirm the written design, then hand off to `andino-planning` or `andino-tdd` as appropriate. |
 
-| Rationalization Shortcut | Required Operational Response |
-|---|---|
-| *"Task is obvious; I'll start coding."* | Hard gate: classify path and obtain explicit design consensus before writing code. |
-| *"I'll ask 5 questions in one message."* | Cognitive flooding: ask exactly 1 question on the active DAG frontier with a recommended default. |
-| *"I'll emit full ADR docs mid-conversation."* | Lazy emission: maintain latent models during dialogue; emit formal ADRs only upon design consensus. |
-| *"User gave 1-word answer, so I'll keep probing."* | Fatigue breaker: halt sequential turns, present remaining items in a table with defaults for bulk sign-off. |
-
-## Diagnostic Red Flags (Stop Immediately)
-
-1. Writing or modifying code before obtaining design consensus.
-2. Asking open-ended questions without proposing a reasoned default.
-3. Interrogating users about codebase facts inspectable via search or file tools.
-4. Reciting a static generic checklist instead of traversing the unblocked decision frontier.
-
-## Outputs, Verification and Fallback
-
-Deliver approved Design Specification, ADR-0001, and Domain Glossary. Hand off cleanly to `andino-planning` or `andino-tdd`. In unattended mode, use safe reversible defaults and record missing decisions as blocked.
+If the user is unavailable, document confirmed decisions and reversible proposals
+separately. Identify the unresolved decision that blocks any affected work.
 
 ## Runnable Operational Example
 
-```python andino-operational-example
-import os, sys
+This fixture checks the distinction between resolved prerequisites, a material
+open frontier and design confirmation. It does not measure interview quality.
 
-def evaluate_discovery_turn(path_type, confidence, frontier_unblocked, consecutive_questions, user_word_count):
-    if path_type not in ("spike", "bounded", "architectural"):
-        return {"status": "FAIL", "reason": "Invalid path classification"}
-    if path_type == "architectural" and confidence < 0.70 and not frontier_unblocked:
-        return {"action": "INTERROGATE_INTENT", "gate": "LOCKED"}
-    if consecutive_questions >= 3 or user_word_count < 10:
-        return {"action": "FATIGUE_BREAKER_TABLE", "gate": "LOCKED"}
-    if not frontier_unblocked:
-        return {"action": "EMIT_ADR_AND_SPEC", "gate": "UNLOCKED"}
-    return {"action": "GRILL_FRONTIER_WITH_DEFAULT", "gate": "LOCKED"}
+```python andino-operational-example
+import os
+
+def next_step(decisions, design_confirmed):
+    pending = {name for name, (_, settled) in decisions.items() if not settled}
+    frontier = tuple(
+        name for name, (dependencies, _) in decisions.items()
+        if name in pending and pending.isdisjoint(dependencies)
+    )
+    if pending:
+        return ("ask", frontier) if frontier else ("blocked", ())
+    return ("handoff", ()) if design_confirmed else ("confirm", ())
 
 if __name__ == "__main__":
-    is_neg = os.environ.get("ANDINO_NEGATIVE") == "1"
-    res = evaluate_discovery_turn(
-        path_type="invalid" if is_neg else "architectural",
-        confidence=0.85,
-        frontier_unblocked=False,
-        consecutive_questions=1,
-        user_word_count=20
-    )
-    if is_neg:
-        sys.exit(1 if res["status"] == "FAIL" else 0)
-    sys.exit(0 if res["action"] == "EMIT_ADR_AND_SPEC" and res["gate"] == "UNLOCKED" else 2)
+    decisions = {
+        "roles": ((), True),
+        "sharing": (("roles",), False),
+        "expiry": (("sharing",), False),
+    }
+    assert next_step(decisions, False) == ("ask", ("sharing",))
+    assert next_step(decisions, True) == ("ask", ("sharing",))
+    decisions["sharing"] = (("roles",), True)
+    assert next_step(decisions, False) == ("ask", ("expiry",))
+    decisions["expiry"] = (("sharing",), True)
+    assert next_step(decisions, False) == ("confirm", ())
+    assert next_step(decisions, True) == ("handoff", ())
+    raise SystemExit(1 if os.environ.get("ANDINO_NEGATIVE") == "1" else 0)
 ```
 
 ## Provenance

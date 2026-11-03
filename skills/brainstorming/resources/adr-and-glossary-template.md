@@ -10,7 +10,7 @@ Architectural Decision Records (ADRs) and Domain Glossaries must not be post-hoc
 
 ### The Lazy Emission Rule
 - **During the Dialogue**: Track ADR candidates and emerging domain vocabulary in the agent's latent mental model. Reflect settled decisions succinctly in chat checkpoints.
-- **Upon Design Consensus**: Emit the finalized, structured ADR and Domain Glossary directly into the agreed project directory or append them to the Builder-Ready Design Specification.
+- **Upon Design Consensus**: Persist an ADR for consequential decisions and a glossary for terms whose meaning affects behavior. Use the agreed project location or append them to the design specification.
 - **Anti-Pattern**: Emitting sprawling Markdown document files mid-turn before the user has agreed to the core direction.
 
 ---
