@@ -29,7 +29,11 @@ whose current acceptance evidence is still valid.
 DONE requires current acceptance observations: command/action, directory, exit/result,
 exercised scope, relevant environment, tested identity and limits. Separate expected
 from actual results. Commit ranges identify committed bytes only; hashes or scoped
-snapshots also cover WIP and owned new files. Empty or wholly skipped checks are gaps.
+snapshots also cover WIP and owned new files. Map each criterion to the executed
+assertion or equivalent observation that proves it. A passing aggregate result
+does not establish an omitted or skipped required case. Record that criterion as
+`NOT_VERIFIED` and identify the missing check. Hold work that requires the
+unverified result and continue independent ready work.
 
 Load canonical TDD for behavior changes: meaningful RED, minimal implementation,
 focused GREEN. Import/tool/fixture errors are setup failures. If already GREEN,

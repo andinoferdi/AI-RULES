@@ -17,6 +17,18 @@ Use when: An accepted plan is ready for authorized execution, or interrupted exe
 
 Do not select for: Unresolved product intent, planning-only requests or unapproved redesign.
 
+## Select a resource, not a second lifecycle
+
+Load only the resource matching the current need. A direct resource selection uses
+that procedure and current authority; it does not run this parent's other modes,
+reopen accepted requirements or require a second execution plan.
+
+| Current need | Resource | Exclusion |
+| :--- | :--- | :--- |
+| Direct task coding, bounded unit implementation | [task-implementation](resources/task-implementation/guide.md) | Architectural redesign or exploratory spikes |
+| Vertical-slice progression, end-to-end thin delivery | [vertical-slices](resources/vertical-slices/guide.md) | Horizontal bulk implementation across disconnected layers |
+| Frontend UI components, design tokens, responsive states, a11y | [frontend-engineering](resources/frontend-engineering/guide.md) | Headless backend or pure data-pipeline tasks |
+
 ## Prerequisites
 
 Locate the authoritative plan, accepted requirements and current worktree. Read
@@ -89,8 +101,12 @@ check, and continue independent authorized work. Available tools do not grant au
      Configuration/schema changes affecting runtime behavior need behavioral checks.
      Content checks prove content properties, not future model compliance.
    - **Each required check**: Run with its recorded directory and prerequisites,
-     read output and compare expected values, exercised cases and scope. Empty or
-     wholly skipped test discovery is a gap. Select regression/integration checks
+     read output and compare expected values, exercised cases and scope. For each
+     acceptance criterion, identify the executed assertion or equivalent observation
+     that proves it. If its required case was skipped or never selected, keep that
+     criterion `NOT_VERIFIED` until a required or permitted equivalent check
+     proves it, even when other cases pass. Record the missing check
+     and continue independent ready work. Select regression/integration checks
      by affected behavior, risk and the standing project quality floor; reuse
      unaffected evidence instead of rerunning broad suites after every small step.
    - **Mismatch**: Diagnose code failures with canonical debugging before patching;
@@ -288,13 +304,7 @@ Expected output:
 {"local_drift": {"rerun": ["ui"], "reusable": ["base", "docs"]}, "producer_drift": {"rerun": ["base", "docs", "ui"], "reusable": []}}
 ```
 
----
+## Provenance
 
-## Provenance & Attribution
-
-Adapted from:
-- `mattpocock/skills:skills/engineering/executing-plans` (MIT, Matt Pocock 2026)
-- `addyosmani/agent-skills:skills/incremental-implementation` (MIT, Addy Osmani 2025)
-- `obra/superpowers:skills/executing-plans` (MIT, Jesse Vincent 2025)
-
-Substantive adapted material is covered under the MIT license terms in [references/license.md](references/license.md).
+See the [source and license notices](references/license.md) for the historical
+Matt Pocock reference and the MIT-licensed Addy Osmani and Superpowers sources.

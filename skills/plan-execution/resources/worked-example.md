@@ -45,6 +45,8 @@ Assess decisions rather than keyword mentions.
 | Meaningful test already GREEN | Inspect coverage and preserve satisfied behavior. |
 | RED is import error | Repair setup before claiming behavioral RED. |
 | Exit 0 with zero cases | Keep verification incomplete. |
+| 12 cases pass, but the required CSV quoting case is skipped | Keep quoting `NOT_VERIFIED` and hold consumers that require it. Run the quoting case with its prerequisite or collect equivalent evidence. Record valid evidence for unrelated criteria. |
+| The required behavior is observed through an equivalent check | Record the actual input, output and tested identity. Accept the criterion if the observation covers it and the project allows that check. |
 | Required artifact check unavailable | Exact criterion stays NOT_VERIFIED; continue independent work. |
 | Dirty user file plus owned new test | Preserve user bytes and include owned test in review. |
 | Push authorized earlier | Proceed within scope and verify remote state. |

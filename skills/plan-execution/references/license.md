@@ -3,7 +3,8 @@
 Substantive adapted material in this skill is covered by the following notices:
 
 ## Matt Pocock (skills)
-- **Original Source:** [mattpocock/skills: skills/engineering/executing-plans](https://github.com/mattpocock/skills/tree/main/skills/engineering/executing-plans)
+- **Historical source path recorded by Andino:** `mattpocock/skills:skills/engineering/executing-plans`. The path is absent from the inspected upstream revision.
+- **Verified upstream notice:** [Repository LICENSE at 4ae2317](https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/LICENSE). This verifies the root license at that revision. The historical source revision is unverified.
 
 MIT License
 
