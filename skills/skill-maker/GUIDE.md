@@ -18,6 +18,26 @@ Andino Workflow owns task lifecycle, progress checkpointing, resource guards, an
 
 ---
 
+## Define the brief and the acceptance oracle
+
+Record one representative task and one nearby request where the skill should
+stay inactive. Include the fixture, available tools, user's authority, expected
+deliverable and constraints. Ask only about missing decisions that change the
+deliverable or permitted actions. State assumptions for reversible details.
+
+Specify the observable outputs as an ordered recipe. For each consequential
+decision, record the evidence to inspect, the predicate to apply and the action
+for each outcome. Give the next safe action when evidence or permission is
+missing. Select one worked example that exercises those decisions.
+
+Before seeing the outputs, list required fields, correctness checks and
+forbidden side effects. Score these against what the consumer did and produced.
+For revisions, compare the old and candidate skills on the same task as well as
+the unguided control. Carry forward valid behavior as regression criteria.
+Discovery probes exercise selection and full-body loading separately from
+task performance. See the [comparison cases](resources/worked-examples-and-templates.md#comparison-cases)
+and [evaluation record](resources/contract.md#evaluation-record-fields).
+
 ## 2. Dual-Mode Authoring Lifecycle
 
 Skill creation is structured into two complementary modes, unified by the principle of **Invariance Enforcement**:
@@ -138,7 +158,7 @@ Full subagent runs are token-heavy. Calibrate wording rapidly using single-turn 
 
 ### Evaluation Honesty & Fallback
 - Testing a skill in the author's active conversation is self-review, not independent validation.
-- When an independent evaluator or subagent harness is unavailable in the current host, mark the verification status honestly as `NOT_VERIFIED` with the exact cause (`HOST_UNAVAILABLE`). Never fabricate or assume evaluation passes.
+- When an independent evaluator or subagent harness is unavailable in the current host, mark model behavior as `NOT_VERIFIED` with the actual cause (`HOST_UNAVAILABLE` or `EVALUATOR_UNAUTHORIZED`). Never fabricate or assume evaluation passes.
 
 ---
 

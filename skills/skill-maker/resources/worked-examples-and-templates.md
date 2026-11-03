@@ -4,7 +4,7 @@ Supporting craft protocol for `andino-skill-maker`. Read with [SKILL.md](../SKIL
 
 ## 1. Canonical Template: Elevated Member `SKILL.md` (<150 Lines)
 
-This structural template defines the exact layout required for all member skills in the Andino Workflow ecosystem:
+Adapt this illustrative layout to the member skill. Use the sections that make its decisions and outputs executable.
 
 ````markdown
 ---
@@ -129,3 +129,34 @@ If migration exits with non-zero status or latency spikes > 2x baseline:
 2. Restore traffic routing: `python scripts/traffic_restore.py --all`
 3. Export diagnostic logs: `python scripts/dump_incident_state.py --out /tmp/incident.log`
 ````
+
+## Comparison cases
+
+Run each prompt in fresh contexts with no skill, the current skill and the
+candidate. Keep the fixture and permissions fixed. Give the oracle to the
+reviewer separately. Use a walkthrough to check the written procedure when
+fresh contexts are unavailable, and record model behavior as NOT_VERIFIED.
+
+### Greenfield authoring
+
+> Build a reusable skill for preview deployments. Teams keep asking for a
+> deploy checklist. We have staging and customer preview targets with different
+> approval rules. The target and applicable approval rule have yet to be
+> supplied. You can inspect the repository and draft files. Run no deployment.
+
+Oracle: distinguish the two targets, find their requirements or ask one
+targeted question, and propose an observable approval boundary before writing
+target-specific instructions. Prepare the common checks where possible. A
+spelling correction to an existing checklist should bypass skill creation.
+
+### Remedial authoring
+
+> Improve our release review skill. Its report lists build results and the
+> approver, but three reviews omitted the rollback evidence. Keep both existing
+> report fields and the approval gate. The deadline is in five minutes. The
+> build passed and the approver is Lee. The fixture contains no rollback drill.
+
+Oracle: use a required rollback field and exercise the existing approval gate.
+For the missing-evidence case, require an explicit absence and its consequence.
+For a paired fixture with a rollback record, require a reference to that record.
+Preserve build result and approver, and leave release execution untouched.

@@ -28,7 +28,7 @@ Reject skill creation immediately if ANY condition holds:
 
 ## 3. The 5 Floor Invariants
 
-1. **Iron Law of Verification (TDD for Docs)**: Never author guidance without observing unguided baseline behavior first. If unguided baseline passes, do not add the rule.
+1. **Iron Law of Verification (TDD for Docs)**: Run an unguided baseline before introducing a behavioral rule. If it passes, retain existing guidance. A source walkthrough can justify correcting a demonstrable contract defect, with behavior still NOT_VERIFIED.
 2. **SDO Isolation**: Frontmatter description defines triggering conditions ONLY. Never summarize the internal workflow, or agents will skip reading the skill.
 3. **Match Form to Failure**: Prohibitions for discipline failures under stress; positive recipes for output shaping; structural slots for omissions.
 4. **Zero Nuance Clauses**: Escape clauses (*"unless needed"*) reopen negotiation. Express exceptions as falsifiable branches on observable predicates.
@@ -46,14 +46,36 @@ Reject skill creation immediately if ANY condition holds:
 
 ## 5. Diagnostic Red Flags (Stop Immediately)
 
-1. Writing a skill without running an unguided baseline test.
+1. Treating a walkthrough or metadata check as an observed consumer baseline.
 2. Summarizing internal steps or workflow in the frontmatter `description`.
 3. Using negative prohibitions to fix output structure instead of a positive recipe.
 4. Adding an *"unless..."* or *"except when..."* clause to an operational rule.
 5. Providing three shallow code examples in different languages instead of one deep, runnable example.
 6. Embedding executable shell or code logic inside diagram nodes.
 
-## 6. Progressive Disclosure Router
+## Procedure
+
+1. Write the brief before changing the skill. Name the consumer, task, trigger,
+   near miss, required output and authority boundary. State reversible assumptions
+   and resolve any ambiguity that changes the artifact or permitted action.
+2. Define acceptance before running the task. Specify observable actions,
+   deliverable contents and forbidden side effects. Use the same task, tools and
+   authority for the unguided control, current skill (for revisions) and candidate.
+3. Use the evidence to select the smallest change. For a repeated failure,
+   reproduce it and preserve behaviors that already pass. For a new skill,
+   identify the invariant the unguided control misses. If the controls meet the
+   requirements, retain the existing guidance.
+4. Write the procedure around the consumer's decisions and output. Give exact
+   preconditions, actions, output fields and stop conditions where the cost of
+   guessing is high. Put longer examples and infrequent branches in local
+   resources linked from the step that needs them.
+5. Check discovery, task performance and packaging separately. Probe a trigger
+   and a near miss, inspect completed artifacts against the oracle, and resolve
+   referenced resources from the installed entrypoint when distribution is in
+   scope. If independent trials are unavailable or unauthorized, use a bounded
+   walkthrough to identify contract defects and report behavior as NOT_VERIFIED.
+
+## Resources
 
 - Complete authoring methodology and evaluation craft: [GUIDE.md](GUIDE.md)
 - Skill Discovery Optimization (SDO) and keyword engineering: [resources/sdo-and-discovery-protocols.md](resources/sdo-and-discovery-protocols.md)
@@ -73,11 +95,15 @@ def evaluate_skill_contract(data):
     mode = data.get("mode")
     if mode not in ("remedial", "greenfield"): return {"valid": False, "error": "Invalid mode"}
     name = data.get("name", "")
-    if not re.fullmatch(r"andino-[a-z0-9]+(?:-[a-z0-9]+)*", name): return {"valid": False, "error": "Invalid name"}
+    if not isinstance(name, str) or not re.fullmatch(r"andino-[a-z0-9]+(?:-[a-z0-9]+)*", name): return {"valid": False, "error": "Invalid name"}
     lines = data.get("contract_lines")
     if type(lines) is not int or lines < 1: return {"valid": False, "error": "contract_lines must be positive int"}
     kind = data.get("contract_kind", "strict")
-    if lines >= 150 and (kind != "member" or not str(data.get("craft_exception", "")).strip()):
+    if kind not in ("strict", "root", "member"):
+        return {"valid": False, "error": "Invalid contract kind"}
+    exception = data.get("craft_exception", "")
+    has_exception = isinstance(exception, str) and bool(exception.strip())
+    if lines >= 150 and (kind != "member" or not has_exception):
         return {"valid": False, "error": "Strict contracts require <150 lines"}
     if data.get("has_negative_gates") is not True: return {"valid": False, "error": "Missing negative gates"}
     if data.get("has_sdo_isolation") is not True: return {"valid": False, "error": "Missing SDO isolation"}
@@ -90,7 +116,7 @@ if __name__ == "__main__":
         "mode": "greenfield",
         "contract_lines": 150 if is_neg else 98,
         "has_negative_gates": True,
-        "has_sdo_isolation": not is_neg,
+        "has_sdo_isolation": True,
     }
     result = evaluate_skill_contract(payload)
     if not result["valid"]:

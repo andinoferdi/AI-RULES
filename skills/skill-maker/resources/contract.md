@@ -155,7 +155,7 @@ Independent literal cases for both remedial and greenfield modes:
 
 Missing/zero/negative/non-integer counts, malformed names/modes, non-object
 payloads, nonboolean gates, unknown kinds, and blank/nonstring exceptions are
-invalid rather than interpreter crashes. Default sample `contract_lines` is 88.
+invalid rather than interpreter crashes. Default sample `contract_lines` is 98.
 Run the extracted example normally for exit 0. Set `ANDINO_NEGATIVE=1` to change
 that actual payload to strict 150 and observe exit 1. A source-text replacement
 or an assertion deliberately set false is not a substitute for exercising the
