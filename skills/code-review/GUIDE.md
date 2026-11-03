@@ -137,7 +137,8 @@ When author and reviewer disagree on code changes, resolve the dispute using thi
 ```
 
 **Never Accept:** *"I will clean this up in a follow-up PR."*  
-Historical reality shows deferred cleanups rarely happen. If an issue is important enough to flag, resolve it before merging into main. If an issue truly cannot be addressed in the current scope, require an open issue with self-assignment before merge approval.
+Resolve confirmed blockers before merge. Keep suggestions and nits optional.
+Record agreed follow-ups in the review. Create tracker items when authorized.
 
 ---
 

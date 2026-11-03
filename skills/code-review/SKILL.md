@@ -1,86 +1,99 @@
 ---
 name: andino-code-review
-description: Comprehensive bidirectional 2-axis code review evaluating Spec requirements and Standards quality independently. Operates under Andino Workflow governance.
+description: Use when reviewing a pull request, commit range, branch, work in progress, or agent handoff, or when requesting or responding to code review.
 ---
 
-# Code Review: Dual-Axis Quality Engine
+# Code Review Across Spec and Standards
 
 Internal method ID: `andino-code-review` (alias: `code-review`).
 
 > **Andino Workflow Member Skill**
-> Operates under Andino Workflow governance: proportional investigation, evidence-based decisions, and single durable checkpoints.
-> Anti-loop guard: Do not re-invoke `andino-workflow` recursively; maintain progress within the active task.
+> Use proportional investigation, evidence-based decisions, and one durable
+> checkpoint. Keep the active workflow in control without invoking it again.
 
-```
-                    ┌───────────────────────────────┐
-                    │  PIN SCOPE: BASE..HEAD + W.T. │
-                    └───────────────┬───────────────┘
-                                    │
-                    ┌───────────────▼───────────────┐
-                    │      INSPECT TESTS FIRST      │
-                    └───────┬───────────────┬───────┘
-                            │               │
-       ┌────────────────────▼─────┐   ┌─────▼────────────────────┐
-       │     AXIS 1: SPEC TRACK   │   │  AXIS 2: STANDARDS TRACK │
-       │ Requirements, Edges,     │   │ Security, Fowler Smells, │
-       │ Boundary Oracles, State  │   │ Perf, Architecture, Style│
-       └────────────────────┬─────┘   └─────┬────────────────────┘
-                            │               │
-                            └───────┬───────┘
-                                    │
-                    ┌───────────────▼───────────────┐
-                    │ GRADE: [CRITICAL] [REQUIRED]  │
-                    │        [SUGGESTION] [NIT]     │
-                    └───────────────┬───────────────┘
-                                    │
-                    ┌───────────────▼───────────────┐
-                    │ 1-CYCLE VERIFY / ANTI-DEADLOCK│
-                    └───────────────────────────────┘
-```
+## Trigger and non-trigger
 
-## Trigger and Non-Trigger
-- **Use when:** Reviewing pull requests, feature branches, WIP diffs, uncommitted working tree changes, or verifying subagent task handoffs.
-- **Do not select for:** Conceptual questions with no code diff, or unrequested cosmetic nit hunts on unedited code.
+Review an identifiable change or evaluate feedback about one. Conceptual advice
+and standalone cosmetic cleanup belong outside this procedure. Review mode is
+read-only. Use the reception protocol when asked to act on feedback.
 
-## Prerequisites & Scope Pinning
-Resolve baseline commit (`BASE_SHA=$(git merge-base origin/main HEAD)`) and head commit (`HEAD_SHA=$(git rev-parse HEAD)`). Capture staged, unstaged, and owned untracked files. A review of `HEAD~1..HEAD` alone that omits working tree bytes is invalid.
+## 1. Pin the requested change
 
-## Operational Procedure
-1. **Pin Scope & State:** Record immutable byte boundary (`BASE..HEAD` + untracked files). Log out-of-scope files in the mandatory "Declined to Judge" ledger.
-2. **Read Tests First:** Examine existing and added tests. Identify the behavioral contract, independent oracle, and plausible mutation points.
-3. **Execute Spec Axis:** Map every acceptance requirement to implementation logic. Report missing, partial, or inverted behaviors citing exact `file:line` locations and failure inputs. Spec silence does not waive user invariants.
-4. **Execute Standards Axis:** Inspect code against local standards and the 5 quality dimensions (Correctness, Readability, Architecture, Security, Performance). Audit against `resources/checklists.md` and map design smells to named structural remedies.
-5. **Grade Findings & Formulate Remedies:** Categorize comments using explicit prefixes: `[CRITICAL]` and `[REQUIRED]` (blockers), `[SUGGESTION]` and `[NIT]` (non-blocking, max 3 nits/pass). Pair every defect with an explicit structural remedy.
-6. **Enforce 1-Cycle Reception Guard:** The author must verify findings before implementing. If a finding is inaccurate, the author issues exactly one technical pushback with evidence. If disputes persist, escalate to user/coordinator—never loop in multi-turn debate.
+| Request | Review boundary |
+| --- | --- |
+| Commit or explicit endpoint comparison | Resolve the supplied endpoints to SHAs and inspect `git diff <base> <head>`. For one commit, use its requested parent comparison or the corresponding patch. |
+| Branch or pull request | Resolve target and head to SHAs and compare their merge base to head. Use the PR target when known. |
+| Work in progress | Capture the requested staged and unstaged layers plus in-scope untracked source. Include committed branch changes when the requested scope includes them. |
+| Pasted diff or excerpts | Review the supplied bytes and report the unavailable context that affects the verdict. |
 
-## Rationalization Refutation Table
-| Common Agent Excuse | Reality & Operating Invariant |
-|---|---|
-| *"The diff is small, so I can skip the Spec Axis."* | Small diffs often introduce critical boundary regressions. Run both axes without exception. |
-| *"I'll review HEAD~1 instead of checking untracked files."* | New features often contain uncommitted files. Pinning working tree and untracked files is mandatory. |
-| *"The code is clean, so the requirements must be met."* | Clean, elegant code frequently implements the wrong requirement. Keep the two axes strictly isolated. |
-| *"I will implement all reviewer suggestions immediately."* | Performative sycophancy. Verify every comment against codebase reality before touching code. |
-| *"I'll debate the reviewer until they agree with me."* | Reception deadlock. Limit technical pushbacks to 1 cycle backed by test evidence, then escalate. |
-| *"I will add a generic plugin registry just in case."* | YAGNI violation. Reject speculative generality unless three distinct consumers already exist. |
-| *"I'll leave dead code in case we need it later."* | Dead code degrades context. Flag orphaned functions and obsolete compatibility shims for deletion. |
+For WIP, use `git diff --cached`, `git diff`, and
+`git ls-files --others --exclude-standard` to identify the layers. Read the
+included untracked files. Inspect the final effective content as well as
+layer-specific changes when the request calls for them. Keep local changes
+outside a committed-only verdict. Distinguish out-of-scope material from
+in-scope bytes you could not inspect. Resolve ambiguous boundaries from the
+request and repository; ask when competing boundaries would change the review.
+Report an empty diff or unresolved ref before issuing a verdict.
 
-## Diagnostic Red Flags
-1. Review approved without inspecting tests or formulating mutation oracles.
-2. Spec and Standards verdicts conflated into a single unstructured comment block.
-3. Critical security or correctness findings softened into optional suggestions.
-4. Reviewer mutating files or switching git branches during review (violating read-only boundary).
-5. Untracked files omitted from review scope snapshot.
-6. Reviewer providing vague critique ("this is messy") without a Named Structural Remedy.
-7. Author submitting performative sycophantic praise ("You're absolutely right!").
-8. Author and reviewer looping across multiple cycles debating aesthetic preferences.
-9. Cosmetic nits exceeding 3 items, overwhelming author attention.
-10. Large diff ($>400$ lines) reviewed without suggesting decomposition strategies.
+## 2. Establish evidence and review both axes
 
-## Companion Resources
-- **Deep Craft Manual:** Read [GUIDE.md](GUIDE.md) for change sizing, splitting strategies, the 12 Fowler smells catalog, and dispute hierarchies.
-- **Technical Checklists:** Read [resources/checklists.md](resources/checklists.md) for STRIDE threat modeling, path containment, SQL injection, and database indexing.
-- **Agent Protocols:** Read [resources/agent-review-protocols.md](resources/agent-review-protocols.md) for subagent dispatch templates, "Spec is a vision document", and anti-sycophantic receiving rules.
-- **Worked Example & Verification:** Read [resources/worked-example.md](resources/worked-example.md) for end-to-end pull request walkthroughs and zero-dependency Python verification suite.
+1. Locate the task, acceptance criteria, existing contracts and applicable
+   repository standards. Read the affected tests early. Identify what each
+   relevant test actually observes and which bad implementation could pass it.
+2. **Spec.** Trace requirements to implementation and tests. Check preserved
+   caller behavior, boundaries, failure paths and state transitions. When an
+   originating spec is missing, mark feature acceptance unverified and assess
+   the behavior supported by existing contracts.
+3. **Standards.** Evaluate correctness, readability, architecture, security and
+   performance in proportion to the change. Follow affected callers or data
+   across boundaries to verify reachability. Use the [checklists](resources/checklists.md)
+   for relevant risks and the [guide](GUIDE.md) for structural remedies and
+   splitting a review by coherent behavior.
+4. Before reporting a candidate issue, check whether a caller, guard, contract
+   or test already resolves it. Tie it to a changed behavior or a pre-existing
+   issue made reachable or materially worse by the change. Distinguish a
+   confirmed defect from missing evidence. Name a focused reproduction or
+   regression assertion when it would resolve uncertainty or prevent recurrence.
+
+## 3. Report and reconcile
+
+- **Scope.** State the reviewed snapshot and the applicable requirement sources.
+- **Findings.** Order by severity and label each with its primary axis. Report
+  one finding per root cause and cross-reference the other axis when affected.
+  Use a changed `file:line` or nearest available anchor, concrete trigger,
+  consequence, supporting evidence, and the smallest practical remedy.
+  Say when there are no actionable findings.
+- **Axis verdicts.** Give Spec and Standards each a verdict of `PASS`, `FAIL`,
+  or `UNVERIFIED`. A confirmed blocker fails its affected axis. A material
+  evidence gap without a confirmed blocker leaves the affected axis unverified.
+  Overall, use `CHANGES REQUESTED` for blockers, `UNVERIFIED` for remaining
+  material gaps, or `NO BLOCKERS FOUND` for completed coverage without blockers.
+- **Verification and limits.** Separate tests inspected, checks actually run,
+  and results reported by others. Identify any evidence needed for a verdict.
+- **Declined to Judge.** Record material exclusions and why they were excluded,
+  or state that there were none.
+
+| Prefix | Impact |
+| --- | --- |
+| `[CRITICAL]` | Blocker involving severe harm such as an exploitable security break or unrecoverable data loss. |
+| `[REQUIRED]` | Blocker involving a concrete regression, unmet requirement, or enforceable project rule. |
+| `[SUGGESTION]` | Optional improvement with a specific benefit and proportionate remedy. |
+| `[NIT]` | Optional cosmetic correction. Cap at three per review. |
+
+## 4. Request or receive review
+
+Use the [agent protocols](resources/agent-review-protocols.md) to hand over
+the pinned snapshot or verify feedback. Independent review is conditional on
+the applicable delegation contract and authorization. Verify a finding and its
+proposed remedy against current code before editing. Give one evidence-backed
+pushback on a disputed item, then escalate a persistent dispute.
+
+## Companion resources
+
+- [Deep craft and structural remedies](GUIDE.md)
+- [Technical checklists](resources/checklists.md)
+- [Review handoff and reception](resources/agent-review-protocols.md)
+- [Worked example and verification](resources/worked-example.md)
 
 ## Ownership and Provenance
 Andino coordinates selection, progress tracking, and durable checkpoints. This skill owns its execution procedure and verification criteria.
