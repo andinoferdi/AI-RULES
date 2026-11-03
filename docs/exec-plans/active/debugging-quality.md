@@ -1,6 +1,6 @@
 # Debugging skill quality
 
-Branch: andino-workflow. Status: IN_PROGRESS. Phase: execution.
+Branch: andino-workflow. Status: DONE. Phase: delivery verified.
 
 ## Decisions and acceptance
 
@@ -10,13 +10,14 @@ Branch: andino-workflow. Status: IN_PROGRESS. Phase: execution.
 - Align supporting resources and correct the Matt Pocock source URL. The three upstream root LICENSE files identify MIT and match the existing notices.
 - Review against three cases: wrong-tenant result versus setup error, slow CI-only repro, and flaky failure with several disproved probes. Check local content and perform latest-source setup into a temporary Codex home after push. Verify installed member and nested guide/resources against the pushed bytes.
 
-## NEXT ACTION
-
-Implement the entrypoint, guide and resource alignment, then verify and publish.
-
 ## Result / evidence
 
 - Self-reviewed the three scenarios against the revised phase gates. An import failure cannot satisfy exact symptom RED. Slow CI can retain the original signal. Disproved flaky probes do not consume the three-fix budget. This was a contract walkthrough, not a live model comparison.
 - Ran the operational example with default and negative input. Observed exit 0 and 2 respectively.
 - Routing test exposed a missing explicit guide-first requirement in the coordinator body. Restored the direct link and ordering there.
 - Portfolio validator reported an unexpected file in the existing search-first source. Debugging files are checked separately and latest setup will verify the installed artifact.
+- Pushed runtime commit ba77a1e. All five routing contract tests passed after fetching the published branch. Latest-source Codex project setup installed 3 targets with zero failures. Both installed debugging copies matched all 9 published Git blobs after line-ending normalization. Native model execution remains unmeasured.
+
+## NEXT ACTION
+
+None.
