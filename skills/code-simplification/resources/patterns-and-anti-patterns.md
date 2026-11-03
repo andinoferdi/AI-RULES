@@ -31,13 +31,16 @@ const badgeColor = status === 'active'
   ? 'red' 
   : 'gray';
 
-// [CLEAR]: Declarative lookup table with constant-time retrieval
-const STATUS_COLORS: Record<string, string> = {
-  active: 'green',
-  pending: 'amber',
-  suspended: 'red',
-};
-const badgeColor = STATUS_COLORS[status] ?? 'gray';
+// [CLEAR]: Keep strict string matching and the fallback for every other value.
+function colorForStatus(status: string): string {
+  switch (status) {
+    case 'active': return 'green';
+    case 'pending': return 'amber';
+    case 'suspended': return 'red';
+    default: return 'gray';
+  }
+}
+const badgeColor = colorForStatus(status);
 ```
 
 ### 2.2 Unreadable Reduce vs Explicit Iteration
@@ -49,14 +52,13 @@ const userById = users.reduce((acc, user) => ({
   [user.id]: user.roles.filter(r => r.isActive).map(r => r.name)
 }), {});
 
-// [CLEAR]: Readable, linear iteration with zero garbage-collection overhead
-const userById = new Map<string, string[]>();
-for (const user of users) {
+// [CLEAR]: Keep reduce traversal and the plain object with own data properties.
+const userById = users.reduce<Record<string, string[]>>((byId, user) => {
   const activeRoles = user.roles
     .filter(r => r.isActive)
     .map(r => r.name);
-  userById.set(user.id, activeRoles);
-}
+  return { ...byId, [user.id]: activeRoles };
+}, {});
 ```
 
 ### 2.3 Redundant Boolean Branching
@@ -77,19 +79,16 @@ function canAccess(user: User): boolean {
 }
 ```
 
-### 2.4 Unnecessary Async Wrappers
+### 2.4 Async Boundary to Keep
 
 ```typescript
-// [UNCLEAR]: Redundant async/await on direct return without error transformation
+// This boundary turns a synchronous service throw into a rejected promise.
 async function fetchConfig(key: string): Promise<Config> {
   return await configService.get(key);
 }
-
-// [CLEAR]: Return the promise directly (caveat: keep async if inside try/catch)
-function fetchConfig(key: string): Promise<Config> {
-  return configService.get(key);
-}
 ```
+
+Keep the wrapper when callers rely on rejection behavior, promise identity or settlement order. Check local error handling and cleanup before changing `return await`.
 
 ---
 

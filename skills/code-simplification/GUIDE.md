@@ -54,7 +54,7 @@ Simplification is prohibited when any of the following gates apply:
 3. **Gate 3: Compliance & Legal Calculations**
    Tax, accounting, and cryptographic procedures are written explicitly and step-by-step so that non-technical regulators and auditors can verify them against official specs. Do not compress them into clever one-liners.
 4. **Gate 4: Unrelated Scope**
-   Do not perform "drive-by" refactors on files untouched by the current task. Limit changes to the immediate diff.
+   Stay within the authorized target. Use the immediate diff as the default when the user has not named a standalone target.
 
 ---
 
@@ -82,7 +82,7 @@ Scan against the catalogs in [resources/patterns-and-anti-patterns.md](resources
 
 ### Step 3: Apply Changes Incrementally (The Rule of 500)
 - Make **one small structural change at a time**.
-- Run the test suite after each change.
+- Run focused checks after each change and the relevant suite before delivery.
 - **The Rule of 500**: If a refactoring pass touches more than 500 lines across a codebase, stop manual editing. Invest in automated AST transforms, codemods, or regex scripts. Manual edits at scale inevitably introduce regressions.
 
 ### Step 4: Verify the Result

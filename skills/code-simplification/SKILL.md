@@ -1,6 +1,6 @@
 ---
 name: andino-code-simplification
-description: Behavior-preserving code simplification. Reduces cognitive complexity while preserving exact public behavior. Operates under Andino Workflow governance.
+description: Simplify working code when nesting, duplication, unclear names, or unnecessary abstractions make it hard to follow. Preserve exact behavior and protected regions. Operates under Andino Workflow governance.
 ---
 
 # Behavior-Preserving Code Simplification
@@ -10,7 +10,7 @@ Internal method ID: `andino-code-simplification` (alias: `code-simplification`).
 > **Andino Workflow Member Skill**
 > Operates under Andino Workflow governance: proportional investigation, evidence-based decisions, single durable checkpoints, and anti-loop guards. Selected skills own their full procedures, resource contracts, and verification checks. Do not re-invoke `andino-workflow` recursively.
 
-Reduce demonstrated complexity while preserving accepted public behavior exactly. The benchmark is **Comprehension Speed**: *"Can an on-call engineer at 2 AM locate a defect in this function within 15 seconds?"*
+Reduce demonstrated complexity while preserving accepted public behavior exactly. Use the **2 AM on-call test** as a review heuristic. Compare how quickly a reader can locate the decision, trace its effects, and explain the failure path before and after the edit.
 
 ## Activation & Negative Gates
 
@@ -19,7 +19,8 @@ Reduce demonstrated complexity while preserving accepted public behavior exactly
   - Tests are failing or missing (apply **"No Test, No Touch"**; write characterization tests first).
   - Code is on a performance-critical hot path, SIMD loop, or cache-line buffer.
   - Code represents legal, regulatory, tax, or cryptographic compliance calculations.
-  - Changes touch code outside the immediate task diff (no drive-by refactoring).
+  - The candidate is outside the authorized target. Default to the immediate diff when no standalone target is named.
+  - The target is already clear or the reason for an existing guard, ordering constraint, or abstraction is still unknown.
 
 ## The Five Principles
 
@@ -27,7 +28,14 @@ Reduce demonstrated complexity while preserving accepted public behavior exactly
 2. **Follow Project Conventions**: Align with existing codebase idioms, import orders, and naming conventions.
 3. **Prefer Clarity Over Cleverness**: Explicit 6-line code beats an unreadable 1-line chained ternary or dense regex.
 4. **Maintain Balance**: Never inline named domain concepts, merge unrelated logic, or strip defensive checks.
-5. **Scope to What Changed**: Limit refactoring to the immediate diff. For changes over 500 lines, use AST/codemods.
+5. **Keep the Diff Focused**: Stay within the authorized target. For changes over 500 lines, use AST/codemods.
+
+## Procedure
+
+1. **Establish the baseline.** Read project guidance and nearby idioms. Trace callers, tests and effect boundaries. Identify what must stay observable, including supported inputs, defaults, return shape, exception type and message, and the order and count of reads and effects. Check history when the reason for a suspicious guard or workaround is unclear. Run focused tests before editing. If relevant behavior is uncovered, characterize it before refactoring. If tests fail or the baseline cannot be established, report the gap and leave the candidate alone. Read the protected-region protocol and capture byte hashes before editing any file containing markers.
+2. **Choose a concrete improvement.** Name the reading problem and the smallest change that removes it. Flatten nesting only if guards run in the same order and preserve exit behavior. Give a hard-to-read predicate a name when it exposes a domain decision. Consolidate duplicate logic only when it represents the same rule and its callers can keep their distinct defaults and errors. Remove a wrapper only after checking what it contributes at the boundary. Keep domain names, defensive checks and comments that explain constraints. Skip candidates whose benefit or equivalence remains unclear.
+3. **Edit in reviewable slices.** Change one decision or structural concern at a time and rerun the focused checks. If a slice changes behavior, isolate and undo that slice while preserving other work. Keep feature and bug-fix changes separate from the simplification.
+4. **Verify behavior and readability.** Run relevant existing tests with their expectations intact and any applicable project checks. Exercise the edge cases that could distinguish the old and new code. Compare protected-region hashes when present. Read the diff as a caller and as an on-call maintainer. Keep the change only if the behavior evidence holds and the reading improvement is concrete.
 
 ## Anti-Rationalization Refutations
 
@@ -48,6 +56,8 @@ Reduce demonstrated complexity while preserving accepted public behavior exactly
 - [ ] Inverting the execution order of async operations or I/O side-effects.
 
 ## Progressive Disclosure Resources
+
+- [GUIDE.md](GUIDE.md) — Deeper method and verification guidance.
 
 - [resources/patterns-and-anti-patterns.md](resources/patterns-and-anti-patterns.md) — Before/After catalogs for TS/JS, Python, and React.
 - [resources/protected-regions.md](resources/protected-regions.md) — Multi-comment syntax and SHA-256 byte-hash integrity rules.
@@ -84,7 +94,7 @@ Adversarial output (`ANDINO_NEGATIVE=1`): `{"behavior_equal": true, "cases": 7, 
 
 ## Output & Verification
 
-Return the concrete Simplification Ledger, modified file identifiers, exact test results, and one `NEXT ACTION` in the active Andino ticket. Never claim completion without test evidence.
+For each retained change, report the location, original reading problem, improvement, preserved behavior and supporting check in the Simplification Ledger. Include exact test results and protected-region status where applicable. If nothing was changed, report the specific reason and any missing evidence. Use the active Andino ticket for the ledger and one `NEXT ACTION` when a ticket exists. Never claim completion without test evidence.
 
 ## Provenance
 
