@@ -1,7 +1,7 @@
 # Plan execution acceptance evidence and provenance
 
-Status: IN_PROGRESS
-Phase: Delivery
+Status: DONE
+Phase: Delivered
 BASE: 915d5e9306c96dd5d854d312e48f3348708951c3
 Branch: andino-workflow
 Date: 2026-11-03
@@ -30,7 +30,7 @@ fresh model benchmark. Council is unnecessary for this bounded decision.
    upstream revision. Preserve the notices for all three sources. Point the main
    entrypoints at the notice and clarify local task provenance. GitHub API returned
    MIT and LICENSE blob f1dd2c09108dde1a5f56097cee8461b3ea834499. Current old path 404.
-3. IN_PROGRESS — Review full owned diff, run main's verify-execution.py against this
+3. DONE — Review full owned diff, run main's verify-execution.py against this
    worktree, check positive and negative consumer scenarios, then commit and push.
    Use latest setup, verify installed nested and standalone Codex member files
    against the reviewed revision. Main checkout has unrelated changes. Use its
@@ -48,6 +48,12 @@ fresh model benchmark. Council is unnecessary for this bounded decision.
   allowlist mismatch. Direct package_files validation of the workflow returned
   no errors. git diff --check passed for owned skill changes.
 - Latest Codex setup dry run resolved three targets with one planned update.
+- Runtime published as ffcf30da903884f0470b573b4526ad571a0ab42c.
+- Global Codex setup with latest source applied one workflow update, verified two
+  current dependencies, and reported zero failures or blockers. Compared 14 files
+  in each of the nested and standalone member directories against the published
+  Git tree, normalizing CRLF. All 28 matched. Live session discovery was not tested.
+- Latest setup uses the published branch. Existing frozen bundled artifacts
+  require a separate release build to carry these bytes.
 
-NEXT ACTION: Commit and push scoped workflow changes, then run setup and compare
-installed files. Advance the main release manifest if needed for future bundles.
+NEXT ACTION: None. Published runtime and latest setup acceptance observed.
