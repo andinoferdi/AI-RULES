@@ -1,6 +1,6 @@
 # Code review quality
 
-Status: IN_PROGRESS
+Status: DONE
 Depth: STANDARD
 Current Phase: Delivery
 
@@ -26,7 +26,7 @@ before changing the skill.
 | Initial audit | DONE | Local source and all four upstream skill entrypoints inspected. |
 | Baseline | DONE | Both agents found both real defects and cleared the clean case. The current skill respected the explicit commit scope despite contradictory instructions, disclosed the missing spec, and counted the transaction defect on both axes. The unguided output omitted the missing-spec limit. |
 | Plan and implementation | DONE | Candidate found both defects, reported the refund issue once, marked missing Spec as unverified and returned no findings for the clean case. It distinguished reported CI from checks run. SQLite reproduced and verified rollback. Markdown links and whitespace checks passed. |
-| Delivery | IN_PROGRESS | Commit and push the workflow, verify clean latest and bundled setups, then publish the bundled pin. |
+| Delivery | DONE | Workflow published at `e858427`. Both setup sources installed six exact files in each of the native and nested Codex project copies. Main published the bundled pin at `d6aa6fa`. |
 
 ## Decisions
 
@@ -38,7 +38,18 @@ before changing the skill.
 
 ## NEXT ACTION
 
-Commit the workflow paths and verify distribution as specified in T2.
+None. Delivery complete.
+
+## Verification limits
+
+- One independent sample per condition across three synthetic cases. This
+  evaluates the specified review behaviors, with no general ranking against
+  the upstream skills.
+- The full package validator rejected the existing search-first file
+  `references/consolidation-provenance.json` on both the previous pin and the
+  candidate. The focused review and real setup checks passed.
+- Setup verification compared installed files in disposable Codex projects.
+  It did not evaluate native discovery in a new Codex session.
 
 ## Implementation tasks
 
