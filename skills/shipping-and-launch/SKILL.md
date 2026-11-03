@@ -37,17 +37,14 @@ Use actual available host tools and repository commands. Required external capab
 
 ## Procedure
 
-1. Apply task acceptance and standing completion plus relevant code/build/tests/types/lint/review, security/native audit, performance, a11y, configuration/health and docs checks. Mark nonapplicable with reason; unavailable is not pass. Read real baselines and SLO rather than copying default numbers.
-2. Prepare immutable candidate identity, changelog/version compatibility, dependency/migration/config inventory, named owner and exact rollback runbook. DB recovery is separate from code revert; irreversible data changes require a tested recovery plan and explicit authorization. Never use the source sample git revert+push as implied permission.
-3. Flags have owner/expiry and both-state tests; default OFF. Avoid nested flags. Plan team→small canary→25/50/100 with observation windows appropriate to traffic/risk. Only advance on evidence. Remove flag/dead path after stable full rollout, normally within a short owned cleanup window.
-4. Establish advance/hold/rollback thresholds relative to baseline: illustrative error >2× or p95 >50% regression→rollback proposal, moderate regression→hold, stable→advance; new JS errors/business decline need explicitly agreed boundaries. Handle zero baseline with absolute counts/rates, not division by zero. Security/data integrity issues override green aggregate numbers.
-5. Error budget remaining >20% supports normal pace; 0–20% permits slow low-risk rollout; exhausted freezes feature release for reliability work. High canary burn is hold. These are defaults subject to actual accepted SLO policy.
-6. If authorized to execute, staging smoke→production flag OFF/health→team/canary and monitor each stage; first-hour check health/errors/latency/critical flow/logs and dry-run rollback where safe. Observation windows cannot be fabricated from one local sample. Contacting others/deploying/changing flags require applicable authority.
-7. Output READY/HOLD/NO-GO with evidence/limits, candidate, missing gates, owner, timing and rollback trigger/action. If service access is absent deliver the concrete readiness/rollback artifacts and label live rollout NOT EXECUTED.
+1. **Identify the release and its authority.** Record the immutable candidate, current production artifact, affected journeys and cohorts, and changes to dependencies, configuration, schema or data. Identify the release owner, observer and recovery executor. Record which actions are authorized and whether the request is readiness review or live execution.
+2. **Collect applicable readiness evidence.** Use the release record below to select checks by change surface. For each required gate record the expected result, actual result and evidence tied to this candidate and environment. Separate failed, unavailable and not applicable with reason. Close required gaps before declaring readiness. Check that dashboards receive the signals and that the observer can use them.
+3. **Prove recovery before exposing users.** Record the trigger, exact approved runbook or command, flag or previous artifact, expected recovery time, verification and escalation. For schema or data changes, verify mixed-version compatibility, backup/restore or forward recovery, and reconciliation of writes made after exposure. A code revert alone cannot undo data loss. A destructive step requires tested recovery and explicit authorization.
+4. **Write the stage contract.** Choose stages for the release surface and blast radius. For flagged releases, test both states, deploy default OFF, smoke-test the critical path, expose a small cohort and expand only after gates pass. Give the flag an owner and removal deadline. For each stage specify cohort, start/end or minimum window, minimum observations, comparison query, thresholds, observer and next action. Compare candidate and control over comparable traffic/windows, with denominators and an absolute rule for zero baseline. Watch a user outcome plus applicable errors, p95 latency and saturation; include client and business signals where the change affects them. Use agreed SLO and error-budget policy. The resource gives example thresholds only.
+5. **Decide in order.** An observed stop condition (including security or data-integrity failure) blocks exposure and calls for the authorized recovery action if already live. Otherwise a known unsafe prerequisite yields NO-GO. Missing, stale or insufficient evidence, conflicting signals without a stop breach, or excessive canary burn yields HOLD. READY is scoped to the named next stage and requires all its gates to pass. Record the worst applicable signal, its evidence and the next observation or action. Execution needs its own authority even when the stage is READY.
+6. **Verify after each authorized action.** Confirm the deployed identity and actual cohort, health, errors, latency, the critical user journey and telemetry flow. Check the first hour as applicable and keep observing for the agreed stage window. After recovery, verify restored user behavior, signal recovery and applicable data reconciliation before closing. At stable full rollout, assign flag cleanup and capture remaining follow-up in the ticket.
 
-## Local resources
-
-- [resources/release-checklist.md](resources/release-checklist.md) — open only for the relevant procedure.
+Use the [release decision record and worked cases](resources/release-checklist.md) to record the checks, thresholds and operator handoff.
 
 ## Permissions and safety
 
@@ -55,7 +52,7 @@ Authorized reversible local edits/checks may continue. This guide grants no bran
 
 ## Output and verification
 
-Return the concrete artifact/decision, source/evidence identifiers, exact relevant commands/results, unresolved risks and NEXT ACTION in the existing Andino ticket. Check acceptance against current bytes/actions; do not claim completion from a checklist alone. Offline threshold decision only; no deployment, monitoring window, notification or live rollback performed.
+Return the decision (READY, HOLD or NO-GO), the candidate and stage it covers, the evidence behind it, and the next action with its owner and deadline or observation condition. Include the recovery trigger and action, the exact relevant commands or evidence links, and the execution status. If access or authority is missing, deliver the readiness and recovery record and mark live actions NOT EXECUTED. Keep the NEXT ACTION in the existing Andino ticket. The embedded offline probe verifies only its fixture branches.
 
 ## Operational example (offline)
 
