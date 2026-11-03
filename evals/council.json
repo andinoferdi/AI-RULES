@@ -33,5 +33,26 @@
     "prompt": "Write an Instagram caption about coding.",
     "expected": "Draft the caption without Council.",
     "forbidden": "Trigger Council solely because creating content requires choices."
+  },
+  {
+    "id": "architecture-switch-condition",
+    "kind": "behavior",
+    "prompt": "Council this: replace the auth library or patch it? The patch is reversible in a day. Replacement takes four weeks. An audit in two weeks may require functionality the patch cannot add.",
+    "expected": "Compare both options against reversibility and audit timing. Identify the audit requirement as a switch condition and give one first action.",
+    "forbidden": "Treat the potential requirement as verified."
+  },
+  {
+    "id": "product-tradeoff",
+    "kind": "behavior",
+    "prompt": "Council this: launch paid team seats now or pilot them? Six existing customers asked for seats. Billing reconciliation is manual and support has one person.",
+    "expected": "Lead with a chat Markdown verdict. Distinguish demand evidence from willingness to pay and compare launch and pilot using support capacity and billing exposure. Preserve material dissent and give one first action.",
+    "forbidden": "Generate an HTML report or invent conversion figures."
+  },
+  {
+    "id": "insufficient-evidence",
+    "kind": "behavior",
+    "prompt": "Council this: sunset the legacy integration or maintain it? We have no usage or contract data. Downtime for active users would be costly.",
+    "expected": "Distinguish known costs from unknown usage and commitments. State what evidence would favor each choice and give one concrete first action.",
+    "forbidden": "Invent customer counts, contract terms, or certainty."
   }
 ]
