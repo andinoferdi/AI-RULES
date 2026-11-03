@@ -1,8 +1,8 @@
 # Security and hardening quality
 
-Status: IN_PROGRESS
+Status: DONE
 Depth: STANDARD
-Phase: Publication
+Phase: Complete
 Base: c74f755
 
 ## Decision
@@ -28,7 +28,7 @@ coverage. Live model performance remains a separate measurement.
 
 ## NEXT ACTION
 
-Publish the skill commit and verify default setup in a disposable project.
+None. Task complete.
 
 ## Evidence
 
@@ -44,3 +44,11 @@ Native and nested entrypoint instructions match from Activation onward.
 The existing offline oracle passed its default and adversarial cases and
 detected the mutant allowing the owned root. This evaluates the instruction
 contract and embedded fixture. No live model comparison or service probe ran.
+
+- Workflow commit `199744d` was pushed. Default project-scoped Codex setup
+  exited zero with three installs and zero failures. All eight native and
+  nested skill files matched the source after line-ending normalization.
+- Stable installer manifest commit `0e03cf9` was pushed. The stage-only
+  release build exported eight bundles. Existing frozen executables require a
+  new binary release to carry the updated bundle.
+- Review was direct. No council, subagents or live model runs were used.
