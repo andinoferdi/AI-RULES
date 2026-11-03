@@ -54,10 +54,11 @@ const userById = users.reduce((acc, user) => ({
 
 // [CLEAR]: Keep reduce traversal and the plain object with own data properties.
 const userById = users.reduce<Record<string, string[]>>((byId, user) => {
+  const id = user.id;
   const activeRoles = user.roles
     .filter(r => r.isActive)
     .map(r => r.name);
-  return { ...byId, [user.id]: activeRoles };
+  return { ...byId, [id]: activeRoles };
 }, {});
 ```
 
