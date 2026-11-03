@@ -100,6 +100,8 @@ Modern web applications involve complex interactions between DOM generation, CSS
 └───────────┘└───────────┘└───────────┘└───────────┘└───────────┘
 ```
 
+Treat each branch as an investigation lead. A 503 shows the request failed. A checked box remaining after that failure is separate evidence about client recovery. Replay both the successful request and the failure path when verifying a rollback fix.
+
 ---
 
 ### Flowchart 3: Performance & Core Web Vitals Profiling
@@ -188,17 +190,17 @@ Console Message
 When executing browser verification, negotiate host tools using this precedence:
 
 1. **Chrome DevTools MCP (Preferred):**
-   - Full Chrome DevTools Protocol access.
-   - Complete support for live DOM snapshots, computed CSS rules, network event streaming, performance traces, and isolated profiles.
+   - Discover the available snapshot, evaluation, network, and trace tools before choosing checks.
 2. **Playwright MCP (Fallback):**
    - High-level browser automation.
    - Use `browser_snapshot` for DOM, `browser_take_screenshot` for visual layout, `browser_console_messages` for logs, and `browser_network_requests` for traffic.
+   - When only timing data is available, report the metric and measurement conditions. Mark trace-based attribution `NOT_VERIFIED`.
 3. **Host-Native Browser (Fallback):**
    - Integrated IDE or platform browser tools. Use available inspection panels.
-4. **Restricted / Headless / Unavailable Environment:**
-   - If no browser tool is configured, authorized, or functional in the current environment (e.g. headless CI container without Xvfb), do **not** simulate or fabricate browser results.
-   - Perform thorough local source code analysis, write unit/component tests, and explicitly mark runtime browser verification as:
-     `Runtime Browser Verification: NOT_VERIFIED (No active browser MCP connection)`
+4. **Unavailable Browser Runtime:**
+   - If no browser tool is configured, authorized, or functional in the current environment, do **not** simulate or fabricate browser results.
+   - Report any source analysis or automated test results separately and mark browser checks as:
+     `Runtime Browser Verification: NOT_VERIFIED (No authorized, working browser tool)`
 
 ---
 
