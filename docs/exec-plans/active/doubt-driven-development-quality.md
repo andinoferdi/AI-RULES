@@ -1,6 +1,6 @@
 # Doubt-driven development quality
 
-Status: IN_PROGRESS
+Status: DONE
 Depth: STANDARD
 Current phase: Delivery
 
@@ -26,7 +26,7 @@ example that exercises fixed classifications but never challenges an artifact.
 | --- | --- | --- |
 | Audit and scenario walkthrough | DONE | Baseline and upstream inspected |
 | T1 Member procedure and example | DONE | Both entrypoints, relative links, fixture variants and retry outcomes verified |
-| T2 Workflow publication and setup | IN_PROGRESS | READY |
+| T2 Workflow publication and setup | DONE | Workflow `8ba73c4`, bundled pin `1af1734`, 16 exact installed-file comparisons |
 
 ## Baseline and decision
 
@@ -74,7 +74,7 @@ skill files in both installed copies for both sources. Push the verified pin.
 
 ## NEXT ACTION
 
-Publish the scoped workflow commit, then advance and verify the bundled pin.
+None. Delivery complete.
 
 ## Verification evidence
 
@@ -85,3 +85,9 @@ retry within the window and a keyed retry at expiry. The scoped self-review
 found the installation ID, delegation boundary and stop policies preserved.
 `git diff --check` passed. This verifies the example and authored contract.
 Comparative model-output quality was not measured.
+
+Both project-scope setup sources installed all three planned Codex
+capabilities with zero failed, blocked or unfinished targets. The four skill
+files matched the published Git objects byte for byte in the native and
+nested copies for both sources. Native discovery in a new session was not
+tested. The separate main checkout's existing edits were excluded.
