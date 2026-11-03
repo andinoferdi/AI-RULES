@@ -24,16 +24,14 @@ Use actual available host tools and repository commands. Required external capab
 
 ## Procedure
 
-1. Write 2–4 actual on-call questions before adding signals. Map “how often/how fast” to metrics, “where across boundaries” to trace and “why this case” to structured logs. A signal without a question is noise.
-2. Emit stable JSON event names and allowlisted fields; consistent error=invariant/action, warn=handled degradation, info=business event, debug=off by default. Generate/validate correlation at entry and propagate through outbound calls/queue metadata. When scheduler, replay and CLI share a sink, set entryPoint at origin and propagate it too; a correlated field is not proof of origin.
-3. Instrument RED rate/errors/duration on endpoints and dependencies, USE utilization/saturation/errors on resources/queues. Latency uses histograms/p50/p95/p99, not only averages. Labels are bounded route-template/status-class/provider sets, never tenant/user/request IDs, raw URL or message.
-4. Initialize existing OpenTelemetry/equivalent before application imports; use auto instrumentation and manual spans only for meaningful work. Carry trace context across HTTP and async queues; sample deliberately, keeping errors with tail sampling if supported. Never add vendor telemetry endpoints merely because examples contain them.
-5. Page on user symptoms/error rate/latency/queue age, not raw CPU causes; each alert needs actionable threshold+duration justified by SLO/history, owner and runbook. Page now vs ticket this week is usually enough severity. Runbook: means, first query and escalation; update after incidents.
-6. In an authorized test environment induce failure, locate it by correlation+entry point, inspect actual structured fields, expected series, end-to-end spans and alert/runbook delivery. Alert firing/messages to others need explicit authorization. Output actual evidence and unavailable components honestly. Never log secrets, auth headers or full PII/request bodies.
+1. **Define the operational questions.** Inspect the repository's telemetry, conventions and deployment path. Write 2–4 questions an on-call engineer must answer, including the affected user outcome. Map each question to a signal, its query or lookup, and the decision the result supports. Reuse existing instrumentation and sinks.
+2. **Make individual cases findable.** Use stable structured events, allowlisted fields and consistent levels (error for actionable failures, warn for handled degradation, info for significant outcomes, debug off by default). Generate or validate correlation IDs at trusted boundaries. Set a bounded entry-point value where execution originates when multiple entry points share a sink. Carry both across HTTP and queues. Record a retryable attempt separately from the terminal outcome. Exclude credentials, bodies and sensitive identifiers from logs and span attributes.
+3. **Define what each series counts.** Use RED (rate, errors, duration) for requests and dependencies and USE (utilization, saturation, errors) for relevant resources. Declare unit, outcome boundary, denominator and bounded labels. Separate attempt health from logical operation success. Use latency histograms with buckets that resolve the relevant objective. Estimate the label combinations before adding a dimension. Keep identifiers, raw URLs and error text out of labels.
+4. **Follow the work across boundaries.** Initialize existing instrumentation before application clients. Inject and extract trace context through supported HTTP and queue carriers. Add spans for meaningful operations that auto-instrumentation misses. Check sampling across the entire path. A tail sampler can retain only spans that reach it.
+5. **Tie alerts to an operator decision.** Use a user-facing symptom with a threshold and window grounded in an SLO or baseline. Identify the owner, urgency, first discriminating query and escalation path. Use dependency and resource signals to narrow causes. Keep missing thresholds explicit until justified. Use tickets for slower degradation and update runbooks when incidents expose stale steps.
+6. **Exercise the normal path and a controlled failure.** In an authorized environment, find the structured event, query the metric delta, follow the trace and verify applicable alert behavior. For an audit, start with emitted evidence and compare it to the expected outcome at each boundary. Record each check as observed, failed, unavailable or not applicable, with its evidence and next action. Test notification delivery only with explicit authorization.
 
-## Local resources
-
-- [resources/telemetry-checklist.md](resources/telemetry-checklist.md) — open only for the relevant procedure.
+Use the [worked example and proof checklist](resources/telemetry-checklist.md) when designing or auditing telemetry across retries or asynchronous boundaries.
 
 ## Permissions and safety
 
@@ -41,7 +39,7 @@ Authorized reversible local edits/checks may continue. This guide grants no bran
 
 ## Output and verification
 
-Return the concrete artifact/decision, source/evidence identifiers, exact relevant commands/results, unresolved risks and NEXT ACTION in the existing Andino ticket. Check acceptance against current bytes/actions; do not claim completion from a checklist alone. Real JSON-lines ingestion/attribution/cardinality checks; exporter delivery, complete traces and live alert routing remain unverified.
+Return the concrete artifact/decision, source/evidence identifiers, exact relevant commands/results, unresolved risks and NEXT ACTION in the existing Andino ticket. Check acceptance against current bytes/actions; do not claim completion from a checklist alone. For each applicable signal report the expected result, what was actually observed, and the artifact or query that supports the claim. The embedded JSON-lines probe checks a local fixture. Exporter delivery, trace continuity and notification routing require their own evidence.
 
 ## Operational example (offline)
 
