@@ -238,6 +238,48 @@ readiness. D1's DONE marker alone does not supply implementation instructions.
 Keep unrelated authorized work moving. Ask only if the findings change
 a user-owned requirement or exceed existing authority.
 
+### Resume with a payment contract still open
+
+Scenario: `src/checkout.py::checkout(order_id)` charges before marking an order
+paid. The paid write can fail after the charge succeeds. The accepted retry
+behavior requires one actual charge and a paid order after a successful retry.
+The provider key lifetime and supported retry window are unknown. The existing
+checkpoint has a checkout pass on an older checkout revision and a current
+order-list pass whose source, check and environment still match.
+
+```markdown
+#### D1 — Establish how a retry finds the original charge
+Status: TODO
+Readiness: READY
+Depends on: none
+Owns: Payment contract decision in this checkpoint.
+Actions:
+- Inspect src/payments.py, provider documentation for the adapter in use,
+  and the existing retry policy. Record key scope and lifetime, the supported
+  retry window, and how the adapter identifies a charge when the response or
+  the paid write is lost. Cite the inspected sources.
+- Record either a verified replay/recovery contract covering that window or
+  the exact uncovered interval or ambiguous provider outcome.
+Exit: The sourced decision is recorded. With a verified contract, rewrite
+T1's changes and assertions before marking it ready. Otherwise keep T1
+waiting and record the gap.
+
+#### T1 — Retry checkout after the paid write fails
+Status: TODO
+Readiness: WAITING_ON D1
+Depends on: D1
+Acceptance: First call creates a charge and hits the one-shot paid-write
+failure. Retry leaves the order paid. Across both calls the fake records one
+actual charge. Request count is a separate observation.
+Pending change specification: Name the adapter call, how the original charge
+is identified, and the exact assertions in tests/test_checkout.py once D1
+establishes replay or recovery behavior. Recheck checkout happy path because
+its prior pass covers older source. Retain the current order-list pass.
+
+NEXT ACTION: Inspect src/payments.py to identify the adapter, then check the
+corresponding provider contract and record D1's exit evidence here.
+```
+
 ## Failure patterns caught by self-review
 
 | Failure | Repair |

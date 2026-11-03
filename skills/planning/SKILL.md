@@ -122,9 +122,14 @@ the plan short. Proportional detail means removing repeated context, not decisio
 6. **Review and hand off.** Compare the saved plan with the requirements and current
    source: coverage, literals, interfaces, dependency order, ownership, commands,
    integration and proportional detail. Repair gaps before calling it ready.
-   Run a **fresh-executor check**: using only the saved plan and its reachable
-   repository/spec references, can someone locate each ready edit, write it without
-   choosing material behavior, and verify it? Fix missing changes/assertions inline.
+   Walk the saved plan as a **fresh executor**, using only its reachable references.
+   For each ready task, follow an accepted input from the requirement to the first
+   file/symbol action, the exact assertion or artifact observation, and the expected
+   result at that task's boundary. Repeat for each remaining acceptance condition.
+   If the first check needs a later deliverable to prove the current one, move the
+   prerequisite earlier or redraw the slice. For each waiting task, trace the
+   missing contract to its evidence source, discovery exit and consumer rewrite.
+   Fix missing edits and assertions inline before handoff.
    A detailed snippet must still agree with current source and accepted requirements;
    detail alone is not correctness. Label remaining roadmap items honestly.
    A fresh executor must find current state, blocked work and the first executable
