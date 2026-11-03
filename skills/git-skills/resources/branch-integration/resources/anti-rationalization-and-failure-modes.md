@@ -7,7 +7,7 @@ Internal Andino resource. Operates under Andino Workflow governance.
 | Agent Excuse / Rationalization | Mechanical Reality and Required Response |
 | :--- | :--- |
 | *"Tests passed earlier in the session, so we can skip running them now."* | A green test suite only proves the tree it was executed on. Any subsequent edits or rebases invalidate previous proof. Run the full suite on the active candidate tree now. |
-| *"The user obviously wants this merged to main."* | Integration authority belongs exclusively to the human partner. Present the locked menu and wait for the response. |
+| *"The user obviously wants this merged to main."* | Integration authority belongs exclusively to the human partner. Use an existing scoped decision or ask for the missing choice. |
 | *"The user seems done with this feature, so I will offer to discard it."* | The menu is complete as written. Discard exists only when explicitly initiated by the human partner in conversation. |
 | *"The user said 'yeah, clean it up', which counts as confirmation to discard."* | Only the explicitly typed word `discard` authorizes permanent branch or commit deletion. |
 | *"The PR is created, so the worktree is just clutter now."* | Pull request feedback, CI fixes, and review iterations are performed directly in that worktree. It must be preserved until the PR is merged or closed. |
@@ -23,7 +23,7 @@ Internal Andino resource. Operates under Andino Workflow governance.
 ## 2. Diagnostic Red Flags (Stop Immediately)
 
 1. Presenting the integration menu while the test suite has failing tests.
-2. Executing `git merge` or `git push` without presenting the menu and awaiting user response.
+2. Executing `git merge` or `git push` without scoped authorization.
 3. Guessing the base branch is `main` without checking plan metadata or confirming with the user.
 4. Using `git worktree remove --force` when untracked or uncommitted files are present.
 5. Deleting a feature branch when post-merge verification failed.

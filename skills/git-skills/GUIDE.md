@@ -58,7 +58,7 @@ Use during implementation to maintain atomic, well-factored commit sequences.
 Use when implementation and verification are complete, and candidate changes need integration.
 - Gated behind a 100% green test suite on the candidate tree.
 - Detects environment state and confirms base branch fork point with human partner.
-- Presents locked dual-mode menu (interactive host dialog or locked 1/2/3 text menu).
+- Uses an existing scoped decision or asks for the missing action or destination.
 - **Completed-Merge Safety**:
   - `git merge --abort` applies ONLY when `MERGE_HEAD` exists (uncommitted conflict state).
   - If the merge completed (merge commit created) or was a fast-forward, and post-merge tests fail:
@@ -92,6 +92,6 @@ Use when publishing a branch to a remote forge (GitHub, GitLab) for peer review.
 
 Adapted from:
 - `obra/superpowers:skills/using-git-worktrees` and `finishing-a-development-branch` (MIT, Jesse Vincent 2025)
-- `mattpocock/skills:skills/engineering/git-interactive` and `create-pr` (MIT, Matt Pocock 2026)
+- `mattpocock/skills` PR-writing and Claude Code Git guardrail references (MIT, Matt Pocock 2026)
 
 Substantive adapted material is covered under the MIT license terms in [references/license.md](references/license.md).

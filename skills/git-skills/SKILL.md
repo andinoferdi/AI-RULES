@@ -101,4 +101,4 @@ if __name__ == "__main__":
 
 ## Provenance
 
-Adapted from `obra/superpowers:skills/{using-git-worktrees,finishing-a-development-branch}` and `mattpocock/skills:skills/engineering/{git-interactive,create-pr}` under MIT license ([references/license.md](references/license.md)).
+Adapted from `obra/superpowers:skills/{using-git-worktrees,finishing-a-development-branch}` under MIT license. See the notice for the separate PR-writing and guardrail references ([references/license.md](references/license.md)).

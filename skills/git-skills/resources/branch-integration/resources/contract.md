@@ -62,17 +62,15 @@ Every delivery evaluation produces or updates a structured handoff ledger:
 
 | Initial State | Event / Signal | Target State | Permitted Action |
 | :--- | :--- | :--- | :--- |
-| `VERIFYING` | Test suite exit code != 0 | `HARD_STOP` | Halt immediately; report failure log; no menu offered. |
-| `VERIFYING` | Uncommitted functional changes | `DIRTY_TREE_STOP` | Require commit or stash before presenting options. |
-| `VERIFYING` | Test suite exit code == 0 | `ENVIRONMENT_DETECTED` | Inspect `GIT_DIR` vs `GIT_COMMON`; confirm base branch. |
-| `ENVIRONMENT_DETECTED` | Base branch confirmed | `MENU_PRESENTED` | Present locked 3-option menu (or 2-option for detached HEAD). |
-| `MENU_PRESENTED` | Option 1 selected (Merge Locally) | `MERGING_LOCAL` | Checkout base, merge, run post-merge test. Abort on failure. |
-| `MENU_PRESENTED` | Option 2 selected (Push & PR) | `PUSHING_PR` | Push upstream; create PR via forge CLI or report URL. |
-| `MENU_PRESENTED` | Option 3 selected (Keep As-Is) | `COMPLETED_PRESERVED` | Record path, preserve branch and worktree untouched. |
-| `MENU_PRESENTED` | Explicit word `discard` typed | `DISCARDING` | Confirm commit list, force-delete branch, prune worktree. |
+| `VERIFYING` | Candidate fails readiness checks | `HARD_STOP` | Preserve state and report missing evidence. |
+| `VERIFYING` | Exact candidate is verified | `READY` | Resolve only missing choice or destination. |
+| `READY` | Scoped push or PR is authorized | `PUBLISHING` | Verify remote ref and record PR separately. |
+| `READY` | Scoped merge and base are authorized | `MERGING_LOCAL` | Merge in safe base checkout and verify merged HEAD. |
+| `READY` | Keep is selected | `COMPLETED_PRESERVED` | Record the preserved checkout. |
+| `READY` | Explicit discard is confirmed | `DISCARDING` | Recheck scope before owned cleanup. |
 
 ## 4. Rollback and Invariant Preservation
 
-- If post-merge verification fails during Option 1, execute `git merge --abort` ONLY when `MERGE_HEAD` exists. If the merge already completed (merge commit created or fast-forward), preserve test failure logs, base HEAD, and candidate branch intact; request permission-scoped recovery options (no automatic hard reset).
+- Abort only an authorized, task-owned merge while `MERGE_HEAD` exists in the base checkout. If the merge already completed (merge commit created or fast-forward), preserve test failure logs, base HEAD, and candidate branch intact; request permission-scoped recovery options (no automatic hard reset).
 - Worktree cleanup requires recorded task session ownership and clean state; path naming never establishes ownership.
 - If worktree cleanup is refused due to untracked or modified files, never supply `--force`. Disclose files and require human resolution.
