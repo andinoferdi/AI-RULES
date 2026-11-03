@@ -1,6 +1,6 @@
 # Verification quality
 
-Status: IN_PROGRESS | Phase: execution
+Status: DONE | Phase: delivery verified
 
 ## Decision
 
@@ -45,4 +45,11 @@ embedded fixture ran in a disposable directory via `python -B -m unittest -v`
 against the good, faulty, then restored implementation. Each run exercised
 one test, with exits 0, 1, 0 and the expected `16 != 15` assertion.
 
-NEXT ACTION: Publish the reviewed paths and verify the global Codex install.
+Delivery: runtime commit `c74f755` was pushed to `origin/andino-workflow`
+and confirmed by `git ls-remote`. The global Codex setup with `--source latest`
+reported one update, two current dependencies, and zero failures or unfinished
+operations. All three skill files matched the published content in both the
+standalone and nested install locations after normalizing Windows line
+endings. Discovery in a new Codex session was outside the file check.
+
+NEXT ACTION: None.
