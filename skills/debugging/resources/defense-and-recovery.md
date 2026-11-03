@@ -46,7 +46,7 @@ Fix Attempt #3 Fails → STOP IMMEDIATELY. TRIP THE CIRCUIT BREAKER.
 3. **Escalate with Evidence**:
    Present an Escalation Report to the user with:
    - The verified symptom and reproduction command.
-   - The 3 hypotheses tested and why each was disproven.
+   - The three attempted fixes and the result of each. List disproved probes separately.
    - The architectural limitation or missing requirement preventing isolation.
    - Suggested architectural options for user review.
 

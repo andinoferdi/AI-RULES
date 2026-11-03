@@ -70,7 +70,7 @@ Runtime error observed:
 
 ## 2. The 10-Tier Feedback Loop Catalog
 
-A tight, red-capable feedback loop is the foundation of debugging. Spend disproportionate effort constructing one before formulating hypotheses. The loop must be **deterministic**, **fast (<5 seconds)**, and **agent-runnable**.
+A tight, red-capable feedback loop is the foundation of debugging. Spend disproportionate effort constructing one before formulating hypotheses. Prefer a fast, unattended loop with a repeatable verdict. Keep a slower exact loop when necessary. For intermittent failures record the observed rate and conditions. A human-assisted driver can collect evidence while an automated check is unavailable.
 
 | Tier | Feedback Loop Mechanism | Best Used For | Execution Speed |
 | :--- | :--- | :--- | :--- |
@@ -203,7 +203,7 @@ Flaky Repro Rate Escalation:
 
 ## 4. Cross-Platform Human-In-The-Loop (HITL) Drivers
 
-When a human must perform an interaction (e.g., 2FA, physical hardware tap, external SSO login), drive them with an automated script so the feedback loop remains structured and unattended data is captured.
+When a human must perform an interaction (e.g., 2FA, physical hardware tap, external SSO login), drive them with an automated script so the interaction and the captured evidence remain structured.
 
 ### A. POSIX Bash Template (`hitl-loop.sh`)
 

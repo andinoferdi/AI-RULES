@@ -82,7 +82,7 @@ In modern architectures (e.g., Client → API Gateway → Microservice → Datab
 
 ## 3. Formulating Falsifiable Hypotheses
 
-Never proceed with fixing a bug based on an unstructured "feeling". Generate **3 to 5 ranked, falsifiable hypotheses** before testing any of them.
+Never proceed with fixing a bug based on an unstructured "feeling". Rank the plausible, falsifiable hypotheses before testing. Use three to five when the evidence supports that many.
 
 ### Hypothesis Syntax Standard
 

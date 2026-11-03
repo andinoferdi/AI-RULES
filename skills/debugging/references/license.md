@@ -28,7 +28,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ## Matt Pocock (skills)
-- **Original Source:** [mattpocock/skills: skills/engineering/debugging](https://github.com/mattpocock/skills/tree/main/skills/engineering/debugging)
+- **Original Source:** [mattpocock/skills: skills/engineering/diagnosing-bugs](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs)
+
+Verified against the [upstream repository license](https://github.com/mattpocock/skills/blob/main/LICENSE).
 
 MIT License
 
