@@ -1,8 +1,8 @@
 # Skill Maker quality and setup delivery
 
-Status: IN_PROGRESS
+Status: DONE
 Plan Depth: STANDARD
-Current Phase: Distribution
+Current Phase: Delivered
 Last Updated: 2026-11-03
 
 ## Objective
@@ -31,7 +31,7 @@ replacing it with a generic meta-workflow.
 | Task | Readiness | State |
 | --- | --- | --- |
 | T1 Authoring and verification path | READY | DONE |
-| T2 Distribute exact package through setup | Depends on T1 commit | TODO |
+| T2 Distribute exact package through setup | READY | DONE |
 
 ## T1 Change specification
 
@@ -64,6 +64,8 @@ Push the two branch updates without forcing remote changes.
 
 Python 3.12 passed 36 metadata cases and observed executable example exits 0 and 1. Live relative links resolved and SKILL.md is 131 lines. The source walkthrough covers both comparison cases. Fresh-context behavior and comparison to upstream are NOT_VERIFIED (EVALUATOR_UNAUTHORIZED).
 
+Workflow commit ffeeae5 was pushed. Codex project setup installed both entrypoints in bundled and latest modes, each matching all nine Git files byte for byte. The published main manifest at b3ad4d2 pins f068882, whose skill-maker tree is identical to ffeeae5. That concurrent manifest update already includes the revision.
+
 ## NEXT ACTION
 
-Publish the workflow commit, pin it in the main release manifest, and exercise project setup.
+No delivery action remains. Fresh-context benchmarking is separate and requires evaluator authorization.
