@@ -47,16 +47,55 @@ Use actual available host tools and repository commands. Required external capab
 
 ## Procedure
 
-1. Inspect existing ADR location, extension/markup, numbering, headings and tool configuration (including .adr-dir). Existing convention overrides defaults; never introduce a competing docs/decisions scheme or overwrite an existing record.
-2. Capture status/date, actual context/constraints, chosen decision, alternatives with trade-offs, and consequences. Write a new numbered ADR to supersede an earlier one; preserve historical rationale. Use project names and facts, not invented requirements.
-3. Public interfaces need parameter/return/error/side-effect contracts and meaningful examples. Prefer local typed docs or existing OpenAPI convention. README covers a real quick start, exact commands, architecture and contributor entry points; changelog describes consumer impact rather than dumping commits.
-4. Inline comments explain non-obvious why, platform constraint, known gotcha or invariant. Remove pure narration only within authorized scope; don't delete unexplained history blindly.
-5. For prose editing first mark facts that must survive: identifiers, numbers/units, commands, paths/links, conditions, limitations, uncertainty and rejected trade-offs. Check against code/source; remove promotional/repeated text without adding guarantees. Restore any lost qualifier.
-6. Execute documented local examples where safe, resolve links and compare contracts to implementation. Output the record/document and evidence of factual/runnable checks. If sources disagree, leave an explicit question rather than polishing uncertainty away. No commit/publish follows from writing documentation.
+1. **Choose the artifact from the reader's task.** Identify who will use it,
+   what they need to decide or do, and the sources that establish the current
+   behavior or decision. Use an ADR for a consequential choice whose rationale
+   future maintainers will need. Update the canonical API reference, README,
+   changelog or nearby comment when it already owns the information. A release
+   can need both an ADR for rationale and a changelog entry for consumer impact.
+   Use project guidance for durable agent instructions and link to the owning
+   record. For a small correction, edit the existing document in place.
+2. **Fit the ADR to the repository.** Inspect project instructions, recent
+   records, indexes and tooling such as `.adr-dir`. Follow established
+   location, markup, numbering, headings and status conventions. If evidence
+   conflicts, resolve which convention governs before allocating a number.
+   With no convention, use numbered Markdown files in `docs/decisions/` with
+   status, date, context, decision, alternatives and consequences. Check for a
+   number collision before writing. Record who or what establishes acceptance.
+   If acceptance is unconfirmed, keep the record proposed. When an accepted
+   decision supersedes an older one, link both records and update the prior
+   record's lifecycle metadata per convention while preserving its rationale.
+3. **Explain why the decision holds.** Name the constraints and their evidence.
+   Compare viable alternatives using the same deciding criteria and state why
+   each was passed over. Distinguish observations from assumptions. Describe
+   benefits, costs and operational obligations, including a measurable revisit
+   trigger when one matters. Keep future actions distinct from completed work.
+4. **Document the consumer contract.** Use the existing typed docs or API
+   specification. Cover relevant inputs and defaults, results, failure cases,
+   side effects, and retry or compatibility behavior. Give a verified example
+   of a meaningful use or failure. In a README, put prerequisites and a
+   runnable quickstart before optional detail, then link to architecture or
+   contribution guidance where the reader needs it. Describe shipped changes
+   in terms of affected users and required actions. Put non-obvious
+   invariants or platform constraints near the affected code and link longer
+   rationale. Change comments only within the authorized scope.
+5. **Preserve facts while editing.** Mark identifiers, units, commands,
+   paths, links, conditions, limitations and rejected trade-offs that must
+   survive. Improve wording against the source and restore dropped qualifiers.
+   Surface conflicting sources and leave unsupported claims unresolved.
+6. **Verify what changed.** Compare the artifact with its owning sources.
+   Run changed commands and examples when safe. Check affected links and,
+   for ADRs, uniqueness, lifecycle status and links to related records.
+   Distinguish executed examples, source-checked examples and unchecked
+   behavior. Report the artifact, relevant evidence and remaining limits in
+   the current ticket. Writing a document does not authorize publication.
+
+Read [the worked examples](resources/worked-example.md) for an ADR, an API
+contract change and a quickstart correction. Apply only the relevant checks.
 
 ## Local resources
 
-The procedure and example are self-contained; no external package/resource is required.
+The procedure and examples are packaged with this skill. They require no external package.
 
 ## Permissions and safety
 
@@ -64,7 +103,7 @@ Authorized reversible local edits/checks may continue. This guide grants no bran
 
 ## Output and verification
 
-Return the concrete artifact/decision, source/evidence identifiers, exact relevant commands/results, unresolved risks and NEXT ACTION in the existing Andino ticket. Check acceptance against current bytes/actions; do not claim completion from a checklist alone. Real temporary-file convention/history/qualifier checks; full document factual accuracy requires current project sources.
+Return the concrete artifact/decision, source/evidence identifiers, exact relevant commands/results, unresolved risks and NEXT ACTION in the existing Andino ticket. Check acceptance against current bytes/actions; do not claim completion from a checklist alone. The offline probe covers numbering, history and qualifier preservation. Factual accuracy requires current project sources.
 
 ## Operational example (offline)
 
