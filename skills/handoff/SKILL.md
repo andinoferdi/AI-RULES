@@ -39,19 +39,39 @@ Use resources progressively: [worked procedure and example](resources/worked-exa
 
 ## Procedure
 
-1. Decide at a natural boundary whether continuation suffices. Clear only irrelevant context, compact only where necessary and supported; a portable file is useful when something actually travels.
-
-2. Reference existing artifacts by exact accessible path/URL rather than copying specs/plans/diffs. Preserve why decisions were made and distinguish observed evidence from assumptions.
-
-3. Record current state, active phase, accepted decisions, unresolved blockers, edit ownership/permissions and the first concrete safe next action.
-
-4. Redact credentials, private data and session tokens. Suggested methods are internal method IDs, not mandatory upstream Skill calls.
-
-5. Choose a destination that survives the handoff: OS temp may be useful for immediate transfer but is not durable across reboot/host changes. Preserve the authoritative checkpoint and ensure referenced files are reachable.
-
-6. Use a current authorized host delegation/continuation adapter only when genuinely supported; never interpolate summary text into a shell or hardcode claude --bg. Otherwise deliver the file for manual use.
-
-7. Recipient checks repository drift and evidence before resuming, rather than re-auditing unchanged completed phases.
+1. Choose the boundary and recipient. Continue in place when the same context can
+   take the next step. For a portable continuation, identify the recipient's
+   assignment, destination, and authorized scope from the request and current
+   checkpoint. If several assignments are possible, label the recommended one.
+2. Collect the sources needed for that assignment. Lead with the authoritative
+   checkpoint and active section, then link the spec, changed code or research,
+   and verification evidence where the next step needs them. Use destination-
+   relative paths with a named root or accessible URLs. Preserve the reason for
+   each decision that constrains the recipient, including rejected approaches
+   they could plausibly repeat.
+3. Identify the state being transferred. For repository work, record the branch,
+   base revision, and whether relevant edits are staged, unstaged or untracked.
+   Give a reachable pointer to the exact work in progress and its prerequisites.
+   If any required bytes exist only on the source host, identify what is missing
+   and make obtaining it the first action. For non-repository work, identify the
+   document revision or other observable source state.
+4. Write the handoff using the output contract below. Separate observed results,
+   pending checks and assumptions. Redact credentials, private data and session
+   tokens from the handoff and any transferred attachments. Suggested methods
+   use internal IDs and are conditional on the recipient's available capabilities.
+5. Check the artifact from the destination's perspective. Resolve the first
+   pointer against the destination root, confirm the expected revision and
+   access, and trace the first action to its expected signal. Label any access
+   you could not check and give the recipient the narrowest way to resolve it.
+   Choose durable storage for cross-host use and keep the authoritative
+   checkpoint as the owner of progress.
+6. Deliver the artifact with its location and the first action. Use a supported
+   continuation adapter only within current authority. Pass the file as data
+   through a structured interface and keep summary text out of shell commands.
+   Otherwise give the recipient a manual start from the handoff file.
+7. On receipt, compare the relevant destination state and project rules with the
+   recorded baseline. Recheck only the evidence invalidated by drift, then
+   resume the first action and update the authoritative checkpoint.
 
 ## Ownership, precedence and permissions
 
@@ -65,7 +85,19 @@ Existing scope authorization persists. Local examples use disposable data; real 
 
 ## Outputs and verification
 
-A cold reader can locate evidence and the next action without chat history; references survive the destination and permissions remain explicit.
+Use these sections in order. Keep entries proportional to what the recipient
+needs for the assignment.
+
+- **Resume here** gives the outcome, recipient assignment, current phase and
+  checkpoint path with the relevant section.
+- **Current state and evidence** identifies the transferred revision or work in
+  progress, what was actually checked, and what is pending. Link evidence with
+  a short explanation of what it establishes.
+- **Decisions and boundaries** captures material rationale, ownership and
+  permissions that constrain the next step.
+- **NEXT ACTION** names one file, command or source to start with, where to start,
+  and the expected signal. When blocked, name who can unblock it, the missing
+  input and the observable condition for resuming the intended action.
 
 Apply the worked example to observe an artifact and independent expected outcomes. Its deterministic result proves only that bounded procedure; it does not prove model routing, live host parity or optional external tool execution. Record actual command/tool, current content identity, result and unresolved limits before claiming success.
 
