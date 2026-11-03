@@ -1,7 +1,7 @@
 # Observability skill quality
 
-Status: IN PROGRESS
-Phase: Publication
+Status: DONE
+Phase: Complete
 
 The accepted design keeps the Andino member layout and authorization boundaries.
 Implementation is the primary case. Auditing existing telemetry is the comparison case.
@@ -34,6 +34,12 @@ This was a direct walkthrough of the instructions, not an independent model
 benchmark. Both embedded probe variants produced their expected JSON. Local
 resource links resolved and the Git whitespace check passed.
 
+Skill content was published in `6a875e7`. A clean Codex project-scoped
+`ai-rules setup` using the default latest source installed three targets with
+zero failures. All four observability package files matched the source after
+newline normalization in both nested and standalone installs. This verifies
+distribution. Native session discovery and live telemetry were not exercised.
+
 ## NEXT ACTION
 
-Push the skill and verify isolated latest setup against the published files.
+None. The published skill is available through latest setup.
