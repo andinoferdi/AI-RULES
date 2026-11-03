@@ -42,11 +42,12 @@ Discover manifests, CI, wrappers and neighboring tests; read glossary/ADRs. Reco
 ## Procedure
 
 1. Choose one public seam and observable behavior. Name a plausible production mutation the test must catch; derive expectations independently from a literal worked case.
-2. Write one readable arrange/act/assert test. Run existing code and inspect RED: expected assertion failure, not broken import, syntax or test setup. Repair setup before trusting the failure.
-3. Implement only enough to pass this behavior. Run the focused check and inspect GREEN, then take the next vertical slice. Avoid writing all imagined tests before any implementation.
-4. Exercise real internal collaborators. Double only slow/external/unsafe/nondeterministic boundaries; understand their side effects and complete response shape. Assert public state, not mock presence or private call sequences.
-5. After implementation is GREEN, optional refactoring is a separate review gate. Name observed complexity, inspect callers, preserve seam/outputs/errors/side-effect order and rerun checks after each small change. Stop if behavior or architecture would change.
-6. Run project suite and applicable integration/build checks. Report all failures including baseline ones. Reuse unchanged valid evidence instead of ceremonial repeats.
+2. Write one readable arrange/act/assert test. Before running it, name the test and record the expected observation and the old behavior it should expose. Run the focused command. Confirm the runner executed that test and the failure matches the predicted behavioral mismatch. Fix collection, syntax, import and fixture errors before interpreting RED.
+3. If the test passes immediately, inspect whether the assertion distinguishes the old behavior and whether the fixture reaches the intended path. Strengthen an insensitive test and rerun. If a fix already exists, preserve current edits and run the same test against a known pre-fix revision in isolation when available. If the behavior is already satisfied and no trustworthy RED can be observed, record that gap and avoid a redundant production edit.
+4. After RED, implement only enough to pass this behavior. Run the same focused check and inspect GREEN, then take the next vertical slice. Avoid writing all imagined tests before any implementation.
+5. Exercise real internal collaborators. Double only slow/external/unsafe/nondeterministic boundaries; understand their side effects and complete response shape. Assert public state, not mock presence or private call sequences. When the behavior depends on a real boundary, prove the fixture reaches the failure point and observe the outcome through that boundary.
+6. After implementation is GREEN, optional refactoring is a separate review gate. Name observed complexity, inspect callers, preserve seam/outputs/errors/side-effect order and rerun checks after each small change. Stop if behavior or architecture would change.
+7. Run project suite and applicable integration/build checks. Report all failures including baseline ones. Reuse unchanged valid evidence instead of ceremonial repeats.
 
 ## Ownership
 
@@ -62,7 +63,7 @@ Use actual host tools within session authorization. No branch creation, commit, 
 
 ## Output
 
-Accepted seam, literal contract, intended RED output, minimal GREEN change, mutation sensitivity, suite result and separate refactor decision.
+Record the public seam, literal expected result, test name and focused command. Include the observed RED mismatch or evidence gap, the minimal GREEN change and result, mutation sensitivity, suite result and separate refactor decision.
 
 ## Verification
 
