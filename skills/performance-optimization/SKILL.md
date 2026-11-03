@@ -37,13 +37,20 @@ Use actual available host tools and repository commands. Required external capab
 
 ## Procedure
 
-1. Establish a baseline tied to user symptom and exact command/data/environment/cold-warm/device/sample budget. Distinguish synthetic Lighthouse/trace from real-user RUM/CrUX p75. Static source review yields potential impact and NOT MEASURED scorecard, never invented CWV.
-2. Identify the actual limiting work. Page load→waterfall DNS/TCP/TLS/TTFB/LCP resources; interaction→long task/re-render/layout; API→query/pool/external hop. Record source artifact, metric/unit and uncertainty. Use the local patterns for query, caching and web audit.
-3. Fix one bottleneck. N+1→join/batch; unbounded reads→stable pagination. EXPLAIN before adding an index: estimate-vs-actual mismatch suggests ANALYZE; equality then range/sort composite; dominant low-selectivity value, leading wildcard or expression needs a different strategy. Recheck plan and write cost.
-4. Pool: one per process; instances×max below DB ceiling, timeouts and leaked/long-held connections measured; autoscaling may need multiplexing proxy, not larger max. Cache only expensive read-heavy work. Key all viewer/tenant/locale/permission/flag inputs, choose layer plus one invalidation strategy and staleness window. Coalesce stampedes; negative results shorter TTL, never origin errors; memory/eviction bounded. Never cache correctness-critical fresh balances/permissions.
-5. Web fixes: reserve image dimensions, responsive modern formats, prioritize LCP image and lazy below fold; split routes/heavy features; batch DOM reads/writes and yield long tasks. Memoize only measured expensive work. Respect actual framework and browser compatibility.
-6. Remeasure identical conditions repeatedly; delta must exceed noise. Keep only threshold-passing improvement AND unchanged correctness; neutral/regressive/behavior-breaking attempts restore only owned edits. Log every attempt including discarded ones so dead ideas aren't repeated.
-7. Guard primary metric with repeatable synthetic budget and field trend where available. Output baseline/result/variance/verdict/attempt ledger/source labels. No browser/production access means offline artifact/benchmark result only.
+1. **Measure.** Define the affected journey, route or operation, primary metric and target or smallest worthwhile change. Record the command or capture steps, revision, representative input, environment, cache state and sample count. Control device/network for browser comparisons and load/concurrency for service comparisons. Keep cold and warm runs separate. Use the statistic that represents the symptom, such as p95 for a tail-latency complaint. Label synthetic, field and offline evidence separately.
+2. **Identify.** Capture the narrowest evidence that separates the plausible causes. Use the table to choose the first diagnostic, then follow the longest relevant phase or dominant work in the measured path.
+
+   | Symptom | First diagnostic | Decision it supports |
+   | --- | --- | --- |
+   | Slow initial render or LCP | Capture a load waterfall and identify the LCP element and its timing. | Separate connection and server time from resource discovery, transfer and render delay. |
+   | Slow interaction or layout shift | Trace the exact interaction or shift window. | Separate input delay, handler work and presentation delay, or identify the element that moved and its trigger. |
+   | Slow API, especially at the tail | Sample slow requests with timings for queue/pool wait, application work, queries and downstream calls. | Separate time waiting for capacity from repeated queries or a slow individual dependency. |
+   | Slow database operation or growth with input size | Count queries per operation at representative sizes and inspect a safe plan for a costly query. | Distinguish repeated work, excess rows, bad estimates and expensive scans or sorts. |
+   | Source only or insufficient samples | Identify the specific path and describe one capture that would distinguish the leading hypotheses. | Label findings potential and scores NOT MEASURED. Return the next capture and keep changes provisional until evidence supports them. |
+
+3. **Fix.** State the observed bottleneck, the expected metric movement and a result that would disprove the hypothesis. Change one mechanism at a time. Use the local patterns for web, query, pool and cache decisions. Preserve result semantics, authorization and freshness, and name any guardrail that could regress, such as write cost, database load or memory.
+4. **Verify.** Repeat the original capture under comparable conditions and report the samples or their source, statistic and spread. Check the target, noise floor, correctness and relevant guardrails. Keep a change only when the gain clears noise and meets the agreed threshold with correctness and guardrails intact. Restore only verified owned changes that fail those checks. If measurements are incomparable or too noisy, mark the result inconclusive and specify the next capture. Log each attempt and verdict.
+5. **Guard.** Put the reproducible metric and threshold in an existing benchmark or CI budget where available. Use field trends for real-user confirmation when available and keep the field verdict pending while the observation window is incomplete.
 
 ## Local resources
 
@@ -56,7 +63,16 @@ Authorized reversible local edits/checks may continue. This guide grants no bran
 
 ## Output and verification
 
-Return the concrete artifact/decision, source/evidence identifiers, exact relevant commands/results, unresolved risks and NEXT ACTION in the existing Andino ticket. Check acceptance against current bytes/actions; do not claim completion from a checklist alone. Observed fixed-sample statistical decision only; no real service/browser benchmark or field improvement claimed.
+Return the concrete artifact and decision in the existing Andino ticket. Use this compact record:
+
+| Field | Evidence to include |
+| --- | --- |
+| Symptom and baseline | Affected path, metric/unit, target, command or capture, source identifier, environment and sampling conditions. |
+| Bottleneck and attempt | Observation that isolates the cost, hypothesis, falsifying result and owned change. Keep discarded attempts in the same ledger. |
+| Result and verdict | Before/after statistic, spread, delta, correctness and guardrail results, and keep, restore, inconclusive or diagnostic-only verdict. |
+| Guard and NEXT ACTION | Budget/check and field status, or the specific missing measurement and how to obtain it. |
+
+Check acceptance against current artifacts and observed actions. The offline example below verifies a fixed-sample decision rule. Its output establishes only that fixture result.
 
 ## Operational example (offline)
 
