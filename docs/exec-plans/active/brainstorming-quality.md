@@ -1,6 +1,7 @@
 # Brainstorming quality
 
-Status: IN_PROGRESS  
+Status: DONE
+
 Current phase: Execution and delivery
 
 ## Objective and acceptance
@@ -14,7 +15,7 @@ Improve observable interview and handoff quality while preserving path selection
 | Source review | DONE | Canonical checkout clean on `andino-workflow`. Read the four upstream SKILL.md files via GitHub raw. No user transcript exists. |
 | Baseline | DONE | Approved read-only Luna/low run. A agreed to start and asked two questions. B cited repo facts but made no recommendation. C agreed to start despite an unresolved sharing policy. |
 | Design and planning | DONE | Tasks below are ready under the existing execution authorization. |
-| Execution and delivery | IN_PROGRESS | Revised all four member files. `git diff --check`, operational fixture in both modes, local links, and path/contract assertions passed. |
+| Execution and delivery | DONE | Revised all four member files. `git diff --check`, operational fixture in both modes, local links, and path/contract assertions passed. Source pushed as `a43cf8e`. Public latest setup installed all three packages with zero failures. All four installed brainstorming files matched the checkout after newline normalization. |
 
 ## Decision and evidence
 
@@ -22,7 +23,7 @@ The current procedure and grilling protocol treat a short answer as fatigue and 
 
 ## NEXT ACTION
 
-Publish the verified source on `origin/andino-workflow` and verify setup from latest. No council panel was needed for this bounded change. Revised-model behavior remains unverified by a fresh evaluator.
+None for source delivery. The baseline used an approved clean-context evaluator. Revised-model quality and parity with the upstream skills remain unverified by a fresh evaluator. Setup verified installed files, with native discovery and the frozen bundled source outside the exercised path. No council panel was needed for this bounded change.
 
 ## Ready tasks
 
