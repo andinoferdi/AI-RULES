@@ -133,7 +133,7 @@ guards. One compact progress source can link full specs, plans, designs and repo
   [Anti-Slop](https://github.com/miqdadbadjuber/anti-slop),
   [Ponytail](https://github.com/DietrichGebert/ponytail), and
   [Graphify](https://graphify.net/).
-- **Marketing and branding:** [LinkedIn Skills](https://github.com/sergebulaev/linkedin-skills)
+- **Marketing and branding:** [LinkedIn Skills](https://github.com/sergebulaev/linkedin-skills), [Marketing Skills](https://github.com/coreyhaines31/marketingskills),
   and [Logo Design Skill](https://github.com/kaankiziltug/logo-design-skill).
 - **Web and social content:** [Agent-Reach](https://github.com/Panniantong/Agent-Reach).
 - **Shell command proxy:** [RTK](https://github.com/rtk-ai/rtk).
