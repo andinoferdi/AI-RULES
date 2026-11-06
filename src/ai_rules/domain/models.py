@@ -143,6 +143,10 @@ class Host:
     project_skill_path: str = ".agents/skills"
     project_skill_aliases: tuple[str, ...] = ()
     mcp_config_hint: str | None = None
+    global_instructions_path: str | None = None
+    mcp_config_path: str | None = None
+    mcp_config_format: str | None = None
+    mcp_config_key: str | None = None
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "Host":
@@ -158,6 +162,10 @@ class Host:
             project_skill_path=data.get("project_skill_path", ".agents/skills"),
             project_skill_aliases=tuple(str(item) for item in data.get("project_skill_aliases", ())),
             mcp_config_hint=data.get("mcp_config_hint"),
+            global_instructions_path=data.get("global_instructions_path"),
+            mcp_config_path=(data.get("mcp_config") or {}).get("path"),
+            mcp_config_format=(data.get("mcp_config") or {}).get("format"),
+            mcp_config_key=(data.get("mcp_config") or {}).get("key"),
         )
 
 

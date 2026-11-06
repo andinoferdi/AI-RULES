@@ -9,7 +9,9 @@
       "mechanisms": ["SKILL_DIRECTORY", "PLUGIN_MARKETPLACE", "MCP_HTTP", "MCP_STDIO", "MCP_OAUTH", "GLOBAL_SKILL_SCOPE", "PROJECT_SKILL_SCOPE"],
       "global_skill_path": "~/.agents/skills",
       "project_skill_path": ".agents/skills",
-      "mcp_config_hint": "codex mcp"
+      "mcp_config_hint": "codex mcp",
+      "global_instructions_path": "~/.codex/AGENTS.md",
+      "mcp_config": {"path": "~/.codex/config.toml", "format": "toml", "key": "mcp_servers"}
     },
     {
       "schema_version": 1,
@@ -19,7 +21,9 @@
       "mechanisms": ["SKILL_DIRECTORY", "PLUGIN_MARKETPLACE", "MCP_HTTP", "MCP_STDIO", "MCP_OAUTH", "GLOBAL_SKILL_SCOPE", "PROJECT_SKILL_SCOPE"],
       "global_skill_path": "~/.claude/skills",
       "project_skill_path": ".claude/skills",
-      "mcp_config_hint": "claude mcp"
+      "mcp_config_hint": "claude mcp",
+      "global_instructions_path": "~/.claude/CLAUDE.md",
+      "mcp_config": {"path": "~/.claude.json", "format": "json", "key": "mcpServers"}
     },
     {
       "schema_version": 1,
@@ -30,7 +34,9 @@
       "global_skill_path": "~/.config/opencode/skills",
       "project_skill_path": ".agents/skills",
       "project_skill_aliases": [".claude/skills"],
-      "mcp_config_hint": "~/.config/opencode/opencode.json"
+      "mcp_config_hint": "~/.config/opencode/opencode.json",
+      "global_instructions_path": "~/.config/opencode/AGENTS.md",
+      "mcp_config": {"path": "~/.config/opencode/opencode.json", "format": "json", "key": "mcp"}
     },
     {
       "schema_version": 1,
@@ -40,7 +46,9 @@
       "mechanisms": ["SKILL_DIRECTORY", "PLUGIN_REPOSITORY", "MCP_STDIO", "MCP_HTTP", "GLOBAL_SKILL_SCOPE", "PROJECT_SKILL_SCOPE"],
       "global_skill_path": "~/.gemini/antigravity-cli/skills",
       "project_skill_path": ".agents/skills",
-      "mcp_config_hint": "Antigravity MCP config"
+      "mcp_config_hint": "Antigravity MCP config",
+      "global_instructions_path": "~/.gemini/AGENTS.md",
+      "mcp_config": {"path": "~/.gemini/config/mcp_config.json", "format": "json", "key": "mcpServers"}
     },
     {
       "schema_version": 1,
@@ -50,7 +58,9 @@
       "mechanisms": ["SKILL_DIRECTORY", "PLUGIN_REPOSITORY", "MCP_STDIO", "MCP_HTTP", "GLOBAL_SKILL_SCOPE", "PROJECT_SKILL_SCOPE"],
       "global_skill_path": "~/.gemini/config/skills",
       "project_skill_path": ".agents/skills",
-      "mcp_config_hint": "Antigravity IDE MCP config"
+      "mcp_config_hint": "Antigravity IDE MCP config",
+      "global_instructions_path": "~/.gemini/AGENTS.md",
+      "mcp_config": {"path": "~/.gemini/config/mcp_config.json", "format": "json", "key": "mcpServers"}
     }
   ]
 }

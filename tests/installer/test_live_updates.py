@@ -520,6 +520,7 @@ class LiveUpdateTests(unittest.TestCase):
             os.chdir(home)
             with patch.object(Path, "home", return_value=home), \
                  patch.object(cli, "prompt_selection", return_value=selection), \
+                 patch.object(cli, "prompt_agent_defaults", return_value=(False, None)), \
                  patch.object(cli, "prompt_confirmation", return_value=True), \
                  contextlib.redirect_stdout(output):
                 self.assertEqual(0, cli.main(["setup"]), output.getvalue())

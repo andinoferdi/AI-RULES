@@ -158,6 +158,33 @@ def _questionary_choices(choices: Sequence[InteractiveChoice]):
     return [questionary.Choice(title=choice.title, value=choice.value, description=choice.description) for choice in choices]
 
 
+def collect_agent_defaults(
+    confirm: Callable[[str], bool | None],
+    choose: Callable[[str, Sequence[str]], str | None],
+) -> tuple[bool, str | None] | None:
+    """Ask whether to install the Layer 1 defaults block and in which language; None cancels."""
+    install = confirm("Install agent defaults (Layer 1) into each host's global instruction file?")
+    if install is None:
+        return None
+    if not install:
+        return (False, None)
+    language = choose("Agent defaults language", ("id", "en"))
+    return None if language is None else (True, language)
+
+
+def prompt_agent_defaults() -> tuple[bool, str | None] | None:
+    import questionary
+
+    return collect_agent_defaults(
+        confirm=lambda message: questionary.confirm(message, default=True).ask(),
+        choose=lambda message, values: questionary.select(
+            message,
+            default="id",
+            choices=[questionary.Choice("Bahasa Indonesia", value="id"), questionary.Choice("English", value="en")],
+        ).ask(),
+    )
+
+
 def confirm_execution(confirm: Callable[[str], bool | None]) -> bool:
     return confirm("Apply this installation plan?") is True
 

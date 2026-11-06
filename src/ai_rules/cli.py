@@ -9,6 +9,7 @@ from importlib import resources
 from pathlib import Path
 from typing import Callable
 
+from ai_rules import agent_defaults
 from ai_rules.banner import print_setup_banner
 from ai_rules.capabilities.adapters import StaticCapabilityAdapter
 from ai_rules.catalog import load_catalog
@@ -17,7 +18,7 @@ from ai_rules.domain.statuses import InstalledOwnership, ReconciliationAction, S
 from ai_rules.execution import Executor
 from ai_rules.hosts.adapters import build_host_adapters
 from ai_rules.hosts.invocation import all_invocation_paths, install_invocation, invocation_paths, invocation_ready, reconcile_invocations
-from ai_rules.interactive import prompt_confirmation, prompt_selection, render_setup_summary
+from ai_rules.interactive import prompt_agent_defaults, prompt_confirmation, prompt_selection, render_setup_summary
 from ai_rules.planning import render_plan
 from ai_rules.platform import detect_environment, project_state_root, state_root
 from ai_rules.profiles import load_profiles
@@ -107,6 +108,11 @@ def add_common_setup_flags(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--state-dir", type=Path)
     parser.add_argument("--source", choices=("latest", "bundled"), default="latest",
                         help="latest checks configured remote branches; bundled uses this CLI's frozen manifest without checking freshness")
+    parser.add_argument("--agent-defaults", action=argparse.BooleanOptionalAction, default=None,
+                        help="manage the AI-RULES working-defaults block in each host's global instruction file")
+    parser.add_argument("--defaults-language", choices=("id", "en"), default=None)
+    parser.add_argument("--replace-agent-defaults", action="store_true",
+                        help="replace an edited or unrecorded defaults block after backing it up")
 
 
 def cmd_setup(args: argparse.Namespace) -> int:
@@ -128,6 +134,13 @@ def cmd_setup(args: argparse.Namespace) -> int:
         args.hosts = list(selection.hosts)
         args.profile = selection.profile_id or "custom"
         args.capabilities = list(selection.capabilities)
+        if getattr(args, "agent_defaults", None) is None and Scope(args.scope) == Scope.GLOBAL:
+            choice = prompt_agent_defaults()
+            if choice is None:
+                print("setup cancelled; no changes made")
+                return 0
+            args.agent_defaults, chosen = choice
+            args.defaults_language = getattr(args, "defaults_language", None) or chosen
         interactive = True
     catalog = load_catalog()
     profiles = load_profiles(catalog)
@@ -147,6 +160,7 @@ def cmd_setup(args: argparse.Namespace) -> int:
         if getattr(args, "verbose", False):
             print(_preflight_text())
         print(render_plan(plan, verbose=getattr(args, "verbose", False)))
+        _agent_defaults(args, plan, apply=False)
     if args.dry_run:
         print("Dry run complete; no installation or state files changed.")
         return 1 if plan.blocked else 0
@@ -155,6 +169,7 @@ def cmd_setup(args: argparse.Namespace) -> int:
         return 0
     if interactive:
         args.yes = True
+    defaults_ok = True
     with progress:
         emit(progress, "Preparing execution bundles")
         result = _executor_for_plan(plan, args).execute(plan, dry_run=False, yes=args.yes)
@@ -173,6 +188,8 @@ def cmd_setup(args: argparse.Namespace) -> int:
                              detail=str(target["verification"]))
         else:
             verified = None
+    if args.yes:
+        defaults_ok = _agent_defaults(args, plan, apply=True)
     for item in result.results:
         if all_current and item.status == "VERIFIED" and getattr(args, "verbose", False):
             label = "Up to date" if getattr(args, "_latest", None) else "Already installed (latest not checked)"
@@ -199,7 +216,7 @@ def cmd_setup(args: argparse.Namespace) -> int:
                 print(f"  {catalog.require_host(host_id).display_name}: " + ", ".join(names))
     elif any(item.status == "APPLIED" for item in result.results):
         print("Start a new agent session or reload its window for applied files; review remaining diagnostics.")
-    return 1 if verified is False or any(item.status in {"FAILED", "SKIPPED", "BLOCKED"} for item in result.results) else 0
+    return 1 if verified is False or not defaults_ok or any(item.status in {"FAILED", "SKIPPED", "BLOCKED"} for item in result.results) else 0
 
 
 def cmd_add(args: argparse.Namespace) -> int:
@@ -223,13 +240,23 @@ def cmd_add(args: argparse.Namespace) -> int:
 def cmd_remove(args: argparse.Namespace) -> int:
     """Remove only installer-managed first-party targets, preserving unmanaged paths."""
     _prepare_args(args)
-    if not args.capabilities:
-        raise ValueError("remove requires at least one --capability")
+    if not args.capabilities and not args.agent_defaults:
+        raise ValueError("remove requires --capability or --agent-defaults")
     records = _managed_installation_records(args.state_dir)
     catalog = load_catalog()
     adapters = build_host_adapters(catalog.hosts)
     removed = 0
-    for host_id in _hosts(args.hosts):
+    defaults_removed = 0
+    if args.agent_defaults:
+        paths = None
+        if args.hosts:
+            paths = {agent_defaults.expand(catalog.require_host(h).global_instructions_path, _home())
+                     for h in args.hosts if catalog.require_host(h).global_instructions_path}
+        apply = args.yes and not args.dry_run
+        for item in agent_defaults.remove(args.state_dir, paths=paths, apply=apply):
+            print(agent_defaults.format_result(item, preview=not apply))
+            defaults_removed += item.status == "REMOVED"
+    for host_id in (_hosts(args.hosts) if args.capabilities else ()):
         root = adapters[host_id].skill_target(Scope(args.scope), args.project_root)
         for capability_id in args.capabilities:
             key = _installation_key(capability_id, host_id, Scope(args.scope))
@@ -282,7 +309,7 @@ def cmd_remove(args: argparse.Namespace) -> int:
             profile = read_json(profile_path)
             remaining = tuple(item for item in profile.get("capabilities", ()) if item not in set(args.capabilities))
             write_profile(profile_path, profile.get("profile", "custom"), tuple(profile.get("hosts", ())), remaining, profile.get("scope", args.scope))
-    return 0 if removed or args.dry_run or not args.yes else 1
+    return 0 if removed or defaults_removed or args.dry_run or not args.yes else 1
 
 
 def cmd_doctor(args: argparse.Namespace) -> int:
@@ -290,6 +317,16 @@ def cmd_doctor(args: argparse.Namespace) -> int:
     plan = _resolve_from_args(args)
     report = doctor_from_plan(plan)
     print(render_doctor(report))
+    defaults_hosts = args.hosts or _recorded_default_hosts(args.state_dir)
+    defaults_healthy = True
+    if defaults_hosts:
+        catalog = load_catalog()
+        targets = agent_defaults.plan_targets([catalog.require_host(h) for h in defaults_hosts], _home(),
+                                              args.defaults_language, {},
+                                              agent_defaults.read_state(args.state_dir)["files"])
+        for item in agent_defaults.check(targets, args.state_dir):
+            print(agent_defaults.format_result(item, preview=False))
+            defaults_healthy = defaults_healthy and item.status != "FAILED"
     if args.repair:
         print("doctor --repair uses the same locked target and does not upgrade versions")
         if args.dry_run or not args.yes:
@@ -304,7 +341,7 @@ def cmd_doctor(args: argparse.Namespace) -> int:
             plan = _resolve_from_args(args)
             report = doctor_from_plan(plan)
             print(render_doctor(report))
-    return 0 if report.healthy and not plan.blocked else 1
+    return 0 if report.healthy and defaults_healthy and not plan.blocked else 1
 
 
 def cmd_update(args: argparse.Namespace) -> int:
@@ -312,14 +349,26 @@ def cmd_update(args: argparse.Namespace) -> int:
     plan = _resolve_from_args(args)
     print("AI-RULES update preview")
     print(render_plan(plan, verbose=getattr(args, "verbose", False)))
+    recorded_hosts = _recorded_default_hosts(args.state_dir)
+    if args.agent_defaults is True:  # explicit: may install for the selected hosts
+        defaults_hosts = args.hosts or recorded_hosts
+    elif args.agent_defaults is None:  # implicit: refresh only blocks the installer already owns
+        defaults_hosts = [host for host in (args.hosts or recorded_hosts) if host in recorded_hosts]
+    else:
+        defaults_hosts = []
+    if defaults_hosts:
+        args.agent_defaults = True
     if args.dry_run or not args.yes:
+        if defaults_hosts:
+            _agent_defaults(args, None, apply=False, hosts=defaults_hosts)
         return 1 if plan.blocked else 0
     result = _executor_for_plan(plan, args).execute(plan, dry_run=False, yes=True)
     for item in result.results:
         print(f"{item.capability_id} -> {item.host_id}: {item.status} {item.action} - {item.message}")
     _record_managed_installations(plan, result, args)
     verified = _write_verified_lock(plan, result, args)
-    return 1 if verified is False or any(item.status in {"FAILED", "SKIPPED", "BLOCKED"} for item in result.results) else 0
+    defaults_ok = _agent_defaults(args, None, apply=True, hosts=defaults_hosts) if defaults_hosts else True
+    return 1 if verified is False or not defaults_ok or any(item.status in {"FAILED", "SKIPPED", "BLOCKED"} for item in result.results) else 0
 
 
 def cmd_repair(args: argparse.Namespace) -> int:
@@ -439,6 +488,38 @@ def _prepare_args(args: argparse.Namespace) -> None:
 
 def _hosts(hosts: list[str]) -> list[str]:
     return hosts or ["codex"]
+
+
+def _home() -> Path:
+    return Path.home()
+
+
+def _recorded_default_hosts(state_dir: Path) -> list[str]:
+    files = agent_defaults.read_state(state_dir)["files"].values()
+    return list(dict.fromkeys(host for record in files for host in record["hosts"]))
+
+
+def _agent_defaults(args: argparse.Namespace, plan, *, apply: bool, hosts: list[str] | None = None) -> bool:
+    """Preview or reconcile the defaults block; False when any file conflicts or fails."""
+    if not getattr(args, "agent_defaults", None):
+        return True
+    if Scope(args.scope) == Scope.PROJECT:
+        print("agent-defaults: SKIPPED global instruction files are not changed in project scope")
+        return True
+    catalog = load_catalog()
+    planned: dict[str, set[str]] = {}
+    for target in (plan.targets if plan else ()):
+        planned.setdefault(target.host_id, set()).add(target.capability_id)
+    host_ids = hosts if hosts is not None else _hosts(args.hosts)
+    targets = agent_defaults.plan_targets([catalog.require_host(h) for h in host_ids], _home(),
+                                          getattr(args, "defaults_language", None), planned,
+                                          agent_defaults.read_state(args.state_dir)["files"])
+    results = agent_defaults.reconcile(targets, args.state_dir, apply=apply,
+                                       replace_unmanaged=getattr(args, "replace_agent_defaults", False),
+                                       home=_home())
+    for result in results:
+        print(agent_defaults.format_result(result, preview=not apply))
+    return all(result.status not in {"CONFLICT", "FAILED"} for result in results)
 
 
 def _profile_capabilities(profile_id: str) -> list[str]:
