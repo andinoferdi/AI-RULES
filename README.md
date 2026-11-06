@@ -96,19 +96,19 @@ The markers let you replace the block later without touching the rest of the fil
 
 </details>
 
-### Layer 2: the task, six slots
+### Layer 2: the task, seven slots
 
 ```text
-Skills: [domain or explicitly wanted skills only; leave empty if none]
-Tools/MCP: [MCP or browser the task must use, e.g. playwright for screenshots; leave empty if none]
+Skills: [domain or sibling skills the workflow cannot infer; never phase skills]
+Tools/MCP: [MCP or browser the task must use, e.g. playwright for screenshots]
 Mode: [brainstorm first | plan only | just do it]
-Task: [what you want, one or two sentences]
+Task: [what you want in one or two sentences, plus any decision still open]
 Context/evidence: [full error, file and line, versions, links, screenshots, repro steps]
 Done when: [checks you could see or run]
-Constraints: [what must not change]
+Constraints: [what must not change or must not happen]
 ```
 
-Empty slots are fine, but a filled **Context/evidence** and **Done when** fix most bad results. Ask the agent to restate its understanding ("Tell me what you've understood so far and ask about anything unclear") only when the task is open or touches several hosts or systems.
+**Task**, **Context/evidence** and **Done when** are always there. Add the other slots only when they change the result, and keep this order. Each slot holds only its own kind of content: `Mode` is one of its three values, open decisions go in `Task`, and `Done when` lists only checks. Ask the agent to restate its understanding ("Tell me what you've understood so far and ask about anything unclear") only when the task is open or touches several hosts or systems.
 
 ### Which skill do I name?
 
@@ -116,7 +116,7 @@ Name skills from this table. Leave out phase skills such as `andino-planning`, `
 
 | You want to… | Name | Must be in the prompt |
 |---|---|---|
-| Explore an idea or a feature whose shape is open | `andino-brainstorming` | Goal, references, constraints |
+| Explore an idea or a feature whose shape is open | nothing extra: write `Mode: brainstorm first` | Goal, references, open decisions |
 | Build or change UI | `design-taste-frontend`, `impeccable` | Page, current style, visual reference |
 | Build a 3D / Three.js scene | `threejs-skills` (+ the two UI skills for art direction) | Visual style, camera, duration, references |
 | Fix a bug or error | nothing extra | Full error, repro steps, expected vs actual, versions |
@@ -146,32 +146,61 @@ You rarely need to: Layer 1 already tells the agent when each one fits. Name one
 ### Examples
 
 ```text
-# Bug fix: evidence does the work, no extra skills
-Task: the preloader animation stops halfway when switching language, then errors.
-Context/evidence: [full console error], src/app/[locale]/layout.tsx:92, Next.js 16.4.3 (Turbopack).
-  Repro: open /id, switch to EN.
-Done when: the full animation plays on every language switch, the console stays clean.
+# Bug fix: the evidence carries the prompt
+Mode: just do it
+Task: fix the preloader animation that stops halfway when switching language, then errors.
+Context/evidence: repro: open /id, switch to EN.
+  Error: [paste the full console error]
+  Location: src/app/[locale]/layout.tsx:92. Next.js 16.4.3 (Turbopack).
+Done when: the full animation plays on every language switch and the console stays clean.
+Constraints: keep the current preloader design and timing.
 
-# UI feature: domain skills + a mode
-Skills: andino-brainstorming, design-taste-frontend, impeccable, agent-reach (reference video)
+# UI feature: domain skills, brainstorming through Mode
+Skills: design-taste-frontend, impeccable, agent-reach
 Tools/MCP: playwright for screenshots
-Mode: brainstorm first, then plan
-Task: macOS-style magnification on taskbar icon hover. Keep the current taskbar style.
+Mode: brainstorm first
+Task: add macOS-style magnification when hovering taskbar app icons.
 Context/evidence: reference video [link]
-Done when: neighboring icons scale smoothly, no layout shift, works at 360/768/1440 px.
+Done when: the hovered icon and its neighbors scale smoothly, nothing else on the page shifts,
+  and it works at 360, 768 and 1440 px.
+Constraints: keep the current taskbar style.
 
-# 3D scene: the domain owner from the start, no conflicting skills
-Skills: threejs-skills, andino-brainstorming, design-taste-frontend, impeccable
-Mode: brainstorm first; ask council about art direction once the brief is clear
-Task: "The Airship That Cannot Dock" [story and seven animation stages unchanged]
-Done when: one coherent path with no teleporting, orientation follows the path, all seven stages read clearly.
-  [visual style, camera, loop length: not decided yet, ask me]
+# 3D scene: the domain owner from the start
+Skills: threejs-skills, design-taste-frontend, impeccable, council
+Mode: brainstorm first
+Task: build the scene "The Airship That Cannot Dock". Visual style, camera and loop length are
+  still open: decide them with me, then ask council about the art direction before planning.
+Context/evidence: [paste the story and the seven animation stages]
+Done when: all seven stages play in order in one loop, the airship never jumps position
+  between frames, and its nose always points along its path.
+Constraints: keep the story and the seven stages unchanged.
+
+# Thesis: the domain skill owns the method
+Skills: skripsi-skill
+Mode: plan only
+Task: tell me where my thesis stands and what to do next.
+Context/evidence: [chapter files or outline], campus and program: [name], deadline: [date].
+Done when: I get the status of each chapter and an ordered list of next steps with the reason for each.
+
+# Tool install across hosts: name the hosts and the proof
+Task: install chrome-devtools-mcp on Claude Code, Codex, OpenCode, Antigravity CLI and
+  Antigravity IDE so it works alongside playwright-mcp.
+Context/evidence: https://github.com/ChromeDevTools/chrome-devtools-mcp,
+  https://github.com/microsoft/playwright-mcp
+Done when: every host lists both servers and one tool call from each returns a result.
+Constraints: keep existing MCP entries; never write secret values into config files.
 
 # Machine troubleshooting: details instead of skills
-Task: my webcam does not work.
-Context/evidence: Windows 11, [laptop/webcam model], black screen in Zoom and Camera app since [date/update].
-Done when: the Camera app shows video.
+Mode: just do it
+Task: fix my webcam.
+Context/evidence: Windows 11, [laptop/webcam model]. Black screen in Zoom and the Camera app
+  since [date or update].
+Done when: the Camera app and Zoom both show video.
+Constraints: ask before changing drivers or system settings; no Windows reset or reinstall.
 ```
+
+Notice what is missing: no example names a phase skill such as `andino-brainstorming`,
+`andino-planning` or `andino-tdd`. `Mode` and **Done when** steer those phases.
 
 ### In web chatbots (no skills)
 
