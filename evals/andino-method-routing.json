@@ -3485,5 +3485,47 @@
       "tdd",
       "verification"
     ]
+  },
+  {
+    "id": "method-optimize-prompt-implicit",
+    "kind": "behavior",
+    "prompt": "Optimize this prompt into the seven slots for this host: build a Three.js scene with ponytail and council.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select optimize-prompt",
+    "forbidden": "Carrying out the scene task; naming uninstalled skills; inventing facts.",
+    "capabilities": [
+      "optimize-prompt"
+    ],
+    "method": "optimize-prompt",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-optimize-prompt-negative",
+    "kind": "negative-trigger",
+    "prompt": "Build a Three.js scene with ponytail and council.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select optimize-prompt",
+    "forbidden": "Rewriting the request into a prompt instead of doing the task.",
+    "capabilities": [
+      "optimize-prompt"
+    ],
+    "method": "optimize-prompt",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-optimize-prompt-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method optimize-prompt for this request: fix my webcam.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select optimize-prompt",
+    "forbidden": "Carrying out the webcam fix; inventing the OS or device.",
+    "capabilities": [
+      "optimize-prompt"
+    ],
+    "method": "optimize-prompt",
+    "variant": "explicit",
+    "coverage": "routing"
   }
 ]

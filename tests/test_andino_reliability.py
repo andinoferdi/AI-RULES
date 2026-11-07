@@ -250,7 +250,7 @@ class CandidateCoverage(unittest.TestCase):
         cases = json.loads((ROOT / 'evals/andino-method-routing.json').read_text(encoding='utf-8'))
         # Definition coverage is structural, not evidence of a model following it.
         methods = {case['method'] for case in cases}
-        self.assertEqual(59, len(methods))
+        self.assertEqual(60, len(methods))
         for identity in methods:
             self.assertTrue({'explicit', 'implicit', 'negative'} <=
                             {case['variant'] for case in cases if case['method'] == identity}, identity)

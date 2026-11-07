@@ -165,6 +165,10 @@ Constraints: [what must not change or must not happen]
 
 **Task**, **Context/evidence** and **Done when** are always there. Add the other slots only when they change the result, and keep this order. Each slot holds only its own kind of content: `Mode` is one of its three values, open decisions go in `Task`, and `Done when` lists only checks. Ask the agent to restate its understanding ("Tell me what you've understood so far and ask about anything unclear") only when the task is open or touches several hosts or systems.
 
+Have a rough prompt instead? Send it with `/andino-optimize-prompt` (Codex: `$andino-optimize-prompt`).
+It returns these seven slots, keeps your facts, names only skills and MCP servers installed on that
+host, and lists what it removed or flagged. It runs only when you ask for it.
+
 ### Which skill do I name?
 
 Name skills from this table. Leave out phase skills such as `andino-planning`, `andino-plan-execution`, `andino-tdd`, `andino-debugging` and `andino-verification`: the workflow loads them when their phase arrives. Name one only to force or forbid it ("plan only, do not execute").
@@ -257,7 +261,7 @@ Constraints: ask before changing drivers or system settings; no Windows reset or
 Notice what is missing: no example names a phase skill such as `andino-brainstorming`,
 `andino-planning` or `andino-tdd`. `Mode` and **Done when** steer those phases.
 
-61 more examples, covering every Andino member, the companion skills and the MCP servers, are in
+62 more examples, covering every Andino member, the companion skills and the MCP servers, are in
 [docs/prompt-examples.md](docs/prompt-examples.md).
 
 ### In web chatbots (no skills)

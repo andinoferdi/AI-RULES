@@ -17,7 +17,7 @@ class FirstPartyBundleTests(unittest.TestCase):
             # Verify member skills are installed
             member_dirs = [d for d in (root / "skills").iterdir() if d.name.startswith("andino-") and d.name != "andino-workflow"]
             if (bundle / "references" / "portfolio.json").exists():
-                self.assertEqual(30, len(member_dirs))
+                self.assertEqual(31, len(member_dirs))
             else:
                 self.assertIn(len(member_dirs), (59, 60))
             self.assertTrue((root / "skills" / "andino-brainstorming" / "SKILL.md").exists())

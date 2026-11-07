@@ -488,6 +488,13 @@ Task: create a skill that prepares our weekly release notes.
 Context/evidence: last three release notes: [links]; where the data comes from: [git log, issues].
 Done when: the skill runs on last week's changes and its output matches the format of the examples.
 
+# Turn a rough prompt into the seven slots
+# workflow picks: andino-optimize-prompt (only when you ask for it)
+Task: turn my rough prompt into a seven-slot prompt for this host.
+Context/evidence: rough prompt: [paste it as you would have sent it]
+Done when: every skill and MCP server in the result is installed on this host, all my facts
+  are unchanged, and removed phase skills, conflicts and proposed checks are listed under it.
+
 # A session went wrong
 # workflow picks: andino-session-diagnostics
 Task: find out why the last session ignored the plan and reran the same tests five times.
@@ -537,6 +544,7 @@ and `andino-verification` also run inside many other examples.
 | `andino-issue-triage` | Triage incoming issues |
 | `andino-learning-workspace` | Learn something over several sessions |
 | `andino-observability-and-instrumentation` | Add production logging and metrics |
+| `andino-optimize-prompt` | Turn a rough prompt into the seven slots |
 | `andino-performance-optimization` | Slow page in production; Three.js scene that runs slowly |
 | `andino-plan-execution` | Execute an approved plan; Loading and error states |
 | `andino-planning` | Turn an accepted spec into a plan |
