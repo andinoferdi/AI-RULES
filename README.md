@@ -157,13 +157,23 @@ This is what setup writes when every listed skill and MCP server is installed; i
 Skills: [domain or sibling skills the workflow cannot infer; never phase skills]
 Tools/MCP: [MCP or browser the task must use, e.g. playwright for screenshots]
 Mode: [brainstorm first | plan only | just do it]
+
 Task: [what you want in one or two sentences, plus any decision still open]
-Context/evidence: [full error, file and line, versions, links, screenshots, repro steps]
-Done when: [checks you could see or run]
+
+Context/evidence:
+- [full error, file and line, versions]
+- [links, screenshots, repro steps]
+
+Done when:
+- [a check you could see or run]
+- [another check]
+
 Constraints: [what must not change or must not happen]
 ```
 
-**Task**, **Context/evidence** and **Done when** are always there. Add the other slots only when they change the result, and keep this order. Each slot holds only its own kind of content: `Mode` is one of its three values, open decisions go in `Task`, and `Done when` lists only checks. Ask the agent to restate its understanding ("Tell me what you've understood so far and ask about anything unclear") only when the task is open or touches several hosts or systems.
+**Task**, **Context/evidence** and **Done when** are always there. Add the other slots only when they change the result, and keep this order. Each slot holds only its own kind of content: `Mode` is one of its three values, open decisions go in `Task`, and `Done when` lists only checks.
+
+Keep it readable: `Skills`, `Tools/MCP` and `Mode` sit together, and a blank line separates every slot from `Task` on. A slot with one item stays on one line; with two or more, each item gets its own `- ` line (one check, file or limit per bullet). Never wrap a line by hand. Ask the agent to restate its understanding ("Tell me what you've understood so far and ask about anything unclear") only when the task is open or touches several hosts or systems.
 
 Have a rough prompt instead? Send it with `/andino-optimize-prompt` (Codex: `$andino-optimize-prompt`).
 It returns these seven slots, keeps your facts, names only skills and MCP servers installed on that
@@ -204,58 +214,111 @@ You rarely need to: Layer 1 already tells the agent when each one fits. Name one
 
 ### Examples
 
-```text
-# Bug fix: the evidence carries the prompt
-Mode: just do it
-Task: fix the preloader animation that stops halfway when switching language, then errors.
-Context/evidence: repro: open /id, switch to EN.
-  Error: [paste the full console error]
-  Location: src/app/[locale]/layout.tsx:92. Next.js 16.4.3 (Turbopack).
-Done when: the full animation plays on every language switch and the console stays clean.
-Constraints: keep the current preloader design and timing.
+#### Bug fix: the evidence carries the prompt
 
-# UI feature: domain skills, brainstorming through Mode
+```text
+Mode: just do it
+
+Task: fix the preloader animation that stops halfway when switching language, then errors.
+
+Context/evidence:
+- Repro: open /id, switch to EN.
+- Error: [paste the full console error]
+- Location: src/app/[locale]/layout.tsx:92.
+- Version: Next.js 16.4.3 (Turbopack).
+
+Done when: the full animation plays on every language switch and the console stays clean.
+
+Constraints: keep the current preloader design and timing.
+```
+
+#### UI feature: domain skills, brainstorming through Mode
+
+```text
 Skills: design-taste-frontend, impeccable, agent-reach
 Tools/MCP: playwright for screenshots
 Mode: brainstorm first
-Task: add macOS-style magnification when hovering taskbar app icons.
-Context/evidence: reference video [link]
-Done when: the hovered icon and its neighbors scale smoothly, nothing else on the page shifts,
-  and it works at 360, 768 and 1440 px.
-Constraints: keep the current taskbar style.
 
-# 3D scene: the domain owner from the start
+Task: add macOS-style magnification when hovering taskbar app icons.
+
+Context/evidence: reference video [link]
+
+Done when:
+- The hovered icon and its neighbors scale smoothly.
+- Nothing else on the page shifts.
+- It works at 360, 768 and 1440 px.
+
+Constraints: keep the current taskbar style.
+```
+
+#### 3D scene: the domain owner from the start
+
+```text
 Skills: threejs-skills, design-taste-frontend, impeccable, council
 Mode: brainstorm first
-Task: build the scene "The Airship That Cannot Dock". Visual style, camera and loop length are
-  still open: decide them with me, then ask council about the art direction before planning.
-Context/evidence: [paste the story and the seven animation stages]
-Done when: all seven stages play in order in one loop, the airship never jumps position
-  between frames, and its nose always points along its path.
-Constraints: keep the story and the seven stages unchanged.
 
-# Thesis: the domain skill owns the method
+Task:
+- Build the scene "The Airship That Cannot Dock".
+- Visual style, camera and loop length are still open: decide them with me, then ask council about the art direction before planning.
+
+Context/evidence: [paste the story and the seven animation stages]
+
+Done when:
+- All seven stages play in order in one loop.
+- The airship never jumps position between frames.
+- Its nose always points along its path.
+
+Constraints: keep the story and the seven stages unchanged.
+```
+
+#### Thesis: the domain skill owns the method
+
+```text
 Skills: skripsi-skill
 Mode: plan only
+
 Task: tell me where my thesis stands and what to do next.
-Context/evidence: [chapter files or outline], campus and program: [name], deadline: [date].
+
+Context/evidence:
+- [chapter files or outline]
+- Campus and program: [name]
+- Deadline: [date]
+
 Done when: I get the status of each chapter and an ordered list of next steps with the reason for each.
+```
 
-# Tool install across hosts: name the hosts and the proof
-Task: install chrome-devtools-mcp on Claude Code, Codex, OpenCode, Antigravity CLI and
-  Antigravity IDE so it works alongside playwright-mcp.
-Context/evidence: https://github.com/ChromeDevTools/chrome-devtools-mcp,
-  https://github.com/microsoft/playwright-mcp
+#### Tool install across hosts: name the hosts and the proof
+
+```text
+Task: install chrome-devtools-mcp on Claude Code, Codex, OpenCode, Antigravity CLI and Antigravity IDE so it works alongside playwright-mcp.
+
+Context/evidence:
+- https://github.com/ChromeDevTools/chrome-devtools-mcp
+- https://github.com/microsoft/playwright-mcp
+
 Done when: every host lists both servers and one tool call from each returns a result.
-Constraints: keep existing MCP entries; never write secret values into config files.
 
-# Machine troubleshooting: details instead of skills
+Constraints:
+- Keep existing MCP entries.
+- Never write secret values into config files.
+```
+
+#### Machine troubleshooting: details instead of skills
+
+```text
 Mode: just do it
+
 Task: fix my webcam.
-Context/evidence: Windows 11, [laptop/webcam model]. Black screen in Zoom and the Camera app
-  since [date or update].
+
+Context/evidence:
+- Windows 11, [laptop/webcam model]
+- Black screen in Zoom and the Camera app since [date or update]
+
 Done when: the Camera app and Zoom both show video.
-Constraints: ask before changing drivers or system settings; no Windows reset or reinstall.
+
+Constraints:
+- Ask before changing drivers or system settings.
+- No Windows reset or reinstall.
 ```
 
 Notice what is missing: no example names a phase skill such as `andino-brainstorming`,
