@@ -1,6 +1,6 @@
 # Internal method index
 
-These 30 public member methods have native `andino-*` SKILL.md entrypoints and canonical GUIDE.md resources. Specialized techniques are separately selectable noncallable resources below; no retired entrypoint or compatibility shim is installed. They are not upstream provider activation or a second router. Consult relevant entries for discovery before Focus or optional external skill search; resolve an explicit native provider directly. Apply [dispatch](method-dispatch.md) to every row: explicit requests and source aliases require canonical loading when applicable; implicit requests select by outcome, trigger, exclusion and current phase. A name in quoted text, a filename or this inventory is not a trigger. Ordinary sufficient tasks need no method.
+These 31 public member methods have native `andino-*` SKILL.md entrypoints and canonical GUIDE.md resources. Specialized techniques are separately selectable noncallable resources below; no retired entrypoint or compatibility shim is installed. They are not upstream provider activation or a second router. Consult relevant entries for discovery before Focus or optional external skill search; resolve an explicit native provider directly. Apply [dispatch](method-dispatch.md) to every row: explicit requests and source aliases require canonical loading when applicable; implicit requests select by outcome, trigger, exclusion and current phase. A name in quoted text, a filename or this inventory is not a trigger. Ordinary sufficient tasks need no method.
 
 An explicit relevant internal method ID is enough: read its linked GUIDE.md through the permitted resource tool, then only the local resources it needs. For implicit selection use the trigger and exclusion together; choose the minimum useful set. Do not load all guides. If the requested outcome is prohibited or excluded, resolve that boundary in the root contract without loading methods just to refuse. No guide grants additional action authority.
 
@@ -31,6 +31,7 @@ Selected skills own their full procedures, required resources, artifact detail a
 | [learning-workspace](../skills/learning-workspace/SKILL.md) | An explicit request for learning across sessions or a structured lesson tied to a concrete mission. | A one-off factual answer or an assumption the user wants recurring lessons/automation. |
 | [skill-maker](../skills/skill-maker/SKILL.md) | Create/improve executable skills, operational procedures, or recurring procedural failures. | One-off note, mechanically enforceable rule, or passive project guidance (`CLAUDE.md`). |
 | [observability-and-instrumentation](../skills/observability-and-instrumentation/SKILL.md) | New production I/O, endpoint/job/retry/queue, missing incident evidence or alert/runbook design. | Diagnosing one current failure only (debugging owns that) or unmeasured performance tuning. |
+| [optimize-prompt](../skills/optimize-prompt/SKILL.md) | An explicit request to optimize, restructure or rewrite a raw task prompt into the seven-slot format. | An ordinary task prompt to carry out, prose polishing, or a prompt for a web chatbot without skills. |
 | [performance-optimization](../skills/performance-optimization/SKILL.md) | Measured slowness, budget regression, slow query/pool/cache issue or provided performance artifacts. | Speculative memoization/index/cache work without evidence of a bottleneck. |
 | [plan-execution](../skills/plan-execution/SKILL.md) | Accepted plan ready or interrupted execution resumes. | Unresolved product intent or unapproved redesign. |
 | [planning](../skills/planning/SKILL.md) | Accepted multi-step work lacks exact interfaces, dependency order or verification. | Simple targeted edit or already complete accepted graph ready to execute. |
@@ -99,6 +100,7 @@ Only names listed below remain supported selection aliases; retired IDs have no 
 | grill-me | [brainstorming](../skills/brainstorming/SKILL.md) |
 | grilling | [brainstorming](../skills/brainstorming/SKILL.md) |
 | interview-me | [brainstorming](../skills/brainstorming/SKILL.md) |
+| optimize-prompt | [optimize-prompt](../skills/optimize-prompt/SKILL.md) |
 | planning-and-task-breakdown | [planning](../skills/planning/SKILL.md) |
 | receiving-code-review | [code-review](../skills/code-review/SKILL.md) |
 | requesting-code-review | [code-review](../skills/code-review/SKILL.md) |

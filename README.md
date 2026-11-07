@@ -1,6 +1,6 @@
 # Andino Workflow
 
-Andino Workflow coordinates a **30-member public core** and selectively loaded internal techniques. It owns routing, one durable checkpoint, permissions and evidence-based acceptance; selected skills retain their full methods and checks. Codex, Claude Code, OpenCode and Antigravity are peers.
+Andino Workflow coordinates a **31-member public core** and selectively loaded internal techniques. It owns routing, one durable checkpoint, permissions and evidence-based acceptance; selected skills retain their full methods and checks. Codex, Claude Code, OpenCode and Antigravity are peers.
 
 ## Public skills and internal resources
 
@@ -54,6 +54,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-handoff` | Portable continuation and optional context packing. |
 | `andino-human-procedure` | Necessary steps requiring human-only access or authority. |
 | `andino-issue-triage` | Maintainer-requested issue/PR evaluation without unauthorized tracker writes. |
+| `andino-optimize-prompt` | Explicitly requested rewrite of a raw task prompt into the seven-slot format, naming only capabilities installed on the host. |
 | `andino-session-diagnostics` | Session-level failures; optional prevention review after causes are known. |
 | `andino-learning-workspace` | Intentional learning; optional course-exercise scaffolding. |
 | `andino-article-shaping` | Shape supplied writing material; optional raw capture without invented anecdotes. |

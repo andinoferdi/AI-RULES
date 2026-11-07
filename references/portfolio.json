@@ -8,7 +8,7 @@
     "constraint-driven-development", "debugging", "delegation",
     "deprecation-and-migration", "documentation-and-adrs", "doubt-driven-development",
     "git-skills", "handoff", "human-procedure", "issue-triage", "learning-workspace",
-    "observability-and-instrumentation", "performance-optimization", "plan-execution",
+    "observability-and-instrumentation", "optimize-prompt", "performance-optimization", "plan-execution",
     "planning", "security-and-hardening", "session-diagnostics", "shipping-and-launch",
     "skill-maker", "tdd", "verification"
   ],
