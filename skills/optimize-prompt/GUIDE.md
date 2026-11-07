@@ -40,8 +40,10 @@ for the slot contract, the skill and MCP picker and examples. A complete run is 
    prompt gains no technology, cause, fix, requirement, device or check that the user did not give.
    The bundled examples show slot shape only; their details and checks never enter the prompt.
 
-3. **Fill the slots** by the slot contract. Slot labels stay exactly as written there; remarks such
-   as "proposed" go in `Notes`. Then run each check:
+3. **Fill the slots** by the slot contract and lay them out by its layout rules: `Skills`,
+   `Tools/MCP` and `Mode` grouped, a blank line before each later slot, one bullet per item when
+   a slot holds two or more, and no hand-wrapped lines. Slot labels stay exactly as written there;
+   remarks such as "proposed" go in `Notes`, never next to a label. Then run each check:
 
    | Check | Trigger | Action |
    | --- | --- | --- |
@@ -79,8 +81,9 @@ edits them, installs a capability or runs the task before the user says yes.
 
 ## Outputs and verification
 
-Compare the output with the raw prompt: every pinned fact appears unchanged; `Mode` holds one
-value; `Skills` holds no `andino-*` member; every named skill and MCP was found in the inventory;
+Compare the output with the raw prompt: every pinned fact appears unchanged; the layout rules
+hold (grouped header slots, blank lines between later slots, one item per bullet, no wrapped or
+indented lines, no remark beside a label); `Mode` holds one value; `Skills` holds no `andino-*` member; every named skill and MCP was found in the inventory;
 each conflict, removal and proposed check appears in `Notes`; at most two questions remain.
 
 ## Example and anti-patterns

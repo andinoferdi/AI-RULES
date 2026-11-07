@@ -10,9 +10,17 @@ kept verbatim, and a test on `main` fails when they drift. Edit them there first
 Skills: [domain or sibling skills the workflow cannot infer; never phase skills]
 Tools/MCP: [MCP or browser the task must use, e.g. playwright for screenshots]
 Mode: [brainstorm first | plan only | just do it]
+
 Task: [what you want in one or two sentences, plus any decision still open]
-Context/evidence: [full error, file and line, versions, links, screenshots, repro steps]
-Done when: [checks you could see or run]
+
+Context/evidence:
+- [full error, file and line, versions]
+- [links, screenshots, repro steps]
+
+Done when:
+- [a check you could see or run]
+- [another check]
+
 Constraints: [what must not change or must not happen]
 ```
 
@@ -21,6 +29,16 @@ Constraints: [what must not change or must not happen]
 - `Mode` holds one of its three values. Omitting it means "just do it".
 - Open decisions go in `Task`. `Done when` lists only checks.
 - `[brackets]` mark what the user fills in.
+
+Layout, so a person can read the prompt at a glance:
+
+- `Skills`, `Tools/MCP` and `Mode` sit together, one line each. A blank line separates every
+  slot from `Task` on.
+- A slot with one item stays on one line: `Label: item`.
+- A slot with two or more items puts the label alone, then each item on its own `- ` line: one
+  check, file, fact or limit per bullet. The open decision in `Task` gets its own bullet.
+- No line is wrapped by hand and no line starts with spaces. A bullet that ends in a
+  `[placeholder]` takes no period.
 
 Phase members never appear in `Skills`: `andino-brainstorming`, `andino-planning`,
 `andino-plan-execution`, `andino-tdd`, `andino-debugging`, `andino-verification` and every other
@@ -58,35 +76,58 @@ steer them. Name one only to force or forbid it ("plan only, do not execute").
 
 ## Examples
 
+#### Bug fix: the evidence carries the prompt
+
 ```text
-# Bug fix: the evidence carries the prompt
 Mode: just do it
+
 Task: fix the preloader animation that stops halfway when switching language, then errors.
-Context/evidence: repro: open /id, switch to EN.
-  Error: [paste the full console error]
-  Location: src/app/[locale]/layout.tsx:92. Next.js 16.4.3 (Turbopack).
+
+Context/evidence:
+- Repro: open /id, switch to EN.
+- Error: [paste the full console error]
+- Location: src/app/[locale]/layout.tsx:92.
+- Version: Next.js 16.4.3 (Turbopack).
+
 Done when: the full animation plays on every language switch and the console stays clean.
+
 Constraints: keep the current preloader design and timing.
 ```
 
+#### 3D scene: the domain owner from the start
+
 ```text
-# 3D scene: the domain owner from the start
 Skills: threejs-skills, design-taste-frontend, impeccable, council
 Mode: brainstorm first
-Task: build the scene "The Airship That Cannot Dock". Visual style, camera and loop length are
-  still open: decide them with me, then ask council about the art direction before planning.
+
+Task:
+- Build the scene "The Airship That Cannot Dock".
+- Visual style, camera and loop length are still open: decide them with me, then ask council about the art direction before planning.
+
 Context/evidence: [paste the story and the seven animation stages]
-Done when: all seven stages play in order in one loop, the airship never jumps position
-  between frames, and its nose always points along its path.
+
+Done when:
+- All seven stages play in order in one loop.
+- The airship never jumps position between frames.
+- Its nose always points along its path.
+
 Constraints: keep the story and the seven stages unchanged.
 ```
 
+#### Machine troubleshooting: details instead of skills
+
 ```text
-# Machine troubleshooting: details instead of skills
 Mode: just do it
+
 Task: fix my webcam.
-Context/evidence: Windows 11, [laptop/webcam model]. Black screen in Zoom and the Camera app
-  since [date or update].
+
+Context/evidence:
+- Windows 11, [laptop/webcam model]
+- Black screen in Zoom and the Camera app since [date or update]
+
 Done when: the Camera app and Zoom both show video.
-Constraints: ask before changing drivers or system settings; no Windows reset or reinstall.
+
+Constraints:
+- Ask before changing drivers or system settings.
+- No Windows reset or reinstall.
 ```
