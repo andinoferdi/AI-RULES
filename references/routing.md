@@ -85,6 +85,8 @@ Antigravity's scoped descriptions are behavioral guidance, not a native hard swi
 
 | Need | Default worker / instrument | Boundary |
 | --- | --- | --- |
+| Logo, brand mark, favicon or visual identity work | Installed `logo-design`; read [local collaboration](marketing-collaboration.md) | Reuse product context and approved identity; the logo skill owns its complete method; marketing, LinkedIn and frontend specialists consume the approved assets |
+| Marketing, positioning, SEO/CRO, content or LinkedIn work | Installed Marketing Skills and LinkedIn specialists; read [local collaboration](marketing-collaboration.md) | Andino keeps lifecycle; choose the specific deliverable owner, share relevant project context and respect host invocation/action authority |
 | Ordinary conversation or sufficient known context | Direct response | explicit Andino invocation is valid; no forced plan, tools or specialist |
 | Daily task or installation guidance | Relevant context and official instructions when needed | answer useful defaults; inspect or ask only about material environment differences |
 | Current research or factual comparison | Authoritative current sources and supplied artifacts | distinguish source findings, inference and unknowns; cite evidence; no invented freshness |
