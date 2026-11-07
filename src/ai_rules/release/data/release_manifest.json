@@ -9,7 +9,7 @@
       "ref": "origin/andino-workflow",
       "commit": "7d582fd94d638e2bf4556fc3f83891874b42fe95",
       "release_sequence": 37,
-      "publication_status": "RUNTIME_REF_PUSH_PENDING"
+      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "ai-codebase-rescue": {
       "branch": "ai-codebase-rescue",
