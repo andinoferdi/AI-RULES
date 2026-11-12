@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "channel": "stable",
-  "release_sequence": 38,
+  "release_sequence": 39,
   "verified_at": "2026-11-12",
   "first_party": {
     "andino-workflow": {
@@ -35,8 +35,8 @@
     "focus": {
       "branch": "focus",
       "ref": "origin/focus",
-      "commit": "d119a80f2ac7567f3034eb6663e54c4ce9545de0",
-      "release_sequence": 16,
+      "commit": "95124736667b5a6a1175577a6edd3526eef19874",
+      "release_sequence": 39,
       "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "council": {
