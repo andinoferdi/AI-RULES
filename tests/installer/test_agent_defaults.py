@@ -80,6 +80,30 @@ class AgentDefaultsTests(unittest.TestCase):
             self.assertEqual(set(), words & banned, language)
         self.assertEqual(render_block("id", skills, mcps).count("\n"), render_block("en", skills, mcps).count("\n"))
 
+    def test_named_choices_win(self):
+        from ai_rules.agent_defaults import render_block
+        cases = (("en", "Keep every skill, phase and order the user names",
+                  ("always in this order", "Do not load members the task does not need", "must be")),
+                 ("id", "Pertahankan setiap skill, fase dan urutan yang disebut user",
+                  ("selalu dengan urutan ini", "Jangan memuat anggota yang tidak dibutuhkan", "wajib")))
+        for language, kept, gone in cases:
+            block = render_block(language, frozenset({"andino-workflow"}), ())
+            self.assertIn(kept, block)
+            for phrase in gone:
+                self.assertNotIn(phrase, block, language)
+
+    def test_readme_layer_one_block_matches_renderer(self):
+        import re
+        from ai_rules.agent_defaults import DOMAIN_HINTS, render_block
+        readme = (Path(__file__).resolve().parents[2] / "README.md").read_text(encoding="utf-8")
+        shown = re.search(r"```markdown\n(<!-- ai-rules:global-defaults:start -->.*?"
+                          r"<!-- ai-rules:global-defaults:end -->\n)```",
+                          readme.replace("\r\n", "\n"), re.S).group(1)
+        skills = frozenset(n for required, _ in DOMAIN_HINTS for n in required) | {
+            "andino-workflow", "andino-delegation", "focus", "search-first", "ponytail"}
+        mcps = ("chrome-devtools", "context7", "graphify", "playwright", "rea")
+        self.assertEqual(render_block("en", skills, mcps), shown)
+
     def test_detect_mcp_formats(self):
         from ai_rules.agent_defaults import detect_mcp_servers
         (self.home / ".claude.json").write_text(json.dumps({"mcpServers": {"context7": {}, "rea": {}}}), encoding="utf-8")

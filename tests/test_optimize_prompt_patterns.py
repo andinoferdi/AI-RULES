@@ -1,4 +1,4 @@
-"""Keep andino-optimize-prompt's bundled patterns identical to README's How to Prompt rules."""
+"""Keep andino-optimize-prompt consistent with README and its own contract."""
 
 import os
 from pathlib import Path
@@ -9,6 +9,8 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 RESOURCE = 'skills/optimize-prompt/resources/prompt-patterns.md'
 WORKED_EXAMPLE = 'skills/optimize-prompt/resources/worked-example.md'
+SKILL = 'skills/optimize-prompt/SKILL.md'
+GUIDE = 'skills/optimize-prompt/GUIDE.md'
 SLOTS = ('Skills', 'Tools/MCP', 'Mode', 'Task', 'Context/evidence', 'Done when', 'Constraints')
 HEADER_SLOTS = SLOTS[:3]
 
@@ -67,10 +69,6 @@ class PromptPatternsMatchReadme(unittest.TestCase):
         cls.readme = (ROOT / 'README.md').read_text(encoding='utf-8').replace('\r\n', '\n')
         cls.resource = runtime_resource().replace('\r\n', '\n')
 
-    def test_slot_contract_is_the_readme_layer_two_block(self):
-        readme = text_blocks(section(self.readme, '### Layer 2: the task, seven slots'))[0]
-        self.assertEqual(readme, text_blocks(section(self.resource, '## Slot contract'))[0])
-
     def test_skill_and_mcp_pickers_match(self):
         self.assertEqual(table(section(self.readme, '### Which skill do I name?')),
                          table(section(self.resource, '## Which skill to name')))
@@ -81,14 +79,6 @@ class PromptPatternsMatchReadme(unittest.TestCase):
         note = next(line for line in section(self.readme, '### Which skill do I name?').splitlines()
                     if line.startswith('`council` runs five advisors'))
         self.assertIn(note, self.resource)
-
-    def test_every_bundled_example_is_a_readme_example(self):
-        examples = '\n'.join(text_blocks(section(self.readme, '### Examples')))
-        bundled = text_blocks(section(self.resource, '## Examples'))
-        self.assertTrue(bundled)
-        for block in bundled:
-            with self.subTest(example=block.splitlines()[0]):
-                self.assertIn(block.strip('\n'), examples)
 
 
 class PromptLayoutIsReadable(unittest.TestCase):
@@ -107,17 +97,38 @@ class PromptLayoutIsReadable(unittest.TestCase):
         doc = (ROOT / 'docs' / 'prompt-examples.md').read_text(encoding='utf-8').replace('\r\n', '\n')
         self.assert_readable('docs/prompt-examples.md', text_blocks(doc))
 
-    def test_bundled_skill_resources(self):
-        resource = runtime_resource().replace('\r\n', '\n')
-        self.assert_readable('prompt-patterns slot contract', text_blocks(section(resource, '## Slot contract')))
-        self.assert_readable('prompt-patterns examples', text_blocks(section(resource, '## Examples')))
-        worked = runtime_resource(WORKED_EXAMPLE).replace('\r\n', '\n')
-        self.assert_readable('worked-example output', text_blocks(section(worked, '## Output')))
-
     def test_checker_rejects_the_old_layout(self):
         old = ('Mode: just do it\nTask: fix it.\nContext/evidence: repro: open /id.\n'
                '  Error: [paste]\nDone when:\n- one check\n')
         self.assertEqual(len(layout_problems(old)), 5)
+
+
+class LightEditorContract(unittest.TestCase):
+    TOKEN = re.compile(r'https?://[^\s,;)]+|[A-Za-z]:\\[^\s,;)]+|\b[a-z0-9]+(?:-[a-z0-9]+)+\b')
+
+    def test_skill_and_guide_share_one_body(self):
+        def body(text):
+            return text.replace('\r\n', '\n').split('## Purpose and selection', 1)[1]
+        self.assertEqual(body(runtime_resource(SKILL)), body(runtime_resource(GUIDE)))
+
+    def test_no_rule_drops_or_adds_user_choices(self):
+        skill = runtime_resource(SKILL)
+        for phrase in ('Phase routing', 'Missing owner', 'Remove them from `Skills`', 'seven-slot'):
+            self.assertNotIn(phrase, skill)
+        self.assertIn('never a reason to drop, merge or reorder them', skill)
+
+    def test_worked_examples_keep_every_named_token_in_order(self):
+        worked = runtime_resource(WORKED_EXAMPLE).replace('\r\n', '\n')
+        examples = re.split(r'^## Example \d+', worked, flags=re.M)[1:]
+        self.assertGreaterEqual(len(examples), 2)
+        for example in examples:
+            raw = text_blocks(section(example, '### Raw prompt'))[0]
+            out = text_blocks(section(example, '### Output'))[0]
+            with self.subTest(raw=raw.splitlines()[0]):
+                for token in self.TOKEN.findall(raw):
+                    self.assertIn(token, out)
+                header = [out.index(token) for token in self.TOKEN.findall(raw.splitlines()[0])]
+                self.assertEqual(sorted(header), header)
 
 
 if __name__ == '__main__':

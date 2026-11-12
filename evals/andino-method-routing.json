@@ -3489,10 +3489,10 @@
   {
     "id": "method-optimize-prompt-implicit",
     "kind": "behavior",
-    "prompt": "Optimize this prompt into the seven slots for this host: build a Three.js scene with ponytail and council.",
+    "prompt": "Optimize this prompt for this host: build a Three.js scene with ponytail and council.",
     "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
     "expected": "Select optimize-prompt",
-    "forbidden": "Carrying out the scene task; naming uninstalled skills; inventing facts.",
+    "forbidden": "Carrying out the scene task; dropping or adding named skills; inventing facts.",
     "capabilities": [
       "optimize-prompt"
     ],

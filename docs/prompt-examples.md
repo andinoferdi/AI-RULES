@@ -5,10 +5,12 @@ features, bug fixes, tests, reviews, docs and questions, plus the specialist wor
 its companion skills and MCP servers cover. Every example follows the rules in
 [How to Prompt](../README.md#how-to-prompt):
 
-- Slots appear in a fixed order: `Skills`, `Tools/MCP`, `Mode`, `Task`, `Context/evidence`,
-  `Done when`, `Constraints`. **Task**, **Context/evidence** and **Done when** are always there;
-  the rest appear only when they change the result.
-- `Skills` lists only skills the workflow cannot infer. It never lists an `andino-*` member.
+- These examples keep one slot order so they are easy to compare: `Skills`, `Tools/MCP`, `Mode`,
+  `Task`, `Context/evidence`, `Done when`, `Constraints`. **Task**, **Context/evidence** and
+  **Done when** are always there; the rest appear only when they change the result. Your own
+  prompts can use any order or plain sentences.
+- These examples list in `Skills` only skills the workflow cannot infer, so none names an
+  `andino-*` member. Naming one in your own prompt is fine and is followed.
 - `Mode` is `brainstorm first`, `plan only` or `just do it`. Omitting it means "just do it".
 - `Skills`, `Tools/MCP` and `Mode` sit together on one line each. A blank line separates every
   slot from `Task` on.
@@ -988,19 +990,18 @@ Context/evidence:
 Done when: the skill runs on last week's changes and its output matches the format of the examples.
 ```
 
-### Turn a rough prompt into the seven slots
+### Tidy a rough prompt
 
 Workflow picks: `andino-optimize-prompt` (only when you ask for it).
 
 ```text
-Task: turn my rough prompt into a seven-slot prompt for this host.
+Task: tidy my rough prompt without changing its shape.
 
 Context/evidence: rough prompt: [paste it as you would have sent it]
 
 Done when:
-- Every skill and MCP server in the result is installed on this host.
-- All my facts are unchanged.
-- Removed phase skills, conflicts and proposed checks are listed under it.
+- Every skill, phase and fact I wrote is still there, in my order.
+- Nothing is added to the prompt itself; suggestions and questions are listed under it.
 ```
 
 ### A session went wrong
@@ -1077,7 +1078,7 @@ and `andino-verification` also run inside many other examples.
 | `andino-issue-triage` | Triage incoming issues |
 | `andino-learning-workspace` | Learn something over several sessions |
 | `andino-observability-and-instrumentation` | Add production logging and metrics |
-| `andino-optimize-prompt` | Turn a rough prompt into the seven slots |
+| `andino-optimize-prompt` | Tidy a rough prompt |
 | `andino-performance-optimization` | Slow page in production; Three.js scene that runs slowly |
 | `andino-plan-execution` | Execute an approved plan; Loading and error states |
 | `andino-planning` | Turn an accepted spec into a plan |
