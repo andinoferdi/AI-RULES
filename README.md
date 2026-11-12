@@ -12,6 +12,7 @@ Conversational filler and generic disclaimers can bury the answer. **Focus** app
 |---|---|
 | **Result First** | State the direct answer or solution immediately before giving reasons or background. |
 | **Active & Natural Voice** | Use simple, natural sentences; avoid formulaic phrasing and corporate jargon. |
+| **Length Budget** | Each request type has a word or step budget (for example, a how-to gets at most 6 one-line steps). Background, side topics and caveats are cut unless they change what the reader does. |
 | **Zero Conversational Fluff** | No pleasantries ("Certainly! I'd be happy to help"), no throat-clearing preambles, no trailing caveats. |
 | **Preserve Facts & Limits** | Never invent numbers, sources, or certainty; distinguish verified facts from assumptions. |
 | **Actionable Next Steps** | For practical queries, provide concrete steps that can be run or tested immediately. |
@@ -82,7 +83,7 @@ Focus triggers automatically when installed alongside Andino Workflow, or you ca
 
 ## References & Provenance
 
-- [`SKILL.md`](SKILL.md) — Activation contract and style precedence.
+- [`SKILL.md`](SKILL.md) — Activation, length budgets, cut rules and style precedence.
 - [`references/priority-a.md`](references/priority-a.md) — Canonical Priority A communication principles.
 - [`references/human-language-indonesia.md`](references/human-language-indonesia.md) — Indonesian conversational patterns.
 - [`references/human-language-english.md`](references/human-language-english.md) — English conversational patterns.
