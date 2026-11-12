@@ -56,3 +56,25 @@ checks from the bundled 3D example; `antislop` relevance not questioned.
 
 Recorded in the session report: validator and test runs on `main` compared with a pre-change
 baseline, and `ai-rules setup --dry-run` for the five hosts.
+
+## Revision 2026-11-12: light editor
+
+Status: authored in a local worktree; not committed or pushed.
+
+Accepted decisions (owner, after a five-advisor council with anonymous review):
+
+- The optimizer is a light editor. It keeps the user's shape, voice, labels and order and makes the
+  smallest edit that makes the prompt clear; returning it almost unchanged is a valid result.
+- Every skill, workflow member, MCP server, mode and phase sequence the user names stays verbatim
+  and in order. The former "Phase routing" check (remove `andino-*`, collapse phases into one
+  `Mode`) and "Missing owner" check (add skills) are removed. Suggestions go to `Notes` only.
+- A weak prompt gets the lightly edited prompt plus at most three questions, never guesses or
+  placeholders.
+- Bundled resources: `prompt-patterns.md` keeps only the README picker tables and the `council`
+  note as suggestion sources; `worked-example.md` shows one strong and one weak prompt.
+
+Tests on `main`: the slot-contract and bundled-example equality tests are replaced by
+`LightEditorContract` (SKILL/GUIDE body parity, no drop/add rules, every named token in the worked
+examples survives in order).
+
+Behavior eval: not run yet (needs approval for fresh-context workers).

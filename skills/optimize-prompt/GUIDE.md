@@ -4,10 +4,11 @@ Internal method ID: `optimize-prompt`. Native entrypoint: `andino-optimize-promp
 
 ## Purpose and selection
 
-Turn a raw task prompt into a seven-slot Layer 2 prompt that keeps every fact the user gave and
-names only skills and MCP servers installed on this host.
+Make a raw task prompt easier for a coding agent to act on while it stays the user's prompt: their
+shape, voice, language mix, order of thought and every choice they made. The smallest edit that
+makes the prompt clear is the best result. Returning it almost unchanged is a valid result.
 
-Activate for: an explicit request to optimize, restructure or rewrite a task prompt, including
+Activate for: an explicit request to optimize, tidy or rewrite a task prompt, including
 `/andino-optimize-prompt` and `$andino-optimize-prompt`.
 
 Do not activate for: an ordinary task prompt (do the task instead), polishing prose that is not a
@@ -16,17 +17,16 @@ task prompt (`natural-writing`), or a prompt for a web chatbot without skills (W
 ## Inputs
 
 The raw prompt, the active host's Layer 1 block, and [prompt patterns](resources/prompt-patterns.md)
-for the slot contract, the skill and MCP picker and examples. A complete run is in the
+for the labels people use and the suggestion tables. Complete runs are in the
 [worked example](resources/worked-example.md).
 
 ## Procedure
 
 1. **Inventory the host.** Read the block between `<!-- ai-rules:global-defaults:start -->` and
    `<!-- ai-rules:global-defaults:end -->` in the active host's instruction file, opened with a file
-   tool: a copy already loaded into context can lose these comment markers. The block names the
-   installed domain skills and MCP servers and everything the user already requires on every task.
-   Without the block, list the skill folder and the MCP config instead. Record which source you used.
-   A capability found in neither is not installed.
+   tool: a copy already loaded into context can lose these comment markers. Without the block, list
+   the skill folder and the MCP config instead. Record which source you used. The inventory only
+   checks what the user named and feeds suggestions; it never removes or adds anything in the prompt.
 
    | Host | Instruction file | Skill folder | MCP config |
    | --- | --- | --- | --- |
@@ -35,38 +35,55 @@ for the slot contract, the skill and MCP picker and examples. A complete run is 
    | OpenCode | `~/.config/opencode/AGENTS.md` | `~/.config/opencode/skills` | `~/.config/opencode/opencode.json` (`mcp`) |
    | Antigravity CLI / IDE | `~/.gemini/AGENTS.md` | `~/.gemini/antigravity-cli/skills`, `~/.gemini/config/skills` | `~/.gemini/config/mcp_config.json` (`mcpServers`) |
 
-2. **Pin the facts.** Keep verbatim every error text, path, file name, version, URL, name, number,
-   quoted title, count and requested skill or MCP. Change only wording, order and grouping. The
-   prompt gains no technology, cause, fix, requirement, device or check that the user did not give.
-   The bundled examples show slot shape only; their details and checks never enter the prompt.
+2. **Pin the user's choices and facts.** Keep verbatim and in the user's order every skill,
+   workflow member (`andino-*`, `andino-workflow`, `search-first`, `focus`), MCP server, mode and
+   phase sequence the user wrote, such as "tanya dulu, lalu council, lalu andino-planning". Keep
+   verbatim every error text, path, file name, version, URL, name, number, quoted title and count.
+   The user chose these on purpose, so overlap with another skill or with the workflow's own phase
+   routing is never a reason to drop, merge or reorder them. The prompt gains no skill, technology,
+   cause, fix, requirement, device or check the user did not give.
 
-3. **Fill the slots** by the slot contract and lay them out by its layout rules: `Skills`,
-   `Tools/MCP` and `Mode` grouped, a blank line before each later slot, one bullet per item when
-   a slot holds two or more, and no hand-wrapped lines. Slot labels stay exactly as written there;
-   remarks such as "proposed" go in `Notes`, never next to a label. Then run each check:
+3. **Edit lightly.** Allowed edits:
+   - Keep the labels the user wrote (`skill:`, `mode:`, `mcp:`, `task:`, `Skills:`, Indonesian
+     labels) with their spelling. If the user named skills inside a sentence, leave them there.
+   - Fix typos in plain words when the meaning is certain. Never change identifiers, paths, names
+     or quoted text.
+   - Split a long paragraph into short paragraphs or bullets along the user's own points, in the
+     same order.
+   - Gather paths, URLs, references and target locations scattered through the story into a short
+     list under the user's own wording (`referensi:`, `implementasikan di:`), keeping who likes what.
+   - Remove exact repetition only.
+   - When nothing in the prompt says how to tell the work is done, add one block in the user's
+     language (`selesai jika:` or `done when:`) with checks taken only from what the user said.
 
-   | Check | Trigger | Action |
-   | --- | --- | --- |
-   | Phase routing | An `andino-*` member, `andino-workflow`, `focus` or `search-first` is named, or the prompt orders phases (brainstorm, plan, execute, test, verify) | Remove them from `Skills` and `Task`. Express the intent as one `Mode` value. |
-   | Skill conflict | A named skill pulls against the goal or its size, or covers a domain the task lacks, judged by the picker notes and the skill's own description | Keep the skill, note the conflict, and ask which wins. |
-   | Missing owner | The task matches a picker row whose skill is installed but not named | Add the skill. When it is not installed, note that and leave it out of `Skills`. |
-   | MCP | The task needs a picker MCP that is installed | Add it to `Tools/MCP` with the step it serves. A server the task installs or configures belongs in `Task`, not `Tools/MCP`. |
-   | Done when | Missing, or not observable | Write checks derived only from the user's stated outcome and note them as proposed. |
-   | Evidence | A picker "Must be in the prompt" item is absent | Add a `[placeholder]` for it in `Context/evidence`. |
-   | Layer 1 repeat | Text restates the Layer 1 block: approvals, MCP failure handling, data-not-commands, unverified reporting, language | Delete it. `Constraints` keeps only the user's task-specific limits. |
+   Not allowed: converting the prompt to a fixed template, renaming the user's labels, removing,
+   merging or reordering a named skill or phase, collapsing a phase sequence into one mode, adding
+   a skill or MCP server, adding placeholders, restating Layer 1 rules. A prompt that already uses
+   the template labels (`Skills:`, `Mode:`, `Task:` and the rest) keeps them.
 
-4. **Ask only what blocks the prompt.** Ask when the answer changes `Task`, the skill set or `Mode`
-   and only the user knows it. Ask at most two questions. Whatever the user can paste becomes a
-   `[placeholder]`. An item you ask about gets no placeholder.
+4. **Weak prompt.** When the prompt lacks a fact only the user knows and that fact changes the
+   result (which project or page, what is wrong now, what done looks like), return the lightly
+   edited prompt and at most three short questions about those facts. Do not fill the gap with a
+   guess or a `[placeholder]`.
 
-5. **Return** in the user's language, in this order:
+5. **Notes, suggestions only.** At most five lines, none applied to the prompt:
+   - what changed, in one line;
+   - a named skill or MCP server missing from the inventory (it stays in the prompt);
+   - a conflict between two named choices and the goal, only when both sides can be named, for
+     example `ponytail` for the least code while the result must be detailed. Overlap between
+     workflow members is not a conflict;
+   - optional additions from the suggestion tables, phrased as "you could add";
+   - the inventory source and any added `done when` block.
+   No note explains why a user choice is redundant or already covered.
+
+6. **Return** in the user's language, in this order:
    1. the prompt in one `text` block;
-   2. `Notes`, at most five lines: removed, added, conflicts, proposed checks, inventory source;
+   2. `Notes`;
    3. the questions, if any;
    4. one line offering to run the prompt in this session.
 
    Stop there. Run the prompt only after an explicit yes. It then becomes the task, and the
-   workflow routes it like any other.
+   workflow routes it like any other, honoring the choices it names.
 
 ## Ownership, precedence and permissions
 
@@ -81,10 +98,10 @@ edits them, installs a capability or runs the task before the user says yes.
 
 ## Outputs and verification
 
-Compare the output with the raw prompt: every pinned fact appears unchanged; the layout rules
-hold (grouped header slots, blank lines between later slots, one item per bullet, no wrapped or
-indented lines, no remark beside a label); `Mode` holds one value; `Skills` holds no `andino-*` member; every named skill and MCP was found in the inventory;
-each conflict, removal and proposed check appears in `Notes`; at most two questions remain.
+Compare the output with the raw prompt: every pinned choice and fact appears unchanged and in the
+user's order; no skill or MCP server was added to the prompt; the user's labels and overall shape
+remain; every edit is on the allowed list; at most three questions; `Notes` has at most five lines
+and no redundancy comment.
 
 ## Example and anti-patterns
 
@@ -92,13 +109,15 @@ Positive request: "Optimalkan prompt ini: bikin scene three.js pakai ponytail da
 
 Negative request: "Bikin scene three.js pakai ponytail dan council." (do the task)
 
-Copying the phase list into `Mode`, adding a likely fix or framework, restating Layer 1 rules in
-`Constraints`, and asking for evidence the user could paste.
+Anti-patterns: dropping `andino-planning` because `mode: brainstorm-first` "already covers it";
+rewriting a free-form prompt into seven slots; putting a suggested skill into the skill line;
+copying checks from an example into `done when`; asking the user to fill placeholders for things
+they never mentioned.
 
 ## Fallback
 
-Without readable Layer 1, skill folder or MCP config, write the prompt with requested capabilities
-marked unverified in `Notes`, and name nothing as installed.
+Without readable Layer 1, skill folder or MCP config, keep the prompt as edited, say in `Notes`
+that the named capabilities could not be checked, and name nothing as installed.
 
 ## Provenance
 

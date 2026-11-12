@@ -1,67 +1,82 @@
-# Worked example: a redesign with hand-written routing
+# Worked examples: light edits
 
-## Raw prompt
+## Example 1: a strong prompt with workflow members
+
+### Raw prompt
 
 ```text
-redesign halaman dashboard admin saya biar ga keliatan AI-made, pake brainstorming, planning, tdd, terus verifikasi. pake council juga. filenya di src/app/admin/page.tsx
+skill: andino-workflow, search-first, andino-brainstorming, design-taste-frontend, impeccable, council
+mode: brainstorm-first
+mcp: context7, playwright
+
+task:
+web landing ini dibuat beberapa ai yang beda beda, konsepnya udah bagus tapi arsitekturnya berantakan, css kepisah dan komponennya gak clean. saya mau bikin web baru yang bener bener clean, konsep dan market tetep sama, modern 2026, performa bagus tanpa regresi. tanya dulu maunya saya gimana, terus tanya council, abis itu plan pakai andino-planning dan kerjain pakai andino-plan-execution, sub agent pakai andino-delegation. refrensi yang disuka klien https://example.com/studio sama https://example.org/motion, yang saya suka https://example.net/gallery
+implementasikan di: C:\work\landing\new-app
 ```
 
-## Inventory
-
-Claude Code, Layer 1 block in `~/.claude/CLAUDE.md`: `design-taste-frontend`, `impeccable`,
-`antislop`, `antislop-ui` and `council` are installed. `playwright` is connected.
-
-## Pinned facts
-
-A redesign of the admin dashboard page; the goal "not looking AI-made"; the file
-`src/app/admin/page.tsx`; `council` requested. No framework version, visual reference or
-current-style description was given.
-
-## Checks
-
-| Check | Finding |
-| --- | --- |
-| Phase routing | `brainstorming`, `planning`, `tdd` and `verifikasi` are phases. Removed; brainstorming becomes `Mode: brainstorm first`. |
-| Skill conflict | `council` runs five advisors for decisions that are expensive to undo; a page redesign can be reverted. |
-| Missing owner | A redesign maps to `design-taste-frontend` and `impeccable`; "AI-made" maps to `antislop-ui`. All installed. |
-| MCP | Picker: screenshots at 360/768/1440 px use `playwright`, which is connected. |
-| Done when | None given. Proposed from the stated outcome only. |
-| Evidence | Picker row for UI asks for page, current style and visual reference; the page is given. |
-
-## Output
+### Output
 
 ```text
-Skills: design-taste-frontend, impeccable, antislop-ui, council
-Tools/MCP: playwright for before/after screenshots
-Mode: brainstorm first
+skill: andino-workflow, search-first, andino-brainstorming, design-taste-frontend, impeccable, council
+mode: brainstorm-first
+mcp: context7, playwright
 
-Task: redesign halaman dashboard admin supaya tidak terlihat AI-made.
+task:
+Web landing ini dibuat beberapa AI yang berbeda-beda. Konsepnya sudah bagus, tapi arsitekturnya berantakan: CSS terpisah dan komponennya tidak clean.
 
-Context/evidence:
-- Halaman: src/app/admin/page.tsx
-- Tampilan sekarang: [screenshot]
-- Referensi visual: [link atau gambar]
+Saya mau web baru yang benar-benar clean, dengan konsep dan market yang tetap sama, modern 2026, dan performa bagus tanpa regresi.
 
-Done when:
-- Screenshot sebelum dan sesudah di 360, 768 dan 1440 px.
-- Review antislop-ui pada halaman baru tidak menemukan pola AI-made.
+Urutan kerja:
+- Tanya dulu maunya saya gimana.
+- Lalu tanya council.
+- Plan pakai andino-planning, kerjakan pakai andino-plan-execution.
+- Sub agent pakai andino-delegation.
+
+referensi:
+- disukai klien: https://example.com/studio, https://example.org/motion
+- saya suka: https://example.net/gallery
+
+implementasikan di: C:\work\landing\new-app
+
+selesai jika:
+- Web baru di C:\work\landing\new-app memakai konsep dan market yang sama.
+- Tidak ada regresi performa dibanding web lama.
 ```
 
 Notes:
-- Dihapus: brainstorming, planning, tdd, verifikasi (workflow memilihnya; brainstorming jadi `Mode`).
-- Ditambahkan: `design-taste-frontend`, `impeccable`, `antislop-ui`, `playwright`, semuanya terpasang.
-- Konflik: `council` untuk keputusan yang mahal dibalik, sedangkan redesign halaman bisa dibalik.
-- `Done when` adalah usulan. Inventaris dari blok Lapis 1 di `~/.claude/CLAUDE.md`.
-
-Pertanyaan: `council` tetap dijalankan untuk redesign ini?
+- Diubah: paragraf dipecah, salah ketik diperbaiki, referensi dan urutan kerja dikumpulkan; semua skill, mode, mcp dan urutan tetap.
+- `selesai jika` ditambahkan dari kalimat Anda sendiri. Inventaris dari blok Lapis 1 di `~/.claude/CLAUDE.md`.
 
 Mau saya jalankan prompt ini di sesi ini?
 
+## Example 2: a weak prompt
+
+### Raw prompt
+
+```text
+tolong remake web ini
+```
+
+### Output
+
+```text
+tolong remake web ini
+```
+
+Notes:
+- Tidak ada yang diubah: maksud prompt sudah jelas, tetapi faktanya kurang.
+
+Pertanyaan:
+1. Web yang mana (path folder atau URL)?
+2. Apa yang tidak Anda sukai dari web sekarang?
+3. Seperti apa hasil yang Anda anggap selesai?
+
+Mau saya jalankan prompt ini di sesi ini setelah Anda menjawab?
+
 ## Why each choice
 
-- The file path stays verbatim; no framework or version is added, although the path suggests one.
-- Current style and reference are placeholders because the user can paste them; only the
-  `council` choice needs an answer, because only the user can make it.
-- `Context/evidence` and `Done when` hold several items, so each item gets its own bullet;
-  `Mode` stays grouped with `Skills` and `Tools/MCP`, and a blank line separates the rest.
-- `Constraints` is absent: the user gave no limit, and approval rules already live in Layer 1.
+- Example 1 keeps `andino-planning`, `andino-plan-execution` and `andino-delegation` in the
+  user's order; the brainstorm-first mode does not replace them.
+- No skill was added to the skill line; a suggestion would go in `Notes`.
+- The `selesai jika` block uses only "konsep dan market tetap sama" and "tanpa regresi".
+- Example 2 asks three questions instead of guessing a framework, page or style.
