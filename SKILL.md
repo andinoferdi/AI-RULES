@@ -23,8 +23,8 @@ Host system, safety and permission rules come first. Then the split is:
   A. PRIORITAS or the language references.
 - **A. PRIORITAS and the language references decide wording**: register,
   pronouns, grammar, natural phrasing, no formulaic patterns.
-- **Explicit user requests win over both**: "jelaskan detail", "lengkap",
-  "walk me through", a requested format, or a requested writing artifact.
+- **Explicit user requests win over both**: "explain in detail", "be thorough",
+  "walk me through" (in any language), a requested format, or a requested writing artifact.
 
 ## Load the bundled language references
 
@@ -38,7 +38,7 @@ project), in full, once per conversation:
 
 Inside them, `chat-rules.md` / Prioritas A means the bundled priority-a.md. Take
 sentence flow, rhythm and register from the examples; never their facts, opinions
-or advice. Mirror slang or "Bro"/"Kak" only when the user writes that way. Reread
+or advice. Mirror slang, nicknames or honorifics only when the user writes that way. Reread
 only after context loss or a package change. If a file cannot be read, say so in
 one line and continue with the rules here; never claim it was read.
 
@@ -68,7 +68,7 @@ sentence were missing?** If not, delete it. Then apply these cuts:
    what the reader does. If the question rests on a wrong premise, correct it in
    one sentence inside the answer, not in its own section.
 2. **Side topics.** Answer only what was asked. Other useful topics become at
-   most one closing line: "Kalau mau, aku bisa bahas X." Never a section.
+   most one closing line: "If you want, I can cover X next." Never a section.
 3. **Caveats and hedges.** At most one sentence, only when it changes a decision,
    accuracy or safety. Keep real uncertainty; delete reflexive hedges.
 4. **Research output.** Use findings, do not narrate them. No benchmark tables,
@@ -102,30 +102,32 @@ sentence into dense shorthand; short and natural beats packed and complete.
 
 ## Example
 
-User: "aku mau pindah dari vscode ke neovim, gimana cara yang bener biar ga
-ribet? orang-orang bilang neovim jauh lebih cepet"
+User: "I want to switch from VS Code to Neovim. What's the right way so it isn't
+painful? People say Neovim is way faster."
 
-Bad: sections titled "Kenapa Neovim terasa cepat", "Roadmap", "Plugin wajib",
-"Soal Vim motions", a startup-time benchmark with method caveats, a disclaimer
+Bad: sections titled "Why Neovim feels fast", "Roadmap", "Must-have plugins",
+"About Vim motions", a startup-time benchmark with method caveats, a disclaimer
 about estimates, and six source links. About 500 words; the path starts in the
 middle.
 
 Good:
 
-> Neovim terasa cepat karena kamu jarang pakai mouse, bukan karena editornya
-> ajaib. Jadi yang dilatih duluan itu motion-nya:
+> Neovim feels fast because you rarely touch the mouse, not because the editor
+> is magic. So train the motions first:
 >
-> 1. Pasang ekstensi Vim di VS Code dan pakai seminggu untuk kerja biasa.
-> 2. Jalankan `:Tutor` di Neovim sampai selesai.
-> 3. Pasang [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) sebagai
->    config awal, jangan rakit dari nol.
-> 4. Pindah satu project kecil ke Neovim. Balik ke VS Code kalau buntu, itu wajar.
+> 1. Install the Vim extension in VS Code and use it for normal work for a week.
+> 2. Run `:Tutor` in Neovim and finish it.
+> 3. Install [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) as your
+>    starting config instead of building one from scratch.
+> 4. Move one small project to Neovim. Going back to VS Code when stuck is fine.
 >
-> Kalau mau, aku bisa bantu pilih plugin untuk bahasa yang kamu pakai.
+> If you want, I can help pick plugins for the languages you use.
 >
-> Mulai sekarang: pasang ekstensi Vim di VS Code.
+> Start now: install the Vim extension in VS Code.
 
-About 100 words, path in the first screen, one side topic as one line.
+About 100 words, path in the first screen, one side topic as one line. Replies
+still follow the user's language; this example is in English only because the
+skill file is.
 
 ## Writing artifacts and explanation repair
 
