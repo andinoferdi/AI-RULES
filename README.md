@@ -76,7 +76,7 @@ These rules apply to every session and are the reference for reading a task prom
 
 A task prompt may use these labels, in any order, language or spelling (for example `skill:`, `mode: brainstorm-first`, `mcp:`). A label that is not written means no special request.
 
-- `Skills`: skills to load before work starts, including workflow members such as `andino-planning` when the user names them.
+- `Skills`: skills for the task, including workflow members such as `andino-planning` when the user names them.
 - `Tools/MCP`: tools or MCP servers to use for the stated need.
 - `Mode`: `brainstorm first` means understand first, ask about what is unclear and give a recommendation before writing code. `plan only` means stop once the plan is saved. `just do it` means do the work directly, which is also the behavior when `Mode` is absent. A mode or sequence of phases written in the user's own words is followed as written.
 - `Task`: the result asked for. Decisions still open here are made with the user, never guessed.
@@ -94,7 +94,7 @@ A task prompt may use these labels, in any order, language or spelling (for exam
 
 ## Skills
 
-- Skills the user names, in a label or in a sentence, are loaded through the host's skill mechanism. Keep every skill, phase and order the user names, even when another one seems to cover it: the user chose them on purpose. Load each named skill when its phase starts, not all at the start of the session.
+- Skills the user names, in a label or in a sentence, are loaded through the host's skill mechanism. Keep every skill, phase and order the user names, even when another one seems to cover it: the user chose them on purpose. Load each named skill when its phase starts (before, during or after the work), not all at the start of the session.
 - Before work starts, check each named skill's hard rules (its "Never", forbidden or must lists) against the goal, the references and the other named skills. When a rule blocks what the user asked for, quote the rule, name the skill and ask which one wins. Never settle the conflict by quietly compromising.
   Example: `ponytail` for the least possible code, while the result must be detailed.
   Example: `design-taste-frontend` forbids scroll reveals and parallax, while the brief asks for GSAP scroll animation like a reference site.

@@ -17,7 +17,7 @@ TEXT = {
             "Prompt tugas boleh memakai label berikut, dengan urutan, bahasa atau penulisan apa pun (misalnya "
             "`skill:`, `mode: brainstorm-first`, `mcp:`). Label yang tidak ditulis berarti tidak ada permintaan khusus."
         ),
-        "slot_skills": "- `Skills`: skill yang dimuat sebelum bekerja, termasuk anggota workflow seperti `andino-planning` jika user menyebutnya.",
+        "slot_skills": "- `Skills`: skill untuk tugas ini, termasuk anggota workflow seperti `andino-planning` jika user menyebutnya.",
         "slot_tools": "- `Tools/MCP`: alat atau server MCP yang dipakai untuk kebutuhan yang disebut.",
         "slot_mode": (
             "- `Mode`: `brainstorm first` berarti pahami dulu, tanyakan hal yang belum jelas dan beri rekomendasi "
@@ -53,8 +53,8 @@ TEXT = {
         "named": (
             "- Skill yang disebut user, di label maupun di kalimat, dimuat lewat mekanisme skill milik host. "
             "Pertahankan setiap skill, fase dan urutan yang disebut user, walaupun terlihat sudah tercakup skill "
-            "lain: user memilihnya dengan sengaja. Muat setiap skill yang disebut saat fasenya dimulai, bukan "
-            "sekaligus di awal sesi."
+            "lain: user memilihnya dengan sengaja. Muat setiap skill yang disebut saat fasenya dimulai (sebelum, "
+            "selama atau sesudah pekerjaan), bukan sekaligus di awal sesi."
         ),
         "conflict": (
             "- Sebelum bekerja, cek aturan keras setiap skill yang disebut (daftar \"Never\", larangan atau "
@@ -119,7 +119,7 @@ TEXT = {
             "A task prompt may use these labels, in any order, language or spelling (for example `skill:`, "
             "`mode: brainstorm-first`, `mcp:`). A label that is not written means no special request."
         ),
-        "slot_skills": "- `Skills`: skills to load before work starts, including workflow members such as `andino-planning` when the user names them.",
+        "slot_skills": "- `Skills`: skills for the task, including workflow members such as `andino-planning` when the user names them.",
         "slot_tools": "- `Tools/MCP`: tools or MCP servers to use for the stated need.",
         "slot_mode": (
             "- `Mode`: `brainstorm first` means understand first, ask about what is unclear and give a recommendation "
@@ -155,7 +155,8 @@ TEXT = {
         "named": (
             "- Skills the user names, in a label or in a sentence, are loaded through the host's skill mechanism. "
             "Keep every skill, phase and order the user names, even when another one seems to cover it: the user "
-            "chose them on purpose. Load each named skill when its phase starts, not all at the start of the session."
+            "chose them on purpose. Load each named skill when its phase starts (before, during or after the work), "
+            "not all at the start of the session."
         ),
         "conflict": (
             "- Before work starts, check each named skill's hard rules (its \"Never\", forbidden or must lists) "
