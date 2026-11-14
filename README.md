@@ -94,14 +94,17 @@ A task prompt may use these labels, in any order, language or spelling (for exam
 
 ## Skills
 
-- Skills the user names, in a label or in a sentence, are loaded through the host's skill mechanism. Keep every skill, phase and order the user names, even when another one seems to cover it: the user chose them on purpose.
-- When two requested skills conflict with the goal, name the conflict and ask before going on.
+- Skills the user names, in a label or in a sentence, are loaded through the host's skill mechanism. Keep every skill, phase and order the user names, even when another one seems to cover it: the user chose them on purpose. Load each named skill when its phase starts, not all at the start of the session.
+- Before work starts, check each named skill's hard rules (its "Never", forbidden or must lists) against the goal, the references and the other named skills. When a rule blocks what the user asked for, quote the rule, name the skill and ask which one wins. Never settle the conflict by quietly compromising.
   Example: `ponytail` for the least possible code, while the result must be detailed.
+  Example: `design-taste-frontend` forbids scroll reveals and parallax, while the brief asks for GSAP scroll animation like a reference site.
 - Researching solutions, libraries, integrations or unfamiliar APIs: `search-first`, only when that research need exists.
 - When the task clearly needs one of these skills but it was not named, propose it before starting:
   - Three.js or 3D scenes: `threejs-skills`
-  - New UI or a redesign: `design-taste-frontend`, then `impeccable` to critique and polish
-  - Rebuilding an existing site faithfully: `clone-website`
+  - New UI or a redesign, pick one design skill by the brief, never both as builders on the same page:
+    - Calm, clean company or product site with quiet motion: `design-taste-frontend`
+    - Expressive, motion-heavy or Awwwards-level site (smooth scroll, scroll-driven animation, interactive hero): `impeccable`
+  - Rebuilding an existing site faithfully: `clone-website`. Not for taking inspiration from reference sites; open those with the browser instead.
   - UI, copy or code comments that read as AI-made: `antislop` and the matching sub-skill
   - A logo or brand identity: `logo-design`
   - Thesis or academic research: `skripsi-skill`

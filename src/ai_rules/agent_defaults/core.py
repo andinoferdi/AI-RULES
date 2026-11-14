@@ -62,6 +62,8 @@ def render_block(language: str, skills: frozenset[str], mcp_servers: tuple[str, 
     lines += [t["skills"], "", t["named"], t["conflict"]]
     if "ponytail" in skills:
         lines.append(t["ponytail"])
+    if "design-taste-frontend" in skills:
+        lines.append(t["design_taste"])
     if "search-first" in skills:
         lines.append(t["search_first"])
     hints = [text[language] for required, text in DOMAIN_HINTS if all(name in skills for name in required)]

@@ -92,6 +92,12 @@ class AgentDefaultsTests(unittest.TestCase):
             for phrase in gone:
                 self.assertNotIn(phrase, block, language)
 
+    def test_design_conflict_example_needs_its_skill(self):
+        from ai_rules.agent_defaults import render_block
+        for language in ("id", "en"):
+            self.assertNotIn("`design-taste-frontend`", render_block(language, frozenset(), ()))
+            self.assertIn("`design-taste-frontend`", render_block(language, frozenset({"design-taste-frontend"}), ()))
+
     def test_readme_layer_one_block_matches_renderer(self):
         import re
         from ai_rules.agent_defaults import DOMAIN_HINTS, render_block

@@ -53,10 +53,20 @@ TEXT = {
         "named": (
             "- Skill yang disebut user, di label maupun di kalimat, dimuat lewat mekanisme skill milik host. "
             "Pertahankan setiap skill, fase dan urutan yang disebut user, walaupun terlihat sudah tercakup skill "
-            "lain: user memilihnya dengan sengaja."
+            "lain: user memilihnya dengan sengaja. Muat setiap skill yang disebut saat fasenya dimulai, bukan "
+            "sekaligus di awal sesi."
         ),
-        "conflict": "- Jika dua skill yang diminta bertentangan dengan tujuan, sebutkan konfliknya dan tanyakan sebelum lanjut.",
+        "conflict": (
+            "- Sebelum bekerja, cek aturan keras setiap skill yang disebut (daftar \"Never\", larangan atau "
+            "keharusannya) terhadap tujuan, referensi dan skill lain yang disebut. Jika sebuah aturan menghalangi "
+            "permintaan user, kutip aturannya, sebutkan skill-nya dan tanyakan mana yang menang. Jangan "
+            "menyelesaikan konflik dengan kompromi diam-diam."
+        ),
         "ponytail": "  Contoh: `ponytail` untuk kode seminimal mungkin, sedangkan hasilnya harus detail.",
+        "design_taste": (
+            "  Contoh: `design-taste-frontend` melarang reveal saat scroll dan parallax, sedangkan brief meminta "
+            "animasi scroll GSAP seperti situs referensi."
+        ),
         "search_first": "- Riset solusi, library, integrasi atau API yang belum dikenal: `search-first`, hanya saat kebutuhan riset itu ada.",
         "domain_intro": "- Jika tugas jelas butuh skill berikut tetapi skill itu tidak disebut, usulkan sebelum mulai:",
         "mcp": "## MCP dan alat",
@@ -145,10 +155,19 @@ TEXT = {
         "named": (
             "- Skills the user names, in a label or in a sentence, are loaded through the host's skill mechanism. "
             "Keep every skill, phase and order the user names, even when another one seems to cover it: the user "
-            "chose them on purpose."
+            "chose them on purpose. Load each named skill when its phase starts, not all at the start of the session."
         ),
-        "conflict": "- When two requested skills conflict with the goal, name the conflict and ask before going on.",
+        "conflict": (
+            "- Before work starts, check each named skill's hard rules (its \"Never\", forbidden or must lists) "
+            "against the goal, the references and the other named skills. When a rule blocks what the user asked "
+            "for, quote the rule, name the skill and ask which one wins. Never settle the conflict by quietly "
+            "compromising."
+        ),
         "ponytail": "  Example: `ponytail` for the least possible code, while the result must be detailed.",
+        "design_taste": (
+            "  Example: `design-taste-frontend` forbids scroll reveals and parallax, while the brief asks for GSAP "
+            "scroll animation like a reference site."
+        ),
         "search_first": "- Researching solutions, libraries, integrations or unfamiliar APIs: `search-first`, only when that research need exists.",
         "domain_intro": "- When the task clearly needs one of these skills but it was not named, propose it before starting:",
         "mcp": "## MCP and tools",
@@ -196,10 +215,20 @@ TEXT = {
 DOMAIN_HINTS = (
     (("threejs-skills",), {"id": "  - Three.js atau scene 3D: `threejs-skills`",
                            "en": "  - Three.js or 3D scenes: `threejs-skills`"}),
-    (("design-taste-frontend", "impeccable"), {"id": "  - UI baru atau desain ulang: `design-taste-frontend`, lalu `impeccable` untuk kritik dan polesan",
-                                               "en": "  - New UI or a redesign: `design-taste-frontend`, then `impeccable` to critique and polish"}),
-    (("clone-website",), {"id": "  - Meniru situs yang sudah ada: `clone-website`",
-                          "en": "  - Rebuilding an existing site faithfully: `clone-website`"}),
+    (("design-taste-frontend", "impeccable"), {
+        "id": ("  - UI baru atau desain ulang, pilih satu skill desain sesuai brief, jangan pakai keduanya untuk "
+               "membangun halaman yang sama:\n"
+               "    - Situs perusahaan atau produk yang tenang dan bersih, dengan gerak yang halus: `design-taste-frontend`\n"
+               "    - Situs ekspresif, kaya gerak atau setara Awwwards (smooth scroll, animasi yang digerakkan scroll, "
+               "hero interaktif): `impeccable`"),
+        "en": ("  - New UI or a redesign, pick one design skill by the brief, never both as builders on the same page:\n"
+               "    - Calm, clean company or product site with quiet motion: `design-taste-frontend`\n"
+               "    - Expressive, motion-heavy or Awwwards-level site (smooth scroll, scroll-driven animation, "
+               "interactive hero): `impeccable`")}),
+    (("clone-website",), {"id": ("  - Meniru situs yang sudah ada: `clone-website`. Bukan untuk mencari inspirasi dari "
+                                 "situs referensi; buka situs itu dengan browser."),
+                          "en": ("  - Rebuilding an existing site faithfully: `clone-website`. Not for taking inspiration "
+                                 "from reference sites; open those with the browser instead.")}),
     (("antislop",), {"id": "  - UI, copy atau komentar kode yang terasa buatan AI: `antislop` dan sub-skill yang sesuai",
                      "en": "  - UI, copy or code comments that read as AI-made: `antislop` and the matching sub-skill"}),
     (("logo-design",), {"id": "  - Logo atau identitas merek: `logo-design`",
