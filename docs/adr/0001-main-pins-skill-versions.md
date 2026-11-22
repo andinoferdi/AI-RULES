@@ -1,6 +1,6 @@
 # Main pins skill versions; skill branch heads are unreleased work
 
-Status: accepted, 2026-11-22.
+Status: superseded by [ADR 0002](0002-skills-live-on-main.md), 2026-11-23. Accepted 2026-11-22.
 
 CI, several tests and `ai-rules setup --source latest` used to read skill branch
 heads (`origin/<skill>`), while main's tests and inventories followed the pins in

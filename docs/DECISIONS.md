@@ -1,5 +1,14 @@
 # Decisions
 
+- 2026-11-23: Monorepo. Every skill moves into `skills/<id>/` on `main`; skill
+  pins, `promote_skill.py` and `skill_refs.py` are removed. `ai-rules setup` is
+  the only install path (no `npx skills` option), installs the clone's `skills/`
+  when run inside a clone and GitHub `main` otherwise. Old installs are
+  recognized from setup's own records. `WebBased` stays a separate branch with
+  one validation pin. Old skill branches are deleted only after the owner
+  approves. Entries below dated 2026-11-22 describe the pinned layout and are
+  superseded. See [ADR 0002](adr/0002-skills-live-on-main.md).
+
 - 2026-11-22: Main's `release_manifest.json` is the only version anything reads.
   CI, the tests and `ai-rules setup --source latest` use the pinned skill commits;
   a skill branch head reaches users only after a promote PR passes CI and is

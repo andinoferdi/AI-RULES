@@ -11,13 +11,17 @@ AI coding agents can propose speculative rewrites, invent APIs or use deprecated
 Requirements: Python 3.11+, Git, and any supported AI coding agent.
 
 ```sh
-# 1. Clone & install the AI-RULES CLI orchestrator
-git clone --branch main https://github.com/andinoferdi/AI-RULES.git
+# 1. Clone & install the AI-RULES CLI
+git clone https://github.com/andinoferdi/AI-RULES.git
 cd AI-RULES && python -m pip install .
 
 # 2. Run interactive setup (choose host & profile)
 ai-rules setup
 ```
+
+Run inside the clone, setup installs the skills from its `skills/` folder and says
+so (`Skill source: local folder ...`). Run anywhere else, it downloads them from
+GitHub `main`.
 
 Or skip Python and Git: download the standalone binary for your system from
 [Releases](https://github.com/andinoferdi/AI-RULES/releases/latest)
@@ -35,6 +39,35 @@ chmod +x ai-rules-linux-x64 && ./ai-rules-linux-x64 setup
 Select your host (`codex`, `claude-code`, `opencode`, `antigravity-cli`, `antigravity-ide`) and your profile (**Minimal** is recommended for first-time setup). Start a fresh agent session, and all installed skills are immediately available via slash commands (`/`) or dollar commands (`$`).
 
 Then read [How to Prompt](#how-to-prompt) once. It is the difference between "the agent ran eight skills and the result still sucks" and "the agent did what I meant".
+
+### Change a skill and use it right away
+
+Every skill is a plain folder in `skills/`, for example `skills/focus/`. To make
+one fit you better:
+
+1. Edit the files in `skills/<name>/` in your clone.
+2. Run `ai-rules setup` again from the clone. It installs your edit, no commit
+   needed, and leaves the other skills alone.
+3. Start a new agent session (or reload the window) so the agent reads the new version.
+4. Happy with it? Commit, open a pull request and merge it. Everyone who runs
+   `ai-rules setup` after that gets the new version.
+
+Setup never overwrites a skill you edited by hand inside an agent's skill folder
+(for example `~/.claude/skills/focus`). It stops, keeps your file and tells you.
+Edit the copy in `skills/` instead.
+
+Where setup reads skills from, if you want to choose:
+
+| Flag | Source |
+|---|---|
+| `--source auto` (default) | `skills/` when run inside a clone, otherwise GitHub `main` |
+| `--source local` | `skills/` in the clone you are in, including uncommitted edits |
+| `--source latest` | GitHub `main`, even inside a clone |
+| `--source bundled` | the skills packaged inside a release executable |
+
+**Coming from the old branch-per-skill installer?** In your clone run
+`git pull`, `python -m pip install .`, then `ai-rules setup`. Skills that the old
+installer put in place are recognized and updated in place.
 
 ---
 
@@ -369,19 +402,22 @@ Claude Web, ChatGPT and Gemini Web cannot load skills. The [WebBased](https://gi
 
 ## First-Party Capabilities
 
-AI-RULES distributes 8 core capabilities and a 30-member Andino core across dedicated branches:
+AI-RULES ships 8 skills from the `skills/` folder of `main`. The Andino Workflow
+brings 31 member skills with it, and `ai-rules setup` installs each member as its
+own native skill (`/andino-planning`, `$andino-tdd`, ...) with its slash command,
+backups and rollback. Generic skill installers copy only the top-level folder.
 
-| Capability | Branch | Purpose | Example Command |
+| Capability | Folder | Purpose | Example Command |
 |---|---|---|---|
-| **[Andino Workflow](https://github.com/andinoferdi/AI-RULES/tree/andino-workflow)** | `andino-workflow` | Adaptive workflow protocol + **30 composable member skills** (`andino-*`). | `/andino-workflow`<br>`/andino-tdd`<br>`/andino-brainstorming` |
-| **[Focus](https://github.com/andinoferdi/AI-RULES/tree/focus)** | `focus` | Direct, result-first communication style (Indonesian & English). | `/focus`<br>`$focus` |
-| **[Search First](https://github.com/andinoferdi/AI-RULES/tree/search-first)** | `search-first` | Evidence-based solution research (`ADOPT`, `EXTEND`, `COMPOSE`, `BUILD`). | `/search-first`<br>`$search-first` |
-| **[AI Codebase Rescue](https://github.com/andinoferdi/AI-RULES/tree/ai-codebase-rescue)** | `ai-codebase-rescue` | Stabilize fragile subsystems (`KEEP`, `REFACTOR`, `REMAKE`, `REMOVE`). | `/ai-codebase-rescue`<br>`$ai-codebase-rescue` |
-| **[Council](https://github.com/andinoferdi/AI-RULES/tree/council)** | `council` | High-stakes decision analysis via 5 independent lenses and anonymous review. | `/council`<br>`$council` |
-| **[Natural Writing](https://github.com/andinoferdi/AI-RULES/tree/natural-writing)** | `natural-writing` | Prose writing, rewriting, and review without formulaic AI tells. | `/natural-writing`<br>`$natural-writing` |
-| **[Skripsi Skill](https://github.com/andinoferdi/AI-RULES/tree/skripsi-skill)** | `skripsi-skill` | Academic thesis, literature matrix, and research defense guidance. | `/skripsi-skill`<br>`$skripsi-skill` |
-| **[Three.js Skills](https://github.com/andinoferdi/AI-RULES/tree/threejs-skills)** | `threejs-skills` | 3D graphics family with 45 WebGL/WebGPU and shader methods. | `/threejs-skills`<br>`$threejs-skills` |
-| **[WebBased](https://github.com/andinoferdi/AI-RULES/tree/WebBased)** | `WebBased` | 47 ready-to-use prompt templates for web chatbots (Claude/ChatGPT Web). | *Copy-paste directly* |
+| **[Andino Workflow](skills/andino-workflow)** | `skills/andino-workflow` | Adaptive workflow protocol + **31 composable member skills** (`andino-*`). | `/andino-workflow`<br>`/andino-tdd`<br>`/andino-brainstorming` |
+| **[Focus](skills/focus)** | `skills/focus` | Direct, result-first communication style (Indonesian & English). | `/focus`<br>`$focus` |
+| **[Search First](skills/search-first)** | `skills/search-first` | Evidence-based solution research (`ADOPT`, `EXTEND`, `COMPOSE`, `BUILD`). | `/search-first`<br>`$search-first` |
+| **[AI Codebase Rescue](skills/ai-codebase-rescue)** | `skills/ai-codebase-rescue` | Stabilize fragile subsystems (`KEEP`, `REFACTOR`, `REMAKE`, `REMOVE`). | `/ai-codebase-rescue`<br>`$ai-codebase-rescue` |
+| **[Council](skills/council)** | `skills/council` | High-stakes decision analysis via 5 independent lenses and anonymous review. | `/council`<br>`$council` |
+| **[Natural Writing](skills/natural-writing)** | `skills/natural-writing` | Prose writing, rewriting, and review without formulaic AI tells. | `/natural-writing`<br>`$natural-writing` |
+| **[Skripsi Skill](skills/skripsi-skill)** | `skills/skripsi-skill` | Academic thesis, literature matrix, and research defense guidance. | `/skripsi-skill`<br>`$skripsi-skill` |
+| **[Three.js Skills](skills/threejs-skills)** | `skills/threejs-skills` | 3D graphics family with 45 WebGL/WebGPU and shader methods. | `/threejs-skills`<br>`$threejs-skills` |
+| **[WebBased](https://github.com/andinoferdi/AI-RULES/tree/WebBased)** | `WebBased` branch | 47 ready-to-use prompt templates for web chatbots (Claude/ChatGPT Web). | *Copy-paste directly* |
 
 ---
 
@@ -391,7 +427,7 @@ The `ai-rules setup` CLI offers these installation bundles:
 
 | Profile | Target Needs | Included Capabilities |
 |---|---|---|
-| **Minimal** (`minimal`) | Core adaptive development & research | `andino-workflow` (+ 30 member skills), `focus`, `search-first` |
+| **Minimal** (`minimal`) | Core adaptive development & research | `andino-workflow` (+ 31 member skills), `focus`, `search-first` |
 | **Engineering** (`engineering`) | Full-stack coding & codebase recovery | Minimal + `ai-codebase-rescue` |
 | **Research / Skripsi** (`research-skripsi`) | Academic writing & thesis preparation | Minimal + `skripsi-skill` + `natural-writing` |
 | **Three.js Development** (`threejs`) | 3D graphics, shaders, and animations | Minimal + `threejs-skills` (45 3D methods) |
@@ -406,16 +442,15 @@ ai-rules setup --host claude-code --profile engineering --scope project --projec
 # Install Everything profile for Codex globally
 ai-rules setup --host codex --profile everything --scope global --yes --non-interactive
 
-# Update installed capabilities to latest verified release
+# Update installed skills to the newest version
 ai-rules update --host claude-code --profile engineering --scope project --project-root . --yes --non-interactive
 
 # Verify installed integrity with health check
 ai-rules doctor --host claude-code --scope project --project-root .
 ```
 
-`setup` and `update` install the skill commits pinned on GitHub `main`. To change,
-add or remove a skill, follow [AGENTS.md](AGENTS.md): edit the skill branch, then
-run `python scripts/promote_skill.py <skill>` to open a checked pull request.
+Adding or removing a skill touches a few more files than editing one; the steps
+are in [AGENTS.md](AGENTS.md).
 
 ---
 
@@ -423,11 +458,11 @@ run `python scripts/promote_skill.py <skill>` to open a checked pull request.
 
 | Feature | Superpowers | Agent Skills | **AI-RULES** |
 |---|---|---|---|
-| **Invocation Model** | Monolithic global bootstrap | Individual commands | **Bidirectional routing** (Main orchestrator $\leftrightarrow$ 30 atomic member skills) |
+| **Invocation Model** | Monolithic global bootstrap | Individual commands | **Bidirectional routing** (Main orchestrator $\leftrightarrow$ 31 atomic member skills) |
 | **Namespace Isolation** | Unprefixed (risk of collisions) | Command wrappers | **Namespaced** (`andino-*` prefix across all hosts) |
 | **Context Window Overhead** | High (loads entire methodology) | Variable | **On-demand loading** (Compact frontmatter) |
 | **Anti-Looping & Checkpoints** | Custom session state | Manual stop-conditions | **Deterministic Portable Checkpoints** with Git drift detection |
-| **Multi-Host CLI Installer** | Per-harness scripts | `npx skills` | **Shared native installer** (`ai-rules setup` with atomic rollback) |
+| **Multi-Host CLI Installer** | Per-harness scripts | `npx skills` | **Shared native installer** (`ai-rules setup` installs all 31 Andino members as native skills, with atomic rollback) |
 
 ---
 

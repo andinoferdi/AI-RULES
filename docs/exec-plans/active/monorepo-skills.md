@@ -2,8 +2,8 @@
 
 Status: IN_PROGRESS
 Plan Depth: DEEP
-Current Phase: Phase 2 — Installer
-Last Updated: 2026-11-22
+Current Phase: Phase 3 — Checks and tests
+Last Updated: 2026-11-23
 Branch / worktree: `monorepo` in `C:\Users\Andino\Downloads\AI-RULES\monorepo`
 (its own clone; the parent folder `C:\Users\Andino\Downloads\AI-RULES` is a
 second clone with every file deleted. Never commit from the parent.)
@@ -125,10 +125,10 @@ council, threejs-skills. `skills/` equals every branch head file-for-file
 | --- | --- | --- | --- | --- |
 | Phase 0 — Plan review | DONE | Owner approves plan | — | Approved 2026-11-22 |
 | Phase 1 — Skills on main | DONE | R2, R8 foundation | T1 | 8 trees equal branch heads |
-| Phase 2 — Installer | TODO | R1, R3, R4, R5, R6 | T2, T3, T4, T5 | Not run |
-| Phase 3 — Checks and tests | TODO | R6, R8, R10 | T6, T7, T8 | Not run |
-| Phase 4 — CI | TODO | R7 | T9 | Not run |
-| Phase 5 — Docs | TODO | R9 | T10 | Not run |
+| Phase 2 — Installer | DONE | R1, R3, R4, R5, R6 | T2, T3, T4, T5 | See Execution log E2–E5 |
+| Phase 3 — Checks and tests | IN_PROGRESS | R6, R8, R10 | T6, T7, T8 | E6–E8; full skills group pending |
+| Phase 4 — CI | IN_PROGRESS | R7 | T9 | Workflow written; GitHub run pending (T12) |
+| Phase 5 — Docs | DONE | R9 | T10 | E10 |
 | Phase 6 — Proof and delivery | TODO | R1–R5, R10–R12 | T11, T12, T13, T14, T15 | Not run |
 
 ## Coverage
@@ -930,6 +930,66 @@ Actions:
       (`ai-codebase-rescue andino-workflow council focus natural-writing search-first
       skripsi-skill threejs-skills promote/natural-writing skill-promotion-gate`) only with explicit approval.
 
+## Execution log (2026-11-23)
+
+E2 — T2 DONE. `tests/test_skill_registry_consistency.py` rewritten; RED observed
+(`'main' != 'andino-workflow'`, `first_party` present), GREEN after the catalog
+edit and T5 (6/6 OK).
+
+E3 — T3 DONE. `src/ai_rules/release/latest.py`: pins removed, `AI_RULES_SOURCE_BRANCH`,
+member history inside the subpath, `recorded_files` / `recorded_member`,
+`snapshot_working_tree` (bare store + `core.bare=false` worked; no fallback needed).
+RED observed for the three planned cases (member "modified or unrecognized";
+"Local content is modified or unrecognized"). `tests.installer.test_live_updates`
++ `test_source_subpaths`: 47 tests, all PASS after T4.
+Ruling: the seven git-clone install tests became one "preserved" test
+(`test_git_checkout_install_is_preserved_for_subpath_sources`) — subpath sources
+already refuse Git-checkout installs — cost if wrong: Git-checkout installs of a
+first-party skill stay unsupported, as before for subpath packages.
+
+E4 — T4 DONE. `src/ai_rules/release/checkout.py` (`find_checkout`, `resolve_source`,
+`bundled_revision`) and `cli.py` (`--source auto|local|latest|bundled`, source
+line, `_bundled_skill`). `tests/installer/test_local_source.py`: RED (argparse
+rejects `local`/`auto`), GREEN 7/7, including an uncommitted CRLF edit.
+Hermetic hazard: only `tests/installer/test_terminal_ux.py` line 251 lacked
+`--source`; pinned to `latest`. `test_portfolio_transactions` was fetching
+`focus`/`search-first` from real GitHub; made hermetic (6 s instead of 15 s).
+Ruling: bundled versions now carry `<HEAD commit>#<commit count>` (packaged as
+`bundles/bundle-sources.json` in a release) because the resolver needs a release
+sequence to decide update direction — evidence: `test_cli_setup_updates_older_managed_first_party_installation`
+blocked with "release sequence is unavailable" — cost if wrong: a clone with
+rewritten history could compare counts wrongly; main is append-only.
+
+E5 — T5 DONE. `release_manifest.json` schema 2 with only `validation_refs.WebBased`.
+Ruling: `stage_bundles` keeps its Git export and receives `HEAD` + `skills/<id>`
+from the new `release_targets(root)` instead of copying the working tree — smaller
+change, existing staging tests stay valid — cost if wrong: stage-only validates
+committed content, so commit before trusting that step (documented).
+`build_release.py --stage-only`: "Exported 8 bundles".
+
+E6 — T6 DONE. Validators read `skills/`; pin tooling and its tests deleted.
+validate_skills PASS (7 packages + Three.js family + WebBased drift at 76f9af1);
+threejs PASS (45/714); andino capabilities PASS (74 schemas); skripsi PASS.
+The natural-writing allow-list fix was already on main (2daf2f4).
+
+E7 — T7 DONE. Ten skill-content tests moved to `tests/` and switched to
+`skills/`; `test_focus`, `test_search_first`, `test_threejs_installation`,
+`test_portfolio_transactions` fixtures moved to the monorepo layout.
+`tests/natural_writing_checker.py` (new on main) reads
+`skills/natural-writing/scripts/check.py`. Andino tests (`debugging_order`,
+`reliability`, `thin_coordinator`, `optimize_prompt_patterns`) default to
+`skills/andino-workflow`. Installer group: 186 tests OK (254 s, Windows).
+Ruling: `tests/test_andino_routing_readiness.py` left reading the old local
+branch (still skips) — four of its assertions fail against current content, a
+pre-existing owner decision recorded in `docs/OPEN-QUESTIONS.md` — cost if wrong:
+that contract stays unchecked until the owner decides.
+
+E10 — T10 DONE. README (Quick Start note, "Change a skill and use it right away",
+source table, old-installer upgrade, folder table, 31 members), AGENTS.md,
+CONTEXT.md, ADR 0002 (+0001 superseded), `docs/specs/changing-skills.md`
+(replaces skill-promotion.md), domain.md, ci-coverage.md, DECISIONS.md,
+OPEN-QUESTIONS.md. `git diff --check` clean.
+
 ## Risks
 
 | Risk | Mitigation / check |
@@ -947,7 +1007,5 @@ Actions:
 
 ## NEXT ACTION
 
-T2 — rewrite `tests/test_skill_registry_consistency.py` (RED on branch/subpath/
-first_party), then point the 8 FIRST_PARTY catalog sources at
-`main` + `skills/<id>`. Before T6, rerun `scripts/validate_skills.py` to see
-whether main's merged update already allows natural-writing `scripts/check.py`.
+Finish T8: read the skills-group rerun, fix anything it shows, then commit and
+run `python scripts/ci_checks.py --group all` (T11).
