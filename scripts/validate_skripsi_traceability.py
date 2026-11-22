@@ -52,7 +52,8 @@ def main():
     a=p.parse_args()
     report=json.loads((ROOT/'docs/validation/skripsi-skill/traceability.json').read_text(encoding='utf-8'))
     paths=set(subprocess.check_output(['git','ls-tree','-r','--name-only',a.runtime_ref],cwd=ROOT,text=True).splitlines())
-    main_paths={f.relative_to(ROOT).as_posix() for f in ROOT.rglob('*') if f.is_file() and '.git' not in f.parts}
+    # Test parts relative to ROOT: the promote clone itself lives under .git/promote/<skill>.
+    main_paths={f.relative_to(ROOT).as_posix() for f in ROOT.rglob('*') if f.is_file() and '.git' not in f.relative_to(ROOT).parts}
     cases=json.loads((ROOT/'evals/skripsi-skill.json').read_text(encoding='utf-8'))
     errors=audit(report,paths,main_paths,{c['id'] for c in cases})
     if errors:
