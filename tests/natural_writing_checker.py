@@ -6,6 +6,7 @@ Set NATURAL_WRITING_CHECKER to another check.py to test a different copy.
 """
 import importlib.util
 import os
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,5 +22,7 @@ def load_checker():
     path = checker_path()
     spec = importlib.util.spec_from_file_location("natural_writing_check", path)
     module = importlib.util.module_from_spec(spec)
+    # dataclasses look the module up in sys.modules while the class is created (Python 3.12).
+    sys.modules[spec.name] = module
     spec.loader.exec_module(module)
     return module
