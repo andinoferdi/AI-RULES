@@ -2,11 +2,13 @@ import contextlib
 import importlib.util
 import io
 import json
+import os
 import subprocess
 import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("promote_skill", ROOT / "scripts" / "promote_skill.py")
@@ -49,6 +51,12 @@ class UpdateManifestTests(unittest.TestCase):
 
 class PromoteFlowTests(unittest.TestCase):
     def setUp(self):
+        # CI runners have no global Git identity; the promote clone commits with this one.
+        identity = patch.dict(os.environ, {
+            "GIT_AUTHOR_NAME": "Test", "GIT_AUTHOR_EMAIL": "test@example.invalid",
+            "GIT_COMMITTER_NAME": "Test", "GIT_COMMITTER_EMAIL": "test@example.invalid"})
+        identity.start()
+        self.addCleanup(identity.stop)
         self.tmp = tempfile.TemporaryDirectory()
         base = Path(self.tmp.name)
         self.remote = base / "remote.git"
