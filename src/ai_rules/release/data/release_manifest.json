@@ -56,8 +56,8 @@
     "natural-writing": {
       "branch": "natural-writing",
       "ref": "origin/natural-writing",
-      "commit": "f359b7bdd07a0b931ff2924ddcb303c2182b11f9",
-      "release_sequence": 16,
+      "commit": "e792e33d5d25b6bd6bc2e8935a7882d7aa6ee276",
+      "release_sequence": 42,
       "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     }
   },
