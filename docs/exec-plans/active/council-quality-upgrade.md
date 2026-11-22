@@ -1,8 +1,8 @@
 # Council quality upgrade
 
-Status: IN_PROGRESS
+Status: DONE
 Plan Depth: STANDARD
-Current Phase: Phase 1 — Council runtime
+Current Phase: Complete
 Last Updated: 2026-11-22
 
 ## Executive Snapshot
@@ -11,7 +11,8 @@ Goal: bring Council output quality to at least the level of
 aiwithremy/claude-skills-llm-council (Reference 1) and karpathy/llm-council
 (Reference 2) without losing evidence discipline, honest host fallback, Focus and
 Andino integration. A Council consultation (5 advisors, 3 anonymous reviewers,
-main agent as chair) chose a lean template-driven restructure. Next: T1.
+main agent as chair) chose a lean template-driven restructure. Shipped as
+council `21c8100017075f8959da8936763cabc2065ae6c5`, pinned at release sequence 40.
 
 ## Objective
 
@@ -22,31 +23,31 @@ fixed verdict layout that README and SKILL.md describe identically. Ship it to
 
 ## Acceptance Criteria
 
-- [ ] R1: `references/prompts.md` holds the advisor, reviewer and single-agent
+- [x] R1: `references/prompts.md` holds the advisor, reviewer and single-agent
   templates and the chair checklist. SKILL.md requires reading it before the first
   advisor prompt is written.
-- [ ] R2: Advisor template tells each lens to argue its angle at full strength and
+- [x] R2: Advisor template tells each lens to argue its angle at full strength and
   still label every material claim `[verified]`, `[reported]`, `[assumption]` or
   `[unknown]`, with no invented numbers.
-- [ ] R3: Reviewer template asks exactly four things: strongest response, weakest
+- [x] R3: Reviewer template asks exactly four things: strongest response, weakest
   consequential claim challenged against the brief, what all responses missed, and
   a final line `FINAL RANKING: X, X, X, X, X`.
-- [ ] R4: SKILL.md defines a run plan: default 5 advisors + 3 reviewers, main agent
+- [x] R4: SKILL.md defines a run plan: default 5 advisors + 3 reviewers, main agent
   as chair, waves no larger than the stricter of 3 or the host/user limit, one
   announcement of count/task/model/effort for every wave before dispatch, and
   waiting for approval when user or project rules require it.
-- [ ] R5: Bounded context step: read only material the user named plus project
+- [x] R5: Bounded context step: read only material the user named plus project
   instruction files relevant to the decision, never secrets or unrelated private
   files, and disclose what was read in the verdict.
-- [ ] R6: One verdict layout, inline in SKILL.md and identical in README:
+- [x] R6: One verdict layout, inline in SKILL.md and identical in README:
   recommendation first, then agreement, clash, blind spots, what would change the
   verdict, one first action, and a one-line run disclosure.
-- [ ] R7: Single-agent fallback uses the same templates and keeps the label
+- [x] R7: Single-agent fallback uses the same templates and keeps the label
   "single-agent perspective review".
-- [ ] R8: `references/worked-example.md` shows one complete compact run.
-- [ ] R9: `references/license.md` is MIT, Copyright (c) 2026 Andino Ferdiansah.
+- [x] R8: `references/worked-example.md` shows one complete compact run.
+- [x] R9: `references/license.md` is MIT, Copyright (c) 2026 Andino Ferdiansah.
   Provenance says no text from the unlicensed references was copied.
-- [ ] R10: `ai-rules setup --capability council` installs the new commit from
+- [x] R10: `ai-rules setup --capability council` installs the new commit from
   `latest` source in an isolated project, together with Focus.
 
 ## Scope
@@ -132,9 +133,9 @@ Contrarian, Outsider.
 
 | Phase | Status | Goal | Scope | Evidence / Result |
 | --- | --- | --- | --- | --- |
-| Phase 1 — Council runtime | IN_PROGRESS | R1-R9 | council branch T1-T3 | Not run |
-| Phase 2 — Verification | TODO | R1-R9 behavior | T4 | Not run |
-| Phase 3 — Publish and setup | TODO | R10 | T5-T6 | Not run |
+| Phase 1 — Council runtime | DONE | R1-R9 | council branch T1-T3 | Artifact checks pass; see Evidence |
+| Phase 2 — Verification | DONE | R1-R9 behavior | T4 | Validator PASS; live trial 4 of 5 criteria pass, 1 partial |
+| Phase 3 — Publish and setup | DONE | R10 | T5-T6 | Pushed; 50 installer tests OK; isolated setup blobs match |
 
 ## Coverage
 
@@ -152,7 +153,7 @@ Contrarian, Outsider.
 ### Phase 1 — Council runtime
 
 #### T1 — Prompt templates, worked example and license
-Status: TODO
+Status: DONE
 Readiness: READY
 Requirements: R1, R2, R3, R7, R8, R9
 Depends on: none
@@ -194,10 +195,10 @@ Actions:
 - [ ] `grep -c "FINAL RANKING: X, X, X, X, X" references/prompts.md` expect 1;
   `grep -c "\[assumption\]" references/prompts.md` expect ≥1.
 
-Result / Evidence: Not run — planned checks only.
+Result / Evidence: see Evidence section.
 
 #### T2 — Restructure SKILL.md
-Status: TODO
+Status: DONE
 Readiness: READY
 Requirements: R1, R4, R5, R6, R7, R9
 Depends on: T1 (links)
@@ -245,10 +246,10 @@ Actions:
 - [ ] `grep -n "references/prompts.md" SKILL.md` expect ≥2 hits;
   `grep -c "^### " SKILL.md` includes the layout headings.
 
-Result / Evidence: Not run — planned checks only.
+Result / Evidence: see Evidence section.
 
 #### T3 — README parity
-Status: TODO
+Status: DONE
 Readiness: READY
 Requirements: R6, R9
 Depends on: T2
@@ -262,12 +263,12 @@ three reference files; add a License line linking `references/license.md`.
 Actions:
 - [ ] Compare the heading list in README against SKILL.md by eye and grep.
 
-Result / Evidence: Not run — planned checks only.
+Result / Evidence: see Evidence section.
 
 ### Phase 2 — Verification
 
 #### T4 — Package validation and live trial
-Status: TODO
+Status: DONE
 Readiness: READY after T1-T3 commit on local `council`
 Requirements: R1-R9
 Depends on: T1, T2, T3
@@ -285,12 +286,12 @@ Actions:
 - [ ] Record pass/fail per criterion here. Parity with Reference 1 stays
   unmeasured unless the same fixture is also run through it (not authorized).
 
-Result / Evidence: Not run — planned checks only.
+Result / Evidence: see Evidence section.
 
 ### Phase 3 — Publish and setup
 
 #### T5 — Publish council and move the pin
-Status: TODO
+Status: DONE
 Readiness: READY after T4 pass
 Depends on: T4
 Owns: branch `council`; `src/ai_rules/release/data/release_manifest.json`,
@@ -313,7 +314,7 @@ Actions:
   with the existing venv interpreter and `PYTHONPATH=src`.
 
 #### T6 — Isolated setup proof and main push
-Status: TODO
+Status: DONE
 Depends on: T5
 Actions:
 - [ ] `ai-rules setup --scope project --project-root <scratch>/proj --state-dir
@@ -323,7 +324,56 @@ Actions:
   council commit.
 - [ ] Commit and push `main`; confirm remote SHA; switch the checkout back to `council`.
 
+## Evidence
+
+All commands ran on 2026-11-22 on Windows 11, Python from the existing
+`~/.local/share/ai-rules/venv` with `PYTHONPATH=src` (no packages installed).
+
+- T1-T3 artifact checks on council `80da674`: `references/license.md` identical to
+  `origin/natural-writing:references/license.md` (diff empty);
+  `FINAL RANKING: X, X, X, X, X` appears once in prompts.md; `[assumption]` three
+  times; SKILL.md links `references/prompts.md` four times; SKILL.md 95 lines;
+  layout headings present at SKILL.md lines 79-83.
+- Ruling: the worked example uses a synthetic CI decision, not the auth fixture —
+  keeps the T4 trial independent of the example — low cost if wrong.
+- Validator: `scripts/validate_skills.py --council-ref council` fails only on
+  `search-first: unexpected runtime file: references/consolidation-provenance.json`.
+  The same failure occurs with `--council-ref origin/council` (pre-existing; the
+  `origin/search-first` tip `698c53a` is ahead of its pin `b55364b`). With
+  `--search-first-ref b55364bf231085bb4a9126c9fe694ddb445df17f`: PASS, 7 packages
+  and 7 eval schemas, for council `032cd14` and again with the final manifest.
+- T4 live trial (old wording at `80da674`): `architecture-switch-condition` brief,
+  5 advisors Sonnet/medium in waves 3+2, 3 reviewers Sonnet/low, main agent chair.
+  Prompts rendered from `references/prompts.md` with no unfilled placeholder.
+  Limitation: advisor answers were lightly condensed before review.
+  - PASS: all 5 advisors returned preferred option, reason, downside, switch
+    observation and evidence tags.
+  - PARTIAL: all 5 picked the patch-now hybrid with distinct reasoning (audit as
+    specification, ask the auditor first, ownership of the figures). Reviewers said
+    nobody proposed a time-boxed parallel spike or a decision deadline.
+  - PASS: 3 of 3 reviewers ended with a parseable line; tally `B, D, C, A, E`
+    unanimous (Expansionist first, First Principles last).
+  - PASS: chair verdict — patch now, get the audit requirement list with a
+    deadline, replace immediately if it exceeds the patch; audit requirement kept
+    as an unverified switch condition; one first action (ask the auditors this week).
+  - DEFECT found: options lettered A-C collided with Response A-E; reviewers had to
+    write "Response B" versus "Option B".
+  - Ruling: number options, sharpen the Contrarian card to attack the most
+    attractive option, and have the chair check unanimity for framing effects —
+    trial evidence above — re-trial not run, so these three edits are NOT_VERIFIED
+    behaviorally. Shipped in council `032cd14` and `21c8100`.
+- T5: `git push origin council`; `git ls-remote` shows
+  `21c8100017075f8959da8936763cabc2065ae6c5`. Manifest pin and sequences updated.
+  `python -m unittest tests.installer.test_council tests.installer.test_live_updates
+  tests.installer.test_source_subpaths`: 50 tests, OK.
+- T6: isolated `setup --scope project --host claude-code --capability council
+  --source latest` installed focus and council (2 installed, 0 failed).
+  `git hash-object` of the five installed council files equals the blobs in
+  `21c8100`. Bundled source mode not tested (bundles are built at release time).
+- Not verified: parity with Reference 1 on the same fixture; Codex, OpenCode and
+  Antigravity installs; native skill discovery in a fresh session.
+
 ## NEXT ACTION
 
-T1: on branch `council`, write `references/prompts.md`, `references/worked-example.md`
-and `references/license.md`, then run the T1 grep checks.
+None — task complete. Optional follow-ups: re-pin or clean `search-first` so the
+default validator passes; run `ai-rules update` on the user's own hosts.

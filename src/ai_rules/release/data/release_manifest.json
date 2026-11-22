@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "channel": "stable",
-  "release_sequence": 39,
-  "verified_at": "2026-11-12",
+  "release_sequence": 40,
+  "verified_at": "2026-11-22",
   "first_party": {
     "andino-workflow": {
       "branch": "andino-workflow",
@@ -42,8 +42,8 @@
     "council": {
       "branch": "council",
       "ref": "origin/council",
-      "commit": "aafc9a089fbfc27aa1ee745ead2f781e67218cf4",
-      "release_sequence": 36,
+      "commit": "21c8100017075f8959da8936763cabc2065ae6c5",
+      "release_sequence": 40,
       "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "threejs-skills": {
