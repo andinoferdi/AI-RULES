@@ -3,7 +3,6 @@
 import os
 from pathlib import Path
 import re
-import subprocess
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,11 +15,8 @@ HEADER_SLOTS = SLOTS[:3]
 
 
 def runtime_resource(path=RESOURCE):
-    directory = os.environ.get('ANDINO_RUNTIME_DIR')
-    if directory:
-        return (Path(directory) / path).read_text(encoding='utf-8')
-    ref = os.environ.get('ANDINO_RUNTIME_REF', 'origin/andino-workflow')
-    return subprocess.check_output(['git', 'show', f'{ref}:{path}'], cwd=ROOT).decode('utf-8')
+    directory = os.environ.get('ANDINO_RUNTIME_DIR') or ROOT / 'skills/andino-workflow'
+    return (Path(directory) / path).read_text(encoding='utf-8')
 
 
 def layout_problems(block):

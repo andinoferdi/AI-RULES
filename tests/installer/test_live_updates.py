@@ -32,31 +32,24 @@ class LiveUpdateTests(unittest.TestCase):
         self.root = Path(self.temp.name)
         self.remote = self.root / "upstream"
         self.remote.mkdir()
-        self.git(self.remote, "init", "-b", "andino-workflow")
+        self.git(self.remote, "init", "-b", "main")
         self.git(self.remote, "config", "user.name", "Fixture")
         self.git(self.remote, "config", "user.email", "fixture@example.invalid")
+        # One branch, every skill in skills/<id>/, like the real repository.
+        self.pkg = self.remote / "skills/andino-workflow"
+        for identifier, body in (("focus", "Answer first."), ("search-first", "Research first.")):
+            package = self.remote / "skills" / identifier
+            package.mkdir(parents=True)
+            (package / "SKILL.md").write_text(
+                f"---\nname: {identifier}\ndescription: Fixture {identifier}\n---\n{body}\n", encoding="utf-8")
         self.commit("old", extra=True)
         self.old = self.git(self.remote, "rev-parse", "HEAD").strip()
-        self.git(self.remote, "checkout", "-b", "focus")
-        (self.remote / "SKILL.md").write_text(
-            "---\nname: focus\ndescription: Fixture communication skill\n---\nAnswer first.\n",
-            encoding="utf-8")
-        self.git(self.remote, "add", "SKILL.md")
-        self.git(self.remote, "commit", "-m", "focus fixture")
-        self.git(self.remote, "checkout", "-b", "search-first")
-        (self.remote / "SKILL.md").write_text(
-            "---\nname: search-first\ndescription: Fixture research skill\n---\nResearch first.\n",
-            encoding="utf-8")
-        self.git(self.remote, "add", "SKILL.md")
-        self.git(self.remote, "commit", "-m", "search-first fixture")
-        self.git(self.remote, "checkout", "andino-workflow")
         self.project = self.root / "project"
         self.target = self.project / ".agents/skills/andino-workflow"
         self.state = self.root / "state"
         self.catalog = load_catalog()
-        self.catalog.require_capability("andino-workflow").source["repository"] = str(self.remote)
-        self.catalog.require_capability("focus").source["repository"] = str(self.remote)
-        self.catalog.require_capability("search-first").source["repository"] = str(self.remote)
+        for identifier in ("andino-workflow", "focus", "search-first"):
+            self.catalog.require_capability(identifier).source["repository"] = str(self.remote)
         self.catalog_patch = patch.object(cli, "load_catalog", return_value=self.catalog)
         self.catalog_patch.start()
         self.addCleanup(self.catalog_patch.stop)
@@ -65,13 +58,20 @@ class LiveUpdateTests(unittest.TestCase):
         return subprocess.check_output(["git", *args], cwd=cwd, text=True, encoding="utf-8", stderr=subprocess.PIPE)
 
     def commit(self, content, extra=False):
-        (self.remote / "SKILL.md").write_text(
+        self.pkg.mkdir(parents=True, exist_ok=True)
+        (self.pkg / "SKILL.md").write_text(
             "---\nname: andino-workflow\ndescription: Fixture workflow\n---\n" + content + "\n", encoding="utf-8")
-        (self.remote / "README.md").write_text("Fixture\n", encoding="utf-8")
+        (self.pkg / "README.md").write_text("Fixture\n", encoding="utf-8")
         if extra:
-            (self.remote / "obsolete.md").write_text("old\n", encoding="utf-8")
+            (self.pkg / "obsolete.md").write_text("old\n", encoding="utf-8")
         self.git(self.remote, "add", ".")
         self.git(self.remote, "commit", "-m", content)
+
+    def add_member(self, body):
+        member = self.pkg / "skills/plan-execution"
+        member.mkdir(parents=True, exist_ok=True)
+        (member / "SKILL.md").write_text(f"---\nname: andino-plan-execution\n---\n{body}\n")
+        return member
 
     def run_cli(self, *extra, command="setup"):
         output = io.StringIO()
@@ -85,11 +85,11 @@ class LiveUpdateTests(unittest.TestCase):
     def copy_old(self):
         self.target.mkdir(parents=True)
         for name in ("SKILL.md", "README.md", "obsolete.md"):
-            shutil.copyfile(self.remote / name, self.target / name)
+            shutil.copyfile(self.pkg / name, self.target / name)
 
     def test_existing_copy_updates_and_later_commit_needs_no_cli_release(self):
         self.copy_old()
-        (self.remote / "obsolete.md").unlink()
+        (self.pkg / "obsolete.md").unlink()
         self.commit("new")
         result, output = self.run_cli()
         self.assertEqual(0, result, output)
@@ -108,43 +108,43 @@ class LiveUpdateTests(unittest.TestCase):
         workflow = next(t for t in lock['targets'] if t['capability'] == 'andino-workflow')
         self.assertIn(self.git(self.remote, "rev-parse", "HEAD").strip(), workflow['target_version'])
 
-    def pin_on_main(self, commit):
-        """Give the fixture remote a main branch whose manifest pins andino-workflow at `commit`."""
-        branch = self.git(self.remote, "branch", "--show-current").strip()
-        self.git(self.remote, "checkout", "-q", "--orphan", "main")
-        self.git(self.remote, "rm", "-rqf", ".")
-        manifest = self.remote / "src/ai_rules/release/data/release_manifest.json"
-        manifest.parent.mkdir(parents=True)
-        manifest.write_text(json.dumps({"first_party": {
-            "andino-workflow": {"branch": "andino-workflow", "commit": commit}}}), encoding="utf-8")
-        self.git(self.remote, "add", ".")
-        self.git(self.remote, "commit", "-qm", "pin")
-        self.git(self.remote, "checkout", "-q", "-f", branch)
-
-    def test_latest_installs_commit_pinned_on_main_not_branch_head(self):
-        self.commit("promoted")
-        promoted = self.git(self.remote, "rev-parse", "HEAD").strip()
-        self.commit("unpromoted")
-        self.pin_on_main(promoted)
+    def test_latest_installs_main_head_and_later_commit(self):
+        self.commit("first")
         result, output = self.run_cli()
         self.assertEqual(0, result, output)
-        body = (self.target / "SKILL.md").read_text()
-        self.assertIn("promoted", body)
-        self.assertNotIn("unpromoted", body)
+        self.commit("second")
+        result, output = self.run_cli()
+        self.assertEqual(0, result, output)
+        self.assertIn("second", (self.target / "SKILL.md").read_text())
         lock = json.loads((self.state / "lock.json").read_text())
-        workflow = next(t for t in lock['targets'] if t['capability'] == 'andino-workflow')
-        self.assertIn(promoted, workflow['target_version'])
+        workflow = next(t for t in lock["targets"] if t["capability"] == "andino-workflow")
+        self.assertIn(self.git(self.remote, "rev-parse", "HEAD").strip(), workflow["target_version"])
 
-    def test_newer_unpromoted_copy_is_kept_with_a_clear_reason(self):
-        self.commit("unpromoted")
+    def test_recorded_install_updates_without_source_history(self):
+        # A copy the old branch-based installer wrote: never committed on main, but recorded.
+        from ai_rules.release.latest import contents
         self.target.mkdir(parents=True)
-        for name in ("SKILL.md", "README.md", "obsolete.md"):
-            shutil.copyfile(self.remote / name, self.target / name)
-        self.pin_on_main(self.old)
+        (self.target / "SKILL.md").write_text(
+            "---\nname: andino-workflow\ndescription: Fixture workflow\n---\nlegacy branch copy\n", encoding="utf-8")
+        (self.target / "README.md").write_text("Fixture\n", encoding="utf-8")
+        self.state.mkdir(parents=True)
+        (self.state / "managed-installations.json").write_text(json.dumps({"schema_version": 1, "installations": {
+            "andino-workflow:codex:project": {
+                "version": "git-branch:andino-workflow@" + "0" * 40,
+                "files": [{"path": path, "blob": blob} for path, blob in contents(self.target).items()]}}}),
+            encoding="utf-8")
+        result, output = self.run_cli()
+        self.assertEqual(0, result, output)
+        self.assertNotIn("legacy branch copy", (self.target / "SKILL.md").read_text())
+        self.assertIn("old", (self.target / "SKILL.md").read_text())
+
+    def test_unrecorded_unknown_copy_is_preserved(self):
+        self.target.mkdir(parents=True)
+        (self.target / "SKILL.md").write_text("---\nname: andino-workflow\ndescription: x\n---\nmine\n", encoding="utf-8")
         result, output = self.run_cli()
         self.assertNotEqual(0, result, output)
-        self.assertIn("newer than the commit main pins", output)
-        self.assertIn("unpromoted", (self.target / "SKILL.md").read_text())
+        self.assertIn("modified or unrecognized", output)
+        self.assertIn("mine", (self.target / "SKILL.md").read_text())
 
     def test_current_skill_gets_missing_command_and_setup_repairs_deleted_command(self):
         self.copy_old()
@@ -191,14 +191,14 @@ class LiveUpdateTests(unittest.TestCase):
         self.assertIn(self.target.joinpath("SKILL.md").as_posix(), command.read_text())
         self.assertNotIn("$ARGUMENTS", command.read_text())
 
-    def test_clean_clone_fast_forwards_without_replacing_git_metadata(self):
+    def test_git_checkout_install_is_preserved_for_subpath_sources(self):
         self.target.parent.mkdir(parents=True)
         self.git(self.root, "clone", str(self.remote), str(self.target))
         self.commit("new")
         result, output = self.run_cli()
-        self.assertEqual(0, result, output)
-        self.assertEqual(self.git(self.remote, "rev-parse", "HEAD"), self.git(self.target, "rev-parse", "HEAD"))
-        self.assertEqual(str(self.remote), self.git(self.target, "remote", "get-url", "origin").strip())
+        self.assertNotEqual(0, result, output)
+        self.assertIn("Git checkout for a subpath package is preserved", output)
+        self.assertEqual(self.old, self.git(self.target, "rev-parse", "HEAD").strip())
 
     def test_crlf_python_resource_matches_source_but_changed_code_does_not(self):
         from ai_rules.release.latest import contents
@@ -224,16 +224,14 @@ class LiveUpdateTests(unittest.TestCase):
         (second / "run-check").write_bytes(b"#!/usr/bin/env bash\r\necho different\r\n")
         self.assertNotEqual(contents(first), contents(second))
 
-    def test_git_workflow_refreshes_native_member_on_update_and_current_parent(self):
-        member = self.remote / "skills/plan-execution"
-        member.mkdir(parents=True)
-        (member / "SKILL.md").write_text("---\nname: andino-plan-execution\n---\nold member\n")
+    def test_native_member_from_older_commit_inside_subpath_is_updated(self):
+        member = self.add_member("old member")
         self.commit("with member")
-        self.target.parent.mkdir(parents=True)
-        self.git(self.root, "clone", str(self.remote), str(self.target))
+        result, output = self.run_cli()
+        self.assertEqual(0, result, output)
         native = self.target.parent / "andino-plan-execution"
-        shutil.copytree(member, native)
-        (member / "SKILL.md").write_text("---\nname: andino-plan-execution\n---\nnew member\n")
+        self.assertIn("old member", (native / "SKILL.md").read_text())
+        self.add_member("new member")
         self.commit("new member")
         result, output = self.run_cli()
         self.assertEqual(0, result, output)
@@ -250,6 +248,25 @@ class LiveUpdateTests(unittest.TestCase):
         self.assertEqual(0, result, output)
         self.assertIn("NO_OP", output)
 
+    def test_recorded_native_member_updates_without_source_history(self):
+        import hashlib
+        from ai_rules.release.family import fingerprint
+        self.add_member("current member")
+        self.commit("with member")
+        native = self.target.parent / "andino-plan-execution"
+        native.mkdir(parents=True)
+        (native / "SKILL.md").write_text("---\nname: andino-plan-execution\n---\nlegacy member\n")
+        root = self.target.parent
+        key = hashlib.sha256(str(root.resolve()).casefold().encode()).hexdigest()
+        inventory = self.state / "family-inventories" / f"{key}.json"
+        inventory.parent.mkdir(parents=True)
+        inventory.write_text(json.dumps({"schema_version": 1, "family": "andino-workflow", "root": str(root),
+                                         "artifacts": {str(native): {"id": native.name, "kind": "tree",
+                                                                     "fingerprint": fingerprint(native)}}}))
+        result, output = self.run_cli()
+        self.assertEqual(0, result, output)
+        self.assertIn("current member", (native / "SKILL.md").read_text())
+
     def test_user_edits_are_preserved_and_never_reported_current(self):
         self.copy_old()
         (self.target / "SKILL.md").write_text("personal edits\n", encoding="utf-8")
@@ -260,28 +277,22 @@ class LiveUpdateTests(unittest.TestCase):
         self.assertEqual("personal edits\n", (self.target / "SKILL.md").read_text())
 
     def test_modified_native_member_blocks_parent_update_without_overwriting(self):
-        member = self.remote / "skills/plan-execution"
-        member.mkdir(parents=True)
-        (member / "SKILL.md").write_text("---\nname: andino-plan-execution\n---\nold\n")
+        self.add_member("old")
         self.commit("with member")
-        self.target.parent.mkdir(parents=True)
-        self.git(self.root, "clone", str(self.remote), str(self.target))
+        result, output = self.run_cli()
+        self.assertEqual(0, result, output)
         native = self.target.parent / "andino-plan-execution"
-        shutil.copytree(member, native)
         (native / "SKILL.md").write_text("personal member edits\n")
-        installed = self.git(self.target, "rev-parse", "HEAD")
-        (member / "SKILL.md").write_text("---\nname: andino-plan-execution\n---\nnew\n")
+        self.add_member("new")
         self.commit("member update")
         result, output = self.run_cli()
         self.assertNotEqual(0, result, output)
         self.assertIn("modified or unrecognized", output)
         self.assertEqual("personal member edits\n", (native / "SKILL.md").read_text())
-        self.assertEqual(installed, self.git(self.target, "rev-parse", "HEAD"))
+        self.assertIn("with member", (self.target / "SKILL.md").read_text())
 
     def test_native_member_drift_after_planning_fails_activation_verification(self):
-        member = self.remote / "skills/plan-execution"
-        member.mkdir(parents=True)
-        (member / "SKILL.md").write_text("---\nname: andino-plan-execution\n---\ncurrent\n")
+        self.add_member("current")
         self.commit("with member")
         result, output = self.run_cli()
         self.assertEqual(0, result, output)
@@ -309,15 +320,15 @@ class LiveUpdateTests(unittest.TestCase):
         self.assertNotIn("All selected skills are ready", output)
         self.assertFalse((self.state / "lock.json").exists())
 
-    def test_latest_is_default_and_fetches_from_non_repository_cwd(self):
-        self.assertEqual("latest", cli.build_parser().parse_args(["setup"]).source)
-        original = Path.cwd()
-        try:
-            os.chdir(self.root)
-            result, output = self.run_cli()
-        finally:
-            os.chdir(original)
-        self.assertEqual(0, result, output)
+    def test_auto_is_default_and_fetches_github_shaped_source_outside_a_clone(self):
+        self.assertEqual("auto", cli.build_parser().parse_args(["setup"]).source)
+        output = io.StringIO()
+        with contextlib.chdir(self.root), contextlib.redirect_stdout(output), contextlib.redirect_stderr(output):
+            result = cli.main(["setup", "--host", "codex", "--profile", "minimal",
+                               "--scope", "project", "--project-root", str(self.project),
+                               "--state-dir", str(self.state), "--non-interactive", "--yes"])
+        self.assertEqual(0, result, output.getvalue())
+        self.assertIn("Skill source: GitHub main", output.getvalue())
         self.assertTrue((self.target / "SKILL.md").is_file())
 
     def test_dry_run_does_not_change_installation_or_persist_state(self):
@@ -335,16 +346,6 @@ class LiveUpdateTests(unittest.TestCase):
         result, output = self.run_cli()
         self.assertNotEqual(0, result, output)
         self.assertEqual("keep me\n", (self.target / "my-notes.md").read_text())
-
-    def test_dirty_clone_is_preserved(self):
-        self.target.parent.mkdir(parents=True)
-        self.git(self.root, "clone", str(self.remote), str(self.target))
-        (self.target / "README.md").write_text("local edits\n")
-        self.commit("new")
-        result, output = self.run_cli()
-        self.assertNotEqual(0, result, output)
-        self.assertEqual(self.old, self.git(self.target, "rev-parse", "HEAD").strip())
-        self.assertEqual("local edits\n", (self.target / "README.md").read_text())
 
     def test_shared_project_root_is_updated_once_and_verified_for_each_host(self):
         self.copy_old()
@@ -382,15 +383,18 @@ class LiveUpdateTests(unittest.TestCase):
         self.assertEqual(0, result, output)
         self.assertIn("alternate next", (self.target / "SKILL.md").read_text())
 
-    def test_all_selected_skills_use_their_own_branch(self):
-        self.git(self.remote, "checkout", "-b", "ai-codebase-rescue")
-        (self.remote / "SKILL.md").write_text("---\nname: ai-codebase-rescue\ndescription: Rescue\n---\nrescue\n")
+    def test_all_selected_skills_come_from_one_fetch_of_main(self):
+        rescue = self.remote / "skills/ai-codebase-rescue"
+        rescue.mkdir(parents=True)
+        (rescue / "SKILL.md").write_text("---\nname: ai-codebase-rescue\ndescription: Rescue\n---\nrescue\n")
         self.git(self.remote, "add", ".")
         self.git(self.remote, "commit", "-m", "rescue")
         self.catalog.require_capability("ai-codebase-rescue").source["repository"] = str(self.remote)
-        with patch.object(cli, "_release_manifest", return_value={}):
+        from ai_rules.release import latest
+        with patch.object(latest, "git", wraps=latest.git) as commands:
             result, output = self.run_cli("--profile", "engineering")
         self.assertEqual(0, result, output)
+        self.assertEqual(1, sum(1 for call in commands.call_args_list if call.args[1] == "fetch"))
         self.assertIn("old", (self.target / "SKILL.md").read_text())
         self.assertIn("rescue", (self.target.parent / "ai-codebase-rescue/SKILL.md").read_text())
         records = json.loads((self.state / "managed-installations.json").read_text())
@@ -447,23 +451,6 @@ class LiveUpdateTests(unittest.TestCase):
         lock = json.loads((self.state / "lock.json").read_text())
         self.assertNotEqual("verified", lock["status"])
 
-    def test_git_branch_advances_even_when_commit_does_not_change_files(self):
-        self.target.parent.mkdir(parents=True)
-        self.git(self.root, "clone", str(self.remote), str(self.target))
-        self.git(self.remote, "commit", "--allow-empty", "-m", "new revision")
-        result, output = self.run_cli()
-        self.assertEqual(0, result, output)
-        self.assertEqual(self.git(self.remote, "rev-parse", "HEAD"), self.git(self.target, "rev-parse", "HEAD"))
-
-    def test_wrong_branch_clone_is_not_switched_implicitly(self):
-        self.target.parent.mkdir(parents=True)
-        self.git(self.root, "clone", str(self.remote), str(self.target))
-        self.git(self.target, "checkout", "-b", "personal-work")
-        self.commit("new")
-        result, output = self.run_cli()
-        self.assertNotEqual(0, result, output)
-        self.assertEqual("personal-work", self.git(self.target, "branch", "--show-current").strip())
-
     def test_doctor_accepts_latest_installation_and_records_git_provenance(self):
         result, output = self.run_cli()
         self.assertEqual(0, result, output)
@@ -482,26 +469,12 @@ class LiveUpdateTests(unittest.TestCase):
         self.assertFalse(self.target.exists())
 
     def test_wrong_skill_identity_in_branch_is_rejected(self):
-        (self.remote / "SKILL.md").write_text("---\nname: other-skill\ndescription: Wrong identity\n---\n")
+        (self.pkg / "SKILL.md").write_text("---\nname: other-skill\ndescription: Wrong identity\n---\n")
         self.git(self.remote, "add", ".")
         self.git(self.remote, "commit", "-m", "wrong skill")
         result, output = self.run_cli()
         self.assertNotEqual(0, result, output)
         self.assertFalse(self.target.exists())
-
-    def test_non_fast_forward_git_history_is_preserved(self):
-        self.target.parent.mkdir(parents=True)
-        self.git(self.root, "clone", str(self.remote), str(self.target))
-        self.git(self.target, "config", "user.name", "Fixture")
-        self.git(self.target, "config", "user.email", "fixture@example.invalid")
-        (self.target / "README.md").write_text("personal commit\n")
-        self.git(self.target, "add", ".")
-        self.git(self.target, "commit", "-m", "personal history")
-        saved = self.git(self.target, "rev-parse", "HEAD")
-        self.commit("new")
-        result, output = self.run_cli()
-        self.assertNotEqual(0, result, output)
-        self.assertEqual(saved, self.git(self.target, "rev-parse", "HEAD"))
 
     def test_branch_locked_snapshot_never_silently_restores_a_different_revision(self):
         snapshot = self.root / "snapshot.json"
@@ -515,7 +488,7 @@ class LiveUpdateTests(unittest.TestCase):
     def test_interactive_setup_checks_current_content_without_reasking_permission(self):
         selection = InteractiveSelection(("codex",), "minimal", ())
         arguments = ["setup", "--scope", "project", "--project-root", str(self.project),
-                     "--state-dir", str(self.state)]
+                     "--state-dir", str(self.state), "--source", "latest"]
         with patch.object(cli, "prompt_selection", return_value=selection), \
              patch.object(cli, "prompt_confirmation", return_value=True) as confirm:
             with contextlib.redirect_stdout(io.StringIO()):
@@ -529,25 +502,17 @@ class LiveUpdateTests(unittest.TestCase):
             self.assertNotIn("Already installed", output.getvalue())
 
     def test_novice_setup_from_empty_home_installs_and_registers_all_hosts(self):
-        for identifier in ("ai-codebase-rescue", "skripsi-skill", "council", "natural-writing"):
-            self.git(self.remote, "checkout", "-b", identifier)
-            (self.remote / "SKILL.md").write_text(
-                f"---\nname: {identifier}\ndescription: Fixture {identifier}\n---\nInstructions\n")
-            self.git(self.remote, "add", ".")
-            self.git(self.remote, "commit", "-m", identifier)
-            self.catalog.require_capability(identifier).source["repository"] = str(self.remote)
-        home = self.root / "empty-home"
-        self.git(self.remote, 'checkout', '-b', 'threejs-skills')
         for capability in self.catalog.capabilities.values():
-            if capability.source.get('branch') != 'threejs-skills':
+            if capability.ownership.value != "FIRST_PARTY" or capability.id in ("andino-workflow", "focus", "search-first"):
                 continue
-            capability.source['repository'] = str(self.remote)
-            package = self.remote / capability.source.get('subpath', '')
+            capability.source["repository"] = str(self.remote)
+            package = self.remote / capability.source["subpath"]
             package.mkdir(parents=True, exist_ok=True)
-            (package / 'SKILL.md').write_text(
-                f'---\nname: {capability.id}\ndescription: Fixture\n---\nInstructions\n')
-        self.git(self.remote, 'add', '.')
-        self.git(self.remote, 'commit', '-m', 'Three.js family fixture')
+            (package / "SKILL.md").write_text(
+                f"---\nname: {capability.id}\ndescription: Fixture {capability.id}\n---\nInstructions\n")
+        self.git(self.remote, "add", ".")
+        self.git(self.remote, "commit", "-m", "every skill")
+        home = self.root / "empty-home"
         home.mkdir()
         hosts = tuple(self.catalog.hosts)
         expected_skills = load_profiles(self.catalog).require("everything").capabilities

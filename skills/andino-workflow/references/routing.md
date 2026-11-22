@@ -1,0 +1,210 @@
+# Capability routing
+
+## Plan depth is not capability routing
+
+First select relevant work methods using the [index](internal-method-index.md)
+and [dispatch contract](method-dispatch.md). This covers every internal method and
+supported source alias, including implicit requests with no skill name. Load selected current
+work guides before Focus or optional external discovery. Explicit native providers,
+required research/domain owners and invocation controls retain their authority.
+Focus remains the default communication layer after this selection/loading; honor
+style overrides and report unavailability without blocking authorized work.
+
+Select capabilities by the current unresolved need, not by a compulsory planning
+stage or coding taxonomy. DIRECT may need no tools; GROUNDED needs bounded context;
+INVESTIGATIVE may need hypothesis testing. Independently choose EPHEMERAL or
+CHECKPOINTED persistence. Only the latter needs LITE/STANDARD/DEEP plan density;
+record material density changes in an existing plan. This creates no second router.
+Density describes progress tracking, never a cap on specialist method or artifact
+detail. The selected skill owns its full procedure and required resources/checks.
+Andino coordinates their handoff without rewriting them into a generic workflow.
+
+The pool includes native members, AI-RULES siblings, relevant installed manual
+external skills and actual MCP/native tools. Internal-first is a default for an
+equivalent unresolved method, not exclusivity. Honor an explicit relevant provider
+directly; discover an external method when it better fits an uncovered need. Do
+not activate an entire catalog, install/connect tools merely because listed, or
+load a second skill for the same concern. Host controls still determine invocation.
+
+Select from task intent, current evidence, unresolved need, phase, consequence and
+actual host availability, not keywords or an unverified diagnosis. Native
+filesystem/search/shell/Git and fetching are preferred when sufficient. Consult
+only matching entries in [the capability registry](capability-registry.md), resolve
+actual provider/ID using [coexistence](capability-coexistence.md), then obey
+[the host invocation contract](invocation-adapter.md). Registry metadata is not
+full skill/schema loading, installation or successful invocation.
+
+Skill = methodology; MCP = instrument; native = existing host facility. Select the
+minimum useful combination only when each addresses a distinct need. Read relevant
+instructions/schema just-in-time, perform required preflight and use observed
+results as evidence. Reassess after new facts: keep, replace or release a capability.
+Release means stop unnecessary calls/defaults, not uninstall. Stop when acceptance
+is sufficiently grounded. Simple tasks may remain DIRECT with zero specialists
+only when no required route or explicit specialist choice applies.
+
+REQUIRED means select and load the matching bundled guide, or activate a native
+sibling, before its relevant work, subject to the applicable resource/native controls.
+CONDITIONAL means select only when the
+stated need is evidenced; once selected, activation is required before use.
+Unmarked rows remain conditional on their stated need and boundary.
+These labels govern selection, not permission, persistence or registry AUTO modes.
+
+Apply explicit user choices and exclusions first, then [phase readiness](#phase-readiness),
+then matching REQUIRED routes whose phase is current, then distinct CONDITIONAL
+needs. Integrated methods resolve through the
+[local index](internal-method-index.md), not an upstream native skill installation.
+Native siblings/instruments retain their actual host discovery and invocation controls.
+Match the requested outcome, not names appearing
+in quoted examples, filenames or an inventory. Diagnose an unknown cause before
+choosing a repair; load regression support before behavior changes and completion
+support before consequential acceptance claims. Reassess each phase; do not load
+future phases in advance. Domain and phase routes may both apply without creating
+another owner. Resolve selected skills absent from the registry through the host
+catalog using the same invocation and coexistence contracts.
+
+AUTO supports relevant read-oriented lookup/normal skill loading. CONDITIONAL_AUTO
+waits for the actual regression/review/quality/simplification/browser phase.
+PERMISSION_GATED selects a candidate but does not authorize live/destructive
+mutation. DISCOVERED, AVAILABLE, INVOKABLE, ACTIVE, USED, UNAVAILABLE and NOT_NEEDED
+remain distinct; installation != activation != use. If unavailable, use a safe
+sufficient native/local fallback and record it without claiming external use. If
+no sufficient fallback exists, name the material gap and minimum required access.
+Never install alternatives merely to satisfy registry completeness.
+
+One lifecycle owner coordinates the job; supporting disciplines may change by phase.
+Debugging, regression/TDD, review and completion verification may run in sequence when
+each is relevant. This is phase-local support, not permission to start parallel plans.
+
+Respect native invocation controls. Installed does not mean model-invokable.
+For explicit-only workers, recommend the user's native invocation when that method
+is needed; never reproduce a blocked skill through file reads or alternate tools.
+Do ordinary task work within the available permissions without claiming a worker
+was invoked. Codex implicit policy, Claude manual-only mode and OpenCode V1 deny
+permissions have different semantics; there is no universal hidden-but-callable mode.
+Antigravity's scoped descriptions are behavioral guidance, not a native hard switch.
+
+| Need | Default worker / instrument | Boundary |
+| --- | --- | --- |
+| Logo, brand mark, favicon or visual identity work | Installed `logo-design`; read [local collaboration](marketing-collaboration.md) | Reuse product context and approved identity; the logo skill owns its complete method; marketing, LinkedIn and frontend specialists consume the approved assets |
+| Marketing, positioning, SEO/CRO, content or LinkedIn work | Installed Marketing Skills and LinkedIn specialists; read [local collaboration](marketing-collaboration.md) | Andino keeps lifecycle; choose the specific deliverable owner, share relevant project context and respect host invocation/action authority |
+| Ordinary conversation or sufficient known context | Direct response | explicit Andino invocation is valid; no forced plan, tools or specialist |
+| Daily task or installation guidance | Relevant context and official instructions when needed | answer useful defaults; inspect or ask only about material environment differences |
+| Current research or factual comparison | Authoritative current sources and supplied artifacts | distinguish source findings, inference and unknowns; cite evidence; no invented freshness |
+| Decision support | Existing constraints, options and consequence comparison | inspect available evidence; ask only for unresolved material human preferences |
+| Uncertain goal or request to explore possible directions | REQUIRED while the direction is open and not delegated: bundled [brainstorming](../skills/brainstorming/GUIDE.md) | see [phase readiness](#phase-readiness); explore before converging; accepted specifications bypass ideation; compare settled alternatives without reopening them; Council retains independent-perspective ownership |
+| Explicit advice on selecting or combining workflows | workflow-owned [advice resource](workflow-advice/guide.md) | consult current relevant definitions and availability; advice does not execute recommendations or become a routing prerequisite |
+| Intentional teaching or learning | bundled [learning-workspace](../skills/learning-workspace/GUIDE.md) | a bounded lesson can stay in chat; persist progress for deliberate cross-session learning; explanation repair uses Focus’s `references/explanation-repair.md` resource; ordinary questions stay direct |
+| Explicit Council request or consequential multi-option decision seeking independent scrutiny | CONDITIONAL: council (AI-RULES Council skill) | honor explicit request and host invocation controls; five independent advisors with anonymous review only if real delegation is available; otherwise report single-agent limitation; Andino retains lifecycle, Focus controls language |
+| New feature with likely reusable solutions, dependency/integration choice, new utility, unfamiliar or version-sensitive API, material external uncertainty about reported problems, maintenance or alternatives, or evidence that an approach is unsuitable | REQUIRED: search-first when this research need remains, without waiting for a web-search request | activate actual instructions before research, even offline; its contract requires actual authorized search/read actions when external evidence is needed; local sufficiency stops research; no trigger from coding alone or trivial edits; unknown cause remains with debugging |
+| Thesis/research status, next steps, milestones or substantive research work | REQUIRED: skripsi-skill | activate before interpreting progress or giving research advice; preserve Andino ownership; no second plan |
+| Request to write, rewrite, polish or review prose in a writing artifact, or explicit natural-writing request | CONDITIONAL: natural-writing | select by artifact intent, not keywords; Focus keeps surrounding communication and never shortens the artifact body; Skripsi keeps academic validity; no activation for chat answers, code or machine-readable output; Andino retains lifecycle |
+| Runtime/configuration failure | Relevant logs, service/config/schema status | test environment hypotheses before assuming a source-code defect; read-only evidence does not authorize live mutation |
+| Unknown bug root cause | REQUIRED: bundled [debugging](../skills/debugging/GUIDE.md) | read before diagnostic logs/source for the investigation; reproduce or trace; distinguish observed cause from proposed diagnosis |
+| Evidenced Three.js scene, rendering, animation, material, geometry, interaction, game or NixieFX need | CONDITIONAL: [threejs-skills family](threejs-specialists.md) | choose by unresolved domain need, not a quoted keyword; invoke the one family through the host contract, then load minimum relevant internal GUIDE.md methods; honor explicitly named methods; unknown causes start with debugging; no all-method loading or second lifecycle |
+| Serious stabilization of a fragile/patch-heavy bounded subsystem, repeated regressions, production hardening of a fragile prototype, bounded remake candidate, or material contract/ownership/architecture drift | ai-codebase-rescue after eligibility inspection | evidence-first; smallest justified surface; AI provenance alone never justifies remediation; shared Andino plan remains lifecycle state |
+| Behavior change needing a regression or executable contract | CONDITIONAL: bundled [tdd](../skills/tdd/GUIDE.md) | read before implementation when an executable check distinguishes behavior; RED→GREEN per seam, optional separate GREEN-only refactor gate; skip text-only edits |
+| Consequential claim that implementation, repair or a mapped deliverable meets acceptance | REQUIRED: bundled [verification](../skills/verification/GUIDE.md) | read before the claim; use actual current evidence; excludes ordinary replies/trivial edits; no repeated unchanged suites |
+| Review | bundled [code-review](../skills/code-review/GUIDE.md) | explicit current diff including owned untracked bytes; Spec and Standards axes; no unsolicited rewrite |
+| Unclear product requirements or missing intent | inspect evidence, then REQUIRED: [brainstorming](../skills/brainstorming/GUIDE.md) if a material user-owned choice remains | inspect existing behavior first; no reinterview of locked decisions or environment facts |
+| Large implementation ordering | REQUIRED when requested or accepted multi-step work lacks dependency/verification detail: bundled [planning](../skills/planning/GUIDE.md) | existing Andino plan remains durable state; skip already complete accepted ordering; task decomposition/decision maps are supporting artifacts |
+| Accepted plan ready or interrupted execution resumes | REQUIRED: bundled [plan-execution](../skills/plan-execution/GUIDE.md) | inspect checkpoint and relevant drift; execute only authorized dependency-ready work; planning-only requests stop at the plan |
+| Structural relationship | existing Graphify or symbol/reference search | verify current source; no automatic graph generation |
+| Historical decisions | claude-mem targeted search → timeline → selected detail | any working host integration; no automatic per-prompt retrieval |
+| New visual direction or generation: landing, portfolio, redesign, typography, composition | REQUIRED once the product direction is resolved or delegated: design-taste-frontend (`taste-skill` alias) | Taste generates one design direction recorded in the project's DESIGN.md; dials are stated explicitly from the brief, never inferred from adjectives such as "minimal" or "professional" |
+| UI/UX design or evaluation, critique, polish, accessibility, dashboard, design system, anti-slop detection | REQUIRED for existing UI, or for new UI once the product direction is resolved or delegated: impeccable | `init`/`document` for PRODUCT.md and DESIGN.md; `critique`, `audit`, `polish`, `detect` after generation; excludes mechanical text edits and bugs requiring no UX decision; project stack and accepted design win |
+| Both a new visual direction and its evaluation or refinement | REQUIRED once the product direction is resolved or delegated: both UI skills unless explicitly restricted to one | use [UI coexistence](ui-coexistence.md); Taste generates, Impeccable critiques and refines; one direction; each must address a distinct need |
+| Fidelity clone | clone-website | preserve reference; redesign only when requested; clone then redesign means clone-website first, then Taste and Impeccable under UI coexistence |
+| Evidenced unnecessary dependency/abstraction, or existing avoidable complexity | CONDITIONAL: ponytail for proposed over-building; code-simplification for existing-code cleanup | choose one for the same concern; no activation merely because coding is involved |
+| Concrete generated UI/copy/code quality defect | CONDITIONAL: matching Anti-Slop core/subskill | select only the uncovered concern; accepted direction wins; no family-wide load |
+| Unresolved version-sensitive library behavior | REQUIRED evidence: version-matched official docs; CONDITIONAL instrument: Context7 | use Search First’s `references/version-contract/guide.md`: resolve manifest plus lock/environment version → matching official source → documented change → parity test; use Context7 when available and useful, otherwise official docs; retrieving docs does not replace Search First activation for unfamiliar integration or alternatives after a failed approach; only an already-established solution's bounded API clarification skips that method |
+| Acceptance needs browser interaction, rendered layout or responsive evidence; always for UI work before DONE | REQUIRED for UI work, otherwise CONDITIONAL: [browser verification](../skills/browser-testing-with-devtools/GUIDE.md), prefer sufficient authorized host-native capabilities or existing automated browser tests | map each required evidence item to actual exposed capabilities; add Playwright/DevTools only for a missing item, never infer instrumentation from a browser panel; UI needs inspected screenshots at 360, 768 and 1440 px; one surface; unavailable checks remain NOT_VERIFIED |
+| Missing console/network/performance evidence not supplied by the current surface | CONDITIONAL: Chrome DevTools MCP | add only for the distinct diagnostic gap, not redundant navigation |
+| Repository state where native Git unavailable/inadequate | Git MCP | native Git preferred; MCP mutations still need applicable authorization |
+| Editable general diagram | Draw.io MCP | requested artifact/format; local diagram fallback if sufficient |
+| Formal UML/model inspection or generation | StarUML MCP | model semantics; do not automatically invoke both diagram systems |
+| Actual Premiere project operation | Premiere Pro MCP | connection -> inspect project/sequence -> discover exact tool -> authorized mutation -> read-back |
+| Authorized local memory/process investigation | Cheat Engine MCP bridge | actual connectivity/target evidence and reads first; mutation/injection/shell require explicit applicable authority |
+| Database/cloud/design/media operations | corresponding project MCP/plugin | enable only relevant service; authorization still applies |
+
+Specialized resource routes are listed separately in the [method/resource index](internal-method-index.md#selective-resources--not-public-entrypoints). For a narrow frontend state or accessibility repair, load `skills/plan-execution/resources/frontend-engineering/guide.md` directly from the workflow root: no full executor lifecycle, new plan or reopened discovery. Git operations select `git-skills` and only the matching mode. Advice loads `references/workflow-advice/guide.md` and stops at advice. Resource reading does not activate the parent skill.
+
+Integrated API, frontend, CI/CD, security, performance, migration, observability,
+specification, productivity and shipping techniques are local methods in the
+[internal index](internal-method-index.md). Select the guide matching the actual
+need; no upstream native skill installation or full-family pipeline. Explicit
+current internal IDs and supported source names select their canonical implementation; retired IDs have no callable alias.
+Method discovery/read/use remain separate; no executable keyword router is implied.
+Ponytail is
+useful for evidenced over-build risk, not automatic one-line ceremony. Graphify
+query/callers/impact/trace semantics are resolved against installed version and
+index freshness; native references remain preferred for simple relationships.
+External Anti-Slop availability does not replace existing internal quality rules.
+
+For Search First, resolve the real installed `search-first` entry and load it through
+the host invocation contract when the research need is present; this is required
+selection within that condition, not an optional name mention. Use Claude Code's
+Skill tool or OpenCode's exposed skill tool where applicable; do not substitute
+file reads for those native invocations. Do not substitute
+this routing row for its instructions. Use its sourced recommendation in Andino's
+existing task/plan. Andino coordinates scope, execution, acceptance evidence and checkpoints;
+Search First owns discovery and ADOPT / EXTEND / COMPOSE / BUILD recommendations.
+Focus continues to shape communication. Systematic Debugging retains unknown-cause
+investigation; failed attempts justify Search First only when a distinct question
+about available solutions remains. Context7 and official docs are version-specific
+sources, Rescue owns eligible stabilization, and Skripsi owns academic research.
+Respect explicit exclusions and native manual-only/deny controls. If unavailable,
+record the boundary and use sufficient permitted local/native evidence without
+claiming skill use. Require loading plus a meaningful research action/result for
+USED; installation is not activation. No second plan or automatic subagent.
+For material external uncertainty, apply Search First's proactive online contract:
+actual authorized search, meaningful source reading and version-aware evaluation,
+using native tools first. A known official URL can settle a bounded lookup; open
+solution discovery or reported-problem research requires a search action. A tool
+name or successful call alone does not prove useful evidence. Keep sanitized
+queries, actual URLs/actions and decision effects in existing task evidence when
+verification requires it. Missing, denied, failed and insufficient research remain
+distinct; do not bypass restrictions, install a provider or invent current facts.
+
+For rescue, ordinary local bugs remain on the ordinary workflow. Vague requests
+such as "AI wrote this" or "clean this" warrant only targeted eligibility inspection,
+not automatic rescue or REMAKE. Explicit rescue/stabilization requests can select
+the specialist, subject to native availability and invocation controls above.
+While Andino owns the task, direct rescue invocation binds to the existing plan;
+when persistence is warranted and none exists, use Andino's plan contract. The specialist
+returns findings, verification evidence and a recommended next action; it owns no
+independent DONE, checkpoint or authoritative NEXT ACTION and grants no additional
+mutation authorization. Andino retains lifecycle state and acceptance decisions.
+Rescue is an optional, separately installed package. Without it, continue ordinary
+authorized work using the available methods; do not auto-install it or claim it
+was invoked. Outside an active Andino workflow, Rescue can use the host's normal
+task context independently; installing both skills does not activate both.
+
+Bundled planning/debugging/TDD methods obey resource permissions and the canonical
+procedures; native siblings still obey native invocation controls. Do not combine
+competing planners, routers or lifecycle owners. Retired bootstrap names perform
+no activation; useful discovery belongs to Andino already. No generic method
+boilerplate overrides user scope, accepted project contracts or authorization.
+
+## Phase readiness
+
+Before design or implementation routes, decide what is still open. Read the
+request with its context and evidence: a word of confusion or an execution verb
+is a signal to interpret, not a trigger.
+
+| What is open | Route |
+| --- | --- |
+| The product or goal direction, not delegated by the user | REQUIRED: bundled [brainstorming](../skills/brainstorming/GUIDE.md); explore distinct directions and leave the choice to the user |
+| A known direction with a material user-owned requirement | inspect evidence, then REQUIRED: [brainstorming](../skills/brainstorming/GUIDE.md) for what evidence cannot settle; only clarify the remaining open choice |
+| One rough direction that needs sharpening | directly select [idea-validation](../skills/brainstorming/resources/idea-validation/guide.md), without reopening accepted requirements |
+| How to run, use or understand something already specified or built, or a previous explanation | direct guidance from evidence; [human-procedure](../skills/human-procedure/GUIDE.md), [learning-workspace](../skills/learning-workspace/GUIDE.md) for an actual lesson, or Focus’s `references/explanation-repair.md` for explanation repair; no ideation |
+| Nothing material: specified, accepted or explicitly delegated | proceed with stated defaults; never reopen accepted decisions |
+
+Do not start work that depends on an unresolved material user decision. Minor
+details get safe stated defaults, and independent authorized work continues.
+"Build a CRUD app, but I'm confused how" leaves the direction open unless context
+settles it; "pick any stack and just build it" delegates it. Select brainstorming
+or its directly relevant resource by what remains open, not a compulsory sequence.
+Design (Taste, Impeccable) and implementation routes start once the direction is
+resolved or delegated. Bugs, research, writing, thesis, review and questions route
+directly; Focus activation, debugging timing, Search First research (which may run
+during discovery), TDD and verification keep their own timing.

@@ -8,15 +8,22 @@ instruction following and native host discovery need separate human observation.
 
 [`validate-skills.yml`](../.github/workflows/validate-skills.yml) runs on pull
 requests and pushes to `main`, daily, by manual dispatch, and when called by the
-release workflow. Its original `validate` job uses Python 3.12 on Ubuntu and keeps
-the package, schema, regression and traceability checks together.
+release workflow. It has three jobs:
 
-The full suite already discovers `tests/installer`; installer coverage was not
-missing from the original Ubuntu job. The additional installer matrix runs that
-subset on Ubuntu/Python 3.11, Windows/Python 3.12 and macOS/Python 3.12. This checks
-the declared Python floor and exercises platform-specific paths, including the
-Windows junction regression. It does not run the full suite on every Python/OS
-combination.
+- `skills` (Ubuntu, Python 3.12, every run): `ci_checks.py --group skills`, the
+  package, schema, traceability and release-staging checks plus every test in
+  `tests/`. Those tests read real skill content, including the installer
+  integration tests that install the real `skills/` folder.
+- `changes`: decides whether installer files changed (`src/`, `tests/installer/`,
+  `pyproject.toml`, `packaging/`, the release/CI scripts, workflows).
+- `installer`: `tests/installer` (installer code with fixture data) on
+  Ubuntu/Python 3.11, Windows/Python 3.12 and macOS/Python 3.12, only when
+  `changes` says so, and always on the nightly run, manual dispatch and release
+  calls. This checks the declared Python floor and platform-specific paths,
+  including the Windows junction regression.
+
+A pull request that only edits a skill or docs therefore runs the `skills` job
+alone; a skill change that breaks an installer fixture is still caught nightly.
 
 [`release.yml`](../.github/workflows/release.yml) calls the same validation
 workflow from its own commit. All shared checks must succeed before the platform
@@ -48,13 +55,13 @@ publish version-tag artifacts and checksums
 
 ## Coverage map
 
-Every check reads the skill commits pinned in the
-[release manifest](../src/ai_rules/release/data/release_manifest.json). Before the
-checks run, `scripts/skill_refs.py pin` points `origin/<skill>` at those pins, so a push to a skill branch cannot change a main
-result. Skill branch heads ahead of their pins are listed in the run summary
-(`skill_refs.py drift`) and reach main only through
-[promotion](specs/skill-promotion.md). Release staging exports the same pinned
-commits and optional subpaths. Staging rejects empty
+Every check reads `skills/` from the checkout under test, so a skill change and
+the tests it affects are always checked together
+([ADR 0002](adr/0002-skills-live-on-main.md)). The only pinned input is the
+`WebBased` commit in the
+[release manifest](../src/ai_rules/release/data/release_manifest.json), used by
+the Focus reference check. Release staging exports `skills/<id>` at the commit
+being built. Staging rejects empty
 bundle sets, malformed package metadata, missing resources, broken relative links
 and unsupported package contents using the existing package validator. Export also
 rejects unsafe paths and non-regular Git entries.
@@ -70,8 +77,8 @@ rejects unsafe paths and non-regular Git entries.
 | `natural-writing` | Package structure/links, evaluation schemas and deterministic package regressions | Naturalness, audience fit and preservation of meaning in generated prose |
 | `threejs-skills` | One package and its internal methods; inventory, resources, binary signatures and scenario schemas | Live routing, rendering, visual quality and host execution |
 | `WebBased` | The communication sources used by the Focus drift check | General validation of every web/chat template |
-| Installer/CLI on `main` | Root unittest discovery; installer subset on the additional OS/Python combinations | Native Codex/Claude/OpenCode/Antigravity discovery and actual invocation |
-| Frozen distribution | `build_release.py --stage-only` validates all manifest bundles; every executable build validates its actual staged inputs again | Semantic quality of the skill prose |
+| Installer/CLI on `main` | `tests/installer` fixtures on three OS/Python combinations; real-skill installs in `tests/` | Native Codex/Claude/OpenCode/Antigravity discovery and actual invocation |
+| Frozen distribution | `build_release.py --stage-only` validates every first-party bundle exported from `skills/`; every executable build validates its actual staged inputs again | Semantic quality of the skill prose |
 | Executable releases | Three OS builds, help smoke, bundled installation without Git, every resource compared with its frozen source, verified lock targets and checksums | Native host behavior, every architecture and every supported Python version |
 | Optional external skills/MCP services | Relevant local contract and fixture checks only | Installation, connectivity or live behavior of external services |
 
@@ -81,19 +88,17 @@ the revision, model and host they actually exercised.
 
 ## Run the model-free checks locally
 
-In a disposable clone of `main` with the package installed (the promote command's
-clone at `.git/promote/<skill>` is one):
+In your clone with the package installed:
 
 ```sh
-python scripts/skill_refs.py pin
-python scripts/ci_checks.py
+git fetch origin WebBased
+python scripts/ci_checks.py --group skills
+python scripts/ci_checks.py --group installer
 ```
 
-`ci_checks.py` runs the six CI steps in order and stops at the first failure.
-`pin` moves only `origin/<skill>`, so it is also safe in a working checkout; the
-next `git fetch` moves those refs back to branch heads. Tests that read a local
-branch name (`andino-workflow`, `search-first`) skip where that branch is absent,
-as on CI runners.
+`ci_checks.py` runs the steps in order and stops at the first failure; without
+`--group` it runs both groups (about 13 minutes). Release staging exports the
+committed `skills/` folder, so commit a skill change before trusting that step.
 
 Use a new output directory for each staging attempt: an existing `bundles`
 directory is preserved and rejected. The stage-only command writes bundle contents

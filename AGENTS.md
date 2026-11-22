@@ -1,48 +1,50 @@
 # AGENTS.md — AI-RULES
 
-`main` holds the `ai-rules` installer, validators, tests and the version pins.
-Every skill lives on its own orphan branch (`council`, `focus`, `search-first`, ...).
-Words used here are defined in [CONTEXT.md](CONTEXT.md); where each kind of
-document lives is in [docs/agents/domain.md](docs/agents/domain.md).
+`main` holds everything: the `ai-rules` installer, validators, tests and every
+skill in `skills/<id>/`. The only other long-lived branch is `WebBased` (prompt
+modules for web chatbots); leave it alone. Words used here are defined in
+[CONTEXT.md](CONTEXT.md); where each kind of document lives is in
+[docs/agents/domain.md](docs/agents/domain.md).
 
 ## Where truth lives
 
-1. `src/ai_rules/release/data/release_manifest.json` on `main` pins the exact
-   commit of every skill. CI, the tests and `ai-rules setup` read only these pins
-   ([ADR 0001](docs/adr/0001-main-pins-skill-versions.md)).
-2. The skill branch holds the skill's content. A commit there reaches users only
-   after it is promoted.
-3. `src/ai_rules/catalog/data/capabilities.json` and `profiles/data/profiles.json`
-   list the skills `setup` offers.
+1. `skills/<id>/` is the skill. What is in this folder on `main` is what users get.
+2. `src/ai_rules/catalog/data/capabilities.json` and
+   `src/ai_rules/profiles/data/profiles.json` list the skills `setup` offers.
+   Every first-party entry reads `main` at `subpath` `skills/<id>`.
+3. `src/ai_rules/release/data/release_manifest.json` pins one thing only: the
+   `WebBased` commit used by the Focus reference check. Skills have no pins
+   ([ADR 0002](docs/adr/0002-skills-live-on-main.md)).
 
 ## Changing a skill
 
-1. Edit and commit on the skill branch, in its own worktree:
-   `git worktree add .worktrees/<skill> <skill>`. Push the branch.
-2. From a checkout of `main`, run `python scripts/promote_skill.py <skill>`.
-   It pins the branch head on a `promote/<skill>` branch, runs
-   `scripts/ci_checks.py` against the new pins, and opens a PR only when every
-   check passes. Done when it prints `PR: <url>`.
-3. If it prints `FAIL at '<step>'`: a skill problem is fixed on the skill branch
-   (push, rerun). Out-of-date main tests or data (counts, inventories,
-   allow-lists) are fixed inside the printed `.git/promote/<skill>` clone; rerun
-   and the edits ship in the same PR.
-4. The owner merges the PR after its checks are green. Done when the `main` push
-   run of "Validate skills" is green.
+1. Edit `skills/<id>/` on a branch from `origin/main`.
+2. Try it: run `ai-rules setup` from the clone. Inside a clone setup reads
+   `skills/` from disk (uncommitted edits included) and prints
+   `Skill source: local folder ...`.
+3. Update the tests or data the change affects (counts, inventories,
+   allow-lists, evals) in the same commit, then run
+   `python scripts/ci_checks.py --group skills`.
+4. Open a PR to `main`. Merging it is the release: `ai-rules setup` outside a
+   clone installs `main:skills/<id>` from GitHub.
 
-Changes to the installer, validators or tests themselves use a normal branch
-from `origin/main` and a PR. `main` accepts changes only through a PR with green CI.
+Changes to the installer, validators or tests use the same branch-and-PR flow.
+`main` accepts changes only through a PR with green CI.
 
 ## Adding or removing a skill
 
-Follow [docs/specs/skill-promotion.md](docs/specs/skill-promotion.md#adding-a-skill)
-in one PR to `main`. `tests/test_skill_registry_consistency.py` names any file the
-change missed.
+Follow [docs/specs/changing-skills.md](docs/specs/changing-skills.md) in one PR.
+`tests/test_skill_registry_consistency.py` names any file the change missed.
 
 ## Checks
 
-- Run everything CI runs: `python scripts/skill_refs.py pin`, then
-  `python scripts/ci_checks.py` (the promote command does both in its clone).
-  `pin` moves only `origin/<skill>`; the next `git fetch` moves them back.
-- `python scripts/skill_refs.py drift` lists skill branches with unpromoted commits.
+- `python scripts/ci_checks.py --group skills`: skill packages, validators and
+  every test in `tests/` (they read real skill content). Needs
+  `git fetch origin WebBased` once for the Focus reference check.
+- `python scripts/ci_checks.py --group installer`: `tests/installer/`, the
+  installer with fixture data. CI runs it on Linux, Windows and macOS only when
+  installer files change, plus nightly, on manual dispatch and on release.
+- `python scripts/ci_checks.py` runs both. The full run takes about 13 minutes.
+- To install a pushed branch before it is merged, run setup outside a clone with
+  `AI_RULES_SOURCE_BRANCH=<branch>` set.
 - What CI proves and what it cannot: [docs/ci-coverage.md](docs/ci-coverage.md).

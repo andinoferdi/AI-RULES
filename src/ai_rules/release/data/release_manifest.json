@@ -1,81 +1,11 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "channel": "stable",
-  "release_sequence": 42,
-  "verified_at": "2026-11-22",
-  "first_party": {
-    "andino-workflow": {
-      "branch": "andino-workflow",
-      "ref": "origin/andino-workflow",
-      "commit": "305ab94acfdf8d36d2cad21210dc25c8daf11c20",
-      "release_sequence": 38,
-      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
-    },
-    "ai-codebase-rescue": {
-      "branch": "ai-codebase-rescue",
-      "ref": "origin/ai-codebase-rescue",
-      "commit": "5b0b47c678425daf33be582806f49aed497e2c2b",
-      "release_sequence": 14,
-      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
-    },
-    "skripsi-skill": {
-      "branch": "skripsi-skill",
-      "ref": "origin/skripsi-skill",
-      "commit": "7ae5cd7a63bf40233296624b8e9d49ae3edf438c",
-      "release_sequence": 16,
-      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
-    },
-    "search-first": {
-      "branch": "search-first",
-      "ref": "origin/search-first",
-      "commit": "b55364bf231085bb4a9126c9fe694ddb445df17f",
-      "release_sequence": 14,
-      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
-    },
-    "focus": {
-      "branch": "focus",
-      "ref": "origin/focus",
-      "commit": "082ac78781502cd9994ba1eafcf229d0115c6379",
-      "release_sequence": 42,
-      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
-    },
-    "council": {
-      "branch": "council",
-      "ref": "origin/council",
-      "commit": "21c8100017075f8959da8936763cabc2065ae6c5",
-      "release_sequence": 40,
-      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
-    },
-    "threejs-skills": {
-      "branch": "threejs-skills",
-      "ref": "origin/threejs-skills",
-      "commit": "4fe9d9cd3135b5ff4841ef72e4c797120da5122a",
-      "release_sequence": 41,
-      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
-    },
-    "natural-writing": {
-      "branch": "natural-writing",
-      "ref": "origin/natural-writing",
-      "commit": "e792e33d5d25b6bd6bc2e8935a7882d7aa6ee276",
-      "release_sequence": 42,
-      "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
-    }
-  },
   "validation_refs": {
     "WebBased": {
       "branch": "WebBased",
       "commit": "76f9af105cc1a5bffda2ff0f9fdcd39b69c63845",
       "purpose": "Focus communication reference drift check"
     }
-  },
-  "publication_order": [
-    "natural-writing",
-    "focus",
-    "WebBased",
-    "skripsi-skill",
-    "andino-workflow",
-    "main",
-    "tagged installer release"
-  ],
-  "publication_status": "RUNTIME_REFS_PUBLISHED_INSTALLER_RELEASE_PENDING"
+  }
 }

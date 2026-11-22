@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Wrapper for review_package.py
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if command -v python3 >/dev/null 2>&1; then
+  python3 "${SCRIPT_DIR}/review_package.py" "$@"
+elif command -v python >/dev/null 2>&1; then
+  python "${SCRIPT_DIR}/review_package.py" "$@"
+else
+  echo "Error: Python 3 is required for review-package" >&2
+  exit 2
+fi

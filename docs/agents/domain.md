@@ -1,13 +1,14 @@
 # Domain docs
 
 Before changing a skill, the installer or a check, read the root `CONTEXT.md`
-glossary and the decisions in `docs/adr/`. Use its terms (skill branch, pin,
-promote, drift) in specs, PR titles, commit messages and test names.
+glossary and the decisions in `docs/adr/`. Use its terms (skill folder, local
+source, GitHub source, native member) in specs, PR titles, commit messages and
+test names.
 
 | Need | Document |
 | --- | --- |
-| How a skill change reaches main and users | [specs/skill-promotion.md](../specs/skill-promotion.md) |
-| Why main pins skill versions | [adr/0001](../adr/0001-main-pins-skill-versions.md) |
+| How to change, add or remove a skill | [specs/changing-skills.md](../specs/changing-skills.md) |
+| Why skills live in `skills/` on main | [adr/0002](../adr/0002-skills-live-on-main.md) (supersedes [0001](../adr/0001-main-pins-skill-versions.md)) |
 | Dated owner decisions | [DECISIONS.md](../DECISIONS.md) |
 | Unresolved questions | [OPEN-QUESTIONS.md](../OPEN-QUESTIONS.md) |
 | What CI proves | [ci-coverage.md](../ci-coverage.md) |

@@ -1,0 +1,18 @@
+# TDD skill quality
+
+- Phase: discovery. BASE `6a875e7f0da1996b4e505c3326792e4be0057ab4` on `andino-workflow`, confirmed by remote lookup. Local tracking ref was stale. The untracked performance plan and changes in the main worktree are separate work.
+- Outcome: stronger test selection and RED decisions while preserving public seams, independent oracles, faulty-copy checks, separate refactoring and the typed-fixtures resource. Preserve the install identity.
+- Evidence: Reviewed the current entry point, guide and supporting contract and fetched all three upstream entry points from their raw GitHub URLs. The current method already requires most upstream fundamentals. Static gaps worth probing include first-run passes, recovering RED with existing work, and choosing a seam that exercises a real integration failure.
+- Evaluation: Use the same tasks and criteria for unguided, current and revised skill conditions. Evaluate scope, seam, oracle, expected failure, next action and preservation of user work. Distinguish observed model behavior from document review and executable fixture results.
+- Scenarios: (1) A bug is reproducible on the old implementation, but the working tree has a partial fix and the new test already passes. (2) A feature has several observable outcomes and time for one first slice. (3) A failed write in legacy code must leave stored state unchanged, but the fast unit suite replaces storage with mocks.
+- Baseline: One fresh-context `gpt-6.1-sol` medium run selected an isolated pre-fix checkout, a single checkout/payment slice, and a real database rollback test. It left the coupon amount and expected charged total unspecified and did not require evidence that the debit had actually executed before the induced failure. The strongest existing guidance should stay. This is one qualitative baseline.
+
+## Execution plan
+
+1. T1, in progress. Update `skills/tdd/SKILL.md` and `GUIDE.md` in sync at Procedure and Output. Keep entry metadata, local resources, existing runnable fixture and authority boundaries. Require a named test and expected/actual observation before interpreting RED. Route a first pass to assertion inspection, known pre-fix comparison in isolation when changes already exist, or an already-satisfied result with the RED gap recorded. Keep minimal GREEN, separate refactor and faulty-copy verification.
+2. T2, depends on T1. Expand `skills/tdd/resources/contract.md` with the concrete coupon oracle (5,000 cents less 700 means a 4,300-cent charge) and rollback oracle (starting balances 100 and 20, transfer 30, injected credit failure after debit, fresh read unchanged). Explain how to distinguish a failure before the debit and preserve a real transaction boundary. Walk both cases and the partial refund case against the procedure. Compare shared sections and run the existing Python fixture through RED, GREEN, refactor and mutation with expected outputs. Check the diff.
+3. T3, depends on T2. Commit only this task, push `andino-workflow`, run `ai-rules setup --host codex --capability andino-workflow --scope global --source latest --yes --non-interactive --no-progress`. Compare published revision and installed native/bundled bytes for the three files. Report any remaining model-evaluation limit.
+
+- T1/T2 complete. Shared method sections are byte-equivalent after decoding, relative links resolve, and `git diff --check` passed. The isolated Python fixture executed one test for each variant: RED `0 != 15`, GREEN pass, refactor pass, faulty-copy mutation `10 != 15`. The document walkthrough covers the refund, checkout and rollback scenarios. It does not establish guided model performance.
+
+NEXT ACTION: Commit the three skill files and this checkpoint, push and verify setup.

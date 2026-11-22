@@ -329,7 +329,8 @@ def directory_files(root):
         raise ValueError(f"missing package directory: {root}")
     def visit(directory):
         for path in directory.iterdir():
-            if path == root / ".git":
+            # Python bytecode caches are gitignored and never committed or installed.
+            if path == root / ".git" or path.name == "__pycache__" or path.suffix in (".pyc", ".pyo"):
                 continue
             name = path.relative_to(root).as_posix()
             if path.is_symlink() or getattr(path, "is_junction", lambda: False)():
@@ -405,33 +406,21 @@ def eval_cases(skill):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--andino-ref", default="origin/andino-workflow")
-    parser.add_argument("--andino-dir", type=Path, help="validate an uncommitted Andino package instead of --andino-ref")
-    parser.add_argument("--rescue-ref", default="origin/ai-codebase-rescue")
-    parser.add_argument("--skripsi-ref", default="origin/skripsi-skill")
-    parser.add_argument("--focus-ref", default="origin/focus")
-    parser.add_argument("--focus-dir", type=Path, help="validate an uncommitted Focus package instead of --focus-ref")
-    parser.add_argument("--webbased-ref", help="opt-in maintainer source-drift check against a locally available Git ref")
-    parser.add_argument("--council-ref", default="origin/council")
-    parser.add_argument("--search-first-ref", default="origin/search-first")
-    parser.add_argument("--natural-writing-ref", default="origin/natural-writing")
-    parser.add_argument("--natural-writing-dir", type=Path, help="validate an uncommitted Natural Writing package instead of --natural-writing-ref")
-    parser.add_argument("--search-first-dir", type=Path, help="validate an uncommitted Search First package instead of --search-first-ref")
-    parser.add_argument('--threejs-ref', help='opt-in local/fetched Three.js runtime ref')
-    parser.add_argument('--threejs-dir', type=Path, help='opt-in Three.js runtime worktree')
+    parser.add_argument("--skills-dir", type=Path, default=ROOT / "skills",
+                        help="folder holding one directory per skill (default: skills/ in this checkout)")
+    parser.add_argument("--webbased-ref", help="WebBased commit or ref for the Focus reference drift check")
     args = parser.parse_args()
     errors = []
-    if args.threejs_ref or args.threejs_dir:
+    try:
+        all_files, all_modes = directory_files(args.skills_dir / "threejs-skills")
+        errors.extend(package_files(all_files, "threejs-skills", all_modes))
+    except (ValueError, OSError) as exc:
+        errors.append(str(exc))
+    for skill in RUNTIME_SKILLS:
         try:
-            all_files, all_modes = directory_files(args.threejs_dir) if args.threejs_dir else ref_files(args.threejs_ref)
-            errors.extend(package_files(all_files, 'threejs-skills', all_modes))
-        except (ValueError, OSError) as exc:
-            errors.append(str(exc))
-    for skill, ref in zip(RUNTIME_SKILLS, (args.andino_ref, args.rescue_ref, args.skripsi_ref, args.focus_ref, args.search_first_ref, args.council_ref, args.natural_writing_ref)):
-        try:
+            files, modes = directory_files(args.skills_dir / skill)
+            errors.extend(package_files(files, skill, modes))
             if skill == "focus":
-                files, modes = directory_files(args.focus_dir) if args.focus_dir else ref_files(ref)
-                errors.extend(package_files(files, skill, modes))
                 errors.extend(focus_contract(files))
                 if args.webbased_ref:
                     source = {name: git("show", f"{args.webbased_ref}:{name}") for name in (
@@ -439,14 +428,7 @@ def main():
                         "put-in-your-projects/human-language-indonesia.md",
                         "put-in-your-projects/human-language-english.md")}
                     errors.extend(focus_reference_drift(files, source))
-            else:
-                directory = args.andino_dir if skill == "andino-workflow" else args.search_first_dir if skill == "search-first" else args.natural_writing_dir if skill == "natural-writing" else None
-                if directory:
-                    files, modes = directory_files(directory)
-                    errors.extend(package_files(files, skill, modes))
-                else:
-                    errors.extend(package(ref, skill))
-        except (ValueError, OSError) as exc:
+        except (ValueError, OSError, subprocess.CalledProcessError) as exc:
             errors.append(str(exc))
     for skill in EVAL_SKILLS:
         errors.extend(eval_cases(skill))
@@ -455,10 +437,9 @@ def main():
         return 1
     print(f"PASS: {len(RUNTIME_SKILLS)} skill packages, metadata, relative links, and {len(EVAL_SKILLS)} eval schemas")
     print("Live behavioral evaluation: NOT VERIFIED")
-    if args.threejs_ref or args.threejs_dir:
-        print(f'PASS: one Three.js family with {len(THREEJS_SKILLS)-1} internal methods')
+    print(f"PASS: one Three.js family with {len(THREEJS_SKILLS)-1} internal methods")
     if args.webbased_ref:
-        print(f"PASS: Focus communication references match {args.webbased_ref}; A sources equivalent")
+        print(f"PASS: Focus communication references match WebBased {args.webbased_ref[:12]}; A sources equivalent")
     return 0
 
 

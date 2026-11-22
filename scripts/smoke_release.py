@@ -27,15 +27,14 @@ def verify_bundle_files(expected: Path, installed: Path) -> int:
 
 
 def main() -> int:
-    from build_release import stage_bundles
+    from build_release import release_targets, stage_bundles
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--executable', type=Path, required=True)
     args = parser.parse_args()
     executable = args.executable.resolve(strict=True)
     root = Path(__file__).resolve().parents[1]
-    manifest = root / 'src/ai_rules/release/data/release_manifest.json'
-    targets = json.loads(manifest.read_text(encoding='utf-8'))['first_party']
+    targets = release_targets(root)
     with tempfile.TemporaryDirectory(prefix='ai-rules-release-smoke-') as directory:
         temporary = Path(directory).resolve()
         if not temporary.is_relative_to(Path(tempfile.gettempdir()).resolve()):

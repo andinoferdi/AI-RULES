@@ -177,21 +177,19 @@ class PackageValidationTest(unittest.TestCase):
                 self.assertTrue(any('broken link' in error
                                     for error in package_files(files, 'example')))
 
-    def test_cli_validates_uncommitted_search_and_workflow_directories(self):
+    def test_cli_validates_the_skills_folder_it_is_given(self):
+        import shutil
+        repository = Path(__file__).resolve().parents[1]
         with tempfile.TemporaryDirectory() as temporary:
-            root = Path(temporary)
-            arguments = []
-            for name in ('search-first', 'andino-workflow', 'natural-writing'):
-                package = root / name
-                package.mkdir()
-                (package / 'SKILL.md').write_text(
-                    f'---\nname: {name}\ndescription: Useful research method\n---\n', encoding='utf-8')
-                (package / 'README.md').write_text('# Package\n', encoding='utf-8')
-                arguments += [f'--{name.replace("-workflow", "")}-dir', str(package)]
-            result = subprocess.run([sys.executable, 'scripts/validate_skills.py', *arguments],
-                                    cwd=Path(__file__).resolve().parents[1],
-                                    capture_output=True, text=True, encoding='utf-8')
+            skills = Path(temporary) / 'skills'
+            shutil.copytree(repository / 'skills', skills)
+            command = [sys.executable, 'scripts/validate_skills.py', '--skills-dir', str(skills)]
+            result = subprocess.run(command, cwd=repository, capture_output=True, text=True, encoding='utf-8')
             self.assertEqual(0, result.returncode, result.stderr)
+            (skills / 'search-first/README.md').unlink()
+            result = subprocess.run(command, cwd=repository, capture_output=True, text=True, encoding='utf-8')
+            self.assertNotEqual(0, result.returncode)
+            self.assertIn('search-first: missing README.md', result.stderr)
 
     SKRIPSI_SKILL = "---\nname: skripsi-skill\ndescription: Research workflow guidance\n---\n"
 

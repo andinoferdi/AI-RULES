@@ -21,7 +21,7 @@ REF = os.environ.get('ANDINO_RUNTIME_REF', 'andino-workflow')
 
 
 def show(ref, path):
-    directory = os.environ.get('ANDINO_RUNTIME_DIR')
+    directory = os.environ.get('ANDINO_RUNTIME_DIR') or str(ROOT / 'skills/andino-workflow')
     if directory and ref == REF:
         return (Path(directory) / path).read_text(encoding='utf-8')
     result = subprocess.run(['git', 'show', f'{ref}:{path}'], cwd=ROOT, capture_output=True, text=True, encoding='utf-8')

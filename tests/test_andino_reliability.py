@@ -1,7 +1,6 @@
 """Offline dispatch contracts; these checks do not execute or grade an AI actor."""
 import os
 import re
-import subprocess
 import sys
 import unittest
 import copy
@@ -16,36 +15,21 @@ import check_andino_reliability as checker
 
 
 def runtime_text(path):
-    directory = os.environ.get('ANDINO_RUNTIME_DIR')
-    if directory:
-        target = Path(directory) / path
-        return target.read_text(encoding='utf-8') if target.is_file() else ''
-    result = subprocess.run(['git', 'show', 'origin/andino-workflow:' + path], cwd=ROOT,
-                            capture_output=True, text=True, encoding='utf-8')
-    if result.returncode:
-        return ''
-    return result.stdout
+    directory = os.environ.get('ANDINO_RUNTIME_DIR') or str(ROOT / 'skills/andino-workflow')
+    target = Path(directory) / path
+    return target.read_text(encoding='utf-8').replace('\r\n', '\n') if target.is_file() else ''
 
 
 class RuntimeTextSource(unittest.TestCase):
-    def test_reads_fetched_runtime_without_a_local_branch(self):
+    def test_reads_runtime_from_the_skills_folder(self):
         with tempfile.TemporaryDirectory() as directory:
             repository = Path(directory)
-            def git(*args):
-                return subprocess.run(['git', *args], cwd=repository, check=True,
-                                      capture_output=True, text=True, encoding='utf-8')
-
-            git('init')
-            (repository / 'SKILL.md').write_text('# Remote runtime\n', encoding='utf-8')
-            git('add', 'SKILL.md')
-            git('-c', 'user.name=Test', '-c', 'user.email=test@example.invalid',
-                '-c', 'commit.gpgsign=false', 'commit', '-m', 'Runtime fixture')
-            git('update-ref', 'refs/remotes/origin/andino-workflow', 'HEAD')
-            self.assertNotIn('refs/heads/andino-workflow', git('show-ref').stdout)
-
+            package = repository / 'skills/andino-workflow'
+            package.mkdir(parents=True)
+            (package / 'SKILL.md').write_text('# Runtime in skills/\n', encoding='utf-8')
             with patch.dict(os.environ, {'ANDINO_RUNTIME_DIR': ''}), \
                     patch(__name__ + '.ROOT', repository):
-                self.assertEqual('# Remote runtime\n', runtime_text('SKILL.md'))
+                self.assertEqual('# Runtime in skills/\n', runtime_text('SKILL.md'))
                 self.assertEqual('', runtime_text('skills/absent/SKILL.md'))
 
     def test_candidate_directory_takes_precedence_over_git(self):

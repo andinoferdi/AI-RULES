@@ -248,7 +248,7 @@ class SourceProgressTests(unittest.TestCase):
         with patch.object(cli, "prompt_selection", return_value=InteractiveSelection(("codex",), "minimal", ())), \
              patch.object(cli, "prompt_confirmation", return_value=False) as confirm, \
              contextlib.redirect_stdout(io.StringIO()):
-            code = cli.main(["setup", "--scope", "project", "--project-root", str(self.project), "--state-dir", str(self.state)])
+            code = cli.main(["setup", "--scope", "project", "--project-root", str(self.project), "--state-dir", str(self.state), "--source", "latest"])
         self.assertEqual(0, code)
         confirm.assert_called_once()
         self.assertFalse(self.project.exists())

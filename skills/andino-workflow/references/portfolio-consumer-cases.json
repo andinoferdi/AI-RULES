@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "purpose": "Fresh-context application cases; this file contains requests, not evidence that they ran.",
+  "cases": [
+    {
+      "id": "narrow-modal-state",
+      "request": "Perbaiki modal yang fokusnya tidak kembali ke tombol pemicu dan loading state yang tidak punya pengumuman aksesibel. Penyebab dan perubahan lokal sudah jelas, tidak ada keputusan UX baru. Tidak perlu memulai proyek atau rencana eksekusi penuh. Jelaskan resource yang akan dipakai, checks yang diperlukan, dan batasnya."
+    },
+    {
+      "id": "completed-merge-failure",
+      "request": "Saya sudah mengizinkan merge lokal. Tests sebelum merge lulus. Merge non-fast-forward sudah selesai dan menghasilkan commit; tests setelahnya gagal. MERGE_HEAD tidak ada, belum push. Apa yang kamu lakukan sekarang? Jangan melakukan operasi Git nyata."
+    },
+    {
+      "id": "advice-only",
+      "request": "Saya ingin tahu workflow mana yang cocok untuk membandingkan dua arsitektur, bukan menjalankannya. Berikan rekomendasi berdasarkan definisi yang tersedia, lalu berhenti."
+    },
+    {
+      "id": "accepted-plan",
+      "request": "Rancangan dan rencana implementasi sudah diterima. Task berikutnya sudah dependency-ready dan implementasi diizinkan. Gunakan resource vertical-slices untuk task ini. Apakah kamu perlu mengulang brainstorming, mendapatkan persetujuan spesifikasi lagi, atau membuat rencana kedua?"
+    },
+    {
+      "id": "version-parity",
+      "request": "Ubah integrasi library yang perilakunya bergantung versi. package manifest berisi rentang versi; lockfile dan CI environment belum diperiksa. Jelaskan rantai bukti sampai perubahan bisa dinyatakan benar, termasuk ketika dokumentasi cached memberi respons 304. Jangan mengasumsikan versi resolved atau mengklaim sudah menelusuri web."
+    },
+    {
+      "id": "typed-negative-fixture",
+      "request": "Migrasikan fixture TypeScript yang memakai double assertion. Beberapa fixture sengaja invalid untuk test penolakan runtime. Dependensi helper belum diizinkan. Bagaimana mempertahankan makna test dan apa fallback-nya?"
+    },
+    {
+      "id": "module-not-http",
+      "request": "Interface modul lokal ini sulit diuji. Tidak ada HTTP endpoint atau retryable write. Pilih craft module-depth tanpa memaksa API HTTP, empat agent paralel atau perubahan layout TypeScript yang belum diterima."
+    },
+    {
+      "id": "retired-invocation",
+      "request": "Panggil andino-delivery atau andino-method-authoring yang dulu. Apakah ID itu masih tersedia sebagai skill publik atau alias kompatibilitas? Jelaskan status dan pemilik saat ini tanpa berpura-pura memanggil skill lama."
+    },
+    {
+      "id": "explanation-repair",
+      "request": "Penjelasan terakhir tentang batas transaksi belum masuk. Jelaskan lagi dengan bahasa sederhana dan satu contoh konkret. Saya tidak meminta riset baru, kursus belajar atau perubahan file."
+    }
+  ]
+}

@@ -20,7 +20,8 @@ class NaturalWritingIntegrationTests(unittest.TestCase):
 
     def test_standalone_without_dependencies(self):
         entry = self.catalog.require_capability("natural-writing")
-        self.assertEqual("natural-writing", entry.source["branch"])
+        self.assertEqual("main", entry.source["branch"])
+        self.assertEqual("skills/natural-writing", entry.source["subpath"])
         self.assertEqual((), tuple(entry.requires))
         self.assertEqual({"natural-writing"}, self.ids(capabilities=("natural-writing",)))
 
