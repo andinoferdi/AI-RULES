@@ -117,6 +117,9 @@ def package_files(files, expected_name, modes=None):
         ) or (
             expected_name == "skripsi-skill"
             and name.startswith("assets/") and name.endswith(".md")
+        ) or (
+            # The skill's stdlib checker; main tests it from the pinned ref.
+            expected_name == "natural-writing" and name == "scripts/check.py"
         ))
         if expected_name in ('focus', 'search-first') and name == 'references/consolidation-provenance.json':
             allowed = True

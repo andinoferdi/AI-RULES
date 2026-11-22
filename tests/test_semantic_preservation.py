@@ -6,11 +6,15 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "scripts"))
-from check_semantic_preservation import check, FAIL, NEEDS_REVIEW, PASS, WARNING  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from natural_writing_checker import checker_path, load_checker  # noqa: E402
 
+# The checker ships in the natural-writing skill (scripts/check.py); main tests the pinned copy.
+_checker = load_checker()
+check, FAIL, NEEDS_REVIEW, PASS, WARNING = (_checker.check, _checker.FAIL, _checker.NEEDS_REVIEW,
+                                            _checker.PASS, _checker.WARNING)
 FIX = Path(__file__).resolve().parent / "fixtures" / "natural_writing"
-SCRIPT = ROOT / "scripts" / "check_semantic_preservation.py"
+SCRIPT = checker_path()
 
 
 def read(name):
@@ -143,9 +147,20 @@ class ReviewModeTests(unittest.TestCase):
         self.assertEqual(FAIL, check(text, text + " ", mode="review").verdict)
 
 
+class ListMarkerTests(unittest.TestCase):
+    def test_numbered_list_markers_are_not_facts(self):
+        original = "Restart the worker on the job host. Wait a minute."
+        listed = "1. Restart the worker on the job host.\n2. Wait a minute.\n"
+        self.assertEqual(PASS, check(original, listed).verdict)
+
+    def test_numbers_inside_list_items_stay_protected(self):
+        original = "1. Wait 5 minutes."
+        self.assertEqual(FAIL, check(original, "1. Wait 6 minutes.").verdict)
+
+
 class CliTests(unittest.TestCase):
     def run_cli(self, *args):
-        return subprocess.run([sys.executable, str(SCRIPT), *args], capture_output=True, text=True, encoding="utf-8")
+        return subprocess.run([sys.executable, str(SCRIPT), "compare", *args], capture_output=True, text=True, encoding="utf-8")
 
     def test_exit_codes(self):
         orig, good = FIX / "en_original.txt", FIX / "en_good.txt"

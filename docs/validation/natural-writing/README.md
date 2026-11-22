@@ -20,6 +20,8 @@ f359b7b, focus d119a80, WebBased cb75644, skripsi-skill 7ae5cd7, andino-workflow
 - `python scripts/build_release.py --stage-only`: 8 bundles exported.
 
 ## 3. Semantic-preservation checks
+(2026-11-22: this checker moved into the skill as `scripts/check.py compare`; main's
+tests now load it from the pinned ref. See [quality-v2](quality-v2/README.md).)
 `scripts/check_semantic_preservation.py` is a bounded safeguard, not a proof of
 equal meaning. Its tests cover Rewrite, Write and Review modes, with mutation
 fixtures (changed percentage, fabricated citation, edited code, changed DOI)

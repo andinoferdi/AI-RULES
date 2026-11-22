@@ -160,6 +160,19 @@ class PackageValidationTest(unittest.TestCase):
         }
         self.assertEqual(package_files(files, "example"), [])
 
+    def test_natural_writing_may_ship_only_its_checker_script(self):
+        files = {
+            "README.md": "# Natural Writing\n",
+            "SKILL.md": "---\nname: natural-writing\ndescription: Useful writing method\n---\n",
+            "scripts/check.py": "print('ok')\n",
+        }
+        self.assertEqual([], package_files(dict(files), "natural-writing"))
+        self.assertTrue(any("unexpected runtime file: scripts/check.py" in error
+                            for error in package_files(dict(files), "council")))
+        files["scripts/other.py"] = "print('no')\n"
+        self.assertTrue(any("unexpected runtime file: scripts/other.py" in error
+                            for error in package_files(files, "natural-writing")))
+
     def test_broken_link_fails(self):
         files = {"SKILL.md": "---\nname: example\ndescription: Useful example\n---\n[ref](references/missing.md)\n"}
         self.assertTrue(any("broken link" in error for error in package_files(files, "example")))
