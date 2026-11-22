@@ -91,13 +91,22 @@ class PackageValidationTest(unittest.TestCase):
             files[f'skills/delegation/scripts/{script}'] = '# helper'
         self.assertEqual([], package_files(files, 'andino-workflow'))
 
-    def test_focus_consolidation_metadata_is_a_regular_resource(self):
-        files = {'README.md': '# Focus',
-                 'SKILL.md': '---\nname: focus\ndescription: Communication\n---\n',
+    def test_consolidation_metadata_is_a_regular_resource(self):
+        for skill in ('focus', 'search-first'):
+            with self.subTest(skill=skill):
+                files = {'README.md': f'# {skill}',
+                         'SKILL.md': f'---\nname: {skill}\ndescription: Skill\n---\n',
+                         'references/consolidation-provenance.json': '{}'}
+                self.assertEqual([], package_files(files, skill))
+                self.assertTrue(any('non-regular' in error for error in package_files(
+                    files, skill, {'references/consolidation-provenance.json': '120000'})))
+
+    def test_consolidation_metadata_stays_rejected_for_other_skills(self):
+        files = {'README.md': '# Council',
+                 'SKILL.md': '---\nname: council\ndescription: Decisions\n---\n',
                  'references/consolidation-provenance.json': '{}'}
-        self.assertEqual([], package_files(files, 'focus'))
-        self.assertTrue(any('non-regular' in error for error in package_files(
-            files, 'focus', {'references/consolidation-provenance.json': '120000'})))
+        self.assertIn('council: unexpected runtime file: references/consolidation-provenance.json',
+                      package_files(files, 'council'))
 
     def test_andino_layout_expansion_still_rejects_unknown_or_unsafe_files(self):
         for path in ('scripts/tool.exe', 'scripts/install.py', 'scripts/../private.py',

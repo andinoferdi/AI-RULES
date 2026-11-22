@@ -118,7 +118,7 @@ def package_files(files, expected_name, modes=None):
             expected_name == "skripsi-skill"
             and name.startswith("assets/") and name.endswith(".md")
         ))
-        if expected_name == 'focus' and name == 'references/consolidation-provenance.json':
+        if expected_name in ('focus', 'search-first') and name == 'references/consolidation-provenance.json':
             allowed = True
         if expected_name == 'andino-workflow':
             parts = name.split('/')
