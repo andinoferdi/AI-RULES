@@ -19,3 +19,6 @@ Prompt.txt
 GRAND-PLAN.md
 .playwright-mcp/
 ULTIMATE-PROMPT.md
+
+# Skill branch worktrees (see AGENTS.md)
+.worktrees/

@@ -21,22 +21,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Fetch skill branches
-        run: git fetch --no-tags origin andino-workflow:refs/remotes/origin/andino-workflow ai-codebase-rescue:refs/remotes/origin/ai-codebase-rescue skripsi-skill:refs/remotes/origin/skripsi-skill focus:refs/remotes/origin/focus search-first:refs/remotes/origin/search-first council:refs/remotes/origin/council natural-writing:refs/remotes/origin/natural-writing WebBased:refs/remotes/origin/WebBased threejs-skills:refs/remotes/origin/threejs-skills
+      - name: Point skill refs at the commits pinned on main
+        run: python3 scripts/skill_refs.py pin
       - name: Install AI-RULES package
         run: python3 -m pip install --editable .
-      - name: Validate
-        run: python3 scripts/validate_skills.py --webbased-ref origin/WebBased --threejs-ref origin/threejs-skills
-      - name: Validate Three.js inventory and scenario schemas
-        run: python3 scripts/validate_threejs_family.py --runtime-ref origin/threejs-skills
-      - name: Validate capability evaluation schemas
-        run: python3 scripts/validate_andino_capabilities.py --runtime-ref origin/andino-workflow
-      - name: Test validators and installer regressions
-        run: python3 -m unittest discover -s tests
-      - name: Audit skripsi requirement ownership
-        run: python3 scripts/validate_skripsi_traceability.py
-      - name: Validate frozen release bundles
-        run: python3 scripts/build_release.py --stage-only --output "${{ runner.temp }}/frozen-bundles"
+      - name: Run main checks against pinned skills
+        run: python3 scripts/ci_checks.py
+      - name: Report skill branches waiting for promotion
+        if: always()
+        run: python3 scripts/skill_refs.py drift >> "$GITHUB_STEP_SUMMARY"
 
   installer:
     name: Installer (${{ matrix.os }}, Python ${{ matrix.python }})
@@ -59,6 +52,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
+      - name: Point skill refs at the commits pinned on main
+        run: python scripts/skill_refs.py pin
       - name: Install AI-RULES package
         run: python -m pip install --editable .
       - name: Test installer regressions

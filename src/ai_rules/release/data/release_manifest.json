@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "channel": "stable",
-  "release_sequence": 40,
+  "release_sequence": 41,
   "verified_at": "2026-11-22",
   "first_party": {
     "andino-workflow": {
@@ -49,8 +49,8 @@
     "threejs-skills": {
       "branch": "threejs-skills",
       "ref": "origin/threejs-skills",
-      "commit": "7ff3f5752b333cbe041385372bb3d419a8f0c494",
-      "release_sequence": 14,
+      "commit": "4fe9d9cd3135b5ff4841ef72e4c797120da5122a",
+      "release_sequence": 41,
       "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
     },
     "natural-writing": {
@@ -59,6 +59,13 @@
       "commit": "f359b7bdd07a0b931ff2924ddcb303c2182b11f9",
       "release_sequence": 16,
       "publication_status": "PUBLISHED_RUNTIME_REF_VERIFIED"
+    }
+  },
+  "validation_refs": {
+    "WebBased": {
+      "branch": "WebBased",
+      "commit": "76f9af105cc1a5bffda2ff0f9fdcd39b69c63845",
+      "purpose": "Focus communication reference drift check"
     }
   },
   "publication_order": [

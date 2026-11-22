@@ -400,6 +400,10 @@ ai-rules update --host claude-code --profile engineering --scope project --proje
 ai-rules doctor --host claude-code --scope project --project-root .
 ```
 
+`setup` and `update` install the skill commits pinned on GitHub `main`. To change,
+add or remove a skill, follow [AGENTS.md](AGENTS.md): edit the skill branch, then
+run `python scripts/promote_skill.py <skill>` to open a checked pull request.
+
 ---
 
 ## How AI-RULES Compares

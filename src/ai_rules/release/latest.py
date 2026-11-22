@@ -58,6 +58,22 @@ def contents(root: Path) -> dict[str, str]:
     return result
 
 
+MAIN_MANIFEST = "src/ai_rules/release/data/release_manifest.json"
+MAIN_REFSPEC = "+refs/heads/main*:refs/heads/main*"
+
+
+def main_pins(local: Path) -> dict:
+    """First-party pins from the fetched main branch, or {} when the source has none."""
+    try:
+        manifest = json.loads(git(local, "show", f"refs/heads/main:{MAIN_MANIFEST}"))
+    except (ValueError, json.JSONDecodeError):
+        return {}
+    pins = manifest.get("first_party") if isinstance(manifest, dict) else None
+    return {name: pin for name, pin in (pins or {}).items()
+            if isinstance(pin, dict) and isinstance(pin.get("commit"), str)
+            and re.fullmatch(r"[0-9a-f]{40}", pin["commit"])}
+
+
 def canonical_source(value: str) -> str:
     if "://" not in value and not value.startswith("git@"):
         return str(Path(value).resolve())
@@ -96,12 +112,23 @@ class LatestSources:
                 for _, branch in selections:
                     git(local, "check-ref-format", f"refs/heads/{branch}")
                 refs = [f"+refs/heads/{branch}:refs/heads/{branch}" for _, branch in selections]
-                git(local, "fetch", "--no-tags", "--", repository, *dict.fromkeys(refs))
+                # The glob also brings main (and its pins) in the same fetch, without failing when absent.
+                git(local, "fetch", "--no-tags", "--", repository, *dict.fromkeys(refs), MAIN_REFSPEC)
                 emit(reporter, "Remote branches fetched", completed=index + 1, total=len(groups))
+                pinned = main_pins(local)
                 for identifier, branch in selections:
                     emit(reporter, "Preparing source bundle", capability=identifier,
                          completed=bundle_completed, total=bundle_total)
-                    commit = git(local, "rev-parse", f"refs/heads/{branch}^{{commit}}")
+                    pin = pinned.get(identifier)
+                    if pin and pin.get("branch") == branch:
+                        # Main pins only commits that passed its checks; the branch head may not have.
+                        commit = pin["commit"]
+                        try:
+                            git(local, "cat-file", "-e", f"{commit}^{{commit}}")
+                        except ValueError:
+                            git(local, "fetch", "--no-tags", "--", repository, commit)
+                    else:
+                        commit = git(local, "rev-parse", f"refs/heads/{branch}^{{commit}}")
                     self.entries[identifier] = (local, repository, branch, commit)
                     self.sources[identifier] = self.bundle(identifier)
                     bundle_completed += 1
@@ -151,12 +178,16 @@ class LatestSources:
         return f"git-branch:{identifier}@{commit or self.entries[identifier][3]}"
 
     def known_revision(self, identifier, actual):
-        local, _, _, head = self.entries[identifier]
+        local, _, branch, head = self.entries[identifier]
         # Adoption is bounded. Older/unrecognized copies remain protected, never assumed current.
         candidates = git(local, "rev-list", "--max-count=256", head).splitlines()
         for commit in candidates:
             if self.tree(local, commit, self.subpaths[identifier]) == actual:
                 return commit
+        for commit in git(local, "rev-list", "--max-count=256", f"refs/heads/{branch}", f"^{head}").splitlines():
+            if self.tree(local, commit, self.subpaths[identifier]) == actual:
+                raise ValueError(f"Installed copy is branch revision {commit[:12]}, newer than the commit "
+                                 f"main pins ({head[:12]}); it is kept until main promotes it")
         return None
 
     def known_member(self, local, head, name, actual):
