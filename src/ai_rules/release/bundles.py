@@ -40,6 +40,18 @@ def validate_subpath(value: str | None) -> str | None:
     return value
 
 
+def git_location(root: Path) -> list[str]:
+    """Git arguments that open `root`.
+
+    A bare repository is named with --git-dir: under safe.bareRepository=explicit
+    Git refuses to discover one from `-C` or the working directory.
+    """
+    root = Path(root)
+    if (root / "HEAD").is_file() and (root / "objects").is_dir():
+        return [f"--git-dir={root}"]
+    return ["-C", str(root)]
+
+
 def export_git_ref(ref: str, destination: Path, repo_root: Path | None = None,
                    subpath: str | None = None) -> None:
     subpath = validate_subpath(subpath)
@@ -47,9 +59,9 @@ def export_git_ref(ref: str, destination: Path, repo_root: Path | None = None,
     destination.mkdir(parents=True, exist_ok=True)
     archive_path = destination.with_suffix(".zip")
     completed = subprocess.run(
-        ["git", "-c", "core.autocrlf=false", "-c", "core.eol=lf",
+        ["git", *(git_location(repo_root) if repo_root is not None else []),
+         "-c", "core.autocrlf=false", "-c", "core.eol=lf",
          "archive", "--format=zip", f"--output={archive_path}", tree_ref],
-        cwd=repo_root,
         check=False,
         text=True,
         stdout=subprocess.PIPE,

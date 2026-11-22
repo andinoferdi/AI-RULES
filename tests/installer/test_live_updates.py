@@ -108,6 +108,13 @@ class LiveUpdateTests(unittest.TestCase):
         workflow = next(t for t in lock['targets'] if t['capability'] == 'andino-workflow')
         self.assertIn(self.git(self.remote, "rev-parse", "HEAD").strip(), workflow['target_version'])
 
+    def test_latest_works_when_git_opens_only_explicit_bare_repositories(self):
+        self.commit("first")
+        with patch.dict(os.environ, {"GIT_CONFIG_PARAMETERS": "'safe.bareRepository=explicit'"}):
+            result, output = self.run_cli()
+        self.assertEqual(0, result, output)
+        self.assertIn("first", (self.target / "SKILL.md").read_text())
+
     def test_latest_installs_main_head_and_later_commit(self):
         self.commit("first")
         result, output = self.run_cli()

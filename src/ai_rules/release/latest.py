@@ -15,13 +15,13 @@ from ai_rules.domain.models import ActualState, InstallationPlan, Operation
 from ai_rules.domain.statuses import InstalledOwnership, ReconciliationAction, ReconciliationAssessment, TargetStatus
 from ai_rules.execution.executor import copy_tree_atomic
 from ai_rules.hosts.adapters import build_host_adapters
-from ai_rules.release.bundles import export_git_ref, validate_subpath
+from ai_rules.release.bundles import export_git_ref, git_location, validate_subpath
 from ai_rules.events import emit
 
 
 def git(root: Path, *args: str) -> str:
     env = dict(os.environ, GIT_TERMINAL_PROMPT="0")
-    result = subprocess.run(["git", "-C", str(root), *args], env=env, text=True,
+    result = subprocess.run(["git", *git_location(root), *args], env=env, text=True,
                             encoding="utf-8", stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=120)
     if result.returncode:
         raise ValueError(f"Git source check failed: {result.stderr.strip()}")
