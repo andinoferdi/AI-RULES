@@ -63,28 +63,27 @@ class FocusSetupTests(unittest.TestCase):
         self.root = Path(temporary.name)
         self.upstream = self.root / "upstream"
         self.upstream.mkdir()
-        self.git("init", "-b", "focus")
+        self.git("init", "-b", "main")
         self.git("config", "user.name", "Fixture")
         self.git("config", "user.email", "fixture@example.invalid")
         for identifier in ("focus", "andino-workflow", "search-first"):
-            if identifier != "focus":
-                self.git("checkout", "--orphan", identifier)
-                self.git("rm", "-rf", ".")
+            package = self.upstream / "skills" / identifier
             source = os.environ.get(identifier.upper().replace("-", "_") + "_RUNTIME")
             if source:
-                shutil.copytree(source, self.upstream, dirs_exist_ok=True,
+                shutil.copytree(source, package, dirs_exist_ok=True,
                                 ignore=shutil.ignore_patterns(".git", "__pycache__"))
             else:
-                (self.upstream / "SKILL.md").write_text(
+                package.mkdir(parents=True)
+                (package / "SKILL.md").write_text(
                     f"---\nname: {identifier}\ndescription: Test skill\n---\nAnswer clearly.\n",
                     encoding="utf-8")
-                (self.upstream / "README.md").write_text("Test distribution\n", encoding="utf-8")
+                (package / "README.md").write_text("Test distribution\n", encoding="utf-8")
                 if identifier == "focus":
-                    (self.upstream / "references").mkdir()
+                    (package / "references").mkdir()
                     for name in ("priority-a.md", "human-language-indonesia.md", "human-language-english.md"):
-                        (self.upstream / "references" / name).write_text(f"Fixture {name}\n", encoding="utf-8")
-            self.git("add", ".")
-            self.git("commit", "-m", identifier)
+                        (package / "references" / name).write_text(f"Fixture {name}\n", encoding="utf-8")
+        self.git("add", ".")
+        self.git("commit", "-m", "skills")
         catalog = load_catalog()
         for identifier in ("focus", "andino-workflow", "search-first"):
             catalog.require_capability(identifier).source["repository"] = str(self.upstream)
@@ -115,9 +114,9 @@ class FocusSetupTests(unittest.TestCase):
                 self.run_setup(project, host)
                 skill = adapter.skill_target(Scope.PROJECT, project) / "focus" / "SKILL.md"
                 self.assertTrue(skill.is_file())
-                self.assertEqual(self.git("show", "focus:SKILL.md"), skill.read_text(encoding="utf-8"))
+                self.assertEqual(self.git("show", "main:skills/focus/SKILL.md"), skill.read_text(encoding="utf-8"))
                 for name in ("priority-a.md", "human-language-indonesia.md", "human-language-english.md"):
-                    self.assertEqual(self.git("show", f"focus:references/{name}"),
+                    self.assertEqual(self.git("show", f"main:skills/focus/references/{name}"),
                                      (skill.parent / "references" / name).read_text(encoding="utf-8"))
                 for command in invocation_paths(adapter, Scope.PROJECT, "focus", project):
                     self.assertTrue(invocation_ready(command))
@@ -131,10 +130,9 @@ class FocusSetupTests(unittest.TestCase):
         unrelated.write_text("User content", encoding="utf-8")
         self.run_setup(project, "codex", "focus")
         self.assertFalse((project / ".agents/skills/andino-workflow").exists())
-        self.git("checkout", "focus")
-        reference = self.upstream / "references/priority-a.md"
+        reference = self.upstream / "skills/focus/references/priority-a.md"
         reference.write_text(reference.read_text(encoding="utf-8") + "Updated priority rule.\n", encoding="utf-8")
-        (self.upstream / "README.md").write_text("Updated source\n", encoding="utf-8")
+        (self.upstream / "skills/focus/README.md").write_text("Updated source\n", encoding="utf-8")
         self.git("add", ".")
         self.git("commit", "-m", "update focus")
         self.assertIn("UPDATE", self.run_setup(project, "codex", "focus"))

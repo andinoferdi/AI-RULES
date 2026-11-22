@@ -2,7 +2,6 @@
 import argparse
 import json
 import re
-import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -48,11 +47,10 @@ def audit(report, runtime_paths, main_paths, case_ids):
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--runtime-ref',default='origin/skripsi-skill')
+    p.add_argument('--runtime-dir',type=Path,default=ROOT/'skills/skripsi-skill')
     a=p.parse_args()
     report=json.loads((ROOT/'docs/validation/skripsi-skill/traceability.json').read_text(encoding='utf-8'))
-    paths=set(subprocess.check_output(['git','ls-tree','-r','--name-only',a.runtime_ref],cwd=ROOT,text=True).splitlines())
-    # Test parts relative to ROOT: the promote clone itself lives under .git/promote/<skill>.
+    paths={f.relative_to(a.runtime_dir).as_posix() for f in a.runtime_dir.rglob('*') if f.is_file()}
     main_paths={f.relative_to(ROOT).as_posix() for f in ROOT.rglob('*') if f.is_file() and '.git' not in f.relative_to(ROOT).parts}
     cases=json.loads((ROOT/'evals/skripsi-skill.json').read_text(encoding='utf-8'))
     errors=audit(report,paths,main_paths,{c['id'] for c in cases})

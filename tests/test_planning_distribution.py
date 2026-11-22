@@ -1,9 +1,7 @@
 import contextlib
 import io
-import json
 import os
 import re
-import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -12,7 +10,7 @@ from urllib.parse import unquote, urlsplit
 from ai_rules import cli
 
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 PLANNING_PATHS = (
     'SKILL.md', 'GUIDE.md', 'resources/contract.md', 'resources/worked-example.md',
 )
@@ -23,21 +21,13 @@ WORKFLOW_PATHS = (
 
 class PlanningDistributionTests(unittest.TestCase):
     def workflow_bytes(self, ref, path):
-        result = subprocess.run(
-            ['git', 'show', f'{ref}:{path}'], cwd=ROOT,
-            capture_output=True,
-        )
-        self.assertEqual(0, result.returncode, result.stderr.decode('utf-8'))
-        return result.stdout
+        return (ROOT / 'skills/andino-workflow' / path).read_bytes()
 
     def planning_bytes(self, ref, path):
         return self.workflow_bytes(ref, f'skills/planning/{path}')
 
     def test_setup_preserves_both_entrypoints_and_resolves_local_links(self):
-        manifest = json.loads(
-            (ROOT / 'src/ai_rules/release/data/release_manifest.json').read_text(encoding='utf-8')
-        )
-        commit = manifest['first_party']['andino-workflow']['commit']
+        commit = 'working-tree'  # skills/ in this checkout
         # Release checks can detect a stale pin without requiring a branch in CI.
         expected_ref = os.environ.get('AI_RULES_EXPECTED_PLANNING_REF', commit)
         expected = {

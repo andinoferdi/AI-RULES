@@ -1,12 +1,9 @@
 """Package boundaries of the consolidated 31-member andino-workflow runtime; fresh consumer evidence is separate."""
-import io
 import json
 import os
 from pathlib import Path
 import re
-import subprocess
 import unittest
-import zipfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,24 +19,13 @@ OLD_OWNERSHIP = (
 )
 
 
-def snapshot(ref):
-    data = subprocess.check_output(['git', 'archive', '--format=zip', ref], cwd=ROOT)
-    with zipfile.ZipFile(io.BytesIO(data)) as archive:
-        return {item.filename: archive.read(item).decode('utf-8')
-                for item in archive.infolist() if not item.is_dir()}
-
-
 class ThinCoordinatorContracts(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        directory = os.environ.get('ANDINO_RUNTIME_DIR')
-        if directory:
-            runtime = Path(directory)
-            cls.files = {path.relative_to(runtime).as_posix(): path.read_text(encoding='utf-8')
-                         for path in runtime.rglob('*')
-                         if path.is_file() and path.suffix in ('.md', '.json') and '.git' not in path.parts}
-        else:
-            cls.files = snapshot(os.environ.get('ANDINO_RUNTIME_REF', 'origin/andino-workflow'))
+        runtime = Path(os.environ.get('ANDINO_RUNTIME_DIR') or ROOT / 'skills/andino-workflow')
+        cls.files = {path.relative_to(runtime).as_posix(): path.read_text(encoding='utf-8')
+                     for path in runtime.rglob('*')
+                     if path.is_file() and path.suffix in ('.md', '.json') and '.git' not in path.parts}
 
     def members(self):
         return json.loads(self.files['references/portfolio.json'])['members']

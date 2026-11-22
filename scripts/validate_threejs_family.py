@@ -5,7 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 
-from validate_skills import ROOT, directory_files, ref_files, package_files, THREEJS_SKILLS
+from validate_skills import ROOT, directory_files, package_files, THREEJS_SKILLS
 from validate_andino_capabilities import validate_cases, CAPABILITIES, OPTIONAL_CAPABILITIES
 
 
@@ -48,13 +48,11 @@ def validate_inventory(inventory, files, original=None):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    selection = parser.add_mutually_exclusive_group(required=True)
-    selection.add_argument('--runtime-dir', type=Path)
-    selection.add_argument('--runtime-ref')
+    parser.add_argument('--runtime-dir', type=Path, default=ROOT / 'skills/threejs-skills')
     parser.add_argument('--original', type=Path, help='also prove supplied source has not changed')
     args = parser.parse_args()
     inventory = json.loads((ROOT / 'docs/threejs/inventory.json').read_text(encoding='utf-8'))
-    files, modes = directory_files(args.runtime_dir) if args.runtime_dir else ref_files(args.runtime_ref)
+    files, modes = directory_files(args.runtime_dir)
     errors = validate_inventory(inventory, files, args.original)
     errors += package_files(files, 'threejs-skills', modes)
     cases = json.loads((ROOT / 'evals/threejs-routing.json').read_text(encoding='utf-8'))

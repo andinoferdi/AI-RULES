@@ -1,8 +1,6 @@
 import contextlib
 import io
-import json
 import re
-import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -10,20 +8,15 @@ from pathlib import Path
 from ai_rules import cli
 
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 
 
 class BrainstormingDistributionTests(unittest.TestCase):
     def test_setup_preserves_both_entrypoints_and_local_resources(self):
-        manifest = json.loads(
-            (ROOT / 'src/ai_rules/release/data/release_manifest.json').read_text(encoding='utf-8')
-        )
-        commit = manifest['first_party']['andino-workflow']['commit']
+        commit = 'working-tree'  # skills/ in this checkout
         paths = ('SKILL.md', 'GUIDE.md', 'resources/worked-example.md')
         expected = {
-            path: subprocess.check_output(
-                ['git', 'show', f'{commit}:skills/brainstorming/{path}'], cwd=ROOT
-            )
+            path: (ROOT / 'skills/andino-workflow' / 'skills/brainstorming' / path).read_bytes()
             for path in paths
         }
         hosts = {

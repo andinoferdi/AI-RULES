@@ -1,37 +1,20 @@
-"""Load the Natural Writing checker shipped in the pinned skill package.
+"""Load the Natural Writing checker shipped in the skill package.
 
-The checker lives in the `natural-writing` skill (`scripts/check.py`), not on
-main, so main's tests read it from the commit pinned in the release manifest.
-The commit must be present locally; `git fetch` of the skill branch provides it.
-Set NATURAL_WRITING_CHECKER to a local check.py to test an unpinned copy.
+The checker lives in the `natural-writing` skill (`skills/natural-writing/scripts/check.py`),
+so a change to the checker and the tests that use it land in one commit.
+Set NATURAL_WRITING_CHECKER to another check.py to test a different copy.
 """
 import importlib.util
-import json
 import os
-import subprocess
-import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-MANIFEST = ROOT / "src" / "ai_rules" / "release" / "data" / "release_manifest.json"
-_CACHE = {}
+CHECKER = ROOT / "skills" / "natural-writing" / "scripts" / "check.py"
 
 
 def checker_path() -> Path:
     override = os.environ.get("NATURAL_WRITING_CHECKER")
-    if override:
-        return Path(override)
-    if "path" not in _CACHE:
-        ref = json.loads(MANIFEST.read_text(encoding="utf-8"))["first_party"]["natural-writing"]["commit"]
-        result = subprocess.run(["git", "-C", str(ROOT), "show", f"{ref}:scripts/check.py"],
-                                capture_output=True, text=True, encoding="utf-8")
-        if result.returncode:
-            raise RuntimeError(f"cannot read scripts/check.py from {ref}: {result.stderr.strip()}")
-        directory = Path(tempfile.mkdtemp(prefix="nw-checker-"))
-        path = directory / "check.py"
-        path.write_text(result.stdout, encoding="utf-8", newline="\n")
-        _CACHE["path"] = path
-    return _CACHE["path"]
+    return Path(override) if override else CHECKER
 
 
 def load_checker():

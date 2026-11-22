@@ -16,7 +16,6 @@ from ai_rules.domain.statuses import Scope
 from ai_rules.hosts.adapters import build_host_adapters
 from ai_rules.hosts.invocation import invocation_paths, invocation_ready
 from ai_rules.profiles import load_profiles
-from ai_rules.release import export_git_ref
 from ai_rules.release.latest import contents
 from ai_rules.resolver import ResolveRequest, build_resolver
 
@@ -59,11 +58,10 @@ class SearchFirstSetupTests(unittest.TestCase):
     def test_candidate_reference_installs_on_all_hosts_and_user_edit_is_preserved(self):
         candidate = Path(os.environ['AI_RULES_SEARCH_FIRST_CANDIDATE'])
         self.assertTrue((candidate / 'references/online-research.md').is_file())
-        self.git('switch', 'search-first')
         for name, body in contents(candidate).items():
             if name.startswith('.'):
                 continue
-            target = self.upstream / name
+            target = self.upstream / 'skills/search-first' / name
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(candidate / name, target)
         self.git('add', '.')
@@ -86,38 +84,24 @@ class SearchFirstSetupTests(unittest.TestCase):
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
-        self.repo = Path(__file__).resolve().parents[2]
+        self.repo = Path(__file__).resolve().parents[1]
         self.upstream = self.root / "upstream"
         self.upstream.mkdir()
-        self.git("init", "-b", "search-first")
+        self.git("init", "-b", "main")
         self.git("config", "user.name", "Fixture")
         self.git("config", "user.email", "fixture@example.invalid")
-        manifest = json.loads((self.repo / "src/ai_rules/release/data/release_manifest.json").read_text())
-        self.pins = manifest["first_party"]
-        member_paths = subprocess.check_output(
-            ["git", "ls-tree", "-r", "--name-only", self.pins["andino-workflow"]["commit"]],
-            cwd=self.repo, text=True, encoding="utf-8",
-        ).splitlines()
-        self.workflow_members = {
-            "andino-" + path.split("/")[1]
-            for path in member_paths
-            if path.startswith("skills/") and path.endswith("/SKILL.md")
-            and len(path.split("/")) == 3
-        }
-        portfolio = json.loads(subprocess.check_output(
-            ["git", "show", f"{self.pins['andino-workflow']['commit']}:references/portfolio.json"],
-            cwd=self.repo, text=True, encoding="utf-8",
-        ))
+        workflow = self.repo / "skills/andino-workflow"
+        self.workflow_members = {"andino-" + p.parent.name for p in (workflow / "skills").glob("*/SKILL.md")}
+        portfolio = json.loads((workflow / "references/portfolio.json").read_text(encoding="utf-8"))
         self.assertEqual({"andino-" + name for name in portfolio["members"]}, self.workflow_members)
         self.workflow_installation = {"andino-workflow", "focus", "search-first"} | self.workflow_members
         self.catalog = load_catalog()
+        # The fixture upstream has the real skills in the monorepo layout.
         for identifier in ("search-first", "focus", "andino-workflow"):
-            if identifier != "search-first":
-                self.git("switch", "--orphan", identifier)
-            export_git_ref(self.pins[identifier]["commit"], self.upstream, repo_root=self.repo)
-            self.git("add", ".")
-            self.git("commit", "-m", identifier)
+            shutil.copytree(self.repo / "skills" / identifier, self.upstream / "skills" / identifier)
             self.catalog.require_capability(identifier).source["repository"] = str(self.upstream)
+        self.git("add", ".")
+        self.git("commit", "-m", "skills")
         mocked = patch.object(cli, "load_catalog", return_value=self.catalog)
         mocked.start()
         self.addCleanup(mocked.stop)
@@ -148,11 +132,11 @@ class SearchFirstSetupTests(unittest.TestCase):
                     self.assertEqual(self.workflow_installation,
                                      {p.name for p in root.iterdir()})
                     skill = root / "search-first"
-                    expected_files = set(self.git("ls-tree", "-r", "--name-only", "search-first").splitlines())
+                    expected_files = set(self.git("ls-tree", "-r", "--name-only", "main:skills/search-first").splitlines())
                     self.assertTrue({"SKILL.md", "README.md", "references/license.md"}.issubset(expected_files))
                     self.assertEqual(expected_files, set(contents(skill)))
                     for name in expected_files:
-                        self.assertEqual(self.git("show", f"search-first:{name}"),
+                        self.assertEqual(self.git("show", f"main:skills/search-first/{name}"),
                                          (skill / name).read_text(encoding="utf-8"))
                     for command in invocation_paths(adapter, Scope.PROJECT, "search-first", project):
                         self.assertTrue(invocation_ready(command))
@@ -169,8 +153,7 @@ class SearchFirstSetupTests(unittest.TestCase):
         self.run_setup(project, "--capability", "search-first")
         self.assertFalse((project / ".agents/skills/andino-workflow").exists())
         self.assertFalse((project / ".agents/skills/focus").exists())
-        self.git("switch", "search-first")
-        readme = self.upstream / "README.md"
+        readme = self.upstream / "skills/search-first/README.md"
         readme.write_text(readme.read_text(encoding="utf-8") + "\nUpdated release.\n", encoding="utf-8")
         self.git("add", ".")
         self.git("commit", "-m", "later search-first revision")
@@ -199,15 +182,15 @@ class SearchFirstSetupTests(unittest.TestCase):
 
     def test_embedded_bundle_installs_pinned_files_without_git_fallback(self):
         bundle = self.root / "embedded"
-        export_git_ref(self.pins["search-first"]["commit"], bundle, repo_root=self.repo)
+        shutil.copytree(self.repo / "skills/search-first", bundle)
         project = self.root / "frozen"
-        with patch.object(cli, "packaged_bundle", return_value=bundle), \
-                patch.object(cli, "export_git_ref", side_effect=AssertionError("embedded package must not need Git")):
+        with patch.object(cli, "packaged_bundle", return_value=bundle), contextlib.chdir(self.root):
+            # Outside a clone, so only the packaged bundle can supply files.
             self.run_setup(project, "--capability", "search-first", source="bundled")
         self.assertEqual(contents(bundle), contents(project / ".agents/skills/search-first"))
         self.assertFalse((project / ".agents/skills/andino-workflow").exists())
         lock = json.loads((project / ".ai-rules/lock.json").read_text())
-        self.assertIn(self.pins["search-first"]["commit"], lock["targets"][0]["target_version"])
+        self.assertEqual("VERIFIED", lock["targets"][0]["status"])
 
     def test_default_profile_uses_normal_setup_dependency_resolution(self):
         project = self.root / "default"

@@ -8,7 +8,7 @@ from ai_rules.interactive import build_capability_choices
 from ai_rules.profiles import load_profiles
 from ai_rules.release.bundles import export_git_ref
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 
 
 class SingleThreejsFamilyTests(unittest.TestCase):
@@ -32,8 +32,8 @@ class SingleThreejsFamilyTests(unittest.TestCase):
         inventory = json.loads((ROOT / 'docs/threejs/inventory.json').read_text())
         with tempfile.TemporaryDirectory() as temporary:
             target = Path(temporary) / 'threejs-skills'
-            manifest = json.loads((ROOT / 'src/ai_rules/release/data/release_manifest.json').read_text())
-            export_git_ref(manifest['first_party']['threejs-skills']['commit'], target, ROOT, subpath=capability.source.get('subpath'))
+            # The committed skills/ folder, exported the way release staging does it.
+            export_git_ref('HEAD', target, ROOT, subpath=capability.source['subpath'])
             self.assertEqual(['SKILL.md'], [p.relative_to(target).as_posix() for p in target.rglob('SKILL.md')])
             self.assertEqual(45, len(list(target.glob('skills/*/GUIDE.md'))))
             for member in inventory['skills']:

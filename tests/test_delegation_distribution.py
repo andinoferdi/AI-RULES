@@ -2,7 +2,6 @@
 
 import contextlib
 import io
-import json
 import os
 from pathlib import Path
 import re
@@ -14,7 +13,7 @@ from urllib.parse import unquote, urlsplit
 from ai_rules import cli
 
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 
 
 class DelegationDistributionTests(unittest.TestCase):
@@ -24,21 +23,13 @@ class DelegationDistributionTests(unittest.TestCase):
         return result.stdout
 
     def test_setup_preserves_complete_native_and_nested_skill(self):
-        manifest = json.loads((ROOT / 'src/ai_rules/release/data/release_manifest.json')
-                              .read_text(encoding='utf-8'))
-        commit = manifest['first_party']['andino-workflow']['commit']
-        expected_ref = os.environ.get('AI_RULES_EXPECTED_DELEGATION_REF', commit)
-        prefix = 'skills/delegation/'
-        paths = self.git('ls-tree', '-r', '--name-only', expected_ref, '--', prefix)
-        relative_paths = [path[len(prefix):] for path in paths.decode('utf-8').splitlines()]
+        package = ROOT / 'skills/andino-workflow' / 'skills/delegation'
+        relative_paths = sorted(item.relative_to(package).as_posix()
+                                for item in package.rglob('*') if item.is_file())
         self.assertIn('resources/contract.md', relative_paths)
         self.assertIn('resources/worked-example.md', relative_paths)
         self.assertIn('scripts/task_brief.py', relative_paths)
-        expected = {path: self.git('show', f'{expected_ref}:{prefix}{path}')
-                    for path in relative_paths}
-        for path, content in expected.items():
-            self.assertEqual(content, self.git('show', f'{commit}:{prefix}{path}'),
-                             f'manifest pin is stale: {path}')
+        expected = {path: (package / path).read_bytes() for path in relative_paths}
 
         hosts = {
             'codex': '.agents/skills', 'claude-code': '.claude/skills',

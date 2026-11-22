@@ -6,7 +6,7 @@ import json
 import re
 from pathlib import Path
 
-from validate_skills import ROOT, package_files, git
+from validate_skills import ROOT, package_files
 
 SUPERPOWERS = set('systematic-debugging test-driven-development verification-before-completion brainstorming writing-plans requesting-code-review receiving-code-review dispatching-parallel-agents using-git-worktrees finishing-a-development-branch'.split())
 AGENT_SKILLS = set('api-and-interface-design browser-testing-with-devtools ci-cd-and-automation code-review-and-quality code-simplification constraint-driven-development context-engineering debugging-and-error-recovery deprecation-and-migration documentation-and-adrs doubt-driven-development frontend-ui-engineering git-workflow-and-versioning incremental-implementation observability-and-instrumentation performance-optimization planning-and-task-breakdown security-and-hardening shipping-and-launch source-driven-development spec-driven-development agent-skills-test-driven-development'.split())
@@ -248,9 +248,7 @@ def historical_hashes(current_hash, allow):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    source = parser.add_mutually_exclusive_group()
-    source.add_argument('--runtime', type=Path)
-    source.add_argument('--runtime-ref', default=None)
+    parser.add_argument('--runtime', type=Path, help='Markdown-only runtime folder (fixtures)')
     parser.add_argument('--cases-only', action='store_true')
     parser.add_argument('--records', type=Path)
     parser.add_argument('--allow-historical',action='store_true',help='Accept only documented historical hashes, never count them as current-runtime behavioral PASS')
@@ -269,9 +267,9 @@ def main():
         if args.runtime:
             files = runtime_files(args.runtime)
         else:
-            ref = args.runtime_ref or 'origin/andino-workflow'
-            names = git('ls-tree','-r','--name-only',ref).splitlines()
-            files = {name:git('show',f'{ref}:{name}') for name in names}
+            package = ROOT / 'skills/andino-workflow'
+            files = {item.relative_to(package).as_posix(): item.read_text(encoding='utf-8').replace('\r\n', '\n')
+                     for item in sorted(package.rglob('*')) if item.is_file()}
         errors.extend(package_files(files,'andino-workflow'))
         errors.extend(validate_registry(files.get('references/capability-registry.md',''),
                                         require_internal='references/internal-method-index.md' in files))
