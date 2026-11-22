@@ -1,8 +1,8 @@
 # Monorepo: every skill in `skills/` on main
 
-Status: IN_PROGRESS
+Status: IN_PROGRESS (waiting on owner: real upgrade apply, PR approval)
 Plan Depth: DEEP
-Current Phase: Phase 3 — Checks and tests
+Current Phase: Phase 6 — Proof and delivery
 Last Updated: 2026-11-23
 Branch / worktree: `monorepo` in `C:\Users\Andino\Downloads\AI-RULES\monorepo`
 (its own clone; the parent folder `C:\Users\Andino\Downloads\AI-RULES` is a
@@ -126,10 +126,10 @@ council, threejs-skills. `skills/` equals every branch head file-for-file
 | Phase 0 — Plan review | DONE | Owner approves plan | — | Approved 2026-11-22 |
 | Phase 1 — Skills on main | DONE | R2, R8 foundation | T1 | 8 trees equal branch heads |
 | Phase 2 — Installer | DONE | R1, R3, R4, R5, R6 | T2, T3, T4, T5 | See Execution log E2–E5 |
-| Phase 3 — Checks and tests | IN_PROGRESS | R6, R8, R10 | T6, T7, T8 | E6–E8; full skills group pending |
-| Phase 4 — CI | IN_PROGRESS | R7 | T9 | Workflow written; GitHub run pending (T12) |
+| Phase 3 — Checks and tests | DONE | R6, R8, R10 | T6, T7, T8 | E6–E8, E11 |
+| Phase 4 — CI | DONE | R7 | T9 | E12 |
 | Phase 5 — Docs | DONE | R9 | T10 | E10 |
-| Phase 6 — Proof and delivery | TODO | R1–R5, R10–R12 | T11, T12, T13, T14, T15 | Not run |
+| Phase 6 — Proof and delivery | IN_PROGRESS | R1–R5, R10–R12 | T11, T12, T13, T14, T15 | E11–E14; T14 real apply and T15 PR wait on owner |
 
 ## Coverage
 
@@ -990,6 +990,48 @@ CONTEXT.md, ADR 0002 (+0001 superseded), `docs/specs/changing-skills.md`
 (replaces skill-promotion.md), domain.md, ci-coverage.md, DECISIONS.md,
 OPEN-QUESTIONS.md. `git diff --check` clean.
 
+E8 — T8 DONE. Failures found after the migration and fixed: the natural-writing
+checker loader read the removed pin (now reads `skills/natural-writing/scripts/check.py`)
+and crashed on Python 3.12 without a `sys.modules` entry (main has been red since
+fb58386/718efb7 from the same loader; fixed here in 370032d);
+`test_validate_skills` called the removed `--*-dir` flags (now tests `--skills-dir`
+on a copy of `skills/`, including a broken copy that must fail).
+
+E11 — T11. Local, Windows, Python 3.15: installer group 186 tests OK (257 s) on
+7e8be55; files changed after that touch no installer code (README, checker
+loader, validator test), so that evidence is reused. Skills group on 9f9e256:
+PASS on 27b3084 (265 tests OK in 374 s, 3 skipped: two routing-readiness classes from docs/OPEN-QUESTIONS.md and one opt-in candidate check). Commits carry no attribution lines (`git log origin/main..HEAD`
+grep: 0).
+
+E12 — T12. Pushed `monorepo`; dispatched "Validate skills" runs:
+45062713119 (7e8be55) and 45063199365 (370032d) failed only in the skills job
+(loader, then validator test); installer matrix green both times (Windows ~4.4 min,
+macOS ~45 s, Ubuntu ~36 s). Final run 45063673313 (9f9e256): SUCCESS on 27b3084 (run 45064169231: skills job 51 s, installer matrix Windows 4.4 min, macOS 44 s, Ubuntu 36 s). Run 45063673313 (9f9e256) had failed on a __pycache__ that the checker import left in skills/natural-writing; fixed in 27b3084.
+
+E13 — T13 DONE, from `C:\Users\Andino\AppData\Local\Temp\airf` (USERPROFILE = fake homes):
+Flow 1 fresh clone of origin/monorepo (7e8be55), venv, `pip install`, setup in the clone:
+`Skill source: local folder ...\clone\skills`, 8 installed, 39 skill folders
+(8 + 31 members), lock verified. Flows 2-3: uncommitted edit to skills/focus,
+rerun: focus UPDATE, other 7 NO_OP, marker present in installed copy, lock verified.
+Flow 4: other home, outside a clone, `AI_RULES_SOURCE_BRANCH=monorepo`:
+`Skill source: GitHub main (...), branch monorepo`, 39 folders, all 8 installed
+trees hash-equal `origin/monorepo:skills/<id>`. Interactive `ai-rules setup` was
+not driven by hand (NOT VERIFIED here; covered by test_interactive_setup and
+test_live_updates interactive cases). Post-merge run against real `main`: NOT
+VERIFIED until the owner merges.
+Finding: the first clone attempt from the long scratch path failed with
+"Filename too long" (deepest file 154 chars; Windows needs the clone path under
+~104 chars or `core.longpaths`); README now says so (7e2833d).
+
+E14 — T14. Rehearsal on a copy of the owner's real state (40 records, 256
+inventory artifacts, paths rewritten): dry run 0 BLOCKED; apply exit 0, lock
+verified 40/40 (UPDATE 10 = focus + natural-writing on 5 hosts, NO_OP 20,
+RECONFIGURE 10 = command files the copy did not include); second run NO_OP 40.
+natural-writing a215ca4 was never on main, so it was recognized from records (R5).
+Real machine, read-only dry run from the clone: 0 BLOCKED, 10 UPDATE, 30 NO_OP;
+`~/.ai-rules` lock and records unchanged.
+APPROVAL GATE — real apply. Status: WAITING (owner applies or approves).
+
 ## Risks
 
 | Risk | Mitigation / check |
@@ -1007,5 +1049,7 @@ OPEN-QUESTIONS.md. `git diff --check` clean.
 
 ## NEXT ACTION
 
-Finish T8: read the skills-group rerun, fix anything it shows, then commit and
-run `python scripts/ci_checks.py --group all` (T11).
+Owner: (1) approve or run the real upgrade
+`ai-rules setup --profile everything --host codex --host claude-code --host opencode --host antigravity-cli --host antigravity-ide`
+from the clone; (2) approve opening the PR monorepo -> main; (3) decide the four
+routing-readiness assertions in docs/OPEN-QUESTIONS.md.
