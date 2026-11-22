@@ -94,3 +94,7 @@ Invoke the family name, and optionally name a specific specialist method:
 - [`SKILL.md`](SKILL.md) — Runtime contract and selective method dispatching rules.
 - [`references/specialists.md`](references/specialists.md) — Index and trigger criteria for all 45 methods.
 - [docs/threejs/inventory.json](https://github.com/andinoferdi/AI-RULES/tree/main/docs/threejs) — Complete verification inventory, file hashes, and provenance records.
+
+## License
+
+AI-RULES-authored content in this skill is released under the [MIT License](https://github.com/andinoferdi/AI-RULES/blob/main/LICENSE). Third-party material keeps its original license (MIT, CC0 or GPL); see the notice beside each bundled resource.

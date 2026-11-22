@@ -1,7 +1,6 @@
 ---
 name: search-first
 description: Use when reusable functionality, unfamiliar integrations, version-sensitive APIs, maintenance decisions, documented alternatives or distinct external troubleshooting uncertainty need investigation; also for explicit technical/factual research or source-grounded answers. Skip trivial edits, settled local answers and root-cause debugging alone.
-license: MIT
 ---
 
 # Search First

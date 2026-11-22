@@ -96,3 +96,7 @@ git clone --depth 1 --single-branch --branch skripsi-skill https://github.com/an
 - [`SKILL.md`](SKILL.md) — Runtime contract, stage state machine, and integrity rules.
 - [`references/evidence-guidelines-integrity.md`](references/evidence-guidelines-integrity.md) — Source verification standards.
 - [`assets/research-core-templates.md`](assets/research-core-templates.md) — Standard proposal and chapter structures.
+
+## License
+
+AI-RULES-authored content in this skill is released under the [MIT License](https://github.com/andinoferdi/AI-RULES/blob/main/LICENSE).

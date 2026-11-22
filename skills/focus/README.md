@@ -94,3 +94,7 @@ Focus triggers automatically when installed alongside Andino Workflow, or you ca
 - [`references/explanation-repair.md`](references/explanation-repair.md) — Load only for a confusing prior explanation; preserves meaning without a curriculum, research, file edits or a parent lifecycle.
 - [`references/consolidation-provenance.json`](references/consolidation-provenance.json) — Absorbed-source SHA-256 identities and mapping; [Matt Pocock MIT notice](references/matt-license.md).
 - Adapted from [i-have-adhd](https://github.com/ayghri/i-have-adhd) by Ayoub Ghriss under the MIT License ([license notice](references/license.md)).
+
+## License
+
+AI-RULES-authored content in this skill is released under the [MIT License](https://github.com/andinoferdi/AI-RULES/blob/main/LICENSE). Third-party material keeps its original license; see [references/license.md](references/license.md), [references/matt-license.md](references/matt-license.md).

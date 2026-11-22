@@ -118,4 +118,4 @@ Council answers in chat with one fixed layout:
 
 ## License
 
-Council is released under the [MIT license](references/license.md). It is inspired by [aiwithremy/claude-skills-llm-council](https://github.com/aiwithremy/claude-skills-llm-council) and [karpathy/llm-council](https://github.com/karpathy/llm-council); neither declares a license, so no text or code from them is included.
+AI-RULES-authored content in this skill is released under the [MIT License](https://github.com/andinoferdi/AI-RULES/blob/main/LICENSE). No third-party text or code is included; the credited inspirations are listed in [SKILL.md](SKILL.md).

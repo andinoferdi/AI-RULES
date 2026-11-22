@@ -88,3 +88,7 @@ AI Codebase Rescue works standalone or alongside **Andino Workflow**:
 - [`references/audit-taxonomy.md`](references/audit-taxonomy.md) — Defect classification and disposition criteria.
 - [`references/regression-and-verification.md`](references/regression-and-verification.md) — Baseline capture and test verification protocols.
 - [`references/validation-scenarios.md`](references/validation-scenarios.md) — Representative triage scenarios.
+
+## License
+
+AI-RULES-authored content in this skill is released under the [MIT License](https://github.com/andinoferdi/AI-RULES/blob/main/LICENSE).
