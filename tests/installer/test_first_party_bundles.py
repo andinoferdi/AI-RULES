@@ -1,3 +1,4 @@
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -10,7 +11,9 @@ class FirstPartyBundleTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             bundle = root / "bundle"
-            export_git_ref("andino-workflow", bundle, repo_root=Path.cwd())
+            repo = Path(__file__).resolve().parents[2]
+            manifest = json.loads((repo / "src/ai_rules/release/data/release_manifest.json").read_text(encoding="utf-8"))
+            export_git_ref(manifest["first_party"]["andino-workflow"]["commit"], bundle, repo_root=repo)
             target = install_first_party_bundle(bundle, root / "skills", "andino-workflow", root / "backups")
             self.assertTrue((target / "SKILL.md").exists())
             self.assertTrue((target / "README.md").exists())

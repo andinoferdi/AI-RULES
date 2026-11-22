@@ -373,7 +373,7 @@ class LiveUpdateTests(unittest.TestCase):
         self.commit("new")
         result, output = self.run_cli()
         self.assertEqual(0, result, output)
-        self.assertEqual(linked, self.target.resolve())
+        self.assertEqual(linked.resolve(), self.target.resolve())
         self.assertIn("new", (linked / "SKILL.md").read_text())
 
     def test_current_copy_changed_after_planning_is_not_verified(self):
@@ -404,7 +404,7 @@ class LiveUpdateTests(unittest.TestCase):
                 result, output = self.run_cli("--host", host)
                 self.assertNotEqual(0, result, output)
                 self.assertIn("junction", output)
-                self.assertEqual(linked, self.target.resolve())
+                self.assertEqual(linked.resolve(), self.target.resolve())
                 self.assertIn("old", (linked / "SKILL.md").read_text())
         lock = json.loads((self.state / "lock.json").read_text())
         self.assertNotEqual("verified", lock["status"])

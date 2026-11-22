@@ -104,7 +104,11 @@ class SearchFirstSetupTests(unittest.TestCase):
             if path.startswith("skills/") and path.endswith("/SKILL.md")
             and len(path.split("/")) == 3
         }
-        self.assertEqual(59, len(self.workflow_members))
+        portfolio = json.loads(subprocess.check_output(
+            ["git", "show", f"{self.pins['andino-workflow']['commit']}:references/portfolio.json"],
+            cwd=self.repo, text=True, encoding="utf-8",
+        ))
+        self.assertEqual({"andino-" + name for name in portfolio["members"]}, self.workflow_members)
         self.workflow_installation = {"andino-workflow", "focus", "search-first"} | self.workflow_members
         self.catalog = load_catalog()
         for identifier in ("search-first", "focus", "andino-workflow"):
