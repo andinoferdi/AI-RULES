@@ -23,6 +23,10 @@ Run inside the clone, setup installs the skills from its `skills/` folder and sa
 so (`Skill source: local folder ...`). Run anywhere else, it downloads them from
 GitHub `main`.
 
+On Windows, keep the clone folder short (under about 100 characters, for example
+`C:\Users\you\AI-RULES`) or run `git config --global core.longpaths true` first:
+some Three.js example files sit deep inside `skills/`.
+
 Or skip Python and Git: download the standalone binary for your system from
 [Releases](https://github.com/andinoferdi/AI-RULES/releases/latest)
 (`ai-rules-windows-x64.exe`, `ai-rules-macos-arm64` or `ai-rules-linux-x64`),
