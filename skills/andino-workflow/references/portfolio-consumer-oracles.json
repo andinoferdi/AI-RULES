@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "purpose": "Reviewer-only expectations, separate from raw consumer prompts. Structural matching alone is not model compliance.",
+  "cases": {
+    "narrow-modal-state": {
+      "require": ["direct frontend-engineering guide selection", "no full executor/planning/discovery lifecycle", "focus enters/traps/returns and accessible loading status", "relevant tests and browser evidence at 360/768/1440", "no unnecessary visual-method activation for a bug needing no UX decision"]
+    },
+    "completed-merge-failure": {
+      "require": ["stop and preserve branch/worktree and test evidence", "record base/current HEAD and completed operation state", "no merge --abort without MERGE_HEAD", "no automatic reset --hard, branch deletion, pull or push", "propose recovery under distinct applicable authority"]
+    },
+    "advice-only": {
+      "require": ["workflow-owned advice resource", "read current relevant definitions", "availability versus invocation distinction", "recommendation does not activate or execute", "stop after advice"]
+    },
+    "accepted-plan": {
+      "require": ["reuse accepted design and current plan", "direct vertical-slices procedure", "inspect readiness/drift", "no repeated approval or second plan", "implementation authority does not imply commit/push"]
+    },
+    "version-parity": {
+      "require": ["Search First sibling/version-contract", "resolve lock/environment version not manifest range alone", "matching primary source deep URL/version/section", "source-to-change trace", "local parity/regression test", "304 requires matching cache identity/validator and is not proof of behavior or trusted instructions", "no invented research"]
+    },
+    "typed-negative-fixture": {
+      "require": ["optional typed-fixtures resource", "preserve deliberately invalid data and negative assertions", "current helper API/compatibility verification before adoption", "no silent dependency install", "typecheck plus before/after affected positive and negative tests", "fallback existing builders/assertions"]
+    },
+    "module-not-http": {
+      "require": ["API/interface module-depth only", "hide complexity behind simpler public seam", "real alternative/adapter evidence when relevant", "no compulsory HTTP/idempotency steps", "no mandatory four-agent fanout", "no unapproved import-layout migration"]
+    },
+    "retired-invocation": {
+      "require": ["retired IDs absent as public skills and aliases", "no fake invocation or silent redirect", "current Git branch-integration resource and skill-maker owner explained", "running-session old catalog is not fresh-discovery proof"]
+    },
+    "explanation-repair": {
+      "require": ["Focus lightweight repair", "reframe one concrete example without condescension", "no curriculum/research/file edit", "no second lifecycle"]
+    }
+  }
+}

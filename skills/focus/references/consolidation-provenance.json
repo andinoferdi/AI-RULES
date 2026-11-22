@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "source_root": "AI-RULES workflow repository (provenance only; not a runtime dependency)",
+  "mapping": [
+    {
+      "source": "skills/plain-language-repitch/GUIDE.md",
+      "sha256": "72f78c582eb2a932178de4aa79709e98d21ee7fe373dd06be486d28a367152a3",
+      "destination": "references/explanation-repair.md"
+    },
+    {
+      "source": "skills/plain-language-repitch/resources/worked-example.md",
+      "sha256": "7defdf1dc55d2863e92742064c3a7eee7adc54cb00e4488869fa708fad90a168",
+      "destination": "references/explanation-repair.md"
+    },
+    {
+      "source": "skills/plain-language-repitch/SKILL.md",
+      "sha256": "8dbf3d7b5791824290ae6ff709af25e6e86efd77f933b8b922b75ea3bced7681",
+      "destination": "references/explanation-repair.md"
+    },
+    {
+      "source": "references/legal/matt-license.md",
+      "sha256": "4981c5f6a90eb3a969dacabb9350f5a75695ff3910b39b6534952908dfdc5ff7",
+      "destination": "references/matt-license.md"
+    }
+  ],
+  "upstream_snapshots": {
+    "mattpocock/skills": "49dd158d1076134a641b33efb035946536778336"
+  },
+  "adaptations": [
+    "No native entrypoints or aliases for absorbed resources; original source identifiers in provenance are historical only.",
+    "Applicable entrypoint constraints retained in nonnative contracts; no required parent lifecycle.",
+    "Focus merges repitch guide, entrypoint and illustrative example into a communication-only resource."
+  ],
+  "cross_workflow_resolution": "When a workflow-owned method is needed, resolve its documented path relative to the actual installed workflow root from the host-selected workflow entry; sibling-relative paths must not be used. No workflow read or activation is required merely to select these resources."
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "source_root": "AI-RULES workflow repository (provenance only; not a runtime dependency)",
+  "mapping": [
+    {
+      "source": "skills/primary-source-research/GUIDE.md",
+      "sha256": "e73bbc14e8c34996576e4ebba9a860c3adee643e2f7ee6a887331ba116cf165a",
+      "destination": "references/sourced-answer/guide.md"
+    },
+    {
+      "source": "skills/primary-source-research/resources/worked-example.md",
+      "sha256": "418964830de41f22253ea25539505b2584757183c3a1b6d41eb220ff068d6741",
+      "destination": "references/sourced-answer/resources/worked-example.md"
+    },
+    {
+      "source": "skills/primary-source-research/SKILL.md",
+      "sha256": "881b9ec5dd3428b39707f3808b6f5bd8c7c8d5f99adb2432ca30d0022a35c5cd",
+      "destination": "references/sourced-answer/contract.md"
+    },
+    {
+      "source": "skills/source-driven-development/GUIDE.md",
+      "sha256": "937b2c5d9c24b4ec5d15d4858605c088235e5d3a314b7a326cb485638f9f1191",
+      "destination": "references/version-contract/guide.md"
+    },
+    {
+      "source": "skills/source-driven-development/resources/documentation-freshness.md",
+      "sha256": "c8871b4fbdf24eebfb3e4f1ea2ae61b3468c02001b923fc62a4acf60e91b04ed",
+      "destination": "references/version-contract/resources/documentation-freshness.md"
+    },
+    {
+      "source": "skills/source-driven-development/SKILL.md",
+      "sha256": "ece1e42d391551c594f7c75182eb2cb08c0fdb5cc7e941dda834a13cf2c21a55",
+      "destination": "references/version-contract/contract.md"
+    },
+    {
+      "source": "references/legal/matt-license.md",
+      "sha256": "4981c5f6a90eb3a969dacabb9350f5a75695ff3910b39b6534952908dfdc5ff7",
+      "destination": "references/matt-license.md"
+    },
+    {
+      "source": "references/legal/addy-license.md",
+      "sha256": "b88ef8718459d5b5aabb1943cb8f4fd57963422f2d98a801dac814fea53932c8",
+      "destination": "references/addy-license.md"
+    }
+  ],
+  "upstream_snapshots": {
+    "mattpocock/skills": "49dd158d1076134a641b33efb035946536778336",
+    "addyosmani/agent-skills": "aeac41d4d005999432bb7312f7ff06383a91d59d"
+  },
+  "adaptations": [
+    "No native entrypoints or aliases for absorbed resources; original source identifiers in provenance are historical only.",
+    "Applicable entrypoint constraints retained in nonnative contracts; no required parent lifecycle.",
+    "Full research guides/resources retained; local links relocated, workflow-only checker claims removed, version chain and cache validator identity made explicit."
+  ],
+  "cross_workflow_resolution": "When a workflow-owned method is needed, resolve its documented path relative to the actual installed workflow root from the host-selected workflow entry; sibling-relative paths must not be used. No workflow read or activation is required merely to select these resources."
+}
