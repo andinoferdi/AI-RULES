@@ -19,6 +19,19 @@ cd AI-RULES && python -m pip install .
 ai-rules setup
 ```
 
+Or skip Python and Git: download the standalone binary for your system from
+[Releases](https://github.com/andinoferdi/AI-RULES/releases/latest)
+(`ai-rules-windows-x64.exe`, `ai-rules-macos-arm64` or `ai-rules-linux-x64`),
+check it against `SHA256SUMS`, and run it with the same commands:
+
+```sh
+# Windows (PowerShell)
+.\ai-rules-windows-x64.exe setup
+
+# macOS / Linux
+chmod +x ai-rules-linux-x64 && ./ai-rules-linux-x64 setup
+```
+
 Select your host (`codex`, `claude-code`, `opencode`, `antigravity-cli`, `antigravity-ide`) and your profile (**Minimal** is recommended for first-time setup). Start a fresh agent session, and all installed skills are immediately available via slash commands (`/`) or dollar commands (`$`).
 
 Then read [How to Prompt](#how-to-prompt) once. It is the difference between "the agent ran eight skills and the result still sucks" and "the agent did what I meant".

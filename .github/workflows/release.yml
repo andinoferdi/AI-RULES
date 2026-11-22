@@ -26,10 +26,10 @@ jobs:
             asset: ai-rules-linux-x64
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Install build dependencies
@@ -42,10 +42,10 @@ jobs:
           ./release/${{ matrix.asset }} --help
       - name: Verify bundled installation and every resource without Git
         run: python scripts/smoke_release.py --executable "release/${{ matrix.asset }}"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.asset }}
-          path: release/
+          path: release/${{ matrix.asset }}
           if-no-files-found: error
 
   publish:
@@ -56,7 +56,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           path: release-input
           merge-multiple: true
@@ -64,10 +64,11 @@ jobs:
         shell: bash
         run: |
           mkdir release
-          find release-input -type f -name 'ai-rules*' -exec cp {} release/ \;
+          cp release-input/ai-rules-windows-x64.exe release-input/ai-rules-macos-arm64 release-input/ai-rules-linux-x64 release/
           cd release
           sha256sum ai-rules* > SHA256SUMS
-          python -c 'import hashlib,json,pathlib; p=pathlib.Path("."); a=[{"name":x.name,"sha256":hashlib.sha256(x.read_bytes()).hexdigest(),"size":x.stat().st_size} for x in sorted(p.glob("ai-rules*"))]; pathlib.Path("release-manifest.json").write_text(json.dumps({"schema_version":1,"artifacts":a},indent=2)+"\\n")'
-      - uses: softprops/action-gh-release@v2
+          python -c 'import hashlib,json,pathlib; p=pathlib.Path("."); a=[{"name":x.name,"sha256":hashlib.sha256(x.read_bytes()).hexdigest(),"size":x.stat().st_size} for x in sorted(p.glob("ai-rules*"))]; pathlib.Path("release-manifest.json").write_text(json.dumps({"schema_version":1,"artifacts":a},indent=2)+"\n")'
+      - uses: softprops/action-gh-release@v3
         with:
           files: release/*
+          generate_release_notes: true
