@@ -306,3 +306,28 @@ class PortfolioTransactionTests(unittest.TestCase):
                 ])
                 self.assertNotEqual(0, result)
                 self.assertEqual('user custom delivery\n', (skills_root / 'andino-delivery/SKILL.md').read_text())
+
+
+class LinkedAncestorTests(unittest.TestCase):
+    def check(self, link_uid=0, parent_uid=0, parent_mode=0o40755, system='posix'):
+        from types import SimpleNamespace
+        from ai_rules.release import family
+        path = Path('/var/folders/tmp/project/.agents/skills')
+        var = path.parents[4]
+        stats = {var: SimpleNamespace(st_uid=link_uid, st_mode=0o120755),
+                 var.parent: SimpleNamespace(st_uid=parent_uid, st_mode=parent_mode)}
+        with patch.object(family, 'linked', lambda p: p == var), \
+                patch.object(type(path), 'is_symlink', lambda p: p == var), \
+                patch.object(family.os, 'lstat', lambda p: stats[p]), \
+                patch.object(family.os, 'stat', lambda p: stats[p]), \
+                patch.object(family.os, 'name', system):
+            family.safe_path(path)
+
+    def test_root_owned_system_ancestor_link_is_followed(self):
+        self.check()  # macOS /var -> private/var
+
+    def test_user_controlled_ancestor_links_stay_preserved(self):
+        for case in ({'link_uid': 501}, {'parent_uid': 501}, {'parent_mode': 0o41777},
+                     {'parent_mode': 0o40775}, {'system': 'nt'}):
+            with self.subTest(**case), self.assertRaisesRegex(ValueError, 'Linked path is preserved: '):
+                self.check(**case)

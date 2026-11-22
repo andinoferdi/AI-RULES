@@ -28,9 +28,17 @@ def exists(path):
     return path.exists() or linked(path)
 
 
+def _system_link(path):
+    # Root-owned links in root-owned, non-writable parents (macOS /var, /tmp) cannot be retargeted without root.
+    if os.name == 'nt' or not path.is_symlink():
+        return False
+    link, parent = os.lstat(path), os.stat(path.parent)
+    return link.st_uid == 0 and parent.st_uid == 0 and not parent.st_mode & 0o022
+
+
 def safe_path(path):
     for parent in (path, *path.parents):
-        if linked(parent):
+        if linked(parent) and not _system_link(parent):
             raise ValueError(f'Linked path is preserved: {parent}')
 
 
