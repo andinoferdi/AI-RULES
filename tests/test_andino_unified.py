@@ -16,24 +16,53 @@ class InternalRegistryTests(unittest.TestCase):
         aliases = {'test-driven-development': 'tdd', 'agent-skills-test-driven-development': 'tdd',
                    'systematic-debugging': 'debugging', 'debugging-and-error-recovery': 'debugging',
                    'verification-before-completion': 'verification', 'brainstorming': 'brainstorming',
-                   'interview-me': 'decision-interview', 'writing-plans': 'planning',
+                   'interview-me': 'brainstorming', 'writing-plans': 'planning',
                    'planning-and-task-breakdown': 'planning', 'requesting-code-review': 'code-review',
                    'receiving-code-review': 'code-review', 'code-review-and-quality': 'code-review',
-                   'dispatching-parallel-agents': 'delegation', 'using-git-worktrees': 'git-isolation',
-                   'finishing-a-development-branch': 'delivery', 'spec-driven-development': 'specification'}
+                   'dispatching-parallel-agents': 'delegation'}
         blocks = []
         for identity in sorted(CAPABILITIES):
+            if identity == 'git-skills':
+                blocks.append(self.public_member(identity))
+                continue
             values = dict.fromkeys(FIELDS, 'bounded current need')
-            internal = identity in SUPERPOWERS | AGENT_SKILLS | {'workflow-advisor'}
+            internal = identity in SUPERPOWERS | AGENT_SKILLS | {'skill-maker'}
             values['Type'] = 'method' if internal else 'MCP' if identity in MCPS else 'native' if identity == 'native-capabilities' else 'skill'
             values['Activation policy'] = 'CONDITIONAL_AUTO'
-            if internal:
+            if identity == 'skill-maker':
+                values['Internal method'] = 'skills/skill-maker/SKILL.md'
+            elif internal:
                 values['Internal method'] = f"skills/{aliases.get(identity, identity)}/GUIDE.md"
             blocks.append('## ' + identity + '\n\n' + '\n'.join(f'- {k}: {v}' for k, v in values.items()) + '\n')
         return '\n'.join(blocks)
 
+    @staticmethod
+    def public_member(identity):
+        return (f'## {identity}\n\n- Type: public member skill\n- Purpose: Select one mode.\n'
+                f'- Invocation: [Contract](../skills/{identity}/SKILL.md)\n- Boundary: No new authority.\n')
+
     def test_legacy_names_resolve_to_one_local_canonical_method(self):
         self.assertEqual([], validate_registry(self.fixture()))
+
+    def test_retired_ids_need_no_contract_and_aliases_resolve_to_brainstorming(self):
+        for retired in ('idea-refine', 'source-driven-development', 'using-git-worktrees', 'workflow-advisor'):
+            self.assertNotIn(retired, CAPABILITIES)
+        self.assertIn('skills/brainstorming/GUIDE.md', self.fixture().split('## interview-me')[1].split('## ')[0])
+        wrong = self.fixture().replace('## interview-me', '## interview-me-old', 1)
+        self.assertIn('interview-me: missing contract', validate_registry(wrong))
+
+    def test_short_public_member_entry_is_strict(self):
+        member = self.public_member('git-skills')
+        fixture = self.fixture()
+        for broken, error in ((member.replace('- Boundary: No new authority.\n', ''), 'git-skills: missing Boundary'),
+                              (member.replace('../skills/git-skills/', '../skills/other/'),
+                               'git-skills: invocation must link its own member SKILL.md'),
+                              (member.replace('public member skill', 'skill'), 'git-skills: expected type public member skill')):
+            with self.subTest(error=error):
+                self.assertIn(error, validate_registry(fixture.replace(member, broken)))
+        stranger = self.public_member('unlisted-member')
+        self.assertIn('unlisted-member: unrecognized public member; extend coverage deliberately',
+                      validate_registry(fixture + '\n' + stranger))
 
     def test_wrong_alias_path_or_missing_method_cannot_pass(self):
         text = self.fixture().replace('skills/tdd/GUIDE.md', 'skills/other/GUIDE.md', 1)

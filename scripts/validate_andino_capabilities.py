@@ -11,20 +11,32 @@ from validate_skills import ROOT, package_files, git
 SUPERPOWERS = set('systematic-debugging test-driven-development verification-before-completion brainstorming writing-plans requesting-code-review receiving-code-review dispatching-parallel-agents using-git-worktrees finishing-a-development-branch'.split())
 AGENT_SKILLS = set('api-and-interface-design browser-testing-with-devtools ci-cd-and-automation code-review-and-quality code-simplification constraint-driven-development context-engineering debugging-and-error-recovery deprecation-and-migration documentation-and-adrs doubt-driven-development frontend-ui-engineering git-workflow-and-versioning incremental-implementation observability-and-instrumentation performance-optimization planning-and-task-breakdown security-and-hardening shipping-and-launch source-driven-development spec-driven-development agent-skills-test-driven-development'.split())
 AGENT_SKILLS.update(('idea-refine', 'interview-me'))
-INTERNAL_METHODS = {identity: identity for identity in SUPERPOWERS | AGENT_SKILLS | {'workflow-advisor'}}
+# The consolidated portfolio (andino-workflow c0d9d72) retired these registry IDs or the
+# methods they resolved to. Historical eval cases may still name them; no contract is required.
+RETIRED_CONTRACTS = set('context-engineering finishing-a-development-branch frontend-ui-engineering git-workflow-and-versioning idea-refine incremental-implementation source-driven-development spec-driven-development using-git-worktrees workflow-advisor'.split())
+RETIRED_METHODS = {'decision-interview', 'delivery', 'git-isolation', 'specification'}
+ANDINO_METHODS = {'skill-maker'}
+INTERNAL_METHODS = {identity: identity for identity in (SUPERPOWERS | AGENT_SKILLS | ANDINO_METHODS) - RETIRED_CONTRACTS}
 INTERNAL_METHODS.update({
     'test-driven-development': 'tdd', 'agent-skills-test-driven-development': 'tdd',
     'systematic-debugging': 'debugging', 'debugging-and-error-recovery': 'debugging',
     'verification-before-completion': 'verification', 'brainstorming': 'brainstorming',
-    'interview-me': 'decision-interview', 'writing-plans': 'planning',
+    'interview-me': 'brainstorming', 'writing-plans': 'planning',
     'planning-and-task-breakdown': 'planning', 'requesting-code-review': 'code-review',
     'receiving-code-review': 'code-review', 'code-review-and-quality': 'code-review',
-    'dispatching-parallel-agents': 'delegation', 'using-git-worktrees': 'git-isolation',
-    'finishing-a-development-branch': 'delivery', 'spec-driven-development': 'specification',
+    'dispatching-parallel-agents': 'delegation',
 })
+# Canonical method resource; native members without a separate guide entrypoint use SKILL.md.
+INTERNAL_METHOD_PATHS = {identity: f'skills/{method}/GUIDE.md' for identity, method in INTERNAL_METHODS.items()}
+INTERNAL_METHOD_PATHS['skill-maker'] = 'skills/skill-maker/SKILL.md'
+# Public members registered with the short selection entry instead of the full contract.
+PUBLIC_MEMBERS = {'git-skills'}
+PUBLIC_MEMBER_TYPE = 'public member skill'
+PUBLIC_MEMBER_FIELDS = ('Purpose', 'Invocation', 'Boundary')
 OTHER_SKILLS = set('focus search-first council ponytail claude-mem impeccable design-taste-frontend clone-website graphify antislop antislop-ui antislop-copywriting antislop-human antislop-layoutmobile antislop-code natural-writing'.split())
 MCPS = set('context7 playwright-mcp chrome-devtools git-mcp drawio-mcp staruml-mcp premiere-pro-mcp cheatengine-mcp'.split())
-CAPABILITIES = SUPERPOWERS | AGENT_SKILLS | OTHER_SKILLS | MCPS | {'native-capabilities', 'workflow-advisor'}
+CAPABILITIES = ((SUPERPOWERS | AGENT_SKILLS | ANDINO_METHODS | OTHER_SKILLS | MCPS | PUBLIC_MEMBERS | {'native-capabilities'})
+                - RETIRED_CONTRACTS)
 OPTIONAL_CAPABILITIES = {'threejs-skills'}
 REQUIRED_CASES = set('debugging-superpowers-route no-full-superpowers-bootstrap agent-skills-no-double-router duplicate-tdd-provider ponytail-needed ponytail-not-needed claude-mem-history graphify-impact graphify-not-needed ui-ux-route taste-route ui-taste-coexistence clone-fidelity antislop-ui antislop-copy context7-version playwright-route devtools-route playwright-devtools-coexistence git-native-preferred git-mcp-fallback drawio-diagram staruml-model diagram-tool-choice premiere-preflight premiere-howto-no-mutation cheatengine-read-first cheatengine-permission unavailable-capability capability-rerouting capability-stop simple-task-zero-capability'.split())
 ADDITIONAL_CASES = {'idea-refine-route', 'interview-material-only'}
@@ -46,12 +58,29 @@ def registry_entries(text):
     return entries
 
 
+def validate_public_member(identity, fields):
+    errors = []
+    if identity not in PUBLIC_MEMBERS:
+        errors.append(f'{identity}: unrecognized public member; extend coverage deliberately')
+    if fields.get('Type') != PUBLIC_MEMBER_TYPE:
+        errors.append(f'{identity}: expected type {PUBLIC_MEMBER_TYPE}')
+    for key in PUBLIC_MEMBER_FIELDS:
+        if not fields.get(key, '').strip():
+            errors.append(f'{identity}: missing {key}')
+    if f'(../skills/{identity}/SKILL.md)' not in fields.get('Invocation', ''):
+        errors.append(f'{identity}: invocation must link its own member SKILL.md')
+    return errors
+
+
 def validate_registry(text, require_internal=False):
     errors, seen = [], set()
     for identity, fields in registry_entries(text):
         if identity in seen:
             errors.append(f'{identity}: duplicate registry ID')
         seen.add(identity)
+        if identity in PUBLIC_MEMBERS or fields.get('Type') == PUBLIC_MEMBER_TYPE:
+            errors.extend(validate_public_member(identity, fields))
+            continue
         for key in FIELDS:
             if not fields.get(key, '').strip():
                 errors.append(f'{identity}: missing {key}')
@@ -60,7 +89,7 @@ def validate_registry(text, require_internal=False):
         internal = identity in INTERNAL_METHODS and (require_internal or fields.get('Type') == 'method')
         expected_type = ('method' if internal else 'MCP' if identity in MCPS
                          else 'native' if identity == 'native-capabilities' else 'skill')
-        if internal and fields.get('Internal method') != f'skills/{INTERNAL_METHODS[identity]}/GUIDE.md':
+        if internal and fields.get('Internal method') != INTERNAL_METHOD_PATHS[identity]:
             errors.append(f'{identity}: missing or incorrect canonical internal method path')
         if fields.get('Type') != expected_type:
             errors.append(f'{identity}: expected type {expected_type}')
@@ -77,7 +106,8 @@ CASE_ONLY_IDENTITIES = {'decision-map', 'plain-language-repitch', 'learning-work
 
 
 def validate_cases(cases, identities=CAPABILITIES):
-    identities = set(identities) | set(INTERNAL_METHODS.values()) | CASE_ONLY_IDENTITIES
+    identities = (set(identities) | set(INTERNAL_METHODS.values()) | CASE_ONLY_IDENTITIES
+                  | RETIRED_CONTRACTS | RETIRED_METHODS)
     if not isinstance(cases, list):
         return ['cases: expected array']
     errors, seen = [], set()

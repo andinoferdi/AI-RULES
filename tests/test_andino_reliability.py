@@ -70,7 +70,7 @@ class InternalDispatchContract(unittest.TestCase):
         contract = runtime_text('references/method-dispatch.md')
         for heading in ('Explicit requests', 'Implicit requests', 'Phase transitions', 'Evidence'):
             self.assertIn('## ' + heading, contract)
-        for boundary in ('all internal methods', 'source-name aliases', 'quoted',
+        for boundary in ('all internal methods', 'supported source names', 'quoted',
                          'required domain', 'native provider', 'UNAVAILABLE'):
             self.assertIn(boundary, contract)
         self.assertIn('before Focus', contract)
@@ -90,10 +90,10 @@ class InternalDispatchContract(unittest.TestCase):
         self.assertIn('execution is authorized', guide)
 
     def test_all_native_members_keep_canonical_guides(self):
-        index = runtime_text('references/internal-method-index.md').split('## Source-name compatibility')[0]
+        index = runtime_text('references/internal-method-index.md').split('## Selective resources')[0]
         ids = re.findall(r'\[([^]]+)\]\(\.\./skills/([^/]+)/SKILL.md\)', index)
-        self.assertEqual(59, len(ids))
-        self.assertEqual(59, len({identity for identity, _ in ids}))
+        members = json.loads(runtime_text('references/portfolio.json'))['members']
+        self.assertEqual(sorted(members), sorted(identity for identity, _ in ids))
         for identity, directory in ids:
             self.assertEqual(identity, directory)
             self.assertTrue(runtime_text(f'skills/{identity}/GUIDE.md'), identity)
