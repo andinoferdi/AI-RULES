@@ -108,6 +108,44 @@ class LiveUpdateTests(unittest.TestCase):
         workflow = next(t for t in lock['targets'] if t['capability'] == 'andino-workflow')
         self.assertIn(self.git(self.remote, "rev-parse", "HEAD").strip(), workflow['target_version'])
 
+    def pin_on_main(self, commit):
+        """Give the fixture remote a main branch whose manifest pins andino-workflow at `commit`."""
+        branch = self.git(self.remote, "branch", "--show-current").strip()
+        self.git(self.remote, "checkout", "-q", "--orphan", "main")
+        self.git(self.remote, "rm", "-rqf", ".")
+        manifest = self.remote / "src/ai_rules/release/data/release_manifest.json"
+        manifest.parent.mkdir(parents=True)
+        manifest.write_text(json.dumps({"first_party": {
+            "andino-workflow": {"branch": "andino-workflow", "commit": commit}}}), encoding="utf-8")
+        self.git(self.remote, "add", ".")
+        self.git(self.remote, "commit", "-qm", "pin")
+        self.git(self.remote, "checkout", "-q", "-f", branch)
+
+    def test_latest_installs_commit_pinned_on_main_not_branch_head(self):
+        self.commit("promoted")
+        promoted = self.git(self.remote, "rev-parse", "HEAD").strip()
+        self.commit("unpromoted")
+        self.pin_on_main(promoted)
+        result, output = self.run_cli()
+        self.assertEqual(0, result, output)
+        body = (self.target / "SKILL.md").read_text()
+        self.assertIn("promoted", body)
+        self.assertNotIn("unpromoted", body)
+        lock = json.loads((self.state / "lock.json").read_text())
+        workflow = next(t for t in lock['targets'] if t['capability'] == 'andino-workflow')
+        self.assertIn(promoted, workflow['target_version'])
+
+    def test_newer_unpromoted_copy_is_kept_with_a_clear_reason(self):
+        self.commit("unpromoted")
+        self.target.mkdir(parents=True)
+        for name in ("SKILL.md", "README.md", "obsolete.md"):
+            shutil.copyfile(self.remote / name, self.target / name)
+        self.pin_on_main(self.old)
+        result, output = self.run_cli()
+        self.assertNotEqual(0, result, output)
+        self.assertIn("newer than the commit main pins", output)
+        self.assertIn("unpromoted", (self.target / "SKILL.md").read_text())
+
     def test_current_skill_gets_missing_command_and_setup_repairs_deleted_command(self):
         self.copy_old()
         command = self.project / ".opencode/commands/andino-workflow.md"

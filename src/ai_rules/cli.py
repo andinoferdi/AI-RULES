@@ -107,7 +107,7 @@ def add_common_setup_flags(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--no-progress", action="store_true", help="use plain milestones without terminal animation")
     parser.add_argument("--state-dir", type=Path)
     parser.add_argument("--source", choices=("latest", "bundled"), default="latest",
-                        help="latest checks configured remote branches; bundled uses this CLI's frozen manifest without checking freshness")
+                        help="latest installs the commits pinned on the source repository's main branch (branch heads when it has no pins); bundled uses this CLI's frozen manifest without checking freshness")
     parser.add_argument("--agent-defaults", action=argparse.BooleanOptionalAction, default=None,
                         help="manage the AI-RULES working-defaults block in each host's global instruction file")
     parser.add_argument("--defaults-language", choices=("id", "en"), default=None)

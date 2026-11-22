@@ -48,10 +48,13 @@ publish version-tag artifacts and checksums
 
 ## Coverage map
 
-Current branch refs and frozen release commits have different purposes. Package
-validation checks fetched branch refs; release staging checks the actual commits
-and optional subpaths in the [release manifest](../src/ai_rules/release/data/release_manifest.json).
-A valid frozen commit need not equal the latest branch head. Staging rejects empty
+Every check reads the skill commits pinned in the
+[release manifest](../src/ai_rules/release/data/release_manifest.json). Before the
+checks run, `scripts/skill_refs.py pin` points `origin/<skill>` at those pins, so a push to a skill branch cannot change a main
+result. Skill branch heads ahead of their pins are listed in the run summary
+(`skill_refs.py drift`) and reach main only through
+[promotion](specs/skill-promotion.md). Release staging exports the same pinned
+commits and optional subpaths. Staging rejects empty
 bundle sets, malformed package metadata, missing resources, broken relative links
 and unsupported package contents using the existing package validator. Export also
 rejects unsafe paths and non-regular Git entries.
@@ -78,16 +81,19 @@ the revision, model and host they actually exercised.
 
 ## Run the model-free checks locally
 
-From `main`, with the package installed and the runtime refs fetched:
+In a disposable clone of `main` with the package installed (the promote command's
+clone at `.git/promote/<skill>` is one):
 
 ```sh
-python scripts/validate_skills.py --webbased-ref origin/WebBased --threejs-ref origin/threejs-skills
-python scripts/validate_threejs_family.py --runtime-ref origin/threejs-skills
-python scripts/validate_andino_capabilities.py --runtime-ref origin/andino-workflow
-python -m unittest discover -s tests
-python scripts/validate_skripsi_traceability.py
-python scripts/build_release.py --stage-only --output build/frozen-check
+python scripts/skill_refs.py pin
+python scripts/ci_checks.py
 ```
+
+`ci_checks.py` runs the six CI steps in order and stops at the first failure.
+`pin` moves only `origin/<skill>`, so it is also safe in a working checkout; the
+next `git fetch` moves those refs back to branch heads. Tests that read a local
+branch name (`andino-workflow`, `search-first`) skip where that branch is absent,
+as on CI runners.
 
 Use a new output directory for each staging attempt: an existing `bundles`
 directory is preserved and rejected. The stage-only command writes bundle contents
