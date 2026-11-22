@@ -11,7 +11,8 @@
       "importance": "REQUIRED",
       "source": {
         "repository": "https://github.com/andinoferdi/AI-RULES",
-        "branch": "andino-workflow",
+        "branch": "main",
+        "subpath": "skills/andino-workflow",
         "trust": "first_party",
         "verified_at": "2026-10-02"
       },
@@ -57,7 +58,8 @@
       "importance": "RECOMMENDED",
       "source": {
         "repository": "https://github.com/andinoferdi/AI-RULES",
-        "branch": "ai-codebase-rescue",
+        "branch": "main",
+        "subpath": "skills/ai-codebase-rescue",
         "trust": "first_party",
         "verified_at": "2026-09-21"
       },
@@ -100,7 +102,8 @@
       "importance": "RECOMMENDED",
       "source": {
         "repository": "https://github.com/andinoferdi/AI-RULES",
-        "branch": "skripsi-skill",
+        "branch": "main",
+        "subpath": "skills/skripsi-skill",
         "trust": "first_party",
         "verified_at": "2026-09-21"
       },
@@ -143,7 +146,8 @@
       "importance": "RECOMMENDED",
       "source": {
         "repository": "https://github.com/andinoferdi/AI-RULES",
-        "branch": "focus",
+        "branch": "main",
+        "subpath": "skills/focus",
         "trust": "first_party",
         "verified_at": "2026-10-08"
       },
@@ -186,7 +190,8 @@
       "importance": "RECOMMENDED",
       "source": {
         "repository": "https://github.com/andinoferdi/AI-RULES",
-        "branch": "search-first",
+        "branch": "main",
+        "subpath": "skills/search-first",
         "trust": "first_party",
         "verified_at": "2026-10-13"
       },
@@ -229,7 +234,8 @@
       "importance": "RECOMMENDED",
       "source": {
         "repository": "https://github.com/andinoferdi/AI-RULES",
-        "branch": "council",
+        "branch": "main",
+        "subpath": "skills/council",
         "trust": "first_party",
         "verified_at": "2026-10-15"
       },
@@ -274,7 +280,8 @@
       "importance": "RECOMMENDED",
       "source": {
         "repository": "https://github.com/andinoferdi/AI-RULES",
-        "branch": "threejs-skills",
+        "branch": "main",
+        "subpath": "skills/threejs-skills",
         "trust": "first_party"
       },
       "provides": [
@@ -316,7 +323,8 @@
       "importance": "RECOMMENDED",
       "source": {
         "repository": "https://github.com/andinoferdi/AI-RULES",
-        "branch": "natural-writing",
+        "branch": "main",
+        "subpath": "skills/natural-writing",
         "trust": "first_party",
         "verified_at": "2026-10-19"
       },

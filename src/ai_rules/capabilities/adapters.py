@@ -26,14 +26,12 @@ class StaticCapabilityAdapter:
         if self.targets and capability.id in self.targets:
             return self.targets[capability.id]
         if capability.ownership == Ownership.FIRST_PARTY:
-            manifest = _load_release_manifest()
-            target = manifest.get("first_party", {}).get(capability.id, {})
-            commit = target.get("commit")
-            if commit:
-                sequence = int(target.get("release_sequence", manifest.get("release_sequence", 0)))
+            from ai_rules.release.checkout import bundled_revision
+            revision = bundled_revision()
+            if revision:
+                commit, sequence = revision
                 return f"release-manifest:{capability.id}@{commit}#{sequence}"
-            branch = capability.source.get("branch", capability.id)
-            return f"release-manifest:{branch}@stable"
+            return f"release-manifest:{capability.id}@stable"
         return f"{capability.update_policy.model.value}:{channel}"
 
     def plan_operations(self, capability: Capability, host_id: str, scope: Scope) -> tuple[Operation, ...]:

@@ -1,6 +1,7 @@
 """Every first-party skill is registered in the same places, or CI names the gap.
 
-Adding or removing a skill touches several files on main. This test turns a
+A skill is a folder in skills/<id>/. Adding or removing one also touches the
+catalog, the profiles, the package validator and evals. This test turns a
 half-finished change into one clear failure instead of scattered red checks.
 See AGENTS.md, "Adding or removing a skill".
 """
@@ -11,6 +12,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+SKILLS = ROOT / "skills"
 CATALOG = ROOT / "src/ai_rules/catalog/data/capabilities.json"
 PROFILES = ROOT / "src/ai_rules/profiles/data/profiles.json"
 MANIFEST = ROOT / "src/ai_rules/release/data/release_manifest.json"
@@ -32,22 +34,24 @@ class SkillRegistryConsistencyTests(unittest.TestCase):
     def setUp(self):
         self.catalog = {item["id"]: item for item in load(CATALOG)["capabilities"]
                         if item["ownership"] == "FIRST_PARTY"}
-        self.manifest = load(MANIFEST)["first_party"]
+        self.folders = {path.parent.name for path in SKILLS.glob("*/SKILL.md")}
 
-    def test_catalog_and_manifest_list_the_same_skills(self):
-        self.assertEqual(set(self.catalog) - set(self.manifest), set(),
-                         "pin these catalog skills in release_manifest.json first_party")
-        self.assertEqual(set(self.manifest) - set(self.catalog), set(),
-                         "remove these pins from release_manifest.json or add them to capabilities.json")
+    def test_catalog_and_skills_folder_list_the_same_skills(self):
+        self.assertEqual(set(self.catalog) - self.folders, set(), "add skills/<id>/SKILL.md")
+        self.assertEqual(self.folders - set(self.catalog), set(),
+                         "register these skills/ folders in capabilities.json")
 
-    def test_manifest_branch_matches_catalog_source_branch(self):
-        for skill, pin in self.manifest.items():
-            if skill in self.catalog:
-                self.assertEqual(self.catalog[skill]["source"]["branch"], pin["branch"], skill)
-            self.assertRegex(pin["commit"], r"^[0-9a-f]{40}$", skill)
+    def test_catalog_sources_read_main_subpaths(self):
+        for skill, item in self.catalog.items():
+            self.assertEqual("main", item["source"]["branch"], skill)
+            self.assertEqual(f"skills/{skill}", item["source"]["subpath"], skill)
 
-    def test_package_validator_covers_every_pinned_skill(self):
-        self.assertEqual(runtime_skills() | FAMILIES, set(self.manifest),
+    def test_release_manifest_has_no_skill_pins(self):
+        self.assertNotIn("first_party", load(MANIFEST),
+                         "skills are read from skills/ on main; remove first_party pins")
+
+    def test_package_validator_covers_every_skill_folder(self):
+        self.assertEqual(runtime_skills() | FAMILIES, self.folders,
                          "update RUNTIME_SKILLS in scripts/validate_skills.py")
 
     def test_every_skill_has_eval_cases(self):

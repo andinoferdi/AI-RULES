@@ -58,20 +58,58 @@ def contents(root: Path) -> dict[str, str]:
     return result
 
 
-MAIN_MANIFEST = "src/ai_rules/release/data/release_manifest.json"
-MAIN_REFSPEC = "+refs/heads/main*:refs/heads/main*"
+LOCAL_BRANCH = "local"
+# A fixed date gives the same snapshot commit for the same folder content.
+_FIXED_DATE = "1970-01-01T00:00:00+0000"
 
 
-def main_pins(local: Path) -> dict:
-    """First-party pins from the fetched main branch, or {} when the source has none."""
+def snapshot_working_tree(store: Path, checkout: Path) -> str:
+    """Commit checkout/skills, uncommitted edits included, into a private Git store."""
+    env = dict(os.environ, GIT_TERMINAL_PROMPT="0", GIT_INDEX_FILE=str(Path(store) / "local-index"),
+               GIT_AUTHOR_NAME="ai-rules", GIT_AUTHOR_EMAIL="ai-rules@localhost",
+               GIT_COMMITTER_NAME="ai-rules", GIT_COMMITTER_EMAIL="ai-rules@localhost",
+               GIT_AUTHOR_DATE=_FIXED_DATE, GIT_COMMITTER_DATE=_FIXED_DATE)
+    base = ["git", "-c", "core.autocrlf=input", "-c", "core.safecrlf=false", "-c", "core.bare=false",
+            f"--git-dir={store}", f"--work-tree={checkout}"]
+
+    def run(*args):
+        result = subprocess.run([*base, *args], env=env, text=True, encoding="utf-8",
+                                stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=300)
+        if result.returncode:
+            raise ValueError(f"Local skill snapshot failed: {result.stderr.strip()}")
+        return result.stdout.strip()
+
+    run("add", "--all", "--", "skills")
+    commit = run("commit-tree", run("write-tree"), "-m", "ai-rules local snapshot")
+    run("update-ref", f"refs/heads/{LOCAL_BRANCH}", commit)
+    return commit
+
+
+def recorded_files(state_dir, capability_id, host_id, scope):
+    """(file hashes, version) setup recorded for this target, or None when it recorded none."""
     try:
-        manifest = json.loads(git(local, "show", f"refs/heads/main:{MAIN_MANIFEST}"))
-    except (ValueError, json.JSONDecodeError):
-        return {}
-    pins = manifest.get("first_party") if isinstance(manifest, dict) else None
-    return {name: pin for name, pin in (pins or {}).items()
-            if isinstance(pin, dict) and isinstance(pin.get("commit"), str)
-            and re.fullmatch(r"[0-9a-f]{40}", pin["commit"])}
+        records = json.loads((Path(state_dir) / "managed-installations.json")
+                             .read_text(encoding="utf-8")).get("installations", {})
+    except (OSError, ValueError, AttributeError):
+        return None
+    record = records.get(f"{capability_id}:{host_id}:{scope.value}")
+    files = record.get("files") if isinstance(record, dict) else None
+    if isinstance(files, list):
+        files = {row.get("path"): row.get("blob") for row in files if isinstance(row, dict)}
+    return (files, record.get("version")) if isinstance(files, dict) and files else None
+
+
+def recorded_member(state_dir, root, native) -> bool:
+    """True when a native member still matches the fingerprint setup stored for it."""
+    from ai_rules.release.family import fingerprint
+    key = hashlib.sha256(str(Path(root).resolve()).casefold().encode()).hexdigest()
+    try:
+        inventory = json.loads((Path(state_dir) / "family-inventories" / f"{key}.json")
+                               .read_text(encoding="utf-8"))
+        row = inventory.get("artifacts", {}).get(str(native))
+        return bool(row) and row.get("kind") == "tree" and fingerprint(native) == row.get("fingerprint")
+    except (OSError, ValueError, AttributeError):
+        return False
 
 
 def canonical_source(value: str) -> str:
@@ -81,8 +119,9 @@ def canonical_source(value: str) -> str:
 
 
 class LatestSources:
-    def __init__(self, catalog, capability_ids, reporter=None):
+    def __init__(self, catalog, capability_ids, reporter=None, *, local_root: Path | None = None):
         self.reporter = reporter
+        self.local_root = Path(local_root) if local_root is not None else None
         emit(reporter, "Checking source configuration")
         self.workspace = tempfile.TemporaryDirectory(prefix="ai-rules-sources-")
         self.root = Path(self.workspace.name)
@@ -96,12 +135,26 @@ class LatestSources:
         self.subpaths = {}
         try:
             groups = {}
+            branch_override = os.environ.get("AI_RULES_SOURCE_BRANCH")
             for identifier in dict.fromkeys(capability_ids):
                 capability = catalog.require_capability(identifier)
                 self.subpaths[identifier] = validate_subpath(capability.source.get("subpath"))
                 repository = capability.source["repository"]
-                branch = capability.source["branch"]
+                branch = branch_override or capability.source["branch"]
                 groups.setdefault(repository, []).append((identifier, branch))
+            if self.local_root is not None:
+                emit(reporter, "Reading the local skills folder")
+                store = self.root / "source-local"
+                store.mkdir()
+                git(store, "init", "--bare")
+                commit = snapshot_working_tree(store, self.local_root)
+                identifiers = [identifier for selections in groups.values() for identifier, _ in selections]
+                for index, identifier in enumerate(identifiers):
+                    self.entries[identifier] = (store, str(self.local_root), LOCAL_BRANCH, commit)
+                    self.sources[identifier] = self.bundle(identifier)
+                    emit(reporter, "Source bundle prepared", capability=identifier,
+                         completed=index + 1, total=len(identifiers))
+                groups = {}
             bundle_total = sum(len(selections) for selections in groups.values())
             bundle_completed = 0
             for index, (repository, selections) in enumerate(groups.items()):
@@ -112,23 +165,12 @@ class LatestSources:
                 for _, branch in selections:
                     git(local, "check-ref-format", f"refs/heads/{branch}")
                 refs = [f"+refs/heads/{branch}:refs/heads/{branch}" for _, branch in selections]
-                # The glob also brings main (and its pins) in the same fetch, without failing when absent.
-                git(local, "fetch", "--no-tags", "--", repository, *dict.fromkeys(refs), MAIN_REFSPEC)
+                git(local, "fetch", "--no-tags", "--", repository, *dict.fromkeys(refs))
                 emit(reporter, "Remote branches fetched", completed=index + 1, total=len(groups))
-                pinned = main_pins(local)
                 for identifier, branch in selections:
                     emit(reporter, "Preparing source bundle", capability=identifier,
                          completed=bundle_completed, total=bundle_total)
-                    pin = pinned.get(identifier)
-                    if pin and pin.get("branch") == branch:
-                        # Main pins only commits that passed its checks; the branch head may not have.
-                        commit = pin["commit"]
-                        try:
-                            git(local, "cat-file", "-e", f"{commit}^{{commit}}")
-                        except ValueError:
-                            git(local, "fetch", "--no-tags", "--", repository, commit)
-                    else:
-                        commit = git(local, "rev-parse", f"refs/heads/{branch}^{{commit}}")
+                    commit = git(local, "rev-parse", f"refs/heads/{branch}^{{commit}}")
                     self.entries[identifier] = (local, repository, branch, commit)
                     self.sources[identifier] = self.bundle(identifier)
                     bundle_completed += 1
@@ -175,25 +217,27 @@ class LatestSources:
         return target
 
     def version(self, identifier, commit=None):
-        return f"git-branch:{identifier}@{commit or self.entries[identifier][3]}"
+        kind = "local" if self.local_root is not None else "git-branch"
+        return f"{kind}:{identifier}@{commit or self.entries[identifier][3]}"
 
     def known_revision(self, identifier, actual):
         local, _, branch, head = self.entries[identifier]
         # Adoption is bounded. Older/unrecognized copies remain protected, never assumed current.
         candidates = git(local, "rev-list", "--max-count=256", head).splitlines()
         for commit in candidates:
-            if self.tree(local, commit, self.subpaths[identifier]) == actual:
-                return commit
-        for commit in git(local, "rev-list", "--max-count=256", f"refs/heads/{branch}", f"^{head}").splitlines():
-            if self.tree(local, commit, self.subpaths[identifier]) == actual:
-                raise ValueError(f"Installed copy is branch revision {commit[:12]}, newer than the commit "
-                                 f"main pins ({head[:12]}); it is kept until main promotes it")
+            try:
+                if self.tree(local, commit, self.subpaths[identifier]) == actual:
+                    return commit
+            except ValueError:
+                # The skill folder may not exist in older revisions.
+                continue
         return None
 
-    def known_member(self, local, head, name, actual):
+    def known_member(self, local, head, name, actual, subpath=None):
+        member = f"{subpath}/skills/{name}" if subpath else f"skills/{name}"
         for revision in git(local, "rev-list", "--max-count=256", head).splitlines():
             try:
-                if actual == self.tree(local, revision, f"skills/{name}"):
+                if actual == self.tree(local, revision, member):
                     return True
             except ValueError:
                 # A member may not exist in older revisions of the workflow.
@@ -224,6 +268,7 @@ class LatestSources:
                 before = contents(destination)
                 is_git = (destination / ".git").exists()
                 installed = None
+                recorded = None
                 if is_git:
                     if self.subpaths[identifier]:
                         raise ValueError("Git checkout for a subpath package is preserved; use a managed directory installation")
@@ -243,7 +288,10 @@ class LatestSources:
                 elif destination.exists():
                     installed = self.known_revision(identifier, before)
                     if installed is None:
-                        raise ValueError("Local content is modified or unrecognized; preserved. Use explicit repair only after review")
+                        # The old installer may have written content that main never had.
+                        recorded = recorded_files(args.state_dir, identifier, target.host_id, target.scope)
+                        if not (recorded and recorded[0] == before):
+                            raise ValueError("Local content is modified or unrecognized; preserved. Use explicit repair only after review")
                 if not destination.exists():
                     action, reason = ReconciliationAction.INSTALL, "latest source revision resolved"
                 elif before == self.tree(local, head, self.subpaths[identifier]) and (not is_git or installed == head):
@@ -273,7 +321,9 @@ class LatestSources:
                         desired = contents(member_path)
                         if observed != desired:
                             if native.exists():
-                                if (native / ".git").exists() or not self.known_member(local, head, name, observed):
+                                if (native / ".git").exists() or not (
+                                        self.known_member(local, head, name, observed, self.subpaths[identifier])
+                                        or recorded_member(args.state_dir, root, native)):
                                     raise ValueError(f"Native member {native.name} is modified or unrecognized; preserved")
                         members[native] = (member_path, observed, desired)
 
@@ -281,7 +331,9 @@ class LatestSources:
                         native = root / f"andino-{name}"
                         if native.exists():
                             observed = contents(native)
-                            if (native / ".git").exists() or not self.known_member(local, head, name, observed):
+                            if (native / ".git").exists() or not (
+                                    self.known_member(local, head, name, observed, self.subpaths[identifier])
+                                    or recorded_member(args.state_dir, root, native)):
                                 raise ValueError(f"Native member {native.name} is modified or unrecognized; preserved")
                             retired_members[native] = observed
 
@@ -301,7 +353,8 @@ class LatestSources:
                     adapter=adapters[target.host_id], scope=target.scope, project_root=args.project_root,
                 )
                 actual = ActualState(exists=destination.exists(), ownership=InstalledOwnership.MANAGED_BY_AI_RULES,
-                                     installed_version=self.version(identifier, installed) if installed else None,
+                                     installed_version=(self.version(identifier, installed) if installed
+                                                        else recorded[1] if recorded else None),
                                      healthy=bool(before), content_matches=action == ReconciliationAction.NO_OP)
                 operations = () if action == ReconciliationAction.NO_OP else (Operation(
                     kind="capability_operation", capability_id=identifier, host_id=target.host_id, scope=target.scope,

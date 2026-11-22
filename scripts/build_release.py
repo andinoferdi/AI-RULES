@@ -38,6 +38,14 @@ def stage_bundles(targets: dict, destination: Path, repo_root: Path) -> dict:
     return targets
 
 
+def release_targets(root: Path) -> dict:
+    # Every first-party skill ships from skills/<id> at the commit being built.
+    catalog = json.loads((root / 'src/ai_rules/catalog/data/capabilities.json').read_text(encoding='utf-8'))
+    commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
+    return {item['id']: {'commit': commit, 'subpath': item['source']['subpath']}
+            for item in catalog['capabilities'] if item['ownership'] == 'FIRST_PARTY'}
+
+
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -57,16 +65,19 @@ def main() -> int:
     output = (root / args.output).resolve()
     output.mkdir(parents=True, exist_ok=True)
     staged_bundles = root / "src" / "ai_rules" / "release" / "data" / "bundles"
-    manifest_path = root / "src" / "ai_rules" / "release" / "data" / "release_manifest.json"
-    release_targets = json.loads(manifest_path.read_text(encoding="utf-8")).get("first_party", {})
+    targets = release_targets(root)
     if args.stage_only:
-        stage_bundles(release_targets, output / 'bundles', root)
-        (output / 'bundle-sources.json').write_text(json.dumps(release_targets, indent=2) + '\n', encoding='utf-8')
-        print(f'Exported {len(release_targets)} bundles with source traceability to {output}')
+        stage_bundles(targets, output / 'bundles', root)
+        (output / 'bundle-sources.json').write_text(json.dumps(targets, indent=2) + '\n', encoding='utf-8')
+        print(f'Exported {len(targets)} bundles with source traceability to {output}')
         return 0
     if staged_bundles.exists():
         raise SystemExit(f'preserving existing bundles; review before building: {staged_bundles}')
-    stage_bundles(release_targets, staged_bundles, root)
+    stage_bundles(targets, staged_bundles, root)
+    # Bundled installs compare versions by this commit count; it only grows along main.
+    sequence = int(subprocess.check_output(['git', 'rev-list', '--count', 'HEAD'], cwd=root, text=True).strip())
+    (staged_bundles / 'bundle-sources.json').write_text(json.dumps(
+        {'commit': next(iter(targets.values()))['commit'], 'sequence': sequence}) + '\n', encoding='utf-8')
     try:
         if not args.skip_build:
             subprocess.run(
@@ -88,7 +99,7 @@ def main() -> int:
         "schema_version": 1,
         "platform": {"system": platform.system().lower(), "architecture": platform.machine().lower()},
         "artifacts": [{"name": path.name, "sha256": sha256(path), "size": path.stat().st_size} for path in artifacts],
-        "first_party": release_targets,
+        "first_party": targets,
     }
     try:
         manifest["source_commit"] = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()

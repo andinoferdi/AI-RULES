@@ -14,7 +14,8 @@ class CouncilIntegrationTests(unittest.TestCase):
 
     def test_council_is_standalone_with_focus_dependency(self):
         entry = self.catalog.require_capability("council")
-        self.assertEqual("council", entry.source["branch"])
+        self.assertEqual("main", entry.source["branch"])
+        self.assertEqual("skills/council", entry.source["subpath"])
         self.assertEqual(("focus",), tuple(entry.requires))
         plan = self.resolver.resolve(ResolveRequest(hosts=("codex",), capabilities=("council",)))
         self.assertEqual({"council", "focus"}, {target.capability_id for target in plan.targets})

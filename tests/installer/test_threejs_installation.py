@@ -21,31 +21,28 @@ class ThreejsInstallerTests(unittest.TestCase):
         self.root = Path(self.temp.name)
         self.remote = self.root / 'remote'
         self.remote.mkdir()
-        self.git('init', '-b', 'andino-workflow')
+        self.git('init', '-b', 'main')
         self.git('config', 'user.name', 'Fixture')
         self.git('config', 'user.email', 'fixture@example.invalid')
-        self.commits = {}
+        # The fixture is clone-shaped: bundled installs read its skills/ folder.
+        marker = self.remote / 'src/ai_rules/catalog/data/capabilities.json'
+        marker.parent.mkdir(parents=True)
+        marker.write_text('{}\n', encoding='utf-8')
         for name in ('andino-workflow', 'focus', 'search-first'):
-            if name != 'andino-workflow':
-                self.git('checkout', '-b', name)
-            self.write_skill(self.remote, name)
-            self.commits[name] = self.commit(name)
-        self.git('checkout', '-b', 'threejs-skills')
+            self.write_skill(self.remote / 'skills' / name, name)
         self.catalog = load_catalog()
-        self.names = []
+        self.names = ['threejs-skills']
         for capability in self.catalog.capabilities.values():
             capability.source['repository'] = str(self.remote)
-            if capability.source['branch'] == 'threejs-skills':
-                self.names.append(capability.id)
-                folder = self.remote / capability.source.get('subpath', '')
-                self.write_skill(folder, capability.id)
-                (folder / 'assets').mkdir()
-                (folder / 'assets/field.bin').write_bytes(b'\x00\xff\x00\x01')
-                (folder / 'scripts').mkdir()
-                (folder / 'scripts/probe_asset_credentials.sh').write_text('printf SET\n', encoding='utf-8')
+        self.pkg = self.remote / 'skills/threejs-skills'
+        self.write_skill(self.pkg, 'threejs-skills')
+        (self.pkg / 'assets').mkdir()
+        (self.pkg / 'assets/field.bin').write_bytes(b'\x00\xff\x00\x01')
+        (self.pkg / 'scripts').mkdir()
+        (self.pkg / 'scripts/probe_asset_credentials.sh').write_text('printf SET\n', encoding='utf-8')
         inventory = json.loads((Path(__file__).resolve().parents[2] / 'docs/threejs/inventory.json').read_text())
         for member in inventory['skills']:
-            target = self.remote / 'skills' / member['name']
+            target = self.pkg / 'skills' / member['name']
             target.mkdir(parents=True)
             (target / 'GUIDE.md').write_text('Internal method fixture\n', encoding='utf8')
         self.head = self.commit('family')
@@ -58,11 +55,6 @@ class ThreejsInstallerTests(unittest.TestCase):
         self.home_patch = patch.object(Path, 'home', return_value=self.home)
         self.home_patch.start()
         self.addCleanup(self.home_patch.stop)
-        self.manifest = {'release_sequence': 12, 'first_party': {
-            name: {'branch': capability.source['branch'],
-                   'commit': self.head if name in self.names else self.commits.get(name, self.head),
-                   **({'subpath': capability.source['subpath']} if 'subpath' in capability.source else {})}
-            for name, capability in self.catalog.capabilities.items()}}
 
     def git(self, *args):
         return subprocess.check_output(['git', '-C', str(self.remote), *args],
@@ -80,13 +72,7 @@ class ThreejsInstallerTests(unittest.TestCase):
 
     def run_cli(self, command='setup', source='latest', scope='project', selections=('--profile', 'threejs')):
         output = io.StringIO()
-        def local_export(ref, destination, repo_root=None, subpath=None):
-            from ai_rules.release.bundles import export_git_ref
-            return export_git_ref(ref, destination, self.remote, subpath=subpath)
-        with patch.object(cli, '_release_manifest', return_value=self.manifest), \
-             patch('ai_rules.capabilities.adapters._load_release_manifest', return_value=self.manifest), \
-             patch.object(cli, 'packaged_bundle', return_value=None), \
-             patch.object(cli, 'export_git_ref', side_effect=local_export), \
+        with patch.object(cli, 'packaged_bundle', return_value=None), contextlib.chdir(self.remote), \
              contextlib.redirect_stdout(output), contextlib.redirect_stderr(output):
             result = cli.main([command, '--host', 'codex', '--scope', scope,
                 '--project-root', str(self.project), '--state-dir', str(self.state),
@@ -110,7 +96,7 @@ class ThreejsInstallerTests(unittest.TestCase):
         lock = json.loads((self.state / 'lock.json').read_text())
         self.assertTrue(all(t['action'] == 'NO_OP' for t in lock['targets']))
         records = json.loads((self.state / 'managed-installations.json').read_text())['installations']
-        self.assertNotIn('subpath', records['threejs-skills:codex:project']['source'])
+        self.assertEqual('skills/threejs-skills', records['threejs-skills:codex:project']['source']['subpath'])
 
     def test_family_selection_leaves_legacy_and_unselected_skills_untouched(self):
         legacy = self.target('threejs-shaders')
@@ -137,7 +123,7 @@ class ThreejsInstallerTests(unittest.TestCase):
     def test_update_backups_changed_member_and_preserves_unselected_files(self):
         selection = ('--capability', 'threejs-skills')
         self.assertEqual(0, self.run_cli(selections=selection)[0])
-        (self.remote / 'new.txt').write_text('revision two', encoding='utf-8')
+        (self.pkg / 'new.txt').write_text('revision two', encoding='utf-8')
         self.commit('update shaders')
         result, output = self.run_cli('update', selections=selection)
         self.assertEqual(0, result, output)
@@ -198,8 +184,8 @@ class ThreejsInstallerTests(unittest.TestCase):
         self.assertEqual(0, self.run_cli(source='bundled', selections=selection)[0])
         personal = self.target('threejs-skills') / 'personal.txt'
         personal.write_text('mine', encoding='utf-8')
-        (self.remote / 'new.txt').write_text('update', encoding='utf-8')
-        self.manifest['first_party']['threejs-skills']['commit'] = self.commit('bundle update')
+        (self.pkg / 'new.txt').write_text('update', encoding='utf-8')
+        self.commit('bundle update')
         result, output = self.run_cli('update', source='bundled', selections=selection)
         self.assertNotEqual(0, result, output)
         self.assertEqual('mine', personal.read_text())
@@ -217,8 +203,8 @@ class ThreejsInstallerTests(unittest.TestCase):
         record_path.write_text(json.dumps(records), encoding='utf-8')
         personal = self.target('threejs-skills') / 'personal.txt'
         personal.write_text('legacy personal edit', encoding='utf-8')
-        (self.remote / 'new.txt').write_text('new release', encoding='utf-8')
-        self.manifest['first_party']['threejs-skills']['commit'] = self.commit('legacy upgrade')
+        (self.pkg / 'new.txt').write_text('new release', encoding='utf-8')
+        self.commit('legacy upgrade')
         result, output = self.run_cli('update', source='bundled', selections=selection)
         self.assertNotEqual(0, result, output)
         self.assertEqual('legacy personal edit', personal.read_text())

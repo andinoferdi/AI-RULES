@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 from dataclasses import replace
@@ -22,7 +23,8 @@ from ai_rules.interactive import prompt_agent_defaults, prompt_confirmation, pro
 from ai_rules.planning import render_plan
 from ai_rules.platform import detect_environment, project_state_root, state_root
 from ai_rules.profiles import load_profiles
-from ai_rules.release import export_git_ref, packaged_bundle
+from ai_rules.release import packaged_bundle
+from ai_rules.release.checkout import SOURCES, resolve_source
 from ai_rules.release.latest import LatestSources, contents
 from ai_rules.resolver import ResolveRequest, build_resolver
 from ai_rules.state import atomic_write_json, create_snapshot, read_json, read_snapshot, write_profile
@@ -106,8 +108,10 @@ def add_common_setup_flags(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--verbose", action="store_true", help="show full plan, source, target and operation diagnostics")
     parser.add_argument("--no-progress", action="store_true", help="use plain milestones without terminal animation")
     parser.add_argument("--state-dir", type=Path)
-    parser.add_argument("--source", choices=("latest", "bundled"), default="latest",
-                        help="latest installs the commits pinned on the source repository's main branch (branch heads when it has no pins); bundled uses this CLI's frozen manifest without checking freshness")
+    parser.add_argument("--source", choices=SOURCES, default="auto",
+                        help="auto uses the skills/ folder when run inside an AI-RULES clone, otherwise GitHub main; "
+                             "local forces the clone's skills/ folder (uncommitted edits included); "
+                             "latest forces GitHub main; bundled uses the skills packaged with this executable")
     parser.add_argument("--agent-defaults", action=argparse.BooleanOptionalAction, default=None,
                         help="manage the AI-RULES working-defaults block in each host's global instruction file")
     parser.add_argument("--defaults-language", choices=("id", "en"), default=None)
@@ -148,6 +152,7 @@ def cmd_setup(args: argparse.Namespace) -> int:
     print(render_setup_summary(tuple(_hosts(args.hosts)), args.profile if not args.capabilities else None,
                                capabilities, args.scope, catalog, profiles.profiles, compact=True,
                                project_root=args.project_root))
+    print(_source_line(args, catalog))
     progress = SetupProgress(enabled=not getattr(args, "no_progress", False) and not args.non_interactive,
                              verbose=getattr(args, "verbose", False))
     args._reporter = progress
@@ -453,9 +458,11 @@ def _resolve_from_args(args: argparse.Namespace):
             capabilities=tuple(args.capabilities),
         )
     )
-    if getattr(args, "source", "bundled") == "latest":
+    if getattr(args, "source", "bundled") in ("latest", "local"):
         if not getattr(args, "_latest", None):
-            args._latest = LatestSources(catalog, [target.capability_id for target in plan.targets if target.strategy_id], reporter=reporter)
+            local_root = getattr(args, "_checkout", None) if args.source == "local" else None
+            args._latest = LatestSources(catalog, [target.capability_id for target in plan.targets if target.strategy_id],
+                                         reporter=reporter, local_root=local_root)
         emit(reporter, "Reconciling source revisions")
         plan = args._latest.reconcile(plan, catalog, args)
     else:
@@ -478,7 +485,8 @@ def _resolve_from_args(args: argparse.Namespace):
 
 
 def _prepare_args(args: argparse.Namespace) -> None:
-    """Resolve state location and reject a project mutation without its root."""
+    """Resolve the skill source and state location; reject a project mutation without its root."""
+    args.source, args._checkout = resolve_source(getattr(args, "source", "bundled"), Path.cwd())
     scope = Scope(args.scope)
     if scope == Scope.PROJECT and args.project_root is None:
         raise ValueError("--project-root is required for project scope")
@@ -488,6 +496,36 @@ def _prepare_args(args: argparse.Namespace) -> None:
 
 def _hosts(hosts: list[str]) -> list[str]:
     return hosts or ["codex"]
+
+
+def _source_line(args: argparse.Namespace, catalog) -> str:
+    """One plain line saying where this run reads skills from."""
+    if args.source == "local":
+        return f"Skill source: local folder {args._checkout / 'skills'}"
+    if args.source == "bundled":
+        return "Skill source: bundled with this executable" if _packaged_any(catalog) else \
+            f"Skill source: bundled from {args._checkout / 'skills'}" if args._checkout else \
+            "Skill source: bundled (no packaged skills found)"
+    repository = next((capability.source.get("repository") for capability in catalog.capabilities.values()
+                       if capability.ownership.value == "FIRST_PARTY"), "")
+    branch = os.environ.get("AI_RULES_SOURCE_BRANCH")
+    return f"Skill source: GitHub main ({repository})" + (f", branch {branch}" if branch else "")
+
+
+def _packaged_any(catalog) -> bool:
+    return any(packaged_bundle(identifier) for identifier, capability in catalog.capabilities.items()
+               if capability.ownership.value == "FIRST_PARTY")
+
+
+def _bundled_skill(capability_id: str, args: argparse.Namespace) -> Path:
+    """The packaged bundle of a release executable, else the clone's skills/<id> folder."""
+    bundle = packaged_bundle(capability_id)
+    if bundle is not None:
+        return bundle
+    checkout = getattr(args, "_checkout", None)
+    if checkout is not None and (checkout / "skills" / capability_id / "SKILL.md").is_file():
+        return checkout / "skills" / capability_id
+    raise ValueError("bundled source needs a release executable or an AI-RULES clone")
 
 
 def _home() -> Path:
@@ -541,21 +579,14 @@ def _executor_for_plan(plan, args: argparse.Namespace) -> Executor:
                         reporter=getattr(args, "_reporter", None))
     roots: dict[str, Path] = {}
     bundles: dict[str, Path] = {}
-    manifest = _release_manifest()
     for target in plan.targets:
         host_root = adapters[target.host_id].skill_target(target.scope, args.project_root)
         if host_root is not None:
             roots[target.host_id] = host_root
         capability = catalog.require_capability(target.capability_id)
-        release = manifest.get("first_party", {}).get(capability.id)
-        if release is None:
+        if capability.ownership.value != "FIRST_PARTY":
             continue
-        bundle = packaged_bundle(capability.id)
-        if bundle is None:
-            bundle = args.state_dir / "bundles" / release["commit"] / capability.id
-            export_git_ref(release["commit"], bundle, repo_root=Path.cwd(),
-                           subpath=release.get("subpath"))
-        bundles[capability.id] = bundle
+        bundles[capability.id] = _bundled_skill(capability.id, args)
     return Executor(args.state_dir, first_party_bundles=bundles, host_skill_roots=roots, invocation_installers=registrations,
                     reporter=getattr(args, "_reporter", None))
 
@@ -624,7 +655,7 @@ def _record_managed_installations(plan, result, args: argparse.Namespace) -> Non
         if (target.capability_id, target.host_id, target.action.value) not in applied:
             continue
         key = _installation_key(target.capability_id, target.host_id, target.scope)
-        if latest or target.capability_id in _release_manifest().get("first_party", {}):
+        if latest or catalog.require_capability(target.capability_id).ownership.value == "FIRST_PARTY":
             root = adapters[target.host_id].skill_target(target.scope, args.project_root)
             if root is None:
                 continue
@@ -643,8 +674,8 @@ def _record_managed_installations(plan, result, args: argparse.Namespace) -> Non
                 if subpath := latest.subpaths[target.capability_id]:
                     records[key]['source']['subpath'] = subpath
                 records[key]["files"] = contents((root / target.capability_id).resolve())
-            elif release := _release_manifest().get('first_party', {}).get(target.capability_id):
-                records[key]['source'] = {key: release[key] for key in ('branch', 'commit', 'subpath') if key in release}
+            else:
+                records[key]['source'] = {'origin': 'bundled', 'subpath': f'skills/{target.capability_id}'}
                 records[key]['files'] = contents((root / target.capability_id).resolve())
             if isinstance(records[key].get('files'), dict):
                 records[key]['files'] = [{'path': path, 'blob': blob}

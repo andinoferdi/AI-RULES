@@ -235,22 +235,28 @@ class PortfolioTransactionTests(unittest.TestCase):
             root = Path(temp)
             remote = root / 'remote'
             remote.mkdir()
-            subprocess.run(['git', 'init', '-b', 'andino-workflow'], cwd=remote, check=True, stdout=subprocess.PIPE)
+            subprocess.run(['git', 'init', '-b', 'main'], cwd=remote, check=True, stdout=subprocess.PIPE)
             subprocess.run(['git', 'config', 'user.name', 'Fixture'], cwd=remote, check=True)
             subprocess.run(['git', 'config', 'user.email', 'fixture@example.invalid'], cwd=remote, check=True)
 
+            pkg = remote / 'skills/andino-workflow'
+            pkg.mkdir(parents=True)
+            for dependency in ('focus', 'search-first'):
+                (remote / 'skills' / dependency).mkdir(parents=True)
+                (remote / 'skills' / dependency / 'SKILL.md').write_text(
+                    f'---\nname: {dependency}\ndescription: Test\n---\nBody\n', encoding='utf-8')
             # Old commit has delivery and planning
-            (remote / 'SKILL.md').write_text('---\nname: andino-workflow\ndescription: Test\n---\nWorkflow\n', encoding='utf-8')
-            (remote / 'README.md').write_text('Test\n', encoding='utf-8')
-            (remote / 'references').mkdir()
-            (remote / 'references/portfolio.json').write_text(json.dumps({
+            (pkg / 'SKILL.md').write_text('---\nname: andino-workflow\ndescription: Test\n---\nWorkflow\n', encoding='utf-8')
+            (pkg / 'README.md').write_text('Test\n', encoding='utf-8')
+            (pkg / 'references').mkdir()
+            (pkg / 'references/portfolio.json').write_text(json.dumps({
                 'schema_version': 1, 'installer_protocol': 1,
                 'members': ['planning', 'delivery'], 'retired': [], 'resources': []
             }), encoding='utf-8')
-            (remote / 'skills/planning').mkdir(parents=True)
-            (remote / 'skills/planning/SKILL.md').write_text('---\nname: andino-planning\n---\nPlanning\n', encoding='utf-8')
-            (remote / 'skills/delivery').mkdir(parents=True)
-            (remote / 'skills/delivery/SKILL.md').write_text('---\nname: andino-delivery\n---\nDelivery\n', encoding='utf-8')
+            (pkg / 'skills/planning').mkdir(parents=True)
+            (pkg / 'skills/planning/SKILL.md').write_text('---\nname: andino-planning\n---\nPlanning\n', encoding='utf-8')
+            (pkg / 'skills/delivery').mkdir(parents=True)
+            (pkg / 'skills/delivery/SKILL.md').write_text('---\nname: andino-delivery\n---\nDelivery\n', encoding='utf-8')
             subprocess.run(['git', 'add', '.'], cwd=remote, check=True)
             subprocess.run(['git', 'commit', '-m', 'initial'], cwd=remote, check=True)
 
@@ -258,7 +264,8 @@ class PortfolioTransactionTests(unittest.TestCase):
             project.mkdir()
             state = root / 'state'
             catalog = load_catalog()
-            catalog.require_capability('andino-workflow').source['repository'] = str(remote)
+            for identifier in ('andino-workflow', 'focus', 'search-first'):
+                catalog.require_capability(identifier).source['repository'] = str(remote)
 
             with patch.object(cli, 'load_catalog', return_value=catalog):
                 result = cli.main([
@@ -273,10 +280,10 @@ class PortfolioTransactionTests(unittest.TestCase):
                 self.assertTrue((skills_root / 'andino-planning/SKILL.md').is_file())
 
                 # New commit retires delivery and adds git-skills
-                shutil.rmtree(remote / 'skills/delivery')
-                (remote / 'skills/git-skills').mkdir(parents=True)
-                (remote / 'skills/git-skills/SKILL.md').write_text('---\nname: andino-git-skills\n---\nGit\n', encoding='utf-8')
-                (remote / 'references/portfolio.json').write_text(json.dumps({
+                shutil.rmtree(pkg / 'skills/delivery')
+                (pkg / 'skills/git-skills').mkdir(parents=True)
+                (pkg / 'skills/git-skills/SKILL.md').write_text('---\nname: andino-git-skills\n---\nGit\n', encoding='utf-8')
+                (pkg / 'references/portfolio.json').write_text(json.dumps({
                     'schema_version': 1, 'installer_protocol': 1,
                     'members': ['planning', 'git-skills'], 'retired': ['delivery'], 'resources': []
                 }), encoding='utf-8')
