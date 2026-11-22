@@ -83,6 +83,13 @@ class LocalSourceTests(unittest.TestCase):
         self.assertIn("Skill source: local folder", output)
         self.assertTrue((self.project / ".agents/skills/andino-workflow/SKILL.md").is_file())
 
+    def test_local_source_works_when_git_opens_only_explicit_bare_repositories(self):
+        # safe.bareRepository=explicit is a Git hardening setting; some terminals set it.
+        with patch.dict(os.environ, {"GIT_CONFIG_PARAMETERS": "'safe.bareRepository=explicit'"}):
+            result, output = self.run_cli("local")
+        self.assertEqual(0, result, output)
+        self.assertTrue((self.project / ".agents/skills/focus/SKILL.md").is_file())
+
     def test_auto_source_uses_github_outside_clone(self):
         with patch.object(cli, "LatestSources", side_effect=RuntimeError("remote")) as remote:
             result, output = self.run_cli("auto", cwd=self.root)

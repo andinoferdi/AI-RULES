@@ -73,6 +73,11 @@ Where setup reads skills from, if you want to choose:
 `git pull`, `python -m pip install .`, then `ai-rules setup`. Skills that the old
 installer put in place are recognized and updated in place.
 
+If setup does not print a `Skill source:` line, your shell is running an older
+copy of `ai-rules`. Run `where.exe ai-rules` (Windows) or `which -a ai-rules`
+(macOS, Linux). If it lists more than one, remove the extra copies or install
+the clone into each of them with `<that copy's python> -m pip install -e <clone>`.
+
 ---
 
 ## How to Prompt
@@ -81,7 +86,7 @@ Prompting with AI-RULES has two layers. **Layer 1** holds your defaults and is w
 
 ### Why this matters: four ways prompts fail
 
-**#1: The agent has to guess what only you know.** Which page, what is wrong now, what you already tried, which of two reasonable approaches you prefer. The agent reads the repo; it cannot read your head. **Fix:** say it in the prompt, in your own words. Naming workflow members such as `andino-planning`, or an order such as "brainstorm, then council, then plan", is fine and is followed as written. Leave them out and `andino-workflow` picks phases from [its routing table](https://github.com/andinoferdi/AI-RULES/blob/andino-workflow/references/routing.md).
+**#1: The agent has to guess what only you know.** Which page, what is wrong now, what you already tried, which of two reasonable approaches you prefer. The agent reads the repo; it cannot read your head. **Fix:** say it in the prompt, in your own words. Naming workflow members such as `andino-planning`, or an order such as "brainstorm, then council, then plan", is fine and is followed as written. Leave them out and `andino-workflow` picks phases from [its routing table](skills/andino-workflow/references/routing.md).
 
 **#2: The skills you named fight each other.** `ponytail` pushes toward the least code. "A detailed miniature airship with seven animation stages" needs more code. Naming both makes the agent split the difference, and the result is worse than either. **Fix:** before you send, check that every named skill pulls in the same direction as the goal.
 
@@ -521,7 +526,7 @@ and permissions.
 
 - AI-RULES-authored code, installer engines, and documentation on `main` are licensed under the **[MIT License](LICENSE)**, copyright 2026 andinoferdi.
 - Third-party methods and inspirations retain their original licenses and attributions:
-  - `andino-workflow` adapts techniques from [Addy Osmani Agent Skills](https://github.com/addyosmani/agent-skills), [Matt Pocock Skills](https://github.com/mattpocock/skills), and [Superpowers](https://github.com/obra/superpowers) ([provenance records](https://github.com/andinoferdi/AI-RULES/blob/andino-workflow/references/legal/provenance.md)).
+  - `andino-workflow` adapts techniques from [Addy Osmani Agent Skills](https://github.com/addyosmani/agent-skills), [Matt Pocock Skills](https://github.com/mattpocock/skills), and [Superpowers](https://github.com/obra/superpowers) ([provenance records](skills/andino-workflow/references/legal/provenance.md)).
   - `focus` credits [Ayoub Ghriss's i-have-adhd](https://github.com/ayghri/i-have-adhd).
   - `search-first` credits [Affaan Mustafa's ECC Search First](https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md).
   - `council` draws inspiration from [Ole Lehmann & Andrej Karpathy's LLM Council](https://github.com/aiwithremy/claude-skills-llm-council).
