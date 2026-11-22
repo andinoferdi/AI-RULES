@@ -11,9 +11,40 @@ on:
 permissions:
   contents: read
 jobs:
-  validate:
+  changes:
+    name: Decide which checks run
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 5
+    outputs:
+      installer: ${{ steps.diff.outputs.installer }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - id: diff
+        shell: bash
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD: ${{ github.sha }}
+        run: |
+          # Schedule, manual dispatch and release calls always run everything.
+          if [ "$EVENT" != pull_request ] && [ "$EVENT" != push ]; then
+            echo installer=true >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          if ! git cat-file -e "$BASE^{commit}" 2>/dev/null; then
+            echo installer=true >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          if git diff --name-only "$BASE" "$HEAD" | grep -qE '^(src/|tests/installer/|pyproject\.toml|packaging/|scripts/(build_release|smoke_release|ci_checks)\.py|\.github/workflows/)'; then
+            echo installer=true >> "$GITHUB_OUTPUT"
+          else
+            echo installer=false >> "$GITHUB_OUTPUT"
+          fi
+
+  skills:
+    name: Skills and validators
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
         with:
@@ -21,18 +52,17 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
-      - name: Point skill refs at the commits pinned on main
-        run: python3 scripts/skill_refs.py pin
+      - name: Fetch the WebBased commit used by the Focus reference check
+        run: git fetch --no-tags origin WebBased
       - name: Install AI-RULES package
         run: python3 -m pip install --editable .
-      - name: Run main checks against pinned skills
-        run: python3 scripts/ci_checks.py
-      - name: Report skill branches waiting for promotion
-        if: always()
-        run: python3 scripts/skill_refs.py drift >> "$GITHUB_STEP_SUMMARY"
+      - name: Run skill checks against skills/
+        run: python3 scripts/ci_checks.py --group skills
 
   installer:
     name: Installer (${{ matrix.os }}, Python ${{ matrix.python }})
+    needs: changes
+    if: needs.changes.outputs.installer == 'true'
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
     strategy:
@@ -52,8 +82,6 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python }}
-      - name: Point skill refs at the commits pinned on main
-        run: python scripts/skill_refs.py pin
       - name: Install AI-RULES package
         run: python -m pip install --editable .
       - name: Test installer regressions
