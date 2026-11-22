@@ -290,6 +290,36 @@ def focus_reference_drift(files, source):
             if name not in files or normalize(files[name]) != text]
 
 
+FOCUS_HEADINGS = ("## Activation and priority", "## Load the bundled language references",
+                  "## Why the shape matters", "## Length budget", "## What to cut",
+                  "## Shape rules", "## When to break the shape", "## Pre-send check")
+FOCUS_MAX_WORDS = 2000
+FOCUS_MIN_PAIRS = 8
+
+
+def focus_contract(files):
+    """Static shape contract for Focus: sections, size, paired examples, loading rule."""
+    text = files.get("SKILL.md", "").replace("\r\n", "\n")
+    parts = text.split("---", 2)
+    body = parts[2] if text.startswith("---") and len(parts) == 3 else text
+    errors = [f"focus: missing section {heading}" for heading in FOCUS_HEADINGS
+              if not re.search(rf"^{re.escape(heading)}$", body, re.M)]
+    words = len(body.split())
+    if words > FOCUS_MAX_WORDS:
+        errors.append(f"focus: SKILL.md body has {words} words (max {FOCUS_MAX_WORDS})")
+    bad = len(re.findall(r"^\s*(?:[-*]\s*)?Bad:", body, re.M))
+    good = len(re.findall(r"^\s*(?:[-*]\s*)?Good:", body, re.M))
+    if bad < FOCUS_MIN_PAIRS or bad != good:
+        errors.append(f"focus: expected at least {FOCUS_MIN_PAIRS} paired Bad/Good examples, found {bad}/{good}")
+    if "read only the file for the" not in " ".join(body.split()):
+        errors.append("focus: per-language reference loading rule missing")
+    if "Restate state on multi-step work" not in body:
+        errors.append("focus: restate-state rule missing")
+    if any("ADHD" in line and "i-have-adhd" not in line for line in body.splitlines()):
+        errors.append("focus: diagnosis wording outside the provenance line")
+    return errors
+
+
 def directory_files(root):
     files, modes = {}, {}
     if not root.is_dir():
@@ -399,6 +429,7 @@ def main():
             if skill == "focus":
                 files, modes = directory_files(args.focus_dir) if args.focus_dir else ref_files(ref)
                 errors.extend(package_files(files, skill, modes))
+                errors.extend(focus_contract(files))
                 if args.webbased_ref:
                     source = {name: git("show", f"{args.webbased_ref}:{name}") for name in (
                         "README.md", "put-in-your-projects/chat-rules.md",

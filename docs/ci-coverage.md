@@ -64,7 +64,7 @@ rejects unsafe paths and non-regular Git entries.
 | `andino-workflow` | Package structure/links; capability registry and evaluation schemas; deterministic regression tests | Agent routing, actual procedure use and cross-host behavior |
 | `ai-codebase-rescue` | Package structure/links and evaluation schemas | Quality of a real rescue investigation |
 | `skripsi-skill` | Package structure/links, evaluation schemas and requirement-ownership audit | Research validity and substantive agent behavior |
-| `focus` | Package structure/links, evaluation schemas and bundled-reference comparison with `WebBased` | Whether generated responses follow the communication contract |
+| `focus` | Package structure/links, evaluation schemas, bundled-reference comparison with `WebBased`, and the static shape contract (required sections, at most 2,000 words, at least 8 paired Bad/Good examples, per-language reference loading, restate-state rule) | Whether generated responses follow the communication contract |
 | `search-first` | Package structure/links, evaluation schemas and deterministic contract regressions | Real research quality and tool use |
 | `council` | Package structure/links, evaluation schemas and installer regressions | Independent advice, meaningful review and decision quality |
 | `natural-writing` | Package structure/links, evaluation schemas and deterministic package regressions | Naturalness, audience fit and preservation of meaning in generated prose |

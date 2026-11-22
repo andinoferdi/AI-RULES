@@ -6,7 +6,50 @@ from unittest.mock import patch
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from validate_skills import package_files, eval_cases, focus_reference_drift, directory_files
+from validate_skills import package_files, eval_cases, focus_reference_drift, directory_files, focus_contract, FOCUS_HEADINGS
+
+
+class FocusContractTest(unittest.TestCase):
+    def setUp(self):
+        pairs = "".join(f"- Bad: b{i}\n- Good: g{i}\n" for i in range(8))
+        sections = "\n".join(f"{heading}\n\nText.\n" for heading in FOCUS_HEADINGS)
+        self.skill = ("---\nname: focus\ndescription: Test\n---\n\n# Focus\n\n" + sections
+                      + "\nRead only the file for the\nreply language.\n"
+                      + "**Restate state on multi-step work.**\n" + pairs
+                      + "Adapted from [i-have-adhd](https://github.com/ayghri/i-have-adhd).\n")
+
+    def errors(self, skill):
+        return focus_contract({"SKILL.md": skill})
+
+    def test_complete_contract_passes(self):
+        self.assertEqual([], self.errors(self.skill.replace("Read only", "read only")))
+
+    def test_missing_section_rejected(self):
+        skill = self.skill.replace("read only", "read only").replace("## When to break the shape\n", "")
+        self.assertIn("focus: missing section ## When to break the shape", self.errors(skill))
+
+    def test_word_ceiling_rejected(self):
+        skill = self.skill.replace("Read only", "read only") + "word " * 2001
+        self.assertTrue(any("words (max 2000)" in e for e in self.errors(skill)))
+
+    def test_unpaired_example_rejected(self):
+        skill = self.skill.replace("Read only", "read only").replace("- Good: g7\n", "")
+        self.assertTrue(any("8/7" in e for e in self.errors(skill)))
+
+    def test_too_few_pairs_rejected(self):
+        skill = self.skill.replace("Read only", "read only").replace("- Bad: b7\n- Good: g7\n", "")
+        self.assertTrue(any("7/7" in e for e in self.errors(skill)))
+
+    def test_missing_language_rule_rejected(self):
+        self.assertIn("focus: per-language reference loading rule missing", self.errors(self.skill))
+
+    def test_missing_restate_rule_rejected(self):
+        skill = self.skill.replace("Read only", "read only").replace("Restate state", "Repeat")
+        self.assertIn("focus: restate-state rule missing", self.errors(skill))
+
+    def test_diagnosis_wording_rejected(self):
+        skill = self.skill.replace("Read only", "read only") + "The reader has ADHD.\n"
+        self.assertIn("focus: diagnosis wording outside the provenance line", self.errors(skill))
 
 
 class FocusReferenceTest(unittest.TestCase):
