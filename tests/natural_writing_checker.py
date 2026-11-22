@@ -24,5 +24,10 @@ def load_checker():
     module = importlib.util.module_from_spec(spec)
     # dataclasses look the module up in sys.modules while the class is created (Python 3.12).
     sys.modules[spec.name] = module
-    spec.loader.exec_module(module)
+    # Keep skills/ free of __pycache__ folders.
+    previous, sys.dont_write_bytecode = sys.dont_write_bytecode, True
+    try:
+        spec.loader.exec_module(module)
+    finally:
+        sys.dont_write_bytecode = previous
     return module

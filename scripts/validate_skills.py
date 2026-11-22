@@ -329,7 +329,8 @@ def directory_files(root):
         raise ValueError(f"missing package directory: {root}")
     def visit(directory):
         for path in directory.iterdir():
-            if path == root / ".git":
+            # Python bytecode caches are gitignored and never committed or installed.
+            if path == root / ".git" or path.name == "__pycache__" or path.suffix in (".pyc", ".pyo"):
                 continue
             name = path.relative_to(root).as_posix()
             if path.is_symlink() or getattr(path, "is_junction", lambda: False)():
