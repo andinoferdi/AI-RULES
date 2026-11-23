@@ -116,6 +116,18 @@ def fixture_contents(identity):
     if identity == 'search-first-providers':
         contents['tool-inventory.txt'] = ('SIMULATED saved metadata, not callable tools: native WebSearch '
                                          'and configured search MCP offer public search. No results supplied.\n')
+    if identity == 'search-first-negative-scope':
+        contents['project.md'] = ('Python 3.12; Markdown notes linked with [[wikilinks]]; '
+                                  'no dependency changes authorized. Research only.\n')
+        contents['notes/index.md'] = '# Index\nSee [[setup]] and [[missing-page]].\n'
+        contents['notes/setup.md'] = '# Setup\nBack to [[index]].\n'
+    if identity == 'search-first-adopt-default':
+        contents['requirements.txt'] = 'httpx==0.28.1\n'
+        contents['project.md'] = ('Python 3.12; synchronous HTTP client; connection-error retries required; '
+                                  'no other retry behavior needed. Research only.\n')
+    if identity == 'search-first-skip':
+        contents['utils.py'] = 'def clamp(value, low, high):\n    return max(low, min(high, value))\n'
+        contents['project.md'] = 'Python 3.12; no slug library installed.\n'
     if identity == 'single-lifecycle':
         contents['parser.py'] = 'def parse_items(value):\n    return [part.strip() for part in value.split(",")]\n'
         contents['regressions.log'] = ('Three accepted parser patches later failed: quoted commas split '

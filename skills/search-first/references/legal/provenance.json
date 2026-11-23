@@ -45,12 +45,16 @@
   ],
   "upstream_snapshots": {
     "mattpocock/skills": "49dd158d1076134a641b33efb035946536778336",
-    "addyosmani/agent-skills": "aeac41d4d005999432bb7312f7ff06383a91d59d"
+    "addyosmani/agent-skills": "aeac41d4d005999432bb7312f7ff06383a91d59d",
+    "shimo4228/search-first": "2d49527a72bd1b2eb86d910c125b12883ddca775",
+    "robertnowell/deep-research": "feb53f298ef8965ad059f742bc5a57f541c65ff4",
+    "ericgandrade/claude-superskills": "394587c7cb1fb249d02326c96d9735a0d5969b23"
   },
   "adaptations": [
     "No native entrypoints or aliases for absorbed resources; original source identifiers in provenance are historical only.",
     "Applicable entrypoint constraints retained in nonnative contracts; no required parent lifecycle.",
-    "Full research guides/resources retained; local links relocated, workflow-only checker claims removed, version chain and cache validator identity made explicit."
+    "Full research guides/resources retained; local links relocated, workflow-only checker claims removed, version chain and cache validator identity made explicit.",
+    "2026-11 upgrade: question-type stop rules, step 0 question statement, Adopt default with four stop conditions, Quick/Full modes, report shape and skip line adapted from shimo4228/search-first skills/search-first/SKILL.md; source tiers, red flags and confidence labels from robertnowell/deep-research skills/deep-research/references/source-evaluation.md; fact-versus-inference distinction from ericgandrade/claude-superskills skills/deep-research/references/evidence-ledger.md. Rewritten for host-agnostic use: no researcher agents, hooks, fixed paths or mandatory files."
   ],
   "cross_workflow_resolution": "When a workflow-owned method is needed, resolve its documented path relative to the actual installed workflow root from the host-selected workflow entry; sibling-relative paths must not be used. No workflow read or activation is required merely to select these resources."
 }

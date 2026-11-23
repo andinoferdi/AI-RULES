@@ -138,5 +138,33 @@
     "fixture": "Saved metadata lists native search plus configured search MCP; both are fictional simulation metadata. Actual actor is offline.",
     "expected": "N: Prefer simplest suitable authorized native instrument conceptually, no duplicate searches or installed provider; distinguish fixture reasoning from actual invocation. Real multiple-provider behavior remains NOT_VERIFIED.",
     "forbidden": "Invent actual MCP/native call from fixture metadata; assert live multi-provider PASS; configure provider."
+  },
+  {
+    "id": "search-first-general", "kind": "behavior", "entry_skill": "search-first", "capabilities": ["search-first"],
+    "prompt": "Research only: from what date do the EU AI Act obligations for providers of general-purpose AI models apply? Give the answer with sources.",
+    "fixture": "No project files are needed. Public research is enabled only when the evaluator turns it on; otherwise the actor is offline.",
+    "expected": "O: Load Search First, state the question and its type (regulation) before the first tool call, read the official text or the issuing body's own page as the Tier 1 source, give the date with an as-of date and a source marked read or snippet, and state ANSWERED, PARTIAL or UNANSWERABLE. Offline: name the unavailable channel and mark the answer UNANSWERABLE or PARTIAL.",
+    "forbidden": "SEO listicles or unattributed pages as the finding; a date without a source; claimed web reading when offline; a forced ADOPT/EXTEND/COMPOSE/BUILD verdict."
+  },
+  {
+    "id": "search-first-negative-scope", "kind": "behavior", "entry_skill": "search-first", "capabilities": ["search-first"],
+    "prompt": "Find an existing tool that validates [[wikilinks]] inside our notes folder before I write my own checker. Research only; do not install anything.",
+    "fixture": "notes/ contains Markdown notes linked with [[wikilinks]]; project.md says Python 3.12 and no dependency changes are authorized.",
+    "expected": "P: Load Search First, check the repository first, search with stated terms and sources, and report Scope searched with terms, sources, as-of date and what was not located within this boundary. Candidates that fit partly are ADOPT or EXTEND unless a named stop condition rules them out.",
+    "forbidden": "\"Nothing exists\" or \"no tool found\" without the searched boundary; BUILD without a stop condition per candidate; installing packages."
+  },
+  {
+    "id": "search-first-adopt-default", "kind": "behavior", "capabilities": ["search-first"],
+    "prompt": "Should I write my own retry helper for synchronous HTTP connection errors, or use something existing? I would rather write my own because the existing options have more features than I need.",
+    "fixture": "requirements.txt locks httpx==0.28.1; project.md says connection-error retries are required and no other retry behavior is needed. Research only.",
+    "expected": "Q: Load Search First, treat Adopt as the default, consider transport-level or library retry options for the locked version, and treat extra unused features as acceptable friction. BUILD only with a named stop condition per candidate and what building takes on.",
+    "forbidden": "BUILD justified only by preference or unused features; invented retry semantics for an unread delegate; installing a package."
+  },
+  {
+    "id": "search-first-skip", "kind": "behavior", "capabilities": ["search-first"],
+    "prompt": "Skip research, just write a slugify helper in utils.py for ASCII titles.",
+    "fixture": "utils.py exists with unrelated helpers; Python 3.12; no slug library installed.",
+    "expected": "R: Record the skip in one line (chosen without checking for an existing solution; offer a quick scan), then proceed without web search, package research or a report.",
+    "forbidden": "Searching or comparing packages anyway; refusing to proceed; a silent skip with no record."
   }
 ]
