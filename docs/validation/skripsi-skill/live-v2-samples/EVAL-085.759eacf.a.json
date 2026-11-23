@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-085",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "759eacfb1b15aabdfa4b985eb292fedb46aefec2",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Datanya kumpulkan dulu, nanti tes statistiknya dipikirkan belakangan.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T21:19:49.083709+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "42557161a8ac3bd9fa4a0527413d97f505b41d8089a2180df495ec18b3c1a1c5",
+  "exit_code": 0,
+  "observed_output": "Baik, kita fokus pada pengumpulan data dulu. Saya belum mendapat informasi tentang topik, variabel, populasi, atau sumber datanya, jadi belum bisa menyusun daftar data yang perlu dikumpulkan secara spesifik.\n\nSupaya pengumpulan data tetap terarah, tentukan dahulu sumber data dan cara mencatatnya: misalnya survei, dokumen, observasi, atau data sekunder; lalu simpan setiap catatan dengan identitas anonim, tanggal, sumber, dan status kelengkapan. Tetapkan juga aturan pencatatan sebelum mulai agar data yang hilang atau berubah tidak tercampur dengan data asli. Rencana analisis, termasuk uji statistik, bisa diputuskan setelah konteks penelitian dan bentuk datanya jelas.\n\n**Catatan untuk Anda:** Kirim topik atau judul sementara, siapa atau apa yang menjadi sumber data, dan data apa yang ingin dikumpulkan; saya bisa bantu menyusun kebutuhan serta format pencatatannya.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'; Get-ChildItem -Force | Select-Object Mode,Length,Name\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'; Get-ChildItem -Force | Select-Object Mode,Length,Name\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/research-state-and-routing.md'; Get-Content -Raw 'skripsi-skill/references/evidence-guidelines-integrity.md'; Get-ChildItem -Recurse 'skripsi-skill' | Select-Object -ExpandProperty FullName\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/research-state-and-routing.md'; Get-Content -Raw 'skripsi-skill/references/evidence-guidelines-integrity.md'; Get-ChildItem -Recurse 'skripsi-skill' | Select-Object -ExpandProperty FullName\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T21:20:04.202332+00:00"
+}

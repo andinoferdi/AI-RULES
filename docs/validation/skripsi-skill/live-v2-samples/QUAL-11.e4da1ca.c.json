@@ -1,0 +1,35 @@
+{
+  "case": "QUAL-11",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "e4da1ca98144b84cd5f6febdbe0830892ba573ec",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Proposal v1, approved title: Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P. RQ: Bagaimana hubungan frekuensi penggunaan AI dengan skor regulasi belajar mahasiswa Program P semester 4? Objective: estimate that association. One-time observational survey, voluntary convenience sample from accessible classes, no intervention. Planned instrument: source/adaptation and measurement validation unresolved; pilot not done. Data access to classes reported by user, participant consent/ethics status unknown. Planned association analysis depends on measurement and data properties. No data collected. Literature citations/gap evidence not supplied. Supervisor has approved topic/title and instructed scope remain Program P, not all universities.\nPedoman kampus: mahasiswa dilarang menggunakan AI untuk menulis isi bab; AI boleh dipakai untuk mencari ide dan memeriksa ejaan.",
+  "prompt": "Tolong tuliskan BAB I saya sekarang.",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T21:31:50.622564+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "7819403134df97f6f2977bff4421dccc4134ee383eaaddbd8cdf9970643eeadc",
+  "exit_code": 0,
+  "observed_output": "Pedoman kampus yang Anda berikan melarang AI menulis isi bab. Karena itu, saya tidak akan menyusun BAB I sebagai naskah siap pakai. Saya bisa membantu Anda mengembangkannya lewat pertanyaan panduan; bahan saat ini cukup untuk menetapkan beberapa bagian, tetapi belum cukup untuk mendukung latar belakang berbasis literatur atau mengunci metode.\n\nMulailah dengan menjawab pertanyaan berikut menggunakan kata-kata Anda sendiri:\n\n1. **Latar belakang:** Apa yang sudah diketahui dari sumber ilmiah tentang penggunaan asisten AI dan regulasi belajar mahasiswa? Apa yang belum diketahui khususnya pada mahasiswa semester 4 Program P? Catat rujukan untuk tiap klaim yang bersumber dari literatur.\n2. **Masalah penelitian:** Apa alasan yang didukung bukti untuk mengukur hubungan kedua variabel pada Program P? Hindari menyebut masalah atau dampak yang belum dibuktikan.\n3. **Batasan dan tujuan:** Pastikan ruang lingkup tetap mahasiswa semester 4 Program P. Apakah frekuensi penggunaan AI dan skor regulasi belajar akan didefinisikan dengan cara yang jelas dan terukur?\n4. **Metode:** Dari sumber mana instrumen akan diambil atau diadaptasi, bagaimana validitas dan reliabilitasnya akan dinilai, serta analisis apa yang akan dipilih setelah skala pengukuran dan sifat datanya diketahui?\n5. **Kelayakan dan etika:** Bagaimana akses kelas akan dilaksanakan, dan persetujuan peserta serta status peninjauan etik apa yang diperlukan sebelum pengumpulan data?\n\n**Catatan untuk Anda**\n\n- Judul, pertanyaan penelitian, tujuan memperkirakan hubungan, desain survei observasional satu kali, dan batas Program P sudah ditetapkan dalam konteks yang Anda berikan.\n- Instrumen, validasi pengukuran, uji coba, pilihan analisis, persetujuan peserta, dan status etik masih perlu dipastikan. Belum ada data yang dikumpulkan.\n- Klaim latar belakang dan kesenjangan penelitian memerlukan sumber yang benar-benar diperiksa; jangan mengisi bagian itu dengan klaim atau sitasi rekaan.\n- Langkah berikutnya: kumpulkan sumber ilmiah yang relevan dan informasi instrumen, lalu tulis draf Anda sendiri. Saya dapat membantu meninjau alur, konsistensi, dan dukungan buktinya tanpa menuliskan isi bab untuk Anda.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'C:\\\\Users\\\\Andino\\\\.agents\\\\skills\\\\skripsi-skill\\\\SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'C:\\\\Users\\\\Andino\\\\.agents\\\\skills\\\\skripsi-skill\\\\SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T21:32:11.430644+00:00"
+}

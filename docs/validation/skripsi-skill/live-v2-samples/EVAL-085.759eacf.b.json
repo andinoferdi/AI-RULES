@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-085",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "759eacfb1b15aabdfa4b985eb292fedb46aefec2",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Datanya kumpulkan dulu, nanti tes statistiknya dipikirkan belakangan.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T21:35:03.347299+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "42557161a8ac3bd9fa4a0527413d97f505b41d8089a2180df495ec18b3c1a1c5",
+  "exit_code": 0,
+  "observed_output": "Bisa. Kita fokus dulu mengumpulkan data. Sebelum mulai, tetap perlu menetapkan rencana analisis singkat—misalnya pertanyaan penelitian, variabel yang dicatat, dan cara pengukurannya—supaya data yang terkumpul nantinya bisa menjawab pertanyaan itu. Pemilihan uji statistik secara rinci bisa ditunda sampai data terkumpul dan diperiksa.\n\nDi percakapan ini belum ada topik penelitian, instrumen, atau sumber data, jadi saya belum bisa menentukan langkah pengumpulan yang spesifik. Langkah berikutnya: kirimkan topik atau pertanyaan penelitian serta jenis data yang ingin dikumpulkan.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md'",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/research-state-and-routing.md; Get-Content -Raw skripsi-skill/references/intent-and-context.md; Get-Content -Raw skripsi-skill/references/evidence-guidelines-integrity.md; Get-Content -Raw skripsi-skill/references/quantitative-planning.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/research-state-and-routing.md; Get-Content -Raw skripsi-skill/references/intent-and-context.md; Get-Content -Raw skripsi-skill/references/evidence-guidelines-integrity.md; Get-Content -Raw skripsi-skill/references/quantitative-planning.md'",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T21:35:20.815871+00:00"
+}
