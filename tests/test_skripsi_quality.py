@@ -8,7 +8,20 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 from import_skripsi_evals import parse_cases
 from validate_skripsi_traceability import audit
-from run_skripsi_smoke import make_prompt
+from run_skripsi_smoke import make_prompt, runtime_names
+
+
+class RuntimeLayoutTest(unittest.TestCase):
+    def test_subdir_strips_prefix_and_ignores_other_files(self):
+        names = ['README.md', 'skills/skripsi-skill/SKILL.md', 'skills/skripsi-skill/references/a.md',
+                 'skills/skripsi-skill-extra/SKILL.md']
+        self.assertEqual(runtime_names(names, 'skills/skripsi-skill'),
+                         [('skills/skripsi-skill/SKILL.md', 'SKILL.md'),
+                          ('skills/skripsi-skill/references/a.md', 'references/a.md')])
+
+    def test_no_subdir_keeps_branch_layout(self):
+        self.assertEqual(runtime_names(['SKILL.md', 'references/a.md'], ''),
+                         [('SKILL.md', 'SKILL.md'), ('references/a.md', 'references/a.md')])
 
 
 class SRSImportTest(unittest.TestCase):

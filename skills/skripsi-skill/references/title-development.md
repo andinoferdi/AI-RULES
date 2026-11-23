@@ -19,3 +19,5 @@ Check causal words such as 'meningkatkan', 'memengaruhi', 'menyebabkan' and 'efe
 Before recommending, check clarity, problem/RQ/objective alignment, scope, concept fit, method fit, necessity of context, feasibility, traceability, readability and institutional fit. Explain tradeoffs and remaining evidence, not arbitrary quality scores. Rationale comes from existing state: problem, represented question, selected concept, object/context, method if shown, intended contribution and scope.
 
 Never guarantee ACC, supervisor preference or no future revisions. For rejection, inspect actual feedback and determine whether it concerns focus, scope, concept, method, contribution, convention or wording. Revise the underlying state first if necessary, propagate material changes and then formulate the title. If only wording is requested, preserve the underlying study.
+
+Generic shells such as 'Pengaruh X terhadap Y', 'Analisis X' or 'Studi tentang X dan Y' are advisory flags, not errors. Name what the shell hides (design, unit, context or the relation actually estimated) and offer a sharper wording that another study could not share. Never silently rewrite an approved title.

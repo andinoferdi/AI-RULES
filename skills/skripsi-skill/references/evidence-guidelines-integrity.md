@@ -16,7 +16,7 @@ Search snippet or metadata supports discovery only; abstract supports screening 
 
 Never fabricate articles, sources, authors, citations, DOI/URL, datasets, participant/interview evidence, completed surveys/experiments, statistics or statistical outputs, findings/results, or supervisor instructions. Planning a survey, instrument, interview guide, experiment or analysis remains allowed. Illustrations must be unmistakably hypothetical and cannot enter a real finding registry or thesis as collected evidence.
 
-When evidence is missing, name the affected claim, required artifact, impact on drafting/inference and next feasible action. Offer an outline, analysis plan or bounded supported text instead of invented empirical prose. If retrieval/tools are unavailable, disclose what was not checked; a proposed search is not an executed search.
+When evidence is missing, name the affected claim, required artifact, impact on drafting/inference and next feasible action. Draft the supported text and mark each gap inside it with the SKILL.md placeholders (`[PERLU RUJUKAN: …]`, `[PERLU DATA: …]`, `[PERLU KEPUTUSAN: …]`, `[PERLU VERIFIKASI: …]`); offer an outline or analysis plan only when nothing is supported, never invented empirical prose. Check reference existence and claim support with [citation verification](citation-verification.md). If retrieval/tools are unavailable, disclose what was not checked; a proposed search is not an executed search.
 
 ## Integrity throughout research
 

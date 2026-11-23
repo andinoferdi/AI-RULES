@@ -20,7 +20,7 @@ For example, a literature synthesis request under Andino returns the synthesis, 
 
 ## Companion skills
 
-`natural-writing` is an optional, separately installed prose specialist. Skripsi Skill decides research requirements, evidence standards and academic validity; Natural Writing only refines how supported content is expressed (register, cohesion, terminology consistency, natural Indonesian or English). Search First supplies research discovery when selected, Focus shapes the surrounding communication, and Andino keeps the lifecycle.
+`natural-writing` is an optional, separately installed prose specialist. Skripsi Skill owns research requirements, evidence standards, academic validity and thesis-specific craft (chapter contracts, synthesis, review); Natural Writing only refines how supported content is expressed (register, cohesion, terminology consistency, natural Indonesian or English). Search First supplies research discovery when selected, Focus shapes the surrounding communication, and Andino keeps the lifecycle.
 
 When both are active, settle content first, then prose. Natural Writing must preserve verified source meaning, methodology, approved decisions, citations and bibliographic identity, campus format, disciplinary terms, null or uncertain findings, limitations and required depth. A questionable claim is flagged for verification, not corrected by assumption. Do not copy its methodology into this skill; without it, write carefully under these integrity rules and do not claim it was used.
 

@@ -13,10 +13,10 @@ BAB II should synthesize source evidence, define relevant concepts/theory and ju
 ## Drafting gate
 
 - READY: evidence and major decisions suffice for the requested section.
-- PARTIALLY_READY: draft supported parts and visibly mark missing evidence/decisions, with exact next action.
-- NOT_READY: a material missing link prevents meaningful drafting; offer an argument outline and evidence plan rather than generic paragraphs presented as a completed chapter.
+- PARTIALLY_READY: draft every supported part in full and mark missing evidence or decisions with placeholders inside the text (SKILL.md Output contract); give the exact next action in the closing note.
+- NOT_READY: no part of the requested section is supported. Say so plainly, give the section structure and the exact evidence or decision needed; do not present generic paragraphs as a completed chapter.
 
-These are section-readiness outcomes. The researcher chooses material scope/design; readiness is not supervisor approval. Use [title/proposal helpers](../assets/title-proposal-templates.md) only for the requested artifact.
+These are section-readiness outcomes for internal judgment; tell the student what they mean in plain words. The researcher chooses material scope/design; readiness is not supervisor approval. Write the section with the [BAB I–III writing contracts](writing-bab-1-3.md). Use [title/proposal helpers](../assets/title-proposal-templates.md) only for the requested artifact.
 
 ## Supervisor expectations and self-assessment
 
