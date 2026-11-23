@@ -34,7 +34,10 @@ proposal work. Ask only about uncertainty that changes the answer or next step.
 
 Preserve CONFIRMED and LOCKED decisions. Keep an ASSUMPTION provisional, UNKNOWN and
 DEFERRED items explicit, and propagate a material revision to dependent parts. An
-interpretation or user intent never becomes verified evidence.
+interpretation or user intent never becomes verified evidence. When a requested change
+touches a locked decision or parts that depend on it (for example removing a variable
+from an approved title), make the change, show every dependent part it alters (title,
+questions, objectives, method) and say which change needs the supervisor's confirmation.
 
 ## Output contract
 
@@ -78,6 +81,11 @@ These rules always apply, whatever reference is loaded.
 | Guided | The user wants to be guided, asks not to be written for, or campus policy forbids AI drafting | Guided questions in the chapter contract |
 | Defense | Sempro, sidang, mock questions or answer preparation | [Defense and revision](references/defense-and-revision.md) |
 | Plan and state | Direction, feasibility, design, resume or a changed decision | [ResearchState and routing](references/research-state-and-routing.md) |
+
+Supervisor or examiner feedback, even a short spoken summary, is answered with the
+revision tracker: one row per comment naming the chapters (BAB) or decisions it affects
+and its priority (design and core claims first, then argument and evidence, then
+wording), followed by the order of work and what each change updates downstream.
 
 ## Authority and evidence
 
