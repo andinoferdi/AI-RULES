@@ -101,9 +101,13 @@ without `--allow-historical`; missing unsampled cases remain visible.
 
 ## Search First
 
-`search-first.json` specifies ten A-J cases: new feature, existing implementation,
+`search-first.json` specifies the A-J cases (new feature, existing implementation,
 trivial edit, unfamiliar SDK, failed approach/alternatives, unknown bug, offline
-research, permission boundaries, standalone use and automatic Andino selection.
+research, permission boundaries, standalone use and automatic Andino selection),
+the online-research cases through N, and four report and decision cases: general
+factual research with answer status (O), negative scope recorded as "not located
+within this boundary" (P), Adopt as the default with named stop conditions (Q) and
+the one-line skip record (R).
 The same capability runner materializes their fixtures and hides the oracle fields.
 Use `--case` to select a case; `--web-search` is opt-in for public documentation.
 Keep the offline case offline. Supply only Search First in the standalone catalog;

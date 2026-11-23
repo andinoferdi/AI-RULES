@@ -42,6 +42,7 @@ REQUIRED_CASES = set('debugging-superpowers-route no-full-superpowers-bootstrap 
 ADDITIONAL_CASES = {'idea-refine-route', 'interview-material-only'}
 SEARCH_FIRST_CASES = set('search-first-feature search-first-existing search-first-trivial search-first-sdk search-first-alternatives search-first-unknown-bug search-first-offline search-first-permission search-first-standalone search-first-andino'.split())
 SEARCH_FIRST_CASES |= set('search-first-online search-first-auto-online search-first-github search-first-community search-first-denied search-first-injection search-first-sensitive search-first-browser search-first-stale search-first-providers'.split())
+SEARCH_FIRST_CASES |= set('search-first-general search-first-negative-scope search-first-adopt-default search-first-skip'.split())
 NATURAL_WRITING_CASES = set('natural-writing-rewrite natural-writing-not-needed natural-writing-artifact-boundary natural-writing-academic-companion'.split())
 READINESS_CASES = set('crud-uncertain-id uncertain-website-en crud-technical-confusion-id explanation-repair-id crud-delegated-id crud-accepted-spec inventory-material-req minor-detail-default unknown-bug-id explicit-internal-method-id ui-accepted-direction code-quality-comments thesis-status-id explicit-exclusion-id resume-checkpoint-id completion-verify-id'.split())
 EVAL_CASES = REQUIRED_CASES | ADDITIONAL_CASES | SEARCH_FIRST_CASES | NATURAL_WRITING_CASES | READINESS_CASES | {'single-lifecycle', 'research-specialist-owner'}

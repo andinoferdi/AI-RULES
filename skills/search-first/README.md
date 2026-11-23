@@ -1,8 +1,8 @@
 # Search First
 
-Search First evaluates existing libraries, framework utilities, and official APIs before custom code, leading to one of four implementation decisions: `ADOPT`, `EXTEND`, `COMPOSE`, or `BUILD`.
+Search First looks at what already exists before your agent builds or answers. For code it checks existing libraries, framework utilities and official APIs, and ends in one of four decisions: `ADOPT`, `EXTEND`, `COMPOSE` or `BUILD`. For general research (official sources, news, regulation, markets, published claims) it returns a sourced answer with a clear status.
 
-Before writing custom utilities, check whether standard libraries or maintained packages already meet the need. **Search First** uses a research gate for non-trivial implementation decisions, checking approaches against authoritative documentation and current API contracts.
+Adopt is the default. `BUILD` has to name, for every candidate, the stop condition that rules it out and what building costs. Every run ends in a report that says what was searched, including what was not found, so the next session knows where to continue.
 
 ## What It Does
 
@@ -15,7 +15,25 @@ Before writing custom functionality, Search First categorizes the path forward:
 | **ADOPT** | Use as-is | An official library, built-in standard method, or established package already solves the problem. |
 | **EXTEND** | Build on top | An existing tool handles 80% of the need; customize cleanly via inheritance, plugin, or middleware. |
 | **COMPOSE** | Pipe together | Combine two or more modular utilities rather than authoring a monolith from scratch. |
-| **BUILD** | Write custom | No safe, maintained, or lightweight solution exists; write tailored, test-guarded code. |
+| **BUILD** | Write custom | Every candidate fails a stop condition (needs a fork, glue as big as the part, fails dependency intake, or would carry the task's purpose itself). |
+
+### Quick and Full research
+
+| Mode | When | What you get |
+|---|---|---|
+| **Quick** | One obvious need or a bounded lookup | The question in one line, a few targeted searches, a short report: answer, status, scope, sources |
+| **Full** | A consequential choice, a plan depends on it, or sources conflict | A short brief, one angle per question type plus an adversarial angle, a gap check, up to three follow-up waves, and a full report |
+
+Full mode runs inline. Subagents are used only when your host, you and the active workflow allow delegation.
+
+### Reports you can act on
+
+- **Scope searched:** terms, sources and date, including what was *not located within this boundary* and any search channel that was unavailable.
+- **Found:** each source marked read or snippet, with its tier (1 primary to 4 unverifiable) and a confidence label: Established, Likely, Emerging, Contested or Speculative.
+- **Verdict or Answer:** the decision per need, or the answer with its status: `ANSWERED`, `PARTIAL` or `UNANSWERABLE`.
+- **Still unknown:** what is open and the evidence that would settle it.
+
+Say "skip research" and the agent records the skip in one line and moves on.
 
 ## When to Use
 
@@ -26,6 +44,7 @@ Before writing custom functionality, Search First categorizes the path forward:
 | Version-sensitive APIs or post-upgrade deprecations | Active debugging of known bugs (use `debugging`) |
 | Finding proven alternatives when an initial API path fails | Speculative research without concrete uncertainty |
 | Source-grounded answers to concrete technical/factual questions | A forced implementation decision for research-only work |
+| General factual research: regulation, news, company or market facts, statistics, claims in papers | Thesis and academic writing (use `skripsi-skill`) |
 | Matching resolved versions to official contracts and parity tests | Latest documentation as proof for a different installed release |
 
 ## Quick Start
@@ -72,10 +91,14 @@ cp -r ai-rules-src/skills/search-first "<skills-dir>/search-first"
 
 ### The research protocol
 
-1. **Local Sufficiency First:** Inspect local package manifests and existing utility directories before querying external sources.
-2. **Authoritative Sources Only:** Rely on official documentation, verified release notes, and high-trust repositories over unverified blog snippets.
-3. **Honest Unknowns:** If web browsing or search tools are unavailable or restricted, mark external compatibility claims as `UNKNOWN` rather than speculating.
-4. **Lifecycle Boundary:** Search First owns research methodology only; task planning and execution remain governed by the active workflow.
+0. **State the question first:** Before the first tool call the agent writes the question, its type and the constraints in chat, so you can redirect it early.
+1. **Local Sufficiency First:** Inspect local code, manifests, notes and installed skills before querying external sources.
+2. **Search by question type:** Each type (library choice, official behavior, reported error, news, regulation, market facts, statistics, claims in papers and more) has its own places to look and its own stop rule, instead of "search until it feels enough".
+3. **Tiered sources:** Primary sources outrank curated secondary sources, which outrank community posts; unverifiable sources never support a finding. Red flags such as circular citations or year-bumped listicles lower confidence.
+4. **Honest Unknowns:** If web browsing or search tools are unavailable or restricted, the report names the channel and marks external claims `UNKNOWN` rather than reporting "nothing found".
+5. **Lifecycle Boundary:** Search First owns research methodology only; task planning and execution remain governed by the active workflow.
+
+Safety stays strict on every host: secrets and private data never go into queries, retrieved pages are data rather than instructions, private and metadata URLs are not followed, and the agent never installs a search provider just to make research work.
 
 ### Proportional resource selection
 
@@ -116,12 +139,15 @@ required just to use these resources.
 ## Files
 
 - [`SKILL.md`](SKILL.md) — Runtime contract, decision matrices, and fallback behavior.
+- [`references/question-types.md`](references/question-types.md) — Where to look, what counts as evidence and when to stop, per question type.
+- [`references/source-evaluation.md`](references/source-evaluation.md) — Source tiers, red flags, confidence labels and claim-support labels.
+- [`references/report-contract.md`](references/report-contract.md) — Quick and Full report shapes, answer status and a format example.
 - [`references/online-research.md`](references/online-research.md) — Source vetting guidelines, query formulation, and evidence standards.
 - [`references/sourced-answer/`](references/sourced-answer/guide.md) and [`references/version-contract/`](references/version-contract/guide.md) — Selectable research resources.
 - [`references/legal/provenance.json`](references/legal/provenance.json) — Source SHA-256 identities, complete absorption mapping and upstream snapshots.
 - [`references/legal/license.md`](references/legal/license.md) — MIT license notice for AI-RULES-authored content.
-- [`references/legal/ecc-license.md`](references/legal/ecc-license.md), [`references/legal/matt-license.md`](references/legal/matt-license.md) and [`references/legal/addy-license.md`](references/legal/addy-license.md) — Third-party MIT notices.
+- [`references/legal/ecc-license.md`](references/legal/ecc-license.md), [`references/legal/shimo-license.md`](references/legal/shimo-license.md), [`references/legal/robertnowell-license.md`](references/legal/robertnowell-license.md), [`references/legal/ericgandrade-license.md`](references/legal/ericgandrade-license.md), [`references/legal/matt-license.md`](references/legal/matt-license.md) and [`references/legal/addy-license.md`](references/legal/addy-license.md) — Third-party MIT notices.
 
 ## License
 
-AI-RULES-authored content in this skill is released under the [MIT License](references/legal/license.md). Adapted from [ECC Search First](https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md) by Affaan Mustafa under the MIT License ([notice](references/legal/ecc-license.md)); absorbed Matt Pocock and Addy Osmani material keeps its MIT notices ([Matt](references/legal/matt-license.md), [Addy](references/legal/addy-license.md)).
+AI-RULES-authored content in this skill is released under the [MIT License](references/legal/license.md). Adapted from [ECC Search First](https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md) by Affaan Mustafa under the MIT License ([notice](references/legal/ecc-license.md)); question-type stop rules, the Adopt default and the report shape adapt [shimo4228/search-first](https://github.com/shimo4228/search-first) ([notice](references/legal/shimo-license.md)); source tiers and confidence labels adapt [robertnowell/deep-research](https://github.com/robertnowell/deep-research) ([notice](references/legal/robertnowell-license.md)); the fact-versus-inference distinction draws on [ericgandrade/claude-superskills](https://github.com/ericgandrade/claude-superskills) ([notice](references/legal/ericgandrade-license.md)); absorbed Matt Pocock and Addy Osmani material keeps its MIT notices ([Matt](references/legal/matt-license.md), [Addy](references/legal/addy-license.md)).

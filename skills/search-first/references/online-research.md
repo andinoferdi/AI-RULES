@@ -35,6 +35,10 @@ needed before claiming a fix.
 | Registries | Actual package identity, release/support metadata, dependency constraints, maintenance and license, not name familiarity |
 | Security advisories | Authoritative affected/fixed ranges and project applicability; absent search results do not prove safety |
 
+For non-technical sources (news, regulation, companies, statistics) and for
+tiers, red flags and confidence labels, use [source evaluation](source-evaluation.md);
+for where to look and when to stop, use [question types](question-types.md).
+
 Prefer version-matched primary and maintainer evidence. Community reports can reveal
 candidates and terminology; corroborate consequential behavior using official
 contracts, source or an authorized local check. If the host restricts reliance to
