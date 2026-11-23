@@ -22,3 +22,27 @@ ULTIMATE-PROMPT.md
 
 # Skill branch worktrees (see AGENTS.md)
 .worktrees/
+
+# Removed as unused; keep them from coming back
+/docs/threejs/
+/docs/validation/andino-readiness/
+/docs/validation/andino-reliability/
+/docs/validation/brainstorming-quality/
+/docs/validation/focus/
+/docs/validation/focus-contract/
+/docs/validation/installer/
+/docs/validation/planning-portability/
+/docs/validation/repository-maintenance/
+/docs/validation/setup-terminal-ux/
+/docs/validation/thin-coordinator/
+/evals/threejs-routing-fixtures.json
+/evals/threejs-single-family-fixtures.json
+/scripts/build_skripsi_traceability.py
+/scripts/capture_andino_preflight.py
+/scripts/check_andino_superpowers_methods.py
+/scripts/grade_andino_behavior.py
+/scripts/integrate_andino_methods.py
+/scripts/prepare_andino_behavior.py
+/scripts/prepare_threejs_family.py
+/docs/exec-plans/
+/docs/prompt-examples.md

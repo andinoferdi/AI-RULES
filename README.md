@@ -395,9 +395,6 @@ Constraints:
 
 None of these examples names a workflow member such as `andino-planning`; the workflow picks them from `Mode` and **Done when**. Naming them yourself works too.
 
-62 more examples, covering every Andino member, the companion skills and the MCP servers, are in
-[docs/prompt-examples.md](docs/prompt-examples.md).
-
 ### In web chatbots (no skills)
 
 Claude Web, ChatGPT and Gemini Web cannot load skills. The [WebBased](https://github.com/andinoferdi/AI-RULES/tree/WebBased) branch plays that role as copy-paste prompt modules:

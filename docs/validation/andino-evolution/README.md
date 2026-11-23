@@ -2,8 +2,7 @@
 
 Candidate runtime: C:/Users/Lenovo/.codex/worktrees/andino-evolution/AI-RULES,
 based on 8866a23c5491baf9845e7ba7f7f3b43baaca32d6. Quality plane: main at
-47eb032f5d64e2d1d7fbe64166da205d3c59f02b. The authoritative task state is
-[the evolution plan](../../exec-plans/completed/andino-evolution.md).
+47eb032f5d64e2d1d7fbe64166da205d3c59f02b.
 
 ## Capability assessment
 

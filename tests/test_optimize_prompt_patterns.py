@@ -89,10 +89,6 @@ class PromptLayoutIsReadable(unittest.TestCase):
         self.assert_readable('README Layer 2', text_blocks(section(readme, '### Layer 2: the task, seven slots')))
         self.assert_readable('README Examples', text_blocks(section(readme, '### Examples')))
 
-    def test_prompt_examples_doc(self):
-        doc = (ROOT / 'docs' / 'prompt-examples.md').read_text(encoding='utf-8').replace('\r\n', '\n')
-        self.assert_readable('docs/prompt-examples.md', text_blocks(doc))
-
     def test_checker_rejects_the_old_layout(self):
         old = ('Mode: just do it\nTask: fix it.\nContext/evidence: repro: open /id.\n'
                '  Error: [paste]\nDone when:\n- one check\n')
