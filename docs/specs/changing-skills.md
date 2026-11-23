@@ -51,7 +51,7 @@ Do not separate sections with `---` rules.
 1. Branch from `origin/main` and edit `skills/<id>/`.
 2. Run `ai-rules setup` from the clone to try it (it reads `skills/` from disk).
 3. In the same commit, update whatever the change affects: inventories
-   (`docs/threejs/inventory.json`), counts or allow-lists in
+   (`src/ai_rules/verification/data/threejs_inventory.json`), counts or allow-lists in
    `scripts/validate_skills.py`, `evals/<id>.json`, and the tests in `tests/`.
 4. Run `python scripts/ci_checks.py --group skills`, then open a PR.
 

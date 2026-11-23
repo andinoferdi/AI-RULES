@@ -20,7 +20,7 @@
   [promotion spec](specs/skill-promotion.md).
 
 - 2026-11-22: `threejs-skills` is pinned at `4fe9d9c` instead of `7ff3f57`, because
-  `docs/threejs/inventory.json` on main already describes `4fe9d9c` (README-only
+  `docs/threejs/inventory.json` (now `src/ai_rules/verification/data/threejs_inventory.json`) on main already describes `4fe9d9c` (README-only
   changes). Pinning the older commit made the inventory check fail.
 
 - 2026-11-22: CI and the promote clone pin only `origin/<skill>`, as CI always had.

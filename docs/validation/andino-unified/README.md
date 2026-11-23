@@ -11,8 +11,6 @@ exports after stale byte identities were detected. Their prior versions remain i
 `pre-maintenance/`; no failed or historical evidence was removed. Byte-sensitive
 procedural verification uses LF Git exports of main and runtime, since Windows
 checkout conversion changes raw hashes. Structural package checks normalize CRLF.
-
-The original integration report belongs to its [execution plan](../../exec-plans/active/andino-capability-integration.md).
 Its user-supplied `ULTIMATE-PROMPT.md` and `GRAND-PLAN.md` defined that delivery's
 authority and quality gates. They are historical context, not prerequisites for
 installing or using the published runtime.

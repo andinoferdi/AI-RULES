@@ -1,8 +1,7 @@
 # Andino adaptive workflow integration
 
 Date: 2026-10-02
-Subsequent capability-layer revision: see [current capability handoff](capability-handoff.md)
-and [active execution plan](../../exec-plans/active/andino-capability-integration.md).
+Subsequent capability-layer revision: see [current capability handoff](capability-handoff.md).
 The baseline evidence below is historical and does not include that uncommitted runtime.
 Current phase: Live validation pending after quality-plane verification
 Implementation review: PM GO; no requested runtime revision.

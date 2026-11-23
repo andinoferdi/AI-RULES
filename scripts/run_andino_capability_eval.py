@@ -157,7 +157,7 @@ def skill_resource_hash(path):
 HOSTS = ('codex', 'claude-code', 'opencode', 'antigravity-cli')
 # Hosts whose workspace containment comes from a verified mechanism (OS sandbox or tool confinement).
 CONTAINMENT_PROBE_HOSTS = ('codex', 'claude-code')
-# Smoke evidence (docs/validation/andino-readiness/smoke): only Claude --restricted kept writes inside the workspace.
+# Smoke runs showed only Claude --restricted kept writes inside the workspace.
 WRITABLE_CONTAINED_HOSTS = ('claude-code',)
 EVALUATOR_PATHS = ('eval-plugin', 'andino-workflow', 'skills', '.agents', 'answer.txt')
 SMOKE_CASES = {

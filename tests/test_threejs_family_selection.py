@@ -16,7 +16,7 @@ class SingleThreejsFamilyTests(unittest.TestCase):
         catalog = load_catalog()
         choices = build_capability_choices(catalog.capabilities)
         names = {c.value for c in choices}
-        members = {s['name'] for s in json.loads((ROOT / 'docs/threejs/inventory.json').read_text())['skills']}
+        members = {s['name'] for s in json.loads((ROOT / 'src/ai_rules/verification/data/threejs_inventory.json').read_text())['skills']}
         self.assertIn('threejs-skills', names)
         self.assertFalse(names & members)
         self.assertEqual(8, len(names))
@@ -29,7 +29,7 @@ class SingleThreejsFamilyTests(unittest.TestCase):
 
     def test_installer_source_exports_all_methods_in_one_discoverable_package(self):
         capability = load_catalog().require_capability('threejs-skills')
-        inventory = json.loads((ROOT / 'docs/threejs/inventory.json').read_text())
+        inventory = json.loads((ROOT / 'src/ai_rules/verification/data/threejs_inventory.json').read_text())
         with tempfile.TemporaryDirectory() as temporary:
             target = Path(temporary) / 'threejs-skills'
             # The committed skills/ folder, exported the way release staging does it.
