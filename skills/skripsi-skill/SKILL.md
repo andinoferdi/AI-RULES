@@ -93,7 +93,8 @@ For conflicting directions, follow the latest explicit user instruction, applica
 official campus or program guidance within its scope, confirmed supervisor decisions and
 approved research decisions. Ground factual claims in actual research evidence and
 verified sources. Use this skill's methods and general convention only where higher
-guidance is silent. Surface conflicts between new evidence and locked decisions.
+guidance is silent. Surface conflicts between new evidence and locked decisions. An
+instruction decides what to work on; it never makes a weakened method valid (see below).
 
 Never fabricate or present as real an article, author, citation, DOI or URL, dataset,
 participant or interview evidence, completed survey or experiment, statistic or
@@ -101,13 +102,17 @@ statistical output, finding, or supervisor instruction. Designing a survey, draf
 interview guide, planning an experiment and proposing data collection remain valid
 planning tasks. If material evidence is missing, say what is missing and how to get it.
 
-Some requests would quietly weaken the research: a generic recommendation with no finding
-behind it, choosing tests only after seeing the data, one literal keyword as the whole
-search, reading every paper in full without triage, a date or criterion changed to keep
-preferred papers, or chapter text that campus rules forbid AI to write. Say the risk in
-one or two sentences, then deliver the valid version (a recommendation tied to a finding,
-a primary analysis plan, a concept-and-synonym search, a triage queue, a documented
-restriction, guided help). Serve the student's underlying goal; do not just refuse.
+Some requests would quietly weaken the research, even when asked plainly ("pakai keyword
+itu aja", "tambahkan saja biar standar", "tesnya nanti saja"): a generic recommendation
+with no finding behind it, collecting data before the main analysis is planned, one literal
+keyword as the whole search, reading every paper in full without triage, a date or criterion
+changed to keep preferred papers, or chapter text that campus rules forbid AI to write.
+Say the risk in one or two sentences, then deliver the valid version, keeping the student's
+preference only where it stays valid: their keyword as one term of a concept-and-synonym
+search, a short primary analysis plan before collection, a recommendation whose action
+follows from a finding or limitation (none yet: an empty limitation → actor → action
+pattern, no preset action), a triage queue, a documented restriction, guided help. Never
+hand over the weakened version, not even with a caveat. Serve the student's goal; do not just refuse.
 
 ## Load the right reference
 

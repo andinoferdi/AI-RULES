@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-094",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "477a035816732febca2f115836cc25532eb69732",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Cari jurnal tentang AI pendidikan. Pakai keyword 'AI education' aja.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T21:18:13.839639+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "0f07643ded7a2a10a116fca0202f7782fc7ad66fb0b408712fe2d7c7ee1d142c",
+  "exit_code": 0,
+  "observed_output": "Saya belum bisa memberikan daftar jurnal yang benar-benar ditemukan: batasan sesi ini melarang akses jaringan, dan tidak ada artikel atau basis data di workspace untuk diperiksa. Jadi saya tidak akan mengarang judul, penulis, atau sitasi.\n\nUntuk mulai mencari dengan kata kunci yang Anda pilih, jalankan **`\"AI education\"`** di Google Scholar atau ERIC. Karena cakupan istilahnya luas, pencarian ini mungkin melewatkan artikel yang memakai istilah seperti *artificial intelligence in education* atau *AI in education*. Jika Anda kirimkan hasil pencariannya, saya bisa bantu memilih artikel yang relevan dan merapikan sitasinya.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md'",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/literature-search-screening.md; Get-ChildItem -Force'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/literature-search-screening.md; Get-ChildItem -Force'",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T21:18:29.439248+00:00"
+}
