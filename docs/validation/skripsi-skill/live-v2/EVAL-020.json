@@ -1,35 +1,35 @@
 {
   "case": "EVAL-020",
   "host": "Windows Codex CLI",
-  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "runtime_revision": "58a9d2919c3f5760e44c80641e74123d2d8fa9fe",
   "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Proposal v1, approved title: Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P. RQ: Bagaimana hubungan frekuensi penggunaan AI dengan skor regulasi belajar mahasiswa Program P semester 4? Objective: estimate that association. One-time observational survey, voluntary convenience sample from accessible classes, no intervention. Planned instrument: source/adaptation and measurement validation unresolved; pilot not done. Data access to classes reported by user, participant consent/ethics status unknown. Planned association analysis depends on measurement and data properties. No data collected. Literature citations/gap evidence not supplied. Supervisor has approved topic/title and instructed scope remain Program P, not all universities.\nPrevious draft described X=AI-use frequency and Y=self-regulated learning. User now explicitly removes X but retains Program P and descriptive objective for Y.",
   "prompt": "\"yang tadi udah oke, cuma jangan pakai variabel X dan bikin lebih singkat\"",
   "oracle_hidden": true,
   "verdict": "NOT_VERIFIED",
-  "started_at_utc": "2026-11-23T19:53:22.080078+00:00",
+  "started_at_utc": "2026-11-23T20:46:42.826541+00:00",
   "model_selection": "CLI default; no model override",
   "codex_config_overrides": [
     "windows.sandbox=\"elevated\""
   ],
   "input_sha256": "efb65a9889a0b16947205521e8395c70dd6bf0ccc1347036654b7a13ac9c3be1",
   "exit_code": 0,
-  "observed_output": "Rumusan setelah variabel X dihapus:\n\n**Judul:** Regulasi Belajar Mahasiswa Program P\n\n**Pertanyaan penelitian:** Bagaimana gambaran regulasi belajar mahasiswa semester 4 Program P?\n\n**Tujuan:** Mendeskripsikan regulasi belajar mahasiswa semester 4 Program P.\n\nInstrumen pengukuran masih perlu ditetapkan dan divalidasi sebelum pengumpulan data.",
+  "observed_output": "**Judul:** Regulasi Belajar Mahasiswa Program P\n\n**Tujuan:** Mendeskripsikan regulasi belajar mahasiswa Program P semester 4.",
   "execution_status": "EXECUTED",
   "diagnostic": "",
   "events": [],
   "tool_actions": [
     {
       "type": "command_execution",
-      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md'",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'\"",
       "exit_code": null,
       "status": "in_progress"
     },
     {
       "type": "command_execution",
-      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md'",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'\"",
       "exit_code": 0,
       "status": "completed"
     }
   ],
-  "finished_at_utc": "2026-11-23T19:53:30.921960+00:00"
+  "finished_at_utc": "2026-11-23T20:46:50.776440+00:00"
 }

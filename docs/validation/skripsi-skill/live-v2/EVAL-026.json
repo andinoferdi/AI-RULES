@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-026",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "c60a15ae2fceea2b3f6c2ad5c585415e9f834178",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"RQ saya: kenapa semua mahasiswa malas belajar? Saya mau jawab pakai 20 responden kuesioner\nsatu pertanyaan.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:32:14.090645+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "31231bb8fbfa3df0d5c3169a5920daade9750f80510f3af1552106c6f0b9ca4c",
+  "exit_code": 0,
+  "observed_output": "RQ tersebut **belum layak dijawab dengan rancangan “20 responden, satu pertanyaan”** karena dua hal: “semua mahasiswa” terlalu luas, dan kata “malas” sudah memberi label serta menganggap kesimpulannya benar sebelum data dikumpulkan. Dua puluh jawaban juga hanya menggambarkan responden yang diteliti; tanpa cara memilih responden yang mendukung generalisasi, hasilnya tidak mewakili semua mahasiswa.\n\nJika Anda ingin meneliti alasan mahasiswa menunda atau jarang belajar, persempit kelompoknya dan tanyakan pengalaman mereka tanpa menganggap mereka malas. Contoh RQ:\n\n> **“Faktor apa yang dirasakan berkontribusi pada kebiasaan menunda belajar di kalangan mahasiswa [program/angkatan]?”**\n\nSatu pertanyaan terbuka dapat dipakai untuk **penjajakan awal**, misalnya: *“Apa hal utama yang paling sering membuat Anda menunda atau tidak jadi belajar? Ceritakan singkat.”* Namun, satu jawaban singkat dari 20 orang mungkin tidak cukup untuk menangkap alasan yang beragam. Anda perlu mengelompokkan jawaban secara sistematis, dan membatasi kesimpulan pada responden tersebut. Jika ingin mengukur seberapa umum tiap alasan, gunakan beberapa pertanyaan dengan pilihan jawaban yang jelas serta rencana sampling dan analisis yang sesuai.\n\n**Catatan untuk Anda:** Tetapkan dulu kampus/program atau kelompok mahasiswa yang dimaksud. Angka 20 dan satu pertanyaan sebaiknya dianggap rancangan penjajakan, bukan otomatis cukup untuk menjawab klaim tentang semua mahasiswa.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'; Get-ChildItem -Force\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'; Get-ChildItem -Force\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/research-state-and-routing.md'; Get-Content -Raw 'skripsi-skill/references/intent-and-context.md'; Get-Content -Raw 'skripsi-skill/references/evidence-guidelines-integrity.md'; Get-Content -Raw 'skripsi-skill/references/discovery-feasibility.md'; Get-Content -Raw 'skripsi-skill/references/research-problem-gap-rq.md'; Get-Content -Raw 'skripsi-skill/references/research-design-routing.md'; Get-Content -Raw 'skripsi-skill/references/quantitative-planning.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/research-state-and-routing.md'; Get-Content -Raw 'skripsi-skill/references/intent-and-context.md'; Get-Content -Raw 'skripsi-skill/references/evidence-guidelines-integrity.md'; Get-Content -Raw 'skripsi-skill/references/discovery-feasibility.md'; Get-Content -Raw 'skripsi-skill/references/research-problem-gap-rq.md'; Get-Content -Raw 'skripsi-skill/references/research-design-routing.md'; Get-Content -Raw 'skripsi-skill/references/quantitative-planning.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:32:33.986709+00:00"
+}
