@@ -1,7 +1,6 @@
 ---
 name: focus
 description: Use when explicitly requested, as the default communication layer of andino-workflow, or when the user says a previous explanation was confusing or asks what a technical message means.
-license: MIT
 ---
 
 # Focus

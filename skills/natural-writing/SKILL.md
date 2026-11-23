@@ -1,7 +1,6 @@
 ---
 name: natural-writing
 description: Write, rewrite, edit, proofread or review prose in Indonesian and English so it reads naturally, fits its audience and register, and keeps its meaning, facts and required depth. Use for requested writing artifacts such as essays, articles, reports, emails, documentation prose, runbooks and academic sections, or when the user asks to proofread, polish, paraphrase, make text sound less machine-written or review writing quality. Not for routine chat answers, progress updates, code, machine-readable output, research validity or task orchestration.
-license: MIT
 ---
 
 # Natural Writing

@@ -117,3 +117,7 @@ required just to use these resources.
 - [`references/online-research.md`](references/online-research.md) — Source vetting guidelines, query formulation, and evidence standards.
 - [`references/consolidation-provenance.json`](references/consolidation-provenance.json) — Source SHA-256 identities, complete absorption mapping and upstream snapshots; accompanying [Matt Pocock](references/matt-license.md) and [Addy Osmani](references/addy-license.md) MIT notices.
 - Adapted from [ECC Search First](https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md) by Affaan Mustafa under the MIT License ([license notice](references/license.md)).
+
+## License
+
+AI-RULES-authored content in this skill is released under the [MIT License](https://github.com/andinoferdi/AI-RULES/blob/main/LICENSE). Third-party material keeps its original license; see [references/license.md](references/license.md), [references/matt-license.md](references/matt-license.md), [references/addy-license.md](references/addy-license.md).

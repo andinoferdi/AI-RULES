@@ -114,3 +114,7 @@ This independent structural oracle checks exact public/retired sets, resource ex
 - [Dispatch](references/method-dispatch.md) and [routing](references/routing.md)
 - [Portable checkpoint template](references/execution-plan-template.md)
 - [Provenance and notices](references/legal/provenance.md)
+
+## License
+
+AI-RULES-authored content in this skill is released under the [MIT License](https://github.com/andinoferdi/AI-RULES/blob/main/LICENSE). Third-party material keeps its original license; see [references/legal/provenance.md](references/legal/provenance.md).

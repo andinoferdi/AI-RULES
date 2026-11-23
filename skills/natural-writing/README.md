@@ -108,4 +108,7 @@ For English runbooks, procedures, error messages and UI text, an opt-in plain te
 - [`references/plain-technical-english.md`](references/plain-technical-english.md) — Opt-in plain technical English register.
 - [`scripts/check.py`](scripts/check.py) — `compare` and `scan` checks.
 - Ideas (not text) were informed by humanizer-id, naskah-id, bahasa-skills, bahasa-indonesia-skill, asd-ste100-skill and SimpleEnglish.
-- Created by Andino Ferdiansah under the [MIT License](references/license.md).
+
+## License
+
+AI-RULES-authored content in this skill is released under the [MIT License](https://github.com/andinoferdi/AI-RULES/blob/main/LICENSE).
