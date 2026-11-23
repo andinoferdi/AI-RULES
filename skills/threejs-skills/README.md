@@ -97,7 +97,7 @@ The family installs as one directory (`threejs-skills`) with one root `SKILL.md`
 - [`references/specialists.md`](references/specialists.md) — Index and trigger criteria for all 45 methods.
 - `skills/<method-id>/` — The 45 specialist guides, each with its own `README.md` and `GUIDE.md`.
 - [`references/legal/license.md`](references/legal/license.md) — MIT license notice for AI-RULES-authored content.
-- [docs/threejs/inventory.json](https://github.com/andinoferdi/AI-RULES/tree/main/docs/threejs) — Complete verification inventory, file hashes, and provenance records (in the repository, not installed).
+- [src/ai_rules/verification/data/threejs_inventory.json](https://github.com/andinoferdi/AI-RULES/blob/main/src/ai_rules/verification/data/threejs_inventory.json) — Complete verification inventory and file hashes (in the repository, not installed).
 
 ## License
 

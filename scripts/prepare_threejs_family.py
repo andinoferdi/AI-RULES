@@ -256,7 +256,7 @@ The maintainer attests original collection authorship. Embedded MIT, CC0 and GPL
 notices/full texts remain intact; no collection-wide license is invented. This is
 not independent verification of every resource origin. See main's provenance record.
 
-[Inventory and evidence](https://github.com/andinoferdi/AI-RULES/tree/main/docs/threejs)
+[Inventory](https://github.com/andinoferdi/AI-RULES/blob/main/src/ai_rules/verification/data/threejs_inventory.json)
 '''
     (destination / 'README.md').write_text(readme, encoding='utf-8')
     (destination / 'references').mkdir()

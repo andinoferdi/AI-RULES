@@ -40,7 +40,7 @@ class ThreejsInstallerTests(unittest.TestCase):
         (self.pkg / 'assets/field.bin').write_bytes(b'\x00\xff\x00\x01')
         (self.pkg / 'scripts').mkdir()
         (self.pkg / 'scripts/probe_asset_credentials.sh').write_text('printf SET\n', encoding='utf-8')
-        inventory = json.loads((Path(__file__).resolve().parents[2] / 'docs/threejs/inventory.json').read_text())
+        inventory = json.loads((Path(__file__).resolve().parents[2] / 'src/ai_rules/verification/data/threejs_inventory.json').read_text())
         for member in inventory['skills']:
             target = self.pkg / 'skills' / member['name']
             target.mkdir(parents=True)

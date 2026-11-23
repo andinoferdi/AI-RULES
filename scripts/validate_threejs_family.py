@@ -51,7 +51,7 @@ def main():
     parser.add_argument('--runtime-dir', type=Path, default=ROOT / 'skills/threejs-skills')
     parser.add_argument('--original', type=Path, help='also prove supplied source has not changed')
     args = parser.parse_args()
-    inventory = json.loads((ROOT / 'docs/threejs/inventory.json').read_text(encoding='utf-8'))
+    inventory = json.loads((ROOT / 'src/ai_rules/verification/data/threejs_inventory.json').read_text(encoding='utf-8'))
     files, modes = directory_files(args.runtime_dir)
     errors = validate_inventory(inventory, files, args.original)
     errors += package_files(files, 'threejs-skills', modes)
