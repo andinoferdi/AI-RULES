@@ -1,8 +1,66 @@
-# AI-RULES
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/brand/logo/andino-skills-horizontal-dark.svg">
+    <img alt="Andino Skills: an A whose crossbar is a check mark, next to the words andino skills" src="docs/brand/logo/andino-skills-horizontal.svg" width="420">
+  </picture>
+</p>
 
-> **Engineering skills and adaptive workflows for AI coding agents.** Investigate problems, apply test-driven development, protect against regressions, and check evidence before declaring completion.
+<h1 align="center">Andino Skills</h1>
 
-AI coding agents can propose speculative rewrites, invent APIs or use deprecated ones, skip tests, and repeat failed approaches. **AI-RULES** provides engineering practices, specialist workflows, and deterministic quality checks for Claude Code, Codex, OpenCode, and Antigravity.
+<p align="center">
+  <strong>Done means proven.</strong> · <em>Selesai berarti terbukti.</em><br>
+  Evidence-first skills for AI coding agents, in English and Bahasa Indonesia.
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-15171C"></a>
+  <img alt="Hosts: Claude Code, Codex, OpenCode, Antigravity" src="https://img.shields.io/badge/hosts-Claude%20Code%20·%20Codex%20·%20OpenCode%20·%20Antigravity-D97A00">
+  <img alt="Languages: English and Bahasa Indonesia" src="https://img.shields.io/badge/bahasa-English%20·%20Indonesia-15171C">
+</p>
+
+AI coding agents sound sure of themselves. They report "fixed" without running
+anything, rewrite working code on a guess, call APIs that do not exist and try
+the same failed idea twice. **Andino Skills** are agent skills for Claude Code,
+Codex, OpenCode and Antigravity that make the agent work like a careful
+engineer: find the cause first, write the test first, research before adopting
+a library, and say "done" only after every point of your `Done when` list has
+passed a real check. Rules, prompts and writing guidance work in English and
+Bahasa Indonesia.
+
+Made by [Andino](https://github.com/andinoferdi). Every skill lives in
+[`skills/`](skills/) and installs with one command.
+
+### What "done means proven" looks like
+
+An illustrative session. You write the finish line once:
+
+```text
+Task: fix the login redirect loop after the session expires.
+
+Done when:
+- Expired sessions land on /login once, with no loop.
+- A regression test covers it and passes.
+```
+
+Without the skills, the agent edits a file and replies "Fixed! The redirect
+should work now." With Andino Skills, `andino-debugging` finds the cause before
+any edit, `andino-tdd` writes the failing test first, and `andino-verification`
+holds the report until each line above has evidence:
+
+```text
+Done when, checked:
+- Expired session → /login once: reproduced before the fix, gone after (manual run).
+- Regression test: tests/auth/test_expiry.py fails on the old code, passes now.
+Not verified: logout on mobile Safari (no device here).
+```
+
+The rule behind it, from `andino-verification`: *withhold completion while any
+required criterion lacks passing evidence.*
+
+> **Untuk developer Indonesia:** tulis prompt dalam Bahasa Indonesia, dan
+> `andino setup --agent-defaults --defaults-language id` memasang aturan dasar
+> agent dalam Bahasa Indonesia juga. `focus` dan `natural-writing` punya panduan bahasa Indonesia
+> sendiri, dan `skripsi-skill` menemani pengerjaan skripsi sesuai aturan kampus.
 
 ---
 
@@ -11,13 +69,16 @@ AI coding agents can propose speculative rewrites, invent APIs or use deprecated
 Requirements: Python 3.11+, Git, and any supported AI coding agent.
 
 ```sh
-# 1. Clone & install the AI-RULES CLI
+# 1. Clone & install the Andino Skills CLI
 git clone https://github.com/andinoferdi/AI-RULES.git
 cd AI-RULES && python -m pip install .
 
 # 2. Run interactive setup (choose host & profile)
-ai-rules setup
+andino setup
 ```
+
+`andino` and `ai-rules` are the same command; every `ai-rules ...` example below
+also works as `andino ...`.
 
 Run inside the clone, setup installs the skills from its `skills/` folder and says
 so (`Skill source: local folder ...`). Run anywhere else, it downloads them from
@@ -82,7 +143,7 @@ the clone into each of them with `<that copy's python> -m pip install -e <clone>
 
 ## How to Prompt
 
-Prompting with AI-RULES has two layers. **Layer 1** holds your defaults and is written once per host. **Layer 2** is the task itself and is the only thing you type each time.
+Prompting with Andino Skills has two layers. **Layer 1** holds your defaults and is written once per host. **Layer 2** is the task itself and is the only thing you type each time.
 
 ### Why this matters: four ways prompts fail
 
@@ -406,9 +467,9 @@ Claude Web, ChatGPT and Gemini Web cannot load skills. The [WebBased](https://gi
 
 ---
 
-## First-Party Capabilities
+## What's Inside
 
-AI-RULES ships 8 skills from the `skills/` folder of `main`. The Andino Workflow
+Andino Skills ships 8 skills from the `skills/` folder of `main`. The Andino Workflow
 brings 31 member skills with it, and `ai-rules setup` installs each member as its
 own native skill (`/andino-planning`, `$andino-tdd`, ...) with its slash command,
 backups and rollback. Generic skill installers copy only the top-level folder.
@@ -429,7 +490,7 @@ backups and rollback. Generic skill installers copy only the top-level folder.
 
 ## Setup Profiles
 
-The `ai-rules setup` CLI offers these installation bundles:
+`andino setup` (or `ai-rules setup`) offers these installation bundles:
 
 | Profile | Target Needs | Included Capabilities |
 |---|---|---|
@@ -460,15 +521,21 @@ are in [AGENTS.md](AGENTS.md).
 
 ---
 
-## How AI-RULES Compares
+## Why Andino Skills
 
-| Feature | Superpowers | Agent Skills | **AI-RULES** |
-|---|---|---|---|
-| **Invocation Model** | Monolithic global bootstrap | Individual commands | **Bidirectional routing** (Main orchestrator $\leftrightarrow$ 31 atomic member skills) |
-| **Namespace Isolation** | Unprefixed (risk of collisions) | Command wrappers | **Namespaced** (`andino-*` prefix across all hosts) |
-| **Context Window Overhead** | High (loads entire methodology) | Variable | **On-demand loading** (Compact frontmatter) |
-| **Anti-Looping & Checkpoints** | Custom session state | Manual stop-conditions | **Deterministic Portable Checkpoints** with Git drift detection |
-| **Multi-Host CLI Installer** | Per-harness scripts | `npx skills` | **Shared native installer** (`ai-rules setup` installs all 31 Andino members as native skills, with atomic rollback) |
+Andino Skills stands on work by [Superpowers](https://github.com/obra/superpowers),
+[Addy Osmani's Agent Skills](https://github.com/addyosmani/agent-skills) and
+[Matt Pocock's skills](https://github.com/mattpocock/skills), and credits them in
+[Provenance](#provenance--licenses). They are excellent; read them. Pick Andino
+Skills when you want these things together:
+
+| You want | Andino Skills gives you |
+|---|---|
+| A finish line the agent must prove | A `Done when` contract; `andino-verification` withholds "done" until every point has evidence |
+| Your own language | Indonesian working defaults (`--defaults-language id`), Indonesian writing guides in `focus` and `natural-writing`, and `skripsi-skill` for thesis work |
+| One setup for every agent you use | One installer for Claude Code, Codex, OpenCode, Antigravity CLI and IDE, with backups, rollback and `doctor` |
+| Skills that load only when needed | 31 `andino-*` phase skills; the workflow loads the one the current phase needs |
+| No name clashes with your other skills | Every workflow member carries the `andino-` prefix |
 
 ---
 
@@ -486,7 +553,7 @@ are in [AGENTS.md](AGENTS.md).
 
 ## External resources: manual installation
 
-These optional skills and MCP tools are installed separately from AI-RULES profiles.
+These optional skills and MCP tools are installed separately from Andino Skills profiles.
 Follow each project's setup instructions and connection requirements.
 Andino can select a relevant installed skill or connected tool from these resources;
 their listing alone does not activate, install or connect them. Selected skills own
@@ -521,10 +588,20 @@ and permissions.
 
 ## Provenance & Licenses
 
-- AI-RULES-authored code, installer engines, and documentation on `main` are licensed under the **[MIT License](LICENSE)**, copyright 2026 andinoferdi.
+- Andino Skills code, installer engines, and documentation on `main` are licensed under the **[MIT License](LICENSE)**, copyright 2026 andinoferdi.
+- The Andino Skills name and logo are covered by the [brand guide](docs/brand/README.md); please do not alter the mark.
 - Third-party methods and inspirations retain their original licenses and attributions:
   - `andino-workflow` adapts techniques from [Addy Osmani Agent Skills](https://github.com/addyosmani/agent-skills), [Matt Pocock Skills](https://github.com/mattpocock/skills), and [Superpowers](https://github.com/obra/superpowers) ([provenance records](skills/andino-workflow/references/legal/provenance.md)).
   - `focus` credits [Ayoub Ghriss's i-have-adhd](https://github.com/ayghri/i-have-adhd).
   - `search-first` credits [Affaan Mustafa's ECC Search First](https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md).
   - `council` draws inspiration from [Ole Lehmann & Andrej Karpathy's LLM Council](https://github.com/aiwithremy/claude-skills-llm-council).
   - `threejs-skills` retains upstream resource-specific MIT, CC0, and GPL notices.
+
+---
+
+## Made by Andino
+
+Andino Skills is written and maintained by [Andino Ferdiansah](https://github.com/andinoferdi),
+a developer from Indonesia. If the skills save you a bad "done", star the repo so
+other developers find it, and open an [issue](https://github.com/andinoferdi/AI-RULES/issues)
+with what worked or broke. Brand files and rules: [docs/brand](docs/brand/README.md).
