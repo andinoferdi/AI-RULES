@@ -139,16 +139,16 @@ class PackageValidationTest(unittest.TestCase):
             with self.subTest(skill=skill):
                 files = {'README.md': f'# {skill}',
                          'SKILL.md': f'---\nname: {skill}\ndescription: Skill\n---\n',
-                         'references/consolidation-provenance.json': '{}'}
+                         'references/legal/provenance.json': '{}'}
                 self.assertEqual([], package_files(files, skill))
                 self.assertTrue(any('non-regular' in error for error in package_files(
-                    files, skill, {'references/consolidation-provenance.json': '120000'})))
+                    files, skill, {'references/legal/provenance.json': '120000'})))
 
     def test_consolidation_metadata_stays_rejected_for_other_skills(self):
         files = {'README.md': '# Council',
                  'SKILL.md': '---\nname: council\ndescription: Decisions\n---\n',
-                 'references/consolidation-provenance.json': '{}'}
-        self.assertIn('council: unexpected runtime file: references/consolidation-provenance.json',
+                 'references/legal/provenance.json': '{}'}
+        self.assertIn('council: unexpected runtime file: references/legal/provenance.json',
                       package_files(files, 'council'))
 
     def test_andino_layout_expansion_still_rejects_unknown_or_unsafe_files(self):

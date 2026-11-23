@@ -53,7 +53,7 @@ class FocusSelectionTests(unittest.TestCase):
             self.assertFalse((root / "andino-workflow").exists())
             self.assertIn("name: focus", (root / "focus/SKILL.md").read_text())
             self.assertIn("Copyright (c) 2026 Ayoub Ghriss",
-                          (root / "focus/references/license.md").read_text())
+                          (root / "focus/references/legal/i-have-adhd-license.md").read_text())
 
 
 class FocusSetupTests(unittest.TestCase):

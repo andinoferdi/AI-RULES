@@ -211,4 +211,4 @@ invented content; report it and continue with what is supported. When a requeste
 change would alter meaning or integrity, explain the conflict and keep the
 original meaning unless the user confirms otherwise.
 
-Original AI-RULES work under the [MIT license](references/license.md).
+Original AI-RULES work under the [MIT license](references/legal/license.md).

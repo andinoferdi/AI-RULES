@@ -2,9 +2,9 @@
 
 Andino Workflow coordinates a **31-member public core** and selectively loaded internal techniques. It owns routing, one durable checkpoint, permissions and evidence-based acceptance; selected skills retain their full methods and checks. Codex, Claude Code, OpenCode and Antigravity are peers.
 
-## Public skills and internal resources
-
 Public members have native `andino-*` entrypoints. Specialized techniques live as ordinary Markdown resources: no nested native entrypoint, compatibility shim or old invocation alias. Load only the technique needed now. Selecting a resource does **not** start its parent's lifecycle, run other modes, reopen accepted decisions or create a second plan.
+
+## What It Does
 
 The exact active and cumulative retired sets are in [the distribution manifest](references/portfolio.json). Selection triggers and exclusions are in [the method/resource index](references/internal-method-index.md).
 
@@ -61,7 +61,50 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 
 Workflow advice is a [workflow-owned resource](references/workflow-advice/guide.md), not a mandatory router. Project conventions use the [project-setup resource](references/project-setup/guide.md), not a prerequisite for every task.
 
-## Invocation
+## When to Use
+
+| Use for | Do not use for |
+|---|---|
+| Non-trivial work that needs the right skills chosen and sequenced | Plain questions, code explanations or small edits (do them directly) |
+| Resuming earlier work from its checkpoint | Replacing a selected skill's own method or deliverable |
+| Uncertain problems and bugs of unknown cause | Granting permissions the user has not given |
+| Explicit requests for the workflow | Loading the whole capability collection up front |
+
+## Quick Start
+
+### Installation
+
+Install with the **AI-RULES CLI** (included in every profile):
+
+```sh
+git clone --branch main https://github.com/andinoferdi/AI-RULES.git
+cd AI-RULES && python -m pip install .
+ai-rules setup --capability andino-workflow --host <host>
+```
+
+`<host>` is one of `codex`, `claude-code`, `opencode`, `antigravity-cli` or `antigravity-ide`.
+
+<details>
+<summary>Manual installation</summary>
+
+A manual copy installs only the coordinator. It does not expose the standalone `andino-*` members or safely retire prior installations, so prefer `ai-rules setup`. To copy the coordinator anyway:
+
+```sh
+git clone --depth 1 --filter=blob:none --sparse https://github.com/andinoferdi/AI-RULES.git ai-rules-src
+git -C ai-rules-src sparse-checkout set skills/andino-workflow
+cp -r ai-rules-src/skills/andino-workflow "<skills-dir>/andino-workflow"
+```
+
+| Host | Global skills directory | Project skills directory |
+|---|---|---|
+| **Codex** | `~/.agents/skills/andino-workflow` | `.agents/skills/andino-workflow` |
+| **Claude Code** | `~/.claude/skills/andino-workflow` | `.claude/skills/andino-workflow` |
+| **OpenCode** | `~/.config/opencode/skills/andino-workflow` | `.agents/skills/andino-workflow` |
+| **Antigravity** | `~/.gemini/antigravity-cli/skills/andino-workflow` | `.agents/skills/andino-workflow` |
+
+</details>
+
+### Usage
 
 Use the host's actual invocation mechanism, for example `/andino-workflow`, `/andino-tdd` or Codex's `$andino-debugging`. Availability and permissions must be checked on the current host; installed is not active or used.
 
@@ -72,26 +115,25 @@ Examples of narrow resource requests:
 - “Advise which workflow fits, without executing it.” Read the workflow-advice resource and stop at advice.
 - “Integrate this branch.” Select Git branch-integration; reuse current authorization, verify before/after, and preserve the branch on failure. A completed merge cannot be undone with `merge --abort`.
 
+## How It Works
+
+### Resource resolution
+
 A nested member resolves shared resources from its containing workflow package; a standalone `andino-*` member resolves them from the sibling `andino-workflow` package. Relative local resource links remain within each member. Do not substitute an unrelated unprefixed provider or bypass denied loading.
 
-## Installation and migration
-
-The AI-RULES CLI lives on the repository's `main` branch:
-
-```sh
-git clone --branch main https://github.com/andinoferdi/AI-RULES.git
-cd AI-RULES
-python -m pip install .
-ai-rules setup --capability andino-workflow --host <host>
-```
+### Upgrades and migration
 
 The consolidated bundle declares **installer protocol 1** in `references/portfolio.json`. Use a CLI release that implements that protocol. Older binaries and older frozen bundles do not acquire retirement behavior merely because this branch changed. Local uncommitted source verification is not release publication; the CLI's frozen bundle pins must be coordinated after corresponding revisions exist.
 
 Fresh setup must install the coordinator, the exact active public members and required Focus/Search First packages. Managed upgrades must retire only artifacts whose ownership and unchanged contents are proven. A matching `andino-` prefix is not proof. Modified/unrecognized files and user commands are preserved as conflicts; do not manually force-remove them. Family replacement is a recoverable coordinated transaction, not instantaneous atomic visibility across every directory.
 
-A manual coordinator clone alone does not expose all standalone members or safely retire prior installations. Prefer the protocol-aware setup for migration. Backups/staging belong outside host discovery roots. Refresh native discovery in a **new host session** after migration: deleting an entrypoint cannot remove instructions already loaded into a running conversation.
+Backups/staging belong outside host discovery roots. Refresh native discovery in a **new host session** after migration: deleting an entrypoint cannot remove instructions already loaded into a running conversation.
 
-## Sibling ownership
+### Verification
+
+From an AI-RULES clone, `python scripts/ci_checks.py --group skills` runs the skill package validators and every test that reads real skill content. It checks structure and recorded behavior cases; it does **not** prove real setup, native discovery or model behavior on your host.
+
+## Works With Other Skills
 
 - **Focus** supplies communication and optional lightweight explanation repair (`references/explanation-repair.md`). It does not start a lesson, research task or file edit merely to clarify an answer.
 - **Search First** supplies research-before-coding, source-backed answers (`references/sourced-answer/guide.md`) and version contracts (`references/version-contract/guide.md`): resolved dependency version → matching primary source → change → parity test.
@@ -101,20 +143,17 @@ A manual coordinator clone alone does not expose all standalone members or safel
 
 Sibling resources require actual permitted sibling loading; a name in this README is not activation. No retired public ID silently redirects to an internal resource.
 
-## Verification and references
+## Files
 
-```sh
-python -I scripts/verify_portfolio.py
-```
-
-This independent structural oracle checks exact public/retired sets, resource existence, live routes and local links in nested/flat layouts. It does **not** prove real setup, native discovery or model behavior. Installer/public-flow tests and fresh-context consumer checks are separate obligations.
-
-- [Runtime coordination contract](SKILL.md)
-- [Method and selective-resource index](references/internal-method-index.md)
-- [Dispatch](references/method-dispatch.md) and [routing](references/routing.md)
-- [Portable checkpoint template](references/execution-plan-template.md)
-- [Provenance and notices](references/legal/provenance.md)
+- [`SKILL.md`](SKILL.md) — Runtime coordination contract.
+- [`references/internal-method-index.md`](references/internal-method-index.md) — Method and selective-resource index.
+- [`references/method-dispatch.md`](references/method-dispatch.md) and [`references/routing.md`](references/routing.md) — Dispatch and routing.
+- [`references/execution-plan-template.md`](references/execution-plan-template.md) — Portable checkpoint template.
+- `skills/<member>/` — The 31 public members, each with `SKILL.md` and `GUIDE.md`.
+- [`references/legal/provenance.md`](references/legal/provenance.md) — Provenance of adapted methods.
+- [`references/legal/license.md`](references/legal/license.md) — MIT license notice for AI-RULES-authored content.
+- [`references/legal/addy-license.md`](references/legal/addy-license.md), [`references/legal/matt-license.md`](references/legal/matt-license.md) and [`references/legal/superpowers-license.md`](references/legal/superpowers-license.md) — Third-party MIT notices.
 
 ## License
 
-AI-RULES-authored content in this skill is released under the [MIT License](https://github.com/andinoferdi/AI-RULES/blob/main/LICENSE). Third-party material keeps its original license; see [references/legal/provenance.md](references/legal/provenance.md).
+AI-RULES-authored content in this skill is released under the [MIT License](references/legal/license.md). Third-party material keeps its original license; see [references/legal/provenance.md](references/legal/provenance.md).

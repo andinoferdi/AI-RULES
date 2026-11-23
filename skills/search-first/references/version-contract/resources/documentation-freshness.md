@@ -27,4 +27,4 @@ as URL/version/validator/content identity: unchanged origin bytes do not prove a
 summary answers a different question. Refetch for a changed purpose or mark the
 answer unverified. No automatic HEAD, polling, hook or mandatory network is added.
 
-Provenance: independently worded adaptation of the Addy snapshot identified in the owning [guide](../guide.md); full [MIT notice](../../addy-license.md). No upstream installation or hook is required.
+Provenance: independently worded adaptation of the Addy snapshot identified in the owning [guide](../guide.md); full [MIT notice](../../legal/addy-license.md). No upstream installation or hook is required.

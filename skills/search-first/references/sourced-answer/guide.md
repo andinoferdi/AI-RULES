@@ -66,4 +66,4 @@ Independently adapted from these audited local snapshot paths (provenance only; 
 
 - `mattpocock/skills:skills/engineering/research/SKILL.md`
 
-The audited upstream snapshot is `49dd158d1076134a641b33efb035946536778336`. Source identities and mapping are recorded in [consolidation provenance](../consolidation-provenance.json), with the [Matt Pocock MIT notice](../matt-license.md). Upstream bootstrap, automatic commit/push, hooks and installers are not imported as authority.
+The audited upstream snapshot is `49dd158d1076134a641b33efb035946536778336`. Source identities and mapping are recorded in [consolidation provenance](../legal/provenance.json), with the [Matt Pocock MIT notice](../legal/matt-license.md). Upstream bootstrap, automatic commit/push, hooks and installers are not imported as authority.

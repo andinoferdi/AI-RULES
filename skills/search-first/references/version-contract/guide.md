@@ -88,4 +88,4 @@ Do not replace this method with a name-only index, source checkout link, upstrea
 
 ## Provenance
 
-Adapted in original wording from addyosmani/agent-skills, source `skills/source-driven-development/SKILL.md`, local snapshot `aeac41d4d005999432bb7312f7ff06383a91d59d`. Supporting resource identity and mapping are recorded in [consolidation provenance](../consolidation-provenance.json). Substantive adapted material is covered by the packaged [Addy MIT notice](../addy-license.md). Upstream is audit/build provenance only; runtime requires no upstream installation or network fetch.
+Adapted in original wording from addyosmani/agent-skills, source `skills/source-driven-development/SKILL.md`, local snapshot `aeac41d4d005999432bb7312f7ff06383a91d59d`. Supporting resource identity and mapping are recorded in [consolidation provenance](../legal/provenance.json). Substantive adapted material is covered by the packaged [Addy MIT notice](../legal/addy-license.md). Upstream is audit/build provenance only; runtime requires no upstream installation or network fetch.

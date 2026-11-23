@@ -63,7 +63,7 @@ file or an invented claim that the reader now understands.
 Adapted from the local AI-RULES explanation-repair guide, entrypoint and worked
 example. Original audited source: `mattpocock/skills:skills/productivity/wait-what/SKILL.md`,
 snapshot `49dd158d1076134a641b33efb035946536778336`, independently adapted wording.
-See the [Matt Pocock MIT notice](matt-license.md) and
-[consolidation provenance](consolidation-provenance.json) for source SHA-256
+See the [Matt Pocock MIT notice](legal/matt-license.md) and
+[consolidation provenance](legal/provenance.json) for source SHA-256
 identities and mapping. Upstream bootstrap, automatic commit/push, hooks and
 installers are not imported as authority; no upstream checkout is a runtime input.
