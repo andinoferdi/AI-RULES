@@ -51,7 +51,7 @@ def doctor_from_plan(plan: InstallationPlan) -> DoctorReport:
 
 
 def render_doctor(report: DoctorReport) -> str:
-    lines = ["AI-RULES doctor"]
+    lines = ["Andino Skills doctor"]
     for target in report.targets:
         lines.append(f"- {target.capability_id} -> {target.host_id}: {target.status.value} ({target.assessment}) - {target.message}")
     return "\n".join(lines)
