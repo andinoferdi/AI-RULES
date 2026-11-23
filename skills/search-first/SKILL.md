@@ -265,4 +265,4 @@ the decisive evidence and limitations; no compulsory report or second ledger.
 Adapted by AI-RULES from Affaan Mustafa's
 [ECC Search First](https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md).
 Original methodology Copyright (c) 2026 Affaan Mustafa, under the
-[MIT license](references/license.md).
+[MIT license](references/legal/ecc-license.md).

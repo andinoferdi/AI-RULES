@@ -20,7 +20,7 @@
     {
       "source": "references/legal/matt-license.md",
       "sha256": "4981c5f6a90eb3a969dacabb9350f5a75695ff3910b39b6534952908dfdc5ff7",
-      "destination": "references/matt-license.md"
+      "destination": "references/legal/matt-license.md"
     }
   ],
   "upstream_snapshots": {

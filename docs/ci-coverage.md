@@ -68,6 +68,7 @@ rejects unsafe paths and non-regular Git entries.
 
 | Component / source | Automated evidence | Outside that evidence |
 | --- | --- | --- |
+| Every first-party skill | Shared layout from [Skill layout](specs/changing-skills.md#skill-layout): top-level folders, `references/legal/`, README heading order and install commands (`tests/test_skill_layout.py`) | Whether the shared layout changes how well agents follow a skill |
 | `andino-workflow` | Package structure/links; capability registry and evaluation schemas; deterministic regression tests | Agent routing, actual procedure use and cross-host behavior |
 | `ai-codebase-rescue` | Package structure/links and evaluation schemas | Quality of a real rescue investigation |
 | `skripsi-skill` | Package structure/links, evaluation schemas and requirement-ownership audit | Research validity and substantive agent behavior |

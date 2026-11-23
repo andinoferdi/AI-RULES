@@ -4,9 +4,9 @@ Council reviews consequential choices through five perspectives, anonymized peer
 
 For architectural forks, technology migrations, or strategic trade-offs, **Council** uses independent advisors to examine assumptions and challenge the initial framing. Inspired by Andrej Karpathy and Ole Lehmann's multi-perspective deliberation model, it reviews the choice before you commit.
 
----
+## What It Does
 
-## The 5 Deliberation Lenses
+### The 5 Deliberation Lenses
 
 ```
    ┌─────────────────────────────────────────────────────────────┐
@@ -28,42 +28,41 @@ For architectural forks, technology migrations, or strategic trade-offs, **Counc
 4. **Outsider** — Spots comprehension gaps, stakeholder friction, and assumptions insiders take for granted.
 5. **Executor** — Evaluates implementation constraints, reversibility, dependency risks, and concrete steps.
 
----
-
 ## When to Use
 
-| Convene Council For | Do NOT Convene For |
+| Use for | Do not use for |
 |---|---|
 | Irreversible architectural forks (e.g., monolith vs. microservices) | Simple factual questions or lookups |
 | Technology stack / library selection with material trade-offs | Minor code formatting or cosmetic preferences |
 | Subsystem replacement vs. refactoring decisions | Routine bug fixes or everyday drafting |
 | Critical thesis/research methodological choices | Tasks already settled with clear requirements |
 
----
-
 ## Quick Start
 
-### 1. Installation
+### Installation
 
-Install via the **AI-RULES CLI** (included in the `everything` profile and custom setup; automatically installs companion `focus`):
+Install with the **AI-RULES CLI** (included in the `everything` profile and custom setup; automatically installs companion `focus`):
 
 ```sh
-# Install CLI
 git clone --branch main https://github.com/andinoferdi/AI-RULES.git
 cd AI-RULES && python -m pip install .
-
-# Setup Council for your host
 ai-rules setup --capability council --host <host>
 ```
 
+`<host>` is one of `codex`, `claude-code`, `opencode`, `antigravity-cli` or `antigravity-ide`.
+
 <details>
-<summary>Manual Installation</summary>
+<summary>Manual installation</summary>
+
+Copy `skills/council/` from `main` into your host's skills directory:
 
 ```sh
-git clone --depth 1 --single-branch --branch council https://github.com/andinoferdi/AI-RULES.git "<skills-dir>/council"
+git clone --depth 1 --filter=blob:none --sparse https://github.com/andinoferdi/AI-RULES.git ai-rules-src
+git -C ai-rules-src sparse-checkout set skills/council
+cp -r ai-rules-src/skills/council "<skills-dir>/council"
 ```
 
-| Host | Global Skills Directory | Project Skills Directory |
+| Host | Global skills directory | Project skills directory |
 |---|---|---|
 | **Codex** | `~/.agents/skills/council` | `.agents/skills/council` |
 | **Claude Code** | `~/.claude/skills/council` | `.claude/skills/council` |
@@ -72,15 +71,15 @@ git clone --depth 1 --single-branch --branch council https://github.com/andinofe
 
 </details>
 
-### 2. Usage
+### Usage
 
 - **Claude Code:** `/council Should we rebuild the billing pipeline in Go or optimize the existing Node service?`
 - **Codex:** `$council evaluate trade-offs between PostgreSQL partitioning and sharding for our telemetry data`
 - **OpenCode / Antigravity:** Ask your agent to "Council this decision" or run a war room review.
 
----
+## How It Works
 
-## How a Run Works
+### A run step by step
 
 1. **Context and brief.** Council reads what you named plus the project's instruction files when they matter, then writes one neutral brief with every material fact tagged `[verified]`, `[reported]`, `[assumption]` or `[unknown]`.
 2. **Advisors.** Five advisors get the same brief and the same written template. Each argues its lens at full strength, without seeing the others.
@@ -91,9 +90,7 @@ git clone --depth 1 --single-branch --branch council https://github.com/andinofe
 
 A default run uses 8 sub-agents in three waves of at most 3: three advisors, two advisors, then three reviewers. Advisors use a mid-tier model at medium effort and reviewers a mid or low tier at low effort. Council announces the count, models and effort before dispatching and waits for approval when your rules require it. Five reviewers run only on request. Hosts without sub-agents get a labeled **single-agent perspective review** built from the same templates.
 
----
-
-## Verdict Output Format
+### Verdict output format
 
 Council answers in chat with one fixed layout:
 
@@ -107,15 +104,18 @@ Council answers in chat with one fixed layout:
 | First action | Langkah pertama | Exactly one concrete next step. |
 | Run line | Jalannya council | Agents, models and effort actually used, and the context read. |
 
----
+## Works With Other Skills
 
-## References
+- **Andino Workflow:** Andino keeps scope, routing, planning, implementation and verification. Council returns a decision and one next action; it never starts a second plan.
+- **Focus:** Focus shapes how the verdict is written. Council installs it as a companion.
+
+## Files
 
 - [`SKILL.md`](SKILL.md) — Runtime contract, run budget, and host fidelity limits.
 - [`references/prompts.md`](references/prompts.md) — Advisor, reviewer, and single-agent templates plus the chair checklist.
 - [`references/worked-example.md`](references/worked-example.md) — One complete illustrative run.
-- [AI-RULES Main](https://github.com/andinoferdi/AI-RULES/tree/main) — Validator suite, release manifest, and test harnesses.
+- [`references/legal/license.md`](references/legal/license.md) — MIT license notice.
 
 ## License
 
-AI-RULES-authored content in this skill is released under the [MIT License](https://github.com/andinoferdi/AI-RULES/blob/main/LICENSE). No third-party text or code is included; the credited inspirations are listed in [SKILL.md](SKILL.md).
+AI-RULES-authored content in this skill is released under the [MIT License](references/legal/license.md). No third-party text or code is included; the credited inspirations are listed in [SKILL.md](SKILL.md).

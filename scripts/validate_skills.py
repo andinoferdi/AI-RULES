@@ -121,7 +121,7 @@ def package_files(files, expected_name, modes=None):
             # The skill's stdlib checker; main tests it from the pinned ref.
             expected_name == "natural-writing" and name == "scripts/check.py"
         ))
-        if expected_name in ('focus', 'search-first') and name == 'references/consolidation-provenance.json':
+        if expected_name in ('focus', 'search-first') and name == 'references/legal/provenance.json':
             allowed = True
         if expected_name == 'andino-workflow':
             parts = name.split('/')

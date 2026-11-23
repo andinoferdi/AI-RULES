@@ -4,9 +4,9 @@ Focus guides AI agents to answer the question first, give concrete steps, and st
 
 Conversational filler and generic disclaimers can bury the answer. **Focus** applies **Priority A (A. PRIORITAS)** to communication: answer the core question first, outline immediate steps, and match the natural register of Indonesian or English.
 
----
+## What It Does
 
-## Core Communication Rules (Priority A)
+### Core communication rules (Priority A)
 
 | Rule | What It Means |
 |---|---|
@@ -21,11 +21,9 @@ Conversational filler and generic disclaimers can bury the answer. **Focus** app
 | **Plain Error Reports** | An error report gives the symptom, the confirmed cause or "cause unknown", and the next check, without alarm words. |
 | **Shape Breaks Only for a Reason** | The shape yields only in listed cases: an explicit request for detail, a destructive action, a debug spiral, real ambiguity, or a conflict with the task or the host. |
 
----
-
 ## When to Use
 
-| Use Focus For | Do NOT Use Focus For |
+| Use for | Do not use for |
 |---|---|
 | Direct answers without conversational filler | Truncating long-form essays or reports (use `natural-writing`) |
 | Clear technical steps and immediate commands | Bypassing verification or reducing investigation depth |
@@ -33,31 +31,32 @@ Conversational filler and generic disclaimers can bury the answer. **Focus** app
 | Adaptive bilingual responses (Indonesian & English) | Overriding explicit user requests for a formal style |
 | Repairing a confusing previous explanation with missing context and a concrete example | Starting research, a curriculum or file edits from explanation repair |
 
----
-
 ## Quick Start
 
-### 1. Installation
+### Installation
 
-Install via the **AI-RULES CLI** (included automatically by default in all profiles through `andino-workflow`):
+Install with the **AI-RULES CLI** (included automatically by default in all profiles through `andino-workflow`):
 
 ```sh
-# Install CLI
 git clone --branch main https://github.com/andinoferdi/AI-RULES.git
 cd AI-RULES && python -m pip install .
-
-# Setup Focus for your host
 ai-rules setup --capability focus --host <host>
 ```
 
+`<host>` is one of `codex`, `claude-code`, `opencode`, `antigravity-cli` or `antigravity-ide`.
+
 <details>
-<summary>Manual Installation</summary>
+<summary>Manual installation</summary>
+
+Copy `skills/focus/` from `main` into your host's skills directory:
 
 ```sh
-git clone --depth 1 --single-branch --branch focus https://github.com/andinoferdi/AI-RULES.git "<skills-dir>/focus"
+git clone --depth 1 --filter=blob:none --sparse https://github.com/andinoferdi/AI-RULES.git ai-rules-src
+git -C ai-rules-src sparse-checkout set skills/focus
+cp -r ai-rules-src/skills/focus "<skills-dir>/focus"
 ```
 
-| Host | Global Skills Directory | Project Skills Directory |
+| Host | Global skills directory | Project skills directory |
 |---|---|---|
 | **Codex** | `~/.agents/skills/focus` | `.agents/skills/focus` |
 | **Claude Code** | `~/.claude/skills/focus` | `.claude/skills/focus` |
@@ -66,7 +65,7 @@ git clone --depth 1 --single-branch --branch focus https://github.com/andinoferd
 
 </details>
 
-### 2. Usage
+### Usage
 
 Focus triggers automatically when installed alongside Andino Workflow, or you can invoke it directly:
 
@@ -75,26 +74,23 @@ Focus triggers automatically when installed alongside Andino Workflow, or you ca
 - **OpenCode / Antigravity:** Ask your agent to "use focus" or write using the focus style.
 - **Deactivate:** Simply say `stop focus` or request another style.
 
----
-
-## Relationship to Other Skills
+## Works With Other Skills
 
 - **Andino Workflow:** Focus serves as the default presentation layer for Andino; it shapes communication while Andino owns the task lifecycle and execution plan.
 - **Natural Writing:** Focus controls conversational and progress communication; long-form writing artifacts (essays, academic chapters, documentation) are governed by `natural-writing`.
 - **Web Chatbots:** For copy-pasting into ChatGPT Web or Claude Web, refer to the [WebBased branch](https://github.com/andinoferdi/AI-RULES/tree/WebBased).
 
----
-
-## References & Provenance
+## Files
 
 - [`SKILL.md`](SKILL.md) — Activation, length budgets, cut rules, shape rules with Bad/Good examples, when to break the shape, and style precedence. On first use it reads Priority A plus the language file for the reply language; a mixed-language reply reads both.
 - [`references/priority-a.md`](references/priority-a.md) — Canonical Priority A communication principles.
 - [`references/human-language-indonesia.md`](references/human-language-indonesia.md) — Indonesian conversational patterns.
 - [`references/human-language-english.md`](references/human-language-english.md) — English conversational patterns.
 - [`references/explanation-repair.md`](references/explanation-repair.md) — Load only for a confusing prior explanation; preserves meaning without a curriculum, research, file edits or a parent lifecycle.
-- [`references/consolidation-provenance.json`](references/consolidation-provenance.json) — Absorbed-source SHA-256 identities and mapping; [Matt Pocock MIT notice](references/matt-license.md).
-- Adapted from [i-have-adhd](https://github.com/ayghri/i-have-adhd) by Ayoub Ghriss under the MIT License ([license notice](references/license.md)).
+- [`references/legal/provenance.json`](references/legal/provenance.json) — Absorbed-source SHA-256 identities and mapping.
+- [`references/legal/license.md`](references/legal/license.md) — MIT license notice for AI-RULES-authored content.
+- [`references/legal/i-have-adhd-license.md`](references/legal/i-have-adhd-license.md) and [`references/legal/matt-license.md`](references/legal/matt-license.md) — Third-party MIT notices.
 
 ## License
 
-AI-RULES-authored content in this skill is released under the [MIT License](https://github.com/andinoferdi/AI-RULES/blob/main/LICENSE). Third-party material keeps its original license; see [references/license.md](references/license.md), [references/matt-license.md](references/matt-license.md).
+AI-RULES-authored content in this skill is released under the [MIT License](references/legal/license.md). Adapted from [i-have-adhd](https://github.com/ayghri/i-have-adhd) by Ayoub Ghriss under the MIT License ([notice](references/legal/i-have-adhd-license.md)); absorbed Matt Pocock material keeps its [MIT notice](references/legal/matt-license.md).

@@ -4,9 +4,9 @@ Search First evaluates existing libraries, framework utilities, and official API
 
 Before writing custom utilities, check whether standard libraries or maintained packages already meet the need. **Search First** uses a research gate for non-trivial implementation decisions, checking approaches against authoritative documentation and current API contracts.
 
----
+## What It Does
 
-## The 4 Implementation Decisions
+### The 4 implementation decisions
 
 Before writing custom functionality, Search First categorizes the path forward:
 
@@ -17,11 +17,9 @@ Before writing custom functionality, Search First categorizes the path forward:
 | **COMPOSE** | Pipe together | Combine two or more modular utilities rather than authoring a monolith from scratch. |
 | **BUILD** | Write custom | No safe, maintained, or lightweight solution exists; write tailored, test-guarded code. |
 
----
-
 ## When to Use
 
-| Run Search First For | Do NOT Run Search First For |
+| Use for | Do not use for |
 |---|---|
 | Selecting an unfamiliar library, SDK, or integration | Trivial local edits, syntax corrections, or typos |
 | Checking whether a utility already exists in the repo/ecosystem | Settled local questions with clear in-project answers |
@@ -30,31 +28,32 @@ Before writing custom functionality, Search First categorizes the path forward:
 | Source-grounded answers to concrete technical/factual questions | A forced implementation decision for research-only work |
 | Matching resolved versions to official contracts and parity tests | Latest documentation as proof for a different installed release |
 
----
-
 ## Quick Start
 
-### 1. Installation
+### Installation
 
-Install via the **AI-RULES CLI** (included automatically by default in all profiles alongside `andino-workflow`):
+Install with the **AI-RULES CLI** (included automatically by default in all profiles alongside `andino-workflow`):
 
 ```sh
-# Install CLI
 git clone --branch main https://github.com/andinoferdi/AI-RULES.git
 cd AI-RULES && python -m pip install .
-
-# Setup Search First for your host
 ai-rules setup --capability search-first --host <host>
 ```
 
+`<host>` is one of `codex`, `claude-code`, `opencode`, `antigravity-cli` or `antigravity-ide`.
+
 <details>
-<summary>Manual Installation</summary>
+<summary>Manual installation</summary>
+
+Copy `skills/search-first/` from `main` into your host's skills directory:
 
 ```sh
-git clone --depth 1 --single-branch --branch search-first https://github.com/andinoferdi/AI-RULES.git "<skills-dir>/search-first"
+git clone --depth 1 --filter=blob:none --sparse https://github.com/andinoferdi/AI-RULES.git ai-rules-src
+git -C ai-rules-src sparse-checkout set skills/search-first
+cp -r ai-rules-src/skills/search-first "<skills-dir>/search-first"
 ```
 
-| Host | Global Skills Directory | Project Skills Directory |
+| Host | Global skills directory | Project skills directory |
 |---|---|---|
 | **Codex** | `~/.agents/skills/search-first` | `.agents/skills/search-first` |
 | **Claude Code** | `~/.claude/skills/search-first` | `.claude/skills/search-first` |
@@ -63,24 +62,22 @@ git clone --depth 1 --single-branch --branch search-first https://github.com/and
 
 </details>
 
-### 2. Usage Examples
+### Usage
 
 - **Codex:** `$search-first compare schema validation libraries for this TypeScript project`
 - **Claude Code:** `/search-first research how Next.js 16 handles route caching before writing custom cache layers`
 - **OpenCode / Antigravity:** Ask your agent: `"Search first before implementing this auth flow"`
 
----
+## How It Works
 
-## The Research Protocol
+### The research protocol
 
 1. **Local Sufficiency First:** Inspect local package manifests and existing utility directories before querying external sources.
 2. **Authoritative Sources Only:** Rely on official documentation, verified release notes, and high-trust repositories over unverified blog snippets.
 3. **Honest Unknowns:** If web browsing or search tools are unavailable or restricted, mark external compatibility claims as `UNKNOWN` rather than speculating.
 4. **Lifecycle Boundary:** Search First owns research methodology only; task planning and execution remain governed by the active workflow.
 
----
-
-## Proportional Resource Selection
+### Proportional resource selection
 
 Select the resource for the actual unresolved need, not a mandatory full lifecycle:
 
@@ -111,13 +108,20 @@ method from the actual installed workflow root selected by the host, never throu
 a sibling-relative link. No parent installation or full workflow activation is
 required just to use these resources.
 
-## References & Provenance
+## Works With Other Skills
+
+- **Andino Workflow:** Andino owns planning and execution and installs Search First by default. Search First supplies the research step and keeps any plan Andino already has.
+- **Debugging:** Finding the root cause of a known bug belongs to `andino-debugging`, not to Search First.
+
+## Files
 
 - [`SKILL.md`](SKILL.md) — Runtime contract, decision matrices, and fallback behavior.
 - [`references/online-research.md`](references/online-research.md) — Source vetting guidelines, query formulation, and evidence standards.
-- [`references/consolidation-provenance.json`](references/consolidation-provenance.json) — Source SHA-256 identities, complete absorption mapping and upstream snapshots; accompanying [Matt Pocock](references/matt-license.md) and [Addy Osmani](references/addy-license.md) MIT notices.
-- Adapted from [ECC Search First](https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md) by Affaan Mustafa under the MIT License ([license notice](references/license.md)).
+- [`references/sourced-answer/`](references/sourced-answer/guide.md) and [`references/version-contract/`](references/version-contract/guide.md) — Selectable research resources.
+- [`references/legal/provenance.json`](references/legal/provenance.json) — Source SHA-256 identities, complete absorption mapping and upstream snapshots.
+- [`references/legal/license.md`](references/legal/license.md) — MIT license notice for AI-RULES-authored content.
+- [`references/legal/ecc-license.md`](references/legal/ecc-license.md), [`references/legal/matt-license.md`](references/legal/matt-license.md) and [`references/legal/addy-license.md`](references/legal/addy-license.md) — Third-party MIT notices.
 
 ## License
 
-AI-RULES-authored content in this skill is released under the [MIT License](https://github.com/andinoferdi/AI-RULES/blob/main/LICENSE). Third-party material keeps its original license; see [references/license.md](references/license.md), [references/matt-license.md](references/matt-license.md), [references/addy-license.md](references/addy-license.md).
+AI-RULES-authored content in this skill is released under the [MIT License](references/legal/license.md). Adapted from [ECC Search First](https://github.com/affaan-m/ECC/blob/main/.kiro/skills/search-first/SKILL.md) by Affaan Mustafa under the MIT License ([notice](references/legal/ecc-license.md)); absorbed Matt Pocock and Addy Osmani material keeps its MIT notices ([Matt](references/legal/matt-license.md), [Addy](references/legal/addy-license.md)).

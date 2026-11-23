@@ -224,4 +224,4 @@ Before sending, silently:
    what to do next? If yes, send.
 
 Adapted from [i-have-adhd](https://github.com/ayghri/i-have-adhd),
-Copyright (c) 2026 Ayoub Ghriss, under the [MIT license](references/license.md).
+Copyright (c) 2026 Ayoub Ghriss, under the [MIT license](references/legal/i-have-adhd-license.md).

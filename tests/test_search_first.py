@@ -133,7 +133,7 @@ class SearchFirstSetupTests(unittest.TestCase):
                                      {p.name for p in root.iterdir()})
                     skill = root / "search-first"
                     expected_files = set(self.git("ls-tree", "-r", "--name-only", "main:skills/search-first").splitlines())
-                    self.assertTrue({"SKILL.md", "README.md", "references/license.md"}.issubset(expected_files))
+                    self.assertTrue({"SKILL.md", "README.md", "references/legal/license.md"}.issubset(expected_files))
                     self.assertEqual(expected_files, set(contents(skill)))
                     for name in expected_files:
                         self.assertEqual(self.git("show", f"main:skills/search-first/{name}"),

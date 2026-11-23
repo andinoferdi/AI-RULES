@@ -14,7 +14,7 @@ def validate_inventory(inventory, files, original=None):
     names = [s['name'] for s in inventory['skills']]
     if len(names) != len(set(names)) or set(names) != THREEJS_SKILLS - {'threejs-skills'}:
         errors.append('inventory/catalog identity mismatch')
-    expected_paths = {'README.md', 'SKILL.md', 'references/specialists.md'}
+    expected_paths = {'README.md', 'SKILL.md', 'references/specialists.md', 'references/legal/license.md'}
     for skill in inventory['skills']:
         prefix = 'skills/' + skill['name'] + '/'
         for entry in skill['files'] + skill.get('added_files', []):
