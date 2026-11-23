@@ -70,8 +70,8 @@ Requirements: Python 3.11+, Git, and any supported AI coding agent.
 
 ```sh
 # 1. Clone & install the Andino Skills CLI
-git clone https://github.com/andinoferdi/AI-RULES.git
-cd AI-RULES && python -m pip install .
+git clone https://github.com/andinoferdi/andino-skills.git
+cd andino-skills && python -m pip install .
 
 # 2. Run interactive setup (choose host & profile)
 andino setup
@@ -85,11 +85,11 @@ so (`Skill source: local folder ...`). Run anywhere else, it downloads them from
 GitHub `main`.
 
 On Windows, keep the clone folder short (under about 100 characters, for example
-`C:\Users\you\AI-RULES`) or run `git config --global core.longpaths true` first:
+`C:\Users\you\andino-skills`) or run `git config --global core.longpaths true` first:
 some Three.js example files sit deep inside `skills/`.
 
 Or skip Python and Git: download the standalone binary for your system from
-[Releases](https://github.com/andinoferdi/AI-RULES/releases/latest)
+[Releases](https://github.com/andinoferdi/andino-skills/releases/latest)
 (`ai-rules-windows-x64.exe`, `ai-rules-macos-arm64` or `ai-rules-linux-x64`),
 check it against `SHA256SUMS`, and run it with the same commands:
 
@@ -458,7 +458,7 @@ None of these examples names a workflow member such as `andino-planning`; the wo
 
 ### In web chatbots (no skills)
 
-Claude Web, ChatGPT and Gemini Web cannot load skills. The [WebBased](https://github.com/andinoferdi/AI-RULES/tree/WebBased) branch plays that role as copy-paste prompt modules:
+Claude Web, ChatGPT and Gemini Web cannot load skills. The [WebBased](https://github.com/andinoferdi/andino-skills/tree/WebBased) branch plays that role as copy-paste prompt modules:
 
 1. **A. PRIORITAS** first in every chat. It plays the role of Layer 1.
 2. Add **one** specialist module for the task (for example **O** for web design direction, **L** for thesis).
@@ -484,7 +484,7 @@ backups and rollback. Generic skill installers copy only the top-level folder.
 | **[Natural Writing](skills/natural-writing)** | `skills/natural-writing` | Prose writing, rewriting, and review without formulaic AI tells. | `/natural-writing`<br>`$natural-writing` |
 | **[Skripsi Skill](skills/skripsi-skill)** | `skills/skripsi-skill` | Academic thesis, literature matrix, and research defense guidance. | `/skripsi-skill`<br>`$skripsi-skill` |
 | **[Three.js Skills](skills/threejs-skills)** | `skills/threejs-skills` | 3D graphics family with 45 WebGL/WebGPU and shader methods. | `/threejs-skills`<br>`$threejs-skills` |
-| **[WebBased](https://github.com/andinoferdi/AI-RULES/tree/WebBased)** | `WebBased` branch | 47 ready-to-use prompt templates for web chatbots (Claude/ChatGPT Web). | *Copy-paste directly* |
+| **[WebBased](https://github.com/andinoferdi/andino-skills/tree/WebBased)** | `WebBased` branch | 47 ready-to-use prompt templates for web chatbots (Claude/ChatGPT Web). | *Copy-paste directly* |
 
 ---
 
@@ -603,5 +603,5 @@ and permissions.
 
 Andino Skills is written and maintained by [Andino Ferdiansah](https://github.com/andinoferdi),
 a developer from Indonesia. If the skills save you a bad "done", star the repo so
-other developers find it, and open an [issue](https://github.com/andinoferdi/AI-RULES/issues)
+other developers find it, and open an [issue](https://github.com/andinoferdi/andino-skills/issues)
 with what worked or broke. Brand files and rules: [docs/brand](docs/brand/README.md).
