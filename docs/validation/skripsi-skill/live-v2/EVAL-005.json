@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-005",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "c60a15ae2fceea2b3f6c2ad5c585415e9f834178",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Saya ingin memahami pengalaman mahasiswa memakai AI saat belajar.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:31:05.835735+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "3e2e15a65b12a775d1647435f4950d5446c3fbc5571d7f9f0a19abe7271a54a0",
+  "exit_code": 0,
+  "observed_output": "Topik ini bisa diarahkan sebagai **penelitian tentang pengalaman mahasiswa menggunakan AI generatif dalam kegiatan belajar**. Fokusnya bukan sekadar seberapa sering AI dipakai, tetapi bagaimana mahasiswa memakainya, apa yang mereka rasakan terbantu, dan kendala atau kekhawatiran yang muncul.\n\nPertanyaan awal yang dapat memandu penelitian:\n\n> **Bagaimana mahasiswa menggunakan dan memaknai AI generatif saat belajar, termasuk manfaat, kendala, dan pengaruh yang mereka rasakan terhadap proses belajarnya?**\n\nJika ingin menggali pengalaman secara mendalam, wawancara semi-terstruktur dengan mahasiswa yang pernah memakai AI untuk belajar dapat menjadi titik awal. Topik wawancara bisa mencakup tugas belajar yang dibantu AI, alasan memilih AI, cara memeriksa jawabannya, serta pengalaman terkait pemahaman materi, kemandirian belajar, dan kejujuran akademik. Hal-hal tersebut masih merupakan **arah eksplorasi**, bukan temuan yang sudah terbukti.\n\nAgar topiknya lebih terarah, kelompok mahasiswa mana yang ingin Anda pahami—misalnya mahasiswa di kampus atau program studi tertentu, atau mahasiswa secara umum?",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md; Get-ChildItem -Force'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md; Get-ChildItem -Force'",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/research-state-and-routing.md; Get-Content -Raw skripsi-skill/references/intent-and-context.md; Get-Content -Raw skripsi-skill/references/discovery-feasibility.md; Get-Content -Raw skripsi-skill/references/research-problem-gap-rq.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/research-state-and-routing.md; Get-Content -Raw skripsi-skill/references/intent-and-context.md; Get-Content -Raw skripsi-skill/references/discovery-feasibility.md; Get-Content -Raw skripsi-skill/references/research-problem-gap-rq.md'",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:31:26.906324+00:00"
+}

@@ -44,6 +44,17 @@ design; "banyak penelitian" or statistics without sources; a title that names a 
 relation than the RQ; numbers without an output source; a conclusion that answers a
 question the study did not ask; generic recommendations without a trigger.
 
+## Readiness check (siap dikirim?)
+
+When the student asks whether a proposal or chapter is ready to send, assess each area
+from the available material and give a plain verdict per area and overall ("siap",
+"siap dengan catatan", "belum siap karena …"): foundation and context, problem and gap
+evidence, research questions, literature and theory, design and method, sampling or
+participants, ethics and access, consistency across title, questions, method and
+chapters, campus guide fit, and open blockers. Never judge readiness from formatting or
+word count alone. Without the draft, assess what the known decisions allow, say which
+areas cannot be checked yet, and ask for the draft and guide.
+
 ## Simulating pembimbing or penguji
 
 When asked to act as a supervisor or examiner, review as above in their voice: direct,
@@ -55,10 +66,13 @@ Label the simulation as practice.
 
 Turn every comment into a row; never skip one.
 
-| No | Sumber (pembimbing/penguji, tanggal) | Catatan asli | Tafsiran | Tindakan | Lokasi perubahan | Status |
-| --- | --- | --- | --- | --- | --- | --- |
+| No | Sumber (pembimbing/penguji, tanggal) | Catatan asli | Tafsiran | Bab/bagian terdampak | Prioritas | Tindakan | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
 
 - Copy the original comment verbatim; write the interpretation separately.
+- Map each comment to every chapter or research decision it affects (for example sampling
+  feedback touches BAB III, limitations and conclusions), and rank priority: first what
+  changes the research design or core claims, then argument and evidence, then wording.
 - Split a compound comment into separate rows.
 - An ambiguous comment gets a clarifying question for the student to ask, not a guess.
 - Status: `Selesai`, `Perlu didiskusikan` or `Tidak diubah` with the reason.
