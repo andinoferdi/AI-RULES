@@ -83,10 +83,10 @@ def render_setup_summary(
             table.add_row("Project root", str(project_root))
         else:
             table.add_row("Location", "User skill locations for the selected hosts")
-        console.print("AI-RULES Setup\n")
+        console.print("Andino Skills setup\n")
         console.print(table)
         return stream.getvalue().rstrip()
-    lines = ["AI-RULES Setup", "", "Hosts"]
+    lines = ["Andino Skills setup", "", "Hosts"]
     lines.extend(f"  {catalog.require_host(host_id).display_name}" for host_id in host_ids)
     lines.extend(["", "Profile", f"  {profile_label}", "", "Will install/configure"])
     lines.extend(f"  {catalog.require_capability(capability_id).display_name} - {_capability_kind_label(catalog.require_capability(capability_id))}" for capability_id in capabilities)

@@ -352,7 +352,7 @@ def cmd_doctor(args: argparse.Namespace) -> int:
 def cmd_update(args: argparse.Namespace) -> int:
     _prepare_args(args)
     plan = _resolve_from_args(args)
-    print("AI-RULES update preview")
+    print("Andino Skills update preview")
     print(render_plan(plan, verbose=getattr(args, "verbose", False)))
     recorded_hosts = _recorded_default_hosts(args.state_dir)
     if args.agent_defaults is True:  # explicit: may install for the selected hosts
@@ -383,7 +383,7 @@ def cmd_repair(args: argparse.Namespace) -> int:
         raise ValueError("repair restores the bundled release; use setup/update for latest source reconciliation")
     plan = _resolve_from_args(args)
     repair_plan = _explicit_repair_plan(plan, allow_replace=args.replace_existing)
-    print("AI-RULES Repair")
+    print("Andino Skills repair")
     print(render_plan(repair_plan, verbose=getattr(args, "verbose", False)))
     if args.dry_run or not args.yes:
         print("repair preview only; pass --yes to apply the official stable release")
@@ -409,7 +409,7 @@ def cmd_restore(args: argparse.Namespace) -> int:
     ):
         raise ValueError("Exact replay of branch-tracked snapshots is not implemented; refusing to substitute a bundled or latest revision")
     profile = snapshot.get("profile", {})
-    print("AI-RULES restore preview")
+    print("Andino Skills restore preview")
     print(f"profile={profile.get('profile')} hosts={profile.get('hosts', [])} capabilities={profile.get('capabilities', [])}")
     catalog = load_catalog()
     for host_id in profile.get("hosts", []):

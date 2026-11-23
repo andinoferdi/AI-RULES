@@ -44,7 +44,7 @@ class InteractiveSetupTests(unittest.TestCase):
             catalog=catalog,
         )
 
-        self.assertIn("AI-RULES Setup", summary)
+        self.assertIn("Andino Skills setup", summary)
         self.assertIn("Codex", summary)
         self.assertIn("Engineering", summary)
         self.assertIn("Andino Workflow - first-party skill", summary)

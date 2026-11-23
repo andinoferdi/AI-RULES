@@ -14,35 +14,32 @@ class BannerInfo:
     tools_found: tuple[str, ...]
     tools_missing: tuple[str, ...]
     cwd: str
+    program: str = "andino"
 
 
-# Andes peak that doubles as an "A": S is snow, # is rock; two pixel rows per text row.
+BRAND = "Andino Skills"
+
+# The Andino Skills mark: an "A" whose crossbar is a check mark (see docs/brand).
+# A is the letter, K is the check; two pixel rows per text row.
 _ICON = (
-    "....SS....",
-    "...SSSS...",
-    "...####...",
-    "..######..",
-    "..##..##..",
-    ".########.",
-    ".##....##.",
-    "###....###",
+    "....AA....",
+    "...AAAA...",
+    "...A..A...",
+    "..AA...K..",
+    "..AA..KA..",
+    ".AAK.K.AA.",
+    ".AA.K..AA.",
+    "AA......AA",
 )
-_SNOW = (215, 222, 232)
-_TOP, _BOTTOM = (255, 130, 40), (174, 20, 38)
-_ASCII_ICON = ("   /\\     ", "  /  \\    ", " / /\\ \\   ", "/_/  \\_\\  ")
+_COLORS = {"A": (240, 243, 246), "K": (245, 165, 36)}  # Kertas and Kunyit Terang
+_ASCII_ICON = ("   /\\     ", "  /  \\    ", " / \\/ \\   ", "/      \\  ")
 _BOLD, _DIM, _RESET = "\x1b[1m", "\x1b[2m", "\x1b[0m"
 _ICON_WIDTH = len(_ICON[0])
 _INDENT, _GAP = "  ", "   "
 
 
 def _pixel_color(row: int, column: int) -> tuple[int, int, int] | None:
-    pixel = _ICON[row][column]
-    if pixel == ".":
-        return None
-    if pixel == "S":
-        return _SNOW
-    t = (row - 2) / (len(_ICON) - 3)
-    return tuple(round(a + (b - a) * t) for a, b in zip(_TOP, _BOTTOM))
+    return _COLORS.get(_ICON[row][column])
 
 
 def _icon_rows(color: bool) -> list[str]:
@@ -97,7 +94,7 @@ def render_banner(info: BannerInfo, width: int, *, color: bool = True, unicode: 
     sep = " · " if unicode else ", "
     ellipsis = "…" if unicode else "..."
     if width < 40:
-        title = [("Andino AI Rules", _BOLD), (f" v{info.version}{sep}{info.command}", "")]
+        title = [(BRAND, _BOLD), (f" v{info.version}{sep}{info.command}", "")]
         return "\n" + _INDENT + _fit(title, width - len(_INDENT), ellipsis, color) + "\n"
 
     if info.tools_found:
@@ -110,8 +107,8 @@ def render_banner(info: BannerInfo, width: int, *, color: bool = True, unicode: 
         tools = "AI tools: not checked"
     limit = width - len(_INDENT) - _ICON_WIDTH - len(_GAP)
     lines = [
-        [("Andino AI Rules", _BOLD), (f" v{info.version}", _DIM)],
-        [(f"ai-rules {info.command}", _DIM)],
+        [(BRAND, _BOLD), (f" v{info.version}", _DIM)],
+        [(f"{info.program} {info.command}", _DIM)],
         [(tools, "")],
         [(_fit_path(info.cwd, limit, ellipsis), _DIM)],
     ]
@@ -131,6 +128,12 @@ def _display_path(path: Path) -> str:
     return "~" if relative == Path(".") else f"~{os.sep}{relative}"
 
 
+def _program_name() -> str:
+    """The command the user typed: `andino`, `ai-rules` or a release binary name."""
+    name = Path(sys.argv[0]).stem if sys.argv and sys.argv[0] else ""
+    return name if name.startswith(("andino", "ai-rules")) else "andino"
+
+
 def collect_banner_info(command: str = "setup") -> BannerInfo:
     from ai_rules import __version__
     from ai_rules.catalog import load_catalog
@@ -143,7 +146,8 @@ def collect_banner_info(command: str = "setup") -> BannerInfo:
             continue  # no PATH probe exists for this host, so "not on PATH" would be a guess
         target = found if adapter.detect().status == DetectionStatus.PRESENT else missing
         target.append(adapter.host.display_name)
-    return BannerInfo(__version__, command, tuple(found), tuple(missing), _display_path(Path.cwd()))
+    return BannerInfo(__version__, command, tuple(found), tuple(missing), _display_path(Path.cwd()),
+                      _program_name())
 
 
 def print_setup_banner(command: str = "setup") -> None:
@@ -161,7 +165,7 @@ def print_setup_banner(command: str = "setup") -> None:
         info = collect_banner_info(command)
     except Exception:
         # The banner is decoration; detection trouble must never stop setup.
-        info = BannerInfo(__version__, command, (), (), _display_path(Path.cwd()))
+        info = BannerInfo(__version__, command, (), (), _display_path(Path.cwd()), _program_name())
     print_formatted_text(ANSI(render_banner(
         info,
         shutil.get_terminal_size().columns,

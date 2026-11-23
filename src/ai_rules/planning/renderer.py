@@ -14,7 +14,7 @@ from ai_rules.catalog import load_catalog
 def render_plan(plan: InstallationPlan, *, verbose: bool = False, width: int | None = None) -> str:
     if not verbose:
         return _compact_plan(plan, width or shutil.get_terminal_size().columns)
-    lines = [f"AI-RULES plan schema={plan.schema_version} profile={plan.profile_id or 'custom'}"]
+    lines = [f"Andino Skills plan schema={plan.schema_version} profile={plan.profile_id or 'custom'}"]
     for target in plan.targets:
         lines.append(
             f"- {target.capability_id} -> {target.host_id}/{target.scope.value}: "
