@@ -19,6 +19,7 @@ def main():
     p.add_argument('--subdir',default='',help='skill folder inside --runtime, e.g. skills/skripsi-skill')
     p.add_argument('--out-dir',type=Path,default=ROOT/'docs/validation/skripsi-skill/live')
     p.add_argument('--cases',default='',help='comma-separated case IDs; overrides --start/--stop')
+    p.add_argument('--codex-config',action='append',default=[],help='extra codex -c override (repeatable)')
     a=p.parse_args()
     revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=a.runtime,text=True).strip()
     cases={c['id']:c for c in json.loads((ROOT/'evals/skripsi-skill.json').read_text(encoding='utf-8'))}
@@ -35,7 +36,8 @@ def main():
                 print(f'{ident} existing execution retained',flush=True)
                 continue
         result=subprocess.run([sys.executable,str(ROOT/'scripts/run_skripsi_smoke.py'),'--runtime',str(a.runtime),
-                               '--case',ident,'--output',str(out),'--timeout',str(a.timeout),'--subdir',a.subdir],cwd=ROOT)
+                               '--case',ident,'--output',str(out),'--timeout',str(a.timeout),'--subdir',a.subdir,
+                               *[part for value in a.codex_config for part in ('--codex-config', value)]],cwd=ROOT)
         if result.returncode:
             raise SystemExit(result.returncode)
 

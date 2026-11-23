@@ -8,7 +8,21 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 from import_skripsi_evals import parse_cases
 from validate_skripsi_traceability import audit
-from run_skripsi_smoke import make_prompt, runtime_names
+from run_skripsi_smoke import make_prompt, runtime_names, codex_command
+
+
+class CodexCommandTest(unittest.TestCase):
+    def test_config_overrides_follow_isolation_flags(self):
+        command = codex_command('codex', Path('/tmp/base'), Path('/tmp/base/answer.txt'),
+                                ['windows.sandbox="elevated"'])
+        self.assertIn('--ignore-user-config', command)
+        self.assertEqual(command[command.index('-c') + 1], 'windows.sandbox="elevated"')
+        self.assertEqual(command[command.index('--sandbox') + 1], 'read-only')
+        self.assertEqual(command[-1], '-')
+
+    def test_no_overrides_keeps_original_command(self):
+        command = codex_command('codex', Path('/tmp/base'), Path('/tmp/base/answer.txt'), [])
+        self.assertNotIn('-c', command)
 
 
 class RuntimeLayoutTest(unittest.TestCase):
