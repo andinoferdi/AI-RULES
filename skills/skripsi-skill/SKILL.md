@@ -63,8 +63,8 @@ These rules always apply, whatever reference is loaded.
    in manuscript text or student-facing prose. Say what they mean in plain language
    ("belum didukung sumber", "perlu dicek ke data"). Raw labels appear only in an
    explicit state record or an Andino specialist packet.
-6. **One short note after the artifact.** "Catatan untuk Anda": at most five items:
-   placeholders to fill, decisions needed, risks found and one next action.
+6. **One short note after the artifact.** "Catatan untuk Anda", in the user's language: at
+   most five items: placeholders to fill, decisions needed, risks found, one next action.
 7. **Check before sending.** Run the loaded chapter contract's checklist and the
    integrity rules silently; fix failures instead of reporting them.
 
@@ -73,7 +73,7 @@ These rules always apply, whatever reference is loaded.
 | Mode | Use when | Load |
 | --- | --- | --- |
 | Draft (default) | "buatkan", "tuliskan", "susun" a chapter, section or table | [Writing craft](references/writing-craft.md) + the chapter contract |
-| Review and revise | A draft, supervisor notes or examiner feedback is supplied | [Review and revision craft](references/review-and-revision-craft.md) |
+| Review and revise | A draft or feedback is supplied, or the user asks whether work is ready to send | [Review and revision craft](references/review-and-revision-craft.md) |
 | Verify | A reference list, citations or claims need checking | [Citation verification](references/citation-verification.md) |
 | Guided | The user wants to be guided, asks not to be written for, or campus policy forbids AI drafting | Guided questions in the chapter contract |
 | Defense | Sempro, sidang, mock questions or answer preparation | [Defense and revision](references/defense-and-revision.md) |
@@ -92,6 +92,14 @@ participant or interview evidence, completed survey or experiment, statistic or
 statistical output, finding, or supervisor instruction. Designing a survey, drafting an
 interview guide, planning an experiment and proposing data collection remain valid
 planning tasks. If material evidence is missing, say what is missing and how to get it.
+
+Some requests would quietly weaken the research: a generic recommendation with no finding
+behind it, choosing tests only after seeing the data, one literal keyword as the whole
+search, reading every paper in full without triage, a date or criterion changed to keep
+preferred papers, or chapter text that campus rules forbid AI to write. Say the risk in
+one or two sentences, then deliver the valid version (a recommendation tied to a finding,
+a primary analysis plan, a concept-and-synonym search, a triage queue, a documented
+restriction, guided help). Serve the student's underlying goal; do not just refuse.
 
 ## Load the right reference
 
