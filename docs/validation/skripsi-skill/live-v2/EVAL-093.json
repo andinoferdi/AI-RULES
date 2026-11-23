@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-093",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Proposal v1, approved title: Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P. RQ: Bagaimana hubungan frekuensi penggunaan AI dengan skor regulasi belajar mahasiswa Program P semester 4? Objective: estimate that association. One-time observational survey, voluntary convenience sample from accessible classes, no intervention. Planned instrument: source/adaptation and measurement validation unresolved; pilot not done. Data access to classes reported by user, participant consent/ethics status unknown. Planned association analysis depends on measurement and data properties. No data collected. Literature citations/gap evidence not supplied. Supervisor has approved topic/title and instructed scope remain Program P, not all universities.",
+  "prompt": "\"Cek apakah rancangan kuantitatif saya sudah siap ambil data.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:14:16.764554+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "a6dcee500862dba7d4f6307d5587f49e732d967089a083b3fddb6291ba78e248",
+  "exit_code": 0,
+  "observed_output": "## Penilaian kesiapan\n\n**Rancangan ini belum siap untuk mulai mengambil data.** Pertanyaan tentang hubungan frekuensi penggunaan AI dan skor regulasi belajar cocok diteliti dengan survei observasional satu kali. Namun, beberapa keputusan penting tentang pengukuran, analisis, dan izin pengumpulan belum selesai.\n\n| Bagian | Kondisi saat ini | Yang perlu dibereskan |\n|---|---|---|\n| Fokus | Judul dan topik disetujui; cakupan terkunci pada mahasiswa semester 4 Program P | Pertahankan batas ini di seluruh dokumen dan rekrutmen |\n| Desain | Survei observasional satu kali; tidak ada intervensi | Jelaskan bahwa hasil memperkirakan hubungan dalam data yang terkumpul, bukan membuktikan sebab-akibat |\n| Pengukuran | Instrumen, sumber/adaptasi, dan validasi belum ditetapkan; pilot belum dilakukan | Tetapkan definisi operasional dan instrumen; cek kesesuaian bahasa, skoring, izin penggunaan bila perlu, dan lakukan pilot sebelum survei utama |\n| Sampel | Sampel kemudahan dari kelas yang dapat diakses | Tetapkan kriteria peserta, cara mengundang dan mencatat respons, serta alasan jumlah sampel. Sampel ini tidak dengan sendirinya mewakili seluruh mahasiswa Program P |\n| Izin dan etika | Akses kelas dilaporkan tersedia; status persetujuan peserta dan etik belum diketahui | Pastikan izin akses yang diperlukan, prosedur persetujuan peserta, perlindungan privasi, dan penyimpanan data sebelum mengundang peserta |\n| Analisis | Masih bergantung pada sifat data dan pengukuran | Tentukan variabel, cara menghitung skor, analisis utama, pemeriksaan asumsi yang relevan, penanganan data hilang, dan cara melaporkan besar hubungan beserta ketidakpastiannya |\n\nJudul yang disetujui tidak dengan sendirinya berarti instrumen atau prosedur pengumpulan sudah disetujui. Saya juga belum melihat dokumen proposal atau pedoman kampus, jadi penilaian ini hanya berdasarkan konteks yang Anda berikan; kesesuaian dengan aturan kampus belum diperiksa.\n\n**Catatan untuk Anda**\n\n- Jangan mulai survei utama sebelum instrumen dan prosedur pilot ditetapkan.\n- Pastikan status izin akses, persetujuan peserta, serta persyaratan etik yang berlaku.\n- Susun alasan jumlah sampel berdasarkan tujuan analisis dan cara pengambilan sampel; jangan mengandalkan ambang jumlah responden universal.\n- Setelah itu, cocokkan rencana analisis dengan bentuk data dan skoring instrumen yang benar-benar dipakai.\n- Topik dan batas Program P tetap dipertahankan sesuai arahan pembimbing.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/research-state-and-routing.md'; Get-Content -Raw 'skripsi-skill/references/quantitative-planning.md'; Get-Content -Raw 'skripsi-skill/references/evidence-guidelines-integrity.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/research-state-and-routing.md'; Get-Content -Raw 'skripsi-skill/references/quantitative-planning.md'; Get-Content -Raw 'skripsi-skill/references/evidence-guidelines-integrity.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:14:40.694442+00:00"
+}

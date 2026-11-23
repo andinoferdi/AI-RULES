@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-097",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Saya punya 150 paper. Baca semuanya dari awal sampai akhir.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:15:31.813719+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "c2db366dc218c242fde68779342e0179d222ee0e6ab7664ebf1a446bab19aedb",
+  "exit_code": 0,
+  "observed_output": "Saya bisa membantu membaca dan mensintesis 150 paper, tetapi belum bisa mulai: folder kerja yang tersedia hanya berisi berkas skill dan referensinya; paper Anda tidak ada di sana. Saya belum membaca paper apa pun.\n\nSilakan sediakan paper dalam folder kerja ini, misalnya sebagai PDF atau satu arsip. Setelah tersedia, saya dapat membacanya bertahap dari awal sampai akhir dan mencatat sumber, metode, temuan, keterbatasan, serta bagian yang relevan untuk sintesis. Untuk setiap paper, saya akan menandai bila teksnya tidak lengkap atau ada bagian yang tak terbaca.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'; Get-ChildItem -Force -Recurse | Select-Object FullName,Length,Mode\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'; Get-ChildItem -Force -Recurse | Select-Object FullName,Length,Mode\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/progressive-reading-synthesis.md'; Get-Content -Raw 'skripsi-skill/references/literature-search-screening.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/progressive-reading-synthesis.md'; Get-Content -Raw 'skripsi-skill/references/literature-search-screening.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:15:46.110701+00:00"
+}

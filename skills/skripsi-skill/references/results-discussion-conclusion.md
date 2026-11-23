@@ -4,13 +4,13 @@ Use for post-data writing and BAB IV–V review. Research evidence must precede 
 
 ## Results readiness and Finding Registry
 
-Inspect actual data/source, known analysis method, executed/reproducibly executable analysis, inspectable outputs and RQ/objective mapping. Execute authorized feasible analysis before claiming its output. READY means the requested findings are supported; PARTIALLY_READY permits only supported parts; NOT_READY permits structure/evidence/analysis planning, never invented numbers, participant quotes, themes or findings.
+Inspect actual data/source, known analysis method, executed/reproducibly executable analysis, inspectable outputs and RQ/objective mapping. Execute authorized feasible analysis before claiming its output. READY means the requested findings are supported; PARTIALLY_READY permits only supported parts; NOT_READY permits structure/evidence/analysis planning, never invented numbers, participant quotes, themes or findings. When NOT_READY, tell the student in plain words that the chapter cannot be written yet and why.
 
 For each material finding register ID, RQ/objective, source data/artifact, analysis method and exact output reference, finding statement, direction/pattern, estimate/theme, uncertainty, statistical evidence where relevant, substantive importance, table/figure, and interpretation status. Finding states are VERIFIED_FINDING, PROVISIONAL_FINDING, NEEDS_ANALYSIS, NEEDS_VERIFICATION or NOT_APPLICABLE; they are not ResearchState field statuses. VERIFIED_FINDING requires provenance and inspected evidence. The registry is the writing source of truth, with artifact version/locator retained.
 
 ## Present the actual findings
 
-Follow guideline-defined separate/combined structure while preserving observation → interpretation → literature comparison → implication as distinct functions. Organize by RQ/objective or justified analysis sequence; lead with the main finding and use prose to explain patterns rather than reading every table cell aloud. Separate Results should not become another literature review or premature conclusion.
+Follow guideline-defined separate/combined structure while preserving observation → interpretation → literature comparison → implication as distinct functions. Write results and discussion as paragraphs per finding with the [BAB IV–V writing contracts](writing-bab-4-5.md); interpretation and finding labels stay internal. Organize by RQ/objective or justified analysis sequence; lead with the main finding and use prose to explain patterns rather than reading every table cell aloud. Separate Results should not become another literature review or premature conclusion.
 
 - Quantitative: use actual estimates, uncertainty, test statistics/p-values if used, units/sample base, relevant diagnostics and planned/material analyses. Apply the quantitative reference's interpretation and causal limits.
 - Qualitative: trace themes/categories/processes to actual coding/source context and available quotations; preserve variation and material negative cases. Do not invent representative quotes or force percentages into a design that does not need them.

@@ -1,0 +1,22 @@
+{
+  "case": "EVAL-010",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nKalimat: Banyak mahasiswa pake AI buat bantu belajar.",
+  "prompt": "\"Rapikan satu kalimat ini supaya lebih akademik.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T19:50:49.921917+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "e7f25aafe4ff285232edec49df74001405fb9cf3cbe399e6c38575766cd64396",
+  "exit_code": 0,
+  "observed_output": "Banyak mahasiswa memanfaatkan kecerdasan buatan (AI) untuk mendukung proses pembelajaran.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [],
+  "finished_at_utc": "2026-11-23T19:50:54.946408+00:00"
+}

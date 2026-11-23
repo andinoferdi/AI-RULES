@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-073",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Kalau ditanya kenapa hasil saya signifikan, padahal p-value saya 0.21, saya jawab apa?\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:08:50.107274+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "2714a01fc91e255a4d0899b9c281def5651d3c42f250aca3a127bfe89574a547",
+  "exit_code": 0,
+  "observed_output": "Kalau ambang signifikansi yang ditetapkan adalah 0,05, p-value 0,21 berarti hasilnya **tidak signifikan secara statistik**. Jadi, sebaiknya luruskan premis pertanyaannya dengan tenang:\n\n> “Sebenarnya, pada taraf signifikansi 5%, hasil saya tidak signifikan secara statistik karena p-value 0,21 lebih besar dari 0,05. Jadi, saya tidak menyimpulkan bahwa hipotesis penelitian didukung. Hasil ini menunjukkan bahwa data saya belum memberikan bukti yang cukup untuk menyatakan adanya pengaruh atau hubungan.”\n\nPastikan jawaban itu sesuai dengan uji dan hipotesis yang Anda gunakan. Jika penelitian memakai ambang lain yang sudah ditetapkan sebelumnya, sebutkan ambang tersebut dan jelaskan dasarnya. Jangan menyebut hasilnya signifikan hanya karena arah koefisien sesuai dugaan atau karena ada pola pada data; p-value juga bukan ukuran besar-kecilnya efek.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/defense-and-revision.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/defense-and-revision.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:09:06.224547+00:00"
+}

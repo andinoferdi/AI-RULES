@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-085",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Datanya kumpulkan dulu, nanti tes statistiknya dipikirkan belakangan.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:12:22.689536+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "42557161a8ac3bd9fa4a0527413d97f505b41d8089a2180df495ec18b3c1a1c5",
+  "exit_code": 0,
+  "observed_output": "Siap, kita fokus mengumpulkan dan merapikan data dulu. Saya belum akan menentukan atau menjalankan uji statistik.\n\nSaya hanya menemukan folder `skripsi-skill` di direktori kerja; belum ada data, topik, atau rancangan penelitian yang bisa dijadikan dasar pengumpulan. Kirimkan topik atau pertanyaan penelitian, jenis data yang ingin dikumpulkan, serta sumber atau responden yang sudah tersedia. Setelah itu, saya bisa bantu menyusun daftar data yang perlu dikumpulkan dan mencatat asal serta kelengkapannya.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'C:\\\\Users\\\\Andino\\\\.agents\\\\skills\\\\skripsi-skill\\\\SKILL.md'; Get-ChildItem -Force\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'C:\\\\Users\\\\Andino\\\\.agents\\\\skills\\\\skripsi-skill\\\\SKILL.md'; Get-ChildItem -Force\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/research-state-and-routing.md'; Get-Content -Raw 'skripsi-skill/references/intent-and-context.md'; Get-Content -Raw 'skripsi-skill/references/evidence-guidelines-integrity.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/research-state-and-routing.md'; Get-Content -Raw 'skripsi-skill/references/intent-and-context.md'; Get-Content -Raw 'skripsi-skill/references/evidence-guidelines-integrity.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:12:37.919923+00:00"
+}

@@ -1,12 +1,30 @@
 # Skripsi Skill
 
-Skripsi Skill guides undergraduate and graduate researchers from topic formulation through defense preparation, with evidence traceability and attention to campus requirements.
+Skripsi Skill helps undergraduate and graduate researchers write and defend a thesis
+(*skripsi*, *tesis*, *disertasi*), from topic to sidang and on to a journal article, with
+thesis-ready drafts and no invented evidence.
 
-Writing a thesis (*skripsi*) requires grounded literature synthesis, defensible methodology, honest empirical analysis, and revisions that address feedback. **Skripsi Skill** provides guidance for the current research stage, requiring verified academic evidence for research claims and adherence to institutional guidelines. Its integrity rules prohibit fabricated citations and survey numbers.
+A thesis needs grounded literature synthesis, defensible methods, honest analysis and
+revisions that answer the supervisor. **Skripsi Skill** delivers the requested chapter or
+review first, written as connected academic prose at the requested depth, built only from
+the evidence you supply or that was verified. Where evidence is missing it keeps the
+sentence and marks the gap (`[PERLU RUJUKAN: …]`, `[PERLU DATA: …]`) instead of inventing
+sources, numbers or approvals. Your campus guide always outranks its defaults.
 
 ## What It Does
 
-### The 6 research stages
+### Six working modes
+
+| Mode | What you get |
+| --- | --- |
+| Draft (default) | BAB I–V sections, abstracts or article parts in thesis prose, with placeholders for missing evidence and a short note on what to fill |
+| Review and revise | Prioritized review with severity and location, supervisor/examiner simulation, a revision tracker (lembar revisi) and tracked revisions |
+| Verify | A per-reference check: two-way citation match, existence by DOI or search, claim support, and a clear verdict for each entry |
+| Guided | Questions that help you write the chapter yourself, for learning or when campus rules forbid AI-written chapters |
+| Defense | Sempro and sidang preparation from your actual thesis: high-risk questions, answer cards and mock rounds |
+| Plan and state | Direction, feasibility, problem and research questions, design, sampling, measurement and analysis plans |
+
+### Thesis research stages
 
 ```
 ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
@@ -21,21 +39,17 @@ Writing a thesis (*skripsi*) requires grounded literature synthesis, defensible 
 └──────────────┘     └──────────────┘     └──────────────┘
 ```
 
-1. **Proposal & Topic Formulation:** Formulates research questions, problem statements, and novelty gaps without reopening settled approvals.
-2. **Literature Review & Synthesis:** Structures thematic matrices and critical synthesis from verified papers (APA/IEEE/institutional standards).
-3. **Methodology Design:** Establishes rigorous quantitative, qualitative, or engineering design artifacts and validation protocols.
-4. **Data Analysis & Findings:** Interprets actual experimental data; never invents statistics, survey samples, or evaluation benchmarks.
-5. **Supervisor Revision Tracking:** Resolves feedback point-by-point, documenting exact thesis modifications for supervisor review.
-6. **Defense & Trial Preparation:** Prepares anticipated defense questions, slide talk tracks, and limitation rebuttals.
+The skill enters at your current stage and keeps approved decisions; it never restarts
+settled work. After the thesis, it helps turn it into a journal article.
 
 ## When to Use
 
 | Use for | Do not use for |
 |---|---|
-| Refining thesis titles, background, and research gaps | Superficial sentence rephrasing (use `natural-writing`) |
-| Systematic literature reviews and citation matrices | Unrelated software engineering or generic coding |
-| Structuring chapters according to campus guidelines | Fabricating synthetic research data or fake surveys |
-| Preparing formal responses to supervisor review notes | Bypassing institutional ethics or thesis guidelines |
+| Drafting or reviewing BAB I–V, proposals and abstracts | Polishing one sentence (use `natural-writing`) |
+| Literature search, reading and thematic synthesis | Unrelated software engineering or generic coding |
+| Supervisor or examiner revisions, sempro and sidang preparation | Producing data, results or approvals that do not exist |
+| Citation and claim checks; Indonesian campus and journal conventions | General factual research (use `search-first`) |
 
 ## Quick Start
 
@@ -73,35 +87,72 @@ cp -r ai-rules-src/skills/skripsi-skill "<skills-dir>/skripsi-skill"
 
 ### Usage
 
-- **Proposal Outline:**
-  `/skripsi-skill Judul saya sudah disetujui: 'Optimasi Routing Algoritma X'. Bantu susun latar belakang dan rumusan masalah Bab 1`
-- **Supervisor Revision:**
-  `/skripsi-skill Dosen meminta saya memperkuat perbandingan di Bab 2 dengan 5 studi terbaru 2024-2026. Ini catatan revisinya`
-- **Defense Preparation:**
-  `/skripsi-skill Simulasikan pertanyaan kritis penguji tentang keterbatasan metode pengujian data saya`
+- **Draft a chapter:**
+  `/skripsi-skill Judul saya sudah disetujui. Ini catatan bacaan dan pedoman kampus. Buatkan draf BAB I, latar belakang sekitar 1.000 kata.`
+- **Supervisor revision:**
+  `/skripsi-skill Ini catatan dosen untuk BAB II saya. Tolong bantu revisi dan buatkan lembar revisinya.`
+- **Check references:**
+  `/skripsi-skill Cek apakah sitasi dan daftar pustaka BAB II saya sudah cocok dan rujukannya asli.`
+- **Defense preparation:**
+  `/skripsi-skill Sidang saya minggu depan. Siapkan pertanyaan penguji yang paling berisiko dan cara menjawabnya.`
+- **Thesis to article:**
+  `/skripsi-skill Bantu ubah skripsi saya jadi artikel untuk jurnal SINTA 4.`
 
 ## How It Works
 
+### Output contract
+
+Every reply that produces an artifact follows the same contract (in `SKILL.md`):
+artifact first; every supported part written in full; visible placeholders where evidence
+is missing; thesis prose rather than bullet lists; requested length met within ±10% or the
+shortfall explained; internal status labels kept out of your text; one short note at the
+end with what to fill and the next step.
+
 ### Academic integrity contract
 
-- **Missing Evidence:** If literature or empirical data is missing, the agent explicitly flags it as `DATA_REQUIRED` rather than generating plausible references.
-- **Traceable Attribution:** Every theoretical assertion must cite verifiable authors, years, and methodological contexts.
-- **Campus Precedence:** Your department's official thesis formatting guide (*Buku Panduan Skripsi*) strictly outranks default formatting.
+- **Missing evidence:** placeholders mark what is missing; plausible-looking references,
+  data, quotes or results are never generated.
+- **Traceable attribution:** every claim keeps its source and the strength its design
+  supports (no causal wording for correlational evidence).
+- **Campus precedence:** your department's guide (*Buku Panduan Skripsi*) and your
+  supervisor's decisions outrank the skill's defaults.
+- **Student ownership:** drafts are working drafts for you to verify, understand and
+  revise; campus AI-use rules are followed, including switching to guided mode.
+
+### Writing craft
+
+Chapter contracts give each BAB its reader's question, moves in order, common mistakes
+with fixes, weak-to-stronger sentence examples and a checklist. Drafting goes from an
+evidence map to a paragraph blueprint to prose, and literature paragraphs must
+synthesize, not summarize. A worked example shows the whole path on an illustrative topic.
 
 ## Works With Other Skills
 
-- **Andino Workflow:** When Andino owns the project lifecycle, Skripsi Skill acts as its research specialist and returns research state, evidence, limits and the next research action without a competing plan.
-- **Natural Writing:** Optional companion for the prose of supported academic text; Skripsi Skill keeps research validity.
+- **Andino Workflow:** when Andino owns the project lifecycle, Skripsi Skill acts as its
+  research specialist and returns the artifact, research state, evidence and limits
+  without a competing plan.
+- **Natural Writing:** optional companion for register and naturalness of supported text;
+  Skripsi Skill keeps research validity and thesis craft.
+- **Search First:** runs the lookups behind citation and claim verification when installed.
+- **Focus:** shapes the conversation around the artifact, never the artifact itself.
 
 ## Files
 
-- [`SKILL.md`](SKILL.md) — Runtime contract, stage routing, and integrity rules.
-- [`references/research-state-and-routing.md`](references/research-state-and-routing.md) — Entering, resuming and changing research state.
-- [`references/evidence-guidelines-integrity.md`](references/evidence-guidelines-integrity.md) — Source verification standards.
-- [`references/andino-integration.md`](references/andino-integration.md) — Lifecycle integration and companion skills.
-- [`assets/research-core-templates.md`](assets/research-core-templates.md) — Standard proposal and chapter structures.
-- [`references/legal/license.md`](references/legal/license.md) — MIT license notice.
+- [`SKILL.md`](SKILL.md) — runtime contract: output contract, modes, authority, routing.
+- [`references/writing-craft.md`](references/writing-craft.md) — evidence map, paragraph blueprint, length control, manuscript firewall.
+- [`references/writing-bab-1-3.md`](references/writing-bab-1-3.md) and [`references/writing-bab-4-5.md`](references/writing-bab-4-5.md) — chapter contracts.
+- [`references/literature-synthesis-writing.md`](references/literature-synthesis-writing.md) — synthesis versus summary, with paired examples.
+- [`references/review-and-revision-craft.md`](references/review-and-revision-craft.md) — reviews, supervisor/examiner simulation, revision tracker.
+- [`references/citation-verification.md`](references/citation-verification.md) — reference and claim verification procedure.
+- [`references/indonesian-academic-conventions.md`](references/indonesian-academic-conventions.md) — campus guide, EYD V, citations, SINTA, AI use, ethics.
+- [`references/thesis-to-article.md`](references/thesis-to-article.md) — turning a thesis into a journal article.
+- [`references/research-state-and-routing.md`](references/research-state-and-routing.md) and the other method references — state, evidence, design, literature, results and defense methods.
+- [`assets/worked-example-bab-ii.md`](assets/worked-example-bab-ii.md) — one complete worked example.
+- [`assets/research-core-templates.md`](assets/research-core-templates.md) — optional output helpers.
+- [`references/legal/license.md`](references/legal/license.md) and [`references/legal/third-party-notices.md`](references/legal/third-party-notices.md) — licenses and adapted sources.
 
 ## License
 
 AI-RULES-authored content in this skill is released under the [MIT License](references/legal/license.md).
+Adapted third-party material keeps its notices in
+[third-party notices](references/legal/third-party-notices.md).

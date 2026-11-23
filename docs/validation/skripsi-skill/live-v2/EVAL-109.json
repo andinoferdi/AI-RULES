@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-109",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Proposal v1, approved title: Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P. RQ: Bagaimana hubungan frekuensi penggunaan AI dengan skor regulasi belajar mahasiswa Program P semester 4? Objective: estimate that association. One-time observational survey, voluntary convenience sample from accessible classes, no intervention. Planned instrument: source/adaptation and measurement validation unresolved; pilot not done. Data access to classes reported by user, participant consent/ethics status unknown. Planned association analysis depends on measurement and data properties. No data collected. Literature citations/gap evidence not supplied. Supervisor has approved topic/title and instructed scope remain Program P, not all universities.\nSYNTHETIC paper artifact P1, not a real publication: question is association of digital tool use and study planning among 25 volunteer undergraduates. Method: one-time self-report survey; no assignment. Reported result: positive observed association, exact coefficient and uncertainty not supplied. Authors interpret this as compatible with study support, note selection and self-report limitations. Sections available: abstract, method, result, limitation. Bibliographic DOI/author unknown. Relevant construct is study planning; relation to broader self-regulation needs justification.",
+  "prompt": "\"Baca paper ini dan bilang apakah cocok untuk BAB II.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:18:59.708450+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "abe92847b7ab13e46d6404d3c820c25dbc77990626100bd847f1cf6127f74f47",
+  "exit_code": 0,
+  "observed_output": "P1 **cukup relevan sebagai calon penelitian terdahulu untuk BAB II, tetapi belum siap dikutip atau dipakai sebagai bukti kuat**.\n\nDari ringkasan yang tersedia, P1 meneliti hubungan penggunaan alat digital dengan perencanaan belajar pada mahasiswa melalui survei satu kali tanpa penugasan. Temuan yang dilaporkan—hubungan positif—selaras secara umum dengan topik proposal tentang penggunaan AI dan regulasi belajar. Namun, P1 mengukur *perencanaan belajar*, sementara proposal membahas *regulasi belajar* secara lebih luas. Hubungan antara kedua konstruk itu perlu dijelaskan dan didukung sumber lain. Karena desainnya observasional, hasilnya hanya mendukung pembahasan tentang hubungan, bukan sebab-akibat.\n\nP1 dapat dicatat sementara dalam matriks penelitian terdahulu, dengan keterbatasan yang jelas: koefisien dan ketidakpastian hasil tidak tersedia; rincian instrumen dan analisis belum cukup; serta penulis sendiri menyebut keterbatasan seleksi sukarela dan pelaporan diri. Identitas bibliografisnya juga belum diketahui. Karena P1 adalah **artefak sintetis**, bukan publikasi nyata, isinya tidak boleh disajikan sebagai sitasi atau bukti akademik dalam naskah.\n\n**Catatan untuk Anda:** Cari publikasi asli yang dapat diverifikasi dan teks lengkapnya sebelum memasukkannya ke daftar pustaka. Untuk BAB II proposal, gunakan P1 hanya sebagai petunjuk topik yang perlu dicari; jangan jadikan satu studi ini sebagai dasar klaim kesenjangan penelitian.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/progressive-reading-synthesis.md'; Get-Content -Raw 'skripsi-skill/references/literature-synthesis-writing.md'; Get-Content -Raw 'skripsi-skill/references/evidence-guidelines-integrity.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/progressive-reading-synthesis.md'; Get-Content -Raw 'skripsi-skill/references/literature-synthesis-writing.md'; Get-Content -Raw 'skripsi-skill/references/evidence-guidelines-integrity.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:19:19.693508+00:00"
+}

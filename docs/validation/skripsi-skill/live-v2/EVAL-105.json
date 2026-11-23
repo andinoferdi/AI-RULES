@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-105",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Saya sudah bikin PRISMA flowchart, berarti metode systematic review saya sudah valid.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:17:51.687160+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "a2b16d1396e238d937cebb1c9f7c0b7b189ee10779ce60115245e1a40feb1151",
+  "exit_code": 0,
+  "observed_output": "Belum tentu. **Diagram PRISMA membantu melaporkan alur pencarian dan seleksi studi, tetapi keberadaannya sendiri tidak membuktikan bahwa metode systematic review sudah valid.** PRISMA adalah panduan pelaporan, bukan protokol, metode analisis, atau sertifikat mutu.\n\nUntuk menilai metodenya, perlu diperiksa apakah pertanyaan dan kriteria inklusi-eksklusi ditetapkan dengan jelas; sumber dan strategi pencarian dapat direproduksi; duplikasi dan keputusan penyaringan tercatat; serta ekstraksi data, penilaian kualitas studi, dan sintesis dilakukan dengan cara yang sesuai. Angka pada diagram juga harus cocok dengan catatan pencarian dan seleksi yang benar-benar dilakukan.\n\nJadi, diagram itu bukti pelaporan yang berguna, tetapi validitasnya bergantung pada proses dan dokumentasi di baliknya. Catatan pencarian, alasan eksklusi teks penuh, data ekstraksi, dan hasil penilaian kualitas dapat digunakan untuk mengeceknya.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/systematic-review.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/systematic-review.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:18:06.183368+00:00"
+}

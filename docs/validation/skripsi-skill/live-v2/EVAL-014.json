@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-014",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Penelitian saya observasional, tapi judulnya pakai kata 'meningkatkan' biar lebih kuat.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T19:51:47.405509+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "6a676f7e393057071075529a5dc14848a79c9c8ffc2d2913577719c8b46a25db",
+  "exit_code": 0,
+  "observed_output": "Sebaiknya kata **“meningkatkan”** tidak dipakai jika penelitian Anda hanya observasional. Kata itu menyiratkan bahwa suatu tindakan menyebabkan perubahan, sedangkan desain observasional umumnya mengamati kondisi atau hubungan tanpa menetapkan intervensi.\n\nPilih kata yang sesuai dengan tujuan penelitian:\n\n- Jika meneliti keterkaitan: **“hubungan antara X dan Y”** atau **“asosiasi X dengan Y”**.\n- Jika membandingkan kelompok: **“perbedaan Y berdasarkan X”**.\n- Jika mengidentifikasi faktor terkait: **“faktor-faktor yang berhubungan dengan Y”**.\n\nContoh: ubah *“Pengaruh edukasi terhadap peningkatan kepatuhan pasien”* menjadi *“Hubungan paparan edukasi dengan kepatuhan pasien”*—jika memang itulah yang diukur. Tanpa judul, variabel, dan tujuan lengkap, saya belum bisa memastikan rumusan yang paling tepat.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md'",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/title-development.md; Get-Content -Raw skripsi-skill/references/research-design-routing.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/title-development.md; Get-Content -Raw skripsi-skill/references/research-design-routing.md'",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T19:52:00.574334+00:00"
+}

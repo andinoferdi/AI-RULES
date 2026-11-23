@@ -1,0 +1,47 @@
+{
+  "case": "QUAL-08",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nRencana penelitian pengguna: survei satu kali, korelasional, mahasiswa Program P semester 4, variabel frekuensi penggunaan AI dan skor regulasi belajar. Judul usulan pengguna: \"Pengaruh AI terhadap Belajar Mahasiswa\". Pembimbing berkata judulnya terlalu umum.",
+  "prompt": "Dosen bilang judul saya terlalu umum. Bantu perbaiki.",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:27:33.897028+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "7fc9832856e6b33679847c8cc6c56c0ae3275646765a248bb70363a8c219d9a8",
+  "exit_code": 0,
+  "observed_output": "**Usulan judul:** *Hubungan Frekuensi Penggunaan AI dengan Regulasi Belajar pada Mahasiswa Program P Semester 4*\n\nTujuan penelitian ini adalah menguji hubungan antara frekuensi penggunaan AI dan skor regulasi belajar pada kelompok mahasiswa tersebut. Kata **“pengaruh”** saya ganti dengan **“hubungan”** karena survei satu kali yang bersifat korelasional dapat menguji keterkaitan, tetapi tidak cukup untuk menyimpulkan sebab-akibat.\n\nJudul ini memperjelas dua variabel, kelompok yang diteliti, dan jenis hubungan yang sesuai dengan rancangan Anda. Saya memakai istilah **“regulasi belajar”** sesuai konteks yang diberikan; pastikan istilah itu cocok dengan nama konstruk pada instrumen yang akan digunakan.\n\n**Catatan untuk Anda:** Jika Program P bukan nama yang dapat dicantumkan di judul atau pedoman kampus meminta lokasi tertentu, sesuaikan bagian konteksnya.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/title-development.md'; Get-Content -Raw 'skripsi-skill/references/research-design-routing.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/title-development.md'; Get-Content -Raw 'skripsi-skill/references/research-design-routing.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:27:51.750236+00:00"
+}

@@ -42,3 +42,19 @@ Changed item and rationale:
 Affected dependencies requiring review:
 Preserved decisions:
 Unresolved conflict / next action:
+
+## Thesis state (optional, user-owned)
+
+Create only when the student asks to keep progress across sessions; the student owns and
+stores it. Under Andino this information lives in Andino's existing plan instead.
+
+Confirmed title / research questions / objectives / method (with approval source):
+Campus guide and version:
+Supervisor decisions (date, source):
+
+| Bab | Versi | Jumlah kata | Siap dikirim? | Catatan pembimbing terakhir (tanggal) |
+| --- | --- | --- | --- | --- |
+
+Revision tracker location (lembar revisi):
+Evidence map location:
+Student preferences (citation style, register, terms to avoid):

@@ -1,0 +1,38 @@
+{
+ "Q01": {
+  "A": "new",
+  "B": "vanilla",
+  "C": "reference",
+  "D": "old"
+ },
+ "Q02": {
+  "A": "old",
+  "B": "new",
+  "C": "reference",
+  "D": "vanilla"
+ },
+ "Q03": {
+  "A": "reference",
+  "B": "vanilla",
+  "C": "old",
+  "D": "new"
+ },
+ "Q04": {
+  "A": "reference",
+  "B": "vanilla",
+  "C": "old",
+  "D": "new"
+ },
+ "Q05": {
+  "A": "old",
+  "B": "new",
+  "C": "reference",
+  "D": "vanilla"
+ },
+ "Q06": {
+  "A": "reference",
+  "B": "old",
+  "C": "new",
+  "D": "vanilla"
+ }
+}

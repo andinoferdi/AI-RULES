@@ -25,12 +25,35 @@ def make_prompt(case, fixture):
             'Respond naturally to the request in Indonesian.\n\nUser context:\n' + fixture + '\n\nUser request:\n' + case['prompt'])
 
 
+def runtime_names(names, subdir):
+    """Map repository paths at a revision to paths inside the isolated skill copy.
+
+    Without a subdir the revision root is the skill (legacy branch layout). With a
+    subdir such as skills/skripsi-skill only that subtree is copied, prefix removed.
+    """
+    if not subdir:
+        return [(name, name) for name in names]
+    prefix = subdir.strip('/') + '/'
+    return [(name, name[len(prefix):]) for name in names if name.startswith(prefix)]
+
+
+def codex_command(executable, base, last, config):
+    """Disposable read-only Codex invocation; config adds -c overrides after isolation flags."""
+    overrides = [part for value in config for part in ('-c', value)]
+    return [executable, 'exec', '--ignore-user-config', '--ephemeral', '--skip-git-repo-check',
+            '--sandbox', 'read-only', *overrides, '-C', str(base), '--color', 'never', '--json',
+            '-o', str(last), '-']
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--runtime', type=Path, required=True)
     p.add_argument('--case', required=True)
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--timeout', type=int, default=180)
+    p.add_argument('--subdir', default='', help='skill folder inside --runtime, e.g. skills/skripsi-skill')
+    p.add_argument('--codex-config', action='append', default=[],
+                   help='extra codex -c override, e.g. windows.sandbox="elevated" (repeatable)')
     a = p.parse_args()
     case = next(c for c in json.loads((ROOT / 'evals/skripsi-skill.json').read_text(encoding='utf-8')) if c['id'] == a.case)
     fixtures = json.loads((ROOT / 'evals/skripsi-fixtures.json').read_text(encoding='utf-8'))
@@ -45,28 +68,33 @@ def main():
         skill = base / 'skripsi-skill'
         skill.mkdir()
         names=subprocess.check_output(['git','ls-tree','-r','--name-only',revision],cwd=a.runtime,text=True).splitlines()
-        for name in names:
+        for source, name in runtime_names(names, a.subdir):
             target=skill/name
             target.parent.mkdir(parents=True,exist_ok=True)
-            target.write_bytes(subprocess.check_output(['git','show',f'{revision}:{name}'],cwd=a.runtime))
+            target.write_bytes(subprocess.check_output(['git','show',f'{revision}:{source}'],cwd=a.runtime))
         if a.case == 'SUP-ANDINO':
-            names=subprocess.check_output(['git','ls-tree','-r','--name-only','andino-workflow'],cwd=ROOT,text=True).splitlines()
-            for name in names:
+            if a.subdir:
+                workflow_ref, workflow_cwd = revision, a.runtime
+                workflow_files = runtime_names(names, 'skills/andino-workflow')
+            else:
+                workflow_ref, workflow_cwd = 'andino-workflow', ROOT
+                listed = subprocess.check_output(['git','ls-tree','-r','--name-only',workflow_ref],cwd=ROOT,text=True).splitlines()
+                workflow_files = runtime_names(listed, '')
+            for source, name in workflow_files:
                 target=base/'andino-workflow'/name
                 target.parent.mkdir(parents=True,exist_ok=True)
-                target.write_bytes(subprocess.check_output(['git','show',f'andino-workflow:{name}'],cwd=ROOT))
+                target.write_bytes(subprocess.check_output(['git','show',f'{workflow_ref}:{source}'],cwd=workflow_cwd))
             (base/'active-plan.md').write_text('# Existing Andino plan\nStatus: IN_PROGRESS\nObjective: Review the evidence gap only.\nLocked: approved title and observational method.\nCurrent phase: Literature evidence review.\nNEXT ACTION: receive research specialist evidence and update this plan through Andino.\n',encoding='utf-8')
             fixture+='\nAndino is active at andino-workflow/SKILL.md and owns active-plan.md. Read the actual owner contract and return only the research specialist result; this evaluation permits no file writes.'
         prompt = make_prompt(case, fixture)
         last = base / 'answer.txt'
-        command = [shutil.which('codex') or 'codex', 'exec', '--ignore-user-config', '--ephemeral',
-                   '--skip-git-repo-check', '--sandbox', 'read-only', '-C', str(base),
-                   '--color', 'never', '--json', '-o', str(last), '-']
+        command = codex_command(shutil.which('codex') or 'codex', base, last, a.codex_config)
         record = {'case': a.case, 'host': 'Windows Codex CLI', 'runtime_revision': revision,
                   'fixture': fixture or 'Isolated runtime copy; no additional research artifacts',
                   'prompt': case['prompt'], 'oracle_hidden': True, 'verdict': 'NOT_VERIFIED'}
         record['started_at_utc'] = datetime.now(timezone.utc).isoformat()
         record['model_selection'] = 'CLI default; no model override'
+        record['codex_config_overrides'] = a.codex_config
         record['input_sha256'] = hashlib.sha256(prompt.encode('utf-8')).hexdigest()
         try:
             result = subprocess.run(command, input=prompt, text=True, encoding='utf-8',

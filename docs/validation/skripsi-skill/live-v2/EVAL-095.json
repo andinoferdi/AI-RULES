@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-095",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Saya nggak mau artikel medis. Tambahkan NOT health NOT medicine NOT patient biar bersih.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:15:00.345073+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "b166aae5fbcd36b4a9bd284df473b7af28fcf58d0b5ec54f7489897b48d16a67",
+  "exit_code": 0,
+  "observed_output": "Bisa. Bentuk sementara: `NOT health NOT medicine NOT patient`.\n\nPerlu diperhatikan, penggunaan beberapa `NOT` bisa membuang artikel yang relevan—misalnya riset nonmedis yang menyebut pasien atau kesehatan sebagai konteks. Kalau basis datanya mendukung, biasanya lebih aman mengecualikan frasa spesifik dengan pengelompokan, misalnya `NOT (health OR medicine OR patient)`. Sintaks pastinya bergantung pada basis data; sebutkan platform pencariannya agar kuerinya bisa disesuaikan.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'; Get-ChildItem -Force | Select-Object Name,Mode\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'; Get-ChildItem -Force | Select-Object Name,Mode\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/literature-search-screening.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/literature-search-screening.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:15:13.993834+00:00"
+}
