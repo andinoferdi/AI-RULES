@@ -1,0 +1,47 @@
+{
+  "case": "SUP-NO-TOOLS",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "Saya perlu jurnal asli untuk gap AI pendidikan, tetapi akses web dan database tidak tersedia di sesi ini. Bantu langkah berikutnya.",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:21:06.124679+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "10a3743f7c57c0db3a6f450b01389a0807183de2c89f71e1264b61706df35b87",
+  "exit_code": 0,
+  "observed_output": "Karena akses web dan database tidak tersedia, saya belum bisa memastikan jurnal tertentu atau menyatakan bahwa suatu gap memang belum pernah diteliti. Langkah berikutnya adalah memperjelas topik AI pendidikan, lalu menjalankan pencarian yang tercatat saat akses tersedia.\n\n1. **Tentukan fokus sementara.** Catat jenjang pendidikan, jenis AI (misalnya AI generatif atau tutor cerdas), konteks pembelajaran, dan hal yang ingin diketahui—seperti hasil belajar, keterlibatan, umpan balik, atau integritas akademik. Ini membantu membatasi pencarian tanpa mengunci gap terlalu dini.\n\n2. **Siapkan kata kunci dalam bahasa Inggris dan Indonesia.** Contoh awal:  \n   `(generative AI OR large language model OR ChatGPT) AND (education OR learning) AND (engagement OR learning outcomes)`  \n   Sesuaikan blok terakhir dengan fokus Anda. Ini contoh kueri untuk disiapkan, belum dijalankan atau diuji pada basis data tertentu.\n\n3. **Saat akses tersedia, cari rekaman artikel dan naskah aslinya.** Catat platform, kueri persis, tanggal, filter, jumlah hasil yang benar-benar tampil, serta artikel yang belum bisa diakses. Rekaman atau abstrak dapat membantu memilih bacaan; untuk mendukung klaim penting tentang metode dan hasil, periksa teks lengkap artikel asli.\n\n4. **Bandingkan beberapa studi yang relevan.** Catat konteks, peserta, jenis AI, metode, hasil yang dilaporkan, dan batasan tiap studi. Dari perbandingan itu, rumuskan apa yang masih kurang dijelaskan atau diuji. Hindari klaim “belum pernah diteliti” sebelum penelusuran yang memadai terdokumentasi.\n\nKalau Anda kirimkan jenjang pendidikan, jenis AI, dan isu yang diminati, saya bisa bantu menyusun kueri pencarian dan tabel pencatatan literatur untuk langkah tersebut.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md'",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/literature-search-screening.md; Get-Content -Raw skripsi-skill/references/research-problem-gap-rq.md; Get-Content -Raw skripsi-skill/references/evidence-guidelines-integrity.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/literature-search-screening.md; Get-Content -Raw skripsi-skill/references/research-problem-gap-rq.md; Get-Content -Raw skripsi-skill/references/evidence-guidelines-integrity.md'",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:21:26.362299+00:00"
+}

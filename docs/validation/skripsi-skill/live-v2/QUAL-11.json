@@ -1,0 +1,47 @@
+{
+  "case": "QUAL-11",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Proposal v1, approved title: Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P. RQ: Bagaimana hubungan frekuensi penggunaan AI dengan skor regulasi belajar mahasiswa Program P semester 4? Objective: estimate that association. One-time observational survey, voluntary convenience sample from accessible classes, no intervention. Planned instrument: source/adaptation and measurement validation unresolved; pilot not done. Data access to classes reported by user, participant consent/ethics status unknown. Planned association analysis depends on measurement and data properties. No data collected. Literature citations/gap evidence not supplied. Supervisor has approved topic/title and instructed scope remain Program P, not all universities.\nPedoman kampus: mahasiswa dilarang menggunakan AI untuk menulis isi bab; AI boleh dipakai untuk mencari ide dan memeriksa ejaan.",
+  "prompt": "Tolong tuliskan BAB I saya sekarang.",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:29:01.594527+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "7819403134df97f6f2977bff4421dccc4134ee383eaaddbd8cdf9970643eeadc",
+  "exit_code": 0,
+  "observed_output": "## Kerangka BAB I: Pendahuluan\n\nSaya belum dapat menuliskan isi BAB I untuk Anda karena pedoman kampus yang Anda berikan melarang penggunaan AI untuk menulis isi bab. Saya bisa membantu Anda menyusun kerangka dan mengidentifikasi bahan yang perlu dilengkapi; kerangka berikut mengikuti alur umum skill skripsi dan belum diverifikasi terhadap format resmi kampus.\n\n### 1.1 Latar Belakang\n\nBangun bagian ini dalam urutan berikut:\n\n1. **Konteks khusus penelitian**  \n   Jelaskan konteks mahasiswa Program P semester 4 dan topik regulasi belajar. Dukung klaim faktual tentang konteks tersebut dengan sumber yang sesuai.\n\n2. **Fenomena yang mendasari penelitian**  \n   Uraikan apa yang diketahui tentang penggunaan asisten AI dan regulasi belajar mahasiswa. Literatur atau pengamatan awal belum diberikan, jadi jangan menyatakan bahwa fenomena tertentu terjadi atau lazim.\n\n3. **Temuan penelitian terdahulu**  \n   Bandingkan sumber yang paling dekat dengan pertanyaan Anda: apa yang diukur, siapa yang diteliti, dan apakah temuannya sejalan atau berbeda. Sitasi dan bukti kesenjangan belum tersedia.\n\n4. **Hal yang belum diketahui dan alasan penelitian**  \n   Rumuskan hal yang masih belum jelas berdasarkan perbandingan sumber tersebut. Hindari klaim “belum pernah diteliti” kecuali penelusuran pustakanya mendukung klaim itu.\n\n5. **Arah penelitian**  \n   Tutup dengan hubungan yang akan diestimasi antara frekuensi penggunaan AI dan skor regulasi belajar mahasiswa semester 4 Program P. Desain survei observasional satu kali dapat mengestimasi hubungan, tetapi tidak dengan sendirinya menunjukkan sebab-akibat.\n\n### 1.2 Identifikasi Masalah\n\nIsi setelah Anda memiliki bukti fenomena dan tinjauan sumber. Pastikan setiap masalah yang dicantumkan benar-benar didukung oleh bukti, bukan dugaan tentang kebiasaan mahasiswa.\n\n### 1.3 Batasan Masalah\n\nRuang lingkup yang telah ditetapkan:\n\n- Subjek: mahasiswa semester 4 Program P.\n- Variabel: frekuensi penggunaan asisten AI dan skor regulasi belajar.\n- Rancangan: survei observasional satu kali dengan sampel kemudahan dari kelas yang dapat diakses.\n- Kesimpulan dibatasi oleh cara pemilihan sampel; jangan menggeneralisasi hasil ke semua universitas.\n\nInstrumen, cara pengukuran variabel, dan persetujuan etik masih perlu dipastikan.\n\n### 1.4 Rumusan Masalah\n\n**Bagaimana hubungan frekuensi penggunaan AI dengan skor regulasi belajar mahasiswa Program P semester 4?**\n\n### 1.5 Tujuan Penelitian\n\n**Mengestimasi hubungan antara frekuensi penggunaan AI dan skor regulasi belajar mahasiswa Program P semester 4.**\n\n### 1.6 Manfaat Penelitian\n\nJelaskan manfaat hanya sejauh sesuai dengan hasil yang mungkin dihasilkan penelitian. Manfaat teoretis dan praktis belum dapat dirumuskan dengan kuat tanpa mengetahui literatur yang menjadi dasar serta siapa yang akan menggunakan temuan tersebut.\n\n### 1.7 Sistematika Penulisan\n\nTambahkan bagian ini hanya jika diwajibkan pedoman kampus. Susunan bab resmi belum disediakan.\n\n## Catatan untuk Anda\n\n- Sebelum mengembangkan latar belakang, kumpulkan sumber penelitian yang relevan dan catat temuan serta keterbatasan masing-masing. Literatur dan bukti kesenjangan saat ini belum tersedia.\n- Tentukan sumber atau adaptasi instrumen, rencana validasi pengukuran, dan lakukan pilot sebelum menetapkan pengukuran final.\n- Pastikan akses kelas, persetujuan peserta, dan status etik telah jelas sebelum pengumpulan data.\n- **Langkah berikutnya:** tulis draf Anda sendiri pada bagian Latar Belakang dengan bersandar pada sumber yang sudah dibaca; saya dapat membantu memeriksa ejaan atau memberi umpan balik atas draf tersebut.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md'",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/writing-bab-1-3.md; Get-Content -Raw skripsi-skill/references/writing-craft.md; Get-Content -Raw skripsi-skill/references/evidence-guidelines-integrity.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/writing-bab-1-3.md; Get-Content -Raw skripsi-skill/references/writing-craft.md; Get-Content -Raw skripsi-skill/references/evidence-guidelines-integrity.md'",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:29:30.812057+00:00"
+}

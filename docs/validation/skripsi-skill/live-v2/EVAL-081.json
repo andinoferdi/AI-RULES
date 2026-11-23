@@ -1,0 +1,35 @@
+{
+  "case": "EVAL-081",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Saya sebar Google Form ke grup kelas. Hasilnya otomatis mewakili semua mahasiswa kampus kan?\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:11:22.215362+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "3cad44c93c1632bc6d8514e19adc1477558eb21b272399ca2eaaf0cb330a72bf",
+  "exit_code": 0,
+  "observed_output": "Tidak otomatis. Menyebarkan Google Form ke grup kelas biasanya menghasilkan jawaban dari orang yang kebetulan melihat dan memilih mengisi. Kalau grup itu hanya mencakup satu kelas atau sebagian mahasiswa, hasilnya belum tentu mewakili semua mahasiswa kampus.\n\nAgar bisa menggeneralisasi ke seluruh kampus, perlu ada cara memilih responden yang mencakup populasi kampus secara memadai—misalnya sampel acak dengan kerangka sampel yang sesuai—serta jumlah responden yang cukup. Kalau memakai tautan terbuka di grup kelas, jelaskan keterbatasannya dan simpulkan hasil hanya untuk responden atau kelompok yang terjangkau, kecuali ada dasar metodologis lain yang mendukung generalisasi.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content skripsi-skill/SKILL.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content skripsi-skill/SKILL.md'",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:11:32.704582+00:00"
+}

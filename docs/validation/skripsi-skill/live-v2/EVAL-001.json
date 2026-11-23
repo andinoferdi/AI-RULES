@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-001",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Saya tertarik meneliti AI di pendidikan. Buatkan judul skripsi.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T19:46:57.157130+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "6ffd6c78d2d122e246bf019c30d9d4ece18788d262541cec0b2df899e47b9dcd",
+  "exit_code": 0,
+  "observed_output": "Minat “AI di pendidikan” masih luas untuk langsung menetapkan satu judul. Agar sesuai dengan masalah yang ingin diteliti dan data yang bisa Anda akses, berikut tiga arah awal:\n\n1. **Pengalaman mahasiswa menggunakan AI generatif untuk memahami materi kuliah**  \n   Judul sementara: *Pengalaman Mahasiswa dalam Menggunakan AI Generatif untuk Memahami Materi Perkuliahan: Studi Kualitatif di [program studi/kampus]*  \n   Cocok jika Anda bisa mewawancarai mahasiswa yang menggunakan AI untuk belajar.\n\n2. **Pola penggunaan AI generatif dan kebiasaan belajar mahasiswa**  \n   Judul sementara: *Hubungan Pola Penggunaan AI Generatif dengan Kebiasaan Belajar Mahasiswa di [program studi/kampus]*  \n   Cocok jika Anda bisa menyebarkan kuesioner dan memiliki ukuran yang jelas untuk kedua hal tersebut.\n\n3. **Pandangan guru tentang penggunaan AI untuk menyiapkan pembelajaran**  \n   Judul sementara: *Pandangan Guru terhadap Penggunaan AI Generatif dalam Penyusunan Bahan Ajar di [jenjang/sekolah]*  \n   Cocok jika Anda punya akses ke guru untuk wawancara atau survei.\n\nIni masih **judul sementara**, bukan judul final: konteks, masalah, dan akses responden belum diketahui. Saya sengaja tidak memakai kata “meningkatkan” atau “pengaruh” karena belum ada rancangan penelitian yang mendukung klaim sebab-akibat.\n\n**Catatan untuk Anda:** Pilih satu arah, lalu beri tahu jenjang atau program studi yang diminati dan siapa yang mudah Anda akses sebagai sumber data. Dari situ judulnya bisa dipersempit dan disesuaikan dengan metode yang masuk akal.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/title-development.md'; Get-Content -Raw 'skripsi-skill/references/discovery-feasibility.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/title-development.md'; Get-Content -Raw 'skripsi-skill/references/discovery-feasibility.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T19:47:13.624547+00:00"
+}

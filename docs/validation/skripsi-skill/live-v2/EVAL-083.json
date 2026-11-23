@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-083",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Saya punya X dan Y. Langsung buat 30 pertanyaan kuesioner aja.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:11:51.526972+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "765bc5e0e03520807aa78ae5d595d0aca8c196c15e9227d5715336567d0d1c65",
+  "exit_code": 0,
+  "observed_output": "Saya perlu tahu **apa kepanjangan atau nama konstruk X dan Y** sebelum membuat pertanyaannya. Nama variabel saja belum cukup untuk menentukan indikator dan menyusun butir yang sesuai; kalau saya menebak, kuesionernya bisa tidak mengukur hal yang Anda maksud.\n\nKirimkan nama X dan Y beserta **topik atau konteks penelitian**. Setelah itu saya susun 30 pertanyaan.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'; Get-ChildItem -Force | Select-Object Name,Mode\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'; Get-ChildItem -Force | Select-Object Name,Mode\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/research-state-and-routing.md'; Get-Content -Raw 'skripsi-skill/references/intent-and-context.md'; Get-Content -Raw 'skripsi-skill/references/quantitative-planning.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/research-state-and-routing.md'; Get-Content -Raw 'skripsi-skill/references/intent-and-context.md'; Get-Content -Raw 'skripsi-skill/references/quantitative-planning.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:12:06.721389+00:00"
+}

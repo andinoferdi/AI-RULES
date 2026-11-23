@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-036",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Final thesis v2 uses an observational convenience survey of Program P semester 4 students. Proposal v1 title was Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P; final draft title now says Pengaruh penggunaan AI terhadap regulasi belajar. RQ and objective remain estimating association between AI-use frequency and self-regulated learning score, not a causal effect. Chapter III records actual use of Spearman association for ordinal measurements, replacing the proposal's provisional Pearson plan. Chapter IV analysis fixture F1: n=40, rho=0.12, p=0.21, interval not supplied; this is a fabricated test artifact explicitly not real research. Analysis artifact fixture-output-A, row 1 supports these test values. No intervention or random assignment. No claim of population representativeness. Chapter V currently says AI meningkatkan hasil belajar, although learning achievement was not measured. No literature sources provided. Defense protocol not supplied.\nSYNTHETIC CAMPUS GUIDE requires separate Results (reported observations) and Discussion (explanations/comparisons).",
+  "prompt": "\"Masukkan penjelasan kenapa hasilnya begini langsung di tabel hasil.\"\n\nFixture:\nCampus guideline requires separate Results and Discussion.",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T19:58:02.732073+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "2f83bc8f4a2f1a5b82af95cb84b86cc7b192e17b864a30d059d7cd5ea127e0f1",
+  "exit_code": 0,
+  "observed_output": "Penjelasan mengapa hasilnya demikian sebaiknya **tidak dimasukkan ke dalam tabel hasil**. Pedoman kampus yang Anda berikan mensyaratkan pemisahan Hasil dan Pembahasan: tabel hasil melaporkan temuan yang diamati, sedangkan penjelasan ditulis pada bagian Pembahasan.\n\nContoh penyajian tabel:\n\n| Variabel yang dianalisis | n | Koefisien Spearman (ρ) | p |\n|---|---:|---:|---:|\n| Frekuensi penggunaan AI dan skor regulasi belajar mandiri | 40 | 0,12 | 0,21 |\n\n*Catatan: Angka pada tabel berasal dari fixture sintetis F1 dan hanya untuk evaluasi ini, bukan hasil penelitian nyata.*\n\nDi Pembahasan, Anda dapat menyebutkan bahwa data fixture menunjukkan asosiasi positif yang lemah dan tidak signifikan secara statistik pada hasil yang dilaporkan. Namun, **alasan mengapa pola itu muncul belum dapat ditentukan**: interval tidak tersedia, tidak ada sumber literatur, dan nilai statistik saja tidak menjelaskan penyebabnya. Hindari menyimpulkan bahwa AI meningkatkan hasil belajar—hasil belajar tidak diukur—atau bahwa penggunaan AI menyebabkan perubahan regulasi belajar. Selain itu, judul yang menyebut “pengaruh” tidak selaras dengan pertanyaan penelitian yang mengestimasi asosiasi; judul perlu diselaraskan.\n\nCatatan: pedoman pemisahan Hasil dan Pembahasan serta angka di atas adalah informasi fixture sintetis yang Anda berikan, bukan verifikasi dokumen atau penelitian nyata.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'; Get-ChildItem -Force\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/SKILL.md'; Get-ChildItem -Force\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/results-discussion-conclusion.md'; Get-Content -Raw 'skripsi-skill/references/evidence-guidelines-integrity.md'; Get-Content -Raw 'skripsi-skill/references/review-and-revision-craft.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/results-discussion-conclusion.md'; Get-Content -Raw 'skripsi-skill/references/evidence-guidelines-integrity.md'; Get-Content -Raw 'skripsi-skill/references/review-and-revision-craft.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T19:58:20.682272+00:00"
+}

@@ -1,0 +1,47 @@
+{
+  "case": "QUAL-04",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Proposal v1, approved title: Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P. RQ: Bagaimana hubungan frekuensi penggunaan AI dengan skor regulasi belajar mahasiswa Program P semester 4? Objective: estimate that association. One-time observational survey, voluntary convenience sample from accessible classes, no intervention. Planned instrument: source/adaptation and measurement validation unresolved; pilot not done. Data access to classes reported by user, participant consent/ethics status unknown. Planned association analysis depends on measurement and data properties. No data collected. Literature citations/gap evidence not supplied. Supervisor has approved topic/title and instructed scope remain Program P, not all universities.\nKartu bacaan sintetis yang sudah dibaca pengguna:\n- S2 (Penulis B, 2023): survei 312 mahasiswa di satu universitas; frekuensi penggunaan AI berkorelasi positif lemah dengan skor perencanaan belajar (r = 0,21); tidak berkorelasi dengan skor refleksi.\n- S3 (Penulis C, 2024): studi kualitatif 14 mahasiswa; penggunaan AI untuk menyalin jawaban dikaitkan dengan berkurangnya pemantauan diri, sedangkan penggunaan untuk tanya-jawab dikaitkan dengan refleksi.\n- S4 (Penulis D, 2023): dua kelas utuh tanpa penugasan acak; kelas yang dilatih memakai AI sebagai tutor punya skor perencanaan post-test lebih tinggi; tidak ada pretest setara atau kelompok kontrol yang sebanding.\nDraf latar belakang pengguna: \"1.1 Latar Belakang. Di era digital saat ini, kecerdasan buatan telah merevolusi dunia pendidikan secara signifikan. Banyak penelitian menunjukkan bahwa AI meningkatkan kemampuan belajar mahasiswa. Penulis B (2023) meneliti 312 mahasiswa dan menemukan hubungan penggunaan AI dengan perencanaan belajar. Penulis C (2024) meneliti 14 mahasiswa secara kualitatif. Penulis D (2023) melakukan eksperimen dan membuktikan bahwa AI meningkatkan perencanaan belajar. Oleh karena itu, penulis tertarik untuk meneliti pengaruh AI terhadap regulasi belajar mahasiswa Program P.\"\nCatatan dosen pembimbing: \"(1) Pembukaan terlalu umum, langsung ke masalah di Program P. (2) 'Banyak penelitian' itu siapa? (3) Penelitian terdahulu jangan dijejer satu-satu, bandingkan. (4) Judul kita 'hubungan', kenapa di sini 'pengaruh'?\"",
+  "prompt": "Ini catatan dosen untuk latar belakang saya. Tolong bantu revisi.",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:25:12.406873+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "d5d326b5927911f612a3b1502c28513331f9b4ff737983ed497d6bd84abce143",
+  "exit_code": 0,
+  "observed_output": "## Revisi latar belakang\n\n*Draf ini memakai hanya kartu bacaan sintetis dan informasi proposal yang Anda berikan. Karena belum ada bukti literatur tentang masalah khusus di Program P, saya tandai bagian itu untuk dilengkapi, bukan mengarang konteksnya.*\n\n### 1.1 Latar Belakang\n\n[PERLU DATA: gambaran penggunaan asisten AI dan persoalan regulasi belajar yang relevan pada mahasiswa semester 4 Program P; gunakan data awal, dokumen yang dapat dipertanggungjawabkan, atau observasi pendahuluan yang benar-benar tersedia.] Konteks tersebut diperlukan untuk menjelaskan mengapa hubungan penggunaan AI dan regulasi belajar perlu diteliti pada Program P. Penelitian ini berfokus pada frekuensi penggunaan AI dan skor regulasi belajar mahasiswa semester 4 Program P, sesuai ruang lingkup yang telah ditetapkan.\n\nTemuan terdahulu memberi gambaran yang beragam tentang kaitan penggunaan AI dengan aspek regulasi belajar. Dalam survei terhadap 312 mahasiswa di satu universitas, Penulis B (2023) melaporkan korelasi positif lemah antara frekuensi penggunaan AI dan skor perencanaan belajar (r = 0,21), tetapi tidak menemukan korelasi dengan skor refleksi. Sementara itu, studi kualitatif terhadap 14 mahasiswa oleh Penulis C (2024) mengaitkan penggunaan AI untuk menyalin jawaban dengan berkurangnya pemantauan diri, sedangkan penggunaan AI untuk tanya-jawab dikaitkan dengan refleksi. Kedua studi ini menyoroti aspek regulasi yang berbeda dan tidak menunjukkan bahwa penggunaan AI selalu berkaitan dengan hasil yang sama.\n\nPenulis D (2023) melaporkan bahwa kelas yang mendapat pelatihan menggunakan AI sebagai tutor memiliki skor perencanaan post-test lebih tinggi. Namun, penelitian tersebut membandingkan dua kelas utuh tanpa penugasan acak, tanpa pretest setara, dan tanpa kelompok kontrol yang sebanding. Karena itu, temuan tersebut perlu dibaca dengan mempertimbangkan keterbatasan desainnya dan tidak cukup untuk menyimpulkan bahwa AI menyebabkan peningkatan perencanaan belajar.\n\nSecara keseluruhan, bacaan yang tersedia menunjukkan hasil yang berbeda menurut aspek regulasi belajar dan cara AI digunakan. Namun, informasi yang tersedia belum cukup untuk memastikan adanya kesenjangan penelitian yang spesifik pada mahasiswa semester 4 Program P. [PERLU RUJUKAN: penelitian terdahulu yang secara langsung membahas frekuensi penggunaan AI dan skor regulasi belajar pada konteks atau populasi yang relevan, serta bukti yang mendukung kesenjangan penelitian.] Dengan dasar tersebut, penelitian ini bertujuan mengestimasi hubungan antara frekuensi penggunaan AI dan skor regulasi belajar mahasiswa semester 4 Program P. Penelitian menggunakan survei observasional satu kali, sehingga hasilnya akan menggambarkan hubungan antarvariabel dan tidak digunakan untuk menyimpulkan sebab-akibat.\n\n### Catatan untuk Anda\n\n- Saya mengganti klaim “banyak penelitian” dengan uraian tiga studi yang tersedia, lalu membandingkan fokus dan keterbatasannya.\n- Saya mengubah “eksperimen dan membuktikan” agar sesuai dengan desain S4 yang dilaporkan; temuan itu tidak membuktikan sebab-akibat.\n- Saya menjaga istilah “hubungan” tetap konsisten dengan judul, pertanyaan penelitian, tujuan, dan desain survei.\n- Isi dalam tanda kurung siku perlu dilengkapi dengan bukti yang benar-benar tersedia sebelum naskah dipakai. Sumber dan statistik di atas belum diverifikasi secara independen karena hanya disediakan sebagai kartu bacaan sintetis.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md'",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/review-and-revision-craft.md; Get-Content -Raw skripsi-skill/references/evidence-guidelines-integrity.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/review-and-revision-craft.md; Get-Content -Raw skripsi-skill/references/evidence-guidelines-integrity.md'",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:25:38.260976+00:00"
+}

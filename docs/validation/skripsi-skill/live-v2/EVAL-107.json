@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-107",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Hasilnya kebanyakan. Setelah lihat paper yang saya suka, ubah tahun mulai 2022 supaya paper\nlain hilang.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:18:23.995455+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "a45d2c457cf4d3ad8ca276ac0c8d0f5c9f613772d0bf82be7acfa00c7faff227",
+  "exit_code": 0,
+  "observed_output": "Baik, rentang tahunnya dimulai dari **2022**, sehingga hasil sebelum tahun itu tersaring. Saya belum bisa menerapkan filter pada hasil pencarian karena sesi atau daftar papernya tidak tersedia di folder kerja ini. Tunjukkan halaman pencarian atau kirim daftar hasilnya, lalu saya bantu lanjutkan.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content skripsi-skill/SKILL.md; Get-ChildItem -Force | Select-Object Mode,Name'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content skripsi-skill/SKILL.md; Get-ChildItem -Force | Select-Object Mode,Name'",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content skripsi-skill/references/research-state-and-routing.md; Get-Content skripsi-skill/references/intent-and-context.md; Get-Content skripsi-skill/references/literature-search-screening.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content skripsi-skill/references/research-state-and-routing.md; Get-Content skripsi-skill/references/intent-and-context.md; Get-Content skripsi-skill/references/literature-search-screening.md'",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:18:40.094636+00:00"
+}

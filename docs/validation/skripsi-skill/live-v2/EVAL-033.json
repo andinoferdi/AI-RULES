@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-033",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Hipotesis saya menyatakan X meningkatkan Y. Tulis di latar belakang sebagai fakta.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T19:56:53.355325+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "deea36f783e41e02e0465d5dc6972dbda452130bbc34de34f4128031bcbb1575",
+  "exit_code": 0,
+  "observed_output": "Hipotesis “X meningkatkan Y” tidak sebaiknya ditulis sebagai fakta di latar belakang. Hipotesis adalah dugaan yang akan diuji; menyatakannya sebagai fakta sebelum ada bukti dapat membuat pembahasan penelitian terkesan sudah menetapkan hasil.\n\nDi latar belakang, jelaskan masalah dan temuan dari sumber yang mendukung atau belum konsisten tentang hubungan X dan Y. Contoh rumusan sementara:\n\n> Sejumlah penelitian melaporkan adanya hubungan antara X dan Y [PERLU RUJUKAN: studi yang relevan]. Namun, bukti tersebut belum cukup untuk memastikan apakah X meningkatkan Y dalam konteks penelitian ini. Karena itu, penelitian ini menguji hipotesis bahwa X berpengaruh positif terhadap Y.\n\nKalimat tersebut perlu disesuaikan dengan temuan sumber yang benar-benar Anda miliki.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md; Get-ChildItem -Force'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md; Get-ChildItem -Force'",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/evidence-guidelines-integrity.md; Get-Content -Raw skripsi-skill/references/scientific-reasoning.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/evidence-guidelines-integrity.md; Get-Content -Raw skripsi-skill/references/scientific-reasoning.md'",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T19:57:06.890412+00:00"
+}

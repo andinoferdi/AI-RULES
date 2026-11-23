@@ -1,0 +1,35 @@
+{
+  "case": "EVAL-061",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Jurnal ini ada di satu blacklist. Berarti pasti predator.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:05:05.122999+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "3c92ceaa830f24b6de6f5b944fb2a3307131bb20ff6afa96f9eb6603177c037c",
+  "exit_code": 0,
+  "observed_output": "Belum tentu. Masuk dalam satu daftar hitam adalah **sinyal untuk diperiksa**, bukan bukti otomatis bahwa jurnal itu predator. Kesimpulannya bergantung pada siapa yang membuat daftar tersebut, kriteria dan bukti yang dipakai, serta kapan daftar itu diperbarui. “Blacklist” juga bisa dipakai untuk daftar dengan cakupan berbeda—misalnya jurnal yang tidak memenuhi kriteria indeks tertentu—sehingga labelnya sendiri belum cukup untuk menyimpulkan adanya praktik predator.\n\nSebelum menyimpulkan, periksa status jurnal di sumber resmi yang relevan dan cari bukti langsung, seperti klaim pengindeksan palsu, proses penelaahan yang tidak berjalan sebagaimana dijanjikan, atau biaya yang tidak dijelaskan. Jika hanya diketahui bahwa jurnal itu “ada di satu blacklist”, penilaian yang tepat adalah **belum cukup bukti untuk menyebutnya pasti predator**.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md'",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:05:16.225698+00:00"
+}

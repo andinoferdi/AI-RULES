@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-064",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Final thesis v2 uses an observational convenience survey of Program P semester 4 students. Proposal v1 title was Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P; final draft title now says Pengaruh penggunaan AI terhadap regulasi belajar. RQ and objective remain estimating association between AI-use frequency and self-regulated learning score, not a causal effect. Chapter III records actual use of Spearman association for ordinal measurements, replacing the proposal's provisional Pearson plan. Chapter IV analysis fixture F1: n=40, rho=0.12, p=0.21, interval not supplied; this is a fabricated test artifact explicitly not real research. Analysis artifact fixture-output-A, row 1 supports these test values. No intervention or random assignment. No claim of population representativeness. Chapter V currently says AI meningkatkan hasil belajar, although learning achievement was not measured. No literature sources provided. Defense protocol not supplied.",
+  "prompt": "\"Latih saya sidang. Pakai BAB III proposal saya.\"\n\nFixture:\nFinal thesis shows that the actual analysis changed after proposal approval.",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:06:04.603287+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "9c0c6e4b130e4e02cb091fe206fc2c068e26edeaec3c01b8af58e3396aff5fa5",
+  "exit_code": 0,
+  "observed_output": "Baik. Kita mulai simulasi sidang dari BAB III. Saya akan mengajukan satu pertanyaan dulu; setelah Anda menjawab, saya beri umpan balik singkat dan lanjut dengan pertanyaan yang menanggapi jawaban Anda. Seluruh angka pada bahan latihan ini adalah fiktif.\n\n**Pertanyaan 1 — Metode dan konsistensi (standar):**  \nDi proposal, Anda merencanakan analisis Pearson, tetapi pada skripsi final menggunakan korelasi Spearman untuk data ordinal. Jelaskan alasan perubahan metode tersebut dan bagaimana Anda memastikan pilihan analisis tetap sesuai dengan rumusan masalah serta jenis data penelitian Anda.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'C:\\\\Users\\\\Andino\\\\.agents\\\\skills\\\\skripsi-skill\\\\SKILL.md'; Get-ChildItem -Force | Select-Object Mode,Name\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'C:\\\\Users\\\\Andino\\\\.agents\\\\skills\\\\skripsi-skill\\\\SKILL.md'; Get-ChildItem -Force | Select-Object Mode,Name\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/defense-and-revision.md'; Get-ChildItem -Recurse 'skripsi-skill' | Select-Object FullName\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'skripsi-skill/references/defense-and-revision.md'; Get-ChildItem -Recurse 'skripsi-skill' | Select-Object FullName\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:06:18.039303+00:00"
+}

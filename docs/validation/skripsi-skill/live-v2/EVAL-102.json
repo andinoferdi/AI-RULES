@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-102",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC record title: Digital support and independent learning. Abstract says participants were undergraduate students. Eligibility includes higher-education participants and learning support.",
+  "prompt": "\"Judulnya nggak menyebut mahasiswa, langsung exclude.\"\n\nFixture:\nAbstract/full text may include higher-education participants.",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:17:00.087270+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "8bf8db7c17477ba807153d5caec03a4f19d5f69af8e1b66baf3af8074006ceab",
+  "exit_code": 0,
+  "observed_output": "Belum cukup alasan untuk langsung mengecualikan. Kriterianya mencakup peserta dari pendidikan tinggi, dan abstrak menyebut peserta sebagai mahasiswa S1. Judul yang tidak menyebut mahasiswa tidak membuktikan bahwa studi ini tidak memenuhi kriteria.\n\nKeputusan sementara: **lanjutkan ke pemeriksaan teks lengkap**. Simpan alasan bahwa abstrak menyebut mahasiswa S1; verifikasi di teks lengkap apakah peserta dan dukungan belajar sesuai kriteria.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/literature-search-screening.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -LiteralPath 'skripsi-skill/references/literature-search-screening.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:17:14.248577+00:00"
+}

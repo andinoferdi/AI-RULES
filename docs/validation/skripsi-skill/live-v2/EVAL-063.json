@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-063",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Proposal v1, approved title: Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P. RQ: Bagaimana hubungan frekuensi penggunaan AI dengan skor regulasi belajar mahasiswa Program P semester 4? Objective: estimate that association. One-time observational survey, voluntary convenience sample from accessible classes, no intervention. Planned instrument: source/adaptation and measurement validation unresolved; pilot not done. Data access to classes reported by user, participant consent/ethics status unknown. Planned association analysis depends on measurement and data properties. No data collected. Literature citations/gap evidence not supplied. Supervisor has approved topic/title and instructed scope remain Program P, not all universities.\nThis proposal is complete as a draft artifact, with explicit gaps above; no institution protocol. Generate original practice questions, not fabricated findings.",
+  "prompt": "\"Minggu depan sempro. Buat 50 pertanyaan yang mungkin keluar.\"\n\nFixture:\nA complete proposal is available.",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:05:29.684011+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "73671dd0eab12dec0f64391f9402650b9a8318d6fe5bef16ea2a7d296e1c6586",
+  "exit_code": 0,
+  "observed_output": "Berikut 50 pertanyaan latihan sempro yang disesuaikan dengan proposal tentang **hubungan frekuensi penggunaan asisten AI dengan skor regulasi belajar mahasiswa semester 4 Program P**. Ini pertanyaan latihan, bukan prediksi pasti. Beberapa pertanyaan sengaja menyoroti hal yang masih perlu diputuskan, seperti instrumen, validasi, dan etik.\n\n### Latar belakang, masalah, dan kontribusi\n\n1. Apa masalah utama yang ingin Anda teliti?\n2. Mengapa hubungan penggunaan asisten AI dan regulasi belajar perlu diteliti pada mahasiswa?\n3. Apa yang Anda maksud dengan “asisten AI” dalam penelitian ini?\n4. Bagaimana Anda membedakan penggunaan asisten AI untuk belajar dari penggunaan untuk keperluan lain?\n5. Apa alasan memilih mahasiswa semester 4 Program P?\n6. Mengapa ruang lingkup penelitian dibatasi pada Program P, bukan mahasiswa dari berbagai program atau universitas?\n7. Apa bukti atau sumber yang mendukung urgensi penelitian Anda? **[Prioritas tinggi: rujukan belum disertakan.]**\n8. Apa kesenjangan penelitian yang hendak Anda isi? **[Prioritas tinggi: bukti kesenjangan belum disertakan.]**\n9. Apa kontribusi yang diharapkan dari penelitian ini, mengingat desainnya hanya mengestimasi hubungan?\n10. Apakah ada istilah dalam judul yang perlu didefinisikan atau diperjelas?\n\n### Pertanyaan penelitian, konsep, dan teori\n\n11. Mengapa pertanyaan penelitian Anda berfokus pada hubungan frekuensi penggunaan AI dengan skor regulasi belajar?\n12. Bagaimana tujuan penelitian selaras dengan pertanyaan penelitian tersebut?\n13. Apa definisi operasional “frekuensi penggunaan AI” dalam penelitian Anda?\n14. Apa definisi “regulasi belajar” yang akan digunakan?\n15. Apakah frekuensi penggunaan cukup untuk menggambarkan penggunaan AI, atau perlu mempertimbangkan tujuan dan jenis penggunaannya?\n16. Teori atau kerangka konsep apa yang mendasari dugaan hubungan antara kedua variabel?\n17. Bagaimana teori itu membantu menjelaskan hubungan yang Anda teliti?\n18. Apa hipotesis penelitian Anda, jika penelitian ini menggunakan hipotesis?\n19. Apakah Anda mengharapkan arah hubungan tertentu? Apa dasar harapan itu?\n20. Faktor lain apa yang mungkin berkaitan dengan penggunaan AI maupun regulasi belajar?\n\n### Desain dan batas inferensi\n\n21. Mengapa Anda memilih survei observasional satu kali?\n22. Apa yang dapat dan tidak dapat disimpulkan dari desain tersebut?\n23. Dapatkah penelitian Anda menyimpulkan bahwa penggunaan AI menyebabkan perubahan regulasi belajar? Mengapa?\n24. Bagaimana Anda akan menjelaskan kemungkinan bahwa regulasi belajar juga memengaruhi frekuensi penggunaan AI?\n25. Apa risiko mengukur kedua variabel pada waktu yang sama melalui survei?\n26. Bagaimana Anda akan mencegah kesimpulan melampaui data yang dikumpulkan?\n27. Jika ditemukan hubungan, bagaimana Anda akan membedakan hubungan tersebut dari pengaruh faktor lain yang tidak diukur?\n28. Apakah variabel lain perlu dicatat atau dipertimbangkan dalam analisis? Mana yang relevan dan mengapa?\n\n### Sampel dan pengumpulan data\n\n29. Siapa populasi sasaran penelitian Anda?\n30. Siapa yang memenuhi kriteria untuk menjadi responden?\n31. Bagaimana Anda akan merekrut peserta dari kelas yang dapat diakses?\n32. Apa konsekuensi penggunaan sampel sukarela dengan convenience sampling?\n33. Sejauh mana hasil penelitian dapat digeneralisasikan dari sampel tersebut?\n34. Bagaimana Anda akan menangani kemungkinan bahwa mahasiswa yang bersedia ikut berbeda dari yang tidak ikut?\n35. Bagaimana Anda menentukan jumlah responden yang dibutuhkan?\n36. Bagaimana Anda memastikan akses ke kelas benar-benar tersedia dan sesuai prosedur?\n37. Apa langkah Anda jika jumlah responden yang terkumpul lebih sedikit daripada yang dibutuhkan?\n\n### Instrumen dan pengukuran\n\n38. Instrumen apa yang akan digunakan untuk mengukur regulasi belajar?\n39. Dari mana instrumen tersebut berasal, dan apa dasar pemilihan atau adaptasinya? **[Prioritas tinggi: sumber instrumen belum diputuskan.]**\n40. Bagaimana Anda akan mengukur frekuensi penggunaan AI secara jelas dan konsisten?\n41. Periode waktu apa yang akan diminta saat responden melaporkan frekuensi penggunaan AI, dan apa alasannya?\n42. Bagaimana Anda akan memastikan pertanyaan survei dipahami dengan cara yang sama oleh responden?\n43. Validitas dan reliabilitas seperti apa yang perlu diperiksa untuk instrumen Anda?\n44. Apa yang akan Anda lakukan bila hasil uji atau pilot menunjukkan butir pertanyaan bermasalah? **[Prioritas tinggi: pilot belum dilakukan.]**\n\n### Analisis, etik, dan kelayakan\n\n45. Analisis apa yang akan digunakan untuk mengestimasi hubungan kedua variabel?\n46. Bagaimana Anda akan memilih analisis setelah melihat sifat data dan hasil pemeriksaan asumsi yang relevan?\n47. Bagaimana Anda akan menangani jawaban tidak lengkap atau data yang tidak layak dianalisis?\n48. Bagaimana Anda akan memperoleh persetujuan peserta, menjaga kerahasiaan data, dan memastikan partisipasi bersifat sukarela? **[Prioritas tinggi: status etik dan persetujuan belum diketahui.]**\n49. Apa keterbatasan paling penting dari rancangan ini, dan bagaimana Anda akan menyampaikannya?\n50. Jika penguji meminta perubahan, bagian mana yang dapat Anda revisi tanpa mengubah batas Program P yang telah disetujui?\n\n**Catatan untuk Anda:** Sebelum sempro, siapkan jawaban yang bersumber pada proposal untuk tiap pertanyaan, terutama kesenjangan literatur, pilihan dan validasi instrumen, rencana analisis, serta prosedur etik. Jangan menyajikan hasil atau persetujuan yang belum ada sebagai fakta.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md; Get-ChildItem -Force'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md; Get-ChildItem -Force'",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/defense-and-revision.md; Get-ChildItem -Recurse -File | Select-Object -ExpandProperty FullName'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/defense-and-revision.md; Get-ChildItem -Recurse -File | Select-Object -ExpandProperty FullName'",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:06:02.442894+00:00"
+}

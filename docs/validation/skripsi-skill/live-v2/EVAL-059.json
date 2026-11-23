@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-059",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Bikin kerangka pemikiran X → Y → Z aja. Teorinya nanti nyusul.\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:04:39.461386+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "478198a9a4c8987e71b7fdd859a7a84fd633de6d4d3c1257e00d4cc558c883f3",
+  "exit_code": 0,
+  "observed_output": "## Kerangka Pemikiran\n\n**X → Y → Z**\n\nKerangka ini masih berupa susunan variabel awal. Hubungan antarvariabel dan landasan teorinya belum ditentukan.\n\n**Catatan untuk Anda:** Nama variabel dan konteks penelitian belum diberikan. Setelah tersedia, X, Y, dan Z bisa diganti dengan nama variabel penelitian.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content skripsi-skill/SKILL.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content skripsi-skill/SKILL.md'",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-ChildItem -Force; Get-Content skripsi-skill/references/research-state-and-routing.md; Get-Content skripsi-skill/references/intent-and-context.md; Get-Content skripsi-skill/references/evidence-guidelines-integrity.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-ChildItem -Force; Get-Content skripsi-skill/references/research-state-and-routing.md; Get-Content skripsi-skill/references/intent-and-context.md; Get-Content skripsi-skill/references/evidence-guidelines-integrity.md'",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:04:50.065566+00:00"
+}

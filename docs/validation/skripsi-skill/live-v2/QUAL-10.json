@@ -1,0 +1,47 @@
+{
+  "case": "QUAL-10",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "All artifacts below are SYNTHETIC TEST FIXTURES, not real studies, participants, campus rules or academic evidence. They test reasoning only.\nSYNTHETIC TEST FIXTURE. Proposal v1, approved title: Hubungan penggunaan asisten AI dengan regulasi belajar mahasiswa Program P. RQ: Bagaimana hubungan frekuensi penggunaan AI dengan skor regulasi belajar mahasiswa Program P semester 4? Objective: estimate that association. One-time observational survey, voluntary convenience sample from accessible classes, no intervention. Planned instrument: source/adaptation and measurement validation unresolved; pilot not done. Data access to classes reported by user, participant consent/ethics status unknown. Planned association analysis depends on measurement and data properties. No data collected. Literature citations/gap evidence not supplied. Supervisor has approved topic/title and instructed scope remain Program P, not all universities.\nKartu bacaan sintetis yang sudah dibaca pengguna:\n- S1 (Penulis A, 2021): kerangka konseptual regulasi belajar mandiri tiga fase (perencanaan, pemantauan, refleksi). Konseptual, bukan studi empiris.\n- S2 (Penulis B, 2023): survei 312 mahasiswa di satu universitas; frekuensi penggunaan AI berkorelasi positif lemah dengan skor perencanaan belajar (r = 0,21); tidak berkorelasi dengan skor refleksi.\n- S3 (Penulis C, 2024): studi kualitatif 14 mahasiswa; penggunaan AI untuk menyalin jawaban dikaitkan dengan berkurangnya pemantauan diri, sedangkan penggunaan untuk tanya-jawab dikaitkan dengan refleksi.",
+  "prompt": "Saya mau belajar menulis latar belakang sendiri. Jangan tuliskan untuk saya, bimbing saja.",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:28:37.014802+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "0c913f7d2a513f42991c279fbe7a34ffa421430a301265206d8144e9c4afcda3",
+  "exit_code": 0,
+  "observed_output": "Mari latih menulisnya sendiri, satu langkah dalam satu waktu. Bahan yang Anda berikan cukup untuk membandingkan tiga sumber secara awal, tetapi belum cukup untuk menyimpulkan bahwa ada celah penelitian yang kuat atau terverifikasi.\n\nMulailah dengan **peta alur**, bukan paragraf:\n\n1. **Konteks spesifik:** siapa dan di mana penelitian ini dilakukan? Jaga cakupan pada mahasiswa semester 4 Program P, sesuai arahan pembimbing.\n2. **Apa yang diketahui:** bandingkan temuan S2 dan S3. S2 melaporkan korelasi positif lemah untuk skor perencanaan, tetapi tidak untuk refleksi. S3 menggambarkan perbedaan menurut cara mahasiswa menggunakan AI. S1 memberi kerangka tiga fase, bukan bukti empiris tentang hubungan AI dan regulasi belajar.\n3. **Apa yang belum jelas:** tulis satu pertanyaan yang benar-benar tersisa setelah membandingkan sumber. Misalnya, apakah yang belum jelas berkaitan dengan fase regulasi yang diukur, konteks mahasiswa Program P, atau cara penggunaan AI? Pilih hanya yang dapat didukung oleh bahan bacaan dan batas studi Anda.\n4. **Mengapa perlu diteliti:** jelaskan apa yang akan tetap tidak diketahui jika pertanyaan itu dibiarkan. Jangan mengklaim dampak praktis atau kebijakan yang tidak ditunjukkan sumber.\n5. **Arah penelitian:** tutup dengan hubungan yang akan Anda estimasi: frekuensi penggunaan AI dan skor regulasi belajar mahasiswa semester 4 Program P. Karena desainnya observasional satu kali, gunakan bahasa hubungan/asosiasi, bukan pengaruh atau sebab-akibat.\n\n**Latihan pertama:** isi tiap bagian dengan satu atau dua kalimat berupa catatan, bukan prosa final. Setelah itu, periksa:\n\n- Apakah setiap klaim tentang penelitian berasal dari S1, S2, atau S3?\n- Apakah Anda membedakan hasil S2 yang khusus pada perencanaan dari skor regulasi belajar yang lebih luas dalam pertanyaan Anda?\n- Apakah Anda menyebut keterbatasan bahwa S2 berasal dari satu universitas dan S3 adalah studi kualitatif kecil?\n- Apakah klaim “belum pernah diteliti” dihindari, karena belum ada catatan penelusuran literatur?\n- Apakah tulisan tetap membahas Program P, tanpa menggeneralisasi ke semua universitas?\n\nSebelum latar belakang dapat didukung dengan baik, masih perlu ditelusuri sumber empiris yang lebih dekat dengan populasi dan pengukuran Anda. Instrumen, adaptasi, validasi, akses kelas, serta persetujuan peserta/etik juga masih perlu dipastikan pada bagian metode. **Langkah berikutnya:** kirimkan peta lima bagian Anda; saya akan memberi umpan balik dan pertanyaan revisi tanpa menuliskannya ulang untuk Anda.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'C:\\\\Users\\\\Andino\\\\.agents\\\\skills\\\\skripsi-skill\\\\SKILL.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'C:\\\\Users\\\\Andino\\\\.agents\\\\skills\\\\skripsi-skill\\\\SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'C:\\\\Users\\\\Andino\\\\.agents\\\\skills\\\\skripsi-skill\\\\references\\\\writing-bab-1-3.md'; Get-Content -Raw 'C:\\\\Users\\\\Andino\\\\.agents\\\\skills\\\\skripsi-skill\\\\references\\\\progressive-reading-synthesis.md'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'C:\\\\Users\\\\Andino\\\\.agents\\\\skills\\\\skripsi-skill\\\\references\\\\writing-bab-1-3.md'; Get-Content -Raw 'C:\\\\Users\\\\Andino\\\\.agents\\\\skills\\\\skripsi-skill\\\\references\\\\progressive-reading-synthesis.md'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:28:59.245316+00:00"
+}

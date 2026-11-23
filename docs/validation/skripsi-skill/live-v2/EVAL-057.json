@@ -1,0 +1,47 @@
+{
+  "case": "EVAL-057",
+  "host": "Windows Codex CLI",
+  "runtime_revision": "9ff7cd6980316f82060b8b0e1c505311ca25ccc5",
+  "fixture": "Isolated runtime copy; no additional research artifacts",
+  "prompt": "\"Datanya postingan publik media sosial, berarti nggak ada masalah etika kan?\"",
+  "oracle_hidden": true,
+  "verdict": "NOT_VERIFIED",
+  "started_at_utc": "2026-11-23T20:04:05.625003+00:00",
+  "model_selection": "CLI default; no model override",
+  "codex_config_overrides": [
+    "windows.sandbox=\"elevated\""
+  ],
+  "input_sha256": "d756c7d3187a66362b743fbe32b58d17d2ecdbdaf7b612632718a0572ed6de16",
+  "exit_code": 0,
+  "observed_output": "Belum tentu. **“Publik” berarti unggahan bisa diakses, tetapi tidak otomatis berarti bebas dari pertimbangan etika.** Risikonya bergantung pada cara Anda mengumpulkan dan menyajikan data, topik dan kerentanan orang yang mengunggahnya, serta aturan kampus atau komite etik yang berlaku.\n\nPertimbangkan privasi dan potensi identifikasi ulang—kutipan langsung, nama akun, foto, atau detail lokasi dapat membuat penulis mudah ditemukan meski namanya dihapus. Hindari mengumpulkan data sensitif tanpa alasan dan perlindungan yang memadai, batasi data pada yang diperlukan, dan jelaskan penyimpanan serta aksesnya. Ketentuan platform dan lisensi penggunaan data juga perlu diperiksa.\n\nJadi, jangan langsung menyimpulkan bahwa persetujuan atau peninjauan etik tidak diperlukan. Cek panduan kampus dan bicarakan dengan pembimbing atau komite etik sebelum pengumpulan atau penggunaan data. Karena konteks penelitian dan aturan institusi Anda belum diberikan, kebutuhan persetujuan spesifiknya belum bisa dipastikan.",
+  "execution_status": "EXECUTED",
+  "diagnostic": "",
+  "events": [],
+  "tool_actions": [
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/SKILL.md'",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/evidence-guidelines-integrity.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "type": "command_execution",
+      "command": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Raw skripsi-skill/references/evidence-guidelines-integrity.md'",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "finished_at_utc": "2026-11-23T20:04:20.604953+00:00"
+}
