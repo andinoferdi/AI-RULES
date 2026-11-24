@@ -89,7 +89,9 @@ class ThreejsInstallerTests(unittest.TestCase):
         family = self.target('threejs-skills')
         self.assertTrue((family / 'SKILL.md').is_file())
         self.assertEqual(b'\x00\xff\x00\x01', (family / 'assets/field.bin').read_bytes())
-        self.assertEqual(45, len(list(family.glob('skills/*/GUIDE.md'))))
+        inventory = Path(__file__).resolve().parents[2] / 'src/ai_rules/verification/data/threejs_inventory.json'
+        methods = len(json.loads(inventory.read_text(encoding='utf-8'))['skills'])
+        self.assertEqual(methods, len(list(family.glob('skills/*/GUIDE.md'))))
         self.assertEqual(1, len(list(family.rglob('SKILL.md'))))
         result, output = self.run_cli()
         self.assertEqual(0, result, output)
