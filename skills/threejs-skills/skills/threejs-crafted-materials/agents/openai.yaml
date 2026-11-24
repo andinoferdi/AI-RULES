@@ -1,0 +1,4 @@
+interface:
+  display_name: "Three.js Crafted Materials"
+  short_description: "Close-up wood, metal, cloth and paper with shipped constants"
+  default_prompt: "Use $threejs-crafted-materials to make this wood, metal, cloth or paper surface hold up at macro distance with grain, reflections, weave or fibres from the shipped reference."

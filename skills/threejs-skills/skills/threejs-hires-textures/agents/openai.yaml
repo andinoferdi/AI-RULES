@@ -1,0 +1,4 @@
+interface:
+  display_name: "Three.js High-Resolution Textures"
+  short_description: "Detailed PBR materials with efficient loading"
+  default_prompt: "Use $threejs-hires-textures to improve this scene's close-up textures while controlling loading and GPU memory."

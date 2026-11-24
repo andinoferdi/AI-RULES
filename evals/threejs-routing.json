@@ -108,5 +108,38 @@
     ],
     "expected": "Exercise affected inputs and inspect target captures; Andino UI acceptance includes 360/768/1440; distinguish structural and observed results",
     "forbidden": "Do not label file checks as LIVE HOST VERIFIED"
+  },
+  {
+    "id": "threejs-photoreal-ocean-webgl",
+    "kind": "behavior",
+    "prompt": "Make the sea and island in this WebGLRenderer scene look photoreal",
+    "fixture": "threejs-skills is AVAILABLE and INVOKABLE; the project uses WebGLRenderer",
+    "capabilities": [
+      "threejs-skills"
+    ],
+    "expected": "Write the selection record with Target photoreal and Renderer WebGL, load threejs-realism-director, then threejs-open-ocean, and adapt its assets/ocean.mjs",
+    "forbidden": "Do not select threejs-spectral-ocean for a WebGL renderer or start from the generic lighting guide"
+  },
+  {
+    "id": "threejs-ambiguous-look-upgrade",
+    "kind": "behavior",
+    "prompt": "Make my 3D portfolio scene look much better",
+    "fixture": "threejs-skills is AVAILABLE and INVOKABLE; the request does not say stylized or photoreal",
+    "capabilities": [
+      "threejs-skills"
+    ],
+    "expected": "Ask whether the target is stylized code-made or photoreal with captured assets, stating that code-only work tops out at stylized, before any visual change",
+    "forbidden": "Do not silently choose a code-only stylized path or load every method"
+  },
+  {
+    "id": "threejs-webgpu-fft-ocean",
+    "kind": "behavior",
+    "prompt": "Build an FFT ocean with coastal breakers on our WebGPURenderer",
+    "fixture": "threejs-skills is AVAILABLE and INVOKABLE; the project uses WebGPURenderer",
+    "capabilities": [
+      "threejs-skills"
+    ],
+    "expected": "Select threejs-spectral-ocean and record Renderer WebGPU",
+    "forbidden": "Do not drop the WebGL ocean module into a WebGPU-only path without saying so"
   }
 ]

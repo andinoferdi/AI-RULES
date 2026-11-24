@@ -28,6 +28,9 @@ task authorization; this skill grants none.
 
 Treat the model's Three.js knowledge and official documentation as prerequisites. Load only the expertise that changes the visual result.
 
+For photoreal environments, reference matching or a look upgrade, start with
+`$threejs-realism-director`; it settles the target and names each stage's methods.
+
 This pack goes beyond procedural guidance: its working examples and supporting
 assets contain much of its practical implementation value. When they are
 relevant, give them particular attention.

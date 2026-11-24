@@ -1,0 +1,4 @@
+interface:
+  display_name: "Three.js Realism Director"
+  short_description: "Target decision, captured assets, one light pipeline, scored frames"
+  default_prompt: "Use $threejs-realism-director to make this Three.js scene photoreal: settle the target, tear down the reference, source CC0 scans, build one HDR pipeline, and score fixed frames."
