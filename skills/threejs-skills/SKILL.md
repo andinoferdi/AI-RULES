@@ -104,7 +104,8 @@ application. Unselected methods are NOT_NEEDED.
 Return the selection record for each stage, the files changed, fixed-frame
 screenshots or other observed evidence for visual claims, draw calls, triangles and
 frame time on named hardware for performance claims, and what still looks wrong.
-Static review does not verify rendering.
+Static review does not verify rendering. Finish on a rendered frame inspected for
+black, NaN or clipped pixels; edits that were never re-rendered do not count.
 
 ## Provenance
 

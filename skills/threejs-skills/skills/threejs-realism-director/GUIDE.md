@@ -92,10 +92,17 @@ each selected guide in full before you write code for its stage.
 1. Freeze time and fix the camera, sun direction and exposure for at least three shots:
    low near the surface, mid on the subject, wide with the horizon.
 2. Capture a baseline before changing anything and keep it.
-3. Change one physical cause at a time and compare at the same frames.
-4. Score each shot with [the realism rubric](references/realism-rubric.md). Keep only
+3. Inspect every capture for render errors before judging the look: black or NaN pixels
+   (dashed black lines, speckles, black wedges), clipped highlights wider than the sun's
+   glitter path, and banding. NaN usually comes from `pow`, `sqrt`, `log` or
+   `normalize` of a negative or zero value, or a division by a value that can reach
+   zero: clamp the input first. Fix render errors before any further look change.
+4. Change one physical cause at a time and compare at the same frames.
+5. Score each shot with [the realism rubric](references/realism-rubric.md). Keep only
    changes the picture confirms; look at a 2x crop after any metric-driven change.
-5. For a lit interior, use `threejs-lighting-scorecard` for the numbers.
+6. For a lit interior, use `threejs-lighting-scorecard` for the numbers.
+7. Finish on a rendered, inspected frame. An edit you did not render and inspect is
+   not done: render once more, or revert it before you stop.
 
 ## 7. Hold the frame budget
 
