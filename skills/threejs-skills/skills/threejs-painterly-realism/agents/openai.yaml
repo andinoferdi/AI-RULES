@@ -1,0 +1,4 @@
+interface:
+  display_name: "Three.js Painterly Realism"
+  short_description: "Art-direct walkable, painterly Three.js worlds"
+  default_prompt: "Use $threejs-painterly-realism to refine my Three.js environment, preserve its opening camera and palette, and review the nearest materials at 200%."

@@ -44,7 +44,7 @@
       "schema_version": 1,
       "id": "threejs",
       "display_name": "Three.js Development",
-      "description": "One complete Three.js family with 45 internal methods, Andino Workflow, Focus and Search First",
+      "description": "One complete Three.js family with 57 internal methods, Andino Workflow, Focus and Search First",
       "default": false,
       "capabilities": [
         "andino-workflow",

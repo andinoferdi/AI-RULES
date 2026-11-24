@@ -1,0 +1,4 @@
+interface:
+  display_name: "Three.js Open Ocean"
+  short_description: "Per-pixel Gerstner ocean with footprint fade, glitter, foam and wake"
+  default_prompt: "Use $threejs-open-ocean to add an open ocean with per-pixel Gerstner normals, a per-wave footprint fade, Fresnel sky reflection, sun glitter and lace foam."

@@ -3,12 +3,12 @@
 This is on-demand selection metadata, not activation or another router.
 Use only for an evidenced Three.js/NixieFX need. Resolve and invoke the installed
 `threejs-skills` family through the host contract. It is one native skill containing
-45 internal methods, not 45 native registrations. Its root SKILL.md selects a
+57 internal methods, not 57 native registrations. Its root SKILL.md selects a
 minimum method set from the prompt or an explicitly requested method ID.
 Load only selected `skills/<method-id>/GUIDE.md` resources relative to that installed
 family, through authorized reads after family invocation. These table IDs identify
 bundled methods; they do not require `$threejs-shaders` native registration. The
-family method index covers all45. Do not start another router or lifecycle.
+family method index covers all 57. Do not start another router or lifecycle.
 
 | Current need | Candidate |
 | --- | --- |
@@ -21,6 +21,7 @@ family method index covers all45. Do not start another router or lifecycle.
 | Generate, convert, clean, and integrate audio for Three.js browser games with ElevenLabs - sound effects, looping ambience, music tracks and loops (menu, gameplay, boss, victory/defeat stingers), UI sounds, impact/weapon/vehicle audio, creature and boss stingers, announcer and dialogue TTS, voice conversion from a scratch performance, voice cleanup, audio manifests, and Web Audio integration. | `threejs-audio-generator` |
 | Implement production bloom in advanced Three.js scenes | `threejs-bloom` |
 | Direct advanced Three.js camera systems | `threejs-camera-direction` |
+| Build close-up wood, metal, cloth and paper materials in Three.js that survive macro views - growth-ring grain and finishes, structured metal reflections and patina, woven threads and sheen, paper fibres, translucency and creases | `threejs-crafted-materials` |
 | Debug and profile Three.js browser games - blank canvases, render and runtime bugs, asset and audio loading, animation, resize, mobile input, plus performance profiling of draw calls, triangles, textures, memory, shader and post-processing cost, and bundle size. | `threejs-debug-profiler` |
 | Build a measured exposure and grading path in Three.js | `threejs-exposure-color-grading` |
 | Three.js scene setup, cameras, renderer, Object3D hierarchy, coordinate systems | `threejs-fundamentals` |
@@ -28,12 +29,18 @@ family method index covers all45. Do not start another router or lifecycle.
 | Design premium Three.js game UI - HUDs, menus, overlays, pause/win/lose screens, settings, icon controls, touch UI, typography, responsive layout, safe areas, text fit, and UI/world cohesion. | `threejs-game-ui-designer` |
 | Build and iterate playable Three.js game systems - starter scaffold, architecture, design briefs, core loops, level and encounter design, entities, input, camera, collision and physics, scoring, objectives, and game feel | `threejs-gameplay-systems` |
 | Three.js geometry creation - built-in shapes, BufferGeometry, custom geometry, instancing | `threejs-geometry` |
+| Build sheltered waterfronts in Three.js with depth-aware reflections of docks and signs, rain rings, boats that ride the swell, and wakes that follow turns | `threejs-harbour-water` |
+| Create or integrate highly detailed 3D models with smooth silhouettes, shaped surfaces, believable bevels, and close-up geometry, then prepare suitable runtime LODs and loading | `threejs-high-poly-models` |
+| Build sharp, physically coherent high-resolution materials for 3D rendering with appropriate PBR maps, texel density, UV direction, mipmaps, anisotropic filtering, and progressive asset delivery | `threejs-hires-textures` |
 | Generate and edit 2D image assets for Three.js games with Google's Gemini image API - concept sheets, image-to-3D inputs, texture and material references, sky and background plates, decals, logos, icons, GUI art, title and menu art, and marketing stills. Also use for direct image editing when the user supplies an image path. | `threejs-image-generator` |
 | Build a deliberate final-image pipeline for advanced Three.js scenes | `threejs-image-pipeline` |
 | Three.js interaction - raycasting, controls, mouse/touch input, object selection | `threejs-interaction` |
 | Three.js lighting - light types, shadows, environment lighting | `threejs-lighting` |
+| Light carved wood in a dark room in three.js, with procedural grain and pores, one warm key through a window, soft shadows that touch, light shafts, background rays and dust, then score the render out of 10 on an anchored rubric with a runnable headless scorecard and iterate until each item reaches the target | `threejs-lighting-scorecard` |
 | Three.js asset loading - GLTF, textures, images, models, async patterns | `threejs-loaders` |
 | Three.js materials - PBR, basic, phong, shader materials, material properties | `threejs-materials` |
+| Build an ultra-realistic open ocean in Three.js with a deep-water Gerstner spectrum shaded per pixel from analytic derivatives, each wave faded at its own pixel footprint, plus Fresnel sky-cube and planar reflections, subsurface light through the crests, HDR sun glitter, Jacobian lace foam, a Kelvin wake, hull foam, buoyancy queries and aerial perspective into the sky's horizon haze | `threejs-open-ocean` |
+| Build or art-direct walkable Three.js environments in Kasumidera’s painterly ultra-realism style | `threejs-painterly-realism` |
 | Build silhouette-aware parallax occlusion mapping in Three.js WebGPU and TSL | `threejs-parallax-occlusion-mapping` |
 | Three.js post-processing - EffectComposer, bloom, DOF, screen effects | `threejs-postprocessing` |
 | Build coupled precipitation and affected surfaces in Three.js | `threejs-precipitation-surfaces` |
@@ -47,13 +54,18 @@ family method index covers all45. Do not start another router or lifecycle.
 | Author production real-time VFX in Three.js | `threejs-procedural-vfx` |
 | Verify and release Three.js browser games - playtest QA, automated bot playtests, mobile and responsive checks, production builds, static-hosting base paths, debug gating, bundle review, screenshots, visual regression baselines, canvas-pixel inspection with measured metrics, and release risk reports. | `threejs-qa-release` |
 | Build raymarched space phenomena in Three.js | `threejs-raymarched-space-effects` |
+| Direct photoreal or premium Three.js environments from target decision to scored frames | `threejs-realism-director` |
+| Render a 3D canvas sharply on Retina and HiDPI displays, including explicit 200 percent resolution, synchronized renderer and post-processing sizes, correct pointer coordinates, and measured quality fallbacks | `threejs-retina-resolution` |
 | Implement a production GTAO path in Three.js | `threejs-screen-space-ambient-occlusion` |
 | Three.js shaders - GLSL, ShaderMaterial, uniforms, custom effects | `threejs-shaders` |
 | Implement stable, scalable directional-shadow systems for Three.js | `threejs-shadow-systems` |
 | Route ambitious Three.js graphics work to the smallest expert skill set | `threejs-skill-router` |
+| Create a camera-correct sky background for a 3D scene with a procedural atmosphere or panorama, horizon haze, aligned sunlight, and coherent environment lighting | `threejs-sky-background` |
+| Add sun shafts and crepuscular rays to a Three.js or equivalent 3D scene, using scene occlusion, a projected sun position, controlled foreground spill, and scalable post-processing | `threejs-sky-rays` |
 | Build large procedural oceans and coast transitions in Three.js | `threejs-spectral-ocean` |
 | Build view-aligned and screen-space surface effects in Three.js | `threejs-temporal-surfaces` |
 | Three.js textures - texture types, UV mapping, environment maps, texture settings | `threejs-textures` |
+| Add volumetric underwater god rays to a Three.js scene, marching one drifting swell field along every view ray at half resolution so the light shafts converge on the sun, parallax with the camera and carry rippling caustic streaks, with a shimmering surface underside, a sun that wobbles through the ripples, and the same light dappling fish as they swim through the beams | `threejs-underwater-light` |
 | Validate advanced Three.js graphics as authored systems rather than subjective screenshots | `threejs-visual-validation` |
 | Implement volumetric cloud systems in Three.js | `threejs-volumetric-clouds` |
 | Build production analytic and bounded water in Three.js | `threejs-water-optics` |

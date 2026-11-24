@@ -1,0 +1,16 @@
+# threejs-open-ocean
+
+Build an ultra-realistic open ocean in Three.js with a deep-water Gerstner spectrum shaded per pixel from analytic derivatives, each wave faded at its own pixel footprint, plus Fresnel sky-cube and planar reflections, subsurface light through the crests, HDR sun glitter, Jacobian lace foam, a Kelvin wake, hull foam, buoyancy queries and aerial perspective into the sky's horizon haze. Use for shallow creeks, water around rocks, seas, oceans, sunset or daylight water, sun glitter paths, ship or boat scenes, wakes, coastal flyovers and any 3D scene with a moving camera and a water horizon. Includes the approved water from Pirate Ship Sunset as a reusable module.
+
+This is an internal method bundled in `threejs-skills`, not an individual installer
+choice or native skill. Read [GUIDE.md](GUIDE.md) for the method; its supporting
+resources remain relative to this directory. Install the complete family:
+
+```sh
+ai-rules setup --host codex --capability threejs-skills --scope project --project-root . --source latest
+```
+
+Use "threejs-skills, specifically threejs-open-ocean" or let the family select by need.
+With Andino, return evidence/results to its single task context. Preserve supplied
+notices, observe project versions, and get task authorization for paid services.
+Update the family through the existing CLI; modified/unmanaged targets are preserved.

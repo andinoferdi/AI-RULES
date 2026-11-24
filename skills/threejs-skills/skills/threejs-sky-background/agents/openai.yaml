@@ -1,0 +1,4 @@
+interface:
+  display_name: "Three.js Sky Background"
+  short_description: "Atmospheric skies with coherent scene lighting"
+  default_prompt: "Use $threejs-sky-background to build a sky background that fits this 3D scene and its lighting."

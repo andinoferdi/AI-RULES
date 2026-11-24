@@ -1,25 +1,25 @@
 # Three.js Skills
 
-Three.js Skills packages 45 specialized Three.js and NixieFX engineering methods into one installable family: 3D graphics, custom GLSL/WGSL shaders, lighting, skeletal animation, physics, particle systems, and WebGL/WebGPU optimization.
+Three.js Skills packages 57 specialized Three.js and NixieFX engineering methods into one installable family: photoreal environments, open-ocean water, scanned-asset pipelines, custom GLSL/WGSL shaders, lighting, animation, particle systems, games, and WebGL/WebGPU optimization.
 
-Building advanced 3D web applications involves shader pipelines, draw-call budgets, shadow-map cascades, matrix transformations, and asset management. **Three.js Skills** gives your agent domain guidance through one registration rather than adding 45 separate skill registrations to the system prompt.
+Building advanced 3D web applications involves shader pipelines, draw-call budgets, shadow-map cascades, captured assets and one coherent light and colour pipeline. **Three.js Skills** gives your agent domain guidance through one registration rather than adding 57 separate skill registrations to the system prompt.
 
 ## What It Does
 
-### The specialist catalog (45 methods)
+### The specialist catalog (57 methods)
 
 The family covers these areas of 3D interactive graphics:
 
 | Domain | Key Specialists | What They Handle |
 |---|---|---|
-| **Shaders & VFX** | `threejs-shaders`, `threejs-postprocessing`, `nixie-fx-*` | Custom GLSL/WGSL shaders, postprocessing chains, bloom, depth of field, and NixieFX particle effects. |
-| **Lighting & Realism** | `threejs-lighting`, `threejs-shadows`, `threejs-environment` | Physically based lighting (PBR), shadow-map resolution tuning, HDR environments, and tone mapping. |
-| **Geometry & Math** | `threejs-geometry`, `threejs-math`, `threejs-procedural` | Custom BufferGeometry, procedural meshes, quaternion rotations, spatial indexing, and raycasting. |
-| **Animation & Rigging** | `threejs-animation`, `threejs-skeletal`, `threejs-morph` | Keyframe tracks, skeletal bone hierarchies, morph targets, and animation mixer blending. |
-| **Interaction & Input** | `threejs-interaction`, `threejs-camera`, `threejs-controls` | Raycast pointer picking, orbit/first-person camera controls, viewport resize, and touch events. |
-| **Architecture & Game** | `threejs-architecture`, `threejs-game-director`, `threejs-performance` | Component scene graphs, GLTF/GLB asset loading pipelines, draw-call minimization, and FPS profiling. |
+| **Realism** | `threejs-realism-director`, `threejs-open-ocean`, `threejs-sky-background`, `threejs-hires-textures`, `threejs-crafted-materials` | The stylized-or-photoreal decision, reference teardown, CC0 scanned assets, open-sea water with a working module, skies, close-up materials, and scored fixed frames. |
+| **Shaders & VFX** | `threejs-shaders`, `threejs-postprocessing`, `threejs-procedural-vfx`, `nixie-fx-authoring` | Custom GLSL/WGSL shaders, post-processing chains, real-time effects, and NixieFX particle effects. |
+| **Lighting & Image** | `threejs-lighting`, `threejs-shadow-systems`, `threejs-exposure-color-grading`, `threejs-image-pipeline` | Light types and IBL, stable shadows, exposure and tone mapping, and multi-pass image ownership. |
+| **Geometry & Worlds** | `threejs-geometry`, `threejs-procedural-geometry`, `threejs-procedural-vegetation`, `threejs-high-poly-models` | BufferGeometry, procedural meshes, plants, detailed models and LODs. |
+| **Animation & Camera** | `threejs-animation`, `threejs-procedural-animation`, `threejs-camera-direction` | Keyframe and skeletal animation, procedural motion, and camera rigs. |
+| **Games** | `threejs-game-director`, `threejs-gameplay-systems`, `threejs-qa-release` | Building, upgrading, testing and shipping browser games. |
 
-Consult the complete [Specialist Index](references/specialists.md) for detailed descriptions of all 45 methods.
+Consult the complete [Specialist Index](references/specialists.md) for detailed descriptions of all 57 methods.
 
 ## When to Use
 
@@ -75,6 +75,8 @@ Invoke the family name, and optionally name a specific specialist method:
 
 - **Claude Code:**
   `/threejs-skills create a custom underwater caustics shader using threejs-shaders`
+- **Photoreal scene:**
+  `/threejs-skills make this island scene photoreal`
 - **Codex:**
   `$threejs-skills optimize skeletal animation blending and LOD transitions for character models`
 - **With Andino Workflow:**
@@ -86,6 +88,10 @@ Invoke the family name, and optionally name a specific specialist method:
 
 The family installs as one directory (`threejs-skills`) with one root `SKILL.md`. Internal specialist guides are loaded as needed from `skills/<method-id>/GUIDE.md`.
 
+### Target and selection record
+
+Before visual work the agent settles the target: stylized (code-made) or photoreal (captured assets), because code-only work tops out at stylized. It then writes a short selection record naming the renderer, the methods it read in full and the nearby methods it left out, so you can see which guides shaped the result.
+
 ## Works With Other Skills
 
 - **Andino Workflow:** When Andino is active, it retains the overall lifecycle, execution plan, and checkpointing. `threejs-skills` provides technical domain execution within that task.
@@ -94,11 +100,11 @@ The family installs as one directory (`threejs-skills`) with one root `SKILL.md`
 ## Files
 
 - [`SKILL.md`](SKILL.md) — Runtime contract and selective method dispatching rules.
-- [`references/specialists.md`](references/specialists.md) — Index and trigger criteria for all 45 methods.
-- `skills/<method-id>/` — The 45 specialist guides, each with its own `README.md` and `GUIDE.md`.
+- [`references/specialists.md`](references/specialists.md) — Index and trigger criteria for all 57 methods.
+- `skills/<method-id>/` — The 57 specialist guides, each with its own `README.md` and `GUIDE.md`.
 - [`references/legal/license.md`](references/legal/license.md) — MIT license notice for AI-RULES-authored content.
 - [src/ai_rules/verification/data/threejs_inventory.json](https://github.com/andinoferdi/AI-RULES/blob/main/src/ai_rules/verification/data/threejs_inventory.json) — Complete verification inventory and file hashes (in the repository, not installed).
 
 ## License
 
-AI-RULES-authored content in this skill is released under the [MIT License](references/legal/license.md). Third-party material keeps its original license (MIT, CC0 or GPL); see the notice beside each bundled resource.
+AI-RULES-authored content in this skill is released under the [MIT License](references/legal/license.md). Third-party material keeps its original license (MIT, CC0 or GPL); see the notice beside each bundled resource. Eleven methods are adapted from [MengTo/Skills](https://github.com/MengTo/Skills) under the MIT license; each keeps its notice in `references/legal/mengto-skills-license.md`.

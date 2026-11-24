@@ -1,0 +1,4 @@
+interface:
+  display_name: "Three.js Sky Rays"
+  short_description: "Occlusion-aware sunlight shafts for 3D scenes"
+  default_prompt: "Use $threejs-sky-rays to add sky rays shaped by the roofs and foliage in this scene."
