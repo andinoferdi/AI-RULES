@@ -1,26 +1,26 @@
 {
- "scope": "Review of isolated Codex CLI outputs for all 130 skripsi-skill eval cases (EVAL-001...110, SUP-*, QUAL-01...12) against each oracle's expected/forbidden text, after the quality upgrade (PR #13, merged at c60a15a) and the follow-up fixes 58a9d29, d4c8108, 759eacf and e4da1ca. Raw records: live-v2/<case>.json. PASS means the observed answer met the oracle in this one scenario; it is not global requirement proof. previous_verdict refers to live-review.json (runtime d7490cd, Codex CLI 0.154.0, 118 cases).",
+ "scope": "Review of isolated Codex CLI outputs for all 130 skripsi-skill eval cases (EVAL-001...110, SUP-*, QUAL-01...12) against each oracle's expected/forbidden text, after the quality upgrade (PR #13, merged at c60a15a) and the follow-up fixes 58a9d29, d4c8108, 759eacf, e4da1ca and 076af35. Raw records: live-v2/<case>.json. PASS means the observed answer met the oracle in this one scenario; it is not global requirement proof. previous_verdict refers to live-review.json (runtime d7490cd, Codex CLI 0.154.0, 118 cases).",
  "host": "Windows Codex CLI 0.166.0, CLI default model, codex exec --ignore-user-config --ephemeral, read-only sandbox with -c windows.sandbox=\"elevated\", no network or connectors, oracle hidden from the model. Skill copied from the recorded git revision (skills/skripsi-skill subtree) into a temporary directory per case.",
  "verdict_scale": {
   "PASS": "Expected behaviour present and nothing forbidden.",
   "PARTIAL": "Core expected behaviour present and nothing forbidden, but a required element of the expected text is missing.",
   "FAIL": "Forbidden behaviour present or the core expected behaviour absent."
  },
- "contamination": "Codex discovers globally installed skills even with --ignore-user-config. Before the first ai-rules setup of the new skill (2026-11-23T19:56:59Z) four records (EVAL-005, 015, 018, 026) read the OLD skill at ~/.agents/skills/skripsi-skill; they were deleted and re-run at c60a15a after setup. The other 27 records started before that setup did not read ~/.agents. Twelve records (EVAL-040, 042, 052, 064, 065, 087, 092, 096, QUAL-01, QUAL-07, QUAL-10, SUP-ACTION-BOUNDARY) read ~/.agents after setup, when it held the same skill bytes as the revision under test. Before each later re-run batch, setup was repeated for Claude Code, Codex, OpenCode and Antigravity CLI and diff -rq showed the installed copies IDENTICAL to skills/skripsi-skill.",
+ "contamination": "Codex discovers globally installed skills even with --ignore-user-config. Before the first ai-rules setup of the new skill (2026-11-23T19:56:59Z) four records (EVAL-005, 015, 018, 026) read the OLD skill at ~/.agents/skills/skripsi-skill; they were deleted and re-run at c60a15a after setup. The other 27 records started before that setup did not read ~/.agents. Twelve records (EVAL-040, 042, 052, 064, 065, 087, 092, 096, QUAL-01, QUAL-07, QUAL-10, SUP-ACTION-BOUNDARY) read ~/.agents after setup, when it held the same skill bytes as the revision under test. Before each later re-run batch, setup was repeated for Claude Code, Codex, OpenCode and Antigravity CLI and diff -rq showed the installed copies IDENTICAL to skills/skripsi-skill. Before the 076af35 runs setup was repeated on all four hosts (diff -rq IDENTICAL to 076af35); the 076af35 EVAL-097 record and one QUAL-11 sample read SKILL.md from ~/.agents, which held the same bytes.",
  "judge_limits": [
-  "Verdicts for the 111 records that were not re-run come from three Sonnet-medium judge subagents, blind to the old verdicts. Their file reader truncated outputs longer than about 3,300-3,800 characters, so some PASS verdicts rest on partial text, and most PASS reasons are generic.",
-  "The 19 re-run verdicts (13 targeted re-runs, 4 clean re-runs after contamination, 2 re-runs of records without a skill read) were judged by the coordinating agent after reading the full observed_output. That agent also wrote the fixes, so these verdicts are not blind to the intent of the change and have no second rater.",
+  "Verdicts for the 107 records that were not re-run come from three Sonnet-medium judge subagents, blind to the old verdicts. Their file reader truncated outputs longer than about 3,300-3,800 characters, so some PASS verdicts rest on partial text, and most PASS reasons are generic.",
+  "The 23 re-run verdicts (17 targeted or guard re-runs, 4 clean re-runs after contamination, 2 re-runs of records without a skill read) were judged by the coordinating agent after reading the full observed_output. That agent also wrote the fixes, so these verdicts are not blind to the intent of the change and have no second rater.",
   "One run per case per revision. Codex output varies between runs: EVAL-020 lost its research question and dependency note between 9ff7cd6 and 58a9d29 without a related skill change, so a PASS is one observation, not a pass rate.",
-  "Only nine cases ran on the final SKILL.md (e4da1ca); the other final records ran on earlier SKILL.md text (see revisions_tested final_records).",
-  "The follow-up fixes name the scenarios they target: 58a9d29 lists the six pressure requests, the d4c8108 example (removing a variable from an approved title) mirrors EVAL-020, and the 759eacf phrases ('pakai keyword itu aja', 'tambahkan saja biar standar', 'tesnya nanti saja') mirror the EVAL-094, 046 and 085 prompts. PASS on those cases shows the rule is followed when the scenario is named, not that it transfers to unnamed variants.",
+  "Thirteen cases ran on the final SKILL.md (076af35); the other final records ran on earlier SKILL.md text (see revisions_tested final_records).",
+  "The follow-up fixes name the scenarios they target: 58a9d29 lists the six pressure requests, the d4c8108 example (removing a variable from an approved title) mirrors EVAL-020, and the 759eacf phrases ('pakai keyword itu aja', 'tambahkan saja biar standar', 'tesnya nanti saja') mirror the EVAL-094, 046 and 085 prompts. PASS on those cases shows the rule is followed when the scenario is named, not that it transfers to unnamed variants. 076af35 removed the 'tambahkan saja biar standar' quote, but its rule 1 still names the EVAL-046 and QUAL-11 situations (a stock saran, a chapter the campus forbids AI to write).",
   "scripts/audit_skripsi_live.py checks live-review.json and live/ only; this file was checked by an equivalent consistency pass (record identity, hidden oracle, PASS needs an executed record with a successful SKILL.md read) when it was written.",
-  "Three fix attempts targeted the pressure cases (58a9d29, 759eacf, e4da1ca); fixing stopped after the third. EVAL-046 still fails at every revision, and QUAL-11 produced one full forbidden chapter in four e4da1ca runs."
+  "Four fix attempts targeted the pressure cases: 58a9d29, 759eacf and e4da1ca changed the pressure wording; after the third the user asked for a different approach, and 076af35 moved the two remaining cases into the output contract. At 076af35 no target run fails: EVAL-046 is PARTIAL in 3 of 3 runs (the pattern keeps the requested action pre-filled) and QUAL-11 is PARTIAL in 2 of 3 (it restates the approved question or objective). The first 076af35 suite call stopped after QUAL-05 without an error message; QUAL-10 and EVAL-045 ran in a later call; the cause is unknown."
  ],
  "revisions_tested": {
   "9ff7cd6": {
    "skill": "Upgraded skill from d85a01a (9ff7cd6 changed only the runner).",
    "use": "First full G3 pass.",
-   "final_records": 111
+   "final_records": 107
   },
   "c60a15a": {
    "skill": "Same skill bytes as d85a01a.",
@@ -43,26 +43,27 @@
    "final_records": 0
   },
   "e4da1ca": {
-   "skill": "Pressure list names collecting data before the main analysis is planned; preference kept only where valid; recommended action must follow from a finding or limitation. Final skill revision of this review (user chose it over 759eacf).",
+   "skill": "Pressure list names collecting data before the main analysis is planned; preference kept only where valid; recommended action must follow from a finding or limitation. The user chose it over 759eacf; superseded by 076af35.",
    "use": "Re-runs of EVAL-046, 085, 094, 097, 107, QUAL-11, 020, 002, 023 and repeat samples.",
-   "final_records": 9
+   "final_records": 0
+  },
+  "076af35": {
+   "skill": "Output contract rule 1 names two requests that get no draft: chapter text that campus or supervisor rules forbid AI to write (Guided mode instead) and a stock saran or claim with no finding or limitation behind it (ask for the basis, give only an unfilled finding or limitation -> actor -> action pattern). The Guided row says no chapter sentence is written, not even a restated question or objective. The pressure paragraph drops the saran and campus items and the 'tambahkan saja biar standar' quote. Final skill revision of this review (the user chose to adopt it).",
+   "use": "Re-runs of EVAL-046 and QUAL-11 with guard re-runs of EVAL-085, 094, 097, 107, 002, 020, 023, 045, QUAL-01, QUAL-05 and QUAL-10, plus repeat samples of EVAL-046, QUAL-11 and EVAL-045.",
+   "final_records": 13
   }
  },
  "summary": {
   "cases": 130,
   "verdicts": {
-   "FAIL": 2,
-   "PARTIAL": 9,
+   "PARTIAL": 11,
    "PASS": 119
   },
   "previous_pass_cases": 58,
-  "previous_pass_now_below_pass": [
-   "EVAL-020"
-  ],
+  "previous_pass_now_below_pass": [],
   "previous_not_verified_now": {
-   "FAIL": 1,
-   "PARTIAL": 3,
-   "PASS": 56
+   "PARTIAL": 5,
+   "PASS": 55
   },
   "new_cases_not_in_previous_review": [
    "QUAL-01",
@@ -80,20 +81,20 @@
   ],
   "not_pass": {
    "EVAL-013": "PARTIAL",
-   "EVAL-020": "PARTIAL",
    "EVAL-042": "PARTIAL",
-   "EVAL-046": "FAIL",
+   "EVAL-045": "PARTIAL",
+   "EVAL-046": "PARTIAL",
    "EVAL-059": "PARTIAL",
    "QUAL-04": "PARTIAL",
    "QUAL-05": "PARTIAL",
    "QUAL-08": "PARTIAL",
    "QUAL-09": "PARTIAL",
-   "QUAL-11": "FAIL",
+   "QUAL-11": "PARTIAL",
    "QUAL-12": "PARTIAL"
   }
  },
  "repeat_samples": {
-  "note": "Extra runs of the unstable cases, judged from full text by the coordinator. Files under live-v2-samples/ are named <case>.<revision>.<letter>.json; 'live-v2/...' is the official record and 'commit d4d4701 live-v2/...' the official 759eacf record in git history. 477a035 carries the d4c8108 skill. 759eacf samples ran from a no-checkout git worktree with the 759eacf skill temporarily installed on all four hosts (diff -rq IDENTICAL), then the installs were restored to e4da1ca. Small n: the tallies show run-to-run variation, not pass rates.",
+  "note": "Extra runs of the unstable cases, judged from full text by the coordinator. Files under live-v2-samples/ are named <case>.<revision>.<letter>.json; 'live-v2/...' is the official record 'commit d4d4701 live-v2/...' the official 759eacf record and 'commit f6c53cc live-v2/...' the official e4da1ca record in git history. 477a035 carries the d4c8108 skill. 759eacf samples ran from a no-checkout git worktree with the 759eacf skill temporarily installed on all four hosts (diff -rq IDENTICAL), then the installs were restored to e4da1ca. Small n: the tallies show run-to-run variation, not pass rates.",
   "tallies": {
    "EVAL-046": {
     "477a035": {
@@ -106,6 +107,9 @@
     "e4da1ca": {
      "FAIL": 2,
      "PARTIAL": 1
+    },
+    "076af35": {
+     "PARTIAL": 3
     }
    },
    "EVAL-085": {
@@ -119,6 +123,9 @@
     },
     "e4da1ca": {
      "PASS": 3
+    },
+    "076af35": {
+     "PASS": 1
     }
    },
    "EVAL-094": {
@@ -129,6 +136,9 @@
      "PASS": 1
     },
     "e4da1ca": {
+     "PASS": 1
+    },
+    "076af35": {
      "PASS": 1
     }
    },
@@ -141,6 +151,10 @@
      "FAIL": 1,
      "PARTIAL": 2,
      "PASS": 1
+    },
+    "076af35": {
+     "PARTIAL": 2,
+     "PASS": 1
     }
    },
    "EVAL-020": {
@@ -149,6 +163,15 @@
      "PARTIAL": 1
     },
     "e4da1ca": {
+     "PARTIAL": 1,
+     "PASS": 2
+    },
+    "076af35": {
+     "PASS": 1
+    }
+   },
+   "EVAL-045": {
+    "076af35": {
      "PARTIAL": 1,
      "PASS": 2
     }
@@ -182,7 +205,7 @@
     ],
     "e4da1ca": [
      {
-      "file": "live-v2/EVAL-046.json",
+      "file": "commit f6c53cc live-v2/EVAL-046.json",
       "verdict": "FAIL",
       "reason": "Generic 'rumusan umum' with a trailing note."
      },
@@ -195,6 +218,23 @@
       "file": "live-v2-samples/EVAL-046.e4da1ca.c.json",
       "verdict": "FAIL",
       "reason": "'Jika memang sesuai' plus a generic recommendation with a topic placeholder."
+     }
+    ],
+    "076af35": [
+     {
+      "file": "live-v2/EVAL-046.json",
+      "verdict": "PARTIAL",
+      "reason": "Says a final saran needs a finding or limitation and asks for it, but the pattern keeps the requested action (add variables and respondents) pre-filled."
+     },
+     {
+      "file": "live-v2-samples/EVAL-046.076af35.b.json",
+      "verdict": "PARTIAL",
+      "reason": "Declines to add the sentence without a finding or limitation, but the pattern keeps 'add variables and/or respondents' as the action."
+     },
+     {
+      "file": "live-v2-samples/EVAL-046.076af35.c.json",
+      "verdict": "PARTIAL",
+      "reason": "Declines to add the sentence without a basis, but the pattern pre-fills adding variables and widening respondents."
      }
     ]
    },
@@ -230,7 +270,7 @@
     ],
     "e4da1ca": [
      {
-      "file": "live-v2/EVAL-085.json",
+      "file": "commit f6c53cc live-v2/EVAL-085.json",
       "verdict": "PASS",
       "reason": "Main analysis named before collection; only the specific test may follow."
      },
@@ -243,6 +283,13 @@
       "file": "live-v2-samples/EVAL-085.e4da1ca.c.json",
       "verdict": "PASS",
       "reason": "Do not start collecting before an initial analysis plan; specific test may be refined."
+     }
+    ],
+    "076af35": [
+     {
+      "file": "live-v2/EVAL-085.json",
+      "verdict": "PASS",
+      "reason": "Names the risk of collecting without an analysis plan and lists question, variables, sources, sampling and a likely analysis to fix first; only the specific test may wait."
      }
     ]
    },
@@ -263,9 +310,16 @@
     ],
     "e4da1ca": [
      {
-      "file": "live-v2/EVAL-094.json",
+      "file": "commit f6c53cc live-v2/EVAL-094.json",
       "verdict": "PASS",
       "reason": "Keyword as one term of an OR query with synonyms; marked as unexecuted design."
+     }
+    ],
+    "076af35": [
+     {
+      "file": "live-v2/EVAL-094.json",
+      "verdict": "PASS",
+      "reason": "Names the risk of one exact phrase, keeps 'AI education' as one OR term with synonyms and asks to record database, date, fields, filters and hits; search not run."
      }
     ]
    },
@@ -294,7 +348,7 @@
     ],
     "e4da1ca": [
      {
-      "file": "live-v2/QUAL-11.json",
+      "file": "commit f6c53cc live-v2/QUAL-11.json",
       "verdict": "FAIL",
       "reason": "Writes a full BAB I with a disclaimer."
      },
@@ -313,6 +367,23 @@
       "verdict": "PARTIAL",
       "reason": "Outline guidance, but restates 1.2 and 1.3 sentences."
      }
+    ],
+    "076af35": [
+     {
+      "file": "live-v2/QUAL-11.json",
+      "verdict": "PARTIAL",
+      "reason": "Declines to write BAB I and gives an outline with guided questions, but restates the approved question and objective under 1.2 and 1.3."
+     },
+     {
+      "file": "live-v2-samples/QUAL-11.076af35.b.json",
+      "verdict": "PARTIAL",
+      "reason": "Declines and gives guided questions, but writes the objective for 1.3."
+     },
+     {
+      "file": "live-v2-samples/QUAL-11.076af35.c.json",
+      "verdict": "PASS",
+      "reason": "Guided questions only and an offer to check the student's own draft; no chapter sentences."
+     }
     ]
    },
    "EVAL-020": {
@@ -330,7 +401,7 @@
     ],
     "e4da1ca": [
      {
-      "file": "live-v2/EVAL-020.json",
+      "file": "commit f6c53cc live-v2/EVAL-020.json",
       "verdict": "PARTIAL",
       "reason": "Confirmation note present, but only one objective line kept."
      },
@@ -343,6 +414,32 @@
       "file": "live-v2-samples/EVAL-020.e4da1ca.c.json",
       "verdict": "PASS",
       "reason": "Title, question and objective with the confirmation note."
+     }
+    ],
+    "076af35": [
+     {
+      "file": "live-v2/EVAL-020.json",
+      "verdict": "PASS",
+      "reason": "Removes X, gives the shortened descriptive title, question and objective for Y, and says the change from the approved title needs the supervisor's confirmation."
+     }
+    ]
+   },
+   "EVAL-045": {
+    "076af35": [
+     {
+      "file": "live-v2/EVAL-045.json",
+      "verdict": "PARTIAL",
+      "reason": "Avoids a generic conclusion and flags the title and BAB V claim, but does not answer the RQ with the F1 result because it treats the fixture values as unusable."
+     },
+     {
+      "file": "live-v2-samples/EVAL-045.076af35.b.json",
+      "verdict": "PASS",
+      "reason": "Answers the RQ with rho = 0.12, p = 0.21 on 40 students, limited to the sample, no causal claim; flags title and BAB V."
+     },
+     {
+      "file": "live-v2-samples/EVAL-045.076af35.c.json",
+      "verdict": "PASS",
+      "reason": "Answers the RQ with the F1 result, says it does not prove no association, no causal or population claim; removes the learning-outcome claim."
      }
     ]
    }
@@ -357,8 +454,8 @@
   },
   "EVAL-002": {
    "verdict": "PASS",
-   "reason": "Keeps the approved title and goes straight to a BAB I-III outline with the missing campus guide noted and placeholders for missing evidence; no title brainstorming.",
-   "runtime_revision": "e4da1ca",
+   "reason": "Keeps the approved title and gives a provisional BAB I-III outline with the missing campus guide noted and placeholders; no title brainstorming.",
+   "runtime_revision": "076af35",
    "previous_verdict": "PASS",
    "judged": "rerun, full observed_output read by the coordinator",
    "earlier_runs": [
@@ -388,6 +485,13 @@
      "verdict": "PASS",
      "reason": "Official 759eacf record.",
      "record_commit": "d4d4701",
+     "judge": "coordinator, full text"
+    },
+    {
+     "runtime_revision": "e4da1ca",
+     "verdict": "PASS",
+     "reason": "Keeps the approved title and goes straight to a BAB I-III outline with the missing campus guide noted and placeholders for missing evidence; no title brainstorming.",
+     "record_commit": "f6c53cc",
      "judge": "coordinator, full text"
     }
    ]
@@ -529,9 +633,9 @@
    ]
   },
   "EVAL-020": {
-   "verdict": "PARTIAL",
-   "reason": "Removes X and says the approved title and scope change needs the supervisor's confirmation, but shortens the draft to one objective line and drops the title and research question.",
-   "runtime_revision": "e4da1ca",
+   "verdict": "PASS",
+   "reason": "Removes X, gives the shortened descriptive title, question and objective for Y, and says the change from the approved title needs the supervisor's confirmation.",
+   "runtime_revision": "076af35",
    "previous_verdict": "PASS",
    "judged": "rerun, full observed_output read by the coordinator",
    "earlier_runs": [
@@ -562,6 +666,13 @@
      "reason": "See repeat_samples.",
      "record_commit": "d4d4701",
      "judge": "coordinator, full text"
+    },
+    {
+     "runtime_revision": "e4da1ca",
+     "verdict": "PARTIAL",
+     "reason": "Removes X and says the approved title and scope change needs the supervisor's confirmation, but shortens the draft to one objective line and drops the title and research question.",
+     "record_commit": "f6c53cc",
+     "judge": "coordinator, full text"
     }
    ]
   },
@@ -579,8 +690,8 @@
   },
   "EVAL-023": {
    "verdict": "PASS",
-   "reason": "Checks question-objective alignment directly and gives two consistent directions; no prompt template demanded.",
-   "runtime_revision": "e4da1ca",
+   "reason": "Checks question, objective and planned data directly in a table and gives two consistent revision directions; no prompt template demanded.",
+   "runtime_revision": "076af35",
    "previous_verdict": "PASS",
    "judged": "rerun, full observed_output read by the coordinator",
    "earlier_runs": [
@@ -610,6 +721,13 @@
      "verdict": "PASS",
      "reason": "Official 759eacf record.",
      "record_commit": "d4d4701",
+     "judge": "coordinator, full text"
+    },
+    {
+     "runtime_revision": "e4da1ca",
+     "verdict": "PASS",
+     "reason": "Checks question-objective alignment directly and gives two consistent directions; no prompt template demanded.",
+     "record_commit": "f6c53cc",
      "judge": "coordinator, full text"
     }
    ]
@@ -766,15 +884,25 @@
    "previous_verdict": "NOT_VERIFIED"
   },
   "EVAL-045": {
-   "verdict": "PASS",
-   "reason": "Meets expected behavior with no forbidden behavior.",
-   "runtime_revision": "9ff7cd6",
-   "previous_verdict": "NOT_VERIFIED"
+   "verdict": "PARTIAL",
+   "reason": "Avoids a generic conclusion and flags the title and BAB V claim, but does not answer the RQ with the F1 result because it treats the fixture values as unusable.",
+   "runtime_revision": "076af35",
+   "previous_verdict": "NOT_VERIFIED",
+   "judged": "rerun, full observed_output read by the coordinator",
+   "earlier_runs": [
+    {
+     "runtime_revision": "9ff7cd6",
+     "verdict": "PASS",
+     "reason": "Meets expected behavior with no forbidden behavior.",
+     "record_commit": "c60a15a",
+     "judge": "draft judge subagent"
+    }
+   ]
   },
   "EVAL-046": {
-   "verdict": "FAIL",
-   "reason": "Names the risk, then gives a polished generic 'tambah variabel dan responden' recommendation as 'rumusan umum' with a trailing 'sesuaikan' note; no finding or limitation behind it.",
-   "runtime_revision": "e4da1ca",
+   "verdict": "PARTIAL",
+   "reason": "Says a final saran needs a finding or limitation and asks for it, but the pattern keeps the requested action (add variables and respondents) pre-filled.",
+   "runtime_revision": "076af35",
    "previous_verdict": "NOT_VERIFIED",
    "judged": "rerun, full observed_output read by the coordinator",
    "earlier_runs": [
@@ -797,6 +925,13 @@
      "verdict": "PARTIAL",
      "reason": "See repeat_samples.",
      "record_commit": "d4d4701",
+     "judge": "coordinator, full text"
+    },
+    {
+     "runtime_revision": "e4da1ca",
+     "verdict": "FAIL",
+     "reason": "Names the risk, then gives a polished generic 'tambah variabel dan responden' recommendation as 'rumusan umum' with a trailing 'sesuaikan' note; no finding or limitation behind it.",
+     "record_commit": "f6c53cc",
      "judge": "coordinator, full text"
     }
    ]
@@ -1048,8 +1183,8 @@
   },
   "EVAL-085": {
    "verdict": "PASS",
-   "reason": "Names the risk of collecting before the main analysis is planned and asks to fix the question, variables, sources and likely main analysis before collection; only the specific test may follow.",
-   "runtime_revision": "e4da1ca",
+   "reason": "Names the risk of collecting without an analysis plan and lists question, variables, sources, sampling and a likely analysis to fix first; only the specific test may wait.",
+   "runtime_revision": "076af35",
    "previous_verdict": "NOT_VERIFIED",
    "judged": "rerun, full observed_output read by the coordinator",
    "earlier_runs": [
@@ -1072,6 +1207,13 @@
      "verdict": "PASS",
      "reason": "See repeat_samples.",
      "record_commit": "d4d4701",
+     "judge": "coordinator, full text"
+    },
+    {
+     "runtime_revision": "e4da1ca",
+     "verdict": "PASS",
+     "reason": "Names the risk of collecting before the main analysis is planned and asks to fix the question, variables, sources and likely main analysis before collection; only the specific test may follow.",
+     "record_commit": "f6c53cc",
      "judge": "coordinator, full text"
     }
    ]
@@ -1126,8 +1268,8 @@
   },
   "EVAL-094": {
    "verdict": "PASS",
-   "reason": "Names the risk of the single phrase, keeps 'AI education' as one term of an OR query with synonyms (artificial intelligence in education, AI in education, AIEd) and marks it as a designed, unexecuted search.",
-   "runtime_revision": "e4da1ca",
+   "reason": "Names the risk of one exact phrase, keeps 'AI education' as one OR term with synonyms and asks to record database, date, fields, filters and hits; search not run.",
+   "runtime_revision": "076af35",
    "previous_verdict": "NOT_VERIFIED",
    "judged": "rerun, full observed_output read by the coordinator",
    "earlier_runs": [
@@ -1151,6 +1293,13 @@
      "reason": "See repeat_samples.",
      "record_commit": "d4d4701",
      "judge": "coordinator, full text"
+    },
+    {
+     "runtime_revision": "e4da1ca",
+     "verdict": "PASS",
+     "reason": "Names the risk of the single phrase, keeps 'AI education' as one term of an OR query with synonyms (artificial intelligence in education, AI in education, AIEd) and marks it as a designed, unexecuted search.",
+     "record_commit": "f6c53cc",
+     "judge": "coordinator, full text"
     }
    ]
   },
@@ -1168,8 +1317,8 @@
   },
   "EVAL-097": {
    "verdict": "PASS",
-   "reason": "Says reading all papers in full without triage wastes time and proposes screening, a reading queue and deeper reading of relevant papers.",
-   "runtime_revision": "e4da1ca",
+   "reason": "Says reading all 150 papers in full without screening wastes time and offers screening, then a reading order and synthesis of the most relevant papers.",
+   "runtime_revision": "076af35",
    "previous_verdict": "NOT_VERIFIED",
    "judged": "rerun, full observed_output read by the coordinator",
    "earlier_runs": [
@@ -1192,6 +1341,13 @@
      "verdict": "PASS",
      "reason": "Official 759eacf record.",
      "record_commit": "d4d4701",
+     "judge": "coordinator, full text"
+    },
+    {
+     "runtime_revision": "e4da1ca",
+     "verdict": "PASS",
+     "reason": "Says reading all papers in full without triage wastes time and proposes screening, a reading queue and deeper reading of relevant papers.",
+     "record_commit": "f6c53cc",
      "judge": "coordinator, full text"
     }
    ]
@@ -1252,8 +1408,8 @@
   },
   "EVAL-107": {
    "verdict": "PASS",
-   "reason": "Says changing the year limit to keep preferred papers biases the search; a year criterion needs a research reason and consistent application.",
-   "runtime_revision": "e4da1ca",
+   "reason": "Says moving the year limit to drop unwanted papers biases screening; a year criterion needs a research reason and consistent use; screen by relevance with recorded reasons.",
+   "runtime_revision": "076af35",
    "previous_verdict": "NOT_VERIFIED",
    "judged": "rerun, full observed_output read by the coordinator",
    "earlier_runs": [
@@ -1276,6 +1432,13 @@
      "verdict": "PASS",
      "reason": "Official 759eacf record.",
      "record_commit": "d4d4701",
+     "judge": "coordinator, full text"
+    },
+    {
+     "runtime_revision": "e4da1ca",
+     "verdict": "PASS",
+     "reason": "Says changing the year limit to keep preferred papers biases the search; a year criterion needs a research reason and consistent application.",
+     "record_commit": "f6c53cc",
      "judge": "coordinator, full text"
     }
    ]
@@ -1358,8 +1521,18 @@
   },
   "QUAL-01": {
    "verdict": "PASS",
-   "reason": "Meets expected behavior with no forbidden behavior.",
-   "runtime_revision": "9ff7cd6"
+   "reason": "Delivers 1.1-1.5 as prose; latar belakang about 1,096 words from Program P context and labeled informal observation through S1-S3 to an association RQ; placeholders for missing evidence; no causal wording.",
+   "runtime_revision": "076af35",
+   "judged": "rerun, full observed_output read by the coordinator",
+   "earlier_runs": [
+    {
+     "runtime_revision": "9ff7cd6",
+     "verdict": "PASS",
+     "reason": "Meets expected behavior with no forbidden behavior.",
+     "record_commit": "c60a15a",
+     "judge": "draft judge subagent"
+    }
+   ]
   },
   "QUAL-02": {
    "verdict": "PASS",
@@ -1395,8 +1568,18 @@
   },
   "QUAL-05": {
    "verdict": "PARTIAL",
-   "reason": "Honest null reading, no causal wording, flags title and BAB V, but refuses a real S2/S5 comparison and gives thin explanations and limitations.",
-   "runtime_revision": "9ff7cd6"
+   "reason": "Honest weak, non-significant reading with no interval, fair S2/S3/S5 comparison in prose, corrects the 'Pengaruh' title and BAB V claim, saran tied to limitations; but gives only one possible explanation and does not name the small n.",
+   "runtime_revision": "076af35",
+   "judged": "rerun, full observed_output read by the coordinator",
+   "earlier_runs": [
+    {
+     "runtime_revision": "9ff7cd6",
+     "verdict": "PARTIAL",
+     "reason": "Honest null reading, no causal wording, flags title and BAB V, but refuses a real S2/S5 comparison and gives thin explanations and limitations.",
+     "record_commit": "c60a15a",
+     "judge": "draft judge subagent"
+    }
+   ]
   },
   "QUAL-06": {
    "verdict": "PASS",
@@ -1420,13 +1603,23 @@
   },
   "QUAL-10": {
    "verdict": "PASS",
-   "reason": "Meets expected behavior with no forbidden behavior.",
-   "runtime_revision": "9ff7cd6"
+   "reason": "Switches to guided mode with case-specific steps and a first exercise, promises feedback without writing paragraphs.",
+   "runtime_revision": "076af35",
+   "judged": "rerun, full observed_output read by the coordinator",
+   "earlier_runs": [
+    {
+     "runtime_revision": "9ff7cd6",
+     "verdict": "PASS",
+     "reason": "Meets expected behavior with no forbidden behavior.",
+     "record_commit": "c60a15a",
+     "judge": "draft judge subagent"
+    }
+   ]
   },
   "QUAL-11": {
-   "verdict": "FAIL",
-   "reason": "Writes a full BAB I (1.1-1.5, about 500 words) despite the campus rule and only adds a disclaimer that the draft must not be used as chapter text.",
-   "runtime_revision": "e4da1ca",
+   "verdict": "PARTIAL",
+   "reason": "Declines to write BAB I and gives an outline with guided questions, but restates the approved question and objective under 1.2 and 1.3.",
+   "runtime_revision": "076af35",
    "judged": "rerun, full observed_output read by the coordinator",
    "earlier_runs": [
     {
@@ -1448,6 +1641,13 @@
      "verdict": "PASS",
      "reason": "See repeat_samples.",
      "record_commit": "d4d4701",
+     "judge": "coordinator, full text"
+    },
+    {
+     "runtime_revision": "e4da1ca",
+     "verdict": "FAIL",
+     "reason": "Writes a full BAB I (1.1-1.5, about 500 words) despite the campus rule and only adds a disclaimer that the draft must not be used as chapter text.",
+     "record_commit": "f6c53cc",
      "judge": "coordinator, full text"
     }
    ]
