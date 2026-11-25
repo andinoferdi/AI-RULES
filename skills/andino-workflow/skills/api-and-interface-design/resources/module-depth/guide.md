@@ -103,19 +103,15 @@ If you only have one adapter and your tests use that same adapter (e.g., in-proc
 
 Human engineers and AI models alike suffer from anchoring bias: the first interface conceived almost always mimics existing file structures. To escape this trap, apply the **Design-It-Twice Protocol**:
 
-```
-┌────────────────────────────────────────────────────────┐
-│               DESIGN-IT-TWICE DIVERGENCE               │
-├────────────────────┬───────────────────────────────────┤
-│ Agent 1: Minimal   │ 1-3 entrypoints. Zero config.     │
-│ Agent 2: Flexible  │ Pluggable strategies and hooks.   │
-│ Agent 3: Common    │ Trivial common case (90% default).│
-│ Agent 4: Ports     │ Hexagonal isolation for networks. │
-└────────────────────┴───────────────────────────────────┘
-```
+Sketch the interface under contradictory constraints, for example:
+
+- **Minimal:** one to three entry points, no configuration.
+- **Flexible:** pluggable strategies and hooks.
+- **Common case:** the 90% call is trivial; the rest uses defaults.
+- **Ports:** network dependencies isolated behind adapters.
 
 1. **Frame the Problem**: Ground constraints in a 15-line sketch of caller friction.
-2. **Spawn Parallel Subagents**: Dispatch isolated agents with contradictory directives.
+2. **Explore Divergent Designs**: Inline by default. Up to three subagents only when the user approves them, as described in the protocol file below.
 3. **Score on Leverage**: Calculate the Leverage Index ($L = B_{\text{hidden}} / C_{\text{caller}}$).
 4. **Synthesize Opinionated Hybrid**: Select the winning candidate and graft high-value secondary traits.
 
