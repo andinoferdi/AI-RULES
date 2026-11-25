@@ -1,4 +1,4 @@
-# Skill validation scenarios A-Q
+# Skill validation scenarios A-W
 
 For development, review and validation of this skill only. Do not load this matrix
 automatically during a rescue. These are expected behaviors, not executed results.
@@ -24,6 +24,12 @@ when evaluating; distinguish manual contract review from live host invocation.
 | O - Rescue alone, no Andino installed | Yes when the request meets rescue criteria. | Use the host task context and continue authorized bounded work. | Objective, boundary, findings, actual verification and next action. | Refuse solely because Andino is missing, install it automatically, or invent a rescue lifecycle. |
 | P - Andino installed but inactive | Yes when rescue criteria hold. | Retain the current host task lifecycle unless project rules require Andino. | Existing task ownership and applicable repository rules. | Treat installation as activation or start a second plan. |
 | Q - Both skills active | Yes when Andino routes bounded rescue work. | Return evidence to the existing Andino plan and resume its checkpoint. | One acceptance owner; preserved scope and gate/verification results. | Conflicting completion claims or forced installation of unrelated workers. |
+| R - "Assess this fragile module, do not change it" | Yes, Assess mode. | Read-only report with findings, dispositions, ranked targets and proposed steps with their protection. | Baseline, test-trust verdict, ranking signals and evidence per finding. | Any edit, commit or invented health score. |
+| S - Bug found while writing pins | Yes in Stabilize. | Pin the current wrong value as a known bug with its finding ID; fix it later in its own behavior step that flips that pin. | Pin passing on unmodified code, then the flip in the fix step. | Silent fix inside the pinning step or a pin rewritten to the desired value. |
+| T - Two concerns staged together | Yes in Stabilize. | One concern per step; staged list read before an authorized commit; the other file waits for its own step. | `git diff --cached --stat` per commit matches its concern. | A refactor and a behavior fix, or two fixes, in one commit. |
+| U - Import of a symbol or package that does not exist | Yes when found in scope. | Resolve against code, manifest and lockfile; use a real API or an explicit unsupported error; record the owner decision. | Executed path, manifest/lockfile lines, resolution result. | Installing the package, inventing the symbol or leaving the path broken silently. |
+| V - Fix changes a status other systems read | Yes in Stabilize. | List consumers of the changed contract and the records already written under the defect that need reconciliation. | Consumer search including config and external readers; a reconciliation query or "none found" with its check. | Report that ends at "fixed" with no downstream impact. |
+| W - Several fragile areas, one symptom | Yes. | Rank targets by symptom, contract, churn, complexity and consumers; start at the top target. | Ranked table with measured values. | Numeric health score, whole-repository audit or starting where the code looks ugliest. |
 
 ## Evaluation layers
 
