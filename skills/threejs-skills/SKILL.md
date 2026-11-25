@@ -45,7 +45,7 @@ authorization. Rendering and performance claims need observed evidence.
 | Outcome | Load | Renderer |
 | --- | --- | --- |
 | Photoreal environment, "make it realistic", reference matching, look upgrade | `threejs-realism-director` first; it names each stage's methods | any |
-| Open sea with a horizon, boats, wakes, creeks | `threejs-open-ocean` | WebGL module |
+| Open sea with a horizon, boats, wakes, creeks, shallow lagoons around land | `threejs-open-ocean` | WebGL module |
 | FFT ocean cascades, coastal breakers, beach swash, wet sand | `threejs-spectral-ocean` | WebGPU/TSL |
 | Harbour or canal water, reflections of quays, rain rings | `threejs-harbour-water` | WebGL |
 | Pools, bounded shallow water, caustics, object ripples | `threejs-water-optics` | any |

@@ -5022,11 +5022,11 @@
         },
         {
           "path": "GUIDE.md",
-          "bytes": 6771,
-          "sha256": "c5161160b157a52af6d1c1fe419ca3fba36b92e34ef0447d55ba61693bda72c5",
+          "bytes": 9145,
+          "sha256": "73632bdb0fdd20207cadf3cd046ddaa0f60b4d3e3647afe30db8f4e81351b345",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "c5161160b157a52af6d1c1fe419ca3fba36b92e34ef0447d55ba61693bda72c5"
+          "runtime_sha256": "73632bdb0fdd20207cadf3cd046ddaa0f60b4d3e3647afe30db8f4e81351b345"
         },
         {
           "path": "references/asset-sourcing.md",

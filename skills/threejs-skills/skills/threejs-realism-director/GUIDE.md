@@ -74,11 +74,11 @@ installs need the task's authorization; ask before fetching anything.
 
 | Stage | Methods | Renderer |
 | --- | --- | --- |
-| Water | open sea `threejs-open-ocean`; harbour or canal `threejs-harbour-water`; pool or bounded `threejs-water-optics`; breakers and swash `threejs-spectral-ocean` | WebGL; WebGL; any; WebGPU |
+| Water | open sea `threejs-open-ocean`; shallow lagoon or reef around land: `threejs-open-ocean` with its `references/creek.md` bed optics (see "Shallow water around land"); harbour or canal `threejs-harbour-water`; pool or bounded `threejs-water-optics`; breakers and swash `threejs-spectral-ocean` | WebGL; WebGL; WebGL; any; WebGPU |
 | Sky and light | `threejs-sky-background`, `threejs-sky-rays`, `threejs-volumetric-clouds`; planetary scattering `threejs-atmosphere-aerial-perspective` | any |
 | Ground and terrain | `threejs-hires-textures`, `threejs-procedural-fields` | any |
 | Hero props and architecture | `threejs-high-poly-models`, `threejs-crafted-materials`, `threejs-procedural-architecture` | any |
-| Vegetation | `threejs-procedural-vegetation` | see guide |
+| Vegetation | `threejs-procedural-vegetation`; near palms and ferns as leaflet geometry (see "Near foliage"); distant cards with the alpha guidance in `threejs-hires-textures` | see guide |
 | Underwater | `threejs-underwater-light` | WebGL |
 | Final image | `threejs-exposure-color-grading`, `threejs-bloom`, `threejs-screen-space-ambient-occlusion`, `threejs-retina-resolution` | see guide |
 | Walkable painterly environment | `threejs-painterly-realism` | any |
@@ -86,6 +86,40 @@ installs need the task's authorization; ask before fetching anything.
 When a method ships a working module, adapt that module (for example
 `../threejs-open-ocean/assets/ocean.mjs`) instead of re-deriving its technique. Read
 each selected guide in full before you write code for its stage.
+
+### Shallow water around land
+
+Add the bed term to the water shader in `../threejs-open-ocean/assets/ocean.mjs`
+instead of writing a new water shader, and read
+`../threejs-open-ocean/references/creek.md` steps 3 and 4 first. Each rule below names
+the failure it prevents.
+
+- **Show the bed through the water.** Shade the seabed (sand, rock, reef patches), then
+  attenuate red, green and blue separately by the underwater path length, as
+  `bedTransmission` in `../threejs-open-ocean/assets/creek-optics.mjs` does, and blend
+  the reflection with `waterFresnel` (about 2% head-on, sky-dominated at grazing
+  angles). A tint picked by depth band instead reads as a flat cyan decal.
+- **Give the seabed its own relief.** Build a seabed height field with sand bars,
+  channels and reef patches; do not copy the island's smooth falloff. A smooth radial
+  slope draws a ring of equal width around the island in the wide shot.
+- **Let the angle decide the colour.** At grazing views the Fresnel reflection wins,
+  so far shallows read as sky and haze. A shallow colour that ignores the view angle
+  glows all the way to the horizon.
+
+### Near foliage
+
+- **Model near leaves.** Palms, ferns and shrubs visible in the near or mid fixed shot
+  get leaflets as geometry: narrow strips folded along the midrib on an instanced frond,
+  with a colour gradient from base to tip. Alpha-cut cards at that range show jagged
+  edges and thin out in their mips, so fronds read as spiky paper.
+- **Keep cards for the distance.** Plants that appear only in the wide shot may use alpha
+  cards. Preserve alpha coverage across mip levels and bleed leaf colour into the
+  transparent texels (`threejs-hires-textures`); `alphaToCoverage` needs MSAA (an
+  antialiased renderer or a render target with `samples`).
+- **Light leaves from both sides.** Against bright sky, sunlit leaves must read lighter
+  than shaded ones and backlit leaves should glow slightly: sky light from the
+  environment map plus a translucency term (`threejs-procedural-vegetation`).
+  Near-black fronds against the sky mean one of those two is missing.
 
 ## 6. Review on fixed frames
 
