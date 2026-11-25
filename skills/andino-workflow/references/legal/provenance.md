@@ -237,4 +237,15 @@ SHA-256 payload mismatch conflict with `ANDINO_NEGATIVE` gate, zero-dependency o
 verification via `scripts/verify_api_and_interface_design_elevation.py`, and complete integration with
 `ai-rules setup`). MIT notice for Addy Osmani remains preserved.
 
+The 2026-11-25 upgrade of `api-and-interface-design` re-bases the skill on Addy Osmani's
+`api-and-interface-design` at addyosmani/agent-skills commit 63128d0 (2026-10-19, MIT) and
+moves the method into the sibling layout: one consumer-first procedure for any interface
+kind, the shared rules, shortcut and red-flag lists and the verification checklist in
+`SKILL.md` (mirrored by `GUIDE.md`), transport detail and the idempotency implementation in
+`resources/http-contracts/guide.md`, one worked example, and the separate
+anti-rationalization file removed. Idempotency status codes follow
+`draft-ietf-httpapi-idempotency-key-header-09`. The comparison trial is recorded in
+`docs/validation/api-and-interface-design/trial.md`. Correction to the paragraph above:
+`scripts/verify_api_and_interface_design_elevation.py` does not exist in this repository.
+
 

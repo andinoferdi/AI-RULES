@@ -98,6 +98,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-api-and-interface-design-component-props",
+    "kind": "behavior",
+    "prompt": "Redesign these React component props so a payment can't be both paid and refunded.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select api-and-interface-design",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "api-and-interface-design"
+    ],
+    "method": "api-and-interface-design",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-architecture-survey-implicit",
     "kind": "behavior",
     "prompt": "Survey this order subsystem for evidenced deepening opportunities.",

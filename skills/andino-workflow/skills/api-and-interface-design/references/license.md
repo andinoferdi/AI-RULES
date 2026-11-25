@@ -1,6 +1,7 @@
 # License Notice
 
 **Original Source:** [addyosmani/agent-skills: skills/api-and-interface-design](https://github.com/addyosmani/agent-skills/tree/main/skills/api-and-interface-design)
+(last adapted from commit 63128d0, 2026-10-19)
 
 Substantive adapted material in this skill is covered by the following notice:
 
