@@ -1,6 +1,6 @@
 ---
 name: threejs-procedural-vegetation
-description: Generate authored procedural trees, grass, ivy, flowers, and vegetation in Three.js or raw WebGPU. Use for surface-following vines, painted ivy paths, stylized or GPU grass, GPU-culled virtual flower fields, trunks, recursive branches, roots, canopies, leaf cards, species presets, deterministic growth, distance-tiered plant geometry, and rooted blade, stem, or petiole-hinge wind.
+description: Generate authored procedural trees, grass, ivy, flowers, and vegetation in Three.js or raw WebGPU. Use for surface-following vines, painted ivy paths, stylized or GPU grass, GPU-culled virtual flower fields, trunks, recursive branches, roots, canopies, leaf cards, species presets, deterministic growth, distance-tiered plant geometry, and rooted blade, stem, or petiole-hinge wind. Also covers an animated forest-floor study of fern fronds, moss and stones.
 ---
 
 # Procedural Vegetation
@@ -111,3 +111,12 @@ only implementation; the entry file only re-exports them.
 Use `$threejs-procedural-geometry` for generic branch-ring emission without a
 growth model. This skill owns species tables, vine and branch topology,
 surface-following growth, foliage, grass fields, roots, and rooted wind.
+
+## Recipes adapted from MengTo/Skills
+
+Read the one reference for the need in view; each keeps its source's rules, checks
+and runnable example. Notices: `references/legal/mengto-skills-license.md`.
+
+| Need | Reference | Runnable example |
+| --- | --- | --- |
+| Forest-floor study: fern fronds with folded pinnae, a moss cushion and grounded stones, animated for an editorial section | [references/forest-floor-specimen.md](references/forest-floor-specimen.md) | `examples/forest-floor-specimen/index.html` |

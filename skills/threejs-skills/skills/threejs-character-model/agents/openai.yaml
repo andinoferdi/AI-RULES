@@ -1,0 +1,4 @@
+interface:
+  display_name: "Three.js Character Model"
+  short_description: "Realistic rigged GLB character in a lit three.js viewer"
+  default_prompt: "Use $threejs-character-model to create a realistic, rigged and posed character model from this description or reference and show it in a lit three.js viewer."

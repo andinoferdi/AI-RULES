@@ -1,6 +1,6 @@
 ---
 name: threejs-debug-profiler
-description: Debug and profile Three.js browser games - blank canvases, render and runtime bugs, asset and audio loading, animation, resize, mobile input, plus performance profiling of draw calls, triangles, textures, memory, shader and post-processing cost, and bundle size.
+description: Debug and profile Three.js browser games - blank canvases, render and runtime bugs, asset and audio loading, animation, resize, mobile input, plus performance profiling of draw calls, triangles, textures, memory, shader and post-processing cost, and bundle size. Also covers optimizing games without gameplay regressions, adaptive quality and mobile budgets.
 ---
 
 # Three.js Debug Profiler
@@ -45,3 +45,12 @@ Profile the production preview when user-facing performance matters. Baseline on
 ## Report
 
 Lead with the root cause or the measured bottleneck. Then files changed, baseline and post metrics, commands, screenshots, the broken path retested, and residual risks.
+
+## Recipes adapted from MengTo/Skills
+
+Read the one reference for the need in view; each keeps its source's rules, checks
+and runnable example. Notices: `references/legal/mengto-skills-license.md`.
+
+| Need | Reference | Runnable example |
+| --- | --- | --- |
+| Game optimization without gameplay regressions: frame-time drops, CPU and GPU pressure, draw calls, texture and geometry budgets, adaptive quality, mobile | [references/game-optimization.md](references/game-optimization.md) | — |

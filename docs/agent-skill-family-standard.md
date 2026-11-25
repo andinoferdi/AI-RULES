@@ -13,7 +13,7 @@ Multi-package families can share a runtime branch using each capability's valida
 `source.subpath`. Each selected subtree must be independently installable with its
 own root SKILL.md and stable identity. A single-package family can instead bundle
 internal methods as resources. Three.js is one branch-root package with one
-catalog/menu identity and only one root SKILL.md. Its 57 internal methods live at
+catalog/menu identity and only one root SKILL.md. Its 77 internal methods live at
 `skills/<name>/GUIDE.md`, not native specialist SKILL.md entries. Invoke the family
 through the host, then read selected guides through authorized resource tools.
 Explicit method names and minimum prompt-based selection are supported without

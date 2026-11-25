@@ -1,6 +1,6 @@
 # threejs-lighting-scorecard
 
-Light carved wood in a dark room in three.js, with procedural grain and pores, one warm key through a window, soft shadows that touch, light shafts, background rays and dust, then score the render out of 10 on an anchored rubric with a runnable headless scorecard and iterate until each item reaches the target. Use for oiled timber, kumiko, joinery and workshop scenes; wood that reads flat, plastic or washed out; volumetrics that lift the blacks; "score this out of 10"; or "get the lighting to 8".
+Light carved wood in a dark room in three.js, with procedural grain and pores, one warm key through a window, soft shadows that touch, light shafts, background rays and dust, then score the render out of 10 on an anchored rubric with a runnable headless scorecard and iterate until each item reaches the target. Use for oiled timber, kumiko, joinery and workshop scenes; wood that reads flat, plastic or washed out; volumetrics that lift the blacks; "score this out of 10"; or "get the lighting to 8". Also covers a procedural desk workspace with window blinds, volumetric daylight and coupled lighting presets.
 
 This is an internal method bundled in `threejs-skills`, not an individual installer
 choice or native skill. Read [GUIDE.md](GUIDE.md) for the method; its supporting

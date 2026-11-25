@@ -1,6 +1,6 @@
 # threejs-camera-direction
 
-Direct advanced Three.js camera systems. Use for scale-aware chase rigs, thrust lag, side/orbit cameras, body-relative up vectors, quaternion handoffs, authored cinematic framing, floating origins, pointer-look controls, camera collision constraints, projection ownership, and lifecycle restoration.
+Direct advanced Three.js camera systems. Use for scale-aware chase rigs, thrust lag, side/orbit cameras, body-relative up vectors, quaternion handoffs, authored cinematic framing, floating origins, pointer-look controls, camera collision constraints, projection ownership, and lifecycle restoration. Also covers game camera controls, photographic lenses with depth-aware focus and scroll-driven chapter cameras.
 
 This is an internal method bundled in `threejs-skills`, not an individual installer
 choice or native skill. Read [GUIDE.md](GUIDE.md) for the method; its supporting

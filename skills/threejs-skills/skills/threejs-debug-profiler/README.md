@@ -1,6 +1,6 @@
 # threejs-debug-profiler
 
-Debug and profile Three.js browser games - blank canvases, render and runtime bugs, asset and audio loading, animation, resize, mobile input, plus performance profiling of draw calls, triangles, textures, memory, shader and post-processing cost, and bundle size.
+Debug and profile Three.js browser games - blank canvases, render and runtime bugs, asset and audio loading, animation, resize, mobile input, plus performance profiling of draw calls, triangles, textures, memory, shader and post-processing cost, and bundle size. Also covers optimizing games without gameplay regressions, adaptive quality and mobile budgets.
 
 This is an internal method bundled in `threejs-skills`, not an individual installer
 choice or native skill. Read [GUIDE.md](GUIDE.md) for the method; its supporting

@@ -1,6 +1,6 @@
 ---
 name: threejs-temporal-surfaces
-description: Build view-aligned and screen-space surface effects in Three.js. Use for touch-history frost and thaw, ping-pong accumulation, reduced-resolution blur, crystalline masks, two-scale refraction, and procedural rain droplets that refract and blur a background through wet glass.
+description: Build view-aligned and screen-space surface effects in Three.js. Use for touch-history frost and thaw, ping-pong accumulation, reduced-resolution blur, crystalline masks, two-scale refraction, and procedural rain droplets that refract and blur a background through wet glass. Also covers camera-space lens raindrops and windshield beads that refract the live scene.
 ---
 
 # Temporal Surfaces
@@ -75,3 +75,12 @@ weather-surface coupling. Use `$threejs-procedural-materials` when a body must
 transmit its surroundings through its own volume rather than through a
 screen-aligned pane. This skill owns view-aligned wet-glass optics and
 screen-space persistent history.
+
+## Recipes adapted from MengTo/Skills
+
+Read the one reference for the need in view; each keeps its source's rules, checks
+and runnable example. Notices: `references/legal/mengto-skills-license.md`.
+
+| Need | Reference | Runnable example |
+| --- | --- | --- |
+| Rain on a lens or windshield: camera-space drops that bend the live scene, speed-responsive runoff, a performant refraction pass | [references/lens-raindrops.md](references/lens-raindrops.md) | shaders `assets/lens-raindrops/drop-field.frag`, `assets/lens-raindrops/refract.frag` |

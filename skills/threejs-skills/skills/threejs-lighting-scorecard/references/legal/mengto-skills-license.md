@@ -22,3 +22,5 @@ SOFTWARE.
 
 Source: https://github.com/MengTo/Skills/tree/e7df6eb/agent-skills/3d/3d-wood-lighting-scorecard
 Changes: renamed to threejs-lighting-scorecard; SKILL.md became GUIDE.md; demo payloads removed; links and skill names adapted.
+Source: https://github.com/MengTo/Skills/tree/e7df6eb/agent-skills/3d/light-a-threejs-workspace
+Changes: added to threejs-lighting-scorecard as references/workspace-lighting.md with supporting files under workspace-lighting/; previews, prompts, videos and built demo bundles removed; links and skill names adapted.

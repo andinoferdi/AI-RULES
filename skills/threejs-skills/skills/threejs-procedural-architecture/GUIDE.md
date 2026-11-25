@@ -1,6 +1,6 @@
 ---
 name: threejs-procedural-architecture
-description: Build authored procedural buildings and architectural kits in Three.js. Use for massing grammars, exposed-edge analysis, façade bays, profiles, arches, cornices, roofs, ornaments, material-slot mesh compilation, deterministic variants, and procedural city assets.
+description: Build authored procedural buildings and architectural kits in Three.js. Use for massing grammars, exposed-edge analysis, façade bays, profiles, arches, cornices, roofs, ornaments, material-slot mesh compilation, deterministic variants, and procedural city assets. Also covers human-scale modular buildings for streets and waterfronts that hold up from approach and walk-up cameras.
 ---
 
 # Procedural Architecture
@@ -79,3 +79,12 @@ The generated building must survive:
 Use `$threejs-procedural-geometry` for a reusable profile, sweep, ring, or mesh
 writer without a building grammar. This skill owns massing, façade semantics,
 architectural modules, and building-plan compilation.
+
+## Recipes adapted from MengTo/Skills
+
+Read the one reference for the need in view; each keeps its source's rules, checks
+and runnable example. Notices: `references/legal/mengto-skills-license.md`.
+
+| Need | Reference | Runnable example |
+| --- | --- | --- |
+| Human-scale modular buildings: streets, waterfront districts, facades, entrances and rooftops that work from a distant approach and a walk-up camera | [references/modular-buildings.md](references/modular-buildings.md) | `examples/modular-buildings/index.html` |

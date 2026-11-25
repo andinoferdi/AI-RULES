@@ -1,11 +1,11 @@
 ---
 name: threejs-skills
-description: Use for Three.js, WebGL or WebGPU 3D work - photoreal or stylized scenes, open ocean and water, sky and sunlight, scanned textures and models, materials, shaders, lighting, animation, geometry, interaction, games and particle effects - or when a bundled threejs-* or nixie-fx-* method is named. Excludes ordinary 2D frontend work and general task orchestration.
+description: Use for Three.js, WebGL or WebGPU 3D work - photoreal or stylized scenes, open ocean and water, sky and sunlight, scanned textures and models, materials, shaders, lighting, animation, geometry, interaction, games, combat skill effects, characters and enemies, interactive product objects and particle effects - or when a bundled threejs-* or nixie-fx-* method is named. Excludes ordinary 2D frontend work and general task orchestration.
 ---
 
 # Three.js Skills
 
-One installed skill with 57 internal methods at `skills/<method-id>/GUIDE.md`.
+One installed skill with 77 internal methods at `skills/<method-id>/GUIDE.md`.
 They are resources of this skill, not separate native skills. "Use threejs-skills"
 selects methods from the request; "threejs-skills, specifically threejs-open-ocean"
 or `/threejs-skills threejs-open-ocean` names one, and a named relevant method is
@@ -56,13 +56,37 @@ authorization. Rendering and performance claims need observed evidence.
 | Scanned or high-resolution PBR textures | `threejs-hires-textures` | any |
 | Detailed hero models and LODs | `threejs-high-poly-models`; code-built hard surfaces: `threejs-procedural-geometry` | any |
 | Wood, metal, cloth or paper that holds up close | `threejs-crafted-materials` | WebGL |
-| Terrain fields, vegetation, buildings from code | `threejs-procedural-fields`, `threejs-procedural-vegetation`, `threejs-procedural-architecture` | see guide |
+| Terrain fields, vegetation, buildings from code | `threejs-procedural-fields`, `threejs-procedural-vegetation`, `threejs-procedural-architecture`; human-scale modular streets: `threejs-procedural-architecture` (`references/modular-buildings.md`); fern and moss studies: `threejs-procedural-vegetation` (`references/forest-floor-specimen.md`) | see guide |
 | Walkable painterly-real environment | `threejs-painterly-realism` | any |
-| Light an interior and score the frame | `threejs-lighting-scorecard` | WebGL |
+| Light an interior and score the frame | `threejs-lighting-scorecard`; desk workspace with blinds and daylight presets: its `references/workspace-lighting.md` | WebGL |
 | Sharp output on HiDPI screens | `threejs-retina-resolution` | any |
 | Tone mapping, exposure, bloom, AO, pass order | `threejs-exposure-color-grading`, `threejs-bloom`, `threejs-screen-space-ambient-occlusion`, `threejs-image-pipeline` | see guide |
 | Shadows over large worlds | `threejs-shadow-systems` | see guide |
+| Seasonal states and falling leaves | `threejs-four-seasons` | any |
+| Birds and butterflies that perch, fly and land | `threejs-small-wildlife` | WebGL |
+| Scan pulses, point-cloud reveals, construction sequences | `threejs-scan-reveals` | WebGL |
+| Interactive product objects: hover-lit feature cards, click-to-inspect, hover dissolve, 3D control icons | `threejs-interactive-objects` | WebGL |
+| Guided virtual tours and floor-plan navigation | `threejs-virtual-tour` | any |
+| Camera rigs and framing; game cameras, photographic lenses and focus, scroll-driven chapter cameras | `threejs-camera-direction` (`references/game-camera-controls.md`, `references/camera-lenses.md`, `references/chapter-cameras.md`) | any |
+| Pointer-lit 2D paintings, sprites or cards | `threejs-relit-paintings` | WebGL |
+| Topographic contours and relief timelines | `threejs-interactive-topography` | Canvas 2D, no Three.js |
 | A whole browser game | `threejs-game-director` | any |
+| Isometric action RPG, hybrid asset pipeline, mobile web game | `threejs-game-director` (`references/isometric-arpg.md`, `references/hybrid-assets.md`, `references/mobile-games.md`) | any |
+| Levels, encounters, action-combat timing, inventory and loot | `threejs-gameplay-systems` (`references/level-authoring.md`, `references/encounters.md`, `references/action-combat.md`, `references/inventory.md`) | any |
+| Combat skill effects, one module per element | fire and smoke `threejs-fire-smoke-vfx`; ice and frost `threejs-ice-frost-vfx`; lightning and energy `threejs-lightning-energy-vfx`; water and crystal `threejs-water-crystal-vfx` | WebGL module |
+| Readable gameplay VFX: telegraphs, impacts, status effects | `threejs-procedural-vfx` (`references/game-vfx.md`) | any |
+| Combat animation: strikes, casts, move sets, arm and hand limits | `threejs-combat-animation` | any |
+| Score combat skills out of 10 and polish the weakest | `threejs-combat-skill-polish` | any |
+| Enemy archetypes, rigged monsters, enemy AI | `threejs-enemy-systems` | any |
+| Rigged characters and monsters, asset manifests, catalog review pairs | `threejs-rigged-game-assets` | any |
+| Realistic character model from a description or reference | `threejs-character-model` | any |
+| Character selection screen with a 3D cast | `threejs-character-selector` | any |
+| Photoreal walkable game interiors | `threejs-game-interiors` | any |
+| Browser map editor, in-game changelog | `threejs-game-map-editor`, `threejs-game-changelog` | any |
+| Game audio feedback design | `threejs-audio-generator` (`references/audio-feedback.md`) | any |
+| Rain on a lens or windshield | `threejs-temporal-surfaces` (`references/lens-raindrops.md`) | WebGL |
+| Testing and shipping playable games | `threejs-qa-release` (`references/playable-testing.md`, `references/ship-web-games.md`) | any |
+| Game frame time and budgets | `threejs-debug-profiler` (`references/game-optimization.md`) | any |
 | Premium graphics pass on a game | `threejs-aaa-graphics-builder` | any |
 | NixieFX particle effects | `nixie-fx-authoring`, `nixie-fx-runtime` | any |
 | One API topic: scene setup, shaders, lighting, materials, geometry, textures, loaders, animation, interaction, post-processing | the matching guide (`threejs-fundamentals`, `threejs-shaders`, `threejs-lighting`, `threejs-materials`, `threejs-geometry`, `threejs-textures`, `threejs-loaders`, `threejs-animation`, `threejs-interaction`, `threejs-postprocessing`) | API reference, not a look recipe |
@@ -110,5 +134,5 @@ black, NaN or clipped pixels; edits that were never re-rendered do not count.
 ## Provenance
 
 Methods come from the maintainer's collection and the upstream sources named in
-each method's notices. Eleven methods are adapted from MengTo/Skills (MIT); each
-carries `references/legal/mengto-skills-license.md`. See [README](README.md).
+each method's notices. Thirty-one methods are adapted from MengTo/Skills (MIT) and
+ten more carry MengTo recipes as references; each carries `references/legal/mengto-skills-license.md`. See [README](README.md).

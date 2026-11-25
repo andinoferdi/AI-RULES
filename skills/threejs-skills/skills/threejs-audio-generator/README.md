@@ -1,6 +1,6 @@
 # threejs-audio-generator
 
-Generate, convert, clean, and integrate audio for Three.js browser games with ElevenLabs - sound effects, looping ambience, music tracks and loops (menu, gameplay, boss, victory/defeat stingers), UI sounds, impact/weapon/vehicle audio, creature and boss stingers, announcer and dialogue TTS, voice conversion from a scratch performance, voice cleanup, audio manifests, and Web Audio integration.
+Generate, convert, clean, and integrate audio for Three.js browser games with ElevenLabs - sound effects, looping ambience, music tracks and loops (menu, gameplay, boss, victory/defeat stingers), UI sounds, impact/weapon/vehicle audio, creature and boss stingers, announcer and dialogue TTS, voice conversion from a scratch performance, voice cleanup, audio manifests, and Web Audio integration. Also covers designing responsive game audio feedback - cue maps, mix priority, music states and mobile audio unlock.
 
 This is an internal method bundled in `threejs-skills`, not an individual installer
 choice or native skill. Read [GUIDE.md](GUIDE.md) for the method; its supporting

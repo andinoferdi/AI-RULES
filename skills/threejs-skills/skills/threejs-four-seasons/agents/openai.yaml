@@ -1,0 +1,4 @@
+interface:
+  display_name: "Three.js Four Seasons"
+  short_description: "Blend spring, summer, fall, and winter in 3D"
+  default_prompt: "Use $threejs-four-seasons to add coordinated spring, summer, fall, and winter states to this scene."

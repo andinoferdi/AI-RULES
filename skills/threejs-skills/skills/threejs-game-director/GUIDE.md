@@ -1,6 +1,6 @@
 ---
 name: threejs-game-director
-description: Entrypoint for building, upgrading, and finishing Three.js browser games. Routes work across the sibling threejs-* skills for gameplay, graphics, UI, 3D/image/audio asset generation, debugging, and release. Use for any request to build, upgrade, polish, or ship a Three.js game as a whole, at any scope from a small arcade prototype to a premium release.
+description: Entrypoint for building, upgrading, and finishing Three.js browser games. Routes work across the sibling threejs-* skills for gameplay, graphics, UI, 3D/image/audio asset generation, debugging, and release. Use for any request to build, upgrade, polish, or ship a Three.js game as a whole, at any scope from a small arcade prototype to a premium release. Also carries playbooks for isometric action RPGs, hybrid asset pipelines and mobile web games.
 ---
 
 # Three.js Game Director
@@ -56,6 +56,12 @@ Use the actual loaded skill directory as `<director-skill-dir>`. Resolve sibling
 | Characters, vehicles, weapons, buildings, rigs, animation | `threejs-3d-generator` |
 | Concepts, textures, skies, logos, icons, GUI art, image-to-3D inputs | `threejs-image-generator` |
 | SFX, music, ambience, UI sounds, announcer and dialogue | `threejs-audio-generator` |
+| Combat skill effects: fire, ice, lightning, water and crystal | `threejs-fire-smoke-vfx`, `threejs-ice-frost-vfx`, `threejs-lightning-energy-vfx`, `threejs-water-crystal-vfx` |
+| Combat animation; scoring and polishing skills | `threejs-combat-animation`, `threejs-combat-skill-polish` |
+| Enemy archetypes, monsters, enemy AI | `threejs-enemy-systems` |
+| Rigged actors and catalog review pairs, character models, selection screens | `threejs-rigged-game-assets`, `threejs-character-model`, `threejs-character-selector` |
+| Photoreal walkable interiors | `threejs-game-interiors` |
+| Map editor, in-game changelog | `threejs-game-map-editor`, `threejs-game-changelog` |
 
 For complete games and broad upgrades, select only specialists addressing a current unresolved need and activate them through the permitted host mechanism at phase entry. Read each phase's required references at phase entry. For narrow edits, load the affected specialists and references, preserving unrelated systems. Record actual loaded resources when reporting skill use; a phase label is not a skill invocation.
 
@@ -102,3 +108,14 @@ Generated games carry their own `npm run inspect:canvas` and `npm run verify:vis
 ## Final response
 
 Lead with what was built, whether it works, the local URL and controls, and remaining limitations. For substantial builds put the design artifacts, asset task IDs/paths, captures and motion evidence, renderer/physics metrics, tests, and scorecard in `artifacts/final-evidence.md` and link it. For narrow edits report only affected behavior and checks. Describe what ran and was observed; do not substitute a completion claim for missing evidence.
+
+## Recipes adapted from MengTo/Skills
+
+Read the one reference for the need in view; each keeps its source's rules, checks
+and runnable example. Notices: `references/legal/mengto-skills-license.md`.
+
+| Need | Reference | Runnable example |
+| --- | --- | --- |
+| Isometric action RPG: game-loop architecture, camera and movement, zones, combat, content data, progression, saves, vertical slices | [references/isometric-arpg.md](references/isometric-arpg.md) | — |
+| Hybrid asset pipeline: imported meshes, procedural geometry, AI reference art, 2D UI media, sprites, VFX and runtime delivery | [references/hybrid-assets.md](references/hybrid-assets.md) | — |
+| Mobile web games: touch movement and actions, target selection, safe areas, portrait and landscape HUD, battery and performance budgets, real mobile QA | [references/mobile-games.md](references/mobile-games.md) | — |

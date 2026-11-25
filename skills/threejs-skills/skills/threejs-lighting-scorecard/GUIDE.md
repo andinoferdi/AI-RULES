@@ -1,6 +1,6 @@
 ---
 name: threejs-lighting-scorecard
-description: Light carved wood in a dark room in three.js, with procedural grain and pores, one warm key through a window, soft shadows that touch, light shafts, background rays and dust, then score the render out of 10 on an anchored rubric with a runnable headless scorecard and iterate until each item reaches the target. Use for oiled timber, kumiko, joinery and workshop scenes; wood that reads flat, plastic or washed out; volumetrics that lift the blacks; "score this out of 10"; or "get the lighting to 8".
+description: Light carved wood in a dark room in three.js, with procedural grain and pores, one warm key through a window, soft shadows that touch, light shafts, background rays and dust, then score the render out of 10 on an anchored rubric with a runnable headless scorecard and iterate until each item reaches the target. Use for oiled timber, kumiko, joinery and workshop scenes; wood that reads flat, plastic or washed out; volumetrics that lift the blacks; "score this out of 10"; or "get the lighting to 8". Also covers a procedural desk workspace with window blinds, volumetric daylight and coupled lighting presets.
 ---
 
 # 3D Wood Lighting Scorecard
@@ -110,3 +110,12 @@ Full pipeline, one frame plus a 1 px readback: 7.4-7.9 ms at 1440x900 x1, 16.5 m
 - The metrics block in `examples/demo.html` equals `references/metrics.js` (`node scorecard.mjs --sync`).
 - 1440x900 and 390x844, console clean, reduced motion shows a composed frame, tab order reaches every switch.
 - A scorecard JSON with baseline, all-on, ablation and cost exists and matches the claims above.
+
+## Recipes adapted from MengTo/Skills
+
+Read the one reference for the need in view; each keeps its source's rules, checks
+and runnable example. Notices: `references/legal/mengto-skills-license.md`.
+
+| Need | Reference | Runnable example |
+| --- | --- | --- |
+| Desk workspace: textured furniture, a window with blinds, shadowed volumetric daylight and coupled lighting presets | [references/workspace-lighting.md](references/workspace-lighting.md) | `examples/workspace-lighting/index.html` |
