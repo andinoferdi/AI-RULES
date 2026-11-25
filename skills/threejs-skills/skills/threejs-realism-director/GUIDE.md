@@ -89,8 +89,10 @@ each selected guide in full before you write code for its stage.
 
 ### Shallow water around land
 
-Read `../threejs-open-ocean/references/creek.md` steps 3 and 4 before you write the
-shader. Each rule below names the failure it prevents.
+Add the bed term to the water shader in `../threejs-open-ocean/assets/ocean.mjs`
+instead of writing a new water shader, and read
+`../threejs-open-ocean/references/creek.md` steps 3 and 4 first. Each rule below names
+the failure it prevents.
 
 - **Show the bed through the water.** Shade the seabed (sand, rock, reef patches), then
   attenuate red, green and blue separately by the underwater path length, as
