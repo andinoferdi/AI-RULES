@@ -51,8 +51,31 @@ for States". That broke preservation-ledger row P25 in the execution plan.
 Fix applied after grading: procedure step 3 now says to use the identifier's type everywhere
 the identifier appears (inputs, outputs, signatures, SDK methods, parsed values) and that a
 brand can wrap a numeric wire type; the verification checklist regains both items; the
-example adds a numeric brand. The fix restores dropped guidance; it was not re-run through the
-trial, so its effect on Q1 is NOT VERIFIED.
+example adds a numeric brand. The fix restores dropped guidance.
+
+## Re-run after the fix
+
+On 2026-11-26 the candidate arm ran again with the fixed skill (branch commit fd8fda9), same
+prompt, fixture, model and effort. A fresh grader (Sonnet 5.5, medium) scored the existing
+Addy and current outputs and the new candidate output, reshuffled (A Addy, B current,
+C candidate). Evidence per score: [scores-rerun.md](scores-rerun.md).
+
+| Criterion | Addy (A) | Current (B) | Candidate (C) |
+| --- | --- | --- | --- |
+| H10 boundary validation | 1 | 2 | 2 |
+| H11 webhook delivery | 1 | 2 | 2 |
+| Q1 contract files | 1 | 1 | 2 |
+| Q2 consumer impact | 1 | 2 | 2 |
+| Other 23 criteria | 2 each | 2 each | 2 each |
+| Total (of 54) | 50 | 53 | 54 |
+
+Gate: PASS. The candidate is at least equal to both other arms on every criterion and higher
+than the current skill on Q1, where only the candidate carried branded payment, refund and
+customer ids through its types, handlers and events.
+
+The two gradings disagree on the same unchanged outputs: the current skill's Q1 went from 2 to
+1 and its H10 from 1 to 2, and Addy's H7 from 1 to 2. That is grader variance on one-point
+judgement calls, which both graders flagged; it is the size of noise to expect here.
 
 ## Reading the result
 
@@ -60,15 +83,15 @@ trial, so its effect on Q1 is NOT VERIFIED.
   Addy on four, so on this fixture both Andino versions are ahead of Addy's skill.
 - The candidate improved on the current skill where the rewrite added guidance: H10 (webhook
   event shape parsed after the signature check, internal re-validation removed).
-- The candidate lost Q1 because the rewrite dropped a checklist item, which is the regression
-  risk the council warned about.
+- The first candidate lost Q1 because the rewrite dropped a checklist item, which is the
+  regression risk the council warned about. Restoring the item closed it in the re-run.
 - The candidate answers a reused key with a different body with 422 (IETF draft -09); the
   current skill's arm answered 409. The rubric accepts both, so this does not show in the scores.
 
 ## Limitations
 
-- One run per arm, so a one-point gap can be noise. The grader flagged Q1 for A and B as a
-  judgement call.
+- One run per arm per grading, so a one-point gap can be noise; the two gradings moved three
+  scores on unchanged outputs.
 - The same author wrote the fixture, the rubric and the candidate. The rubric was frozen first,
   but the candidate may still fit this fixture.
 - Runners and grader come from one model family.
