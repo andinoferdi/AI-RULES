@@ -48,7 +48,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 
 | Public member | Responsibility |
 | --- | --- |
-| `andino-agent-document-authoring` | Passive repository guidance such as CLAUDE.md and AGENTS.md. |
+| `andino-agent-document-authoring` | Writing and auditing documents agents read: AGENTS.md, CLAUDE.md, skill text and descriptions, pointers. |
 | `andino-skill-maker` | Executable skill/procedure authoring with baseline and candidate evaluation. |
 | `andino-documentation-and-adrs` | Durable documentation and decisions; optional domain vocabulary. |
 | `andino-handoff` | Portable continuation and optional context packing. |

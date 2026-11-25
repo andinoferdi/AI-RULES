@@ -42,6 +42,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-agent-document-authoring-skill-description",
+    "kind": "behavior",
+    "prompt": "Tighten this skill's description and move its rarely used branch out of SKILL.md.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select agent-document-authoring",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "agent-document-authoring"
+    ],
+    "method": "agent-document-authoring",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-api-and-interface-design-implicit",
     "kind": "behavior",
     "prompt": "Make this charge endpoint honor retries when four requests arrive together.",

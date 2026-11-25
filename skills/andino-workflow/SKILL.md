@@ -41,7 +41,7 @@ Honor explicit provider choices and current phase readiness first; then select b
 | Decoupled tasks across disjoint write paths | Implementation | `andino-delegation` | If tasks share state or common cause, execute inline. |
 | Fragile subsystem, repeated regressions | Remediation | `ai-codebase-rescue` | If code is merely ugly but passing, keep unchanged. |
 | Code or behavioral contract ready for correctness review | Verification | `andino-code-review` | Use `natural-writing` only for prose/style review, not execution or safety contracts. |
-| Authoring or maintaining a skill or procedure | Meta-Authoring | `skill-maker` | For passive repository guidance, use `agent-document-authoring`; auditing such files can still be an executable skill. |
+| Authoring or maintaining a skill or procedure | Meta-Authoring | `skill-maker` | For the wording, structure, pointers or description of any agent-read document, including SKILL.md text, use `agent-document-authoring`; skill-maker keeps baseline and trigger testing. |
 | Routine question, code explanation, typo | General Work | **Direct Execution** | **Zero method loading: execute directly without ceremony.** |
 
 Public members and noncallable techniques are separate in the index. Load a selected resource directly without running its parent lifecycle, unrelated modes or a second plan. Retired IDs have no aliases or compatibility entrypoints. Load the selected guide before governed work. Follow its procedure fully. For an unknown-cause bug, read the [debugging method](skills/debugging/GUIDE.md) before the first diagnostic log/source read. Loading both in the same parallel batch does not satisfy this ordering. Accepted requirements needing detail select planning; an approved plan selects plan-execution.
