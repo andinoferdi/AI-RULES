@@ -14,7 +14,7 @@ Internal method ID: `andino-skill-maker` (aliases: `skill-maker`, `writing-skill
 ## 1. Dominant Negative Gates (When NOT to Use)
 
 Reject skill creation immediately if ANY condition holds:
-- **Passive Repository Guidance**: Instructions for `CLAUDE.md` or `AGENTS.md` belong to `agent-document-authoring`.
+- **Writing Craft Only**: Changing only the wording, structure, pointers or description of an agent-read document (`CLAUDE.md`, `AGENTS.md`, an existing `SKILL.md`) belongs to `agent-document-authoring`.
 - **Mechanically Enforceable**: Rules enforceable via linter, compiler, type checker, or schema belong in automated tooling.
 - **One-Off / Hypothetical**: Solutions to one-time issues or imagined problems without a demonstrated need.
 - **Narrative Retrospective**: Documenting past session history rather than an active, reusable decision procedure.
@@ -68,7 +68,8 @@ Reject skill creation immediately if ANY condition holds:
 4. Write the procedure around the consumer's decisions and output. Give exact
    preconditions, actions, output fields and stop conditions where the cost of
    guessing is high. Put longer examples and infrequent branches in local
-   resources linked from the step that needs them.
+   resources linked from the step that needs them. Apply
+   `agent-document-authoring` for pointers, hierarchy, completion criteria and pruning.
 5. Check discovery, task performance and packaging separately. Probe a trigger
    and a near miss, inspect completed artifacts against the oracle, and resolve
    referenced resources from the installed entrypoint when distribution is in

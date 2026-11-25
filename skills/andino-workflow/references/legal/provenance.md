@@ -180,6 +180,12 @@ embedded Python operational harness testing invariant enforcement with `ANDINO_N
 offline Python stdlib verification via `scripts/verify_agent_document_authoring_elevation.py`, and complete
 integration with `ai-rules setup`). MIT notice for Matt Pocock remains preserved.
 
+The 2026-11-25 rewrite of `agent-document-authoring` replaces that elevation. Matt Pocock's levers
+(mattpocock/skills commit 3216582) form the in-file reference, adapted closely under MIT. Andino keeps
+the audit and author procedure, the five-check audit rubric with its JSON report, templates, the
+completion-criteria catalog and a worked example with one deterministic structural check. The old
+harness, the verification script reference and the coined labels are removed.
+
 The 2026-11-02 elevation of `architecture-survey` synthesizes the generative architectural
 craft of Matt Pocock's `engineering/improve-codebase-architecture`, `HTML-REPORT.md`, and
 `engineering/codebase-design` (The 10 Canonical Terms: module, interface, implementation,

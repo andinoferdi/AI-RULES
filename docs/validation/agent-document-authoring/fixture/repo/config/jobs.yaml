@@ -1,0 +1,11 @@
+defaults:
+  timeout_minutes: 45
+  retries: 2
+
+jobs:
+  orders:
+    schedule: "0 2 * * *"
+    source: orders_api
+  customers:
+    schedule: "30 2 * * *"
+    source: crm_export

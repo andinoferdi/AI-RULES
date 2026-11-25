@@ -61,7 +61,7 @@ Do not search all external skill bodies before checking the bundled index.
 | Decoupled tasks across disjoint write paths | Implementation | `andino-delegation` | If tasks share state or common cause, execute inline. |
 | Fragile subsystem, repeated regressions | Remediation | `ai-codebase-rescue` | If code is merely ugly but passing, keep unchanged. |
 | Code or behavioral contract ready for correctness review | Verification | `andino-code-review` | Use `natural-writing` only for prose/style review, not execution or safety contracts. |
-| Authoring or maintaining a skill or procedure | Meta-Authoring | `skill-maker` | For passive repository guidance, use `agent-document-authoring`; auditing such files can still be an executable skill. |
+| Authoring or maintaining a skill or procedure | Meta-Authoring | `skill-maker` | For the wording, structure, pointers or description of any agent-read document, including SKILL.md text, use `agent-document-authoring`; skill-maker keeps baseline and trigger testing. |
 | Routine question, code explanation, typo | General Work | **Direct Execution** | **Zero method loading: execute directly without ceremony.** |
 
 ### Contrastive Near-Miss Pairs
@@ -81,6 +81,7 @@ Do not search all external skill bodies before checking the bundled index.
 5. **Executable Skill vs Passive Rules**:
    - *"Create a new skill for database migration auditing"* -> `skill-maker` (executable procedure, test harness).
    - *"Update CLAUDE.md with a new rtk command rule"* -> `agent-document-authoring` (passive markdown guidance).
+   - *"Tighten this skill's description and move its edge cases out of SKILL.md"* -> `agent-document-authoring` (writing craft, no new test cycle).
 6. **Parallel Delegation vs Inline Execution**:
    - *"Implement 3 independent microservices with disjoint paths"* -> `andino-delegation` (disjoint write sets).
    - *"Fix 3 tests that all fail due to the same database connection timeout"* -> `andino-debugging` inline (shared root cause).

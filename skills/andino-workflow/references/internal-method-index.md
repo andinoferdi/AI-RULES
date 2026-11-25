@@ -10,7 +10,7 @@ Selected skills own their full procedures, required resources, artifact detail a
 
 | Method | Select for | Exclude |
 | --- | --- | --- |
-| [agent-document-authoring](../skills/agent-document-authoring/SKILL.md) | Creating/reviewing an agent-facing guide, instruction pointer or durable procedure. | Stylistic compression that removes behavior or a second native skill/router system. |
+| [agent-document-authoring](../skills/agent-document-authoring/SKILL.md) | Writing, auditing or restructuring any agent-read document (AGENTS.md, CLAUDE.md, SKILL.md text or description, pointer, disclosed reference) or choosing skill invocation and splitting. | Building and testing an executable skill end to end, human-facing specs/ADRs, or cuts that remove behavior. |
 | [api-and-interface-design](../skills/api-and-interface-design/SKILL.md) | A new or changed API/module boundary, inconsistent errors or a retryable state-changing operation. | Pure private renaming or a request only to format code. |
 | [architecture-survey](../skills/architecture-survey/SKILL.md) | A named architecture pain point or bounded request to find maintainability/testability friction. | A routine feature fix, arbitrary whole-repo scan, or repeated search for findings after no worthwhile candidate. |
 | [article-shaping](../skills/article-shaping/SKILL.md) | An explicit writing request with existing raw material ready to be shaped. | Open fragment exploration, editing raw input without permission or publishing finished copy. |

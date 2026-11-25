@@ -550,7 +550,7 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 - Primary purpose: Author and maintain executable skills, procedures, and runbooks
 - Trigger: Authoring a new skill, refining an existing skill, establishing dual-mode evaluation baselines, or codifying recurring procedural failures.
 - Preferred when: Executable guidance or operational procedure is needed.
-- Avoid when: Editing passive repository instructions (`CLAUDE.md`, `AGENTS.md`) — use `agent-document-authoring`.
+- Avoid when: Only the wording, structure, pointers or description of an agent-read document changes (`CLAUDE.md`, `AGENTS.md`, SKILL.md text) — use `agent-document-authoring`.
 - Availability check: Check local skills/skill-maker/SKILL.md and skills/skill-maker/GUIDE.md plus actual resource permissions.
 - Invocation method: Read [skill-maker](../skills/skill-maker/SKILL.md) through a permitted resource tool; this is an internal method, not native upstream skill invocation.
 - First-call/preflight: Read target craft and establish either Mode A (Remedial failure baseline) or Mode B (Greenfield capability contract).
