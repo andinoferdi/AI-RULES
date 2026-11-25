@@ -1,6 +1,6 @@
 ---
 name: threejs-camera-direction
-description: Direct advanced Three.js camera systems. Use for scale-aware chase rigs, thrust lag, side/orbit cameras, body-relative up vectors, quaternion handoffs, authored cinematic framing, floating origins, pointer-look controls, camera collision constraints, projection ownership, and lifecycle restoration.
+description: Direct advanced Three.js camera systems. Use for scale-aware chase rigs, thrust lag, side/orbit cameras, body-relative up vectors, quaternion handoffs, authored cinematic framing, floating origins, pointer-look controls, camera collision constraints, projection ownership, and lifecycle restoration. Also covers game camera controls, photographic lenses with depth-aware focus and scroll-driven chapter cameras.
 ---
 
 # Camera Direction
@@ -67,3 +67,14 @@ rules, floating-origin shot, pointer controls, and implementation limits.
 Use `$threejs-procedural-animation` for object motion timelines, springs,
 docking, staging, and debris. This skill owns how the scene is viewed and how
 camera modes hand off.
+
+## Recipes adapted from MengTo/Skills
+
+Read the one reference for the need in view; each keeps its source's rules, checks
+and runnable example. Notices: `references/legal/mengto-skills-license.md`.
+
+| Need | Reference | Runnable example |
+| --- | --- | --- |
+| Game cameras: isometric framing, follow, orbit and zoom limits, occlusion, lock-on, shake, touch camera, camera regression tests | [references/game-camera-controls.md](references/game-camera-controls.md) | — |
+| Photographic lenses: focal length, sensor fit, subject tracking, depth-aware shallow focus, deterministic film exports | [references/camera-lenses.md](references/camera-lenses.md) | `examples/camera-lenses/index.html`; check `node references/camera-lenses/check-lens.cjs` |
+| Scroll-driven chapter cameras: distinct hero, story and footer poses over a live valley with a creek, instanced trees and layered fog | [references/chapter-cameras.md](references/chapter-cameras.md) | `examples/chapter-cameras/index.html` |

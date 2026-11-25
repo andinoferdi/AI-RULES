@@ -1,6 +1,6 @@
 ---
 name: threejs-gameplay-systems
-description: Build and iterate playable Three.js game systems - starter scaffold, architecture, design briefs, core loops, level and encounter design, entities, input, camera, collision and physics, scoring, objectives, and game feel. Use for first playable slices, new Vite/TypeScript/Three.js setups, level/arena/track/wave/hole/puzzle design, combat encounters, difficulty tuning, and juice.
+description: Build and iterate playable Three.js game systems - starter scaffold, architecture, design briefs, core loops, level and encounter design, entities, input, camera, collision and physics, scoring, objectives, and game feel. Use for first playable slices, new Vite/TypeScript/Three.js setups, level/arena/track/wave/hole/puzzle design, combat encounters, difficulty tuning, and juice. Also carries recipes for flat-world level authoring, action-combat timing, encounter design and inventory, loot and equipment.
 ---
 
 # Three.js Gameplay Systems
@@ -83,3 +83,15 @@ A static demo instead of a playable loop · mechanics bolted onto a scene that w
 ## Report
 
 Behavior and controls, the three design artifacts for broad builds, architecture choices and tuned values, changed files, and what you saw when you played it. Note the physics engine, timestep, and collider strategy when physics is in scope.
+
+## Recipes adapted from MengTo/Skills
+
+Read the one reference for the need in view; each keeps its source's rules, checks
+and runnable example. Notices: `references/legal/mengto-skills-license.md`.
+
+| Need | Reference | Runnable example |
+| --- | --- | --- |
+| Flat-world levels: movement and camera routes, collision and navigation, encounter zones, landmarks, objectives, pickups, deterministic level data | [references/level-authoring.md](references/level-authoring.md) | — |
+| Action combat: attack timing, guard and dodge windows, hit contact, posture, lock-on, boss phases, deterministic combat tests | [references/action-combat.md](references/action-combat.md) | — |
+| Encounters: arena layout, enemy composition, spawn pacing, objectives, reward cadence, difficulty validation | [references/encounters.md](references/encounters.md) | — |
+| Inventory, loot and equipment: item schemas, stacks, slots, atomic swaps, tooltips, drag and drop, save migration | [references/inventory.md](references/inventory.md) | — |

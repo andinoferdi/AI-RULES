@@ -1,6 +1,6 @@
 ---
 name: threejs-qa-release
-description: Verify and release Three.js browser games - playtest QA, automated bot playtests, mobile and responsive checks, production builds, static-hosting base paths, debug gating, bundle review, screenshots, visual regression baselines, canvas-pixel inspection with measured metrics, and release risk reports.
+description: Verify and release Three.js browser games - playtest QA, automated bot playtests, mobile and responsive checks, production builds, static-hosting base paths, debug gating, bundle review, screenshots, visual regression baselines, canvas-pixel inspection with measured metrics, and release risk reports. Also covers deterministic end-to-end tests of playable games and shipping web games with production smoke tests and rollback.
 ---
 
 # Three.js QA Release
@@ -72,3 +72,13 @@ Inspect package scripts, Vite config, base path, and public assets → gate debu
 ## Report
 
 Lead with the result and unresolved defects. Put the detailed commands, manifest, captures, motion evidence, controls exercised, issues fixed, and deployment notes in the project's evidence report. Include the harness decision and bot metrics when in scope. Return the artifact path to the lead; passing pixels and acknowledged state hooks do not establish aesthetic quality or successful gameplay by themselves.
+
+## Recipes adapted from MengTo/Skills
+
+Read the one reference for the need in view; each keeps its source's rules, checks
+and runnable example. Notices: `references/legal/mengto-skills-license.md`.
+
+| Need | Reference | Runnable example |
+| --- | --- | --- |
+| Playable games end to end: deterministic fixtures, controls, accessibility, responsive and mobile, saves, console and performance smoke tests with real browser evidence | [references/playable-testing.md](references/playable-testing.md) | — |
+| Shipping web games: release builds, asset delivery, private or public deployment, production smoke tests, release notes, rollback, QA cleanup | [references/ship-web-games.md](references/ship-web-games.md) | — |

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Three.js Interactive Topography"
+  short_description: "Contour map and relief timeline with hover and a seismic wave"
+  default_prompt: "Use $threejs-interactive-topography to draw thin elevation contours and a raised relief view with interactive years, hover highlights and a seismic particle wave."

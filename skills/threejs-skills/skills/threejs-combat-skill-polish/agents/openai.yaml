@@ -1,0 +1,4 @@
+interface:
+  display_name: "Three.js Combat Skill Polish"
+  short_description: "Score combat skills out of 10 and raise the weakest to a bar"
+  default_prompt: "Use $threejs-combat-skill-polish to film these combat skills on a stepped clock, score readability and art with blind judges, and raise the weakest skill to the bar."

@@ -19,8 +19,8 @@ NAME = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
 THREEJS_SKILLS = frozenset({'threejs-skills'} | {item['name'] for item in json.loads(
     (ROOT / 'src/ai_rules/verification/data/threejs_inventory.json').read_text(encoding='utf-8'))['skills']})
 BINARY_SUFFIXES = {'.png', '.jpg', '.webp', '.bin', '.exr', '.glb', '.wasm', '.gz'}
-THREEJS_SUFFIXES = BINARY_SUFFIXES | {'.md', '.ts', '.js', '.mjs', '.py', '.sh', '.json',
-    '.yaml', '.txt', '.glsl', '.wgsl', '.frag', '.vert', '.html', '.css'}
+THREEJS_SUFFIXES = BINARY_SUFFIXES | {'.md', '.ts', '.js', '.mjs', '.cjs', '.py', '.sh', '.swift',
+    '.json', '.yaml', '.txt', '.glsl', '.wgsl', '.frag', '.vert', '.html', '.css'}
 
 
 def binary_error(name, data):

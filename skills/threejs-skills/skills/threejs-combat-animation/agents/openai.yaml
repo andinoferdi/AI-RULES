@@ -1,0 +1,4 @@
+interface:
+  display_name: "Three.js Combat Animation"
+  short_description: "Combat moves held to a numbered standard and blind critics"
+  default_prompt: "Use $threejs-combat-animation to build or fix this attack, skill or move set so arms, wrists and hands never stretch or lock, with per-frame tests and blind critics."

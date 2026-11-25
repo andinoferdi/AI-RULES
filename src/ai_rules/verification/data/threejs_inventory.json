@@ -1141,12 +1141,14 @@
     },
     {
       "name": "threejs-audio-generator",
-      "description": "Generate, convert, clean, and integrate audio for Three.js browser games with ElevenLabs - sound effects, looping ambience, music tracks and loops (menu, gameplay, boss, victory/defeat stingers), UI sounds, impact/weapon/vehicle audio, creature and boss stingers, announcer and dialogue TTS, voice conversion from a scratch performance, voice cleanup, audio manifests, and Web Audio integration.",
+      "description": "Generate, convert, clean, and integrate audio for Three.js browser games with ElevenLabs - sound effects, looping ambience, music tracks and loops (menu, gameplay, boss, victory/defeat stingers), UI sounds, impact/weapon/vehicle audio, creature and boss stingers, announcer and dialogue TTS, voice conversion from a scratch performance, voice cleanup, audio manifests, and Web Audio integration. Also covers designing responsive game audio feedback - cue maps, mix priority, music states and mobile audio unlock.",
       "role": "specialist",
       "sibling_suggestions": [
         "threejs-game-director"
       ],
-      "license_notices": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
       "files": [
         {
           "path": "agents/openai.yaml",
@@ -1178,14 +1180,22 @@
           "sha256": "7602dd274c1bbf24d943e06c6f3aa38de738e9c3a7a120e3118649b8bcc154bb",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "d1c722dfca9065f7cbb4af3ba7e56abaf81d39afeb666275109db5f942290497",
+          "runtime_sha256": "72283a925a3ff1a494574954abc39a7db425e249ddb4cd09620b1ff95a85b641",
           "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "dd6f9f5905a230a61728734a1ec95ffde6befbdfac5249eba5672b934a468cb8"
+          "sha256": "97f639fd1dd838e89cedda765f6571e6aefa4971daba4c2e96aad935d173d146"
+        },
+        {
+          "path": "references/audio-feedback.md",
+          "sha256": "286b57269cb6ac93a08a3938cc8e5b993e5a0928491756cf2dca59df98364e45"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "sha256": "86440db100a0d6086e186962cfbaa548fb2d79508ca198b6e54a9b623fe4cf0a"
         },
         {
           "path": "scripts/probe_asset_credentials.sh",
@@ -1239,12 +1249,14 @@
     },
     {
       "name": "threejs-camera-direction",
-      "description": "Direct advanced Three.js camera systems. Use for scale-aware chase rigs, thrust lag, side/orbit cameras, body-relative up vectors, quaternion handoffs, authored cinematic framing, floating origins, pointer-look controls, camera collision constraints, projection ownership, and lifecycle restoration.",
+      "description": "Direct advanced Three.js camera systems. Use for scale-aware chase rigs, thrust lag, side/orbit cameras, body-relative up vectors, quaternion handoffs, authored cinematic framing, floating origins, pointer-look controls, camera collision constraints, projection ownership, and lifecycle restoration. Also covers game camera controls, photographic lenses with depth-aware focus and scroll-driven chapter cameras.",
       "role": "specialist",
       "sibling_suggestions": [
         "threejs-procedural-animation"
       ],
-      "license_notices": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
       "files": [
         {
           "path": "agents/openai.yaml",
@@ -1268,14 +1280,622 @@
           "sha256": "9559e63ade85dc5084284d4f10cce45685d08bc6c0268b6a900333af91207bb1",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "d8090e0f07789bd9fc344d57ca5500049c58a453371d5c57a746fb5810d1b3fe",
+          "runtime_sha256": "2ddb9df99a3ead83a54f41858ea5017aacb136566d49ff88d49da500d089cffd",
           "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "7c2fd09d311d466cf3478a98b28173c2a0057807ee6f5addb099b45d17ae6206"
+          "sha256": "94cb15292d008d124f4e3f4194e1659a8fa9056d8905e7864228a14de43fb72d"
+        },
+        {
+          "path": "examples/camera-lenses/assets/THREE-LICENSE.txt",
+          "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+        },
+        {
+          "path": "examples/camera-lenses/assets/lens.js",
+          "sha256": "dcd785418e6d405e777331302368558d6228a6ab6e1a4a52783063892f1983b9"
+        },
+        {
+          "path": "examples/camera-lenses/assets/three.min.js",
+          "sha256": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271"
+        },
+        {
+          "path": "examples/camera-lenses/index.html",
+          "sha256": "ec9f8f53248d13e2f00764b24386db5220a0cb484c2c4838d457aa8ea46c6a82"
+        },
+        {
+          "path": "examples/camera-lenses/study.js",
+          "sha256": "29b89fb7450959993becc200b1a4f6ed7a54c330e5e2be236dc69b10296702ec"
+        },
+        {
+          "path": "examples/chapter-cameras/assets/THREE-LICENSE.txt",
+          "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+        },
+        {
+          "path": "examples/chapter-cameras/assets/three.min.js",
+          "sha256": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271"
+        },
+        {
+          "path": "examples/chapter-cameras/index.html",
+          "sha256": "0cb55ddff5664df2fd7017d62dfc9d9edc6237700252c09a735f6a1f440a64bc"
+        },
+        {
+          "path": "references/camera-lenses.md",
+          "sha256": "ffa16fac3a024dadbeae8227e3376e3a269557d14378b62b9ec483b7496f306f"
+        },
+        {
+          "path": "references/camera-lenses/check-lens.cjs",
+          "sha256": "9db1706bbcea75a3b5df65a4debe3db79cd643c8d8fd85eb85133f77d10e508c"
+        },
+        {
+          "path": "references/chapter-cameras.md",
+          "sha256": "eff6202e3a0f25b8ca22d8bc071898fda176d813b13e3ea0c3be355adbb2e577"
+        },
+        {
+          "path": "references/game-camera-controls.md",
+          "sha256": "3d0791fe0df8c7568950c7383f7581c79ef8f245db63e2830db9aeff0c778546"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "sha256": "4a0c742e05b8046eb14ee18ea846aec6f6ed9f06dbcb62a94b814308dc19623a"
+        }
+      ]
+    },
+    {
+      "name": "threejs-character-model",
+      "description": "Create a realistic, AAA-looking 3D character model for a game or web scene, from a description or a reference video/image, as a textured, rigged GLB standing in a relaxed pose in a lit three.js viewer. Covers designing an original character, the photoreal A-pose concept image, image-to-3D with Meshy or Tripo through Fil, rigging, posing in code, hangar-style lighting, headless capture, and the checks before showing it. Use when the user asks for a character model, a hero/heroine/NPC, \"a model as good as X\", a realistic human for a game, or to rig or pose a generated character.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 311,
+          "sha256": "8fda3f1d1deb30debfba26f3f794963cf6235579e589987d1b731a423b80e78d",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "8fda3f1d1deb30debfba26f3f794963cf6235579e589987d1b731a423b80e78d"
+        },
+        {
+          "path": "assets/viewer.html",
+          "bytes": 13803,
+          "sha256": "09240fc263d5a424a3ebdfd749123ab14c71c89a0ef332d5e07e4f260763ae75",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "09240fc263d5a424a3ebdfd749123ab14c71c89a0ef332d5e07e4f260763ae75"
+        },
+        {
+          "path": "examples/assets/a-pose-full.jpg",
+          "bytes": 73382,
+          "sha256": "a229de750f577466067e4f9d9646256f716b877edebd01eac1e35323876f1754",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "a229de750f577466067e4f9d9646256f716b877edebd01eac1e35323876f1754"
+        },
+        {
+          "path": "examples/assets/concept.jpg",
+          "bytes": 134894,
+          "sha256": "fe1fdf310e8affd3396c2e1d19f8b792bbadb218ae8f2a554297563338e31083",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "fe1fdf310e8affd3396c2e1d19f8b792bbadb218ae8f2a554297563338e31083"
+        },
+        {
+          "path": "examples/assets/posed-back.jpg",
+          "bytes": 70549,
+          "sha256": "588dcd0070c6720b1ffe4fcb64283b5993174d73847f7eb8842fe29c60207376",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "588dcd0070c6720b1ffe4fcb64283b5993174d73847f7eb8842fe29c60207376"
+        },
+        {
+          "path": "examples/assets/posed-face.jpg",
+          "bytes": 164239,
+          "sha256": "51f377e2b5ea9c79d76dd27f4d83a822893646376569522d406b6c70a306f8c7",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "51f377e2b5ea9c79d76dd27f4d83a822893646376569522d406b6c70a306f8c7"
+        },
+        {
+          "path": "examples/assets/posed-full.jpg",
+          "bytes": 72155,
+          "sha256": "f1b55fc8aafd58a91860bbebcc5515fd442b913e1c51142762240339041e996c",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "f1b55fc8aafd58a91860bbebcc5515fd442b913e1c51142762240339041e996c"
+        },
+        {
+          "path": "examples/assets/posed-half.jpg",
+          "bytes": 120626,
+          "sha256": "b82586a00b88016dec07efa4243e96791ba8bd089a68eb989be6b51339890852",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "b82586a00b88016dec07efa4243e96791ba8bd089a68eb989be6b51339890852"
+        },
+        {
+          "path": "examples/index.html",
+          "bytes": 10711,
+          "sha256": "dce56660dce9d689ab8b7c999fa0b1c25c320ef386b7a4da763b726362ecff7e",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "dce56660dce9d689ab8b7c999fa0b1c25c320ef386b7a4da763b726362ecff7e"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 11519,
+          "sha256": "7d3f49ef66cacf422e9a9cb914185992a726bcd00132faf29e0147403ea25027",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "7d3f49ef66cacf422e9a9cb914185992a726bcd00132faf29e0147403ea25027"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1358,
+          "sha256": "c18d1234687bc86c19833d51328bea2b8ab4b9f0343bd22868e11b3bd024d051",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "c18d1234687bc86c19833d51328bea2b8ab4b9f0343bd22868e11b3bd024d051"
+        },
+        {
+          "path": "scripts/capture.mjs",
+          "bytes": 3027,
+          "sha256": "00fc6236904ab002cbba16e333efade4d34ae322be8a616ae96a353f15811f40",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "00fc6236904ab002cbba16e333efade4d34ae322be8a616ae96a353f15811f40"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "d64b36bafc80648662e4bf504a466e5c125ffa71cfa861d74bf8192d3905e694"
+        }
+      ]
+    },
+    {
+      "name": "threejs-character-selector",
+      "description": "Make an original 3D cast from identity and full-body references, prepare textured GLBs for the browser, and build a full-body character selection screen with rotation, material lighting and animated swaps. Use for character generation, a casting room, a wardrobe or a playable roster.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 289,
+          "sha256": "e0500db025aafc3a323ac2449696976cedf17edaf693b6a146bd823831b0781f",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "e0500db025aafc3a323ac2449696976cedf17edaf693b6a146bd823831b0781f"
+        },
+        {
+          "path": "assets/full-body-selector.jpg",
+          "bytes": 121144,
+          "sha256": "b9a4c5181f2e827cf279cbb56d6b07cba5892451b6a1aa13c693fde3a8d8686e",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "b9a4c5181f2e827cf279cbb56d6b07cba5892451b6a1aa13c693fde3a8d8686e"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 6126,
+          "sha256": "dbef70f6a2a72bc08d3b6e71b8d54cc6487f3b056c0447773dc30c971ae7f251",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "dbef70f6a2a72bc08d3b6e71b8d54cc6487f3b056c0447773dc30c971ae7f251"
+        },
+        {
+          "path": "references/character-production.md",
+          "bytes": 4330,
+          "sha256": "57d924e681d4939e78645b2a852508b6f8a722bcf83f7ee89cc763e4063829cc",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "57d924e681d4939e78645b2a852508b6f8a722bcf83f7ee89cc763e4063829cc"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1364,
+          "sha256": "f5d254999dd2c9df7b560bfe4fb5d57dace3227e1142f2c1b05da26d64dd5fe6",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "f5d254999dd2c9df7b560bfe4fb5d57dace3227e1142f2c1b05da26d64dd5fe6"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "9b244b4341fe8719dbe6e72224dddcd8fbe51d970008e6d593f2c6d455ab0692"
+        }
+      ]
+    },
+    {
+      "name": "threejs-combat-animation",
+      "description": "Build, fix and review character combat animations (melee strikes, bow shots, spell casts, skills, monster attacks, whole move sets) so they read like Diablo IV, Baldur's Gate 3 or Elden Ring and never stretch, lock, wring or break an arm, wrist or hand. A written standard with numbered rules, per-frame tests on the real skinned mesh, keys designed from upper-arm, forearm and blade intents, checks from every camera the player sees, two blind critics plus a blind A/B against the last release, and every critic claim verified against full-resolution frames and live-rig numbers. Use when creating or reworking any attack, skill or move set; when the user says arms, hands, wrists, elbows or weapons look stretched, weird, broken or wrong; when they ask for a standard, rules or tests for animations; or when they ask to score animations or get them to N out of 10.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 323,
+          "sha256": "2a8d0cc67be94d32e8d152f9a818ba4bb25d707fb4327f22a2665dde10608a93",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "2a8d0cc67be94d32e8d152f9a818ba4bb25d707fb4327f22a2665dde10608a93"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 9357,
+          "sha256": "494d6709992cb9de54ae2a797c10c6b69f691f68cd52b4ed6402d2a92911869c",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "494d6709992cb9de54ae2a797c10c6b69f691f68cd52b4ed6402d2a92911869c"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1355,
+          "sha256": "fb80a73c46eef53508c35cd881198415cb57685d090b06a78590426325bf2d5e",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "fb80a73c46eef53508c35cd881198415cb57685d090b06a78590426325bf2d5e"
+        },
+        {
+          "path": "references/review.md",
+          "bytes": 4021,
+          "sha256": "2ba283657dc5767b636de5fe26a4c9f42276b6eb2167e57b33f07dbee8deb0b2",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "2ba283657dc5767b636de5fe26a4c9f42276b6eb2167e57b33f07dbee8deb0b2"
+        },
+        {
+          "path": "references/rules.md",
+          "bytes": 7655,
+          "sha256": "0123d3bee64385d7b3759c8dc4012645e19faeb6b6be8e5e2c08b02b410f613d",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "0123d3bee64385d7b3759c8dc4012645e19faeb6b6be8e5e2c08b02b410f613d"
+        },
+        {
+          "path": "references/techniques.md",
+          "bytes": 5712,
+          "sha256": "7f0ba9ca2db0406095198a8bdf593f8fa05bf56c5ec46dfc328eebe2fd6b02a6",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "7f0ba9ca2db0406095198a8bdf593f8fa05bf56c5ec46dfc328eebe2fd6b02a6"
+        },
+        {
+          "path": "references/templates/ab-judge-prompt.md",
+          "bytes": 1416,
+          "sha256": "43e789884fbf25dae90d07e9aa6216401c0a6d798f9b5cc1c64bd2f8a9c49034",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "43e789884fbf25dae90d07e9aa6216401c0a6d798f9b5cc1c64bd2f8a9c49034"
+        },
+        {
+          "path": "references/templates/critic-prompt.md",
+          "bytes": 2367,
+          "sha256": "ca722abe43bf44b1ef93950a1c4c6f4c899c6a41a2e2073e3fe2ce0e09355d5a",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "ca722abe43bf44b1ef93950a1c4c6f4c899c6a41a2e2073e3fe2ce0e09355d5a"
+        },
+        {
+          "path": "references/thornvigil.md",
+          "bytes": 7233,
+          "sha256": "a253e74a9b2221c9886ac971087cc2ec02da3d4784fbf38c77e2b294d75bca05",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "a253e74a9b2221c9886ac971087cc2ec02da3d4784fbf38c77e2b294d75bca05"
+        },
+        {
+          "path": "references/traps.md",
+          "bytes": 5264,
+          "sha256": "90c3e81ee2d0b882db9232b03c52edd3a490146714df87f5123823500c85693d",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "90c3e81ee2d0b882db9232b03c52edd3a490146714df87f5123823500c85693d"
+        },
+        {
+          "path": "scripts/install.sh",
+          "bytes": 1186,
+          "sha256": "644ce93d4143554fe96ce82f1963cb4c3ff400de58ed8e774e79136936806f69",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "644ce93d4143554fe96ce82f1963cb4c3ff400de58ed8e774e79136936806f69"
+        },
+        {
+          "path": "scripts/tools/ab-pack.py",
+          "bytes": 1174,
+          "sha256": "36a5103a71dc65d978d8c00d1327f27ca40f7bb3d344a0fc289576dfdeac71ce",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "36a5103a71dc65d978d8c00d1327f27ca40f7bb3d344a0fc289576dfdeac71ce"
+        },
+        {
+          "path": "scripts/tools/anchor.mjs",
+          "bytes": 2385,
+          "sha256": "eb41d6df2e8f0170350104c1cee853c70f5d2e5e6cbbaf4253388f4ca76de63c",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "eb41d6df2e8f0170350104c1cee853c70f5d2e5e6cbbaf4253388f4ca76de63c"
+        },
+        {
+          "path": "scripts/tools/armcheck.mjs",
+          "bytes": 7578,
+          "sha256": "08ec587a66c53c7cdd00673ffa369e19380fd5671af17ad58297347a5410baa7",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "08ec587a66c53c7cdd00673ffa369e19380fd5671af17ad58297347a5410baa7"
+        },
+        {
+          "path": "scripts/tools/at.mjs",
+          "bytes": 1663,
+          "sha256": "7a1bd8065b86ebd8214caafb79b7e9d42d756b343d30f6fc11a8fbaed3998042",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "7a1bd8065b86ebd8214caafb79b7e9d42d756b343d30f6fc11a8fbaed3998042"
+        },
+        {
+          "path": "scripts/tools/baketime.mjs",
+          "bytes": 1032,
+          "sha256": "818afc78de0f50c494a973bd81302be53f8be2eda9e25c047f4aa201a72baade",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "818afc78de0f50c494a973bd81302be53f8be2eda9e25c047f4aa201a72baade"
+        },
+        {
+          "path": "scripts/tools/drawfit.mjs",
+          "bytes": 2592,
+          "sha256": "4a2b9b5db6f2ef4de1019fb4c4e6dd5c92fae116a98c7c8d966f7ddc573030a4",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "4a2b9b5db6f2ef4de1019fb4c4e6dd5c92fae116a98c7c8d966f7ddc573030a4"
+        },
+        {
+          "path": "scripts/tools/encode.swift",
+          "bytes": 2312,
+          "sha256": "a1ae2efbd92b7d291856fa000ce540b8ac858de44aa97415f19ffc36a168ae0f",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "a1ae2efbd92b7d291856fa000ce540b8ac858de44aa97415f19ffc36a168ae0f"
+        },
+        {
+          "path": "scripts/tools/face.mjs",
+          "bytes": 2094,
+          "sha256": "b8f62836c723fa4f9e73a47f9e40b358f859b32dc00a813315cfaed647a11b70",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "b8f62836c723fa4f9e73a47f9e40b358f859b32dc00a813315cfaed647a11b70"
+        },
+        {
+          "path": "scripts/tools/host.html",
+          "bytes": 103,
+          "sha256": "649d402f88abad58f5e31c5596678977b8c81986b6e8f0576e31da45a89f2cfc",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "649d402f88abad58f5e31c5596678977b8c81986b6e8f0576e31da45a89f2cfc"
+        },
+        {
+          "path": "scripts/tools/jumps.mjs",
+          "bytes": 2176,
+          "sha256": "8356ed648cd9b41e6950a21c511df827361ef81ee3df842eb11895bc5c5a6610",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "8356ed648cd9b41e6950a21c511df827361ef81ee3df842eb11895bc5c5a6610"
+        },
+        {
+          "path": "scripts/tools/keydesign.mjs",
+          "bytes": 2208,
+          "sha256": "37d3afdb5f69c27548d30d327530374edf13a699ed069d95d16526b40b1f07ee",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "37d3afdb5f69c27548d30d327530374edf13a699ed069d95d16526b40b1f07ee"
+        },
+        {
+          "path": "scripts/tools/knight-measure.mjs",
+          "bytes": 5290,
+          "sha256": "587716f616a3793660e0f600ccc73a0cbfab94ada0add94d392b0de8786ac229",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "587716f616a3793660e0f600ccc73a0cbfab94ada0add94d392b0de8786ac229"
+        },
+        {
+          "path": "scripts/tools/msheet.py",
+          "bytes": 1167,
+          "sha256": "8705d2a3c19b8be4103a8457f1523152890f37e247dadbb73cf30c1907c351b0",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "8705d2a3c19b8be4103a8457f1523152890f37e247dadbb73cf30c1907c351b0"
+        },
+        {
+          "path": "scripts/tools/play.js",
+          "bytes": 1826,
+          "sha256": "cdcc343d057244c174f20a03aa51029fbf1716519963d705a5fd9b633954c8c4",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "cdcc343d057244c174f20a03aa51029fbf1716519963d705a5fd9b633954c8c4"
+        },
+        {
+          "path": "scripts/tools/psheet.py",
+          "bytes": 722,
+          "sha256": "ec5c1aa55bf4e6870b41d518504c36b28f93579a5e6d5dfbc4adac0b89df6ccd",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "ec5c1aa55bf4e6870b41d518504c36b28f93579a5e6d5dfbc4adac0b89df6ccd"
+        },
+        {
+          "path": "scripts/tools/setup.js",
+          "bytes": 2904,
+          "sha256": "c16822a5dac5c2e3125614a18603338108c8069327eaf1598b78451e5e8d5c60",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "c16822a5dac5c2e3125614a18603338108c8069327eaf1598b78451e5e8d5c60"
+        },
+        {
+          "path": "scripts/tools/shot.js",
+          "bytes": 1259,
+          "sha256": "1438e00043b70cc12bf805f11411c8bfe35a5876150321b597c5c9a7f07017fe",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "1438e00043b70cc12bf805f11411c8bfe35a5876150321b597c5c9a7f07017fe"
+        },
+        {
+          "path": "scripts/tools/vidcompose.py",
+          "bytes": 2366,
+          "sha256": "be01a7ed7073f8221a6dbf866e6d8ebcec90ce9de42265e76b51fc3fba8f2150",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "be01a7ed7073f8221a6dbf866e6d8ebcec90ce9de42265e76b51fc3fba8f2150"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "03e3d785be939b7dee680f2e1b7d08dd5468118e55b699db3a8404cbce0d036d"
+        }
+      ]
+    },
+    {
+      "name": "threejs-combat-skill-polish",
+      "description": "Score a game's combat skills and spells out of 10 with blind judges, then raise the weakest to a bar, for timing and readability (does a skill read as itself, does the blow land when it lands) and for art (detail, light, trails, impact, art direction, judged against a reference such as Diablo IV). Covers filming casts on a stopped, stepped clock, contact strips and close-ups, anonymised two-judge rounds, the levers that moved scores, the traps that cost points, asset and load budgets, and shipping each skill as its own version. Use when the user asks to score, review, improve, polish or rebuild combat skills, spells or attacks; says a skill doesn't make sense, looks bad or should look like another game; names a target score; or starts a next skill thread.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 328,
+          "sha256": "20a9c1a29f2a7d5b5b06a880d12bee8ff7e1ae8bacecd6d360337d16d6d94bfe",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "20a9c1a29f2a7d5b5b06a880d12bee8ff7e1ae8bacecd6d360337d16d6d94bfe"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 10543,
+          "sha256": "9fc0ffe7d6f1a31ebf560237a4ce0e4b157ca63efbd55fc6b33fe6582e231380",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "9fc0ffe7d6f1a31ebf560237a4ce0e4b157ca63efbd55fc6b33fe6582e231380"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1361,
+          "sha256": "0491fa2612d0df4aa8d0efcf805ba2c95e81a31de77be418f4d56dfebeeae1e0",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "0491fa2612d0df4aa8d0efcf805ba2c95e81a31de77be418f4d56dfebeeae1e0"
+        },
+        {
+          "path": "references/rubric-art.md",
+          "bytes": 2342,
+          "sha256": "39ae03285fc1b1bf10b2631437674d7e9d4c6d8d77133617e39599c5ddfd219d",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "39ae03285fc1b1bf10b2631437674d7e9d4c6d8d77133617e39599c5ddfd219d"
+        },
+        {
+          "path": "references/rubric-readability.md",
+          "bytes": 2003,
+          "sha256": "a10bc15cb7a2ca93f54d09cdd3ae16d1fcf8a72850fbc39d9a49c6f26b600b81",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "a10bc15cb7a2ca93f54d09cdd3ae16d1fcf8a72850fbc39d9a49c6f26b600b81"
+        },
+        {
+          "path": "references/templates/judge-prompt.md",
+          "bytes": 2636,
+          "sha256": "519afa894731245640c1f06f54b190beaee628d387e50b176d9bb1092db04627",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "519afa894731245640c1f06f54b190beaee628d387e50b176d9bb1092db04627"
+        },
+        {
+          "path": "scripts/beforeafter.py",
+          "bytes": 1397,
+          "sha256": "740ab88b07eb63b4c93549685737297bbd17d276548d177968d33cde7c678eb6",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "740ab88b07eb63b4c93549685737297bbd17d276548d177968d33cde7c678eb6"
+        },
+        {
+          "path": "scripts/close.py",
+          "bytes": 1410,
+          "sha256": "52694510b9e771d7e5cc665fb7262dd0ad7f46037477a1d2dc25f92387d68661",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "52694510b9e771d7e5cc665fb7262dd0ad7f46037477a1d2dc25f92387d68661"
+        },
+        {
+          "path": "scripts/film.mjs",
+          "bytes": 9720,
+          "sha256": "1c6ea5a1940de4e166d89634cd8cb8809cbdd23afe1f21f28bc0b632121826d5",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "1c6ea5a1940de4e166d89634cd8cb8809cbdd23afe1f21f28bc0b632121826d5"
+        },
+        {
+          "path": "scripts/judge-set.py",
+          "bytes": 1432,
+          "sha256": "cf707ad0d2e21904c6e7baaefcff9fb3b2646f54affa4cb0ad427376bd3b6482",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "cf707ad0d2e21904c6e7baaefcff9fb3b2646f54affa4cb0ad427376bd3b6482"
+        },
+        {
+          "path": "scripts/merge.py",
+          "bytes": 792,
+          "sha256": "7987938468b955036d7d284fb943e6a6ff27bb73102ad8d3986fa418370c1948",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "7987938468b955036d7d284fb943e6a6ff27bb73102ad8d3986fa418370c1948"
+        },
+        {
+          "path": "scripts/perf.mjs",
+          "bytes": 5748,
+          "sha256": "86bfe1be8d1849775dd6f9691008c8d563de4e399d9de0fdd8a24af8080ff82f",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "86bfe1be8d1849775dd6f9691008c8d563de4e399d9de0fdd8a24af8080ff82f"
+        },
+        {
+          "path": "scripts/probe.mjs",
+          "bytes": 5337,
+          "sha256": "b3ef65a1db17b754624b17bb6d1ae58dbf28e2af7795c823c85f2ec9600c7af6",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "b3ef65a1db17b754624b17bb6d1ae58dbf28e2af7795c823c85f2ec9600c7af6"
+        },
+        {
+          "path": "scripts/scenarios.example.mjs",
+          "bytes": 1106,
+          "sha256": "711ac3456c2c62831189154adf0b154f1c0c1006e65a44069a4e9555ff0ad220",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "711ac3456c2c62831189154adf0b154f1c0c1006e65a44069a4e9555ff0ad220"
+        },
+        {
+          "path": "scripts/strips.py",
+          "bytes": 3143,
+          "sha256": "2d57b3d57c6f7ba9ae37a07ffb3fb5d517f68ad36ec370ff340824f18211601c",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "2d57b3d57c6f7ba9ae37a07ffb3fb5d517f68ad36ec370ff340824f18211601c"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "96a27ee2ecec54b8725e036e4f5b11f7b9c507b98a28fe9de77ea846f91722dd"
         }
       ]
     },
@@ -1386,10 +2006,12 @@
     },
     {
       "name": "threejs-debug-profiler",
-      "description": "Debug and profile Three.js browser games - blank canvases, render and runtime bugs, asset and audio loading, animation, resize, mobile input, plus performance profiling of draw calls, triangles, textures, memory, shader and post-processing cost, and bundle size.",
+      "description": "Debug and profile Three.js browser games - blank canvases, render and runtime bugs, asset and audio loading, animation, resize, mobile input, plus performance profiling of draw calls, triangles, textures, memory, shader and post-processing cost, and bundle size. Also covers optimizing games without gameplay regressions, adaptive quality and mobile budgets.",
       "role": "specialist",
       "sibling_suggestions": [],
-      "license_notices": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
       "files": [
         {
           "path": "agents/openai.yaml",
@@ -1413,14 +2035,87 @@
           "sha256": "20b1dc50ed5872698c27e03e379d8695d47e1515062ecc8589b3bb3cdcc7d27b",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "4a9264fe946e34c4982b85b17ef78934559889591ea6b00cd15a534cb90eb4a7",
+          "runtime_sha256": "7beaad28e450058f1cdee4a6e8e6a7928045e683168d0f6bd4efe4c94f296f40",
           "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "1be79f6559a47239471b772ca16885a823395508c52fbe9d7be70da874d304c6"
+          "sha256": "e28b583af60300a56fdc1082c0f17544d7c150189a8082525fa2324de6c02a41"
+        },
+        {
+          "path": "references/game-optimization.md",
+          "sha256": "ab2fa2677678008db6225a8c38cb6aa9045965be7dde20a7dcf8240e255668aa"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "sha256": "216acb52b63b03c8363f4a66290ba6446420b2bb7dfd5484ca8732b148dca4da"
+        }
+      ]
+    },
+    {
+      "name": "threejs-enemy-systems",
+      "description": "Build or refactor reusable, data-driven enemy archetype and moveset systems for Three.js action games, plus rigged monster contracts and combat enemy AI. Use for enemy content schemas, model and rig conventions, combat move timing and contact contracts, runtime state boundaries, placeholder fallbacks, monster joints, sockets, hurtboxes and attack volumes, aggro, target selection, spacing, telegraphs, retreats, boss behavior, behavior-state machines, deterministic fixtures and AI regression tests.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 251,
+          "sha256": "9e61e31de7d952eacacd5a58302011080aa57f6d9694e12a5803d8af21bedd3a",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "9e61e31de7d952eacacd5a58302011080aa57f6d9694e12a5803d8af21bedd3a"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 6496,
+          "sha256": "3362eb1eff616a43ad710a769c05e911fe68628317653fb96cf475f543401087",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "3362eb1eff616a43ad710a769c05e911fe68628317653fb96cf475f543401087"
+        },
+        {
+          "path": "references/enemy-ai-tuning.md",
+          "bytes": 1413,
+          "sha256": "80fbe582a9ad16b5efa1fe81dc9625d1aade47225ca77f68465f1b0221d97c5e",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "80fbe582a9ad16b5efa1fe81dc9625d1aade47225ca77f68465f1b0221d97c5e"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1981,
+          "sha256": "19069ce52984b601e87e74dd17dd52962f4273f49a1eb278c9113bba98987b12",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "19069ce52984b601e87e74dd17dd52962f4273f49a1eb278c9113bba98987b12"
+        },
+        {
+          "path": "references/monster-system/monster-contract.md",
+          "bytes": 7357,
+          "sha256": "6b95113966ed7241856be22ca7eef58e9be906946f6aa56180830a4eda8ba330",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "6b95113966ed7241856be22ca7eef58e9be906946f6aa56180830a4eda8ba330"
+        },
+        {
+          "path": "references/monster-system.md",
+          "bytes": 4213,
+          "sha256": "dde7a662cbbfc721b1970ea6f97129b7ea9184af0223ec5a9e2b6db4b22cc160",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "dde7a662cbbfc721b1970ea6f97129b7ea9184af0223ec5a9e2b6db4b22cc160"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "584be1d3f233c525397be1bcc966e1f3be3d305180ccacb394e865c4c58f5fbc"
         }
       ]
     },
@@ -1468,6 +2163,200 @@
       ]
     },
     {
+      "name": "threejs-fire-smoke-vfx",
+      "description": "Build the effects of a fire skill as one visual language in Three.js - ray-marched flames that rise with buoyancy and cool from a white-hot core to red tips, walls and rings of fire broken into unequal tongues, a fire whirl, charcoal smoke lit only by the fire, embers that cool to ash, heat haze, firelight shared with the world, smouldering ground and gentle impact frames capped at three flashes a second. Use for fire or flame skills, fireballs, fire waves or breath, rings of fire, fire tornadoes, burning ground, wildfire fronts, smoke columns, embers, realistic fire or skill effects only. Includes a reusable module and a rebuildable five-beat demo on a scanned CC0 burned-ground floor.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 640,
+          "sha256": "9f9f8a90a429bfd29295e6bf0ec2cd999247d9d6e74108b21bc63469a4078ac1",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "9f9f8a90a429bfd29295e6bf0ec2cd999247d9d6e74108b21bc63469a4078ac1"
+        },
+        {
+          "path": "assets/fire-fx.mjs",
+          "bytes": 111152,
+          "sha256": "4abb31ded427e1b634f2d0f479147952ce4050fd7e5fb8ef23adada1f38ad0aa",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "4abb31ded427e1b634f2d0f479147952ce4050fd7e5fb8ef23adada1f38ad0aa"
+        },
+        {
+          "path": "examples/assets/ground/burned_ground_01_arm_1k.jpg",
+          "bytes": 227733,
+          "sha256": "fb7f6cd3a2f240712bf6cb21ca2a54072da5a8a4a0cba897f93c3b435a2a8caa",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "fb7f6cd3a2f240712bf6cb21ca2a54072da5a8a4a0cba897f93c3b435a2a8caa"
+        },
+        {
+          "path": "examples/assets/ground/burned_ground_01_diff_1k.jpg",
+          "bytes": 1033112,
+          "sha256": "be83310cad64d23539e628f14525af651a03646f5a1cc6029bd19a9446ea72f9",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "be83310cad64d23539e628f14525af651a03646f5a1cc6029bd19a9446ea72f9"
+        },
+        {
+          "path": "examples/assets/ground/burned_ground_01_nor_gl_1k.jpg",
+          "bytes": 366727,
+          "sha256": "86125af02b64b05b0079dd6fa08ffae11878a3f9f50326a265e94c7a64cba865",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "86125af02b64b05b0079dd6fa08ffae11878a3f9f50326a265e94c7a64cba865"
+        },
+        {
+          "path": "examples/assets/three.r170.min.js",
+          "bytes": 691561,
+          "sha256": "aba48d00aac89d4952c8242a3f87707eb120e7a91a427a493283b4c7954b7449",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "aba48d00aac89d4952c8242a3f87707eb120e7a91a427a493283b4c7954b7449"
+        },
+        {
+          "path": "examples/build.mjs",
+          "bytes": 3139,
+          "sha256": "04fe471dc07c92abecc307a9a9fb18cc4cf5053ae9587457c393abed15d5e1a3",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "04fe471dc07c92abecc307a9a9fb18cc4cf5053ae9587457c393abed15d5e1a3"
+        },
+        {
+          "path": "examples/src/stage.js",
+          "bytes": 48134,
+          "sha256": "78bc2be03f6aca7dcdd0374c19b9f29faf407efbcd53c548168a5ec0a6dd40b6",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "78bc2be03f6aca7dcdd0374c19b9f29faf407efbcd53c548168a5ec0a6dd40b6"
+        },
+        {
+          "path": "examples/src/ui.css",
+          "bytes": 5266,
+          "sha256": "6eabdd4ca061255633580f7e3582affbbd4334d102437beef3262240c15d39af",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "6eabdd4ca061255633580f7e3582affbbd4334d102437beef3262240c15d39af"
+        },
+        {
+          "path": "examples/src/ui.html",
+          "bytes": 3421,
+          "sha256": "ed4098de24779bc3d35e3006855206766aa7f0531df6c941a5bef5a23db5fdc1",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "ed4098de24779bc3d35e3006855206766aa7f0531df6c941a5bef5a23db5fdc1"
+        },
+        {
+          "path": "examples/src/ui.js",
+          "bytes": 4076,
+          "sha256": "1f6935a13c37a9399e43f5b18bab82fec21a2da11cf22d80642b08d8a390ca06",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "1f6935a13c37a9399e43f5b18bab82fec21a2da11cf22d80642b08d8a390ca06"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 31078,
+          "sha256": "5961f6c21b08e07ab68478d2650f68b11564a13fe30400b7380cb8af1d9da3e4",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "5961f6c21b08e07ab68478d2650f68b11564a13fe30400b7380cb8af1d9da3e4"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1348,
+          "sha256": "7ad5b42699ec7ec7eb62cb3b092ec1ac5c50e7b0d20e7d3da3210028fba945c4",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "7ad5b42699ec7ec7eb62cb3b092ec1ac5c50e7b0d20e7d3da3210028fba945c4"
+        },
+        {
+          "path": "references/scorecard.md",
+          "bytes": 8355,
+          "sha256": "ad4bbd1fde94c1c1582fb6e21e4282d06e840dd7bdc4473e98d18a2482ec54bb",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "ad4bbd1fde94c1c1582fb6e21e4282d06e840dd7bdc4473e98d18a2482ec54bb"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "ce46ec1139729528e5fabecbe7bd7894b8807ebce9eb60fed1ae4e82f9e3e51d"
+        }
+      ]
+    },
+    {
+      "name": "threejs-four-seasons",
+      "description": "Add coordinated spring, summer, fall, and winter states to a 3D scene, blending foliage, sunlight, sky, ground materials, snow, and particles without rebuilding the world. Use for seasonal controls, architectural walkthroughs, and outdoor scenes with four-season transitions. Includes recognizable 3D falling leaves with instanced tumble, coupled drift, shared wind and camera-aware recycling.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 239,
+          "sha256": "61f02ab6d3ba325424fcbfa0340e7d3d19b87fd4249bcfa4563363dcda2a047d",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "61f02ab6d3ba325424fcbfa0340e7d3d19b87fd4249bcfa4563363dcda2a047d"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 6838,
+          "sha256": "1ae193dffed875ad53ce7c046f574b7a297ab65853de5db68beee6ee9a7b8d08",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "1ae193dffed875ad53ce7c046f574b7a297ab65853de5db68beee6ee9a7b8d08"
+        },
+        {
+          "path": "references/falling-leaves/links.md",
+          "bytes": 296,
+          "sha256": "5c1aefb4431602c9994d166eb3f331c8d54f88ed1c1adb77333f0a169a86dc04",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "5c1aefb4431602c9994d166eb3f331c8d54f88ed1c1adb77333f0a169a86dc04"
+        },
+        {
+          "path": "references/falling-leaves.md",
+          "bytes": 4890,
+          "sha256": "baa8a6a97a78f034900bfa43e267d0f735373f145df90176328b07c9b3912b56",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "baa8a6a97a78f034900bfa43e267d0f735373f145df90176328b07c9b3912b56"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1625,
+          "sha256": "13ef2524d6f5047783dd432ac0ff1b4909d73b6ca77126baf17e0903d9dc82a4",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "13ef2524d6f5047783dd432ac0ff1b4909d73b6ca77126baf17e0903d9dc82a4"
+        },
+        {
+          "path": "references/links.md",
+          "bytes": 470,
+          "sha256": "8f5d9301cc22fc166057b55b26f7a9af8d7c717d9a58a828b714c2bbb6c1b220",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "8f5d9301cc22fc166057b55b26f7a9af8d7c717d9a58a828b714c2bbb6c1b220"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "e88e93890c2d202b10ec434d720cf0923c256e6dfa61ad6f15ef62299c137b51"
+        }
+      ]
+    },
+    {
       "name": "threejs-fundamentals",
       "description": "Three.js scene setup, cameras, renderer, Object3D hierarchy, coordinate systems. Use when setting up 3D scenes, creating cameras, configuring renderers, managing object hierarchies, or working with transforms.",
       "role": "specialist",
@@ -1496,8 +2385,57 @@
       ]
     },
     {
+      "name": "threejs-game-changelog",
+      "description": "Design, implement, backfill, audit, and release in-game changelogs with contiguous versioning, deployment provenance, menu-state navigation, accessible toggle, close, and Escape behavior, and responsive release-ledger UI. Use when Codex needs to add or revise a changelog or version screen in a game, reconstruct release history from deployments and Git, define version-bump rules, keep displayed versions synchronized with live builds, or test changelog mechanics across desktop and mobile.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 245,
+          "sha256": "3375cb59032f907837287891c854236e7332e2d2b5f2de483d4c7a55efda595a",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "3375cb59032f907837287891c854236e7332e2d2b5f2de483d4c7a55efda595a"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 10056,
+          "sha256": "34ebb0fb4cadab6c3849809ff4b1175964700876c5e5d540d86d5d270af87730",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "34ebb0fb4cadab6c3849809ff4b1175964700876c5e5d540d86d5d270af87730"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1353,
+          "sha256": "b63221c368be5553a38ead86f053f4da2c8b86ce39ced377e1746ca2ffffd6e7",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "b63221c368be5553a38ead86f053f4da2c8b86ce39ced377e1746ca2ffffd6e7"
+        },
+        {
+          "path": "references/reference-architecture.md",
+          "bytes": 8379,
+          "sha256": "e9f6e67de3c3a419860ce3f44ac999078571690c54f66249a55dac99e2a2bc37",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "e9f6e67de3c3a419860ce3f44ac999078571690c54f66249a55dac99e2a2bc37"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "daacc49583cd5fd19cec995a347ba3462d9dc2ddfda16b5c208d9529e8ec7bcb"
+        }
+      ]
+    },
+    {
       "name": "threejs-game-director",
-      "description": "Entrypoint for building, upgrading, and finishing Three.js browser games. Routes work across the sibling threejs-* skills for gameplay, graphics, UI, 3D/image/audio asset generation, debugging, and release. Use for any request to build, upgrade, polish, or ship a Three.js game as a whole, at any scope from a small arcade prototype to a premium release.",
+      "description": "Entrypoint for building, upgrading, and finishing Three.js browser games. Routes work across the sibling threejs-* skills for gameplay, graphics, UI, 3D/image/audio asset generation, debugging, and release. Use for any request to build, upgrade, polish, or ship a Three.js game as a whole, at any scope from a small arcade prototype to a premium release. Also carries playbooks for isometric action RPGs, hybrid asset pipelines and mobile web games.",
       "role": "game-production-specialist",
       "sibling_suggestions": [
         "threejs-3d-generator",
@@ -1512,7 +2450,9 @@
         "threejs-qa-release",
         "threejs-qa-release-skill-dir"
       ],
-      "license_notices": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
       "files": [
         {
           "path": "agents/openai.yaml",
@@ -1568,14 +2508,152 @@
           "sha256": "88c4810af05d20f180af993adae65632bf8b70cf35218fdd7c9a21169f1a5d6c",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "156f0af41ab0a0c7fd6a11a1d79f4e480d88a5cfb98946d1d1c9c8df32962a38",
+          "runtime_sha256": "aa8fcfc99511d5c1cbb38b594f8b0d9d5e745dbababaa4b2ded2f7481178618a",
           "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "d816a847f601b066ad4f284dbee688a9d68a9a429f762bdaa19442b903d823c4"
+          "sha256": "41b6db15587c37e38b3ab175155078f6ec37479d0dfb784f098486bb1aba9e70"
+        },
+        {
+          "path": "references/hybrid-assets.md",
+          "sha256": "87025e362201d7e75222ea3f9c7cda23039016955a94c18dd6e0f20b3a3f656a"
+        },
+        {
+          "path": "references/isometric-arpg.md",
+          "sha256": "e71e0c83af46b707c8632e03668e54d241cd8da3f0ac71a4b5d62b5becbe6e22"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "sha256": "73b1c5419fd313af7939e77a83688270bc7fb4e1fc2bd5f6dad9cf63ebe7afd3"
+        },
+        {
+          "path": "references/mobile-games.md",
+          "sha256": "3f92e77541b8a331a8a979eda281c89dc3a7e3dc84fe6f675cfb61c3a85ab361"
+        }
+      ]
+    },
+    {
+      "name": "threejs-game-interiors",
+      "description": "Build or refine photoreal, walkable first-person interiors in Three.js. Use for the worn cyberpunk look of Nocturne Hotel, for rooms that lose realism when the camera moves, or for a reference-matched 9/10 pass on room lighting, materials and in-game interactions.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 294,
+          "sha256": "906a5edcf96b329ab35037a0fe68b148d1927b9d30ee1d9b46a472472e4936bd",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "906a5edcf96b329ab35037a0fe68b148d1927b9d30ee1d9b46a472472e4936bd"
+        },
+        {
+          "path": "assets/four-room-look.jpg",
+          "bytes": 419211,
+          "sha256": "50afc1603e51a5e30a16a8296d45c595e37eba26414cb01e0d01fd4ac5cfd836",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "50afc1603e51a5e30a16a8296d45c595e37eba26414cb01e0d01fd4ac5cfd836"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 5155,
+          "sha256": "bd53a931c1b07ec80ee67b9c39b3fd61b3fa6d6af675e5ad8900e0a49f9a5750",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "bd53a931c1b07ec80ee67b9c39b3fd61b3fa6d6af675e5ad8900e0a49f9a5750"
+        },
+        {
+          "path": "references/gameplay.md",
+          "bytes": 5351,
+          "sha256": "629ad34b7d1f220c76f22b80b4965a0504ceb3f404e48dced5e1ab6976007982",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "629ad34b7d1f220c76f22b80b4965a0504ceb3f404e48dced5e1ab6976007982"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1369,
+          "sha256": "3e5721c62940c7b0a552ad4b7134e480f679920db744232d3693f73d1cf16e95",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "3e5721c62940c7b0a552ad4b7134e480f679920db744232d3693f73d1cf16e95"
+        },
+        {
+          "path": "references/prompts-and-review.md",
+          "bytes": 6514,
+          "sha256": "f5685b34246d436215def811f0d9321cad25000e60c852f58fdc485c85c71807",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "f5685b34246d436215def811f0d9321cad25000e60c852f58fdc485c85c71807"
+        },
+        {
+          "path": "references/rendering.md",
+          "bytes": 4535,
+          "sha256": "1b71ecd45adc10187e09654104eaa59be7b6ef4800cd646d46cfc2986592072a",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "1b71ecd45adc10187e09654104eaa59be7b6ef4800cd646d46cfc2986592072a"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "c0f3fa04468af1a7e8a036336913362ef190ea52bdc94d89a97579b3bc52c44e"
+        }
+      ]
+    },
+    {
+      "name": "threejs-game-map-editor",
+      "description": "Build, extend, or audit production-linked browser map editors for Three.js and isometric games. Use when Codex needs to create a private director view, derive a versioned editor document from authored placements, add outliner, layer, selection, drag, snap, inspector, or camera controls, expose enemy aggro, leash, or patrol overlays, implement local draft import, export, undo, and reset, secure an editor route with IP and password sessions, or validate and release a map editor without mutating live gameplay data.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 228,
+          "sha256": "1e2f62cdfccd58566e73d1049563a66222e4034e0b5030c5d5eb9d324830af7d",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "1e2f62cdfccd58566e73d1049563a66222e4034e0b5030c5d5eb9d324830af7d"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 10500,
+          "sha256": "11339c5be08a3d5c3649e2e8483c78d0a1e34bc472764fab6e276d68500636c4",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "11339c5be08a3d5c3649e2e8483c78d0a1e34bc472764fab6e276d68500636c4"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1355,
+          "sha256": "b98044501ba260b60c90356b0be87cb323200c40870b85b70b57f77857eb5318",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "b98044501ba260b60c90356b0be87cb323200c40870b85b70b57f77857eb5318"
+        },
+        {
+          "path": "references/vesperfall-implementation.md",
+          "bytes": 6767,
+          "sha256": "e05622ec32624cccabe2056522c7fcf6a7b57f993385800522542f80a37cebd7",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "e05622ec32624cccabe2056522c7fcf6a7b57f993385800522542f80a37cebd7"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "12641995a5645711498149fc580c7a5a7e447390eade1b45a9fbca5b3fdc7294"
         }
       ]
     },
@@ -1624,13 +2702,15 @@
     },
     {
       "name": "threejs-gameplay-systems",
-      "description": "Build and iterate playable Three.js game systems - starter scaffold, architecture, design briefs, core loops, level and encounter design, entities, input, camera, collision and physics, scoring, objectives, and game feel. Use for first playable slices, new Vite/TypeScript/Three.js setups, level/arena/track/wave/hole/puzzle design, combat encounters, difficulty tuning, and juice.",
+      "description": "Build and iterate playable Three.js game systems - starter scaffold, architecture, design briefs, core loops, level and encounter design, entities, input, camera, collision and physics, scoring, objectives, and game feel. Use for first playable slices, new Vite/TypeScript/Three.js setups, level/arena/track/wave/hole/puzzle design, combat encounters, difficulty tuning, and juice. Also carries recipes for flat-world level authoring, action-combat timing, encounter design and inventory, loot and equipment.",
       "role": "specialist",
       "sibling_suggestions": [
         "threejs-audio-generator",
         "threejs-vite-game"
       ],
-      "license_notices": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
       "files": [
         {
           "path": "agents/openai.yaml",
@@ -1894,14 +2974,34 @@
           "sha256": "782480029079d0ec321ee555417e901760b863fff816ff7eb5ddc650f06f014f",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "a73dff935dd4d65e84016688cc85bd188bc084bdb36eec0b558ac1d6ddba3cba",
+          "runtime_sha256": "cb4ef813dcf04793c98da2d1f6976b5ea3c58f72b783db7a37a2a7f08d5bd311",
           "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "eea8f967bf21be1883c035aeef2319d921f1c6ee7e1f07a55f3af7b329254dce"
+          "sha256": "b2d988fd3e8b551b842b7466008da8f075ac704f926d41d6c00c5b3da6fb5e1c"
+        },
+        {
+          "path": "references/action-combat.md",
+          "sha256": "92012cf8d1988b68f83849cfc988da5162769af452932f84245ba35e3234ae45"
+        },
+        {
+          "path": "references/encounters.md",
+          "sha256": "744b1bc3c7568dfc72730f9c893a2b510155eca469e2fd7d4104b7b1bc76766b"
+        },
+        {
+          "path": "references/inventory.md",
+          "sha256": "ba2920cec599651a5af7606e7b82939f84d7beaa01663911a69c59e3d6439b55"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "sha256": "c93e7ca8a82ea1d643e63f95797fe3b729b4207c314fbc1b0ac4d22b3f3169bb"
+        },
+        {
+          "path": "references/level-authoring.md",
+          "sha256": "0e373b67d3b7b26eca623cb02a4136eb5aa375eab0846a5c5f084a47aeb1b33e"
         }
       ]
     },
@@ -2089,6 +3189,143 @@
       ]
     },
     {
+      "name": "threejs-ice-frost-vfx",
+      "description": "Build the effects of an ice and frost skill as one visual language in Three.js - dendritic frost grown on the CPU and drawn as hairline feathers from a seed, faceted ice spikes ray-traced against their own planes with refraction, internal reflection, blue absorption, bubbles and fractures that erupt, crack and shatter into pieces that land and rest, low freezing mist banks, a blizzard column, diamond dust and a scanned snow floor with glints. Use for ice or frost skills, frost novas, ice spikes or walls, glacial eruptions, shattering ice, blizzards, snow devils, freezing mist, frozen ground, frost creep, ice shards or realistic ice. Includes two reusable modules and a rebuildable five-beat demo on a scanned CC0 snow floor.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 684,
+          "sha256": "39a51114d54fb0cef477b9421c99421a436b09e39e5eb973da8166a2253fa483",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "39a51114d54fb0cef477b9421c99421a436b09e39e5eb973da8166a2253fa483"
+        },
+        {
+          "path": "assets/frost-energy.mjs",
+          "bytes": 153894,
+          "sha256": "ab9fb1c9bae2e3143da685e669c1f3cb9840bc9e7262a2c1b6038d8b24845839",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "ab9fb1c9bae2e3143da685e669c1f3cb9840bc9e7262a2c1b6038d8b24845839"
+        },
+        {
+          "path": "assets/frost-growth.mjs",
+          "bytes": 12154,
+          "sha256": "7361aa18cb2c3945b065efdc7cff06a0d6031eaece6447cedd35d0297d630e66",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "7361aa18cb2c3945b065efdc7cff06a0d6031eaece6447cedd35d0297d630e66"
+        },
+        {
+          "path": "examples/assets/ground/snow_02_arm_1k.jpg",
+          "bytes": 88100,
+          "sha256": "1bf5380767702c1ea758f60585c1db1d655d99a2468d359b55d654e6272cc633",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "1bf5380767702c1ea758f60585c1db1d655d99a2468d359b55d654e6272cc633"
+        },
+        {
+          "path": "examples/assets/ground/snow_02_diff_1k.jpg",
+          "bytes": 325497,
+          "sha256": "523a4e69c90b96d787dd69b897f29a2b3761a017024405c60aa630d1e8e9009a",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "523a4e69c90b96d787dd69b897f29a2b3761a017024405c60aa630d1e8e9009a"
+        },
+        {
+          "path": "examples/assets/ground/snow_02_nor_gl_1k.jpg",
+          "bytes": 1081858,
+          "sha256": "9495ec680616b8340e2cbecbd151bff84c690cfad4209e90cc98d2d0ba81f810",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "9495ec680616b8340e2cbecbd151bff84c690cfad4209e90cc98d2d0ba81f810"
+        },
+        {
+          "path": "examples/assets/three.r170.min.js",
+          "bytes": 691561,
+          "sha256": "aba48d00aac89d4952c8242a3f87707eb120e7a91a427a493283b4c7954b7449",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "aba48d00aac89d4952c8242a3f87707eb120e7a91a427a493283b4c7954b7449"
+        },
+        {
+          "path": "examples/build.mjs",
+          "bytes": 3359,
+          "sha256": "af00e265834e20654dd20eaa1c5ec46dad31d8ac72103ce9d129daf806b417cf",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "af00e265834e20654dd20eaa1c5ec46dad31d8ac72103ce9d129daf806b417cf"
+        },
+        {
+          "path": "examples/src/stage.js",
+          "bytes": 54720,
+          "sha256": "d5c3715ab6c3b888aa4e51ce7c84036fe465538d39c641f7769bfdf579dfb8ce",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "d5c3715ab6c3b888aa4e51ce7c84036fe465538d39c641f7769bfdf579dfb8ce"
+        },
+        {
+          "path": "examples/src/ui.css",
+          "bytes": 5267,
+          "sha256": "cc9b8901123c8355f98851d1a2018c394c051f5655a3e4c4d40cf07469554be7",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "cc9b8901123c8355f98851d1a2018c394c051f5655a3e4c4d40cf07469554be7"
+        },
+        {
+          "path": "examples/src/ui.html",
+          "bytes": 3049,
+          "sha256": "070023d878a19b384098773c8563b5c17496da1fccdf7fa841bdc0a02d5bec17",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "070023d878a19b384098773c8563b5c17496da1fccdf7fa841bdc0a02d5bec17"
+        },
+        {
+          "path": "examples/src/ui.js",
+          "bytes": 3798,
+          "sha256": "0e61d97dcbf1a26f63123d58e3c40dfc4340b3e191b08fa9931735f674da3bdd",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "0e61d97dcbf1a26f63123d58e3c40dfc4340b3e191b08fa9931735f674da3bdd"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 32235,
+          "sha256": "f4dc2fdfb04d5f820f5aa28ade45617a0d97e36ef83bb52391721c73aacf24d7",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "f4dc2fdfb04d5f820f5aa28ade45617a0d97e36ef83bb52391721c73aacf24d7"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1346,
+          "sha256": "3a344c97a664acf701ec1ed9e35d156e3ddf8e04a1593ac1cca70f2399b92df0",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "3a344c97a664acf701ec1ed9e35d156e3ddf8e04a1593ac1cca70f2399b92df0"
+        },
+        {
+          "path": "references/scorecard.md",
+          "bytes": 11170,
+          "sha256": "46dd988698bf28a966eb8eb8703f394ac2d2bb5230f80256d091b15efadf5cdb",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "46dd988698bf28a966eb8eb8703f394ac2d2bb5230f80256d091b15efadf5cdb"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "03bb1ebbef691d14339aa12a47ebc5cb36c307a692e64038babf6f4cbeef6708"
+        }
+      ]
+    },
+    {
       "name": "threejs-image-generator",
       "description": "Generate and edit 2D image assets for Three.js games with Google's Gemini image API - concept sheets, image-to-3D inputs, texture and material references, sky and background plates, decals, logos, icons, GUI art, title and menu art, and marketing stills. Also use for direct image editing when the user supplies an image path.",
       "role": "specialist",
@@ -2208,6 +3445,208 @@
       ]
     },
     {
+      "name": "threejs-interactive-objects",
+      "description": "Build interactive 3D objects for product pages and interfaces in Three.js - lit feature-grid objects that turn on hover, a hover lean with a click-to-inspect view you can turn and dolly, surfaces that break into grains around the pointer and reassemble, and detailed miniature control icons in a reusable atlas. Use for product instruments, hero sculptures, specimen viewers, feature cards and small interface controls.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 320,
+          "sha256": "eb1f8491a02a796ebc8530b7802a98182fa648a48c530b7c2edb078988b4dd01",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "eb1f8491a02a796ebc8530b7802a98182fa648a48c530b7c2edb078988b4dd01"
+        },
+        {
+          "path": "examples/control-icons/assets/THREE-LICENSE.txt",
+          "bytes": 1081,
+          "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+        },
+        {
+          "path": "examples/control-icons/assets/three.min.js",
+          "bytes": 518458,
+          "sha256": "f5008af7ce4c7412480557623a0e85fec5abb96eb44a4c1bd119b51425c324c5",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "f5008af7ce4c7412480557623a0e85fec5abb96eb44a4c1bd119b51425c324c5"
+        },
+        {
+          "path": "examples/control-icons/index.html",
+          "bytes": 8128,
+          "sha256": "da38e4e790447c10758d93e6202fb902ab3d9c051678973a532d7fd6eee0101f",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "da38e4e790447c10758d93e6202fb902ab3d9c051678973a532d7fd6eee0101f"
+        },
+        {
+          "path": "examples/feature-objects/assets/Three-LICENSE.txt",
+          "bytes": 1081,
+          "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+        },
+        {
+          "path": "examples/feature-objects/assets/three.min.js",
+          "bytes": 608081,
+          "sha256": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271"
+        },
+        {
+          "path": "examples/feature-objects/index.html",
+          "bytes": 9283,
+          "sha256": "4155f8bcd30edea9c73a0615ae0981b48b409b14e37845c223e7d162a92cadf5",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "4155f8bcd30edea9c73a0615ae0981b48b409b14e37845c223e7d162a92cadf5"
+        },
+        {
+          "path": "examples/hover-dissolve/assets/Three-LICENSE.txt",
+          "bytes": 1081,
+          "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+        },
+        {
+          "path": "examples/hover-dissolve/assets/three.min.js",
+          "bytes": 608081,
+          "sha256": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271"
+        },
+        {
+          "path": "examples/hover-dissolve/index.html",
+          "bytes": 9631,
+          "sha256": "6fbeb808facc27453805aee23821b76742367e2d31ce03b9ce91b252d357adf2",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "6fbeb808facc27453805aee23821b76742367e2d31ce03b9ce91b252d357adf2"
+        },
+        {
+          "path": "examples/orbit-inspect/demo.html",
+          "bytes": 37491,
+          "sha256": "0e16438c7918a7fd55a9f9ed331985833832300ab471320363d7bdc25014f314",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "0e16438c7918a7fd55a9f9ed331985833832300ab471320363d7bdc25014f314"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 3729,
+          "sha256": "0c9d782a64c06862bffb0ee37268e517dff74941355f1124b7e38db42daa889e",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "0c9d782a64c06862bffb0ee37268e517dff74941355f1124b7e38db42daa889e"
+        },
+        {
+          "path": "references/control-icons.md",
+          "bytes": 2263,
+          "sha256": "45ba8abfa6746bb44f6757ba3e6cd1bb9a897a7ef2437c6efa4748e7d8a9eb0d",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "45ba8abfa6746bb44f6757ba3e6cd1bb9a897a7ef2437c6efa4748e7d8a9eb0d"
+        },
+        {
+          "path": "references/feature-objects.md",
+          "bytes": 2742,
+          "sha256": "adfa4687da0f50607b9ea6510025e1207b66504656a719a3cf742c533d58a906",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "adfa4687da0f50607b9ea6510025e1207b66504656a719a3cf742c533d58a906"
+        },
+        {
+          "path": "references/hover-dissolve.md",
+          "bytes": 2905,
+          "sha256": "f8a4c4d68da8a1e6cc4af6ecb4c570d63bdae8af4bacd299b25fb9dac1c3aed3",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "f8a4c4d68da8a1e6cc4af6ecb4c570d63bdae8af4bacd299b25fb9dac1c3aed3"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 2284,
+          "sha256": "bc0b247652748fefa8d7798492bcc4d4facafabce6be030e46c6e72e066dd86d",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "bc0b247652748fefa8d7798492bcc4d4facafabce6be030e46c6e72e066dd86d"
+        },
+        {
+          "path": "references/orbit-inspect.md",
+          "bytes": 9354,
+          "sha256": "98e1f1f723b91beb2c2e62cd3972a43ba1f9fe81a97cb223e910f96f2ed059f1",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "98e1f1f723b91beb2c2e62cd3972a43ba1f9fe81a97cb223e910f96f2ed059f1"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "ed7547a4ac047f6b2ff6eda82370139eee399496b6fe9e5ac1cd6f4fab545521"
+        }
+      ]
+    },
+    {
+      "name": "threejs-interactive-topography",
+      "description": "Create thin elevation contours for a historical map and a raised relief view with interactive years, localized hover highlights and a press-triggered seismic particle wave. Use for timeline atlases and topographic section backgrounds.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 329,
+          "sha256": "77ab56cfe8d95e52075c1e75629ce24cb2c2d666d9a671931b0b73c05f2bfa6c",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "77ab56cfe8d95e52075c1e75629ce24cb2c2d666d9a671931b0b73c05f2bfa6c"
+        },
+        {
+          "path": "examples/index.html",
+          "bytes": 10324,
+          "sha256": "a69dfd59aa644a28ed7a91b23df549be3023503a3574a710f810a09a0ec07271",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "a69dfd59aa644a28ed7a91b23df549be3023503a3574a710f810a09a0ec07271"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 4543,
+          "sha256": "368574e5405d7c4eaeb77f2ef0a67c453c3071e66149bf2759c07bca67f5eec9",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "368574e5405d7c4eaeb77f2ef0a67c453c3071e66149bf2759c07bca67f5eec9"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1349,
+          "sha256": "a6f95cd9711208185975eed2cd0cdad4cf804978bbf0c072f92e5c88a1905b73",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "a6f95cd9711208185975eed2cd0cdad4cf804978bbf0c072f92e5c88a1905b73"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "4af78075428fc93601678944176fe67d4f52fa038bccb85d939c88f1d4e973e5"
+        }
+      ]
+    },
+    {
       "name": "threejs-lighting",
       "description": "Three.js lighting - light types, shadows, environment lighting. Use when adding lights, configuring shadows, setting up IBL, or optimizing lighting performance.",
       "role": "specialist",
@@ -2237,7 +3676,7 @@
     },
     {
       "name": "threejs-lighting-scorecard",
-      "description": "Light carved wood in a dark room in three.js, with procedural grain and pores, one warm key through a window, soft shadows that touch, light shafts, background rays and dust, then score the render out of 10 on an anchored rubric with a runnable headless scorecard and iterate until each item reaches the target. Use for oiled timber, kumiko, joinery and workshop scenes; wood that reads flat, plastic or washed out; volumetrics that lift the blacks; \"score this out of 10\"; or \"get the lighting to 8\".",
+      "description": "Light carved wood in a dark room in three.js, with procedural grain and pores, one warm key through a window, soft shadows that touch, light shafts, background rays and dust, then score the render out of 10 on an anchored rubric with a runnable headless scorecard and iterate until each item reaches the target. Use for oiled timber, kumiko, joinery and workshop scenes; wood that reads flat, plastic or washed out; volumetrics that lift the blacks; \"score this out of 10\"; or \"get the lighting to 8\". Also covers a procedural desk workspace with window blinds, volumetric daylight and coupled lighting presets.",
       "role": "specialist",
       "sibling_suggestions": [],
       "license_notices": [
@@ -2266,7 +3705,7 @@
           "sha256": "4be66c6c05d410b93d035767cf5f8bf7f58e47026d9abfe99a5ad7c5d5722d45",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "4be66c6c05d410b93d035767cf5f8bf7f58e47026d9abfe99a5ad7c5d5722d45"
+          "runtime_sha256": "f7ae391dcac821c0dd5bea11ea33dc4842de610addaad2649b66b1c4532daff0"
         },
         {
           "path": "references/last-scorecard.json",
@@ -2282,7 +3721,7 @@
           "sha256": "4ae70ca32abaf14cb2d6a68371c74b9643f573ce1e26cbb7b3a4f230b1ce302e",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "4ae70ca32abaf14cb2d6a68371c74b9643f573ce1e26cbb7b3a4f230b1ce302e"
+          "runtime_sha256": "44a0d67ad3a30182aa19e44db8fdf98ae218eedeced926bae6271af036c5be40"
         },
         {
           "path": "references/metrics.js",
@@ -2312,7 +3751,152 @@
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "7d682d795b79421949cfaa4e7a9854e6cfc1ac47a3663513bea30d2c4146a580"
+          "sha256": "d359e93df3a787511241be80d0bac947986bc2c3532ed8cd8dbf2cea30a23f89"
+        },
+        {
+          "path": "examples/workspace-lighting/assets/THREE-LICENSE.txt",
+          "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+        },
+        {
+          "path": "examples/workspace-lighting/assets/three.min.js",
+          "sha256": "f5008af7ce4c7412480557623a0e85fec5abb96eb44a4c1bd119b51425c324c5"
+        },
+        {
+          "path": "examples/workspace-lighting/index.html",
+          "sha256": "b2ef511bd57dd4f4cdaf5f2d0516a298e5d798c84e7c12f0813b33272c4ab932"
+        },
+        {
+          "path": "references/workspace-lighting.md",
+          "sha256": "47a8844387e66b3966c61465e79fae4157326630650fd8fcda105a7f1f5f48c4"
+        }
+      ]
+    },
+    {
+      "name": "threejs-lightning-energy-vfx",
+      "description": "Build the effects of a close-combat energy skill as one visual language in Three.js - branching lightning with a white core in a violet-blue glow that reaches out as a stepped leader, flares on contact and fades, a storm-cloud energy orb with plasma arcs, ground strikes that crawl along cracks and reflect in wet stone, a torn black afterimage shadow, air bursts as refraction, sparks, floating rocks and impact frames that hold, invert, shake and bend the lens, capped at three flashes a second. Use for anime or dark-fantasy skill effects, lightning or thunder fists, plasma or energy balls, charge-ups, dashes with shadow trails, ground strikes, storm domains, ultimates, hit-stop, impact frames, negative flashes or screen shake. Includes a reusable module and a rebuildable five-beat demo.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 506,
+          "sha256": "6f068ad826e6f82c7f7a901f6e72bf6fa927afec71309aa4c8801868b7aa0eb6",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "6f068ad826e6f82c7f7a901f6e72bf6fa927afec71309aa4c8801868b7aa0eb6"
+        },
+        {
+          "path": "assets/storm-energy.mjs",
+          "bytes": 151534,
+          "sha256": "c7b07060f4175182a033f73ec302f890edc5d7e2c6e4f6b99bc02d1429a17d46",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "c7b07060f4175182a033f73ec302f890edc5d7e2c6e4f6b99bc02d1429a17d46"
+        },
+        {
+          "path": "examples/assets/ground/dry_ground_01_arm_1k.jpg",
+          "bytes": 184324,
+          "sha256": "e6627e56850bf5021162081bbd886fbb38465850dbcee854b9b5deedfb2c3fed",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "e6627e56850bf5021162081bbd886fbb38465850dbcee854b9b5deedfb2c3fed"
+        },
+        {
+          "path": "examples/assets/ground/dry_ground_01_diff_1k.jpg",
+          "bytes": 604799,
+          "sha256": "75222fc97a82b635a09cf8f2891dd58bc42e49599b9fda920b2c50193fe85e9f",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "75222fc97a82b635a09cf8f2891dd58bc42e49599b9fda920b2c50193fe85e9f"
+        },
+        {
+          "path": "examples/assets/ground/dry_ground_01_nor_gl_1k.jpg",
+          "bytes": 243523,
+          "sha256": "8faf30f0656721f861dba573006c3f90e38fcda8dad481d2369145b114c6b45e",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "8faf30f0656721f861dba573006c3f90e38fcda8dad481d2369145b114c6b45e"
+        },
+        {
+          "path": "examples/assets/three.r170.min.js",
+          "bytes": 691561,
+          "sha256": "aba48d00aac89d4952c8242a3f87707eb120e7a91a427a493283b4c7954b7449",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "aba48d00aac89d4952c8242a3f87707eb120e7a91a427a493283b4c7954b7449"
+        },
+        {
+          "path": "examples/build.mjs",
+          "bytes": 2648,
+          "sha256": "76a609a5491510fab6c936f8687433488fe600414f15729fbd86a57d6375c962",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "76a609a5491510fab6c936f8687433488fe600414f15729fbd86a57d6375c962"
+        },
+        {
+          "path": "examples/src/stage.js",
+          "bytes": 44477,
+          "sha256": "fea4394f05bdfd56e18480ef1df7d177d72eff7f2a493cafcd66ac7a42766d1e",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "fea4394f05bdfd56e18480ef1df7d177d72eff7f2a493cafcd66ac7a42766d1e"
+        },
+        {
+          "path": "examples/src/ui.css",
+          "bytes": 5267,
+          "sha256": "02e0f464c47ea0455232bc8d44f387f1334c901d55a3508af0e69875473aafc7",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "02e0f464c47ea0455232bc8d44f387f1334c901d55a3508af0e69875473aafc7"
+        },
+        {
+          "path": "examples/src/ui.html",
+          "bytes": 3779,
+          "sha256": "1f0f3ef57fff132f0a73498a7f011723f6106ef50e246ff7d9235f5c8bbfef84",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "1f0f3ef57fff132f0a73498a7f011723f6106ef50e246ff7d9235f5c8bbfef84"
+        },
+        {
+          "path": "examples/src/ui.js",
+          "bytes": 4382,
+          "sha256": "000aae84e1e94e121e79c7829bfe0e2ff5f2dd30f628d06c4e0ece4130961637",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "000aae84e1e94e121e79c7829bfe0e2ff5f2dd30f628d06c4e0ece4130961637"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 40070,
+          "sha256": "35fb9c961278bdb3b133beb49ff35ecef7e5d48c66363c0171bcbc1c8de3373c",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "35fb9c961278bdb3b133beb49ff35ecef7e5d48c66363c0171bcbc1c8de3373c"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1360,
+          "sha256": "64ee7e0bf39452c0052a8d5329d8feb8d19364068e59fe44031aa0fd6ac01124",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "64ee7e0bf39452c0052a8d5329d8feb8d19364068e59fe44031aa0fd6ac01124"
+        },
+        {
+          "path": "references/scorecard.md",
+          "bytes": 8792,
+          "sha256": "11a96d7cc6a289d3514301ab8b834f06c92dc5894b66ffb4129ca35038913292",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "11a96d7cc6a289d3514301ab8b834f06c92dc5894b66ffb4129ca35038913292"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "80e69cb29c7dbd3193dfd66b51737d6a9b6aa3bc06afe8eaec9cc9fe1ce8b24e"
         }
       ]
     },
@@ -2800,13 +4384,14 @@
     },
     {
       "name": "threejs-procedural-architecture",
-      "description": "Build authored procedural buildings and architectural kits in Three.js. Use for massing grammars, exposed-edge analysis, fa\u00e7ade bays, profiles, arches, cornices, roofs, ornaments, material-slot mesh compilation, deterministic variants, and procedural city assets.",
+      "description": "Build authored procedural buildings and architectural kits in Three.js. Use for massing grammars, exposed-edge analysis, fa\u00e7ade bays, profiles, arches, cornices, roofs, ornaments, material-slot mesh compilation, deterministic variants, and procedural city assets. Also covers human-scale modular buildings for streets and waterfronts that hold up from approach and walk-up cameras.",
       "role": "specialist",
       "sibling_suggestions": [
         "threejs-procedural-geometry"
       ],
       "license_notices": [
-        "assets/procedural-financial-tower/THIRD_PARTY_LICENSES.md"
+        "assets/procedural-financial-tower/THIRD_PARTY_LICENSES.md",
+        "references/legal/mengto-skills-license.md"
       ],
       "files": [
         {
@@ -2887,14 +4472,34 @@
           "sha256": "4a2327585614bd3c878a9ea1ed1048e824f339ad38193c4da4492e5a86c8c609",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "2b7702f22fe3113f6dd47c51cc8a27015766694b0840cd621c8a43d7d6ad84cd",
+          "runtime_sha256": "793153a09ea03c3bfa92646fed73b9e279aeb268ef4acc6aadbb5edc926ff193",
           "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "2e959d2323481ae23c8a8b9624cc87a869bcedf719b3075e90741fc1afce968a"
+          "sha256": "de54444bc64ce090c724b5aef1c9dce8967e774716a8f8d274b826e3bb96a7d7"
+        },
+        {
+          "path": "examples/modular-buildings/assets/Three-LICENSE.txt",
+          "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+        },
+        {
+          "path": "examples/modular-buildings/assets/three.min.js",
+          "sha256": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271"
+        },
+        {
+          "path": "examples/modular-buildings/index.html",
+          "sha256": "6e61cd2328095f1fc2fc2e2dc43e28a385ff3a25e7b877eaa4e2cc3f3d3ba3c5"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "sha256": "1d7775569c29039217b1b82d976e19013ad3744fc66464c4aaeacbcd58a59559"
+        },
+        {
+          "path": "references/modular-buildings.md",
+          "sha256": "8e2a1c21728cfdf9bd2dc7757f30b8c1944e3892767a5e2184e01986b3655295"
         }
       ]
     },
@@ -2936,16 +4541,16 @@
       ],
       "added_files": [
         {
+          "path": "README.md",
+          "sha256": "6e80ec4bbc9c6251fc0eb7896f48a9edd7e39d19ac1d772704d6b8ffd3c01cc7"
+        },
+        {
           "path": "examples/shared-procedural-planet-surface/planet-system.js",
           "sha256": "9c4b5df5883ba9d660ab56ead515eb0a921cee7ba1dcb6045c025ac2f851523e"
         },
         {
           "path": "examples/shared-procedural-planet-surface/terrain-field.js",
           "sha256": "59bdee7b208b6188857e3ced93e75efc5f57d39861f06d05762b4e7c8a30f629"
-        },
-        {
-          "path": "README.md",
-          "sha256": "6e80ec4bbc9c6251fc0eb7896f48a9edd7e39d19ac1d772704d6b8ffd3c01cc7"
         }
       ]
     },
@@ -3268,16 +4873,16 @@
       ],
       "added_files": [
         {
+          "path": "README.md",
+          "sha256": "3e0ad378043dda2c87dd22d6b30d78243e33676c013056ec007d047059d52ad3"
+        },
+        {
           "path": "examples/shared-procedural-financial-tower/building-system.js",
           "sha256": "59db7c2674bb50a22340c6bc808d5c31143e670697cdc9cc624a75d3e421b3a6"
         },
         {
           "path": "examples/shared-procedural-financial-tower/shadow-clipmaps.js",
           "sha256": "809e6c9605505cf3fa67de24f9e79db8faf82ad252822817e31f3e161de8efb2"
-        },
-        {
-          "path": "README.md",
-          "sha256": "3e0ad378043dda2c87dd22d6b30d78243e33676c013056ec007d047059d52ad3"
         }
       ]
     },
@@ -4280,6 +5885,10 @@
       ],
       "added_files": [
         {
+          "path": "README.md",
+          "sha256": "71e8c62548eac8390ff1906fc7f0ca7da742a11db44685bf8257ef5fad51ff34"
+        },
+        {
           "path": "examples/shared-procedural-planet-surface/planet-system.js",
           "sha256": "9c4b5df5883ba9d660ab56ead515eb0a921cee7ba1dcb6045c025ac2f851523e"
         },
@@ -4290,10 +5899,6 @@
         {
           "path": "examples/shared-sculpted-gallery-frame/frame-geometry.js",
           "sha256": "5c72a6b4cf907ff32a5f9e70ac20d465e435058f227b2ea3ded242bd60e8fac6"
-        },
-        {
-          "path": "README.md",
-          "sha256": "71e8c62548eac8390ff1906fc7f0ca7da742a11db44685bf8257ef5fad51ff34"
         }
       ]
     },
@@ -4358,14 +5963,15 @@
     },
     {
       "name": "threejs-procedural-vegetation",
-      "description": "Generate authored procedural trees, grass, ivy, flowers, and vegetation in Three.js or raw WebGPU. Use for surface-following vines, painted ivy paths, stylized or GPU grass, GPU-culled virtual flower fields, trunks, recursive branches, roots, canopies, leaf cards, species presets, deterministic growth, distance-tiered plant geometry, and rooted blade, stem, or petiole-hinge wind.",
+      "description": "Generate authored procedural trees, grass, ivy, flowers, and vegetation in Three.js or raw WebGPU. Use for surface-following vines, painted ivy paths, stylized or GPU grass, GPU-culled virtual flower fields, trunks, recursive branches, roots, canopies, leaf cards, species presets, deterministic growth, distance-tiered plant geometry, and rooted blade, stem, or petiole-hinge wind. Also covers an animated forest-floor study of fern fronds, moss and stones.",
       "role": "specialist",
       "sibling_suggestions": [
         "threejs-procedural-geometry"
       ],
       "license_notices": [
         "assets/gpu-culled-flower-field/THIRD_PARTY_LICENSES.md",
-        "assets/structured-ash-growth/THIRD_PARTY_LICENSES.md"
+        "assets/structured-ash-growth/THIRD_PARTY_LICENSES.md",
+        "references/legal/mengto-skills-license.md"
       ],
       "files": [
         {
@@ -4582,20 +6188,40 @@
           "sha256": "ba601624c21d7f016220ddb73f733c5ecd4625900cf291ff72afbd8635c0573e",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "029e1876be761d08e359a97bc3f61e15e02f631d5e936299763973fac904e483",
+          "runtime_sha256": "206b510eefa43dd5fe9b1d1a3048ff297fb65ed8e5b95334bd44a3925e4f4508",
           "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "a473bd930dfc52b2e0713c627624df59921c8bf9fc4135e18aafb9baa38dacdb"
+          "sha256": "e6b758461e178c35bcdf2062a367b11f9e986347f4572b14f383e6a70416a4e3"
+        },
+        {
+          "path": "examples/forest-floor-specimen/assets/THREE-LICENSE.txt",
+          "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+        },
+        {
+          "path": "examples/forest-floor-specimen/assets/three.min.js",
+          "sha256": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271"
+        },
+        {
+          "path": "examples/forest-floor-specimen/index.html",
+          "sha256": "66a1da5ba0171225ea1c00e646a24add16d6f771285d93de84fbdc044fa53cd0"
+        },
+        {
+          "path": "references/forest-floor-specimen.md",
+          "sha256": "70d236ef14c33a22b08e8df4c69ee574d44c9585d542f540881605f5774e7eaf"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "sha256": "4f31b437991be1ad2719b7e7719954504aaa6261c830c3d540b35816e7dd96a0"
         }
       ]
     },
     {
       "name": "threejs-procedural-vfx",
-      "description": "Author production real-time VFX in Three.js. Use for filmic HDR lens-flare compositors, highlight-derived ghosts, field-angle pupil deformation, localized glare and bloom, raymarched aurora curtains, finite-footprint emissive slabs, uniform volume integration, equirectangular radiance probes, WebGPU voxel fire and smoke, coupled volumetric fluid fields, mesh-surface emitters, signed-distance fire collisions, ship-conforming reentry plasma, generated capsule wakes, instanced analytic sparks, timed dissolving debris, dense-swap effect pools, additive holographic projections, Fresnel rim shells, scanline banding, glitch displacement, swept shape-to-shape handovers, and explicit scene-relative HDR emission hierarchy.",
+      "description": "Author production real-time VFX in Three.js. Use for filmic HDR lens-flare compositors, highlight-derived ghosts, field-angle pupil deformation, localized glare and bloom, raymarched aurora curtains, finite-footprint emissive slabs, uniform volume integration, equirectangular radiance probes, WebGPU voxel fire and smoke, coupled volumetric fluid fields, mesh-surface emitters, signed-distance fire collisions, ship-conforming reentry plasma, generated capsule wakes, instanced analytic sparks, timed dissolving debris, dense-swap effect pools, additive holographic projections, Fresnel rim shells, scanline banding, glitch displacement, swept shape-to-shape handovers, and explicit scene-relative HDR emission hierarchy. Also carries rules for readable, budgeted gameplay VFX - telegraphs, impacts, status effects and reduced-motion alternatives.",
       "role": "specialist",
       "sibling_suggestions": [
         "threejs-atmosphere-aerial-perspective",
@@ -4603,7 +6229,9 @@
         "threejs-temporal-surfaces",
         "threejs-volumetric-clouds"
       ],
-      "license_notices": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
       "files": [
         {
           "path": "agents/openai.yaml",
@@ -4835,26 +6463,36 @@
           "sha256": "6094bb92a25d5a7bac5d36b6f325ecaadae332f6cad3e1142c849bcae8f08969",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "e88118562552189a61033ebb3ba044d1fb5ac590ed82b7c21c490f675d8cc4a9",
+          "runtime_sha256": "060405a7ab758b26a3dda02f483569479b43fc1ccb67a3fb54b18406fd36e100",
           "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "eaae3d2c59a65c915f4deba71b6ae0bfb9036ae1967340263a0d03db1451b3f1"
+          "sha256": "e6ef4ac90bf439f19e8c25d8a78e9f6d7e5fae787b52dd8a4d1dd77f7c882ded"
+        },
+        {
+          "path": "references/game-vfx.md",
+          "sha256": "0aca43bba743d82a1094958a96055302c88e63f758291c43b7ae4be101c5c0b4"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "sha256": "614602f843bf2dba3943bf92cbfb3590fb14476e17af1726a68664e9c9fbc424"
         }
       ]
     },
     {
       "name": "threejs-qa-release",
-      "description": "Verify and release Three.js browser games - playtest QA, automated bot playtests, mobile and responsive checks, production builds, static-hosting base paths, debug gating, bundle review, screenshots, visual regression baselines, canvas-pixel inspection with measured metrics, and release risk reports.",
+      "description": "Verify and release Three.js browser games - playtest QA, automated bot playtests, mobile and responsive checks, production builds, static-hosting base paths, debug gating, bundle review, screenshots, visual regression baselines, canvas-pixel inspection with measured metrics, and release risk reports. Also covers deterministic end-to-end tests of playable games and shipping web games with production smoke tests and rollback.",
       "role": "specialist",
       "sibling_suggestions": [
         "threejs-aaa-graphics-builder",
         "threejs-canvas"
       ],
-      "license_notices": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
       "files": [
         {
           "path": "agents/openai.yaml",
@@ -4902,14 +6540,26 @@
           "sha256": "cf86ea23ea77839a81374dd66bc8f70c5284f8556398c08292e24c706c35863e",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "6f5d9ed5de4ad0071e1e62e512342beb2af1230d30d57eb882d35fcbb4754fae",
+          "runtime_sha256": "62703ad37ef3cb2845d4ad285c59cb32268e2d22d4247ef99efde2e26e53e3f3",
           "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "0e166523efda07314ec6156a4a29f93f06df05045bd857bed46f8d824e0ef803"
+          "sha256": "318e22adf6a8799629ab5594a062f86726602b827f1075c7852c84c795a389e1"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "sha256": "84ea7bb81e427977f318267a23ca10ebeb25db3a530644dca25209272ddb3d8a"
+        },
+        {
+          "path": "references/playable-testing.md",
+          "sha256": "a14f4465cbfeb967c5b3acdb75959c304d16e4d6c4c19d8723dca912377884cc"
+        },
+        {
+          "path": "references/ship-web-games.md",
+          "sha256": "e773566d45b03a29a10090a1cdb32703ed808c36d80eeb06637ad690bcab8eef"
         }
       ]
     },
@@ -5026,7 +6676,7 @@
           "sha256": "73632bdb0fdd20207cadf3cd046ddaa0f60b4d3e3647afe30db8f4e81351b345",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "73632bdb0fdd20207cadf3cd046ddaa0f60b4d3e3647afe30db8f4e81351b345"
+          "runtime_sha256": "0acc8e21c0d407539313820e945b8589f62d2ce9728f43a046a068ab929c8cfb"
         },
         {
           "path": "references/asset-sourcing.md",
@@ -5049,6 +6699,127 @@
         {
           "path": "README.md",
           "sha256": "100d3c3165f334e826a06d961bad9ca76e4a1cd2e6ef38a3a10a4354bad4a5d8"
+        }
+      ]
+    },
+    {
+      "name": "threejs-relit-paintings",
+      "description": "Add pointer-driven lighting to a 2D painting, sprite, or holographic card using separate depth, normal, and roughness maps. Use for moving highlights on illustrated metal, skin, cloth, or paper while the painted silhouette stays registered.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 256,
+          "sha256": "ec9b08c29e5f5c0ae065dba462fe7345eb30bb83f2d0bda18ff3323feb5d862a",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "ec9b08c29e5f5c0ae065dba462fe7345eb30bb83f2d0bda18ff3323feb5d862a"
+        },
+        {
+          "path": "assets/paint-light.js",
+          "bytes": 6143,
+          "sha256": "71fa04bf14782a74136870824676d32277aa499025743b184e5228f988b9b3f8",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "71fa04bf14782a74136870824676d32277aa499025743b184e5228f988b9b3f8"
+        },
+        {
+          "path": "assets/paint-renderer.js",
+          "bytes": 5579,
+          "sha256": "62db48c4ce8d899e4ec7d645c9ec71bc9760627f8451b004fd8154e65ad808bb",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "62db48c4ce8d899e4ec7d645c9ec71bc9760627f8451b004fd8154e65ad808bb"
+        },
+        {
+          "path": "assets/paint-shader.js",
+          "bytes": 2027,
+          "sha256": "1a200e875cc4ac32ed1cd9144bc8e2bfd58b2719c50413776235412334e341f0",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "1a200e875cc4ac32ed1cd9144bc8e2bfd58b2719c50413776235412334e341f0"
+        },
+        {
+          "path": "examples/assets/commission-engraving.webp",
+          "bytes": 370874,
+          "sha256": "1629efc8c09af6ff7ae2cd749d7919dea8a70ad67b55b4b94408f4f85d05f4e2",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "1629efc8c09af6ff7ae2cd749d7919dea8a70ad67b55b4b94408f4f85d05f4e2"
+        },
+        {
+          "path": "examples/assets/handoff.js",
+          "bytes": 2264596,
+          "sha256": "7c66a84150683a13c8a22097bae0a798c9b57ca3509f35cc45c9934bed706bcd",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "7c66a84150683a13c8a22097bae0a798c9b57ca3509f35cc45c9934bed706bcd"
+        },
+        {
+          "path": "examples/assets/paint-light.min.js",
+          "bytes": 545964,
+          "sha256": "5adc19eaa0543e0aea888093258bf02b4119d2650183540caaa24fc5df30db4a",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "5adc19eaa0543e0aea888093258bf02b4119d2650183540caaa24fc5df30db4a"
+        },
+        {
+          "path": "examples/assets/paper-grain.png",
+          "bytes": 130882,
+          "sha256": "4f6a029da43892150edcea54bd7ea98233d447084d389b69973f63e0b5e0ac9e",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "4f6a029da43892150edcea54bd7ea98233d447084d389b69973f63e0b5e0ac9e"
+        },
+        {
+          "path": "examples/assets/Three-LICENSE.txt",
+          "bytes": 1081,
+          "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+        },
+        {
+          "path": "examples/index.html",
+          "bytes": 6659,
+          "sha256": "86708aa8b356ab6291282ab5d15bdf11cd5186a333d5d967fbd55cbeac0e98cd",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "86708aa8b356ab6291282ab5d15bdf11cd5186a333d5d967fbd55cbeac0e98cd"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 7675,
+          "sha256": "9f460d76ee18f578cc5a78ccf80210cb0a9d840cca09cad9d701afa62597774d",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "972db3e742cdb2d9ab39cbc4067dcbdb15cbdfa5f909fb1a73a13ac5a56a2f48"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1344,
+          "sha256": "1632daccad320a91e6c74b958c61b6a3a710933e06d4e9818ca4f5bc24dcdf3a",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "1632daccad320a91e6c74b958c61b6a3a710933e06d4e9818ca4f5bc24dcdf3a"
+        },
+        {
+          "path": "scripts/bake_maps.py",
+          "bytes": 5689,
+          "sha256": "91f0b6c5e19acb41088169e65e9f4ac67117610cafc1a5161382cf34acd9ca6a",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "91f0b6c5e19acb41088169e65e9f4ac67117610cafc1a5161382cf34acd9ca6a"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "c0bc9a5407d175568e91a081e55e9a7ce6b616db08b6e41f0fba904420df0198"
         }
       ]
     },
@@ -5098,6 +6869,240 @@
         {
           "path": "README.md",
           "sha256": "26ac9f6576a3d38c0f7afcc6dc6f0654d5f5de2558fe8c5536aad6193a240bd1"
+        }
+      ]
+    },
+    {
+      "name": "threejs-rigged-game-assets",
+      "description": "Create, integrate, or audit production-ready rigged 3D characters and monsters with a main model, skeleton, animation library, sockets, collision contracts, separate character equipment, optimized runtime files, catalog media, and an interactive moveset inspector. Use when generating or importing FBX/GLB game actors; defining character-versus-monster asset requirements; separating swords, shields, helmets, armor, or stowed gear; adding idle, walk, run, attack, hit, dodge, block, cast, or death clips; wiring an asset into gameplay; or adding action and equipment controls plus deterministic tests to a game asset catalog. Also covers truthful catalog review pairs that set a transparent PNG reference beside the live model.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 300,
+          "sha256": "7234c01c45e92d6ba89aafe7e3a793558f56512adf6ff46cc34e86aa9ddb465f",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "7234c01c45e92d6ba89aafe7e3a793558f56512adf6ff46cc34e86aa9ddb465f"
+        },
+        {
+          "path": "assets/character-asset-manifest.template.json",
+          "bytes": 4637,
+          "sha256": "d2a1a02e47eaa2dd25b57da673362558b82c2c906b8a7f01a0ff5e60a4bf816c",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "d2a1a02e47eaa2dd25b57da673362558b82c2c906b8a7f01a0ff5e60a4bf816c"
+        },
+        {
+          "path": "assets/monster-asset-manifest.template.json",
+          "bytes": 3205,
+          "sha256": "e1c476235b93c632579446842a235b8f257b0ce47ddf9cc3a14e398e6c12187c",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "e1c476235b93c632579446842a235b8f257b0ce47ddf9cc3a14e398e6c12187c"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 9578,
+          "sha256": "716e4c902c3324898a599631b52e807a214a7ed6ead99a81aeedae65ab7f85bd",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "716e4c902c3324898a599631b52e807a214a7ed6ead99a81aeedae65ab7f85bd"
+        },
+        {
+          "path": "references/catalog-and-testing.md",
+          "bytes": 5520,
+          "sha256": "1e3f0e15c4dabe0329f265ebeeb90138b47789d3ebf229e5bd8c673f6132ab19",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "1e3f0e15c4dabe0329f265ebeeb90138b47789d3ebf229e5bd8c673f6132ab19"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1683,
+          "sha256": "67d0c145b0c63b50b8ae65b947bfefc56e5f17913501b7ece0c5f98e198e6ed9",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "67d0c145b0c63b50b8ae65b947bfefc56e5f17913501b7ece0c5f98e198e6ed9"
+        },
+        {
+          "path": "references/requirements.md",
+          "bytes": 7696,
+          "sha256": "e55a1e96c7dce6f3cd36475b9545f1b545b10cc8b90a0c7b23801539f28d6a8e",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "e55a1e96c7dce6f3cd36475b9545f1b545b10cc8b90a0c7b23801539f28d6a8e"
+        },
+        {
+          "path": "references/review-pairs/catalog-contract.md",
+          "bytes": 1739,
+          "sha256": "881ce3f129c42c4ddb58bab7208f873fa26877d32dec4b33254457b046e3e4b6",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "881ce3f129c42c4ddb58bab7208f873fa26877d32dec4b33254457b046e3e4b6"
+        },
+        {
+          "path": "references/review-pairs.md",
+          "bytes": 3022,
+          "sha256": "d707e22cf36cd378e1bc871fac91a9b639360c721fa6851df52704ef91a01db6",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "d707e22cf36cd378e1bc871fac91a9b639360c721fa6851df52704ef91a01db6"
+        },
+        {
+          "path": "scripts/review-pairs/validate_pair.py",
+          "bytes": 1495,
+          "sha256": "d3d1d5a8560002acd970d9931dd5117c4de2a558dad4260dd9dadf5f8f94b9d1",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "d3d1d5a8560002acd970d9931dd5117c4de2a558dad4260dd9dadf5f8f94b9d1"
+        },
+        {
+          "path": "scripts/validate_asset_manifest.py",
+          "bytes": 16136,
+          "sha256": "fdfd3e6d65c96c434a40c56201f536d248a6eee52f59bbc2e6cee0177c7e3d08",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "fdfd3e6d65c96c434a40c56201f536d248a6eee52f59bbc2e6cee0177c7e3d08"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "446b5ef0910e73f9389d05e3c7e2ea5a4c849369a224d4072e56f367ad588b79"
+        }
+      ]
+    },
+    {
+      "name": "threejs-scan-reveals",
+      "description": "Build animated 3D scans from actual mesh topology in Three.js or WebGL. Use for a city survey pulse, a replayable world-space scanner that traces mesh edges over architecture, terrain or water, a staged construction reveal from structural wireframe to finished solids, or a character swap where dots and wireframe travel across the surface before it resolves.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 239,
+          "sha256": "13bab4ab0def2cf197aef0730d75854e975294cdc1f9dee630dbc4d5736bd460",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "13bab4ab0def2cf197aef0730d75854e975294cdc1f9dee630dbc4d5736bd460"
+        },
+        {
+          "path": "assets/character-scan.jpg",
+          "bytes": 132706,
+          "sha256": "ebb78db7154d92bb0180ef074139f439f302b84cae5e5743293ae90810c4ccb4",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "ebb78db7154d92bb0180ef074139f439f302b84cae5e5743293ae90810c4ccb4"
+        },
+        {
+          "path": "assets/district-scan.jpg",
+          "bytes": 256889,
+          "sha256": "6787d02f9936c5905e78f7a9b37bca1a6aa44c74883756e666f23f32bbb022bb",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "6787d02f9936c5905e78f7a9b37bca1a6aa44c74883756e666f23f32bbb022bb"
+        },
+        {
+          "path": "assets/scan-cage.mjs",
+          "bytes": 2270,
+          "sha256": "09d0841acd6bb210b960393850948d8d4c7e04162eb3ef6d90183e70171c4c77",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "09d0841acd6bb210b960393850948d8d4c7e04162eb3ef6d90183e70171c4c77"
+        },
+        {
+          "path": "examples/construction-sequence/assets/Three-LICENSE.txt",
+          "bytes": 1081,
+          "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+        },
+        {
+          "path": "examples/construction-sequence/assets/three.min.js",
+          "bytes": 608081,
+          "sha256": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271"
+        },
+        {
+          "path": "examples/construction-sequence/index.html",
+          "bytes": 16411,
+          "sha256": "3289f96b41b3617697e5f3c4e315cb9b5731dadfccb098e2d9a0a92a7186204b",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "3289f96b41b3617697e5f3c4e315cb9b5731dadfccb098e2d9a0a92a7186204b"
+        },
+        {
+          "path": "examples/survey-scan/assets/Three-LICENSE.txt",
+          "bytes": 1081,
+          "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+        },
+        {
+          "path": "examples/survey-scan/assets/three.min.js",
+          "bytes": 608081,
+          "sha256": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271"
+        },
+        {
+          "path": "examples/survey-scan/index.html",
+          "bytes": 16608,
+          "sha256": "8fdd754113c6ad014cf2eab5ffd2d3d3fffa66cc5e32935d4512884b43b50b00",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "8fdd754113c6ad014cf2eab5ffd2d3d3fffa66cc5e32935d4512884b43b50b00"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 6943,
+          "sha256": "defebff1a11666ef8833f4a2e6757f812364f968d2bb6c67b579c2cd8cf409f4",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "defebff1a11666ef8833f4a2e6757f812364f968d2bb6c67b579c2cd8cf409f4"
+        },
+        {
+          "path": "references/construction-sequence.md",
+          "bytes": 3496,
+          "sha256": "fd1a24fb3a0fe8961b5df9854fac95676a8ef129038ed49a666d19e740d71399",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "fd1a24fb3a0fe8961b5df9854fac95676a8ef129038ed49a666d19e740d71399"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1951,
+          "sha256": "b5c615ecdea3a46e2a2a2ba5f8d63ba55a8e898e6319a3c9423f716b1eaf1f17",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "b5c615ecdea3a46e2a2a2ba5f8d63ba55a8e898e6319a3c9423f716b1eaf1f17"
+        },
+        {
+          "path": "references/survey-scan.md",
+          "bytes": 3499,
+          "sha256": "a4db20bd72f5e207cff8d4b0b2b02a71b61ba58079ffb144607be694b6d9867f",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "a4db20bd72f5e207cff8d4b0b2b02a71b61ba58079ffb144607be694b6d9867f"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "a38f1c50301dfc509aa1ccde211cb6bc6f6175461e24efa64fb8479e03ab7b65"
         }
       ]
     },
@@ -5209,16 +7214,16 @@
       ],
       "added_files": [
         {
+          "path": "README.md",
+          "sha256": "0bf4e2cf9385b555fe8b06fabb75589edd11c2eddf4199c6854ab82a2b9f2700"
+        },
+        {
           "path": "examples/shared-procedural-financial-tower/building-system.js",
           "sha256": "59db7c2674bb50a22340c6bc808d5c31143e670697cdc9cc624a75d3e421b3a6"
         },
         {
           "path": "examples/shared-procedural-financial-tower/shadow-clipmaps.js",
           "sha256": "809e6c9605505cf3fa67de24f9e79db8faf82ad252822817e31f3e161de8efb2"
-        },
-        {
-          "path": "README.md",
-          "sha256": "0bf4e2cf9385b555fe8b06fabb75589edd11c2eddf4199c6854ab82a2b9f2700"
         }
       ]
     },
@@ -5373,6 +7378,135 @@
         {
           "path": "README.md",
           "sha256": "953c624c4625747ca1e8597304271b753c415b841f0188566287416c78c1bcc5"
+        }
+      ]
+    },
+    {
+      "name": "threejs-small-wildlife",
+      "description": "Build and animate small 3D wildlife in Three.js - a bird with a recognizable species silhouette, folding wings, independent head and tail and grounded toes, and a butterfly that banks in flight, settles on a real plant surface with hinged wings and takes off when disturbed. Use for perching, takeoff, flight and landing in wildlife or garden scenes.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 315,
+          "sha256": "119201f30280e821c7c9704c132d926d9187235d1eb2f48a05b143f6df4331c9",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "119201f30280e821c7c9704c132d926d9187235d1eb2f48a05b143f6df4331c9"
+        },
+        {
+          "path": "examples/birds/assets/THREE-LICENSE.txt",
+          "bytes": 1081,
+          "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+        },
+        {
+          "path": "examples/birds/assets/three.min.js",
+          "bytes": 608081,
+          "sha256": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271"
+        },
+        {
+          "path": "examples/birds/assets/wagtail.js",
+          "bytes": 4438,
+          "sha256": "1ffc4ed73ab282cbc06979714ea15945fd6fb284671c3fdd1c70ab3dea350e6c",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "1ffc4ed73ab282cbc06979714ea15945fd6fb284671c3fdd1c70ab3dea350e6c"
+        },
+        {
+          "path": "examples/birds/index.html",
+          "bytes": 1501,
+          "sha256": "18dd61f2d1056eacbee89e1d3c61061c2826dedda834a260b9ce2a29905be433",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "18dd61f2d1056eacbee89e1d3c61061c2826dedda834a260b9ce2a29905be433"
+        },
+        {
+          "path": "examples/birds/study.js",
+          "bytes": 2721,
+          "sha256": "c897a0555fe000a8647a588b4d8d612b7b60c5ee71d11ccfe2d8dd5d0a9c0f8a",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "c897a0555fe000a8647a588b4d8d612b7b60c5ee71d11ccfe2d8dd5d0a9c0f8a"
+        },
+        {
+          "path": "examples/butterfly/assets/THREE-LICENSE.txt",
+          "bytes": 1081,
+          "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+        },
+        {
+          "path": "examples/butterfly/assets/three.min.js",
+          "bytes": 608081,
+          "sha256": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271"
+        },
+        {
+          "path": "examples/butterfly/index.html",
+          "bytes": 20003,
+          "sha256": "fe88723c09782e938079db28aaf07d0ca0403d7983baec2d2c50cbd20bb641e5",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "fe88723c09782e938079db28aaf07d0ca0403d7983baec2d2c50cbd20bb641e5"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 3228,
+          "sha256": "430850e2658a9ba9df85e1108b32d03589590fa6718ca581c5ec561c16e44689",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "430850e2658a9ba9df85e1108b32d03589590fa6718ca581c5ec561c16e44689"
+        },
+        {
+          "path": "references/birds/check-perch.cjs",
+          "bytes": 941,
+          "sha256": "37ea1cc997e85f5e5d44a477270ba474f357f61d863177e3fb6708de98606ce3",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "37ea1cc997e85f5e5d44a477270ba474f357f61d863177e3fb6708de98606ce3"
+        },
+        {
+          "path": "references/birds.md",
+          "bytes": 2754,
+          "sha256": "cc566c810346a017bbc3653b4d4566692d4b8f7b806414f9e79caa019c05f799",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "cc566c810346a017bbc3653b4d4566692d4b8f7b806414f9e79caa019c05f799"
+        },
+        {
+          "path": "references/butterfly.md",
+          "bytes": 1359,
+          "sha256": "ad02e80a03a44229c2bb9540f9ce5f77e8aa9492326e3ba90479e8da6459d888",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "ad02e80a03a44229c2bb9540f9ce5f77e8aa9492326e3ba90479e8da6459d888"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1635,
+          "sha256": "da76f242779ebc99e0accfb3e86894ceba0b11ae6123eb95c36254d66ff6d7be",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "da76f242779ebc99e0accfb3e86894ceba0b11ae6123eb95c36254d66ff6d7be"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "a80d51e97cd94095f19975206ec9b1172ae55406ee9c484ac17b783ba9205645"
         }
       ]
     },
@@ -5872,14 +8006,16 @@
     },
     {
       "name": "threejs-temporal-surfaces",
-      "description": "Build view-aligned and screen-space surface effects in Three.js. Use for touch-history frost and thaw, ping-pong accumulation, reduced-resolution blur, crystalline masks, two-scale refraction, and procedural rain droplets that refract and blur a background through wet glass.",
+      "description": "Build view-aligned and screen-space surface effects in Three.js. Use for touch-history frost and thaw, ping-pong accumulation, reduced-resolution blur, crystalline masks, two-scale refraction, and procedural rain droplets that refract and blur a background through wet glass. Also covers camera-space lens raindrops and windshield beads that refract the live scene.",
       "role": "specialist",
       "sibling_suggestions": [
         "threejs-precipitation-surfaces",
         "threejs-procedural-materials",
         "threejs-procedural-vfx"
       ],
-      "license_notices": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
       "files": [
         {
           "path": "agents/openai.yaml",
@@ -5959,14 +8095,30 @@
           "sha256": "95b601aed2e559e9b943b57224fbfe83c547a62d58bd6a57efa66de8e5a731c9",
           "kind": "text",
           "findings": [],
-          "runtime_sha256": "1ba1ff319b5291fa7940b7089001e9ea9c08a644b9079eeadd1e77d2c442150b",
+          "runtime_sha256": "21988908a56555098d7f4c0721de412c04d8ce3127c05bdedbff17cdd790d75a",
           "runtime_path": "GUIDE.md"
         }
       ],
       "added_files": [
         {
           "path": "README.md",
-          "sha256": "5617ddabe29935e9431637cd2e07399c4fdd771b89ff81cc6853de013f64049c"
+          "sha256": "45817b20089d5a26ad5dd6046be5505aac0d57f776c84bd2ac68d6f26c963536"
+        },
+        {
+          "path": "assets/lens-raindrops/drop-field.frag",
+          "sha256": "10adc2c59039684e7f75164d04bd9cdb263ddcc7e67ed75b0ea46a5cb4435f90"
+        },
+        {
+          "path": "assets/lens-raindrops/refract.frag",
+          "sha256": "80bdf51149c6a89cf2e21ecaf76bbc86dddc783b2120450c0b68d33605b48dfe"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "sha256": "c664ef4d7b78b35daac3f2930f6dac23b759932f83b47dfe1f6d7d45fbb42c3c"
+        },
+        {
+          "path": "references/lens-raindrops.md",
+          "sha256": "d4863f6b0a3c37a790bc741b1299d461d78e67c680fbad5feace904db43dde46"
         }
       ]
     },
@@ -6044,6 +8196,55 @@
         {
           "path": "README.md",
           "sha256": "f9f2ccdc87e57c0975aecb16221b8d90a49a8a857c6f172db9b098fa1de64213"
+        }
+      ]
+    },
+    {
+      "name": "threejs-virtual-tour",
+      "description": "Build guided and interactive virtual tours through a 3D environment with authored camera paths, room and floor-plan navigation, orbit inspection, smooth mode handoffs, and progressive loading. Use for architectural walkthroughs, real-estate tours, museums, showrooms, and explorable spaces built with Three.js or a similar renderer.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 279,
+          "sha256": "c4f5f54e72f68b8d6087c4a74ee3b74e92220d2f6b23ffd1834c77a761e4ffe4",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "c4f5f54e72f68b8d6087c4a74ee3b74e92220d2f6b23ffd1834c77a761e4ffe4"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 10475,
+          "sha256": "48d29279eac807a501e755dcb7fbce05ad63079a51813c6d9fe927dad2bdaf7c",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "48d29279eac807a501e755dcb7fbce05ad63079a51813c6d9fe927dad2bdaf7c"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1332,
+          "sha256": "79ec648786543138efe3bd057b340244cc38be3c07cceef699ca72049d402215",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "79ec648786543138efe3bd057b340244cc38be3c07cceef699ca72049d402215"
+        },
+        {
+          "path": "references/links.md",
+          "bytes": 825,
+          "sha256": "4b2b8272f7f1f276416a3d412e5b475cd2c9fcc0e48778f8dec9e38ff7f70e74",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "4b2b8272f7f1f276416a3d412e5b475cd2c9fcc0e48778f8dec9e38ff7f70e74"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "79ee21ecc4a806413dcc6733f77218d0cebfd71e4ef14fac64d7edf0160190ea"
         }
       ]
     },
@@ -7309,6 +9510,159 @@
       ]
     },
     {
+      "name": "threejs-water-crystal-vfx",
+      "description": "Build the effects of a water and crystal skill as one visual language in Three.js - a ray-marched clear water orb that refracts the frame behind it, beaded streams, a whipping lash with a torn splash crown, ripple rings and rain on tide pools, crystals ray-traced against their own planes that grow, resonate and shatter into shards that land and rest, pool caustics and a moonlit tidal flat with mirror pools and moon glitter. Use for water or crystal skills, water orbs, whips, jets or tentacles, splash impacts, tide pools, rain, crystal growth, resonance or shatter, caustics, wet-stone night scenes, moon reflections or clear water VFX. Includes a reusable module and a rebuildable five-beat demo on a scanned CC0 low-tide floor.",
+      "role": "specialist",
+      "sibling_suggestions": [],
+      "license_notices": [
+        "references/legal/mengto-skills-license.md"
+      ],
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 898,
+          "sha256": "9f330c36a370a4ca87ae814e20d5a30443b7c97747a4edbd37d3fac56a426d1f",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "9f330c36a370a4ca87ae814e20d5a30443b7c97747a4edbd37d3fac56a426d1f"
+        },
+        {
+          "path": "assets/tide-crystal.mjs",
+          "bytes": 130272,
+          "sha256": "080e9262c2993d41faa18ee7dee3e609aafdc2387723c4c3e16aa1cf2869756a",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "080e9262c2993d41faa18ee7dee3e609aafdc2387723c4c3e16aa1cf2869756a"
+        },
+        {
+          "path": "examples/assets/ground/low_tide_rocks_arm_1k.jpg",
+          "bytes": 371353,
+          "sha256": "3d832491f45ba928fe673f25041632b13cebaa79d1bbf4911a56d4d70711784f",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "3d832491f45ba928fe673f25041632b13cebaa79d1bbf4911a56d4d70711784f"
+        },
+        {
+          "path": "examples/assets/ground/low_tide_rocks_diff_1k.jpg",
+          "bytes": 397363,
+          "sha256": "613046676c0d000e60601615e3882a264ea9c9e476b765ab10289ece0a138813",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "613046676c0d000e60601615e3882a264ea9c9e476b765ab10289ece0a138813"
+        },
+        {
+          "path": "examples/assets/ground/low_tide_rocks_nor_gl_1k.jpg",
+          "bytes": 519744,
+          "sha256": "0c0dd7df851a6007c0b47b7a2f56255481e04ccb00f499825b7ecb02dc48752e",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "0c0dd7df851a6007c0b47b7a2f56255481e04ccb00f499825b7ecb02dc48752e"
+        },
+        {
+          "path": "examples/assets/three.r170.min.js",
+          "bytes": 691561,
+          "sha256": "aba48d00aac89d4952c8242a3f87707eb120e7a91a427a493283b4c7954b7449",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "aba48d00aac89d4952c8242a3f87707eb120e7a91a427a493283b4c7954b7449"
+        },
+        {
+          "path": "examples/build.mjs",
+          "bytes": 4329,
+          "sha256": "fd6a4647e67920893beda2c8f20b04885da7b8b98efd579d33fd064f5116a08e",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "fd6a4647e67920893beda2c8f20b04885da7b8b98efd579d33fd064f5116a08e"
+        },
+        {
+          "path": "examples/layout/cams.json",
+          "bytes": 2163,
+          "sha256": "a9b70afb9c81de667ea711a288a7d9679dce9086208b9fddbe37de443d8446c9",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "a9b70afb9c81de667ea711a288a7d9679dce9086208b9fddbe37de443d8446c9"
+        },
+        {
+          "path": "examples/layout/layout.bin",
+          "bytes": 36000,
+          "sha256": "7ef6813b6bb0aa216b1cb0e3e652a2f7356f52c6a9f4d7b667bc7a0a58493231",
+          "kind": "binary",
+          "findings": [],
+          "runtime_sha256": "7ef6813b6bb0aa216b1cb0e3e652a2f7356f52c6a9f4d7b667bc7a0a58493231"
+        },
+        {
+          "path": "examples/layout/layout.py",
+          "bytes": 5183,
+          "sha256": "bf01a626f54fbf4fab7926cf27c9daa6ac92880783a759435884f99e996ee310",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "bf01a626f54fbf4fab7926cf27c9daa6ac92880783a759435884f99e996ee310"
+        },
+        {
+          "path": "examples/src/stage.js",
+          "bytes": 71618,
+          "sha256": "b488f188578e9d9fdc22bfbc915fbc064c04f787295881f32da0e74bda14e73f",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "b488f188578e9d9fdc22bfbc915fbc064c04f787295881f32da0e74bda14e73f"
+        },
+        {
+          "path": "examples/src/ui.css",
+          "bytes": 5407,
+          "sha256": "59114d78cd9ab571872c7e18a690f2e6e9d06f90939e4006f3f2ddd8531296ca",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "59114d78cd9ab571872c7e18a690f2e6e9d06f90939e4006f3f2ddd8531296ca"
+        },
+        {
+          "path": "examples/src/ui.html",
+          "bytes": 3518,
+          "sha256": "77779297033f257ba90a7e450a2f4f8f38cf683e97ecaf473b75071d4eb618e9",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "77779297033f257ba90a7e450a2f4f8f38cf683e97ecaf473b75071d4eb618e9"
+        },
+        {
+          "path": "examples/src/ui.js",
+          "bytes": 4063,
+          "sha256": "5677fe89a1e897344cd9708002d5d5fd8f56f409b3abbdefd3e82310fa909be4",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "5677fe89a1e897344cd9708002d5d5fd8f56f409b3abbdefd3e82310fa909be4"
+        },
+        {
+          "path": "GUIDE.md",
+          "bytes": 34768,
+          "sha256": "0b277e03e84cd73bf1e342e1dbf6584fbb0924b9a6d1b4c03fbd4f93fb8d5422",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "0b277e03e84cd73bf1e342e1dbf6584fbb0924b9a6d1b4c03fbd4f93fb8d5422"
+        },
+        {
+          "path": "references/legal/mengto-skills-license.md",
+          "bytes": 1354,
+          "sha256": "a9fbe515ef365f13eb644eda1d292c8143a7fd9c17b3e6a98abc945b0526590a",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "a9fbe515ef365f13eb644eda1d292c8143a7fd9c17b3e6a98abc945b0526590a"
+        },
+        {
+          "path": "references/scorecard.md",
+          "bytes": 13018,
+          "sha256": "2d8479ca4033944dce538e81aaa7cb70fec32a0336f1a178b589ebfbbc2fd2d7",
+          "kind": "text",
+          "findings": [],
+          "runtime_sha256": "2d8479ca4033944dce538e81aaa7cb70fec32a0336f1a178b589ebfbbc2fd2d7"
+        }
+      ],
+      "added_files": [
+        {
+          "path": "README.md",
+          "sha256": "78893e3ec70b2de6875834f39bbe3215bcccae965171cd682222360fbfa1e3d5"
+        }
+      ]
+    },
+    {
       "name": "threejs-water-optics",
       "description": "Build production analytic and bounded water in Three.js. Use for photoreal shallow water with gravity-capillary FFT waves, dispersive caustics and diffraction glare, shared multi-wave displacement and normals, bounded RGBA heightfield pool simulation, local drops, object-driven ripples, differential-area caustics, ray-traced pool/water/sphere volume optics, derivative-filtered normal bands, analytic sky reflection, side-aware Fresnel, heuristic screen refraction, Beer-Lambert absorption, and crest foam.",
       "role": "specialist",
@@ -7444,6 +9798,6 @@
   ],
   "provenance": "Maintainer reports original collection authorship on 2026-10-16; embedded third-party notices remain authoritative for those materials; no new blanket license inferred.",
   "publication": "Single-family correction prepared locally; branch publication tracked separately.",
-  "distribution": "One root family skill; 57 internal GUIDE.md methods",
+  "distribution": "One root family skill; 77 internal GUIDE.md methods",
   "runtime_hash_normalization": "Text CRLF normalized to LF; binary resources byte-exact"
 }

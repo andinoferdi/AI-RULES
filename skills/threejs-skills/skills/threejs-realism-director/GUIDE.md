@@ -134,7 +134,7 @@ the failure it prevents.
 4. Change one physical cause at a time and compare at the same frames.
 5. Score each shot with [the realism rubric](references/realism-rubric.md). Keep only
    changes the picture confirms; look at a 2x crop after any metric-driven change.
-6. For a lit interior, use `threejs-lighting-scorecard` for the numbers.
+6. For a lit interior, use `threejs-lighting-scorecard` for the numbers. For a walkable game interior, follow `threejs-game-interiors`.
 7. Finish on a rendered, inspected frame. An edit you did not render and inspect is
    not done: render once more, or revert it before you stop.
 

@@ -141,5 +141,8 @@
     ],
     "expected": "Select threejs-spectral-ocean and record Renderer WebGPU",
     "forbidden": "Do not drop the WebGL ocean module into a WebGPU-only path without saying so"
-  }
+  },
+  {"id": "threejs-fire-skill-character", "kind": "behavior", "prompt": "Give my character's fireball skill real flames, smoke and embers in our WebGLRenderer action game", "fixture": "threejs-skills is AVAILABLE and INVOKABLE; the project uses WebGLRenderer", "capabilities": ["threejs-skills"], "expected": "Select threejs-fire-smoke-vfx, read its GUIDE in full and adapt assets/fire-fx.mjs", "forbidden": "Do not rebuild fire from sprites or generic particles without opening the shipped module"},
+  {"id": "threejs-enemy-ai-spacing", "kind": "behavior", "prompt": "All our skeleton enemies rush the player at once; make their aggro and spacing readable", "fixture": "threejs-skills is AVAILABLE and INVOKABLE", "capabilities": ["threejs-skills"], "expected": "Select threejs-enemy-systems and read references/enemy-ai-tuning.md", "forbidden": "Do not load every game method or start a new game scaffold"},
+  {"id": "threejs-mobile-web-game", "kind": "behavior", "prompt": "Make our Three.js action RPG playable on phones", "fixture": "threejs-skills is AVAILABLE and INVOKABLE", "capabilities": ["threejs-skills"], "expected": "Select threejs-game-director and read references/mobile-games.md, then threejs-qa-release for real mobile browser checks", "forbidden": "Do not treat it as a 2D DOM-only task"}
 ]

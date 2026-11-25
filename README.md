@@ -483,7 +483,7 @@ backups and rollback. Generic skill installers copy only the top-level folder.
 | **[Council](skills/council)** | `skills/council` | High-stakes decision analysis via 5 independent lenses and anonymous review. | `/council`<br>`$council` |
 | **[Natural Writing](skills/natural-writing)** | `skills/natural-writing` | Prose writing, rewriting, and review without formulaic AI tells. | `/natural-writing`<br>`$natural-writing` |
 | **[Skripsi Skill](skills/skripsi-skill)** | `skills/skripsi-skill` | Academic thesis, literature matrix, and research defense guidance. | `/skripsi-skill`<br>`$skripsi-skill` |
-| **[Three.js Skills](skills/threejs-skills)** | `skills/threejs-skills` | 3D graphics family with 57 WebGL/WebGPU, realism and shader methods. | `/threejs-skills`<br>`$threejs-skills` |
+| **[Three.js Skills](skills/threejs-skills)** | `skills/threejs-skills` | 3D graphics family with 77 WebGL/WebGPU, realism, game and shader methods. | `/threejs-skills`<br>`$threejs-skills` |
 | **[WebBased](https://github.com/andinoferdi/andino-skills/tree/WebBased)** | `WebBased` branch | 47 ready-to-use prompt templates for web chatbots (Claude/ChatGPT Web). | *Copy-paste directly* |
 
 ---
@@ -497,7 +497,7 @@ backups and rollback. Generic skill installers copy only the top-level folder.
 | **Minimal** (`minimal`) | Core adaptive development & research | `andino-workflow` (+ 31 member skills), `focus`, `search-first` |
 | **Engineering** (`engineering`) | Full-stack coding & codebase recovery | Minimal + `ai-codebase-rescue` |
 | **Research / Skripsi** (`research-skripsi`) | Academic writing & thesis preparation | Minimal + `skripsi-skill` + `natural-writing` |
-| **Three.js Development** (`threejs`) | 3D graphics, shaders, and animations | Minimal + `threejs-skills` (57 3D methods) |
+| **Three.js Development** (`threejs`) | 3D graphics, shaders, and animations | Minimal + `threejs-skills` (77 3D methods) |
 | **Everything** (`everything`) | Full installation | All 8 first-party capabilities |
 
 ### Non-Interactive / Scripted Usage

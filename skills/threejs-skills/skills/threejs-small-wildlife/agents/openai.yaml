@@ -1,0 +1,4 @@
+interface:
+  display_name: "Three.js Small Wildlife"
+  short_description: "Birds and butterflies that perch, fly, land and take off"
+  default_prompt: "Use $threejs-small-wildlife to add a bird or butterfly that perches on a real surface, flies, lands and takes off, with folding or hinged wings and planted feet."

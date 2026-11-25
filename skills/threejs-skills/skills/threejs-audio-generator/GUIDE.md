@@ -1,6 +1,6 @@
 ---
 name: threejs-audio-generator
-description: Generate, convert, clean, and integrate audio for Three.js browser games with ElevenLabs - sound effects, looping ambience, music tracks and loops (menu, gameplay, boss, victory/defeat stingers), UI sounds, impact/weapon/vehicle audio, creature and boss stingers, announcer and dialogue TTS, voice conversion from a scratch performance, voice cleanup, audio manifests, and Web Audio integration.
+description: Generate, convert, clean, and integrate audio for Three.js browser games with ElevenLabs - sound effects, looping ambience, music tracks and loops (menu, gameplay, boss, victory/defeat stingers), UI sounds, impact/weapon/vehicle audio, creature and boss stingers, announcer and dialogue TTS, voice conversion from a scratch performance, voice cleanup, audio manifests, and Web Audio integration. Also covers designing responsive game audio feedback - cue maps, mix priority, music states and mobile audio unlock.
 ---
 
 # Three.js Audio Generator
@@ -98,3 +98,12 @@ Listen to a representative effect or line before generating a batch. Test it thr
 ## Report
 
 Generated and processed file paths, the prompts, composition plans, text, source files, voice IDs, durations, loop flags and loop points and formats behind them, the runtime trigger mapping and audio groups, and any remaining gaps or plan limits.
+
+## Recipes adapted from MengTo/Skills
+
+Read the one reference for the need in view; each keeps its source's rules, checks
+and runnable example. Notices: `references/legal/mengto-skills-license.md`.
+
+| Need | Reference | Runnable example |
+| --- | --- | --- |
+| Game audio feedback design: cue map, combat layers, music states, spatial audio, mix priority, mute, accessibility, mobile unlock | [references/audio-feedback.md](references/audio-feedback.md) | — |

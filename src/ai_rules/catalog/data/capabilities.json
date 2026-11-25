@@ -274,7 +274,7 @@
       "schema_version": 1,
       "id": "threejs-skills",
       "display_name": "Three.js Skills",
-      "description": "All 57 Three.js and NixieFX methods in one installed family; selective automatic or explicitly named method use",
+      "description": "All 77 Three.js and NixieFX methods in one installed family; selective automatic or explicitly named method use",
       "ownership": "FIRST_PARTY",
       "kind": "skill",
       "importance": "RECOMMENDED",

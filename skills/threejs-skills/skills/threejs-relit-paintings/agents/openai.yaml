@@ -1,0 +1,4 @@
+interface:
+  display_name: "Three.js Relit Paintings"
+  short_description: "Light a painting with depth, normal, and roughness maps"
+  default_prompt: "Use $threejs-relit-paintings to make the studio light follow my pointer across a painted illustration."

@@ -57,6 +57,22 @@ class SingleThreejsFamilyTests(unittest.TestCase):
             text = (ROOT / rel).read_text(encoding='utf-8')
             self.assertEqual(set(), {m for m in self.METHODS if f'`{m}`' not in text and f'[{m}]' not in text}, rel)
 
+    def test_root_table_reference_paths_exist(self):
+        text = (ROOT / 'skills/threejs-skills/SKILL.md').read_text(encoding='utf-8')
+        family = ROOT / 'skills/threejs-skills/skills'
+        for row in (line for line in text.splitlines() if line.startswith('| ')):
+            methods = re.findall(r'`((?:threejs|nixie-fx)-[a-z0-9-]+)`', row)
+            for path in re.findall(r'`((?:references|assets|examples)/[^`]+)`', row):
+                self.assertTrue(any((family / m / path).is_file() for m in methods), (row[:50], path))
+
+    def test_every_mengto_adapted_method_is_in_the_root_table(self):
+        text = (ROOT / 'skills/threejs-skills/SKILL.md').read_text(encoding='utf-8')
+        inventory = json.loads((ROOT / 'src/ai_rules/verification/data/threejs_inventory.json').read_text())
+        adapted = {s['name'] for s in inventory['skills']
+                   if 'references/legal/mengto-skills-license.md' in s['license_notices']}
+        self.assertEqual(41, len(adapted))
+        self.assertEqual(set(), {m for m in adapted if f'`{m}`' not in text})
+
     def test_root_contract_requires_target_and_selection_record(self):
         text = (ROOT / 'skills/threejs-skills/SKILL.md').read_text(encoding='utf-8')
         for literal in ('## Selection record', 'Target: stylized | photoreal', 'Renderer: WebGL | WebGPU',

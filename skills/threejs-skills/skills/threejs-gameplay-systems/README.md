@@ -1,6 +1,6 @@
 # threejs-gameplay-systems
 
-Build and iterate playable Three.js game systems - starter scaffold, architecture, design briefs, core loops, level and encounter design, entities, input, camera, collision and physics, scoring, objectives, and game feel. Use for first playable slices, new Vite/TypeScript/Three.js setups, level/arena/track/wave/hole/puzzle design, combat encounters, difficulty tuning, and juice.
+Build and iterate playable Three.js game systems - starter scaffold, architecture, design briefs, core loops, level and encounter design, entities, input, camera, collision and physics, scoring, objectives, and game feel. Use for first playable slices, new Vite/TypeScript/Three.js setups, level/arena/track/wave/hole/puzzle design, combat encounters, difficulty tuning, and juice. Also carries recipes for flat-world level authoring, action-combat timing, encounter design and inventory, loot and equipment.
 
 This is an internal method bundled in `threejs-skills`, not an individual installer
 choice or native skill. Read [GUIDE.md](GUIDE.md) for the method; its supporting

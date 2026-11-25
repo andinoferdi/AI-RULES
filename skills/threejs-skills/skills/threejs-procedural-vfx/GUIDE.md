@@ -1,6 +1,6 @@
 ---
 name: threejs-procedural-vfx
-description: Author production real-time VFX in Three.js. Use for filmic HDR lens-flare compositors, highlight-derived ghosts, field-angle pupil deformation, localized glare and bloom, raymarched aurora curtains, finite-footprint emissive slabs, uniform volume integration, equirectangular radiance probes, WebGPU voxel fire and smoke, coupled volumetric fluid fields, mesh-surface emitters, signed-distance fire collisions, ship-conforming reentry plasma, generated capsule wakes, instanced analytic sparks, timed dissolving debris, dense-swap effect pools, additive holographic projections, Fresnel rim shells, scanline banding, glitch displacement, swept shape-to-shape handovers, and explicit scene-relative HDR emission hierarchy.
+description: Author production real-time VFX in Three.js. Use for filmic HDR lens-flare compositors, highlight-derived ghosts, field-angle pupil deformation, localized glare and bloom, raymarched aurora curtains, finite-footprint emissive slabs, uniform volume integration, equirectangular radiance probes, WebGPU voxel fire and smoke, coupled volumetric fluid fields, mesh-surface emitters, signed-distance fire collisions, ship-conforming reentry plasma, generated capsule wakes, instanced analytic sparks, timed dissolving debris, dense-swap effect pools, additive holographic projections, Fresnel rim shells, scanline banding, glitch displacement, swept shape-to-shape handovers, and explicit scene-relative HDR emission hierarchy. Also carries rules for readable, budgeted gameplay VFX - telegraphs, impacts, status effects and reduced-motion alternatives.
 ---
 
 # Procedural VFX
@@ -138,3 +138,12 @@ bounded interactive fire and smoke, subject-space plasma, generated wakes,
 sparks, pooled debris, and additive projection shells in this skill. Keep lens
 flare in `$threejs-atmosphere-aerial-perspective` when it remains one stage in a
 shared sky-scattering and aerial-perspective composition.
+
+## Recipes adapted from MengTo/Skills
+
+Read the one reference for the need in view; each keeps its source's rules, checks
+and runnable example. Notices: `references/legal/mengto-skills-license.md`.
+
+| Need | Reference | Runnable example |
+| --- | --- | --- |
+| Readable gameplay VFX: attacks, impacts, damage feedback, status effects, spell trails, telegraphs, quality tiers, reduced-motion alternatives | [references/game-vfx.md](references/game-vfx.md) | — |

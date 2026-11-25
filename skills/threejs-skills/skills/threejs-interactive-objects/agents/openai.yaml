@@ -1,0 +1,4 @@
+interface:
+  display_name: "Three.js Interactive Objects"
+  short_description: "Hover-lit feature objects, inspect view, dissolve and 3D icons"
+  default_prompt: "Use $threejs-interactive-objects to add a lit 3D object to a feature card, a click-to-inspect view, a hover particle dissolve or detailed 3D control icons."

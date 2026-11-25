@@ -1,6 +1,6 @@
 # threejs-temporal-surfaces
 
-Build view-aligned and screen-space surface effects in Three.js. Use for touch-history frost and thaw, ping-pong accumulation, reduced-resolution blur, crystalline masks, two-scale refraction, and procedural rain droplets that refract and blur a background through wet glass.
+Build view-aligned and screen-space surface effects in Three.js. Use for touch-history frost and thaw, ping-pong accumulation, reduced-resolution blur, crystalline masks, two-scale refraction, and procedural rain droplets that refract and blur a background through wet glass. Also covers camera-space lens raindrops and windshield beads that refract the live scene.
 
 This is an internal method bundled in `threejs-skills`, not an individual installer
 choice or native skill. Read [GUIDE.md](GUIDE.md) for the method; its supporting

@@ -1,6 +1,6 @@
 # threejs-qa-release
 
-Verify and release Three.js browser games - playtest QA, automated bot playtests, mobile and responsive checks, production builds, static-hosting base paths, debug gating, bundle review, screenshots, visual regression baselines, canvas-pixel inspection with measured metrics, and release risk reports.
+Verify and release Three.js browser games - playtest QA, automated bot playtests, mobile and responsive checks, production builds, static-hosting base paths, debug gating, bundle review, screenshots, visual regression baselines, canvas-pixel inspection with measured metrics, and release risk reports. Also covers deterministic end-to-end tests of playable games and shipping web games with production smoke tests and rollback.
 
 This is an internal method bundled in `threejs-skills`, not an individual installer
 choice or native skill. Read [GUIDE.md](GUIDE.md) for the method; its supporting
