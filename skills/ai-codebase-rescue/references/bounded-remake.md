@@ -41,7 +41,9 @@ independent safe work where useful; do not widen the boundary to make gates pass
 4. Build within that boundary and integrate through a controlled seam. Use an
    adapter, flag, parallel path or branch-by-abstraction only when consumer count,
    comparison needs or cutover/recovery risk justifies its cost. A self-contained
-   target can use a direct swap with equivalent protection.
+   target can use a direct swap with equivalent protection. Branch by Abstraction,
+   Expand-Migrate-Contract and Strangler Fig steps are in
+   [refactoring moves](refactoring-moves.md).
 5. Compare old/new behavior with fixtures or safe dual runs where practical.
    Never duplicate payments, writes or other irreversible effects to obtain a
    comparison. Use isolated fixtures or read-only observations instead.

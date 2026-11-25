@@ -12,7 +12,8 @@ Briefly consider correctness/data loss, access boundaries where present, failure
 handling, state/resource ownership and scope integrity. Identify the risk that can
 invalidate the intended change before spending effort on appearance or duplication.
 Record relevant signals and unknowns; do not create ceremonial findings for every
-category or label uninspected areas healthy.
+category or label uninspected areas healthy. Pick the starting target with
+[triage and hotspots](triage-and-hotspots.md).
 
 ## Deepen only on signals
 
@@ -28,6 +29,7 @@ category or label uninspected areas healthy.
 | Untrusted green or failing tests | Do checks exercise the contract and fail for the right reason? | Controlled regression and fixture/environment inspection. |
 | Slowness or resource exhaustion | Which critical path consumes time/resources under representative load? | Comparable trace/profile and baseline workload. |
 | Unexpected agent/config edits | Are canonical sources, generated outputs, permissions and user changes respected? | Scoped diff, instruction/config provenance and generator inputs. |
+| Phantom imports, swallowed errors, fake success or diverged copies after rushed patches | Which signals from [AI failure signals](ai-failure-signals.md) hold on the target? | Resolved imports, failure-injection fixture, diff of the copies with contrasting inputs. |
 
 Choose the next smallest evidence action. Stop expanding when evidence supports an
 in-scope disposition and verification strategy. Conflicting evidence or a boundary

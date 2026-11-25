@@ -16,6 +16,11 @@ assertions, uses representative data and models failure/permission boundaries.
 Check stale snapshots, over-mocked dependencies, disabled assertions and flaky
 environmental assumptions where they could invalidate the proposed proof.
 
+Pin before changing: protection for a contract runs and passes on the unmodified
+code before the first change to it, and defects found while pinning are pinned as
+known bugs and fixed in their own step. Recipes, known-bug pins, golden masters and
+seams are in [safety-net techniques](safety-net-techniques.md).
+
 Characterization captures behavior, not its correctness. Compare observed behavior
 with requirements and consumer contracts; preserve verified behavior and explicitly
 mark the defect that should change. If no trusted suite exists, establish a small

@@ -69,6 +69,7 @@ Evidence:
 Observed Behavior:
 Expected Behavior / Invariant:
 Impact:
+Downstream / Data Impact: optional; consumers of the contract, records written under the defect
 Recommended Disposition: KEEP | REFACTOR | REMAKE | REMOVE | INVESTIGATE
 Remediation Scope:
 Verification Method:
@@ -107,4 +108,5 @@ findings/dispositions, preserved contracts, protection and gate results, actual
 implementation and verification, deferred risks and the next evidence action.
 Link existing artifacts instead of copying full logs. This packet is a projection
 for the active task record, not a new plan or lifecycle. When Andino is active,
-it incorporates this evidence and owns the completion verdict.
+it incorporates this evidence and owns the completion verdict. The user-facing
+shape of the same content is in [rescue report](rescue-report.md).

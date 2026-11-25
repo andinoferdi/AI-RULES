@@ -479,7 +479,7 @@ backups and rollback. Generic skill installers copy only the top-level folder.
 | **[Andino Workflow](skills/andino-workflow)** | `skills/andino-workflow` | Adaptive workflow protocol + **31 composable member skills** (`andino-*`). | `/andino-workflow`<br>`/andino-tdd`<br>`/andino-brainstorming` |
 | **[Focus](skills/focus)** | `skills/focus` | Direct, result-first communication style (Indonesian & English). | `/focus`<br>`$focus` |
 | **[Search First](skills/search-first)** | `skills/search-first` | Evidence-based solution research (`ADOPT`, `EXTEND`, `COMPOSE`, `BUILD`). | `/search-first`<br>`$search-first` |
-| **[AI Codebase Rescue](skills/ai-codebase-rescue)** | `skills/ai-codebase-rescue` | Stabilize fragile subsystems (`KEEP`, `REFACTOR`, `REMAKE`, `REMOVE`). | `/ai-codebase-rescue`<br>`$ai-codebase-rescue` |
+| **[AI Codebase Rescue](skills/ai-codebase-rescue)** | `skills/ai-codebase-rescue` | Stabilize fragile subsystems: assess, pin behavior, fix in small verified steps (`KEEP`, `REFACTOR`, `REMAKE`, `REMOVE`, `INVESTIGATE`). | `/ai-codebase-rescue`<br>`$ai-codebase-rescue` |
 | **[Council](skills/council)** | `skills/council` | High-stakes decision analysis via 5 independent lenses and anonymous review. | `/council`<br>`$council` |
 | **[Natural Writing](skills/natural-writing)** | `skills/natural-writing` | Prose writing, rewriting, and review without formulaic AI tells. | `/natural-writing`<br>`$natural-writing` |
 | **[Skripsi Skill](skills/skripsi-skill)** | `skills/skripsi-skill` | Academic thesis, literature matrix, and research defense guidance. | `/skripsi-skill`<br>`$skripsi-skill` |
