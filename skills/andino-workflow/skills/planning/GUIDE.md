@@ -1,4 +1,9 @@
-# Refine one dependency-aware implementation plan
+---
+name: andino-planning
+description: Use when accepted requirements, an approved design or a spec need an implementation plan, a task breakdown or a writing-plans step before code is written, so that another developer can build the work without the conversation. Operates under Andino Workflow governance.
+---
+
+# Write a plan another developer can build from without asking
 
 Internal method ID: `andino-planning` (alias: `planning`).
 
@@ -9,244 +14,287 @@ Internal method ID: `andino-planning` (alias: `planning`).
 
 ## Purpose
 
-Turn accepted requirements into small, verifiable deliverables a fresh executor
-can implement without recovering decisions from chat. Preserve the useful precision
-of exact files, interfaces, test assertions and commands; spend detail on decisions
-the executor cannot safely infer, rather than transcribing routine implementation.
+Turn accepted requirements into a saved plan that a developer who has not seen the spec, the
+code or this conversation can build task by task. Assume they write good code once they know
+the exact interface and the exact test. What they cannot know is what you decided: which files,
+which names and signatures, which values from the spec, which tests prove each task, what is
+still blocked and on whom. The plan writes those down and nothing more. The deliverable is the
+plan file in the [plan template](resources/contract.md#plan-template) and a short reply to the
+requester.
 
 ## Trigger and non-trigger
 
-Use when accepted multi-step work lacks task boundaries, dependency order,
-interfaces or verification. Skip a simple targeted edit or a complete accepted
-task graph ready for execution. A known root cause alone does not determine size.
-Open product direction or material user-owned requirements belong to the relevant
-discovery method before implementation-ready planning.
+Use when:
+
+- a spec, an approved design or accepted requirements need tasks, order and checks before code;
+- the user asks for a plan, a task breakdown, an implementation plan or a writing-plans step;
+- work spans several files or steps and another session or developer will build it;
+- an existing plan must be extended or replanned after the requirements changed.
+
+Do not select for:
+
+- Open product direction, or a requirement only the user can settle: `brainstorming`.
+- A one-file change whose edit and check fit in a few lines: do it, or write a LITE plan if the
+  user asked for one.
+- Executing an accepted plan: `plan-execution`.
+- A bug with an unknown cause: `debugging` first; plan the fix after the cause is proven.
+
+## Select a resource, not a second lifecycle
+
+Load only the resource the current step names. It runs inside this procedure and current
+authority; it starts no second plan.
+
+| Current need | Resource | Skip when |
+| :--- | :--- | :--- |
+| Plan and task templates, readiness, what a step contains, density, drift | [task contract](resources/contract.md) | Never before gate 4 |
+| A complete plan end to end, a LITE plan and the transcription anti-pattern | [worked examples](resources/worked-example.md) | The templates are already clear |
+| Given/when/then acceptance for behaviour that is still vague | [behavior readiness](resources/behavior-readiness/guide.md) | Acceptance is already concrete |
+| A large graph: dependency waves, parallel lanes, shared-state conflicts | [dependency slicing](resources/dependency-slicing/guide.md) | Fewer than about six tasks in one line |
+| A recurring operational process or runbook rather than a one-time change | [recurring process](resources/recurring-process/guide.md) | One-time implementation work |
 
 ## Prerequisites
 
-Locate the accepted requirements, project constraints and existing checkpoint.
-Use the project's location; otherwise follow the workflow's
-`docs/exec-plans/active/<task>.md` convention. Update the same ticket in place,
-preserving decisions, completed work and evidence. Preserve another ticket's
-incomplete plan; use a separate appropriate path or resolve a real path conflict.
-
-Read [the task contract](resources/contract.md) before drafting task detail.
-Before drafting implementation task detail, read
-[the worked examples](resources/worked-example.md), including the change blocks.
-They show the required output shape, not optional inspiration.
-
-## Ready tasks carry the change
-
-A milestone such as "build the API", "restore the scene" or "add validation"
-is a roadmap item, even with an acceptance paragraph. For every implementation
-task offered as ready, the saved plan must answer **where, what changes into what,
-and how will we know?** Write a task-local **Change Specification**:
-
-- Inspected starting state: exact file and symbol/section anchor, with relevant
-  existing behavior. Mark new files/interfaces as proposed. Lines are optional
-  navigation aids; use an anchor that survives nearby edits.
-- Operation and result for each owned file: add/replace/remove which code, config
-  or text; exact names, signatures, imports, literals and error/side-effect rules
-  that constrain the change. "Follow the existing pattern" names the reference
-  file/symbol and the differences, not an instruction to redesign the task.
-- Decision-bearing change blocks: small before/after snippets, a diff, replacement
-  text or a code skeleton with the non-obvious logic filled in. Include them for
-  algorithms, formulas, schema/enums, exact copy/config and other choices that
-  prose plus signatures leaves open. Include concrete test assertions/fixtures
-  as code for executable checks. Routine bodies need no transcription.
-- Ordered actions and runnable proof: working directory, prerequisites, exact
-  commands/manual operations, inputs and observable expected results.
-
-Plan density never relaxes these essentials. A task is not ready while a material
-behavior, interface or change is still "appropriate", "as needed" or UNKNOWN.
-State that readiness separately from TODO/IN_PROGRESS work status. For unresolved
-work keep a roadmap/discovery item, its missing decision and a bounded exit check;
-populate dependent Change Specifications with the resolved contract before calling
-them ready. Known decisions must not be postponed to the executor merely to keep
-the plan short. Proportional detail means removing repeated context, not decisions.
+- Find the accepted requirements (spec, design, issue or the user's message) and read all of it.
+- Find the plan location: the user's path, the project's convention, otherwise
+  `docs/exec-plans/active/<task>.md`. Reuse the plan for the same work and keep its decisions
+  and evidence. Never overwrite or rename another task's unfinished plan: use another path, or
+  stop and ask when the path is the same.
+- Read the project instructions (`AGENTS.md`, `CLAUDE.md`, README) for commands, test style and
+  the quality floor.
 
 ## Procedure
 
-1. **Ground the next executor.** Inspect the relevant files, callers, test setup
-   and repository commands. Record accepted outcomes with exact values and a short
-   approach explaining boundaries and tradeoffs. Distinguish existing inspected
-   interfaces from proposed ones. Keep unverified facts `UNKNOWN` with a bounded
-   discovery action; dependent work waits for its exit criterion. During planning,
-   edit the plan rather than application source; code snippets inside the plan are
-   encouraged when they specify the change. Never report planned checks as run.
-2. **Choose deliverables.** Prefer thin paths through the real entrypoint to the
-   observable result. Include setup, configuration and documentation in the slice
-   they enable. A necessary foundation or discovery task is valid when it has its
-   own acceptance and explicitly unblocks a named consumer. Split a task when its
-   outcomes can be reviewed independently or its uncertainty prevents one focused
-   implementation/test cycle. File count is a warning, not a mandatory split.
-3. **Make each task executable.** Record its requirement, dependencies, owned files,
-   consumed/produced interfaces where relevant, concrete acceptance, Change
-   Specification and action sequence. For behavior changes, include named tests
-   with decisive assertion/fixture code, then expected RED, the specified change
-   and focused GREEN. Align with
-   the canonical TDD guide: a meaningful failing assertion distinguishes missing
-   behavior from broken setup. For static documents/configuration, use an
-   appropriate artifact check. Name working directory, prerequisites, exact command
-   and expected signal. A missing test suite calls for a concrete supported check
-   or justified test-setup task, never invented scripts or silently omitted proof.
-   Commit steps appear only under existing authorization.
-4. **Order and integrate.** Give tasks stable IDs and explicit dependencies;
-   reject cycles, missing nodes and incompatible producer/consumer contracts.
-   Sequence overlapping writes, including shared fixtures, schemas and generated
-   files. Mark parallel work eligible only after dependencies and shared-state
-   conflicts are resolved; eligibility does not dispatch workers. Put uncertain,
-   high-consequence seams early. Place integration gates where slices meet or a
-   costly assumption becomes testable, using actual repository checks.
-5. **Close coverage gaps.** Map every accepted requirement and material implied
-   failure case to an owning task and observable check. Use relevant cases, without
-   a fixed quota. Test the public flow when acceptance spans collaborators; a helper
-   test cannot prove integration. Identify unavailable validation and its consequence.
-6. **Review and hand off.** Compare the saved plan with the requirements and current
-   source: coverage, literals, interfaces, dependency order, ownership, commands,
-   integration and proportional detail. Repair gaps before calling it ready.
-   Walk the saved plan as a **fresh executor**, using only its reachable references.
-   For each ready task, follow an accepted input from the requirement to the first
-   file/symbol action, the exact assertion or artifact observation, and the expected
-   result at that task's boundary. Repeat for each remaining acceptance condition.
-   If the first check needs a later deliverable to prove the current one, move the
-   prerequisite earlier or redraw the slice. For each waiting task, trace the
-   missing contract to its evidence source, discovery exit and consumer rewrite.
-   Fix missing edits and assertions inline before handoff.
-   A detailed snippet must still agree with current source and accepted requirements;
-   detail alone is not correctness. Label remaining roadmap items honestly.
-   A fresh executor must find current state, blocked work and the first executable
-   step from the plan alone. Keep one concrete `NEXT ACTION`; hand off to
-   the canonical plan-execution guide only when execution is authorized.
+Seven gates, in order. Each ends with a **Done when** line; do not start the next gate before it
+holds.
+
+1. **Read the spec and the code.** Open every file the work will touch, its callers and its
+   tests. Note existing helpers the plan should reuse, test helpers and fixtures, the real test
+   command, and traps: a helper whose behaviour differs from its name, a shared file, a runtime
+   difference between the development machine and the target. Run the test suite once and
+   record the result. Edit only the plan, never source. Done when every file, symbol and command
+   the plan will name has been seen, and each fact you could not find is written down with
+   where you looked.
+2. **Settle the plan-wide decisions.** Write the Goal in one sentence, link the spec, and copy
+   its project-wide constraints verbatim into **Global Constraints**. List the gaps the spec
+   leaves open under **Decisions the spec leaves open**, each with your call and its reason, for
+   the requester to confirm. Turn each unknown into a blocked or discovery item: what is
+   missing, who provides it, what the rest of the plan does without it, and the seam where it
+   plugs in later. Never invent a format, file, command or value to fill a gap. Done when no
+   task needs a decision that is not either written in the plan or named as blocked.
+3. **Map files and slices.** List each file to create or modify with its one responsibility.
+   Cut the work into vertical slices, each running through the real entry point to something a
+   person or test can observe. Fold setup, configuration and documentation into the slice that
+   needs them. Split a task that touches more than about five files or two subsystems, or whose
+   title needs "and". Tasks that edit the same file run one after the other. Done when every
+   requirement belongs to a slice and no two tasks that may run together own the same file.
+4. **Write each task.** Read [the task contract](resources/contract.md), then fill the task
+   template for every slice: files, interfaces consumed and produced with exact signatures,
+   acceptance, and steps (test as code with the spec's values, RED with the exact command and
+   the assertion that must fail, the Change Specification, GREEN with the expected result).
+   Mark readiness (READY, NEEDS_DETAIL or WAITING_ON a discovery item) apart from status. Done when every READY task lets a developer write the test, see it fail
+   for the stated reason, make the change and see it pass, without asking anything.
+5. **Close coverage and write the Review Focus.** Fill the coverage table: every requirement,
+   with its owning task and the named check. Then list three to five inputs or conditions the
+   spec implies but never states, most likely to break first (a boundary value, an empty or
+   zero input, a malformed argument, an old data file, a missing file), each with the behaviour
+   a reasonable person would expect, and add its test to the owning task. Then plan the
+   end-to-end check: the last task of each user-facing path runs the real command on concrete
+   data (a copy of the sample data or a temporary file) and states the exact output expected,
+   worked out from the spec's rules. Done when every requirement and every Review Focus line
+   points to a task and a check, and each end-to-end check lists its command, its data and its
+   exact expected output.
+6. **Review the plan as a fresh developer.** Read only the saved plan and the files it names,
+   and check: coverage against the spec; each step can produce exactly one reasonable thing;
+   names and signatures match between producer and consumer tasks; spec literals are copied
+   exactly; no task needs a later task to prove itself; the plan holds no routine function
+   bodies. Fix each finding in the plan. Done when the review finds nothing to fix and the plan
+   is still shorter than the code it describes.
+7. **Hand off.** Set one concrete NEXT ACTION. Reply to the requester in their words: where the
+   plan is, what is ready to build, what is blocked on them and exactly what you need from them,
+   and the decisions they should confirm. Report no planned check as run. A planning-only
+   request stops here. When execution is authorized, continue with
+   `skills/plan-execution/GUIDE.md`. Done when the reply names every blocker and every decision
+   that waits for the requester.
+
+## Rules for every plan
+
+- **One reasonable thing.** A step is ready when the developer can write exactly one
+  reasonable thing from it. A step that decides nothing ("handle edge cases", "add validation",
+  "write tests for the above", "follow the existing pattern" without naming it) is a gap.
+- **Write the decisions, leave the routine.** Write what the developer cannot decide alone:
+  files, names and signatures, values from the spec, the tests that prove each task, and the
+  logic of a rule that the signature and tests do not fix (a formula, a rounding rule, a sort
+  key, the order of checks). Leave routine bodies to the developer. A plan longer than the code
+  it describes has written the code instead.
+- **Tests carry the values.** Test steps are code with the spec's exact numbers and strings. A
+  RED step names the assertion that must fail; an import error or a missing module is a setup
+  failure, not RED.
+- **The spec beats the plan.** When the code and the spec disagree, the plan follows the spec
+  and says so. A gap the spec leaves open goes to Decisions, never silently into a task.
+- **Real commands only.** Use the repository's own test and run commands, with the working
+  directory. Never prescribe a tool the project does not have.
+- **Planned is not run.** Every check in the plan reads as planned until someone runs it.
+
+## Shortcuts that break plans
+
+| Shortcut | What to do instead |
+| --- | --- |
+| "Showing the full code is the clearest specification." | Give the signature, the tests and the rule's logic. Bodies the tests already fix are transcription. |
+| "The developer will know which tests to write." | Write the assertions as code with the spec's values. |
+| "RED: fails because the module doesn't exist." | That is setup. Create the stub first and name the assertion that fails. |
+| "The format isn't known, I'll assume a reasonable one." | Mark it blocked, say who provides it, and plan the seam. |
+| "The spec doesn't say; I'll pick something inside the task." | List it under Decisions the spec leaves open with your reason. |
+| "This helper already does it." | Read its body; reuse it only when it does exactly what the requirement says. |
+| "Edge cases are obvious." | Put the three to five most likely ones in Review Focus, each with its test. |
+| "The old plan in that folder is stale." | Its unchecked tasks may be in progress. Use another path or ask. |
+| "I'll add a commit step to every task." | Only when commits are authorized. |
+
+## Red flags
+
+- A code block that holds a full routine function body or a whole module.
+- A task whose title is a milestone ("build the API") with no files, tests or checks.
+- A format, column, flag or command that appears in no file and no spec.
+- RED steps that expect an ImportError or "module not found".
+- Two tasks that may run together editing the same file.
+- A reply that says something was built or tested.
+- Decisions the spec leaves open that are not in the reply.
 
 ## Ownership and permission boundary
 
 Andino coordinates selection, shared progress, resource guards and final status from evidence.
-This skill owns its full procedure, required resources, artifact detail and technical
-checks. Coordinator brevity/density never truncates these. User/project authority,
-Focus/research/domain boundaries and real invocation controls still apply. Native
-`andino-planning` and this guide expose one method, without recursive workflow invocation.
+This skill owns its procedure, templates and checks; coordinator brevity never shortens the
+plan's required content. Native `andino-planning` and this guide expose one method, without
+recursive workflow invocation.
 
-Resolve workflow-wide resources from the installed `andino-workflow` root:
-for a nested member, use its containing workflow package; for standalone
-`andino-planning`, use the sibling `andino-workflow` package. The canonical paths
-are `references/execution-plan.md`, `skills/tdd/GUIDE.md` and
-`skills/plan-execution/GUIDE.md`. Load only the current phase's needed guide.
-If the package is unavailable, report the boundary and preserve the essential
-state/authority contract here; do not pretend it was loaded.
+Resolve workflow-wide resources from the installed `andino-workflow` root: for a nested member,
+use its containing workflow package; for standalone `andino-planning`, use the
+sibling `andino-workflow` package. The canonical paths are `references/execution-plan.md` (checkpoint
+fields), `skills/tdd/GUIDE.md` (RED and GREEN) and `skills/plan-execution/GUIDE.md`
+(execution). Load only the guide the current gate needs. If the package is unavailable, say so
+and keep the templates here; do not claim it was loaded.
 
-A planning-only request ends with the saved plan. Plan acceptance grants no new
-implementation, commit, push, publication, external message, installation or
-destructive-action authority. Reuse authorization already supplied; ask only for
-a missing material decision or permission. Tracker designation alone does not
-authorize creating issues. Preserve unrelated user changes.
+A planning-only request ends with the saved plan and the reply. A plan grants no authority to
+implement, commit, push, publish, install, message anyone or delete anything. Reuse
+authorization already given; ask only for a missing decision or permission. Naming a tracker
+does not authorize creating issues. Preserve unrelated user changes.
 
 ## Output
 
-One proportionate plan with outcome-to-task-to-check coverage, dependency-ready
-tasks containing concrete change instructions and code/text where decisions need
-it, verified or explicitly proposed interfaces, risks, current state and a
-single `NEXT ACTION`. LITE may combine fields; STANDARD/DEEP retain the canonical
-snapshot, acceptance criteria and execution board.
+The saved plan in the [plan template](resources/contract.md#plan-template): header with Goal,
+spec, status and readiness; Global Constraints; Decisions the spec leaves open; Review Focus;
+file map; Execution Board; coverage table; tasks in the
+[task template](resources/contract.md#task-template); blocked and discovery items; risks; one
+NEXT ACTION. LITE plans may merge sections; STANDARD and DEEP keep them all.
 
-## Verification and fallback
+Then the reply to the requester:
 
-Check the saved artifact against the six procedure steps. If an interface or test
-environment is unavailable, make the discovery/validation gap explicit instead
-of inventing precision. Local examples and structural checks demonstrate bounded
-properties; model behavior needs actual fresh-context application evidence.
-During execution preserve prior evidence and update only invalidated tasks and
-dependents. Resolve bounded drift within existing authority; escalate changed
-scope or a user-owned decision, consistent with plan-execution.
+```text
+Plan: <path>
+Ready to build: <tasks>, in order <...>
+Blocked on you: <item> - I need <exact thing> (for example a sample file with its columns)
+Decisions to confirm: <each decision the spec left open, with the call made>
+Not done: nothing is built or tested yet.
+```
 
-## Deterministic graph fixture
+## Verification
 
-Retained for the existing procedural checker: this synthetic graph checks
-interfaces, dependency cycles and independent write sets, not feature completeness
-or model compliance. The worked resource above demonstrates complete task plans.
+Before you hand off, confirm:
 
-```andino-example
-{
-  "tasks": [
-    {
-      "id": "create",
-      "deps": [],
-      "files": [
-        "store.py"
-      ],
-      "produces": [
-        "create(name)->id"
-      ],
-      "consumes": []
-    },
-    {
-      "id": "list",
-      "deps": [
-        "create"
-      ],
-      "files": [
-        "store.py",
-        "test_list.py"
-      ],
-      "produces": [
-        "list()->names"
-      ],
-      "consumes": [
-        "create(name)->id"
-      ]
-    },
-    {
-      "id": "audit",
-      "deps": [
-        "create"
-      ],
-      "files": [
-        "audit.py"
-      ],
-      "produces": [
-        "audit(id)->record"
-      ],
-      "consumes": [
-        "create(name)->id"
-      ]
-    }
-  ],
-  "bad_cycle": [
-    {
-      "id": "a",
-      "deps": [
-        "b"
-      ],
-      "files": []
-    },
-    {
-      "id": "b",
-      "deps": [
-        "a"
-      ],
-      "files": []
-    }
-  ],
-  "dangling": [
-    {
-      "id": "a",
-      "deps": [
-        "missing"
-      ],
-      "files": []
-    }
-  ]
-}
+- [ ] every gate's Done when line holds;
+- [ ] every requirement has a task and a named check, and R-numbers match the spec;
+- [ ] Global Constraints are verbatim and applied in the tasks they constrain;
+- [ ] every READY task has tests as code, a RED with its expected assertion failure, the change
+      and a GREEN with its expected result;
+- [ ] Review Focus has three to five lines, each with a test in its owning task;
+- [ ] each user-facing path ends with an end-to-end run of the real command on concrete data,
+      with its exact expected output;
+- [ ] names and signatures agree between producer and consumer tasks;
+- [ ] no routine function body or whole module is transcribed;
+- [ ] each unknown is a blocked or discovery item with who provides what;
+- [ ] the reply names every blocker and every decision to confirm, and claims nothing as run.
+
+These checks are properties of the saved plan. How a model follows this skill stays
+NOT_VERIFIED without a real trial.
+
+## Worked example and anti-pattern
+
+[The worked examples](resources/worked-example.md) carry one spec through all seven gates into a
+STANDARD plan, show a LITE plan, and show the anti-pattern with its fix.
+
+Anti-pattern: a 700-line plan that pastes every function body of the new module. It looks
+thorough, hides the four decisions that matter among two hundred lines of routine code, and goes
+stale with the first review comment. Replace the bodies with signatures, tests and the one
+formula they need.
+
+## Fallback
+
+- No test suite: name the concrete check the project supports (a script run, a manual step with
+  its expected output), or plan a test-setup task first; never invent a test command.
+- No requester reachable: make the smallest reasonable call for each open decision, list it, and
+  keep each unknown blocked.
+- The workflow package is unavailable: keep the templates here and say the checkpoint fields
+  could not be checked.
+
+## Local resources
+
+- [Task contract](resources/contract.md): plan and task templates, readiness, density, drift.
+- [Worked examples](resources/worked-example.md).
+- The three sub-resources in the [resource table](#select-a-resource-not-a-second-lifecycle).
+- MIT notices: [references/license.md](references/license.md).
+
+## Operational example (offline)
+
+This fixture checks a task graph before handoff: unknown dependencies, cycles and two tasks
+that may run together owning one file. It does not measure plan quality.
+
+```python andino-operational-example
+import os
+
+def graph_findings(tasks):
+    ids = {task["id"] for task in tasks}
+    deps = {task["id"]: set(task["deps"]) for task in tasks}
+    findings = [f"{t}: unknown dependency {d}" for t in deps for d in sorted(deps[t] - ids)]
+
+    def reaches(start, goal, seen=()):
+        return any(d == goal or (d in deps and d not in seen and reaches(d, goal, seen + (d,)))
+                   for d in deps.get(start, ()))
+
+    findings += [f"{t}: cycle" for t in sorted(deps) if reaches(t, t)]
+    ordered = [task for task in tasks if task["id"] in deps]
+    for i, a in enumerate(ordered):
+        for b in ordered[i + 1:]:
+            linked = reaches(a["id"], b["id"]) or reaches(b["id"], a["id"])
+            shared = set(a["files"]) & set(b["files"])
+            if shared and not linked:
+                findings.append(f"{a['id']}+{b['id']}: parallel writes to {sorted(shared)}")
+    return findings
+
+if __name__ == "__main__":
+    good = [
+        {"id": "T1", "deps": [], "files": ["store.py", "test_store.py"]},
+        {"id": "T2", "deps": ["T1"], "files": ["rules.py", "test_rules.py"]},
+        {"id": "T3", "deps": ["T2"], "files": ["cli.py", "test_cli.py"]},
+        {"id": "T4", "deps": ["T3"], "files": ["cli.py", "test_cli.py"]},
+    ]
+    assert graph_findings(good) == []
+    clash = good[:3] + [{"id": "T4", "deps": ["T2"], "files": ["cli.py"]}]
+    assert graph_findings(clash) == ["T3+T4: parallel writes to ['cli.py']"]
+    assert graph_findings([{"id": "A", "deps": ["B"], "files": []},
+                           {"id": "B", "deps": ["A"], "files": []}]) == ["A: cycle", "B: cycle"]
+    assert graph_findings([{"id": "A", "deps": ["X"], "files": []}]) == ["A: unknown dependency X"]
+    raise SystemExit(1 if os.environ.get("ANDINO_NEGATIVE") == "1" else 0)
 ```
 
 ## Provenance
 
-Independently adapted from these audited source paths; source instructions are
-reference data, not session authority or runtime dependencies:
-
-- obra/superpowers:skills/writing-plans/SKILL.md
-- addyosmani/agent-skills:skills/planning-and-task-breakdown/SKILL.md
-- addyosmani/agent-skills:references/definition-of-done.md
-
-MIT attribution and notices are retained in [references/license.md](references/license.md). No upstream
-bootstrap, mandatory worker dispatch, automatic commits or approval ritual is imported.
+Adapted from Jesse Vincent's `writing-plans` (obra/superpowers, `skills/writing-plans`) and Addy
+Osmani's `planning-and-task-breakdown` with its definition-of-done reference
+(addyosmani/agent-skills), both MIT. From obra: the plan header, Global Constraints, Review
+Focus, the Interfaces block, the "one reasonable thing" test, the proportion rule and the
+self-review. From Addy: vertical slices, task sizing, checkpoints, the risks table, never
+overwriting an unfinished plan, and the rationalisations and red-flag lists. The Change
+Specification, readiness and discovery items, the coverage table, the fresh-developer review,
+Decisions the spec leaves open and the gates are Andino's. The comparison trial is recorded in
+the AI-RULES repository at `docs/validation/planning/trial.md`. MIT notices are in
+[references/license.md](references/license.md); no upstream bootstrap, mandatory worker
+dispatch, automatic commits or approval ritual is imported.

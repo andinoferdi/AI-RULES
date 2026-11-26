@@ -294,7 +294,7 @@ The labels are a convenience, not a format the agent requires. Use the ones that
 
 When you use the template, keep it readable: `Skills`, `Tools/MCP` and `Mode` sit together, and a blank line separates every slot from `Task` on. A slot with one item stays on one line; with two or more, each item gets its own `- ` line (one check, file or limit per bullet). Never wrap a line by hand. Ask the agent to restate its understanding ("Tell me what you've understood so far and ask about anything unclear") only when the task is open or touches several hosts or systems.
 
-Have a rough prompt instead? Send it with `/andino-optimize-prompt` (Codex: `$andino-optimize-prompt`). It tidies your prompt in place: same shape, your words where they work, and every skill, phase and fact you wrote kept in your order. It never adds or drops a skill; suggestions and up to three questions come after the prompt. It runs only when you ask for it.
+Have a rough prompt instead? Send it with `/andino-optimize-prompt` (Codex: `$andino-optimize-prompt`). It tidies your prompt in place: same shape, your words where they work, and every skill, phase and fact you wrote kept in your order. It then adds only labelled blocks you can trace: project facts it checked in your files, a done-when and limits built from your own words, and a verification step that uses your project's real commands. It never adds or drops a skill; a short diagnosis table, suggestions and up to three questions come after the prompt. It runs only when you ask for it.
 
 ### Your own words work too
 

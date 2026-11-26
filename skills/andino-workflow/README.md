@@ -14,7 +14,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | --- | --- |
 | `andino-brainstorming` | Open intent and choices, why before how, decision rounds and a confirmed design; optional decision-frontier, feasibility-probe, idea-validation and async-question resources. |
 | `andino-planning` | Exact implementation changes, dependencies and proof; optional behavior-readiness, dependency-slicing and recurring-process resources. |
-| `andino-plan-execution` | Authorized dependency-ready execution; independently selectable task-implementation, vertical-slice and frontend-engineering resources. |
+| `andino-plan-execution` | Execute an accepted plan one task at a time through gated steps (preflight, resume, red-green increments, four stops, full-diff review) with a report template; task-implementation, vertical-slice and frontend-engineering resources. |
 | `andino-delegation` | Decide, brief and accept any subagent work (plan lanes, investigations, research, reviews, panel seats) under one envelope approval and parent acceptance. |
 | `andino-api-and-interface-design` | Consumer-first design of any interface (HTTP, GraphQL, module, props, events, agent tools); optional HTTP-contract, module-depth and import-enforcement resources. |
 | `andino-architecture-survey` | Deepening candidates from the hot spots or a named area, shown as a before/after HTML report and then grilled; never edits product code during the survey. |
@@ -23,7 +23,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 
 | Public member | Responsibility |
 | --- | --- |
-| `andino-tdd` | Executable RED/GREEN behavior guards; optional typed-fixture migration preserving invalid negative cases. |
+| `andino-tdd` | One behavior per red-green slice from a written slice list, proof against the pre-fix code for tests that pass at once, and a test record; optional typed-fixture migration. |
 | `andino-debugging` | Reproduce, prove and fix an unknown cause through six evidence gates with a report template; quick path when the compiler names the cause. |
 | `andino-verification` | Observed acceptance evidence before consequential completion claims. |
 | `andino-browser-testing-with-devtools` | Reproduce, fix and replay in a real browser; release pass at 360, 768 and 1440 px by device emulation, accessibility, console split and loading metrics. |
@@ -37,7 +37,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | Public member | Responsibility |
 | --- | --- |
 | `andino-security-and-hardening` | External-input, authentication, data and dependency trust boundaries. |
-| `andino-deprecation-and-migration` | Consumer-aware interface/schema retirement and migration. |
+| `andino-deprecation-and-migration` | Retire or replace something others use: consumer map beyond grep, expand/backfill phase ledger, per-consumer parity or notice, and a ready/held/done contract decision; quick path for private changes. |
 | `andino-observability-and-instrumentation` | Useful production evidence, monitoring and runbooks. |
 | `andino-performance-optimization` | Measured bottlenecks and verified improvements. |
 | `andino-ci-cd-and-automation` | CI gates and required checks, failing or flaky runs, workflow security, deploy promotion and rollback; optional commit-check setup. |
@@ -54,7 +54,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-handoff` | Portable continuation and optional context packing. |
 | `andino-human-procedure` | Necessary steps requiring human-only access or authority. |
 | `andino-issue-triage` | Maintainer-requested issue/PR evaluation without unauthorized tracker writes. |
-| `andino-optimize-prompt` | Explicitly requested light edit of a raw task prompt that keeps its shape, every named skill and phase, and every fact; suggestions and up to three questions follow it. |
+| `andino-optimize-prompt` | Explicitly requested rewrite of a raw task prompt that keeps its shape, every named skill and phase, and every fact, and adds labelled checked project facts, done-when, limits and a verification step; a diagnosis table and up to three questions follow it. |
 | `andino-session-diagnostics` | Session-level failures; optional prevention review after causes are known. |
 | `andino-learning-workspace` | Intentional learning; optional course-exercise scaffolding. |
 | `andino-article-shaping` | Shape a fixed pile into an article with its author: reader first, pile-built candidates, agreed blocks only, nothing invented; optional raw capture. |

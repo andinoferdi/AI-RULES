@@ -165,6 +165,22 @@ Fast-Path Deterministic and Deep Forensic Investigation, deep craft `GUIDE.md`, 
 catalogs, dual-runtime cross-platform portability in Bash POSIX and Python 3.8+ stdlib, offline
 deterministic Python stdlib verification, and complete integration with `ai-rules setup`).
 
+The 2026-11-26 upgrade of `tdd` re-reads Addy Osmani's `test-driven-development`
+(addyosmani/agent-skills df50a6d), Matt Pocock's `tdd` (mattpocock/skills 3f59913) and Jesse
+Vincent's `test-driven-development` (obra/superpowers 5bf4e78), all MIT, and moves the method into
+the sibling layout: a slice list and six evidence gates in `SKILL.md` (mirrored by `GUIDE.md`), a
+test record template, shortcut and red-flag lists, and resources for test design, the supporting
+contract and a worked example. The duplicate `resources/typed-fixtures/contract.md` was removed;
+the typed-fixtures guide is unchanged. The comparison trial is recorded in
+`docs/validation/tdd/trial.md`.
+
+The 2026-11-26 upgrade of `deprecation-and-migration` re-reads Addy Osmani's
+`deprecation-and-migration` (addyosmani/agent-skills 9f91cc4, MIT) and moves the method into the
+sibling layout: a quick path and six gates with named artifacts in `SKILL.md` (mirrored by
+`GUIDE.md`), the consumer map, phase ledger, backfill rules and contract decision, the shortcut
+and red-flag lists, and resources for transition patterns, notices and a worked example. The
+comparison trial is recorded in `docs/validation/deprecation-and-migration/trial.md`.
+
 The 2026-11-26 upgrade of `debugging` re-reads Addy Osmani's `debugging-and-error-recovery`
 (addyosmani/agent-skills 9097b64), Matt Pocock's `diagnosing-bugs` (mattpocock/skills f3fc563)
 and Jesse Vincent's `systematic-debugging` (obra/superpowers 22f0b46), all MIT, and moves the
@@ -173,6 +189,15 @@ method into the sibling layout: a quick path and six evidence gates in `SKILL.md
 tracing, flaky failures and recovery. The comparison trial is recorded in
 `docs/validation/debugging/trial.md`. The paragraph above describes the earlier version; its
 line budget, state-machine and Bash POSIX wording no longer apply.
+
+The 2026-11-26 upgrade of `plan-execution` re-reads Addy Osmani's `incremental-implementation`
+(addyosmani/agent-skills c4efec8) and Jesse Vincent's `executing-plans` (obra/superpowers
+22f0b46), both MIT, and moves the method into the sibling layout: six gated steps in `SKILL.md`
+(mirrored by `GUIDE.md`) for preflight, resume, one task at a time with red-green increments and
+a check-the-check gate, four stops, a full-diff review against the spec and delivery, plus a
+report template with exhaustive rulings and deferred lists. Evidence identity, `NOT_VERIFIED`,
+the single plan checkpoint and the delivery distinctions are kept from the earlier Andino text.
+The comparison trial is recorded in `docs/validation/plan-execution/trial.md`.
 
 The 2026-11-01 elevation of `delegation` synthesizes the generative multi-agent delegation craft of
 Matt Pocock's `engineering/implement-spec` (task graph DAG modeling, active unblocked frontier tracking,
@@ -200,6 +225,15 @@ lines, low-ceremony single-line rationales without discovery ledgers or banner s
 shims preserving legacy invocations and catalog counts, zero-deletion workspace overrides in test runners,
 deterministic offline test fixtures in `tests/fixtures/decision_lens_cases.json`, and comprehensive multi-tier
 verification). All source attributions remain preserved under their respective MIT licenses.
+
+The 2026-11-26 rewrite of `skill-maker` replaces its part of that elevation. Jesse Vincent's
+`writing-skills` (obra/superpowers, path last changed in 2ce8aa1) supplies test-driven skill writing,
+the form-to-failure table, loophole closing, per-type tests, pressure types and wording micro-tests;
+Addy Osmani's `using-agent-skills` (eca51a2) and `docs/skill-anatomy.md` (c4efec8) supply the section
+anatomy and context efficiency, all adapted under MIT. Andino keeps the remedial and greenfield modes,
+the brief, separate discovery, task and packaging checks and honest status labels, and adds seven gates
+with Done-when artifacts, a routing table for items that leave the skill, PASS/FAIL scenarios and a
+labelled self-review path. The 150-line rule, numbered sections and the metadata-only harness are removed.
 
 The 2026-11-02 elevation of `agent-document-authoring` synthesizes the generative cognitive craft
 of Matt Pocock's `writing-for-agents` and `SKILL-MECHANICS.md` (The Two Loads: Context vs Cognitive,
