@@ -238,6 +238,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-brainstorming-grill-plan",
+    "kind": "behavior",
+    "prompt": "Grill me on this plan before I build it: a weekly digest email of new tools for members.",
+    "fixture": "Disposable routing assessment; current product facts are settled unless the request opens them.",
+    "expected": "Select brainstorming",
+    "forbidden": "Invented invocation, bulk loading, unauthorized changes or reopened accepted decisions.",
+    "capabilities": [
+      "brainstorming"
+    ],
+    "method": "brainstorming",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-browser-testing-with-devtools-implicit",
     "kind": "behavior",
     "prompt": "The checkbox stays checked after a PATCH returns 503; diagnose these captured events.",
