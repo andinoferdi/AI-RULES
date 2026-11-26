@@ -197,6 +197,9 @@ Doubt cycle
   on a copy, never on production data or a shared environment.
 - **One change at a time.** Each revision answers one finding, so the re-check shows what fixed
   what.
+- **Change only what the finding needs.** Keep the behavior, parameters, interfaces and tests the
+  finding does not touch. Never delete or weaken an existing test to make a fix fit; if one
+  really stops applying, say why in the reply.
 - **Each external run is its own authorization.** A yes for one cross-model command does not
   cover the next; the artifact, prompt and flags change between runs.
 
@@ -274,7 +277,8 @@ Before relying on the claim or calling the review done, confirm:
       your reasoning;
 - [ ] at least one check able to fail ran on the original artifact, and its output is recorded;
 - [ ] every finding has its five fields, a class in precedence order and evidence;
-- [ ] every fix has a check seen failing before it and passing after it;
+- [ ] every fix has a check seen failing before it and passing after it, and changes nothing the
+      finding does not need: no removed parameter, behavior or existing test;
 - [ ] a stop condition was met and written, and no cycle repeated an unchanged artifact;
 - [ ] the review mode is stated: fresh reviewer or DEGRADED self-review; cross-model run,
       declined or skipped with its reason;

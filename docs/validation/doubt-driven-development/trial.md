@@ -109,3 +109,10 @@ than the current skill on M11 and than Addy on Q2, equal elsewhere.
   the runner wrote its claim only in the final record and no arm wrote a contract. A subagent
   runner that emits no text between tool calls may not show these steps whatever the guide says.
 - The gate as frozen (at least equal on every criterion) is not met in either round.
+
+## After the second round
+
+The user chose to ship without a third round. One rule was added for the M5 miss: a fix changes
+only what the finding needs and keeps the behavior, parameters, interfaces and tests it does not
+touch, never deleting or weakening an existing test to make the fix fit (Rules and Verification
+in `SKILL.md`). This rule has not been through a trial run.
