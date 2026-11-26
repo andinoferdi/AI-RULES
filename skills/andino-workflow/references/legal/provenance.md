@@ -165,6 +165,15 @@ Fast-Path Deterministic and Deep Forensic Investigation, deep craft `GUIDE.md`, 
 catalogs, dual-runtime cross-platform portability in Bash POSIX and Python 3.8+ stdlib, offline
 deterministic Python stdlib verification, and complete integration with `ai-rules setup`).
 
+The 2026-11-26 upgrade of `debugging` re-reads Addy Osmani's `debugging-and-error-recovery`
+(addyosmani/agent-skills 9097b64), Matt Pocock's `diagnosing-bugs` (mattpocock/skills f3fc563)
+and Jesse Vincent's `systematic-debugging` (obra/superpowers 22f0b46), all MIT, and moves the
+method into the sibling layout: a quick path and six evidence gates in `SKILL.md` (mirrored by
+`GUIDE.md`), a report template, the shortcut and red-flag lists, and resources for loops,
+tracing, flaky failures and recovery. The comparison trial is recorded in
+`docs/validation/debugging/trial.md`. The paragraph above describes the earlier version; its
+line budget, state-machine and Bash POSIX wording no longer apply.
+
 The 2026-11-01 elevation of `delegation` synthesizes the generative multi-agent delegation craft of
 Matt Pocock's `engineering/implement-spec` (task graph DAG modeling, active unblocked frontier tracking,
 context pointers replacing conversational chat dumps, and clean integration branch lifecycles),

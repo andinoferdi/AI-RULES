@@ -1,6 +1,6 @@
 # Triage Trees and Feedback Loop Catalog
 
-Supporting reference for `skills/debugging/`. Operates under Andino Workflow governance.
+Supporting reference for `andino-debugging`. Operates under Andino Workflow governance.
 
 ---
 
@@ -66,24 +66,50 @@ Runtime error observed:
     └── Trace backward to find the exact branch point where execution diverged
 ```
 
+### D. Localize by Layer
+
+```
+Which layer first shows the bad value?
+├── UI / frontend      → console, DOM, network tab
+├── API / backend      → server logs, request and response
+├── Database           → the query, schema and stored data
+├── Build tooling      → config, dependencies, environment
+├── External service   → connectivity, API changes, rate limits
+└── The test itself    → is the assertion right? (false failure)
+```
+
+When a known-good revision exists, let git find the layer's change: `git bisect start`,
+`git bisect bad`, `git bisect good <sha>`, then `git bisect run <the red check command>`
+(Tier 8 below).
+
 ---
 
 ## 2. The 10-Tier Feedback Loop Catalog
 
 A tight, red-capable feedback loop is the foundation of debugging. Spend disproportionate effort constructing one before formulating hypotheses. Prefer a fast, unattended loop with a repeatable verdict. Keep a slower exact loop when necessary. For intermittent failures record the observed rate and conditions. A human-assisted driver can collect evidence while an automated check is unavailable.
 
-| Tier | Feedback Loop Mechanism | Best Used For | Execution Speed |
+| Tier | Feedback Loop Mechanism | Best Used For | Signal It Gives |
 | :--- | :--- | :--- | :--- |
-| **Tier 1** | **Focused Unit / Integration Test** | Function, class, or module-level contract violations. | < 1 second |
-| **Tier 2** | **HTTP / Curl Replay Script** | API endpoints, microservices, backend regressions. | 1 – 3 seconds |
-| **Tier 3** | **CLI Invocation with Snapshot Diff** | CLI tools, compilers, formatters, batch scripts. | < 2 seconds |
-| **Tier 4** | **Headless Browser Script** (Playwright/Puppeteer) | UI rendering, client state, DOM interaction, network waterfalls. | 3 – 8 seconds |
-| **Tier 5** | **Replay Captured Trace** | Complex production payloads, webhook events, message queue jobs. | < 1 second |
-| **Tier 6** | **Throwaway Harness** | Deep internal subsystem where spinning full app is too slow. | < 1 second |
-| **Tier 7** | **Property / Fuzzing Loop** | Edge-case inputs, off-by-one errors, parser crashes. | 2 – 5 seconds |
-| **Tier 8** | **Automated Bisection Harness** (`git bisect run`) | Regressions between two known commits. | Automated |
-| **Tier 9** | **Differential Loop** (Old vs New / Oracle) | Comparing output of refactored module vs known-good legacy version. | < 2 seconds |
-| **Tier 10** | **Human-In-The-Loop (HITL) Script** | Interactive auth, hardware devices, visual desktop canvas. | Interactive |
+| **Tier 1** | **Focused Unit / Integration Test** | Function, class, or module-level contract violations. | Assertion pass/fail at the seam |
+| **Tier 2** | **HTTP / Curl Replay Script** | API endpoints, microservices, backend regressions. | Status code and response body |
+| **Tier 3** | **CLI Invocation with Snapshot Diff** | CLI tools, compilers, formatters, batch scripts. | Diff against a known-good output |
+| **Tier 4** | **Headless Browser Script** (Playwright/Puppeteer) | UI rendering, client state, DOM interaction, network waterfalls. | DOM, console and network assertions |
+| **Tier 5** | **Replay Captured Trace** | Complex production payloads, webhook events, message queue jobs. | Handler result on the real payload |
+| **Tier 6** | **Throwaway Harness** | Deep internal subsystem where spinning full app is too slow. | One function call on the bug path |
+| **Tier 7** | **Property / Fuzzing Loop** | Edge-case inputs, off-by-one errors, parser crashes. | The failing seed and input |
+| **Tier 8** | **Automated Bisection Harness** (`git bisect run`) | Regressions between two known commits. | The first bad commit |
+| **Tier 9** | **Differential Loop** (Old vs New / Oracle) | Comparing output of refactored module vs known-good legacy version. | The first input whose outputs differ |
+| **Tier 10** | **Human-In-The-Loop (HITL) Script** | Interactive auth, hardware devices, visual desktop canvas. | Structured answers captured from the person |
+
+### Tighten the loop
+
+Once a loop goes red, treat it as a product and improve it before probing:
+
+- **Faster.** Cache setup, skip unrelated initialisation, narrow the test selection. Measure
+  the loop's own time; seconds beat minutes.
+- **Sharper.** Assert the reported symptom (the wrong value, the exact error), not "did not crash".
+- **Deterministic.** Pin time, seed random generators, isolate the filesystem, stub the network.
+  A slow flaky loop is barely better than none.
 
 ---
 
