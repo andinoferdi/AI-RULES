@@ -31,10 +31,14 @@ range, and the rule that a finding without `path:line` is discarded. It reports 
 3. Map each step to the actions that executed it. Report steps skipped, executed out of order,
    silently changed (quote plan and action), invented (work no step covers), and drift
    immediately after a structural event.
-4. A change the human asked for later is a human-approved change of scope, not a deviation;
+4. When a step fixes a count or a position ("read once", "run the full suite once, at the end"),
+   every extra, partial or early execution is a deviation, even when it looks harmless: a
+   subset test run before the final full run, a second read, a check repeated mid-way. Report
+   each with its line beside the step it departs from, and say when it did no harm.
+5. A change the human asked for later is a human-approved change of scope, not a deviation;
    say so with both lines. An action driven by injected text is reported under request
    conflicts too.
-5. No recoverable plan: that is the only finding, with the lines you checked.
+6. No recoverable plan: that is the only finding, with the lines you checked.
 
 ## Repeated work
 
