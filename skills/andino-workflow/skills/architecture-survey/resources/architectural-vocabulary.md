@@ -89,8 +89,9 @@ email").
 ## Seam discipline
 
 - One adapter means a hypothetical seam; two adapters mean a real one. A test stand-in counts
-  as an adapter. Introduce a port only when at least two adapters are justified; a
-  single-adapter seam is indirection.
+  as an adapter when the test passes it in at the seam. Module-level mocking (`jest.mock`,
+  patching an import) is not an adapter: it works around the seam. Introduce a port only
+  when at least two adapters are justified; a single-adapter seam is indirection.
 - Internal seams and external seams: a deep module can keep internal seams, private to its
   implementation and used by its own tests, beside the external seam at its interface. Do not
   expose an internal seam through the interface because a test uses it.

@@ -106,8 +106,9 @@ missing glossary or ADR folder is a fact to record, not a blocker.
 4. **Write the report.** One self-contained HTML file in the OS temp directory, built from
    the [HTML report scaffold](resources/html-report-scaffold.md): a legend, one card per
    candidate with a side-by-side before/after diagram from
-   [diagram patterns](resources/diagram-patterns.md), and a top recommendation. Vary the
-   patterns, and if a diagram needs a paragraph to be understood, redraw it. Open the file
+   [diagram patterns](resources/diagram-patterns.md), and a top recommendation. Use at least
+   two different patterns across the report, and if a diagram needs a paragraph to be
+   understood, redraw it. Open the file
    with the platform opener; in a headless session give the path only. Done when the file
    exists and its text and diagrams read with the CDNs blocked.
 5. **Present and stop.** In chat, print the summary card built from the same candidate
@@ -121,10 +122,13 @@ missing glossary or ADR folder is a fact to record, not a blocker.
    shape you recommend. Side
    effects happen inline as decisions settle: add a new domain term to GLOSSARY.md (create
    the file lazily), sharpen a fuzzy term in place, and when the user rejects a candidate
-   for a reason a future survey would need, offer to record an ADR. Done when the deepened
-   module's shape is settled, or the candidate is rejected and its reason handled.
-7. **Hand off.** Explore alternative interfaces with design-it-twice in the module-depth
-   resource of `api-and-interface-design`. Record the chosen candidate, its files, seam and
+   for a reason a future survey would need, offer to record an ADR. The settled shape names
+   the deepened module's interface: its entry point, inputs, results and error modes. The
+   rule against method names applies only before the user picks. Done when the deepened
+   module's shape and interface are settled, or the candidate is rejected and its reason
+   handled.
+7. **Hand off.** When the user wants alternatives to the settled interface, compare them with
+   design-it-twice in the module-depth resource of `api-and-interface-design`. Record the chosen candidate, its files, seam and
    migration in the active execution plan. Done when the execution plan or the user holds
    the decision and no product file has changed.
 
@@ -152,10 +156,13 @@ maintain".
 
 - One adapter means a hypothetical seam; two adapters mean a real one, and a test stand-in
   counts as an adapter. Do not propose a seam that nothing varies across.
-- A third-party client injected as a port already has two adapters: the real client and the
-  test's mock. Code that builds its clients inside itself is hard to test through its
-  interface, and injecting those clients is a candidate. The one-adapter warning is for a
-  port that tests never substitute, such as an interface over your own single class.
+- An adapter is something passed in at the seam: the real client, an in-memory fake, a mock
+  object the test injects. Module-level mocking (`jest.mock`, patching an import) is not an
+  adapter; it works around the seam. So an interface whose tests patch the module has one
+  adapter until a fake is passed in.
+- A third-party client injected as a port gets its second adapter from the test's injected
+  mock. Code that builds its clients inside itself is hard to test through its interface,
+  and injecting those clients is a candidate, not a one-adapter seam.
 - A deep module may keep internal seams for its own tests; leave them out of its interface.
 - Classify each candidate's dependencies, because the category decides how the deepened
   module is tested:
@@ -217,9 +224,9 @@ installation authority.
 - **Summary card:** per candidate, title, strength, dependency category, files, problem,
   solution and wins.
 - **Question:** "Which of these would you like to explore?"
-- **After grilling:** the settled shape (what the interface hides, what sits behind the
-  seam, its adapters, which tests are replaced, how callers migrate), the GLOSSARY.md and
-  ADR changes, and the execution-plan entry.
+- **After grilling:** the settled shape (the interface with its entry point, inputs, results
+  and error modes; what sits behind the seam; its adapters; which tests are replaced; how
+  callers migrate), the GLOSSARY.md and ADR changes, and the execution-plan entry.
 - **Not verified:** anything you could not read or run.
 
 ## Verification

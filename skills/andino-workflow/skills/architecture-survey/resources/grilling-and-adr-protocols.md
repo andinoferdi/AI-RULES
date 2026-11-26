@@ -31,7 +31,8 @@ The decisions every deepening candidate has to settle:
   stated steps when they cannot, and whether any old entry point stays.
 
 The grilling ends when every branch has an answer and nothing is silently assumed; play the
-settled shape back and wait for the user to confirm it. When the user asks you to choose for
+settled shape back, including the interface (entry point, inputs, results, error modes), and
+wait for the user to confirm it. When the user asks you to choose for
 them, take your recommended answers, say so, and play the result back.
 
 ## Keep the glossary current

@@ -4,7 +4,7 @@ Internal method ID: `architecture-survey`. Supporting resource for `skills/archi
 
 This resource specifies the 5 canonical visual diagram patterns used in architecture survey reports. Diagrams carry the substantive weight of the report and prose stays minimal. If a diagram needs a paragraph of explanation to be understood, redraw the diagram.
 
-Pick the pattern that fits each candidate and mix them across the report; when every diagram looks the same, the report reads as generic. Use Mermaid when the relationships are graph-shaped (call graphs, dependencies, sequences such as "before: 6 round-trips; after: 1") and hand-built HTML or SVG for the editorial visuals (deep-module boxes, cross-sections, mass diagrams, collapses). Draw at least one diagram per card by hand: Mermaid needs its CDN, and a hand-built diagram still renders offline. Label diagrams with the real module and file names from the code being surveyed.
+Pick the pattern that fits each candidate and use at least two different patterns across the report; when every diagram looks the same, the report reads as generic. Use Mermaid when the relationships are graph-shaped (call graphs, dependencies, sequences such as "before: 6 round-trips; after: 1") and hand-built HTML or SVG for the editorial visuals (deep-module boxes, cross-sections, mass diagrams, collapses). Draw at least one diagram per card by hand: Mermaid needs its CDN, and a hand-built diagram still renders offline. Label diagrams with the real module and file names from the code being surveyed.
 
 ---
 
