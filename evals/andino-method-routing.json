@@ -322,6 +322,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-ci-cd-and-automation-required-check",
+    "kind": "behavior",
+    "prompt": "Docs-only pull requests wait twenty minutes for CI. Let them skip the heavy jobs without breaking the required check.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select ci-cd-and-automation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "ci-cd-and-automation"
+    ],
+    "method": "ci-cd-and-automation",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-code-review-implicit",
     "kind": "behavior",
     "prompt": "Review perubahan termasuk file baru belum tracked.",
