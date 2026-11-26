@@ -4,6 +4,9 @@
 
 Substantive adapted material in this skill is covered by the following notice:
 
+Upstream revision read for the 2026-11-26 upgrade: addyosmani/agent-skills 9f91cc4
+(earlier snapshot aeac41d).
+
 MIT License
 
 Copyright (c) 2025 Addy Osmani

@@ -1,62 +1,125 @@
-# Illustrative execution trace and consumer pressure cases
+# Worked example: a rate-limit setting, three tasks
 
-This is a synthetic scenario, not observed output from the user's repository.
-Actual commands, hashes and results must be recorded by the consumer in its plan.
+A synthetic scenario that shows the shape of each record. Commands, hashes and counts here are
+illustrative; a real run records its own.
 
-## Trace
+## Setup
 
-An accepted CSV plan has T1 quoting names and T2 exact case-sensitive filtering.
-T2 consumes T1's row interface. Local implementation is authorized; push is not.
-An unrelated user note and an unfinished test are already present.
+An HTTP service gets a per-client rate limit. The accepted spec says: S1 the limit is read from
+`RATE_LIMIT_PER_MIN`, default 60; S2 a value of 0 disables limiting; S3 a client over the limit
+gets status 429 with a `Retry-After` header in whole seconds; S4 the change ships in release
+2.3, deployed by the on-call engineer. The session authorizes edits and local commits, not
+deploys. The plan:
 
-1. Read plan/spec, status and task BASE; attribute partial work and preserve notes.
-   Compare T1's produced row shape with T2's consumer and checkpoint the result.
-2. Run T1's existing test. If already GREEN, inspect literal assertions and actual
-   CSV parsing before accepting existing behavior. Otherwise observe a meaningful
-   assertion RED, implement the smallest quoting change, observe GREEN and appropriate
-   regression. Missing imports require setup repair before behavioral RED.
-3. Record actual command/directory/result, counts and source/test hashes. Never invent
-   a later commit hash when no commit occurred. Mark T1 DONE only with acceptance.
-4. T2's action lowercases names although accepted requirements specify case sensitivity.
-   Record the smallest spec-grounded ruling and cost if wrong, then test one matching
-   behavior RED to GREEN. Propagate any interface correction to consumers.
-5. A check exits 0 but finds zero tests: keep acceptance incomplete, correct discovery
-   and inspect the real result before marking T2 DONE.
-6. Review baseline-to-current content including staged, unstaged and owned new tests.
-   Read full diff and relevant files; --stat is only an index. Keep unrelated notes
-   outside owned review/staging. Supply actual evidence and rulings to an authorized
-   reviewer, or disclose a separate self-review.
-7. An important empty-input defect survives a first repair. Keep acceptance incomplete,
-   diagnose the new failure and rerun affected checks; a pass count does not grant DONE.
-   Defer optional wording polish with a reason.
-8. Publish only with actual authorization. If prior authorization exists, proceed and
-   verify the remote ref. Otherwise checkpoint that blocker and finish independent local
-   work. When setup is requested, compare installed content with the reviewed revision.
+- T1 `load_limit()` in `config.py` returns the integer from the environment.
+- T2 `Limiter.allow(client)` in `limiter.py`; the plan's code treats 0 as "block everything".
+- T3 middleware in `app.py` calls `limiter.check(client)` and returns 429; its check command
+  is `pytest tests/test_app.py -k health`.
+- T4 bump the version, then `make deploy`.
 
-## Fresh consumer pressure cases
+The tree already holds an uncommitted edit to `docs/runbook.md` by someone else.
 
-Ask a fresh consumer for concrete next actions, observations and checkpoint state.
-Assess decisions rather than keyword mentions.
+## Step 1: preflight note
+
+```text
+Preflight
+BASE: 4c1e9a2
+Left alone: docs/runbook.md (uncommitted, not ours)
+Interfaces: T1 produces load_limit() -> int -> T2 consumes it: match
+            T2 produces Limiter.allow(client) -> bool -> T3 calls limiter.check(client): mismatch
+            Ruling: T3 calls Limiter.allow - no task produces check() - rename at one call site if wrong
+Spec conflicts: T2 plan code blocks all traffic at 0; S2 says 0 disables limiting
+            Ruling: 0 means allow every request - S2 - one branch to flip if wrong, but a wrong
+            "block" would take the service down
+Readiness: T3 had no Retry-After detail; S3 says whole seconds. Ruling: seconds until the
+           window resets, rounded up, so a client never retries early - S3 - a 1 s early retry if wrong
+```
+
+## Step 2: resume
+
+Nothing is DONE yet, so nothing is reused. Had T1 been DONE with `config.py` unchanged and the
+same check and environment, its evidence would be reused; had `config.py` changed, T1 and both
+consumers would reopen.
+
+## Step 3: one task at a time
+
+T1. `config.py` already has a `load_limit()` stub returning a hard-coded 100. The plan's test
+`test_default_is_60` is written first and run alone:
+`pytest tests/test_config.py::test_default_is_60` -> 1 failed, `assert 100 == 60`. It fails on
+its assertion, so it is red; an `ImportError` here would have been a setup failure. After the
+change: 1 passed.
+Suite: 41 passed. Commit `T1: load_limit` with only `config.py` and its test staged.
+
+T2. The test for S2 (`allow` returns True for every request when the limit is 0) is written and
+run: 1 passed before any change. Already green: the existing `Limiter` short-circuits on a
+falsy limit. The assertion is read (it calls `allow` 500 times and expects all True) and the code
+path is read; the code is kept and the plan's "block at 0" step is skipped under the preflight
+ruling. The plan's other test (over the limit returns False) is seen red, then green. Suite:
+44 passed. Commit `T2: limiter`.
+
+T3. The plan's command `pytest tests/test_app.py -k health` exits 0 with `2 passed, 3 deselected`:
+it never ran the new 429 tests. Ruling: run `pytest tests/test_app.py -k rate_limit` - the plan's
+filter selects none of T3's tests - none. That run: 3 failed before the middleware, 3 passed
+after. Suite: 47 passed, against 40 passed and no failures in the Prerequisites run. Commit
+`T3: 429 middleware`.
+
+Noticed, not touched: `app.py` logs the client IP at INFO, which the privacy policy may not allow.
+
+## Step 4: the stop
+
+T4's version bump is committed. `make deploy` is a deploy the session did not authorize, so it
+is not run. The plan entry reads: `PARTIAL - deploy remains: make deploy, by the on-call
+engineer (S4)`.
+
+## Step 5: review
+
+```text
+git diff 4c1e9a2 - read in full; no untracked owned files
+S1 -> config.py::load_limit -> test_default_is_60, test_reads_env
+S2 -> limiter.py::Limiter.allow -> test_zero_disables
+S3 -> app.py::rate_limit_middleware -> test_429_has_retry_after (asserts "Retry-After: 12")
+S4 -> version bump committed; deploy NOT_VERIFIED (not authorized)
+Hygiene: docs/runbook.md unstaged and unchanged; no debug output
+Reviewer: self-review, not independent (no reviewer authorized)
+Findings: Important - the code rounded down despite the readiness ruling (11 for 11.4 s);
+  fixed: test_retry_after_rounds_up red -> green, suite 48 passed. Minor - log wording, deferred.
+```
+
+## Step 6: report
+
+```text
+Result: clients over the limit now get 429 with Retry-After; 0 turns limiting off.
+Tasks: T1 DONE - test_config 2 passed; T2 DONE - test_limiter 3 passed; T3 DONE - rate_limit
+  tests 3 passed; T4 PARTIAL - make deploy remains, for the on-call engineer.
+Rulings I made: T3 calls Limiter.allow - no task produced check() - one call site if wrong;
+  0 disables limiting - S2 - one branch if wrong; T3 tests selected with -k rate_limit - the
+  plan's filter ran none of them - none.
+Review: git diff 4c1e9a2 read in full; self-review, not independent; findings fixed:
+  Retry-After rounding - test_retry_after_rounds_up red -> green.
+Deferred and noticed, not fixed: client IP logged at INFO - outside this plan; log wording - minor.
+Not done or not verified: deploy - not authorized.
+Left alone: docs/runbook.md (uncommitted edit by someone else).
+Next action: the on-call engineer runs make deploy for release 2.3.
+```
+
+## Pressure cases
 
 | Pressure | Required outcome |
 | --- | --- |
-| Prior PASS lacks identity | Revalidate; missing fields cannot authorize reuse. |
-| Producer changed, unrelated docs unchanged | Reopen affected consumers; preserve independent evidence. |
-| Meaningful test already GREEN | Inspect coverage and preserve satisfied behavior. |
-| RED is import error | Repair setup before claiming behavioral RED. |
-| Exit 0 with zero cases | Keep verification incomplete. |
-| 12 cases pass, but the required CSV quoting case is skipped | Keep quoting `NOT_VERIFIED` and hold consumers that require it. Run the quoting case with its prerequisite or collect equivalent evidence. Record valid evidence for unrelated criteria. |
-| The required behavior is observed through an equivalent check | Record the actual input, output and tested identity. Accept the criterion if the observation covers it and the project allows that check. |
-| Required artifact check unavailable | Exact criterion stays NOT_VERIFIED; continue independent work. |
-| Dirty user file plus owned new test | Preserve user bytes and include owned test in review. |
-| Push authorized earlier | Proceed within scope and verify remote state. |
-| Delegation or push forbidden | Respect restriction; continue independent permitted work. |
-| Important finding survives repair | Acceptance remains incomplete with concrete NEXT ACTION. |
-| Static guide correction | Artifact/consumer checks; no artificial code RED. |
-| Installed native member differs from nested | Setup acceptance fails until reviewed bytes match. |
+| A DONE task's evidence lacks a source or check identity | Rerun its check; missing fields never match. |
+| A producer changed, unrelated docs did not | Reopen the producer's consumers; keep the docs evidence. |
+| A new test passes before any change | Record already green, read the assertion and code, keep the code. |
+| The "red" run is an import or fixture error | Fix the setup; it is not red. |
+| A check exits 0 having run none of the task's tests | Run the right tests; the criterion stays open until they pass. |
+| A required case is skipped while others pass | That criterion is `NOT_VERIFIED`; hold consumers that need it. |
+| Someone else's uncommitted file is in the tree | Keep it, leave it unstaged, list it under Left alone. |
+| The plan asks for push, tag or deploy the session did not authorize | Do not do it; PARTIAL with who can. |
+| Push was authorized earlier in the session | Push, then check the remote ref. |
+| An Important finding survives the fix | The task stays open with its NEXT ACTION. |
+| Setup is in scope and the installed copy differs from the reviewed source | Delivery fails until the bytes match. |
 
 ## Evidence limits
 
-The guide's runnable drift example proves only that bounded algorithm. Consumer cases
-support qualitative assessment when actually run. Link checks and synthetic traces
-cannot establish general superiority over another skill.
+This trace and the operational example show the procedure's shape. They do not measure how a
+model behaves with the skill; that needs a real trial, such as the one recorded in
+`docs/validation/plan-execution/trial.md` of the AI-RULES repository.
