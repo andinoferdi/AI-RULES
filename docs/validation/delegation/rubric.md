@@ -127,6 +127,18 @@ the output says or does; a criterion the output never addresses scores 0.
 
 Maximum: 25 criteria, 50 points.
 
+## Amendment of 2026-11-26 (before the candidate was written)
+
+Made after the unguided and current arms had run, before the candidate existed, and applied
+to every arm. Two baseline outputs argued for fixing the Task 2 failures without investigation
+subagents, which made I3 and I4 unscorable as written and would reward starting subagents
+for the score. So: when an output starts no investigation subagent for a failure group and
+argues that choice from cost (I2), score I3 and I4 on its own written plan for that group,
+using the same elements (tests named, failure quoted, suspect commit or file, scope of edits,
+before and after evidence; no weakened assertions, sleeps, retries or loosened tolerances, and
+the test-or-code question settled from the commit's intent). Prompts it writes for other
+subagents in Task 2, such as a reviewer, count as well.
+
 ## Gate
 
 The candidate passes when its score is at least the reference arm's and at least the current
