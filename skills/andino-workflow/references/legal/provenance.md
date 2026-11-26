@@ -165,6 +165,15 @@ Fast-Path Deterministic and Deep Forensic Investigation, deep craft `GUIDE.md`, 
 catalogs, dual-runtime cross-platform portability in Bash POSIX and Python 3.8+ stdlib, offline
 deterministic Python stdlib verification, and complete integration with `ai-rules setup`).
 
+The 2026-11-26 upgrade of `tdd` re-reads Addy Osmani's `test-driven-development`
+(addyosmani/agent-skills df50a6d), Matt Pocock's `tdd` (mattpocock/skills 3f59913) and Jesse
+Vincent's `test-driven-development` (obra/superpowers 5bf4e78), all MIT, and moves the method into
+the sibling layout: a slice list and six evidence gates in `SKILL.md` (mirrored by `GUIDE.md`), a
+test record template, shortcut and red-flag lists, and resources for test design, the supporting
+contract and a worked example. The duplicate `resources/typed-fixtures/contract.md` was removed;
+the typed-fixtures guide is unchanged. The comparison trial is recorded in
+`docs/validation/tdd/trial.md`.
+
 The 2026-11-26 upgrade of `deprecation-and-migration` re-reads Addy Osmani's
 `deprecation-and-migration` (addyosmani/agent-skills 9f91cc4, MIT) and moves the method into the
 sibling layout: a quick path and six gates with named artifacts in `SKILL.md` (mirrored by
@@ -275,6 +284,19 @@ non-destructive survey invariants, embedded Python operational harness testing i
 with `ANDINO_NEGATIVE` gate, zero-dependency offline Python stdlib verification via
 `scripts/verify_architecture_survey_elevation.py`, and complete integration with `ai-rules setup`).
 MIT notice for Matt Pocock remains preserved.
+
+The 2026-11-26 rewrite of `issue-triage` follows mattpocock/skills commit d80fa0f (`triage`
+with `AGENT-BRIEF.md` and `OUT-OF-SCOPE.md`). It puts the skill in the sibling Andino layout
+with one eight-step procedure (GUIDE.md mirrors SKILL.md) and adds the three-bucket attention
+list, the already-built and prior-rejection checks by concept, the CONFIRMED / FAILED /
+INSUFFICIENT verification verdicts, recommend-then-wait, grilling through
+`andino-brainstorming`, the outcome table with its three wontfix variants, quick state
+override and resuming from earlier notes. The brief template and durability rules, the
+out-of-scope record format and flows, and the needs-info and closing-comment formats move into
+`resources/` with new examples in other domains. The authority table, the per-item record and
+the local-draft fallback are Andino additions; the dependency on Matt's setup skill is replaced
+by reading the project's tracker configuration. `tests/test_issue_triage_preservation.py`
+guards the kept rules; the trial is in `docs/validation/issue-triage/`.
 
 The 2026-11-26 rewrite of `architecture-survey` follows mattpocock/skills commit 7739eae
 (`improve-codebase-architecture` with `HTML-REPORT.md`, and the skills it calls:

@@ -23,7 +23,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 
 | Public member | Responsibility |
 | --- | --- |
-| `andino-tdd` | Executable RED/GREEN behavior guards; optional typed-fixture migration preserving invalid negative cases. |
+| `andino-tdd` | One behavior per red-green slice from a written slice list, proof against the pre-fix code for tests that pass at once, and a test record; optional typed-fixture migration. |
 | `andino-debugging` | Reproduce, prove and fix an unknown cause through six evidence gates with a report template; quick path when the compiler names the cause. |
 | `andino-verification` | Observed acceptance evidence before consequential completion claims. |
 | `andino-browser-testing-with-devtools` | Reproduce, fix and replay in a real browser; release pass at 360, 768 and 1440 px by device emulation, accessibility, console split and loading metrics. |
@@ -53,7 +53,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-documentation-and-adrs` | Durable documentation and decisions; optional domain vocabulary. |
 | `andino-handoff` | Portable continuation and optional context packing. |
 | `andino-human-procedure` | Necessary steps requiring human-only access or authority. |
-| `andino-issue-triage` | Maintainer-requested issue/PR evaluation without unauthorized tracker writes. |
+| `andino-issue-triage` | Attention list, verified triage of issues and external pull requests, durable agent briefs and out-of-scope records; tracker writes only for items the maintainer authorized. |
 | `andino-optimize-prompt` | Explicitly requested rewrite of a raw task prompt that keeps its shape, every named skill and phase, and every fact, and adds labelled checked project facts, done-when, limits and a verification step; a diagnosis table and up to three questions follow it. |
 | `andino-session-diagnostics` | Session-level failures; optional prevention review after causes are known. |
 | `andino-learning-workspace` | Intentional learning; optional course-exercise scaffolding. |
