@@ -1,6 +1,8 @@
 # License Notice
 
 **Original Source:** [mattpocock/skills: skills/engineering/triage](https://github.com/mattpocock/skills/tree/main/skills/engineering/triage)
+(`SKILL.md`, `AGENT-BRIEF.md` and `OUT-OF-SCOPE.md` at commit d80fa0f, adapted in the
+2026-11-26 rewrite into `SKILL.md` and `resources/`)
 
 Substantive adapted material in this skill is covered by the following notice:
 

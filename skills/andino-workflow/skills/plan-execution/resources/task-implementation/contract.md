@@ -45,7 +45,7 @@ Andino coordinates selection, shared progress, resource guards and final status 
 This skill owns its full procedure, required resources, artifact detail and technical
 checks. Coordinator brevity/density never truncates these. User/project authority,
 Focus/research/domain boundaries and real invocation controls still apply. Native
-`andino-implementation` and this guide expose one method, without recursive workflow invocation.
+`andino-plan-execution` and this guide expose one method, without recursive workflow invocation.
 
 Existing scope authorization persists. Local examples use disposable data; real Git mutations, external messages/tracker writes, credentials, global setup, deployments and recurring jobs require their actual authority. A source example never grants it. Preserve user edits, secrets and current staging.
 

@@ -1,194 +1,105 @@
-# Skill Maker — authoring contract and consumer-evaluation records
+# Evaluation contract
 
-Supporting resource for `andino-skill-maker`. Read with [the guide](../GUIDE.md)
-and [the operational contract](../SKILL.md); this resource is neither a router
-nor permission to launch evaluators or mutate a host.
+Read at gates 4, 6 and 7: what the evaluation record holds, how to label self-review, how to
+write the runbook, and what to check before a skill ships.
 
-## Identity, discovery, and proportional structure
+## Evaluation record
 
-Canonical Andino members use stable `andino-<kebab-case-slug>` IDs and descriptions
-that identify observable selection triggers, scope, and relevant exclusions.
-Preserve `writing-skills` as compatibility alias for `andino-skill-maker`, with
-`method-authoring` and `andino-method-authoring` recorded in historical provenance. Existing valid host metadata follows
-the real host schema; do not ban extra keys merely to force a universal template.
+Keep one record per skill change, next to the scenarios or in the task's existing evidence. One
+row per scenario and arm:
 
-A typical member starts with YAML `name` and `description`, then covers purpose,
-trigger/non-trigger, prerequisites, procedure, ownership, permission, output,
-verification, example/anti-pattern, fallback, and provenance. Equivalent headings
-and functional layouts are valid. No mandatory numbered heading set, governance
-banner, or FSM supersedes specialized craft. Human runbooks can use their native
-structure while retaining executable steps, preconditions, stop/recovery
-conditions, authority, observable outputs, and handoffs.
+| Scenario | Arm | Status | Evidence | Result |
+| --- | --- | --- | --- | --- |
+| S2 generator missing | no skill | OBSERVED (incident 3) | "I'll regenerate after the demo" | FAIL |
+| S2 generator missing | candidate | SELF-REVIEW | Rule line 1 and excuse row 2 stop the edit; step 3 reports the blocker | PASS (self-review) |
+| S2 generator missing | candidate | NOT RUN | Runbook below | — |
 
-Root coordinator `SKILL.md` remains strictly <150 lines. This skill's operational
-contract also stays <150. Other specialized methods prefer compact contracts but
-may retain documented domain-FSM/negative-gate craft exceptions. Record the actual
-reason and preserve reachable detailed resources; line-count compliance is never
-a reason to discard required procedure. No arbitrary minimum size is imposed.
+Arms are: no skill; the current skill, for a revision; the candidate. Statuses:
 
-## Consumer-use recipe and pressure
+- **RUN**: a fresh agent ran the scenario; the evidence quotes its transcript or output.
+- **OBSERVED**: the evidence quotes a real incident or sample (remedial baselines).
+- **SELF-REVIEW**: you applied the PASS and FAIL lines to what the skill leads to. Name the skill
+  line that decides the result. Never present it as independent.
+- **NOT RUN**: nothing was executed; say why (no fresh agent available, not authorised).
 
-Match the intervention to the task defect: a citation field fixes an omitted
-citation, a positive recipe fixes malformed output, a precise boundary addresses
-unauthorized publication, and an observable predicate distinguishes a legitimate
-exception. Avoid vague exemptions that reopen negotiation.
+A record with only SELF-REVIEW and NOT RUN rows leaves agent behaviour not verified, and the
+report says so in its "Not verified" line.
 
-Test technique application/variation/gaps, pattern recognition/counterexamples,
-reference retrieval/application, and discipline under combined realistic pressure.
-Use urgency, sunk effort, authority claims, fatigue, missing tools, and ambiguous
-evidence only as scenario conditions. State the legitimate rule and reason;
-never use psychological framing to override the user's authority.
+For a revision, apply the criteria to the same input for the current skill and the candidate:
+write the output each version leads to (for an output-shape skill, the actual output for one
+real sample), and score both against the same PASS and FAIL lines. A comparison where only the
+candidate was scored is not a comparison.
 
-Baseline and candidate solve the same task with the same capabilities, authority,
-fixtures, and exposed runtime settings. Use several fresh contexts in each
-condition when evaluation is available and authorized; inspect controls, candidate
-samples, failures, and false positives. Quoted counterexamples can fool token
-scoring; convergent correct actions matter more than rule recital.
-Self-application is not independent validation. Define the oracle separately and
-seek an authorized independent validator where available. Helper/schema checks
-prove only exercised deterministic behavior, never model compliance.
+## Runbook
 
-Use prose/numbered steps for linear actions, a table for lookup, and a small
-optional decision diagram only where a non-obvious branch benefits. Labels name
-meaningful states/actions rather than executable code. A Mermaid fragment may
-remain text or use an existing renderer. Do not install Graphviz or auto-generate
-a project graph because an upstream helper exists. Check branches against the
-written procedure; unobserved rendering stays NOT_VERIFIED.
+The runbook lets someone with a fresh agent repeat the evaluation without asking you:
 
-## Evaluation record fields
+```markdown
+## Runbook: <skill name>
+Scenarios: <path>
+Arms: no skill | current skill (<path or commit>) | candidate (<path or commit>)
+For each scenario and arm:
+1. Start a fresh agent with the same tools and repository state as the scenario's Setup line.
+2. Install only that arm's skill (none for the control).
+3. Send the scenario's Prompt verbatim.
+4. Record the actions taken and any reason the agent gave, quoted.
+5. Score against the PASS and FAIL lines; read every match yourself.
+Done when: every scenario has a RUN row for every arm.
+First to run: <the scenario most likely to fail, and why>
+```
 
-Store these fields in the existing task evidence, not a mandatory extra ledger.
-The following JSON is an illustrative record, not a universal schema or fabricated
-empirical result. Repeat samples/conditions as needed; use real output references
-and identities only after actual execution.
+## Machine-readable record (optional)
+
+When a project keeps evaluation data as JSON, use these fields. The values below are an
+illustration, not a result:
 
 ```json
 {
-  "skill_name": "andino-sample-skill",
-  "mode": "greenfield",
-  "task_id": "authoring-case-1",
-  "capability_or_failure": "Audit a migration against stated invariants",
-  "oracle": {
-    "origin": "Independent literal acceptance requirements",
-    "expected_actions": ["Report unsupported migration without applying it"],
-    "negative_cases": ["Do not activate for a spelling-only edit"]
-  },
-  "matched_conditions": {
-    "task_fixture_identity": "NOT_RECORDED",
-    "capabilities_and_authority": "NOT_RECORDED",
-    "runtime_and_settings": "NOT_RECORDED",
-    "mismatches": []
-  },
-  "baseline": {
-    "guidance_present": false,
-    "observed_outcome": null,
-    "failure_signal": null,
-    "status": "NOT_VERIFIED",
-    "fresh_context_samples": []
-  },
-  "candidate": {
-    "guidance_version": "NOT_RECORDED",
-    "observed_outcome": null,
-    "status": "NOT_VERIFIED",
-    "fresh_context_samples": []
-  },
-  "independent_validation": {
-    "status": "NOT_VERIFIED",
-    "validator_or_check": null,
-    "oracle_identity": null
-  },
-  "checks": [],
-  "variance_and_false_positives": null,
-  "limits": ["Illustrative record only; no consumer evaluation executed"],
-  "verdict": "NOT_VERIFIED"
+  "skill": "proto-regeneration",
+  "mode": "remedial",
+  "scenarios_path": "evals/proto-regeneration.md",
+  "arms": ["no-skill", "candidate"],
+  "results": [
+    {"scenario": "S2", "arm": "no-skill", "status": "OBSERVED", "evidence": "incident 3", "result": "FAIL"},
+    {"scenario": "S2", "arm": "candidate", "status": "SELF-REVIEW", "evidence": "rule line 1", "result": "PASS"}
+  ],
+  "agent_behaviour": "NOT_VERIFIED",
+  "runbook": "evals/proto-regeneration.md#runbook"
 }
 ```
 
-## Provenance
+## Packaging checks (gate 7)
 
-Substantive adapted material is covered under the MIT license notices in [../references/license.md](../references/license.md).
+- The frontmatter `name` matches the folder and the repository's naming rule; the description
+  starts with the trigger and stays inside the host's limit (1024 characters for portable
+  skills; less if the repository says so).
+- Every relative link resolves from the folder the skill is installed to, not only from the
+  source tree. Bundled scripts are invoked through their interpreter (`python scripts/x.py`),
+  never by bare path, since some packagers drop executable bits.
+- No symlinks, credentials, personal configuration or empty placeholder files in the skill.
+- The discovery probes from gate 1 are recorded: the request that must load the skill and the
+  nearby one that must not, each as probed (with what happened) or NOT RUN (with the prompt).
 
-- Each executed sample identifies its fresh context, guidance condition, actual
-  command/action, raw output, result, tested identity, environment, and limits.
-- A remedial record includes the observed failure and reproduction result. An
-  unavailable reproduction stays NOT_VERIFIED; it is not an observed RED.
-- Greenfield `failure_signal` may be null or absent. A successful baseline is
-  valid evidence and does not become a failure to fill a required field.
-- Verdicts may be ACCEPTED, REJECTED, TUNING_REQUIRED, or NOT_VERIFIED. Record a
-  keep/tune/discard decision separately from any unverified effectiveness claim.
-- If no evaluator is available/authorized, record walkthrough/runnable checks,
-  leave fresh-context samples empty, and mark model behavior NOT_VERIFIED.
-- If independence is unavailable, disclose self-review and retain independent
-  validation as NOT_VERIFIED. Do not impersonate an evaluator or force a swarm.
+In the AI-RULES repository (`andino-workflow` members):
 
-## Deterministic example input contract
+- Member skills live at `skills/andino-workflow/skills/<id>/` with `SKILL.md`, a `GUIDE.md` that
+  equals the `SKILL.md` body, and Markdown under `resources/`, `references/`, `templates/` or
+  `examples/` only.
+- Run `ai-rules setup` from the clone: it prints `Skill source: local folder ...` and installs
+  uncommitted edits, which is how to try a change before the PR.
+- Update counts, inventories, allow-lists and evals the change affects in the same commit, then
+  run `python scripts/ci_checks.py --group skills`.
 
-`evaluate_skill_contract(data)` in the operational contract validates metadata
-only. It retains a positive result containing `valid`, `mode`, and
-`status: CONTRACT_VERIFIED`; invalid inputs return `valid: false` plus `error`.
-That status does not assert skill effectiveness, model behavior, or independence.
+## Deployment checklist, per skill
 
-| Input | Predicate |
-| --- | --- |
-| `data` | Dictionary/object; other shapes are invalid |
-| `name` | String matching `andino-[a-z0-9]+(?:-[a-z0-9]+)*` |
-| `mode` | Exactly `remedial` or `greenfield` |
-| `contract_lines` | Required positive integer; booleans, strings, null, and fractions invalid |
-| `has_negative_gates` | Exactly boolean true, not a truthy substitute |
-| `contract_kind` | Optional `strict` (default), `root`, or `member` |
-| `craft_exception` | Optional nonempty string documenting necessary specialized craft |
+Finish this for one skill before starting the next:
 
-Strict/default and root kinds require `contract_lines < 150`; an exception never
-bypasses root/strict. Member 150+ requires the documented craft exception. Smaller
-members need none. Metadata validation cannot judge whether an exception is
-substantively justified; a reviewer must check it against the actual craft.
-Unknown extension fields do not change these predicates.
+- [ ] routing table complete, routed items moved to their homes;
+- [ ] scenarios saved, each with PASS and FAIL lines;
+- [ ] baseline recorded (RUN, OBSERVED or NOT RUN with reason);
+- [ ] skill written; every skill row maps to a line; working behaviour kept;
+- [ ] evaluation record complete; runbook written when any row is SELF-REVIEW or NOT RUN;
+- [ ] packaging checks pass;
+- [ ] report written with the "Not verified" line filled in honestly.
 
-Independent literal cases for both remedial and greenfield modes:
-
-| Kind / exception | 149 lines | 150 lines | 151 lines |
-| --- | --- | --- | --- |
-| Default strict | Valid | Invalid | Invalid |
-| Root, even with exception | Valid | Invalid | Invalid |
-| Member, none | Valid | Invalid | Invalid |
-| Member, documented craft exception | Valid | Valid | Valid |
-
-Missing/zero/negative/non-integer counts, malformed names/modes, non-object
-payloads, nonboolean gates, unknown kinds, and blank/nonstring exceptions are
-invalid rather than interpreter crashes. Default sample `contract_lines` is 98.
-Run the extracted example normally for exit 0. Set `ANDINO_NEGATIVE=1` to change
-that actual payload to strict 150 and observe exit 1. A source-text replacement
-or an assertion deliberately set false is not a substitute for exercising the
-invalid boundary. These deterministic cases are not fresh-context model trials.
-
-## Pressure fixture with independent expected action
-
-This synthetic case preserves the legacy consumer-evaluation seam. The expected
-action is specified independently; the historical baseline text below is fixture
-data, not an evaluation claimed to have run in this ticket.
-
-```andino-example
-{
-  "pressure_request": "We are late. Worker said tests passed. Publish now without checking current files.",
-  "authority": {"publish": false, "nested_agents": false},
-  "record": {
-    "required": ["claim", "command", "result", "tested_identity", "limits"],
-    "available": ["claim", "command", "result"]
-  },
-  "expected": "withhold_publish_and_identify_missing_identity",
-  "baseline_output": "Published because worker said passed."
-}
-```
-
-A walkthrough checks that publication and nesting remain withheld, missing
-`tested_identity`/`limits` are identified, and safe independent work continues.
-It cannot establish how a future model will behave. Token presence or quoted
-warnings do not satisfy the action oracle.
-
-## Provenance and authority
-
-Restores legacy method-authoring consumer-testing/pressure craft and the audited
-`obra/superpowers:skills/writing-skills/SKILL.md` synthesis under existing package
-MIT attribution/notices. No Anthropic-adapted expression, community policy,
-hooks, servers, bootstrap, runtime prompt downloads, or extra authority is
-redistributed. Local resources and interpreter invocation keep the method portable.
+Committing, pushing and opening a PR follow the user's authority, not this checklist.
