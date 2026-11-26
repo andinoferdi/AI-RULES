@@ -38,7 +38,7 @@ Honor explicit provider choices and current phase readiness first; then select b
 | Approved plan ready for sequential execution | Execution | `andino-plan-execution` | If scope is newly ambiguous, reopen `brainstorming`. |
 | Unexplained test failure, crash, regression | Diagnostic | `andino-debugging` | If cause is confirmed and fix is small, execute inline. |
 | Choosing external library, unfamiliar API | Investigation | `search-first` | If local code already provides utility, adopt local code. |
-| Decoupled tasks across disjoint write paths | Implementation | `andino-delegation` | If tasks share state or common cause, execute inline. |
+| Any subagent decision: plan tasks, failure investigation, research, review, verification or panel seats | Implementation | `andino-delegation` | If the work is small, coupled or shares an unresolved cause, execute inline. |
 | Fragile subsystem, repeated regressions | Remediation | `ai-codebase-rescue` | If code is merely ugly but passing, keep unchanged. |
 | Code or behavioral contract ready for correctness review | Verification | `andino-code-review` | Use `natural-writing` only for prose/style review, not execution or safety contracts. |
 | Authoring or maintaining a skill or procedure | Meta-Authoring | `skill-maker` | For the wording, structure, pointers or description of any agent-read document, including SKILL.md text, use `agent-document-authoring`; skill-maker keeps baseline and trigger testing. |

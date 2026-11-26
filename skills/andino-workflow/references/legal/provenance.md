@@ -335,3 +335,20 @@ without invented detail, and `resources/raw-capture/` is unchanged. The comparis
 recorded in `docs/validation/article-shaping/trial.md`. Correction to the 2026-11-02
 paragraph above: `scripts/verify_article_shaping_elevation.py` does not exist in this
 repository.
+
+The 2026-11-26 upgrade of `delegation` re-reads Matt Pocock's `engineering/implement-spec`
+(mattpocock/skills commit 6f7f783, 2026-11-25, MIT) and Jesse Vincent's Obra Superpowers
+`dispatching-parallel-agents` and `subagent-driven-development` (obra/superpowers commit 22f0b46,
+2026-11-03, MIT) and moves the method into the sibling layout: one procedure for every subagent
+role (implementer, investigator, researcher, reviewer, panel seat) in `SKILL.md` (mirrored by
+`GUIDE.md`); the rules, including the one-message envelope approval, in `resources/contract.md`;
+fill-in prompts for every role in `resources/subagent-brief-and-report-schemas.md`; the pre-flight
+table, rolling frontier and batching in `resources/frontier-and-dag-protocols.md`; fix rounds,
+the single final fix wave and the rulings list in `resources/two-track-review-and-fix-loop.md`;
+model and effort by role in `resources/host-cost-calibration.md`; and a new worked example with two
+lanes. Not adopted from the references: continuous execution without approval, automatic
+escalation to a stronger fresh agent in fix rounds 4-5, a final review always on the most capable
+model, one fresh agent per task, a merger agent and deleting the workspace at the end. The
+comparison trial is recorded in `docs/validation/delegation/trial.md`. Correction to the
+2026-11-01 paragraph above: superpowers' fix loop is not adopted as "escalating", and the
+contract is no longer kept under 150 lines.
