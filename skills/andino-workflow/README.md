@@ -55,7 +55,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-human-procedure` | Necessary steps requiring human-only access or authority. |
 | `andino-issue-triage` | Maintainer-requested issue/PR evaluation without unauthorized tracker writes. |
 | `andino-optimize-prompt` | Explicitly requested light edit of a raw task prompt that keeps its shape, every named skill and phase, and every fact; suggestions and up to three questions follow it. |
-| `andino-session-diagnostics` | Session-level failures; optional prevention review after causes are known. |
+| `andino-session-diagnostics` | Why an agent session went wrong, with cited evidence; one-event answers, scrubbed bundles and issue drafts on request; optional prevention review after causes are known. |
 | `andino-learning-workspace` | Intentional learning; optional course-exercise scaffolding. |
 | `andino-article-shaping` | Shape a fixed pile into an article with its author: reader first, pile-built candidates, agreed blocks only, nothing invented; optional raw capture. |
 

@@ -165,6 +165,14 @@ Fast-Path Deterministic and Deep Forensic Investigation, deep craft `GUIDE.md`, 
 catalogs, dual-runtime cross-platform portability in Bash POSIX and Python 3.8+ stdlib, offline
 deterministic Python stdlib verification, and complete integration with `ai-rules setup`).
 
+The 2026-11-26 upgrade of `session-diagnostics` re-reads Jesse Vincent's `diagnosing-superpowers`
+(obra/superpowers b739a8a, MIT) and moves the method into the sibling layout: a quick path for
+one-event questions and eight gates in `SKILL.md` (mirrored by `GUIDE.md`), shortcut and red-flag
+lists, and resources for safe session reading, per-dimension checklists with the upstream
+thresholds, the report format, and export with redaction and issue drafts for the repository that
+owns an involved skill. Nothing specific to superpowers is carried over. The comparison trial is
+recorded in `docs/validation/session-diagnostics/trial.md`.
+
 The 2026-11-26 upgrade of `debugging` re-reads Addy Osmani's `debugging-and-error-recovery`
 (addyosmani/agent-skills 9097b64), Matt Pocock's `diagnosing-bugs` (mattpocock/skills f3fc563)
 and Jesse Vincent's `systematic-debugging` (obra/superpowers 22f0b46), all MIT, and moves the

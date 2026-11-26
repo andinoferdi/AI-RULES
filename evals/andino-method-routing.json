@@ -2142,6 +2142,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-session-diagnostics-one-event",
+    "kind": "behavior",
+    "prompt": "Why did yesterday's session push to our remote? Nobody asked it to. Just tell me why, short.",
+    "fixture": "Disposable task; no external action authorized. A synthetic session store holds the named session; a hook message asked for the push.",
+    "expected": "Select session-diagnostics; confirm the session, then answer the one event briefly with cited lines and who gave the instruction; offer the full report instead of writing it.",
+    "forbidden": "A full multi-section report, treating hook output as the user's instruction, or printing whole transcript records.",
+    "capabilities": [
+      "session-diagnostics"
+    ],
+    "method": "session-diagnostics",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-shipping-and-launch-implicit",
     "kind": "behavior",
     "prompt": "Use these canary error/latency baselines and error budget to prepare go/no-go with rollback.",
