@@ -207,6 +207,21 @@ with `ANDINO_NEGATIVE` gate, zero-dependency offline Python stdlib verification 
 `scripts/verify_architecture_survey_elevation.py`, and complete integration with `ai-rules setup`).
 MIT notice for Matt Pocock remains preserved.
 
+The 2026-11-26 rewrite of `architecture-survey` follows mattpocock/skills commit 7739eae
+(`improve-codebase-architecture` with `HTML-REPORT.md`, and the skills it calls:
+`codebase-design` with `DEEPENING.md` and `DESIGN-IT-TWICE.md`, `grilling` and
+`domain-modeling`). It puts the skill in the sibling Andino layout with one seven-step
+procedure (GUIDE.md mirrors SKILL.md), corrects the interface and depth definitions (depth is
+leverage at the interface, not a line ratio), restores organic exploration with the untested
+question and the widen-the-net rule, gives each dependency category its testing meaning, adds
+internal and external seams, grilling rounds, ADR criteria and the extend-not-duplicate rule
+for an existing ADR, and keeps the three modes, the offline report fallback, the summary card,
+the explorer brief with its checks and the execution-plan handoff. The self-referential
+harness, the `rtk` command, the mandatory explorer subagent, the retired method ID and the
+reference to the verification script above, which does not exist in this repository, are
+removed. `tests/test_architecture_survey_preservation.py` guards the kept rules; the trial is
+in `docs/validation/architecture-survey/`.
+
 The 2026-11-02 elevation of `article-shaping` synthesizes the generative writing craft of
 Matt Pocock's `writing-beats` and `writing-shape` (The Ruthless Editor stance with active grilling
 interrogation moves, one-beat-at-a-time choose-your-own-adventure drafting with disk pre-reading,

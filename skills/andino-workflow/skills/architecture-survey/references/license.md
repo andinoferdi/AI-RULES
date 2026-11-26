@@ -2,6 +2,10 @@
 
 **Original Source:** [mattpocock/skills: skills/engineering/improve-codebase-architecture](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)
 
+The 2026-11-26 rewrite also adapts `skills/engineering/codebase-design` (with `DEEPENING.md`
+and `DESIGN-IT-TWICE.md`), `skills/productivity/grilling` and
+`skills/engineering/domain-modeling` at commit 7739eae.
+
 Substantive adapted material in this skill is covered by the following notice:
 
 MIT License

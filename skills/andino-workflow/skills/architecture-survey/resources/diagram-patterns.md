@@ -2,11 +2,13 @@
 
 Internal method ID: `architecture-survey`. Supporting resource for `skills/architecture-survey`.
 
-This resource specifies the 5 canonical visual diagram patterns used in architecture survey reports. Diagrams carry the substantive weight of the report. Prose must remain minimal. If a diagram requires a paragraph of explanation to be understood, redesign the diagram.
+This resource specifies the 5 canonical visual diagram patterns used in architecture survey reports. Diagrams carry the substantive weight of the report and prose stays minimal. If a diagram needs a paragraph of explanation to be understood, redraw the diagram.
+
+Pick the pattern that fits each candidate and mix them across the report; when every diagram looks the same, the report reads as generic. Use Mermaid when the relationships are graph-shaped (call graphs, dependencies, sequences such as "before: 6 round-trips; after: 1") and hand-built HTML or SVG for the editorial visuals (deep-module boxes, cross-sections, mass diagrams, collapses). Draw at least one diagram per card by hand: Mermaid needs its CDN, and a hand-built diagram still renders offline. Label diagrams with the real module and file names from the code being surveyed.
 
 ---
 
-## 1. Visual Standards and Aesthetics
+## Visual standards
 
 - **Style:** Editorial, clean, schematic (not a bloated corporate dashboard).
 - **Typography:** Monospaced or clean sans-serif; `text-xs uppercase tracking-wider` for internal module labels so they read as schematic blueprints.
@@ -20,14 +22,14 @@ This resource specifies the 5 canonical visual diagram patterns used in architec
 
 ---
 
-## 2. Pattern 1: Mermaid Graph (Dependencies and Call Flow)
+## Pattern 1: Mermaid graph (dependencies and call flow)
 
 **When to Use:** When illustrating complex call flows, messy dependency webs, or multi-step round trips.
 
 ### Before: Messy dependencies and leaky seams
 ```html
 <div class="rounded-lg border border-slate-200 bg-white p-4 h-80 flex flex-col justify-between">
-  <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Before: Fragmented Wrappers</span>
+  <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Before: pass-through modules</span>
   <div class="flex-1 flex items-center justify-center">
     <pre class="mermaid">
       flowchart TD
@@ -66,7 +68,7 @@ This resource specifies the 5 canonical visual diagram patterns used in architec
 
 ---
 
-## 3. Pattern 2: Hand-Built Boxes and Arrows (CSS / SVG)
+## Pattern 2: Hand-built boxes and arrows (CSS / SVG)
 
 **When to Use:** When Mermaid auto-layout fights the desired emphasis, or when representing a thick-bordered deep module enclosing greyed-out internal functions.
 
@@ -74,12 +76,12 @@ This resource specifies the 5 canonical visual diagram patterns used in architec
 <div class="grid grid-cols-2 gap-4 my-4">
   <!-- BEFORE -->
   <div class="border border-slate-300 rounded-lg p-4 bg-slate-50 h-80 relative flex flex-col justify-between">
-    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Before: 4 Shallow Files</span>
+    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Before: 4 shallow modules</span>
     <div class="space-y-2 my-auto">
-      <div class="p-2 border border-dashed border-red-500 bg-red-50 rounded text-xs text-red-800">OrderValidator.ts (15 lines)</div>
-      <div class="p-2 border border-dashed border-red-500 bg-red-50 rounded text-xs text-red-800">OrderPricing.ts (22 lines)</div>
-      <div class="p-2 border border-dashed border-red-500 bg-red-50 rounded text-xs text-red-800">OrderDbWrapper.ts (30 lines)</div>
-      <div class="p-2 border border-dashed border-red-500 bg-red-50 rounded text-xs text-red-800">OrderNotifier.ts (18 lines)</div>
+      <div class="p-2 border border-dashed border-red-500 bg-red-50 rounded text-xs text-red-800">OrderValidator.ts: one boolean check</div>
+      <div class="p-2 border border-dashed border-red-500 bg-red-50 rounded text-xs text-red-800">OrderPricing.ts: forwards to tax table</div>
+      <div class="p-2 border border-dashed border-red-500 bg-red-50 rounded text-xs text-red-800">OrderDbWrapper.ts: begin, insert, commit</div>
+      <div class="p-2 border border-dashed border-red-500 bg-red-50 rounded text-xs text-red-800">OrderNotifier.ts: forwards to mailer</div>
     </div>
     <span class="text-xs text-red-600 font-mono">Caller coordinates all 4 files</span>
   </div>
@@ -105,7 +107,7 @@ This resource specifies the 5 canonical visual diagram patterns used in architec
 
 ---
 
-## 4. Pattern 3: Cross-Section (Layered Shallowness)
+## Pattern 3: Cross-section (layered shallowness)
 
 **When to Use:** When diagnosing architectural pass-through layers where each layer does almost nothing except pass arguments to the layer below.
 
@@ -141,9 +143,9 @@ This resource specifies the 5 canonical visual diagram patterns used in architec
 
 ---
 
-## 5. Pattern 4: Mass Diagram (Interface Width vs Implementation Depth)
+## Pattern 4: Mass diagram (interface against hidden behaviour)
 
-**When to Use:** Visualizing the core definition of depth: a shallow module has an interface nearly as large as its implementation, whereas a deep module has a tiny interface surface covering a massive implementation volume.
+**When to Use:** Visualizing depth as leverage: a shallow module asks callers to learn nearly everything it does, whereas a deep module hides a lot of behaviour behind a small interface. Label the rectangles with what callers must know and what stays hidden, never with line counts.
 
 ```html
 <div class="grid grid-cols-2 gap-4 my-4">
@@ -151,39 +153,39 @@ This resource specifies the 5 canonical visual diagram patterns used in architec
   <div class="border border-slate-200 rounded-lg p-4 bg-white h-80 flex flex-col justify-between">
     <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Before: Shallow Module Mass</span>
     <div class="my-auto flex flex-col items-center">
-      <!-- Interface Rect: Wide and Tall -->
-      <div class="w-48 h-16 border-2 border-amber-500 bg-amber-100 flex items-center justify-center text-xs font-mono font-bold text-amber-900">
-        Interface: 14 Methods
+      <!-- Interface Rect: what callers must know (wide and tall) -->
+      <div class="w-48 h-16 border-2 border-amber-500 bg-amber-100 flex items-center justify-center text-xs font-mono font-bold text-amber-900 text-center px-2">
+        Callers learn: 14 methods + call order + tx handle
       </div>
-      <!-- Implementation Rect: Shallow -->
+      <!-- Implementation Rect: what stays hidden (thin) -->
       <div class="w-48 h-12 border-2 border-t-0 border-slate-400 bg-slate-200 flex items-center justify-center text-xs font-mono text-slate-700">
-        Impl: 40 Lines Logic
+        Hidden: field mapping only
       </div>
     </div>
-    <span class="text-xs text-amber-800 text-center">Interface is 50% of the cognitive surface area</span>
+    <span class="text-xs text-amber-800 text-center">Callers know nearly everything it does</span>
   </div>
 
   <!-- AFTER: Tiny Interface, Deep Implementation -->
   <div class="border border-slate-200 rounded-lg p-4 bg-white h-80 flex flex-col justify-between">
     <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider">After: Deep Module Mass</span>
     <div class="my-auto flex flex-col items-center">
-      <!-- Interface Rect: Narrow and Short -->
+      <!-- Interface Rect: what callers must know (narrow and short) -->
       <div class="w-28 h-8 border-2 border-emerald-600 bg-emerald-100 flex items-center justify-center text-xs font-mono font-bold text-emerald-900">
-        1 Method
+        submit(order)
       </div>
-      <!-- Implementation Rect: Deep and Solid -->
+      <!-- Implementation Rect: what stays hidden (deep and solid) -->
       <div class="w-48 h-32 border-2 border-t-0 border-slate-900 bg-slate-900 flex items-center justify-center text-xs font-mono text-slate-200 text-center px-2">
-        Impl: 220 Lines Encapsulated Rules & Invariants
+        Hidden: validation, tax, transaction, confirmation email
       </div>
     </div>
-    <span class="text-xs text-emerald-700 text-center">High leverage: massive power behind tiny seam</span>
+    <span class="text-xs text-emerald-700 text-center">Leverage: one call, every rule behind it</span>
   </div>
 </div>
 ```
 
 ---
 
-## 6. Pattern 5: Call-Graph Collapse
+## Pattern 5: Call-graph collapse
 
 **When to Use:** Showing a deeply nested call tree collapsed into a single boundary module where internal invocations become invisible private methods.
 

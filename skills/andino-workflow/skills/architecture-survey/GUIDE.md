@@ -1,102 +1,299 @@
-# Architecture Survey: Deep Craft Guide
+# Find deepening opportunities and grill the one worth doing
 
-Internal method ID: `architecture-survey`. Authoritative craft guide for `skills/architecture-survey`.
+Internal method ID: `andino-architecture-survey` (aliases: `architecture-survey`,
+`improve-codebase-architecture`).
 
----
+> **Andino Workflow Member Skill**
+> Operates under Andino Workflow: proportional investigation, evidence-based
+> decisions, one durable checkpoint and clean handoff. Do not invoke the workflow
+> recursively. Loading this resource changes neither tools nor permissions.
 
-## 1. Core Philosophy: Deep vs Shallow Modules
+## Purpose
 
-The objective of an architectural survey is not to produce theoretical taxonomies or celebrate "clean architecture" abstractions. It is to surface real maintainability and testability friction in active code and propose **deepening opportunities**: refactoring shallow, fragmented wrappers into deep, high-leverage modules.
+Surface architectural friction and propose **deepening opportunities**: refactors that turn
+shallow modules into deep ones, so the code is easier to test and easier for an agent to
+navigate. A survey reads code and history, presents candidates as a visual before/after
+report, and grills the one the user picks. It never edits product code. The deliverable is
+the report, a chat summary card and a grilled decision, not a refactor.
 
-### The Problem with Shallow Modules
-A shallow module has an interface nearly as complex as its implementation. When a system decomposes operations into dozens of tiny single-function classes or pass-through wrappers:
-1. **Locality is destroyed:** Business rules, validation, and invariant enforcement scatter across disparate files. Understanding one operation requires jumping across multiple directories.
-2. **Defects hide in caller coordination:** Real production bugs rarely lurk inside pure, atomized helper functions; they hide in the inconsistent ways callers stitch those helpers together.
-3. **Tests become mock-heavy and brittle:** Unit tests must mock 4 or 5 intermediate wrappers just to assert that a single business operation executed, coupling tests to ephemeral internal plumbing.
+## Trigger and non-trigger
 
-### The Power of Deep Modules
-A deep module provides a powerful, high-leverage implementation behind a simple, stable public interface.
-- **High leverage:** Callers invoke one cohesive method (`submitOrder`) and are shielded from transactional lifecycles, database locks, tax math, and event dispatching.
-- **The interface is the test surface:** Callers test meaningful business outcomes against the public contract without reaching into private internals or mocking internal helper methods.
-- **Invariants concentrate:** State transitions and business constraints are enforced centrally in the module, making invalid states unrepresentable.
+Use when:
 
----
+- the user names a pain point, module or subsystem and asks how to restructure it;
+- the user asks where a codebase's architecture should improve, with no direction;
+- callers repeat the same orchestration around a module, tests mock every internal step, or
+  every change touches many small files.
 
-## 2. The 6-Phase Operational Procedure
+Do not select for:
 
+- Renames, formatting or file moves that leave every module's interface unchanged.
+- A single interface whose shape is the whole question: `api-and-interface-design`.
+- Retiring an interface consumers still use: `deprecation-and-migration`.
+- A bug of unknown cause: `debugging`.
+- Another search after a survey found no worthwhile candidate. Report that result instead.
+
+## Select a resource, not a second lifecycle
+
+Load only the resource the current need names. It runs inside this procedure and current
+authority; it starts no second plan.
+
+| Current need | Resource | Skip when |
+| :--- | :--- | :--- |
+| Exact terms, substitutions, dependency categories, card wording | [vocabulary](resources/architectural-vocabulary.md) | The terms in Rules settle the question |
+| Choosing and drawing a before/after diagram | [diagram patterns](resources/diagram-patterns.md) | No report is being written |
+| The report file: scaffold, offline fallback, delivery, summary card | [HTML report scaffold](resources/html-report-scaffold.md) | No report is being written |
+| Briefing a fresh-context explorer the user approved | [exploration brief](resources/subagent-exploration-brief.md) | You explore inline |
+| Grilling the picked candidate, GLOSSARY.md and ADR side effects | [grilling and ADR protocol](resources/grilling-and-adr-protocols.md) | The user has not picked a candidate |
+| One survey end to end, with before and after code | [worked example](resources/worked-example.md) | The procedure is already clear |
+| Designing the deepened module's interface, design-it-twice | The module-depth resource of the sibling `api-and-interface-design` skill: `resources/module-depth/guide.md` in that skill's folder (`andino-api-and-interface-design` when installed on its own) | The candidate's shape is not settled yet |
+
+## Prerequisites
+
+Read the domain glossary (`GLOSSARY.md`, or the file a `GLOSSARY-MAP.md` points to) and the
+ADRs in `docs/adr/` for the area you will touch: the glossary names good seams, and ADRs
+record decisions a survey must not re-litigate. Note whether the user named a direction. A
+missing glossary or ADR folder is a fact to record, not a blocker.
+
+## Procedure
+
+1. **Scope before you scan.** Deepening pays off by making future changes easier, so weight
+   the code that changes. Pick one mode:
+   - **Named subsystem**: the user named a module, area or pain point. Take it and skip the
+     inference below; walk its callers, tests and dependencies.
+   - **Hot spot**: no direction. Walk a good stretch of history (`git log --oneline`, then
+     `git log --name-only` over the same range) and let the files and areas that keep
+     changing pull your attention first. If changes are scattered with no clear hot spot,
+     widen the net to the entrypoints and the modules they reach.
+   - **Cross-seam leakage**: the complaint is coupling, such as callers handling another
+     module's transactions, clients or transport types, or tests mocking every internal
+     step. Trace those callers.
+
+   Done when the paths you will walk, and why, are written down.
+2. **Explore organically.** Read the code yourself by default. Use a fresh-context explorer
+   only when the user approves one, briefed with the
+   [exploration brief](resources/subagent-exploration-brief.md). Follow friction, not a
+   checklist of thresholds:
+   - Where does understanding one concept mean bouncing between many small modules?
+   - Where is a module **shallow**, its interface nearly as complex as its implementation?
+   - Where were pure functions extracted to be testable while the real bugs hide in how
+     they are called (no **locality**)?
+   - Where do coupled modules leak across their seams?
+   - Which parts are untested, or hard to test through their current interface?
+
+   Apply the **deletion test** to every suspect: imagine deleting it. If complexity
+   vanishes, it was a pass-through; if it reappears across its callers, it earns its keep.
+   Done when each suspect has file and symbol evidence and a deletion-test verdict.
+3. **Shape candidates.** For each deepening worth proposing, write a title that names the
+   deepening, the files, the problem in one sentence, the solution in one sentence, wins of
+   6 words or fewer in glossary terms, a strength (`Strong`, `Worth exploring` or
+   `Speculative`), the dependency category, and an ADR callout only when the friction is
+   real enough to reopen that ADR. Recent change raises strength. Do not propose interfaces
+   yet. Done when every candidate has every field and none rests on a seam with one adapter.
+4. **Write the report.** One self-contained HTML file in the OS temp directory, built from
+   the [HTML report scaffold](resources/html-report-scaffold.md): a legend, one card per
+   candidate with a side-by-side before/after diagram from
+   [diagram patterns](resources/diagram-patterns.md), and a top recommendation. Vary the
+   patterns, and if a diagram needs a paragraph to be understood, redraw it. Open the file
+   with the platform opener; in a headless session give the path only. Done when the file
+   exists and its text and diagrams read with the CDNs blocked.
+5. **Present and stop.** In chat, print the summary card built from the same candidate
+   data and the report's absolute path, then ask: "Which of these would you like to
+   explore?" Done when the user picks a candidate or declines; a decline ends the survey.
+6. **Grill the chosen candidate** with the
+   [grilling and ADR protocol](resources/grilling-and-adr-protocols.md): constraints, what
+   sits behind the seam, which adapters exist, which tests survive and which are replaced,
+   and how each caller migrates. Every question carries your recommended answer. Side
+   effects happen inline as decisions settle: add a new domain term to GLOSSARY.md (create
+   the file lazily), sharpen a fuzzy term in place, and when the user rejects a candidate
+   for a reason a future survey would need, offer to record an ADR. Done when the deepened
+   module's shape is settled, or the candidate is rejected and its reason handled.
+7. **Hand off.** Explore alternative interfaces with design-it-twice in the module-depth
+   resource of `api-and-interface-design`. Record the chosen candidate, its files, seam and
+   migration in the active execution plan. Done when the execution plan or the user holds
+   the decision and no product file has changed.
+
+## Rules
+
+### Words
+
+Use module, interface, implementation, depth, deep, shallow, seam, adapter, leverage and
+locality exactly, as defined in the [vocabulary](resources/architectural-vocabulary.md).
+Two definitions carry the most weight:
+
+- An **interface** is everything a caller must know to use the module correctly: types,
+  invariants, ordering, error modes, required configuration and performance.
+- **Depth** is leverage at the interface: how much behaviour a caller or test reaches per
+  unit of interface it learns. Depth is not a ratio of implementation lines to interface
+  lines.
+
+Name modules with the glossary's domain words ("the order intake module", not
+"OrderService"). In your own prose, component, service, unit, API, signature, boundary and
+layer are not substitutes for these terms; identifiers quoted from the code keep their
+names. A win names a gain ("tests hit one interface"), never "cleaner code" or "easier to
+maintain".
+
+### Seams and dependencies
+
+- One adapter means a hypothetical seam; two adapters mean a real one, and a test stand-in
+  counts as an adapter. Do not propose a seam that nothing varies across.
+- A deep module may keep internal seams for its own tests; leave them out of its interface.
+- Classify each candidate's dependencies, because the category decides how the deepened
+  module is tested:
+  - **in-process**: pure computation or in-memory state. Merge, then test through the new
+    interface.
+  - **local-substitutable**: a dependency with a local stand-in, such as an in-memory
+    database or filesystem. Test with the stand-in; no port at the interface.
+  - **ports & adapters**: your own service across a network. Define a port; production uses
+    the real transport, tests use an in-memory adapter.
+  - **true external**: a third party you do not control. Inject it as a port; tests use a
+    mock adapter.
+
+### Tests
+
+The interface is the test surface: callers and tests cross the same seam. Once tests at the
+deepened interface exist, delete the old tests of the shallow modules: replace, don't
+layer. A test that must change whenever the implementation changes is testing past the
+interface.
+
+### Scope and history
+
+Weight recently changed code. Dormant code may appear as `Speculative` with that reason; it
+is rarely the top recommendation. A direction the user names wins over history.
+
+## Shortcuts that break a survey
+
+| Shortcut | What actually happens |
+| --- | --- |
+| "This old file is ugly; lead with it." | Deepening pays back through future change. Code nobody touches repays little; mark it Speculative or leave it out. |
+| "I'll sketch the new interface now and save a turn." | The user has not picked a candidate, so the design anchors on your first idea. Present candidates; design after grilling. |
+| "'Service' is the standard word." | It names nothing precise and invites a shallow class. Say module, seam or adapter, and use the glossary's domain word. |
+| "A summary in chat is enough." | Shallowness and leaks are spatial; the before/after diagram makes them visible. Write the report, then the summary card. |
+| "Add a port so it is testable." | With one adapter the port is indirection. Test with the dependency's local stand-in, or add the port when a second adapter exists. |
+| "That small helper is everywhere; fold it in." | Run the deletion test first. If its rules would reappear in every caller, it is load-bearing. |
+
+## Red flags
+
+- A product file edited, refactored or created during the survey.
+- A survey with no report, or a report without before/after diagrams.
+- A candidate whose seam has one adapter.
+- An interface proposed before the user picked a candidate.
+- A candidate that contradicts an ADR with no callout.
+- A cited path, symbol or caller you did not read.
+- Depth argued from line counts.
+
+## Ownership and permission boundary
+
+Andino coordinates selection, shared progress, resource guards and final status from
+evidence. This skill owns its procedure, resources and checks, and coordinator brevity
+never truncates them. The survey is read-only: no product code, configuration or git state
+changes, and the report lives in the OS temp directory. GLOSSARY.md and ADR edits happen
+only during grilling, as the user's decisions settle. A fresh-context explorer runs only
+when the user approves it. Loading this skill grants no commit, push, refactor or
+installation authority.
+
+## Output
+
+- **Report:** the absolute path of the HTML file.
+- **Summary card:** per candidate, title, strength, dependency category, files, problem,
+  solution and wins.
+- **Question:** "Which of these would you like to explore?"
+- **After grilling:** the settled shape (what the interface hides, what sits behind the
+  seam, its adapters, which tests are replaced, how callers migrate), the GLOSSARY.md and
+  ADR changes, and the execution-plan entry.
+- **Not verified:** anything you could not read or run.
+
+## Verification
+
+- [ ] The report file exists in the OS temp directory and its absolute path was given.
+- [ ] Every card has files, a one-sentence problem and solution, wins of 6 words or fewer, a
+      before/after diagram, a strength and a dependency category.
+- [ ] Every cited file and symbol exists, and every candidate passed the deletion test.
+- [ ] No candidate rests on a one-adapter seam; every ADR conflict has a callout.
+- [ ] Each card's text and at least one diagram read with the CDNs blocked.
+- [ ] Your own prose uses the vocabulary, with no substitutes.
+- [ ] `git status --porcelain` shows no product file changed by the survey.
+
+## Worked example and anti-pattern
+
+[The worked example](resources/worked-example.md) surveys an order intake flow: the shallow
+modules and the leaking transaction, the card and summary card, and the design reached
+after grilling.
+
+Anti-patterns: a report that lists every module as a candidate; merging a module an ADR
+keeps separate without saying so; deleting a small helper every caller relies on; a port
+with one adapter "for testability"; a refactor started before the user picked a candidate.
+
+## Fallback
+
+- No git history: ask for a direction, or walk from the entrypoints.
+- No browser or a headless session: give the absolute path; the summary card carries the
+  content.
+- No network: the scaffold's embedded styles and hand-built diagrams keep the report
+  readable.
+- No glossary or ADRs: say so in the report header and name modules after the code's own
+  domain words.
+- Explorer not approved: explore inline; the brief's checks still apply to your findings.
+
+## Local resources
+
+The resources above are packaged with this skill; upstream repositories are not runtime
+dependencies. The MIT notice is in [references/license.md](references/license.md).
+
+## Operational example (offline)
+
+```python andino-operational-example
+import json, os
+
+def verdict(module):
+    """Deletion test first, then the seam rule."""
+    if module["callers_relying_on_its_rules"] >= 2:
+        return "keep"            # deleting it scatters its rules across callers
+    if module["is_port"] and module["adapters"] < 2:
+        return "collapse-seam"   # one adapter: a hypothetical seam
+    if module["pass_through"]:
+        return "deepen"          # complexity vanishes with it: absorb it into a deep module
+    return "keep"
+
+def top(candidates):
+    order = {"Strong": 3, "Worth exploring": 2, "Speculative": 1}
+    return max(candidates, key=lambda c: (order[c["strength"]], c["recent_commits"]))["title"]
+
+negative = os.environ.get("ANDINO_NEGATIVE") == "1"
+modules = {
+    "CurrencyMath": {"callers_relying_on_its_rules": 6, "is_port": False, "adapters": 0,
+                     "pass_through": False},
+    "INotifier": {"callers_relying_on_its_rules": 0, "is_port": True, "adapters": 1,
+                  "pass_through": True},
+    "OrderValidator": {"callers_relying_on_its_rules": 0, "is_port": False, "adapters": 0,
+                       "pass_through": not negative},
+}
+candidates = [
+    {"title": "Collapse the order intake pipeline", "strength": "Strong", "recent_commits": 14},
+    {"title": "Rewrite the legacy report export", "strength": "Speculative", "recent_commits": 0},
+]
+verdicts = {name: verdict(module) for name, module in modules.items()}
+expected = {"CurrencyMath": "keep", "INotifier": "collapse-seam", "OrderValidator": "deepen"}
+ok = verdicts == expected and top(candidates) == "Collapse the order intake pipeline"
+print(json.dumps({"verdicts": verdicts, "top": top(candidates),
+                  "status": "CONTRACT_VERIFIED" if ok else "CONTRACT_BROKEN"}))
+raise SystemExit(0 if ok else 1)
 ```
-[1. Scope & Churn] ──► [2. Organic Friction Walk] ──► [3. Structure Candidates]
-                                                              │
-                                                              ▼
-[6. Carry into Plan] ◄─── [5. Grilling & ADR Loop] ◄─── [4. Hybrid HTML Report]
-```
 
-### Phase 1: Scope Before Scanning (YAGNI & Hotspots)
-Never scan an entire repository without bounding attention. Deepening a module pays dividends by making future modifications simpler and safer; refactoring dormant, stable code yields zero or negative ROI.
-- **If a subsystem or pain point is named:** Immediately bound investigation to that target directory, its immediate callers, and its test suite.
-- **If no target is named:** Inspect recent commit churn using `rtk git log --oneline -n 100`. Identify files and directories that change frequently. Let code churn guide investigation.
-- **Consult constraints:** Check `GLOSSARY.md` for accepted domain language and `docs/adr/` for settled architectural decisions to avoid re-litigating settled trade-offs.
+Default output: `{"verdicts": {"CurrencyMath": "keep", "INotifier": "collapse-seam",
+"OrderValidator": "deepen"}, "top": "Collapse the order intake pipeline", "status":
+"CONTRACT_VERIFIED"}`. With `ANDINO_NEGATIVE=1` the validator stops being a pass-through,
+the "deepen" expectation fails and the example exits 1. It checks the order of the deletion
+test and the seam rule, not a model's survey.
 
-### Phase 2: Organic Friction Walk with Fresh Subagent
-Dispatch a subagent with an isolated context window to walk the bounded codebase without preconceptions (see [resources/subagent-exploration-brief.md](resources/subagent-exploration-brief.md)).
-- Walk callers and implementations: note where understanding one concept forces jumping across 4+ small files.
-- Spot caller-side policy duplication: where multiple callers perform identical validation, transaction setup, or parameter mapping before calling a downstream dependency.
-- Detect leaky seams: where callers must pass or manage database connection handles, ORM transaction contexts, or transport-specific types.
-- **Apply the Deletion Test:** For every suspected wrapper, ask: *"If this module were deleted, would complexity vanish or merely disperse back into callers?"*
-  - If complexity concentrates into one cohesive place, the wrapper is shallow and ripe for deepening.
-  - If complexity scatters across disparate callers, the seam is load-bearing and must be preserved.
+## Provenance
 
-### Phase 3: Structure Candidate Deepening Proposals
-Synthesize findings into crisp, structured candidate proposals using strictly the 10 canonical terms (see [resources/architectural-vocabulary.md](resources/architectural-vocabulary.md)):
-- **Title:** Action-oriented deepening statement (e.g. *"Collapse Order Intake Pipeline"*).
-- **Recommendation Strength:** `Strong` (high churn, blatant shallowness), `Worth exploring` (moderate leverage), or `Speculative` (lower frequency, trade-offs present).
-- **Dependency Classification:** `in-process`, `local-substitutable`, `ports & adapters`, or `mock`.
-- **Problem:** Exactly one sentence stating what hurts today.
-- **Solution:** Exactly one sentence describing the structural consolidation.
-- **Wins:** Bullet points ($\le 6$ words each) formatted as `[Glossary Category]: [Claim]`.
-- **ADR Callout:** Flag existing ADR contradictions only if concrete friction warrants reopening the decision.
-
-### Phase 4: Generate and Deliver the Hybrid HTML Report
-Write a single self-contained HTML file to the OS temporary directory (`$TMPDIR` or `%TEMP%`, e.g. `architecture-survey-<timestamp>.html`) to prevent repository pollution (see [resources/html-report-scaffold.md](resources/html-report-scaffold.md)).
-- Use the **Hybrid Report Scaffold**: load Tailwind CSS and Mermaid via CDN for rich rendering when online, with embedded fallback CSS and inline SVG geometry for offline or air-gapped resilience.
-- Provide a side-by-side **Before / After diagram** (~320px height) for every candidate, selecting the most expressive visual pattern from [resources/diagram-patterns.md](resources/diagram-patterns.md):
-  1. *Mermaid graph:* Call flows, sequence round-trips, and leaky seams (`#dc2626`).
-  2. *Hand-built boxes-and-arrows (CSS/SVG):* Deep module consolidation with faded internals.
-  3. *Cross-section:* Collapsing multiple thin horizontal layers into one solid band.
-  4. *Mass diagram:* Interface width shrinking relative to deep implementation volume.
-  5. *Call-graph collapse:* Nested call trees consolidated behind a single public seam.
-- Include a **Top Recommendation** card highlighting the highest-ROI opportunity.
-- Launch the file in the default browser (`start` on Windows, `open` on macOS, `xdg-open` on Linux) and print the absolute path in chat alongside a terminal-native Executive Summary Card.
-
-### Phase 5: Interactive Grilling Loop and Domain Synchronization
-Do NOT immediately draft implementation code or refactor product files. Prompt the user: *"Which of these candidates would you like to explore?"*
-- Walk through the grilling loop (see [resources/grilling-and-adr-protocols.md](resources/grilling-and-adr-protocols.md)): challenge whether the seam satisfies the Two-Adapter Rule, verify what state/validation is encapsulated, and audit test survival.
-- **Domain alignment:** If a deepened module introduces a new domain concept, update or lazily create `GLOSSARY.md`.
-- **Durable ADR recording:** If the user rejects a candidate for an enduring architectural reason (e.g. regulatory isolation), offer to record an ADR so future surveys do not re-suggest it.
-- Seamlessly transition into `andino-api-and-interface-design` for interface specification using the Design-It-Twice pattern.
-
-### Phase 6: Carry Selected Candidate into the Execution Plan
-Record the chosen candidate, affected files, public interface seam, and migration strategy into the active Andino execution plan checkpoint (`docs/exec-plans/active/<ticket>.md`).
-
----
-
-## 3. Modular Resource Index
-
-This skill organizes its specialized techniques into 6 focused resources:
-
-| Resource | Purpose |
-| :--- | :--- |
-| [resources/architectural-vocabulary.md](resources/architectural-vocabulary.md) | 10 canonical terms, prohibited substitution table, output shaping rules, and deletion test criteria. |
-| [resources/diagram-patterns.md](resources/diagram-patterns.md) | 5 Before/After visual diagram patterns (~320px height) in Mermaid and CSS/SVG. |
-| [resources/html-report-scaffold.md](resources/html-report-scaffold.md) | Progressive enhancement HTML scaffold (CDN + offline fallback) and delivery protocols. |
-| [resources/subagent-exploration-brief.md](resources/subagent-exploration-brief.md) | Prompt templates and operational invariants for isolated subagent exploration. |
-| [resources/grilling-and-adr-protocols.md](resources/grilling-and-adr-protocols.md) | Post-survey decision grilling, glossary synchronization, and durable ADR recording. |
-| [resources/worked-example.md](resources/worked-example.md) | Comprehensive Order Intake case study with before/after code and invariant checks. |
-
----
-
-## 4. Ownership and Non-Destructive Invariants
-
-- **Read-Only Investigation:** The architecture survey phase is strictly non-destructive. Product files, Git tracking state, and project configurations are never modified during a survey.
-- **Temporary Storage Only:** Generated HTML reports are written exclusively to `$TMPDIR` / `%TEMP%`.
-- **Single Plan Checkpoint:** All accepted directions are recorded in the active Andino execution plan checkpoint, maintaining continuity across session boundaries without memory fragmentation.
+Adapted from Matt Pocock's `improve-codebase-architecture` with its `HTML-REPORT.md`, and
+from the skills it calls, `codebase-design` (with `DEEPENING.md` and `DESIGN-IT-TWICE.md`),
+`grilling` and `domain-modeling` (mattpocock/skills commit 7739eae, 2026-10-29), under the
+MIT license: the deepening aim, scope before scanning, the exploration questions, the
+deletion test, the vocabulary and its definitions, the dependency categories,
+replace-don't-layer, the report card and diagram patterns, the grilling rounds and the
+glossary and ADR side effects. The three modes, the offline report fallback, the summary
+card, the explorer brief with its return schema and checks, the ADR template and the
+execution-plan handoff are Andino additions.

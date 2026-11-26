@@ -17,7 +17,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-plan-execution` | Authorized dependency-ready execution; independently selectable task-implementation, vertical-slice and frontend-engineering resources. |
 | `andino-delegation` | Bounded independent work with disjoint write scopes and parent integration. |
 | `andino-api-and-interface-design` | Consumer-first design of any interface (HTTP, GraphQL, module, props, events, agent tools); optional HTTP-contract, module-depth and import-enforcement resources. |
-| `andino-architecture-survey` | Bounded observed architectural friction, not an unsolicited whole-repository rewrite. |
+| `andino-architecture-survey` | Deepening candidates from the hot spots or a named area, shown as a before/after HTML report and then grilled; never edits product code during the survey. |
 
 ### Implementation and verification
 
