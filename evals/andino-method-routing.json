@@ -168,6 +168,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-article-shaping-implicit-id",
+    "kind": "behavior",
+    "prompt": "Ini catatan mentah saya soal migrasi database. Bantu saya bentuk jadi tulisan blog, pelan-pelan bareng saya.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select article-shaping",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "article-shaping"
+    ],
+    "method": "article-shaping",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-article-shaping-negative",
     "kind": "negative-trigger",
     "prompt": "Overwrite my raw interview transcript.",
