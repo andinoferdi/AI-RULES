@@ -1,179 +1,206 @@
-# End-to-End Debugging Worked Example
+# Worked example: a cross-tenant cache leak
 
-Supporting reference for `skills/debugging/`. Operates under Andino Workflow governance.
-
----
-
-## 1. Incident Scenario: Multi-Tenant Cache Leakage
-
-### The Symptom
-A multi-tenant SaaS application reports that Tenant B occasionally sees cached data belonging to Tenant A when both tenants query for the same resource identifier (`key="config-7"`). The bug does not reproduce in standard single-tenant unit tests.
+Supporting reference for `andino-debugging`. Operates under Andino Workflow governance. It
+walks one investigation through the six gates of [the skill](../SKILL.md) and ends with the
+filled report. The outputs below come from running each step; long output is cut to the
+lines that carry the signal.
 
 ---
 
-## 2. Step-by-Step Investigation Walkthrough
+## The report
 
-### Phase 1: Build the Tight Feedback Loop
-Instead of reading all caching code or guessing, we build an automated 2-second reproduction test asserting multi-tenant isolation:
+> "Tenant B sometimes sees Tenant A's settings. It happens when both open the same page,
+> `config-7`. Single-tenant tests are all green."
+
+The code under suspicion:
 
 ```python
-# test_repro.py
-import unittest
-from subject import lookup_resource
-
-class TestMultiTenantIsolation(unittest.TestCase):
-    def test_two_tenants_same_key_isolation(self):
-        val_a = lookup_resource(tenant_id="Tenant-A", resource_key="config-7")
-        val_b = lookup_resource(tenant_id="Tenant-B", resource_key="config-7")
-        self.assertEqual(val_a, "Tenant-A:config-7")
-        self.assertEqual(val_b, "Tenant-B:config-7", "Tenant B received Tenant A's cached data!")
-
-if __name__ == "__main__":
-    unittest.main()
-```
-**Loop execution**: We run `python -m unittest test_repro.py`.
-**Signal**: Fails reliably with:
-`AssertionError: 'Tenant-A:config-7' != 'Tenant-B:config-7' : Tenant B received Tenant A's cached data!`
-The feedback loop is **tight**, **deterministic (<0.1s)**, and **red-capable**.
-
----
-
-### Phase 2: Minimize the Failure
-We prune external database connections, HTTP headers, and unnecessary tenant configurations.
-Load-bearing state remaining:
-1. Two distinct tenants (`Tenant-A`, `Tenant-B`).
-2. Identical resource key (`config-7`).
-3. Shared lookup cache.
-
----
-
-### Phase 3: Formulate 3 Falsifiable Hypotheses
-
-1. **Hypothesis 1 (Cache Key Collision)**:
-   *Prediction*: If the internal cache key dictionary indexes solely on `resource_key` without prefixing `tenant_id`, compounding the key to `(tenant_id, resource_key)` will cause Tenant B to miss Tenant A's cache and generate its own value.
-2. **Hypothesis 2 (Global Variable Leakage)**:
-   *Prediction*: If a global `current_tenant` thread-local is failing to switch between calls, explicitly passing tenant context into the storage constructor will isolate state.
-3. **Hypothesis 3 (Stale Invalidation Event)**:
-   *Prediction*: If an async cache invalidation listener is dropping events, running synchronous eviction will eliminate the cross-talk.
-
-We rank **Hypothesis 1** as highest probability because the symptom specifically requires identical keys across different tenants.
-
----
-
-### Phase 4: Instrument with Unique Tags `[DEBUG-uuid]`
-We probe the cache lookup function with uniquely tagged logs:
-
-```python
-# Temporary instrumentation in subject.py
-print(f"[DEBUG-9b1c] Lookup called: tenant={tenant_id}, key={resource_key}")
-print(f"[DEBUG-9b1c] Computed cache index: {resource_key} in cache: {resource_key in _cache}")
-```
-Output:
-```
-[DEBUG-9b1c] Lookup called: tenant=Tenant-A, key=config-7
-[DEBUG-9b1c] Computed cache index: config-7 in cache: False
-[DEBUG-9b1c] Lookup called: tenant=Tenant-B, key=config-7
-[DEBUG-9b1c] Computed cache index: config-7 in cache: True  <-- PROVEN ROOT CAUSE
-```
-The evidence proves Hypothesis 1: the cache dictionary index omitted the `tenant_id`.
-
----
-
-### Phase 5: Implement Root Fix at the Seam
-
-#### Before (Flawed Implementation):
-```python
+# subject.py
 _cache = {}
+
+def load_config(tenant_id: str, resource_key: str) -> str:
+    """Stand-in for the database read."""
+    return f"{tenant_id}:{resource_key}"
 
 def lookup_resource(tenant_id: str, resource_key: str) -> str:
     if resource_key not in _cache:
-        _cache[resource_key] = f"{tenant_id}:{resource_key}"
+        _cache[resource_key] = load_config(tenant_id, resource_key)
     return _cache[resource_key]
 ```
 
-#### After (Root Cause Fix):
-```python
-_cache = {}
+Reading it suggests a cause straight away. That suggestion is a hypothesis; the gates turn it
+into evidence.
 
+## Gate 1: reproduce before reading for the cause
+
+The reporter's scenario as a command:
+
+```
+$ python report_bug.py
+tenant-a sees: tenant-a:config-7
+tenant-b sees: tenant-a:config-7
+```
+
+Done when the command and the output show the symptom: Tenant B receives Tenant A's value.
+
+## Gate 2: a red check
+
+```python
+# test_isolation.py
+import unittest
+import subject
+
+class TenantIsolationTest(unittest.TestCase):
+    def setUp(self):
+        subject._cache.clear()
+
+    def test_same_key_different_tenants(self):
+        self.assertEqual(subject.lookup_resource("tenant-a", "config-7"), "tenant-a:config-7")
+        self.assertEqual(subject.lookup_resource("tenant-b", "config-7"), "tenant-b:config-7")
+```
+
+```
+$ python -m unittest test_isolation
+AssertionError: 'tenant-a:config-7' != 'tenant-b:config-7'
+FAILED (failures=1)
+```
+
+It fails on the assertion that carries the symptom, not on an import or fixture error, and it
+runs in milliseconds with the cache cleared in `setUp`.
+
+## Gate 3: shrink, then compare
+
+The report mentions a page, HTTP headers and a database. None of them is needed: two calls to
+`lookup_resource` reproduce it. Three cuts, each run as a pair of calls, show what the failure
+depends on:
+
+```
+different keys: tenant-a:config-7 tenant-b:config-8
+same tenant twice: tenant-a:config-7 tenant-a:config-7
+cache bypassed: tenant-a:config-7 tenant-b:config-7
+```
+
+None of the three leaks.
+
+Minimal case: two tenants, the same key, the shared cache. Working against failing: with
+different keys, or with the cache bypassed, each tenant gets its own value; with the same key
+through the cache, the second tenant gets the first one's.
+
+## Gate 4: rank causes, then probe one at a time
+
+1. The cache key omits the tenant. Confirmed if the key stored for Tenant A is found when Tenant
+   B looks up the same resource. Ruled out if the stored key contains the tenant.
+2. A request-scoped "current tenant" leaks between requests. Ruled out if two direct calls with
+   explicit tenants still leak (they do, in gate 3), since no request scope is involved.
+3. An invalidation event is dropped. Ruled out if the leak appears with no invalidation in play
+   (it does: the test never invalidates).
+
+One read-only probe for candidate 1, two tagged prints after Tenant A's lookup:
+
+```
+[DEBUG-9b1c] cache keys after tenant-a: ['config-7']
+[DEBUG-9b1c] tenant-b key present before its lookup: True
+```
+
+Candidate 1 explains the symptom and the minimal case; gate 3 already ruled out 2 and 3.
+
+## Gate 5: fix at the origin and watch red turn green
+
+The regression check is `test_same_key_different_tenants`: it calls `lookup_resource`, where
+the cache entry is created, with the real cache. Its failing output is recorded in gate 2.
+One change where the bad state starts:
+
+```python
 def lookup_resource(tenant_id: str, resource_key: str) -> str:
-    # Composite cache key guarantees tenant isolation
-    cache_identity = (tenant_id, resource_key)
-    if cache_identity not in _cache:
-        _cache[cache_identity] = f"{tenant_id}:{resource_key}"
-    return _cache[cache_identity]
+    cache_key = (tenant_id, resource_key)
+    if cache_key not in _cache:
+        _cache[cache_key] = load_config(tenant_id, resource_key)
+    return _cache[cache_key]
+```
+
+```
+$ python -m unittest test_isolation
+Ran 1 test in 0.000s
+OK
+```
+
+The same, unchanged check went from red to green. The shared cache lives in memory, so no
+stored data needs repair. Patching the page to reload settings for each tenant would have hidden
+the leak and left every other caller exposed.
+
+## Gate 6: verify against the report
+
+```
+$ python report_bug.py
+tenant-a sees: tenant-a:config-7
+tenant-b sees: tenant-b:config-7
+```
+
+Then the full suite runs and is compared with the run made before any change, the `[DEBUG-9b1c]`
+probe lines are deleted (searching for the tag finds none), and the diff holds only the cache
+key change and the new test.
+
+## The report
+
+```text
+Symptom: Tenant B sees Tenant A's settings for the same page (config-7); expected its own.
+Reproduction: python report_bug.py -> "tenant-b sees: tenant-a:config-7"
+Red check: test_isolation.test_same_key_different_tenants ->
+  AssertionError: 'tenant-a:config-7' != 'tenant-b:config-7'
+Minimal case: two tenants, the same key, the shared cache; depends on the shared key
+Working vs failing: different keys or cache bypassed -> no leak; same key through the cache -> leak
+Candidate causes: 1. cache key omits the tenant - confirmed by probe [DEBUG-9b1c];
+  2. leaked request-scoped tenant - ruled out (direct calls leak, no request scope);
+  3. dropped invalidation - ruled out (no invalidation in the failing case)
+Root cause: lookup_resource keys _cache by resource_key alone
+Fix: cache key is (tenant_id, resource_key); data repaired: none (in-memory cache)
+Verification: red check now passes (OK); report_bug.py -> "tenant-b sees: tenant-b:config-7";
+  suite compared with the pre-change run
+Not done or not verified: other callers of _cache were not audited for the same key pattern
 ```
 
 ---
 
-### Phase 6: Verify and Cleanup
-1. Re-run `python -m unittest test_repro.py` → **PASSES (OK)**.
-2. Search and destroy temporary probes:
-   `git diff | grep "\[DEBUG-9b1c\]"` → Returns empty.
-3. Full test suite re-run → **All 142 tests pass**.
-4. Verified that original multi-caller scenario is permanently resolved.
+## Embedded verification harness
 
----
-
-## 3. Embedded Zero-Dependency Verification Script
-
-Save this script as `run_verification.py` to deterministically verify the debugging contract offline using Python stdlib:
+The harness reruns gates 2 and 5 offline: the check must fail on the faulty lookup and pass
+on the fixed one. Save it as `run_verification.py` and run it with Python 3; it exits 0 on
+success and 2 with `ANDINO_NEGATIVE=1`.
 
 ```python
 #!/usr/bin/env python3
-"""
-Zero-dependency verification harness for debugging worked example.
-Validates both faulty behavior (exit 1) and fixed behavior (exit 0).
-"""
+"""Zero-dependency harness for the tenant-cache worked example."""
 import os
 import sys
-import unittest
 
-def create_module(fixed: bool = False):
-    """Creates in-memory module representation."""
+
+def make_lookup(fixed):
     cache = {}
-    if not fixed:
-        def lookup(tenant, key):
-            if key not in cache:
-                cache[key] = f"{tenant}:{key}"
-            return cache[key]
-    else:
-        def lookup(tenant, key):
-            identity = (tenant, key)
-            if identity not in cache:
-                cache[identity] = f"{tenant}:{key}"
-            return cache[identity]
+
+    def lookup(tenant, key):
+        ident = (tenant, key) if fixed else key
+        if ident not in cache:
+            cache[ident] = f"{tenant}:{key}"
+        return cache[ident]
+
     return lookup
 
-def run_checks():
-    is_negative_mode = os.environ.get("ANDINO_NEGATIVE", "0") == "1"
-    
-    # 1. Test Faulty Implementation
-    lookup_faulty = create_module(fixed=False)
-    a_val = lookup_faulty("TenantA", "item1")
-    b_val = lookup_faulty("TenantB", "item1")
-    
-    # In faulty state, b_val erroneously equals TenantA's data
-    has_leak = (a_val == b_val == "TenantA:item1")
-    if not has_leak:
-        print("FAIL: Expected faulty implementation to demonstrate cache leak!")
-        sys.exit(2)
-        
-    if is_negative_mode:
-        print("[ANDINO_NEGATIVE] Intentionally failing baseline check.")
-        sys.exit(2)
 
-    # 2. Test Fixed Implementation
-    lookup_fixed = create_module(fixed=True)
-    a_fixed = lookup_fixed("TenantA", "item1")
-    b_fixed = lookup_fixed("TenantB", "item1")
-    
-    if a_fixed != "TenantA:item1" or b_fixed != "TenantB:item1":
-        print(f"FAIL: Fixed lookup failed isolation: A={a_fixed}, B={b_fixed}")
-        sys.exit(1)
-        
-    print("SUCCESS: Debugging verification completed. Root fix verified.")
-    sys.exit(0)
+def red_check(lookup):
+    lookup("tenant-a", "config-7")
+    return lookup("tenant-b", "config-7") == "tenant-b:config-7"
+
 
 if __name__ == "__main__":
-    run_checks()
+    if red_check(make_lookup(fixed=False)):
+        print("FAIL: the check must go red on the faulty lookup")
+        sys.exit(2)
+    if os.environ.get("ANDINO_NEGATIVE") == "1":
+        print("[ANDINO_NEGATIVE] intentional failure")
+        sys.exit(2)
+    if not red_check(make_lookup(fixed=True)):
+        print("FAIL: the same check must pass after the fix")
+        sys.exit(1)
+    print("OK: red on the faulty lookup, green after the fix")
+    sys.exit(0)
 ```

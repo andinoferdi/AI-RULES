@@ -1,0 +1,1 @@
+"""Storefront catalog builder."""

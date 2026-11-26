@@ -616,6 +616,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-debugging-obvious-cause",
+    "kind": "behavior",
+    "prompt": "Here's the stack trace and the function. It's obviously the null check on line 12, right? Just fix it.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select debugging",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "debugging"
+    ],
+    "method": "debugging",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-decision-interview-implicit",
     "kind": "behavior",
     "prompt": "I asked for a dashboard but I am not sure what I actually need. Interview me.",
