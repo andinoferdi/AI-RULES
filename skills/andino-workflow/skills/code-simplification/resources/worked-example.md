@@ -1,24 +1,29 @@
 # Code Simplification Worked Example
 
-This walkthrough illustrates an end-to-end, behavior-preserving simplification pass under Andino Workflow governance. It demonstrates how to decompose complex nesting, remove redundancy, and clarify control flow while strictly preserving error contracts, side-effects, and a byte-protected performance region.
+One behavior-preserving pass from baseline to ledger. The function flattens, a strict check
+and a read order survive, a protected digest keeps its bytes, and a runnable harness proves
+each claim by running the old and new code side by side.
 
 ---
 
 ## 1. The Scenario
 
-You are asked to simplify a telemetry aggregation procedure in a backend service. The code has accumulated layers of defensive flags, deeply nested `if/else` ladders, and redundant pass-through wrappers during successive emergency fixes.
-
-The procedure contains:
-1. **Public contract**: Accepts raw telemetry items, validates structure, rejects unauthorized payloads with specific exceptions, aggregates valid metrics, and dispatches them.
-2. **Protected region**: A hardware/crypto-optimized hashing loop marked with `# simplify-ignore-start` and `# simplify-ignore-end` that must not be altered, inlined, or re-formatted.
-3. **Existing test suite**: Fully passing (GREEN).
-
----
+You are asked to simplify a telemetry aggregator that grew nested `if`/`else` ladders and a
+verbose default during emergency fixes. Its tests pass. The ingest team fenced their digest
+with `simplify-ignore` markers because it runs on the hot path.
 
 ## 2. Before Simplification
 
 ```python
-# telemetry_pipeline.py (Original)
+# simplify-ignore-start
+# FNV-1a digest, tuned for the ingest hot path (PERF-41). Do not reformat.
+def _fnv1a_digest(raw_bytes):
+    h = 2166136261
+    for b in raw_bytes:
+        h = ((h ^ b) * 16777619) & 0xFFFFFFFF
+    return h
+# simplify-ignore-end
+
 
 def aggregate_telemetry(batch, options=None):
     if options is None:
@@ -36,16 +41,11 @@ def aggregate_telemetry(batch, options=None):
                     if item.get("valid") is True:
                         if "payload" in item:
                             payload = item["payload"]
-                            # simplify-ignore-start
-                            # HIGH-PERFORMANCE BITWISE DIGEST (DO NOT TOUCH)
-                            h = 2166136261
-                            for b in payload.get("raw_bytes", b""):
-                                h = ((h ^ b) * 16777619) & 0xFFFFFFFF
-                            # simplify-ignore-end
+                            raw = payload.get("raw_bytes", b"")
                             results.append({
                                 "id": item["id"],
-                                "digest": h,
-                                "count": len(payload.get("raw_bytes", b""))
+                                "digest": _fnv1a_digest(raw),
+                                "count": len(raw),
                             })
                         else:
                             if strict_mode:
@@ -66,93 +66,75 @@ def aggregate_telemetry(batch, options=None):
         raise TypeError("Batch cannot be None")
 ```
 
-### Cognitive Smells Observed
-- **Deep nesting (5+ levels)**: Hard to follow error paths and loop logic.
-- **Verbose defaults**: Chained `if/else` for `options` dictionary defaults.
-- **Redundant branch checks**: Multiple redundant checks for `len(batch) > 0` vs `else: return {"processed": 0, "items": []}`.
-- **Dead pass-throughs**: `else: pass` and empty fallback ladders.
+## 3. The Pass
 
----
+**Safety net (step 1).** The suite passes but only uses `valid: True` and `valid: False`, and
+never passes odd options. Those behaviors get pinned before editing, here by the harness in
+section 5.
 
-## 3. The 4-Step Simplification Process
+**What must stay observable (step 2).**
+- `TypeError("Batch cannot be None")`, then `TypeError("Batch must be a list")`, in that order.
+- `options` is read before `batch` is checked: `aggregate_telemetry(None, 5)` raises
+  `AttributeError` from `opts.get`, not the `TypeError`.
+- Only the boolean `True` counts as valid. `valid: 1` and `valid: "yes"` are invalid: skipped,
+  or `ValueError("Invalid item: <id>")` in strict mode.
+- A missing payload is skipped, or `ValueError("Missing payload in strict mode")` in strict mode.
+- Results keep batch order. An empty list returns `{"processed": 0, "items": []}`.
+- The digest block is protected: hash it before editing.
 
-### Step 1: Understand Before Touching (Chesterton's Fence)
-- **Inputs**: `batch` (list of dicts), `options` (optional dict).
-- **Exceptions**:
-  - `TypeError("Batch cannot be None")` if `batch is None`.
-  - `TypeError("Batch must be a list")` if `not isinstance(batch, list)`.
-  - `ValueError("Missing payload in strict mode")` if strict and item lacks `"payload"`.
-  - `ValueError("Invalid item: <id>")` if strict and `item.get("valid") is not True`.
-- **Side effects / Ordering**: Results appended in strict batch order.
-- **Protected Region**: Bytes between `# simplify-ignore-start` and `# simplify-ignore-end` hashed:
-  `SHA-256 = d4628...`
-
-### Step 2: Formulate Concrete Remedies
-1. Convert outer validation into **top-level guard clauses** with early exceptions.
-2. Default `options` using dict fallback idiom `options or {}`.
-3. Invert loop conditions: filter invalid items early with continue/raise.
-4. Extract item processing into a clean, focused step while keeping the protected region byte-identical.
-
-### Step 3: Apply Changes Incrementally
-Apply the guard clauses first, verify existing tests pass, then flatten the loop body.
-
----
+**Opportunities (step 3).** A five-level pyramid (guard clauses); a verbose `options` default
+(one conditional expression that keeps the `is None` test); `else: pass` and
+`else: continue` branches that do nothing; a separate empty-list branch the loop already
+covers. Left alone: the digest (protected) and the strict `is True` check (a truthy test would
+accept `1` and `"yes"`).
 
 ## 4. After Simplification
 
 ```python
-# telemetry_pipeline.py (Simplified)
+# simplify-ignore-start
+# FNV-1a digest, tuned for the ingest hot path (PERF-41). Do not reformat.
+def _fnv1a_digest(raw_bytes):
+    h = 2166136261
+    for b in raw_bytes:
+        h = ((h ^ b) * 16777619) & 0xFFFFFFFF
+    return h
+# simplify-ignore-end
+
 
 def aggregate_telemetry(batch, options=None):
+    opts = {} if options is None else options
+    strict_mode = opts.get("strict", False)
+
     if batch is None:
         raise TypeError("Batch cannot be None")
     if not isinstance(batch, list):
         raise TypeError("Batch must be a list")
 
-    opts = options or {}
-    strict_mode = opts.get("strict", False)
-
     results = []
     for item in batch:
-        if not item.get("valid"):
+        # Only the boolean True counts as valid; 1 or "yes" do not.
+        if item.get("valid") is not True:
             if strict_mode:
                 raise ValueError(f"Invalid item: {item.get('id')}")
             continue
-
         if "payload" not in item:
             if strict_mode:
                 raise ValueError("Missing payload in strict mode")
             continue
-
-        payload = item["payload"]
-        # simplify-ignore-start
-        # HIGH-PERFORMANCE BITWISE DIGEST (DO NOT TOUCH)
-        h = 2166136261
-        for b in payload.get("raw_bytes", b""):
-            h = ((h ^ b) * 16777619) & 0xFFFFFFFF
-        # simplify-ignore-end
-
-        results.append({
-            "id": item["id"],
-            "digest": h,
-            "count": len(payload.get("raw_bytes", b""))
-        })
+        raw = item["payload"].get("raw_bytes", b"")
+        results.append({"id": item["id"], "digest": _fnv1a_digest(raw), "count": len(raw)})
 
     return {"processed": len(results), "items": results}
 ```
 
-### Cognitive Gains
-- Maximum nesting reduced from **5 levels to 2 levels**.
-- Control flow is linear and readable from top to bottom.
-- On-call debugging latency dropped: all pre-conditions are verified at the entrance.
-- **Protected region**: Byte-for-byte SHA-256 identical.
-- **Behavior parity**: 100% invariant across all input/error spaces.
+The tempting version uses `if not item.get("valid"):` and `opts = options or {}`, and checks
+`batch` before reading `options`. It reads slightly shorter and changes behavior for
+`valid: 1`, `valid: "yes"` and `aggregate_telemetry(None, 5)`. The harness below fails on it.
 
----
+## 5. Old-Versus-New Harness
 
-## 5. Offline Deterministic Verification Suite
-
-The following runnable standard-library test (`run_verification.py`) proves behavioral parity, edge-case preservation, and protected-region hash integrity.
+The harness holds both versions as source text, runs each over the same cases, and hashes the
+protected block extracted from each source. Run it with `python -I harness.py`.
 
 ```python andino-operational-example
 import hashlib
@@ -160,11 +142,23 @@ import json
 import os
 import sys
 
-def before_fn(batch, options=None):
+BEFORE_SOURCE = '''
+# simplify-ignore-start
+# FNV-1a digest, tuned for the ingest hot path (PERF-41). Do not reformat.
+def _fnv1a_digest(raw_bytes):
+    h = 2166136261
+    for b in raw_bytes:
+        h = ((h ^ b) * 16777619) & 0xFFFFFFFF
+    return h
+# simplify-ignore-end
+
+
+def aggregate_telemetry(batch, options=None):
     if options is None:
         opts = {}
     else:
         opts = options
+
     strict_mode = opts.get("strict", False)
 
     if batch is not None:
@@ -175,15 +169,11 @@ def before_fn(batch, options=None):
                     if item.get("valid") is True:
                         if "payload" in item:
                             payload = item["payload"]
-                            # simplify-ignore-start
-                            h = 2166136261
-                            for b in payload.get("raw_bytes", b""):
-                                h = ((h ^ b) * 16777619) & 0xFFFFFFFF
-                            # simplify-ignore-end
+                            raw = payload.get("raw_bytes", b"")
                             results.append({
                                 "id": item["id"],
-                                "digest": h,
-                                "count": len(payload.get("raw_bytes", b""))
+                                "digest": _fnv1a_digest(raw),
+                                "count": len(raw),
                             })
                         else:
                             if strict_mode:
@@ -202,121 +192,134 @@ def before_fn(batch, options=None):
             raise TypeError("Batch must be a list")
     else:
         raise TypeError("Batch cannot be None")
+'''
 
-def after_fn(batch, options=None):
+AFTER_SOURCE = '''
+# simplify-ignore-start
+# FNV-1a digest, tuned for the ingest hot path (PERF-41). Do not reformat.
+def _fnv1a_digest(raw_bytes):
+    h = 2166136261
+    for b in raw_bytes:
+        h = ((h ^ b) * 16777619) & 0xFFFFFFFF
+    return h
+# simplify-ignore-end
+
+
+def aggregate_telemetry(batch, options=None):
+    opts = {} if options is None else options
+    strict_mode = opts.get("strict", False)
+
     if batch is None:
         raise TypeError("Batch cannot be None")
     if not isinstance(batch, list):
         raise TypeError("Batch must be a list")
 
-    opts = options or {}
-    strict_mode = opts.get("strict", False)
-
     results = []
     for item in batch:
-        if not item.get("valid"):
+        # Only the boolean True counts as valid; 1 or "yes" do not.
+        if item.get("valid") is not True:
             if strict_mode:
                 raise ValueError(f"Invalid item: {item.get('id')}")
             continue
-
         if "payload" not in item:
             if strict_mode:
                 raise ValueError("Missing payload in strict mode")
             continue
-
-        payload = item["payload"]
-        # simplify-ignore-start
-        h = 2166136261
-        for b in payload.get("raw_bytes", b""):
-            h = ((h ^ b) * 16777619) & 0xFFFFFFFF
-        # simplify-ignore-end
-
-        results.append({
-            "id": item["id"],
-            "digest": h,
-            "count": len(payload.get("raw_bytes", b""))
-        })
+        raw = item["payload"].get("raw_bytes", b"")
+        results.append({"id": item["id"], "digest": _fnv1a_digest(raw), "count": len(raw)})
 
     return {"processed": len(results), "items": results}
+'''
 
-def extract_protected(source_bytes):
-    start = b"# simplify-ignore-start"
-    end = b"# simplify-ignore-end"
-    idx1 = source_bytes.find(start)
-    idx2 = source_bytes.find(end)
-    if idx1 == -1 or idx2 == -1:
-        return b""
-    return source_bytes[idx1 : idx2 + len(end)]
+CASES = [
+    (None, None),
+    ("not-a-list", None),
+    ([], None),
+    ([], {"strict": True}),
+    ([{"id": 1, "valid": True, "payload": {"raw_bytes": b"hello"}}], None),
+    ([{"id": 2, "valid": False}], {"strict": False}),
+    ([{"id": 3, "valid": False}], {"strict": True}),
+    ([{"id": 4, "valid": True}], None),
+    ([{"id": 5, "valid": True}], {"strict": True}),
+    ([{"id": 6, "valid": 1, "payload": {"raw_bytes": b"x"}}], None),
+    ([{"id": 7, "valid": "yes", "payload": {"raw_bytes": b"y"}}], {"strict": True}),
+    ([{"id": 8, "valid": True, "payload": {}}], {}),
+    (None, 5),
+    ([{"id": 9, "valid": True, "payload": {"raw_bytes": b"andino"}},
+      {"id": 10, "valid": False},
+      {"id": 11, "valid": True, "payload": {"raw_bytes": b"workflow"}}], None),
+]
 
-def test_probe():
-    # 1. Protected region hash invariance
-    raw_before = b"""# simplify-ignore-start
-h = 2166136261
-for b in payload.get("raw_bytes", b""):
-    h = ((h ^ b) * 16777619) & 0xFFFFFFFF
-# simplify-ignore-end"""
-    
-    raw_after = raw_before
+
+def protected_block(source):
+    start = source.index("# simplify-ignore-start")
+    end = source.index("# simplify-ignore-end") + len("# simplify-ignore-end")
+    return source[start:end].encode("utf-8")
+
+
+def load(source):
+    namespace = {}
+    exec(source, namespace)
+    return namespace["aggregate_telemetry"]
+
+
+def observe(function, batch, options):
+    try:
+        return ("value", function(batch, options))
+    except Exception as error:
+        return (type(error).__name__, str(error))
+
+
+def main():
+    after_source = AFTER_SOURCE
     if os.getenv("ANDINO_NEGATIVE") == "1":
-        # Simulate illegal tampering in protected block
-        raw_after = raw_before.replace(b"2166136261", b"2166136262")
-
-    hash_before = hashlib.sha256(raw_before).hexdigest()
-    hash_after = hashlib.sha256(raw_after).hexdigest()
-    protected_intact = (hash_before == hash_after)
-
-    # 2. Comprehensive test matrix
-    test_cases = [
-        # (batch, options)
-        (None, None),
-        ("not-a-list", None),
-        ([], None),
-        ([], {"strict": True}),
-        ([{"id": 1, "valid": True, "payload": {"raw_bytes": b"hello"}}], None),
-        ([{"id": 2, "valid": False}], {"strict": False}),
-        ([{"id": 3, "valid": False}], {"strict": True}),
-        ([{"id": 4, "valid": True}], {"strict": False}),
-        ([{"id": 5, "valid": True}], {"strict": True}),
-        ([{"id": 6, "valid": True, "payload": {"raw_bytes": b"andino"}},
-          {"id": 7, "valid": False},
-          {"id": 8, "valid": True, "payload": {"raw_bytes": b"workflow"}}], None),
-    ]
-
-    def observe(fn, batch, opts):
-        try:
-            return ("OK", fn(batch, opts))
-        except Exception as e:
-            return (type(e).__name__, str(e))
-
-    behavior_matches = True
-    for batch, opts in test_cases:
-        res_before = observe(before_fn, batch, opts)
-        res_after = observe(after_fn, batch, opts)
-        if res_before != res_after:
-            behavior_matches = False
-            break
-
-    return {
-        "behavior_equal": behavior_matches,
-        "protected_equal": protected_intact,
-        "cases_tested": len(test_cases)
+        after_source = after_source.replace("2166136261", "2166136262")
+    before, after = load(BEFORE_SOURCE), load(after_source)
+    behavior_equal = all(observe(before, b, o) == observe(after, b, o) for b, o in CASES)
+    before_hash = hashlib.sha256(protected_block(BEFORE_SOURCE)).hexdigest()
+    after_hash = hashlib.sha256(protected_block(after_source)).hexdigest()
+    result = {
+        "behavior_equal": behavior_equal,
+        "protected_equal": before_hash == after_hash,
+        "cases": len(CASES),
     }
+    print(json.dumps(result, sort_keys=True))
+    sys.exit(0 if behavior_equal and before_hash == after_hash else 1)
+
 
 if __name__ == "__main__":
-    result = test_probe()
-    print(json.dumps(result, sort_keys=True))
-    if not (result["behavior_equal"] and result["protected_equal"]):
-        sys.exit(1)
+    main()
 ```
 
 ### Expected Output
 
-Default variant:
+Default run, exit 0:
 ```json
-{"behavior_equal": true, "cases_tested": 10, "protected_equal": true}
+{"behavior_equal": true, "cases": 14, "protected_equal": true}
 ```
 
-Adversarial negative variant (`ANDINO_NEGATIVE=1`):
+With `ANDINO_NEGATIVE=1`, which changes one constant inside the protected block, exit 1:
 ```json
-{"behavior_equal": true, "cases_tested": 10, "protected_equal": false}
+{"behavior_equal": false, "cases": 14, "protected_equal": false}
 ```
+
+## 6. The Ledger
+
+```markdown
+### `telemetry_pipeline.py::aggregate_telemetry`
+- Reading problem: five nested levels; the error paths sit far from their conditions.
+- Change: guard clauses for `batch`; `continue` guards in the loop; `else: pass`,
+  `else: continue` and the separate empty-list branch removed.
+- Behavior kept: both TypeErrors in order; `options` read before `batch`; strict `is True`;
+  both ValueErrors; result order; empty-list result.
+- Check: existing suite passes unchanged; harness 14 cases, behavior_equal true.
+
+### `telemetry_pipeline.py::aggregate_telemetry` (default)
+- Reading problem: four-line `if`/`else` for one default.
+- Change: `opts = {} if options is None else options`.
+- Behavior kept: only `None` gets the default; a caller's own mapping is kept.
+- Check: harness cases with `None`, `{}` and `5` as options.
+```
+
+Left alone: `_fnv1a_digest` (protected, before and after SHA-256 equal), the strict `is True`
+check. Not verified: callers outside this module.

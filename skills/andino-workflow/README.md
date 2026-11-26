@@ -28,7 +28,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-verification` | Observed acceptance evidence before consequential completion claims. |
 | `andino-browser-testing-with-devtools` | Rendered behavior, console/network and browser evidence; UI screenshots at 360, 768 and 1440 px. |
 | `andino-code-review` | Spec and Standards review with pinned scope, evidence from the reviewed bytes and the repository left as found; request and receive protocols. |
-| `andino-code-simplification` | Evidenced simplification of green code without behavioral drift. |
+| `andino-code-simplification` | Behavior-preserving simplification of working code, in a repository or pasted, with a per-change ledger and protected regions. |
 | `andino-constraint-driven-development` | Establish and preserve the quality floor. |
 | `andino-doubt-driven-development` | Fresh scrutiny of consequential assumptions and invariants. |
 
