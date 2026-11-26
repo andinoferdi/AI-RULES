@@ -20,7 +20,7 @@ FIXTURE = "# local only\nDATABASE_URL=postgres://u:p@h/db\nPAYLANE_KEY=old\nFLAG
 
 
 def snippet(language: str) -> str:
-    text = CONTRACT.read_text(encoding="utf-8")
+    text = CONTRACT.read_bytes().decode("utf-8").replace("\r\n", "\n")
     found = re.findall(rf"```{language} hp-env-set\n(.*?)\n```", text, re.S)
     if len(found) != 1:
         raise AssertionError(f"expected one `{language} hp-env-set` block in {CONTRACT.name}")
