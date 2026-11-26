@@ -174,6 +174,13 @@ contract and a worked example. The duplicate `resources/typed-fixtures/contract.
 the typed-fixtures guide is unchanged. The comparison trial is recorded in
 `docs/validation/tdd/trial.md`.
 
+The 2026-11-26 upgrade of `deprecation-and-migration` re-reads Addy Osmani's
+`deprecation-and-migration` (addyosmani/agent-skills 9f91cc4, MIT) and moves the method into the
+sibling layout: a quick path and six gates with named artifacts in `SKILL.md` (mirrored by
+`GUIDE.md`), the consumer map, phase ledger, backfill rules and contract decision, the shortcut
+and red-flag lists, and resources for transition patterns, notices and a worked example. The
+comparison trial is recorded in `docs/validation/deprecation-and-migration/trial.md`.
+
 The 2026-11-26 upgrade of `debugging` re-reads Addy Osmani's `debugging-and-error-recovery`
 (addyosmani/agent-skills 9097b64), Matt Pocock's `diagnosing-bugs` (mattpocock/skills f3fc563)
 and Jesse Vincent's `systematic-debugging` (obra/superpowers 22f0b46), all MIT, and moves the
