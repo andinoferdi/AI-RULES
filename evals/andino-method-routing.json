@@ -350,6 +350,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-code-review-receive-feedback",
+    "kind": "behavior",
+    "prompt": "A reviewer left six comments on my PR; some look wrong. Handle them.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select code-review",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "code-review"
+    ],
+    "method": "code-review",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-code-review-negative",
     "kind": "negative-trigger",
     "prompt": "Apa beda review dan testing?",
