@@ -134,7 +134,8 @@ and its output goes into the report (step 10).
    Replace a vague warning with the specific hazard taken from its source (an ADR, a test, an
    incident) and link that source. Delete commented-out code; version control keeps it. Keep a
    tracked TODO with its issue reference. Do an untracked TODO now when it is inside the task's
-   scope; otherwise delete it and list it as follow-up in the report.
+   scope; otherwise delete it and list it as follow-up in the report. Change comments only in
+   files the task covers.
    Done when every remaining comment passes that test, no fact in a comment is missing from its
    source, every removed TODO appears in the report, and behaviour is shown unchanged: tests
    pass and the diff (or a syntax-tree comparison) touches comment lines only.
