@@ -36,7 +36,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 
 | Public member | Responsibility |
 | --- | --- |
-| `andino-security-and-hardening` | External-input, authentication, data and dependency trust boundaries. |
+| `andino-security-and-hardening` | Map a trust boundary, prove the control with tests that the protected effect never runs, and report findings as confirmed or inferred through build and review gates; quick path when no boundary is touched. |
 | `andino-deprecation-and-migration` | Consumer-aware interface/schema retirement and migration. |
 | `andino-observability-and-instrumentation` | Useful production evidence, monitoring and runbooks. |
 | `andino-performance-optimization` | Measured bottlenecks and verified improvements. |
