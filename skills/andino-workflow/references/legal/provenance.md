@@ -248,4 +248,14 @@ anti-rationalization file removed. Idempotency status codes follow
 `docs/validation/api-and-interface-design/trial.md`. Correction to the paragraph above:
 `scripts/verify_api_and_interface_design_elevation.py` does not exist in this repository.
 
-
+The 2026-11-26 upgrade of `code-review` re-bases the skill on Addy Osmani's
+`code-review-and-quality` (addyosmani/agent-skills commit e997ac5, MIT), Matt Pocock's
+`engineering/code-review` (mattpocock/skills commit 6f7f783, MIT) and Jesse Vincent's
+`requesting-code-review` and `receiving-code-review` (obra/superpowers commit 22f0b46, MIT),
+and moves the method into the sibling layout: one review procedure in `SKILL.md` (mirrored by
+`GUIDE.md`) that pins the change and the starting state, gathers test evidence from the
+reviewed bytes with a mutation probe, runs a Spec pass with unspecified-harm questions and a
+Standards pass in which documented repository standards override smell heuristics, and leaves
+the repository as found. Request and receive protocols, review craft and trimmed security and
+performance triggers (path containment and negative caching kept in full) live in
+`resources/`. The comparison trial is recorded in `docs/validation/code-review/trial.md`.
