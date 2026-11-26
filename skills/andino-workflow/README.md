@@ -37,7 +37,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | Public member | Responsibility |
 | --- | --- |
 | `andino-security-and-hardening` | External-input, authentication, data and dependency trust boundaries. |
-| `andino-deprecation-and-migration` | Consumer-aware interface/schema retirement and migration. |
+| `andino-deprecation-and-migration` | Retire or replace something others use: consumer map beyond grep, expand/backfill phase ledger, per-consumer parity or notice, and a ready/held/done contract decision; quick path for private changes. |
 | `andino-observability-and-instrumentation` | Useful production evidence, monitoring and runbooks. |
 | `andino-performance-optimization` | Measured bottlenecks and verified improvements. |
 | `andino-ci-cd-and-automation` | CI gates and required checks, failing or flaky runs, workflow security, deploy promotion and rollback; optional commit-check setup. |
