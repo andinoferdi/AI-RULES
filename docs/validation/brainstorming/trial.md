@@ -2,12 +2,13 @@
 
 Run on 2026-11-26 on the fixture in `fixture/`, scored against the [rubric](rubric.md), which was
 frozen (commit 560e9b3) before the candidate was written. The baseline arms ran once; the
-candidate ran three times (first version, after one round of fixes, after a second round), and
-each candidate run was graded blind together with the two baseline outputs by a fresh grader.
+candidate ran four times (first version, after one round of fixes, after a second round, and after
+a follow-up change), and each candidate run was graded blind together with the two baseline
+outputs by a fresh grader.
 
-Result: the final candidate scored 71 of 74 against 59 for the current skill and 59 for
-superpowers. It is at least equal to both on 34 of 37 criteria and one point below one of them on
-W2, E2 and M1, so the per-criterion gate is not met.
+Result: the version merged in PR #20 scored 71 of 74 against 59 and 59, one point below one arm on
+W2, E2 and M1. The follow-up version scored 74 of 74 against 58 for superpowers and 56 for the
+current skill, and meets the per-criterion gate (see "Follow-up run").
 
 ## Setup
 
@@ -192,6 +193,56 @@ No further change was made after this run, so the shipped skill is the one grade
 
 Across the three gradings of unchanged outputs, the current skill's total was 60, 59 and 59 and
 superpowers' 59, 57 and 59; single criteria moved by one point between graders.
+
+## Follow-up run
+
+After PR #20 merged, the user asked for a follow-up on E2 and M1 and approved two more subagents.
+Both gaps were omissions, so the fixes are structural slots:
+
+- E2: the restate block gains a seventh line, `Anti-goal: <what would make this a failure even if
+  it works as specified>`, and the red flag and verification items name it; the worked example's
+  restate gains an anti-goal. In the final run the candidate wrote its design in chat with the
+  restate block as its scope section, and that block had no anti-goal slot.
+- M1: on the several-sessions route the first message lists every decision already visible as a
+  numbered list, root first, each later one saying which earlier one it waits on, and still asks
+  one question. In the final run the candidate named a single example decision.
+
+The candidate ran with SKILL.md blob e7d9ae0; a fresh grader (Sonnet 5.5, medium) scored it with the
+existing superpowers and current outputs, reshuffled (A superpowers, B candidate, C current).
+Evidence per score: [scores-followup.md](scores-followup.md).
+
+| Criterion | Superpowers (A) | Current (C) | Candidate (B) |
+| --- | --- | --- | --- |
+| B2 echo and related path | 1 | 2 | 2 |
+| B3 why first, open | 1 | 1 | 2 |
+| B4 current read and gaps | 1 | 1 | 2 |
+| W2 one question with a guess | 1 | 1 | 2 |
+| G1 numbered round | 0 | 0 | 2 |
+| G3 term challenge | 1 | 2 | 2 |
+| D2 approaches | 2 | 0 | 2 |
+| E2 scope and anti-goals | 2 | 1 | 2 |
+| E3 decisions and what is left | 2 | 1 | 2 |
+| E4 approaches recorded | 2 | 1 | 2 |
+| E5 observable acceptance | 1 | 2 | 2 |
+| F1 spike framing | 0 | 0 | 2 |
+| F2 facts and permission | 1 | 1 | 2 |
+| M1 root decisions first | 1 | 1 | 2 |
+| M2 decisions tracked across sessions | 0 | 0 | 2 |
+| M3 outcome before technology | 0 | 0 | 2 |
+| Other 21 criteria | 2 each | 2 each | 2 each |
+| Total (of 74) | 58 | 56 | 74 |
+
+Gate: PASS. The candidate is at least equal to both arms on all 37 criteria and higher than both
+on 9 (B3, B4, W2, G1, F1, F2, M1, M2, M3). The output shows the two fixes at work: the s1-cp5 design has an anti-goal ("a volunteer
+calls someone who already returned the tool, or a member is promised a date that then proves
+wrong"), and the s5 message lists six decisions with what each waits on before asking one
+question. The grader named one close call: E8, where the candidate ends with "A yes lets me hand it
+on to be planned and built"; it asks for approval first and names planning, so it scored 2, but a
+stricter reading could give 1.
+
+A perfect score from one run and one grader is a ceiling on this rubric, not proof of a ceiling in
+use. Across the four gradings the unchanged arms' totals moved between 56 and 60, so a one or two
+point difference remains within grader variance.
 
 ## Limitations
 
