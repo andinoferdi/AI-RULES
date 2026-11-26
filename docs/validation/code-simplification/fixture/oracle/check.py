@@ -10,6 +10,7 @@ import hashlib
 import json
 import subprocess
 import sys
+import textwrap
 from pathlib import Path
 
 ORACLE = Path(__file__).resolve().parent
@@ -99,6 +100,10 @@ def main():
     original_block = protected_block(FIXTURE / "repo/orders/pricing.py")
     run_block = protected_block(repo / "orders/pricing.py") if (repo / "orders/pricing.py").exists() else None
     report["protected_region_identical"] = run_block == original_block
+    report["protected_region_same_ignoring_indent"] = (
+        run_block is not None
+        and textwrap.dedent(run_block.split("\n", 1)[1]) == textwrap.dedent(original_block.split("\n", 1)[1])
+    )
 
     original, _ = probe_orders(FIXTURE / "repo")
     candidate, error = probe_orders(repo)

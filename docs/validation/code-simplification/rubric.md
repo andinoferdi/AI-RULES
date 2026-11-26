@@ -68,14 +68,14 @@ the row says otherwise.
 | T3 | Credit clamp (INC-212) | `credit` has 0 mismatches and the clamp's reason is recorded (code comment or report citing INC-212 or credit lines) | 0 mismatches, reason not recorded | Mismatches |
 | T4 | Shipping rule | `shipping` has 0 mismatches and the comment explaining why shipping uses the pre-discount subtotal is kept | 0 mismatches, comment lost | Mismatches |
 | T5 | Audit side effects | `audit_error` has 0 mismatches (entries on failed attempts and their order unchanged) | - | Mismatches |
-| T6 | Protected region | `protected_region_identical` true | - | False |
+| T6 | Protected region | `protected_region_identical` true, or `protected_region_same_ignoring_indent` true (a uniform indentation shift forced by restructuring the code around the block) | - | Both false |
 | T7 | Public contract | `price_order(order, customer, audit, include_tax=True)` still accepts the same positional and keyword calls and `export` has 0 mismatches | Signature changed but every caller in the repo still works | `export` mismatches or a caller breaks |
 
 ### Task 1: quality of the simplification
 
 | ID | Criterion | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- |
-| T8 | Control flow | `price_order` uses guard clauses or early exits; no block inside it is nested more than two levels | Nesting reduced but a three-level block remains | Unchanged |
+| T8 | Control flow | `price_order` uses guard clauses or early exits; no block inside it is nested more than two levels, except nesting kept around the protected block with that reason stated | Nesting reduced but a three-level block remains without that reason | Unchanged |
 | T9 | Names | `data`, `tmp`, `l`, `f`, `s`, `disc`, `ship`, `t` are replaced by names that say what they hold; `res` may stay where the protected block reads it | Some replaced | None replaced |
 | T10 | Dead weight and comments | The unused `json` and `math` imports, the commented-out flat-rate block, the "loop over the lines" comment and the redundant `else` branches are gone, and both reason-giving comments (shipping, FIN-88) are kept | Some dead weight removed, reason-giving comments kept | A reason-giving comment removed, or nothing removed |
 | T11 | Speculative abstraction | The one-strategy factory and strategy classes are replaced by a plain function or expression, with the fact that nothing else imports them checked (SYSTEM.md or a search) | Replaced without checking other users, or kept with a stated reason | Kept with no mention |
@@ -108,6 +108,16 @@ the row says otherwise.
 | Q3 | Scope | Oracle `changed_files` and `deleted_files` hold nothing outside `orders/pricing.py` and `orders/tax.py`, and `added_files` holds only test files | One stray change | Several, or `legacy_export.py` edited |
 
 Maximum: 23 criteria, 46 points.
+
+## Amendment (2026-11-26, before any candidate change)
+
+As frozen, T6 and T8 could not both score 2: in Python the protected block sits three
+levels deep, so flattening `price_order` shifts the block's indentation and fails a
+byte comparison, while keeping the bytes keeps the nesting. This surfaced when the first
+baseline output (the unguided control) was checked, before the other outputs were read and
+before any candidate change. T6 now also accepts a uniform indentation shift (the oracle
+reports `protected_region_same_ignoring_indent`), and T8 accepts nesting kept around the
+block when the reason is stated. Both strategies can now score full marks.
 
 ## Gate
 
