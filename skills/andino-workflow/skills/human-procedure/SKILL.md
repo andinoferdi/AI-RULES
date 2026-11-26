@@ -235,6 +235,37 @@ the person never sees, and nothing that says when a step is done.
 - [Worked example](resources/worked-example.md): one procedure through the gates.
 - MIT notice: [references/license.md](references/license.md).
 
+## Operational example (offline)
+
+This fixture checks two properties of a procedure: the read-only first stage maps each
+observation to one of three branches, and every CI reference and `.env.example` key is either
+in the value map or named as not needed. It does not measure artifact quality.
+
+```python andino-operational-example
+import os
+
+def first_stage(observed):
+    """Branch for one effect, from what the read-only first stage saw."""
+    if observed == "absent":
+        return "do"
+    if observed == "present-verified":
+        return "skip"
+    return "stop"
+
+def unmapped(ci_refs, env_keys, value_map, not_needed):
+    return sorted((set(ci_refs) | set(env_keys)) - set(value_map) - set(not_needed))
+
+if __name__ == "__main__":
+    assert [first_stage(s) for s in ("absent", "present-verified", "unclear")] == ["do", "skip", "stop"]
+    ci = {"INKWELL_SECRET_KEY", "APP_URL", "GITHUB_TOKEN"}
+    env = {"INKWELL_SECRET_KEY", "DATABASE_URL"}
+    value_map = {"INKWELL_SECRET_KEY": ("Inkwell dashboard", [".env", "CI secret"], "secret"),
+                 "APP_URL": ("the person", ["CI variable"], "public")}
+    assert unmapped(ci, env, value_map, {"GITHUB_TOKEN": "built-in", "DATABASE_URL": "local default"}) == []
+    assert unmapped(ci, env, value_map, {"GITHUB_TOKEN": "built-in"}) == ["DATABASE_URL"]
+    raise SystemExit(1 if os.environ.get("ANDINO_NEGATIVE") == "1" else 0)
+```
+
 ## Provenance
 
 Independently adapted from these audited local snapshot paths (provenance only; runtime never

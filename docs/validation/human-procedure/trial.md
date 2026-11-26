@@ -87,7 +87,9 @@ run.
   straight from baseline errors (verify platform facts, after the false GitHub secret-scope
   claim; repository versus environment secrets in the shell table). After grading, the example
   names were replaced with neutral ones (Inkwell keys, a Relay token, `MIGRATE` and `DELETE`, "a
-  migration, a key deletion"); no rule or step changed, and the edited text was not re-run.
+  migration, a key deletion"); no rule or step changed, and the edited text was not re-run. An
+  "Operational example (offline)" section, the offline fixture every sibling member carries,
+  was also added after grading; it changes no instruction.
   Part of the candidate's lead on C2 and X1 may come from this fit.
 - The current-arm run was resumed after a usage-limit stop, so its context differed from the
   others; the `wizard` arm ran on its second attempt.
