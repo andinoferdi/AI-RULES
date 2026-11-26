@@ -53,7 +53,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-documentation-and-adrs` | Durable documentation and decisions; optional domain vocabulary. |
 | `andino-handoff` | Portable continuation and optional context packing. |
 | `andino-human-procedure` | Necessary steps requiring human-only access or authority. |
-| `andino-issue-triage` | Maintainer-requested issue/PR evaluation without unauthorized tracker writes. |
+| `andino-issue-triage` | Attention list, verified triage of issues and external pull requests, durable agent briefs and out-of-scope records; tracker writes only for items the maintainer authorized. |
 | `andino-optimize-prompt` | Explicitly requested rewrite of a raw task prompt that keeps its shape, every named skill and phase, and every fact, and adds labelled checked project facts, done-when, limits and a verification step; a diagnosis table and up to three questions follow it. |
 | `andino-session-diagnostics` | Session-level failures; optional prevention review after causes are known. |
 | `andino-learning-workspace` | Intentional learning; optional course-exercise scaffolding. |

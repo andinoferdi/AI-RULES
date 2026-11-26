@@ -275,6 +275,19 @@ with `ANDINO_NEGATIVE` gate, zero-dependency offline Python stdlib verification 
 `scripts/verify_architecture_survey_elevation.py`, and complete integration with `ai-rules setup`).
 MIT notice for Matt Pocock remains preserved.
 
+The 2026-11-26 rewrite of `issue-triage` follows mattpocock/skills commit d80fa0f (`triage`
+with `AGENT-BRIEF.md` and `OUT-OF-SCOPE.md`). It puts the skill in the sibling Andino layout
+with one eight-step procedure (GUIDE.md mirrors SKILL.md) and adds the three-bucket attention
+list, the already-built and prior-rejection checks by concept, the CONFIRMED / FAILED /
+INSUFFICIENT verification verdicts, recommend-then-wait, grilling through
+`andino-brainstorming`, the outcome table with its three wontfix variants, quick state
+override and resuming from earlier notes. The brief template and durability rules, the
+out-of-scope record format and flows, and the needs-info and closing-comment formats move into
+`resources/` with new examples in other domains. The authority table, the per-item record and
+the local-draft fallback are Andino additions; the dependency on Matt's setup skill is replaced
+by reading the project's tracker configuration. `tests/test_issue_triage_preservation.py`
+guards the kept rules; the trial is in `docs/validation/issue-triage/`.
+
 The 2026-11-26 rewrite of `architecture-survey` follows mattpocock/skills commit 7739eae
 (`improve-codebase-architecture` with `HTML-REPORT.md`, and the skills it calls:
 `codebase-design` with `DEEPENING.md` and `DESIGN-IT-TWICE.md`, `grilling` and
