@@ -1,164 +1,189 @@
-# Shape Raw Material into an Article: Worked Procedure and Example
+# Worked example: one session, in Indonesian
 
-Internal method ID: `andino-article-shaping/worked-example`.
+Internal resource for `andino-article-shaping`. It follows one session from a pile of notes
+to three written blocks. Every detail in the agent's text comes from the pile or from the
+author's messages; the comments in italics point to the rule each turn applies.
 
-This resource demonstrates the complete article shaping lifecycle—from raw, unorganized fragments to a sequenced beat journey, three concrete opening hooks, and an engaging shaped draft with zero AI slop.
-
----
-
-## 1. Input: Raw Fragments (`raw.md`)
+## The pile (`jumat.md`)
 
 ```markdown
-# Migration & Billing Brain Dump
+# catatan: berhenti deploy hari jumat
 
-- Double charges happening when mobile client retries on flaky 4G connections.
-- We thought idempotency was just "cache the response for 24 hours".
-- Client sends UUID idempotency key in header `X-Idempotency-Key`.
-- Race condition: two identical retry requests hit two different server pods at the exact same millisecond.
-- Both check DB, see no record, and both execute Stripe charge. Customer gets charged twice anyway.
-- The fix: Distributed lock before checking database, or unique DB constraint on the idempotency key with an insert-first pattern.
-- Lesson: Retries without atomic deduplication aren't fault tolerance; they are an automated DoS attack on your own payment ledger.
+- tiga bulan terakhir ada dua insiden besar, dua-duanya dari deploy Jumat sore.
+- insiden kedua: rilis jam 4 sore Jumat, migrasi kolom bikin dashboard admin error. baru beres Senin pagi.
+- Dimas yang on-call waktu itu, sendirian.
+- Dimas pas retro: "yang review PR jam 4 sore Jumat itu orangnya udah mikirin weekend."
+- aturan baru: deploy terakhir Kamis jam 3 sore. hotfix tetap boleh, tapi harus di-approve dua orang.
+- deploy Jumat itu kayak titip kunci rumah ke tetangga terus langsung berangkat mudik.
+- aturan ini baru jalan 5 minggu. belum diukur insidennya turun atau nggak.
+- tim mobile protes, rilis app store mereka biasanya Jumat.
+- ada ide feature flag biar deploy nggak sama dengan rilis fitur. belum dikerjakan.
+- (samping) CI kita lambat, 25 menit sekali jalan. nggak nyambung sih.
 ```
 
----
+## Turn 1: settle the reader
 
-## 2. Opening Hook Generation: 3 Concrete Prose Options
+**Author:** Ini catatan saya di `jumat.md`. Tolong bentuk jadi artikel buat blog tim, simpan
+di `artikel-jumat.md`.
 
-Before drafting, generate three radically distinct opening angles with full sample prose:
+**Agent:**
 
-- **Angle A (Narrative / In Media Res)**:
-  > *"At 9:02 on a Monday morning, a frustrated commuter in a subway tunnel tapped 'Pay Now' four times on a spinning screen. Two seconds later, our payment gateway executed four separate $120 charges to their Visa card—and our system logged every single one as a successful, fault-tolerant retry."*
+> Catatannya sudah saya baca sampai habis. Sebelum menulis apa pun, saya perlu tahu
+> pembacanya.
+>
+> Usul saya, pembaca sudah paham git, pull request, code review, CI, dan deploy ke
+> production. Yang dijelaskan di dalam artikel: apa itu on-call, dan aturan deploy terakhir
+> hari Kamis beserta pengecualian hotfix-nya.
+>
+> CI yang lambat dan ide feature flag saya tinggalkan dulu, karena tidak menopang argumen
+> utamanya.
+>
+> Pembacanya seperti itu, atau ada yang perlu digeser?
 
-- **Angle B (Provocative / Counter-Intuitive Claim)**:
-  > *"Retrying failed HTTP requests is the most dangerous feature in your mobile application. Without atomic database locks, your retry policy isn't protecting customers from network drops; it is an automated DoS weapon aimed squarely at your own billing ledger."*
+*Steps 1-3: the pile is read in full, the reader is proposed as two lists, tangents are
+named in one line, and the message asks one thing.*
 
-- **Angle C (Tension / Paradoxical Question)**:
-  > *"If our backend idempotency service was designed specifically to prevent duplicate payments, why did duplicate charges spike by 300% after our 'reliability upgrade'? The answer lies in the deadly two-millisecond gap between reading a cache and committing a transaction."*
+**Author:** Pembacanya engineer baru di tim. Paham git dan CI, tapi belum pernah on-call.
 
----
+## Turn 2: openings from the pile
 
-## 3. The Beat Progression & Concept Graph
+**Agent:**
 
-| Beat ID | Type | Job | Preconditions | Grounds | Reader Delta |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| `1_incident` | `scene` | Visually ground the double-charge nightmare in real life | `request` | `retry_failure` | Casual -> Startled |
-| `2_idempotency` | `claim` | Introduce idempotency keys and explain standard belief | `request`, `retry_failure` | `idempotency_key` | Startled -> Informed |
-| `3_race_hazard` | `pivot` | Reveal the concurrent multi-pod race condition | `idempotency_key` | `concurrency_gap` | Confident -> Shocked |
-| `4_solution` | `claim` | Present atomic unique constraints and insert-first pattern | `concurrency_gap` | `atomic_dedup` | Shocked -> Enlightened |
-| `5_takeaway` | `payoff` | Deliver the memorable engineering rule | `atomic_dedup` | `retry_safety` | Enlightened -> Armed |
+> Oke, on-call saya jelaskan di dalam artikel. Ini tiga pembuka, semuanya dari catatanmu.
+>
+> **1. Mulai dari kejadian**
+> "Jumat jam empat sore, satu migrasi kolom masuk ke production. Dashboard admin error, dan
+> baru beres Senin pagi."
+> Tesis: deploy Jumat sore sudah dua kali berujung insiden, jadi kebiasaannya harus diubah.
+> Pembaca jadi tahu insiden kedua. Setelah ini bisa lanjut ke siapa yang menanganinya, atau
+> ke pola dua insiden.
+>
+> **2. Mulai dari kalimat Dimas**
+> "Kata Dimas di retro: 'Yang review PR jam 4 sore Jumat itu orangnya udah mikirin
+> weekend.'"
+> Tesis: masalahnya ada di perhatian reviewer menjelang weekend. Pembaca langsung memegang
+> argumennya, dan dua insiden jadi buktinya setelah ini.
+>
+> **3. Mulai dari perumpamaan**
+> "Deploy hari Jumat itu kayak titip kunci rumah ke tetangga, terus langsung berangkat
+> mudik."
+> Tesis: perubahan yang dikirim tepat sebelum semua orang pergi tidak punya penjaga.
+> Pembaca dapat gambarannya dulu. Kurang terasa kalau pembaca belum tahu kejadiannya.
+>
+> Saya sarankan nomor 1: engineer baru perlu melihat kejadiannya dulu sebelum mau menerima
+> aturannya. Pilih yang mana, atau mau digabung?
 
----
+*Step 4: three different theses (the incident, the reviewer's attention, the image), each
+built from one pile item, each with what it introduces and opens. No timestamp, count or
+feeling the pile lacks.*
 
-## 4. Shaped Output Article (`article.md`)
+**Author:** Nomor 1.
+
+## Turn 3: write exactly the chosen text
+
+**Agent:**
+
+> Pembuka nomor 1 sudah saya tulis ke `artikel-jumat.md`, persis seperti tadi.
+>
+> Berikutnya, pilih satu:
+>
+> 1. **Ini yang kedua.** Insiden ini yang kedua dalam tiga bulan, dan dua-duanya dari
+>    deploy Jumat sore. Pembaca melihat pola, dan setelah ini aturan baru terasa sebagai
+>    jawaban atas pola itu. Bentuknya prosa, karena isinya satu sebab-akibat.
+> 2. **Siapa yang menangani.** Dimas yang on-call, sendirian. Di sini on-call dijelaskan:
+>    orang yang dihubungi kalau production rusak. Setelah ini, kalimat Dimas di retro.
+>    Prosa juga, dua kalimat.
+> 3. **Perumpamaan titip kunci.** "Deploy Jumat itu kayak titip kunci rumah ke tetangga,
+>    terus langsung berangkat mudik." Kutipan langsung dari catatanmu, karena gambarannya
+>    milikmu sendiri. Pembaca dapat rasa "ditinggal tanpa penjaga" sebelum masuk ke soal
+>    on-call.
+>
+> Saya sarankan nomor 1.
+
+*Steps 5-7: the file gets the approved words unchanged, the next candidates lean only on
+what the reader has, and each names its form with the reason.*
+
+**Author:** Nomor 1.
+
+Between turns the author opens the file and adds a line under the opening:
+"Saya sendiri ikut begadang malam itu."
+
+## Turn 4: the author's line stays
+
+**Agent:**
+
+> Sebelum menulis, saya baca ulang file. Ada kalimat baru darimu di bawah pembuka, "Saya
+> sendiri ikut begadang malam itu." Kalimat itu saya biarkan persis di tempatnya, lalu blok
+> kedua saya tambahkan di bawahnya:
+>
+> "Itu insiden kedua dalam tiga bulan. Yang pertama juga datang dari deploy Jumat sore."
+>
+> Blok berikutnya yang saya sarankan soal Dimas dan on-call, dan pilihan-pilihannya
+> bergantung pada satu hal: catatanmu bilang Dimas on-call sendirian, sedangkan kamu ikut
+> begadang. Maksudnya Dimas satu-satunya yang on-call, dan kamu menemani? Setelah kamu jawab,
+> saya tawarkan pilihannya.
+
+*Rules "The author's text wins" and "Talk to the author plainly": the added line is kept
+byte for byte; the possible tension with the pile becomes the one question, and the next
+candidates wait for it because they depend on the answer.*
+
+**Author:** Iya, Dimas satu-satunya on-call. Saya cuma nemenin di chat. Bagian berikutnya
+bikin pembaca ngerasa seberapa parah dampaknya. Langsung tulis aja.
+
+## Turn 5: pressure, a gap and an inference
+
+**Agent:**
+
+> Saya tulis langsung, tapi hanya dari yang ada di catatanmu. Lamanya error sudah ada di
+> pembuka, jadi blok ini menambah sisi orangnya:
+>
+> "Yang on-call waktu itu cuma Dimas. On-call artinya dialah orang yang dihubungi kalau
+> production rusak, dan kali itu dia memegangnya sendirian."
+>
+> Catatanmu tidak punya angka dampak: berapa admin yang tidak bisa bekerja, atau apa saja
+> yang tertunda. Saya tidak mengisinya dengan perkiraan. Di artikel saya taruh penanda
+> `[GAP: dampak ke admin selama dashboard error; belum ada datanya]`. Kalau kamu punya
+> angkanya, saya ganti penanda itu. Kalau tidak, kita tulis terus terang bahwa dampaknya
+> belum dihitung.
+>
+> Satu hal sengaja tidak saya tulis sebagai fakta: bahwa bug itu dibiarkan sepanjang
+> weekend. Itu kesimpulan saya dari jam rilis dan jam beresnya, bukan isi catatanmu. Benar
+> begitu kejadiannya?
+
+*Rule "Invent nothing": "write it directly" changes the pacing only; the gap is named with
+the ways on, and the inference is held back until the author confirms it.*
+
+## The article file after turn 5
 
 ```markdown
-# The Anatomy of a Duplicate Charge: Why Retries Break Billing
+Jumat jam empat sore, satu migrasi kolom masuk ke production. Dashboard admin error, dan baru beres Senin pagi.
 
-At 9:02 on a Monday morning, a commuter in a subway tunnel tapped 'Pay Now' four times on a spinning screen. Two seconds later, our payment gateway executed four separate $120 charges to their Visa card—and our telemetry logged every single one as a successful, fault-tolerant retry.
+Saya sendiri ikut begadang malam itu.
 
-We thought we had solved this months ago. Every mobile request carried an `X-Idempotency-Key` header with a unique UUID. In theory, if a connection timed out and the client retried, the server would recognize the key, bypass the payment processor, and return the cached receipt.
+Itu insiden kedua dalam tiga bulan. Yang pertama juga datang dari deploy Jumat sore.
 
-Here is the flaw: network retries are not polite, sequential inquiries. When a flaky cellular tower drops, the client library hammers the backend with immediate retries. Those requests hit two different backend pods at the exact same millisecond. Both servers queried the database, both found zero existing records, and both happily dispatched charge instructions to Stripe.
+Yang on-call waktu itu cuma Dimas. On-call artinya dialah orang yang dihubungi kalau production rusak, dan kali itu dia memegangnya sendirian.
 
-Caching a response after the fact is not idempotency. True idempotency requires an atomic barrier at the very start of the pipeline.
-
-By enforcing a unique database constraint on the idempotency key and executing an atomic insert before calling downstream services, the second request immediately halts on constraint violation. The race condition vanishes.
-
-The rule is simple: retrying failed operations without atomic deduplication isn't resilience. It's just multiplying your bugs under pressure.
+[GAP: dampak ke admin selama dashboard error; belum ada datanya]
 ```
 
----
+## Anti-pattern: the same moments done wrong
 
-## 5. Runnable Deterministic Verification
+An opening offered from a formula instead of the pile:
 
-This script executes in a fresh environment using Python's standard library. It proves:
-1. The raw notes file is read without mutation.
-2. The concept grounding graph accurately transitions state and unlocks reachable beats.
-3. The resulting article artifact satisfies both structural grounding and anti-slop rules.
-4. Outputs `result.json` with deterministic properties.
+> "Jam 02.14 dini hari, ponsel Dimas berdering untuk ketiga kalinya."
 
-```python
-from pathlib import Path
-import json
+The time, the hour of night and the count of calls are invented. The pile gives a Friday
+four o'clock release and nothing about calls.
 
-# 1. Define initial prerequisites and beats
-grounded = {"request"}
-beats = {
-    "1_incident": {
-        "job": "scene",
-        "requires": {"request"},
-        "grounds": {"retry_failure"}
-    },
-    "2_idempotency": {
-        "job": "claim",
-        "requires": {"request", "retry_failure"},
-        "grounds": {"idempotency_key"}
-    },
-    "3_race_hazard": {
-        "job": "pivot",
-        "requires": {"idempotency_key"},
-        "grounds": {"concurrency_gap"}
-    },
-    "4_solution": {
-        "job": "claim",
-        "requires": {"concurrency_gap"},
-        "grounds": {"atomic_dedup"}
-    },
-    "5_takeaway": {
-        "job": "payoff",
-        "requires": {"atomic_dedup"},
-        "grounds": {"retry_safety"}
-    }
-}
+The pressure turn answered with scale:
 
-# 2. Track reachability
-initial_reachable = sorted(k for k, v in beats.items() if v["requires"] <= grounded)
+> "Selama 64 jam, ratusan admin tidak bisa bekerja, dan Dimas begadang tiga malam
+> berturut-turut. (Beat 3: payoff)"
 
-# Execute beat 1
-chosen = "1_incident"
-grounded |= beats[chosen]["grounds"]
-next_ready = sorted(k for k, v in beats.items() if k != chosen and v["requires"] <= grounded)
-
-# Step through the remaining beat chain
-for beat_id in ["2_idempotency", "3_race_hazard", "4_solution", "5_takeaway"]:
-    assert beats[beat_id]["requires"] <= grounded, f"Beat {beat_id} violated grounding invariant!"
-    grounded |= beats[beat_id]["grounds"]
-
-# 3. Simulate raw notes intake and verify non-mutation
-raw_content = "Double charges happening on retries. Race conditions across pods. Fix with unique DB constraints."
-Path("raw.md").write_text(raw_content, encoding="utf-8")
-original_raw_bytes = Path("raw.md").read_bytes()
-
-# 4. Generate shaped article
-article_prose = """At 9:02 on a Monday morning, a commuter in a subway tunnel tapped 'Pay Now' four times.
-The mobile app sent an X-Idempotency-Key. Two requests hit two pods concurrently.
-Both pods charged Stripe.
-The fix was a unique DB constraint on the idempotency key.
-Retries without atomic deduplication aren't resilience; they multiply bugs."""
-Path("article.md").write_text(article_prose, encoding="utf-8")
-
-# 5. Anti-slop checks
-slop_markers = ["in today's world", "it is important to remember", "in conclusion", "furthermore"]
-article_lower = article_prose.lower()
-contains_slop = any(marker in article_lower for marker in slop_markers)
-
-result = {
-    "initial_choices": initial_reachable,
-    "next_choices": next_ready,
-    "grounded": sorted(grounded),
-    "raw_preserved": Path("raw.md").read_bytes() == original_raw_bytes,
-    "all_beats_grounded": True,
-    "slop_free": not contains_slop
-}
-
-Path("result.json").write_text(json.dumps(result, sort_keys=True, indent=2), encoding="utf-8")
-```
-
----
-
-## 6. What the Observation Establishes
-
-- `raw_preserved == True`: Proves the raw input material was not modified, overwritten, or truncated.
-- `initial_choices` and `next_choices`: Proves reachability logic correctly prevents ungrounded leaps.
-- `all_beats_grounded == True`: Proves every beat's preconditions were satisfied prior to execution.
-- `slop_free == True`: Proves anti-slop filters ensure punchy, vivid, professional prose.
+- "64 jam" turns an inference from two pile times into a precise fact.
+- "ratusan admin" and "tiga malam berturut-turut" appear nowhere in the pile or the author's
+  messages.
+- "(Beat 3: payoff)" shows the agent's working label to the author.
+- Deleting "Saya sendiri ikut begadang malam itu." because the pile does not contain it
+  would discard the author's own evidence.

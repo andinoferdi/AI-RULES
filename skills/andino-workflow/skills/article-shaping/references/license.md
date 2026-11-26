@@ -2,6 +2,8 @@
 
 **Original Source:** [mattpocock/skills: skills/in-progress/writing-beats](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-beats) & [writing-shape](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-shape)
 
+**Adapted from:** mattpocock/skills commit 6f7f783 (2026-11-24).
+
 Substantive adapted material in this skill is covered by the following notice:
 
 MIT License
