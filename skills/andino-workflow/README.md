@@ -26,7 +26,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-tdd` | Executable RED/GREEN behavior guards; optional typed-fixture migration preserving invalid negative cases. |
 | `andino-debugging` | Reproduction and systematic investigation of an unknown cause. |
 | `andino-verification` | Observed acceptance evidence before consequential completion claims. |
-| `andino-browser-testing-with-devtools` | Rendered behavior, console/network and browser evidence; UI screenshots at 360, 768 and 1440 px. |
+| `andino-browser-testing-with-devtools` | Reproduce, fix and replay in a real browser; release pass at 360, 768 and 1440 px by device emulation, accessibility, console split and loading metrics. |
 | `andino-code-review` | Specification and standards review. |
 | `andino-code-simplification` | Evidenced simplification of green code without behavioral drift. |
 | `andino-constraint-driven-development` | Establish and preserve the quality floor. |

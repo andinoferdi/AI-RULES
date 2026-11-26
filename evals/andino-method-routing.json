@@ -280,6 +280,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-browser-testing-with-devtools-release-pass",
+    "kind": "behavior",
+    "prompt": "We just shipped a new settings page. Check it is ready to release on phones and desktops.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select browser-testing-with-devtools",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "browser-testing-with-devtools"
+    ],
+    "method": "browser-testing-with-devtools",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-ci-cd-and-automation-implicit",
     "kind": "behavior",
     "prompt": "Wire lint, unit, build and release readiness so a failed ancestor prevents advancement.",

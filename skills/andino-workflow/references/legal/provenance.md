@@ -248,4 +248,13 @@ anti-rationalization file removed. Idempotency status codes follow
 `docs/validation/api-and-interface-design/trial.md`. Correction to the paragraph above:
 `scripts/verify_api_and_interface_design_elevation.py` does not exist in this repository.
 
-
+The 2026-11-26 upgrade of `browser-testing-with-devtools` re-bases the skill on Addy Osmani's
+`browser-testing-with-devtools` at addyosmani/agent-skills commit 57bfe5d (2026-10-25, MIT) and
+moves the method into the sibling layout: one eight-step procedure (isolated session, checks
+first, reproduce, diagnose by path, smallest fix, replay and probe, release pass, report) in
+`SKILL.md` (mirrored by `GUIDE.md`), a tool map checked against chrome-devtools-mcp 1.12.0 and
+Playwright MCP with device emulation for widths, the first-party and third-party console split,
+Addy's heading-outline, script-scope and profile rules, a rewritten worked example and an
+updated test-plan template. The earlier worked example's Python script and its regex filter are
+removed. The comparison trial is recorded in
+`docs/validation/browser-testing-with-devtools/trial.md`.
