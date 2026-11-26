@@ -260,4 +260,14 @@ third-party actions pinned to commit SHAs, image promotion with OIDC); the failu
 2026-11-26. The comparison trial is recorded in
 `docs/validation/ci-cd-and-automation/trial.md`.
 
-
+The 2026-11-26 upgrade of `code-review` re-bases the skill on Addy Osmani's
+`code-review-and-quality` (addyosmani/agent-skills commit e997ac5, MIT), Matt Pocock's
+`engineering/code-review` (mattpocock/skills commit 6f7f783, MIT) and Jesse Vincent's
+`requesting-code-review` and `receiving-code-review` (obra/superpowers commit 22f0b46, MIT),
+and moves the method into the sibling layout: one review procedure in `SKILL.md` (mirrored by
+`GUIDE.md`) that pins the change and the starting state, gathers test evidence from the
+reviewed bytes with a mutation probe, runs a Spec pass with unspecified-harm questions and a
+Standards pass in which documented repository standards override smell heuristics, and leaves
+the repository as found. Request and receive protocols, review craft and trimmed security and
+performance triggers (path containment and negative caching kept in full) live in
+`resources/`. The comparison trial is recorded in `docs/validation/code-review/trial.md`.
