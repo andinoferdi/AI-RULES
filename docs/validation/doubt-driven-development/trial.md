@@ -73,7 +73,39 @@ and Q1, equal elsewhere.
   flags.
 - The claim example now covers concurrent session-token renewal and the anti-pattern a cache race.
 
-## Rerun
+## Second round
 
-Pending: a new candidate run on the fixed text and a fresh blind grading need the user's
-approval.
+With the user's approval, one new candidate run on the fixed text (commit a70991e, Sonnet 5.5,
+medium) and one fresh grader (Sonnet 5.5, medium) that rescored the two baseline outputs and the
+new candidate output under new random letters. Evidence is in [scores.md](scores.md).
+
+| Criterion | Addy | Current | Candidate (a70991e) |
+| --- | --- | --- | --- |
+| M1 claim named | 0 | 0 | 1 |
+| M3 disproof attempt | 1 | 1 | 2 |
+| M5 fix | 2 | 2 | 1 |
+| M6 revision challenged again | 1 | 1 | 2 |
+| M11 review mode | 2 | 1 | 2 |
+| Q2 honesty and register | 1 | 2 | 2 |
+| M2 contract apart from the claim | 0 | 0 | 0 |
+| Other 11 criteria | 2 each | 2 each | 2 each |
+| Total (of 36) | 29 | 29 | 32 |
+
+Gate: FAIL on M5 (1 against 2 for both baselines). Higher than both on M1, M3 and M6, higher
+than the current skill on M11 and than Addy on Q2, equal elsewhere.
+
+## Reading both rounds
+
+- The candidate led on total in both rounds (32 against 29 and 27, then 32 against 29 and 29),
+  and in both it was the only arm that ran the failure on the original code before fixing it and
+  saw its regression test fail on the original and pass on the fix (M3 and M6).
+- Each round it lost one different criterion by one point: Q2 in round 1 (a factor against the
+  wrong baseline), M5 in round 2 (it dropped the unused batching and deleted
+  `test_small_batches` along with the fix, an unneeded change).
+- The same baseline outputs were scored differently by the two graders: Addy's Q2 went from 2 to
+  1, the current skill's E1 and Q1 from 1 to 2. One-point differences on one run per arm are
+  within grader variation, as the rubric warns.
+- M1 stayed at 1 and M2 at 0: even with the rule that a record written at the end does not count,
+  the runner wrote its claim only in the final record and no arm wrote a contract. A subagent
+  runner that emits no text between tool calls may not show these steps whatever the guide says.
+- The gate as frozen (at least equal on every criterion) is not met in either round.
