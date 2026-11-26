@@ -79,7 +79,7 @@ follow [Fallback](#fallback). Read the project's instruction files and, when the
    take one at a time. Mention the size only when it changes what the user decides, in plain words
    ("this is bigger than one change; I suggest we settle X first"). Done when you know the route.
 
-3. **Write the first message**, about 200 words, in the user's language and vocabulary:
+3. **Write the first message**, 200 words or fewer, in the user's language and vocabulary:
    - echo the request in your own words: what, for whom and why, as far as they said;
    - what you found that bears on it: how it works today, and any cheaper path, existing feature,
      recorded decision it conflicts with, or code that contradicts what they said;
@@ -98,7 +98,8 @@ follow [Fallback](#fallback). Read the project's instruction files and, when the
        in a few lines) and a request to approve it.
 
    On the Several sessions route, also say that you will keep a record of decisions and open
-   questions, and where. When the user did not ask to brainstorm, end with one line offering to go
+   questions, and where, and name the decisions you can already see in the order they depend on
+   each other, saying which come later; still ask only the one question. When the user did not ask to brainstorm, end with one line offering to go
    ahead instead ("Or, if you'd rather I go ahead on my best reading, say so"). If they take it,
    state any significant how-choice (platform, language, storage) in one line and continue through
    the normal workflow. Done when the message holds your findings and one question, one round or one
@@ -133,8 +134,10 @@ follow [Fallback](#fallback). Read the project's instruction files and, when the
      with your recommendation and its reason, worded so that "yes" accepts it;
    - look facts up yourself; a missing fact holds only the branch it blocks while you ask the
      rest;
-   - state your own calls instead of asking them: process steps, file locations, how to show
-     something, and the how itself when the user talks about outcomes rather than tools;
+   - state your own calls instead of asking them: process steps, file locations, where something
+     lives in the app, how to show something, and the how itself when the user talks about
+     outcomes rather than tools; before you send a round, strike every question the user would only
+     rubber-stamp and state it as your call;
    - keep a question whose answer depends on another open question for a later round;
    - raise term conflicts and code contradictions as they appear
      ([Name things once](#name-things-once), [Look before you ask](#look-before-you-ask)), and test
@@ -142,12 +145,13 @@ follow [Fallback](#fallback). Read the project's instruction files and, when the
      someone holds it here: whose Hold gets it?").
 
    After each answer, read it with the [answer table](#read-the-answer-you-got), recompute the
-   frontier and drop branches the answer made irrelevant. Done when the frontier is empty: every
-   branch visited and nothing silently assumed. Your next message lays out the approaches.
+   frontier and drop branches the answer made irrelevant. Done when no decision only the user can
+   make is still open: every branch visited and nothing silently assumed. Your next message lays
+   out the approaches, and any small choice still open goes into it as your call.
 
-6. **Lay out the approaches** in a message of their own, before any design. Come up with several
-   real ways to build it and drop those that work against why they want it or that the existing
-   work rules out. Sketch the two or three that remain concretely enough to picture, grounded in
+6. **Lay out the approaches** in a message of their own, as soon as the answers settle what gets
+   built and before any design. Come up with several real ways to build it and drop those that
+   work against why they want it or that the existing work rules out. Sketch the two or three that remain concretely enough to picture, grounded in
    what the project already does, each with what it trades off. Recommend one with your reason and
    ask which they want. When they handed you the how, say you will go with your pick. When there is
    genuinely one sensible way, say so and why the others do not fit. Done when the user picked an
@@ -230,8 +234,8 @@ visual tool.
 | The user says | Treat it as |
 | --- | --- |
 | A clear short answer to a concrete question ("yes", "2", "owners only") | Confirmed |
-| "Whatever you think" on a choice that changes what gets built | Not decided yet: offer two concrete options with your pick |
-| "Whatever you think" on a minor or reversible choice | Delegated: make the call and record it as yours, with the reason |
+| "Whatever you think" | Delegated: make the call, say it is yours and why, and carry on; they can overrule it |
+| "Whatever you think" on a choice that is hard to undo | Not decided yet: offer two concrete options with your pick |
 | "Sounds good" to a summary you have not written down | Agreement with the direction only, not approval of a design |
 | A buzzword or convention ("scalable", "best practice") | A cue to ask what they would want if they did not have to justify it |
 | Impatience ("just build it") | The remaining independent decisions with your defaults in one round, or stop if they opt out |
