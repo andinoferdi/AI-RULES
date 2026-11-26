@@ -924,6 +924,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-deprecation-and-migration-unused-claim",
+    "kind": "behavior",
+    "prompt": "The v1 export endpoint has been deprecated for months and grep shows nothing calls it anymore. Please delete it and its handler today.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select deprecation-and-migration",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "deprecation-and-migration"
+    ],
+    "method": "deprecation-and-migration",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-design-prototype-implicit",
     "kind": "behavior",
     "prompt": "Make a local state demo to decide whether empty checkout is legal.",
@@ -1809,6 +1823,20 @@
     "id": "method-plan-execution-implicit",
     "kind": "behavior",
     "prompt": "Lanjutkan plan sesudah memeriksa drift.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select plan-execution",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "plan-execution"
+    ],
+    "method": "plan-execution",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-plan-execution-resume-implicit",
+    "kind": "behavior",
+    "prompt": "Tasks 1 and 2 of the approved plan are done; carry on with the rest.",
     "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
     "expected": "Select plan-execution",
     "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
