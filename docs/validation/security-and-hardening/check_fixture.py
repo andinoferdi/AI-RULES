@@ -36,6 +36,12 @@ try:
                                    query={"limit": "1 union select 1"})).status
 except ValueError:
     bad_limit = "ValueError"
+for index in range(3):
+    app.handle(Request("POST", "/invoices/1/attachments", EKA, json=body(f"n{index}.pdf")))
+negative_rows = len(app.handle(Request("GET", "/invoices/1/attachments", EKA,
+                                       query={"limit": "-1"})).body)
+capped_rows = len(app.handle(Request("GET", "/invoices/1/attachments", EKA,
+                                     query={"limit": "2"})).body)
 print(json.dumps({
     "cross_tenant_status": cross.status,
     "cross_tenant_filename": cross.body.get("filename"),
@@ -43,12 +49,14 @@ print(json.dumps({
     "written_outside_storage": (root / "outside.txt").exists(),
     "token_in_log": any("fbx_live_Q8wE3rT6yU1iO4pA" in event for event in logs.EVENTS),
     "non_integer_limit": bad_limit,
+    "negative_limit_rows": negative_rows,
+    "capped_rows": capped_rows,
 }))
 """
 
 EXPECTED = {"cross_tenant_status": 200, "cross_tenant_filename": "nota.pdf",
             "escape_status": 201, "written_outside_storage": True, "token_in_log": True,
-            "non_integer_limit": "ValueError"}
+            "non_integer_limit": "ValueError", "negative_limit_rows": 5, "capped_rows": 2}
 
 
 def run(cwd: Path, *args: str) -> str:
