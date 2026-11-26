@@ -1,8 +1,8 @@
 # Comparison trial: code simplification
 
 Run on 2026-11-26. One blind run per arm on the fixture in `fixture/`, scored against the
-[rubric](rubric.md), which was frozen (commit e529c22) before the candidate was written and
-amended once (commit de99fd1) before the candidate was written. Evidence per score:
+[rubric](rubric.md), which was frozen (commit fbdbfe3) before the candidate was written and
+amended once (commit df74070) before the candidate was written. Evidence per score:
 [scores.md](scores.md).
 
 ## Setup
@@ -10,7 +10,8 @@ amended once (commit de99fd1) before the candidate was written. Evidence per sco
 - Arms: Addy Osmani's `code-simplification` (addyosmani/agent-skills, skill last changed in
   f1f6fbf); the current `andino-code-simplification` (AI-RULES main at 49ad00b); an unguided
   control with no skill; the candidate rewrite (branch `skill/code-simplification-upgrade`,
-  skill folder exported from commit 4d89629).
+  skill folder exported from commit 4d89629, which became beabab0 when the branch was
+  rebased onto main; the skill folder, fixture and rubric bytes are identical in both).
 - Runners: four Claude Code subagents, Sonnet 5.5 at medium effort, one per arm, each with the
   rubric's run prompt, its own copy of the fixture and (skill arms) its own skill copy, told to
   read nothing else and to use no skills, slash commands or subagents. The three baseline arms
