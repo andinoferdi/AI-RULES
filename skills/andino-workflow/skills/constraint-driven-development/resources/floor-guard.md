@@ -1,483 +1,598 @@
-# Diff-Scoped Floor Guard Reference Implementations
+# Floor guard: reference implementations
 
-The **Floor** is the zero-setup, non-negotiable baseline of Constraint-Driven Development. While numbered dimensions (coverage, bundle size, latency) map to de facto tools like Vitest or Lighthouse, the floor watches for mid-task evasion moves that coding agents make to get to green quickly.
+Numbered dimensions in `CONSTRAINTS.md` each have an established tool. The floor has none: it is a
+diff-scoped check for the shortcuts an agent takes to turn a red check green. Left to improvise,
+each agent writes a different checker, and the same project gets different enforcement from run to
+run. Use this reference, change only the patterns for your stack, and keep the contract as it is.
 
-Without a standardized floor guard, every agent invents its own heuristic, creating non-deterministic quality leakage. This reference provides complete, production-ready, zero-dependency implementations in both **Node.js** and **Python 3 stdlib**.
+## Contract
 
----
+- **Input:** the diff between the merge base and the working tree: committed, staged, unstaged and
+  untracked changes. Run from the repository root (`git rev-parse --show-toplevel`), because
+  `git ls-files` lists only the current subtree. A guard that reads only `git diff` misses new files.
+- **Moves it reports:**
 
-## 1. The Floor Contract
+  | Rule | Move |
+  | --- | --- |
+  | `silenced-checker` | A new suppression or coverage-ignore comment |
+  | `test-made-easier` | A new skip, focus or expected-failure marker |
+  | `test-deleted` | A test file deleted |
+  | `assertion-removed` | An assertion removed from a test file that stays (a line moved within the file is not a removal) |
+  | `unfinished-work` | A stub that throws or raises "not implemented", an empty `catch` or bare `except: pass`, a new `TODO` |
+  | `check-made-optional` | `continue-on-error: true` or `\|\| true` added to a CI workflow |
+  | `threshold-loosened` / `threshold-changed` / `threshold-removed` | A minimum lowered, a maximum raised, a number without readable direction changed, or a number dropped from a rule in `CONSTRAINTS.md` |
+  | `rule-removed` | A rule row or bullet removed from `CONSTRAINTS.md` |
+  | `new-exception` | A row added to (or changed in) the Exceptions table |
+  | `exception-expired` / `exception-too-long` / `exception-without-expiry` | With `--check-expiry`: an exception past its date, a new one longer than 90 days, or one with no date |
 
-### A. Input Scope
-- Must inspect the diff between the **merge base** and the **active working tree**.
-- Must include **staged changes**, **unstaged changes**, and **untracked files**. A guard reading only `git diff` misses newly created files and staged commits.
-- Run from the repository root (or detect top-level with `git rev-parse --show-toplevel`) so subdirectories don't omit untracked files elsewhere.
+- **Exit codes:** `0` clean, `1` at least one violation (block the change), `2` the guard could not
+  run (not a git work tree, no merge base, unreadable diff). Never let a `2` read as a `0`.
+- **Output:** the rule and the location (`path:line`, or `path:line (removed)` for a line in the
+  base). Never the line's text: a suppressed or TODO line is often the one holding a secret-like
+  value, and the report lands in terminals and agent logs.
+- **Direction:** tightening is silent, loosening is loud. A number's direction comes from the
+  words right next to it (`>=`, `≥`, `at least`, `must not fall`, `--min-...` for a minimum; `<=`,
+  `≤`, `at most`, `must not grow`, `--max-...` for a maximum). A number with no readable direction,
+  such as a tolerance column, is reported whenever it changes. Dates are not thresholds.
+- **Approval:** the guard cannot tell an approved exception from an invented one. A policy change
+  that adds an exception shows `new-exception`, and the owner's review in that pull request is what
+  approves it.
 
-### B. The Five Evasion Moves Detected
-1. **Silenced Checkers**: Added suppressions (`@ts-ignore`, `@ts-nocheck`, `eslint-disable`, `biome-ignore`, `# noqa`, `# type: ignore`, `istanbul ignore`, `nosemgrep`, `gitleaks:allow`, `Stryker disable`).
-2. **Tests Made Easier**: Added skips/todos (`.skip(`, `.todo(`, `xit(`, `xdescribe(`, `@pytest.mark.skip`, `t.Skip(`); deleted test files; or assertions removed (`assert `, `expect(`, `.should`) from surviving test files.
-3. **Unfinished Work / Stubs**: Added `throw new Error("...not implemented...")`, empty `catch {}` blocks swallowing errors, `TODO` placeholders in new code, or `pass # stub`.
-4. **Weakened Constraints**: Lowered numeric minimums (`>= 80` -> `>= 70`), raised numeric maximums (`<= 200` -> `<= 250`), removed constraint rules, or changed numbers with ambiguous direction in `CONSTRAINTS.md`.
-5. **Unauthorized Exceptions**: Added rows in the `Exceptions` table (`| W... |` or `| E... |`) without documented authority and expiry.
+Both implementations below pass the same 13-scenario battery and produce the same findings. They
+use only the language runtime and git.
 
-### C. Deterministic Exit Codes
-- **`0` (CLEAN)**: No floor violations found.
-- **`1` (VIOLATION)**: One or more floor violations detected. Execution mid-task must block.
-- **`2` (ERROR / UNAVAILABLE)**: Git failed, no merge base against target branch, or diff could not be read. **Never allow exit code 2 to be treated as clean.**
+## Node (`scripts/floor-guard.mjs`)
 
-### D. Redaction & Direction Rules
-- **Redaction is mandatory**: Print only the rule name, file, and line/snippet context. Never dump matched secret tokens or sensitive values.
-- **Directionality**: Tightening the bar (e.g., `>= 80%` -> `>= 85%`, or deleting an exception) is silent. Loosening is loud and blocks.
-
----
-
-## 2. Reference Implementation: Node.js (`floor-guard.mjs`)
-
-Save as `scripts/floor-guard.mjs`. Runs with native Node 18+ without npm dependencies.
+Node 18 or later, no dependencies.
 
 ```js
 #!/usr/bin/env node
-/**
- * floor-guard.mjs — Diff-scoped enforcement of CONSTRAINTS.md floor.
- * Usage: node scripts/floor-guard.mjs [--base <branch-or-ref>] (default: origin/main)
- */
+// floor-guard.mjs: diff-scoped check that a change does not lower the bar set in CONSTRAINTS.md.
+// Usage: node scripts/floor-guard.mjs [--base <ref>] [--check-expiry] [--today YYYY-MM-DD]
+// Exit 0: clean. Exit 1: at least one violation. Exit 2: the guard could not run; never read 2 as 0.
+// A finding names the rule and the location, never the line's text: a flagged line can hold a secret.
 import { execFileSync } from 'node:child_process';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 
-const baseIndex = process.argv.indexOf('--base');
-const targetBase = baseIndex > -1 ? process.argv[baseIndex + 1] : (process.env.CONSTRAINTS_BASE || 'origin/main');
-
-const git = (args, { diffExit = false } = {}) => {
-  try {
-    return execFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
-  } catch (err) {
-    if (diffExit && err.status === 1 && typeof err.stdout === 'string') {
-      return err.stdout;
-    }
-    return null;
-  }
+const argv = process.argv.slice(2);
+const option = (name) => {
+  const i = argv.indexOf(name);
+  return i > -1 ? argv[i + 1] : undefined;
 };
-
-const bail = (msg) => {
-  console.error(`floor-guard [ERROR]: ${msg}`);
+const bail = (message) => {
+  console.error('floor-guard: ' + message);
   process.exit(2);
 };
+const base = option('--base') ?? process.env.CONSTRAINTS_BASE ?? 'origin/main';
+const checkExpiry = argv.includes('--check-expiry');
+const now = new Date();
+const localToday = [now.getFullYear(), now.getMonth() + 1, now.getDate()]
+  .map((n, i) => String(n).padStart(i ? 2 : 4, '0')).join('-');
+const today = option('--today') ?? localToday;
+if (!/^\d{4}-\d{2}-\d{2}$/.test(today)) bail('--today must be YYYY-MM-DD');
 
-// 1. Ensure git repository root
-const topLevel = git(['rev-parse', '--show-toplevel'])?.trim();
-if (!topLevel) bail('Not inside a valid git repository.');
-process.chdir(topLevel);
+// For an untracked file `git diff --no-index` exits 1 because the sides differ: keep that output.
+// Every other failure returns null, which the caller turns into exit 2.
+const git = (args, { diffExit = false } = {}) => {
+  try {
+    return execFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 1 << 28 });
+  } catch (e) {
+    return diffExit && e.status === 1 && typeof e.stdout === 'string' ? e.stdout : null;
+  }
+};
 
-// 2. Discover merge base
-const mergeBase = git(['merge-base', targetBase, 'HEAD'])?.trim();
-if (!mergeBase) bail(`No merge base found against "${targetBase}". Ensure ref is fetched.`);
+// Run from the top of the work tree: `git ls-files` lists only the current subtree.
+const top = git(['rev-parse', '--show-toplevel'])?.trim();
+if (!top) bail('not inside a git work tree');
+process.chdir(top);
+const mergeBase = git(['merge-base', base, 'HEAD'])?.trim();
+if (!mergeBase) bail('no merge base against ' + base + ' (fetch it, or pass --base)');
 
-// 3. Collect diff: tracked changes + untracked files
-const trackedDiff = git(['diff', '--unified=0', mergeBase, '--']);
-if (trackedDiff === null) bail(`Failed to diff tracked changes against ${mergeBase}`);
-
+// Committed, staged and unstaged changes against the merge base, plus untracked files.
+const tracked = git(['diff', '--unified=0', mergeBase, '--']);
+if (tracked === null) bail('could not diff against ' + mergeBase);
 const untrackedList = git(['ls-files', '--others', '--exclude-standard']);
-if (untrackedList === null) bail('Failed to enumerate untracked files.');
+if (untrackedList === null) bail('could not list untracked files');
+const untracked = untrackedList.split('\n').filter(Boolean).map((f) => {
+  const d = git(['diff', '--no-index', '--unified=0', '/dev/null', f], { diffExit: true });
+  if (d === null) bail('could not diff untracked file ' + f);
+  return d;
+});
+const diff = [tracked, ...untracked].join('\n');
 
-const untrackedDiffs = untrackedList
-  .split('\n')
-  .filter(Boolean)
-  .map((file) => {
-    const d = git(['diff', '--no-index', '--unified=0', '/dev/null', file], { diffExit: true });
-    if (d === null) bail(`Could not diff untracked file: ${file}`);
-    return d;
-  })
-  .join('\n');
-
-const fullDiff = (trackedDiff + '\n' + untrackedDiffs).trim();
-
-// 4. Parse diff hunks accurately
-const added = [];
-const removed = [];
-const deletedFiles = [];
-const normalizePath = (p) => p.replace(/^[ab]\//, '').trim();
-
-let currentFile = '';
-let oldFile = '';
-let inHeader = false;
-
-for (const line of fullDiff.split('\n')) {
-  if (line.startsWith('diff --git') || line.startsWith('diff --no-index')) {
-    inHeader = true;
-    continue;
-  }
-  if (line.startsWith('@@')) {
+// Header lines run from `diff ` to the first `@@`; after that a line starting with `---` or `+++`
+// is content. Each hunk header resets the old and new line counters used in findings.
+const added = [], removed = [], deleted = [];
+const pathOf = (s) => s.replace(/^[ab]\//, '').replace(/\t$/, '');
+let file = '', oldFile = '', inHeader = false, oldLine = 0, newLine = 0;
+for (const line of diff.split('\n')) {
+  if (line.startsWith('diff ')) inHeader = true;
+  else if (line.startsWith('@@')) {
     inHeader = false;
-    continue;
-  }
-  if (inHeader) {
-    if (line.startsWith('--- ')) oldFile = normalizePath(line.slice(4));
+    const m = /^@@ -(\d+)(?:,\d+)? \+(\d+)/.exec(line);
+    if (m) { oldLine = Number(m[1]); newLine = Number(m[2]); }
+  } else if (inHeader) {
+    if (line.startsWith('--- ')) oldFile = pathOf(line.slice(4));
     else if (line.startsWith('+++ ')) {
-      const newPath = normalizePath(line.slice(4));
-      currentFile = newPath === '/dev/null' ? oldFile : newPath;
-      if (newPath === '/dev/null') deletedFiles.push(currentFile);
+      const newFile = pathOf(line.slice(4));
+      file = newFile === '/dev/null' ? oldFile : newFile;
+      if (newFile === '/dev/null') deleted.push(oldFile);
     }
-  } else {
-    if (line.startsWith('+') && !line.startsWith('+++')) {
-      added.push({ file: currentFile, text: line.slice(1) });
-    } else if (line.startsWith('-') && !line.startsWith('---')) {
-      removed.push({ file: currentFile, text: line.slice(1) });
-    }
-  }
+  } else if (line.startsWith('+')) added.push({ file, line: newLine++, text: line.slice(1) });
+  else if (line.startsWith('-')) removed.push({ file, oldPath: oldFile, line: oldLine++, text: line.slice(1) });
+  else if (line.startsWith(' ')) { oldLine++; newLine++; }
 }
-
-// 5. Detection Regexes
-const SUPPRESSIONS = /@ts-ignore|@ts-nocheck|eslint-disable|biome-ignore|#\s*noqa|#\s*type:\s*ignore|istanbul\s+ignore|nosemgrep|gitleaks:allow|Stryker\s+disable/;
-const STUBS = /throw\s+new\s+(Error|NotImplementedError|UnsupportedOperationException)\s*\([^)]*[Nn]ot\s+implemented|catch\s*\([^)]*\)\s*\{\s*\}|catch\s*\{\s*\}|\bTODO\b|\bpass\s*#\s*stub/;
-const SKIPS = /\.(skip|todo)\b|\bxit\(|\bxdescribe\(|@pytest\.mark\.skip|t\.Skip\(|#[ \t]*\[ignore\]/;
-const isTestFile = (f) => /\.(test|spec)\.[jt]sx?$|_test\.(py|go|rs)$|[Tt]est\.(java|kt)$/.test(f);
-const isConstraintsFile = (f) => /CONSTRAINTS\.md$/.test(f);
 
 const findings = [];
-const flag = (rule, file, text) => {
-  findings.push({ rule, file, text: text.trim().slice(0, 100) });
-};
+const flag = (rule, where) => findings.push({ rule, where });
+const at = (l) => `${l.file}:${l.line}`;
+const atBase = (l) => `${l.oldPath}:${l.line} (removed)`;
 
-// Check added lines
-for (const { file, text } of added) {
-  if (SUPPRESSIONS.test(text)) flag('silenced-checker', file, text);
-  if (STUBS.test(text)) flag('unfinished-work', file, text);
-  if (SKIPS.test(text)) flag('test-made-easier', file, text);
-  if (isConstraintsFile(file) && /^\|\s*(W|E)\d+\s*\|/.test(text)) {
-    flag('unauthorized-exception', file, text);
-  }
+// One character of each plain-word pattern sits in a class so this file never matches itself
+// when it is first added. Keep that when you extend the lists for your stack.
+const SUPPRESSIONS = /@ts-[i]gnore|@ts-[n]ocheck|@ts-[e]xpect-error|eslint-[d]isable|biome-[i]gnore|#\s*noqa|#\s*type:\s*ignore|#\s*pyright:\s*ignore|#\s*pragma:\s*no\s*cover|istanbul\s+ignore|c8\s+ignore|[n]osemgrep|gitleaks:[a]llow|Stryker\s+disable|\/\/\s*nolint|#\[allow\(/;
+const STUBS = /throw\s+new\s+\w*Error\s*\([^)]*[Nn]ot\s+implemented|raise\s+NotImplementedError|\bpass\s*#\s*stub|\btodo!\(|\bunimplemented!\(|panic\(\s*"not implemented|catch\s*(\(\s*\w*\s*\))?\s*\{\s*\}|except(\s+\w+)?\s*:\s*pass\b|\b[T]ODO\b/;
+const SKIPS = /\.(skip|only|todo)\s*\(|\bx(it|describe|test)\s*\(|@pytest\.mark\.(skip|xfail)|\bpytest\.skip\(|@unittest\.skip|\bt\.Skip\(|#\[ignore\]/;
+const OPTIONAL = /continue-on-error:\s*true|\|\|\s*true\b/;
+const ASSERTION = /\b(expect|assert|should)\b|\bassert\w*\(/;
+const isTest = (f) => /(^|\/)test_[^/]+\.py$|_test\.(py|go|rs)$|\.(test|spec)\.[cm]?[jt]sx?$|Tests?\.(java|kt)$/.test(f);
+const isWorkflow = (f) => /(^|\/)\.github\/workflows\/[^/]+\.ya?ml$|(^|\/)\.gitlab-ci\.yml$/.test(f);
+const isConstraints = (f) => /(^|\/)CONSTRAINTS\.md$/.test(f);
+const isException = (t) => /^\s*\|\s*[WE]\d+\s*\|/.test(t);
+
+// 1. Silenced checkers, unfinished work, easier tests, optional CI checks, new exceptions.
+for (const l of added) {
+  if (SUPPRESSIONS.test(l.text)) flag('silenced-checker', at(l));
+  if (STUBS.test(l.text)) flag('unfinished-work', at(l));
+  if (SKIPS.test(l.text)) flag('test-made-easier', at(l));
+  if (isWorkflow(l.file) && OPTIONAL.test(l.text)) flag('check-made-optional', at(l));
+  if (isConstraints(l.file) && isException(l.text)) flag('new-exception', at(l));
 }
 
-// Check deleted files and removed assertions
-for (const f of deletedFiles) {
-  if (isTestFile(f)) flag('test-deleted', f, 'Test file was deleted');
+// 2. A test file deleted, or an assertion removed from a test file that stays. A removed line that
+// comes back unchanged in the same file was moved, not removed.
+for (const f of deleted) if (isTest(f)) flag('test-deleted', `${f} (file deleted)`);
+const readded = new Map();
+for (const l of added) {
+  const key = l.file + '\n' + l.text.trim();
+  readded.set(key, (readded.get(key) ?? 0) + 1);
+}
+for (const l of removed) {
+  if (!isTest(l.file) || deleted.includes(l.file) || !ASSERTION.test(l.text)) continue;
+  const key = l.file + '\n' + l.text.trim();
+  if (readded.get(key) > 0) { readded.set(key, readded.get(key) - 1); continue; }
+  flag('assertion-removed', atBase(l));
 }
 
-for (const { file, text } of removed) {
-  if (isTestFile(file) && !deletedFiles.includes(file)) {
-    if (/\b(expect|assert|should)\b/.test(text)) {
-      flag('assertion-removed', file, text);
-    }
-  }
-}
-
-// Check CONSTRAINTS.md threshold loosening
-const extractThresholds = (text) => {
-  const matches = [];
-  const re = /\b(\d+(?:\.\d+)?)\b/g;
-  let m;
-  while ((m = re.exec(text)) !== null) {
-    const before = text.slice(Math.max(0, m.index - 20), m.index).toLowerCase();
-    const after = text.slice(m.index + m[0].length, m.index + m[0].length + 25).toLowerCase();
-    const isMin = />=|at\s+least|minimum|min\b|not\s+fall|not\s+drop/.test(before) || /must\s+not\s+fall|or\s+more/.test(after);
-    const isMax = /<=|at\s+most|maximum|max\b|under|below|not\s+grow/.test(before) || /must\s+not\s+grow|or\s+less/.test(after);
-    matches.push({ val: parseFloat(m[0]), dir: isMin ? 'min' : isMax ? 'max' : 'unknown' });
-  }
-  return matches;
-};
-
-const ruleKey = (line) => {
-  const s = line.trim();
-  if (s.startsWith('|')) return s.split('|').map((c) => c.trim()).filter(Boolean)[0] || '';
-  if (/^[-*]\s+/.test(s)) return s.slice(2).split(':')[0].trim();
+// 3. A rule in CONSTRAINTS.md weakened or removed. Rules are table rows (key: first cell) or
+// bullets (key: text before the first colon). Numbers get a direction from adjacent words;
+// lowering a minimum or raising a maximum loosens the rule. A number with no readable direction
+// is reported on any change, since silence would be the unsafe default. Numbers pair by direction.
+const ruleKey = (t) => {
+  const s = t.trim();
+  if (s.startsWith('|')) return s.split('|').map((c) => c.trim()).filter(Boolean)[0] ?? '';
+  if (/^[-*] /.test(s)) return s.slice(2).split(':')[0].trim();
   return null;
 };
-
-const removedRules = removed.filter((l) => isConstraintsFile(l.file) && ruleKey(l.text) !== null);
-const addedRules = added.filter((l) => isConstraintsFile(l.file) && ruleKey(l.text) !== null);
-
+const MIN_BEFORE = /(>=|>|≥|at least|minimum|\bmin\b|no less than|not fall|not drop|--min[-\w]*[ =]|fail[-_]under[ =])\s*$/;
+const MAX_BEFORE = /(<=|<|≤|at most|maximum|\bmax\b|no more than|under|below|not grow|not exceed|--max[-\w]*[ =])\s*$/;
+const MIN_AFTER = /^\s*\S*\s*(?:\|\s*)?(or more|or higher|must not fall|must not drop)/;
+const MAX_AFTER = /^\s*\S*\s*(?:\|\s*)?(or less|or lower|must not grow|must not exceed)/;
+const thresholds = (text) => {
+  const t = text.replace(/\b\d{4}-\d{2}-\d{2}\b/g, 'date');
+  const out = [], re = /\d+(?:\.\d+)?/g;
+  let m;
+  while ((m = re.exec(t))) {
+    const before = t.slice(Math.max(0, m.index - 24), m.index).toLowerCase();
+    const after = t.slice(m.index + m[0].length, m.index + m[0].length + 40).toLowerCase();
+    const dir = MIN_BEFORE.test(before) || MIN_AFTER.test(after) ? 'min'
+      : MAX_BEFORE.test(before) || MAX_AFTER.test(after) ? 'max' : null;
+    out.push({ n: Number(m[0]), dir });
+  }
+  return out;
+};
+const removedRules = removed.filter((l) => isConstraints(l.file) && ruleKey(l.text) !== null);
+const addedRules = added.filter((l) => isConstraints(l.file) && ruleKey(l.text) !== null);
 for (const r of removedRules) {
-  const matchingAdded = addedRules.find((a) => ruleKey(a.text) === ruleKey(r.text));
-  if (!matchingAdded) {
-    if (!/^\|\s*(W|E)\d+\s*\|/.test(r.text)) {
-      flag('rule-removed', r.file, r.text);
-    }
+  if (isException(r.text)) continue; // deleting an exception tightens; a changed one is a new-exception
+  const a = addedRules.find((x) => x.file === r.file && ruleKey(x.text) === ruleKey(r.text));
+  if (!a) {
+    flag('rule-removed', atBase(r));
     continue;
   }
-  const oldNums = extractThresholds(r.text);
-  const newNums = extractThresholds(matchingAdded.text);
-  for (let i = 0; i < oldNums.length; i++) {
-    const o = oldNums[i];
-    const n = newNums[i];
-    if (!n) {
-      flag('threshold-removed', r.file, `${r.text} -> ${matchingAdded.text}`);
-      break;
-    }
-    if (o.dir === 'min' && n.val < o.val) {
-      flag('threshold-loosened', r.file, `Minimum lowered: ${o.val} -> ${n.val}`);
-    } else if (o.dir === 'max' && n.val > o.val) {
-      flag('threshold-loosened', r.file, `Maximum raised: ${o.val} -> ${n.val}`);
-    } else if (o.dir === 'unknown' && o.val !== n.val) {
-      flag('threshold-changed', r.file, `Ambiguous direction threshold changed: ${o.val} -> ${n.val}`);
-    }
+  const was = thresholds(r.text), now = thresholds(a.text);
+  let verdict = null;
+  for (const dir of ['min', 'max', null]) {
+    const before = was.filter((x) => x.dir === dir), after = now.filter((x) => x.dir === dir);
+    before.forEach((b, i) => {
+      const n = after[i];
+      if (verdict) return;
+      if (!n) verdict = 'threshold-removed';
+      else if (n.n === b.n) return;
+      else if (dir === 'min' ? n.n < b.n : dir === 'max' ? n.n > b.n : true) {
+        verdict = dir ? 'threshold-loosened' : 'threshold-changed';
+      }
+    });
   }
+  if (verdict) flag(verdict, `${atBase(r)} -> ${at(a)}`);
 }
 
-// 6. Report Verdict
+// 4. With --check-expiry: an exception past its date, or a new one longer than 90 days.
+if (checkExpiry && existsSync('CONSTRAINTS.md')) {
+  const day = (s) => Date.UTC(Number(s.slice(0, 4)), Number(s.slice(5, 7)) - 1, Number(s.slice(8, 10)));
+  const addedLines = new Set(added.filter((l) => l.file === 'CONSTRAINTS.md').map((l) => l.line));
+  readFileSync('CONSTRAINTS.md', 'utf8').split(/\r?\n/).forEach((text, i) => {
+    if (!isException(text)) return;
+    const dates = text.match(/\b\d{4}-\d{2}-\d{2}\b/g);
+    const where = `CONSTRAINTS.md:${i + 1}`;
+    if (!dates) { flag('exception-without-expiry', where); return; }
+    const expires = dates[dates.length - 1];
+    if (expires < today) flag('exception-expired', where);
+    else if (addedLines.has(i + 1) && day(expires) - day(today) > 90 * 86400000) flag('exception-too-long', where);
+  });
+}
+
 if (findings.length === 0) {
-  console.log('floor-guard: [CLEAN] Working tree respects quality floor.');
+  console.log('floor-guard: clean');
   process.exit(0);
 }
-
-console.error(`\nfloor-guard: [VIOLATION] Found ${findings.length} attempt(s) to weaken the floor:`);
-for (const f of findings) {
-  console.error(`  - [${f.rule}] ${f.file}: "${f.text}"`);
+console.error(`floor-guard: ${findings.length} violation(s):`);
+for (const f of findings) console.error(`  [${f.rule}] ${f.where}`);
+if (findings.some((f) => f.rule === 'rule-removed')) {
+  console.error('\nrule-removed also appears when a rule ID changed: change IDs and numbers in separate commits.');
 }
-console.error('\nFix the issues above or register a tracked exception in CONSTRAINTS.md.\n');
+if (findings.some((f) => f.rule === 'threshold-removed')) {
+  console.error('\nthreshold-removed also appears when direction words were edited (">= 80%" to "80%"): compare both lines.');
+}
+console.error('\nEach finding lowers the bar. Fix the code; a genuine exception goes through the policy owner.');
 process.exit(1);
 ```
 
----
+## Python (`scripts/floor_guard.py`)
 
-## 3. Reference Implementation: Python 3 (`floor_guard.py`)
-
-Save as `scripts/floor_guard.py`. Runs anywhere with Python 3.8+ using pure standard library (zero pip packages). Ideal for Python, Go, Rust, or systems repositories.
+Python 3.8 or later, standard library only. Use it where Node is not part of the stack.
 
 ```python
 #!/usr/bin/env python3
+"""floor_guard.py: diff-scoped check that a change does not lower the bar set in CONSTRAINTS.md.
+
+Usage: python scripts/floor_guard.py [--base <ref>] [--check-expiry] [--today YYYY-MM-DD]
+Exit 0: clean. Exit 1: at least one violation. Exit 2: the guard could not run; never read 2 as 0.
+A finding names the rule and the location, never the line's text: a flagged line can hold a secret.
+Standard library only, Python 3.8+.
 """
-floor_guard.py — Zero-dependency diff-scoped floor guard in Python standard library.
-Usage: python scripts/floor_guard.py [--base origin/main]
-Exit codes: 0 = Clean, 1 = Violations found, 2 = Execution error.
-"""
+import datetime
 import os
 import re
 import subprocess
 import sys
-from pathlib import Path
 
-def git_cmd(args, diff_exit=False):
-    try:
-        res = subprocess.run(
-            ["git"] + args,
-            capture_output=True,
-            text=True,
-            check=False,
-            encoding="utf-8",
-            errors="replace"
-        )
-        if res.returncode == 0:
-            return res.stdout
-        if diff_exit and res.returncode == 1:
-            return res.stdout
-        return None
-    except Exception:
-        return None
+
+def option(name):
+    if name in sys.argv:
+        i = sys.argv.index(name)
+        if i + 1 < len(sys.argv):
+            return sys.argv[i + 1]
+    return None
+
 
 def bail(message):
-    sys.stderr.write(f"floor-guard [ERROR]: {message}\n")
+    sys.stderr.write("floor-guard: " + message + "\n")
     sys.exit(2)
 
+
+def git(args, diff_exit=False):
+    # For an untracked file `git diff --no-index` exits 1 because the sides differ: keep that
+    # output. Every other failure returns None, which the caller turns into exit 2.
+    try:
+        res = subprocess.run(["git"] + args, capture_output=True, text=True,
+                             encoding="utf-8", errors="replace")
+    except OSError:
+        return None
+    if res.returncode == 0 or (diff_exit and res.returncode == 1):
+        return res.stdout
+    return None
+
+
+# One character of each plain-word pattern sits in a class so this file never matches itself
+# when it is first added. Keep that when you extend the lists for your stack.
+SUPPRESSIONS = re.compile(
+    r"@ts-[i]gnore|@ts-[n]ocheck|@ts-[e]xpect-error|eslint-[d]isable|biome-[i]gnore|#\s*noqa"
+    r"|#\s*type:\s*ignore|#\s*pyright:\s*ignore|#\s*pragma:\s*no\s*cover|istanbul\s+ignore"
+    r"|c8\s+ignore|[n]osemgrep|gitleaks:[a]llow|Stryker\s+disable|//\s*nolint|#\[allow\(")
+STUBS = re.compile(
+    r"throw\s+new\s+\w*Error\s*\([^)]*[Nn]ot\s+implemented|raise\s+NotImplementedError"
+    r"|\bpass\s*#\s*stub|\btodo!\(|\bunimplemented!\(|panic\(\s*\"not implemented"
+    r"|catch\s*(\(\s*\w*\s*\))?\s*\{\s*\}|except(\s+\w+)?\s*:\s*pass\b|\b[T]ODO\b")
+SKIPS = re.compile(
+    r"\.(skip|only|todo)\s*\(|\bx(it|describe|test)\s*\(|@pytest\.mark\.(skip|xfail)"
+    r"|\bpytest\.skip\(|@unittest\.skip|\bt\.Skip\(|#\[ignore\]")
+OPTIONAL = re.compile(r"continue-on-error:\s*true|\|\|\s*true\b")
+ASSERTION = re.compile(r"\b(expect|assert|should)\b|\bassert\w*\(")
+TEST_FILE = re.compile(
+    r"(^|/)test_[^/]+\.py$|_test\.(py|go|rs)$|\.(test|spec)\.[cm]?[jt]sx?$|Tests?\.(java|kt)$")
+WORKFLOW = re.compile(r"(^|/)\.github/workflows/[^/]+\.ya?ml$|(^|/)\.gitlab-ci\.yml$")
+CONSTRAINTS = re.compile(r"(^|/)CONSTRAINTS\.md$")
+EXCEPTION = re.compile(r"^\s*\|\s*[WE]\d+\s*\|")
+DATE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
+MIN_BEFORE = re.compile(r"(>=|>|≥|at least|minimum|\bmin\b|no less than|not fall|not drop"
+                        r"|--min[-\w]*[ =]|fail[-_]under[ =])\s*$")
+MAX_BEFORE = re.compile(r"(<=|<|≤|at most|maximum|\bmax\b|no more than|under|below|not grow"
+                        r"|not exceed|--max[-\w]*[ =])\s*$")
+MIN_AFTER = re.compile(r"^\s*\S*\s*(?:\|\s*)?(or more|or higher|must not fall|must not drop)")
+MAX_AFTER = re.compile(r"^\s*\S*\s*(?:\|\s*)?(or less|or lower|must not grow|must not exceed)")
+
+
+def thresholds(text):
+    # Each number takes a direction from the words right next to it; dates are not thresholds.
+    t = DATE.sub("date", text)
+    out = []
+    for m in re.finditer(r"\d+(?:\.\d+)?", t):
+        before = t[max(0, m.start() - 24):m.start()].lower()
+        after = t[m.end():m.end() + 40].lower()
+        if MIN_BEFORE.search(before) or MIN_AFTER.search(after):
+            direction = "min"
+        elif MAX_BEFORE.search(before) or MAX_AFTER.search(after):
+            direction = "max"
+        else:
+            direction = None
+        out.append((float(m.group(0)), direction))
+    return out
+
+
+def rule_key(text):
+    s = text.strip()
+    if s.startswith("|"):
+        cells = [c.strip() for c in s.split("|") if c.strip()]
+        return cells[0] if cells else ""
+    if s.startswith(("- ", "* ")):
+        return s[2:].split(":")[0].strip()
+    return None
+
+
 def main():
-    target_base = "origin/main"
-    if "--base" in sys.argv:
-        idx = sys.argv.index("--base")
-        if idx + 1 < len(sys.argv):
-            target_base = sys.argv[idx + 1]
-    elif "CONSTRAINTS_BASE" in os.environ:
-        target_base = os.environ["CONSTRAINTS_BASE"]
+    base = option("--base") or os.environ.get("CONSTRAINTS_BASE") or "origin/main"
+    check_expiry = "--check-expiry" in sys.argv
+    today = option("--today") or datetime.date.today().isoformat()
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", today):
+        bail("--today must be YYYY-MM-DD")
 
-    # 1. Verify git root
-    top_level = git_cmd(["rev-parse", "--show-toplevel"])
-    if not top_level:
-        bail("Not inside a git repository.")
-    os.chdir(top_level.strip())
-
-    # 2. Get merge base
-    merge_base = git_cmd(["merge-base", target_base, "HEAD"])
+    # Run from the top of the work tree: `git ls-files` lists only the current subtree.
+    top = git(["rev-parse", "--show-toplevel"])
+    if not top:
+        bail("not inside a git work tree")
+    os.chdir(top.strip())
+    merge_base = git(["merge-base", base, "HEAD"])
     if not merge_base:
-        bail(f"Cannot resolve merge-base against '{target_base}'. Ensure branch is fetched.")
+        bail("no merge base against " + base + " (fetch it, or pass --base)")
     merge_base = merge_base.strip()
 
-    # 3. Collect tracked and untracked diffs
-    tracked_diff = git_cmd(["diff", "--unified=0", merge_base, "--"])
-    if tracked_diff is None:
-        bail(f"Failed to diff against merge base {merge_base}")
-
-    untracked_files = git_cmd(["ls-files", "--others", "--exclude-standard"])
-    if untracked_files is None:
-        bail("Failed to enumerate untracked files.")
-
-    untracked_diffs = []
-    for f in untracked_files.splitlines():
-        f = f.strip()
-        if not f:
-            continue
-        d = git_cmd(["diff", "--no-index", "--unified=0", os.devnull, f], diff_exit=True)
+    # Committed, staged and unstaged changes against the merge base, plus untracked files.
+    tracked = git(["diff", "--unified=0", merge_base, "--"])
+    if tracked is None:
+        bail("could not diff against " + merge_base)
+    listing = git(["ls-files", "--others", "--exclude-standard"])
+    if listing is None:
+        bail("could not list untracked files")
+    parts = [tracked]
+    for path in filter(None, listing.splitlines()):
+        d = git(["diff", "--no-index", "--unified=0", "/dev/null", path], diff_exit=True)
         if d is None:
-            bail(f"Could not diff untracked file: {f}")
-        untracked_diffs.append(d)
+            bail("could not diff untracked file " + path)
+        parts.append(d)
 
-    full_diff = tracked_diff + "\n" + "\n".join(untracked_diffs)
-
-    # 4. Parse diff lines
-    added = []
-    removed = []
-    deleted_files = []
-
-    def clean_path(p):
-        p = p.strip()
-        if p.startswith("a/") or p.startswith("b/"):
-            return p[2:]
-        return p
-
-    cur_file = ""
-    old_file = ""
-    in_header = False
-
-    for line in full_diff.splitlines():
-        if line.startswith("diff --git") or line.startswith("diff --no-index"):
+    # Header lines run from `diff ` to the first `@@`; after that a line starting with `---` or
+    # `+++` is content. Each hunk header resets the old and new line counters used in findings.
+    added, removed, deleted = [], [], []
+    path_of = lambda s: re.sub(r"^[ab]/", "", s).rstrip("\t")
+    cur, old, in_header, old_line, new_line = "", "", False, 0, 0
+    for line in "\n".join(parts).split("\n"):
+        if line.startswith("diff "):
             in_header = True
-            continue
-        if line.startswith("@@"):
+        elif line.startswith("@@"):
             in_header = False
-            continue
-        if in_header:
+            m = re.match(r"^@@ -(\d+)(?:,\d+)? \+(\d+)", line)
+            if m:
+                old_line, new_line = int(m.group(1)), int(m.group(2))
+        elif in_header:
             if line.startswith("--- "):
-                old_file = clean_path(line[4:])
+                old = path_of(line[4:])
             elif line.startswith("+++ "):
-                new_file = clean_path(line[4:])
-                cur_file = old_file if new_file == os.devnull or new_file == "/dev/null" else new_file
-                if new_file in (os.devnull, "/dev/null"):
-                    deleted_files.append(cur_file)
-        else:
-            if line.startswith("+") and not line.startswith("+++"):
-                added.append({"file": cur_file, "text": line[1:]})
-            elif line.startswith("-") and not line.startswith("---"):
-                removed.append({"file": cur_file, "text": line[1:]})
-
-    # 5. Regex checks
-    re_suppressions = re.compile(
-        r"@ts-ignore|@ts-nocheck|eslint-disable|biome-ignore|#\s*noqa|#\s*type:\s*ignore|istanbul\s+ignore|nosemgrep|gitleaks:allow|Stryker\s+disable"
-    )
-    re_stubs = re.compile(
-        r"throw\s+new\s+(Error|NotImplementedError)\s*\([^)]*[Nn]ot\s+implemented|catch\s*\([^)]*\)\s*\{\s*\}|catch\s*\{\s*\}|\bTODO\b|\bpass\s*#\s*stub"
-    )
-    re_skips = re.compile(
-        r"\.(skip|todo)\b|\bxit\(|\bxdescribe\(|@pytest\.mark\.skip|t\.Skip\(|#\[ignore\]"
-    )
-
-    def is_test(path):
-        return bool(re.search(r"(\.test|\.spec|_test|test_)\.[a-zA-Z0-9]+$", path))
-
-    def is_constraints(path):
-        return path.endswith("CONSTRAINTS.md")
+                new = path_of(line[4:])
+                cur = old if new == "/dev/null" else new
+                if new == "/dev/null":
+                    deleted.append(old)
+        elif line.startswith("+"):
+            added.append({"file": cur, "line": new_line, "text": line[1:]})
+            new_line += 1
+        elif line.startswith("-"):
+            removed.append({"file": cur, "old": old, "line": old_line, "text": line[1:]})
+            old_line += 1
+        elif line.startswith(" "):
+            old_line += 1
+            new_line += 1
 
     findings = []
-    def flag(rule, f, t):
-        findings.append({"rule": rule, "file": f, "text": t.strip()[:100]})
+    at = lambda l: "%s:%d" % (l["file"], l["line"])
+    at_base = lambda l: "%s:%d (removed)" % (l["old"], l["line"])
 
-    for item in added:
-        f, t = item["file"], item["text"]
-        if re_suppressions.search(t):
-            flag("silenced-checker", f, t)
-        if re_stubs.search(t):
-            flag("unfinished-work", f, t)
-        if re_skips.search(t):
-            flag("test-made-easier", f, t)
-        if is_constraints(f) and re.match(r"^\|\s*(W|E)\d+\s*\|", t):
-            flag("unauthorized-exception", f, t)
+    # 1. Silenced checkers, unfinished work, easier tests, optional CI checks, new exceptions.
+    for l in added:
+        if SUPPRESSIONS.search(l["text"]):
+            findings.append(("silenced-checker", at(l)))
+        if STUBS.search(l["text"]):
+            findings.append(("unfinished-work", at(l)))
+        if SKIPS.search(l["text"]):
+            findings.append(("test-made-easier", at(l)))
+        if WORKFLOW.search(l["file"]) and OPTIONAL.search(l["text"]):
+            findings.append(("check-made-optional", at(l)))
+        if CONSTRAINTS.search(l["file"]) and EXCEPTION.match(l["text"]):
+            findings.append(("new-exception", at(l)))
 
-    for df in deleted_files:
-        if is_test(df):
-            flag("test-deleted", df, "Test file was deleted")
-
-    for item in removed:
-        f, t = item["file"], item["text"]
-        if is_test(f) and f not in deleted_files:
-            if re.search(r"\b(assert|expect|should)\b", t):
-                flag("assertion-removed", f, t)
-
-    # Threshold weakening in CONSTRAINTS.md
-    def extract_thresholds(t):
-        nums = []
-        for m in re.finditer(r"\b(\d+(?:\.\d+)?)\b", t):
-            before = t[max(0, m.start() - 20):m.start()].lower()
-            after = t[m.end():min(len(t), m.end() + 25)].lower()
-            is_min = bool(re.search(r">=|at\s+least|minimum|min\b|not\s+fall|not\s+drop", before) or re.search(r"must\s+not\s+fall|or\s+more", after))
-            is_max = bool(re.search(r"<=|at\s+most|maximum|max\b|under|below|not\s+grow", before) or re.search(r"must\s+not\s+grow|or\s+less", after))
-            nums.append({"val": float(m.group(1)), "dir": "min" if is_min else "max" if is_max else "unknown"})
-        return nums
-
-    def rule_key(t):
-        s = t.strip()
-        if s.startswith("|"):
-            parts = [c.strip() for c in s.split("|") if c.strip()]
-            return parts[0] if parts else ""
-        if s.startswith(("- ", "* ")):
-            return s[2:].split(":")[0].strip()
-        return None
-
-    removed_rules = [r for r in removed if is_constraints(r["file"]) and rule_key(r["text"])]
-    added_rules = [a for a in added if is_constraints(a["file"]) and rule_key(a["text"])]
-
-    for r in removed_rules:
-        k = rule_key(r["text"])
-        match = next((a for a in added_rules if rule_key(a["text"]) == k), None)
-        if not match:
-            if not re.match(r"^\|\s*(W|E)\d+\s*\|", r["text"]):
-                flag("rule-removed", r["file"], r["text"])
+    # 2. A test file deleted, or an assertion removed from a test file that stays. A removed line
+    # that comes back unchanged in the same file was moved, not removed.
+    for path in deleted:
+        if TEST_FILE.search(path):
+            findings.append(("test-deleted", path + " (file deleted)"))
+    readded = {}
+    for l in added:
+        key = (l["file"], l["text"].strip())
+        readded[key] = readded.get(key, 0) + 1
+    for l in removed:
+        if not TEST_FILE.search(l["file"]) or l["file"] in deleted or not ASSERTION.search(l["text"]):
             continue
-        old_nums = extract_thresholds(r["text"])
-        new_nums = extract_thresholds(match["text"])
-        for i, o in enumerate(old_nums):
-            if i >= len(new_nums):
-                flag("threshold-removed", r["file"], f"{r['text']} -> {match['text']}")
-                break
-            n = new_nums[i]
-            if o["dir"] == "min" and n["val"] < o["val"]:
-                flag("threshold-loosened", r["file"], f"Minimum lowered: {o['val']} -> {n['val']}")
-            elif o["dir"] == "max" and n["val"] > o["val"]:
-                flag("threshold-loosened", r["file"], f"Maximum raised: {o['val']} -> {n['val']}")
-            elif o["dir"] == "unknown" and o["val"] != n["val"]:
-                flag("threshold-changed", r["file"], f"Ambiguous threshold changed: {o['val']} -> {n['val']}")
+        key = (l["file"], l["text"].strip())
+        if readded.get(key, 0) > 0:
+            readded[key] -= 1
+            continue
+        findings.append(("assertion-removed", at_base(l)))
+
+    # 3. A rule in CONSTRAINTS.md weakened or removed. Lowering a minimum or raising a maximum
+    # loosens the rule; a number with no readable direction is reported on any change.
+    removed_rules = [l for l in removed if CONSTRAINTS.search(l["file"]) and rule_key(l["text"]) is not None]
+    added_rules = [l for l in added if CONSTRAINTS.search(l["file"]) and rule_key(l["text"]) is not None]
+    for r in removed_rules:
+        if EXCEPTION.match(r["text"]):
+            continue  # deleting an exception tightens; a changed one is a new-exception
+        match = next((a for a in added_rules
+                      if a["file"] == r["file"] and rule_key(a["text"]) == rule_key(r["text"])), None)
+        if match is None:
+            findings.append(("rule-removed", at_base(r)))
+            continue
+        was, now = thresholds(r["text"]), thresholds(match["text"])
+        verdict = None
+        for direction in ("min", "max", None):
+            before = [n for n, d in was if d == direction]
+            after = [n for n, d in now if d == direction]
+            for i, b in enumerate(before):
+                if verdict:
+                    break
+                if i >= len(after):
+                    verdict = "threshold-removed"
+                elif after[i] == b:
+                    continue
+                elif direction == "min" and after[i] < b or direction == "max" and after[i] > b:
+                    verdict = "threshold-loosened"
+                elif direction is None:
+                    verdict = "threshold-changed"
+        if verdict:
+            findings.append((verdict, "%s -> %s" % (at_base(r), at(match))))
+
+    # 4. With --check-expiry: an exception past its date, or a new one longer than 90 days.
+    if check_expiry and os.path.isfile("CONSTRAINTS.md"):
+        added_lines = {l["line"] for l in added if l["file"] == "CONSTRAINTS.md"}
+        limit = datetime.date.fromisoformat(today) + datetime.timedelta(days=90)
+        with open("CONSTRAINTS.md", encoding="utf-8") as fh:
+            for number, text in enumerate(fh.read().splitlines(), 1):
+                if not EXCEPTION.match(text):
+                    continue
+                where = "CONSTRAINTS.md:%d" % number
+                dates = DATE.findall(text)
+                if not dates:
+                    findings.append(("exception-without-expiry", where))
+                elif dates[-1] < today:
+                    findings.append(("exception-expired", where))
+                elif number in added_lines and datetime.date.fromisoformat(dates[-1]) > limit:
+                    findings.append(("exception-too-long", where))
 
     if not findings:
-        print("floor-guard: [CLEAN] Working tree respects quality floor.")
+        print("floor-guard: clean")
         sys.exit(0)
-
-    sys.stderr.write(f"\nfloor-guard: [VIOLATION] Found {len(findings)} attempt(s) to weaken the floor:\n")
-    for f in findings:
-        sys.stderr.write(f"  - [{f['rule']}] {f['file']}: \"{f['text']}\"\n")
-    sys.stderr.write("\nFix the issues above or register a tracked exception in CONSTRAINTS.md.\n\n")
+    sys.stderr.write("floor-guard: %d violation(s):\n" % len(findings))
+    for rule, where in findings:
+        sys.stderr.write("  [%s] %s\n" % (rule, where))
+    rules = {rule for rule, _ in findings}
+    if "rule-removed" in rules:
+        sys.stderr.write("\nrule-removed also appears when a rule ID changed: change IDs and "
+                         "numbers in separate commits.\n")
+    if "threshold-removed" in rules:
+        sys.stderr.write("\nthreshold-removed also appears when direction words were edited "
+                         "(\">= 80%\" to \"80%\"): compare both lines.\n")
+    sys.stderr.write("\nEach finding lowers the bar. Fix the code; a genuine exception goes "
+                     "through the policy owner.\n")
     sys.exit(1)
+
 
 if __name__ == "__main__":
     main()
 ```
 
----
+## Adapting it
 
-## 4. Wiring Floor Guard into Developer Loops
+- **The patterns are the only stack-specific part.** Add your language's suppression, skip and
+  stub forms to the pattern lists; the diff walk, the `CONSTRAINTS.md` checks and the exit codes
+  stay as they are. Keep one character of each plain-word pattern in a class (`@ts-[i]gnore`) so
+  the guard does not report its own source when it is first added, and keep those tokens out of
+  its comments.
+- **A `.constraintsignore`** file (one glob per line) can exempt paths. Match each finding's file
+  against it before reporting. The exemption then lives in a reviewed file instead of in a weaker
+  rule.
+- **Pattern matching is deliberately simple.** It targets the shortcuts agents take under a red
+  check, not someone determined to hide a change; that is enough for a check that runs on every
+  diff. When the setup needs diff-scoped budgets and ratchets in one place, move to a dedicated
+  runner (the escalation path in the skill).
 
-### A. NPM Projects (`package.json`)
+## Wiring it
+
+Run the same command at every stage. Locally the guard sees staged, unstaged and untracked files;
+in CI it needs the target branch's history.
+
+Scripts (`package.json`):
+
 ```json
 {
   "scripts": {
-    "check:floor": "node scripts/floor-guard.mjs",
-    "check:fast": "npm run check:floor && tsc --noEmit && biome check",
+    "check:floor": "node scripts/floor-guard.mjs --base origin/main --check-expiry",
+    "check:fast": "npm run check:floor && tsc --noEmit && eslint .",
     "check:task": "npm run check:fast && vitest run --coverage"
   }
 }
 ```
 
-### B. Python / Make Projects (`Makefile`)
+Make targets:
+
 ```makefile
 .PHONY: check-floor check-task
 check-floor:
-	python scripts/floor_guard.py
+	python scripts/floor_guard.py --base origin/main --check-expiry
 
 check-task: check-floor
 	pytest --cov --cov-report=lcov
 ```
 
-### C. Git Pre-Commit Hook (`.git/hooks/pre-commit`)
+Agent edit loop. Extend the project's existing edit hook rather than adding a second one. In Claude
+Code a `PostToolUse` command that exits 2 passes its stderr back to the agent, so map any failure to
+2 there:
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [{ "type": "command", "command": "node scripts/floor-guard.mjs --base origin/main || exit 2" }]
+      }
+    ]
+  }
+}
+```
+
+Git `pre-commit` hook (`.git/hooks/pre-commit`, or the project's hook manager):
+
 ```sh
 #!/bin/sh
-# Run floor guard before allowing any commit
 if command -v node >/dev/null 2>&1 && [ -f scripts/floor-guard.mjs ]; then
-  node scripts/floor-guard.mjs || exit 1
+  node scripts/floor-guard.mjs --base origin/main || exit 1
 elif command -v python3 >/dev/null 2>&1 && [ -f scripts/floor_guard.py ]; then
-  python3 scripts/floor_guard.py || exit 1
+  python3 scripts/floor_guard.py --base origin/main || exit 1
 fi
+```
+
+CI (GitHub Actions), as a required check. The default checkout is shallow and has no merge base:
+
+```yaml
+- uses: actions/checkout@v4
+  with:
+    fetch-depth: 0
+- run: node scripts/floor-guard.mjs --base "origin/${{ github.base_ref || 'main' }}" --check-expiry
 ```

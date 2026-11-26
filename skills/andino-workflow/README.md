@@ -29,7 +29,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-browser-testing-with-devtools` | Rendered behavior, console/network and browser evidence; UI screenshots at 360, 768 and 1440 px. |
 | `andino-code-review` | Specification and standards review. |
 | `andino-code-simplification` | Evidenced simplification of green code without behavioral drift. |
-| `andino-constraint-driven-development` | Establish and preserve the quality floor. |
+| `andino-constraint-driven-development` | Write the quality bar into `CONSTRAINTS.md` and block agents lowering it; Node and Python floor guards, multi-stack catalog. |
 | `andino-doubt-driven-development` | Fresh scrutiny of consequential assumptions and invariants. |
 
 ### Production boundaries

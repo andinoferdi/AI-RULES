@@ -448,6 +448,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-constraint-driven-development-unattended",
+    "kind": "behavior",
+    "prompt": "Our nightly agent run starts next week and nothing stops it from skipping tests or adding ts-ignore to get green. Put guardrails in place.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select constraint-driven-development",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "constraint-driven-development"
+    ],
+    "method": "constraint-driven-development",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-context-engineering-implicit",
     "kind": "behavior",
     "prompt": "Prepare a bounded handoff that preserves scope and the current error while dropping old logs.",

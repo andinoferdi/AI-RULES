@@ -81,6 +81,20 @@ floor guards with cross-platform CRLF/path normalization, third-party scanner ex
 normalization protocols, multi-ecosystem catalogs across TS/JS, Python, Go, Rust, and Web UI,
 and offline deterministic Python stdlib verification).
 
+The 2026-11-26 upgrade of `constraint-driven-development` rewrites `SKILL.md` (mirrored by
+`GUIDE.md`) into the sibling Andino layout as one procedure and adds points from Addy Osmani's
+skill at commit 9c7f62d: no interview in non-interactive runs (floor only, open questions flagged),
+one intake question at a time with the cost of each pick, a per-dimension install table including
+the Vitest coverage provider and dependency-cruiser, changed-line coverage from the existing report
+without a second test run, URL-based checks recorded as not applicable when there is no URL,
+`CONSTRAINTS.md` as the canonical source that scripts mirror, the three-level escalation path, the
+agent pointer line and a verification checklist. Both reference guards now pair thresholds by
+direction, understand `≥` and `≤`, report location only (never line text), detect Python stubs and
+`test_*.py` deletions and optional CI checks, and enforce exception expiry with `--check-expiry`.
+Kept Andino material: the Python guard and quality gate, the multi-stack catalog, comparable
+baselines, exit 2 as blocking, the stricter exception schema, separate policy changes and the
+disposable-fixture proof. Trial record: `docs/validation/constraint-driven-development/`.
+
 The 2026-11-01 elevation of `decision-map` synthesizes the epistemic navigation and multi-session
 architectural mapping craft of Matt Pocock's `engineering/wayfinder` ("Produce decisions, not
 deliverables" law, 6-part map body anatomy, 4-tier ticket taxonomy across research, interview/grilling,
