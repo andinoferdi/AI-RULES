@@ -295,6 +295,20 @@ updated test-plan template. The earlier worked example's Python script and its r
 removed. The comparison trial is recorded in
 `docs/validation/browser-testing-with-devtools/trial.md`.
 
+The 2026-11-26 upgrade of `article-shaping` re-bases the skill on Matt Pocock's
+`writing-beats` and `writing-shape` at mattpocock/skills commit 6f7f783 (2026-11-24, MIT) and
+moves the method into the sibling layout: one author-first procedure (read the pile, settle
+the reader, offer pile-built candidates, write exactly the agreed block, keep author edits,
+invent nothing, mark inference) with the rules, shortcut and red-flag lists and the
+verification checklist in `SKILL.md` (mirrored by `GUIDE.md`). The former contract,
+grilling-and-cadence, grounding-graph, format-and-anti-slop and hooks resources are replaced
+by `resources/lenses.md`, `resources/grounding-and-gaps.md` and `resources/format-and-prose.md`;
+the hook formulas and sentence-length rules are removed, the worked example is rewritten
+without invented detail, and `resources/raw-capture/` is unchanged. The comparison trial is
+recorded in `docs/validation/article-shaping/trial.md`. Correction to the 2026-11-02
+paragraph above: `scripts/verify_article_shaping_elevation.py` does not exist in this
+repository.
+
 The 2026-11-26 upgrade of `delegation` re-reads Matt Pocock's `engineering/implement-spec`
 (mattpocock/skills commit 6f7f783, 2026-11-25, MIT) and Jesse Vincent's Obra Superpowers
 `dispatching-parallel-agents` and `subagent-driven-development` (obra/superpowers commit 22f0b46,
