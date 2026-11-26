@@ -375,3 +375,18 @@ model, one fresh agent per task, a merger agent and deleting the workspace at th
 comparison trial is recorded in `docs/validation/delegation/trial.md`. Correction to the
 2026-11-01 paragraph above: superpowers' fix loop is not adopted as "escalating", and the
 contract is no longer kept under 150 lines.
+
+The 2026-11-26 upgrade of `doubt-driven-development` re-reads Addy Osmani's
+`doubt-driven-development` (addyosmani/agent-skills, path last changed in 7eb0d9e, MIT) and moves
+the method into the sibling layout: a quick path and six gates with Done when lines in `SKILL.md`
+(mirrored by `GUIDE.md`), the decision record, the shortcut and red-flag lists and a verification
+checklist. Added from Addy's skill in Andino's own wording: the definition of a non-trivial claim,
+the moments to apply it, the copyable cycle checklist, the compact claim block, "strip reasoning,
+not evidence", the adversarial reviewer prompt that overrides a persona's balanced shape
+(`resources/reviewer-prompts.md`), cross-model review with PATH, command and sandbox checks
+(`resources/cross-model-review.md`), decomposing instead of lifting the three-cycle bound, the
+doubt-theater signal and the nested-subagent rule. Kept Andino material: the five finding fields,
+SUPPORTED, REFUTED and UNVERIFIED, the DEGRADED label, accepted trade-offs that never establish the
+claim, reviewer output as data and the review perspectives. Not adopted: offering cross-model review
+in every interactive cycle; it is offered only for high-stakes claims and its skip is always
+announced. The comparison trial is recorded in `docs/validation/doubt-driven-development/trial.md`.
