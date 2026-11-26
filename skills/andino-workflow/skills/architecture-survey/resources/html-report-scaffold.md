@@ -37,7 +37,7 @@ To prevent semantic split-brain and avoid stealing focus in remote environments,
 | Problem  : Every order caller sequences validation, tax, the transaction    |
 |            and the email itself across 4 shallow modules.                   |
 | Solution : Absorb the 4 pass-through modules into one order intake module   |
-|            whose submit call owns the transaction.                          |
+|            that owns the transaction.                                       |
 |                                                                             |
 | Wins:                                                                       |
 |   - locality: tax rules in one module                                       |
@@ -48,7 +48,7 @@ To prevent semantic split-brain and avoid stealing focus in remote environments,
 +-----------------------------------------------------------------------------+
 ```
 
-Print one card per candidate, strongest first, then the report path, then the question "Which of these would you like to explore?". The card and the HTML report come from the same candidate data, so they never disagree.
+Print one card per candidate, strongest first, then the "Also found" items one line each, then the report path, then the question "Which of these would you like to explore?". The cards and the HTML report come from the same candidate data, so they never disagree. Neither names a method or signature for the deepened module yet.
 
 ---
 
@@ -162,6 +162,15 @@ The scaffold utilizes progressive enhancement: when an internet connection is av
         {{/if}}
       </article>
 
+    </section>
+
+    <!-- Also Found: findings not proposed, one line each -->
+    <section id="also-found" class="text-sm text-slate-700">
+      <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">Also found</h3>
+      <ul class="list-disc list-inside mt-1">
+        <li>{{kept_module}}: kept, deletion test scatters its rules across callers</li>
+        <li>{{untested_area}}: untested; {{what blocks testing through its interface}}</li>
+      </ul>
     </section>
 
     <!-- Top Recommendation Section -->

@@ -83,12 +83,12 @@ export class OrderDatabaseWrapper {
 
 The HTML card holds the files, the before diagram (pattern 2: four dashed pass-through boxes
 the controller calls in sequence, a red arrow for `tx`), the after diagram (one dark order
-intake box with `submit(order)` on top and the four steps faded inside), and:
+intake box with a single entry point on top and the four steps faded inside), and:
 
 - **Problem:** Every order caller sequences validation, tax, the transaction and the email
   itself across four shallow modules.
-- **Solution:** Absorb the four pass-through modules into one order intake module whose
-  submit call owns the transaction.
+- **Solution:** Absorb the four pass-through modules into one order intake module that
+  owns the transaction.
 - **Wins:** "locality: tax rules in one module", "leverage: one interface, three callers",
   "transaction handle stays behind the seam", "tests hit one interface".
 
@@ -105,10 +105,12 @@ The chat summary card from the same data:
 | Problem : Every order caller sequences validation, tax, the transaction     |
 |           and the email itself across four shallow modules.                 |
 | Solution: Absorb the four pass-through modules into one order intake        |
-|           module whose submit call owns the transaction.                    |
+|           module that owns the transaction.                                 |
 | Wins: locality: tax rules in one module | leverage: one interface, three    |
 |       callers | transaction handle stays behind the seam                    |
 +-----------------------------------------------------------------------------+
+Also found: src/money/CurrencyMath.ts kept (12 callers rely on its rounding);
+            src/orders/importWorker.ts untested (builds its queue client inline)
 Report: /tmp/architecture-survey-20261102-143000.html
 Which of these would you like to explore?
 ```

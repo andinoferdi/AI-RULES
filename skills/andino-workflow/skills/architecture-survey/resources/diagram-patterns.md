@@ -52,7 +52,7 @@ Pick the pattern that fits each candidate and mix them across the report; when e
   <div class="flex-1 flex items-center justify-center">
     <pre class="mermaid">
       flowchart TD
-        Caller[OrderController] -->|submitOrder| Intake[OrderIntake Deep Module]
+        Caller[OrderController] -->|one call| Intake[OrderIntake Deep Module]
         subgraph IntakeInternals [Encapsulated Behind Seam]
           V[Validation]
           P[Pricing Invariants]
@@ -91,7 +91,7 @@ Pick the pattern that fits each candidate and mix them across the report; when e
     <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider">After: 1 Deep Module</span>
     <div class="border-2 border-slate-900 rounded-md p-4 bg-slate-900 text-white my-auto">
       <div class="text-xs font-bold tracking-wider uppercase mb-2 border-b border-slate-700 pb-1">
-        Public Interface: submitOrder(cmd)
+        Interface: one entry point
       </div>
       <div class="grid grid-cols-2 gap-2 text-[10px] text-slate-400">
         <div class="bg-slate-800 p-1.5 rounded">internal: validation</div>
@@ -131,7 +131,7 @@ Pick the pattern that fits each candidate and mix them across the report; when e
     <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider">After: Consolidated Band</span>
     <div class="my-auto">
       <div class="h-44 border-l-4 border-emerald-600 bg-slate-900 text-white p-3 rounded-r flex flex-col justify-between">
-        <span class="text-xs font-bold font-mono text-emerald-400">OrderIntake.submitOrder()</span>
+        <span class="text-xs font-bold font-mono text-emerald-400">OrderIntake: one entry point</span>
         <p class="text-xs text-slate-300">Absorbs validation, transaction boundaries, and line item persistence into a single coherent unit.</p>
         <span class="text-[10px] text-slate-400 font-mono">Eliminates 3 intermediate delegating layers</span>
       </div>
@@ -171,7 +171,7 @@ Pick the pattern that fits each candidate and mix them across the report; when e
     <div class="my-auto flex flex-col items-center">
       <!-- Interface Rect: what callers must know (narrow and short) -->
       <div class="w-28 h-8 border-2 border-emerald-600 bg-emerald-100 flex items-center justify-center text-xs font-mono font-bold text-emerald-900">
-        submit(order)
+        one entry point
       </div>
       <!-- Implementation Rect: what stays hidden (deep and solid) -->
       <div class="w-48 h-32 border-2 border-t-0 border-slate-900 bg-slate-900 flex items-center justify-center text-xs font-mono text-slate-200 text-center px-2">
@@ -209,7 +209,7 @@ Pick the pattern that fits each candidate and mix them across the report; when e
     <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider">After: Collapsed Single Seam</span>
     <div class="my-auto font-mono text-xs pl-4 border-l-2 border-emerald-500">
       <div class="text-slate-900 font-bold">Caller</div>
-      <div class="pl-4 text-emerald-600 font-bold">↳ execute()</div>
+      <div class="pl-4 text-emerald-600 font-bold">↳ one entry point</div>
       <div class="pl-8 text-slate-400 italic text-[11px]">(all 4 steps executed internally)</div>
     </div>
     <span class="text-xs text-emerald-700">Internal sequencing details completely encapsulated</span>

@@ -8,10 +8,12 @@ the procedure). Do not write implementation code during grilling.
 Map the candidate's decisions as a tree: each decision branches into the ones that hang off
 it. The frontier is every open decision whose prerequisites are settled.
 
-1. Ask the whole frontier in one round. Number each question, give your recommended answer
-   under it, and word it so "yes" accepts your recommendation.
+1. The first round covers all five decisions listed below. Number each question, give your
+   recommended answer under it, and word it so "yes" accepts your recommendation. For a
+   decision that depends on another (tests and caller migration depend on the module's
+   shape), recommend what follows from the shape you recommend, so one "yes" settles both.
 2. Wait for the answers. Settled decisions push the frontier outward; recompute it and ask
-   the next round. A question that depends on another open question belongs to a later round.
+   the next round about what the answers reopened or left open.
 3. Facts are your job: when a question needs a fact from the code, read the code instead of
    asking the user. Decisions are the user's.
 

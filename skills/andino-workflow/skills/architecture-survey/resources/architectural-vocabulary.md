@@ -115,9 +115,11 @@ keep it, and say so when a reader would expect it on the candidate list.
   - Fits: "Three order callers each sequence validation, tax, the database transaction and
     the confirmation email themselves."
   - Does not fit: "The order flow is messy and could use a better service layer."
-- **Solution**: one sentence naming the consolidation and where the seam goes.
-  - Fits: "Absorb the four pass-through order modules into one order intake module whose
-    submit call owns the transaction."
+- **Solution**: one sentence naming the consolidation and where the seam goes. No method
+  names or signatures yet: the interface is designed after the user picks and grilling
+  settles the shape.
+  - Fits: "Absorb the four pass-through order modules into one order intake module that
+    owns the transaction."
   - Does not fit: "Refactor the code with clean architecture patterns."
 - **Wins**: 6 words or fewer each, naming the gain in glossary terms, for example
   "locality: tax rules in one module", "leverage: one interface, three callers", "tests hit

@@ -88,13 +88,21 @@ missing glossary or ADR folder is a fact to record, not a blocker.
 
    Apply the **deletion test** to every suspect: imagine deleting it. If complexity
    vanishes, it was a pass-through; if it reappears across its callers, it earns its keep.
-   Done when each suspect has file and symbol evidence and a deletion-test verdict.
+   Say where each defect lives: a correct, well-tested pure function is not the defect
+   when its callers misuse it. The deepening then gathers what those callers each compute
+   (units, periods, ordering) into one module, and the function and its tests stay.
+   Done when each suspect has file and symbol evidence and a deletion-test verdict, and
+   every untested or hard-to-test area you found is either a candidate or listed under
+   "Also found".
 3. **Shape candidates.** For each deepening worth proposing, write a title that names the
    deepening, the files, the problem in one sentence, the solution in one sentence, wins of
    6 words or fewer in glossary terms, a strength (`Strong`, `Worth exploring` or
    `Speculative`), the dependency category, and an ADR callout only when the friction is
    real enough to reopen that ADR. Recent change raises strength. Do not propose interfaces
-   yet. Done when every candidate has every field and none rests on a seam with one adapter.
+   yet: the solution names the consolidation and where the seam goes, never a method name
+   or signature. Keep a short "Also found" list for findings you do not propose (kept
+   modules with their deletion-test reason, untested areas, ADR-protected ideas). Done when
+   every candidate has every field and none rests on a seam with one adapter.
 4. **Write the report.** One self-contained HTML file in the OS temp directory, built from
    the [HTML report scaffold](resources/html-report-scaffold.md): a legend, one card per
    candidate with a side-by-side before/after diagram from
@@ -106,9 +114,11 @@ missing glossary or ADR folder is a fact to record, not a blocker.
    data and the report's absolute path, then ask: "Which of these would you like to
    explore?" Done when the user picks a candidate or declines; a decline ends the survey.
 6. **Grill the chosen candidate** with the
-   [grilling and ADR protocol](resources/grilling-and-adr-protocols.md): constraints, what
-   sits behind the seam, which adapters exist, which tests survive and which are replaced,
-   and how each caller migrates. Every question carries your recommended answer. Side
+   [grilling and ADR protocol](resources/grilling-and-adr-protocols.md). The first round
+   covers all five decisions: constraints, what sits behind the seam, which adapters exist,
+   which tests survive and which are replaced, and how each caller migrates. Every question
+   carries your recommended answer; for tests and migration, recommend what follows from the
+   shape you recommend. Side
    effects happen inline as decisions settle: add a new domain term to GLOSSARY.md (create
    the file lazily), sharpen a fuzzy term in place, and when the user rejects a candidate
    for a reason a future survey would need, offer to record an ADR. Done when the deepened
@@ -142,6 +152,10 @@ maintain".
 
 - One adapter means a hypothetical seam; two adapters mean a real one, and a test stand-in
   counts as an adapter. Do not propose a seam that nothing varies across.
+- A third-party client injected as a port already has two adapters: the real client and the
+  test's mock. Code that builds its clients inside itself is hard to test through its
+  interface, and injecting those clients is a candidate. The one-adapter warning is for a
+  port that tests never substitute, such as an interface over your own single class.
 - A deep module may keep internal seams for its own tests; leave them out of its interface.
 - Classify each candidate's dependencies, because the category decides how the deepened
   module is tested:
