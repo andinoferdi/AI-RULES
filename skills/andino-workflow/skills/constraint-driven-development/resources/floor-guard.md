@@ -31,7 +31,7 @@ run. Use this reference, change only the patterns for your stack, and keep the c
   base). Never the line's text: a suppressed or TODO line is often the one holding a secret-like
   value, and the report lands in terminals and agent logs.
 - **Direction:** tightening is silent, loosening is loud. A number's direction comes from the
-  words right next to it (`>=`, `≥`, `at least`, `must not fall`, `--min-...` for a minimum; `<=`,
+  words right next to it (`>=`, `≥`, `at least`, `must not fall`, `must not fall below`, `--min-...` for a minimum; `<=`,
   `≤`, `at most`, `must not grow`, `--max-...` for a maximum). A number with no readable direction,
   such as a tolerance column, is reported whenever it changes. Dates are not thresholds.
 - **Approval:** the guard cannot tell an approved exception from an invented one. A policy change
@@ -174,7 +174,7 @@ const ruleKey = (t) => {
   if (/^[-*] /.test(s)) return s.slice(2).split(':')[0].trim();
   return null;
 };
-const MIN_BEFORE = /(>=|>|≥|at least|minimum|\bmin\b|no less than|not fall|not drop|--min[-\w]*[ =]|fail[-_]under[ =])\s*$/;
+const MIN_BEFORE = /(>=|>|≥|at least|minimum|\bmin\b|no less than|not fall|not drop|fall below|drop below|go below|not below|not under|--min[-\w]*[ =]|fail[-_]under[ =])\s*$/;
 const MAX_BEFORE = /(<=|<|≤|at most|maximum|\bmax\b|no more than|under|below|not grow|not exceed|--max[-\w]*[ =])\s*$/;
 const MIN_AFTER = /^\s*\S*\s*(?:\|\s*)?(or more|or higher|must not fall|must not drop)/;
 const MAX_AFTER = /^\s*\S*\s*(?:\|\s*)?(or less|or lower|must not grow|must not exceed)/;
@@ -316,6 +316,7 @@ CONSTRAINTS = re.compile(r"(^|/)CONSTRAINTS\.md$")
 EXCEPTION = re.compile(r"^\s*\|\s*[WE]\d+\s*\|")
 DATE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
 MIN_BEFORE = re.compile(r"(>=|>|≥|at least|minimum|\bmin\b|no less than|not fall|not drop"
+                        r"|fall below|drop below|go below|not below|not under"
                         r"|--min[-\w]*[ =]|fail[-_]under[ =])\s*$")
 MAX_BEFORE = re.compile(r"(<=|<|≤|at most|maximum|\bmax\b|no more than|under|below|not grow"
                         r"|not exceed|--max[-\w]*[ =])\s*$")
