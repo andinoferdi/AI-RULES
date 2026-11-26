@@ -78,3 +78,44 @@ P2, and ties every arm on the other 16 criteria.
   runs.
 - The chair's unblinded reading before the council said the current-Andino arm profiled Task 2;
   the grader scored it 1 on P2 because it profiled and edited in the same tool call.
+
+## Re-run after strengthening gate 4
+
+D5 (ranked hypotheses) was 0 in every arm, the first candidate included. Its transcript ran
+gates 2 and 3, whose "Done when" lines name visible output, and skipped the written candidate
+list and the report record: gate 4 ended on a judgement ("one cause explains..."), and the
+Output section let the record live in "the reply, the commit or PR message, or the handoff".
+
+- **v2** (gate 4 writes the candidates "into the record"; every reply ends with the record):
+  run-7 wrote ranked candidates with what confirmed or ruled out each, in every reply. It wrote
+  them only when composing the reply, after the fix, and it added the full record to the
+  quick-path reply for the syntax error, which the rubric scores as ceremony (S2). Not graded:
+  the S2 regression alone fails the gate, so the approved grader was kept for the corrected text.
+- **v3** (shipped on this branch): candidates are written "where they show now ... not only the
+  final reply" before any source edit; the record ends every reply after the six gates; a
+  quick-path reply carries only the error, the change and the rerun. One runner (run-8) and a
+  fresh blind grader (both Sonnet 5.5, medium) on the unchanged fixture, the five baseline
+  outputs reshuffled with it. Evidence: [scores-rerun.md](scores-rerun.md).
+
+| Criterion | No skill | Addy | Matt | obra | Current | v3 |
+| --- | --- | --- | --- | --- | --- | --- |
+| D2 red-capable check | 1 | 1 | 1 | 1 | 1 | 2 |
+| D3 minimise | 1 | 1 | 1 | 1 | 1 | 2 |
+| D5 hypotheses | 0 | 0 | 0 | 0 | 0 | 0 |
+| D7 regression test seen red | 1 | 1 | 1 | 1 | 1 | 2 |
+| P2 locate by measurement | 1 | 1 | 1 | 2 | 1 | 2 |
+| S1 direct fix | 1 | 2 | 2 | 1 | 2 | 2 |
+| D4, D9, P1 | 1 each | 1 each | 1 each | 1 each | 1 each | 1 each |
+| Other 13 criteria | 2 each | 2 each | 2 each | 2 each | 2 each | 2 each |
+| Total (of 44) | 34 | 35 | 35 | 35 | 35 | 39 |
+
+Gate: PASS. v3 is at least equal to every arm on all 22 criteria and ahead on D2, D3 and D7.
+
+- The quick-path regression of v2 is gone: run-8 fixed the syntax error in a few lines.
+- D5 is still 0: run-8 wrote no candidate list and no record, where run-7 with nearly the same
+  text wrote both. One run per version cannot separate the wording from run-to-run variance;
+  the gap stays open.
+- The two gradings disagree on unchanged baseline outputs (obra 36 then 35, no skill 35 then
+  34; D4 and P1 moved), and v1's 41 and v3's 39 come from different graders and runs, so they
+  do not compare v1 with v3. The grader's notes name P1, P2 and D9 as readings that could go
+  either way.
