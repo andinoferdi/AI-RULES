@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taskboard</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/vendor/analytics.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Taskboard</h1>
+      <p class="subtitle">Sprint 42 · synced just now</p>
+    </div>
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Search tasks" aria-label="Search tasks" autocomplete="off">
+      <button id="filter-btn" class="icon-btn" type="button">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4-2v-4z" fill="currentColor"/></svg>
+      </button>
+      <button id="add-btn" type="button">Add task</button>
+    </div>
+  </header>
+
+  <img class="banner" src="/img/banner.svg" alt="Sprint 42 goals: ship retries, close the audit, demo on Friday">
+
+  <main>
+    <section id="open-section">
+      <h2>Open <span id="open-count" class="count">0</span></h2>
+      <ul id="open-list" class="tasks"></ul>
+    </section>
+    <section id="done-section">
+      <h2>Done</h2>
+      <ul id="done-list" class="tasks"></ul>
+    </section>
+    <section id="results" hidden>
+      <h4>Search results</h4>
+      <ul id="result-list" class="tasks"></ul>
+    </section>
+  </main>
+
+  <div id="add-dialog" class="modal" hidden>
+    <div class="modal-card" role="dialog" aria-labelledby="add-title">
+      <h2 id="add-title">New task</h2>
+      <form id="add-form">
+        <label for="new-title">Title</label>
+        <input id="new-title" name="title" required>
+        <div class="actions">
+          <button type="button" id="cancel-add">Cancel</button>
+          <button type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

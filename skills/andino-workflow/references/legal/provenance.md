@@ -284,6 +284,17 @@ reverse, surprising and a real trade-off, and the light design, ADR and glossary
 elevation above (`<70%` confidence, 3-question predictability as a percentage) are retired. The
 comparison trial is recorded in `docs/validation/brainstorming/trial.md`.
 
+The 2026-11-26 upgrade of `browser-testing-with-devtools` re-bases the skill on Addy Osmani's
+`browser-testing-with-devtools` at addyosmani/agent-skills commit 57bfe5d (2026-10-25, MIT) and
+moves the method into the sibling layout: one eight-step procedure (isolated session, checks
+first, reproduce, diagnose by path, smallest fix, replay and probe, release pass, report) in
+`SKILL.md` (mirrored by `GUIDE.md`), a tool map checked against chrome-devtools-mcp 1.12.0 and
+Playwright MCP with device emulation for widths, the first-party and third-party console split,
+Addy's heading-outline, script-scope and profile rules, a rewritten worked example and an
+updated test-plan template. The earlier worked example's Python script and its regex filter are
+removed. The comparison trial is recorded in
+`docs/validation/browser-testing-with-devtools/trial.md`.
+
 The 2026-11-26 upgrade of `delegation` re-reads Matt Pocock's `engineering/implement-spec`
 (mattpocock/skills commit 6f7f783, 2026-11-25, MIT) and Jesse Vincent's Obra Superpowers
 `dispatching-parallel-agents` and `subagent-driven-development` (obra/superpowers commit 22f0b46,
