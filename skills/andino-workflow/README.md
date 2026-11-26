@@ -14,7 +14,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | --- | --- |
 | `andino-brainstorming` | Open intent and choices, why before how, decision rounds and a confirmed design; optional decision-frontier, feasibility-probe, idea-validation and async-question resources. |
 | `andino-planning` | Exact implementation changes, dependencies and proof; optional behavior-readiness, dependency-slicing and recurring-process resources. |
-| `andino-plan-execution` | Authorized dependency-ready execution; independently selectable task-implementation, vertical-slice and frontend-engineering resources. |
+| `andino-plan-execution` | Execute an accepted plan one task at a time through gated steps (preflight, resume, red-green increments, four stops, full-diff review) with a report template; task-implementation, vertical-slice and frontend-engineering resources. |
 | `andino-delegation` | Decide, brief and accept any subagent work (plan lanes, investigations, research, reviews, panel seats) under one envelope approval and parent acceptance. |
 | `andino-api-and-interface-design` | Consumer-first design of any interface (HTTP, GraphQL, module, props, events, agent tools); optional HTTP-contract, module-depth and import-enforcement resources. |
 | `andino-architecture-survey` | Deepening candidates from the hot spots or a named area, shown as a before/after HTML report and then grilled; never edits product code during the survey. |

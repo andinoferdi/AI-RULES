@@ -1,0 +1,34 @@
+{
+  "loans": [
+    {
+      "loan_id": "L-001",
+      "member_id": "A-07",
+      "member_name": "Siti Rahma",
+      "principal": 2400000,
+      "installments": [
+        {"number": 1, "due_date": "2026-01-10", "amount": 400000},
+        {"number": 2, "due_date": "2026-02-10", "amount": 400000},
+        {"number": 3, "due_date": "2026-03-10", "amount": 400000}
+      ]
+    },
+    {
+      "loan_id": "L-002",
+      "member_id": "A-02",
+      "member_name": "Budi Santoso",
+      "principal": 1000000,
+      "installments": [
+        {"number": 1, "due_date": "2026-03-25", "amount": 333333},
+        {"number": 2, "due_date": "2026-04-25", "amount": 333333}
+      ]
+    },
+    {
+      "loan_id": "L-003",
+      "member_id": "A-11",
+      "member_name": "Wayan Putra",
+      "principal": 600000,
+      "installments": [
+        {"number": 1, "due_date": "2026-03-31", "amount": 300000}
+      ]
+    }
+  ]
+}

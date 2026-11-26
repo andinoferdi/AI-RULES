@@ -1,302 +1,241 @@
 # Worked planning examples
 
-These synthetic fixtures demonstrate plan construction, not actual repository
-inspection or completed implementation. Paths, signatures and commands are stated
-scenario inputs. Real plans derive them from the target repository. Planned
-assertions below are not reported test results.
+Synthetic scenarios. Paths, signatures and commands are scenario inputs; a real plan takes them
+from the repository it inspected. Every check below is planned, not run.
 
-## STANDARD: two complete CLI capabilities
+## STANDARD: a booking command with a price rule and one unknown
 
-Scenario: a Python inventory CLI already has `inventory/cli.py::main(argv:
-list[str]) -> int`, `inventory/store.py::list_items() -> list[dict[str, str]]`
-and `tests/test_cli.py`, whose `run_cli(argv, items)` returns `(exit_code, stdout)`
-while patching `inventory.cli.list_items` to return `items`.
-Store fixtures contain `[{"id": "1", "name": "Tea, green"}]`; an empty fixture
-returns `[]`. JSON listing already exists. Tests use standard-library unittest.
-`cli.py` imports argparse/json, uses `subparsers.add_parser('list')` in main,
-and after `args = parser.parse_args(argv)` calls `print(json.dumps(list_items()))`
-then returns 0. The accepted request adds CSV export and an optional exact-name
-filter for either format. The
-existing checkpoint is reused; publication has not been authorized.
+**Scenario.** A Python 3.10 study-room CLI, `rooms/`. Inspected: `rooms/cli.py::main(argv) ->
+int` with an argparse `list` subcommand; `rooms/store.py::load(path) -> list[Booking]` and
+`save(path, bookings)`; `rooms/models.py::Booking(room, day, start, end)` with `datetime.date`
+and `datetime.time` fields; `tests/support.py::run(args) -> (code, out, err)`. Tests use
+`unittest`; the README command is `python -m unittest -v` from the repository root, 6 tests,
+all passing. `rooms/timeutil.py::minutes(a, b)` returns `abs` minutes between two times.
+
+The accepted spec, `docs/specs/booking.md`:
+
+- **B1** `book <room> <YYYY-MM-DD> <HH:MM> <HH:MM> --member <id>` saves a booking and prints
+  `Booked <room> <date> <start>-<end>: Rp <price>`.
+- **B2** Price: Rp 10.000 for each started 30 minutes. A member's first 60 minutes of a day are
+  free. Prices are whole rupiah.
+- **B3** A booking that overlaps another in the same room is refused with
+  `Room <room> is taken <start>-<end>` on stderr, exit 1, nothing saved.
+- **B4** After saving, send an SMS through the campus gateway. The gateway's reply format is
+  not documented yet; IT will send an example.
+- Constraints: standard library only; existing booking files must still load.
+
+Gate 1 finds the trap: `minutes()` is absolute, so an end before the start would look like a
+valid booking. Gate 2 records two gaps (end before start; what "first 60 minutes" means when a
+day's earlier booking was 45 minutes) and turns B4 into D1.
 
 ````markdown
-# Inventory export
-Status: IN_PROGRESS
+# Room booking implementation plan
+
+Status: TODO
 Plan Depth: STANDARD
-Current Phase: Phase 1 — CSV export
-Last Updated: 2026-10-30
+Spec: docs/specs/booking.md
+Last Updated: 2026-11-26
 
 ## Executive Snapshot
-Accepted: CSV output and exact-name filtering; existing JSON remains default.
-Inspected scenario interfaces are listed above. No implementation or tests run.
-T1 establishes CSV; T2 adds filtering. Shared CLI/test writes are sequential.
+T1-T3 (B1-B3) are READY; start with T1. B4 waits on D1: IT's example gateway reply.
 
-## Objective
-Export inventory through the existing CLI with correct quoting and optional filtering.
+## Goal
+Members book study rooms from the CLI, see the price, and cannot double-book a room.
 
-## Acceptance Criteria
-- [ ] R1: `list --format csv` emits `id,name` followed by current rows using CSV quoting.
-- [ ] R2: Empty CSV emits only the header; default JSON preserves its existing behavior.
-- [ ] R3: `list --format csv --name NAME` emits exact matches, or just the header if none.
+## Global Constraints
+- Standard library only.
+- Existing booking files must still load.
+- Prices are whole rupiah (`int`).
 
-## Approach and Constraints
-Use the existing CLI/store boundary and Python csv.writer; add no dependency.
-Filter returned rows before rendering. JSON options/behavior remain compatible.
-No persistence or public store-interface change. No commit/push authorization.
+## Decisions the spec leaves open
+- End time not after start time: refused with `End must be after start`, exit 2 (same code as
+  argparse errors).
+- "First 60 minutes free" counts the member's minutes already booked that day: 45 earlier
+  minutes leave 15 free minutes.
+- Started 30 minutes are counted on the paid minutes after the free ones.
+
+## Review Focus
+1. End equal to start: refused (decision 1). Test in T1.
+2. A booking that ends exactly when another starts: not an overlap. Test in T3.
+3. A member's second booking on the same day: free minutes already used. Test in T2.
+4. Exactly 30 paid minutes: Rp 10.000, not 20.000. Test in T2.
+5. A booking file written before this change: still loads. Test in T1.
+
+## File map
+- `rooms/pricing.py` (create): the price rule only.
+- `rooms/cli.py` (modify): `book` subcommand and its checks.
+- `tests/test_pricing.py` (create), `tests/test_cli.py` (modify).
 
 ## Execution Board
-| Phase | Status | Goal | Scope | Evidence / Result |
+| Task | Status | Readiness | Depends on | Files |
 | --- | --- | --- | --- | --- |
-| Phase 1 — CSV export | IN_PROGRESS | R1/R2 through CLI | cli.py, test_cli.py | Scenario interface inspection; implementation not run |
-| Phase 2 — Name filter | TODO | R3 through CLI | same files after T1 | Not run |
+| T1 book saves a booking | TODO | READY | none | cli.py, test_cli.py |
+| T2 price rule | TODO | READY | none | pricing.py, test_pricing.py |
+| T3 overlap refusal and price in output | TODO | READY | T1, T2 | cli.py, test_cli.py |
+| D1 gateway reply format | BLOCKED | - | IT's example | none |
+| T4 SMS after save | TODO | WAITING_ON D1 | T3, D1 | cli.py, sms.py |
 
 ## Coverage
-| Requirement / failure case | Task | Check |
+| Requirement | Task | Check |
 | --- | --- | --- |
-| R1 and comma in name | T1 | csv.reader(output) == [['id','name'],['1','Tea, green']] |
-| R2 empty CSV | T1 | csv.reader(output) == [['id','name']] |
-| R2 existing JSON | T1/T2 gate | existing JSON regression tests still pass |
-| R3 match / missing name | T2 | exact row for 'Tea, green'; header only for 'Coffee' |
+| B1 | T1, T3 | `test_book_saves`, `test_book_prints_price` |
+| B2 | T2 | `test_price_*` |
+| B3 | T3 | `test_overlap_refused_nothing_saved` |
+| B4 | D1, T4 | blocked |
 
-## Detailed Execution
+## Tasks
 
-### Phase 1 — CSV export
-Status: IN_PROGRESS
-
-#### T1 — Export current inventory as CSV
+### T2 - Price rule (B2)
 Status: TODO
 Readiness: READY
-Requirements: R1, R2
+Requirements: B2
 Depends on: none
-Owns: Modify inventory/cli.py::main; Test tests/test_cli.py
-Interfaces: consumes inspected list_items() -> list[dict[str,str]];
-produces proposed CLI option `list --format csv`; existing main signature unchanged.
-
-Acceptance: exact parsed rows above, exit 0; empty store yields header only.
-
-Change Specification:
-- `inventory/cli.py` imports: add `import csv` and `import sys`.
-- `main` parser setup: replace `subparsers.add_parser('list')` with:
-
-```python
-list_parser = subparsers.add_parser('list')
-list_parser.add_argument('--format', choices=('json', 'csv'), default='json')
-```
-
-- `main` rendering: replace the existing `print(json.dumps(list_items()))`
-  with the following. Keep argument parsing, main signature and final return 0.
-
-```python
-rows = list_items()
-if args.format == 'csv':
-    writer = csv.writer(sys.stdout, lineterminator='\n')
-    writer.writerow(('id', 'name'))
-    writer.writerows((row['id'], row['name']) for row in rows)
-else:
-    print(json.dumps(rows))
-```
-
-- `tests/test_cli.py`: add `import csv` and `import io` if absent; add the two
-  unittest methods below to the existing CLI test class. Existing JSON tests remain.
-
-```python
-def test_csv_quotes_name(self):
-    code, output = run_cli(['list', '--format', 'csv'],
-                           [{'id': '1', 'name': 'Tea, green'}])
-    self.assertEqual(0, code)
-    self.assertEqual([['id', 'name'], ['1', 'Tea, green']],
-                     list(csv.reader(io.StringIO(output))))
-
-def test_csv_empty(self):
-    code, output = run_cli(['list', '--format', 'csv'], [])
-    self.assertEqual(0, code)
-    self.assertEqual([['id', 'name']], list(csv.reader(io.StringIO(output))))
-```
-
-Actions:
-- [ ] Add test_csv_quotes_name and test_csv_empty using existing run_cli/store fixtures.
-      Parse stdout with csv.reader; assert the literal rows in Coverage and exit 0.
-- [ ] Run `python -m unittest discover -s tests -p test_cli.py -v` at repository root.
-      Expect CSV-option/output assertions to fail; fix broken test setup separately.
-- [ ] Apply T1's parser, imports and rendering replacements in main.
-      Preserve the list_items interface and default JSON output.
-- [ ] Rerun the focused command; expect new and existing CLI assertions PASS, exit 0.
-
-Verification prerequisites: repository's supported Python; existing test fixtures.
-Integration gate: CLI tests invoke main and the existing store fixture, asserting
-stdout and status, rather than checking only a rendering helper.
-Result / Evidence: Not run — planned checks only.
-
-### Phase 2 — Name filter
-Status: TODO
-
-#### T2 — Export only exact-name matches
-Status: TODO
-Readiness: READY after T1 acceptance
-Requirements: R3; preserve R1/R2
-Depends on: T1
-Owns: Modify inventory/cli.py::main; Test tests/test_cli.py (serialize after T1)
-Interfaces: consumes T1's CSV option; produces proposed `--name NAME` list option.
-
-Acceptance: 'Tea, green' retains row 1; 'Coffee' emits only header, both exit 0.
+Files: Create `rooms/pricing.py`; Test `tests/test_pricing.py`
+Interfaces:
+- Produces: `price(minutes: int, free_left: int) -> int` in `rooms/pricing.py`.
+Acceptance: the spec rule in integers; values below.
 
 Change Specification:
-- `inventory/cli.py::main`, after T1's format argument: add
-  `list_parser.add_argument('--name', default=None)`.
-- Immediately after `rows = list_items()`, before either renderer, insert:
+- `rooms/pricing.py` (proposed): `price` charges each started 30 minutes of
+  `max(0, minutes - free_left)` at 10000. Started blocks in integers: `-(-paid // 30)`. No float.
+
+Steps:
+- [ ] 1. Write `tests/test_pricing.py`:
 
 ```python
-if args.name is not None:
-    rows = [row for row in rows if row['name'] == args.name]
+class PriceTest(unittest.TestCase):
+    def test_price_counts_started_half_hours(self):
+        self.assertEqual(price(30, 0), 10000)
+        self.assertEqual(price(31, 0), 20000)
+        self.assertEqual(price(90, 0), 30000)
+
+    def test_price_member_free_minutes(self):
+        self.assertEqual(price(60, 60), 0)
+        self.assertEqual(price(90, 60), 10000)
+        self.assertEqual(price(90, 15), 30000)   # 75 paid minutes -> 3 started blocks
 ```
 
-  Matching is case-sensitive equality with no trimming; omitted --name keeps all
-  rows. Filtering before rendering also applies to JSON. No new helper/store API.
-- `tests/test_cli.py`, existing test class: use these decisive cases with run_cli.
-  Add the JSON case to preserve the shared filter contract.
+- [ ] 2. Create `rooms/pricing.py` with `def price(minutes: int, free_left: int) -> int:
+      return 0`. RED: `python -m unittest tests.test_pricing -v` from the repository root;
+      expect `AssertionError: 0 != 10000` in `test_price_counts_started_half_hours`.
+- [ ] 3. Implement `price` per the Change Specification.
+- [ ] 4. GREEN: same command, 2 tests OK; then `python -m unittest -v`, 8 tests OK.
+
+Result / Evidence: Not run - planned checks only.
+
+### T3 - Overlap refusal and price in output (B1, B3)
+Status: TODO
+Readiness: READY
+Requirements: B1, B3
+Depends on: T1, T2
+Files: Modify `rooms/cli.py` (`_cmd_book`); Test `tests/test_cli.py`
+Interfaces:
+- Consumes: `price(minutes, free_left)` (T2); `_cmd_book` (T1).
+Acceptance: overlap refused with the exact message and nothing saved; success prints the price.
+
+Change Specification:
+- `rooms/cli.py::_cmd_book`, order of checks: end after start (decision 1, exit 2); overlap in
+  the same room and day, where `new.start < old.end and old.start < new.end` (touching is not an
+  overlap), print `Room <room> is taken <old.start>-<old.end>` to stderr and return 1 before
+  `save`; then price with `free_left = max(0, 60 - minutes already booked by the member that
+  day)`; save; print `Booked <room> <date> <start>-<end>: Rp <price with dots>`.
+- Do not use `timeutil.minutes` for durations: it is absolute. Use
+  `(end.hour * 60 + end.minute) - (start.hour * 60 + start.minute)`.
+
+Steps:
+- [ ] 1. Add to `tests/test_cli.py`, using `support.run` and a temporary booking file:
 
 ```python
-def test_csv_name_match(self):
-    code, output = run_cli(['list', '--format', 'csv', '--name', 'Tea, green'],
-                           [{'id': '1', 'name': 'Tea, green'},
-                            {'id': '2', 'name': 'tea, green'}])
-    self.assertEqual(0, code)
-    self.assertEqual([['id', 'name'], ['1', 'Tea, green']],
-                     list(csv.reader(io.StringIO(output))))
+def test_overlap_refused_nothing_saved(self):
+    self.write_bookings([("R1", "2026-12-01", "09:00", "10:00", "M7")])
+    code, out, err = run(["book", "R1", "2026-12-01", "09:30", "10:30", "--member", "M8"])
+    self.assertEqual((code, err.strip()), (1, "Room R1 is taken 09:00-10:00"))
+    self.assertEqual(len(self.read_bookings()), 1)
 
-def test_csv_name_missing(self):
-    code, output = run_cli(['list', '--format', 'csv', '--name', 'Coffee'],
-                           [{'id': '1', 'name': 'Tea, green'}])
-    self.assertEqual(0, code)
-    self.assertEqual([['id', 'name']], list(csv.reader(io.StringIO(output))))
+def test_touching_is_not_overlap(self):
+    self.write_bookings([("R1", "2026-12-01", "09:00", "10:00", "M7")])
+    code, out, err = run(["book", "R1", "2026-12-01", "10:00", "10:30", "--member", "M8"])
+    self.assertEqual(code, 0)
 
-def test_json_name_match(self):
-    items = [{'id': '1', 'name': 'Tea, green'}, {'id': '2', 'name': 'Coffee'}]
-    code, output = run_cli(['list', '--name', 'Coffee'], items)
-    self.assertEqual(0, code)
-    self.assertEqual([items[1]], json.loads(output))
+def test_book_prints_price(self):
+    code, out, err = run(["book", "R1", "2026-12-01", "09:00", "10:30", "--member", "M8"])
+    self.assertEqual(out.strip(), "Booked R1 2026-12-01 09:00-10:30: Rp 10.000")
 ```
 
-Actions:
-- [ ] Add test_csv_name_match and test_csv_name_missing using the literal cases above.
-- [ ] Run `python -m unittest discover -s tests -p test_cli.py -v` at repository root;
-      expect assertions for missing filter behavior to fail.
-- [ ] Apply T2's argument and filter insertion at the named anchors.
-- [ ] Rerun focused tests, then `python -m unittest discover -s tests -v` at repository
-      root; expect nonzero test count, all assertions PASS, exit 0, including existing JSON.
+- [ ] 2. RED: `python -m unittest tests.test_cli -v`; expect
+      `AssertionError: Tuples differ: (0, '') != (1, 'Room R1 is taken 09:00-10:00')` and
+      `'Booked R1 2026-12-01 09:00-10:30' != 'Booked R1 2026-12-01 09:00-10:30: Rp 10.000'`.
+- [ ] 3. Change `_cmd_book` per the Change Specification.
+- [ ] 4. GREEN: same command OK; full suite OK. Then run
+      `python -m rooms.cli book R1 2026-12-01 09:00 10:30 --member M8 --data <temp copy>` and
+      expect `Booked R1 2026-12-01 09:00-10:30: Rp 10.000`.
 
-Verification prerequisites: T1 accepted; same Python/test setup.
-Result / Evidence: Not run — planned checks only.
+Result / Evidence: Not run - planned checks only.
+
+## Blocked and discovery items
+
+### D1 - Gateway reply format (B4)
+Missing: what the campus SMS gateway returns on success and on failure. Provider: IT (example
+reply promised in the spec). Questions: success shape and status field; failure codes; timeout
+behaviour. Without it: T1-T3 ship; bookings save and print as today. Seam: `_cmd_book` calls one
+function `notify(booking) -> None` after `save`, added in T4. Exit check: the example reply is
+in the repository and T4's Change Specification names the success field and failure handling.
+
+## Risks
+| Risk | Effect | Covered by |
+| --- | --- | --- |
+| Absolute `minutes()` reused for durations | Reversed times accepted | T1 decision 1, T3 note |
+| Float price arithmetic | Off-by-one blocks | T2 integer rule and tests |
 
 ## NEXT ACTION
-Review the saved plan. Implementation awaits authorization because this scenario
-requested a plan only; once authorized, add T1's two cases in tests/test_cli.py,
-run the focused CLI command and inspect RED.
+T1: write `test_book_saves` in `tests/test_cli.py` and run it red.
 ````
 
-The example fixes boundary decisions (standard CSV quoting and exact matching),
-shows what code changes, states assertions, names dependencies and preserves the
-real entrypoint. The short branch bodies carry actual decisions; the parser,
-fixture machinery and store are not copied wholesale. Neither task is
-an isolated database/service/UI layer. A necessary shared foundation would be
-valid if its own check and named consumer justified it.
+T1 is left out above for length; it follows the same template. Notice what the plan does not
+contain: no body for `_cmd_book`, no argparse code, no imports. The tests, the overlap
+condition, the order of checks and the integer price rule are the decisions; the rest is the
+developer's.
 
-## LITE: static artifact, no TDD ceremony
+The reply to the requester:
 
-Scenario: the user requests a short saved plan to repair one inspected README
-command. `README.md` says `python app.py`; inspected `pyproject.toml` declares
-the supported entrypoint `inventory = inventory.cli:main`.
-
-```markdown
-# Correct the quickstart
-Status: TODO
-Plan Depth: LITE
-Current State: inspected README command disagrees with the declared entrypoint.
-Objective / Acceptance: quickstart uses `inventory --help`; adjacent setup steps remain accurate.
-Constraints: documentation only; preserve unrelated edits; no commit authorization.
-Readiness: READY
-Change Specification: README.md::Quickstart, replace the exact code-fence line
-`python app.py` with `inventory --help`. Do not change the surrounding setup commands.
-Actions: apply that replacement; inspect the diff against pyproject.toml.
-Verification: from repo root run `git diff --check` (exit 0), then review
-`git diff -- README.md` for exactly the intended command change. Runtime help
-is unverified unless the installed entrypoint is available and exercised.
-NEXT ACTION: edit the inspected README command, then inspect the focused diff.
+```text
+Plan: docs/exec-plans/active/room-booking.md
+Ready to build: T1, T2, T3 (booking, price, overlap), in that order.
+Blocked on IT: the SMS gateway's example reply (success and failure). SMS (B4) waits for it;
+  everything else ships without it.
+Decisions to confirm: end time must be after start (else refused); free 60 minutes count across
+  the member's bookings that day; started 30 minutes count after the free ones.
+Not done: nothing is built or tested yet.
 ```
 
-## Discovery before dependent implementation
+## LITE: one file, one rule
 
-If a requested export must stream millions of rows but the store's streaming API
-is unknown, add D1: inspect the store implementation and a bounded representative
-memory experiment; produce the verified iterator/error contract or evidence that
-the requirement needs a different approach. The streaming task depends on D1.
-Mark the consumer `Readiness: WAITING_ON D1`; do not invent `stream_items()`.
-D1 can be READY if its inspection/experiment and success criterion are specified.
-After D1 succeeds, write the verified iterator signature, error/close semantics,
-exact consumer edit and discriminating test into the dependent task, then reassess
-readiness. D1's DONE marker alone does not supply implementation instructions.
-Keep unrelated authorized work moving. Ask only if the findings change
-a user-owned requirement or exceed existing authority.
+Request: "Reject booking dates in the past." One file, one check.
 
-### Resume with a payment contract still open
+````markdown
+# Reject past booking dates
+Status: TODO | Plan Depth: LITE | Spec: user request 2026-11-26
+Goal: `book` refuses a date before today with `Date <date> is in the past`, exit 2.
+Decision: today is allowed; "today" is the machine's local date.
 
-Scenario: `src/checkout.py::checkout(order_id)` charges before marking an order
-paid. The paid write can fail after the charge succeeds. The accepted retry
-behavior requires one actual charge and a paid order after a successful retry.
-The provider key lifetime and supported retry window are unknown. The existing
-checkpoint has a checkout pass on an older checkout revision and a current
-order-list pass whose source, check and environment still match.
+### T1 - Refuse past dates
+Readiness: READY | Files: Modify `rooms/cli.py` (`_cmd_book`, first check); Test `tests/test_cli.py`
+Test: `run(["book", "R1", "2000-01-01", "09:00", "10:00", "--member", "M8"])` gives
+`(2, "", "Date 2000-01-01 is in the past\n")`; a booking for today is accepted.
+RED: `python -m unittest tests.test_cli -v` fails on the exit code (0 != 2).
+Change: compare `day < date.today()` before the overlap check.
+GREEN: same command OK; full suite OK.
+NEXT ACTION: write the test and run it red.
+````
 
-```markdown
-#### D1 — Establish how a retry finds the original charge
-Status: TODO
-Readiness: READY
-Depends on: none
-Owns: Payment contract decision in this checkpoint.
-Actions:
-- Inspect src/payments.py, provider documentation for the adapter in use,
-  and the existing retry policy. Record key scope and lifetime, the supported
-  retry window, and how the adapter identifies a charge when the response or
-  the paid write is lost. Cite the inspected sources.
-- Record either a verified replay/recovery contract covering that window or
-  the exact uncovered interval or ambiguous provider outcome.
-Exit: The sourced decision is recorded. With a verified contract, rewrite
-T1's changes and assertions before marking it ready. Otherwise keep T1
-waiting and record the gap.
+## Anti-pattern: the plan that writes the code
 
-#### T1 — Retry checkout after the paid write fails
-Status: TODO
-Readiness: WAITING_ON D1
-Depends on: D1
-Acceptance: First call creates a charge and hits the one-shot paid-write
-failure. Retry leaves the order paid. Across both calls the fake records one
-actual charge. Request count is a separate observation.
-Pending change specification: Name the adapter call, how the original charge
-is identified, and the exact assertions in tests/test_checkout.py once D1
-establishes replay or recovery behavior. Recheck checkout happy path because
-its prior pass covers older source. Retain the current order-list pass.
+A plan for the booking spec whose T3 holds the whole `_cmd_book` function (forty lines of
+argparse wiring, file loading, loops and prints) and whose T2 holds the full `pricing.py`. It
+is three times longer than the code it describes. The overlap rule and the integer rounding are
+buried in the body, so a reviewer cannot see what was decided, and the first review comment
+makes the pasted body stale.
 
-NEXT ACTION: Inspect src/payments.py to identify the adapter, then check the
-corresponding provider contract and record D1's exit evidence here.
-```
-
-## Failure patterns caught by self-review
-
-| Failure | Repair |
-| --- | --- |
-| Milestone says "restore About geometry" with a file directory and acceptance | Keep it a roadmap until inspected selectors, decided formula/values, concrete code/CSS change and check are written into tasks. |
-| Ready task says "implement the API" or "follow existing patterns" | Specify file/symbol, operation, exact interface/literals and decision-bearing change block; name the actual pattern and differences. |
-| Precise snippet still edits a removed symbol or contradicts the spec | Reconcile with current source/accepted requirements before execution; log the bounded correction and update consumers. |
-| Goal promises crash recovery; tasks only add a table and route | Add the recovery task and fault-condition proof, or narrow scope with an authorized decision. |
-| Test calls a helper while acceptance concerns a complete mutation | Exercise the public operation and observe both side effects, including rollback. |
-| Five speculative risks inflate a tiny document fix | Keep the relevant artifact check; no quota. |
-| 'Handle errors' / 'tests pass' leaves behavior undecided | Give the input, expected output/state, named assertion and actual command. |
-| One-task plan contains the entire implementation | Keep boundary decisions, fixtures and assertions; let executor write routine bodies. |
-| Planning automatically commits or asks again despite authorization | Respect existing authority and record a useful boundary only when applicable. |
-
-## Evidence limits
-
-Review can establish that this artifact covers its stated requirements and has
-coherent ownership/dependencies. Running fixture checks establishes only those
-checks. Claiming consistently better AI output requires repeated independent
-consumer evaluations; a schema pass or one favorable sample cannot establish it.
+Fix: replace each body with the signature, the tests as code and the lines that decide
+something (the overlap condition, `-(-paid // 30)`, the order of checks and their messages).
+Then run the step scan: each step should still yield exactly one reasonable thing.
