@@ -34,19 +34,21 @@ To prevent semantic split-brain and avoid stealing focus in remote environments,
 | Recommendation: STRONG | Dependency: in-process                             |
 | Affected Files: src/orders/OrderController.ts, OrderValidator.ts, ...       |
 |                                                                             |
-| Problem  : Controller forces callers to manually coordinate DB transactions |
-|            and pricing invariants across 4 shallow files.                   |
-| Solution : Consolidate 4 wrappers into a single deep OrderIntake module     |
-|            behind a transactional submitOrder seam.                         |
+| Problem  : Every order caller sequences validation, tax, the transaction    |
+|            and the email itself across 4 shallow modules.                   |
+| Solution : Absorb the 4 pass-through modules into one order intake module   |
+|            that owns the transaction.                                       |
 |                                                                             |
 | Wins:                                                                       |
-|   - locality: pricing invariants stay in 1 module                           |
-|   - leverage: 1 public interface replaces 4 wrappers                        |
-|   - tests hit 1 public submit seam without DB mocking                       |
+|   - locality: tax rules in one module                                       |
+|   - leverage: one interface, three callers                                  |
+|   - tests hit one interface                                                 |
 |                                                                             |
-| Full Visual HTML Report: C:\Users\Lenovo\AppData\Local\Temp\survey-xxx.html |
+| Report: /tmp/architecture-survey-20261102-143000.html                       |
 +-----------------------------------------------------------------------------+
 ```
+
+Print one card per candidate, strongest first, then the "Also found" items one line each, then the report path, then the question "Which of these would you like to explore?". The cards and the HTML report come from the same candidate data, so they never disagree. Neither names a method or signature for the deepened module yet.
 
 ---
 
@@ -65,7 +67,7 @@ The scaffold utilizes progressive enhancement: when an internet connection is av
   <!-- Online Progressive Enhancement via CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" onerror="this.onerror=null;this.dataset.failed=true;">
   <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs';
     mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });
   </script>
 
@@ -100,7 +102,7 @@ The scaffold utilizes progressive enhancement: when an internet connection is av
       <!-- Compact Schematic Legend -->
       <div class="mt-4 flex flex-wrap gap-4 text-xs font-mono text-slate-600 bg-white p-3 rounded-md border border-slate-200">
         <span class="flex items-center"><span class="w-3 h-3 bg-slate-900 mr-1.5 rounded-sm"></span> Deep Module</span>
-        <span class="flex items-center"><span class="w-3 h-3 bg-white border border-slate-400 mr-1.5 rounded-sm"></span> Shallow Wrapper</span>
+        <span class="flex items-center"><span class="w-3 h-3 bg-white border border-slate-400 mr-1.5 rounded-sm"></span> Shallow module</span>
         <span class="flex items-center"><span class="w-4 h-0 border-t-2 border-dashed border-slate-500 mr-1.5"></span> Seam</span>
         <span class="flex items-center"><span class="w-4 h-0 border-t-2 border-red-600 mr-1.5"></span> Leakage</span>
       </div>
@@ -109,7 +111,7 @@ The scaffold utilizes progressive enhancement: when an internet connection is av
     <!-- Candidates Section -->
     <section id="candidates" class="space-y-6">
       
-      <article class="candidate-card">
+      <article id="{{candidate_id}}" class="candidate-card">
         <!-- Title and Badges -->
         <div class="flex items-center justify-between flex-wrap gap-2">
           <h2 class="text-lg font-bold text-slate-900">{{candidate_title}}</h2>
@@ -162,10 +164,19 @@ The scaffold utilizes progressive enhancement: when an internet connection is av
 
     </section>
 
+    <!-- Also Found: findings not proposed, one line each -->
+    <section id="also-found" class="text-sm text-slate-700">
+      <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">Also found</h3>
+      <ul class="list-disc list-inside mt-1">
+        <li>{{kept_module}}: kept, deletion test scatters its rules across callers</li>
+        <li>{{untested_area}}: untested; {{what blocks testing through its interface}}</li>
+      </ul>
+    </section>
+
     <!-- Top Recommendation Section -->
     <section id="top-recommendation" class="top-rec">
       <h3 class="text-base font-bold text-emerald-900 uppercase tracking-wide">Top Recommendation</h3>
-      <p class="text-sm text-slate-800 mt-2 font-medium">{{top_rec_name}}</p>
+      <p class="text-sm text-slate-800 mt-2 font-medium"><a href="#{{top_rec_id}}">{{top_rec_name}}</a></p>
       <p class="text-xs text-slate-600 mt-1">{{top_rec_rationale}}</p>
     </section>
 
@@ -173,3 +184,13 @@ The scaffold utilizes progressive enhancement: when an internet connection is av
 </body>
 </html>
 ```
+
+---
+
+## 4. Offline Behaviour and Final Checks
+
+- The embedded `<style>` block styles every class the fallback needs, so the cards, badges, legend and top recommendation read without the Tailwind CDN.
+- A Mermaid block shows its source text when the Mermaid CDN is unreachable. Draw at least one diagram per card as hand-built HTML or SVG (patterns 2-5 in the diagram resource) so each card keeps a picture offline.
+- The header holds the repository name, the date and the legend, then goes straight into the candidates: no introduction paragraph.
+- The only scripts are the Tailwind stylesheet and the Mermaid import; the report is otherwise static.
+- Before handing over the path, open the file once or read it back and confirm every card has its files, problem, solution, wins, both diagram panels, strength badge and dependency category, and that the top recommendation links to a card id.

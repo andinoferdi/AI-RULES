@@ -1,19 +1,16 @@
-# Survey Architecture Friction: Worked Example and End-to-End Case Study
+# Worked example: surveying an order intake flow
 
-Internal method ID: `architecture-survey`. Supporting resource for `skills/architecture-survey`.
+Internal resource of `architecture-survey`. It follows one candidate from the code to the
+report card, the summary card and the design reached after grilling. The design section is
+what grilling produced; the report itself proposes no interface.
 
-This resource provides an end-to-end case study demonstrating how architectural friction is diagnosed, structured into candidate proposals, visually rendered in HTML, and grilled to an accepted design.
+## 1. The code before
 
----
-
-## 1. Worked Case Study: The Order Intake Pipeline
-
-### The Problem: Fragmented Shallow Modules (Before)
-
-In expanding codebases, simple operations are frequently atomized across multiple thin classes under the guise of "clean code". Understanding or changing the order placement logic forces developers to jump across five separate files:
+A shop's order placement is spread across five files. The HTTP controller, a bulk-import
+worker and an admin script each repeat the same sequence. `git log --name-only` over the last
+six months shows these files in most commits.
 
 ```typescript
-// BEFORE: Fragmented shallow modules, caller-side policy duplication, leaky seams
 // File: src/orders/OrderController.ts
 export class OrderController {
   constructor(
@@ -25,22 +22,22 @@ export class OrderController {
 
   async handleOrder(req: Request, res: Response) {
     const raw = req.body;
-    
-    // 1. Caller repeats policy and sequencing
+
+    // 1. The caller sequences policy itself
     if (!this.validator.isValidPayload(raw)) {
       return res.status(400).send("Invalid order");
     }
     const tax = this.pricing.computeTax(raw.subtotal, raw.country);
     const total = this.pricing.computeTotal(raw.subtotal, tax);
 
-    // 2. Leaky abstraction: Controller must manage DB transaction seam directly
+    // 2. The caller manages the database transaction handle
     const tx = await this.repoWrapper.beginTransaction();
     try {
       const orderRecord = await this.repoWrapper.insertOrder(tx, raw, total);
       await this.repoWrapper.insertLines(tx, orderRecord.id, raw.items);
       await this.repoWrapper.commit(tx);
 
-      // 3. Side-effect coordination scattered in caller
+      // 3. Side effects coordinated by the caller
       await this.notifier.sendOrderPlacedEmail(orderRecord.id, raw.email);
       return res.status(201).json({ id: orderRecord.id, total });
     } catch (err) {
@@ -50,180 +47,159 @@ export class OrderController {
   }
 }
 
-// File: src/orders/OrderValidator.ts (Shallow wrapper: interface as complex as impl)
+// File: src/orders/OrderValidator.ts
 export class OrderValidator {
   isValidPayload(data: any): boolean {
     return Boolean(data && data.items && data.items.length > 0 && data.subtotal > 0);
   }
 }
 
-// File: src/orders/OrderDatabaseWrapper.ts (Shallow pass-through over raw SQL)
+// File: src/orders/OrderDatabaseWrapper.ts
 export class OrderDatabaseWrapper {
   beginTransaction() { return db.startTx(); }
-  insertOrder(tx: any, data: any, total: number) { return tx.query("INSERT INTO orders...", [total]); }
-  insertLines(tx: any, orderId: string, items: any[]) { return tx.query("INSERT INTO order_items...", [items]); }
+  insertOrder(tx: any, data: any, total: number) { return tx.query("INSERT INTO orders ...", [total]); }
+  insertLines(tx: any, orderId: string, items: any[]) { return tx.query("INSERT INTO order_items ...", [items]); }
   commit(tx: any) { return tx.commit(); }
   rollback(tx: any) { return tx.rollback(); }
 }
 ```
 
-### Architectural Flaws Diagnosed:
-1. **The Deletion Test Concentrates:** If `OrderValidator` and `OrderDatabaseWrapper` are deleted and their logic absorbed into an order coordinator, complexity concentrates into one cohesive place rather than scattering. They are shallow wrappers.
-2. **Caller Repeats Policy:** Every caller (HTTP controller, background bulk intake worker, test suite) must replicate the exact sequencing of validation, tax math, transaction commits, and notification dispatches.
-3. **Leaky Seam:** The controller is coupled to transaction handles (`tx`), exposing database concurrency semantics to the web transport layer.
-4. **Brittle Test Surface:** Testing the controller requires mocking 4 dependencies across 8 method signatures.
+## 2. What the survey found
 
----
+1. **Deletion test concentrates:** deleting `OrderValidator` and `OrderDatabaseWrapper` and
+   absorbing their logic into one order intake module puts the complexity in one place; no
+   caller would have to reinvent anything. They are pass-through modules.
+2. **Callers repeat the sequence:** the controller, the bulk-import worker and the admin
+   script each run validation, tax, the transaction and the email, and their copies have
+   drifted (the worker emails before it commits).
+3. **Leak across the seam:** the controller holds the transaction handle `tx`, so database
+   concurrency rules reach the HTTP code.
+4. **Hard to test through the interface:** the controller test mocks four modules and eight
+   methods to assert one order.
+5. **Kept:** `src/money/CurrencyMath.ts` is used by twelve files. Deleting it would spread its
+   rounding rules across all of them, so it is load-bearing and not a candidate.
 
-### The Solution: Consolidated Deep Module Behind Public Seam (After)
+## 3. The report card and the summary card
 
-Consolidate the fragmented wrappers into a single deep module: `OrderIntake`. The public interface exposes exactly one high-leverage method (`submitOrder`) that encapsulates validation, pricing invariants, transactional persistence, and event notifications.
+The HTML card holds the files, the before diagram (pattern 2: four dashed pass-through boxes
+the controller calls in sequence, a red arrow for `tx`), the after diagram (one dark order
+intake box with a single entry point on top and the four steps faded inside), and:
+
+- **Problem:** Every order caller sequences validation, tax, the transaction and the email
+  itself across four shallow modules.
+- **Solution:** Absorb the four pass-through modules into one order intake module that
+  owns the transaction.
+- **Wins:** "locality: tax rules in one module", "leverage: one interface, three callers",
+  "transaction handle stays behind the seam", "tests hit one interface".
+
+The chat summary card from the same data:
+
+```
++-----------------------------------------------------------------------------+
+| CANDIDATE: Collapse the order intake pipeline                               |
++-----------------------------------------------------------------------------+
+| Strength: STRONG | Dependency: local-substitutable (orders database),       |
+|                  | true external (email)                                    |
+| Files: src/orders/OrderController.ts, OrderValidator.ts,                    |
+|        OrderDatabaseWrapper.ts, OrderPricingService.ts                      |
+| Problem : Every order caller sequences validation, tax, the transaction     |
+|           and the email itself across four shallow modules.                 |
+| Solution: Absorb the four pass-through modules into one order intake        |
+|           module that owns the transaction.                                 |
+| Wins: locality: tax rules in one module | leverage: one interface, three    |
+|       callers | transaction handle stays behind the seam                    |
++-----------------------------------------------------------------------------+
+Also found: src/money/CurrencyMath.ts kept (12 callers rely on its rounding);
+            src/orders/importWorker.ts untested (builds its queue client inline)
+Report: /tmp/architecture-survey-20261102-143000.html
+Which of these would you like to explore?
+```
+
+### The design after grilling
+
+The user picked this candidate. Grilling settled: the database has a local stand-in (an
+in-memory Postgres), so it stays behind an internal seam with no port; email is a third party,
+so it crosses a port with two adapters (production and a recording adapter for tests); the
+email goes out after commit and a failed email does not undo the order; the three callers
+move in one change and the four old modules are deleted.
 
 ```typescript
-// AFTER: Deep module, high leverage, strong locality, encapsulated transaction seam
 // File: src/orders/OrderIntake.ts
+export interface OrderLine { sku: string; quantity: number; unitPriceCents: number; }
+export interface PlaceOrder { customerId: string; country: string; email: string; lines: OrderLine[]; }
+export interface OrderReceipt { orderId: string; totalCents: number; }
 
-export interface OrderItem {
-  sku: string;
-  quantity: number;
-  unitPriceCents: number;
+// Port at the external seam. Adapters: SesOrderMailer (production), RecordingOrderMailer (tests).
+export interface OrderMailer {
+  orderPlaced(orderId: string, email: string): Promise<void>;
 }
 
-export interface SubmitOrderCommand {
-  customerId: string;
-  country: string;
-  items: OrderItem[];
-  email: string;
+// A pg Pool in production, an in-memory Postgres in tests: an internal seam, not a port.
+export interface Queryable {
+  connect(): Promise<{ query(sql: string, params?: unknown[]): Promise<any>; release(): void }>;
 }
 
-export interface OrderReceipt {
-  orderId: string;
-  totalCents: number;
-  itemCount: number;
-  submittedAt: Date;
-}
-
-export interface OrderRepository {
-  persist(order: { id: string; totalCents: number; items: OrderItem[] }): Promise<void>;
-}
-
-export interface NotificationService {
-  notifyOrderPlaced(orderId: string, email: string): Promise<void>;
-}
-
-// The Deep Module
 export class OrderIntake {
-  constructor(
-    private readonly repository: OrderRepository,
-    private readonly notifications: NotificationService
-  ) {}
+  constructor(private readonly db: Queryable, private readonly mailer: OrderMailer) {}
 
-  /**
-   * Deep public interface: one entry point handles the complete order placement lifecycle.
-   * Callers have zero awareness of internal transactions, tax calculations, or helper modules.
-   */
-  async submitOrder(command: SubmitOrderCommand): Promise<OrderReceipt> {
-    // 1. Invariants concentrated in implementation
-    this.assertValidCommand(command);
-
-    // 2. Calculations encapsulated internally
-    const subtotal = command.items.reduce((acc, i) => acc + i.unitPriceCents * i.quantity, 0);
-    const tax = this.computeTax(subtotal, command.country);
-    const totalCents = subtotal + tax;
-    const orderId = `ord_${crypto.randomUUID()}`;
-
-    // 3. Atomicity & persistence completely encapsulated behind repo seam
-    await this.repository.persist({ id: orderId, totalCents, items: command.items });
-
-    // 4. Notifications handled reliably
-    await this.notifications.notifyOrderPlaced(orderId, command.email);
-
-    return {
-      orderId,
-      totalCents,
-      itemCount: command.items.length,
-      submittedAt: new Date()
-    };
-  }
-
-  private assertValidCommand(cmd: SubmitOrderCommand): void {
-    if (!cmd.items?.length || cmd.items.some(i => i.quantity <= 0)) {
-      throw new Error("Order must contain at least one valid item");
+  /** Validates, prices, stores the order in one transaction, then emails. Throws InvalidOrder. */
+  async submit(order: PlaceOrder): Promise<OrderReceipt> {
+    if (!order.lines.length || order.lines.some((l) => l.quantity <= 0)) {
+      throw new InvalidOrder("an order needs at least one line with a positive quantity");
     }
-  }
+    const subtotal = order.lines.reduce((sum, l) => sum + l.unitPriceCents * l.quantity, 0);
+    const totalCents = subtotal + taxFor(subtotal, order.country);
 
-  private computeTax(subtotal: number, country: string): number {
-    return country === "ID" ? Math.round(subtotal * 0.11) : 0;
+    const client = await this.db.connect();
+    let orderId: string;
+    try {
+      await client.query("BEGIN");
+      orderId = (await client.query(
+        "INSERT INTO orders (customer_id, total_cents) VALUES ($1, $2) RETURNING id",
+        [order.customerId, totalCents])).rows[0].id;
+      for (const line of order.lines) {
+        await client.query("INSERT INTO order_items (order_id, sku, quantity, unit_price_cents) VALUES ($1, $2, $3, $4)",
+          [orderId, line.sku, line.quantity, line.unitPriceCents]);
+      }
+      await client.query("COMMIT");
+    } catch (err) {
+      await client.query("ROLLBACK");
+      throw err;
+    } finally {
+      client.release();
+    }
+
+    await this.mailer.orderPlaced(orderId, order.email).catch(() => { /* logged; the order stands */ });
+    return { orderId, totalCents };
   }
 }
 ```
 
-### Quantified Wins Achieved:
-- `locality: pricing invariants stay in 1 module`
-- `leverage: 1 public interface replaces 4 wrappers`
-- `seam hides database transaction handles`
-- `interface shrinks from 14 methods to 1`
-- `tests hit 1 public submit seam` without mocking internal SQL sequences.
+Tests: delete the controller test that mocks four modules. New tests call `submit` against an
+in-memory Postgres and a `RecordingOrderMailer`: a valid order is stored with its lines and one
+email recorded; an order with no lines throws `InvalidOrder` and stores nothing; a mailer
+failure still leaves the order stored.
 
----
+The interface shrank from fourteen methods spread over four modules to one `submit` call, and
+the transaction handle no longer leaves the module.
 
-## 2. Terminal-Native Executive Summary Card
+## 4. A wording check that matches the rules
 
-During the survey presentation in chat, this summary card is emitted:
-
-```
-+-----------------------------------------------------------------------------+
-| ARCHITECTURE SURVEY CANDIDATE: Collapse Order Intake Pipeline               |
-+-----------------------------------------------------------------------------+
-| Recommendation: STRONG | Dependency: in-process                             |
-| Affected Files: src/orders/OrderController.ts, OrderValidator.ts,           |
-|                 OrderDatabaseWrapper.ts, OrderPricingService.ts             |
-|                                                                             |
-| Problem  : Controller forces callers to manually coordinate DB transactions |
-|            and pricing invariants across 4 shallow files.                   |
-| Solution : Consolidate 4 wrappers into a single deep OrderIntake module     |
-|            behind a transactional submitOrder seam.                         |
-|                                                                             |
-| Wins:                                                                       |
-|   - locality: pricing invariants stay in 1 module                           |
-|   - leverage: 1 public interface replaces 4 wrappers                        |
-|   - seam hides database transaction handles                                 |
-|   - tests hit 1 public submit seam                                          |
-|                                                                             |
-| Full Visual HTML Report: C:\Users\Lenovo\AppData\Local\Temp\survey-123.html |
-+-----------------------------------------------------------------------------+
-```
-
----
-
-## 3. Deterministic Python Invariant Verification
-
-Below is an operational Python snippet validating that a candidate specification satisfies the 5 Floor Invariants before inclusion in the final survey report:
+This check flags banned substitutes in a card's prose and ignores identifiers in backticks,
+which is how the vocabulary rule is written.
 
 ```python
-def validate_survey_candidate(candidate):
-    # Invariant 1: Problem and Solution must be exactly 1 sentence
-    for field in ("problem", "solution"):
-        text = candidate.get(field, "").strip()
-        sentences = [s for s in text.split(".") if s.strip()]
-        if len(sentences) != 1:
-            return False, f"{field} must be exactly 1 sentence (found {len(sentences)})"
-    
-    # Invariant 2: Wins must be <= 6 words each
-    wins = candidate.get("wins", [])
-    if not wins or len(wins) > 5:
-        return False, "Candidate must provide 1 to 5 wins"
-    for w in wins:
-        words = w.split()
-        if len(words) > 6:
-            return False, f"Win '{w}' exceeds strict 6-word ceiling ({len(words)} words)"
-            
-    # Invariant 3: Lexical purity check (no forbidden words)
-    banned = ["component", "service", "unit", "api", "wrapper", "clean code", "maintainable"]
-    dump = str(candidate).lower()
-    for b in banned:
-        if b in dump:
-            return False, f"Banned terminology detected: '{b}'"
+import re
 
-    return True, "VALID"
+BANNED = ("component", "service", "api", "boundary", "layer", "cleaner code",
+          "easier to maintain")
+
+def prose_problems(text):
+    prose = re.sub(r"`[^`]*`", "", text).lower()   # quoted identifiers keep their names
+    return [word for word in BANNED if re.search(rf"\b{re.escape(word)}\b", prose)]
+
+card = ("Every order caller sequences validation, tax, the transaction and the email itself "
+        "across four shallow modules such as `OrderDatabaseWrapper`.")
+assert prose_problems(card) == []
+assert prose_problems("Introduce an order service layer.") == ["service", "layer"]
 ```
