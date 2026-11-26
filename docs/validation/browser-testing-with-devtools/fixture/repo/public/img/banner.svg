@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="240" viewBox="0 0 1200 240">
+  <rect width="1200" height="240" fill="#1a56db"/>
+  <text x="48" y="104" fill="#ffffff" font-family="system-ui, sans-serif" font-size="44" font-weight="700">Sprint 42 goals</text>
+  <text x="48" y="160" fill="#e8f0fe" font-family="system-ui, sans-serif" font-size="26">Ship retries · Close the audit · Demo on Friday</text>
+</svg>
