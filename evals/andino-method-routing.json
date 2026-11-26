@@ -392,6 +392,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-code-simplification-pasted",
+    "kind": "behavior",
+    "prompt": "Here's a function I pasted from our codebase, can you clean it up? There are no tests, it just works.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select code-simplification",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "code-simplification"
+    ],
+    "method": "code-simplification",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-code-simplification-negative",
     "kind": "negative-trigger",
     "prompt": "Fix the empty-input crash; the accepted behavior must change.",

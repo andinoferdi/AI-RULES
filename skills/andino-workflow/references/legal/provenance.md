@@ -72,6 +72,17 @@ catalogs across TypeScript/JavaScript, Python, and React) with Andino Workflow g
 SHA-256 byte-exact protected regions across multi-language comment syntaxes, subagent safety
 protocols with the Simplification Ledger, and offline deterministic Python test verification).
 
+The 2026-11-26 upgrade of `code-simplification` re-bases the skill on Addy Osmani's
+`code-simplification` at addyosmani/agent-skills commit f1f6fbf (2026-10-16, MIT) and moves
+the method into the sibling layout: one behavior-first procedure in `SKILL.md` (mirrored by
+`GUIDE.md`) with a safety-net table for repositories with, without or with failing tests and
+for pasted code, Addy's signal table, per-change questions and rationalization rows, an
+evidence rule for removing unused code, and the Simplification Ledger. The separate
+agent-protocols file is merged into `SKILL.md`; the pattern catalog gains a behavior-trap
+section; the worked example is corrected (its earlier "after" accepted truthy `valid` values
+and claimed a re-indented protected block was byte-identical). The comparison trial is
+recorded in `docs/validation/code-simplification/trial.md`.
+
 The 2026-11-01 elevation of `constraint-driven-development` synthesizes the generative craft
 of Addy Osmani's `constraint-driven-development` (4-question intake discipline with sane defaults,
 3-tier circularity hierarchy, 4-stage lifecycle integration, monotonic ratchets, and diff-scoped
