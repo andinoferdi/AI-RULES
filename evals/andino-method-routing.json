@@ -1834,6 +1834,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-plan-execution-resume-implicit",
+    "kind": "behavior",
+    "prompt": "Tasks 1 and 2 of the approved plan are done; carry on with the rest.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select plan-execution",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "plan-execution"
+    ],
+    "method": "plan-execution",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-plan-execution-negative",
     "kind": "negative-trigger",
     "prompt": "Buat ulang semua rencana tanpa sebab.",
