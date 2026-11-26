@@ -72,6 +72,17 @@ catalogs across TypeScript/JavaScript, Python, and React) with Andino Workflow g
 SHA-256 byte-exact protected regions across multi-language comment syntaxes, subagent safety
 protocols with the Simplification Ledger, and offline deterministic Python test verification).
 
+The 2026-11-26 upgrade of `code-simplification` re-bases the skill on Addy Osmani's
+`code-simplification` at addyosmani/agent-skills commit f1f6fbf (2026-10-16, MIT) and moves
+the method into the sibling layout: one behavior-first procedure in `SKILL.md` (mirrored by
+`GUIDE.md`) with a safety-net table for repositories with, without or with failing tests and
+for pasted code, Addy's signal table, per-change questions and rationalization rows, an
+evidence rule for removing unused code, and the Simplification Ledger. The separate
+agent-protocols file is merged into `SKILL.md`; the pattern catalog gains a behavior-trap
+section; the worked example is corrected (its earlier "after" accepted truthy `valid` values
+and claimed a re-indented protected block was byte-identical). The comparison trial is
+recorded in `docs/validation/code-simplification/trial.md`.
+
 The 2026-11-01 elevation of `constraint-driven-development` synthesizes the generative craft
 of Addy Osmani's `constraint-driven-development` (4-question intake discipline with sane defaults,
 3-tier circularity hierarchy, 4-stage lifecycle integration, monotonic ratchets, and diff-scoped
@@ -271,3 +282,16 @@ Standards pass in which documented repository standards override smell heuristic
 the repository as found. Request and receive protocols, review craft and trimmed security and
 performance triggers (path containment and negative caching kept in full) live in
 `resources/`. The comparison trial is recorded in `docs/validation/code-review/trial.md`.
+
+The 2026-11-26 upgrade of `brainstorming` re-bases the skill on Addy Osmani's `interview-me`
+(addyosmani/agent-skills commit 1d32b88), Matt Pocock's `grilling`, `grill-with-docs` and
+`domain-modeling` (mattpocock/skills commits 7739eae, 447ca70 and 2b7ab8c) and Jesse Vincent's
+superpowers `brainstorming` (obra/superpowers commit 22f0b46), all MIT, and moves the method into
+the sibling layout: one procedure from the first message to an approved design in `SKILL.md`
+(mirrored by `GUIDE.md`), why before how, numbered decision rounds once the why is known, an
+answer table, glossary updates when a term is resolved, ADRs only when a decision is hard to
+reverse, surprising and a real trade-off, and the light design, ADR and glossary formats in
+`resources/adr-and-glossary-template.md`. `resources/grilling-protocol.md` was merged into
+`SKILL.md`; the four sub-resources are unchanged. The numeric thresholds of the 2026-11-01
+elevation above (`<70%` confidence, 3-question predictability as a percentage) are retired. The
+comparison trial is recorded in `docs/validation/brainstorming/trial.md`.

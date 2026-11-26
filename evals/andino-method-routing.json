@@ -238,6 +238,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-brainstorming-grill-plan",
+    "kind": "behavior",
+    "prompt": "Grill me on this plan before I build it: a weekly digest email of new tools for members.",
+    "fixture": "Disposable routing assessment; current product facts are settled unless the request opens them.",
+    "expected": "Select brainstorming",
+    "forbidden": "Invented invocation, bulk loading, unauthorized changes or reopened accepted decisions.",
+    "capabilities": [
+      "brainstorming"
+    ],
+    "method": "brainstorming",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-browser-testing-with-devtools-implicit",
     "kind": "behavior",
     "prompt": "The checkbox stays checked after a PATCH returns 503; diagnose these captured events.",
@@ -395,6 +409,20 @@
     "id": "method-code-simplification-implicit",
     "kind": "behavior",
     "prompt": "Simplify this green nested function without changing errors or the marked fast path.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select code-simplification",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "code-simplification"
+    ],
+    "method": "code-simplification",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-code-simplification-pasted",
+    "kind": "behavior",
+    "prompt": "Here's a function I pasted from our codebase, can you clean it up? There are no tests, it just works.",
     "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
     "expected": "Select code-simplification",
     "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
