@@ -213,9 +213,13 @@ plan.
    5. **Semgrep registry rules are free to run; check their licence before redistributing them.**
       opengrep reads the same rules and writes the same JSON.
 
-   - A missing coverage provider (Vitest without `@vitest/coverage-v8`) is a dev dependency to add,
-     pinned to the test runner's version. It changes the lockfile, so say so when installs need
-     approval.
+   - Add a missing coverage provider (Vitest without `@vitest/coverage-v8`) to the manifest, pinned
+     to the test runner's version, even when it cannot be installed here; report the lockfile
+     update as the remaining step. Leaving coverage pending because this environment cannot
+     install it gives up a dimension the user chose.
+   - A missing lockfile does not drop the dependency dimension. Scan what CI installs (`pip-audit`
+     after the install step, `npm audit --audit-level=high` after `npm ci`, osv-scanner once a
+     lockfile is committed) and report the lockfile as a prerequisite.
    - A new rule that current code already breaks, such as an existing violation of a layer
      boundary, is fixed in the setup change or recorded as Known debt or an approved exception. A
      gate that fails forever teaches people to ignore red; a rule that quietly skips the violation
@@ -223,8 +227,9 @@ plan.
    - `semgrep scan` and `axe` can exit 0 with findings: run them through the quality gate in
      [quality-gate-protocols](resources/quality-gate-protocols.md).
 
-   Done when every chosen dimension has a command that runs today, or a pending row naming the
-   missing tool.
+   Done when every chosen dimension has a command that runs today, locally or in CI. A row stays
+   pending only when it cannot run anywhere yet (no URL, no rules decided), and names what is
+   missing.
 
 6. **Wire it to the lifecycle.** Running everything everywhere is the biggest mistake. A check that
    stalls the agent gets switched off, and a gate people switched off is worse than none, because
@@ -410,7 +415,7 @@ The method was applied when:
 
 - [ ] `CONSTRAINTS.md` exists at the repository root, and every number in it states its reason.
 - [ ] The floor guard runs at edit, task end and CI, and passes on the current code without changes.
-- [ ] Every dimension the user chose has a tool and a command that runs today, or a pending row naming what is missing.
+- [ ] Every dimension the user chose has a tool and a command that runs today, locally or in CI; pending rows are only for dimensions that cannot run anywhere yet.
 - [ ] Each row says where it runs, and the edit stage stays within a few seconds.
 - [ ] At least one enforced constraint is external or project-owned, not judged only by the project's own tests.
 - [ ] Measured metrics record today's value, its source and a direction.
@@ -434,8 +439,10 @@ or to hand the failing evidence to the policy owner.
 - No person to answer: the floor only (step 2).
 - No merge base: the guard exits 2. Record the floor as unavailable and fetch the target branch
   (in CI, `fetch-depth: 0`); never treat the run as clean.
-- A tool cannot be installed here (no network, no approval): write its row as pending, with the
-  install command and where it will run; do not mark it enforced.
+- A tool cannot be installed in this environment (no network, no approval) but CI can install it:
+  declare it (a manifest entry or a CI install step), enforce the row at the CI stage, and record
+  the local proof as unavailable with the step that obtains it. A row is pending only when it
+  cannot run anywhere yet.
 - No running URL: accessibility and page performance are not applicable in this repository; name
   where they belong.
 
