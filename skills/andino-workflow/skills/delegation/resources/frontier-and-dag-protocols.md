@@ -1,127 +1,119 @@
-# Active Frontier and Task DAG Protocols
+# Pre-flight, frontier and write collisions
 
-Internal Andino resource for `andino-delegation`. Operates under Andino Workflow governance.
+Internal Andino resource for `andino-delegation`. Use it before the first dispatch of a plan and
+whenever a task finishes. Words such as frontier and lane are defined in [the rules](contract.md).
 
-## 1. Task DAG Mathematical Modeling
+## Pre-flight table
 
-A multi-task implementation plan forms a Directed Acyclic Graph (DAG) $G = (V, E)$:
-- $V = \{T_1, T_2, \dots, T_n\}$: set of discrete implementation tasks.
-- $E \subset V \times V$: directed dependency edges where $(T_u, T_v) \in E$ indicates task $T_v$ depends on task $T_u$ ($T_u \prec T_v$).
-- Every task $T$ declares a write set $W(T)$ of relative paths. Only concurrent tasks
-  must be disjoint; dependent tasks in one lane may reuse ownership sequentially.
+Before the first dispatch, write a table into the plan (or the journal it links). Write each row as
+you check it.
 
-### Dependency Graph Specification
+- One row per pair of tasks that share a file or an interface: the two tasks, what one produces and
+  the other consumes, what you found, your ruling.
+- One row per task: whether its own text agrees with itself and with the spec (the tests it names
+  against the code it names, the files it creates against the files it later edits, its values
+  against the spec's).
 
-```yaml
-tasks:
-  - id: auth-tokens
-    deps: []
-    owned_paths:
-      - src/auth/token_signer.py
-      - tests/test_token_signer.py
-  - id: auth-store
-    deps: []
-    owned_paths:
-      - src/auth/refresh_store.py
-      - tests/test_refresh_store.py
-  - id: auth-middleware
-    deps:
-      - auth-tokens
-      - auth-store
-    owned_paths:
-      - src/auth/middleware.py
-      - tests/test_middleware.py
-```
+A clean scan without these rows was not run. Rule on each conflict with the spec as the authority
+and record the ruling (format in [the rules](contract.md)). Ask the user only when the spec does
+not settle it. Look in particular for:
 
-## 2. Active Frontier Calculation
+- a value in the plan that differs from the spec (a timeout, a limit, a default);
+- a dependency the text uses but the dependency table omits (Task 4 calls a function Task 5 adds);
+- a test the plan specifies that cannot work with the signature it specifies;
+- anything the plan mandates that the review would call a defect (a test that asserts nothing, a
+  duplicated logic block).
 
-The **Active Frontier** $\mathcal{F}_t \subseteq V$ at step $t$ is the set of uncompleted tasks whose prerequisites are completely satisfied:
+Example rows:
 
-$$\mathcal{F}_t = \{ T \in V \setminus C_t \mid \forall D \in \text{deps}(T), D \in C_t \}$$
+| Pair or task | Produces / consumes | Found | Ruling |
+| --- | --- | --- | --- |
+| 1 and 3 | both edit `tests/conftest.py` | same file, different fixtures | never at the same time; same lane or sequential |
+| 4 and 5 | 4 calls `parse_since`, which 5 adds | table lists 4 on 1, 2, 3 only | 4 also depends on 5 |
+| 3 | default `expires_in=600` | spec says 900 seconds | 900 — spec is authority — a one-line constant if wrong |
 
-Where $C_t$ is the set of parent-accepted tasks whose source/check/environment
-identities and prerequisites remain current. A stale producer is unsatisfied.
-Reject duplicate IDs, missing dependencies and cycles before computing a frontier.
+For an investigation instead of a plan, the pre-flight is grouping the failures by cause: read the
+failure output and the commits since the last green run, and put failures that share a cause in one
+group. A shared cause is investigated once, inline or by one agent.
 
-### Frontier Resolution Algorithm (Python stdlib)
+## Dependencies and the frontier
+
+Reject duplicate task IDs, dependencies on tasks that do not exist, and cycles before computing
+anything. A task joins the frontier when every task it depends on has parent acceptance whose
+identities still match the current files. A producer that changed after acceptance is not accepted
+any more, and neither is anything built on it.
 
 ```python
 def compute_active_frontier(tasks: list[dict], completed_ids: set[str]) -> list[dict]:
-    """
-    Returns uncompleted tasks whose dependencies are strictly satisfied in completed_ids.
-    Preserves input order; this helper does not calculate critical-path priority.
-    """
+    """Uncompleted tasks whose dependencies are all in completed_ids, in input order."""
     frontier = []
-    for t in tasks:
-        t_id = t["id"]
-        if t_id in completed_ids:
+    for task in tasks:
+        if task["id"] in completed_ids:
             continue
-        deps = set(t.get("deps", []))
-        if deps.issubset(completed_ids):
-            frontier.append(t)
+        if set(task.get("deps", [])).issubset(completed_ids):
+            frontier.append(task)
     return frontier
 ```
 
-## 3. Disjoint Write Ownership & Collision Prevention
+Rolling frontier: when you accept a producer, start the listed agent for the task it unblocks right
+away, inside the envelope and the 3-agent limit, without waiting for the rest of its wave. Never
+start a consumer on a producer that has only its own worker's word.
 
-Concurrent subagent execution is **strictly forbidden** if any candidate tasks share write targets or exhibit ancestor path collisions.
+## Write collisions
 
-### Overlap Rules
+Two tasks may run at the same time only when none of these hold:
 
-1. **Exact File Collision**: If $W(T_A) \cap W(T_B) \neq \emptyset$, tasks $T_A$ and $T_B$ must execute sequentially.
-2. **Ancestor Directory Collision**: If path $p_A \in W(T_A)$ is a parent directory or prefix of path $p_B \in W(T_B)$ (e.g., `src/auth` vs `src/auth/signer.py`), tasks $T_A$ and $T_B$ must execute sequentially.
-3. **Shared Dependency File Lock**: Modifications to shared root configuration files (`package.json`, `Cargo.toml`, `pyproject.toml`, database migration ledgers) cannot be parallelized.
-4. **Mutable State**: Shared databases, ports, generated fixtures and services also
-   need isolation or serialization. Disjoint file names alone do not establish independence.
-
-The snippet below illustrates normalized relative paths, not a filesystem sandbox.
-Validate repo-relative ownership against actual resolved paths and host case rules;
-reject escapes and inspect symlink aliases before dispatch. Never use this toy
-predicate as permission to write outside the approved worktree.
-
-### Collision Detection Function
+1. **Same file**: both write one path.
+2. **Ancestor directory**: one owns a directory and the other a path inside it (`src/auth` and
+   `src/auth/signer.py`).
+3. **Shared root configuration**: `package.json`, `pyproject.toml`, `Cargo.toml`, lockfiles,
+   migration ledgers and similar files have one writer at a time.
+4. **Shared mutable state**: a database, a port, generated fixtures or a running service need
+   isolation or one user at a time. Different file names alone do not make tasks independent.
 
 ```python
 import os
 
-def normalize_path(p: str) -> str:
-    return os.path.normpath(p).replace("\\", "/").strip("/")
+
+def normalize_path(path: str) -> str:
+    return os.path.normpath(path).replace("\\", "/").strip("/")
+
 
 def has_write_collision(paths_a: list[str], paths_b: list[str]) -> bool:
-    norm_a = [normalize_path(p) for p in paths_a]
-    norm_b = [normalize_path(p) for p in paths_b]
-    for pa in norm_a:
-        for pb in norm_b:
-            if pa == pb:
-                return True
-            # Ancestor check
-            if pa.startswith(pb + "/") or pb.startswith(pa + "/"):
+    for a in map(normalize_path, paths_a):
+        for b in map(normalize_path, paths_b):
+            if a == b or a.startswith(b + "/") or b.startswith(a + "/"):
                 return True
     return False
 ```
 
-## 4. Concurrency Bounds & Wave Scheduling
+This snippet compares normalized relative paths; it is not a sandbox and grants no permission.
+Check real ownership against resolved paths and the host's case rules, reject paths that escape the
+worktree, and look for symlink aliases before dispatch. A consumed interface that is still changing
+is a collision too: serialize the consumer.
 
-Under Andino Workflow resource guard 10:
-- **Maximum Concurrent Direct Children**: At most **3**, reviewers included; zero is valid.
-- **No Nested Agent Spawning**: A subagent must never spawn another subagent.
-- **Wave Dispatch**: If active frontier $|\mathcal{F}_t| > 3$, partition into waves:
-  - Select only as many ready, independent lanes as benefit justifies, at most 3.
-  - Every wave needs count, tasks, actual model, effort and planned reviews followed
-    by user go-ahead. A free slot does not authorize another wave or a replacement.
-  - Keep one worker/model per lane; accept a producer before releasing its consumer.
+## Lanes and waves
 
-## 5. Tri-Modal Execution Decision Matrix
+Group related tasks that share files or context into a lane, kept by one worker with one model.
+Dependent tasks in a lane run in order and may reuse the same files. Separate lanes may run at the
+same time when they pass the collision checks. Start a fresh worker for a later task only when the
+lane's earlier context would mislead it, and say why; that is a new agent in the envelope.
 
-| Strategy | When to Select | Execution Mechanics |
-| :--- | :--- | :--- |
-| **Inline** | Start-up/briefing/review exceeds benefit, coupled changes, a shared unknown cause, or missing worker capability. | Parent executes and verifies; size is only a signal. |
-| **Parallel Dispatch** | 2+ completely independent problem domains, zero shared state, separate test files, and no common root cause. | Multi-dispatch in a single turn; parent collects summaries, checks for conflicts, and integrates. |
-| **Subagent-Driven** | Multi-task implementation plan with clear specifications, where isolated context and risk-scaled review ensure quality. | One worker per lane (dependent tasks sharing a write set); task brief via file pointer; risk-scaled review; fix loop escalation; parent ledger tracking. |
+When more lanes are ready than the limit allows, run at most 3 at once and pick the ones whose
+results unblock the most work. A free slot does not authorize an agent the envelope did not list.
 
-## 6. Anti-Patterns & Failure Modes
+## Batching
 
-1. **Failure Count Parallelism**: Dispatching 1 subagent per failing test when all failures stem from a single shared schema error or broken import.
-2. **Shared-Manifest Race Conditions**: Spawning two subagents that each run `npm install <pkg>` or mutate `pyproject.toml` simultaneously.
-3. **Speculative Dispatch**: Dispatching task $T_B$ while prerequisite $T_A$ is still running or has only passed implementer self-review without parent gate verification.
-4. **Chat History Replay**: Pasting the entire prior conversation or accumulated task history into subsequent worker prompts.
+Several small edits of the same shape (the same one-line fix, constant or key across files) are one
+unit: do them inline or give the whole list to one agent, and review the diff as one change, file
+by file against the list. Keep one task per agent for work that needs its own judgment, tests or
+review.
+
+## Anti-patterns
+
+1. **One agent per failing test** when the failures share one schema change or broken import.
+2. **Shared manifest races**: two agents each installing packages or editing `pyproject.toml`.
+3. **Speculative dispatch**: starting a consumer while its producer still runs, or has passed only
+   its own worker's self-review.
+4. **History replay**: pasting the conversation or earlier tasks' summaries into a later dispatch.
+5. **A merger or a reviewer per small task**: the parent integrates; review follows risk.

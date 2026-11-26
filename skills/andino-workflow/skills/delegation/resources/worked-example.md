@@ -1,143 +1,171 @@
-# Worked Example: CSV Export in One Lane
+# Worked example: a plan where two lanes pay
 
-Internal Andino resource. This is a synthetic runnable example, not a report of a
-real agent run. It shows implementation and handoff detail, not a model benchmark.
+Internal Andino resource for `andino-delegation`. A synthetic run, written to show the artifacts in
+order; nothing here ran. Paths, numbers and agent output are scenario inputs. The rules it applies
+are in [the rules](contract.md) and the prompts it fills are in
+[briefs and prompts](subagent-brief-and-report-schemas.md).
 
-## 1. Cost decision and ready work
+## The plan and the cost decision
 
-Accepted outcome: inventory listing supports JSON (default) and CSV. CSV quotes
-commas, preserves row order and emits only a header for no items. Export is pure:
-no persistence, dependency installation or network access.
+Accepted spec: partner API v2. Partners get signed API keys that rotate, and a monthly usage report
+as CSV. The accepted plan has nine tasks on branch `feature/partner-v2`:
 
-The task graph has T1 (render CSV/JSON) then T2 (wire the CLI format option).
-Both touch the same module/tests. They form one sequential lane. This small case
-is cheaper inline: zero agents, zero reviewer start-ups. For the same tasks inside
-an already approved larger lane, retain that lane's worker/model. Do not spawn two
-workers or a merger simply because two task IDs exist.
+| Task | Depends on | Files | Size |
+| --- | --- | --- | --- |
+| 1 Settings keys | none | `config/settings.toml`, `src/partner/settings.py` | 15 lines, values given |
+| 2 Key model and store | 1 | `src/partner/keys/store.py`, `tests/keys/test_store.py` | ~120 lines |
+| 3 Key signing and verification | 2 | `src/partner/keys/sign.py`, `tests/keys/test_sign.py` | ~130 lines, security |
+| 4 Key rotation endpoint | 3 | `src/partner/api/keys.py`, `src/partner/api/__init__.py`, `tests/api/test_keys.py` | ~100 lines |
+| 5 Usage event model | 1 | `src/partner/usage/events.py`, `tests/usage/test_events.py` | ~60 lines, code given |
+| 6 Monthly aggregation | 5 | `src/partner/usage/aggregate.py`, `tests/usage/test_aggregate.py` | ~180 lines |
+| 7 CSV report renderer | 6 | `src/partner/usage/report.py`, `tests/usage/test_report.py` | ~150 lines |
+| 8 Report endpoint | 4, 7 | `src/partner/api/reports.py`, `src/partner/api/__init__.py`, `tests/api/test_reports.py` | ~90 lines |
+| 9 API docs | 8 | `docs/partner-api.md` | ~40 lines |
 
-Ready brief:
-- Spec & Global Constraints: this accepted outcome; JSON remains default.
-- Working directory / source: approved checkout, recorded BASE and owned WIP.
-- Owned paths: `inventory_example.py`; in a real repo, name its exact test file too.
-- Consumed interface: items are ordered dictionaries with string `id` and `name`.
-- Produced interface: `main(argv, items, output)` returns 0, writes JSON or CSV.
-- T1 acceptance: comma-bearing name round-trips; empty CSV has header only.
-- T2 acceptance: CLI selects CSV; absent format selects JSON; invalid format errors.
-- Proof: save/run the complete example below with Python 3; all five tests pass.
-- Report: agreed plan-specific report path; no commit/push without scoped authority.
+Decision, per task: Tasks 1, 8 and 9 stay with the parent (small, or the place where both domains
+meet). Tasks 2-4 (keys) and 5-7 (usage) are two independent domains of roughly 350 and 390 lines
+with separate files; each becomes a lane. Two lane workers and one reviewer cost about 180k tokens
+of start-up against about 740 lines of work that can proceed side by side while the parent keeps its
+context for integration. That pays. A worker per task (six workers) or a reviewer per task would not.
 
-## 2. One complete runnable example
+## Pre-flight table
 
-The assertions use literal expected rows, not the renderer to calculate its own
-expected output. In a real implementation first run each relevant new assertion
-against the old behavior and observe the intended failure, then implement it.
+| Pair or task | Produces / consumes | Found | Ruling |
+| --- | --- | --- | --- |
+| 1 and 2, 1 and 5 | Task 1 provides `settings.KEY_TTL_DAYS`, `settings.REPORT_TZ` | names match | none |
+| 4 and 8 | both edit `src/partner/api/__init__.py` (router) | same file | Task 8 by the parent after Task 4 is accepted |
+| 5 and 6 | 6 consumes `UsageEvent(partner_id, at, units)` | types match | none |
+| 2 | key lifetime 30 days | spec section 3 says 90 days | `Ruling: KEY_TTL_DAYS = 90 — spec section 3 — one constant if wrong` |
+| 6 | "group by month" | spec section 4: calendar months in UTC | aggregation uses UTC boundaries; recorded in the brief |
+| 7 | test expects header `Units` | spec table says `Billable units` | `Ruling: header "Billable units" — spec section 5 — one string if wrong` |
 
-Save as `inventory_example.py`, run `python inventory_example.py`:
+## The envelope
 
-```python
-import argparse
-import csv
-import io
-import json
-import unittest
+> I'd run this plan with 3 subagents, at most 2 running at once:
+>
+> - K, implementer, lane keys (Tasks 2, 3, 4): sonnet, medium. Owns `src/partner/keys/`,
+>   `src/partner/api/keys.py`, `tests/keys/`, `tests/api/test_keys.py`.
+> - U, implementer, lane usage (Tasks 5, 6, 7): sonnet, medium. Owns `src/partner/usage/`,
+>   `tests/usage/`. Task 5's code is given, but 6 and 7 work from prose, so the lane needs the mid tier.
+> - R, reviewer for Task 3 (key signing, security): sonnet, medium, plus one scoped re-review per fix
+>   round.
+>
+> Fix-round cap: 5, stopping earlier when a round brings nothing new. I do Tasks 1, 8 and 9, read
+> every task's diff, and do the final whole-change review myself, disclosed as not independent. Two
+> independent domains run side by side for about 180k tokens of start-up.
+>
+> Following the spec over the plan: key lifetime 90 days (plan said 30) and the report header
+> "Billable units". The run stops for a product decision the spec leaves open, a failed or stopped
+> agent, or anything needing an install, a push or a merge. Reply yes to approve this list; anything
+> outside it I will ask about first.
 
+The user says yes. The journal records the envelope line.
 
-def render(items, format_name, output):
-    if format_name == "csv":
-        writer = csv.writer(output, lineterminator="\n")
-        writer.writerow(("id", "name"))
-        writer.writerows((row["id"], row["name"]) for row in items)
-    else:
-        output.write(json.dumps(items) + "\n")
+## Brief and dispatch for lane K
 
+`python scripts/task_brief.py docs/plans/partner-v2.md 2` copies Task 2; the parent completes it:
 
-def main(argv, items, output):
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--format", choices=("json", "csv"), default="json")
-    args = parser.parse_args(argv)
-    render(items, args.format, output)
-    return 0
-
-
-class InventoryTests(unittest.TestCase):
-    def test_csv_quotes_comma(self):
-        output = io.StringIO()
-        render([{"id": "1", "name": "Tea, green"}], "csv", output)
-        self.assertEqual([["id", "name"], ["1", "Tea, green"]],
-                         list(csv.reader(io.StringIO(output.getvalue()))))
-
-    def test_csv_empty_header(self):
-        output = io.StringIO()
-        render([], "csv", output)
-        self.assertEqual("id,name\n", output.getvalue())
-
-    def test_cli_csv_integration(self):
-        output = io.StringIO()
-        self.assertEqual(0, main(["--format", "csv"],
-                                [{"id": "7", "name": "Coffee"}], output))
-        self.assertEqual("id,name\n7,Coffee\n", output.getvalue())
-
-    def test_cli_json_default(self):
-        output = io.StringIO()
-        self.assertEqual(0, main([], [{"id": "7", "name": "Coffee"}], output))
-        self.assertEqual([{"id": "7", "name": "Coffee"}],
-                         json.loads(output.getvalue()))
-
-    def test_cli_rejects_invalid_format(self):
-        import contextlib
-        with contextlib.redirect_stderr(io.StringIO()):
-            with self.assertRaises(SystemExit) as error:
-                main(["--format", "xml"], [], io.StringIO())
-        self.assertEqual(2, error.exception.code)
-
-
-if __name__ == "__main__":
-    unittest.main(verbosity=2)
+```markdown
+# Task 2 — Key model and store   (lane keys)
+Outcome: keys are created, looked up by id and revoked; expired keys are never returned
+Spec and plan: docs/spec/partner-v2.md sections 2-3; docs/plans/partner-v2.md Task 2
+Global constraints: "Keys expire after 90 days." "No new runtime dependency."
+Rulings that bind this task: Ruling: KEY_TTL_DAYS = 90 — spec section 3 — one constant if wrong
+Working directory and BASE: /work/partner (feature/partner-v2), BASE 4c1e2d8, no uncommitted files
+Owned paths: src/partner/keys/store.py, tests/keys/test_store.py; must not touch: src/partner/api/
+Uses: settings.KEY_TTL_DAYS (Task 1, accepted at 4c1e2d8)
+Provides: create(partner_id) -> Key; get(key_id) -> Key | None; revoke(key_id) -> None
+Acceptance: get() of a key created 89 days ago returns it; at 90 days returns None; revoke then get
+  returns None; unknown id returns None
+Proof: python -m pytest tests/keys/test_store.py -q from /work/partner; 4 tests, all pass
+Report: /work/partner/.andino/delegation/partner-v2/task-2-report.md
+Limits: no subagents; no writes outside owned paths; no weakened tests; no install, push or publish;
+  commit on feature/partner-v2 with the task id in the message
 ```
-
-## 3. Report, parent acceptance and review
-
-A worker's hypothetical short return might say:
 
 ```text
-Status: DONE_WITH_CONCERNS
-Task / lane: export / T1
-Content identity: [actual BASE..HEAD or owned snapshot]
-Evidence: [actual command, directory, five tests observed; report pointer]
-Concerns: downstream command naming still needs confirmation for T2
-Report: [absolute agreed report path]
+description: Lane keys: Task 2 store
+model: sonnet
+effort: medium
+prompt: |
+  This lane builds partner API keys; Tasks 3 and 4 follow in this same lane after review.
+  Read /work/partner/.andino/delegation/partner-v2/task-2-brief.md first. It is your requirements;
+  use its exact values verbatim.
+  [Implementer section from the prompts resource, unchanged.]
+  Write your full report to /work/partner/.andino/delegation/partner-v2/task-2-report.md. Reply
+  only with the short return.
 ```
 
-Parent first determines whether the concern affects T1. T1's render contract can
-be accepted only with current proof; T2 stays NEEDS_CONTEXT until its command is
-settled. The worker does not guess an option name or automatically start T2.
+Lane U gets the same shape for Task 5. Both start at once: they pass the collision checks.
 
-Spec review checks quoting, empty output, row order, JSON default and exact option
-against code and observed tests. Quality review checks real renderer/CLI wiring
-and error behavior. Parent runs the integration cases on the combined current
-bytes. A mock-only assertion that render was called cannot prove CSV correctness.
+## Review of Task 3 and a fix round
 
-If the reviewer cannot inspect a required CLI result, mark that criterion
-UNVERIFIED and obtain focused proof; do not accept it because render tests pass.
-This small change needs parent self-review, disclosed as non-independent, rather
-than another agent. A larger risk-bearing lane can propose one approved reviewer.
+K returns DONE on Task 3. The parent reads the diff and the report: the RED run shows two failing
+assertions with 6 tests selected, the GREEN run 6 passed. It packages the range
+(`python scripts/review_package.py docs/plans/partner-v2.md 9a0b1c2 f3d4e5a`) and dispatches R with
+the reviewer prompt, naming the risks: constant-time comparison, expiry boundary, malformed tokens
+raising the module's error. The prompt states the 90-day ruling as a fact and says nothing about
+what not to flag.
 
-## 4. Recovery without hidden spend
+R returns: Spec PASS; Important `src/partner/keys/sign.py:41` compares signatures with `==`; Minor
+naming of `kid`. The parent confirms the Important finding in the diff, logs the Minor one as
+deferred, and sends the Important finding verbatim to K, which is listed and idle after returning
+normally, for its own task. K switches to `hmac.compare_digest`, adds a test that a one-byte change
+in the signature is rejected, reruns `tests/keys/test_sign.py` (7 passed) and appends the fix report.
+R's scoped re-review: ADDRESSED, no new breakage. Journal:
 
-Suppose an authorized lane worker stopped after T1 during a larger plan:
-1. Read plan/report and inspect live status plus partial diff. Verify accepted T1
-   source/check/environment identity before reusing it.
-2. Record T2's exact missing contract and the stopped-worker condition.
-3. Resolve discoverable command facts inline. If a real user decision remains,
-   ask that single question and continue independent ready work.
-4. Present any proposed resume/replacement with count, task, actual model, effort
-   and planned review; wait for go-ahead. No automatic new child at round four.
-5. Alternatively transfer ownership inline after confirming the worker has
-   relinquished it, preserve edits and run the same gates.
+```text
+Task 3: minor (deferred): rename kid to key_id
+Task 3: fix round 1/5 (1 addressed, 0 open; commits f3d4e5a..b6c7d8e)
+Task 3: complete (commits 9a0b1c2..b6c7d8e, review clean)
+```
 
-At a repair cap, a genuine broken required CLI behavior remains incomplete. A
-ruling may defer cosmetic naming; it cannot waive CSV correctness. Keep evidence
-and the concrete NEXT ACTION in the plan; no automatic scratch deletion.
+The parent accepts Task 3 and starts K on Task 4, which is now on the frontier.
 
-[Contract](contract.md) · [Brief/report recipes](subagent-brief-and-report-schemas.md)
-· [MIT notices](../references/license.md)
+## A return with a concern
+
+U returns DONE_WITH_CONCERNS on Task 6: "Partners in UTC+7 will see the last seven hours of a month
+in the next month's report. I used UTC as the brief says. Confirm?" The concern is about
+correctness, so the parent resolves it before review: spec section 4 settles it (calendar months in
+UTC), so the code stands. Journal: `Ruling: Task 6 keeps UTC month boundaries — spec section 4 — a
+boundary change in one function if the product owner disagrees`. The user hears about it in the
+final report; no question is needed now because the spec answers it.
+
+## Integration and finish
+
+After Tasks 4 and 7 are accepted, the parent does Task 8 (it shares the router with Task 4) and
+Task 9, runs `python -m pytest -q` on the integrated branch (212 passed) and calls both endpoints
+against the test server. The final review is the parent's own two-track pass over
+`git merge-base main HEAD..HEAD`, disclosed as not independent, pointed at the deferred `kid` rename.
+It finds one Important issue (the report endpoint returns 500 for a partner with no usage instead of
+a header-only CSV). One fix, by the parent, with a test; one re-check; no second wave.
+
+Final report excerpt:
+
+```text
+Not verified: report generation with more than 100k events (no fixture that large).
+Deferred: Task 3 rename kid to key_id (Minor).
+Rulings I made:
+1. KEY_TTL_DAYS = 90, not the plan's 30 — spec section 3 — one constant if wrong
+2. CSV header "Billable units", not "Units" — spec section 5 — one string if wrong
+3. Task 6 keeps UTC month boundaries — spec section 4 — one function if the product owner disagrees
+```
+
+## Contrast: a small plan
+
+A seven-task plan of 18 to 200 lines per task, where tasks share `tests/conftest.py` and the CLI
+module, gets no implementer: one start-up costs more than most tasks. The parent does it inline and
+asks, at most, for one reviewer on the security-sensitive task. Two task IDs alone never justify two
+workers or a merger.
+
+## Recovery without hidden spend
+
+Suppose the context resets while K is idle after Task 3 and U has stopped on a usage limit midway
+through Task 7:
+
+1. Read the plan and the journal; list live agents; inspect U's partial bytes and report. Check that
+   Task 3's recorded commits and checks still match before reusing them.
+2. Record Task 7's state and U's stop in the plan.
+3. U stopped on a limit, so ask the user before resuming it, with its model and effort, or take Task 7
+   over inline once its partial edits are attributed and kept.
+4. K is listed and idle; it may start Task 4 as the envelope allows. Nothing accepted is redispatched.
