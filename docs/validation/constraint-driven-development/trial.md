@@ -55,12 +55,48 @@ Fallback said "A tool cannot be installed here (no network, no approval): write 
 ... do not mark it enforced". Addy's skill has no such line, and its arm declared the provider in
 `package.json` and wired the scanner in CI.
 
-Fix applied after grading (not yet re-run): the Fallback now says that a tool CI can install is
+Fix applied after grading (re-run below): the Fallback now says that a tool CI can install is
 declared and enforced at the CI stage, with only the local proof recorded as unavailable, and that a
 row stays pending only when it cannot run anywhere yet. Step 5 now says to add a missing coverage
 provider to the manifest even when it cannot be installed locally, and that a missing lockfile does
 not drop the dependency dimension (scan what CI installs). The step's completion criterion and the
 verification checklist say the same.
+
+## Re-run after the fix
+
+The user approved one more candidate run and one more grading. The candidate ran again on branch
+commit 61ac4ca, same prompt, fixture, model and effort; its runner was again refused writing
+`REPORT.md` and returned it as text, which the chair saved unchanged. A fresh grader scored all four
+outputs, reshuffled (A Addy, B current, C candidate, D control). Evidence: [scores-rerun.md](scores-rerun.md).
+
+| Criterion | Addy (A) | Current (B) | Candidate (C) | Control (D) |
+| --- | --- | --- | --- | --- |
+| S2 intake questions | 2 | 1 | 2 | 0 |
+| S3 contract shape | 2 | 2 | 2 | 1 |
+| S5 both deployables | 2 | 1 | 2 | 2 |
+| S6 baselines | 2 | 1 | 2 | 1 |
+| S7 coverage mechanics | 2 | 1 | 2 | 2 |
+| S8 security | 2 | 2 | 2 | 1 |
+| S15 exception policy | 1 | 2 | 2 | 1 |
+| V6 no false alarms | 1 | 1 | 1 | 1 |
+| V8 guard evidence and redaction | 2 | 2 | 2 | 1 |
+| P2 unattended run | 2 | 1 | 2 | 1 |
+| Q2 reasons and register | 2 | 2 | 2 | 1 |
+| Other 16 criteria | 2 each | 2 each | 2 each | 2 each |
+| Total (of 54) | 52 | 48 | 53 | 44 |
+
+Gate: PASS. The candidate is at least equal to Addy and to the current skill on every criterion,
+higher than Addy on S15 and higher than the current skill on S2, S5, S6, S7 and P2. S5 and S8, the two
+failures of the first run, are now 2: the re-run candidate declared the coverage provider, enforced
+changed-line coverage for both deployables and scanned what CI installs.
+
+The two gradings disagree on unchanged outputs (the current skill 51 then 48, Addy 51 then 52, the
+control 47 then 44); scores-rerun.md lists the moves. That is grader variance on one-point calls.
+
+The re-run candidate also found a guard defect: a row worded "must not fall below 74.2%" was read as
+a maximum, so lowering it passed silently. Both guards now read "fall below", "drop below",
+"go below", "not below" and "not under" as a minimum (branch commit 13510c2, after the re-run); the
+battery still passes 13 of 13 and a probe shows the lowered minimum reported.
 
 ## Guard battery
 
@@ -79,9 +115,9 @@ skills only through graded agent output.
 
 ## Reading the result
 
-- On totals the candidate is ahead of both other skills (52 against 51 and 51) and the control
-  trails at 47, mainly on intake questions, the exception schema, the key it quoted and the
-  unattended run.
+- On totals the candidate led both gradings (52 against 51 and 51; then 53 against 52 and 48) and
+  the control trailed (47, then 44), mainly on intake questions, the exception schema, the key it
+  quoted and the unattended run. Only the re-run passes the per-criterion gate.
 - The candidate kept the current skill's wins (exception schema, edit-hook use) and gained Addy's
   (changed-line coverage, floor-only unattended run). It lost two criteria to a Fallback sentence
   that made it under-wire tools CI could install.
