@@ -13,7 +13,6 @@ from ai_rules import cli
 ROOT = Path(__file__).resolve().parents[1]
 CODE_SIMPLIFICATION_PATHS = (
     'SKILL.md', 'GUIDE.md', 'references/license.md',
-    'resources/agent-simplification-protocols.md',
     'resources/patterns-and-anti-patterns.md',
     'resources/protected-regions.md', 'resources/worked-example.md',
 )

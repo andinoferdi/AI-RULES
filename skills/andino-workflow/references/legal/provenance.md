@@ -72,6 +72,17 @@ catalogs across TypeScript/JavaScript, Python, and React) with Andino Workflow g
 SHA-256 byte-exact protected regions across multi-language comment syntaxes, subagent safety
 protocols with the Simplification Ledger, and offline deterministic Python test verification).
 
+The 2026-11-26 upgrade of `code-simplification` re-bases the skill on Addy Osmani's
+`code-simplification` at addyosmani/agent-skills commit f1f6fbf (2026-10-16, MIT) and moves
+the method into the sibling layout: one behavior-first procedure in `SKILL.md` (mirrored by
+`GUIDE.md`) with a safety-net table for repositories with, without or with failing tests and
+for pasted code, Addy's signal table, per-change questions and rationalization rows, an
+evidence rule for removing unused code, and the Simplification Ledger. The separate
+agent-protocols file is merged into `SKILL.md`; the pattern catalog gains a behavior-trap
+section; the worked example is corrected (its earlier "after" accepted truthy `valid` values
+and claimed a re-indented protected block was byte-identical). The comparison trial is
+recorded in `docs/validation/code-simplification/trial.md`.
+
 The 2026-11-01 elevation of `constraint-driven-development` synthesizes the generative craft
 of Addy Osmani's `constraint-driven-development` (4-question intake discipline with sane defaults,
 3-tier circularity hierarchy, 4-stage lifecycle integration, monotonic ratchets, and diff-scoped
@@ -247,6 +258,18 @@ anti-rationalization file removed. Idempotency status codes follow
 `draft-ietf-httpapi-idempotency-key-header-09`. The comparison trial is recorded in
 `docs/validation/api-and-interface-design/trial.md`. Correction to the paragraph above:
 `scripts/verify_api_and_interface_design_elevation.py` does not exist in this repository.
+
+The 2026-11-26 upgrade of `code-review` re-bases the skill on Addy Osmani's
+`code-review-and-quality` (addyosmani/agent-skills commit e997ac5, MIT), Matt Pocock's
+`engineering/code-review` (mattpocock/skills commit 6f7f783, MIT) and Jesse Vincent's
+`requesting-code-review` and `receiving-code-review` (obra/superpowers commit 22f0b46, MIT),
+and moves the method into the sibling layout: one review procedure in `SKILL.md` (mirrored by
+`GUIDE.md`) that pins the change and the starting state, gathers test evidence from the
+reviewed bytes with a mutation probe, runs a Spec pass with unspecified-harm questions and a
+Standards pass in which documented repository standards override smell heuristics, and leaves
+the repository as found. Request and receive protocols, review craft and trimmed security and
+performance triggers (path containment and negative caching kept in full) live in
+`resources/`. The comparison trial is recorded in `docs/validation/code-review/trial.md`.
 
 The 2026-11-26 upgrade of `brainstorming` re-bases the skill on Addy Osmani's `interview-me`
 (addyosmani/agent-skills commit 1d32b88), Matt Pocock's `grilling`, `grill-with-docs` and
