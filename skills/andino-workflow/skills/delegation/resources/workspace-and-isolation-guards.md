@@ -65,20 +65,28 @@ not override the plan or create a second lifecycle. Both outrank conversational 
 Plan ID: auth-refactor
 Base Commit: f3a8c12
 Current State: ACTIVE
+Envelope: approved 2026-11-26 — A sonnet/medium lane tokens (Tasks 2, 3); R sonnet/medium review
+  Task 3; at most 2 running; fix-round cap 5. Nothing else approved.
+
+## Pre-flight rulings
+- Ruling: Task 3 expiry is 900 s, not the plan's 600 — spec section 6 — a one-line constant if wrong
+
+## Agents
+- A: idle after DONE on Task 3 (can receive Task 3 fix rounds). R: returned review.
 
 ## Task Execution History
 - Task 1: complete (commits a1b2c3d..d4e5f6a, review clean)
 - Task 2: fix round 1/5 (2 addressed, 0 open; commits d4e5f6a..b7c8d9e)
 - Task 2: complete (commits d4e5f6a..b7c8d9e, review clean)
 - Task 3: complete (commits b7c8d9e..f9a0b1c, 1 parked)
-  - Ruling: parked — minor mock warning — Ruling: code stands — zero risk
+  - Ruling: parked — reviewer's mock warning — the test exercises the real signer — none if wrong
 
 ## Deferred Minor Findings
 - Task 1: minor (deferred): extract JWT_EXPIRY_SECONDS to constant
 - Task 3: minor (deferred): simplify header parsing regex
 
 ## Active Frontier
-- Task 4 (deps: [Task 2, Task 3]) -> READY FOR DISPATCH
+- Task 4 (deps: [Task 2, Task 3]) -> READY; listed agent A starts it
 ```
 
 ### Post-Compaction Recovery Protocol
@@ -88,11 +96,18 @@ Current State: ACTIVE
    bytes. A fix-round record does not prove that its worker is still running.
 3. Verify recorded commits and source/check/environment identities. Reuse valid
    completion evidence; invalidate changed producers and affected dependents.
-4. Reuse only the exact still-valid approved wave. Failed, stopped or quota-limited
-   workers need go-ahead before resume/replacement. Never redispatch completed valid
-   tasks. Parent may continue inline after the worker relinquishes ownership.
+4. Reuse only what the still-valid envelope lists. Failed, stopped or quota-limited
+   workers need the user's yes before any resume or replacement. Never redispatch completed
+   valid tasks. Parent may continue inline after the worker relinquishes ownership.
 5. Update current state and NEXT ACTION in the plan. Checkpointing does not require
    a context-reset command; use compaction only when actually exposed and useful.
+
+### Waiting for agents
+- While agents run, keep doing local work: journal lines, the next review package, reading reports.
+  Results arrive on their own.
+- Never poll a wait interface with short timeouts, and never sit in one silent, open-ended wait.
+  When idle, wait in bounded stretches where the host allows, then post one status line, list the
+  live agents and chase any that finished without reporting.
 
 ---
 

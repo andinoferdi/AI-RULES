@@ -1,0 +1,1 @@
+Promo 12.12 berakhir tepat jam 00.00. Halaman produk tidak tahu. Pembeli yang membukanya masih melihat harga promo dan checkout di harga itu. Orang pertama yang sadar bukan sistem monitoring kami, tapi tim CS yang menerima komplain: kenapa harga di keranjang beda dengan di halaman produk?

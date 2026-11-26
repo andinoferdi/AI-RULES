@@ -4,6 +4,7 @@ Substantive adapted material in this skill is covered by the following notices:
 
 ## Addy Osmani (agent-skills)
 - **Original Source:** [addyosmani/agent-skills: skills/code-review-and-quality](https://github.com/addyosmani/agent-skills/tree/main/skills/code-review-and-quality)
+(last adapted from commit e997ac5, 2026-11-26)
 
 MIT License
 
@@ -29,6 +30,7 @@ SOFTWARE.
 
 ## Matt Pocock (skills)
 - **Original Source:** [mattpocock/skills: skills/engineering/code-review](https://github.com/mattpocock/skills/tree/main/skills/engineering/code-review)
+(last adapted from commit 6f7f783, 2026-11-26)
 
 MIT License
 
@@ -54,6 +56,7 @@ SOFTWARE.
 
 ## Jesse Vincent (superpowers)
 - **Original Source:** [obra/superpowers: skills/requesting-code-review](https://github.com/obra/superpowers/tree/main/skills/requesting-code-review) & [skills/receiving-code-review](https://github.com/obra/superpowers/tree/main/skills/receiving-code-review)
+(last adapted from commit 22f0b46, 2026-11-26)
 
 MIT License
 

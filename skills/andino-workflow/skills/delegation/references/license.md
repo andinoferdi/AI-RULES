@@ -4,6 +4,7 @@ Substantive adapted material in this skill is covered by the following notices:
 
 ## Matt Pocock (skills)
 - **Original Source:** [mattpocock/skills: skills/engineering/implement-spec](https://github.com/mattpocock/skills/tree/main/skills/engineering/implement-spec)
+- **Revision read for the 2026-11-26 upgrade:** commit 6f7f783 (2026-11-25)
 
 MIT License
 
@@ -29,6 +30,7 @@ SOFTWARE.
 
 ## Jesse Vincent (superpowers)
 - **Original Source:** [obra/superpowers: skills/dispatching-parallel-agents](https://github.com/obra/superpowers/tree/main/skills/dispatching-parallel-agents) & [skills/subagent-driven-development](https://github.com/obra/superpowers/tree/main/skills/subagent-driven-development)
+- **Revision read for the 2026-11-26 upgrade:** commit 22f0b46 (2026-11-03)
 
 MIT License
 

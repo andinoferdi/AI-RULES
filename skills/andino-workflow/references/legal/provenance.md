@@ -72,6 +72,17 @@ catalogs across TypeScript/JavaScript, Python, and React) with Andino Workflow g
 SHA-256 byte-exact protected regions across multi-language comment syntaxes, subagent safety
 protocols with the Simplification Ledger, and offline deterministic Python test verification).
 
+The 2026-11-26 upgrade of `code-simplification` re-bases the skill on Addy Osmani's
+`code-simplification` at addyosmani/agent-skills commit f1f6fbf (2026-10-16, MIT) and moves
+the method into the sibling layout: one behavior-first procedure in `SKILL.md` (mirrored by
+`GUIDE.md`) with a safety-net table for repositories with, without or with failing tests and
+for pasted code, Addy's signal table, per-change questions and rationalization rows, an
+evidence rule for removing unused code, and the Simplification Ledger. The separate
+agent-protocols file is merged into `SKILL.md`; the pattern catalog gains a behavior-trap
+section; the worked example is corrected (its earlier "after" accepted truthy `valid` values
+and claimed a re-indented protected block was byte-identical). The comparison trial is
+recorded in `docs/validation/code-simplification/trial.md`.
+
 The 2026-11-01 elevation of `constraint-driven-development` synthesizes the generative craft
 of Addy Osmani's `constraint-driven-development` (4-question intake discipline with sane defaults,
 3-tier circularity hierarchy, 4-stage lifecycle integration, monotonic ratchets, and diff-scoped
@@ -221,6 +232,21 @@ with `ANDINO_NEGATIVE` gate, zero-dependency offline Python stdlib verification 
 `scripts/verify_architecture_survey_elevation.py`, and complete integration with `ai-rules setup`).
 MIT notice for Matt Pocock remains preserved.
 
+The 2026-11-26 rewrite of `architecture-survey` follows mattpocock/skills commit 7739eae
+(`improve-codebase-architecture` with `HTML-REPORT.md`, and the skills it calls:
+`codebase-design` with `DEEPENING.md` and `DESIGN-IT-TWICE.md`, `grilling` and
+`domain-modeling`). It puts the skill in the sibling Andino layout with one seven-step
+procedure (GUIDE.md mirrors SKILL.md), corrects the interface and depth definitions (depth is
+leverage at the interface, not a line ratio), restores organic exploration with the untested
+question and the widen-the-net rule, gives each dependency category its testing meaning, adds
+internal and external seams, grilling rounds, ADR criteria and the extend-not-duplicate rule
+for an existing ADR, and keeps the three modes, the offline report fallback, the summary card,
+the explorer brief with its checks and the execution-plan handoff. The self-referential
+harness, the `rtk` command, the mandatory explorer subagent, the retired method ID and the
+reference to the verification script above, which does not exist in this repository, are
+removed. `tests/test_architecture_survey_preservation.py` guards the kept rules; the trial is
+in `docs/validation/architecture-survey/`.
+
 The 2026-11-02 elevation of `article-shaping` synthesizes the generative writing craft of
 Matt Pocock's `writing-beats` and `writing-shape` (The Ruthless Editor stance with active grilling
 interrogation moves, one-beat-at-a-time choose-your-own-adventure drafting with disk pre-reading,
@@ -262,4 +288,81 @@ anti-rationalization file removed. Idempotency status codes follow
 `docs/validation/api-and-interface-design/trial.md`. Correction to the paragraph above:
 `scripts/verify_api_and_interface_design_elevation.py` does not exist in this repository.
 
+The 2026-11-26 upgrade of `ci-cd-and-automation` re-bases the skill on Addy Osmani's
+`ci-cd-and-automation` at addyosmani/agent-skills commit a05781556f89 (2026-11-22, MIT) and
+moves the method into the sibling layout: one procedure with four modes, an inline starting
+workflow, the required-check aggregate, least-privilege, build-once and release rules, the
+shortcut and red-flag lists and the verification checklist in `SKILL.md` (mirrored by
+`GUIDE.md`); full templates in `resources/pipeline-templates.md` (current action majors,
+third-party actions pinned to commit SHAs, image promotion with OIDC); the failure loop in
+`resources/agent-feedback-loop.md`. GitHub behavior for skipped required checks,
+`merge_group` and `pull_request_target` follows GitHub's documentation as read on
+2026-11-26. The comparison trial is recorded in
+`docs/validation/ci-cd-and-automation/trial.md`.
 
+The 2026-11-26 upgrade of `code-review` re-bases the skill on Addy Osmani's
+`code-review-and-quality` (addyosmani/agent-skills commit e997ac5, MIT), Matt Pocock's
+`engineering/code-review` (mattpocock/skills commit 6f7f783, MIT) and Jesse Vincent's
+`requesting-code-review` and `receiving-code-review` (obra/superpowers commit 22f0b46, MIT),
+and moves the method into the sibling layout: one review procedure in `SKILL.md` (mirrored by
+`GUIDE.md`) that pins the change and the starting state, gathers test evidence from the
+reviewed bytes with a mutation probe, runs a Spec pass with unspecified-harm questions and a
+Standards pass in which documented repository standards override smell heuristics, and leaves
+the repository as found. Request and receive protocols, review craft and trimmed security and
+performance triggers (path containment and negative caching kept in full) live in
+`resources/`. The comparison trial is recorded in `docs/validation/code-review/trial.md`.
+
+The 2026-11-26 upgrade of `brainstorming` re-bases the skill on Addy Osmani's `interview-me`
+(addyosmani/agent-skills commit 1d32b88), Matt Pocock's `grilling`, `grill-with-docs` and
+`domain-modeling` (mattpocock/skills commits 7739eae, 447ca70 and 2b7ab8c) and Jesse Vincent's
+superpowers `brainstorming` (obra/superpowers commit 22f0b46), all MIT, and moves the method into
+the sibling layout: one procedure from the first message to an approved design in `SKILL.md`
+(mirrored by `GUIDE.md`), why before how, numbered decision rounds once the why is known, an
+answer table, glossary updates when a term is resolved, ADRs only when a decision is hard to
+reverse, surprising and a real trade-off, and the light design, ADR and glossary formats in
+`resources/adr-and-glossary-template.md`. `resources/grilling-protocol.md` was merged into
+`SKILL.md`; the four sub-resources are unchanged. The numeric thresholds of the 2026-11-01
+elevation above (`<70%` confidence, 3-question predictability as a percentage) are retired. The
+comparison trial is recorded in `docs/validation/brainstorming/trial.md`.
+
+The 2026-11-26 upgrade of `browser-testing-with-devtools` re-bases the skill on Addy Osmani's
+`browser-testing-with-devtools` at addyosmani/agent-skills commit 57bfe5d (2026-10-25, MIT) and
+moves the method into the sibling layout: one eight-step procedure (isolated session, checks
+first, reproduce, diagnose by path, smallest fix, replay and probe, release pass, report) in
+`SKILL.md` (mirrored by `GUIDE.md`), a tool map checked against chrome-devtools-mcp 1.12.0 and
+Playwright MCP with device emulation for widths, the first-party and third-party console split,
+Addy's heading-outline, script-scope and profile rules, a rewritten worked example and an
+updated test-plan template. The earlier worked example's Python script and its regex filter are
+removed. The comparison trial is recorded in
+`docs/validation/browser-testing-with-devtools/trial.md`.
+
+The 2026-11-26 upgrade of `article-shaping` re-bases the skill on Matt Pocock's
+`writing-beats` and `writing-shape` at mattpocock/skills commit 6f7f783 (2026-11-24, MIT) and
+moves the method into the sibling layout: one author-first procedure (read the pile, settle
+the reader, offer pile-built candidates, write exactly the agreed block, keep author edits,
+invent nothing, mark inference) with the rules, shortcut and red-flag lists and the
+verification checklist in `SKILL.md` (mirrored by `GUIDE.md`). The former contract,
+grilling-and-cadence, grounding-graph, format-and-anti-slop and hooks resources are replaced
+by `resources/lenses.md`, `resources/grounding-and-gaps.md` and `resources/format-and-prose.md`;
+the hook formulas and sentence-length rules are removed, the worked example is rewritten
+without invented detail, and `resources/raw-capture/` is unchanged. The comparison trial is
+recorded in `docs/validation/article-shaping/trial.md`. Correction to the 2026-11-02
+paragraph above: `scripts/verify_article_shaping_elevation.py` does not exist in this
+repository.
+
+The 2026-11-26 upgrade of `delegation` re-reads Matt Pocock's `engineering/implement-spec`
+(mattpocock/skills commit 6f7f783, 2026-11-25, MIT) and Jesse Vincent's Obra Superpowers
+`dispatching-parallel-agents` and `subagent-driven-development` (obra/superpowers commit 22f0b46,
+2026-11-03, MIT) and moves the method into the sibling layout: one procedure for every subagent
+role (implementer, investigator, researcher, reviewer, panel seat) in `SKILL.md` (mirrored by
+`GUIDE.md`); the rules, including the one-message envelope approval, in `resources/contract.md`;
+fill-in prompts for every role in `resources/subagent-brief-and-report-schemas.md`; the pre-flight
+table, rolling frontier and batching in `resources/frontier-and-dag-protocols.md`; fix rounds,
+the single final fix wave and the rulings list in `resources/two-track-review-and-fix-loop.md`;
+model and effort by role in `resources/host-cost-calibration.md`; and a new worked example with two
+lanes. Not adopted from the references: continuous execution without approval, automatic
+escalation to a stronger fresh agent in fix rounds 4-5, a final review always on the most capable
+model, one fresh agent per task, a merger agent and deleting the workspace at the end. The
+comparison trial is recorded in `docs/validation/delegation/trial.md`. Correction to the
+2026-11-01 paragraph above: superpowers' fix loop is not adopted as "escalating", and the
+contract is no longer kept under 150 lines.
