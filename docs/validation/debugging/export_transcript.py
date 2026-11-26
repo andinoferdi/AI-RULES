@@ -15,9 +15,11 @@ MAX_LINES = 60
 
 
 def clip(text: str) -> str:
+    """Keep the start and the end of long output; results and timings are usually last."""
     lines = text.splitlines()
     if len(lines) > MAX_LINES:
-        lines = lines[:MAX_LINES] + [f"... ({len(lines) - MAX_LINES} more lines)"]
+        head, tail = MAX_LINES // 3, MAX_LINES - MAX_LINES // 3
+        lines = lines[:head] + [f"... ({len(lines) - MAX_LINES} lines omitted)"] + lines[-tail:]
     return "\n".join(lines)
 
 
@@ -40,7 +42,34 @@ def main() -> int:
         for variant in sorted(run_variants, key=len, reverse=True):
             text = text.replace(variant, "<RUN>")
         text = re.sub(r"<RUN>[\\/]+guide[\\/][^\s'\"`)]*", "<RUN>/[guidance]", text)
+        text = re.sub(r"[^\s'\"`]*trial[\\/]+run-\d+", "<RUN>", text)
+        text = re.sub(r"\brun-\d+\b", "run-X", text)
         return re.sub(r"\bSKILL\.md\b|\bGUIDE\.md\b", "[guidance]", text)
+
+    guide_lines = set()
+    guide = Path(run_dir) / "guide"
+    if guide.is_dir():
+        for path in guide.rglob("*"):
+            guide_lines.update({path.name, path.name + "/", path.relative_to(guide).as_posix()})
+            if path.is_file():
+                guide_lines.update(line.strip() for line in
+                                   path.read_text(encoding="utf-8", errors="ignore").splitlines()
+                                   if len(line.strip()) >= 8)
+
+    def strip_guidance(text: str) -> str:
+        """Drop output lines copied from the guidance files (a runner may cat them)."""
+        kept, dropping = [], False
+        for line in text.splitlines():
+            bare = re.sub(r"^\s*\d+\t", "", line).strip()
+            listed = re.sub(r"\s+\d+(\.\d+)?[KMG]?B?$", "", bare)  # "name  8.5K" in a listing
+            if bare in guide_lines or listed in guide_lines or bare in ("guide/", "guide"):
+                if not dropping:
+                    kept.append("[guidance text removed]")
+                dropping = True
+                continue
+            dropping = False
+            kept.append(line)
+        return "\n".join(kept)
 
     entries = [json.loads(line) for line in transcript.read_text(encoding="utf-8").splitlines()
                if line.strip()]
@@ -80,7 +109,7 @@ def main() -> int:
             for item in content:
                 if item.get("type") != "tool_result" or item.get("tool_use_id") in hidden:
                     continue
-                text = clip(blind(result_text(item.get("content"))))
+                text = clip(blind(strip_guidance(result_text(item.get("content")))))
                 blocks.append(f"Result of step {pending.get(item.get('tool_use_id'), '?')}:\n```\n{text}\n```")
     out.write_text("# Runner transcript\n\n" + "\n\n".join(blocks) + "\n", encoding="utf-8")
     print(f"wrote {out} ({step} tool calls, {len(hidden)} guidance reads hidden)")
