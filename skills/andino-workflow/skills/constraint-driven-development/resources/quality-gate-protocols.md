@@ -18,7 +18,7 @@ A raw scanner command chained with `&&` can create silent false passes:
 ### The Three Exit Codes
 - **`0` (PASS)**: Scan completed successfully; all findings are strictly below blocking thresholds.
 - **`1` (BLOCKING VIOLATION)**: Scan completed; one or more findings equal or exceed agreed blocking severity.
-- **`2` (SCANNER ERROR / INVALID)**: Scanner failed to execute, crashed, produced malformed JSON, or scanned zero files/URLs. **A scanner error must never pass.**
+- **`2` (SCANNER ERROR / INVALID)**: Scanner failed to execute, crashed, produced malformed JSON, or scanned zero files/URLs. Unknown severity labels also exit `2`, so a renamed level cannot pass silently. **A scanner error must never pass.**
 
 ---
 
@@ -219,18 +219,19 @@ When a legacy defect or third-party limitation cannot be immediately resolved, r
 ```markdown
 ## Exceptions
 
-| ID | Rule | Path | Reason | Owner | Expires |
-|----|------|------|--------|-------|---------|
-| W1 | `no-explicit-any` | `src/legacy/parser.ts` | Refactor tracked in JIRA-881 | @andino | 2026-12-31 |
-| W2 | `min-coverage` | `src/cli/installer.py` | CLI mock refactor needed | @andino | 2027-01-15 |
+| ID | Rule | Path | Reason and ticket | Owner | Approved by | Expires |
+|----|------|------|-------------------|-------|-------------|---------|
+| W1 | Q3 (`no-explicit-any`) | `src/legacy/parser.ts` | Parser rewrite, JIRA-881 | @dana | @lead | 2026-12-31 |
+| W2 | Q1 (changed-line coverage) | `src/cli/installer.py` | CLI mock refactor, JIRA-902 | @sam | @lead | 2027-01-15 |
 ```
 
 ### B. Operational Rules for Exceptions
 1. **Explicit ID**: Prefixed with `W` (Waiver) or `E` (Exception) followed by an integer.
-2. **Specific Rule & Path**: Broad file-wide or repo-wide wildcard exceptions (e.g. `*`) are prohibited.
-3. **Documented Reason & Ticket**: Must link to a tracked ticket or concrete rationale.
-4. **Named Individual Owner**: Must be owned by an individual GitHub handle or engineer (`@username`), never a generic label like "team" or "agent".
-5. **Strict Expiry Date**: Maximum allowable duration is **90 days**. Any exception with an expired date is treated by the floor guard as a blocking violation.
-6. **Tightening vs. Loosening**:
+2. **Specific Rule & Path**: name the rule ID and the narrowest path. Wildcards that cover future files (`src/export/**`, `*`) are not narrow.
+3. **Reason with a ticket**: the reason names the tracked ticket that removes the exception.
+4. **Named Individual Owner**: an individual handle (`@username`), never a generic label like "team" or "agent".
+5. **Approved by**: the person who owns the quality policy, recorded by name. The guard cannot verify this; the owner's review of the pull request that adds the row does.
+6. **Strict Expiry Date**: at most **90 days** after the row is added. `floor-guard --check-expiry` reports an expired row (`exception-expired`), a new row dated more than 90 days out (`exception-too-long`) and a row with no date (`exception-without-expiry`).
+7. **Tightening vs. Loosening**:
    - **Deleting an exception** (when debt is repaid) is silent and encouraged.
-   - **Adding a new exception** during a feature implementation requires explicit user authorization; otherwise the floor guard flags it as `unauthorized-exception`.
+   - **Adding or changing an exception** is a policy change: the guard reports every such row as `new-exception`. Make it in its own pull request, separate from the failing feature, with the policy owner's approval.

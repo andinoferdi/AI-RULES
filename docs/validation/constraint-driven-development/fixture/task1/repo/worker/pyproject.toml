@@ -1,0 +1,17 @@
+[project]
+name = "report-worker"
+version = "0.4.0"
+requires-python = ">=3.12"
+dependencies = ["psycopg[binary]==3.2.10"]
+
+[project.optional-dependencies]
+dev = ["pytest==8.4.2", "pytest-cov==6.3.0", "ruff==0.14.1", "mypy==1.18.2"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

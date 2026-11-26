@@ -1,254 +1,201 @@
-# Complete Worked Example: From Intake to Anti-Evasion
+# Worked example: from intake to a blocked evasion
 
-This worked example demonstrates the end-to-end lifecycle of Constraint-Driven Development in a production TypeScript/Next.js repository. It covers:
-1. Pre-interview environment detection.
-2. The 4-question intake interview with sane defaults.
-3. Generating the canonical `CONSTRAINTS.md`.
-4. Wiring checks into developer lifecycle scripts.
-5. Detecting and mechanically rejecting an AI evasion diff.
-6. Embedded zero-dependency verification harness.
+A TypeScript billing service, from the first look at the repository to the guard rejecting an
+agent's shortcut. Names, numbers and outputs illustrate the shape of each step; the guard output in
+step 6 was produced by the reference guard in [floor-guard.md](floor-guard.md) on a reproduction of
+this diff.
 
----
+## 1. Detect before asking
 
-## 1. Step 1: Detect Before Asking
+Read before the first question:
 
-Before opening an intake interview, inspect the repository silently:
-```sh
-# Inspected files:
-# - package.json -> dependencies include "typescript", "vitest", "eslint"
-# - eslint.config.mjs -> active flat config
-# - coverage/lcov.info -> exists from previous run, current project coverage is 64.2%
-# - .github/workflows/ci.yml -> runs `npm test` and `npm run lint`
-```
+| Looked at | Found |
+| --- | --- |
+| `package.json` | Next.js 15, TypeScript 5.7, Vitest 3, ESLint 9; no `@vitest/coverage-v8` |
+| `eslint.config.mjs` | Flat config, `no-explicit-any` as error |
+| `coverage/lcov.info` | 64.2% line coverage from `vitest run --coverage` on `main` at `a1b2c3d`, run by hand |
+| `.github/workflows/ci.yml` | `npm test` and `npm run lint` on pull requests; shallow checkout |
+| `.claude/settings.json`, `AGENTS.md` | A PostToolUse hook runs ESLint after edits; no quality bar written down |
+| Existing suppressions | One `@ts-ignore` and one `eslint-disable` in `src/legacy/xml-parser.ts` |
+| Running URL | Preview deploys per pull request (`$PREVIEW_URL`) |
 
-**Two-line report to the user:**
-> "Detected Next.js 15, TypeScript 5.7, ESLint 9, and Vitest. Baseline project test coverage is currently 64.2%."
+Two-line report to the user:
 
----
+> Next.js 15 with Vitest and ESLint; CI runs tests and lint, nothing measures coverage, and the
+> Vitest coverage provider is not installed. Coverage on record is 64.2% from a hand run on `main`.
 
-## 2. Step 2: The 4-Question Intake
+## 2. Ask only what is left, one question at a time
 
-```
-Q1: Beyond the baseline floor, which dimensions do you want enforced?
-    (a) Test coverage on changed code
-    (b) Security scanning (secrets & code)
-    (c) Performance budgets (Lighthouse)
-    (d) Accessibility (Axe-core)
-GUESS: (a) and (b) — you have Vitest installed and handle authenticated user routes.
+Each question carries a guess and a default, so "I don't know" still produces a working setup.
+
+```text
+Q1: Beyond the floor, which of these should be enforced?
+    (a) coverage on new code  (b) security scanning  (c) performance budgets
+    (d) accessibility  (e) architecture boundaries
+GUESS: (a) and (b): there is a test runner and the service handles payment input.
 DEFAULT if unsure: (a) and (b).
-User answer: "Default is fine, let's do (a) and (b)."
-
-Q2: When a check fails mid-task, should the agent block or warn?
-GUESS: Block. A warning nobody reads mid-task is an ignored warning.
-DEFAULT if unsure: Block on the floor, warn on optional dimensions.
-User answer: "Block."
-
-Q3: Do you have specific target numbers in mind, or should I measure today's baseline and hold the line?
-GUESS: Measure and hold. Baseline coverage is 64.2%; changed lines target 80%.
-DEFAULT if unsure: Measure and hold.
-User answer: "Hold the line."
-
-Q4: What is the slowest check you'll tolerate before an agent hands work back?
-GUESS: 90 seconds for task-end checks; fast loop under 5 seconds.
-DEFAULT if unsure: 90s at task end, unlimited in CI.
-User answer: "90s."
+Cost: (c) and (d) run against the preview URL in CI; (e) needs a rules file.
+User: "(a), (b) and (d)."
 ```
 
----
+```text
+Q2: When a check fails while an agent is mid-task, block or warn?
+GUESS: Block. A warning nobody reads mid-task is ignored.
+DEFAULT if unsure: block on the floor, warn on the rest for two weeks.
+User: "Block."
+```
 
-## 3. Step 3: Canonical `CONSTRAINTS.md` Generated
+```text
+Q3: Target numbers, or measure today and hold that line?
+GUESS: Measure and hold for project coverage; changed lines at 80% from day one.
+DEFAULT if unsure: measure and hold.
+User: "Hold the line."
+```
 
-The skill writes `CONSTRAINTS.md` at the repository root:
+```text
+Q4: Slowest check you will tolerate before the agent hands work back?
+GUESS: About 90 seconds at task end.
+DEFAULT if unsure: 90 seconds at task end, unlimited in CI.
+User: "90 seconds."
+```
+
+## 3. Baselines
+
+- Changed-line coverage needs no baseline: 80% applies to new code from the first change.
+- Project coverage is re-measured on `main` with the enforcing command
+  (`vitest run --coverage`, line coverage over `src/**`, one decimal): 64.2%, the same as the file
+  on record. Had the scope or command differed, the row would stay pending until a comparable run.
+- Accessibility has no baseline yet: the first preview scan records today's count.
+
+## 4. CONSTRAINTS.md
 
 ```markdown
-# Quality Constraints
+# Constraints
 
-Last reviewed: 2026-11-01 by @andino
+Last reviewed: 2026-11-01 by @lead
 
-## Floor (Always Enforced, Zero Setup Required)
+## Floor (always enforced, no setup required)
 
-- No new suppression comments: `@ts-ignore`, `@ts-nocheck`, `eslint-disable`, `biome-ignore`
-- No unimplemented stubs: `throw new Error("Not implemented")`, empty `catch {}`
-- No skipped or deleted tests without a justified commit message
-- No removed assertions from surviving test files
-- No secrets in source code (`--redact` mandatory)
-- This file does not get weakened to make a change pass
+- No new suppression comments (`@ts-ignore`, `eslint-disable`, `# noqa`, `# type: ignore`, coverage-ignore pragmas)
+- No skipped, focused or deleted tests, and no assertions removed from tests that stay
+- No unimplemented stubs, empty catch blocks or `TODO` standing in for an implementation
+- No secrets in source; secret scanners run with `--redact`
+- No check made optional in CI (`continue-on-error: true`, `|| true`)
+- This file is not weakened to make a change pass
 
-## Enforced With Numbers
+## Enforced
 
-| Dimension | Rule | Checked by | Runs at |
-|---|---|---|---|
-| Types | Zero type errors | `tsc --noEmit` | every edit |
-| Lint | Zero errors from config | `npm run lint` | every edit |
-| Secrets | No leaked credentials | `gitleaks dir . --redact --no-banner` | every edit |
-| Floor Guard | Zero floor violations | `node scripts/floor-guard.mjs` | every edit |
-| Coverage | Changed lines >= 80% covered | `vitest run --coverage` | task end, CI |
-| Security: code | Zero HIGH or CRITICAL | `npm run check:security` | CI |
-| Security: deps | Zero HIGH or CRITICAL | `osv-scanner scan source -r .` | CI |
+| ID | Rule | Why this number | Checked by | Runs at |
+|----|------|-----------------|------------|---------|
+| F1 | Diff passes the floor guard | No number: any move that lowers the bar | `node scripts/floor-guard.mjs --base origin/main --check-expiry` | edit, task end, CI |
+| Q1 | Zero type errors | A type error is a bug the compiler already found | `npx tsc --noEmit` | task end, CI |
+| Q2 | Zero lint errors from our config | The config is the team's agreed style | `npm run lint` | edit, CI |
+| Q3 | Changed lines ≥ 80% covered | High enough to force a test, low enough to allow a config line | `npm run check:coverage` | task end, CI |
+| Q4 | Secrets: no findings | A leaked key costs more than any delay | `gitleaks dir . --redact --no-banner` | CI |
+| Q5 | Dependencies: nothing at high or above | Below that is mostly noise | `osv-scanner scan source -r .` | CI |
+| Q6 | Accessibility: zero critical or serious | Moderate and minor findings are often debatable | `npm run check:a11y` | preview deploy |
 
-Every row names the exact executable command that produces the verdict.
+## Measured, not yet enforced
 
-## Measured, Not Yet Enforced (Ratchets)
+| ID | Metric | Today | Source (command, revision, precision) | Direction | Tolerance |
+|----|--------|-------|----------------------------------------|-----------|-----------|
+| M1 | Project line coverage | 64.2% | `vitest run --coverage`, `main` at a1b2c3d, one decimal | must not fall | 0.5 |
+| M2 | Main bundle size | 172 kB | `size-limit --json`, `main` at a1b2c3d | must not grow | 2 |
 
-| Metric | Today | Direction | Tolerance |
-|---|---|---|---|
-| Project test coverage | 64.2% | must not fall | 0.5% |
-| Bundle size (main entry) | 172 kB | must not grow | 2 kB |
+## Pending or not applicable
+
+| Dimension | Why it is not enforced here | Becomes enforced when |
+|-----------|-----------------------------|-----------------------|
+| Performance budgets | Not chosen in intake | The team picks it |
+
+## Known debt (predates this file; not exceptions)
+
+- `src/legacy/xml-parser.ts`: one `@ts-ignore`, one `eslint-disable` (rewrite in ENG-402)
 
 ## Exceptions
 
-| ID | Rule | Path | Reason | Owner | Expires |
-|---|---|---|---|---|---|
-| W1 | `no-explicit-any` | `src/legacy/xml-parser.ts` | Legacy migration ENG-402 | @andino | 2026-12-31 |
+| ID | Rule | Path | Reason and ticket | Owner | Approved by | Expires |
+|----|------|------|-------------------|-------|-------------|---------|
+
+No exceptions are approved.
 ```
 
----
+One line goes into `AGENTS.md` (which `CLAUDE.md` imports):
+`Read CONSTRAINTS.md before writing code. Do not weaken it to make a change pass.`
 
-## 4. Step 4: Wire to Package Scripts
+## 5. Install, wire and prove
 
-Update `package.json`:
-```json
-{
-  "scripts": {
-    "check:floor": "node scripts/floor-guard.mjs",
-    "check:fast": "npm run check:floor && tsc --noEmit && npm run lint && gitleaks dir . --redact --no-banner",
-    "check:task": "npm run check:fast && vitest run --coverage",
-    "check:security": "semgrep scan --config p/typescript --strict --json > semgrep.json && node scripts/quality-gate.mjs semgrep semgrep.json",
-    "check:full": "npm run check:task && npm run check:security && osv-scanner scan source -r ."
-  }
-}
-```
+- `npm i -D @vitest/coverage-v8@3.2.4` (pinned to the installed Vitest), `reporter: ['lcov']` in
+  `vitest.config.ts`, and a changed-line coverage script behind `check:coverage`.
+- `package.json`: `check:floor`, `check:fast` (floor, tsc, lint), `check:task` (fast, tests with
+  coverage, `check:coverage`), `check:a11y` (axe against `$PREVIEW_URL` through the quality gate).
+- The existing ESLint hook in `.claude/settings.json` also runs the floor guard.
+- CI: `fetch-depth: 0`, the floor guard and `check:task` in the required job, gitleaks and
+  osv-scanner in a security job, `check:a11y` after the preview is reachable.
 
----
+Check record (each command run in a disposable copy):
 
-## 5. Step 5: The Mid-Task Evasion Attempt
+| Check | Case | Result |
+| --- | --- | --- |
+| Floor guard | Clean branch | exit 0, 0.3 s |
+| Floor guard | Branch adding `it.skip` | exit 1, `test-made-easier` |
+| Floor guard | `--base origin/missing` | exit 2 |
+| `check:coverage` | New function without a test | exit 1 (0% of 6 changed lines) |
+| `check:coverage` | Same function with its test | exit 0 (100% of 6) |
+| `check:a11y` | Not run: no preview in the sandbox | Next: run on the first pull request's preview |
 
-An agent is tasked with adding a new billing endpoint. To achieve green status rapidly, it creates this unified git diff:
+## 6. The agent takes the cheap road to green
+
+An agent adding a billing endpoint produces this diff:
 
 ```diff
 --- a/src/billing/service.ts
 +++ b/src/billing/service.ts
-@@ -42,3 +42,5 @@ export async function processPayment(user: User, amount: number) {
-+// @ts-ignore: bypass type mismatch on legacy currency code
-+const currency = user.profile.currency;
-+if (!currency) throw new Error("Not implemented yet");
-
+@@ -41,0 +42,3 @@ export async function processPayment(user: User, amount: number) {
++  // @ts-ignore legacy currency code
++  const currency = user.profile.currency;
++  if (!currency) throw new Error("Not implemented yet");
 --- a/src/billing/service.test.ts
 +++ b/src/billing/service.test.ts
-@@ -15,4 +15,2 @@ describe("BillingService", () => {
+@@ -15,3 +15 @@ describe("BillingService", () => {
 -  it("validates currency format", () => {
 -    expect(validateCurrency("USD")).toBe(true);
 -  });
 +  it.skip("validates currency format", () => {});
-
 --- a/CONSTRAINTS.md
 +++ b/CONSTRAINTS.md
-@@ -18,1 +18,1 @@
--| Coverage | Changed lines >= 80% covered | `vitest run --coverage` | task end, CI |
-+| Coverage | Changed lines >= 70% covered | `vitest run --coverage` | task end, CI |
+@@ -18 +18 @@
+-| Q3 | Changed lines ≥ 80% covered | High enough to force a test, low enough to allow a config line | `npm run check:coverage` | task end, CI |
++| Q3 | Changed lines ≥ 70% covered | High enough to force a test, low enough to allow a config line | `npm run check:coverage` | task end, CI |
 ```
 
----
+The edit hook runs the guard:
 
-## 6. Step 6: Mechanical Rejection by Floor Guard
+```text
+floor-guard: 5 violation(s):
+  [test-made-easier] src/billing/service.test.ts:15
+  [silenced-checker] src/billing/service.ts:42
+  [unfinished-work] src/billing/service.ts:44
+  [assertion-removed] src/billing/service.test.ts:16 (removed)
+  [threshold-loosened] CONSTRAINTS.md:18 (removed) -> CONSTRAINTS.md:18
 
-When `npm run check:fast` runs, the floor guard analyzes the diff:
-
-```
-$ node scripts/floor-guard.mjs
-
-floor-guard: [VIOLATION] Found 4 attempt(s) to weaken the floor:
-  - [silenced-checker] src/billing/service.ts: "// @ts-ignore: bypass type mismatch on legacy currency code"
-  - [unfinished-work] src/billing/service.ts: "if (!currency) throw new Error("Not implemented yet");"
-  - [test-made-easier] src/billing/service.test.ts: "it.skip("validates currency format", () => {});"
-  - [threshold-loosened] CONSTRAINTS.md: "Minimum lowered: 80.0 -> 70.0"
-
-Fix the issues above or register a tracked exception in CONSTRAINTS.md.
-npm ERR! Lifecycle script failed with exit code 1.
+Each finding lowers the bar. Fix the code; a genuine exception goes through the policy owner.
 ```
 
-The change is **blocked mechanically**. The agent cannot self-certify completion until:
-1. The `@ts-ignore` is replaced with proper typing.
-2. The stub `throw new Error("Not implemented yet")` is replaced with real logic.
-3. The test `.skip` is removed and the test assertion is restored.
-4. `CONSTRAINTS.md` is reverted to `>= 80%`.
+The findings name locations, not line contents. The agent's next moves:
 
----
+1. Type `user.profile.currency` properly instead of suppressing the error.
+2. Implement the missing-currency branch.
+3. Restore the test and its assertion.
+4. Revert `CONSTRAINTS.md`.
 
-## 7. Embedded Python Verification Harness
+If the deadline arrives first, the change stays blocked. The agent hands the failing evidence to
+@lead, who may approve a Q3 exception for `src/billing/service.ts` in its own pull request, with a
+ticket, a named owner and an expiry within 90 days.
 
-Below is the standalone Python verification script (`run_verification.py`) asserting floor-guard behavior:
+## Anti-pattern
 
-```python
-import json
-import os
-import re
-
-def evaluate_floor(diff_text, old_min=80, new_min=80, is_available=True):
-    if not is_available:
-        return {"exit": 2, "rules": ["baseline-unavailable"]}
-
-    findings = []
-    in_hunk = False
-
-    re_suppression = re.compile(r"@ts-ignore|@ts-nocheck|eslint-disable|biome-ignore|#\s*noqa")
-    re_stub = re.compile(r"Not implemented|catch\s*\{\s*\}|\bTODO\b")
-    re_skip = re.compile(r"\.skip\(|\.todo\(|@pytest\.mark\.skip")
-
-    for line in diff_text.splitlines():
-        if line.startswith("@@"):
-            in_hunk = True
-            continue
-        if not in_hunk:
-            continue
-
-        if line.startswith("+") and not line.startswith("+++"):
-            content = line[1:]
-            if re_suppression.search(content):
-                findings.append("silenced-checker")
-            if re_stub.search(content):
-                findings.append("unfinished-work")
-            if re_skip.search(content):
-                findings.append("test-made-easier")
-
-        elif line.startswith("-") and not line.startswith("---"):
-            content = line[1:]
-            if "assert " in content or "expect(" in content:
-                findings.append("assertion-removed")
-
-    if new_min < old_min:
-        findings.append("threshold-loosened")
-
-    return {
-        "exit": 1 if findings else 0,
-        "rules": sorted(list(set(findings)))
-    }
-
-def probe():
-    sample_diff = (
-        "--- a/service.ts\n"
-        "+++ b/service.ts\n"
-        "@@ -1,3 +1,4 @@\n"
-        "-expect(result).toBe(true);\n"
-        "+// @ts-ignore\n"
-        "+it.skip('test', () => {});\n"
-        "+throw new Error('Not implemented');\n"
-    )
-    if os.getenv("ANDINO_NEGATIVE"):
-        return evaluate_floor("", 80, 80, is_available=False)
-    return evaluate_floor(sample_diff, old_min=80, new_min=70, is_available=True)
-
-if __name__ == "__main__":
-    result = probe()
-    print(json.dumps(result, sort_keys=True))
-```
-
-**Expected Default Output:**
-```json
-{"exit": 1, "rules": ["assertion-removed", "silenced-checker", "test-made-easier", "threshold-loosened", "unfinished-work"]}
-```
-
-**Expected Adversarial Output (`ANDINO_NEGATIVE=1`):**
-```json
-{"exit": 2, "rules": ["baseline-unavailable"]}
-```
+The same agent "fixes" the red build by adding `src/billing/**` to the coverage exclude list in
+`vitest.config.ts`. The guard does not read tool configuration, so the move passes the floor. That
+is why measurement configuration sits under maintainer review (CODEOWNERS) next to
+`CONSTRAINTS.md`. Review and ownership cover what a regex cannot.

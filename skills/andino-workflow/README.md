@@ -29,7 +29,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-browser-testing-with-devtools` | Reproduce, fix and replay in a real browser; release pass at 360, 768 and 1440 px by device emulation, accessibility, console split and loading metrics. |
 | `andino-code-review` | Spec and Standards review with pinned scope, evidence from the reviewed bytes and the repository left as found; request and receive protocols. |
 | `andino-code-simplification` | Behavior-preserving simplification of working code, in a repository or pasted, with a per-change ledger and protected regions. |
-| `andino-constraint-driven-development` | Establish and preserve the quality floor. |
+| `andino-constraint-driven-development` | Write the quality bar into `CONSTRAINTS.md` and block agents lowering it; Node and Python floor guards, multi-stack catalog. |
 | `andino-doubt-driven-development` | Fresh scrutiny of consequential assumptions and invariants. |
 
 ### Production boundaries

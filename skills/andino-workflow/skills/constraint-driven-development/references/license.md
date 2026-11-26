@@ -1,6 +1,7 @@
 # License Notice
 
 **Original Source:** [addyosmani/agent-skills: skills/constraint-driven-development](https://github.com/addyosmani/agent-skills/tree/main/skills/constraint-driven-development)
+(last adapted from commit 9c7f62d, 2026-11-20)
 
 Substantive adapted material in this skill is covered by the following notice:
 
