@@ -38,27 +38,26 @@ Never assume "ugly" or "verbose" code is accidental. Protected regions typically
 
 ## 3. Operational Integrity Protocol
 
-Whenever an agent touches a file containing protected markers, it MUST adhere to the following 5-phase cryptographic invariant:
+Whenever an agent touches a file containing protected markers, it follows this four-phase procedure:
 
 ### Phase 1: Pre-Edit Snapshot & Hash Baseline
 1. Scan the target file for marker pairs.
 2. Extract the exact raw bytes between the start marker (including the marker line) and the end marker (including the marker line).
-3. Compute the raw SHA-256 digest of the extracted bytes:
-   $$\text{Baseline Hash} = \text{SHA256}(\text{RawBytes})$$
+3. Compute the SHA-256 digest of the extracted bytes: this is the baseline hash.
 4. Record the count, order, and identifiers of all protected regions in the task memory.
 
 ### Phase 2: Bounded Editing
 - You may refactor, flatten, and simplify code **surrounding** the protected block (e.g. caller parameter setup, validation guard clauses, and consumer return logic).
 - You MUST NOT touch, re-indent, re-wrap, or format any byte within the protected markers.
+- Indentation is part of the bytes. In an indentation-sensitive language such as Python, flattening the code around a block would shift its indentation: keep the nesting around the block instead, and say why in the report.
 - Never use placeholder masking tools or synthetic mock replacements on Read. Read the source code in its authentic state.
 
 ### Phase 3: Post-Edit Hash Verification
 1. Extract the raw bytes of the protected region from the edited file.
-2. Compute:
-   $$\text{Post-Edit Hash} = \text{SHA256}(\text{EditedBytes})$$
-3. Assert:
-   $$\text{Baseline Hash} == \text{Post-Edit Hash}$$
+2. Compute their SHA-256 digest: this is the post-edit hash.
+3. Compare it with the baseline hash.
 4. If the hashes differ by even a single byte or newline character, the modification is immediately REJECTED.
+5. Report the comparison you ran, with both hashes. Never state that a block is unchanged without it.
 
 ### Phase 4: Emergency Rollback
 If verification fails:

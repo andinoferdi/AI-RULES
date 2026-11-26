@@ -18,6 +18,11 @@ Automated DOM linters only catch a fraction of accessibility defects. Use browse
 2. **Accessible Role Verification:**
    - Use native HTML elements whenever possible: `<button>` for actions, `<a href>` for navigation.
    - Avoid clickable `<div>` or `<span>` elements. If custom components are unavoidable, verify `role="button"`, `tabindex="0"`, and keyboard event handlers are present.
+3. **Heading Outline:**
+   - Read the headings from the accessibility snapshot, or list them with
+     `[...document.querySelectorAll('h1,h2,h3,h4,h5,h6')].map((h) => h.tagName + ' ' + h.textContent.trim())`.
+   - The page has one `h1`. Going down the outline, each heading is at most one level deeper than the one before it (`h2` to `h4` skips a level and fails).
+   - Headings describe the section they open; styling text to look like a heading does not make it one.
 
 ---
 
@@ -57,11 +62,13 @@ Test keyboard interactions purely using keyboard events in the browser:
 ## 4. Visual Contrast & Target Sizing
 
 - [ ] **Color Contrast Ratios:**
+  - Compute the ratio from the rendered colors (`getComputedStyle(el).color` and the effective background) with the WCAG relative-luminance formula, or read it from `lighthouse_audit`; a color that only looks dark enough is not a measurement.
   - Normal text (< 18pt / < 14pt bold): minimum **4.5:1** contrast against background.
   - Large text (>= 18pt / >= 14pt bold): minimum **3.0:1** contrast against background.
   - User interface components & graphical objects (borders, icons): minimum **3.0:1** contrast.
 - [ ] **Touch Target Sizing:**
-  - On mobile viewports (360px), all tap targets (buttons, links, form controls) must measure at least **44 x 44px** (including padding).
+  - WCAG 2.2 AA (2.5.8): every tap target (button, link, form control) measures at least **24 x 24px**, or has enough spacing around it.
+  - **44 x 44px** (2.5.5, AAA) is the comfortable size on mobile viewports (360px); report smaller targets as a recommendation unless the project requires AAA.
 - [ ] **Zoom & Text Resizing:**
   - Page layout remains functional and legible when browser text is zoomed to 200% without clipping or horizontal overflow.
 - [ ] **Flashing & Motion:**

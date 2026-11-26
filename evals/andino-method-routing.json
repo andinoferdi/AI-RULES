@@ -252,6 +252,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-brainstorming-grill-plan",
+    "kind": "behavior",
+    "prompt": "Grill me on this plan before I build it: a weekly digest email of new tools for members.",
+    "fixture": "Disposable routing assessment; current product facts are settled unless the request opens them.",
+    "expected": "Select brainstorming",
+    "forbidden": "Invented invocation, bulk loading, unauthorized changes or reopened accepted decisions.",
+    "capabilities": [
+      "brainstorming"
+    ],
+    "method": "brainstorming",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-browser-testing-with-devtools-implicit",
     "kind": "behavior",
     "prompt": "The checkbox stays checked after a PATCH returns 503; diagnose these captured events.",
@@ -291,6 +305,20 @@
     ],
     "method": "browser-testing-with-devtools",
     "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-browser-testing-with-devtools-release-pass",
+    "kind": "behavior",
+    "prompt": "We just shipped a new settings page. Check it is ready to release on phones and desktops.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select browser-testing-with-devtools",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "browser-testing-with-devtools"
+    ],
+    "method": "browser-testing-with-devtools",
+    "variant": "implicit",
     "coverage": "routing"
   },
   {
@@ -350,6 +378,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-code-review-receive-feedback",
+    "kind": "behavior",
+    "prompt": "A reviewer left six comments on my PR; some look wrong. Handle them.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select code-review",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "code-review"
+    ],
+    "method": "code-review",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-code-review-negative",
     "kind": "negative-trigger",
     "prompt": "Apa beda review dan testing?",
@@ -381,6 +423,20 @@
     "id": "method-code-simplification-implicit",
     "kind": "behavior",
     "prompt": "Simplify this green nested function without changing errors or the marked fast path.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select code-simplification",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "code-simplification"
+    ],
+    "method": "code-simplification",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-code-simplification-pasted",
+    "kind": "behavior",
+    "prompt": "Here's a function I pasted from our codebase, can you clean it up? There are no tests, it just works.",
     "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
     "expected": "Select code-simplification",
     "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",

@@ -1,0 +1,9 @@
+{
+  "library": {
+    "name": "Northside Tool Library"
+  },
+  "email": {
+    "provider": "postmark",
+    "from": "desk@northsidetools.org"
+  }
+}
