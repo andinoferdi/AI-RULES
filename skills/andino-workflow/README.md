@@ -39,7 +39,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-security-and-hardening` | External-input, authentication, data and dependency trust boundaries. |
 | `andino-deprecation-and-migration` | Consumer-aware interface/schema retirement and migration. |
 | `andino-observability-and-instrumentation` | Useful production evidence, monitoring and runbooks. |
-| `andino-performance-optimization` | Measured bottlenecks and verified improvements. |
+| `andino-performance-optimization` | Measured baselines, attributed bottlenecks, one change at a time, guards and an attempts record. |
 | `andino-ci-cd-and-automation` | CI gates and required checks, failing or flaky runs, workflow security, deploy promotion and rollback; optional commit-check setup. |
 | `andino-shipping-and-launch` | Authorized release readiness, rollout and recovery planning. |
 | `andino-git-skills` | Select workspace, operation-safety, change-hygiene, branch-integration or PR-draft craft. No implicit commit, push or destructive recovery. |
