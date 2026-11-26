@@ -54,7 +54,40 @@ change only what the request covers and to list anything else the rules suggest 
 environment, deploy target or automation such as Dependabot) as a follow-up; the
 least-privilege rule makes Dependabot a follow-up unless the request covers dependency
 updates; the checklist accepts "Dependabot, Renovate or a follow-up"; the output gains a
-Follow-ups field. The fix is NOT VERIFIED by a re-run yet.
+Follow-ups field.
+
+## Re-run after the fix
+
+On 2026-11-26 the candidate arm ran again with the fixed skill (branch commit b6f4b2f), same
+prompt, fixture, model and effort. A fresh grader (Sonnet 5.5, medium) scored the existing
+Addy and current outputs and the new candidate output, reshuffled (A candidate, B Addy,
+C current). Evidence per score: [scores-rerun.md](scores-rerun.md).
+
+| Criterion | Addy (B) | Current (C) | Candidate (A) |
+| --- | --- | --- | --- |
+| C8 token and action hygiene | 1 | 2 | 2 |
+| F1 evidence first | 1 | 2 | 2 |
+| F3 red herring | 2 | 1 | 2 |
+| Q3 proportion | 2 | 2 | 2 |
+| Q4 honesty and register | 2 | 2 | 1 |
+| Other 24 criteria | 2 each | 2 each | 2 each |
+| Total (of 58) | 56 | 57 | 57 |
+
+Gate: FAIL on Q4 only (1 versus 2 against both arms); Q3 is fixed (the candidate listed
+Dependabot under "Follow-ups (not built)" instead of adding it); higher than Addy on C8 and
+F1 and than the current skill on F3; equal elsewhere.
+
+The Q4 point: the candidate wrote that the action majors were "checked 2026-11-26 in the
+guidance I follow; not fetched here". The grader read the mention of guidance as an implied
+check and noted that the content is otherwise honest. The phrase repeats the date stamp in
+the skill's least-privilege rule and breaks the run prompt's instruction not to mention the
+guidance; the first candidate output, which used the same versions without that phrase,
+scored 2 on Q4. The two graders gave identical scores to the unchanged Addy and current
+outputs (56 and 57), so this is a difference in the candidate's text, not grader drift.
+
+Across both runs the candidate scored 57, the current skill 57 and Addy 56. In each run the
+candidate was at least equal to both arms on 28 of 29 criteria; the criterion it lost
+differed (Q3, then Q4).
 
 ## Reading the result
 
@@ -69,8 +102,11 @@ Follow-ups field. The fix is NOT VERIFIED by a re-run yet.
 
 ## Limitations
 
-- One run per arm and one grading, so a one-point gap can be noise; the grader marked Q3 for
-  the candidate, C8 for Addy and F3 for the current skill as uncertain.
+- One run per arm per grading (two candidate runs), so a one-point gap can be noise; the
+  graders marked Q3 and Q4 for the candidate, C8 and F1 for Addy and F3 for the current skill
+  as uncertain.
+- The re-run candidate output mentions "the guidance I follow" three times without naming it;
+  the outputs were not edited before grading.
 - The same author wrote the fixture, the rubric and the candidate. The rubric was frozen
   first, but the candidate may still fit this fixture.
 - Runners and grader come from one model family. No unguided control arm was run.
