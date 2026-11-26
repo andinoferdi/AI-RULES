@@ -14,7 +14,7 @@ A developer opened a pull request refactoring the user authentication module. Th
 ## 2. Step-by-Step Execution Walkthrough
 
 ### Step 1: CI Failure Notification & Log Distillation
-The CI pipeline failed on job `integration`. Rather than ingesting the entire 1,400-line GitHub Actions log, the agent distilled the relevant error block:
+CI run 8807, attempt 1 (commit `9b1e7d0`) failed on job `integration`; the first failing step was `npm run test:integration`. Rather than ingesting the entire 1,400-line GitHub Actions log, the agent distilled the relevant error block:
 
 ```text
 [FAIL] test/integration/auth-repository.test.ts
@@ -56,58 +56,14 @@ Before pushing, the agent executed the exact local verification sequence:
    npm run lint && npx tsc --noEmit && npm test && npm run build
    ```
    *Result: All gates passed exit code 0.*
-3. Pushed the atomic fix commit to the branch. Remote CI re-ran and turned green.
+3. Pushed the atomic fix commit to the branch and recorded the hosted evidence separately from the
+   local results above: CI run 8812, attempt 1, commit `4f2c9a1`, job `integration` passed and the
+   required check `build` reported success for that commit. Until that run was observed, the hosted
+   result was reported as NOT VERIFIED.
 
 ---
 
-## 3. Operational Example (Offline Deterministic Python Runner)
+## 3. Operational Example
 
-The Andino test harness validates CI dependency graph evaluation and blocker propagation using this standard-library Python runner. It verifies that when an ancestor gate fails (e.g., under `ANDINO_NEGATIVE=1`), all dependent downstream stages are strictly blocked from execution, preventing unsafe advancement.
-
-```python andino-operational-example
-import json, os
-
-def evaluate(jobs):
-    """
-    Evaluates pipeline stages against a directed acyclic graph (DAG).
-    If any dependency of a job is not 'pass', the job is marked 'blocked'.
-    Otherwise, if exit_code is 0, it passes; else it fails.
-    """
-    state = {}
-    for name, deps, exit_code in jobs:
-        if any(state.get(d) != "pass" for d in deps):
-            state[name] = "blocked"
-        else:
-            state[name] = "pass" if exit_code == 0 else "fail"
-    return state
-
-def probe():
-    # When ANDINO_NEGATIVE is set, lint fails, triggering cascading blocks.
-    lint_exit = 1 if os.getenv("ANDINO_NEGATIVE") else 0
-    jobs = [
-        ("lint", [], lint_exit),
-        ("unit", ["lint"], 0),
-        ("build", ["unit"], 0),
-        ("publish", ["build"], 0)
-    ]
-    result = evaluate(jobs)
-    all_passed = all(v == "pass" for v in result.values())
-    return {
-        "stages": result,
-        "publish_ready": all_passed,
-        "deployed": False
-    }
-
-if __name__ == "__main__":
-    print(json.dumps(probe(), sort_keys=True))
-```
-
-### Expected Output (Default / Success):
-```json
-{"deployed": false, "publish_ready": true, "stages": {"build": "pass", "lint": "pass", "publish": "pass", "unit": "pass"}}
-```
-
-### Expected Output (Adversarial / Negative: `ANDINO_NEGATIVE=1`):
-```json
-{"deployed": false, "publish_ready": false, "stages": {"build": "blocked", "lint": "fail", "publish": "blocked", "unit": "blocked"}}
-```
+The gate-graph example that shows a failed ancestor blocking every later stage is in
+[the skill's operational example](../SKILL.md#operational-example-offline).

@@ -1,6 +1,7 @@
 # License Notice
 
 **Original Source:** [addyosmani/agent-skills: skills/ci-cd-and-automation](https://github.com/addyosmani/agent-skills/tree/main/skills/ci-cd-and-automation)
+(last adapted from commit a05781556f89, 2026-11-22)
 
 Substantive adapted material in this skill is covered by the following notice:
 
