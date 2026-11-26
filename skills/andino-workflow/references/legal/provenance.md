@@ -211,6 +211,15 @@ shims preserving legacy invocations and catalog counts, zero-deletion workspace 
 deterministic offline test fixtures in `tests/fixtures/decision_lens_cases.json`, and comprehensive multi-tier
 verification). All source attributions remain preserved under their respective MIT licenses.
 
+The 2026-11-26 rewrite of `skill-maker` replaces its part of that elevation. Jesse Vincent's
+`writing-skills` (obra/superpowers, path last changed in 2ce8aa1) supplies test-driven skill writing,
+the form-to-failure table, loophole closing, per-type tests, pressure types and wording micro-tests;
+Addy Osmani's `using-agent-skills` (eca51a2) and `docs/skill-anatomy.md` (c4efec8) supply the section
+anatomy and context efficiency, all adapted under MIT. Andino keeps the remedial and greenfield modes,
+the brief, separate discovery, task and packaging checks and honest status labels, and adds seven gates
+with Done-when artifacts, a routing table for items that leave the skill, PASS/FAIL scenarios and a
+labelled self-review path. The 150-line rule, numbered sections and the metadata-only harness are removed.
+
 The 2026-11-02 elevation of `agent-document-authoring` synthesizes the generative cognitive craft
 of Matt Pocock's `writing-for-agents` and `SKILL-MECHANICS.md` (The Two Loads: Context vs Cognitive,
 the 3-Tier Hierarchy Ladder, Progressive Disclosure branching test, Co-location vs Scattering,
