@@ -7,6 +7,7 @@ Writes into <out-dir>:
   summary.md             the runner's final message, when the parent saved it there
   state.txt              HEAD, branch, git status, commits since the fixture, test run
   changes.diff           full diff of tracked files against the fixture HEAD
+  changes-ignore-eol.diff  the same diff with CR/LF line-ending changes ignored
   new-files/             copies of untracked files
 
 Absolute paths of the run directory are replaced with <RUN_DIR> in every text file.
@@ -75,6 +76,10 @@ def main():
     (out / "state.txt").write_text(scrub("\n".join(state) + "\n", run_dir), encoding="utf-8")
     diff = run(git + ["diff", FIXTURE_HEAD], repo)
     (out / "changes.diff").write_text(scrub(diff + "\n", run_dir), encoding="utf-8")
+    # File tools on Windows may rewrite LF as CRLF; this diff shows content changes only.
+    content = run(git + ["diff", "--ignore-cr-at-eol", FIXTURE_HEAD], repo)
+    (out / "changes-ignore-eol.diff").write_text(scrub(content + "\n", run_dir),
+                                                 encoding="utf-8")
     print(f"collected {run_dir} -> {out}")
     return 0
 

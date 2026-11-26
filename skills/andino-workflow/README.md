@@ -50,7 +50,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | --- | --- |
 | `andino-agent-document-authoring` | Writing and auditing documents agents read: AGENTS.md, CLAUDE.md, skill text and descriptions, pointers. |
 | `andino-skill-maker` | Executable skill/procedure authoring with baseline and candidate evaluation. |
-| `andino-documentation-and-adrs` | Durable documentation and decisions; optional domain vocabulary. |
+| `andino-documentation-and-adrs` | ADRs in the house convention, consumer contracts and release notes, drift audits by commit order and content, comment cleanup; optional domain vocabulary. |
 | `andino-handoff` | Portable continuation and optional context packing. |
 | `andino-human-procedure` | Necessary steps requiring human-only access or authority. |
 | `andino-issue-triage` | Maintainer-requested issue/PR evaluation without unauthorized tracker writes. |
