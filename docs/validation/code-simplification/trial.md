@@ -70,6 +70,13 @@ than the current skill on T10, T11 and T13.
   catch this. The candidate kept the comparison, explained it in a comment and pinned it with
   characterization tests.
 
+## Change after grading
+
+The self-review after grading added `x == True` to the strict-versus-truthy trap in
+`SKILL.md` ("Preserve behavior exactly"), next to `is True` and `=== true`, because that is the
+change the Addy and unguided arms made without noticing. The candidate arm already kept that
+comparison. This one-line addition was not re-run.
+
 ## Limitations
 
 - One run per arm and one grading, so a one-point difference can be noise. The chair's earlier

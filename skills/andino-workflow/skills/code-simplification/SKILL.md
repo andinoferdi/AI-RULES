@@ -144,9 +144,9 @@ types and messages, side effects and their order, and edge-case results stay ide
 you cannot show that a change preserves behavior, do not make it. These look equivalent and
 are not:
 
-- strict and truthy checks: `x is True` or `x === true` versus `if x`; `!= null` (null and
-  undefined) versus `!== null` or a truthy test; `a ?? b` versus `a || b` when `a` can be
-  `""` or `0`;
+- strict and truthy checks: `x is True`, `x == True` or `x === true` versus `if x` (they
+  differ for `"yes"` or `2`); `!= null` (null and undefined) versus `!== null` or a truthy
+  test; `a ?? b` versus `a || b` when `a` can be `""` or `0`;
 - an `async` wrapper: without `async`, a synchronous throw from the callee escapes as a
   thrown error instead of a rejected promise, and a plain value comes back where callers got
   a promise;
