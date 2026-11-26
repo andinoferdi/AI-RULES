@@ -12,7 +12,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 
 | Public member | Responsibility |
 | --- | --- |
-| `andino-brainstorming` | Open intent and choices; optional decision-frontier, feasibility-probe, idea-validation and async-question resources. |
+| `andino-brainstorming` | Open intent and choices, why before how, decision rounds and a confirmed design; optional decision-frontier, feasibility-probe, idea-validation and async-question resources. |
 | `andino-planning` | Exact implementation changes, dependencies and proof; optional behavior-readiness, dependency-slicing and recurring-process resources. |
 | `andino-plan-execution` | Authorized dependency-ready execution; independently selectable task-implementation, vertical-slice and frontend-engineering resources. |
 | `andino-delegation` | Bounded independent work with disjoint write scopes and parent integration. |
@@ -26,9 +26,9 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-tdd` | Executable RED/GREEN behavior guards; optional typed-fixture migration preserving invalid negative cases. |
 | `andino-debugging` | Reproduce, prove and fix an unknown cause through six evidence gates with a report template; quick path when the compiler names the cause. |
 | `andino-verification` | Observed acceptance evidence before consequential completion claims. |
-| `andino-browser-testing-with-devtools` | Rendered behavior, console/network and browser evidence; UI screenshots at 360, 768 and 1440 px. |
-| `andino-code-review` | Specification and standards review. |
-| `andino-code-simplification` | Evidenced simplification of green code without behavioral drift. |
+| `andino-browser-testing-with-devtools` | Reproduce, fix and replay in a real browser; release pass at 360, 768 and 1440 px by device emulation, accessibility, console split and loading metrics. |
+| `andino-code-review` | Spec and Standards review with pinned scope, evidence from the reviewed bytes and the repository left as found; request and receive protocols. |
+| `andino-code-simplification` | Behavior-preserving simplification of working code, in a repository or pasted, with a per-change ledger and protected regions. |
 | `andino-constraint-driven-development` | Establish and preserve the quality floor. |
 | `andino-doubt-driven-development` | Fresh scrutiny of consequential assumptions and invariants. |
 

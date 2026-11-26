@@ -158,9 +158,13 @@ finally:
     f.close()
 
 # [CLEAR]: Idiomatic context manager ensuring resource release
-with open("data.json", "r", encoding="utf-8") as f:
+with open("data.json", "r") as f:
     content = json.load(f)
 ```
+
+Keep the original `open()` arguments. Adding `encoding="utf-8"` is a behavior change wherever
+the platform's default encoding differs (Windows, for example); make it a separate, stated
+change.
 
 ---
 
@@ -206,26 +210,74 @@ function ProfileCard({ user, isLoading, error }: Props) {
 
 ---
 
-## 5. Over-Simplification Anti-Patterns (The Traps)
+## 5. Behavior Traps
 
-Simplification has a treacherous failure mode: **over-simplification**. Agents must actively avoid these 4 traps:
+Each pair below looks like a harmless tidy-up and changes behavior. Keep the original form, or
+make the change separately and say so.
 
-### Trap 1: Aggressive Inlining of Domain Concepts
-- **The Mistake**: Inlining a 2-line function `function isSessionExpired(session) { return Date.now() > session.expiresAt; }` directly into 5 call sites to "reduce function count."
-- **Why It Fails**: You destroyed a named ubiquitous domain concept. The call sites now leak low-level time arithmetic into high-level business flows.
-- **Rule**: If a function names a meaningful domain rule, keep it.
+### 5.1 Strict checks versus truthy checks
 
-### Trap 2: Optimizing for Line Count (Code Slop)
-- **The Mistake**: Replacing a readable 6-line `if/else` block with an unreadable, clever 1-line regular expression or chained bitwise operator.
-- **Why It Fails**: Line count is NOT complexity. The true benchmark is **Comprehension Speed**: *"Can an on-call engineer at 2 AM locate a bug in this function in 15 seconds?"*
-- **Rule**: Prefer explicit clarity over clever compression.
+```python
+# Original: only the boolean True counts as valid.
+if item.get("valid") is True:
+    process(item)
 
-### Trap 3: Stripping Defensive Checks
-- **The Mistake**: Deleting `if (!item) return null;` because the current unit test always passes valid objects.
-- **Why It Fails**: In production, asynchronous payloads, external API drops, or legacy data frequently introduce `null`. Stripping defensive checks causes catastrophic runtime crashes.
-- **Rule**: Never remove error handling unless caller contract invariants mathematically guarantee impossibility.
+# Looks simpler, accepts 1, "yes" and any non-empty value as well.
+if item.get("valid"):
+    process(item)
+```
 
-### Trap 4: Premature DRY (False Duplication)
-- **The Mistake**: Merging `calculateShippingTax()` and `calculateCorporateDiscountTax()` because their formulas look identical today.
-- **Why It Fails**: They represent two completely different business axes that evolve independently. Unifying them couples unrelated requirements.
-- **Rule**: Duplication is far cheaper than the wrong abstraction.
+```typescript
+// Original: strict. `active: 1` or `active: "yes"` stay excluded.
+users.filter((u) => u.active === true);
+
+// Looks simpler, now includes them.
+users.filter((u) => u.active);
+```
+
+### 5.2 Loose null checks
+
+```typescript
+// Original: skips null and undefined, keeps "" (an empty string is pushed).
+if (u.email != null) emails.push(u.email.trim());
+
+// `!== null` lets undefined through and then crashes on `.trim()`.
+if (u.email !== null) emails.push(u.email.trim());
+
+// A truthy test also drops "".
+if (u.email) emails.push(u.email.trim());
+```
+
+### 5.3 `??` versus `||`
+
+```typescript
+// Original falls back for every falsy nickname: undefined, null, "" and 0.
+const name = user.nickname ? user.nickname : `${user.firstName} ${user.lastName}`;
+
+const sameBehavior = user.nickname || `${user.firstName} ${user.lastName}`;
+// Changes behavior: "" and 0 are kept instead of falling back.
+const different = user.nickname ?? `${user.firstName} ${user.lastName}`;
+```
+
+### 5.4 Iteration protocol
+
+```typescript
+// Original index loop accepts any object with a length and indexed elements,
+// such as { length: 2, 0: "a", 1: "b" }.
+for (let i = 0; i < items.length; i++) handle(items[i]);
+
+// for...of needs an iterator and throws a TypeError on that plain object.
+for (const item of items) handle(item);
+```
+
+### 5.5 Default arguments
+
+```python
+# Original: only None gets the default; a caller's own empty mapping is kept.
+opts = {} if options is None else options
+
+# Replaces every falsy value, including an empty custom mapping, with a new dict.
+opts = options or {}
+```
+
+For the `async` wrapper trap, see 2.4.

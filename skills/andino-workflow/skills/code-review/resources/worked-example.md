@@ -12,20 +12,32 @@ and inserts its audit record in a separate autocommit statement on line 12.
 
 ## Review output
 
-**Scope.** Committed refund change against its parent. The task's atomicity
-requirement is the Spec source.
+**Scope.** Committed refund change against its parent, both resolved to SHAs.
+Spec source: the task's atomicity requirement. Standards source: the
+repository's contributing rules. Excluded: the uncommitted `auth.py` draft.
+
+**Verdict.** Overall CHANGES REQUESTED. Spec FAIL. Standards FAIL on
+persistence correctness, covered by the same finding. One finding; worst on
+both axes: the refund and its audit row can diverge.
 
 **[REQUIRED] Spec · `refund.py:11` · Commit the refund and audit row together.**
 If the audit insert fails after the order update, the order remains refunded
 without an audit record. Both writes use autocommit, so the second failure
 cannot roll back the first write. Run both statements in one transaction and
-add a regression test that forces the audit insert to fail.
+add a regression test that forces the audit insert to fail. Cross-reference:
+Standards (persistence correctness).
 
-**Axis verdicts.** Spec FAIL. Standards FAIL on persistence correctness,
-covered by the same finding. Overall CHANGES REQUESTED.
+**Tests.** The existing test asserts both writes when the audit insert
+succeeds. No test forces the audit insert to fail, so a non-atomic
+implementation passes it. Missing: audit failure leaves the order unrefunded.
 
-**Verification and limits.** Inspected the happy-path test. It does not
-exercise audit failure. No repository test was run for this example review.
+**Checked and sound.** The happy path writes both rows.
+
+**Pre-existing, outside this change.** None.
+
+**Verification and limits.** Inspected the happy-path test and ran the proof
+below, which reproduces the partial write. No repository test was run for this
+example review. Starting and ending repository state: unchanged.
 
 **Declined to Judge.** The uncommitted `auth.py` draft is outside the
 requested committed scope.
