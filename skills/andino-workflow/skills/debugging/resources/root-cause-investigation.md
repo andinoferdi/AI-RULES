@@ -1,6 +1,6 @@
 # Root Cause Investigation and Seam Isolation
 
-Supporting reference for `skills/debugging/`. Operates under Andino Workflow governance.
+Supporting reference for `andino-debugging`. Operates under Andino Workflow governance.
 
 ---
 
@@ -144,3 +144,30 @@ A regression test is only as trustworthy as the architectural seam it exercises.
 If a codebase makes it impossible to write a focused, unattended regression test without spinning up 10 manual external systems or monkey-patching globals:
 > **Document this explicitly as an Architectural Seam Finding.**
 > Do not write a fake mock test and claim full verification. Flag that the module boundary lacks testability.
+
+---
+
+## 6. Compare With a Working Case
+
+The fastest way to see what is wrong is often to put a working case beside the failing one
+(gate 3). A working case is anything close to the failure that behaves correctly: another
+input, another data source, an older app version, another configuration, a previous commit,
+or similar working code elsewhere in the codebase.
+
+1. **Find the nearest working case.** Prefer one that differs from the failing case in as few
+   ways as possible. When several exist, the closest one shortens the list below.
+2. **Read the reference completely.** When the code follows a pattern or a reference
+   implementation, read all of it rather than skimming; partial understanding breeds a
+   partial fix.
+3. **List every difference**, however small: input shape, field formats, versions, environment
+   variables, ordering, timing, configuration. Do not pre-filter with "that cannot matter".
+4. **Check what each case depends on**: other components, settings and assumptions the working
+   case gets for free.
+5. **Test the differences one at a time** with the red check, starting with the most likely, and
+   record which difference flips the result.
+
+```
+Working:  invoice exported by the en-US server -> amount "1,200.50" -> parsed as 1200.50
+Failing:  invoice exported by the de-DE server -> amount "1.200,50" -> parsed as 1.2
+Difference that flips the result: the server locale's decimal separator
+```

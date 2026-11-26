@@ -2,6 +2,9 @@
 
 Substantive adapted material in this skill is covered by the following notices:
 
+Upstream revisions read for the 2026-11-26 upgrade: addyosmani/agent-skills 9097b64,
+mattpocock/skills f3fc563 and obra/superpowers 22f0b46.
+
 ## Addy Osmani (agent-skills)
 - **Original Source:** [addyosmani/agent-skills: skills/debugging-and-error-recovery](https://github.com/addyosmani/agent-skills/tree/main/skills/debugging-and-error-recovery)
 

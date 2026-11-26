@@ -1,6 +1,6 @@
 # Flaky Tests and Concurrency Debugging
 
-Supporting reference for `skills/debugging/`. Operates under Andino Workflow governance.
+Supporting reference for `andino-debugging`. Operates under Andino Workflow governance.
 
 ---
 
