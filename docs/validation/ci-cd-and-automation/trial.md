@@ -8,7 +8,8 @@ Run on 2026-11-26. One blind run per arm on the fixture in `fixture/`, scored ag
 - Arms: Addy Osmani's `ci-cd-and-automation` (addyosmani/agent-skills commit
   a05781556f8999e42ad884500053804720b4e568); the current `andino-ci-cd-and-automation`
   (AI-RULES main at 49ad00b); the candidate rewrite (branch
-  `skill/ci-cd-and-automation-upgrade`, skill folder as it stood before the Q3 fix below).
+  `skill/ci-cd-and-automation-upgrade`: the skill folder of commit 049a6c0 without the Q3
+  fix below; the two differ only in the fix lines of SKILL.md and its GUIDE.md mirror).
 - Runners: three Claude Code subagents, Sonnet 5.5 at medium effort, one per arm. The two
   baseline arms ran first; a five-advisor council read their outputs before the rewrite; the
   candidate ran after it. Each runner got the rubric's run prompt, its own skill copy and its
@@ -47,7 +48,8 @@ or Renovate "updates" the pinned actions, and its verification checklist require
 Dependabot or Renovate keep actions current, so the runner added a configuration to satisfy
 the checklist. Neither baseline skill pushes for that file.
 
-Fix applied after grading (branch commit recorded in the PR): procedure step 1 now says to
+Fix applied after grading (included in commit 049a6c0, together with two shortened
+sentences that keep SKILL.md at 470 lines): procedure step 1 now says to
 change only what the request covers and to list anything else the rules suggest (a gate,
 environment, deploy target or automation such as Dependabot) as a follow-up; the
 least-privilege rule makes Dependabot a follow-up unless the request covers dependency
