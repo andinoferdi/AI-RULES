@@ -1,0 +1,16 @@
+# Alert rules for the payments worker, evaluated against the metrics backend.
+# Notifications: severity "page" goes to the #payments-oncall pager, "ticket" to the
+# payments board. Owner: payments team (lead: Budi).
+groups:
+  - name: payments-worker
+    rules:
+      - alert: PaymentFailure
+        expr: increase(payment_failures_total[1m]) > 0
+        for: 0m
+        labels:
+          severity: page
+      - alert: WorkerHighCPU
+        expr: process_cpu_percent{job="payments-worker"} > 80
+        for: 1m
+        labels:
+          severity: page
