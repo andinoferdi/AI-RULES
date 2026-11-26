@@ -165,6 +165,15 @@ Fast-Path Deterministic and Deep Forensic Investigation, deep craft `GUIDE.md`, 
 catalogs, dual-runtime cross-platform portability in Bash POSIX and Python 3.8+ stdlib, offline
 deterministic Python stdlib verification, and complete integration with `ai-rules setup`).
 
+The 2026-11-26 upgrade of `tdd` re-reads Addy Osmani's `test-driven-development`
+(addyosmani/agent-skills df50a6d), Matt Pocock's `tdd` (mattpocock/skills 3f59913) and Jesse
+Vincent's `test-driven-development` (obra/superpowers 5bf4e78), all MIT, and moves the method into
+the sibling layout: a slice list and six evidence gates in `SKILL.md` (mirrored by `GUIDE.md`), a
+test record template, shortcut and red-flag lists, and resources for test design, the supporting
+contract and a worked example. The duplicate `resources/typed-fixtures/contract.md` was removed;
+the typed-fixtures guide is unchanged. The comparison trial is recorded in
+`docs/validation/tdd/trial.md`.
+
 The 2026-11-26 upgrade of `debugging` re-reads Addy Osmani's `debugging-and-error-recovery`
 (addyosmani/agent-skills 9097b64), Matt Pocock's `diagnosing-bugs` (mattpocock/skills f3fc563)
 and Jesse Vincent's `systematic-debugging` (obra/superpowers 22f0b46), all MIT, and moves the

@@ -86,6 +86,11 @@ def main() -> int:
                 if item.get("type") == "text" and item.get("text", "").strip():
                     blocks.append("> " + blind(item["text"]).strip().replace("\n", "\n> "))
                 elif item.get("type") == "tool_use":
+                    if item["name"] == "SubagentHandback":
+                        # The runner's report to the chair, not a reply to the requester; it
+                        # can name the guidance, and the replies are graded from out/.
+                        hidden.add(item["id"])
+                        continue
                     step += 1
                     raw = json.dumps(item.get("input", {}), ensure_ascii=False)
                     if re.search(r"[\\/]guide[\\/]|[\\/]guide\"", raw) and item["name"] in (
