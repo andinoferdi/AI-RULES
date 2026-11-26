@@ -1,75 +1,106 @@
 # Plan execution contract
 
-## Single durable checkpoint and state
+The fields and states the procedure writes into the plan. Equivalent project fields are fine;
+keep one authoritative record.
 
-The existing plan is authoritative. Preserve its proportional shape and equivalent
-project fields. Keep TODO, IN_PROGRESS, BLOCKED, DONE and SKIPPED synchronized when
-both board and detail exist. BLOCKED names its dependency and can resume when resolved.
-SKIPPED records an accepted replacement. Drift can reopen DONE and affected consumers;
-preserve unrelated valid evidence. Recovery attributes current bytes and preserves
-user changes before rerunning missing checks; never revert unknown work.
+## The plan is the checkpoint
 
-## Task specification readiness
+The existing plan holds status, evidence, rulings and NEXT ACTION. Keep its proportional
+shape (LITE, STANDARD or DEEP) and its own field names. When it has both a board and task
+details, keep them in step. States:
 
-Before an implementation task starts, check its inspected file/symbol anchors,
-Change Specification (add/replace/remove what into what, with decision-bearing
-snippets/text and exact values), interfaces and concrete proof. Work status alone
-does not establish readiness. A roadmap, "implement as needed", or an UNKNOWN
-consumer contract requires detail/discovery first. Compare snippets with current
-source and accepted requirements; precision cannot excuse a stale or wrong edit.
-Resolve bounded discoverable gaps in the same checkpoint within existing authority,
-loading canonical planning when decomposition or task detail is missing. Record
-the correction/ruling and update consumers before source edits. Reuse authorized
-execution without a new permission gate; user-owned decisions and unavailable
-evidence block only dependent work. Do not retrofit detail onto completed tasks
-whose current acceptance evidence is still valid.
+| State | Meaning |
+| --- | --- |
+| TODO | Not started. |
+| IN_PROGRESS | Being executed now; one task at a time. |
+| DONE | Acceptance observed on the current files (fields below). |
+| PARTIAL | Some steps done; a stopped action remains, named with who can take it. |
+| BLOCKED | Cannot proceed; names the dependency, decision or authority it waits on. |
+| SKIPPED | Replaced by an accepted alternative, named. |
 
-## Acceptance and evidence
+Drift can reopen a DONE task and its consumers. Recovery attributes the current bytes and
+keeps user changes before rerunning missing checks; unknown work is never reverted.
 
-DONE requires current acceptance observations: command/action, directory, exit/result,
-exercised scope, relevant environment, tested identity and limits. Separate expected
-from actual results. Commit ranges identify committed bytes only; hashes or scoped
-snapshots also cover WIP and owned new files. Map each criterion to the executed
-assertion or equivalent observation that proves it. A passing aggregate result
-does not establish an omitted or skipped required case. Record that criterion as
-`NOT_VERIFIED` and identify the missing check. Hold work that requires the
-unverified result and continue independent ready work.
+## Preflight note (step 1)
 
-Load canonical TDD for behavior changes: meaningful RED, minimal implementation,
-focused GREEN. Import/tool/fixture errors are setup failures. If already GREEN,
-inspect coverage and real behavior; preserve satisfied behavior rather than inventing
-changes. Static artifacts use observable artifact checks; runtime-affecting config
-needs behavioral checks. Select regression/integration by risk and project quality floor.
+Written in the plan before the first edit:
 
-Reuse requires nonempty source, check and relevant environment identities, prior PASS
-and unchanged dependencies. Two missing fields do not constitute matching evidence.
-Worker reports and checklist marks never replace actual observation.
+- BASE: the commit execution starts from.
+- Left alone: every change present before execution (path and what it holds, when known).
+- Interfaces: one line per producer/consumer pair, `T<a> produces X -> T<b> consumes Y: match`
+  or `mismatch - Ruling: ...`.
+- Spec conflicts: one line per plan step, code or test that contradicts a requirement, with
+  its ruling.
+- Readiness: each gap closed from the current source (what was added to the task), or the task
+  sent back to planning.
+- Or, when there is nothing to record: `Preflight: no shared interfaces, no conflicts`.
 
-## Rulings and authority
+A plan whose spec is unreachable says so here; its rulings are provisional.
 
-Accepted requirements outrank defective steps. Record the smallest grounded correction:
-`Ruling: <decision> — <evidence/spec basis> — <cost and scope if wrong>`.
-Propagate interface changes and invalidate affected consumers. A ruling cannot waive
-acceptance or silently change a material user-owned requirement.
+## Task readiness
 
-Reuse existing scoped session authority for commit, push, setup and delegation. This
-guide grants none. Check actual effect and host constraints; ask only for missing
-authority or decisions. Network reading is not automatically publication. Block the
-affected action and continue independent authorized work.
+Before a task starts it needs exact file and symbol anchors, its change (what becomes what,
+with decision-bearing code, text and literal values) and a concrete check. Work status is not
+readiness. A roadmap line, "implement as needed" or an unknown consumer contract needs detail
+first. A detailed snippet that disagrees with the current source or the spec is a conflict, not
+an instruction. Do not retrofit detail onto DONE tasks whose evidence still holds.
 
-## Review and delivery
+## Task record (step 3)
 
-Use canonical code-review and verification. Pin accepted BASE plus committed, staged,
-unstaged and owned untracked bytes. Include requirements, rulings, actual checks and
-untested risks; preserve separate Spec and Standards verdicts. Diff statistics alone
-are not a review. Fresh delegation requires utility, availability and authorization;
-otherwise make a distinct self-review and disclose the limitation.
+Written into the task's entry when it closes, before the next task starts:
 
-Grade real user effect, resolve material findings using suitable behavioral/static
-checks and scoped re-review. Defer optional polish with reasons. Bound loops by new
-evidence; a pass limit never converts unresolved acceptance to DONE. Preserve the
-exact blocker, failed criterion and concrete NEXT ACTION.
+- Status.
+- Each command with its working directory, result and test count; the red run and the green
+  run for each behaviour change, or `already green` with the reason the code was kept.
+- Acceptance map: each criterion -> the test or observation that proves it, or `NOT_VERIFIED`
+  with the missing check.
+- Rulings: `Ruling: <decision> - <spec or evidence basis> - <cost if wrong>`.
+- Commit hash, or `not committed: <reason>` with file hashes for uncommitted owned files.
+- NEXT ACTION in the plan, pointing at the next ready task, so a reset resumes there.
 
-Distinguish source verification, publication and installed activation. When setup is
-in scope, compare nested and native member resources with the reviewed source revision.
-Finish only when required outcomes are observed; retain the durable checkpoint.
+A commit range identifies committed bytes only. An aggregate pass does not prove a criterion
+whose case was skipped, deselected or never selected.
+
+## Evidence identity and reuse (step 2)
+
+Reuse a DONE task's evidence only when the prior result is PASS and its source, check and
+relevant environment identities are present, non-empty and unchanged, and every task it
+depends on is still valid. Two missing fields never match. A passing rerun of the task's check
+on the current files is new evidence. Worker reports and ticked boxes are not evidence.
+
+## Rulings
+
+The accepted spec outranks the plan. A ruling is the smallest change that satisfies the spec,
+recorded in the owning task. It updates every consumer of a changed interface and invalidates
+their evidence. A ruling cannot waive acceptance, security or data correctness, and cannot
+decide a product question the spec leaves open: that is a stop.
+
+## Stops (step 4)
+
+The four stops are an unauthorized action, a security-sensitive action, an open user-owned
+decision and a plan with no grounded route. The stopped action is not done. Its task becomes
+BLOCKED or PARTIAL with the exact remaining action (the command or decision) and who can take
+it; independent tasks continue. Network reading is not publication. A plan step is not
+authority.
+
+## Review package (step 5)
+
+- Identity: BASE plus committed, staged, unstaged and owned untracked bytes: `git diff BASE`
+  read in full, plus each new owned file. The plan records the diff command that was read;
+  `--stat` is an index, not a review.
+- Requirement table: each spec requirement -> file and symbol -> test, or `NOT_VERIFIED`.
+- Diff hygiene: no unrelated edits, debug output, scratch files or foreign changes.
+- Reviewer: a fresh reviewer when authorized and available, given the spec, the diff and the
+  rulings as facts; otherwise a separate self-review, disclosed as not independent.
+- Verdicts: Spec and Standards kept apart. Findings graded by the effect on a person using the
+  result. Critical and Important fixed, each with a test seen failing first; Minor deferred
+  with a reason. After the fixes the suite reruns and the requirement table is updated. Loops
+  end on the anti-loop rules; a pass limit never turns an open finding into DONE.
+
+## Delivery and report (step 6)
+
+Local verification, a pushed branch and an installed copy are separate claims, each checked
+by its own observation (test output, remote ref and CI run, installed bytes compared with the
+reviewed source). The report fields are the Output template in the skill: Result, Tasks,
+Rulings I made, Review, Deferred and noticed, Not done or not verified, Left alone, Next
+action. The lists are exhaustive: every ruling in the plan appears in the report.

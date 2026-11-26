@@ -14,7 +14,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | --- | --- |
 | `andino-brainstorming` | Open intent and choices, why before how, decision rounds and a confirmed design; optional decision-frontier, feasibility-probe, idea-validation and async-question resources. |
 | `andino-planning` | Exact implementation changes, dependencies and proof; optional behavior-readiness, dependency-slicing and recurring-process resources. |
-| `andino-plan-execution` | Authorized dependency-ready execution; independently selectable task-implementation, vertical-slice and frontend-engineering resources. |
+| `andino-plan-execution` | Execute an accepted plan one task at a time through gated steps (preflight, resume, red-green increments, four stops, full-diff review) with a report template; task-implementation, vertical-slice and frontend-engineering resources. |
 | `andino-delegation` | Decide, brief and accept any subagent work (plan lanes, investigations, research, reviews, panel seats) under one envelope approval and parent acceptance. |
 | `andino-api-and-interface-design` | Consumer-first design of any interface (HTTP, GraphQL, module, props, events, agent tools); optional HTTP-contract, module-depth and import-enforcement resources. |
 | `andino-architecture-survey` | Deepening candidates from the hot spots or a named area, shown as a before/after HTML report and then grilled; never edits product code during the survey. |
@@ -54,7 +54,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-handoff` | Portable continuation and optional context packing. |
 | `andino-human-procedure` | Necessary steps requiring human-only access or authority. |
 | `andino-issue-triage` | Attention list, verified triage of issues and external pull requests, durable agent briefs and out-of-scope records; tracker writes only for items the maintainer authorized. |
-| `andino-optimize-prompt` | Explicitly requested light edit of a raw task prompt that keeps its shape, every named skill and phase, and every fact; suggestions and up to three questions follow it. |
+| `andino-optimize-prompt` | Explicitly requested rewrite of a raw task prompt that keeps its shape, every named skill and phase, and every fact, and adds labelled checked project facts, done-when, limits and a verification step; a diagnosis table and up to three questions follow it. |
 | `andino-session-diagnostics` | Session-level failures; optional prevention review after causes are known. |
 | `andino-learning-workspace` | Intentional learning; optional course-exercise scaffolding. |
 | `andino-article-shaping` | Shape a fixed pile into an article with its author: reader first, pile-built candidates, agreed blocks only, nothing invented; optional raw capture. |

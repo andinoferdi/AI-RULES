@@ -174,6 +174,15 @@ tracing, flaky failures and recovery. The comparison trial is recorded in
 `docs/validation/debugging/trial.md`. The paragraph above describes the earlier version; its
 line budget, state-machine and Bash POSIX wording no longer apply.
 
+The 2026-11-26 upgrade of `plan-execution` re-reads Addy Osmani's `incremental-implementation`
+(addyosmani/agent-skills c4efec8) and Jesse Vincent's `executing-plans` (obra/superpowers
+22f0b46), both MIT, and moves the method into the sibling layout: six gated steps in `SKILL.md`
+(mirrored by `GUIDE.md`) for preflight, resume, one task at a time with red-green increments and
+a check-the-check gate, four stops, a full-diff review against the spec and delivery, plus a
+report template with exhaustive rulings and deferred lists. Evidence identity, `NOT_VERIFIED`,
+the single plan checkpoint and the delivery distinctions are kept from the earlier Andino text.
+The comparison trial is recorded in `docs/validation/plan-execution/trial.md`.
+
 The 2026-11-01 elevation of `delegation` synthesizes the generative multi-agent delegation craft of
 Matt Pocock's `engineering/implement-spec` (task graph DAG modeling, active unblocked frontier tracking,
 context pointers replacing conversational chat dumps, and clean integration branch lifecycles),
