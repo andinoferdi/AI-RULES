@@ -1,0 +1,57 @@
+Workflow: CI   Run: 5121   Attempt: 2 (re-run of failed jobs)   Event: push   Ref: refs/heads/main   Commit: 9f3c2e1
+Job: build   Result: success
+2026-11-20T11:02:40.3000000Z Current runner version: '2.330.0'
+2026-11-20T11:02:40.3010000Z Runner Image: ubuntu-24.04 Version: 20261116.1
+2026-11-20T11:02:40.3020000Z Machine: 4 vCPU, 16 GB RAM
+2026-11-20T11:02:41.0000000Z ##[group]Initialize containers
+2026-11-20T11:02:47.9000000Z /usr/bin/docker start 7e02_postgres16
+2026-11-20T11:02:48.2000000Z ##[endgroup]
+2026-11-20T11:02:52.0000000Z ##[group]Run npm install
+2026-11-20T11:08:41.5000000Z added 812 packages, and audited 813 packages in 5m 49s
+2026-11-20T11:08:41.6000000Z ##[endgroup]
+2026-11-20T11:08:41.7000000Z ##[group]Run npm run lint
+2026-11-20T11:09:02.9000000Z ✖ 14 problems (14 errors, 0 warnings)
+2026-11-20T11:09:03.0000000Z ##[error]Process completed with exit code 1.
+2026-11-20T11:09:03.0010000Z ##[endgroup]
+2026-11-20T11:09:30.1000000Z ##[group]Run ./scripts/wait-for-db.sh
+2026-11-20T11:09:30.1500000Z localhost:5432 - no response
+2026-11-20T11:09:30.1510000Z postgres not ready yet, retrying (1/10)
+2026-11-20T11:09:32.1600000Z localhost:5432 - no response
+2026-11-20T11:09:32.1610000Z postgres not ready yet, retrying (2/10)
+2026-11-20T11:09:34.1700000Z localhost:5432 - accepting connections
+2026-11-20T11:09:34.1800000Z ##[endgroup]
+2026-11-20T11:09:34.2000000Z ##[group]Run npm run db:migrate
+2026-11-20T11:09:36.4000000Z Migrations complete!
+2026-11-20T11:09:36.5000000Z ##[endgroup]
+2026-11-20T11:09:36.6000000Z ##[group]Run npm run test:integration
+2026-11-20T11:09:37.0000000Z > vitest run --config vitest.integration.config.ts
+2026-11-20T11:09:37.6000000Z  RUN  v3.2.4 /home/runner/work/orders-platform/orders-platform
+2026-11-20T11:09:41.9010000Z [sql w2 11:09:41.900] TRUNCATE customers, orders RESTART IDENTITY CASCADE
+2026-11-20T11:09:41.9170000Z [sql w2 11:09:41.916] INSERT INTO customers (id, name) VALUES ($1, $2) ON CONFLICT DO NOTHING
+2026-11-20T11:09:41.9300000Z [sql w2 11:09:41.929] TRUNCATE customers, orders RESTART IDENTITY CASCADE
+2026-11-20T11:09:41.9410000Z [sql w2 11:09:41.940] INSERT INTO customers (id, name) VALUES ($1, $2) ON CONFLICT DO NOTHING
+2026-11-20T11:09:41.9470000Z [sql w2 11:09:41.946] INSERT INTO customers (id, name) VALUES ($1, $2) ON CONFLICT DO NOTHING
+2026-11-20T11:09:41.9590000Z [sql w2 11:09:41.958] TRUNCATE customers, orders RESTART IDENTITY CASCADE
+2026-11-20T11:09:41.9700000Z [sql w2 11:09:41.969] INSERT INTO customers (id, name) VALUES ($1, $2) ON CONFLICT DO NOTHING
+2026-11-20T11:09:41.9760000Z [sql w2 11:09:41.975] SELECT id, name FROM customers ORDER BY id
+2026-11-20T11:09:41.9840000Z [sql w2 11:09:41.983] TRUNCATE customers, orders RESTART IDENTITY CASCADE
+2026-11-20T11:09:41.9950000Z [sql w2 11:09:41.994] INSERT INTO customers (id, name) VALUES ($1, $2) ON CONFLICT DO NOTHING
+2026-11-20T11:09:42.0010000Z [sql w2 11:09:42.000] DELETE FROM customers WHERE id = $1
+2026-11-20T11:09:42.0350000Z [sql w1 11:09:42.034] INSERT INTO customers (id, name) VALUES ('c-orders', 'Orders Fixture') ON CONFLICT DO NOTHING
+2026-11-20T11:09:42.0400000Z [sql w1 11:09:42.039] INSERT INTO orders (customer_id, total_cents) VALUES ('c-orders', 1000), ('c-orders', 1500), ('c-orders', 2000)
+2026-11-20T11:09:42.0480000Z [sql w1 11:09:42.047] SELECT id, total_cents, notes FROM orders WHERE customer_id = $1
+2026-11-20T11:09:42.0560000Z [sql w1 11:09:42.055] SELECT id, total_cents, notes FROM orders WHERE customer_id = $1
+2026-11-20T11:09:42.0630000Z [sql w1 11:09:42.062] SELECT COALESCE(SUM(total_cents), 0)::int AS total_cents FROM orders WHERE customer_id = $1
+2026-11-20T11:09:42.1100000Z  ✓ tests/integration/customers.int.test.ts (4 tests) 112ms
+2026-11-20T11:09:42.1110000Z  ✓ tests/integration/orders.int.test.ts (3 tests) 41ms
+2026-11-20T11:09:42.1300000Z  Test Files  2 passed (2)
+2026-11-20T11:09:42.1310000Z       Tests  7 passed (7)
+2026-11-20T11:09:42.1320000Z    Duration  4.52s
+2026-11-20T11:09:42.2000000Z ##[endgroup]
+2026-11-20T11:09:42.3000000Z ##[group]Run npm run build
+2026-11-20T11:10:20.0000000Z ##[endgroup]
+2026-11-20T11:10:20.1000000Z ##[group]Run npx playwright install --with-deps
+2026-11-20T11:12:58.0000000Z ##[endgroup]
+2026-11-20T11:12:58.1000000Z ##[group]Run npm run e2e
+2026-11-20T11:18:47.0000000Z   1 passed (5.8m)
+2026-11-20T11:18:47.1000000Z ##[endgroup]

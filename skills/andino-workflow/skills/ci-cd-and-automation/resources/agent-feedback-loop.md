@@ -73,6 +73,7 @@ CI logs often span thousands of lines containing environment setup, download pro
 | **Unit / Test** | Jest, Vitest, or Pytest assertion failures; expected vs received mismatch. | Read test code and implementation. If implementation introduced a regression, fix implementation. If test expectations are outdated due to an approved contract change, update the test assertion with documented justification. | **NEVER** comment out failing tests, delete assertions, or mark tests as `.skip`. |
 | **Build / Bundle** | Webpack, Vite, Next.js build failure; missing asset, circular import, syntax error. | Inspect the build log around the fatal error. Verify path aliases (`@/...`), environment variable accessibility during build time, and export/import signatures. | **NEVER** delete build flags or remove required output verification steps. |
 | **Integration / DB** | Prisma/TypeORM/Flyway migration mismatch; connection refused; 500 status. | Check database service readiness (`pg_isready`), verify schema migration files against database snapshot, and inspect mock vs real environment variables. | **NEVER** bypass migrations or drop tables without an audited migration plan. |
+| **Shared state between tests** | Passes alone or on a re-run; fails when test files run in parallel; rows written by one file disappear or appear in another. | Compare the interleaving (timestamps, worker ids) of a failing and a passing attempt. Make each test own its data: a database or schema per worker, a transaction rolled back after each test, unique ids, setup in `beforeEach` instead of a shared `beforeAll`; or run those files serially and state the cost. | **NEVER** add retries, `.skip` or sleeps; **NEVER** `TRUNCATE` tables other files rely on. |
 | **E2E / Browser** | Playwright/Cypress timeout, selector not found, assertion failed on element state. | Download or inspect failure artifacts (traces, screenshots, HTML snapshot). Diagnose whether the failure is a timing issue (race condition) or a real UI/DOM regression. Add explicit web-first assertions (`toBeVisible()`). | **NEVER** insert hardcoded sleeps (`sleep(5000)`) instead of locator-based waiting. |
 | **Security Audit** | `npm audit` or `pip-audit` reports high/critical vulnerabilities. | Identify affected dependency. Run targeted update (`npm update <pkg>` or `npm audit fix`). If a breaking major version is required, assess risk and record decision. | **NEVER** lower the audit threshold from `--audit-level=high` to pass the gate. |
 
@@ -108,7 +109,9 @@ shared state, ordering, resource pressure, or infrastructure). Reproduce under
 matching conditions, then repeat the targeted check after the fix and report
 the number of attempts and failures. A passing rerun alone leaves the cause open.
 If a test passes locally but failed in CI (or vice-versa), do not dismiss it as "just flaky" or re-run until it passes.
-- Check for shared state across test suites (e.g. global variables, database records not cleaned in `afterEach`).
+- A symptom that also appears in a passing attempt (for example a service that needed two start-up retries) is not the cause.
+- Check for shared state across test suites (e.g. global variables, database records not cleaned in `afterEach`, one file truncating tables another file seeded); tests must own their data.
+- A retry cannot repair data created once in `beforeAll`: the retried test sees the same missing rows. It only hides the race.
 - Check for race conditions, unresolved Promises, or timezone/locale dependencies.
 - Quarantine genuinely flaky external dependencies with a clear TODO and issue reference, never silently.
 

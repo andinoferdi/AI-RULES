@@ -259,6 +259,18 @@ anti-rationalization file removed. Idempotency status codes follow
 `docs/validation/api-and-interface-design/trial.md`. Correction to the paragraph above:
 `scripts/verify_api_and_interface_design_elevation.py` does not exist in this repository.
 
+The 2026-11-26 upgrade of `ci-cd-and-automation` re-bases the skill on Addy Osmani's
+`ci-cd-and-automation` at addyosmani/agent-skills commit a05781556f89 (2026-11-22, MIT) and
+moves the method into the sibling layout: one procedure with four modes, an inline starting
+workflow, the required-check aggregate, least-privilege, build-once and release rules, the
+shortcut and red-flag lists and the verification checklist in `SKILL.md` (mirrored by
+`GUIDE.md`); full templates in `resources/pipeline-templates.md` (current action majors,
+third-party actions pinned to commit SHAs, image promotion with OIDC); the failure loop in
+`resources/agent-feedback-loop.md`. GitHub behavior for skipped required checks,
+`merge_group` and `pull_request_target` follows GitHub's documentation as read on
+2026-11-26. The comparison trial is recorded in
+`docs/validation/ci-cd-and-automation/trial.md`.
+
 The 2026-11-26 upgrade of `code-review` re-bases the skill on Addy Osmani's
 `code-review-and-quality` (addyosmani/agent-skills commit e997ac5, MIT), Matt Pocock's
 `engineering/code-review` (mattpocock/skills commit 6f7f783, MIT) and Jesse Vincent's
