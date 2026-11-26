@@ -271,6 +271,19 @@ the repository as found. Request and receive protocols, review craft and trimmed
 performance triggers (path containment and negative caching kept in full) live in
 `resources/`. The comparison trial is recorded in `docs/validation/code-review/trial.md`.
 
+The 2026-11-26 upgrade of `brainstorming` re-bases the skill on Addy Osmani's `interview-me`
+(addyosmani/agent-skills commit 1d32b88), Matt Pocock's `grilling`, `grill-with-docs` and
+`domain-modeling` (mattpocock/skills commits 7739eae, 447ca70 and 2b7ab8c) and Jesse Vincent's
+superpowers `brainstorming` (obra/superpowers commit 22f0b46), all MIT, and moves the method into
+the sibling layout: one procedure from the first message to an approved design in `SKILL.md`
+(mirrored by `GUIDE.md`), why before how, numbered decision rounds once the why is known, an
+answer table, glossary updates when a term is resolved, ADRs only when a decision is hard to
+reverse, surprising and a real trade-off, and the light design, ADR and glossary formats in
+`resources/adr-and-glossary-template.md`. `resources/grilling-protocol.md` was merged into
+`SKILL.md`; the four sub-resources are unchanged. The numeric thresholds of the 2026-11-01
+elevation above (`<70%` confidence, 3-question predictability as a percentage) are retired. The
+comparison trial is recorded in `docs/validation/brainstorming/trial.md`.
+
 The 2026-11-26 upgrade of `browser-testing-with-devtools` re-bases the skill on Addy Osmani's
 `browser-testing-with-devtools` at addyosmani/agent-skills commit 57bfe5d (2026-10-25, MIT) and
 moves the method into the sibling layout: one eight-step procedure (isolated session, checks

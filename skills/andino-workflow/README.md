@@ -12,7 +12,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 
 | Public member | Responsibility |
 | --- | --- |
-| `andino-brainstorming` | Open intent and choices; optional decision-frontier, feasibility-probe, idea-validation and async-question resources. |
+| `andino-brainstorming` | Open intent and choices, why before how, decision rounds and a confirmed design; optional decision-frontier, feasibility-probe, idea-validation and async-question resources. |
 | `andino-planning` | Exact implementation changes, dependencies and proof; optional behavior-readiness, dependency-slicing and recurring-process resources. |
 | `andino-plan-execution` | Authorized dependency-ready execution; independently selectable task-implementation, vertical-slice and frontend-engineering resources. |
 | `andino-delegation` | Bounded independent work with disjoint write scopes and parent integration. |
