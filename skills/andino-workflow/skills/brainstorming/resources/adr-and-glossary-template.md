@@ -1,80 +1,104 @@
-# In-Flight ADR and Domain Glossary Protocols
+# Design document, ADR and glossary formats
 
-Internal resource for `andino-brainstorming`. Adapts and elevates `mattpocock/skills:engineering/grill-with-docs` and `domain-modeling`.
+Internal resource for `andino-brainstorming`. Read the section you are about to write: the design
+document after the user picked an approach, an ADR after a decision that passes the ADR test was
+confirmed, a glossary entry when a term is resolved.
 
----
+## Design document
 
-## 1. The In-Flight Documentation Philosophy
-
-Architectural Decision Records (ADRs) and Domain Glossaries must not be post-hoc administrative chores. They are captured **in-flight** as decisions resolve during the discovery dialogue, then emitted as persistent artifacts once mutual consensus is reached.
-
-### The Lazy Emission Rule
-- **During the Dialogue**: Track ADR candidates and emerging domain vocabulary in the agent's latent mental model. Reflect settled decisions succinctly in chat checkpoints.
-- **Upon Design Consensus**: Persist an ADR for consequential decisions and a glossary for terms whose meaning affects behavior. Use the agreed project location or append them to the design specification.
-- **Anti-Pattern**: Emitting sprawling Markdown document files mid-turn before the user has agreed to the core direction.
-
----
-
-## 2. Canonical ADR Schema
-
-When an architectural decision resolves during brainstorming, format it using this schema:
+Write it for a capable builder who cannot talk to the user. A Bounded change covers the same
+headings in a line or two each, or in chat; an Architectural design fills every section. Put it at
+the project's spec location, or `docs/specs/YYYY-MM-DD-<topic>-design.md`.
 
 ```markdown
-# ADR-0001: [Short Title of Decision]
+# <Topic> design
 
-- **Status**: Accepted
-- **Date**: YYYY-MM-DD
-- **Decision Makers**: [User, Agent]
-- **Target Path**: Architectural
+Status: draft for the user's approval. Date: YYYY-MM-DD.
 
-### Context
-[What was the core problem, user goal, and technical forces? What constraints shaped this problem?]
+## Intent
+Who it is for, what they will do differently, and why now, in the user's words.
 
-### Decision
-[What is the chosen approach, pattern, or architectural direction? State it directly in active voice.]
+## Scope
+- Goals: what this must achieve.
+- Out of scope: what we are deliberately not doing.
+- Anti-goals: what would make this a failure even if it works as specified.
 
-### Alternatives Considered & Trade-offs
-1. **[Chosen Option]**:
-   - *Pros*: [Direct alignment with goal, minimal complexity, etc.]
-   - *Cons / Costs*: [Specific trade-off accepted]
-2. **[Alternative Option A]**:
-   - *Pros*: [Why someone might choose it]
-   - *Why Rejected*: [Binding constraint violated, disproportionate cost, or anti-goal]
-3. **[Alternative Option B]**:
-   - *Pros / Why Rejected*
+## Constraints
+The binding limits: people, budget, deadlines, platforms, recorded decisions (link the ADRs).
 
-### Consequences & Invariants
-- **Positive**: [What becomes easier or reliable]
-- **Negative**: [What overhead, migration, or limitation is incurred]
-- **Floor Invariants**: [Non-negotiable constraints downstream executors must hold]
+## Approaches considered
+The two or three ways considered, what each trades off, which one was chosen and why.
+
+## Design
+Behaviour, the affected areas (files, routes, tables), component boundaries and what happens on
+failure. For something the user will look at, a short text sketch.
+
+## Decisions
+- Confirmed by the user: ...
+- My calls, with the reason (delegated choices included): ...
+- Open, and the work each one blocks: ...
+
+## Acceptance checks
+Observable checks a builder can run, each with its input or situation and the expected result.
+
+## Left to the builder
+Choices the builder may make without asking.
+
+## Terms
+Glossary terms this design relies on; code names that differ from the term.
 ```
 
----
+## ADR
 
-## 3. Domain Glossary Schema (Ubiquitous Language)
+Offer one only when all three hold: the decision is hard to reverse, it would surprise a future
+reader without context, and it came from a real trade-off. Write it after the user confirmed the
+decision.
 
-To prevent semantic drift between the user's intent, the architectural spec, and the code written by downstream executors (TDD/Implementation), capture new or overloaded terms using this table:
+ADRs live in `docs/adr/` (or the project's ADR folder) as `NNNN-slug.md`. Scan the folder for the
+highest number and add one; create the folder when the first ADR is needed. An ADR can be one
+paragraph; the value is recording that the decision was made and why.
 
 ```markdown
-### Domain Glossary
+# <Short title of the decision>
 
-| Domain Term | Canonical Definition | Anti-Terms (Do NOT Use) | Code Representation |
-|---|---|---|---|
-| **Session** | A continuous connection lifecycle between CLI and runtime. | "Connection", "Instance", "Worker" | `SessionContext` (`session.py`) |
-| **Frontier** | The unblocked set of decision DAG nodes whose parents are resolved. | "Queue", "Pending List", "Backlog" | `DecisionFrontier` (`frontier.py`) |
-| **Ratcheted Floor** | A quality metric threshold that can never be weakened without an ADR. | "Lint rule", "Warning", "Suggestion" | `FloorGuard` (`guard.py`) |
+<1-3 sentences: the context, what we decided, and why.>
 ```
 
-### De-Aliasing Rules:
-1. **One Concept, One Name**: If the user calls an entity an "account", but the code calls it "workspace", resolve the ambiguity during the interview and record the canonical name in the glossary.
-2. **Anti-Terms**: Explicitly document words that must **not** be used interchangeably. Semantic ambiguity in specifications is the #1 cause of downstream implementation defects.
+Add a section only when it earns its place:
 
----
+- **Status**: `proposed`, `accepted`, `deprecated` or `superseded by ADR-NNNN`, when decisions get
+  revisited. A new ADR that reverses an old one says which one it supersedes, and the old one is
+  marked superseded.
+- **Considered options**: when the rejected alternatives are worth remembering, so nobody proposes
+  them again without the reason they lost.
+- **Consequences**: downstream effects that are not obvious, including invariants that later work
+  must hold (planning, tests and code review check against them).
 
-## 4. Integration with Downstream Skills
+What usually qualifies: the architectural shape, how two parts of the system talk to each other,
+technology choices with lock-in, ownership and scope boundaries, deliberate deviations from the
+obvious path, constraints the code does not show, and rejections that are not obvious.
 
-The output of `grill-with-docs` serves as the explicit input for the next workflow phases:
+## Glossary
 
-- **andino-planning**: Consumes the ADR's chosen approach and constraints to decompose tasks without re-evaluating rejected alternatives.
-- **andino-tdd**: Consumes the Domain Glossary to name test fixtures, assertions, and domain entities accurately.
-- **andino-code-review**: Consumes the ADR's *Consequences & Invariants* to verify that pull requests respect the agreed architectural boundaries.
+`GLOSSARY.md` holds the project's own vocabulary and nothing else: no implementation detail, no
+general programming terms, no decisions. A repository with several contexts keeps a
+`GLOSSARY-MAP.md` at the root that lists each context's glossary and how the contexts relate; read
+it first and update the glossary of the context the term belongs to.
+
+```markdown
+# <Context name>
+
+<One or two sentences on what this context is and why it exists.>
+
+## Language
+
+**Hold**:
+A **Member**'s place in the queue for a **Tool** that has no **Item** on the shelf.
+_Avoid_: reservation, booking
+```
+
+- Pick one word per concept and list the others under `_Avoid_`.
+- Define what the thing is, in one or two sentences, not what it does.
+- Bold another glossary term inside a definition and let the sentence say how they relate.
+- Group terms under subheadings when natural clusters appear.
+- Code names that differ from the term go in the design document's Terms section, not here.

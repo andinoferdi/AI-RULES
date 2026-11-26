@@ -1,6 +1,7 @@
 # License Notice
 
 **Original Source:** [addyosmani/agent-skills: skills/code-simplification](https://github.com/addyosmani/agent-skills/tree/main/skills/code-simplification)
+(last adapted from commit f1f6fbf, 2026-10-16)
 
 Substantive adapted material in this skill is covered by the following notice:
 

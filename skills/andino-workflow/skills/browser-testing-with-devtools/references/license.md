@@ -1,6 +1,7 @@
 # License Notice
 
 **Original Source:** [addyosmani/agent-skills: skills/browser-testing-with-devtools](https://github.com/addyosmani/agent-skills/tree/main/skills/browser-testing-with-devtools)
+(last adapted from commit 57bfe5d, 2026-10-25)
 
 Substantive adapted material in this skill is covered by the following notice:
 

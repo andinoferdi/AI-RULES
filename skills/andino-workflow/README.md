@@ -12,7 +12,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 
 | Public member | Responsibility |
 | --- | --- |
-| `andino-brainstorming` | Open intent and choices; optional decision-frontier, feasibility-probe, idea-validation and async-question resources. |
+| `andino-brainstorming` | Open intent and choices, why before how, decision rounds and a confirmed design; optional decision-frontier, feasibility-probe, idea-validation and async-question resources. |
 | `andino-planning` | Exact implementation changes, dependencies and proof; optional behavior-readiness, dependency-slicing and recurring-process resources. |
 | `andino-plan-execution` | Authorized dependency-ready execution; independently selectable task-implementation, vertical-slice and frontend-engineering resources. |
 | `andino-delegation` | Bounded independent work with disjoint write scopes and parent integration. |
@@ -26,9 +26,9 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-tdd` | Executable RED/GREEN behavior guards; optional typed-fixture migration preserving invalid negative cases. |
 | `andino-debugging` | Reproduction and systematic investigation of an unknown cause. |
 | `andino-verification` | Observed acceptance evidence before consequential completion claims. |
-| `andino-browser-testing-with-devtools` | Rendered behavior, console/network and browser evidence; UI screenshots at 360, 768 and 1440 px. |
-| `andino-code-review` | Specification and standards review. |
-| `andino-code-simplification` | Evidenced simplification of green code without behavioral drift. |
+| `andino-browser-testing-with-devtools` | Reproduce, fix and replay in a real browser; release pass at 360, 768 and 1440 px by device emulation, accessibility, console split and loading metrics. |
+| `andino-code-review` | Spec and Standards review with pinned scope, evidence from the reviewed bytes and the repository left as found; request and receive protocols. |
+| `andino-code-simplification` | Behavior-preserving simplification of working code, in a repository or pasted, with a per-change ledger and protected regions. |
 | `andino-constraint-driven-development` | Establish and preserve the quality floor. |
 | `andino-doubt-driven-development` | Fresh scrutiny of consequential assumptions and invariants. |
 
@@ -40,7 +40,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-deprecation-and-migration` | Consumer-aware interface/schema retirement and migration. |
 | `andino-observability-and-instrumentation` | Useful production evidence, monitoring and runbooks. |
 | `andino-performance-optimization` | Measured bottlenecks and verified improvements. |
-| `andino-ci-cd-and-automation` | Build/test/deployment automation; optional commit-check setup. |
+| `andino-ci-cd-and-automation` | CI gates and required checks, failing or flaky runs, workflow security, deploy promotion and rollback; optional commit-check setup. |
 | `andino-shipping-and-launch` | Authorized release readiness, rollout and recovery planning. |
 | `andino-git-skills` | Select workspace, operation-safety, change-hygiene, branch-integration or PR-draft craft. No implicit commit, push or destructive recovery. |
 
@@ -57,7 +57,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-optimize-prompt` | Explicitly requested light edit of a raw task prompt that keeps its shape, every named skill and phase, and every fact; suggestions and up to three questions follow it. |
 | `andino-session-diagnostics` | Session-level failures; optional prevention review after causes are known. |
 | `andino-learning-workspace` | Intentional learning; optional course-exercise scaffolding. |
-| `andino-article-shaping` | Shape supplied writing material; optional raw capture without invented anecdotes. |
+| `andino-article-shaping` | Shape a fixed pile into an article with its author: reader first, pile-built candidates, agreed blocks only, nothing invented; optional raw capture. |
 
 Workflow advice is a [workflow-owned resource](references/workflow-advice/guide.md), not a mandatory router. Project conventions use the [project-setup resource](references/project-setup/guide.md), not a prerequisite for every task.
 

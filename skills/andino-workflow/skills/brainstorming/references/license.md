@@ -4,6 +4,7 @@ Substantive adapted material in this skill is covered by the following notices:
 
 ## Addy Osmani (agent-skills)
 - **Original Source:** [addyosmani/agent-skills: skills/interview-me](https://github.com/addyosmani/agent-skills/tree/main/skills/interview-me)
+- **Snapshot used for the 2026-11-26 upgrade:** commit 1d32b88
 
 MIT License
 
@@ -28,7 +29,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ## Matt Pocock (skills)
-- **Original Source:** [mattpocock/skills: skills/productivity/grilling](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) & [skills/engineering/grill-with-docs](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)
+- **Original Source:** [mattpocock/skills: skills/productivity/grilling](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) & [skills/engineering/grill-with-docs](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs) & [skills/engineering/domain-modeling](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling)
+- **Snapshots used for the 2026-11-26 upgrade:** grilling 7739eae, grill-with-docs 447ca70, domain-modeling 2b7ab8c
 
 MIT License
 
@@ -54,6 +56,7 @@ SOFTWARE.
 
 ## Jesse Vincent (superpowers)
 - **Original Source:** [obra/superpowers: skills/brainstorming](https://github.com/obra/superpowers/tree/main/skills/brainstorming)
+- **Snapshot used for the 2026-11-26 upgrade:** commit 22f0b46
 
 MIT License
 
