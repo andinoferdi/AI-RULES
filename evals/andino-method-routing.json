@@ -2408,6 +2408,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-tdd-regression-guard",
+    "kind": "behavior",
+    "prompt": "Fikri fixed the duplicate sign-up bug last month but nobody added a test. Add a regression test; the code already works.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select tdd",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "tdd"
+    ],
+    "method": "tdd",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-tdd-explicit",
     "kind": "behavior",
     "prompt": "Use the Andino internal method tdd for this request: Tambahkan total faktur pada API publik yang sudah ada.",
