@@ -2114,6 +2114,34 @@
     "coverage": "routing"
   },
   {
+    "id": "method-security-and-hardening-build",
+    "kind": "behavior",
+    "prompt": "Add an endpoint that downloads an image from a URL the customer saves in their profile.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select security-and-hardening",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "security-and-hardening"
+    ],
+    "method": "security-and-hardening",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-security-and-hardening-review",
+    "kind": "behavior",
+    "prompt": "Before I merge this branch, can you check it for security problems?",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select security-and-hardening",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "security-and-hardening"
+    ],
+    "method": "security-and-hardening",
+    "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-security-and-hardening-explicit",
     "kind": "behavior",
     "prompt": "Use the Andino internal method security-and-hardening for this request: Validate an owned temporary job leaf before cleanup and prove SQL input cannot alter the query.",

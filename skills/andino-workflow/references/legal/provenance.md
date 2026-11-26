@@ -199,6 +199,16 @@ report template with exhaustive rulings and deferred lists. Evidence identity, `
 the single plan checkpoint and the delivery distinctions are kept from the earlier Andino text.
 The comparison trial is recorded in `docs/validation/plan-execution/trial.md`.
 
+The 2026-11-26 upgrade of `security-and-hardening` re-reads Addy Osmani's
+`security-and-hardening` (addyosmani/agent-skills 6502129) and adds Phoenix Security's
+`security-reviewer` (Security-Phoenix-demo/security-skills-claude-code 40ace4a) and Riyan
+Pratama's `09-web-security` (Masriyan/Claude-Code-CyberSecurity-Skill 3aa77d8), all MIT. It
+moves the method into the sibling layout: a quick path, build and review gates in `SKILL.md`
+(mirrored by `GUIDE.md`), a finding template with confirmed / inferred / unverified status, the
+shortcut and red-flag lists, and resources for controls and their tests, the review checklist
+and a worked example. No payloads, scripts or hooks are imported. The comparison trial is
+recorded in `docs/validation/security-and-hardening/trial.md`.
+
 The 2026-11-01 elevation of `delegation` synthesizes the generative multi-agent delegation craft of
 Matt Pocock's `engineering/implement-spec` (task graph DAG modeling, active unblocked frontier tracking,
 context pointers replacing conversational chat dumps, and clean integration branch lifecycles),
