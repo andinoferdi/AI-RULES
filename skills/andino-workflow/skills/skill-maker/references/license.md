@@ -4,6 +4,7 @@ Substantive adapted material in this skill is covered by the following notices:
 
 ## Jesse Vincent (superpowers)
 - **Original Source:** [obra/superpowers: skills/writing-skills](https://github.com/obra/superpowers/tree/main/skills/writing-skills)
+- **Revision adapted:** path last changed in commit 2ce8aa1 (2026-10-21)
 
 MIT License
 
@@ -29,6 +30,7 @@ SOFTWARE.
 
 ## Addy Osmani (agent-skills)
 - **Original Source:** [addyosmani/agent-skills: skills/using-agent-skills](https://github.com/addyosmani/agent-skills/tree/main/skills/using-agent-skills)
+- **Also adapted:** [docs/skill-anatomy.md](https://github.com/addyosmani/agent-skills/blob/main/docs/skill-anatomy.md) (commit c4efec8); `using-agent-skills` at commit eca51a2
 
 MIT License
 

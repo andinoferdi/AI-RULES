@@ -1,211 +1,297 @@
-# Skill Maker: Author and Refine Executable Skills — Comprehensive Guide
+# Prove a skill changes what agents do before it ships
 
 Internal method ID: `andino-skill-maker` (aliases: `skill-maker`, `writing-skills`).
 
-## 1. Purpose, Scope, and Architectural Prerequisites
+> **Andino Workflow Member Skill**
+> Operates under Andino Workflow: proportional investigation, evidence-based
+> decisions, one durable checkpoint and clean handoff. Do not invoke the workflow
+> recursively. Loading this resource changes neither tools nor permissions.
 
-`andino-skill-maker` is the foundational methodology factory for the Andino Workflow ecosystem. It teaches human engineers and autonomous agents how to author, evaluate, bulletproof, and maintain high-fidelity executable skills, operational runbooks, and repository protocols.
+## Purpose
 
-### What is an Executable Skill?
-A **skill** is an operational reference guide containing reusable techniques, decision heuristics, and execution patterns that future AI agents discover and apply to solve non-trivial problems.
-- **Skills ARE:** Reusable operational techniques, architectural constraints, diagnostic procedures, and zero-negotiation invariants.
-- **Skills are NOT:** Retrospective session logs (*"how we solved ticket #42 yesterday"*), passive coding preferences (which belong in `CLAUDE.md`), or mechanical rules enforceable by linters or compilers.
+A skill exists to change what an agent does. Writing one is test-driven work on a document:
+see what agents do without it, write the smallest text that changes that, and check the change
+on the same cases. Most requests for a skill turn out to be partly something else, such as a
+fact for the project instructions or a rule a linter already enforces, so sorting comes before
+writing. The deliverable is the skill (or the reason none was made), a table of what was kept
+out of it and where that now lives, test scenarios with PASS and FAIL lines, and an evaluation
+record a reviewer can rerun.
 
-### Governance and Authority
-Andino Workflow owns task lifecycle, progress checkpointing, resource guards, and completion status. `andino-skill-maker` owns the specialist authoring craft, empirical evaluation techniques, and structural invariants.
-- Loading this guide grants no automatic subagent fan-out, file deletion, publication, or destructive authority.
-- Follow the single durable plan in the active task (`docs/exec-plans/active/<task>.md`). Never spawn parallel competing lifecycles.
+## Trigger and non-trigger
 
----
+Use when:
 
-## Define the brief and the acceptance oracle
+- creating a new skill, runbook or repeatable agent procedure;
+- revising a skill after agents ignored it, misused it or produced the wrong output with it;
+- turning observed agent failures, incident excerpts or bad samples into guidance;
+- checking that a skill changes agent behaviour before it ships, or that it still loads when it
+  should and stays quiet when it should not.
 
-Record one representative task and one nearby request where the skill should
-stay inactive. Include the fixture, available tools, user's authority, expected
-deliverable and constraints. Ask only about missing decisions that change the
-deliverable or permitted actions. State assumptions for reversible details.
+Do not select for:
 
-Specify the observable outputs as an ordered recipe. For each consequential
-decision, record the evidence to inspect, the predicate to apply and the action
-for each outcome. Give the next safe action when evidence or permission is
-missing. Select one worked example that exercises those decisions.
+- Wording, structure, pointers or the description of an agent-read document with no behaviour
+  to test: `agent-document-authoring`. This skill applies those levers to a skill's text.
+- Facts, preferences and conventions (a deploy region, who reviews what, a branch naming rule): they go in the project
+  instructions (`AGENTS.md`, `CLAUDE.md`), which load every session.
+- A rule a linter, formatter, type checker, schema or CI job can enforce: put it in that tool.
+- A one-off problem, a problem nobody has observed yet, or a story of how a session went.
 
-Before seeing the outputs, list required fields, correctness checks and
-forbidden side effects. Score these against what the consumer did and produced.
-For revisions, compare the old and candidate skills on the same task as well as
-the unguided control. Carry forward valid behavior as regression criteria.
-Discovery probes exercise selection and full-body loading separately from
-task performance. See the [comparison cases](resources/worked-examples-and-templates.md#comparison-cases)
-and [evaluation record](resources/contract.md#evaluation-record-fields).
+## Select a resource, not a second lifecycle
 
-## 2. Dual-Mode Authoring Lifecycle
+Load only the resource the current gate names. It runs inside this procedure and current
+authority; it starts no second plan.
 
-Skill creation is structured into two complementary modes, unified by the principle of **Invariance Enforcement**:
+| Current need | Resource | Skip when |
+| :--- | :--- | :--- |
+| Choosing the form for each failure, closing loopholes, excuse tables, red flags, routing items out of the skill | [failure forms](resources/failure-forms.md) | Every row already has a form and a destination |
+| Writing scenarios per skill type, pressure combinations, PASS/FAIL lines, wording micro-tests | [test scenarios](resources/test-scenarios.md) | The scenarios file already exists and covers every skill row |
+| The evaluation record, the self-review label, the runbook, packaging and the deployment checklist | [evaluation contract](resources/contract.md) | Nothing to evaluate or package yet |
+| The description, trigger and near-miss probes, keywords, naming | [discovery](resources/discovery.md) | The description and probes are settled |
+| Degrees of freedom, context cost, examples, flowcharts, anti-patterns | [authoring craft](resources/authoring-craft.md) | The skill text is settled |
+| A repository with no skill conventions: skill and runbook templates | [templates](resources/templates.md) | The repository defines its own layout |
+| One remedial case end to end with every artifact | [worked example](resources/worked-example.md) | The gates are already clear |
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                        TRIAGE: SELECT MODE                             │
-└──────────────────────────────────┬─────────────────────────────────────┘
-                                   │
-         ┌─────────────────────────┴─────────────────────────┐
-         ▼                                                   ▼
-┌─────────────────────────────────┐ ┌─────────────────────────────────┐
-│   MODE A: REMEDIAL (FAILURE)    │ │   MODE B: GREENFIELD (CAPABILITY)│
-│ 1. Capture observed failure     │ │ 1. Declare floor invariants     │
-│ 2. Run unguided pressure test   │ │ 2. Run unguided baseline        │
-│ 3. Document verbatim excuses    │ │ 3. Confirm baseline divergence  │
-│ 4. Match form to failure        │ │ 4. Author minimal contract      │
-│ 5. Close loopholes (Refactor)   │ │ 5. Verify boundary adherence    │
-└─────────────────────────────────┘ └─────────────────────────────────┘
-```
+## Prerequisites
 
-### Mode A: Remedial (Failure-Driven Authoring)
-Use when an agent exhibited a concrete defect: cutting corners, ignoring standards, generating malformed outputs, or rationalizing shortcuts under operational stress.
+- Read the repository's skill conventions (a skills README, the instructions file, two existing
+  skills) and follow them over any template here.
+- Read all the evidence: transcripts, incident notes, bad samples, reviewer comments. For a
+  revision, read the current skill and every file it links.
+- Find out whether you can start a fresh agent (a subagent or a separate session) and whether
+  the user allows it. Usually you cannot; the gates below have a path for that.
 
-1. **Capture the Observable Defect:** Record the exact task, context, wrong action, and failure signal. Distinguish what the model actually did from what you assume caused it.
-2. **Execute Unguided Baseline Control (RED):** Present the identical scenario to a fresh, unguided model. If the unguided model succeeds naturally without guidance, **STOP**. Do not author speculative rules for non-reproducible problems.
-3. **Capture Verbatim Rationalizations:** Document the exact words, arguments, and excuses the model used to justify violating the rule.
-4. **Match Form to the Failure (GREEN):**
-   - For discipline violations under pressure: apply *Prohibitions + Rationalization Table + Red Flags*.
-   - For bloated or inverted output: apply a *Positive Recipe*.
-   - For forgotten elements: apply a *Required Structural Slot*.
-   - For situational actions: apply a *Conditional on an Observable Predicate*.
-5. **Verify Under Pressure & Plug Loopholes (REFACTOR):** Re-test the candidate skill under multi-vector pressure. When the model invents a new rationalization, add an explicit refutation and repeat until compliance converges.
+## Procedure
 
-### Mode B: Greenfield (Invariant-Driven Authoring)
-Use when building a completely new system capability, operational runbook, or multi-step coordination protocol where no historical failure incident exists.
+Pick the mode first. **Remedial**: an observed failure exists, including a skill agents misused;
+the observed failures are the baseline. **Greenfield**: a new capability with no failure yet;
+declare the invariants the skill must hold (ordering, stop conditions, authority limits, output
+contract) and look for the ones an agent without the skill misses.
 
-1. **Declare Floor Invariants:** Specify the non-negotiable boundaries: required security perimeters, interface contracts, ordering dependencies, and stop conditions.
-2. **Execute Unguided Baseline:** Run the domain task on a clean model without the skill.
-   - If the baseline model already conforms to all invariants across 5 repetitions, a new skill is unnecessary. Avoid token bloat.
-   - If the baseline model produces architectural drift, missing steps, or boundary violations, record those specific divergence points.
-3. **Draft Proportional Contract:** Author the minimal operational recipe that eliminates the observed divergence.
-4. **Verify Boundary Adherence:** Run fresh-context evaluations to confirm that the candidate skill strictly binds model behavior to the declared invariants.
+**Quick path.** When every item in the request is a fact, a preference or a rule a tool already
+enforces, run gate 2 only: make the routed changes, create no skill, and reply in a few lines
+naming where each item now lives.
 
----
+Everything else goes through seven gates in order; the report quotes each **Done when** line.
 
-## 3. Skill Discovery Optimization (SDO)
+1. **Write the brief.** Name who loads the skill, for which task, and what it must produce.
+   Pick one request that must load it and one nearby request that must not; they become the
+   discovery probes in gate 7. State the authority limits (what the agent may never do while
+   following it). Done when: the brief names the consumer, the task, one request that must load
+   the skill, one nearby request that must not, the output the skill must produce and the
+   authority limits.
+2. **Sort every observed item.** List each failure, excuse, sample defect and requested fact
+   from the evidence as a row: the quote, its type and its destination. Types: discipline (the
+   agent knew the rule and skipped it), shape (the output has the wrong form), omission (a
+   required part is missing), condition (the right action depends on a situation), fact. A row
+   goes to the skill only when it needs judgement during a task; send it to a tool when a
+   linter, formatter, type checker, schema or CI job can catch it, to the project instructions
+   when it is a fact or preference, to "already covered" when a file or tool holds it now, and
+   to "nothing" when it does not recur. Check the repository before writing "already covered".
+   Pick each skill row's form from [failure forms](resources/failure-forms.md). Done when: every
+   failure, excuse, sample defect or requested fact in the evidence has a row with its quote,
+   its type and its destination (skill with a form, tooling, project instructions, already
+   covered, nothing), and every row that leaves the skill names the file or tool that holds it
+   now or the exact proposed home. When no row goes to the skill, take the quick path.
+3. **Write the scenarios before the skill text.** Use the format in
+   [test scenarios](resources/test-scenarios.md). A discipline scenario replays the evidence: the
+   real task, the real files, at least two of the pressures that were present (deadline, sunk
+   effort, authority, missing access, fatigue) and a forced choice. A shape scenario gives one
+   real input and the output checks. A condition scenario has one case on each side of the
+   condition. Done when: a scenarios file exists where the repository keeps evals (otherwise in
+   the skill's references folder) with one scenario per skill row type, discipline scenarios
+   drawn from the evidence and combining at least two pressures, and every scenario has a PASS
+   line and a FAIL line that each name an observable action or output.
+4. **Record the baseline.** Run the scenarios on a fresh agent without the skill and, for a
+   revision, with the current skill, when you can. In remedial mode the incident excerpts and
+   samples are observed baseline evidence: quote them. Write down behaviour that already works
+   (a line the samples get right, a step agents never skip); it becomes a regression check.
+   Done when: for each scenario the record holds what an agent without the skill (and, for a
+   revision, with the current skill) actually did, quoted from a run or from the observed
+   incidents, or says NOT RUN with the reason; a predicted baseline is never recorded as observed.
+5. **Write the smallest skill that answers the skill rows.** Follow the repository's layout.
+   The description says only when to load the skill (see [discovery](resources/discovery.md)).
+   Answer each discipline row with a hard rule tied to the action, plus an excuse table using
+   the excuses as they were said and the stop signals; each shape row with the ordered output
+   parts and a size for each; each omission row with a required slot; each condition row with
+   a branch on something the agent can observe. Keep every working behaviour from gate 4. Put
+   long material in a linked file. Done when: every skill row maps to a line of the skill in
+   the form gate 2 assigned, every behaviour that works today is listed and still present, the
+   description says only when to load, the repository's skill conventions are met, and no rule
+   carries an escape clause.
+6. **Evaluate with the criteria fixed in gate 3.** Run the same scenarios on a fresh agent with
+   the candidate, and compare with gate 4. When no fresh agent can run, apply the same PASS/FAIL
+   lines yourself: for a revision, write what the current skill and the candidate each lead to
+   on the same input and score both; for a new skill, walk each scenario through the candidate
+   and name the line that decides it. Label that self-review and write the runbook someone
+   else can execute (see [evaluation contract](resources/contract.md)). Done when: the evaluation
+   record shows, for each scenario and each arm (no skill, current skill when revising,
+   candidate), a result with its evidence; when no second agent can run, it shows your own
+   application of the same criteria to the same input, labelled self-review, plus the exact
+   prompt and setup someone else can run.
+7. **Package and report.** Resolve every link from the location the skill is installed to,
+   check that the name matches its folder, and probe the two requests from gate 1 (or record
+   them as NOT RUN with the prompts). Close loopholes a run exposed and rerun the scenarios it
+   touched. Finish one skill before you start the next. Done when: links resolve from the
+   installed location, name and folder agree, the trigger and near-miss requests from gate 1
+   are recorded as probed or NOT RUN, and the report lists what changed, what was routed out
+   and where, the scenarios path and the evaluation status.
 
-Future agents can only use your skill if they can find it—and if loading it causes them to read the full operational procedure.
+**After a failed evaluation.** Read what the agent did and the words it used. A new excuse goes
+into the excuse table and the stop signals; a wrong shape means the recipe is unclear, not that
+it needs a prohibition. Change one thing and rerun the scenarios that failed. Stop after three
+rounds that bring no new evidence and report the scenario that still fails.
 
-### The Trigger-Only Description Rule
-Frontmatter descriptions are injected into runtime prompts during initial indexing.
-- **MANDATORY:** The `description` must state **WHEN** to use the skill (observable symptoms, triggering problems, environment states). Always start with `"Use when..."`.
-- **STRICTLY FORBIDDEN:** Never summarize **WHAT** the skill does (internal steps, workflow phases, or solutions) inside the description.
+## Rules for every skill
 
-**The Workflow Leakage Trap:** Testing proves that when a description summarizes the workflow, LLMs take the cognitive shortcut of executing the summarized sentence and **bypass reading the full skill body**.
+- **Match the form to the failure.** A prohibition with an excuse table fixes discipline; it
+  backfires on shape, where an ordered recipe works. A missing part needs a required slot. A
+  situational action needs a condition the agent can check.
+- **No escape clauses.** "Unless necessary" or "if time permits" reopens every rule. Write a
+  real exception as its own condition on something observable.
+- **Letter equals spirit.** For a discipline skill, state early that breaking the letter of the
+  rule is breaking its spirit, so "I kept the intent" is not a way out.
+- **Keep facts and tool-enforced rules out.** A skill loads only when its description matches;
+  a fact belongs where every session reads it, and a lint rule belongs in the linter.
+- **Preserve what works.** A revision keeps every behaviour the evidence shows working.
+- **Report only what ran.** A walkthrough, a metadata check or your own reading is never a
+  baseline or a pass. Self-review is labelled as such.
+- **One excellent example.** One complete example from a real scenario beats several thin ones.
 
-```yaml
-# ❌ TOXIC: Summarizes workflow; agent skips reading SKILL.md
-description: Use for debugging - runs repro script, minimizes input, tests hypotheses, and applies minimal fix.
+## Shortcuts that ship untested skills
 
-# ✅ OPTIMAL: Trigger conditions only; agent reads SKILL.md to learn procedure
-description: Tests/build fail, runtime output is wrong, a regression slows down or a bug is reported. Operates under Andino Workflow governance.
-```
+| Shortcut | Response |
+| --- | --- |
+| "The skill is obviously clear." | Clear to the author is not clear to an agent under pressure. Write the scenarios and score them. |
+| "I'll write the skill first and the tests after." | Text written before the evidence encodes what you guess, not what failed. Gates 2 to 4 come first. |
+| "It's only a reference, there is nothing to test." | Test retrieval: can an agent find the right entry and apply it? |
+| "I can't start a second agent, so I can't evaluate." | Apply the PASS/FAIL lines yourself, label it self-review, and leave the runbook. |
+| "I'll summarise the steps in the description so agents know what it does." | An agent that reads a summary follows the summary. The description says when to load. |
+| "A 'never do X' list will fix the long output." | Prohibitions on shape produce more of it. State the parts in order with sizes. |
+| "I'll add 'unless necessary' to keep it flexible." | That clause is where every agent will stand. Write the real exception as a condition. |
+| "They asked for a skill, so I make one." | Sort first. Facts go in the instructions file; enforced rules stay in their tool. |
+| "Lint already catches it, but a reminder can't hurt." | It costs context in every load and teaches agents to trust prose over the tool. Route it out and say where it lives. |
+| "I'll do the next skill and verify both together." | Finish the gates for one skill before starting another. |
 
-### Keyword Engineering
-Embed precise terms throughout the skill:
-- Verbatim error messages (`ENOTEMPTY`, `NullPointerException`, `exit code 137`).
-- Failure symptoms (`flaky`, `hanging`, `zombie`, `memory spike`, `race condition`).
-- Technology synonyms (`cleanup / teardown / dispose`, `timeout / freeze / block`).
+## Red flags
 
----
+- A walkthrough or your own reading recorded as a baseline or a pass.
+- The description lists the skill's steps.
+- A prohibition list used to fix the shape of an output.
+- An "unless", "except when" or "if possible" on a rule.
+- A fact or a rule a tool enforces copied into a skill.
+- A scenario without a PASS line and a FAIL line.
+- "Tested" in a report when no run of an agent is shown.
+- Three thin examples where one complete one would do.
 
-## 4. Matching Form to Failure & Bulletproofing
+## Ownership and permission boundary
 
-### The Form Selection Matrix
-Applying the wrong guidance format measurably degrades model compliance:
-- **Prohibitions Backfire on Shaping:** Telling an agent *"never summarize the background"* triggers negative priming; the model will generate more unwanted background text than a control. Instead, use a **Positive Recipe** specifying the exact required output slots in order.
-- **Prohibitions Excel at Discipline:** When an agent knows a rule but cuts corners due to urgency or sunk cost, soft guidance (*"prefer testing first"*) fails. You must use an absolute prohibition paired with an explicit loophole-closing block.
+Andino coordinates selection, shared progress, resource guards and final status from evidence.
+This skill owns its gates, resources and checks; coordinator brevity never shortens them.
+`agent-document-authoring` owns wording levers, which this skill applies. Starting evaluation
+agents follows `delegation` and needs the user's approval; loading this skill grants no authority
+to start agents, install, commit, publish or message anyone.
 
-### Absolute Loophole Closing
-Never leave a negative rule open to creative interpretation:
+## Output
+
+- The skill files, or a note that no skill was made and why.
+- The routing table from gate 2.
+- The scenarios file from gate 3.
+- The evaluation record from gates 4 and 6.
+- A report in this shape:
 
 ```markdown
-Write code before test? Delete it immediately. Start over with TDD.
-
-No exceptions:
-- Do NOT keep the code as a "reference".
-- Do NOT adapt snippets while writing tests.
-- Do NOT comment it out to un-comment later.
-- Do NOT look at it.
-Delete means permanent deletion.
+Changed: <files and what each now does>
+Routed out: <item -> where it lives now (file or tool)>
+Scenarios: <path>, <count> scenarios
+Evaluation: RUN | SELF-REVIEW | NOT RUN — <arms and results, one line each>
+Not verified: <what no run has shown yet>
+Next check: <the exact prompt or command someone should run first>
 ```
 
-### The "Letter vs Spirit" Anchor
-Always establish early:
-```markdown
-Violating the letter of the rules is violating the spirit of the rules.
+## Verification
+
+Before you call the skill done:
+
+- [ ] every item in the evidence has a row and a destination, and routed rows name their home;
+- [ ] the scenarios were written before the skill text and each has PASS and FAIL lines;
+- [ ] the baseline quotes runs or incidents, or says NOT RUN with the reason;
+- [ ] every skill row maps to a line of the skill in the assigned form;
+- [ ] behaviour that worked before is still present;
+- [ ] the description says only when to load, and the trigger and near-miss probes are recorded;
+- [ ] the evaluation record has a result per scenario per arm, or self-review plus a runbook;
+- [ ] links resolve from the installed location and the report claims nothing that did not run.
+
+## Worked example and anti-pattern
+
+The [worked example](resources/worked-example.md) takes agents that hand-edit generated
+protobuf code through all seven gates: the routing table sends one item to a CI check, three
+scenarios replay the incidents, and the evaluation is self-review with a runbook.
+
+Anti-pattern: asked to "make a skill so agents stop doing X", the author writes a long skill
+with every rule they can think of, folds in a reminder the linter already enforces, reads it
+once and reports it as tested.
+
+## Fallback
+
+- **No fresh agent, or the user does not allow one.** This is the common case. Gates 4 and 6 use
+  the observed incidents and labelled self-review, and the report carries the runbook.
+- **No skill conventions in the repository.** Use [templates](resources/templates.md).
+- **No evidence of a failure for a remedial request.** Ask for the transcript or sample; until it
+  arrives, treat the request as greenfield and say so.
+
+## Local resources
+
+- [Failure forms](resources/failure-forms.md)
+- [Test scenarios](resources/test-scenarios.md)
+- [Evaluation contract](resources/contract.md)
+- [Discovery](resources/discovery.md)
+- [Authoring craft](resources/authoring-craft.md)
+- [Templates](resources/templates.md)
+- [Worked example](resources/worked-example.md)
+- MIT notices: [references/license.md](references/license.md)
+
+## Operational example (offline)
+
+This fixture checks three properties of the gate artifacts: a routing table with no skill row
+means no skill, a scenario needs both a PASS and a FAIL line, and a self-review evaluation needs
+a runbook. It does not measure how well a model writes skills.
+
+```python andino-operational-example
+import os
+
+def needs_skill(rows):
+    return any(row["destination"] == "skill" for row in rows)
+
+def scenario_ok(scenario):
+    return bool(scenario.get("pass", "").strip()) and bool(scenario.get("fail", "").strip())
+
+def evaluation_ok(record):
+    if record["status"] == "SELF-REVIEW":
+        return bool(record.get("runbook", "").strip())
+    return record["status"] in ("RUN", "NOT RUN")
+
+if __name__ == "__main__":
+    facts = [
+        {"item": "default deploy region", "destination": "project instructions"},
+        {"item": "line length 100", "destination": "already covered"},
+    ]
+    assert not needs_skill(facts)
+    assert needs_skill(facts + [{"item": "hand-edits generated code", "destination": "skill"}])
+    assert scenario_ok({"pass": "regenerates from the .proto file", "fail": "edits the generated file"})
+    assert not scenario_ok({"pass": "agent complies", "fail": ""})
+    assert evaluation_ok({"status": "SELF-REVIEW", "runbook": "replay scenario 1 without the skill"})
+    assert not evaluation_ok({"status": "SELF-REVIEW"})
+    raise SystemExit(1 if os.environ.get("ANDINO_NEGATIVE") == "1" else 0)
 ```
-This terminates all semantic arguments claiming that a shortcut *"honored the underlying intent"*.
 
----
+## Provenance
 
-## 5. Testing Methodologies & Evaluation Craft
-
-### Multi-Vector Pressure Scenarios
-Academic questions (*"What are the steps of this skill?"*) only test memorization. Efficacy requires testing compliance under realistic, competing operational pressures:
-1. **Time Pressure:** Imminent deploy cutoffs or production downtime.
-2. **Sunk Cost:** Substantial intellectual effort already expended.
-3. **Simulated Authority:** Direct instructions from a hypothetical manager to bypass gates.
-4. **Context Exhaustion:** Deep, multi-turn debugging fatigue.
-
-### Fast Wording Micro-Tests
-Full subagent runs are token-heavy. Calibrate wording rapidly using single-turn micro-tests:
-- Run 5 fresh-context repetitions per phrasing candidate against an unguided control.
-- **Variance is the Metric:** If 5 repetitions yield 5 different output formats, the instruction is soft and ambiguous. When phrasing is mechanically binding, all 5 repetitions converge on the identical structure.
-- Manually read flagged outputs; automated regex matching misses quoted counter-examples and template echoes.
-
-### Evaluation Honesty & Fallback
-- Testing a skill in the author's active conversation is self-review, not independent validation.
-- When an independent evaluator or subagent harness is unavailable in the current host, mark model behavior as `NOT_VERIFIED` with the actual cause (`HOST_UNAVAILABLE` or `EVALUATOR_UNAUTHORIZED`). Never fabricate or assume evaluation passes.
-
----
-
-## 6. Anthropic Craft & Degrees of Freedom
-
-### Calibrating Instruction Specificity
-- **High Freedom (Text heuristics):** Use for qualitative analysis and multi-path decisions (e.g., code review, architectural trade-offs).
-- **Medium Freedom (Pseudocode / Typed Skeletons):** Use when a clear pattern exists but local types and fields vary (e.g., API endpoint design).
-- **Low Freedom (Exact commands & scripts):** Use when any deviation causes catastrophic failure (e.g., database schema migrations, git operations, deployment cutovers).
-
-### Token Budgeting
-- **Assume Model Intelligence:** Never waste tokens explaining basic programming concepts (what JSON is, how HTTP works, why tests matter). Focus exclusively on repo-specific invariants, failure modes, and tool sequences.
-- **Strict Size Plafond:** Coordinator `SKILL.md` must remain strictly `<150` lines (aim for `<120`). Move detailed craft, evaluation records, and extensive templates into `resources/`.
-
-### The Single Great Example Principle
-One production-grade, fully runnable, well-annotated example is vastly superior to five shallow examples across multiple programming languages. Models generalize and port clean patterns across languages effortlessly.
-
----
-
-## 7. Packaging, Progressive Disclosure & Host Integration
-
-### Recommended Directory Structure
-```
-skills/<skill-name>/
-├── SKILL.md                                        # Runtime Contract (<150 lines)
-├── GUIDE.md                                        # Comprehensive Craft Guide
-└── resources/
-    ├── contract.md                                 # Schemas and verification records
-    ├── sdo-and-discovery-protocols.md              # SDO rules and keyword lists
-    ├── failure-form-matching-and-bulletproofing.md # Form-to-failure matrix & red flags
-    ├── subagent-testing-and-pressure-scenarios.md  # Pressure scenarios & micro-testing
-    ├── anthropic-craft-and-degrees-of-freedom.md   # Freedom tiers & token budgeting
-    └── worked-examples-and-templates.md            # Structural templates
-```
-
-### Setup Compatibility (`ai-rules setup`)
-The `ai-rules` installer validates each skill directory with `_is_valid_skill_tree(path)` (requiring `(path / "SKILL.md").is_file()`) and copies member skills atomically into host directories as `andino-<skill-name>`.
-- Never create symlinks inside skill bundles.
-- Ensure all relative markdown links resolve to physical local files.
-- Verify deterministically with offline test harnesses before committing.
-
----
-
-## 8. Provenance & Attribution
-
-Synthesized from:
-- `obra/superpowers:skills/writing-skills` (MIT, Jesse Vincent 2025)
-- Official Anthropic Skill Best Practices & `addyosmani/agent-skills` authoring patterns (MIT, Addy Osmani 2025)
-
-Substantive adapted material is covered under the MIT license terms in [references/license.md](references/license.md).
+Adapted from Jesse Vincent's `writing-skills` (obra/superpowers, path last changed in 2ce8aa1):
+test-driven skill writing, the form-to-failure table, loophole closing, per-type tests, pressure
+types and wording micro-tests; and from Addy Osmani's `using-agent-skills` (eca51a2) and
+`docs/skill-anatomy.md` (c4efec8) in addyosmani/agent-skills: the section anatomy with
+rationalisations, red flags and verification, and context efficiency. Both under the MIT license;
+notices are in [references/license.md](references/license.md). The two modes, the brief, the
+separate discovery, task and packaging checks and the honest status labels come from the
+earlier Andino skill; the routing table, the gates and the self-review path are new here. The
+comparison trial is recorded in the AI-RULES repository at `docs/validation/skill-maker/trial.md`.
