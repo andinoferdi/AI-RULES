@@ -39,7 +39,7 @@ Selected skills own their full procedures, required resources, artifact detail a
 | [session-diagnostics](../skills/session-diagnostics/SKILL.md) | User identifies repeated work, ignored plan, unexpected tools, cost or verification failure in a session. | Unscoped sweep of all history or directly reproducible code bug. |
 | [shipping-and-launch](../skills/shipping-and-launch/SKILL.md) | Requested production/release readiness, staged rollout, launch monitoring or rollback planning. | A local-only change with no release request, or bypassing explicit publication approval. |
 | [tdd](../skills/tdd/SKILL.md) | A feature, bug fix or behavior change needs a regression guard, including pasted code. | Pure prose/static content or reversible configuration without behavioral impact. |
-| [verification](../skills/verification/SKILL.md) | About to report fixed/passing/complete or accept worker output. | No change/claim needing proof; do not rerun unchanged checks ritualistically. |
+| [verification](../skills/verification/SKILL.md) | About to say work is done, fixed, passing or ready; before commit, PR, release or handoff; accepting a worker's report, fix or test. | No claim about the state of work; finding a failure's cause (debugging); do not rerun unchanged checks ritualistically. |
 | [git-skills](../skills/git-skills/SKILL.md) | Workspace isolation, operation safety, change hygiene, branch integration or PR drafting. | No implicit commit, push, rewrite, branch deletion or full Git pipeline. |
 
 ## Selective resources — not public entrypoints
