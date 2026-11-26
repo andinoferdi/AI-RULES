@@ -1,0 +1,47 @@
+CI run #418 on main (2026-11-24 09:12 UTC)
+
+Commits since the last green run (#412):
+  f41c2d9  tokens: allow one hour of clock-skew leeway
+  9ab07e1  money: truncate display amounts instead of rounding
+  77d0c3a  orders: add multi-currency support
+  3e5b911  inventory: cache stock reads for 2 seconds
+
+$ python -m pytest -q
+F.F.F.FFF.                                                               [100%]
+================================== FAILURES =================================
+_________________ test_bulk_discount_half_cent_rounds_up ____________________
+tests/test_pricing.py:13: in test_bulk_discount_half_cent_rounds_up
+    assert bulk_price_label(Decimal("2.33"), 10) == "19.81"
+E   AssertionError: assert '19.80' == '19.81'
+_______________________________ test_totals_row ______________________________
+tests/test_export_legacy.py:16: in test_totals_row
+    assert totals_row(orders) == ["TOTAL", "2", "1,234.50"]
+E   AssertionError: assert ['TOTAL', '2', '1,234.49'] == ['TOTAL', '2', '1,234.50']
+_________________________ test_expired_token_rejected ________________________
+tests/test_tokens.py:13: in test_expired_token_rejected
+    with pytest.raises(InvalidToken):
+E   Failed: DID NOT RAISE <class 'shopline.auth.tokens.InvalidToken'>
+____________________________ test_concurrent_reserve _________________________
+tests/test_inventory.py:29: in test_concurrent_reserve
+    assert len(successes) == 5
+E   assert 20 == 5
+_________________________________ test_total _________________________________
+tests/test_orders.py:5: in test_total
+    assert str(Order.from_dict(order_dict).total()) == "25.50"
+src/shopline/orders.py:23: in from_dict
+    currency=data["currency"],
+E   KeyError: 'currency'
+____________________________ test_cancel_restocks ____________________________
+tests/test_orders.py:10: in test_cancel_restocks
+    order = cancel(Order.from_dict(order_dict))
+src/shopline/orders.py:23: in from_dict
+    currency=data["currency"],
+E   KeyError: 'currency'
+========================= short test summary info ===========================
+FAILED tests/test_pricing.py::test_bulk_discount_half_cent_rounds_up
+FAILED tests/test_export_legacy.py::test_totals_row
+FAILED tests/test_tokens.py::test_expired_token_rejected
+FAILED tests/test_inventory.py::test_concurrent_reserve
+FAILED tests/test_orders.py::test_total - KeyError: 'currency'
+FAILED tests/test_orders.py::test_cancel_restocks - KeyError: 'currency'
+6 failed, 4 passed in 0.41s

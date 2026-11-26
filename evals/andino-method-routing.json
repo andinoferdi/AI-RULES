@@ -798,6 +798,34 @@
     "coverage": "routing"
   },
   {
+    "id": "method-delegation-parallel-investigation",
+    "kind": "behavior",
+    "prompt": "Four test files fail after last week's commits. Should I hand the failures to subagents?",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select delegation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "delegation"
+    ],
+    "method": "delegation",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-delegation-research",
+    "kind": "behavior",
+    "prompt": "Before we implement, send a couple of helper agents to research the payment SDK options.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select delegation",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "delegation"
+    ],
+    "method": "delegation",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-delivery-implicit",
     "kind": "behavior",
     "prompt": "Laporan akhir dan bukti uji; jangan commit/push.",

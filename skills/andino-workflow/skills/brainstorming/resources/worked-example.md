@@ -65,6 +65,7 @@ account role or the person who requested the file.
 - Success: an owner gets the file from the account without asking support
 - Constraint: tenant isolation and the audit role's email restriction stay as they are
 - Out of scope: shareable links, scheduled exports, formats other than CSV
+- Anti-goal: a file that any user of the tenant, or someone outside the account, can download
 ```
 
 The file lifetime is the agent's call under the existing retention policy, marked as such in the

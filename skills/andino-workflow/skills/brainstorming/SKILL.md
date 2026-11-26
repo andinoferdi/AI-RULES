@@ -103,8 +103,9 @@ follow [Fallback](#fallback). Read the project's instruction files and, when the
        in a few lines) and a request to approve it.
 
    On the Several sessions route, also say that you will keep a record of decisions and open
-   questions, and where, and name the decisions you can already see in the order they depend on
-   each other, saying which come later; still ask only the one question. When the user did not ask to brainstorm, end with one line offering to go
+   questions, and where, and list every decision you can already see as a short numbered list,
+   root first, each later one saying which earlier one it waits on; still ask only the one
+   question. When the user did not ask to brainstorm, end with one line offering to go
    ahead instead ("Or, if you'd rather I go ahead on my best reading, say so"). If they take it,
    state any significant how-choice (platform, language, storage) in one line and continue through
    the normal workflow. Done when the message holds your findings and one question, one round or one
@@ -262,10 +263,11 @@ open decisions with the work each blocks. The restate block:
 - Success: <how we will know it worked>
 - Constraint: <the binding limit>
 - Out of scope: <what we are not doing>
+- Anti-goal: <what would make this a failure even if it works as specified>
 ```
 
-Every restate has an Out of scope line: silent disagreement about what is not being built is half
-of all misalignment.
+Every restate has its Out of scope and Anti-goal lines: silent disagreement about what is not being
+built, or about what failure looks like, is half of all misalignment.
 
 ### Name things once
 
@@ -314,7 +316,7 @@ no ADR or spec file. Format: [ADR](resources/adr-and-glossary-template.md#adr).
 - Several why-questions in one message, or a feature menu before the why is known.
 - Buzzwords accepted as requirements.
 - "Whatever you think" or "sounds good" recorded as the user's decision.
-- A restate with no Out of scope line.
+- A restate or design with no Out of scope or Anti-goal line.
 - Method words or quotes from this skill in a message to the user.
 - A design that mixes the user's decisions with your own calls.
 - A how-question in a decision round, or another round when the what is already settled.
@@ -354,7 +356,8 @@ Before handing off, check that:
 - [ ] a request that reverses a recorded decision was named as such, with a superseding ADR proposed;
 - [ ] claims from your own knowledge are marked unverified;
 - [ ] the approaches came in their own message, with a recommendation, before the design;
-- [ ] the restate block has all six lines, Out of scope included, and the user confirmed it;
+- [ ] the restate block has all seven lines, Out of scope and Anti-goal included, and the user
+  confirmed it;
 - [ ] decisions are split into confirmed, your calls and open, with delegated choices marked yours;
 - [ ] the design matches its size, and an Architectural design passed the fresh-reader check;
 - [ ] an ADR exists only where the ADR test holds;
