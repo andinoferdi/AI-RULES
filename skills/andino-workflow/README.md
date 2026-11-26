@@ -23,7 +23,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 
 | Public member | Responsibility |
 | --- | --- |
-| `andino-tdd` | Executable RED/GREEN behavior guards; optional typed-fixture migration preserving invalid negative cases. |
+| `andino-tdd` | One behavior per red-green slice from a written slice list, proof against the pre-fix code for tests that pass at once, and a test record; optional typed-fixture migration. |
 | `andino-debugging` | Reproduce, prove and fix an unknown cause through six evidence gates with a report template; quick path when the compiler names the cause. |
 | `andino-verification` | Observed acceptance evidence before consequential completion claims. |
 | `andino-browser-testing-with-devtools` | Reproduce, fix and replay in a real browser; release pass at 360, 768 and 1440 px by device emulation, accessibility, console split and loading metrics. |
