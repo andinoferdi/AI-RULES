@@ -31,24 +31,40 @@ _ICON = (
     ".AA.K..AA.",
     "AA......AA",
 )
-_COLORS = {"A": (240, 243, 246), "K": (245, 165, 36)}  # Kertas and Kunyit Terang
+KERTAS, KUNYIT_TERANG, ABU_TERANG = (240, 243, 246), (245, 165, 36), (154, 164, 178)
+_COLORS = {"A": KERTAS, "K": KUNYIT_TERANG}
 _ASCII_ICON = ("   /\\     ", "  /  \\    ", " / \\/ \\   ", "/      \\  ")
 _BOLD, _DIM, _RESET = "\x1b[1m", "\x1b[2m", "\x1b[0m"
 _ICON_WIDTH = len(_ICON[0])
 _INDENT, _GAP = "  ", "   "
 
 
-def _pixel_color(row: int, column: int) -> tuple[int, int, int] | None:
-    return _COLORS.get(_ICON[row][column])
+CHECK_STROKE = ((5, 3), (6, 4), (5, 5), (4, 6), (3, 7))  # check cells (row, column) in drawing order
 
 
-def _icon_rows(color: bool) -> list[str]:
+def mark_rows(*, color: bool, built: int = 8, lit: int = 5) -> list[str]:
+    """The mark with its lowest `built` pixel rows drawn and the first `lit` check cells lit.
+
+    An unlit check cell is Abu Terang in colour and left out without colour, so the check
+    appears only once setup has proven its work.
+    """
+    first = len(_ICON) - max(0, min(built, len(_ICON)))
+    lit_cells = set(CHECK_STROKE[:max(0, lit)])
+
+    def pixel(row: int, column: int) -> tuple[int, int, int] | None:
+        kind = _ICON[row][column]
+        if row < first:
+            return None
+        if kind == "K" and (row, column) not in lit_cells:
+            return ABU_TERANG if color else None
+        return _COLORS.get(kind)
+
     rows = []
     for top_row in range(0, len(_ICON), 2):
         cells = []
         for column in range(_ICON_WIDTH):
-            top = _pixel_color(top_row, column)
-            bottom = _pixel_color(top_row + 1, column)
+            top = pixel(top_row, column)
+            bottom = pixel(top_row + 1, column)
             if top is None and bottom is None:
                 cells.append(" ")
                 continue
@@ -90,7 +106,8 @@ def _fit_path(path: str, limit: int, ellipsis: str) -> str:
     return ellipsis + path[len(path) - max(0, limit - len(ellipsis)):]
 
 
-def render_banner(info: BannerInfo, width: int, *, color: bool = True, unicode: bool = True) -> str:
+def render_banner(info: BannerInfo, width: int, *, color: bool = True, unicode: bool = True,
+                  built: int = 8, lit: int = 5) -> str:
     sep = " · " if unicode else ", "
     ellipsis = "…" if unicode else "..."
     if width < 40:
@@ -112,12 +129,19 @@ def render_banner(info: BannerInfo, width: int, *, color: bool = True, unicode: 
         [(tools, "")],
         [(_fit_path(info.cwd, limit, ellipsis), _DIM)],
     ]
-    icon = _icon_rows(color) if unicode else list(_ASCII_ICON)
-    rows = [
+    icon = mark_rows(color=color, built=built, lit=lit) if unicode else list(_ASCII_ICON)
+    return compose(icon, lines, width, color=color, ellipsis=ellipsis)
+
+
+def compose(rows: list[str], lines: list[list[tuple[str, str]]], width: int, *, color: bool, ellipsis: str) -> str:
+    """The mark's rows, each with one fitted line of (text, ANSI style) segments beside it."""
+    limit = width - len(_INDENT) - _ICON_WIDTH - len(_GAP)
+    lines = list(lines) + [[] for _ in range(len(rows) - len(lines))]
+    composed = [
         (_INDENT + cell_row + _GAP + _fit(line, limit, ellipsis, color)).rstrip()
-        for cell_row, line in zip(icon, lines)
+        for cell_row, line in zip(rows, lines)
     ]
-    return "\n" + "\n".join(rows) + "\n"
+    return "\n" + "\n".join(composed) + "\n"
 
 
 def _display_path(path: Path) -> str:
@@ -150,22 +174,25 @@ def collect_banner_info(command: str = "setup") -> BannerInfo:
                       _program_name())
 
 
-def print_setup_banner(command: str = "setup") -> None:
-    if not sys.stdout.isatty() or os.environ.get("TERM") == "dumb":
+def print_setup_banner(command: str = "setup", *, screen=None) -> None:
+    """Screen mode plays the intro; otherwise a terminal gets today's static banner."""
+    if screen is None and (not sys.stdout.isatty() or os.environ.get("TERM") == "dumb"):
         return
     from prompt_toolkit import ANSI, print_formatted_text
     from ai_rules import __version__
 
     try:
-        "▀▄█·…".encode(sys.stdout.encoding or "utf-8")
-        unicode = True
-    except UnicodeEncodeError:
-        unicode = False
-    try:
         info = collect_banner_info(command)
     except Exception:
         # The banner is decoration; detection trouble must never stop setup.
         info = BannerInfo(__version__, command, (), (), _display_path(Path.cwd()), _program_name())
+    if screen is not None and screen.intro(info):
+        return
+    try:
+        "▀▄█·…".encode(sys.stdout.encoding or "utf-8")
+        unicode = True
+    except UnicodeEncodeError:
+        unicode = False
     print_formatted_text(ANSI(render_banner(
         info,
         shutil.get_terminal_size().columns,

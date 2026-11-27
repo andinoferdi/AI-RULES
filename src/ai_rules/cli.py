@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Callable
 
 from ai_rules import agent_defaults
-from ai_rules.banner import print_setup_banner
+from ai_rules.banner import _display_path, _fit_path, print_setup_banner
 from ai_rules.capabilities.adapters import StaticCapabilityAdapter
 from ai_rules.catalog import load_catalog
 from ai_rules.domain.models import ActualState, InstallationPlan, Operation
@@ -31,6 +31,7 @@ from ai_rules.state import atomic_write_json, create_snapshot, read_json, read_s
 from ai_rules.verification import doctor_from_plan, render_doctor
 from ai_rules.progress import SetupProgress
 from ai_rules.events import emit
+from ai_rules.screen import LANGUAGE_NAMES, Problem, Result, detect_screen, fit_names
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -121,8 +122,9 @@ def add_common_setup_flags(parser: argparse.ArgumentParser) -> None:
 
 def cmd_setup(args: argparse.Namespace) -> int:
     _prepare_args(args)
+    screen = detect_screen(interactive=not args.non_interactive, progress=not getattr(args, "no_progress", False))
     if not args.non_interactive:
-        print_setup_banner()
+        print_setup_banner(screen=screen)
     interactive = False
     if not args.non_interactive and not args.hosts and not args.capabilities and args.profile == "minimal":
         catalog = load_catalog()
@@ -131,17 +133,18 @@ def cmd_setup(args: argparse.Namespace) -> int:
             hosts=catalog.hosts,
             profiles=profiles.profiles,
             capabilities=catalog.capabilities,
+            screen=screen,
         )
         if selection is None:
-            print("setup cancelled; no changes made")
+            _say(screen, "Cancelled · nothing changed", "setup cancelled; no changes made")
             return 0
         args.hosts = list(selection.hosts)
         args.profile = selection.profile_id or "custom"
         args.capabilities = list(selection.capabilities)
         if getattr(args, "agent_defaults", None) is None and Scope(args.scope) == Scope.GLOBAL:
-            choice = prompt_agent_defaults()
+            choice = prompt_agent_defaults(screen=screen)
             if choice is None:
-                print("setup cancelled; no changes made")
+                _say(screen, "Cancelled · nothing changed", "setup cancelled; no changes made")
                 return 0
             args.agent_defaults, chosen = choice
             args.defaults_language = getattr(args, "defaults_language", None) or chosen
@@ -149,12 +152,13 @@ def cmd_setup(args: argparse.Namespace) -> int:
     catalog = load_catalog()
     profiles = load_profiles(catalog)
     capabilities = tuple(args.capabilities) if args.capabilities else profiles.require(args.profile).capabilities
-    print(render_setup_summary(tuple(_hosts(args.hosts)), args.profile if not args.capabilities else None,
-                               capabilities, args.scope, catalog, profiles.profiles, compact=True,
-                               project_root=args.project_root))
-    print(_source_line(args, catalog))
+    if not (screen and _screen_answers(screen, args, catalog, profiles, asked=interactive)):
+        print(render_setup_summary(tuple(_hosts(args.hosts)), args.profile if not args.capabilities else None,
+                                   capabilities, args.scope, catalog, profiles.profiles, compact=True,
+                                   project_root=args.project_root))
+        print(_source_line(args, catalog))
     progress = SetupProgress(enabled=not getattr(args, "no_progress", False) and not args.non_interactive,
-                             verbose=getattr(args, "verbose", False))
+                             verbose=getattr(args, "verbose", False), screen=screen)
     args._reporter = progress
     with progress:
         plan = _resolve_from_args(args)
@@ -162,19 +166,27 @@ def cmd_setup(args: argparse.Namespace) -> int:
     if all_current:
         args.yes = True
     if not all_current or args.dry_run:
-        if getattr(args, "verbose", False):
-            print(_preflight_text())
-        print(render_plan(plan, verbose=getattr(args, "verbose", False)))
-        _agent_defaults(args, plan, apply=False)
+        preview = _defaults_results(args, plan, apply=False) if screen else None
+        if screen and screen.plan(plan, catalog, preview):
+            if getattr(args, "verbose", False):
+                _print_plan_details(plan, preflight=True)
+                for item in preview or ():
+                    print(agent_defaults.format_result(item, preview=True))
+        else:
+            if getattr(args, "verbose", False):
+                print(_preflight_text())
+            print(render_plan(plan, verbose=getattr(args, "verbose", False)))
+            _agent_defaults(args, plan, apply=False)
     if args.dry_run:
-        print("Dry run complete; no installation or state files changed.")
+        _say(screen, "Dry run · nothing changed", "Dry run complete; no installation or state files changed.")
         return 1 if plan.blocked else 0
-    if interactive and not args.yes and not prompt_confirmation():
-        print("setup cancelled; no changes made")
+    if interactive and not args.yes and not prompt_confirmation(screen=screen):
+        _say(screen, "Cancelled · nothing changed", "setup cancelled; no changes made")
         return 0
     if interactive:
         args.yes = True
     defaults_ok = True
+    progress.expect(_host_totals(plan, catalog))
     with progress:
         emit(progress, "Preparing execution bundles")
         result = _executor_for_plan(plan, args).execute(plan, dry_run=False, yes=args.yes)
@@ -193,8 +205,20 @@ def cmd_setup(args: argparse.Namespace) -> int:
                              detail=str(target["verification"]))
         else:
             verified = None
-    if args.yes:
+    applied_defaults = None
+    if args.yes and screen:
+        applied_defaults = _defaults_results(args, plan, apply=True)
+        defaults_ok = all(item.status not in {"CONFLICT", "FAILED"} for item in applied_defaults or ())
+    elif args.yes:
         defaults_ok = _agent_defaults(args, plan, apply=True)
+    code = 1 if verified is False or not defaults_ok or any(
+        item.status in {"FAILED", "SKIPPED", "BLOCKED"} for item in result.results) else 0
+    if screen and screen.outro(_screen_result(args, plan, result, progress, verified, applied_defaults)):
+        if getattr(args, "verbose", False):
+            _print_result_details(args, plan, result, applied_defaults)
+        return code if args.yes else 0
+    for item in applied_defaults or ():  # the screen broke after applying: show today's lines
+        print(agent_defaults.format_result(item, preview=False))
     for item in result.results:
         if all_current and item.status == "VERIFIED" and getattr(args, "verbose", False):
             label = "Up to date" if getattr(args, "_latest", None) else "Already installed (latest not checked)"
@@ -221,7 +245,55 @@ def cmd_setup(args: argparse.Namespace) -> int:
                 print(f"  {catalog.require_host(host_id).display_name}: " + ", ".join(names))
     elif any(item.status == "APPLIED" for item in result.results):
         print("Start a new agent session or reload its window for applied files; review remaining diagnostics.")
-    return 1 if verified is False or not defaults_ok or any(item.status in {"FAILED", "SKIPPED", "BLOCKED"} for item in result.results) else 0
+    return code
+
+
+def _screen_result(args: argparse.Namespace, plan, execution, progress: SetupProgress, verified, defaults) -> "Result":
+    """What the outro shows: the tally, every item that needs a look, and the commands to try."""
+    catalog = load_catalog()
+    names = {host_id: host.display_name for host_id, host in catalog.hosts.items()}
+    kinds = {"FAILED": "failed", "BLOCKED": "blocked", "MANUAL_ACTION_REQUIRED": "manual", "SKIPPED": "skipped"}
+    problems: dict[str, Problem] = {}
+    for item in execution.results:
+        where = f"{names.get(item.host_id, item.host_id)} / {item.capability_id}"
+        if item.status in kinds and where not in problems:
+            problems[where] = Problem(kinds[item.status], where, item.message)
+    if verified is False:
+        for target in read_json(args.state_dir / "lock.json")["targets"]:
+            where = f"{names.get(target['host'], target['host'])} / {target['capability']}"
+            if target["status"] == "FAILED" and where not in problems:
+                problems[where] = Problem("failed", where, str(target["verification"]))
+    for item in defaults or ():
+        if item.status in {"CONFLICT", "FAILED"}:
+            where = _display_path(item.path)
+            problems.setdefault(where, Problem("manual" if item.status == "CONFLICT" else "failed", where, item.message))
+    hosts = list(dict.fromkeys(target.host_id for target in plan.targets))
+    commands = tuple(dict.fromkeys(target.capability_id for target in plan.targets
+                                   if catalog.require_capability(target.capability_id).ownership.value == "FIRST_PARTY"))
+    prefix = "$" if hosts == ["codex"] else "/"
+    tally = progress.tally()
+    backups = args.state_dir / "backups"
+    replaced = any(tally[key] for key in ("updated", "replaced", "repaired", "downgraded"))
+    return Result(progress.elapsed(), tally, tuple(problems.values()), verified, commands, prefix,
+                  prefix == "/" and "codex" in hosts, _display_path(backups) if replaced and backups.exists() else None)
+
+
+def _print_result_details(args: argparse.Namespace, plan, execution, defaults) -> None:
+    """Today's closing details, printed under the outro for --verbose."""
+    for item in execution.results:
+        print(f"{item.capability_id} -> {item.host_id}: {item.status} {item.action} - {item.message}")
+    for item in defaults or ():
+        print(agent_defaults.format_result(item, preview=False))
+    print(f"Installation records: {args.state_dir}")
+    if (args.state_dir / "backups").exists():
+        print(f"Backups: {args.state_dir / 'backups'}")
+    catalog = load_catalog()
+    for host_id in dict.fromkeys(target.host_id for target in plan.targets):
+        prefix = "$" if host_id == "codex" else "/"
+        names = [prefix + target.capability_id for target in plan.targets
+                 if target.host_id == host_id and catalog.require_capability(target.capability_id).ownership.value == "FIRST_PARTY"]
+        if names:
+            print(f"  {catalog.require_host(host_id).display_name}: " + ", ".join(names))
 
 
 def cmd_add(args: argparse.Namespace) -> int:
@@ -351,9 +423,10 @@ def cmd_doctor(args: argparse.Namespace) -> int:
 
 def cmd_update(args: argparse.Namespace) -> int:
     _prepare_args(args)
+    screen = detect_screen(interactive=not args.non_interactive, progress=not getattr(args, "no_progress", False))
     plan = _resolve_from_args(args)
     print("Andino Skills update preview")
-    print(render_plan(plan, verbose=getattr(args, "verbose", False)))
+    _show_plan(screen, plan, args)
     recorded_hosts = _recorded_default_hosts(args.state_dir)
     if args.agent_defaults is True:  # explicit: may install for the selected hosts
         defaults_hosts = args.hosts or recorded_hosts
@@ -381,10 +454,11 @@ def cmd_repair(args: argparse.Namespace) -> int:
     _prepare_args(args)
     if getattr(args, "source", "bundled") != "bundled":
         raise ValueError("repair restores the bundled release; use setup/update for latest source reconciliation")
+    screen = detect_screen(interactive=not args.non_interactive, progress=not getattr(args, "no_progress", False))
     plan = _resolve_from_args(args)
     repair_plan = _explicit_repair_plan(plan, allow_replace=args.replace_existing)
     print("Andino Skills repair")
-    print(render_plan(repair_plan, verbose=getattr(args, "verbose", False)))
+    _show_plan(screen, repair_plan, args)
     if args.dry_run or not args.yes:
         print("repair preview only; pass --yes to apply the official stable release")
         return 1 if repair_plan.blocked else 0
@@ -498,13 +572,52 @@ def _hosts(hosts: list[str]) -> list[str]:
     return hosts or ["codex"]
 
 
-def _source_line(args: argparse.Namespace, catalog) -> str:
-    """One plain line saying where this run reads skills from."""
+def _host_totals(plan, catalog) -> list[tuple[str, str, int]]:
+    """(host id, display name, target count) for each agent in plan order: one bar each."""
+    counts: dict[str, int] = {}
+    for target in plan.targets:
+        counts[target.host_id] = counts.get(target.host_id, 0) + 1
+    return [(host_id, catalog.hosts[host_id].display_name if host_id in catalog.hosts else host_id, count)
+            for host_id, count in counts.items()]
+
+
+def _say(screen, screen_text: str, plain_text: str) -> None:
+    """A one-line note: dim in screen mode, today's wording in plain mode."""
+    if not (screen and screen.note(screen_text)):
+        print(plain_text)
+
+
+def _screen_answers(screen, args: argparse.Namespace, catalog, profiles, *, asked: bool) -> bool:
+    """Folded answer lines for what the questions did not already show, then the skill source."""
+    rows = []
+    if not asked:
+        names = [catalog.require_host(host_id).display_name for host_id in _hosts(args.hosts)]
+        rows.append(("Agents", fit_names(names, screen.console.width - 12)))
+        if args.capabilities:
+            rows.append(("Skills", f"{len(args.capabilities)} selected"))
+        else:
+            rows.append(("Profile", profiles.require(args.profile).display_name))
+        if getattr(args, "agent_defaults", None) is not None and Scope(args.scope) == Scope.GLOBAL:
+            language = getattr(args, "defaults_language", None)
+            rows.append(("Defaults", LANGUAGE_NAMES.get(language, "on") if args.agent_defaults else "off"))
+    ellipsis = "…" if screen.unicode else "..."
+    if Scope(args.scope) == Scope.PROJECT:
+        prefix = f"project{screen.glyphs.sep}"
+        room = screen.console.width - 12 - len(prefix)
+        rows.append(("Scope", prefix + _fit_path(_display_path(args.project_root), room, ellipsis)))
+    if not all(screen.answer(label, value) for label, value in rows):
+        return False
+    room = screen.console.width - len("  Skill source: bundled from ")
+    return screen.note(_source_line(args, catalog, show=lambda path: _fit_path(_display_path(path), room, ellipsis)))
+
+
+def _source_line(args: argparse.Namespace, catalog, *, show: Callable[[Path], str] = str) -> str:
+    """One plain line saying where this run reads skills from; `show` renders the local path."""
     if args.source == "local":
-        return f"Skill source: local folder {args._checkout / 'skills'}"
+        return f"Skill source: local folder {show(args._checkout / 'skills')}"
     if args.source == "bundled":
         return "Skill source: bundled with this executable" if _packaged_any(catalog) else \
-            f"Skill source: bundled from {args._checkout / 'skills'}" if args._checkout else \
+            f"Skill source: bundled from {show(args._checkout / 'skills')}" if args._checkout else \
             "Skill source: bundled (no packaged skills found)"
     repository = next((capability.source.get("repository") for capability in catalog.capabilities.values()
                        if capability.ownership.value == "FIRST_PARTY"), "")
@@ -537,6 +650,23 @@ def _recorded_default_hosts(state_dir: Path) -> list[str]:
     return list(dict.fromkeys(host for record in files for host in record["hosts"]))
 
 
+def _show_plan(screen, plan, args: argparse.Namespace) -> None:
+    """The one-line plan in screen mode (today's details too with --verbose), else today's plan."""
+    if screen and screen.plan(plan, load_catalog()):
+        if getattr(args, "verbose", False):
+            _print_plan_details(plan, preflight=False)
+        return
+    print(render_plan(plan, verbose=getattr(args, "verbose", False)))
+
+
+def _print_plan_details(plan, *, preflight: bool) -> None:
+    """Today's plan blocks, printed under the screen-mode plan line for --verbose."""
+    if preflight:
+        print(_preflight_text())
+    print(render_plan(plan))
+    print(render_plan(plan, verbose=True))
+
+
 def _agent_defaults(args: argparse.Namespace, plan, *, apply: bool, hosts: list[str] | None = None) -> bool:
     """Preview or reconcile the defaults block; False when any file conflicts or fails."""
     if not getattr(args, "agent_defaults", None):
@@ -544,6 +674,16 @@ def _agent_defaults(args: argparse.Namespace, plan, *, apply: bool, hosts: list[
     if Scope(args.scope) == Scope.PROJECT:
         print("agent-defaults: SKIPPED global instruction files are not changed in project scope")
         return True
+    results = _defaults_results(args, plan, apply=apply, hosts=hosts)
+    for result in results:
+        print(agent_defaults.format_result(result, preview=not apply))
+    return all(result.status not in {"CONFLICT", "FAILED"} for result in results)
+
+
+def _defaults_results(args: argparse.Namespace, plan, *, apply: bool, hosts: list[str] | None = None):
+    """Reconcile (or preview) the defaults block; None when defaults are off or the scope is project."""
+    if not getattr(args, "agent_defaults", None) or Scope(args.scope) == Scope.PROJECT:
+        return None
     catalog = load_catalog()
     planned: dict[str, set[str]] = {}
     for target in (plan.targets if plan else ()):
@@ -552,12 +692,9 @@ def _agent_defaults(args: argparse.Namespace, plan, *, apply: bool, hosts: list[
     targets = agent_defaults.plan_targets([catalog.require_host(h) for h in host_ids], _home(),
                                           getattr(args, "defaults_language", None), planned,
                                           agent_defaults.read_state(args.state_dir)["files"])
-    results = agent_defaults.reconcile(targets, args.state_dir, apply=apply,
-                                       replace_unmanaged=getattr(args, "replace_agent_defaults", False),
-                                       home=_home())
-    for result in results:
-        print(agent_defaults.format_result(result, preview=not apply))
-    return all(result.status not in {"CONFLICT", "FAILED"} for result in results)
+    return agent_defaults.reconcile(targets, args.state_dir, apply=apply,
+                                    replace_unmanaged=getattr(args, "replace_agent_defaults", False),
+                                    home=_home())
 
 
 def _profile_capabilities(profile_id: str) -> list[str]:

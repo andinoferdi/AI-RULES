@@ -11,6 +11,51 @@ from rich.text import Text
 from ai_rules.catalog import load_catalog
 
 
+# Screen mode's one-line plan: every action that occurs, in this order and wording.
+ACTION_WORDS = (
+    ("INSTALL", "to install"), ("UPDATE", "to update"), ("REPAIR", "to repair"),
+    ("RECONFIGURE", "to reconfigure"), ("ADOPT", "to adopt"), ("REPLACE", "to replace"),
+    ("DOWNGRADE", "to downgrade"), ("NO_OP", "current"), ("MANUAL_ACTION", "manual"), ("BLOCK", "blocked"),
+)
+
+
+def plan_summary(plan: InstallationPlan, *, sep: str = " · ") -> str:
+    """`5 to update · 35 current`: non-zero counts only; `nothing to do` for an empty plan."""
+    counts = Counter(target.action.value for target in plan.targets)
+    words = dict(ACTION_WORDS)
+    known = [f"{counts[action]} {word}" for action, word in ACTION_WORDS if counts[action]]
+    other = [f"{count} {action.lower()}" for action, count in counts.items() if action not in words]
+    return sep.join(known + other) or "nothing to do"
+
+
+def plan_issues(plan: InstallationPlan, catalog) -> list[tuple[str, str, str]]:
+    """Blocked and manual targets as (kind, "<Host> / <capability>", reason or manual step)."""
+    issues = []
+    for target in plan.targets:
+        if target.action.value not in {"BLOCK", "MANUAL_ACTION"}:
+            continue
+        host = catalog.hosts[target.host_id].display_name if target.host_id in catalog.hosts else target.host_id
+        where = f"{host} / {target.capability_id}"
+        if target.action.value == "BLOCK":
+            issues.append(("blocked", where, target.reason))
+        else:
+            step = next((op.manual_step for op in target.operations if op.manual_step), None)
+            issues.append(("manual", where, step or target.reason))
+    return issues
+
+
+def count_backups(plan: InstallationPlan, catalog) -> int:
+    """Targets that may replace existing files, each of which is backed up first."""
+    return sum(
+        any(op.backup for op in t.operations) or (
+            t.actual.exists and t.action.value not in {"NO_OP", "BLOCK", "MANUAL_ACTION", "ADOPT"}
+            and t.capability_id in catalog.capabilities
+            and catalog.require_capability(t.capability_id).ownership.value == "FIRST_PARTY"
+            and any(op.kind != "register_skill_invocation" for op in t.operations)
+        ) for t in plan.targets
+    )
+
+
 def render_plan(plan: InstallationPlan, *, verbose: bool = False, width: int | None = None) -> str:
     if not verbose:
         return _compact_plan(plan, width or shutil.get_terminal_size().columns)
@@ -63,15 +108,7 @@ def _compact_plan(plan: InstallationPlan, width: int) -> str:
     console.print(f"{len(plan.targets)} targets")
     for start in range(0, len(totals), 3):
         console.print(" | ".join(totals[start:start + 3]), markup=False)
-    backups = sum(
-        any(op.backup for op in t.operations) or (
-            t.actual.exists and t.action.value not in {"NO_OP", "BLOCK", "MANUAL_ACTION", "ADOPT"}
-            and t.capability_id in catalog.capabilities
-            and catalog.require_capability(t.capability_id).ownership.value == "FIRST_PARTY"
-            and any(op.kind != "register_skill_invocation" for op in t.operations)
-        ) for t in plan.targets
-    )
-    console.print(f"Up to {backups} targets need backup if existing files are replaced.")
+    console.print(f"Up to {count_backups(plan, catalog)} targets need backup if existing files are replaced.")
     console.print("Operation details: --verbose")
     for target in plan.targets:
         if target.action.value in {"BLOCK", "MANUAL_ACTION"}:
