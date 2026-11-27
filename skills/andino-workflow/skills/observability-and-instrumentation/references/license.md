@@ -1,6 +1,7 @@
 # License Notice
 
-**Original Source:** [addyosmani/agent-skills: skills/observability-and-instrumentation](https://github.com/addyosmani/agent-skills/tree/main/skills/observability-and-instrumentation)
+**Original Source:** [addyosmani/agent-skills: skills/observability-and-instrumentation](https://github.com/addyosmani/agent-skills/tree/main/skills/observability-and-instrumentation),
+including `references/shared/observability-checklist.md`; path last changed in commit `c4efec8`.
 
 Substantive adapted material in this skill is covered by the following notice:
 

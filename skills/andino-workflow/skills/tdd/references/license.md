@@ -4,6 +4,7 @@ Substantive adapted material in this skill is covered by the following notices:
 
 ## Addy Osmani (agent-skills)
 - **Original Source:** [addyosmani/agent-skills: skills/test-driven-development](https://github.com/addyosmani/agent-skills/tree/main/skills/test-driven-development)
+- **Revision re-read for the 2026-11-26 upgrade:** path last changed in df50a6d
 
 MIT License
 
@@ -29,6 +30,7 @@ SOFTWARE.
 
 ## Matt Pocock (skills)
 - **Original Source:** [mattpocock/skills: skills/engineering/tdd](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)
+- **Revision re-read for the 2026-11-26 upgrade:** path last changed in 3f59913
 
 MIT License
 
@@ -54,6 +56,7 @@ SOFTWARE.
 
 ## Jesse Vincent (superpowers)
 - **Original Source:** [obra/superpowers: skills/test-driven-development](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)
+- **Revision re-read for the 2026-11-26 upgrade:** path last changed in 5bf4e78
 
 MIT License
 

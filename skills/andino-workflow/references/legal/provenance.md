@@ -92,6 +92,20 @@ floor guards with cross-platform CRLF/path normalization, third-party scanner ex
 normalization protocols, multi-ecosystem catalogs across TS/JS, Python, Go, Rust, and Web UI,
 and offline deterministic Python stdlib verification).
 
+The 2026-11-26 upgrade of `documentation-and-adrs` rewrites `SKILL.md` (mirrored by `GUIDE.md`)
+into the sibling Andino layout as one gated procedure and adds points from Addy Osmani's skill at
+commit 551c59c: the default ADR template and lifecycle, why-over-what comments with no commented-out
+code, API, README and changelog patterns, documentation for agents, drift decided from commit order
+with "can't tell" for unordered history, append-only change logs, the rationalizations, red flags
+and checklist. New resources: `templates.md` and `drift-audit.md` (bash and PowerShell commit-order
+checks). Kept Andino material: reader-first artifact choice, convention conflicts and reserved
+numbers, proposed status until recorded acceptance, same-criteria alternatives and revisit triggers,
+the consumer contract, executed / source-checked labels, qualifier preservation, the domain
+vocabulary resource and the offline probe. New Andino gates: the content check decides drift, a
+measurable revisit trigger, breaking labels with the consumer action, untracked TODOs reported as
+follow-up, and line-ending churn restored or reported. Trial record:
+`docs/validation/documentation-and-adrs/`.
+
 The 2026-11-26 upgrade of `constraint-driven-development` rewrites `SKILL.md` (mirrored by
 `GUIDE.md`) into the sibling Andino layout as one procedure and adds points from Addy Osmani's
 skill at commit 9c7f62d: no interview in non-interactive runs (floor only, open questions flagged),
@@ -175,6 +189,22 @@ shipped as a Markdown block, scoped commits, test-before-commit branch finishing
 The duplicate `contract.md` files and the branch-integration sub-resources are folded into the
 guides. The comparison trial is recorded in `docs/validation/git-skills/trial.md`.
 
+The 2026-11-26 upgrade of `tdd` re-reads Addy Osmani's `test-driven-development`
+(addyosmani/agent-skills df50a6d), Matt Pocock's `tdd` (mattpocock/skills 3f59913) and Jesse
+Vincent's `test-driven-development` (obra/superpowers 5bf4e78), all MIT, and moves the method into
+the sibling layout: a slice list and six evidence gates in `SKILL.md` (mirrored by `GUIDE.md`), a
+test record template, shortcut and red-flag lists, and resources for test design, the supporting
+contract and a worked example. The duplicate `resources/typed-fixtures/contract.md` was removed;
+the typed-fixtures guide is unchanged. The comparison trial is recorded in
+`docs/validation/tdd/trial.md`.
+
+The 2026-11-26 upgrade of `deprecation-and-migration` re-reads Addy Osmani's
+`deprecation-and-migration` (addyosmani/agent-skills 9f91cc4, MIT) and moves the method into the
+sibling layout: a quick path and six gates with named artifacts in `SKILL.md` (mirrored by
+`GUIDE.md`), the consumer map, phase ledger, backfill rules and contract decision, the shortcut
+and red-flag lists, and resources for transition patterns, notices and a worked example. The
+comparison trial is recorded in `docs/validation/deprecation-and-migration/trial.md`.
+
 The 2026-11-26 upgrade of `debugging` re-reads Addy Osmani's `debugging-and-error-recovery`
 (addyosmani/agent-skills 9097b64), Matt Pocock's `diagnosing-bugs` (mattpocock/skills f3fc563)
 and Jesse Vincent's `systematic-debugging` (obra/superpowers 22f0b46), all MIT, and moves the
@@ -183,6 +213,34 @@ method into the sibling layout: a quick path and six evidence gates in `SKILL.md
 tracing, flaky failures and recovery. The comparison trial is recorded in
 `docs/validation/debugging/trial.md`. The paragraph above describes the earlier version; its
 line budget, state-machine and Bash POSIX wording no longer apply.
+
+The 2026-11-26 upgrade of `plan-execution` re-reads Addy Osmani's `incremental-implementation`
+(addyosmani/agent-skills c4efec8) and Jesse Vincent's `executing-plans` (obra/superpowers
+22f0b46), both MIT, and moves the method into the sibling layout: six gated steps in `SKILL.md`
+(mirrored by `GUIDE.md`) for preflight, resume, one task at a time with red-green increments and
+a check-the-check gate, four stops, a full-diff review against the spec and delivery, plus a
+report template with exhaustive rulings and deferred lists. Evidence identity, `NOT_VERIFIED`,
+the single plan checkpoint and the delivery distinctions are kept from the earlier Andino text.
+The comparison trial is recorded in `docs/validation/plan-execution/trial.md`.
+
+The 2026-11-26 upgrade of `security-and-hardening` re-reads Addy Osmani's
+`security-and-hardening` (addyosmani/agent-skills 6502129) and adds Phoenix Security's
+`security-reviewer` (Security-Phoenix-demo/security-skills-claude-code 40ace4a) and Riyan
+Pratama's `09-web-security` (Masriyan/Claude-Code-CyberSecurity-Skill 3aa77d8), all MIT. It
+moves the method into the sibling layout: a quick path, build and review gates in `SKILL.md`
+(mirrored by `GUIDE.md`), a finding template with confirmed / inferred / unverified status, the
+shortcut and red-flag lists, and resources for controls and their tests, the review checklist
+and a worked example. No payloads, scripts or hooks are imported. The comparison trial is
+recorded in `docs/validation/security-and-hardening/trial.md`.
+
+The 2026-11-26 upgrade of `learning-workspace` re-reads Matt Pocock's `teach`
+(mattpocock/skills ad5400b, `skills/productivity/teach` with `MISSION-FORMAT.md`,
+`RESOURCES-FORMAT.md`, `LEARNING-RECORD-FORMAT.md` and `GLOSSARY-FORMAT.md`, MIT) and moves the
+method into the sibling layout: a route table (direct answer, quick lesson, repair, workspace,
+course exercises), quick-lesson and repair steps, seven workspace steps with "Done when" lines in
+`SKILL.md` (mirrored by `GUIDE.md`), and resources for workspace formats, lessons and shared
+assets, and how people learn. The comparison trial is recorded in
+`docs/validation/learning-workspace/trial.md`.
 
 The 2026-11-01 elevation of `delegation` synthesizes the generative multi-agent delegation craft of
 Matt Pocock's `engineering/implement-spec` (task graph DAG modeling, active unblocked frontier tracking,
@@ -210,6 +268,15 @@ lines, low-ceremony single-line rationales without discovery ledgers or banner s
 shims preserving legacy invocations and catalog counts, zero-deletion workspace overrides in test runners,
 deterministic offline test fixtures in `tests/fixtures/decision_lens_cases.json`, and comprehensive multi-tier
 verification). All source attributions remain preserved under their respective MIT licenses.
+
+The 2026-11-26 rewrite of `skill-maker` replaces its part of that elevation. Jesse Vincent's
+`writing-skills` (obra/superpowers, path last changed in 2ce8aa1) supplies test-driven skill writing,
+the form-to-failure table, loophole closing, per-type tests, pressure types and wording micro-tests;
+Addy Osmani's `using-agent-skills` (eca51a2) and `docs/skill-anatomy.md` (c4efec8) supply the section
+anatomy and context efficiency, all adapted under MIT. Andino keeps the remedial and greenfield modes,
+the brief, separate discovery, task and packaging checks and honest status labels, and adds seven gates
+with Done-when artifacts, a routing table for items that leave the skill, PASS/FAIL scenarios and a
+labelled self-review path. The 150-line rule, numbered sections and the metadata-only harness are removed.
 
 The 2026-11-02 elevation of `agent-document-authoring` synthesizes the generative cognitive craft
 of Matt Pocock's `writing-for-agents` and `SKILL-MECHANICS.md` (The Two Loads: Context vs Cognitive,
@@ -250,6 +317,19 @@ non-destructive survey invariants, embedded Python operational harness testing i
 with `ANDINO_NEGATIVE` gate, zero-dependency offline Python stdlib verification via
 `scripts/verify_architecture_survey_elevation.py`, and complete integration with `ai-rules setup`).
 MIT notice for Matt Pocock remains preserved.
+
+The 2026-11-26 rewrite of `issue-triage` follows mattpocock/skills commit d80fa0f (`triage`
+with `AGENT-BRIEF.md` and `OUT-OF-SCOPE.md`). It puts the skill in the sibling Andino layout
+with one eight-step procedure (GUIDE.md mirrors SKILL.md) and adds the three-bucket attention
+list, the already-built and prior-rejection checks by concept, the CONFIRMED / FAILED /
+INSUFFICIENT verification verdicts, recommend-then-wait, grilling through
+`andino-brainstorming`, the outcome table with its three wontfix variants, quick state
+override and resuming from earlier notes. The brief template and durability rules, the
+out-of-scope record format and flows, and the needs-info and closing-comment formats move into
+`resources/` with new examples in other domains. The authority table, the per-item record and
+the local-draft fallback are Andino additions; the dependency on Matt's setup skill is replaced
+by reading the project's tracker configuration. `tests/test_issue_triage_preservation.py`
+guards the kept rules; the trial is in `docs/validation/issue-triage/`.
 
 The 2026-11-26 rewrite of `architecture-survey` follows mattpocock/skills commit 7739eae
 (`improve-codebase-architecture` with `HTML-REPORT.md`, and the skills it calls:
@@ -385,3 +465,17 @@ model, one fresh agent per task, a merger agent and deleting the workspace at th
 comparison trial is recorded in `docs/validation/delegation/trial.md`. Correction to the
 2026-11-01 paragraph above: superpowers' fix loop is not adopted as "escalating", and the
 contract is no longer kept under 150 lines.
+
+The 2026-11-26 upgrade of `verification` re-reads Jesse Vincent's Obra Superpowers
+`verification-before-completion` (obra/superpowers commit 3be5aad, MIT) and moves the method into
+the sibling layout: one procedure in `SKILL.md` (mirrored by `GUIDE.md`) with a quick path for a
+single freshly checked claim and six gates with Done when lines (list the claims, treat reports and
+earlier results as claims, run and read the complete check, see each regression check fail on old
+code in a disposable copy, re-check after the last change, decide and report), rules, a shortcuts
+table and red flags adapted from superpowers' rationalization table and red flags, and a
+verification record that every status reply ends with. `resources/contract.md` holds the claim
+table with what is not sufficient, the status words, the reuse rule and copy recipes for old-code
+checks; `resources/worked-example.md` is new. Not adopted from the reference: rerunning every check
+"in this message" regardless of state (Andino reuses results whose state still matches), and
+reverting the fix in place to see a test fail (Andino uses a disposable copy). The comparison trial
+is recorded in `docs/validation/verification/trial.md`.

@@ -924,6 +924,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-deprecation-and-migration-unused-claim",
+    "kind": "behavior",
+    "prompt": "The v1 export endpoint has been deprecated for months and grep shows nothing calls it anymore. Please delete it and its handler today.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select deprecation-and-migration",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "deprecation-and-migration"
+    ],
+    "method": "deprecation-and-migration",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-design-prototype-implicit",
     "kind": "behavior",
     "prompt": "Make a local state demo to decide whether empty checkout is legal.",
@@ -969,6 +983,20 @@
     "id": "method-documentation-and-adrs-implicit",
     "kind": "behavior",
     "prompt": "Record the queue decision using our existing ADR-004 .rst convention and retain its throughput caveat.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select documentation-and-adrs",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "documentation-and-adrs"
+    ],
+    "method": "documentation-and-adrs",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-documentation-and-adrs-drift",
+    "kind": "behavior",
+    "prompt": "We changed the export limits and formats last sprint. Find out which docs under docs/exports/ still match the code and fix the stale ones.",
     "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
     "expected": "Select documentation-and-adrs",
     "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
@@ -1638,6 +1666,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-learning-workspace-quick-lesson",
+    "kind": "behavior",
+    "prompt": "Teach me idempotency keys quickly, I'm building POST /payments and worry about double charges on retry.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select learning-workspace; teach in the conversation with the user's endpoint and end on one retrieval question; create no workspace or file",
+    "forbidden": "Creating a learning workspace, curriculum or files for a quick request; bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "learning-workspace"
+    ],
+    "method": "learning-workspace",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-method-authoring-implicit",
     "kind": "behavior",
     "prompt": "Buat panduan dari kegagalan proses teramati.",
@@ -1809,6 +1851,20 @@
     "id": "method-plan-execution-implicit",
     "kind": "behavior",
     "prompt": "Lanjutkan plan sesudah memeriksa drift.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select plan-execution",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "plan-execution"
+    ],
+    "method": "plan-execution",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-plan-execution-resume-implicit",
+    "kind": "behavior",
+    "prompt": "Tasks 1 and 2 of the approved plan are done; carry on with the rest.",
     "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
     "expected": "Select plan-execution",
     "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
@@ -2083,6 +2139,34 @@
     ],
     "method": "security-and-hardening",
     "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-security-and-hardening-build",
+    "kind": "behavior",
+    "prompt": "Add an endpoint that downloads an image from a URL the customer saves in their profile.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select security-and-hardening",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "security-and-hardening"
+    ],
+    "method": "security-and-hardening",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-security-and-hardening-review",
+    "kind": "behavior",
+    "prompt": "Before I merge this branch, can you check it for security problems?",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select security-and-hardening",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "security-and-hardening"
+    ],
+    "method": "security-and-hardening",
+    "variant": "explicit",
     "coverage": "routing"
   },
   {
@@ -2377,6 +2461,20 @@
     ],
     "method": "tdd",
     "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-tdd-regression-guard",
+    "kind": "behavior",
+    "prompt": "Fikri fixed the duplicate sign-up bug last month but nobody added a test. Add a regression test; the code already works.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select tdd",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "tdd"
+    ],
+    "method": "tdd",
+    "variant": "implicit",
     "coverage": "routing"
   },
   {
