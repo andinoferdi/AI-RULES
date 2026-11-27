@@ -278,4 +278,4 @@ Result / Evidence: Not run — planned checks only.
 
 ## NEXT ACTION
 
-T5: rerun `ci_checks --group skills` on the final text, then commit, push and open the PR.
+T5: open the PR to `main` from the pushed branch and watch its CI. Final local evidence: `ci_checks --group skills` on the tree merged with origin/main 575eec0 ran 306 tests, OK (skipped=6), PASS: all skills checks.
