@@ -432,3 +432,17 @@ model, one fresh agent per task, a merger agent and deleting the workspace at th
 comparison trial is recorded in `docs/validation/delegation/trial.md`. Correction to the
 2026-11-01 paragraph above: superpowers' fix loop is not adopted as "escalating", and the
 contract is no longer kept under 150 lines.
+
+The 2026-11-26 upgrade of `verification` re-reads Jesse Vincent's Obra Superpowers
+`verification-before-completion` (obra/superpowers commit 3be5aad, MIT) and moves the method into
+the sibling layout: one procedure in `SKILL.md` (mirrored by `GUIDE.md`) with a quick path for a
+single freshly checked claim and six gates with Done when lines (list the claims, treat reports and
+earlier results as claims, run and read the complete check, see each regression check fail on old
+code in a disposable copy, re-check after the last change, decide and report), rules, a shortcuts
+table and red flags adapted from superpowers' rationalization table and red flags, and a
+verification record that every status reply ends with. `resources/contract.md` holds the claim
+table with what is not sufficient, the status words, the reuse rule and copy recipes for old-code
+checks; `resources/worked-example.md` is new. Not adopted from the reference: rerunning every check
+"in this message" regardless of state (Andino reuses results whose state still matches), and
+reverting the fix in place to see a test fail (Andino uses a disposable copy). The comparison trial
+is recorded in `docs/validation/verification/trial.md`.
