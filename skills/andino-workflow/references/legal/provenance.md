@@ -92,6 +92,20 @@ floor guards with cross-platform CRLF/path normalization, third-party scanner ex
 normalization protocols, multi-ecosystem catalogs across TS/JS, Python, Go, Rust, and Web UI,
 and offline deterministic Python stdlib verification).
 
+The 2026-11-26 upgrade of `documentation-and-adrs` rewrites `SKILL.md` (mirrored by `GUIDE.md`)
+into the sibling Andino layout as one gated procedure and adds points from Addy Osmani's skill at
+commit 551c59c: the default ADR template and lifecycle, why-over-what comments with no commented-out
+code, API, README and changelog patterns, documentation for agents, drift decided from commit order
+with "can't tell" for unordered history, append-only change logs, the rationalizations, red flags
+and checklist. New resources: `templates.md` and `drift-audit.md` (bash and PowerShell commit-order
+checks). Kept Andino material: reader-first artifact choice, convention conflicts and reserved
+numbers, proposed status until recorded acceptance, same-criteria alternatives and revisit triggers,
+the consumer contract, executed / source-checked labels, qualifier preservation, the domain
+vocabulary resource and the offline probe. New Andino gates: the content check decides drift, a
+measurable revisit trigger, breaking labels with the consumer action, untracked TODOs reported as
+follow-up, and line-ending churn restored or reported. Trial record:
+`docs/validation/documentation-and-adrs/`.
+
 The 2026-11-26 upgrade of `constraint-driven-development` rewrites `SKILL.md` (mirrored by
 `GUIDE.md`) into the sibling Andino layout as one procedure and adds points from Addy Osmani's
 skill at commit 9c7f62d: no interview in non-interactive runs (floor only, open questions flagged),

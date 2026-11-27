@@ -994,6 +994,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-documentation-and-adrs-drift",
+    "kind": "behavior",
+    "prompt": "We changed the export limits and formats last sprint. Find out which docs under docs/exports/ still match the code and fix the stale ones.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select documentation-and-adrs",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "documentation-and-adrs"
+    ],
+    "method": "documentation-and-adrs",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-documentation-and-adrs-negative",
     "kind": "negative-trigger",
     "prompt": "Add comments saying increment counter above every increment.",
