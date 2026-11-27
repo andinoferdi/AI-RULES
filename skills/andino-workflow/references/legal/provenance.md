@@ -189,6 +189,14 @@ shipped as a Markdown block, scoped commits, test-before-commit branch finishing
 The duplicate `contract.md` files and the branch-integration sub-resources are folded into the
 guides. The comparison trial is recorded in `docs/validation/git-skills/trial.md`.
 
+The 2026-11-26 upgrade of `session-diagnostics` re-reads Jesse Vincent's `diagnosing-superpowers`
+(obra/superpowers b739a8a, MIT) and moves the method into the sibling layout: a quick path for
+one-event questions and eight gates in `SKILL.md` (mirrored by `GUIDE.md`), shortcut and red-flag
+lists, and resources for safe session reading, per-dimension checklists with the upstream
+thresholds, the report format, and export with redaction and issue drafts for the repository that
+owns an involved skill. Nothing specific to superpowers is carried over. The comparison trial is
+recorded in `docs/validation/session-diagnostics/trial.md`.
+
 The 2026-11-26 upgrade of `tdd` re-reads Addy Osmani's `test-driven-development`
 (addyosmani/agent-skills df50a6d), Matt Pocock's `tdd` (mattpocock/skills 3f59913) and Jesse
 Vincent's `test-driven-development` (obra/superpowers 5bf4e78), all MIT, and moves the method into

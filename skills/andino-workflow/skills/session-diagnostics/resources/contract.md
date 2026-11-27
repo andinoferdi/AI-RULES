@@ -1,19 +1,47 @@
-# Investigate bounded session evidence — supporting contract
+# Explain what happened in an agent session — supporting contract
 
-## Case, findings and redaction
+## Case
 
-Case: target, human problem, absolute sources, lineage, bytes/records/longest record, evidenced field meanings, historical/current/unknown environment and coverage. Finding: observation, path:line, bounded quote, turns/confidence.
+Problem statement (session, range, expected, actual, observable; bundle or issue wanted).
+Sources: absolute paths, role (main or subagent), lines, bytes, longest line, first prompt and
+first timestamp with the time-zone conversion, rejected candidates with reasons, still running
+or not. Environment items labelled historical evidence, current observation, unverified
+snapshot or unknown; a current install never proves a historical version. Record meanings with
+a supporting line each; unresolved information listed.
 
-Redact secrets, people/email, account/org ids, private hosts/repos, home paths and named proprietary terms with stable placeholders. Never put plaintext replacement maps in scrub logs. Preserve safe commands/results and linkage; opaque encrypted values may be withheld with limitation.
+## Statuses and findings
 
-Privacy CLEAN is not evidence completeness. Resolve exported citations in scrubbed bundle; withholding may limit a finding. Reconcile case/report/timeline/issue drafts and counts after changes. Share only exact authorized material; no network or issue creation is implied.
+Each examined dimension has one status and the range examined:
 
-## Evidence dimensions and optional discovery
+- `OBSERVED`: findings follow, each with observation, `path:line`, a quote of at most 200
+  characters with secrets replaced, turns and confidence.
+- `NOT_OBSERVED_IN_SCOPE`: the authorized evidence was available, searched in the stated range,
+  and showed no instance.
+- `UNKNOWN`: history, fields or semantics are missing or ambiguous. Zero is valid only when a
+  record establishes zero.
 
-For each requested dimension, record `OBSERVED`, `NOT_OBSERVED_IN_SCOPE`, or `UNKNOWN` and cite the bounded source. `NOT_OBSERVED_IN_SCOPE` means the searched, authorized evidence was available and showed no instance; missing history, unavailable fields, or unclear semantics mean `UNKNOWN`. Zero is valid only when the source explicitly establishes a zero.
+A conclusion carries two confidences: in what happened, and in why. A cause is `CONFIRMED` only
+when cited evidence rules out the material alternatives; otherwise it stays a candidate
+explanation or `UNKNOWN`. Involvement of a skill, hook, plugin or tool is `not indicated`,
+`possible` or `likely`, with lines; it is never a defect diagnosis or a proposed change.
 
-Plan adherence maps agreed steps to observed actions; note compaction/resume before drift. Repetition groups tool plus normalized path/command/query, then checks intervening writes or changed evidence before calling it waste. Stumbles pair error/denial/retry with recovery or unresolved status. Verification compares each success claim with its actual supporting run. Tool and skill timeline distinguishes actual invocation from metadata discovery; a trigger match alone does not establish a missed activation. Delegation counts require observed dispatch identities/statuses and distinguish active, completed, failed and unknown children. Model-selection findings require a host-confirmed selection field; a worker's apparent capability or current host default does not prove its model.
+## Derived numbers
 
-Request conflicts distinguish human instructions from loaded files and record the resolution. Cost/time uses only established counter semantics and timestamps: report supported dominant turns/results and missing data, never infer prices or turn unknown into zero. Report an observed behavior separately from a candidate explanation. Mark a cause confirmed only when cited evidence rules out material alternatives; otherwise keep it plausible or `UNKNOWN`.
+Usage totals state their semantics (per response or cumulative), count each response once, and
+mark records without usage, which make the total a lower bound. Durations come from recorded
+timestamps; a gap's cause is stated only when records show it. Every derived figure shows its
+inputs. No prices or rates the source does not record.
 
-Similar-session matching is opt-in: define evidenced markers, locate candidate identities narrowly, and report hit/miss/unknown per marker with citations. Issue lookup is optional and permission-aware; prepare exact local issue text and environment provenance before any authorized publication. No archive or issue is created because a report merely exists.
+## Export
+
+Copies only; originals unchanged. Placeholders are stable across files and numbered by first
+appearance; the scrub log holds placeholder, category and count, never an original value or a
+replacement map. Line alignment preserved. Two separate outcomes: privacy (`CLEAN` or the
+unresolved misses) and evidence support (supported, or limited with the affected findings).
+No archive, upload, issue or message without the user's approval of the exact content.
+
+## Similar sessions and issue lookup
+
+Opt-in only. Markers come from confirmed findings; each is hit, miss or unknown per candidate,
+with citations. Issue lookup searches the repository that owns the involved skill; drafting
+creates a local file only.

@@ -4,6 +4,8 @@
 
 Substantive adapted material in this skill is covered by the following notice:
 
+Upstream revision read for the 2026-11-26 upgrade: obra/superpowers b739a8a.
+
 MIT License
 
 Copyright (c) 2025 Jesse Vincent
