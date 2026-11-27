@@ -33,18 +33,22 @@ research: [ultracode-research.md](ultracode-research.md).
    X3 when the count matches. Applied to both arms. Cost if wrong: the current arm drops to 1 on X3.
 4. A5 is read strictly: a coverage count that disagrees with the list it summarises is partial
    (1), even when the list itself is complete. Cost if wrong: the candidate's round-1 A5 would be 2.
+5. Round 2 reran S1, S3 and S4 only (three runners approved by the owner). S2 keeps its round-1
+   result: the round-2 change touches only the report step, and that S2 answer already listed all
+   eight units and scored the maximum. Cost if wrong: an S2 effect of the new report rule goes unseen.
 
 ## Scores
 
-| Scenario | Current | Candidate round 1 |
-| --- | --- | --- |
-| S1 (of 14) | 13 | 13 (A5 -1, A6 +1) |
-| S2 (of 12) | 12 | 12 |
-| S3 (of 8) | 8 | 8 |
-| S4 (of 14) | 12 | 12 (X3 -1, X6 +1) |
-| Total (of 48) | 45 | 45 |
+| Scenario | Current | Candidate round 1 (52e3ef2) | Candidate round 2 (df01389) |
+| --- | --- | --- | --- |
+| S1 (of 14) | 13 | 13 (A5 -1, A6 +1) | 14 (A6 +1) |
+| S2 (of 12) | 12 | 12 | 12 (round 1, not rerun) |
+| S3 (of 8) | 8 | 8, K1 fail (+0.86%) | 8, K1 pass (+0.02%) |
+| S4 (of 14) | 12 | 12 (X3 -1, X6 +1) | 14 (X4 +1, X6 +1) |
+| Total (of 48) | 45 | 45 | 48 |
 
 Gate, round 1: **FAIL** on A5, X3 and K1 (S3 cost 0.86% over 1.25x).
+Gate, round 2: **PASS** (no criterion below the current arm; K1 holds).
 
 ## Reading the result
 
@@ -60,13 +64,19 @@ Gate, round 1: **FAIL** on A5, X3 and K1 (S3 cost 0.86% over 1.25x).
   extra turn (26%, all of it that turn) without reading any orchestration text.
 - Both lost points came from one gap in the recipe: the report step did not require every unit
   to appear once with its verdict, or the coverage total to match that list. Round 2 (df01389)
-  adds exactly that.
+  adds exactly that, and both audits then listed every unit with a matching count; the S4 runner
+  also named the clearing checks for every gap (X4), which neither arm did in round 1.
+- Cost in round 2: S1 4.4% cheaper than the current arm, S3 equal, S4 22% higher (one more turn
+  and a longer report). The round-1 runners chose to reproduce their findings by running the
+  handlers; the round-2 runners judged from reading. That choice, not the text that changed,
+  drove most of the S4 cost difference between rounds (852k against 580k).
 
 ## Limits
 
-- One run per arm and scenario: model variance is not measured. A single extra tool turn costs
-  about 73k tokens here, a quarter of the S3 budget, so K1 cannot separate skill cost from turn
-  variance with one sample.
+- One run per arm and scenario per round: model variance is not measured. The two candidate S3
+  runs read the same text and took 5 and 4 turns; a single extra turn costs about 73k tokens here,
+  a quarter of the S3 budget, so K1 passed in round 2 and failed in round 1 on turn variance
+  alone. Whether a runner reproduces findings by running code also varied between rounds.
 - The grader wrote the candidate and knew the mapping. Every score cites its evidence so another
   grader can redo it from the collected folders.
 - Goal drift after compaction and fresh-context verification (the Thorough agent form) were not

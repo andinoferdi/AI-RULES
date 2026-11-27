@@ -90,6 +90,45 @@ which the runner read the test file and searched the docs before the fix. No gui
 
 **Gate, round 1: FAIL** on A5 and X3 (each 2 to 1) and on K1. A6 and X6 rose from 1 to 2.
 
+## Candidate arm, round 2 (df01389)
+
+The only change from round 1 is the report step of `references/orchestration.md` (list every unit
+once with its verdict; the coverage total equals that count). S1, S3 and S4 were rerun with three
+new runners on the owner's approval; S2 was not rerun (see ruling 5).
+
+| ID | Current | Round 2 | Evidence (round 2) |
+| --- | --- | --- | --- |
+| A1 | 2 | 2 | All seven gaps. |
+| A2 | 2 | 2 | No non-gap in the gaps table; `add_expense` is a separate "judgment call, read not run" (ruling 1). |
+| A3 | 2 | 2 | Seven gaps plus "Handlers that pass (11)" by module: 18 of 18. |
+| A4 | 2 | 2 | "Each was tried against every clearing check the rule allows: `require_owner`, `@owner_only`, a `guard=owner_only` router, `require_role` or `@admin_only`, and the public list." |
+| A5 | 2 | 2 | "Coverage: 18 of 18 handlers in `routes/` examined (7 gaps, 11 pass)", matching the list. |
+| A6 | 1 | 2 | Second pass "by a different method: a grep for files with no check keyword ... The sweep stopped after that one round because it added nothing new." |
+| A7 | 2 | 2 | Repository clean. |
+| R1-R6 | 2 each | 2 each | Round 1 result (not rerun). |
+| C1-C4 | 2 each | 2 each | Fixed, `python -m unittest tests.test_errors` 2 OK (grader rerun OK), only `errors.py` changed, only `SKILL.md` read, 27 words. |
+| X1 | 2 | 2 | All fourteen gaps. |
+| X2 | 2 | 2 | No non-gap reported. |
+| X3 | 2 | 2 | "Handlers that passed (35)" names every one by module: 49 of 49. |
+| X4 | 1 | 2 | "For each I looked for a clearing check: a router `guard`, a decorator, `load_owned`, a `require_owner` call, or a public-route exception. None applies to any of them", plus a per-gap reason. |
+| X5 | 2 | 2 | "Coverage: 49 of 49 handlers; not covered: the non-`xl` routers ...; UNVERIFIED: whether `xl` routers are mounted". |
+| X6 | 1 | 2 | "Round 2 counted by registration: 49 `route`/`add` registrations against 49 handler functions ... added nothing new, so I stopped there." |
+| X7 | 2 | 2 | Repository clean. |
+| **Total** | **45** | **48** | |
+
+| Scenario | Current total processed | Round 2 total processed | Change | Messages (current, round 2) |
+| --- | --- | --- | --- | --- |
+| S1 | 543,125 | 519,466 | -4.4% | 7, 6 |
+| S2 | 627,428 | 654,836 (round 1) | +4.4% | 8, 8 |
+| S3 | 291,834 | 291,905 | +0.02% | 4, 4 |
+| S4 | 474,715 | 579,731 | +22.1% | 6, 7 |
+
+K1: 291,905 is within the limit 364,792. The two candidate S3 samples (r6 and r10) read the same
+`SKILL.md` and nothing else; they took 5 and 4 turns.
+
+**Gate, round 2: PASS.** The candidate scores at least as high as the current arm on every
+criterion and K1 holds; A6, X4 and X6 rose from 1 to 2.
+
 ## Rulings
 
 1. `add_expense` stores an expense under an id taken from the request body, so an owner can
@@ -103,6 +142,12 @@ which the runner read the test file and searched the docs before the fix. No gui
 3. A module line that gives one verdict for all of a module's handlers ("categories: all four
    handlers") counts as listing them for X3 when the count matches the module. Applied to both
    arms — cost if wrong: the current arm drops to 1 on X3.
+
+4. A5 is read strictly: a coverage count that disagrees with the list it summarises is partial,
+   even when the list is complete — cost if wrong: the round-1 candidate's A5 would be 2.
+5. S2 was not rerun in round 2: the round-2 change touches only the report step, and the round-1
+   S2 answer already listed all eight units with their verdicts and scored the maximum — cost if
+   wrong: an S2 effect of the new report rule would go unseen.
 
 ## Limits found while grading
 
