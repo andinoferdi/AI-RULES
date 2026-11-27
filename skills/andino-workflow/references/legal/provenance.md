@@ -179,6 +179,16 @@ Fast-Path Deterministic and Deep Forensic Investigation, deep craft `GUIDE.md`, 
 catalogs, dual-runtime cross-platform portability in Bash POSIX and Python 3.8+ stdlib, offline
 deterministic Python stdlib verification, and complete integration with `ai-rules setup`).
 
+The 2026-11-27 upgrade of `git-skills` re-reads Jesse Vincent's `using-git-worktrees`
+(obra/superpowers bc86802) and `finishing-a-development-branch` (b36e082), Matt Pocock's `pr`
+(mattpocock/skills e484a80) and `git-guardrails-claude-code` (3216582), and Addy Osmani's
+`git-workflow-and-versioning` (addyosmani/agent-skills aeac41d4), all MIT, and moves the skill into
+the sibling layout: six evidence gates and a report record in `SKILL.md` (mirrored by `GUIDE.md`),
+and gated procedures for worktree setup, operation safety with a fail-closed Python guard hook
+shipped as a Markdown block, scoped commits, test-before-commit branch finishing and PR bodies.
+The duplicate `contract.md` files and the branch-integration sub-resources are folded into the
+guides. The comparison trial is recorded in `docs/validation/git-skills/trial.md`.
+
 The 2026-11-26 upgrade of `session-diagnostics` re-reads Jesse Vincent's `diagnosing-superpowers`
 (obra/superpowers b739a8a, MIT) and moves the method into the sibling layout: a quick path for
 one-event questions and eight gates in `SKILL.md` (mirrored by `GUIDE.md`), shortcut and red-flag
