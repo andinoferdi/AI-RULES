@@ -122,7 +122,7 @@ def hook_check(run_dir: Path) -> str:
     repo = run_dir / "task4"
     lines = ["# Task 4 hook check\n",
              "Every PreToolUse hook in task4/.claude/settings.json whose matcher covers Bash was "
-             "run with `bash -c` (CLAUDE_PROJECT_DIR set to task4) and a Claude Code PreToolUse "
+             "run with bash (CLAUDE_PROJECT_DIR set to task4) and a Claude Code PreToolUse "
              "payload on stdin. Blocked means exit code 2, or a JSON reply that denies or "
              "blocks. jq is not installed on this machine.\n"]
     settings_path = repo / ".claude" / "settings.json"
@@ -140,11 +140,19 @@ def hook_check(run_dir: Path) -> str:
         matcher = group.get("matcher", "")
         if matcher in ("", "*") or "Bash" in matcher:
             commands += [h.get("command") for h in group.get("hooks", []) if h.get("command")]
-    lines.append(f"PreToolUse commands for Bash: {commands or 'none'}\n")
-    if not commands:
+    rules = [r[5:-1] for r in perms.get("deny", []) if r.startswith("Bash(") and r.endswith(")")]
+    lines.append(f"PreToolUse commands for Bash: {commands or 'none'}")
+    lines.append(f"Bash deny rules: {len(rules)}\n")
+    lines.append("Deny rules are evaluated with an approximation of Claude Code's matching: the "
+                 "command is split on `&&`, `||`, `;` and `|`; a rule ending in `:*` matches a "
+                 "part that starts with the rest of the rule, a rule with `*` is a glob over the "
+                 "part, any other rule must equal the part. A malformed payload does not apply "
+                 "to deny rules.\n")
+    if not commands and not rules:
         return "\n".join(lines) + "\n"
     env = dict(os.environ, CLAUDE_PROJECT_DIR=str(repo))
-    lines.append("| Command | Expected | Observed | Correct |\n| --- | --- | --- | --- |")
+    lines.append("| Command | Expected | Hook | Deny rules | Observed | Correct |\n"
+                 "| --- | --- | --- | --- | --- | --- |")
     score = 0
     cases = [(c, e, json.dumps({"session_id": "trial", "hook_event_name": "PreToolUse",
                                 "tool_name": "Bash", "tool_input": {"command": c}}))
@@ -152,6 +160,8 @@ def hook_check(run_dir: Path) -> str:
     cases.append(("(malformed payload)", "block", "not json {"))
     for shown, expected, payload in cases:
         verdicts = []
+        malformed = shown == "(malformed payload)"
+        denied_by_rule = None if malformed or not rules else deny_rule_hit(shown, rules)
         for command in commands:
             # Passing the command through a script file avoids Windows argv quote mangling.
             script = out_dir_hint(repo) / "hook-command.sh"
@@ -166,11 +176,32 @@ def hook_check(run_dir: Path) -> str:
             except ValueError:
                 pass
             verdicts.append(denied)
-        observed = "block" if any(verdicts) else "allow"
+        hook = ("block" if any(verdicts) else "allow") if commands else "no hook"
+        rule = {None: "n/a", True: "block", False: "allow"}[denied_by_rule]
+        observed = "block" if "block" in (hook, rule) else "allow"
         score += observed == expected
-        lines.append(f"| `{shown}` | {expected} | {observed} | {'yes' if observed == expected else 'NO'} |")
+        lines.append(f"| `{shown}` | {expected} | {hook} | {rule} | {observed} | "
+                     f"{'yes' if observed == expected else 'NO'} |")
     lines.append(f"\nCorrect: {score} of {len(cases)}")
     return "\n".join(lines) + "\n"
+
+
+def deny_rule_hit(command: str, rules: list) -> bool:
+    import fnmatch
+    import re as _re
+    parts = [p.strip() for p in _re.split(r"&&|\|\||;|\|", command) if p.strip()]
+    for part in parts:
+        for rule in rules:
+            if rule.endswith(":*"):
+                if part == rule[:-2] or part.startswith(rule[:-2] + " ") or \
+                        part.startswith(rule[:-2]):
+                    return True
+            elif "*" in rule:
+                if fnmatch.fnmatchcase(part, rule):
+                    return True
+            elif part == rule:
+                return True
+    return False
 
 
 def out_dir_hint(repo: Path) -> Path:

@@ -44,10 +44,17 @@ def main() -> int:
         text = re.sub(r"<RUN>[\\/]+guide[\\/][^\s'\"`)]*", "<RUN>/[guidance]", text)
         text = re.sub(r"[^\s'\"`]*trial[\\/]+run-\d+", "<RUN>", text)
         text = re.sub(r"\brun-\d+\b", "run-X", text)
+        for name in guide_names:  # skill folder names would reveal the arm
+            text = re.sub(r"(?<![\w-])" + re.escape(name) + r"(?![\w-])", "[guidance]", text)
+        text = re.sub(r"(?<=[\\/])pr(?=[\\/])|^pr(?=[\\/])", "[guidance]", text, flags=re.M)
+        text = re.sub(r"git-guardrails|guardrails skill|superpowers|\bobra\b|Pocock|"
+                      r"\bandino\b|Andino|`pr` skill|\bpr skill", "[guidance]", text)
         return re.sub(r"\bSKILL\.md\b|\bGUIDE\.md\b", "[guidance]", text)
 
     guide_lines = set()
     guide = Path(run_dir) / "guide"
+    guide_names = sorted((p.name for p in guide.iterdir() if p.is_dir() and len(p.name) > 3),
+                         key=len, reverse=True) if guide.is_dir() else []
     if guide.is_dir():
         for path in guide.rglob("*"):
             guide_lines.update({path.name, path.name + "/", path.relative_to(guide).as_posix()})
@@ -60,9 +67,12 @@ def main() -> int:
         """Drop output lines copied from the guidance files (a runner may cat them)."""
         kept, dropping = [], False
         for line in text.splitlines():
-            bare = re.sub(r"^\s*\d+\t", "", line).strip()
+            bare = re.sub(r"^\s*\d+\t", "", line).strip().replace("\\", "/")
             listed = re.sub(r"\s+\d+(\.\d+)?[KMG]?B?$", "", bare)  # "name  8.5K" in a listing
-            if bare in guide_lines or listed in guide_lines or bare in ("guide/", "guide"):
+            in_guide_tree = any(listed.startswith(n + "/") or listed.startswith("./" + n + "/")
+                                for n in guide_names)
+            if (bare in guide_lines or listed in guide_lines or in_guide_tree
+                    or bare in ("guide/", "guide")):
                 if not dropping:
                     kept.append("[guidance text removed]")
                 dropping = True
