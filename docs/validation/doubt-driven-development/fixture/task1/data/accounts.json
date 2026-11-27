@@ -1,0 +1,6255 @@
+{
+ "schema_version": 1,
+ "accounts": [
+  {
+   "id": "A-100001",
+   "owner": "andi0",
+   "balance": 0
+  },
+  {
+   "id": "A-100002",
+   "owner": "budi1",
+   "balance": 0
+  },
+  {
+   "id": "A-100003",
+   "owner": "citra2",
+   "balance": 0
+  },
+  {
+   "id": "A-100004",
+   "owner": "dewi3",
+   "balance": 0
+  },
+  {
+   "id": "A-100005",
+   "owner": "eko4",
+   "balance": 0
+  },
+  {
+   "id": "A-100006",
+   "owner": "fajar5",
+   "balance": 4275000
+  },
+  {
+   "id": "A-100007",
+   "owner": "gita6",
+   "balance": 0
+  },
+  {
+   "id": "A-100008",
+   "owner": "hadi7",
+   "balance": 3457500
+  },
+  {
+   "id": "A-100009",
+   "owner": "indah8",
+   "balance": 0
+  },
+  {
+   "id": "A-100010",
+   "owner": "joko9",
+   "balance": 0
+  },
+  {
+   "id": "A-100011",
+   "owner": "kartika10",
+   "balance": 0
+  },
+  {
+   "id": "A-100012",
+   "owner": "lina11",
+   "balance": 3824000
+  },
+  {
+   "id": "A-100013",
+   "owner": "made12",
+   "balance": 440000
+  },
+  {
+   "id": "A-100014",
+   "owner": "nur13",
+   "balance": 1599500
+  },
+  {
+   "id": "A-100015",
+   "owner": "oki14",
+   "balance": 2796500
+  },
+  {
+   "id": "A-100016",
+   "owner": "putri15",
+   "balance": 0
+  },
+  {
+   "id": "A-100017",
+   "owner": "rizal16",
+   "balance": 0
+  },
+  {
+   "id": "A-100018",
+   "owner": "sari17",
+   "balance": 0
+  },
+  {
+   "id": "A-100019",
+   "owner": "tono18",
+   "balance": 0
+  },
+  {
+   "id": "A-100020",
+   "owner": "wulan19",
+   "balance": 0
+  },
+  {
+   "id": "A-100021",
+   "owner": "andi20",
+   "balance": 0
+  },
+  {
+   "id": "A-100022",
+   "owner": "budi21",
+   "balance": 0
+  },
+  {
+   "id": "A-100023",
+   "owner": "citra22",
+   "balance": 0
+  },
+  {
+   "id": "A-100024",
+   "owner": "dewi23",
+   "balance": 4844500
+  },
+  {
+   "id": "A-100025",
+   "owner": "eko24",
+   "balance": 1569000
+  },
+  {
+   "id": "A-100026",
+   "owner": "fajar25",
+   "balance": 1954500
+  },
+  {
+   "id": "A-100027",
+   "owner": "gita26",
+   "balance": 0
+  },
+  {
+   "id": "A-100028",
+   "owner": "hadi27",
+   "balance": 4422500
+  },
+  {
+   "id": "A-100029",
+   "owner": "indah28",
+   "balance": 4971000
+  },
+  {
+   "id": "A-100030",
+   "owner": "joko29",
+   "balance": 0
+  },
+  {
+   "id": "A-100031",
+   "owner": "kartika30",
+   "balance": 0
+  },
+  {
+   "id": "A-100032",
+   "owner": "lina31",
+   "balance": 1660000
+  },
+  {
+   "id": "A-100033",
+   "owner": "made32",
+   "balance": 4766500
+  },
+  {
+   "id": "A-100034",
+   "owner": "nur33",
+   "balance": 0
+  },
+  {
+   "id": "A-100035",
+   "owner": "oki34",
+   "balance": 1106500
+  },
+  {
+   "id": "A-100036",
+   "owner": "putri35",
+   "balance": 4953000
+  },
+  {
+   "id": "A-100037",
+   "owner": "rizal36",
+   "balance": 4638000
+  },
+  {
+   "id": "A-100038",
+   "owner": "sari37",
+   "balance": 0
+  },
+  {
+   "id": "A-100039",
+   "owner": "tono38",
+   "balance": 4483500
+  },
+  {
+   "id": "A-100040",
+   "owner": "wulan39",
+   "balance": 0
+  },
+  {
+   "id": "A-100041",
+   "owner": "andi40",
+   "balance": 1286000
+  },
+  {
+   "id": "A-100042",
+   "owner": "budi41",
+   "balance": 1966000
+  },
+  {
+   "id": "A-100043",
+   "owner": "citra42",
+   "balance": 0
+  },
+  {
+   "id": "A-100044",
+   "owner": "dewi43",
+   "balance": 2373500
+  },
+  {
+   "id": "A-100045",
+   "owner": "eko44",
+   "balance": 0
+  },
+  {
+   "id": "A-100046",
+   "owner": "fajar45",
+   "balance": 0
+  },
+  {
+   "id": "A-100047",
+   "owner": "gita46",
+   "balance": 2991500
+  },
+  {
+   "id": "A-100048",
+   "owner": "hadi47",
+   "balance": 0
+  },
+  {
+   "id": "A-100049",
+   "owner": "indah48",
+   "balance": 0
+  },
+  {
+   "id": "A-100050",
+   "owner": "joko49",
+   "balance": 0
+  },
+  {
+   "id": "A-100051",
+   "owner": "kartika50",
+   "balance": 27000
+  },
+  {
+   "id": "A-100052",
+   "owner": "lina51",
+   "balance": 0
+  },
+  {
+   "id": "A-100053",
+   "owner": "made52",
+   "balance": 2755500
+  },
+  {
+   "id": "A-100054",
+   "owner": "nur53",
+   "balance": 0
+  },
+  {
+   "id": "A-100055",
+   "owner": "oki54",
+   "balance": 0
+  },
+  {
+   "id": "A-100056",
+   "owner": "putri55",
+   "balance": 0
+  },
+  {
+   "id": "A-100057",
+   "owner": "rizal56",
+   "balance": 0
+  },
+  {
+   "id": "A-100058",
+   "owner": "sari57",
+   "balance": 559500
+  },
+  {
+   "id": "A-100059",
+   "owner": "tono58",
+   "balance": 0
+  },
+  {
+   "id": "A-100060",
+   "owner": "wulan59",
+   "balance": 1807000
+  },
+  {
+   "id": "A-100061",
+   "owner": "andi60",
+   "balance": 4981000
+  },
+  {
+   "id": "A-100062",
+   "owner": "budi61",
+   "balance": 414000
+  },
+  {
+   "id": "A-100063",
+   "owner": "citra62",
+   "balance": 1964000
+  },
+  {
+   "id": "A-100064",
+   "owner": "dewi63",
+   "balance": 3322000
+  },
+  {
+   "id": "A-100065",
+   "owner": "eko64",
+   "balance": 3969500
+  },
+  {
+   "id": "A-100066",
+   "owner": "fajar65",
+   "balance": 320000
+  },
+  {
+   "id": "A-100067",
+   "owner": "gita66",
+   "balance": 4658500
+  },
+  {
+   "id": "A-100068",
+   "owner": "hadi67",
+   "balance": 3660500
+  },
+  {
+   "id": "A-100069",
+   "owner": "indah68",
+   "balance": 2344000
+  },
+  {
+   "id": "A-100070",
+   "owner": "joko69",
+   "balance": 0
+  },
+  {
+   "id": "A-100071",
+   "owner": "kartika70",
+   "balance": 0
+  },
+  {
+   "id": "A-100072",
+   "owner": "lina71",
+   "balance": 940500
+  },
+  {
+   "id": "A-100073",
+   "owner": "made72",
+   "balance": 3468500
+  },
+  {
+   "id": "A-100074",
+   "owner": "nur73",
+   "balance": 0
+  },
+  {
+   "id": "A-100075",
+   "owner": "oki74",
+   "balance": 0
+  },
+  {
+   "id": "A-100076",
+   "owner": "putri75",
+   "balance": 0
+  },
+  {
+   "id": "A-100077",
+   "owner": "rizal76",
+   "balance": 0
+  },
+  {
+   "id": "A-100078",
+   "owner": "sari77",
+   "balance": 0
+  },
+  {
+   "id": "A-100079",
+   "owner": "tono78",
+   "balance": 1191000
+  },
+  {
+   "id": "A-100080",
+   "owner": "wulan79",
+   "balance": 606500
+  },
+  {
+   "id": "A-100081",
+   "owner": "andi80",
+   "balance": 2119500
+  },
+  {
+   "id": "A-100082",
+   "owner": "budi81",
+   "balance": 4112000
+  },
+  {
+   "id": "A-100083",
+   "owner": "citra82",
+   "balance": 2139000
+  },
+  {
+   "id": "A-100084",
+   "owner": "dewi83",
+   "balance": 3523500
+  },
+  {
+   "id": "A-100085",
+   "owner": "eko84",
+   "balance": 1810500
+  },
+  {
+   "id": "A-100086",
+   "owner": "fajar85",
+   "balance": 467500
+  },
+  {
+   "id": "A-100087",
+   "owner": "gita86",
+   "balance": 776500
+  },
+  {
+   "id": "A-100088",
+   "owner": "hadi87",
+   "balance": 4116500
+  },
+  {
+   "id": "A-100089",
+   "owner": "indah88",
+   "balance": 0
+  },
+  {
+   "id": "A-100090",
+   "owner": "joko89",
+   "balance": 0
+  },
+  {
+   "id": "A-100091",
+   "owner": "kartika90",
+   "balance": 0
+  },
+  {
+   "id": "A-100092",
+   "owner": "lina91",
+   "balance": 583500
+  },
+  {
+   "id": "A-100093",
+   "owner": "made92",
+   "balance": 1480500
+  },
+  {
+   "id": "A-100094",
+   "owner": "nur93",
+   "balance": 4383500
+  },
+  {
+   "id": "A-100095",
+   "owner": "oki94",
+   "balance": 662000
+  },
+  {
+   "id": "A-100096",
+   "owner": "putri95",
+   "balance": 4540500
+  },
+  {
+   "id": "A-100097",
+   "owner": "rizal96",
+   "balance": 3166500
+  },
+  {
+   "id": "A-100098",
+   "owner": "sari97",
+   "balance": 0
+  },
+  {
+   "id": "A-100099",
+   "owner": "tono98",
+   "balance": 0
+  },
+  {
+   "id": "A-100100",
+   "owner": "wulan99",
+   "balance": 0
+  },
+  {
+   "id": "A-100101",
+   "owner": "andi100",
+   "balance": 0
+  },
+  {
+   "id": "A-100102",
+   "owner": "budi101",
+   "balance": 0
+  },
+  {
+   "id": "A-100103",
+   "owner": "citra102",
+   "balance": 0
+  },
+  {
+   "id": "A-100104",
+   "owner": "dewi103",
+   "balance": 0
+  },
+  {
+   "id": "A-100105",
+   "owner": "eko104",
+   "balance": 0
+  },
+  {
+   "id": "A-100106",
+   "owner": "fajar105",
+   "balance": 1853000
+  },
+  {
+   "id": "A-100107",
+   "owner": "gita106",
+   "balance": 0
+  },
+  {
+   "id": "A-100108",
+   "owner": "hadi107",
+   "balance": 0
+  },
+  {
+   "id": "A-100109",
+   "owner": "indah108",
+   "balance": 287500
+  },
+  {
+   "id": "A-100110",
+   "owner": "joko109",
+   "balance": 2939500
+  },
+  {
+   "id": "A-100111",
+   "owner": "kartika110",
+   "balance": 0
+  },
+  {
+   "id": "A-100112",
+   "owner": "lina111",
+   "balance": 0
+  },
+  {
+   "id": "A-100113",
+   "owner": "made112",
+   "balance": 0
+  },
+  {
+   "id": "A-100114",
+   "owner": "nur113",
+   "balance": 842500
+  },
+  {
+   "id": "A-100115",
+   "owner": "oki114",
+   "balance": 0
+  },
+  {
+   "id": "A-100116",
+   "owner": "putri115",
+   "balance": 3037000
+  },
+  {
+   "id": "A-100117",
+   "owner": "rizal116",
+   "balance": 0
+  },
+  {
+   "id": "A-100118",
+   "owner": "sari117",
+   "balance": 892000
+  },
+  {
+   "id": "A-100119",
+   "owner": "tono118",
+   "balance": 3824500
+  },
+  {
+   "id": "A-100120",
+   "owner": "wulan119",
+   "balance": 2287500
+  },
+  {
+   "id": "A-100121",
+   "owner": "andi120",
+   "balance": 4197500
+  },
+  {
+   "id": "A-100122",
+   "owner": "budi121",
+   "balance": 0
+  },
+  {
+   "id": "A-100123",
+   "owner": "citra122",
+   "balance": 3261500
+  },
+  {
+   "id": "A-100124",
+   "owner": "dewi123",
+   "balance": 0
+  },
+  {
+   "id": "A-100125",
+   "owner": "eko124",
+   "balance": 342500
+  },
+  {
+   "id": "A-100126",
+   "owner": "fajar125",
+   "balance": 3247500
+  },
+  {
+   "id": "A-100127",
+   "owner": "gita126",
+   "balance": 1893000
+  },
+  {
+   "id": "A-100128",
+   "owner": "hadi127",
+   "balance": 0
+  },
+  {
+   "id": "A-100129",
+   "owner": "indah128",
+   "balance": 0
+  },
+  {
+   "id": "A-100130",
+   "owner": "joko129",
+   "balance": 570000
+  },
+  {
+   "id": "A-100131",
+   "owner": "kartika130",
+   "balance": 0
+  },
+  {
+   "id": "A-100132",
+   "owner": "lina131",
+   "balance": 1133500
+  },
+  {
+   "id": "A-100133",
+   "owner": "made132",
+   "balance": 0
+  },
+  {
+   "id": "A-100134",
+   "owner": "nur133",
+   "balance": 2477500
+  },
+  {
+   "id": "A-100135",
+   "owner": "oki134",
+   "balance": 0
+  },
+  {
+   "id": "A-100136",
+   "owner": "putri135",
+   "balance": 0
+  },
+  {
+   "id": "A-100137",
+   "owner": "rizal136",
+   "balance": 0
+  },
+  {
+   "id": "A-100138",
+   "owner": "sari137",
+   "balance": 1803500
+  },
+  {
+   "id": "A-100139",
+   "owner": "tono138",
+   "balance": 0
+  },
+  {
+   "id": "A-100140",
+   "owner": "wulan139",
+   "balance": 0
+  },
+  {
+   "id": "A-100141",
+   "owner": "andi140",
+   "balance": 2379500
+  },
+  {
+   "id": "A-100142",
+   "owner": "budi141",
+   "balance": 2894000
+  },
+  {
+   "id": "A-100143",
+   "owner": "citra142",
+   "balance": 1821000
+  },
+  {
+   "id": "A-100144",
+   "owner": "dewi143",
+   "balance": 0
+  },
+  {
+   "id": "A-100145",
+   "owner": "eko144",
+   "balance": 3275500
+  },
+  {
+   "id": "A-100146",
+   "owner": "fajar145",
+   "balance": 0
+  },
+  {
+   "id": "A-100147",
+   "owner": "gita146",
+   "balance": 661500
+  },
+  {
+   "id": "A-100148",
+   "owner": "hadi147",
+   "balance": 0
+  },
+  {
+   "id": "A-100149",
+   "owner": "indah148",
+   "balance": 0
+  },
+  {
+   "id": "A-100150",
+   "owner": "joko149",
+   "balance": 2710000
+  },
+  {
+   "id": "A-100151",
+   "owner": "kartika150",
+   "balance": 0
+  },
+  {
+   "id": "A-100152",
+   "owner": "lina151",
+   "balance": 0
+  },
+  {
+   "id": "A-100153",
+   "owner": "made152",
+   "balance": 0
+  },
+  {
+   "id": "A-100154",
+   "owner": "nur153",
+   "balance": 0
+  },
+  {
+   "id": "A-100155",
+   "owner": "oki154",
+   "balance": 4988500
+  },
+  {
+   "id": "A-100156",
+   "owner": "putri155",
+   "balance": 0
+  },
+  {
+   "id": "A-100157",
+   "owner": "rizal156",
+   "balance": 2080500
+  },
+  {
+   "id": "A-100158",
+   "owner": "sari157",
+   "balance": 0
+  },
+  {
+   "id": "A-100159",
+   "owner": "tono158",
+   "balance": 4692000
+  },
+  {
+   "id": "A-100160",
+   "owner": "wulan159",
+   "balance": 0
+  },
+  {
+   "id": "A-100161",
+   "owner": "andi160",
+   "balance": 0
+  },
+  {
+   "id": "A-100162",
+   "owner": "budi161",
+   "balance": 1607500
+  },
+  {
+   "id": "A-100163",
+   "owner": "citra162",
+   "balance": 563000
+  },
+  {
+   "id": "A-100164",
+   "owner": "dewi163",
+   "balance": 0
+  },
+  {
+   "id": "A-100165",
+   "owner": "eko164",
+   "balance": 2114500
+  },
+  {
+   "id": "A-100166",
+   "owner": "fajar165",
+   "balance": 135000
+  },
+  {
+   "id": "A-100167",
+   "owner": "gita166",
+   "balance": 0
+  },
+  {
+   "id": "A-100168",
+   "owner": "hadi167",
+   "balance": 1596500
+  },
+  {
+   "id": "A-100169",
+   "owner": "indah168",
+   "balance": 4778500
+  },
+  {
+   "id": "A-100170",
+   "owner": "joko169",
+   "balance": 4962000
+  },
+  {
+   "id": "A-100171",
+   "owner": "kartika170",
+   "balance": 2362500
+  },
+  {
+   "id": "A-100172",
+   "owner": "lina171",
+   "balance": 0
+  },
+  {
+   "id": "A-100173",
+   "owner": "made172",
+   "balance": 0
+  },
+  {
+   "id": "A-100174",
+   "owner": "nur173",
+   "balance": 576000
+  },
+  {
+   "id": "A-100175",
+   "owner": "oki174",
+   "balance": 88000
+  },
+  {
+   "id": "A-100176",
+   "owner": "putri175",
+   "balance": 0
+  },
+  {
+   "id": "A-100177",
+   "owner": "rizal176",
+   "balance": 0
+  },
+  {
+   "id": "A-100178",
+   "owner": "sari177",
+   "balance": 0
+  },
+  {
+   "id": "A-100179",
+   "owner": "tono178",
+   "balance": 4030000
+  },
+  {
+   "id": "A-100180",
+   "owner": "wulan179",
+   "balance": 0
+  },
+  {
+   "id": "A-100181",
+   "owner": "andi180",
+   "balance": 0
+  },
+  {
+   "id": "A-100182",
+   "owner": "budi181",
+   "balance": 0
+  },
+  {
+   "id": "A-100183",
+   "owner": "citra182",
+   "balance": 0
+  },
+  {
+   "id": "A-100184",
+   "owner": "dewi183",
+   "balance": 1024500
+  },
+  {
+   "id": "A-100185",
+   "owner": "eko184",
+   "balance": 0
+  },
+  {
+   "id": "A-100186",
+   "owner": "fajar185",
+   "balance": 0
+  },
+  {
+   "id": "A-100187",
+   "owner": "gita186",
+   "balance": 2172000
+  },
+  {
+   "id": "A-100188",
+   "owner": "hadi187",
+   "balance": 778000
+  },
+  {
+   "id": "A-100189",
+   "owner": "indah188",
+   "balance": 1593500
+  },
+  {
+   "id": "A-100190",
+   "owner": "joko189",
+   "balance": 0
+  },
+  {
+   "id": "A-100191",
+   "owner": "kartika190",
+   "balance": 4740000
+  },
+  {
+   "id": "A-100192",
+   "owner": "lina191",
+   "balance": 0
+  },
+  {
+   "id": "A-100193",
+   "owner": "made192",
+   "balance": 547000
+  },
+  {
+   "id": "A-100194",
+   "owner": "nur193",
+   "balance": 0
+  },
+  {
+   "id": "A-100195",
+   "owner": "oki194",
+   "balance": 2365000
+  },
+  {
+   "id": "A-100196",
+   "owner": "putri195",
+   "balance": 3058000
+  },
+  {
+   "id": "A-100197",
+   "owner": "rizal196",
+   "balance": 4556500
+  },
+  {
+   "id": "A-100198",
+   "owner": "sari197",
+   "balance": 0
+  },
+  {
+   "id": "A-100199",
+   "owner": "tono198",
+   "balance": 0
+  },
+  {
+   "id": "A-100200",
+   "owner": "wulan199",
+   "balance": 0
+  },
+  {
+   "id": "A-100201",
+   "owner": "andi200",
+   "balance": 470500
+  },
+  {
+   "id": "A-100202",
+   "owner": "budi201",
+   "balance": 3364000
+  },
+  {
+   "id": "A-100203",
+   "owner": "citra202",
+   "balance": 0
+  },
+  {
+   "id": "A-100204",
+   "owner": "dewi203",
+   "balance": 0
+  },
+  {
+   "id": "A-100205",
+   "owner": "eko204",
+   "balance": 0
+  },
+  {
+   "id": "A-100206",
+   "owner": "fajar205",
+   "balance": 2716500
+  },
+  {
+   "id": "A-100207",
+   "owner": "gita206",
+   "balance": 3028000
+  },
+  {
+   "id": "A-100208",
+   "owner": "hadi207",
+   "balance": 2584000
+  },
+  {
+   "id": "A-100209",
+   "owner": "indah208",
+   "balance": 0
+  },
+  {
+   "id": "A-100210",
+   "owner": "joko209",
+   "balance": 3674500
+  },
+  {
+   "id": "A-100211",
+   "owner": "kartika210",
+   "balance": 329500
+  },
+  {
+   "id": "A-100212",
+   "owner": "lina211",
+   "balance": 4435000
+  },
+  {
+   "id": "A-100213",
+   "owner": "made212",
+   "balance": 0
+  },
+  {
+   "id": "A-100214",
+   "owner": "nur213",
+   "balance": 4053500
+  },
+  {
+   "id": "A-100215",
+   "owner": "oki214",
+   "balance": 4451000
+  },
+  {
+   "id": "A-100216",
+   "owner": "putri215",
+   "balance": 4994500
+  },
+  {
+   "id": "A-100217",
+   "owner": "rizal216",
+   "balance": 715000
+  },
+  {
+   "id": "A-100218",
+   "owner": "sari217",
+   "balance": 0
+  },
+  {
+   "id": "A-100219",
+   "owner": "tono218",
+   "balance": 0
+  },
+  {
+   "id": "A-100220",
+   "owner": "wulan219",
+   "balance": 0
+  },
+  {
+   "id": "A-100221",
+   "owner": "andi220",
+   "balance": 0
+  },
+  {
+   "id": "A-100222",
+   "owner": "budi221",
+   "balance": 2495500
+  },
+  {
+   "id": "A-100223",
+   "owner": "citra222",
+   "balance": 2643000
+  },
+  {
+   "id": "A-100224",
+   "owner": "dewi223",
+   "balance": 4664500
+  },
+  {
+   "id": "A-100225",
+   "owner": "eko224",
+   "balance": 0
+  },
+  {
+   "id": "A-100226",
+   "owner": "fajar225",
+   "balance": 0
+  },
+  {
+   "id": "A-100227",
+   "owner": "gita226",
+   "balance": 0
+  },
+  {
+   "id": "A-100228",
+   "owner": "hadi227",
+   "balance": 4936000
+  },
+  {
+   "id": "A-100229",
+   "owner": "indah228",
+   "balance": 4524500
+  },
+  {
+   "id": "A-100230",
+   "owner": "joko229",
+   "balance": 4055000
+  },
+  {
+   "id": "A-100231",
+   "owner": "kartika230",
+   "balance": 0
+  },
+  {
+   "id": "A-100232",
+   "owner": "lina231",
+   "balance": 3775500
+  },
+  {
+   "id": "A-100233",
+   "owner": "made232",
+   "balance": 615000
+  },
+  {
+   "id": "A-100234",
+   "owner": "nur233",
+   "balance": 2545000
+  },
+  {
+   "id": "A-100235",
+   "owner": "oki234",
+   "balance": 0
+  },
+  {
+   "id": "A-100236",
+   "owner": "putri235",
+   "balance": 0
+  },
+  {
+   "id": "A-100237",
+   "owner": "rizal236",
+   "balance": 606500
+  },
+  {
+   "id": "A-100238",
+   "owner": "sari237",
+   "balance": 1733500
+  },
+  {
+   "id": "A-100239",
+   "owner": "tono238",
+   "balance": 0
+  },
+  {
+   "id": "A-100240",
+   "owner": "wulan239",
+   "balance": 0
+  },
+  {
+   "id": "A-100241",
+   "owner": "andi240",
+   "balance": 0
+  },
+  {
+   "id": "A-100242",
+   "owner": "budi241",
+   "balance": 4303000
+  },
+  {
+   "id": "A-100243",
+   "owner": "citra242",
+   "balance": 1021500
+  },
+  {
+   "id": "A-100244",
+   "owner": "dewi243",
+   "balance": 0
+  },
+  {
+   "id": "A-100245",
+   "owner": "eko244",
+   "balance": 0
+  },
+  {
+   "id": "A-100246",
+   "owner": "fajar245",
+   "balance": 3106500
+  },
+  {
+   "id": "A-100247",
+   "owner": "gita246",
+   "balance": 0
+  },
+  {
+   "id": "A-100248",
+   "owner": "hadi247",
+   "balance": 0
+  },
+  {
+   "id": "A-100249",
+   "owner": "indah248",
+   "balance": 0
+  },
+  {
+   "id": "A-100250",
+   "owner": "joko249",
+   "balance": 408000
+  },
+  {
+   "id": "A-100251",
+   "owner": "kartika250",
+   "balance": 0
+  },
+  {
+   "id": "A-100252",
+   "owner": "lina251",
+   "balance": 0
+  },
+  {
+   "id": "A-100253",
+   "owner": "made252",
+   "balance": 0
+  },
+  {
+   "id": "A-100254",
+   "owner": "nur253",
+   "balance": 4849500
+  },
+  {
+   "id": "A-100255",
+   "owner": "oki254",
+   "balance": 4993500
+  },
+  {
+   "id": "A-100256",
+   "owner": "putri255",
+   "balance": 0
+  },
+  {
+   "id": "A-100257",
+   "owner": "rizal256",
+   "balance": 0
+  },
+  {
+   "id": "A-100258",
+   "owner": "sari257",
+   "balance": 3407000
+  },
+  {
+   "id": "A-100259",
+   "owner": "tono258",
+   "balance": 0
+  },
+  {
+   "id": "A-100260",
+   "owner": "wulan259",
+   "balance": 232000
+  },
+  {
+   "id": "A-100261",
+   "owner": "andi260",
+   "balance": 260000
+  },
+  {
+   "id": "A-100262",
+   "owner": "budi261",
+   "balance": 0
+  },
+  {
+   "id": "A-100263",
+   "owner": "citra262",
+   "balance": 4229000
+  },
+  {
+   "id": "A-100264",
+   "owner": "dewi263",
+   "balance": 4052500
+  },
+  {
+   "id": "A-100265",
+   "owner": "eko264",
+   "balance": 0
+  },
+  {
+   "id": "A-100266",
+   "owner": "fajar265",
+   "balance": 0
+  },
+  {
+   "id": "A-100267",
+   "owner": "gita266",
+   "balance": 0
+  },
+  {
+   "id": "A-100268",
+   "owner": "hadi267",
+   "balance": 4782000
+  },
+  {
+   "id": "A-100269",
+   "owner": "indah268",
+   "balance": 0
+  },
+  {
+   "id": "A-100270",
+   "owner": "joko269",
+   "balance": 0
+  },
+  {
+   "id": "A-100271",
+   "owner": "kartika270",
+   "balance": 0
+  },
+  {
+   "id": "A-100272",
+   "owner": "lina271",
+   "balance": 0
+  },
+  {
+   "id": "A-100273",
+   "owner": "made272",
+   "balance": 0
+  },
+  {
+   "id": "A-100274",
+   "owner": "nur273",
+   "balance": 0
+  },
+  {
+   "id": "A-100275",
+   "owner": "oki274",
+   "balance": 0
+  },
+  {
+   "id": "A-100276",
+   "owner": "putri275",
+   "balance": 0
+  },
+  {
+   "id": "A-100277",
+   "owner": "rizal276",
+   "balance": 0
+  },
+  {
+   "id": "A-100278",
+   "owner": "sari277",
+   "balance": 0
+  },
+  {
+   "id": "A-100279",
+   "owner": "tono278",
+   "balance": 0
+  },
+  {
+   "id": "A-100280",
+   "owner": "wulan279",
+   "balance": 1526000
+  },
+  {
+   "id": "A-100281",
+   "owner": "andi280",
+   "balance": 0
+  },
+  {
+   "id": "A-100282",
+   "owner": "budi281",
+   "balance": 0
+  },
+  {
+   "id": "A-100283",
+   "owner": "citra282",
+   "balance": 2726500
+  },
+  {
+   "id": "A-100284",
+   "owner": "dewi283",
+   "balance": 0
+  },
+  {
+   "id": "A-100285",
+   "owner": "eko284",
+   "balance": 4935000
+  },
+  {
+   "id": "A-100286",
+   "owner": "fajar285",
+   "balance": 2249500
+  },
+  {
+   "id": "A-100287",
+   "owner": "gita286",
+   "balance": 725000
+  },
+  {
+   "id": "A-100288",
+   "owner": "hadi287",
+   "balance": 1732000
+  },
+  {
+   "id": "A-100289",
+   "owner": "indah288",
+   "balance": 0
+  },
+  {
+   "id": "A-100290",
+   "owner": "joko289",
+   "balance": 710000
+  },
+  {
+   "id": "A-100291",
+   "owner": "kartika290",
+   "balance": 26000
+  },
+  {
+   "id": "A-100292",
+   "owner": "lina291",
+   "balance": 3597500
+  },
+  {
+   "id": "A-100293",
+   "owner": "made292",
+   "balance": 1141000
+  },
+  {
+   "id": "A-100294",
+   "owner": "nur293",
+   "balance": 1822000
+  },
+  {
+   "id": "A-100295",
+   "owner": "oki294",
+   "balance": 0
+  },
+  {
+   "id": "A-100296",
+   "owner": "putri295",
+   "balance": 0
+  },
+  {
+   "id": "A-100297",
+   "owner": "rizal296",
+   "balance": 0
+  },
+  {
+   "id": "A-100298",
+   "owner": "sari297",
+   "balance": 0
+  },
+  {
+   "id": "A-100299",
+   "owner": "tono298",
+   "balance": 1237500
+  },
+  {
+   "id": "A-100300",
+   "owner": "wulan299",
+   "balance": 0
+  },
+  {
+   "id": "A-100301",
+   "owner": "andi300",
+   "balance": 0
+  },
+  {
+   "id": "A-100302",
+   "owner": "budi301",
+   "balance": 1050000
+  },
+  {
+   "id": "A-100303",
+   "owner": "citra302",
+   "balance": 1223500
+  },
+  {
+   "id": "A-100304",
+   "owner": "dewi303",
+   "balance": 4111000
+  },
+  {
+   "id": "A-100305",
+   "owner": "eko304",
+   "balance": 1332500
+  },
+  {
+   "id": "A-100306",
+   "owner": "fajar305",
+   "balance": 1649000
+  },
+  {
+   "id": "A-100307",
+   "owner": "gita306",
+   "balance": 0
+  },
+  {
+   "id": "A-100308",
+   "owner": "hadi307",
+   "balance": 2841500
+  },
+  {
+   "id": "A-100309",
+   "owner": "indah308",
+   "balance": 0
+  },
+  {
+   "id": "A-100310",
+   "owner": "joko309",
+   "balance": 0
+  },
+  {
+   "id": "A-100311",
+   "owner": "kartika310",
+   "balance": 4000
+  },
+  {
+   "id": "A-100312",
+   "owner": "lina311",
+   "balance": 1097000
+  },
+  {
+   "id": "A-100313",
+   "owner": "made312",
+   "balance": 2020500
+  },
+  {
+   "id": "A-100314",
+   "owner": "nur313",
+   "balance": 1876000
+  },
+  {
+   "id": "A-100315",
+   "owner": "oki314",
+   "balance": 0
+  },
+  {
+   "id": "A-100316",
+   "owner": "putri315",
+   "balance": 2522500
+  },
+  {
+   "id": "A-100317",
+   "owner": "rizal316",
+   "balance": 0
+  },
+  {
+   "id": "A-100318",
+   "owner": "sari317",
+   "balance": 0
+  },
+  {
+   "id": "A-100319",
+   "owner": "tono318",
+   "balance": 2757500
+  },
+  {
+   "id": "A-100320",
+   "owner": "wulan319",
+   "balance": 0
+  },
+  {
+   "id": "A-100321",
+   "owner": "andi320",
+   "balance": 4927500
+  },
+  {
+   "id": "A-100322",
+   "owner": "budi321",
+   "balance": 1275000
+  },
+  {
+   "id": "A-100323",
+   "owner": "citra322",
+   "balance": 3877000
+  },
+  {
+   "id": "A-100324",
+   "owner": "dewi323",
+   "balance": 3947500
+  },
+  {
+   "id": "A-100325",
+   "owner": "eko324",
+   "balance": 3208500
+  },
+  {
+   "id": "A-100326",
+   "owner": "fajar325",
+   "balance": 2694000
+  },
+  {
+   "id": "A-100327",
+   "owner": "gita326",
+   "balance": 682000
+  },
+  {
+   "id": "A-100328",
+   "owner": "hadi327",
+   "balance": 2981500
+  },
+  {
+   "id": "A-100329",
+   "owner": "indah328",
+   "balance": 0
+  },
+  {
+   "id": "A-100330",
+   "owner": "joko329",
+   "balance": 3664500
+  },
+  {
+   "id": "A-100331",
+   "owner": "kartika330",
+   "balance": 0
+  },
+  {
+   "id": "A-100332",
+   "owner": "lina331",
+   "balance": 0
+  },
+  {
+   "id": "A-100333",
+   "owner": "made332",
+   "balance": 0
+  },
+  {
+   "id": "A-100334",
+   "owner": "nur333",
+   "balance": 0
+  },
+  {
+   "id": "A-100335",
+   "owner": "oki334",
+   "balance": 4974500
+  },
+  {
+   "id": "A-100336",
+   "owner": "putri335",
+   "balance": 3963500
+  },
+  {
+   "id": "A-100337",
+   "owner": "rizal336",
+   "balance": 0
+  },
+  {
+   "id": "A-100338",
+   "owner": "sari337",
+   "balance": 0
+  },
+  {
+   "id": "A-100339",
+   "owner": "tono338",
+   "balance": 3256000
+  },
+  {
+   "id": "A-100340",
+   "owner": "wulan339",
+   "balance": 0
+  },
+  {
+   "id": "A-100341",
+   "owner": "andi340",
+   "balance": 0
+  },
+  {
+   "id": "A-100342",
+   "owner": "budi341",
+   "balance": 0
+  },
+  {
+   "id": "A-100343",
+   "owner": "citra342",
+   "balance": 0
+  },
+  {
+   "id": "A-100344",
+   "owner": "dewi343",
+   "balance": 4135500
+  },
+  {
+   "id": "A-100345",
+   "owner": "eko344",
+   "balance": 0
+  },
+  {
+   "id": "A-100346",
+   "owner": "fajar345",
+   "balance": 0
+  },
+  {
+   "id": "A-100347",
+   "owner": "gita346",
+   "balance": 0
+  },
+  {
+   "id": "A-100348",
+   "owner": "hadi347",
+   "balance": 0
+  },
+  {
+   "id": "A-100349",
+   "owner": "indah348",
+   "balance": 460500
+  },
+  {
+   "id": "A-100350",
+   "owner": "joko349",
+   "balance": 2198000
+  },
+  {
+   "id": "A-100351",
+   "owner": "kartika350",
+   "balance": 1598000
+  },
+  {
+   "id": "A-100352",
+   "owner": "lina351",
+   "balance": 2412500
+  },
+  {
+   "id": "A-100353",
+   "owner": "made352",
+   "balance": 3135000
+  },
+  {
+   "id": "A-100354",
+   "owner": "nur353",
+   "balance": 0
+  },
+  {
+   "id": "A-100355",
+   "owner": "oki354",
+   "balance": 4924000
+  },
+  {
+   "id": "A-100356",
+   "owner": "putri355",
+   "balance": 92000
+  },
+  {
+   "id": "A-100357",
+   "owner": "rizal356",
+   "balance": 0
+  },
+  {
+   "id": "A-100358",
+   "owner": "sari357",
+   "balance": 2156000
+  },
+  {
+   "id": "A-100359",
+   "owner": "tono358",
+   "balance": 4641500
+  },
+  {
+   "id": "A-100360",
+   "owner": "wulan359",
+   "balance": 0
+  },
+  {
+   "id": "A-100361",
+   "owner": "andi360",
+   "balance": 0
+  },
+  {
+   "id": "A-100362",
+   "owner": "budi361",
+   "balance": 0
+  },
+  {
+   "id": "A-100363",
+   "owner": "citra362",
+   "balance": 4563500
+  },
+  {
+   "id": "A-100364",
+   "owner": "dewi363",
+   "balance": 4849000
+  },
+  {
+   "id": "A-100365",
+   "owner": "eko364",
+   "balance": 0
+  },
+  {
+   "id": "A-100366",
+   "owner": "fajar365",
+   "balance": 769500
+  },
+  {
+   "id": "A-100367",
+   "owner": "gita366",
+   "balance": 0
+  },
+  {
+   "id": "A-100368",
+   "owner": "hadi367",
+   "balance": 2486500
+  },
+  {
+   "id": "A-100369",
+   "owner": "indah368",
+   "balance": 0
+  },
+  {
+   "id": "A-100370",
+   "owner": "joko369",
+   "balance": 3554000
+  },
+  {
+   "id": "A-100371",
+   "owner": "kartika370",
+   "balance": 0
+  },
+  {
+   "id": "A-100372",
+   "owner": "lina371",
+   "balance": 0
+  },
+  {
+   "id": "A-100373",
+   "owner": "made372",
+   "balance": 169000
+  },
+  {
+   "id": "A-100374",
+   "owner": "nur373",
+   "balance": 0
+  },
+  {
+   "id": "A-100375",
+   "owner": "oki374",
+   "balance": 1022500
+  },
+  {
+   "id": "A-100376",
+   "owner": "putri375",
+   "balance": 0
+  },
+  {
+   "id": "A-100377",
+   "owner": "rizal376",
+   "balance": 3422000
+  },
+  {
+   "id": "A-100378",
+   "owner": "sari377",
+   "balance": 4475500
+  },
+  {
+   "id": "A-100379",
+   "owner": "tono378",
+   "balance": 564000
+  },
+  {
+   "id": "A-100380",
+   "owner": "wulan379",
+   "balance": 803500
+  },
+  {
+   "id": "A-100381",
+   "owner": "andi380",
+   "balance": 0
+  },
+  {
+   "id": "A-100382",
+   "owner": "budi381",
+   "balance": 0
+  },
+  {
+   "id": "A-100383",
+   "owner": "citra382",
+   "balance": 1508500
+  },
+  {
+   "id": "A-100384",
+   "owner": "dewi383",
+   "balance": 0
+  },
+  {
+   "id": "A-100385",
+   "owner": "eko384",
+   "balance": 0
+  },
+  {
+   "id": "A-100386",
+   "owner": "fajar385",
+   "balance": 1123500
+  },
+  {
+   "id": "A-100387",
+   "owner": "gita386",
+   "balance": 0
+  },
+  {
+   "id": "A-100388",
+   "owner": "hadi387",
+   "balance": 0
+  },
+  {
+   "id": "A-100389",
+   "owner": "indah388",
+   "balance": 3143500
+  },
+  {
+   "id": "A-100390",
+   "owner": "joko389",
+   "balance": 0
+  },
+  {
+   "id": "A-100391",
+   "owner": "kartika390",
+   "balance": 3762500
+  },
+  {
+   "id": "A-100392",
+   "owner": "lina391",
+   "balance": 0
+  },
+  {
+   "id": "A-100393",
+   "owner": "made392",
+   "balance": 0
+  },
+  {
+   "id": "A-100394",
+   "owner": "nur393",
+   "balance": 434500
+  },
+  {
+   "id": "A-100395",
+   "owner": "oki394",
+   "balance": 0
+  },
+  {
+   "id": "A-100396",
+   "owner": "putri395",
+   "balance": 0
+  },
+  {
+   "id": "A-100397",
+   "owner": "rizal396",
+   "balance": 1477500
+  },
+  {
+   "id": "A-100398",
+   "owner": "sari397",
+   "balance": 546000
+  },
+  {
+   "id": "A-100399",
+   "owner": "tono398",
+   "balance": 0
+  },
+  {
+   "id": "A-100400",
+   "owner": "wulan399",
+   "balance": 1707500
+  },
+  {
+   "id": "A-100401",
+   "owner": "andi400",
+   "balance": 2724500
+  },
+  {
+   "id": "A-100402",
+   "owner": "budi401",
+   "balance": 0
+  },
+  {
+   "id": "A-100403",
+   "owner": "citra402",
+   "balance": 0
+  },
+  {
+   "id": "A-100404",
+   "owner": "dewi403",
+   "balance": 0
+  },
+  {
+   "id": "A-100405",
+   "owner": "eko404",
+   "balance": 0
+  },
+  {
+   "id": "A-100406",
+   "owner": "fajar405",
+   "balance": 3165000
+  },
+  {
+   "id": "A-100407",
+   "owner": "gita406",
+   "balance": 0
+  },
+  {
+   "id": "A-100408",
+   "owner": "hadi407",
+   "balance": 0
+  },
+  {
+   "id": "A-100409",
+   "owner": "indah408",
+   "balance": 2477000
+  },
+  {
+   "id": "A-100410",
+   "owner": "joko409",
+   "balance": 3089500
+  },
+  {
+   "id": "A-100411",
+   "owner": "kartika410",
+   "balance": 0
+  },
+  {
+   "id": "A-100412",
+   "owner": "lina411",
+   "balance": 0
+  },
+  {
+   "id": "A-100413",
+   "owner": "made412",
+   "balance": 1118500
+  },
+  {
+   "id": "A-100414",
+   "owner": "nur413",
+   "balance": 4176000
+  },
+  {
+   "id": "A-100415",
+   "owner": "oki414",
+   "balance": 3975000
+  },
+  {
+   "id": "A-100416",
+   "owner": "putri415",
+   "balance": 0
+  },
+  {
+   "id": "A-100417",
+   "owner": "rizal416",
+   "balance": 0
+  },
+  {
+   "id": "A-100418",
+   "owner": "sari417",
+   "balance": 4626500
+  },
+  {
+   "id": "A-100419",
+   "owner": "tono418",
+   "balance": 4510000
+  },
+  {
+   "id": "A-100420",
+   "owner": "wulan419",
+   "balance": 0
+  },
+  {
+   "id": "A-100421",
+   "owner": "andi420",
+   "balance": 0
+  },
+  {
+   "id": "A-100422",
+   "owner": "budi421",
+   "balance": 0
+  },
+  {
+   "id": "A-100423",
+   "owner": "citra422",
+   "balance": 0
+  },
+  {
+   "id": "A-100424",
+   "owner": "dewi423",
+   "balance": 0
+  },
+  {
+   "id": "A-100425",
+   "owner": "eko424",
+   "balance": 782000
+  },
+  {
+   "id": "A-100426",
+   "owner": "fajar425",
+   "balance": 0
+  },
+  {
+   "id": "A-100427",
+   "owner": "gita426",
+   "balance": 448000
+  },
+  {
+   "id": "A-100428",
+   "owner": "hadi427",
+   "balance": 0
+  },
+  {
+   "id": "A-100429",
+   "owner": "indah428",
+   "balance": 0
+  },
+  {
+   "id": "A-100430",
+   "owner": "joko429",
+   "balance": 0
+  },
+  {
+   "id": "A-100431",
+   "owner": "kartika430",
+   "balance": 0
+  },
+  {
+   "id": "A-100432",
+   "owner": "lina431",
+   "balance": 0
+  },
+  {
+   "id": "A-100433",
+   "owner": "made432",
+   "balance": 241000
+  },
+  {
+   "id": "A-100434",
+   "owner": "nur433",
+   "balance": 1105000
+  },
+  {
+   "id": "A-100435",
+   "owner": "oki434",
+   "balance": 0
+  },
+  {
+   "id": "A-100436",
+   "owner": "putri435",
+   "balance": 4158500
+  },
+  {
+   "id": "A-100437",
+   "owner": "rizal436",
+   "balance": 4182000
+  },
+  {
+   "id": "A-100438",
+   "owner": "sari437",
+   "balance": 439500
+  },
+  {
+   "id": "A-100439",
+   "owner": "tono438",
+   "balance": 0
+  },
+  {
+   "id": "A-100440",
+   "owner": "wulan439",
+   "balance": 0
+  },
+  {
+   "id": "A-100441",
+   "owner": "andi440",
+   "balance": 1725000
+  },
+  {
+   "id": "A-100442",
+   "owner": "budi441",
+   "balance": 0
+  },
+  {
+   "id": "A-100443",
+   "owner": "citra442",
+   "balance": 3032500
+  },
+  {
+   "id": "A-100444",
+   "owner": "dewi443",
+   "balance": 3679000
+  },
+  {
+   "id": "A-100445",
+   "owner": "eko444",
+   "balance": 4284000
+  },
+  {
+   "id": "A-100446",
+   "owner": "fajar445",
+   "balance": 0
+  },
+  {
+   "id": "A-100447",
+   "owner": "gita446",
+   "balance": 0
+  },
+  {
+   "id": "A-100448",
+   "owner": "hadi447",
+   "balance": 3799000
+  },
+  {
+   "id": "A-100449",
+   "owner": "indah448",
+   "balance": 0
+  },
+  {
+   "id": "A-100450",
+   "owner": "joko449",
+   "balance": 0
+  },
+  {
+   "id": "A-100451",
+   "owner": "kartika450",
+   "balance": 0
+  },
+  {
+   "id": "A-100452",
+   "owner": "lina451",
+   "balance": 4970500
+  },
+  {
+   "id": "A-100453",
+   "owner": "made452",
+   "balance": 1855500
+  },
+  {
+   "id": "A-100454",
+   "owner": "nur453",
+   "balance": 3230000
+  },
+  {
+   "id": "A-100455",
+   "owner": "oki454",
+   "balance": 2251000
+  },
+  {
+   "id": "A-100456",
+   "owner": "putri455",
+   "balance": 0
+  },
+  {
+   "id": "A-100457",
+   "owner": "rizal456",
+   "balance": 194000
+  },
+  {
+   "id": "A-100458",
+   "owner": "sari457",
+   "balance": 3879000
+  },
+  {
+   "id": "A-100459",
+   "owner": "tono458",
+   "balance": 1466500
+  },
+  {
+   "id": "A-100460",
+   "owner": "wulan459",
+   "balance": 0
+  },
+  {
+   "id": "A-100461",
+   "owner": "andi460",
+   "balance": 0
+  },
+  {
+   "id": "A-100462",
+   "owner": "budi461",
+   "balance": 0
+  },
+  {
+   "id": "A-100463",
+   "owner": "citra462",
+   "balance": 4058000
+  },
+  {
+   "id": "A-100464",
+   "owner": "dewi463",
+   "balance": 3585500
+  },
+  {
+   "id": "A-100465",
+   "owner": "eko464",
+   "balance": 0
+  },
+  {
+   "id": "A-100466",
+   "owner": "fajar465",
+   "balance": 962500
+  },
+  {
+   "id": "A-100467",
+   "owner": "gita466",
+   "balance": 0
+  },
+  {
+   "id": "A-100468",
+   "owner": "hadi467",
+   "balance": 0
+  },
+  {
+   "id": "A-100469",
+   "owner": "indah468",
+   "balance": 67000
+  },
+  {
+   "id": "A-100470",
+   "owner": "joko469",
+   "balance": 0
+  },
+  {
+   "id": "A-100471",
+   "owner": "kartika470",
+   "balance": 0
+  },
+  {
+   "id": "A-100472",
+   "owner": "lina471",
+   "balance": 1049000
+  },
+  {
+   "id": "A-100473",
+   "owner": "made472",
+   "balance": 4622000
+  },
+  {
+   "id": "A-100474",
+   "owner": "nur473",
+   "balance": 4012500
+  },
+  {
+   "id": "A-100475",
+   "owner": "oki474",
+   "balance": 0
+  },
+  {
+   "id": "A-100476",
+   "owner": "putri475",
+   "balance": 0
+  },
+  {
+   "id": "A-100477",
+   "owner": "rizal476",
+   "balance": 476500
+  },
+  {
+   "id": "A-100478",
+   "owner": "sari477",
+   "balance": 0
+  },
+  {
+   "id": "A-100479",
+   "owner": "tono478",
+   "balance": 463000
+  },
+  {
+   "id": "A-100480",
+   "owner": "wulan479",
+   "balance": 2264000
+  },
+  {
+   "id": "A-100481",
+   "owner": "andi480",
+   "balance": 601500
+  },
+  {
+   "id": "A-100482",
+   "owner": "budi481",
+   "balance": 2230000
+  },
+  {
+   "id": "A-100483",
+   "owner": "citra482",
+   "balance": 112500
+  },
+  {
+   "id": "A-100484",
+   "owner": "dewi483",
+   "balance": 0
+  },
+  {
+   "id": "A-100485",
+   "owner": "eko484",
+   "balance": 0
+  },
+  {
+   "id": "A-100486",
+   "owner": "fajar485",
+   "balance": 0
+  },
+  {
+   "id": "A-100487",
+   "owner": "gita486",
+   "balance": 3141500
+  },
+  {
+   "id": "A-100488",
+   "owner": "hadi487",
+   "balance": 3002000
+  },
+  {
+   "id": "A-100489",
+   "owner": "indah488",
+   "balance": 3159500
+  },
+  {
+   "id": "A-100490",
+   "owner": "joko489",
+   "balance": 0
+  },
+  {
+   "id": "A-100491",
+   "owner": "kartika490",
+   "balance": 4210000
+  },
+  {
+   "id": "A-100492",
+   "owner": "lina491",
+   "balance": 0
+  },
+  {
+   "id": "A-100493",
+   "owner": "made492",
+   "balance": 4968500
+  },
+  {
+   "id": "A-100494",
+   "owner": "nur493",
+   "balance": 0
+  },
+  {
+   "id": "A-100495",
+   "owner": "oki494",
+   "balance": 4942000
+  },
+  {
+   "id": "A-100496",
+   "owner": "putri495",
+   "balance": 0
+  },
+  {
+   "id": "A-100497",
+   "owner": "rizal496",
+   "balance": 0
+  },
+  {
+   "id": "A-100498",
+   "owner": "sari497",
+   "balance": 0
+  },
+  {
+   "id": "A-100499",
+   "owner": "tono498",
+   "balance": 2481000
+  },
+  {
+   "id": "A-100500",
+   "owner": "wulan499",
+   "balance": 838500
+  },
+  {
+   "id": "A-100501",
+   "owner": "andi500",
+   "balance": 0
+  },
+  {
+   "id": "A-100502",
+   "owner": "budi501",
+   "balance": 4282000
+  },
+  {
+   "id": "A-100503",
+   "owner": "citra502",
+   "balance": 1540500
+  },
+  {
+   "id": "A-100504",
+   "owner": "dewi503",
+   "balance": 1665500
+  },
+  {
+   "id": "A-100505",
+   "owner": "eko504",
+   "balance": 3201000
+  },
+  {
+   "id": "A-100506",
+   "owner": "fajar505",
+   "balance": 0
+  },
+  {
+   "id": "A-100507",
+   "owner": "gita506",
+   "balance": 0
+  },
+  {
+   "id": "A-100508",
+   "owner": "hadi507",
+   "balance": 2581500
+  },
+  {
+   "id": "A-100509",
+   "owner": "indah508",
+   "balance": 0
+  },
+  {
+   "id": "A-100510",
+   "owner": "joko509",
+   "balance": 0
+  },
+  {
+   "id": "A-100511",
+   "owner": "kartika510",
+   "balance": 3598000
+  },
+  {
+   "id": "A-100512",
+   "owner": "lina511",
+   "balance": 3732500
+  },
+  {
+   "id": "A-100513",
+   "owner": "made512",
+   "balance": 0
+  },
+  {
+   "id": "A-100514",
+   "owner": "nur513",
+   "balance": 0
+  },
+  {
+   "id": "A-100515",
+   "owner": "oki514",
+   "balance": 0
+  },
+  {
+   "id": "A-100516",
+   "owner": "putri515",
+   "balance": 0
+  },
+  {
+   "id": "A-100517",
+   "owner": "rizal516",
+   "balance": 1290500
+  },
+  {
+   "id": "A-100518",
+   "owner": "sari517",
+   "balance": 0
+  },
+  {
+   "id": "A-100519",
+   "owner": "tono518",
+   "balance": 2198000
+  },
+  {
+   "id": "A-100520",
+   "owner": "wulan519",
+   "balance": 110000
+  },
+  {
+   "id": "A-100521",
+   "owner": "andi520",
+   "balance": 0
+  },
+  {
+   "id": "A-100522",
+   "owner": "budi521",
+   "balance": 4856500
+  },
+  {
+   "id": "A-100523",
+   "owner": "citra522",
+   "balance": 2262000
+  },
+  {
+   "id": "A-100524",
+   "owner": "dewi523",
+   "balance": 0
+  },
+  {
+   "id": "A-100525",
+   "owner": "eko524",
+   "balance": 1519000
+  },
+  {
+   "id": "A-100526",
+   "owner": "fajar525",
+   "balance": 0
+  },
+  {
+   "id": "A-100527",
+   "owner": "gita526",
+   "balance": 2027500
+  },
+  {
+   "id": "A-100528",
+   "owner": "hadi527",
+   "balance": 0
+  },
+  {
+   "id": "A-100529",
+   "owner": "indah528",
+   "balance": 4512000
+  },
+  {
+   "id": "A-100530",
+   "owner": "joko529",
+   "balance": 0
+  },
+  {
+   "id": "A-100531",
+   "owner": "kartika530",
+   "balance": 0
+  },
+  {
+   "id": "A-100532",
+   "owner": "lina531",
+   "balance": 2405500
+  },
+  {
+   "id": "A-100533",
+   "owner": "made532",
+   "balance": 0
+  },
+  {
+   "id": "A-100534",
+   "owner": "nur533",
+   "balance": 0
+  },
+  {
+   "id": "A-100535",
+   "owner": "oki534",
+   "balance": 2775500
+  },
+  {
+   "id": "A-100536",
+   "owner": "putri535",
+   "balance": 4551000
+  },
+  {
+   "id": "A-100537",
+   "owner": "rizal536",
+   "balance": 2055500
+  },
+  {
+   "id": "A-100538",
+   "owner": "sari537",
+   "balance": 0
+  },
+  {
+   "id": "A-100539",
+   "owner": "tono538",
+   "balance": 0
+  },
+  {
+   "id": "A-100540",
+   "owner": "wulan539",
+   "balance": 0
+  },
+  {
+   "id": "A-100541",
+   "owner": "andi540",
+   "balance": 455000
+  },
+  {
+   "id": "A-100542",
+   "owner": "budi541",
+   "balance": 2516000
+  },
+  {
+   "id": "A-100543",
+   "owner": "citra542",
+   "balance": 3646000
+  },
+  {
+   "id": "A-100544",
+   "owner": "dewi543",
+   "balance": 0
+  },
+  {
+   "id": "A-100545",
+   "owner": "eko544",
+   "balance": 0
+  },
+  {
+   "id": "A-100546",
+   "owner": "fajar545",
+   "balance": 0
+  },
+  {
+   "id": "A-100547",
+   "owner": "gita546",
+   "balance": 0
+  },
+  {
+   "id": "A-100548",
+   "owner": "hadi547",
+   "balance": 790500
+  },
+  {
+   "id": "A-100549",
+   "owner": "indah548",
+   "balance": 4163500
+  },
+  {
+   "id": "A-100550",
+   "owner": "joko549",
+   "balance": 0
+  },
+  {
+   "id": "A-100551",
+   "owner": "kartika550",
+   "balance": 2464500
+  },
+  {
+   "id": "A-100552",
+   "owner": "lina551",
+   "balance": 1516000
+  },
+  {
+   "id": "A-100553",
+   "owner": "made552",
+   "balance": 2100500
+  },
+  {
+   "id": "A-100554",
+   "owner": "nur553",
+   "balance": 3520500
+  },
+  {
+   "id": "A-100555",
+   "owner": "oki554",
+   "balance": 3950500
+  },
+  {
+   "id": "A-100556",
+   "owner": "putri555",
+   "balance": 2565000
+  },
+  {
+   "id": "A-100557",
+   "owner": "rizal556",
+   "balance": 2537500
+  },
+  {
+   "id": "A-100558",
+   "owner": "sari557",
+   "balance": 0
+  },
+  {
+   "id": "A-100559",
+   "owner": "tono558",
+   "balance": 0
+  },
+  {
+   "id": "A-100560",
+   "owner": "wulan559",
+   "balance": 4764000
+  },
+  {
+   "id": "A-100561",
+   "owner": "andi560",
+   "balance": 3625000
+  },
+  {
+   "id": "A-100562",
+   "owner": "budi561",
+   "balance": 0
+  },
+  {
+   "id": "A-100563",
+   "owner": "citra562",
+   "balance": 3515000
+  },
+  {
+   "id": "A-100564",
+   "owner": "dewi563",
+   "balance": 1682500
+  },
+  {
+   "id": "A-100565",
+   "owner": "eko564",
+   "balance": 0
+  },
+  {
+   "id": "A-100566",
+   "owner": "fajar565",
+   "balance": 3585500
+  },
+  {
+   "id": "A-100567",
+   "owner": "gita566",
+   "balance": 0
+  },
+  {
+   "id": "A-100568",
+   "owner": "hadi567",
+   "balance": 0
+  },
+  {
+   "id": "A-100569",
+   "owner": "indah568",
+   "balance": 4479500
+  },
+  {
+   "id": "A-100570",
+   "owner": "joko569",
+   "balance": 4020000
+  },
+  {
+   "id": "A-100571",
+   "owner": "kartika570",
+   "balance": 1741000
+  },
+  {
+   "id": "A-100572",
+   "owner": "lina571",
+   "balance": 0
+  },
+  {
+   "id": "A-100573",
+   "owner": "made572",
+   "balance": 1323000
+  },
+  {
+   "id": "A-100574",
+   "owner": "nur573",
+   "balance": 0
+  },
+  {
+   "id": "A-100575",
+   "owner": "oki574",
+   "balance": 0
+  },
+  {
+   "id": "A-100576",
+   "owner": "putri575",
+   "balance": 0
+  },
+  {
+   "id": "A-100577",
+   "owner": "rizal576",
+   "balance": 0
+  },
+  {
+   "id": "A-100578",
+   "owner": "sari577",
+   "balance": 1613500
+  },
+  {
+   "id": "A-100579",
+   "owner": "tono578",
+   "balance": 2087500
+  },
+  {
+   "id": "A-100580",
+   "owner": "wulan579",
+   "balance": 3338000
+  },
+  {
+   "id": "A-100581",
+   "owner": "andi580",
+   "balance": 0
+  },
+  {
+   "id": "A-100582",
+   "owner": "budi581",
+   "balance": 0
+  },
+  {
+   "id": "A-100583",
+   "owner": "citra582",
+   "balance": 3201500
+  },
+  {
+   "id": "A-100584",
+   "owner": "dewi583",
+   "balance": 2376000
+  },
+  {
+   "id": "A-100585",
+   "owner": "eko584",
+   "balance": 0
+  },
+  {
+   "id": "A-100586",
+   "owner": "fajar585",
+   "balance": 0
+  },
+  {
+   "id": "A-100587",
+   "owner": "gita586",
+   "balance": 3498500
+  },
+  {
+   "id": "A-100588",
+   "owner": "hadi587",
+   "balance": 0
+  },
+  {
+   "id": "A-100589",
+   "owner": "indah588",
+   "balance": 2041500
+  },
+  {
+   "id": "A-100590",
+   "owner": "joko589",
+   "balance": 2275500
+  },
+  {
+   "id": "A-100591",
+   "owner": "kartika590",
+   "balance": 0
+  },
+  {
+   "id": "A-100592",
+   "owner": "lina591",
+   "balance": 2334000
+  },
+  {
+   "id": "A-100593",
+   "owner": "made592",
+   "balance": 2102500
+  },
+  {
+   "id": "A-100594",
+   "owner": "nur593",
+   "balance": 0
+  },
+  {
+   "id": "A-100595",
+   "owner": "oki594",
+   "balance": 0
+  },
+  {
+   "id": "A-100596",
+   "owner": "putri595",
+   "balance": 91000
+  },
+  {
+   "id": "A-100597",
+   "owner": "rizal596",
+   "balance": 0
+  },
+  {
+   "id": "A-100598",
+   "owner": "sari597",
+   "balance": 868000
+  },
+  {
+   "id": "A-100599",
+   "owner": "tono598",
+   "balance": 4771500
+  },
+  {
+   "id": "A-100600",
+   "owner": "wulan599",
+   "balance": 0
+  },
+  {
+   "id": "A-100601",
+   "owner": "andi600",
+   "balance": 3488000
+  },
+  {
+   "id": "A-100602",
+   "owner": "budi601",
+   "balance": 0
+  },
+  {
+   "id": "A-100603",
+   "owner": "citra602",
+   "balance": 0
+  },
+  {
+   "id": "A-100604",
+   "owner": "dewi603",
+   "balance": 3716500
+  },
+  {
+   "id": "A-100605",
+   "owner": "eko604",
+   "balance": 0
+  },
+  {
+   "id": "A-100606",
+   "owner": "fajar605",
+   "balance": 0
+  },
+  {
+   "id": "A-100607",
+   "owner": "gita606",
+   "balance": 0
+  },
+  {
+   "id": "A-100608",
+   "owner": "hadi607",
+   "balance": 4173000
+  },
+  {
+   "id": "A-100609",
+   "owner": "indah608",
+   "balance": 0
+  },
+  {
+   "id": "A-100610",
+   "owner": "joko609",
+   "balance": 893000
+  },
+  {
+   "id": "A-100611",
+   "owner": "kartika610",
+   "balance": 3821000
+  },
+  {
+   "id": "A-100612",
+   "owner": "lina611",
+   "balance": 2212500
+  },
+  {
+   "id": "A-100613",
+   "owner": "made612",
+   "balance": 3697000
+  },
+  {
+   "id": "A-100614",
+   "owner": "nur613",
+   "balance": 1787000
+  },
+  {
+   "id": "A-100615",
+   "owner": "oki614",
+   "balance": 0
+  },
+  {
+   "id": "A-100616",
+   "owner": "putri615",
+   "balance": 0
+  },
+  {
+   "id": "A-100617",
+   "owner": "rizal616",
+   "balance": 0
+  },
+  {
+   "id": "A-100618",
+   "owner": "sari617",
+   "balance": 3033000
+  },
+  {
+   "id": "A-100619",
+   "owner": "tono618",
+   "balance": 328000
+  },
+  {
+   "id": "A-100620",
+   "owner": "wulan619",
+   "balance": 4620000
+  },
+  {
+   "id": "A-100621",
+   "owner": "andi620",
+   "balance": 0
+  },
+  {
+   "id": "A-100622",
+   "owner": "budi621",
+   "balance": 1341500
+  },
+  {
+   "id": "A-100623",
+   "owner": "citra622",
+   "balance": 0
+  },
+  {
+   "id": "A-100624",
+   "owner": "dewi623",
+   "balance": 0
+  },
+  {
+   "id": "A-100625",
+   "owner": "eko624",
+   "balance": 0
+  },
+  {
+   "id": "A-100626",
+   "owner": "fajar625",
+   "balance": 49500
+  },
+  {
+   "id": "A-100627",
+   "owner": "gita626",
+   "balance": 0
+  },
+  {
+   "id": "A-100628",
+   "owner": "hadi627",
+   "balance": 686500
+  },
+  {
+   "id": "A-100629",
+   "owner": "indah628",
+   "balance": 0
+  },
+  {
+   "id": "A-100630",
+   "owner": "joko629",
+   "balance": 0
+  },
+  {
+   "id": "A-100631",
+   "owner": "kartika630",
+   "balance": 4982500
+  },
+  {
+   "id": "A-100632",
+   "owner": "lina631",
+   "balance": 0
+  },
+  {
+   "id": "A-100633",
+   "owner": "made632",
+   "balance": 4583500
+  },
+  {
+   "id": "A-100634",
+   "owner": "nur633",
+   "balance": 1354000
+  },
+  {
+   "id": "A-100635",
+   "owner": "oki634",
+   "balance": 0
+  },
+  {
+   "id": "A-100636",
+   "owner": "putri635",
+   "balance": 0
+  },
+  {
+   "id": "A-100637",
+   "owner": "rizal636",
+   "balance": 3298500
+  },
+  {
+   "id": "A-100638",
+   "owner": "sari637",
+   "balance": 179500
+  },
+  {
+   "id": "A-100639",
+   "owner": "tono638",
+   "balance": 0
+  },
+  {
+   "id": "A-100640",
+   "owner": "wulan639",
+   "balance": 3290000
+  },
+  {
+   "id": "A-100641",
+   "owner": "andi640",
+   "balance": 0
+  },
+  {
+   "id": "A-100642",
+   "owner": "budi641",
+   "balance": 1580500
+  },
+  {
+   "id": "A-100643",
+   "owner": "citra642",
+   "balance": 2795500
+  },
+  {
+   "id": "A-100644",
+   "owner": "dewi643",
+   "balance": 0
+  },
+  {
+   "id": "A-100645",
+   "owner": "eko644",
+   "balance": 0
+  },
+  {
+   "id": "A-100646",
+   "owner": "fajar645",
+   "balance": 4104000
+  },
+  {
+   "id": "A-100647",
+   "owner": "gita646",
+   "balance": 1536500
+  },
+  {
+   "id": "A-100648",
+   "owner": "hadi647",
+   "balance": 0
+  },
+  {
+   "id": "A-100649",
+   "owner": "indah648",
+   "balance": 3365500
+  },
+  {
+   "id": "A-100650",
+   "owner": "joko649",
+   "balance": 2978000
+  },
+  {
+   "id": "A-100651",
+   "owner": "kartika650",
+   "balance": 3680500
+  },
+  {
+   "id": "A-100652",
+   "owner": "lina651",
+   "balance": 0
+  },
+  {
+   "id": "A-100653",
+   "owner": "made652",
+   "balance": 855000
+  },
+  {
+   "id": "A-100654",
+   "owner": "nur653",
+   "balance": 0
+  },
+  {
+   "id": "A-100655",
+   "owner": "oki654",
+   "balance": 0
+  },
+  {
+   "id": "A-100656",
+   "owner": "putri655",
+   "balance": 0
+  },
+  {
+   "id": "A-100657",
+   "owner": "rizal656",
+   "balance": 1903000
+  },
+  {
+   "id": "A-100658",
+   "owner": "sari657",
+   "balance": 0
+  },
+  {
+   "id": "A-100659",
+   "owner": "tono658",
+   "balance": 0
+  },
+  {
+   "id": "A-100660",
+   "owner": "wulan659",
+   "balance": 0
+  },
+  {
+   "id": "A-100661",
+   "owner": "andi660",
+   "balance": 4466000
+  },
+  {
+   "id": "A-100662",
+   "owner": "budi661",
+   "balance": 0
+  },
+  {
+   "id": "A-100663",
+   "owner": "citra662",
+   "balance": 1908500
+  },
+  {
+   "id": "A-100664",
+   "owner": "dewi663",
+   "balance": 0
+  },
+  {
+   "id": "A-100665",
+   "owner": "eko664",
+   "balance": 4852500
+  },
+  {
+   "id": "A-100666",
+   "owner": "fajar665",
+   "balance": 3504000
+  },
+  {
+   "id": "A-100667",
+   "owner": "gita666",
+   "balance": 4002500
+  },
+  {
+   "id": "A-100668",
+   "owner": "hadi667",
+   "balance": 2970000
+  },
+  {
+   "id": "A-100669",
+   "owner": "indah668",
+   "balance": 1412000
+  },
+  {
+   "id": "A-100670",
+   "owner": "joko669",
+   "balance": 2031500
+  },
+  {
+   "id": "A-100671",
+   "owner": "kartika670",
+   "balance": 3335500
+  },
+  {
+   "id": "A-100672",
+   "owner": "lina671",
+   "balance": 0
+  },
+  {
+   "id": "A-100673",
+   "owner": "made672",
+   "balance": 4137000
+  },
+  {
+   "id": "A-100674",
+   "owner": "nur673",
+   "balance": 0
+  },
+  {
+   "id": "A-100675",
+   "owner": "oki674",
+   "balance": 2543500
+  },
+  {
+   "id": "A-100676",
+   "owner": "putri675",
+   "balance": 1099000
+  },
+  {
+   "id": "A-100677",
+   "owner": "rizal676",
+   "balance": 0
+  },
+  {
+   "id": "A-100678",
+   "owner": "sari677",
+   "balance": 1380500
+  },
+  {
+   "id": "A-100679",
+   "owner": "tono678",
+   "balance": 3500000
+  },
+  {
+   "id": "A-100680",
+   "owner": "wulan679",
+   "balance": 4001500
+  },
+  {
+   "id": "A-100681",
+   "owner": "andi680",
+   "balance": 0
+  },
+  {
+   "id": "A-100682",
+   "owner": "budi681",
+   "balance": 0
+  },
+  {
+   "id": "A-100683",
+   "owner": "citra682",
+   "balance": 0
+  },
+  {
+   "id": "A-100684",
+   "owner": "dewi683",
+   "balance": 618000
+  },
+  {
+   "id": "A-100685",
+   "owner": "eko684",
+   "balance": 0
+  },
+  {
+   "id": "A-100686",
+   "owner": "fajar685",
+   "balance": 0
+  },
+  {
+   "id": "A-100687",
+   "owner": "gita686",
+   "balance": 0
+  },
+  {
+   "id": "A-100688",
+   "owner": "hadi687",
+   "balance": 1282000
+  },
+  {
+   "id": "A-100689",
+   "owner": "indah688",
+   "balance": 1402000
+  },
+  {
+   "id": "A-100690",
+   "owner": "joko689",
+   "balance": 204000
+  },
+  {
+   "id": "A-100691",
+   "owner": "kartika690",
+   "balance": 3715000
+  },
+  {
+   "id": "A-100692",
+   "owner": "lina691",
+   "balance": 0
+  },
+  {
+   "id": "A-100693",
+   "owner": "made692",
+   "balance": 0
+  },
+  {
+   "id": "A-100694",
+   "owner": "nur693",
+   "balance": 0
+  },
+  {
+   "id": "A-100695",
+   "owner": "oki694",
+   "balance": 0
+  },
+  {
+   "id": "A-100696",
+   "owner": "putri695",
+   "balance": 0
+  },
+  {
+   "id": "A-100697",
+   "owner": "rizal696",
+   "balance": 0
+  },
+  {
+   "id": "A-100698",
+   "owner": "sari697",
+   "balance": 418000
+  },
+  {
+   "id": "A-100699",
+   "owner": "tono698",
+   "balance": 0
+  },
+  {
+   "id": "A-100700",
+   "owner": "wulan699",
+   "balance": 2134000
+  },
+  {
+   "id": "A-100701",
+   "owner": "andi700",
+   "balance": 3370500
+  },
+  {
+   "id": "A-100702",
+   "owner": "budi701",
+   "balance": 0
+  },
+  {
+   "id": "A-100703",
+   "owner": "citra702",
+   "balance": 3421000
+  },
+  {
+   "id": "A-100704",
+   "owner": "dewi703",
+   "balance": 0
+  },
+  {
+   "id": "A-100705",
+   "owner": "eko704",
+   "balance": 4237000
+  },
+  {
+   "id": "A-100706",
+   "owner": "fajar705",
+   "balance": 0
+  },
+  {
+   "id": "A-100707",
+   "owner": "gita706",
+   "balance": 3066000
+  },
+  {
+   "id": "A-100708",
+   "owner": "hadi707",
+   "balance": 3086500
+  },
+  {
+   "id": "A-100709",
+   "owner": "indah708",
+   "balance": 4352500
+  },
+  {
+   "id": "A-100710",
+   "owner": "joko709",
+   "balance": 206500
+  },
+  {
+   "id": "A-100711",
+   "owner": "kartika710",
+   "balance": 0
+  },
+  {
+   "id": "A-100712",
+   "owner": "lina711",
+   "balance": 2219000
+  },
+  {
+   "id": "A-100713",
+   "owner": "made712",
+   "balance": 0
+  },
+  {
+   "id": "A-100714",
+   "owner": "nur713",
+   "balance": 0
+  },
+  {
+   "id": "A-100715",
+   "owner": "oki714",
+   "balance": 1681000
+  },
+  {
+   "id": "A-100716",
+   "owner": "putri715",
+   "balance": 0
+  },
+  {
+   "id": "A-100717",
+   "owner": "rizal716",
+   "balance": 0
+  },
+  {
+   "id": "A-100718",
+   "owner": "sari717",
+   "balance": 0
+  },
+  {
+   "id": "A-100719",
+   "owner": "tono718",
+   "balance": 318000
+  },
+  {
+   "id": "A-100720",
+   "owner": "wulan719",
+   "balance": 1643500
+  },
+  {
+   "id": "A-100721",
+   "owner": "andi720",
+   "balance": 0
+  },
+  {
+   "id": "A-100722",
+   "owner": "budi721",
+   "balance": 0
+  },
+  {
+   "id": "A-100723",
+   "owner": "citra722",
+   "balance": 548500
+  },
+  {
+   "id": "A-100724",
+   "owner": "dewi723",
+   "balance": 375500
+  },
+  {
+   "id": "A-100725",
+   "owner": "eko724",
+   "balance": 0
+  },
+  {
+   "id": "A-100726",
+   "owner": "fajar725",
+   "balance": 0
+  },
+  {
+   "id": "A-100727",
+   "owner": "gita726",
+   "balance": 4710000
+  },
+  {
+   "id": "A-100728",
+   "owner": "hadi727",
+   "balance": 4776000
+  },
+  {
+   "id": "A-100729",
+   "owner": "indah728",
+   "balance": 0
+  },
+  {
+   "id": "A-100730",
+   "owner": "joko729",
+   "balance": 177000
+  },
+  {
+   "id": "A-100731",
+   "owner": "kartika730",
+   "balance": 0
+  },
+  {
+   "id": "A-100732",
+   "owner": "lina731",
+   "balance": 0
+  },
+  {
+   "id": "A-100733",
+   "owner": "made732",
+   "balance": 0
+  },
+  {
+   "id": "A-100734",
+   "owner": "nur733",
+   "balance": 0
+  },
+  {
+   "id": "A-100735",
+   "owner": "oki734",
+   "balance": 4547000
+  },
+  {
+   "id": "A-100736",
+   "owner": "putri735",
+   "balance": 2984500
+  },
+  {
+   "id": "A-100737",
+   "owner": "rizal736",
+   "balance": 0
+  },
+  {
+   "id": "A-100738",
+   "owner": "sari737",
+   "balance": 2044000
+  },
+  {
+   "id": "A-100739",
+   "owner": "tono738",
+   "balance": 1282000
+  },
+  {
+   "id": "A-100740",
+   "owner": "wulan739",
+   "balance": 0
+  },
+  {
+   "id": "A-100741",
+   "owner": "andi740",
+   "balance": 0
+  },
+  {
+   "id": "A-100742",
+   "owner": "budi741",
+   "balance": 0
+  },
+  {
+   "id": "A-100743",
+   "owner": "citra742",
+   "balance": 2831000
+  },
+  {
+   "id": "A-100744",
+   "owner": "dewi743",
+   "balance": 4683500
+  },
+  {
+   "id": "A-100745",
+   "owner": "eko744",
+   "balance": 1268500
+  },
+  {
+   "id": "A-100746",
+   "owner": "fajar745",
+   "balance": 0
+  },
+  {
+   "id": "A-100747",
+   "owner": "gita746",
+   "balance": 1862000
+  },
+  {
+   "id": "A-100748",
+   "owner": "hadi747",
+   "balance": 1640000
+  },
+  {
+   "id": "A-100749",
+   "owner": "indah748",
+   "balance": 0
+  },
+  {
+   "id": "A-100750",
+   "owner": "joko749",
+   "balance": 0
+  },
+  {
+   "id": "A-100751",
+   "owner": "kartika750",
+   "balance": 4147500
+  },
+  {
+   "id": "A-100752",
+   "owner": "lina751",
+   "balance": 0
+  },
+  {
+   "id": "A-100753",
+   "owner": "made752",
+   "balance": 0
+  },
+  {
+   "id": "A-100754",
+   "owner": "nur753",
+   "balance": 1803000
+  },
+  {
+   "id": "A-100755",
+   "owner": "oki754",
+   "balance": 0
+  },
+  {
+   "id": "A-100756",
+   "owner": "putri755",
+   "balance": 4426500
+  },
+  {
+   "id": "A-100757",
+   "owner": "rizal756",
+   "balance": 0
+  },
+  {
+   "id": "A-100758",
+   "owner": "sari757",
+   "balance": 3016000
+  },
+  {
+   "id": "A-100759",
+   "owner": "tono758",
+   "balance": 1295500
+  },
+  {
+   "id": "A-100760",
+   "owner": "wulan759",
+   "balance": 4256500
+  },
+  {
+   "id": "A-100761",
+   "owner": "andi760",
+   "balance": 1973500
+  },
+  {
+   "id": "A-100762",
+   "owner": "budi761",
+   "balance": 3188000
+  },
+  {
+   "id": "A-100763",
+   "owner": "citra762",
+   "balance": 0
+  },
+  {
+   "id": "A-100764",
+   "owner": "dewi763",
+   "balance": 3500000
+  },
+  {
+   "id": "A-100765",
+   "owner": "eko764",
+   "balance": 0
+  },
+  {
+   "id": "A-100766",
+   "owner": "fajar765",
+   "balance": 0
+  },
+  {
+   "id": "A-100767",
+   "owner": "gita766",
+   "balance": 0
+  },
+  {
+   "id": "A-100768",
+   "owner": "hadi767",
+   "balance": 0
+  },
+  {
+   "id": "A-100769",
+   "owner": "indah768",
+   "balance": 0
+  },
+  {
+   "id": "A-100770",
+   "owner": "joko769",
+   "balance": 3211000
+  },
+  {
+   "id": "A-100771",
+   "owner": "kartika770",
+   "balance": 4306500
+  },
+  {
+   "id": "A-100772",
+   "owner": "lina771",
+   "balance": 2034000
+  },
+  {
+   "id": "A-100773",
+   "owner": "made772",
+   "balance": 0
+  },
+  {
+   "id": "A-100774",
+   "owner": "nur773",
+   "balance": 3435000
+  },
+  {
+   "id": "A-100775",
+   "owner": "oki774",
+   "balance": 0
+  },
+  {
+   "id": "A-100776",
+   "owner": "putri775",
+   "balance": 1925500
+  },
+  {
+   "id": "A-100777",
+   "owner": "rizal776",
+   "balance": 4738500
+  },
+  {
+   "id": "A-100778",
+   "owner": "sari777",
+   "balance": 0
+  },
+  {
+   "id": "A-100779",
+   "owner": "tono778",
+   "balance": 0
+  },
+  {
+   "id": "A-100780",
+   "owner": "wulan779",
+   "balance": 0
+  },
+  {
+   "id": "A-100781",
+   "owner": "andi780",
+   "balance": 0
+  },
+  {
+   "id": "A-100782",
+   "owner": "budi781",
+   "balance": 797500
+  },
+  {
+   "id": "A-100783",
+   "owner": "citra782",
+   "balance": 0
+  },
+  {
+   "id": "A-100784",
+   "owner": "dewi783",
+   "balance": 4153500
+  },
+  {
+   "id": "A-100785",
+   "owner": "eko784",
+   "balance": 1853500
+  },
+  {
+   "id": "A-100786",
+   "owner": "fajar785",
+   "balance": 0
+  },
+  {
+   "id": "A-100787",
+   "owner": "gita786",
+   "balance": 2552500
+  },
+  {
+   "id": "A-100788",
+   "owner": "hadi787",
+   "balance": 2313500
+  },
+  {
+   "id": "A-100789",
+   "owner": "indah788",
+   "balance": 3737000
+  },
+  {
+   "id": "A-100790",
+   "owner": "joko789",
+   "balance": 0
+  },
+  {
+   "id": "A-100791",
+   "owner": "kartika790",
+   "balance": 0
+  },
+  {
+   "id": "A-100792",
+   "owner": "lina791",
+   "balance": 1474000
+  },
+  {
+   "id": "A-100793",
+   "owner": "made792",
+   "balance": 0
+  },
+  {
+   "id": "A-100794",
+   "owner": "nur793",
+   "balance": 1809500
+  },
+  {
+   "id": "A-100795",
+   "owner": "oki794",
+   "balance": 2322000
+  },
+  {
+   "id": "A-100796",
+   "owner": "putri795",
+   "balance": 0
+  },
+  {
+   "id": "A-100797",
+   "owner": "rizal796",
+   "balance": 0
+  },
+  {
+   "id": "A-100798",
+   "owner": "sari797",
+   "balance": 0
+  },
+  {
+   "id": "A-100799",
+   "owner": "tono798",
+   "balance": 1126500
+  },
+  {
+   "id": "A-100800",
+   "owner": "wulan799",
+   "balance": 0
+  },
+  {
+   "id": "A-100801",
+   "owner": "andi800",
+   "balance": 0
+  },
+  {
+   "id": "A-100802",
+   "owner": "budi801",
+   "balance": 0
+  },
+  {
+   "id": "A-100803",
+   "owner": "citra802",
+   "balance": 2750500
+  },
+  {
+   "id": "A-100804",
+   "owner": "dewi803",
+   "balance": 0
+  },
+  {
+   "id": "A-100805",
+   "owner": "eko804",
+   "balance": 0
+  },
+  {
+   "id": "A-100806",
+   "owner": "fajar805",
+   "balance": 4325000
+  },
+  {
+   "id": "A-100807",
+   "owner": "gita806",
+   "balance": 0
+  },
+  {
+   "id": "A-100808",
+   "owner": "hadi807",
+   "balance": 0
+  },
+  {
+   "id": "A-100809",
+   "owner": "indah808",
+   "balance": 4969000
+  },
+  {
+   "id": "A-100810",
+   "owner": "joko809",
+   "balance": 2860000
+  },
+  {
+   "id": "A-100811",
+   "owner": "kartika810",
+   "balance": 871000
+  },
+  {
+   "id": "A-100812",
+   "owner": "lina811",
+   "balance": 2650000
+  },
+  {
+   "id": "A-100813",
+   "owner": "made812",
+   "balance": 722500
+  },
+  {
+   "id": "A-100814",
+   "owner": "nur813",
+   "balance": 2074000
+  },
+  {
+   "id": "A-100815",
+   "owner": "oki814",
+   "balance": 3679000
+  },
+  {
+   "id": "A-100816",
+   "owner": "putri815",
+   "balance": 0
+  },
+  {
+   "id": "A-100817",
+   "owner": "rizal816",
+   "balance": 249500
+  },
+  {
+   "id": "A-100818",
+   "owner": "sari817",
+   "balance": 0
+  },
+  {
+   "id": "A-100819",
+   "owner": "tono818",
+   "balance": 0
+  },
+  {
+   "id": "A-100820",
+   "owner": "wulan819",
+   "balance": 1395000
+  },
+  {
+   "id": "A-100821",
+   "owner": "andi820",
+   "balance": 0
+  },
+  {
+   "id": "A-100822",
+   "owner": "budi821",
+   "balance": 4181500
+  },
+  {
+   "id": "A-100823",
+   "owner": "citra822",
+   "balance": 660500
+  },
+  {
+   "id": "A-100824",
+   "owner": "dewi823",
+   "balance": 1402000
+  },
+  {
+   "id": "A-100825",
+   "owner": "eko824",
+   "balance": 1861000
+  },
+  {
+   "id": "A-100826",
+   "owner": "fajar825",
+   "balance": 0
+  },
+  {
+   "id": "A-100827",
+   "owner": "gita826",
+   "balance": 931500
+  },
+  {
+   "id": "A-100828",
+   "owner": "hadi827",
+   "balance": 0
+  },
+  {
+   "id": "A-100829",
+   "owner": "indah828",
+   "balance": 197500
+  },
+  {
+   "id": "A-100830",
+   "owner": "joko829",
+   "balance": 0
+  },
+  {
+   "id": "A-100831",
+   "owner": "kartika830",
+   "balance": 3660500
+  },
+  {
+   "id": "A-100832",
+   "owner": "lina831",
+   "balance": 0
+  },
+  {
+   "id": "A-100833",
+   "owner": "made832",
+   "balance": 138000
+  },
+  {
+   "id": "A-100834",
+   "owner": "nur833",
+   "balance": 3815500
+  },
+  {
+   "id": "A-100835",
+   "owner": "oki834",
+   "balance": 0
+  },
+  {
+   "id": "A-100836",
+   "owner": "putri835",
+   "balance": 0
+  },
+  {
+   "id": "A-100837",
+   "owner": "rizal836",
+   "balance": 0
+  },
+  {
+   "id": "A-100838",
+   "owner": "sari837",
+   "balance": 0
+  },
+  {
+   "id": "A-100839",
+   "owner": "tono838",
+   "balance": 0
+  },
+  {
+   "id": "A-100840",
+   "owner": "wulan839",
+   "balance": 675000
+  },
+  {
+   "id": "A-100841",
+   "owner": "andi840",
+   "balance": 339500
+  },
+  {
+   "id": "A-100842",
+   "owner": "budi841",
+   "balance": 4331500
+  },
+  {
+   "id": "A-100843",
+   "owner": "citra842",
+   "balance": 0
+  },
+  {
+   "id": "A-100844",
+   "owner": "dewi843",
+   "balance": 0
+  },
+  {
+   "id": "A-100845",
+   "owner": "eko844",
+   "balance": 0
+  },
+  {
+   "id": "A-100846",
+   "owner": "fajar845",
+   "balance": 0
+  },
+  {
+   "id": "A-100847",
+   "owner": "gita846",
+   "balance": 3546500
+  },
+  {
+   "id": "A-100848",
+   "owner": "hadi847",
+   "balance": 1642500
+  },
+  {
+   "id": "A-100849",
+   "owner": "indah848",
+   "balance": 4147000
+  },
+  {
+   "id": "A-100850",
+   "owner": "joko849",
+   "balance": 3206000
+  },
+  {
+   "id": "A-100851",
+   "owner": "kartika850",
+   "balance": 3320500
+  },
+  {
+   "id": "A-100852",
+   "owner": "lina851",
+   "balance": 3523500
+  },
+  {
+   "id": "A-100853",
+   "owner": "made852",
+   "balance": 0
+  },
+  {
+   "id": "A-100854",
+   "owner": "nur853",
+   "balance": 164500
+  },
+  {
+   "id": "A-100855",
+   "owner": "oki854",
+   "balance": 4196000
+  },
+  {
+   "id": "A-100856",
+   "owner": "putri855",
+   "balance": 0
+  },
+  {
+   "id": "A-100857",
+   "owner": "rizal856",
+   "balance": 4747000
+  },
+  {
+   "id": "A-100858",
+   "owner": "sari857",
+   "balance": 4950500
+  },
+  {
+   "id": "A-100859",
+   "owner": "tono858",
+   "balance": 3557500
+  },
+  {
+   "id": "A-100860",
+   "owner": "wulan859",
+   "balance": 0
+  },
+  {
+   "id": "A-100861",
+   "owner": "andi860",
+   "balance": 21500
+  },
+  {
+   "id": "A-100862",
+   "owner": "budi861",
+   "balance": 0
+  },
+  {
+   "id": "A-100863",
+   "owner": "citra862",
+   "balance": 4462500
+  },
+  {
+   "id": "A-100864",
+   "owner": "dewi863",
+   "balance": 1078000
+  },
+  {
+   "id": "A-100865",
+   "owner": "eko864",
+   "balance": 0
+  },
+  {
+   "id": "A-100866",
+   "owner": "fajar865",
+   "balance": 0
+  },
+  {
+   "id": "A-100867",
+   "owner": "gita866",
+   "balance": 0
+  },
+  {
+   "id": "A-100868",
+   "owner": "hadi867",
+   "balance": 0
+  },
+  {
+   "id": "A-100869",
+   "owner": "indah868",
+   "balance": 0
+  },
+  {
+   "id": "A-100870",
+   "owner": "joko869",
+   "balance": 1124000
+  },
+  {
+   "id": "A-100871",
+   "owner": "kartika870",
+   "balance": 2161000
+  },
+  {
+   "id": "A-100872",
+   "owner": "lina871",
+   "balance": 0
+  },
+  {
+   "id": "A-100873",
+   "owner": "made872",
+   "balance": 0
+  },
+  {
+   "id": "A-100874",
+   "owner": "nur873",
+   "balance": 1961500
+  },
+  {
+   "id": "A-100875",
+   "owner": "oki874",
+   "balance": 0
+  },
+  {
+   "id": "A-100876",
+   "owner": "putri875",
+   "balance": 352000
+  },
+  {
+   "id": "A-100877",
+   "owner": "rizal876",
+   "balance": 0
+  },
+  {
+   "id": "A-100878",
+   "owner": "sari877",
+   "balance": 0
+  },
+  {
+   "id": "A-100879",
+   "owner": "tono878",
+   "balance": 0
+  },
+  {
+   "id": "A-100880",
+   "owner": "wulan879",
+   "balance": 0
+  },
+  {
+   "id": "A-100881",
+   "owner": "andi880",
+   "balance": 2535500
+  },
+  {
+   "id": "A-100882",
+   "owner": "budi881",
+   "balance": 0
+  },
+  {
+   "id": "A-100883",
+   "owner": "citra882",
+   "balance": 4159000
+  },
+  {
+   "id": "A-100884",
+   "owner": "dewi883",
+   "balance": 0
+  },
+  {
+   "id": "A-100885",
+   "owner": "eko884",
+   "balance": 2145500
+  },
+  {
+   "id": "A-100886",
+   "owner": "fajar885",
+   "balance": 0
+  },
+  {
+   "id": "A-100887",
+   "owner": "gita886",
+   "balance": 0
+  },
+  {
+   "id": "A-100888",
+   "owner": "hadi887",
+   "balance": 4316500
+  },
+  {
+   "id": "A-100889",
+   "owner": "indah888",
+   "balance": 1390000
+  },
+  {
+   "id": "A-100890",
+   "owner": "joko889",
+   "balance": 0
+  },
+  {
+   "id": "A-100891",
+   "owner": "kartika890",
+   "balance": 1065500
+  },
+  {
+   "id": "A-100892",
+   "owner": "lina891",
+   "balance": 0
+  },
+  {
+   "id": "A-100893",
+   "owner": "made892",
+   "balance": 675500
+  },
+  {
+   "id": "A-100894",
+   "owner": "nur893",
+   "balance": 4733000
+  },
+  {
+   "id": "A-100895",
+   "owner": "oki894",
+   "balance": 3407500
+  },
+  {
+   "id": "A-100896",
+   "owner": "putri895",
+   "balance": 2438500
+  },
+  {
+   "id": "A-100897",
+   "owner": "rizal896",
+   "balance": 801500
+  },
+  {
+   "id": "A-100898",
+   "owner": "sari897",
+   "balance": 3606000
+  },
+  {
+   "id": "A-100899",
+   "owner": "tono898",
+   "balance": 2685500
+  },
+  {
+   "id": "A-100900",
+   "owner": "wulan899",
+   "balance": 0
+  },
+  {
+   "id": "A-100901",
+   "owner": "andi900",
+   "balance": 0
+  },
+  {
+   "id": "A-100902",
+   "owner": "budi901",
+   "balance": 867000
+  },
+  {
+   "id": "A-100903",
+   "owner": "citra902",
+   "balance": 122500
+  },
+  {
+   "id": "A-100904",
+   "owner": "dewi903",
+   "balance": 3708000
+  },
+  {
+   "id": "A-100905",
+   "owner": "eko904",
+   "balance": 2224000
+  },
+  {
+   "id": "A-100906",
+   "owner": "fajar905",
+   "balance": 0
+  },
+  {
+   "id": "A-100907",
+   "owner": "gita906",
+   "balance": 0
+  },
+  {
+   "id": "A-100908",
+   "owner": "hadi907",
+   "balance": 135000
+  },
+  {
+   "id": "A-100909",
+   "owner": "indah908",
+   "balance": 597500
+  },
+  {
+   "id": "A-100910",
+   "owner": "joko909",
+   "balance": 0
+  },
+  {
+   "id": "A-100911",
+   "owner": "kartika910",
+   "balance": 0
+  },
+  {
+   "id": "A-100912",
+   "owner": "lina911",
+   "balance": 4716000
+  },
+  {
+   "id": "A-100913",
+   "owner": "made912",
+   "balance": 0
+  },
+  {
+   "id": "A-100914",
+   "owner": "nur913",
+   "balance": 0
+  },
+  {
+   "id": "A-100915",
+   "owner": "oki914",
+   "balance": 2254500
+  },
+  {
+   "id": "A-100916",
+   "owner": "putri915",
+   "balance": 0
+  },
+  {
+   "id": "A-100917",
+   "owner": "rizal916",
+   "balance": 1083000
+  },
+  {
+   "id": "A-100918",
+   "owner": "sari917",
+   "balance": 0
+  },
+  {
+   "id": "A-100919",
+   "owner": "tono918",
+   "balance": 0
+  },
+  {
+   "id": "A-100920",
+   "owner": "wulan919",
+   "balance": 537000
+  },
+  {
+   "id": "A-100921",
+   "owner": "andi920",
+   "balance": 2122500
+  },
+  {
+   "id": "A-100922",
+   "owner": "budi921",
+   "balance": 0
+  },
+  {
+   "id": "A-100923",
+   "owner": "citra922",
+   "balance": 0
+  },
+  {
+   "id": "A-100924",
+   "owner": "dewi923",
+   "balance": 3301500
+  },
+  {
+   "id": "A-100925",
+   "owner": "eko924",
+   "balance": 4341500
+  },
+  {
+   "id": "A-100926",
+   "owner": "fajar925",
+   "balance": 0
+  },
+  {
+   "id": "A-100927",
+   "owner": "gita926",
+   "balance": 2957000
+  },
+  {
+   "id": "A-100928",
+   "owner": "hadi927",
+   "balance": 933500
+  },
+  {
+   "id": "A-100929",
+   "owner": "indah928",
+   "balance": 958000
+  },
+  {
+   "id": "A-100930",
+   "owner": "joko929",
+   "balance": 2910500
+  },
+  {
+   "id": "A-100931",
+   "owner": "kartika930",
+   "balance": 427500
+  },
+  {
+   "id": "A-100932",
+   "owner": "lina931",
+   "balance": 0
+  },
+  {
+   "id": "A-100933",
+   "owner": "made932",
+   "balance": 1928500
+  },
+  {
+   "id": "A-100934",
+   "owner": "nur933",
+   "balance": 0
+  },
+  {
+   "id": "A-100935",
+   "owner": "oki934",
+   "balance": 4477500
+  },
+  {
+   "id": "A-100936",
+   "owner": "putri935",
+   "balance": 0
+  },
+  {
+   "id": "A-100937",
+   "owner": "rizal936",
+   "balance": 0
+  },
+  {
+   "id": "A-100938",
+   "owner": "sari937",
+   "balance": 0
+  },
+  {
+   "id": "A-100939",
+   "owner": "tono938",
+   "balance": 0
+  },
+  {
+   "id": "A-100940",
+   "owner": "wulan939",
+   "balance": 1086500
+  },
+  {
+   "id": "A-100941",
+   "owner": "andi940",
+   "balance": 0
+  },
+  {
+   "id": "A-100942",
+   "owner": "budi941",
+   "balance": 0
+  },
+  {
+   "id": "A-100943",
+   "owner": "citra942",
+   "balance": 0
+  },
+  {
+   "id": "A-100944",
+   "owner": "dewi943",
+   "balance": 0
+  },
+  {
+   "id": "A-100945",
+   "owner": "eko944",
+   "balance": 100000
+  },
+  {
+   "id": "A-100946",
+   "owner": "fajar945",
+   "balance": 0
+  },
+  {
+   "id": "A-100947",
+   "owner": "gita946",
+   "balance": 384000
+  },
+  {
+   "id": "A-100948",
+   "owner": "hadi947",
+   "balance": 4565500
+  },
+  {
+   "id": "A-100949",
+   "owner": "indah948",
+   "balance": 4645500
+  },
+  {
+   "id": "A-100950",
+   "owner": "joko949",
+   "balance": 0
+  },
+  {
+   "id": "A-100951",
+   "owner": "kartika950",
+   "balance": 2337500
+  },
+  {
+   "id": "A-100952",
+   "owner": "lina951",
+   "balance": 0
+  },
+  {
+   "id": "A-100953",
+   "owner": "made952",
+   "balance": 4984000
+  },
+  {
+   "id": "A-100954",
+   "owner": "nur953",
+   "balance": 0
+  },
+  {
+   "id": "A-100955",
+   "owner": "oki954",
+   "balance": 1799000
+  },
+  {
+   "id": "A-100956",
+   "owner": "putri955",
+   "balance": 0
+  },
+  {
+   "id": "A-100957",
+   "owner": "rizal956",
+   "balance": 0
+  },
+  {
+   "id": "A-100958",
+   "owner": "sari957",
+   "balance": 3327500
+  },
+  {
+   "id": "A-100959",
+   "owner": "tono958",
+   "balance": 1203000
+  },
+  {
+   "id": "A-100960",
+   "owner": "wulan959",
+   "balance": 0
+  },
+  {
+   "id": "A-100961",
+   "owner": "andi960",
+   "balance": 0
+  },
+  {
+   "id": "A-100962",
+   "owner": "budi961",
+   "balance": 2294000
+  },
+  {
+   "id": "A-100963",
+   "owner": "citra962",
+   "balance": 578500
+  },
+  {
+   "id": "A-100964",
+   "owner": "dewi963",
+   "balance": 2059500
+  },
+  {
+   "id": "A-100965",
+   "owner": "eko964",
+   "balance": 3570000
+  },
+  {
+   "id": "A-100966",
+   "owner": "fajar965",
+   "balance": 0
+  },
+  {
+   "id": "A-100967",
+   "owner": "gita966",
+   "balance": 0
+  },
+  {
+   "id": "A-100968",
+   "owner": "hadi967",
+   "balance": 1030000
+  },
+  {
+   "id": "A-100969",
+   "owner": "indah968",
+   "balance": 0
+  },
+  {
+   "id": "A-100970",
+   "owner": "joko969",
+   "balance": 313000
+  },
+  {
+   "id": "A-100971",
+   "owner": "kartika970",
+   "balance": 15500
+  },
+  {
+   "id": "A-100972",
+   "owner": "lina971",
+   "balance": 3445000
+  },
+  {
+   "id": "A-100973",
+   "owner": "made972",
+   "balance": 4958500
+  },
+  {
+   "id": "A-100974",
+   "owner": "nur973",
+   "balance": 0
+  },
+  {
+   "id": "A-100975",
+   "owner": "oki974",
+   "balance": 0
+  },
+  {
+   "id": "A-100976",
+   "owner": "putri975",
+   "balance": 0
+  },
+  {
+   "id": "A-100977",
+   "owner": "rizal976",
+   "balance": 3551000
+  },
+  {
+   "id": "A-100978",
+   "owner": "sari977",
+   "balance": 3446000
+  },
+  {
+   "id": "A-100979",
+   "owner": "tono978",
+   "balance": 0
+  },
+  {
+   "id": "A-100980",
+   "owner": "wulan979",
+   "balance": 0
+  },
+  {
+   "id": "A-100981",
+   "owner": "andi980",
+   "balance": 0
+  },
+  {
+   "id": "A-100982",
+   "owner": "budi981",
+   "balance": 0
+  },
+  {
+   "id": "A-100983",
+   "owner": "citra982",
+   "balance": 0
+  },
+  {
+   "id": "A-100984",
+   "owner": "dewi983",
+   "balance": 1773500
+  },
+  {
+   "id": "A-100985",
+   "owner": "eko984",
+   "balance": 0
+  },
+  {
+   "id": "A-100986",
+   "owner": "fajar985",
+   "balance": 3173000
+  },
+  {
+   "id": "A-100987",
+   "owner": "gita986",
+   "balance": 4873500
+  },
+  {
+   "id": "A-100988",
+   "owner": "hadi987",
+   "balance": 0
+  },
+  {
+   "id": "A-100989",
+   "owner": "indah988",
+   "balance": 1382500
+  },
+  {
+   "id": "A-100990",
+   "owner": "joko989",
+   "balance": 3758500
+  },
+  {
+   "id": "A-100991",
+   "owner": "kartika990",
+   "balance": 2880000
+  },
+  {
+   "id": "A-100992",
+   "owner": "lina991",
+   "balance": 1816000
+  },
+  {
+   "id": "A-100993",
+   "owner": "made992",
+   "balance": 4672000
+  },
+  {
+   "id": "A-100994",
+   "owner": "nur993",
+   "balance": 659500
+  },
+  {
+   "id": "A-100995",
+   "owner": "oki994",
+   "balance": 0
+  },
+  {
+   "id": "A-100996",
+   "owner": "putri995",
+   "balance": 4974500
+  },
+  {
+   "id": "A-100997",
+   "owner": "rizal996",
+   "balance": 0
+  },
+  {
+   "id": "A-100998",
+   "owner": "sari997",
+   "balance": 0
+  },
+  {
+   "id": "A-100999",
+   "owner": "tono998",
+   "balance": 4994500
+  },
+  {
+   "id": "A-101000",
+   "owner": "wulan999",
+   "balance": 0
+  },
+  {
+   "id": "A-101001",
+   "owner": "andi1000",
+   "balance": 4105500
+  },
+  {
+   "id": "A-101002",
+   "owner": "budi1001",
+   "balance": 0
+  },
+  {
+   "id": "A-101003",
+   "owner": "citra1002",
+   "balance": 0
+  },
+  {
+   "id": "A-101004",
+   "owner": "dewi1003",
+   "balance": 0
+  },
+  {
+   "id": "A-101005",
+   "owner": "eko1004",
+   "balance": 0
+  },
+  {
+   "id": "A-101006",
+   "owner": "fajar1005",
+   "balance": 1248000
+  },
+  {
+   "id": "A-101007",
+   "owner": "gita1006",
+   "balance": 141000
+  },
+  {
+   "id": "A-101008",
+   "owner": "hadi1007",
+   "balance": 1360500
+  },
+  {
+   "id": "A-101009",
+   "owner": "indah1008",
+   "balance": 0
+  },
+  {
+   "id": "A-101010",
+   "owner": "joko1009",
+   "balance": 0
+  },
+  {
+   "id": "A-101011",
+   "owner": "kartika1010",
+   "balance": 0
+  },
+  {
+   "id": "A-101012",
+   "owner": "lina1011",
+   "balance": 3357000
+  },
+  {
+   "id": "A-101013",
+   "owner": "made1012",
+   "balance": 1250000
+  },
+  {
+   "id": "A-101014",
+   "owner": "nur1013",
+   "balance": 29500
+  },
+  {
+   "id": "A-101015",
+   "owner": "oki1014",
+   "balance": 1791000
+  },
+  {
+   "id": "A-101016",
+   "owner": "putri1015",
+   "balance": 4803500
+  },
+  {
+   "id": "A-101017",
+   "owner": "rizal1016",
+   "balance": 0
+  },
+  {
+   "id": "A-101018",
+   "owner": "sari1017",
+   "balance": 2694500
+  },
+  {
+   "id": "A-101019",
+   "owner": "tono1018",
+   "balance": 0
+  },
+  {
+   "id": "A-101020",
+   "owner": "wulan1019",
+   "balance": 970000
+  },
+  {
+   "id": "A-101021",
+   "owner": "andi1020",
+   "balance": 0
+  },
+  {
+   "id": "A-101022",
+   "owner": "budi1021",
+   "balance": 0
+  },
+  {
+   "id": "A-101023",
+   "owner": "citra1022",
+   "balance": 0
+  },
+  {
+   "id": "A-101024",
+   "owner": "dewi1023",
+   "balance": 0
+  },
+  {
+   "id": "A-101025",
+   "owner": "eko1024",
+   "balance": 0
+  },
+  {
+   "id": "A-101026",
+   "owner": "fajar1025",
+   "balance": 2422000
+  },
+  {
+   "id": "A-101027",
+   "owner": "gita1026",
+   "balance": 0
+  },
+  {
+   "id": "A-101028",
+   "owner": "hadi1027",
+   "balance": 0
+  },
+  {
+   "id": "A-101029",
+   "owner": "indah1028",
+   "balance": 4389000
+  },
+  {
+   "id": "A-101030",
+   "owner": "joko1029",
+   "balance": 220500
+  },
+  {
+   "id": "A-101031",
+   "owner": "kartika1030",
+   "balance": 0
+  },
+  {
+   "id": "A-101032",
+   "owner": "lina1031",
+   "balance": 4621500
+  },
+  {
+   "id": "A-101033",
+   "owner": "made1032",
+   "balance": 0
+  },
+  {
+   "id": "A-101034",
+   "owner": "nur1033",
+   "balance": 601000
+  },
+  {
+   "id": "A-101035",
+   "owner": "oki1034",
+   "balance": 342500
+  },
+  {
+   "id": "A-101036",
+   "owner": "putri1035",
+   "balance": 0
+  },
+  {
+   "id": "A-101037",
+   "owner": "rizal1036",
+   "balance": 4780000
+  },
+  {
+   "id": "A-101038",
+   "owner": "sari1037",
+   "balance": 0
+  },
+  {
+   "id": "A-101039",
+   "owner": "tono1038",
+   "balance": 1431500
+  },
+  {
+   "id": "A-101040",
+   "owner": "wulan1039",
+   "balance": 0
+  },
+  {
+   "id": "A-101041",
+   "owner": "andi1040",
+   "balance": 2331500
+  },
+  {
+   "id": "A-101042",
+   "owner": "budi1041",
+   "balance": 0
+  },
+  {
+   "id": "A-101043",
+   "owner": "citra1042",
+   "balance": 128500
+  },
+  {
+   "id": "A-101044",
+   "owner": "dewi1043",
+   "balance": 4275000
+  },
+  {
+   "id": "A-101045",
+   "owner": "eko1044",
+   "balance": 0
+  },
+  {
+   "id": "A-101046",
+   "owner": "fajar1045",
+   "balance": 4015500
+  },
+  {
+   "id": "A-101047",
+   "owner": "gita1046",
+   "balance": 0
+  },
+  {
+   "id": "A-101048",
+   "owner": "hadi1047",
+   "balance": 2513000
+  },
+  {
+   "id": "A-101049",
+   "owner": "indah1048",
+   "balance": 0
+  },
+  {
+   "id": "A-101050",
+   "owner": "joko1049",
+   "balance": 4729500
+  },
+  {
+   "id": "A-101051",
+   "owner": "kartika1050",
+   "balance": 3140000
+  },
+  {
+   "id": "A-101052",
+   "owner": "lina1051",
+   "balance": 0
+  },
+  {
+   "id": "A-101053",
+   "owner": "made1052",
+   "balance": 3172500
+  },
+  {
+   "id": "A-101054",
+   "owner": "nur1053",
+   "balance": 0
+  },
+  {
+   "id": "A-101055",
+   "owner": "oki1054",
+   "balance": 0
+  },
+  {
+   "id": "A-101056",
+   "owner": "putri1055",
+   "balance": 4731500
+  },
+  {
+   "id": "A-101057",
+   "owner": "rizal1056",
+   "balance": 4364000
+  },
+  {
+   "id": "A-101058",
+   "owner": "sari1057",
+   "balance": 0
+  },
+  {
+   "id": "A-101059",
+   "owner": "tono1058",
+   "balance": 0
+  },
+  {
+   "id": "A-101060",
+   "owner": "wulan1059",
+   "balance": 0
+  },
+  {
+   "id": "A-101061",
+   "owner": "andi1060",
+   "balance": 0
+  },
+  {
+   "id": "A-101062",
+   "owner": "budi1061",
+   "balance": 0
+  },
+  {
+   "id": "A-101063",
+   "owner": "citra1062",
+   "balance": 2378500
+  },
+  {
+   "id": "A-101064",
+   "owner": "dewi1063",
+   "balance": 0
+  },
+  {
+   "id": "A-101065",
+   "owner": "eko1064",
+   "balance": 0
+  },
+  {
+   "id": "A-101066",
+   "owner": "fajar1065",
+   "balance": 4946000
+  },
+  {
+   "id": "A-101067",
+   "owner": "gita1066",
+   "balance": 0
+  },
+  {
+   "id": "A-101068",
+   "owner": "hadi1067",
+   "balance": 0
+  },
+  {
+   "id": "A-101069",
+   "owner": "indah1068",
+   "balance": 0
+  },
+  {
+   "id": "A-101070",
+   "owner": "joko1069",
+   "balance": 1204500
+  },
+  {
+   "id": "A-101071",
+   "owner": "kartika1070",
+   "balance": 217000
+  },
+  {
+   "id": "A-101072",
+   "owner": "lina1071",
+   "balance": 105000
+  },
+  {
+   "id": "A-101073",
+   "owner": "made1072",
+   "balance": 0
+  },
+  {
+   "id": "A-101074",
+   "owner": "nur1073",
+   "balance": 0
+  },
+  {
+   "id": "A-101075",
+   "owner": "oki1074",
+   "balance": 0
+  },
+  {
+   "id": "A-101076",
+   "owner": "putri1075",
+   "balance": 3624000
+  },
+  {
+   "id": "A-101077",
+   "owner": "rizal1076",
+   "balance": 1880000
+  },
+  {
+   "id": "A-101078",
+   "owner": "sari1077",
+   "balance": 0
+  },
+  {
+   "id": "A-101079",
+   "owner": "tono1078",
+   "balance": 0
+  },
+  {
+   "id": "A-101080",
+   "owner": "wulan1079",
+   "balance": 3798500
+  },
+  {
+   "id": "A-101081",
+   "owner": "andi1080",
+   "balance": 4839500
+  },
+  {
+   "id": "A-101082",
+   "owner": "budi1081",
+   "balance": 0
+  },
+  {
+   "id": "A-101083",
+   "owner": "citra1082",
+   "balance": 2219500
+  },
+  {
+   "id": "A-101084",
+   "owner": "dewi1083",
+   "balance": 4287500
+  },
+  {
+   "id": "A-101085",
+   "owner": "eko1084",
+   "balance": 0
+  },
+  {
+   "id": "A-101086",
+   "owner": "fajar1085",
+   "balance": 0
+  },
+  {
+   "id": "A-101087",
+   "owner": "gita1086",
+   "balance": 0
+  },
+  {
+   "id": "A-101088",
+   "owner": "hadi1087",
+   "balance": 0
+  },
+  {
+   "id": "A-101089",
+   "owner": "indah1088",
+   "balance": 0
+  },
+  {
+   "id": "A-101090",
+   "owner": "joko1089",
+   "balance": 0
+  },
+  {
+   "id": "A-101091",
+   "owner": "kartika1090",
+   "balance": 0
+  },
+  {
+   "id": "A-101092",
+   "owner": "lina1091",
+   "balance": 0
+  },
+  {
+   "id": "A-101093",
+   "owner": "made1092",
+   "balance": 2059500
+  },
+  {
+   "id": "A-101094",
+   "owner": "nur1093",
+   "balance": 928500
+  },
+  {
+   "id": "A-101095",
+   "owner": "oki1094",
+   "balance": 1668000
+  },
+  {
+   "id": "A-101096",
+   "owner": "putri1095",
+   "balance": 0
+  },
+  {
+   "id": "A-101097",
+   "owner": "rizal1096",
+   "balance": 4602000
+  },
+  {
+   "id": "A-101098",
+   "owner": "sari1097",
+   "balance": 869500
+  },
+  {
+   "id": "A-101099",
+   "owner": "tono1098",
+   "balance": 2640500
+  },
+  {
+   "id": "A-101100",
+   "owner": "wulan1099",
+   "balance": 3312000
+  },
+  {
+   "id": "A-101101",
+   "owner": "andi1100",
+   "balance": 2076500
+  },
+  {
+   "id": "A-101102",
+   "owner": "budi1101",
+   "balance": 2136000
+  },
+  {
+   "id": "A-101103",
+   "owner": "citra1102",
+   "balance": 0
+  },
+  {
+   "id": "A-101104",
+   "owner": "dewi1103",
+   "balance": 4774500
+  },
+  {
+   "id": "A-101105",
+   "owner": "eko1104",
+   "balance": 0
+  },
+  {
+   "id": "A-101106",
+   "owner": "fajar1105",
+   "balance": 3448500
+  },
+  {
+   "id": "A-101107",
+   "owner": "gita1106",
+   "balance": 0
+  },
+  {
+   "id": "A-101108",
+   "owner": "hadi1107",
+   "balance": 0
+  },
+  {
+   "id": "A-101109",
+   "owner": "indah1108",
+   "balance": 0
+  },
+  {
+   "id": "A-101110",
+   "owner": "joko1109",
+   "balance": 0
+  },
+  {
+   "id": "A-101111",
+   "owner": "kartika1110",
+   "balance": 0
+  },
+  {
+   "id": "A-101112",
+   "owner": "lina1111",
+   "balance": 3456500
+  },
+  {
+   "id": "A-101113",
+   "owner": "made1112",
+   "balance": 0
+  },
+  {
+   "id": "A-101114",
+   "owner": "nur1113",
+   "balance": 0
+  },
+  {
+   "id": "A-101115",
+   "owner": "oki1114",
+   "balance": 4204000
+  },
+  {
+   "id": "A-101116",
+   "owner": "putri1115",
+   "balance": 0
+  },
+  {
+   "id": "A-101117",
+   "owner": "rizal1116",
+   "balance": 0
+  },
+  {
+   "id": "A-101118",
+   "owner": "sari1117",
+   "balance": 3734000
+  },
+  {
+   "id": "A-101119",
+   "owner": "tono1118",
+   "balance": 2735000
+  },
+  {
+   "id": "A-101120",
+   "owner": "wulan1119",
+   "balance": 0
+  },
+  {
+   "id": "A-101121",
+   "owner": "andi1120",
+   "balance": 1040000
+  },
+  {
+   "id": "A-101122",
+   "owner": "budi1121",
+   "balance": 2534000
+  },
+  {
+   "id": "A-101123",
+   "owner": "citra1122",
+   "balance": 0
+  },
+  {
+   "id": "A-101124",
+   "owner": "dewi1123",
+   "balance": 0
+  },
+  {
+   "id": "A-101125",
+   "owner": "eko1124",
+   "balance": 2180000
+  },
+  {
+   "id": "A-101126",
+   "owner": "fajar1125",
+   "balance": 0
+  },
+  {
+   "id": "A-101127",
+   "owner": "gita1126",
+   "balance": 3568000
+  },
+  {
+   "id": "A-101128",
+   "owner": "hadi1127",
+   "balance": 3551500
+  },
+  {
+   "id": "A-101129",
+   "owner": "indah1128",
+   "balance": 4878500
+  },
+  {
+   "id": "A-101130",
+   "owner": "joko1129",
+   "balance": 0
+  },
+  {
+   "id": "A-101131",
+   "owner": "kartika1130",
+   "balance": 3066000
+  },
+  {
+   "id": "A-101132",
+   "owner": "lina1131",
+   "balance": 0
+  },
+  {
+   "id": "A-101133",
+   "owner": "made1132",
+   "balance": 0
+  },
+  {
+   "id": "A-101134",
+   "owner": "nur1133",
+   "balance": 0
+  },
+  {
+   "id": "A-101135",
+   "owner": "oki1134",
+   "balance": 3956500
+  },
+  {
+   "id": "A-101136",
+   "owner": "putri1135",
+   "balance": 3492500
+  },
+  {
+   "id": "A-101137",
+   "owner": "rizal1136",
+   "balance": 0
+  },
+  {
+   "id": "A-101138",
+   "owner": "sari1137",
+   "balance": 1486000
+  },
+  {
+   "id": "A-101139",
+   "owner": "tono1138",
+   "balance": 2370500
+  },
+  {
+   "id": "A-101140",
+   "owner": "wulan1139",
+   "balance": 0
+  },
+  {
+   "id": "A-101141",
+   "owner": "andi1140",
+   "balance": 2827500
+  },
+  {
+   "id": "A-101142",
+   "owner": "budi1141",
+   "balance": 4682500
+  },
+  {
+   "id": "A-101143",
+   "owner": "citra1142",
+   "balance": 4799500
+  },
+  {
+   "id": "A-101144",
+   "owner": "dewi1143",
+   "balance": 0
+  },
+  {
+   "id": "A-101145",
+   "owner": "eko1144",
+   "balance": 0
+  },
+  {
+   "id": "A-101146",
+   "owner": "fajar1145",
+   "balance": 3794500
+  },
+  {
+   "id": "A-101147",
+   "owner": "gita1146",
+   "balance": 0
+  },
+  {
+   "id": "A-101148",
+   "owner": "hadi1147",
+   "balance": 0
+  },
+  {
+   "id": "A-101149",
+   "owner": "indah1148",
+   "balance": 1685000
+  },
+  {
+   "id": "A-101150",
+   "owner": "joko1149",
+   "balance": 0
+  },
+  {
+   "id": "A-101151",
+   "owner": "kartika1150",
+   "balance": 899500
+  },
+  {
+   "id": "A-101152",
+   "owner": "lina1151",
+   "balance": 4894500
+  },
+  {
+   "id": "A-101153",
+   "owner": "made1152",
+   "balance": 3243000
+  },
+  {
+   "id": "A-101154",
+   "owner": "nur1153",
+   "balance": 3441000
+  },
+  {
+   "id": "A-101155",
+   "owner": "oki1154",
+   "balance": 1356000
+  },
+  {
+   "id": "A-101156",
+   "owner": "putri1155",
+   "balance": 3123500
+  },
+  {
+   "id": "A-101157",
+   "owner": "rizal1156",
+   "balance": 0
+  },
+  {
+   "id": "A-101158",
+   "owner": "sari1157",
+   "balance": 4621000
+  },
+  {
+   "id": "A-101159",
+   "owner": "tono1158",
+   "balance": 2330000
+  },
+  {
+   "id": "A-101160",
+   "owner": "wulan1159",
+   "balance": 4324000
+  },
+  {
+   "id": "A-101161",
+   "owner": "andi1160",
+   "balance": 0
+  },
+  {
+   "id": "A-101162",
+   "owner": "budi1161",
+   "balance": 0
+  },
+  {
+   "id": "A-101163",
+   "owner": "citra1162",
+   "balance": 692500
+  },
+  {
+   "id": "A-101164",
+   "owner": "dewi1163",
+   "balance": 3724000
+  },
+  {
+   "id": "A-101165",
+   "owner": "eko1164",
+   "balance": 4620000
+  },
+  {
+   "id": "A-101166",
+   "owner": "fajar1165",
+   "balance": 0
+  },
+  {
+   "id": "A-101167",
+   "owner": "gita1166",
+   "balance": 0
+  },
+  {
+   "id": "A-101168",
+   "owner": "hadi1167",
+   "balance": 224000
+  },
+  {
+   "id": "A-101169",
+   "owner": "indah1168",
+   "balance": 3611500
+  },
+  {
+   "id": "A-101170",
+   "owner": "joko1169",
+   "balance": 1210500
+  },
+  {
+   "id": "A-101171",
+   "owner": "kartika1170",
+   "balance": 2899500
+  },
+  {
+   "id": "A-101172",
+   "owner": "lina1171",
+   "balance": 1392500
+  },
+  {
+   "id": "A-101173",
+   "owner": "made1172",
+   "balance": 652000
+  },
+  {
+   "id": "A-101174",
+   "owner": "nur1173",
+   "balance": 4118000
+  },
+  {
+   "id": "A-101175",
+   "owner": "oki1174",
+   "balance": 0
+  },
+  {
+   "id": "A-101176",
+   "owner": "putri1175",
+   "balance": 1285500
+  },
+  {
+   "id": "A-101177",
+   "owner": "rizal1176",
+   "balance": 632000
+  },
+  {
+   "id": "A-101178",
+   "owner": "sari1177",
+   "balance": 3527000
+  },
+  {
+   "id": "A-101179",
+   "owner": "tono1178",
+   "balance": 995500
+  },
+  {
+   "id": "A-101180",
+   "owner": "wulan1179",
+   "balance": 1164000
+  },
+  {
+   "id": "A-101181",
+   "owner": "andi1180",
+   "balance": 2896500
+  },
+  {
+   "id": "A-101182",
+   "owner": "budi1181",
+   "balance": 1699000
+  },
+  {
+   "id": "A-101183",
+   "owner": "citra1182",
+   "balance": 0
+  },
+  {
+   "id": "A-101184",
+   "owner": "dewi1183",
+   "balance": 0
+  },
+  {
+   "id": "A-101185",
+   "owner": "eko1184",
+   "balance": 0
+  },
+  {
+   "id": "A-101186",
+   "owner": "fajar1185",
+   "balance": 0
+  },
+  {
+   "id": "A-101187",
+   "owner": "gita1186",
+   "balance": 1026500
+  },
+  {
+   "id": "A-101188",
+   "owner": "hadi1187",
+   "balance": 0
+  },
+  {
+   "id": "A-101189",
+   "owner": "indah1188",
+   "balance": 4963000
+  },
+  {
+   "id": "A-101190",
+   "owner": "joko1189",
+   "balance": 3034000
+  },
+  {
+   "id": "A-101191",
+   "owner": "kartika1190",
+   "balance": 3672000
+  },
+  {
+   "id": "A-101192",
+   "owner": "lina1191",
+   "balance": 0
+  },
+  {
+   "id": "A-101193",
+   "owner": "made1192",
+   "balance": 1251500
+  },
+  {
+   "id": "A-101194",
+   "owner": "nur1193",
+   "balance": 3567500
+  },
+  {
+   "id": "A-101195",
+   "owner": "oki1194",
+   "balance": 3452000
+  },
+  {
+   "id": "A-101196",
+   "owner": "putri1195",
+   "balance": 0
+  },
+  {
+   "id": "A-101197",
+   "owner": "rizal1196",
+   "balance": 0
+  },
+  {
+   "id": "A-101198",
+   "owner": "sari1197",
+   "balance": 0
+  },
+  {
+   "id": "A-101199",
+   "owner": "tono1198",
+   "balance": 2178000
+  },
+  {
+   "id": "A-101200",
+   "owner": "wulan1199",
+   "balance": 0
+  },
+  {
+   "id": "A-101201",
+   "owner": "andi1200",
+   "balance": 0
+  },
+  {
+   "id": "A-101202",
+   "owner": "budi1201",
+   "balance": 0
+  },
+  {
+   "id": "A-101203",
+   "owner": "citra1202",
+   "balance": 526000
+  },
+  {
+   "id": "A-101204",
+   "owner": "dewi1203",
+   "balance": 875500
+  },
+  {
+   "id": "A-101205",
+   "owner": "eko1204",
+   "balance": 0
+  },
+  {
+   "id": "A-101206",
+   "owner": "fajar1205",
+   "balance": 0
+  },
+  {
+   "id": "A-101207",
+   "owner": "gita1206",
+   "balance": 0
+  },
+  {
+   "id": "A-101208",
+   "owner": "hadi1207",
+   "balance": 0
+  },
+  {
+   "id": "A-101209",
+   "owner": "indah1208",
+   "balance": 2653500
+  },
+  {
+   "id": "A-101210",
+   "owner": "joko1209",
+   "balance": 0
+  },
+  {
+   "id": "A-101211",
+   "owner": "kartika1210",
+   "balance": 1907500
+  },
+  {
+   "id": "A-101212",
+   "owner": "lina1211",
+   "balance": 3290500
+  },
+  {
+   "id": "A-101213",
+   "owner": "made1212",
+   "balance": 4518500
+  },
+  {
+   "id": "A-101214",
+   "owner": "nur1213",
+   "balance": 0
+  },
+  {
+   "id": "A-101215",
+   "owner": "oki1214",
+   "balance": 1415000
+  },
+  {
+   "id": "A-101216",
+   "owner": "putri1215",
+   "balance": 3947000
+  },
+  {
+   "id": "A-101217",
+   "owner": "rizal1216",
+   "balance": 3030000
+  },
+  {
+   "id": "A-101218",
+   "owner": "sari1217",
+   "balance": 1348500
+  },
+  {
+   "id": "A-101219",
+   "owner": "tono1218",
+   "balance": 177500
+  },
+  {
+   "id": "A-101220",
+   "owner": "wulan1219",
+   "balance": 0
+  },
+  {
+   "id": "A-101221",
+   "owner": "andi1220",
+   "balance": 0
+  },
+  {
+   "id": "A-101222",
+   "owner": "budi1221",
+   "balance": 0
+  },
+  {
+   "id": "A-101223",
+   "owner": "citra1222",
+   "balance": 0
+  },
+  {
+   "id": "A-101224",
+   "owner": "dewi1223",
+   "balance": 2591000
+  },
+  {
+   "id": "A-101225",
+   "owner": "eko1224",
+   "balance": 3143500
+  },
+  {
+   "id": "A-101226",
+   "owner": "fajar1225",
+   "balance": 2211000
+  },
+  {
+   "id": "A-101227",
+   "owner": "gita1226",
+   "balance": 0
+  },
+  {
+   "id": "A-101228",
+   "owner": "hadi1227",
+   "balance": 0
+  },
+  {
+   "id": "A-101229",
+   "owner": "indah1228",
+   "balance": 3404500
+  },
+  {
+   "id": "A-101230",
+   "owner": "joko1229",
+   "balance": 0
+  },
+  {
+   "id": "A-101231",
+   "owner": "kartika1230",
+   "balance": 0
+  },
+  {
+   "id": "A-101232",
+   "owner": "lina1231",
+   "balance": 1278000
+  },
+  {
+   "id": "A-101233",
+   "owner": "made1232",
+   "balance": 791000
+  },
+  {
+   "id": "A-101234",
+   "owner": "nur1233",
+   "balance": 2524000
+  },
+  {
+   "id": "A-101235",
+   "owner": "oki1234",
+   "balance": 0
+  },
+  {
+   "id": "A-101236",
+   "owner": "putri1235",
+   "balance": 2886500
+  },
+  {
+   "id": "A-101237",
+   "owner": "rizal1236",
+   "balance": 0
+  },
+  {
+   "id": "A-101238",
+   "owner": "sari1237",
+   "balance": 3275000
+  },
+  {
+   "id": "A-101239",
+   "owner": "tono1238",
+   "balance": 0
+  },
+  {
+   "id": "A-101240",
+   "owner": "wulan1239",
+   "balance": 4545500
+  },
+  {
+   "id": "A-101241",
+   "owner": "andi1240",
+   "balance": 0
+  },
+  {
+   "id": "A-101242",
+   "owner": "budi1241",
+   "balance": 4348500
+  },
+  {
+   "id": "A-101243",
+   "owner": "citra1242",
+   "balance": 0
+  },
+  {
+   "id": "A-101244",
+   "owner": "dewi1243",
+   "balance": 0
+  },
+  {
+   "id": "A-101245",
+   "owner": "eko1244",
+   "balance": 0
+  },
+  {
+   "id": "A-101246",
+   "owner": "fajar1245",
+   "balance": 0
+  },
+  {
+   "id": "A-101247",
+   "owner": "gita1246",
+   "balance": 2260000
+  },
+  {
+   "id": "A-101248",
+   "owner": "hadi1247",
+   "balance": 0
+  },
+  {
+   "id": "A-101249",
+   "owner": "indah1248",
+   "balance": 4067000
+  },
+  {
+   "id": "A-101250",
+   "owner": "joko1249",
+   "balance": 4434000
+  }
+ ]
+}

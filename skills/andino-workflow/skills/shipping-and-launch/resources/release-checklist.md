@@ -1,36 +1,99 @@
-# Release decision and rollback record
+# Release checklist by surface
 
-## Readiness review
+Walk the sections the candidate's diff touches (step 3). Record every item you check as a gate:
 
-Fill in the candidate and previous production artifact, release stage, change summary, affected journeys and cohorts, release owner, observer, recovery executor, authorization and execution status. Use the repository's Definition of Done and release policy. Record evidence for applicable checks.
+```text
+| Gate | Expected | Observed (command or file, and result) | Status | Owner / next action |
+```
 
-| Surface | Select checks appropriate to the change |
-| --- | --- |
-| Build and behavior | Candidate build, unit/integration/end-to-end tests for changed paths, lint/types, review and staging smoke. |
-| Security | Native dependency audit, secret and configuration handling, input validation, authorization and abuse controls for exposed endpoints. |
-| Performance | Compare critical-path latency, throughput, saturation and affected client budgets to their baselines. |
-| Accessibility | For changed UI, exercise keyboard and focus behavior, accessible names, errors and contrast. |
-| Infrastructure and data | Verify production config, health, telemetry, dependency and mixed-version compatibility, migration recovery and data reconciliation. |
-| Documentation | Review release notes, operator runbook, user instructions and API compatibility notes where affected. |
+Status is PASS, FAIL, UNAVAILABLE (could not be checked: say why and who can) or NOT APPLICABLE
+(say why). Use the repository's Definition of Done and release policy first; the items below fill
+the gaps. A routine Standard release keeps the table short: one row per touched surface, with the
+items that matter for this diff.
 
-For each required check record **gate | expected | observed | evidence and time | status | owner and next action**. Use PASS, FAIL, UNAVAILABLE or NOT APPLICABLE with a reason. Keep the record compact for a routine release.
+## Build and behaviour
 
-## Stage and recovery handoff
+- [ ] Clean build of this exact candidate (tag, commit or digest), with no new warnings.
+- [ ] Unit, integration and end-to-end tests for the changed paths ran and passed; count the
+      skipped and quarantined ones and name what they would have covered.
+- [ ] Lint and type checks pass.
+- [ ] The change was reviewed and approved.
+- [ ] Staging (or a production-like environment) ran this candidate and a smoke test of the
+      critical journeys passed. Staging that was down or skipped is UNAVAILABLE, not PASS.
+- [ ] No leftover debugging output (`console.log`, `print`, `dbg!`) or TODOs that block launch.
+- [ ] Error handling covers the expected failure modes of the new paths.
+- [ ] Both flag states (off and on) are tested.
 
-- **Stage** — Cohort and candidate/control query, window and minimum volume, signal thresholds, observer, decision time and next stage. Compare like traffic and verify actual exposure. Distinguish a zero baseline with known volume from a missing baseline.
-- **Thresholds** — Use accepted release policy. For illustration, error rise up to 10% and p95 rise up to 20% can pass their individual gates. Error above 2× baseline or p95 above 50% regression can trigger recovery. Intermediate values hold. For zero baseline, use a pre-agreed absolute ceiling and denominator. Set explicit boundaries for user impact, data, security and applicable business or client signals.
-- **Error budget** — Use the service's window, remaining budget and burn policy. Example policy permits normal pace above 20%, only low-risk slow rollout above zero through 20%, and freezes feature rollout when exhausted. Excessive canary burn holds expansion even with favorable aggregate metrics.
-- **Recovery** — Record trigger, executor, approved runbook/command, target flag or previous artifact, recovery deadline, verification and escalation. Confirm data preservation and recovery separately. Check health, errors, latency, the critical journey and telemetry after each action. Verify data reconciliation if writes were exposed.
-- **Decision** — Record READY, HOLD or NO-GO, the scope and reason, evidence and the next action with owner and timing. List completed live actions separately from proposals.
+## Security
 
-## Worked cases
+Deeper review belongs to `security-and-hardening`. At release time check:
 
-These are hypothetical operator records. Their figures and policies are fixture inputs.
+- [ ] No secrets in code, config or history of the candidate (`git log -p` on the diff, a secret
+      scanner when the project has one). A found secret is a FAIL: remove it, rotate it, report
+      the file and the key name only.
+- [ ] The ecosystem's dependency audit (`npm audit`, `pip-audit`, `cargo audit`, `govulncheck`)
+      shows no critical or high finding in new or changed dependencies.
+- [ ] Input validation on every new or changed user-facing endpoint.
+- [ ] Authentication and authorization checks on new routes and actions, including who may see
+      shared data.
+- [ ] Security headers unchanged or improved (CSP, HSTS, X-Content-Type-Options).
+- [ ] Rate limiting on authentication and other abusable endpoints.
+- [ ] CORS lists specific origins; a wildcard origin never combines with credentials.
 
-| Input | Decision and operator handoff |
-| --- | --- |
-| **Routine flag.** Candidate `r42`, current `r41`. Staging smoke and both flag-state tests pass. Production health and dashboard access verified with the flag OFF. Release policy allows a 5% canary with 30 minutes and at least 1,000 requests per cohort. Owner Ana has an approved flag-off runbook. | **READY for 5% only.** Ana may enable the canary within the approved window. Compare matched request counts, errors, p95 and checkout success before expansion. If the stop rule fires, Ana disables the flag and verifies checkout and error recovery. Ana owns flag removal after stable full rollout. |
-| **Mixed canary.** Candidate `r43` at 5%. Over matched windows with sufficient volume, candidate has 24 errors in 2,000 requests (1.2%) versus control's 20 in 10,000 (0.2%). Aggregate health is green. Approved stop rule is over 2× control. | **NO-GO for expansion.** The candidate is at 6× control. The authorized operator reduces exposure per the runbook and checks cohort exposure and user-facing errors afterward. If the window had too few observations and no independently verified stop breach, HOLD at the current stage and record the next decision time and sample requirement. |
-| **Destructive migration.** Candidate `r44` drops a column still read by the prior binary. Backup exists, but restore duration and writes after cutover have not been tested. | **NO-GO for the destructive step.** The migration owner stages a compatible transition, rehearses recovery and reconciliation in a representative environment, and submits the evidence before requesting destructive-step authorization. A binary revert alone is unsafe after the drop. |
+## Performance
 
-Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md. Full MIT notice at [../references/license.md](../references/license.md). Runtime uses local resources.
+Deeper work belongs to `performance-optimization`. At release time compare with the current
+production baseline:
+
+- [ ] Critical-path latency (p95) and throughput on comparable load.
+- [ ] Core Web Vitals for changed pages at the 75th percentile: LCP at most 2.5 s, INP at most
+      200 ms, CLS at most 0.1 (web.dev "good" thresholds).
+- [ ] No N+1 queries on critical paths; new queries have the indexes they need.
+- [ ] Bundle size within its budget; images compressed, sized and lazy-loaded.
+- [ ] Caching configured for static assets and repeated queries.
+- [ ] Saturation headroom: CPU, memory, database connections, queues.
+
+## Accessibility
+
+For changed UI:
+
+- [ ] Every interactive element works with the keyboard, in a sensible order, with visible focus.
+- [ ] Focus is managed for dialogs and content that appears or changes.
+- [ ] Controls and images have accessible names; structure reads correctly in a screen reader.
+- [ ] Text contrast meets WCAG AA: 4.5:1 for normal text, 3:1 for large text.
+- [ ] Error messages are specific and tied to their fields.
+- [ ] axe-core or Lighthouse shows no new accessibility violations.
+
+## Infrastructure and data
+
+- [ ] Production configuration and environment variables are set, in code or the secret store,
+      not by hand from memory.
+- [ ] Every migration works with both the previous version and the candidate (expand, migrate,
+      contract). Destructive steps are deferred to a later release.
+- [ ] A backup exists from before the change, and a restore of it has been tested; record when.
+- [ ] Health endpoint responds and reports the deployed version.
+- [ ] Logging, error reporting and metrics for the new paths reach the dashboards, split by cohort.
+- [ ] DNS, TLS certificates and CDN configuration are in place for new hosts or assets.
+- [ ] The flag mechanism can turn the feature off; the time it takes is known.
+- [ ] Capacity covers the 100% stage at peak.
+
+## Documentation
+
+- [ ] Release notes and changelog describe what users and operators will see, including
+      removals.
+- [ ] Runbook: deploy steps, the stage plan, the rollback plan and who is on call.
+- [ ] API documentation and compatibility notes for changed contracts.
+- [ ] README or setup notes for new configuration; an ADR for an architectural decision
+      (`documentation-and-adrs`).
+- [ ] User-facing help updated where behaviour changed.
+
+## Pointers
+
+- Pipeline gates, artifact promotion and deploy order: `ci-cd-and-automation`.
+- Alert rules, SLOs and dashboards: `observability-and-instrumentation`.
+- Designing the phases of a schema or API change: `deprecation-and-migration`.
+- Browser checks of a changed page: `browser-testing-with-devtools`.
+
+Provenance: concrete items adapted from Addy Osmani's `shipping-and-launch` and its shared
+checklists (addyosmani/agent-skills 3d78ead, MIT); thresholds from web.dev and WCAG. Full notice
+in [../references/license.md](../references/license.md).

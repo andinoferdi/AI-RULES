@@ -41,7 +41,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-observability-and-instrumentation` | Useful production evidence, monitoring and runbooks. |
 | `andino-performance-optimization` | Measured bottlenecks and verified improvements. |
 | `andino-ci-cd-and-automation` | CI gates and required checks, failing or flaky runs, workflow security, deploy promotion and rollback; optional commit-check setup. |
-| `andino-shipping-and-launch` | Authorized release readiness, rollout and recovery planning. |
+| `andino-shipping-and-launch` | Size a release, decide go/no-go from cohort evidence, and hand over a stage table, rollback plan, monitoring and first-hour checks; a short answer for small changes. |
 | `andino-git-skills` | Six evidence gates for any Git change (snapshot, project check, classify, resource, observe, report) over five procedures: worktree setup, operation safety with a fail-closed guard hook, scoped commits, test-before-commit branch finishing, and PR bodies with evidence and merge danger. No implicit pull, push, force or cleanup on red. |
 
 ### Knowledge and collaboration
