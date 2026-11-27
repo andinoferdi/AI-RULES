@@ -1,0 +1,13 @@
+{
+  "metre": {"dimension": "length", "factor": 1},
+  "kilometre": {"dimension": "length", "factor": 1000},
+  "mile": {"dimension": "length", "factor": 1609.344},
+  "gram": {"dimension": "mass", "factor": 1},
+  "kilogram": {"dimension": "mass", "factor": 1000},
+  "pound": {"dimension": "mass", "factor": 453.59237},
+  "second": {"dimension": "time", "factor": 1},
+  "minute": {"dimension": "time", "factor": 60},
+  "hour": {"dimension": "time", "factor": 3600},
+  "kelvin": {"dimension": "temperature-delta", "factor": 1},
+  "rankine": {"dimension": "temperature-delta", "factor": 0.5555555555555556},
+}

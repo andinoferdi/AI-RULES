@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="id">
+<head><meta charset="utf-8"><title>0002 Seq Scan atau Index Scan</title><link rel="stylesheet" href="../assets/lesson.css"></head>
+<body>
+<h1>Kapan planner memilih Seq Scan, kapan Index Scan</h1>
+<p>Planner membandingkan estimasi cost tiap cara membaca tabel. Kalau filter mengambil sebagian kecil baris, Index Scan biasanya lebih murah. Kalau filter mengambil sebagian besar baris, membaca seluruh tabel secara berurutan lebih murah.
+<span class="source">(<a href="https://www.postgresql.org/docs/16/using-explain.html">PostgreSQL docs 14.1</a>, <a href="https://use-the-index-luke.com/">Use The Index, Luke</a>)</span></p>
+<section class="quiz">
+<fieldset data-answer="b"><legend>1. Apa yang dilakukan Seq Scan?</legend>
+<label><input type="radio" name="q1" value="a"> Membaca index lalu tabel</label><br>
+<label><input type="radio" name="q1" value="b"> Membaca seluruh tabel berurutan</label><br>
+<label><input type="radio" name="q1" value="c"> Membaca hanya halaman yang berubah</label><p class="feedback"></p></fieldset>
+<fieldset data-answer="a"><legend>2. Baris "Rows Removed by Filter" yang besar menunjukkan apa?</legend>
+<label><input type="radio" name="q2" value="a"> Banyak baris dibaca lalu dibuang</label><br>
+<label><input type="radio" name="q2" value="b"> Index dipakai untuk menyaring baris</label><br>
+<label><input type="radio" name="q2" value="c"> Tabel perlu dijalankan VACUUM FULL</label><p class="feedback"></p></fieldset>
+<fieldset data-answer="c"><legend>3. Tabel orders punya index di kolom status. Kenapa planner tetap memilih Seq Scan untuk WHERE status = 'paid'?</legend>
+<label><input type="radio" name="q3" value="a"> Index-nya belum di-VACUUM</label><br>
+<label><input type="radio" name="q3" value="b"> Index tidak bisa dipakai untuk teks</label><br>
+<label><input type="radio" name="q3" value="c"> Sebagian besar baris berstatus paid</label><p class="feedback"></p></fieldset>
+<fieldset data-answer="b"><legend>4. Apa arti loops=3 pada sebuah node?</legend>
+<label><input type="radio" name="q4" value="a"> Query diulang tiga kali oleh client</label><br>
+<label><input type="radio" name="q4" value="b"> Node dijalankan tiga kali, angka rata-rata</label><br>
+<label><input type="radio" name="q4" value="c"> Ada tiga index yang dicoba planner</label><p class="feedback"></p></fieldset>
+<fieldset data-answer="a"><legend>5. Untuk membandingkan dua plan, angka mana yang paling jujur?</legend>
+<label><input type="radio" name="q5" value="a"> Actual time dan Execution Time</label><br>
+<label><input type="radio" name="q5" value="b"> Total cost di node paling atas</label><br>
+<label><input type="radio" name="q5" value="c"> Jumlah node di dalam plan</label><p class="feedback"></p></fieldset>
+</section>
+<p>Sumber utama untuk dibaca: <a href="https://use-the-index-luke.com/">Use The Index, Luke</a>, bab tentang WHERE clause.</p>
+<p>Ada yang belum jelas? Tanyakan ke agent. Kembali ke <a href="0001-membaca-pohon-plan.html">0001</a> atau <a href="../reference/explain-cheatsheet.html">cheat sheet</a>.</p>
+<script src="../assets/quiz.js"></script>
+</body>
+</html>

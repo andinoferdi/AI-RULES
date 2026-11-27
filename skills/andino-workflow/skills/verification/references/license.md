@@ -2,6 +2,8 @@
 
 **Original Source:** [obra/superpowers: skills/verification-before-completion](https://github.com/obra/superpowers/tree/main/skills/verification-before-completion)
 
+Upstream revision read for the 2026-11-26 upgrade: obra/superpowers 3be5aad.
+
 Substantive adapted material in this skill is covered by the following notice:
 
 MIT License
