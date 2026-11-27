@@ -12,7 +12,7 @@ line holds.
 | Lint or type check clean | Its own run on the current state: 0 errors | A passing test run, a partial file list |
 | Build succeeds | The build command ran, exited 0 and produced the expected artifact (name, version) | Lint or tests passing, logs that look fine |
 | Bug fixed | The reporter's command or symptom check run on the current code shows the expected result | The code changed, a test that never reaches the bug |
-| A regression test guards a bug | The test failed on code without the fix, for the reason it guards, and passes on the current code | The test passes once; it was written alongside the fix; it uses an input the old code also handled |
+| A regression test guards a bug | The test, run as delivered, failed on code without the fix, for the reason it guards, and passes on the current code | The test passes once; it was written alongside the fix; it uses an input the old code also handled |
 | Requirements met | Each requirement checked one by one against code or a test that reaches it, both parts of compound ones | The suite is green; the report says so |
 | A worker, agent or colleague finished | You read the actual diff and new files, and ran the checks on the integrated result | Their report, their quoted numbers, a commit message |
 | Ready to release or merge | Every checklist item has a current result on the exact state to ship; unrunnable items are named | "Most items pass", a green log from an earlier state |

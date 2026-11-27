@@ -80,3 +80,34 @@ no-skill run on W2, and ties every arm on the other 16 criteria.
   would cost it one point on Q3 under a stricter reading. The total would still lead (38), but
   the per-criterion gate would then fail on Q3.
 - Every task is a small Python repository on Windows.
+
+## Follow-up run
+
+After the merge, gate 4 was changed so that a fix and test that already exist are run with the
+test exactly as delivered, on the old code in a disposable copy, before the test is edited; the
+record, checklist, a red flag, a shortcut row and the contract's regression row say the same. One
+new runner (Sonnet 5.5, medium) ran the follow-up candidate on the same fixture. A second, fresh
+blind grader (Sonnet 5.5, medium) scored five runs together: the three baseline runs, the first
+candidate run and the follow-up run, under new letters. Evidence is in
+[scores-followup.md](scores-followup.md).
+
+| Criterion | No skill | obra | Current | First candidate | Follow-up |
+| --- | --- | --- | --- | --- | --- |
+| W2 requirement-by-requirement check | 1 | 1 | 1 | 2 | 2 |
+| W4 gap closed with a test seen red | 1 | 1 | 1 | 2 | 2 |
+| T2 regression test run on unfixed code | 1 | 1 | 1 | 1 | 2 |
+| T5 reply and ticket text backed | 1 | 1 | 1 | 2 | 2 |
+| Q1 claims backed by observations | 1 | 1 | 1 | 2 | 2 |
+| Q3 scope and cleanup | 1 | 1 | 1 | 1 | 2 |
+| Other 14 criteria | 2 each | 2 each | 2 each | 2 each | 2 each |
+| Total (of 40) | 34 | 34 | 34 | 38 | 40 |
+
+Gate: PASS. The follow-up candidate is at least equal to every other run on every criterion, and
+it is the only run that executed the delivered `test_issue_42` on the old code and saw it pass
+before correcting it.
+
+The second grader scored the baseline runs lower on W2 and Q3 than the first grader did (34
+against 35 and 36), and the first candidate's Q3 at 1, which the first grader left at 2: the two
+graders read the same rubric differently on grouped requirement results and on files written
+outside the run folder. The ordering of the candidates against the baselines is the same under
+both graders. One run per arm still applies.

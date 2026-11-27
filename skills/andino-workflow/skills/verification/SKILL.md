@@ -83,13 +83,15 @@ record. Anything more goes through the six gates; the record quotes each **Done 
 4. **Prove each regression check can fail.** A test claimed to guard a bug or a requirement,
    yours or anyone's, proves nothing until it has failed on code without the fix. When you add
    the test and the missing code yourself, write and run the test first and keep its failing
-   output, then implement. When the fix already exists, run the test against the old code in a
-   disposable copy inside your writable scope (see the recipes in the
+   output, then implement. When the fix and its test already exist, run the test exactly as
+   delivered, before you edit it, against the old code in a disposable copy inside your writable
+   scope (see the recipes in the
    [claim evidence and recipes](resources/contract.md#old-code-in-a-disposable-copy)), never by
-   stash, checkout, reset or swapping files in the working tree, and delete the copy afterwards.
-   Done when: the record holds the test's failure on the old code (for the reason it guards)
-   and its pass on the current code; a test that passes on both is reported as not guarding,
-   and corrected or flagged.
+   stash, checkout, reset or swapping files in the working tree. That run decides whether the
+   delivered test guards anything. If it passes on the old code, report that, correct the test,
+   and run the corrected test on the old code too. Delete the copy afterwards. Done when: the
+   record holds the delivered test's result on the old code, and the guarding test's failure
+   there (for the reason it guards) and its pass on the current code.
 5. **Re-check after the last change.** Any edit, including a fix you made while verifying,
    makes earlier results stale for everything it can affect. After your final edit rerun those
    checks and the full suite, then read `git status` and the diff: only intended changes, no
@@ -134,6 +136,7 @@ record. Anything more goes through the six gates; the record quotes each **Done 
 | "I ran that before my last edit." | Rerun what the edit can affect. |
 | "Staging is unreachable, but it's probably fine." | Not verified. Say what would verify it. |
 | "I confirmed it against the old code" (from reading). | Say "by reading", or run it. |
+| "The test is obviously wrong, I'll fix it first." | Run it as delivered on the old code first; that run is the evidence. |
 
 ## Red flags
 
@@ -143,6 +146,7 @@ Stop and return to the gate you skipped when you notice:
 - numbers copied from a report or log rather than from your own run;
 - `skipped`, `deselected`, `xfail` or `0 tests` in output you are about to call a pass;
 - a test you added that you never saw fail;
+- someone else's test judged by reading, or edited before it ran on the old code;
 - `git stash`, `git checkout -- <file>` or a file swap used to test old code;
 - an edit after the last test run you are quoting;
 - a reply sentence that says you ran something the transcript does not show.
@@ -167,7 +171,8 @@ Claims checked: <n>, from <request / spec / checklist / report>
 - <claim> - failed: <observed output>
 - <claim> - not verified: <reason>; would be established by <check>
 Reused results: <result, the state it covered, why it still matches> | none
-Regression checks: <test> fails on old code (<output>, run in <copy>) and passes on current (<output>) | none
+Regression checks: <test as delivered> on old code -> <result>; <guarding test> fails on old code
+  (<output>, run in <copy>) and passes on current (<output>) | none
 Last run after last edit: yes; git status: <summary>
 Verdict: <complete | not complete: blocking items>
 ```
@@ -179,7 +184,8 @@ Before sending the reply, confirm:
 - [ ] every claim from the request, spec, checklist or report is in the record;
 - [ ] every reused result names the state it covered and still matches it;
 - [ ] every skip, deselected test and unreachable check is named with what it leaves unverified;
-- [ ] every regression check was seen failing on old code and passing on current code;
+- [ ] a delivered regression test ran unchanged on old code before any edit;
+- [ ] every guarding regression check was seen failing on old code and passing on current code;
 - [ ] old code was tested in a disposable copy inside the writable scope, now removed;
 - [ ] the last reported run came after the last edit, and `git status` matches the reply;
 - [ ] no success sentence lacks a record line, and nothing reasoned is reported as run.
