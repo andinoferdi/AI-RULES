@@ -152,8 +152,12 @@ def package_files(files, expected_name, modes=None):
                                      'task-brief', 'task_brief.py',
                                      'review-package', 'review_package.py',
                                  })
+            tickets_helper = (parts[:3] == ['skills', 'writing-tickets', 'scripts']
+                              and len(parts) == 4
+                              and parts[3] in {'ticket-graph', 'ticket_graph.py'})
             allowed = safe and (allowed or bool(method_resource) or metadata
-                                or workflow_resource or maintainer_file or delegation_helper)
+                                or workflow_resource or maintainer_file or delegation_helper
+                                or tickets_helper)
             if parts[0] == 'references' and (parts[-1].casefold() == 'skill.md' or
                     len(parts) > 2 and parts[1] not in {'legal', 'project-setup', 'workflow-advice'}):
                 allowed = False
