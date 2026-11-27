@@ -1,0 +1,7 @@
+CI run 4471 | 2026-11-25 18:02 WIB | branch main | commit 3f9c2ab "Release 2.4.0"
+[1/5] python -m unittest ............ Ran 4 tests, OK
+[2/5] python scripts/lint.py ........ lint: 0 problem(s)
+[3/5] python scripts/build.py ....... built dist/unitconv-2.4.0.zip
+[4/5] version check ................. 2.4.0 / 2.4.0 / 2.4.0
+[5/5] smoke staging ................. OK
+Result: SUCCESS

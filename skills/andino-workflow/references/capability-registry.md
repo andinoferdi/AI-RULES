@@ -396,7 +396,7 @@ Excluded meta-routers: using-superpowers and using-agent-skills. Andino performs
 - Family/provider: Andino internal; adapted source provenance in package legal records
 - Aliases: documentation-and-adrs resolves to canonical documentation-and-adrs; no upstream native registration required
 - Primary purpose: Record decisions and documentation
-- Trigger: Material decisions or usage changes need durable documentation.
+- Trigger: Material decisions or usage changes need durable documentation, or existing docs may have drifted from the code.
 - Preferred when: Use an existing ADR/docs convention.
 - Avoid when: Placeholder docs or duplicating the active plan.
 - Availability check: Check local skills/documentation-and-adrs/GUIDE.md and selected resources plus actual resource permissions.

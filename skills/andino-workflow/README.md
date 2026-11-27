@@ -50,13 +50,13 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | --- | --- |
 | `andino-agent-document-authoring` | Writing and auditing documents agents read: AGENTS.md, CLAUDE.md, skill text and descriptions, pointers. |
 | `andino-skill-maker` | Executable skill/procedure authoring with baseline and candidate evaluation. |
-| `andino-documentation-and-adrs` | Durable documentation and decisions; optional domain vocabulary. |
+| `andino-documentation-and-adrs` | ADRs in the house convention, consumer contracts and release notes, drift audits by commit order and content, comment cleanup; optional domain vocabulary. |
 | `andino-handoff` | Portable continuation and optional context packing. |
 | `andino-human-procedure` | Necessary steps requiring human-only access or authority. |
 | `andino-issue-triage` | Attention list, verified triage of issues and external pull requests, durable agent briefs and out-of-scope records; tracker writes only for items the maintainer authorized. |
 | `andino-optimize-prompt` | Explicitly requested rewrite of a raw task prompt that keeps its shape, every named skill and phase, and every fact, and adds labelled checked project facts, done-when, limits and a verification step; a diagnosis table and up to three questions follow it. |
 | `andino-session-diagnostics` | Why an agent session went wrong, with cited evidence; one-event answers, scrubbed bundles and issue drafts on request; optional prevention review after causes are known. |
-| `andino-learning-workspace` | Intentional learning; optional course-exercise scaffolding. |
+| `andino-learning-workspace` | Quick lessons in chat with a retrieval check, or a cross-session workspace: mission, sourced HTML lessons with shared components, reference sheets and evidence-based learning records; optional course-exercise scaffolding. |
 | `andino-article-shaping` | Shape a fixed pile into an article with its author: reader first, pile-built candidates, agreed blocks only, nothing invented; optional raw capture. |
 
 Workflow advice is a [workflow-owned resource](references/workflow-advice/guide.md), not a mandatory router. Project conventions use the [project-setup resource](references/project-setup/guide.md), not a prerequisite for every task.
