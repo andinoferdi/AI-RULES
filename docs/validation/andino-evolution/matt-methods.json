@@ -512,38 +512,41 @@
     "id": "learning-workspace",
     "title": "Build a learning workspace",
     "purpose": "Teach a bounded skill from trusted sources and demonstrated learning rather than mere content coverage.",
-    "trigger": "An explicit request for learning across sessions or a structured lesson tied to a concrete mission.",
-    "non_trigger": "A one-off factual answer or an assumption the user wants recurring lessons/automation.",
+    "trigger": "A request to be taught now or over several sessions, a named learning folder, a continued learning workspace, or an explanation that did not land.",
+    "non_trigger": "A one-off factual answer, documentation for other people, or recurring reminders/schedules.",
     "source_paths": [
       "mattpocock/skills:skills/productivity/teach/SKILL.md"
     ],
     "resources": [
-      "skills/learning-workspace/resources/worked-example.md"
+      "skills/learning-workspace/resources/worked-example.md",
+      "skills/learning-workspace/resources/workspace-formats.md",
+      "skills/learning-workspace/resources/lesson-and-assets.md",
+      "skills/learning-workspace/resources/pedagogy.md"
     ],
     "resource_dispositions": [
       {
         "source_path": "skills/productivity/teach/GLOSSARY-FORMAT.md",
         "disposition": "ADAPT",
-        "runtime_path": "skills/learning-workspace/resources/worked-example.md",
-        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+        "runtime_path": "skills/learning-workspace/resources/workspace-formats.md",
+        "rationale": "Format and rules adapted into the local workspace-formats resource; no upstream runtime lookup."
       },
       {
         "source_path": "skills/productivity/teach/LEARNING-RECORD-FORMAT.md",
         "disposition": "ADAPT",
-        "runtime_path": "skills/learning-workspace/resources/worked-example.md",
-        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+        "runtime_path": "skills/learning-workspace/resources/workspace-formats.md",
+        "rationale": "Format and rules adapted into the local workspace-formats resource; no upstream runtime lookup."
       },
       {
         "source_path": "skills/productivity/teach/MISSION-FORMAT.md",
         "disposition": "ADAPT",
-        "runtime_path": "skills/learning-workspace/resources/worked-example.md",
-        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+        "runtime_path": "skills/learning-workspace/resources/workspace-formats.md",
+        "rationale": "Format and rules adapted into the local workspace-formats resource; no upstream runtime lookup."
       },
       {
         "source_path": "skills/productivity/teach/RESOURCES-FORMAT.md",
         "disposition": "ADAPT",
-        "runtime_path": "skills/learning-workspace/resources/worked-example.md",
-        "rationale": "Distinctive procedure, formats or constraints adapted into local GUIDE.md procedure and worked-example detail; no upstream runtime lookup."
+        "runtime_path": "skills/learning-workspace/resources/workspace-formats.md",
+        "rationale": "Format and rules adapted into the local workspace-formats resource; no upstream runtime lookup."
       }
     ],
     "positive_requests": [

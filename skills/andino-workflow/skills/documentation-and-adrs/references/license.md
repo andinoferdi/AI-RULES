@@ -1,6 +1,7 @@
 # License Notice
 
 **Original Source:** [addyosmani/agent-skills: skills/documentation-and-adrs](https://github.com/addyosmani/agent-skills/tree/main/skills/documentation-and-adrs)
+(last adapted from commit 551c59c, 2026-11-01)
 
 Substantive adapted material in this skill is covered by the following notice:
 

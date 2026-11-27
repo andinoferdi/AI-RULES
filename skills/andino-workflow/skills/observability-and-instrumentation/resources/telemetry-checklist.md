@@ -1,63 +1,107 @@
-# Worked example and telemetry proof checklist
+# Telemetry checklist
 
-## Payment retries from a scheduler and replay endpoint
+The at-a-glance version of the gates, for a final pass or a review of someone else's change. Each
+line is checked against emitted output or the diff, never against intent. Mark a line that cannot
+be checked here as unavailable, with the reason.
 
-Start from the worker's existing logger, metrics and tracer. The scheduler and
-replay endpoint each create a run with an allowlisted origin and a validated or
-generated request ID. Put both in queue metadata with the injected trace
-context. The worker extracts the context and binds the same origin and request
-ID to its logger before calling the provider. A worker retry keeps the original
-origin. A separately initiated replay starts its own run.
+## On-call questions (gate 1)
 
-| On-call question | Evidence to query | Decision |
-| --- | --- | --- |
-| Are payment operations succeeding after retries? | Rate of terminal failures divided by all completed operations over the same window. Group success by bounded first-attempt or after-retry outcome when needed. | Decide whether customers are affected. |
-| Which attempt failed and where did the run originate? | Filter structured events by request ID and inspect entry point, attempt number, bounded error code and terminal outcome. | Distinguish scheduler traffic from replay and confirm retry exhaustion. |
-| Is time spent waiting in the queue or calling the provider? | Compare queue age with provider attempt duration histograms. Follow a trace across enqueue, consume and provider call. | Route investigation to the queue or provider owner. |
+- [ ] Two to four questions were written before the first edit, in the agent's message.
+- [ ] Each question names its signal (log, metric or trace), the query that answers it and the
+      decision the answer supports.
+- [ ] Every signal added or changed serves one of the questions.
 
-Example event at the worker after a retryable timeout:
+## Structured logging (gate 2)
 
-```json
-{"event":"payment_attempt_failed","level":"warn","requestId":"r7","entryPoint":"scheduler","attempt":1,"errorCode":"provider_timeout","retryable":true}
-```
+- [ ] Every line is one JSON object with a stable event name; no prose built by interpolation.
+- [ ] Levels are consistent: `error` for a broken invariant or a terminal failure, `warn` for a
+      handled degradation such as a retryable attempt, `info` for significant outcomes, `debug`
+      off in production.
+- [ ] Fields are allowlisted: no bodies, auth headers, tokens, passwords, card data or unredacted
+      personal data, at any level or flag setting.
+- [ ] Calls to external services log metadata only: endpoint, status, latency, attempt, bounded
+      error code.
+- [ ] Actual output was spot-checked: structured fields, not `[object Object]`.
 
-Count the provider attempt as a dependency error. If the second attempt succeeds,
-count one terminal payment success and zero terminal failures for the run. Count
-at the existing terminal state boundary so redelivery does not inflate completed
-operations. Keep request IDs in allowlisted diagnostic events. Provider metrics
-can use bounded provider and outcome dimensions. Record duration in a histogram
-with units and buckets suitable for the latency objective.
+## Attribution and correlation (gate 2)
 
-Page on the terminal failure ratio using the team's approved objective and
-window. Until those values are available, record the alert as a proposal.
-The runbook identifies the payment on-call owner, starts with terminal outcome
-counts and provider attempt latency for the affected window, then directs the
-operator to the queue or provider escalation path based on those results.
+- [ ] A request ID is accepted (validated) or generated at the trusted boundary and appears on
+      every line, span and outbound call of the run.
+- [ ] Every sink written by more than one entry point carries an entry-point field from a fixed
+      set, set where the run starts.
+- [ ] Both travel in HTTP headers and queue metadata; no consumer derives them from a queue name,
+      a host or the time.
 
-## Exercise and audit the same case
+## Metrics (gate 3)
 
-- Force one scheduler attempt to time out and the next to succeed. Expect one
-  failed dependency attempt and one successful operation. Replay a separate run
-  that exhausts retries. Expect one terminal failure, with replay attribution.
-- For each run, inspect emitted events by request ID, query before/after metric
-  counts, and follow the enqueue-to-provider trace in the configured backend.
-  Evaluate the alert rule against controlled success and breach inputs. Verify
-  notification delivery separately when authorized.
-- When auditing, a worker log that reconstructs origin from queue name leaves
-  attribution unresolved. A terminal failure counter that moves on each attempt
-  overstates user impact. A standalone worker span leaves propagation unproven.
-  Identify the first failing boundary and the smallest change to fix it, then
-  rerun the affected check.
-- Report the expected and observed result for each check, the query or artifact
-  used, and any missing evidence with its next action. Local JSON output can
-  demonstrate event shape without proving export, cross-service traces or routing.
+- [ ] **RED** on every endpoint and external dependency: rate, errors, duration.
+- [ ] **USE** on every queue, pool and host: utilization, saturation, errors; queue depth and the
+      age of the oldest job for every worker.
+- [ ] Attempt series and terminal-outcome series are separate; the terminal series moves once per
+      job, at the existing terminal state, so retries and redelivery do not inflate it.
+- [ ] Each series declares its unit, what one increment means and its denominator.
+- [ ] Labels come from fixed sets (route template, status class, provider, outcome); the label
+      combinations were estimated and written down.
+- [ ] No unbounded label: user, tenant or request IDs, emails, raw URLs, error text.
+- [ ] Latency is a histogram with buckets that resolve the objective; p50, p95 and p99 are
+      queryable; no average stands alone.
 
-## Quick checklist
-Start with 2–4 on-call questions. Every field/signal answers one. Logs use JSON/stable event/level/correlation; entryPoint comes from originating scheduler/CLI/replay path, not downstream inference. Propagate both across queue/HTTP. Allowlist identifiers/metadata; never full bodies/tokens/passwords/PII.
-RED on endpoint/dependency, USE on pool/queue/resource. Route templates/status classes/provider names are bounded labels; user/tenant/request IDs and raw URLs/errors belong only in appropriately redacted logs/traces. Histograms permit p50/p95/p99; means alone hide tails. Budget cardinality and retention.
-Initialize tracing before clients; W3C context travels each async boundary. Manual spans name meaningful work, not every function. Low head sampling/default and error-retaining tail sampling when supported; no sensitive attributes.
-Alert symptom + threshold/duration/SLO rationale + owner/runbook. Page for immediate user impact, ticket for slower degradation. Causes feed dashboards. Runbook minimum: what it means, first discriminating query, escalation. Correct stale steps when closing incident.
-In authorized test environment emit a real failure; find by requestId and entryPoint, verify structured output and expected series, follow an unbroken trace and test alert delivery/runbook. Offline artifact inspection does not prove exporter or channel works. Recording external notification needs explicit authority.
-Output signal/question map, actual artifact identifiers, observed gaps and deployment limitations.
+## Tracing (gate 4)
 
-Provenance: independently worded adaptation of the Addy snapshot identified in the owning GUIDE.md; full MIT notice at [../references/license.md](../references/license.md). No upstream installation or hook is required.
+- [ ] The tracing SDK starts before instrumented clients load; auto-instrumentation covers HTTP,
+      gRPC and database clients.
+- [ ] W3C `traceparent`/`tracestate` is injected on every outbound call and queue message and
+      extracted on every inbound one.
+- [ ] Manual spans wrap meaningful units of work only, with the attributes on-call filters by and
+      no secrets or personal data.
+- [ ] Head sampling is low by default; errors are kept with tail sampling where supported; the
+      sampling decision holds on every hop of the path.
+
+## Alerting and runbooks (gate 5)
+
+- [ ] Every page is a symptom users feel (terminal failures, latency, queue age); causes (CPU,
+      disk, restarts) go to dashboards or tickets.
+- [ ] Two severities only: **page** and **ticket**.
+- [ ] Every threshold and window cites an SLO or a measured baseline; one without a basis is marked
+      PROPOSED with the owner who approves it, and ships as a ticket or a disabled page.
+- [ ] Every alert is actionable, has an owner and links a runbook with what it means, the first
+      check and the escalation path.
+- [ ] Rules were evaluated against controlled input where the project can; a real notification
+      was sent only with explicit authorization.
+- [ ] No alert fires daily and gets acknowledged without action.
+
+## Dashboards
+
+- [ ] A service health view shows error rate, p99 latency, traffic and saturation.
+- [ ] A dependency panel shows each dependency's error rate and latency.
+- [ ] The dashboard answers the on-call questions, not "everything except the answer".
+- [ ] The default time range is short (1 h to 6 h), not 30 days.
+
+## Verify the telemetry (gate 6)
+
+- [ ] A normal run and a controlled failure went through each entry point.
+- [ ] The failed run was found by request ID alone, with its entry point, attempts and terminal
+      outcome.
+- [ ] Metric deltas match the expected counts for the controlled runs.
+- [ ] One trace runs unbroken from the entry point through the queue to the dependency call.
+- [ ] Tests assert telemetry properties: attribution reaches the consumer, the terminal outcome is
+      counted once, no sensitive field is emitted.
+- [ ] Each check is recorded as observed, failed, unavailable or not applicable, with its command
+      or artifact. Local output proves event shape, not export, cross-service delivery or routing.
+
+## Pre-launch gate
+
+Before a feature ships to production, all of these hold, or the gap is named with its owner:
+
+- [ ] Structured logs reach the log backend.
+- [ ] RED metrics are visible for every new endpoint and dependency.
+- [ ] At least one symptom alert exists with a runbook, its threshold approved or marked PROPOSED.
+- [ ] A request can be traced across every service it touches.
+- [ ] On-call knows where the runbooks are.
+
+Launch-day monitoring and rollback triggers belong to `shipping-and-launch`.
+
+Provenance: adapted from Addy Osmani's `references/shared/observability-checklist.md`
+(addyosmani/agent-skills, path last changed in c4efec8, MIT), with the Andino attempt-versus-outcome,
+attribution, label-estimate, proposed-threshold and evidence-status items. Notice:
+[../references/license.md](../references/license.md).
