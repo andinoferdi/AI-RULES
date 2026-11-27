@@ -3505,14 +3505,14 @@
   {
     "id": "alias-to-tickets",
     "kind": "behavior",
-    "prompt": "Use Andino and its to-tickets method for this task: Slice the accepted rename into expand, caller migrations and contract tasks.",
+    "prompt": "Use Andino and its to-tickets method for this task: Break this approved spec into tracker tickets an agent can pick up.",
     "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
-    "expected": "Select task-decomposition; resolve the alias and load only the applicable canonical procedure(s).",
+    "expected": "Select writing-tickets; resolve the alias and load only the applicable canonical procedure(s).",
     "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
     "capabilities": [
-      "task-decomposition"
+      "writing-tickets"
     ],
-    "method": "task-decomposition",
+    "method": "writing-tickets",
     "variant": "alias",
     "coverage": "routing",
     "source_alias": "to-tickets"
@@ -3531,6 +3531,48 @@
     "variant": "alias",
     "coverage": "routing",
     "source_alias": "triage"
+  },
+  {
+    "id": "method-writing-tickets-implicit",
+    "kind": "behavior",
+    "prompt": "Break this approved spec into tracker tickets an agent can pick up.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select writing-tickets",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "writing-tickets"
+    ],
+    "method": "writing-tickets",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-writing-tickets-negative",
+    "kind": "negative-trigger",
+    "prompt": "Write the implementation plan for this spec so I can build it in this session.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select writing-tickets",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "writing-tickets"
+    ],
+    "method": "writing-tickets",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-writing-tickets-explicit",
+    "kind": "behavior",
+    "prompt": "Use the Andino internal method writing-tickets for this request: Break this approved spec into tracker tickets an agent can pick up.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select writing-tickets",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "writing-tickets"
+    ],
+    "method": "writing-tickets",
+    "variant": "explicit",
+    "coverage": "routing"
   },
   {
     "id": "alias-using-git-worktrees",

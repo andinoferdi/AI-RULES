@@ -1,6 +1,6 @@
 # Internal method index
 
-These 31 public member methods have native `andino-*` SKILL.md entrypoints and canonical GUIDE.md resources. Specialized techniques are separately selectable noncallable resources below; no retired entrypoint or compatibility shim is installed. They are not upstream provider activation or a second router. Consult relevant entries for discovery before Focus or optional external skill search; resolve an explicit native provider directly. Apply [dispatch](method-dispatch.md) to every row: explicit requests and source aliases require canonical loading when applicable; implicit requests select by outcome, trigger, exclusion and current phase. A name in quoted text, a filename or this inventory is not a trigger. Ordinary sufficient tasks need no method.
+These 32 public member methods have native `andino-*` SKILL.md entrypoints and canonical GUIDE.md resources. Specialized techniques are separately selectable noncallable resources below; no retired entrypoint or compatibility shim is installed. They are not upstream provider activation or a second router. Consult relevant entries for discovery before Focus or optional external skill search; resolve an explicit native provider directly. Apply [dispatch](method-dispatch.md) to every row: explicit requests and source aliases require canonical loading when applicable; implicit requests select by outcome, trigger, exclusion and current phase. A name in quoted text, a filename or this inventory is not a trigger. Ordinary sufficient tasks need no method.
 
 An explicit relevant internal method ID is enough: read its linked GUIDE.md through the permitted resource tool, then only the local resources it needs. For implicit selection use the trigger and exclusion together; choose the minimum useful set. Do not load all guides. If the requested outcome is prohibited or excluded, resolve that boundary in the root contract without loading methods just to refuse. No guide grants additional action authority.
 
@@ -40,6 +40,7 @@ Selected skills own their full procedures, required resources, artifact detail a
 | [shipping-and-launch](../skills/shipping-and-launch/SKILL.md) | Whether a change can ship, release or launch preparation, a canary or staged rollout to plan, advance or stop, go/no-go from release metrics, launch monitoring or rollback. | A local-only change with no release question, pipeline changes (ci-cd-and-automation), or bypassing explicit publication approval. |
 | [tdd](../skills/tdd/SKILL.md) | A feature, bug fix or behavior change needs a test that fails first, a regression test is requested for behavior that already works, or pasted code must change. | Pure prose/static content, reversible configuration without behavioral impact, or a failure whose cause is still unknown (debugging first). |
 | [verification](../skills/verification/SKILL.md) | About to say work is done, fixed, passing or ready; before commit, PR, release or handoff; accepting a worker's report, fix or test. | No claim about the state of work; finding a failure's cause (debugging); do not rerun unchanged checks ritualistically. |
+| [writing-tickets](../skills/writing-tickets/SKILL.md) | A plan, spec, issue or discussion must become tracker tickets (issues, sub-issues or a local ticket folder) that agents or people pick up later: tracer-bullet slices with blocking edges, open decisions as human tickets, an existing ticket set brought up to date without duplicates, or a wide refactor sequenced as expand-contract. | Open product direction (brainstorming), a plan to execute in this session (planning), triaging incoming issues or one item's brief (issue-triage), or building a ticket (plan-execution, tdd). |
 | [git-skills](../skills/git-skills/SKILL.md) | Setting up a worktree, committing, pushing, merging or finishing a branch, cleanup, a failed merge or rejected push, a PR description, or a guard against destructive Git commands. | No implicit commit, push, rewrite, branch deletion or full Git pipeline. |
 
 ## Selective resources — not public entrypoints
@@ -108,6 +109,8 @@ Only names listed below remain supported selection aliases; retired IDs have no 
 | systematic-debugging | [debugging](../skills/debugging/SKILL.md) |
 | teach | [learning-workspace](../skills/learning-workspace/SKILL.md) |
 | test-driven-development | [tdd](../skills/tdd/SKILL.md) |
+| to-issues | [writing-tickets](../skills/writing-tickets/SKILL.md) |
+| to-tickets | [writing-tickets](../skills/writing-tickets/SKILL.md) |
 | triage | [issue-triage](../skills/issue-triage/SKILL.md) |
 | verification-before-completion | [verification](../skills/verification/SKILL.md) |
 | wizard | [human-procedure](../skills/human-procedure/SKILL.md) |

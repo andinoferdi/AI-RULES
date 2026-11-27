@@ -37,6 +37,7 @@ Do not select for:
 - A one-file change whose edit and check fit in a few lines: do it, or write a LITE plan if the
   user asked for one.
 - Executing an accepted plan: `plan-execution`.
+- Tracker tickets that agents or people pick up later: `writing-tickets`.
 - A bug with an unknown cause: `debugging` first; plan the fix after the cause is proven.
 
 ## Select a resource, not a second lifecycle

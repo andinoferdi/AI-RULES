@@ -10,7 +10,7 @@
     "git-skills", "handoff", "human-procedure", "issue-triage", "learning-workspace",
     "observability-and-instrumentation", "optimize-prompt", "performance-optimization", "plan-execution",
     "planning", "security-and-hardening", "session-diagnostics", "shipping-and-launch",
-    "skill-maker", "tdd", "verification"
+    "skill-maker", "tdd", "verification", "writing-tickets"
   ],
   "retired": [
     "context-engineering", "decision-interview", "decision-map", "deep-module-design",

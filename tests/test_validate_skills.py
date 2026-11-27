@@ -132,7 +132,11 @@ class PackageValidationTest(unittest.TestCase):
         for script in ('delegation-workspace', 'delegation_workspace.py',
                        'task-brief', 'task_brief.py', 'review-package', 'review_package.py'):
             files[f'skills/delegation/scripts/{script}'] = '# helper'
+        for script in ('ticket-graph', 'ticket_graph.py'):
+            files[f'skills/writing-tickets/scripts/{script}'] = '# helper'
         self.assertEqual([], package_files(files, 'andino-workflow'))
+        files['skills/writing-tickets/scripts/other.py'] = '# helper'
+        self.assertTrue(package_files(files, 'andino-workflow'))
 
     def test_consolidation_metadata_is_a_regular_resource(self):
         for skill in ('focus', 'search-first'):
