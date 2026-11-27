@@ -1,5 +1,16 @@
 # Decisions
 
+- 2026-11-27: andino-workflow gets its own loop for multi-unit work
+  (`skills/andino-workflow/references/orchestration.md`, with a short trigger in SKILL.md): a
+  counted work list, results written to the checkpoint in batches, an attempt to clear each
+  consequential finding (CONFIRMED / REFUTED / UNVERIFIED), a second sweep until a round adds
+  nothing, and a coverage line with the stop reason, inline by default. Claude Code's Workflow
+  tool may run approved units under the 3-agent limit; the ultracode keyword or mode is not
+  approval. Council verdict: Option 2 plus targeted fixes. Design:
+  [specs/2026-11-27-andino-workflow-orchestration-design.md](specs/2026-11-27-andino-workflow-orchestration-design.md);
+  evidence in `docs/validation/andino-workflow/` (ultracode research, orchestration rubric,
+  scores and trial).
+
 - 2026-11-23: Monorepo. Every skill moves into `skills/<id>/` on `main`; skill
   pins, `promote_skill.py` and `skill_refs.py` are removed. `ai-rules setup` is
   the only install path (no `npx skills` option), installs the clone's `skills/`

@@ -1,6 +1,8 @@
 # andino-workflow orchestration design
 
-Status: draft for the owner's approval. Date: 2026-11-27.
+Status: approved by the owner on 2026-11-27 ("Ya, dengan S4"), with S4 added to the trial.
+Date: 2026-11-27. Implementation rulings (checkpoint trigger, the Workflow tool's place in the
+registry) are recorded in the trial record.
 
 ## Intent
 
