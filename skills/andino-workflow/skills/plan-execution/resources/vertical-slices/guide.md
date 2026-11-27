@@ -18,7 +18,7 @@ Andino coordinates selection, shared progress, resource guards and final status 
 This skill owns its full procedure, required resources, artifact detail and technical
 checks. Coordinator brevity/density never truncates these. User/project authority,
 Focus/research/domain boundaries and real invocation controls still apply. Native
-`andino-incremental-implementation` and this guide expose one method, without recursive workflow invocation.
+`andino-plan-execution` and this guide expose one method, without recursive workflow invocation.
 
 Use actual available host tools and repository commands. Required external capability that is absent is UNVERIFIED/UNAVAILABLE; do useful bounded local work and name the missing evidence. Never invent tool execution or a passing gate.
 

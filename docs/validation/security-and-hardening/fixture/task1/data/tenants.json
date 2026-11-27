@@ -1,0 +1,16 @@
+{
+  "tenants": {
+    "t-acme": {"name": "Acme Logistik", "webhook": {"url": "https://hooks.acme.example/hookdesk", "secret": "whsec_acme_9fK2pQ7vX1mZ4tR8"}},
+    "t-bumi": {"name": "Bumi Retail", "webhook": {"url": "", "secret": "whsec_bumi_3hN6cW0yL5sD2gJ7"}}
+  },
+  "users": {
+    "u-ayu": {"name": "Ayu", "tenant_id": "t-acme", "role": "owner"},
+    "u-bagas": {"name": "Bagas", "tenant_id": "t-acme", "role": "admin"},
+    "u-citra": {"name": "Citra", "tenant_id": "t-acme", "role": "member"},
+    "u-dimas": {"name": "Dimas", "tenant_id": "t-bumi", "role": "admin"}
+  },
+  "invoices": [
+    {"id": "inv-1001", "tenant_id": "t-acme", "amount": 1250000},
+    {"id": "inv-1002", "tenant_id": "t-bumi", "amount": 480000}
+  ]
+}
