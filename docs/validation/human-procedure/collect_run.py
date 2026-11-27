@@ -18,7 +18,17 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 FIXTURE = HERE / "fixture"
-PASSWORD = "kopi-lokal"
+
+
+def fixture_password() -> str:
+    """The fictional local database password in task1's .env, read from the fixture itself."""
+    for line in (FIXTURE / "task1" / "env.local").read_text(encoding="utf-8").splitlines():
+        if line.startswith("DATABASE_URL="):
+            return line.split("://", 1)[1].split("@", 1)[0].split(":", 1)[1]
+    raise SystemExit("fixture task1/env.local has no DATABASE_URL")
+
+
+PASSWORD = fixture_password()
 
 
 def git(repo: Path, *args, env=None) -> str:
