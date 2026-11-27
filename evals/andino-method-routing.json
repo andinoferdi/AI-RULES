@@ -1092,6 +1092,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-doubt-driven-development-rerun-claim",
+    "kind": "behavior",
+    "prompt": "The migration PR says it is safe to re-run if it crashes halfway because it checks the schema version first. We run it on production tonight; check that before we rely on it.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select doubt-driven-development",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "doubt-driven-development"
+    ],
+    "method": "doubt-driven-development",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-doubt-driven-development-negative",
     "kind": "negative-trigger",
     "prompt": "Summarize this already accepted one-line rename.",
@@ -2307,6 +2321,34 @@
     ],
     "method": "shipping-and-launch",
     "variant": "explicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-shipping-and-launch-live-canary",
+    "kind": "behavior",
+    "prompt": "The canary has been at 5% for 40 minutes and the dashboard is all green. Can we go to 25%?",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select shipping-and-launch",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "shipping-and-launch"
+    ],
+    "method": "shipping-and-launch",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-shipping-and-launch-pipeline-negative",
+    "kind": "negative-trigger",
+    "prompt": "Add a required lint job to our GitHub Actions workflow so pull requests cannot merge with lint errors.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select shipping-and-launch",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "shipping-and-launch"
+    ],
+    "method": "shipping-and-launch",
+    "variant": "negative",
     "coverage": "routing"
   },
   {

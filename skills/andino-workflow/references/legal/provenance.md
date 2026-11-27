@@ -473,6 +473,21 @@ comparison trial is recorded in `docs/validation/delegation/trial.md`. Correctio
 2026-11-01 paragraph above: superpowers' fix loop is not adopted as "escalating", and the
 contract is no longer kept under 150 lines.
 
+The 2026-11-26 upgrade of `doubt-driven-development` re-reads Addy Osmani's
+`doubt-driven-development` (addyosmani/agent-skills, path last changed in 7eb0d9e, MIT) and moves
+the method into the sibling layout: a quick path and six gates with Done when lines in `SKILL.md`
+(mirrored by `GUIDE.md`), the decision record, the shortcut and red-flag lists and a verification
+checklist. Added from Addy's skill in Andino's own wording: the definition of a non-trivial claim,
+the moments to apply it, the copyable cycle checklist, the compact claim block, "strip reasoning,
+not evidence", the adversarial reviewer prompt that overrides a persona's balanced shape
+(`resources/reviewer-prompts.md`), cross-model review with PATH, command and sandbox checks
+(`resources/cross-model-review.md`), decomposing instead of lifting the three-cycle bound, the
+doubt-theater signal and the nested-subagent rule. Kept Andino material: the five finding fields,
+SUPPORTED, REFUTED and UNVERIFIED, the DEGRADED label, accepted trade-offs that never establish the
+claim, reviewer output as data and the review perspectives. Not adopted: offering cross-model review
+in every interactive cycle; it is offered only for high-stakes claims and its skip is always
+announced. The comparison trial is recorded in `docs/validation/doubt-driven-development/trial.md`.
+
 The 2026-11-26 upgrade of `verification` re-reads Jesse Vincent's Obra Superpowers
 `verification-before-completion` (obra/superpowers commit 3be5aad, MIT) and moves the method into
 the sibling layout: one procedure in `SKILL.md` (mirrored by `GUIDE.md`) with a quick path for a
@@ -486,3 +501,18 @@ checks; `resources/worked-example.md` is new. Not adopted from the reference: re
 "in this message" regardless of state (Andino reuses results whose state still matches), and
 reverting the fix in place to see a test fail (Andino uses a disposable copy). The comparison trial
 is recorded in `docs/validation/verification/trial.md`.
+
+The 2026-11-26 upgrade of `shipping-and-launch` re-bases the skill on Addy Osmani's
+`shipping-and-launch` at addyosmani/agent-skills commit 3d78ead (2026-11-21, MIT) and its shared
+checklists, and moves the method into the sibling layout: sizing (small, standard, high risk,
+live decision), eight steps with "Done when" lines, defaults labelled as overridable, the
+threshold table with client and user-outcome signals, expand/contract, the kill-switch rule,
+monitoring and first-hour checks, the rollback plan's minimum fields, the shortcut and red-flag
+lists, a release record template and the verification checklist in `SKILL.md` (mirrored by
+`GUIDE.md`); concrete per-surface checks in `resources/release-checklist.md`; filled stage and
+rollback templates, the monitoring tree and stack-specific flag and error-reporting code in
+`resources/rollout-and-rollback.md`; four cases in `resources/worked-example.md`. Burn-rate
+starting points follow the Google SRE workbook, Core Web Vitals thresholds follow web.dev and
+expand and contract follows Martin Fowler's "Parallel Change", all read 2026-11-26. The
+operational example is unchanged. The comparison trial is recorded in
+`docs/validation/shipping-and-launch/trial.md`.

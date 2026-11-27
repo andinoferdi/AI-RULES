@@ -1,0 +1,12 @@
+{
+  "windows": [
+    {"from": "since flag change", "to": "now", "candidate": {"requests": 0, "errors_5xx": 0}, "control": {"requests": 12950, "errors_5xx": 25}}
+  ],
+  "p95_ms": {"candidate": null, "control": 379},
+  "sessions": {"candidate": 0, "control": 15100},
+  "new_client_errors": [
+    {"type": "TypeError: selection.map is not a function (static/bulk-edit.js:88)", "candidate_sessions": 0, "control_sessions": 0}
+  ],
+  "task_saves": {"candidate": {"started": 0, "completed": 0}, "control": {"started": 7900, "completed": 7742}},
+  "bulk_edit_log_rows": 212
+}
