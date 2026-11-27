@@ -2282,6 +2282,34 @@
     "coverage": "routing"
   },
   {
+    "id": "method-shipping-and-launch-live-canary",
+    "kind": "behavior",
+    "prompt": "The canary has been at 5% for 40 minutes and the dashboard is all green. Can we go to 25%?",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select shipping-and-launch",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "shipping-and-launch"
+    ],
+    "method": "shipping-and-launch",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-shipping-and-launch-pipeline-negative",
+    "kind": "negative-trigger",
+    "prompt": "Add a required lint job to our GitHub Actions workflow so pull requests cannot merge with lint errors.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Do not select shipping-and-launch",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "shipping-and-launch"
+    ],
+    "method": "shipping-and-launch",
+    "variant": "negative",
+    "coverage": "routing"
+  },
+  {
     "id": "method-source-driven-development-implicit",
     "kind": "behavior",
     "prompt": "Check this version-pinned manifest and supplied official excerpt before using its intent_key argument.",

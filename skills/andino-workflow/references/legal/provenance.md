@@ -477,3 +477,18 @@ checks; `resources/worked-example.md` is new. Not adopted from the reference: re
 "in this message" regardless of state (Andino reuses results whose state still matches), and
 reverting the fix in place to see a test fail (Andino uses a disposable copy). The comparison trial
 is recorded in `docs/validation/verification/trial.md`.
+
+The 2026-11-26 upgrade of `shipping-and-launch` re-bases the skill on Addy Osmani's
+`shipping-and-launch` at addyosmani/agent-skills commit 3d78ead (2026-11-21, MIT) and its shared
+checklists, and moves the method into the sibling layout: sizing (small, standard, high risk,
+live decision), eight steps with "Done when" lines, defaults labelled as overridable, the
+threshold table with client and user-outcome signals, expand/contract, the kill-switch rule,
+monitoring and first-hour checks, the rollback plan's minimum fields, the shortcut and red-flag
+lists, a release record template and the verification checklist in `SKILL.md` (mirrored by
+`GUIDE.md`); concrete per-surface checks in `resources/release-checklist.md`; filled stage and
+rollback templates, the monitoring tree and stack-specific flag and error-reporting code in
+`resources/rollout-and-rollback.md`; four cases in `resources/worked-example.md`. Burn-rate
+starting points follow the Google SRE workbook, Core Web Vitals thresholds follow web.dev and
+expand and contract follows Martin Fowler's "Parallel Change", all read 2026-11-26. The
+operational example is unchanged. The comparison trial is recorded in
+`docs/validation/shipping-and-launch/trial.md`.
