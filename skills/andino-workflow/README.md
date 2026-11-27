@@ -118,6 +118,10 @@ Examples of narrow resource requests:
 
 ## How It Works
 
+### Multi-unit orchestration
+
+Work made of many similar units runs Andino's own loop ([`references/orchestration.md`](references/orchestration.md)): a counted work list, units worked inline with results written to the checkpoint in batches, an attempt to clear each consequential finding (CONFIRMED, REFUTED or UNVERIFIED), a second sweep by another method until a round adds nothing (three rounds at most), and a coverage line with the stop reason. It takes the quality patterns of Claude Code's dynamic workflows (ultracode) without their cost defaults: agents stay optional and approved, at most three at once, and the checkpoint carries progress across sessions and hosts.
+
 ### Resource resolution
 
 A nested member resolves shared resources from its containing workflow package; a standalone `andino-*` member resolves them from the sibling `andino-workflow` package. Relative local resource links remain within each member. Do not substitute an unrelated unprefixed provider or bypass denied loading.
@@ -150,6 +154,7 @@ Sibling resources require actual permitted sibling loading; a name in this READM
 - [`references/internal-method-index.md`](references/internal-method-index.md) — Method and selective-resource index.
 - [`references/method-dispatch.md`](references/method-dispatch.md) and [`references/routing.md`](references/routing.md) — Dispatch and routing.
 - [`references/execution-plan-template.md`](references/execution-plan-template.md) — Portable checkpoint template.
+- [`references/orchestration.md`](references/orchestration.md) — Multi-unit orchestration loop.
 - `skills/<member>/` — The 32 public members, each with `SKILL.md` and `GUIDE.md`.
 - [`references/legal/provenance.md`](references/legal/provenance.md) — Provenance of adapted methods.
 - [`references/legal/license.md`](references/legal/license.md) — MIT license notice for AI-RULES-authored content.
