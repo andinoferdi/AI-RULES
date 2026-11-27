@@ -1,22 +1,27 @@
-# Human procedure stages and worked example
+# Worked example: a two-stage sandbox procedure
 
-Use these fields in order. Render only fields relevant to the stage.
+The stage fields, layouts and script requirements live in the
+[stage contract](stage-contract.md). This example applies them to the smallest useful case:
+one secret and one setting for a local sandbox client, delivered as a checklist because there
+are two short stages and no remote write.
 
-| Field | What the human needs |
-| --- | --- |
-| Stage N of M | One outcome, plus account, environment and prerequisites |
-| Open and do | Verified URL or command, exact actions and manual-open fallback |
-| Input and destination | Field name, source, sensitivity, approved destination and consumer |
-| Before confirming | Impact and an affirmative gate for irreversible actions |
-| Done when | An observable result that discloses no sensitive values |
-| If interrupted | How to check prior effects and where to resume |
+How the gates shaped it:
 
-End with completed, pending and blocked stages, applied effects by name,
-and the first remaining action. For example, if a cutover was submitted and
-the dashboard connection dropped, inspect the active target and health signal
-before retrying. Resume verification if the new target is active. If the active
-target is ambiguous, stop and ask the operator to reconcile it. A dashboard
-toggle with no copied value still needs its own completion signal.
+1. Scope: `.env.example` lists `SERVICE_KEY` and `MODE`; no CI workflow reads them. Value map:
+   `SERVICE_KEY` from the sandbox dashboard, secret, written to `.env`, read by the sandbox
+   client; `MODE` typed by the person, public, written to `.env`, read by the same client.
+2. What already happened: `.env` may already hold a key from an earlier try, so each stage
+   starts with the client's read-only credential check and reuses a saved key that passes.
+3. Journey: the operator confirmed the dashboard labels (API keys → Test → Reveal); nothing is
+   marked unconfirmed.
+4. Artifact: a checklist; two stages and no value the agent must route.
+5. Stages: each has Open, Do, Enter, Done when and If interrupted; neither has a hard-to-undo
+   effect, so neither needs a typed word.
+
+A cutover differs in gate 2. If a DNS change was submitted and the session dropped, the first
+stage reads the record and the health signal before anything else: the new target is active,
+skip to verification; still the old target, continue; anything else, stop and ask the operator
+to reconcile it. A dashboard toggle with no copied value still gets its own Done when.
 
 ## Run the example
 

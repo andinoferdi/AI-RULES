@@ -1,6 +1,9 @@
 # License Notice
 
 **Original Source:** [mattpocock/skills: skills/productivity/teach](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach)
+at commit ad5400b: `SKILL.md`, `MISSION-FORMAT.md`, `RESOURCES-FORMAT.md`,
+`LEARNING-RECORD-FORMAT.md` and `GLOSSARY-FORMAT.md`. The course-exercise resource adapts
+`skills/misc/scaffold-exercises/SKILL.md` from the same repository.
 
 Substantive adapted material in this skill is covered by the following notice:
 
