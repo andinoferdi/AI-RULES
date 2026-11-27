@@ -209,6 +209,15 @@ shortcut and red-flag lists, and resources for controls and their tests, the rev
 and a worked example. No payloads, scripts or hooks are imported. The comparison trial is
 recorded in `docs/validation/security-and-hardening/trial.md`.
 
+The 2026-11-26 upgrade of `learning-workspace` re-reads Matt Pocock's `teach`
+(mattpocock/skills ad5400b, `skills/productivity/teach` with `MISSION-FORMAT.md`,
+`RESOURCES-FORMAT.md`, `LEARNING-RECORD-FORMAT.md` and `GLOSSARY-FORMAT.md`, MIT) and moves the
+method into the sibling layout: a route table (direct answer, quick lesson, repair, workspace,
+course exercises), quick-lesson and repair steps, seven workspace steps with "Done when" lines in
+`SKILL.md` (mirrored by `GUIDE.md`), and resources for workspace formats, lessons and shared
+assets, and how people learn. The comparison trial is recorded in
+`docs/validation/learning-workspace/trial.md`.
+
 The 2026-11-01 elevation of `delegation` synthesizes the generative multi-agent delegation craft of
 Matt Pocock's `engineering/implement-spec` (task graph DAG modeling, active unblocked frontier tracking,
 context pointers replacing conversational chat dumps, and clean integration branch lifecycles),

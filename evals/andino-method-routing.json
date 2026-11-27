@@ -1652,6 +1652,20 @@
     "coverage": "routing"
   },
   {
+    "id": "method-learning-workspace-quick-lesson",
+    "kind": "behavior",
+    "prompt": "Teach me idempotency keys quickly, I'm building POST /payments and worry about double charges on retry.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select learning-workspace; teach in the conversation with the user's endpoint and end on one retrieval question; create no workspace or file",
+    "forbidden": "Creating a learning workspace, curriculum or files for a quick request; bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "learning-workspace"
+    ],
+    "method": "learning-workspace",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-method-authoring-implicit",
     "kind": "behavior",
     "prompt": "Buat panduan dari kegagalan proses teramati.",

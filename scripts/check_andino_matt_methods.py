@@ -153,12 +153,30 @@ EXPECTED = json.loads(r'''{
     "spawned": false
   },
   "learning-workspace": {
-    "recorded": [
-      "idempotency",
-      "timeouts"
-    ],
-    "covered_not_mastered": [
+    "covered_not_learned": [
       "retry identity"
+    ],
+    "files": [
+      "MISSION.md",
+      "NOTES.md",
+      "RESOURCES.md",
+      "assets/lesson.css",
+      "assets/quiz.js",
+      "learning-records/0001-prior-knowledge.md",
+      "learning-records/0002-retry-safety-misconception.md",
+      "lessons/0001-retry-identity.html",
+      "reference/retry-identity.html"
+    ],
+    "links_resolve": true,
+    "quiz_options_within_two_words": true,
+    "quiz_positions": [
+      2,
+      0,
+      1
+    ],
+    "recorded": [
+      "timeouts",
+      "retry safety misconception"
     ],
     "scheduled": false
   },
@@ -281,7 +299,7 @@ ARTIFACT_CONTRACTS = {
     "decision-map": {"map.md": ["Destination: choose local storage", "Not yet specified: backup policy", "Out of scope: cloud sync"]},
     "human-procedure": {"manual-steps.md": ["privately", "never paste into chat", "No external writes"]},
     "handoff": {"handoff.md": ["verification pending", "spec.md", "commit", "false", "run the accepted public-interface test"]},
-    "learning-workspace": {"MISSION.md": ["diagnose safe retries", "explain duplicate handling", "Out of scope"], "lesson.html": ["local source fixture"]},
+    "learning-workspace": {"MISSION.md": ["diagnose safe retries", "Explain duplicate handling", "Out of scope"], "lessons/0001-retry-identity.html": ["../assets/lesson.css", "../reference/retry-identity.html", "Primary source"], "learning-records/0002-retry-safety-misconception.md": ["Corrected", "**Evidence**"]},
     "stakeholder-questionnaire": {"questionnaire.md": ["platform owner", "peak request rate", "retained", "unknowns are useful", "> "]},
     "plain-language-repitch": {"repitch.txt": ["API task", "schema change", "Finish that change first"]},
     "agent-document-authoring": {"consumer-guide.md": ["done when", "only for TypeScript tests"]},
