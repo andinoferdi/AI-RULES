@@ -39,7 +39,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-security-and-hardening` | Map a trust boundary, prove the control with tests that the protected effect never runs, and report findings as confirmed or inferred through build and review gates; quick path when no boundary is touched. |
 | `andino-deprecation-and-migration` | Retire or replace something others use: consumer map beyond grep, expand/backfill phase ledger, per-consumer parity or notice, and a ready/held/done contract decision; quick path for private changes. |
 | `andino-observability-and-instrumentation` | Useful production evidence, monitoring and runbooks. |
-| `andino-performance-optimization` | Measured bottlenecks and verified improvements. |
+| `andino-performance-optimization` | Measured baselines, attributed bottlenecks, one change at a time, guards and an attempts record. |
 | `andino-ci-cd-and-automation` | CI gates and required checks, failing or flaky runs, workflow security, deploy promotion and rollback; optional commit-check setup. |
 | `andino-shipping-and-launch` | Size a release, decide go/no-go from cohort evidence, and hand over a stage table, rollback plan, monitoring and first-hour checks; a short answer for small changes. |
 | `andino-git-skills` | Six evidence gates for any Git change (snapshot, project check, classify, resource, observe, report) over five procedures: worktree setup, operation safety with a fail-closed guard hook, scoped commits, test-before-commit branch finishing, and PR bodies with evidence and merge danger. No implicit pull, push, force or cleanup on red. |

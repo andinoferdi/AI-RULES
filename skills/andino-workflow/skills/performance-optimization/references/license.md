@@ -4,6 +4,8 @@
 
 Substantive adapted material in this skill is covered by the following notice:
 
+Upstream revision read for the 2026-11-26 upgrade: addyosmani/agent-skills 783c41e.
+
 MIT License
 
 Copyright (c) 2025 Addy Osmani
@@ -25,3 +27,10 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## ruvnet (agentic-flow)
+
+ruvnet/agentic-flow `.claude/skills/v3-performance-optimization` (230611a) was read as a
+reference. The repository declares no license, so no text or code from it is reproduced; only
+general ideas (memory and startup measurement, input-size sweeps, percent-threshold regression
+gates) informed the Andino wording.

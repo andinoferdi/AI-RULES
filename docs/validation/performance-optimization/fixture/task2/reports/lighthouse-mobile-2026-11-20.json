@@ -1,0 +1,99 @@
+{
+  "lighthouseVersion": "12.2.1",
+  "requestedUrl": "https://lumen.example/",
+  "finalDisplayedUrl": "https://lumen.example/",
+  "fetchTime": "2026-11-20T03:14:07.512Z",
+  "configSettings": {
+    "formFactor": "mobile",
+    "throttlingMethod": "simulate",
+    "throttling": { "rttMs": 150, "throughputKbps": 1638.4, "cpuSlowdownMultiplier": 4 },
+    "screenEmulation": { "width": 412, "height": 823, "deviceScaleFactor": 1.75, "mobile": true }
+  },
+  "runWarnings": [],
+  "categories": {
+    "performance": { "title": "Performance", "score": 0.52 }
+  },
+  "audits": {
+    "first-contentful-paint": { "title": "First Contentful Paint", "numericValue": 1810, "numericUnit": "millisecond", "displayValue": "1.8 s" },
+    "largest-contentful-paint": { "title": "Largest Contentful Paint", "numericValue": 4810, "numericUnit": "millisecond", "displayValue": "4.8 s", "score": 0.31 },
+    "cumulative-layout-shift": { "title": "Cumulative Layout Shift", "numericValue": 0.21, "numericUnit": "unitless", "displayValue": "0.21", "score": 0.58 },
+    "total-blocking-time": { "title": "Total Blocking Time", "numericValue": 180, "numericUnit": "millisecond", "displayValue": "180 ms" },
+    "server-response-time": { "title": "Initial server response time was short", "numericValue": 112, "numericUnit": "millisecond", "displayValue": "Root document took 110 ms" },
+    "largest-contentful-paint-element": {
+      "title": "Largest Contentful Paint element",
+      "displayValue": "4,810 ms",
+      "details": {
+        "type": "list",
+        "items": [
+          {
+            "type": "table",
+            "headings": [{ "key": "node", "valueType": "node", "label": "Element" }],
+            "items": [
+              { "node": { "type": "node", "selector": "body > section.hero > img.hero-image", "snippet": "<img class=\"hero-image lazy\" data-src=\"img/hero.png\" alt=\"Lumen planning board on a laptop\" loading=\"lazy\" src=\"img/hero.png\">", "nodeLabel": "Lumen planning board on a laptop" } }
+            ]
+          },
+          {
+            "type": "table",
+            "headings": [
+              { "key": "phase", "valueType": "text", "label": "Phase" },
+              { "key": "percent", "valueType": "text", "label": "% of LCP" },
+              { "key": "timing", "valueType": "ms", "label": "Timing" }
+            ],
+            "items": [
+              { "phase": "TTFB", "percent": "11%", "timing": 520 },
+              { "phase": "Load Delay", "percent": "61%", "timing": 2930 },
+              { "phase": "Load Time", "percent": "17%", "timing": 810 },
+              { "phase": "Render Delay", "percent": "11%", "timing": 550 }
+            ]
+          }
+        ]
+      }
+    },
+    "lcp-lazy-loaded": {
+      "title": "Largest Contentful Paint image was lazily loaded",
+      "score": 0,
+      "details": { "type": "table", "items": [ { "node": { "selector": "body > section.hero > img.hero-image" } } ] }
+    },
+    "prioritize-lcp-image": {
+      "title": "Preload Largest Contentful Paint image",
+      "details": { "type": "opportunity", "items": [ { "url": "https://lumen.example/img/hero.png", "wastedMs": 2310 } ] }
+    },
+    "render-blocking-resources": {
+      "title": "Eliminate render-blocking resources",
+      "details": {
+        "type": "opportunity",
+        "overallSavingsMs": 930,
+        "items": [
+          { "url": "https://lumen.example/js/vendor.js", "totalBytes": 389120, "wastedMs": 870 },
+          { "url": "https://lumen.example/css/site.css", "totalBytes": 1630, "wastedMs": 150 }
+        ]
+      }
+    },
+    "uses-responsive-images": {
+      "title": "Properly size images",
+      "details": {
+        "type": "opportunity",
+        "items": [ { "url": "https://lumen.example/img/hero.png", "totalBytes": 1342177, "wastedBytes": 1236992 } ]
+      }
+    },
+    "modern-image-formats": {
+      "title": "Serve images in next-gen formats",
+      "details": { "type": "opportunity", "items": [ { "url": "https://lumen.example/img/hero.png", "totalBytes": 1342177, "wastedBytes": 1048576 } ] }
+    },
+    "unsized-images": {
+      "title": "Image elements do not have explicit width and height",
+      "score": 0,
+      "details": { "type": "table", "items": [ { "node": { "selector": "body > section.hero > img.hero-image" } }, { "node": { "selector": "body > section.team > img" } } ] }
+    },
+    "layout-shifts": {
+      "title": "Avoid large layout shifts",
+      "details": {
+        "type": "table",
+        "items": [
+          { "node": { "selector": "body > section.hero > h1" }, "score": 0.19, "subItems": { "items": [ { "cause": "Media element lacking an explicit size", "extra": { "selector": "body > section.hero > img.hero-image" } } ] } },
+          { "node": { "selector": "body > section.quotes" }, "score": 0.02 }
+        ]
+      }
+    }
+  }
+}

@@ -1820,6 +1820,34 @@
     "coverage": "routing"
   },
   {
+    "id": "method-performance-optimization-speculative",
+    "kind": "behavior",
+    "prompt": "slug.py looks inefficient to me; can you make it 10x faster?",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select performance-optimization",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "performance-optimization"
+    ],
+    "method": "performance-optimization",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
+    "id": "method-performance-optimization-memory",
+    "kind": "behavior",
+    "prompt": "The worker's memory climbs until the container is OOM-killed every six hours; ops restarts it nightly.",
+    "fixture": "Disposable task; no external action authorized. Other product facts/accepted current phase are settled unless the request explicitly asks to resolve them.",
+    "expected": "Select performance-optimization",
+    "forbidden": "Bulk loading or invented tool/skill use; authority bypass.",
+    "capabilities": [
+      "performance-optimization"
+    ],
+    "method": "performance-optimization",
+    "variant": "implicit",
+    "coverage": "routing"
+  },
+  {
     "id": "method-plain-language-repitch-implicit",
     "kind": "behavior",
     "prompt": "I do not understand your last message about task blockers. Explain plainly.",

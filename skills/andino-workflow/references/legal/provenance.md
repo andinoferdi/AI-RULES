@@ -222,6 +222,15 @@ tracing, flaky failures and recovery. The comparison trial is recorded in
 `docs/validation/debugging/trial.md`. The paragraph above describes the earlier version; its
 line budget, state-machine and Bash POSIX wording no longer apply.
 
+The 2026-11-26 upgrade of `performance-optimization` re-reads Addy Osmani's
+`performance-optimization` (addyosmani/agent-skills 783c41e, MIT) and moves the method into the
+sibling layout: a quick path and six evidence gates in `SKILL.md` (mirrored by `GUIDE.md`), a
+record with an attempts table, shortcut and red-flag lists, and resources for measurement,
+optimization patterns, web audits, a contract and a worked example. ruvnet's
+`v3-performance-optimization` (ruvnet/agentic-flow 230611a, no license declared) contributed
+ideas only, no text. The comparison trial is recorded in
+`docs/validation/performance-optimization/trial.md`.
+
 The 2026-11-26 upgrade of `plan-execution` re-reads Addy Osmani's `incremental-implementation`
 (addyosmani/agent-skills c4efec8) and Jesse Vincent's `executing-plans` (obra/superpowers
 22f0b46), both MIT, and moves the method into the sibling layout: six gated steps in `SKILL.md`
