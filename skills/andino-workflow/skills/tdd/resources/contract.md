@@ -1,22 +1,42 @@
-# Test one public behavior before implementing it — supporting contract
+# Supporting contract: invariants, record fields and the refactor gate
 
-## Tests and the separate refactor gate
+## Invariants the gates rest on
 
-Use repository-native commands. Prefer small pure tests, medium boundary integration and a few critical E2E flows; these are resource choices, not fixed percentage quotas. DAMP fixtures deliberately repeat enough facts to tell each story.
+1. Every production edit is preceded by a red run of the row it serves, or the row's test is
+   proved by gate 4. A suite that is green at the end proves nothing about a test that never
+   failed.
+2. A red counts only when the runner executed the named test and it failed on the predicted
+   assertion. Collection, import, syntax, name and fixture errors are setup failures.
+3. Expected values come from an independent source: a literal, a hand-checked fixture or the
+   requester's own figures. Never from the code under test, its helpers or its formula.
+4. Tests act through the public seam and observe through it. A seam may span several calls
+   (create then fetch, reserve then release); it never bypasses them through storage.
+5. Doubles stand in for slow, external, unsafe or nondeterministic boundaries only, and mirror
+   the real boundary's complete response and side effects.
+6. Known failures, skipped tests and choices made for the requester are reported, never hidden.
 
-A public seam may span create then retrieve, or reserve then release. Do not bypass it through an unrelated storage side channel. Doubles belong at system boundaries. Assert external call counts only when count/order is itself a contract; internal collaborator mocks couple tests to structure.
+## Record fields
 
-The refactor gate starts from GREEN. Compare return values, exceptions, side effects and ordering; simplify one observed problem. Apply the deletion test: what concept or indirection disappears? A deep module can hide complexity; an adapter without actual variation adds it. No new behavior belongs in this gate.
+| Field | Content | Source gate |
+| --- | --- | --- |
+| Test commands | The repository's focused and full-suite commands | Prerequisites |
+| Slices | One entry per row: behavior, seam, example, red line, green change and run | 1, 2, 3 |
+| Proof for tests that passed at once | The old revision or break, the failing line, the restore check | 4 |
+| Refactor | What changed and the suite run after it, or none | 5 |
+| Verification | Suite counts with every failure named old or new; the reporter's command for a bug | 6 |
+| Not done or not verified | Open choices, checks that could not run, behavior left unprotected | all |
 
-## Coverage design and boundary examples
+## The refactor gate in detail
 
-- **First feature slice.** At the public checkout entry point, use a cart worth 5,000 cents and an active fixed coupon for 700 cents. Assert a charge of 4,300 cents with fees and tax disabled in the fixture. The pre-feature checkout may charge 5,000 cents or reject the coupon. Identify which behavior the current code has and confirm the focused run reaches that mismatch. Keep receipt formatting, expiration and usage limits for later slices.
-- **Rollback through a real boundary.** Start with balances of 100 and 20, then attempt to transfer 30. In the test database, arrange for the credit write to fail after a successful debit. Use a database constraint or deterministic boundary fault that lets the debit execute and surfaces the intended credit error. Confirm the fault was reached and the debit executed in that attempt, then read both balances from a fresh connection after the operation ends. Expect 100 and 20. The legacy partial write should leave 70 and 20. A fault before the debit can leave both balances unchanged even when rollback is broken.
-
-Choose the lowest level that captures the real behavior. Inventory happy path, empty input, numeric/string boundaries, invalid input, external failure/timeout and concurrent/out-of-order calls; prioritize by data loss/security and core user flow. This is a risk map, not a rule to test every trivial function. Report current coverage, gaps, recommended case and what bug each catches.
-
-For components, locate controls by accessible role/name and assert user-visible validation or state. For HTTP boundaries, assert status and response contract for valid, malformed and unauthorized cases. For a critical browser path, exercise the full create/complete flow and visible result. Always await asynchronous success and rejection checks; isolate mutable test data and time. Snapshot only what a reviewer will inspect. Never skip a failing test just to make CI green. Upstream JS/TS syntax is illustrative: use the repository's native framework.
+Start only when every row is green. Name the observed problem first: duplication, an unclear
+name, a long function, a needless indirection. Inspect the callers of anything you touch. Change
+one thing, rerun the suite, and repeat. Compare return values, raised errors, side effects and
+their order before and after. Apply the deletion test: say which concept or indirection the
+change removes. A deep module may hide complexity; an adapter without real variation adds it.
+New behavior belongs in a new row, never in this gate. Stop when the next change would alter a
+test, the seam or the architecture, and record it as a separate request.
 
 ## Provenance
 
-Substantive adapted material is covered under the MIT license notices in [../references/license.md](../references/license.md).
+Substantive adapted material is covered by the MIT notices in
+[../references/license.md](../references/license.md).

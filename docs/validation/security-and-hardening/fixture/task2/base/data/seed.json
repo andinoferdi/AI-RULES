@@ -1,0 +1,10 @@
+{
+  "users": [
+    {"id": "u-eka", "tenant_id": "t-kopi", "name": "Eka", "token": "fbx_live_Q8wE3rT6yU1iO4pA"},
+    {"id": "u-fajar", "tenant_id": "t-tani", "name": "Fajar", "token": "fbx_live_Z5xC2vB7nM0kL9jH"}
+  ],
+  "invoices": [
+    {"id": 1, "tenant_id": "t-kopi", "number": "KOPI-2026-031", "amount": 2150000},
+    {"id": 2, "tenant_id": "t-tani", "number": "TANI-2026-118", "amount": 7400000}
+  ]
+}

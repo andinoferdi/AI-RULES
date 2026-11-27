@@ -1,14 +1,34 @@
-# Prepare a portable handoff: procedure detail and bounded example
+# Worked example: handing an export change to a reviewer
 
-Preserve primary-source pointers when the next phase depends on reasoning that compression could flatten. The ordered context choices are Continue, discard irrelevant context, portable Handoff, bounded delegation, then compaction if needed; this is judgment under host constraints, not mandatory commands. No handoff replaces current Andino task state.
+Rina finished a one-line export change and stops for the day. Tomorrow Bayu reviews it in
+his own checkout, with his own agent. This example follows the procedure from the boundary
+decision to Bayu's first command, then covers two things that go wrong.
+
+## Step 1: the move
+
+The next phase (review) runs in another checkout and with another person, so question 3 of
+the boundary table answers yes: a handoff document. Continue fails because the work leaves
+this session; a subagent would fit an unattended review here, but Bayu wants to review it
+himself.
+
+## Steps 2 to 7: the document
+
+Recipient: Bayu, his own checkout, starting tomorrow; focus: verify the change against the
+spec. Rina reruns the check, notes that `changes.diff` is not committed anywhere Bayu can
+fetch, and ships it beside the handoff instead of asking him to find it. Commit permission
+was not given, so the handoff says so.
 
 ## Run the example
 
-This example uses only Python's standard library and writes inside the current working directory. Read the code, then run it only in a fresh disposable directory. The main repository's `scripts/check_andino_matt_methods.py --runtime-root <package>` executes this exact block in a TemporaryDirectory and independently checks the semantic results. No project files, index, external services or credentials are needed.
+The block uses only Python's standard library and writes inside the current working
+directory. Read it, then run it in a fresh, disposable directory. The repository's
+`scripts/check_andino_matt_methods.py --runtime-root <package>` runs this exact block in a
+temporary directory and checks its results independently.
 
 ```python
 from pathlib import Path
 import json
+
 Path("spec.md").write_text(
     "# Export ticket\n\n## Acceptance\nThe export exposes a status field.\n",
     encoding="utf-8",
@@ -24,27 +44,39 @@ Path("check_export.py").write_text(
     encoding="utf-8",
 )
 Path("handoff.md").write_text(
-    """# Export ticket handoff
+    """# Handoff: export status field, for Bayu (his checkout, tomorrow)
 
-## Resume here
+Written by Rina. Next session's focus: review the change against the spec.
 
-Review the export field change against spec.md, section Acceptance. Start in
-the directory containing this handoff. The current phase is verification.
+## Before you start
+`changes.diff` exists only on Rina's machine and is shipped next to this file. Check it is
+there: `python check_export.py` must print `Export status field present`.
+Checked from your side: `ls spec.md changes.diff check_export.py` -> all three present in
+the folder that holds this file.
+
+## Read first
+- spec.md, section Acceptance: the export exposes a status field.
 
 ## Current state and evidence
+- Slice implemented; verification pending. The diff renames `state` to `status`.
+- `python check_export.py` run by Rina before writing this: passed.
 
-Slice implemented, verification pending. changes.diff contains the exact
-proposed change. It is a standalone patch in this fixture.
+## Decisions that must hold
+- The field is named status, because the consumer contract names it. Rejected: keeping
+  state with an alias, because the consumer rejects unknown fields.
 
-## Decisions and boundaries
-
-Use the field name status because the consumer contract names it. The reviewer
-may run local checks. Permission to commit is false.
+## Open questions and boundaries
+- None open. Out of scope: other export fields.
+- The reviewer may run local checks. Permission to commit: false.
 
 ## NEXT ACTION
-
 From this directory, run `python check_export.py` to run the accepted public-interface test
-for this fixture. Expect `Export status field present`.
+for this fixture. Expect `Export status field present`. Then compare changes.diff with the
+Acceptance section of spec.md.
+
+## Suggested skills
+- Comparing the diff with the spec: andino-code-review, if installed.
+- Before calling the review accepted: andino-verification, if installed.
 """,
     encoding="utf-8",
 )
@@ -57,22 +89,23 @@ result = {
 Path("result.json").write_text(json.dumps(result, sort_keys=True), encoding="utf-8")
 ```
 
-## What the observation establishes
+## Step 6: check it as Bayu
 
-Read `handoff.md` as the recipient, resolve its pointers from the fixture root,
-and run the stated command. Compare the observed output with the stated signal.
-The check exercises the patch fixture only.
+Read `handoff.md` alone, resolve `spec.md` and `changes.diff` from the directory that holds
+it, and run the NEXT ACTION. The output must match the stated signal. The check exercises the
+patch fixture only; it says nothing about how a model applies the skill.
 
-For a blocked assignment, suppose the consumer owner has yet to confirm the
-field name. Mark verification pending and make the next action obtaining their
-recorded decision in the Acceptance section. Resume the check once that section
-contains the confirmed name.
+## When things go wrong
 
-For a cross-host transfer, copy the fixture to another directory and repeat the
-recipient check from that root. If `changes.diff` was omitted, record it as missing.
-The next action is to obtain the exact patch from the sender and confirm it is
-present before running the check.
+**The patch is missing.** Copy the folder without `changes.diff` and repeat Bayu's check: the
+presence check fails before any review starts. The handoff's first action is then to get the
+exact patch from Rina, and the review waits until `python check_export.py` prints the signal.
 
-The deterministic result covers artifact structure and the local recipient
-procedure. Model activation, host delegation and human decisions require their
-own evidence.
+**The repository moved before Bayu started.** Suppose another commit renamed `export.txt` to
+`export.csv` after Rina wrote the handoff. On receipt Bayu compares HEAD with the recorded
+commit, finds the rename, applies the patch to the new path, reruns the check and tells Rina
+what he adapted. He does not restore the old name to make the handoff literally true.
+
+**The consumer owner has not confirmed the field name.** Then the handoff marks verification
+pending and its NEXT ACTION is to get that decision recorded in the Acceptance section; the
+review resumes once the section names the field.

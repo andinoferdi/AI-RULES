@@ -1,0 +1,4 @@
+{
+  "quote_engine": "pricing.legacy:quote",
+  "invoice_day": 1
+}
