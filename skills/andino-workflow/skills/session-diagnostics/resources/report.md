@@ -1,43 +1,73 @@
 # Write a session diagnostics report
 
-Use the [supporting contract](contract.md) for case fields, dimension statuses,
-and safe excerpts. Start with the observable the user asked about. For repeated
-work, compare the original and later action, their inputs and results, and any
-reason to retry. For plan or verification concerns, compare the applicable
-instruction or acceptance condition with the action actually taken. For cost
-or time, identify the recorded field and the exact range before calculating.
+Used by gate 6, and by the quick path for its short answer. The report answers the user's
+questions first, then shows the evidence. Case fields and statuses are in the
+[supporting contract](contract.md).
 
-## Report format
+## Short answer
 
-1. **Verdict.** Answer the scoped question in the first paragraph. Cite the
-   decisive lines and state confidence in the conclusion separately from
-   confidence in its cause. A component's presence or proximity can establish
-   involvement. Establish causation only with evidence that distinguishes it
-   from competing explanations.
-2. **Scope and sources.** State the expected and observed behavior, session
-   identity, examined range, and whether the source was an in-progress
-   snapshot when known. Explain how the selected source was identified.
-   Include relevant rejected candidates, missing lineage, or differences
-   between recorded session configuration and the current environment.
-3. **Timeline.** Include this section when the order of events affects the
-   verdict. Keep only the events needed to understand the discrepancy, with
-   an anchor for each. Distinguish human requests, agent actions and tool results.
-4. **Findings.** Lead with the dimensions that answer the user's question. For
-   each, give its status, examined range, and, for an observation, a bounded
-   safe excerpt at `path:line`. Explain what the excerpt proves and what it
-   leaves open. Show the input and arithmetic for material derived metrics.
-   Use `UNKNOWN` for missing or ambiguous evidence and
-   `NOT_OBSERVED_IN_SCOPE` only for evidence actually examined.
-5. **Coverage and next check.** Identify material unread ranges or missing
-   records and say how they limit the answer. If one bounded check could
-   change the verdict, name the evidence to inspect and what it would settle.
-   Include any requested export results under the existing privacy and
-   evidence-support contract.
+For a question about one event, reply in this shape, near 150 words and never over 200:
 
-For a compact answer, combine the verdict, scope and material limitations in
-one paragraph or a short list. Apply the same citation and confidence rules.
-Save a report artifact when requested or when already part of the agreed
-deliverable.
+1. The answer or cause in the first sentence, in the user's terms.
+2. The decisive lines: what the records show, each with `path:line` (or `L<n>` once the file is
+   named).
+3. Who gave the instruction: the human, injected hook or system text, a tool result or a parent
+   agent, with the line that shows it.
+4. One line on what you could not see (a script's contents, a config, a missing record).
+
+Then offer the full report in one line. No headings, tables or sections.
+
+## Report sections
+
+Write `report.md` in the workspace with these sections, in order. A section that does not
+apply says why in one line.
+
+1. **Verdict.** Answer each question the user asked, in their order, in the first lines. For
+   each conclusion state its confidence (high, medium, low) and, separately, the confidence in
+   its cause. Cite the decisive lines. No statement about what a skill should change.
+2. **Problem statement and scope.** The agreed statement; session identity (id, path, first
+   prompt, first timestamp in the user's zone and UTC); rejected candidates with reasons;
+   examined range; whether the session was still running; differences between the recorded
+   environment and today's.
+3. **Timeline.** One row per human prompt, with the injected messages that preceded it:
+
+   | Turn | Line | Time (user zone / UTC) | Request (one line) | Events |
+   | --- | --- | --- | --- | --- |
+
+   Events lists skills invoked, subagents dispatched, compactions, errors and retries, resumes,
+   injected instructions acted on, and the claims the turn ended with.
+4. **Findings.** One subsection per examined dimension, leading with those that answer the
+   user's question. Each gives its status, the range examined and its findings in the
+   [finding format](#finding-format). A dimension with nothing to report says
+   `NOT_OBSERVED_IN_SCOPE — checked: <what>` or `UNKNOWN — missing: <what>`.
+5. **Cost and time.** The usage semantics in one sentence (per response or cumulative; repeated
+   records counted once); totals per session with each counter; records without usage and that
+   the total is a lower bound; the five largest responses or turns; the ten largest tool
+   results; the span; every gap over ten minutes with what the records show it was or "not
+   shown in the records"; compactions with their counters; subagents with usage and duration.
+   Show inputs for every derived number. No prices unless the source records them.
+6. **Involvement.** For each skill, hook, plugin or tool in play: `not indicated`, `possible`
+   or `likely`, with its lines. State involvement only; no defect, no fix. When possible or
+   likely, mention the issue step.
+7. **Coverage and next check.** Ranges and files not read and why; fields unavailable;
+   whether the session was in progress; claims the user should double-check. When one bounded
+   check could change the verdict, name the evidence and what it would settle.
+8. **Export** (only when requested). Bundle path, level, file list, privacy outcome and evidence
+   outcome on separate lines.
+9. **Similar sessions** (only when requested). One row per candidate: id, path, date, matched
+   markers, missed markers.
+
+## Finding format
+
+```text
+- finding: <one sentence, what happened>
+  evidence: <path>:<line> - "<quote, at most 200 characters, secrets replaced>"
+  turns: <first>-<last>
+  confidence: high | medium | low
+```
+
+Derived numbers name their inputs: "41,250 = 12 + 8,100 + 32,600 + 538 (input, cache
+creation, cache read, output; lines 4-90, one count per response id)".
 
 ## Worked report
 
@@ -52,26 +82,44 @@ The anchors below refer to this synthetic, complete excerpt of a session log.
 6 tool: read plan.md -> success, hash abc
 ```
 
-**Verdict.** The log shows one repeated successful read of unchanged content
-after the checkpoint, with high confidence in that count. The earlier retry
-followed a timeout. Why the later repeat occurred is unknown.
-(`session.log:2`, `session.log:3`, `session.log:4`, `session.log:6`)
+**Verdict.** Yes, the session repeated completed work once: plan.md was read successfully at
+line 3 and again at line 6 with the same content (confidence high). Why it re-read is not shown
+in the records; the compaction at line 5 is the only event between the reads (confidence in
+the cause: low). (`session.log:3`, `session.log:5`, `session.log:6`)
 
-**Scope and sources.** This example covers `session.log:1–6`. The human asked
-for a plan read before editing (`session.log:1`). The question is whether the
-extra read repeated completed work and what it cost.
+**Problem statement and scope.** The human asked for one plan read before editing
+(`session.log:1`); the question is whether the extra read repeated completed work. Range
+`session.log:1-6`, complete; no other candidate session.
 
-**Timeline.** Timeout (`session.log:2`), successful retry and checkpoint
-(`session.log:3`, `session.log:4`), compaction (`session.log:5`), second
-successful read (`session.log:6`).
+**Timeline.**
 
-**Findings.** Repeated work — `OBSERVED` in lines 2–6. Both successful results
-show “hash abc” (`session.log:3`, `session.log:6`). Compaction is recorded
-between them, and the excerpt does not show what checkpoint context the agent
-received afterward. Cost — `UNKNOWN` in lines 1–6. The excerpt has no usage or
-billing fields.
+| Turn | Line | Time | Request | Events |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | not recorded | Use the accepted plan; read plan.md first | timeout (2), retry (3), checkpoint (4), compaction (5), re-read (6) |
 
-**Coverage and next check.** The finding covers these reads only. If an
-authorized post-compaction context record is available, check whether it
-contains the checkpoint at line 4. That would help distinguish a missing
-checkpoint from a repeat despite the checkpoint being available.
+**Findings.**
+
+Repeated work — `OBSERVED`, lines 2-6.
+
+```text
+- finding: plan.md was read successfully twice with unchanged content, the second read after a compaction
+  evidence: session.log:6 - "read plan.md -> success, hash abc"
+  turns: 1-1
+  confidence: high
+```
+
+The read at line 3 is a retry after the timeout at line 2, not waste.
+
+Stumbles — `OBSERVED`, line 2: a timeout, recovered at line 3 in the same turn.
+
+**Cost and time.** `UNKNOWN`: the excerpt has no usage or timestamp fields.
+
+**Involvement.** Compaction (host): `possible` — it is the only event between the two
+successful reads (`session.log:5`).
+
+**Coverage and next check.** Lines 1-6 read in full. If an authorized post-compaction context
+record exists, check whether it carries the checkpoint from line 4: that separates a lost
+checkpoint from a repeat despite the checkpoint.
+
+Adapted from obra/superpowers `diagnosing-superpowers` (b739a8a, MIT): the report template and
+finding format.
