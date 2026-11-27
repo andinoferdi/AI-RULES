@@ -1,0 +1,7 @@
+{
+ "inv-101": ["timeout", "ok"],
+ "inv-102": ["declined"],
+ "inv-103": ["timeout", "timeout", "timeout"],
+ "inv-104": ["ok"],
+ "inv-106": ["timeout", "timeout", "ok"]
+}
