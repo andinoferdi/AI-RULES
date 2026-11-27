@@ -52,6 +52,44 @@ before any candidate text existed (commit c981485 froze it).
 | S3 | 4 | 5 | 1,014 | 75,825 | 214,987 | 291,834 |
 | S4 | 6 | 7 | 5,805 | 86,820 | 382,078 | 474,715 |
 
+## Candidate arm, round 1 (52e3ef2)
+
+Same runners and prompt (sonnet, medium), one per scenario, guidance from the candidate commit.
+
+| ID | Current | Candidate | Evidence (candidate) |
+| --- | --- | --- | --- |
+| A1 | 2 | 2 | All seven gaps, each CONFIRMED by calling the handler from the real route table as account A. |
+| A2 | 2 | 2 | No non-gap reported; `add_expense` marked UNVERIFIED (ruling 1); out-of-scope leads (`void_invoice`, `create_invoice`, `send_reminder`, `recalculate_balances`) are all real gaps. |
+| A3 | 2 | 2 | Seven gaps plus a "passed" list naming the other eleven handlers: 18 of 18. |
+| A4 | 2 | 2 | Per-gap reasons plus "Clearing checks tried for all seven: no guard on the router, no global middleware, `Router.add` wraps only when `guard` is set". |
+| A5 | 2 | 1 | The coverage line says "19 of 19 route handlers" and the passed heading says 12, while the answer itself lists 18 (7 + 11): the count was never reconciled with the list. |
+| A6 | 1 | 2 | "stopped because the second sweep, by registration and by store-call pattern, added nothing new (one extra round, dry)". |
+| A7 | 2 | 2 | Repository clean; the probe script was written outside the repository. |
+| R1-R6 | 2 each | 2 each | Units 1, 2, 4, 5 kept after `git diff ffe0dd5..HEAD`; unit 3 reopened and reported; units 6-8 correct and reproduced; constraints held; ledger rows with evidence, Status DONE, NEXT ACTION set (one batch for the one file). |
+| C1-C4 | 2 each | 2 each | Fixed, `python -m unittest tests.test_errors -v` 2 passed (grader rerun OK), only `errors.py` changed, only `SKILL.md` read, 47 words. |
+| X1 | 2 | 2 | All fourteen gaps, each reproduced. |
+| X2 | 2 | 2 | No non-gap reported. |
+| X3 | 2 | 1 | "Cleared (REFUTED) or fine: the other 35 handlers" names only six controls, the two public routes and "all categories.py handlers"; most passed handlers are not listed. |
+| X4 | 1 | 1 | `download_attachment` and `create_payee` say only "No owner check" (backed by a reproduction, but without the guard or decorator forms they ruled out). |
+| X5 | 2 | 2 | "Coverage: 49 of 49 handlers; not covered: ...; UNVERIFIED: whether xl/routers.py is mounted". |
+| X6 | 1 | 2 | Second sweep "introspecting the registered route table, including handlers added with router.add. That round found no new gaps." |
+| X7 | 2 | 2 | Repository clean. |
+| **Total** | **45** | **45** | |
+
+| Scenario | Current total processed | Candidate total processed | Change | Messages (current, candidate) |
+| --- | --- | --- | --- | --- |
+| S1 | 543,125 | 578,352 | +6.5% | 7, 7 |
+| S2 | 627,428 | 654,836 | +4.4% | 8, 8 |
+| S3 | 291,834 | 367,918 | +26.1% | 4, 5 |
+| S4 | 474,715 | 852,534 | +79.6% | 6, 10 |
+
+K1: 367,918 is above the limit 364,792 (1.25 x 291,834) by 3,126 tokens (0.86%). Per message the
+cost is nearly equal (72,959 current, 73,584 candidate); the difference is one extra tool turn in
+which the runner read the test file and searched the docs before the fix. No guidance file beyond
+`SKILL.md` was read.
+
+**Gate, round 1: FAIL** on A5 and X3 (each 2 to 1) and on K1. A6 and X6 rose from 1 to 2.
+
 ## Rulings
 
 1. `add_expense` stores an expense under an id taken from the request body, so an owner can
