@@ -30,6 +30,7 @@ SOFTWARE.
 
 ## Addy Osmani (agent-skills)
 - **Original Source:** [addyosmani/agent-skills: skills/incremental-implementation](https://github.com/addyosmani/agent-skills/tree/main/skills/incremental-implementation)
+- **Revision read for the 2026-11-26 upgrade:** c4efec801df9bfcc682ee5a877e5b04c14dbc118
 
 MIT License
 
@@ -55,6 +56,7 @@ SOFTWARE.
 
 ## Jesse Vincent (superpowers)
 - **Original Source:** [obra/superpowers: skills/executing-plans](https://github.com/obra/superpowers/tree/main/skills/executing-plans)
+- **Revision read for the 2026-11-26 upgrade:** 22f0b463e7a5e579904dd6211a520321035526f7
 
 MIT License
 

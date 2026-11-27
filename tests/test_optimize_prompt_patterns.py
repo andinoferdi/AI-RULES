@@ -10,6 +10,7 @@ RESOURCE = 'skills/optimize-prompt/resources/prompt-patterns.md'
 WORKED_EXAMPLE = 'skills/optimize-prompt/resources/worked-example.md'
 SKILL = 'skills/optimize-prompt/SKILL.md'
 GUIDE = 'skills/optimize-prompt/GUIDE.md'
+INTENT = 'skills/optimize-prompt/resources/intent-checklists.md'
 SLOTS = ('Skills', 'Tools/MCP', 'Mode', 'Task', 'Context/evidence', 'Done when', 'Constraints')
 HEADER_SLOTS = SLOTS[:3]
 
@@ -100,7 +101,7 @@ class LightEditorContract(unittest.TestCase):
 
     def test_skill_and_guide_share_one_body(self):
         def body(text):
-            return text.replace('\r\n', '\n').split('## Purpose and selection', 1)[1]
+            return text.replace('\r\n', '\n').split('## Purpose\n', 1)[1]
         self.assertEqual(body(runtime_resource(SKILL)), body(runtime_resource(GUIDE)))
 
     def test_no_rule_drops_or_adds_user_choices(self):
@@ -121,6 +122,20 @@ class LightEditorContract(unittest.TestCase):
                     self.assertIn(token, out)
                 header = [out.index(token) for token in self.TOKEN.findall(raw.splitlines()[0])]
                 self.assertEqual(sorted(header), header)
+
+    def test_worked_examples_have_a_short_diagnosis_table(self):
+        worked = runtime_resource(WORKED_EXAMPLE).replace('\r\n', '\n')
+        for example in re.split(r'^## Example \d+', worked, flags=re.M)[1:]:
+            rows = [line for line in table(section(example, '### Output'))
+                    if not re.match(r'^\|\s*-', line)]
+            with self.subTest(example=example.splitlines()[0]):
+                self.assertTrue(2 <= len(rows) <= 6, rows)  # header plus at most five rows
+
+    def test_intent_checklist_covers_core_intents(self):
+        text = runtime_resource(INTENT)
+        for intent in ('bug', 'UI', 'feature', 'refactor', 'research'):
+            self.assertRegex(text, rf'(?m)^\| {intent}')
+        self.assertIn('intent-checklists.md', runtime_resource(SKILL))
 
 
 if __name__ == '__main__':
