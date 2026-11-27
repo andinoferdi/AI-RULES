@@ -98,6 +98,25 @@ class OrchestrationContract(unittest.TestCase):
         self.assertIn('reopen only the units that changed',
                       flat(read(f'{WORKFLOW}/references/handoff.md')))
 
+    def test_coexistence_registry_and_readme(self):
+        coexist = read(f'{WORKFLOW}/references/capability-coexistence.md')
+        self.assertIn('Workflow tool / ultracode / Andino orchestration', coexist)
+        self.assertIn('search-first Full mode / orchestration', coexist)
+        registry = read(f'{WORKFLOW}/references/capability-registry.md')
+        self.assertIn('| [rea](#rea) | MCP |', registry)
+        self.assertRegex(registry, r'(?m)^## rea\n\n- Type: MCP$')
+        self.assertIn('Workflow tool', section(registry, '## native-capabilities'))
+        self.assertIn('references/orchestration.md', read(f'{WORKFLOW}/README.md'))
+
+    def test_delegation_host_notes(self):
+        notes = flat(read(f'{WORKFLOW}/skills/delegation/resources/host-cost-calibration.md'))
+        for phrase in ('CLAUDE_CODE_WORKFLOW_MAX_CONCURRENT_AGENTS',
+                       'CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS', 'backticks', 'same session only',
+                       'CLAUDE_CODE_EFFORT_LEVEL'):
+            self.assertIn(phrase, notes)
+        self.assertIn('holds the 3-agent limit',
+                      flat(read(f'{WORKFLOW}/skills/delegation/resources/contract.md')))
+
     def test_guard_mapping_covers_all_ten(self):
         mapping = section(read(REFERENCE), '## Guard mapping')
         self.assertEqual(list(range(1, 11)),

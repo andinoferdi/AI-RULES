@@ -47,8 +47,9 @@ Ask again before any of these:
 - a different model or effort, or a replacement agent;
 - another review seat, a higher round cap, or work outside the listed tasks.
 
-A multi-agent workflow tool counts every agent it starts against the same message and limit. A
-calibration probe is an agent too.
+A multi-agent workflow tool counts every agent it starts against the same message and limit. Its
+script or host setting holds the 3-agent limit, every agent call states model and effort, and a
+host mode or keyword that opts into workflows is not approval. A calibration probe is an agent too.
 
 ## Limits on every agent
 
