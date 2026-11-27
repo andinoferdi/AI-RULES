@@ -118,34 +118,81 @@ def collect_selection(
     profile_choices: Sequence[object],
     capability_choices: Sequence[object],
 ) -> InteractiveSelection | None:
-    hosts = checkbox("Select AI agent(s)", host_choices)
+    hosts = checkbox("Which AI agents?", host_choices)
     if not hosts:
         return None
-    profile = choose("Select profile", profile_choices)
+    profile = choose("Which profile?", profile_choices)
     if profile is None:
         return None
     if profile != "custom":
         return InteractiveSelection(tuple(hosts), profile, ())
-    capabilities = checkbox("Select capabilities", capability_choices)
+    capabilities = checkbox("Which skills?", capability_choices)
     if not capabilities:
         return None
     return InteractiveSelection(tuple(hosts), None, tuple(capabilities))
+
+
+def _look(screen, *, pointer: bool = True) -> dict:
+    """Questionary arguments for screen mode: brand symbols and a colourless style."""
+    if screen is None:
+        return {}
+    look = {"qmark": screen.glyphs.active, "style": screen.question_style()}
+    if pointer:
+        look["pointer"] = screen.glyphs.pointer
+    return look
+
+
+def _shown(choices: Sequence[object], answer) -> str:
+    """The text questionary prints after a select or checkbox answer."""
+    titles = {choice.value: choice.title for choice in choices}
+    if not isinstance(answer, (list, tuple)):
+        return str(titles.get(answer, answer))
+    if len(answer) == 1:
+        return f"[{titles.get(answer[0], answer[0])}]"
+    return "done" if not answer else f"done ({len(answer)} selections)"
 
 
 def prompt_selection(
     hosts: Mapping[str, Host],
     profiles: Mapping[str, Profile],
     capabilities: Mapping[str, Capability],
+    *,
+    screen=None,
 ) -> InteractiveSelection | None:
     import questionary
+
+    from ai_rules.screen import fit_names
 
     host_choices = _questionary_choices(build_host_choices(hosts))
     profile_choices = _questionary_choices(build_profile_choices(profiles, capabilities))
     profile_choices.append(questionary.Choice(title="Custom", value="custom", description="Choose skills and integrations manually"))
     capability_choices = _questionary_choices(build_capability_choices(capabilities))
+
+    def fold(message, choices, answer):
+        if screen is None or not answer:
+            return
+        titles = {choice.value: choice.title for choice in choices}
+        if choices is host_choices:
+            label, value = "Agents", fit_names([titles[item] for item in answer], screen.console.width - 12)
+        elif choices is capability_choices:
+            label, value = "Skills", f"{len(answer)} selected"
+        else:
+            label, value = "Profile", titles.get(answer, answer)
+        screen.rewrite_answer(label, value, rows=screen.prompt_rows(message, _shown(choices, answer)))
+
+    def choose(message, choices):
+        answer = questionary.select(message, choices=choices, **_look(screen)).ask()
+        fold(message, choices, answer)
+        return answer
+
+    def checkbox(message, choices):
+        answer = questionary.checkbox(message, choices=choices, **_look(screen)).ask()
+        fold(message, choices, answer)
+        return answer
+
     return collect_selection(
-        choose=lambda message, choices: questionary.select(message, choices=choices).ask(),
-        checkbox=lambda message, choices: questionary.checkbox(message, choices=choices).ask(),
+        choose=choose,
+        checkbox=checkbox,
         host_choices=host_choices,
         profile_choices=profile_choices,
         capability_choices=capability_choices,
@@ -163,34 +210,54 @@ def collect_agent_defaults(
     choose: Callable[[str, Sequence[str]], str | None],
 ) -> tuple[bool, str | None] | None:
     """Ask whether to install the Layer 1 defaults block and in which language; None cancels."""
-    install = confirm("Install agent defaults (Layer 1) into each host's global instruction file?")
+    install = confirm("Add working defaults to each agent's global instructions?")
     if install is None:
         return None
     if not install:
         return (False, None)
-    language = choose("Agent defaults language", ("id", "en"))
+    language = choose("Defaults language", ("id", "en"))
     return None if language is None else (True, language)
 
 
-def prompt_agent_defaults() -> tuple[bool, str | None] | None:
+def prompt_agent_defaults(*, screen=None) -> tuple[bool, str | None] | None:
     import questionary
 
-    return collect_agent_defaults(
-        confirm=lambda message: questionary.confirm(message, default=True).ask(),
-        choose=lambda message, values: questionary.select(
-            message,
-            default="id",
-            choices=[questionary.Choice("Bahasa Indonesia", value="id"), questionary.Choice("English", value="en")],
-        ).ask(),
-    )
+    from ai_rules.screen import LANGUAGE_NAMES
+
+    languages = [questionary.Choice(LANGUAGE_NAMES["id"], value="id"), questionary.Choice(LANGUAGE_NAMES["en"], value="en")]
+    rows = []
+
+    def confirm(message):
+        answer = questionary.confirm(message, default=True, **_look(screen, pointer=False)).ask()
+        if screen is not None and answer is not None:
+            rows.append(screen.prompt_rows(message, "Yes" if answer else "No"))
+        return answer
+
+    def choose(message, _values):
+        answer = questionary.select(message, default="id", choices=languages, **_look(screen)).ask()
+        if screen is not None and answer is not None:
+            rows.append(screen.prompt_rows(message, _shown(languages, answer)))
+        return answer
+
+    choice = collect_agent_defaults(confirm=confirm, choose=choose)
+    if screen is not None and choice is not None:
+        install, language = choice
+        screen.rewrite_answer("Defaults", LANGUAGE_NAMES.get(language, "on") if install else "off", rows=sum(rows))
+    return choice
 
 
 def confirm_execution(confirm: Callable[[str], bool | None]) -> bool:
-    return confirm("Apply this installation plan?") is True
+    return confirm("Apply this plan?") is True
 
 
-def prompt_confirmation() -> bool:
+def prompt_confirmation(*, screen=None) -> bool:
     import questionary
 
-    return confirm_execution(lambda message: questionary.confirm(message, default=False).ask())
+    def confirm(message):
+        answer = questionary.confirm(message, default=False, **_look(screen, pointer=False)).ask()
+        if screen is not None and answer is not None:
+            screen.rewrite_answer("Apply", "yes" if answer else "no",
+                                  rows=screen.prompt_rows(message, "Yes" if answer else "No"))
+        return answer
 
+    return confirm_execution(confirm)

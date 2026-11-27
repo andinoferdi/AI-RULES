@@ -1,5 +1,15 @@
 # Decisions
 
+- 2026-11-27: `ai-rules setup` gets a screen mode for people at a terminal ("Ya, pakai
+  dua-duanya"): the Checked A builds, answers fold into one line each, the plan is one line, a
+  bar fills per agent, and the check lights up in Kunyit only after a verified run. Kunyit stays
+  reserved for done marks; no gradients or confetti. Full paths, installation records and
+  per-file lines move to `--verbose`; failed, blocked and manual items always show. Plain mode
+  (CI, pipes, `--no-progress`, `--non-interactive`) keeps the old text. No new dependency:
+  rich and questionary only; terminaltexteffects was set aside (its maintainer recommends only
+  Windows Terminal for animation on Windows, and its effects are built on gradients). Design:
+  [specs/2026-11-27-setup-screen-design.md](specs/2026-11-27-setup-screen-design.md).
+
 - 2026-11-27: andino-workflow gets its own loop for multi-unit work
   (`skills/andino-workflow/references/orchestration.md`, with a short trigger in SKILL.md): a
   counted work list, results written to the checkpoint in batches, an attempt to clear each

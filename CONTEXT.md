@@ -38,3 +38,14 @@ A pinned commit of another branch used only by checks, never installed.
 **Skill checks / installer checks**:
 The two groups of `scripts/ci_checks.py`. Skill checks read real skill content;
 installer checks use fixture data.
+
+**Screen mode**:
+The way `ai-rules setup`, `update` and `repair` draw for a person at a terminal:
+the mark builds, answers fold into one line each, the plan is one line, a bar fills
+per agent, and the check lights up only after a verified run.
+_Avoid_: TUI, fancy mode
+
+**Plain mode**:
+The line output the installer prints for logs, pipes and scripts: every run that
+is not in screen mode (CI, `TERM=dumb`, `--no-progress`, `--non-interactive`,
+redirected output). Its text is the installer's original wording.
