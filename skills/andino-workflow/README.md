@@ -1,6 +1,6 @@
 # Andino Workflow
 
-Andino Workflow coordinates a **31-member public core** and selectively loaded internal techniques. It owns routing, one durable checkpoint, permissions and evidence-based acceptance; selected skills retain their full methods and checks. Codex, Claude Code, OpenCode and Antigravity are peers.
+Andino Workflow coordinates a **32-member public core** and selectively loaded internal techniques. It owns routing, one durable checkpoint, permissions and evidence-based acceptance; selected skills retain their full methods and checks. Codex, Claude Code, OpenCode and Antigravity are peers.
 
 Public members have native `andino-*` entrypoints. Specialized techniques live as ordinary Markdown resources: no nested native entrypoint, compatibility shim or old invocation alias. Load only the technique needed now. Selecting a resource does **not** start its parent's lifecycle, run other modes, reopen accepted decisions or create a second plan.
 
@@ -13,6 +13,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | Public member | Responsibility |
 | --- | --- |
 | `andino-brainstorming` | Open intent and choices, why before how, decision rounds and a confirmed design; optional decision-frontier, feasibility-probe, idea-validation and async-question resources. |
+| `andino-writing-tickets` | Tracer-bullet tracker tickets with blocking edges from a plan, spec, issue or discussion: prefactor first, expand-contract for wide refactors, open decisions as human tickets, reruns without duplicates and a graph check. |
 | `andino-planning` | Exact implementation changes, dependencies and proof; optional behavior-readiness, dependency-slicing and recurring-process resources. |
 | `andino-plan-execution` | Execute an accepted plan one task at a time through gated steps (preflight, resume, red-green increments, four stops, full-diff review) with a report template; task-implementation, vertical-slice and frontend-engineering resources. |
 | `andino-delegation` | Decide, brief and accept any subagent work (plan lanes, investigations, research, reviews, panel seats) under one envelope approval and parent acceptance. |
@@ -149,7 +150,7 @@ Sibling resources require actual permitted sibling loading; a name in this READM
 - [`references/internal-method-index.md`](references/internal-method-index.md) — Method and selective-resource index.
 - [`references/method-dispatch.md`](references/method-dispatch.md) and [`references/routing.md`](references/routing.md) — Dispatch and routing.
 - [`references/execution-plan-template.md`](references/execution-plan-template.md) — Portable checkpoint template.
-- `skills/<member>/` — The 31 public members, each with `SKILL.md` and `GUIDE.md`.
+- `skills/<member>/` — The 32 public members, each with `SKILL.md` and `GUIDE.md`.
 - [`references/legal/provenance.md`](references/legal/provenance.md) — Provenance of adapted methods.
 - [`references/legal/license.md`](references/legal/license.md) — MIT license notice for AI-RULES-authored content.
 - [`references/legal/addy-license.md`](references/legal/addy-license.md), [`references/legal/matt-license.md`](references/legal/matt-license.md) and [`references/legal/superpowers-license.md`](references/legal/superpowers-license.md) — Third-party MIT notices.

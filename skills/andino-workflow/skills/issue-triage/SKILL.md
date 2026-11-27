@@ -34,6 +34,7 @@ Use when:
 Do not select for:
 
 - Building an item that is already ready-for-agent: `plan-execution` or `tdd`.
+- Breaking accepted work into a new set of tickets: `writing-tickets`.
 - Finding the root cause of a confirmed bug: `debugging` (triage only confirms the claim).
 - Reviewing a collaborator's in-flight pull request: `code-review`.
 - Re-triaging items the maintainer has just approved, or bulk relabeling the maintainer has

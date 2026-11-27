@@ -348,6 +348,19 @@ the local-draft fallback are Andino additions; the dependency on Matt's setup sk
 by reading the project's tracker configuration. `tests/test_issue_triage_preservation.py`
 guards the kept rules; the trial is in `docs/validation/issue-triage/`.
 
+The 2026-11-27 member `writing-tickets` follows mattpocock/skills commit 9e2abf8
+(`to-tickets`). It keeps the tracer-bullet slices with blocking edges, prefactoring first,
+expand-contract for wide refactors, the quiz until approval, local and tracker publishing in
+dependency order and durable tickets without paths, in the sibling Andino layout with one
+seven-step procedure (GUIDE.md mirrors SKILL.md). Open decisions as ready-for-human tickets,
+rerun matching without duplicates, the reader check, observable acceptance criteria, the split
+between local and remote write authority, and the `scripts/ticket_graph.py` graph check are
+Andino additions; the dependency on Matt's setup skill is replaced by reading the project's
+tracker configuration. The alias `to-tickets` moves here from planning's dependency-slicing
+resource, which keeps its own expand-contract procedure.
+`tests/test_writing_tickets_preservation.py` guards the kept rules; the trial is in
+`docs/validation/writing-tickets/`.
+
 The 2026-11-26 rewrite of `architecture-survey` follows mattpocock/skills commit 7739eae
 (`improve-codebase-architecture` with `HTML-REPORT.md`, and the skills it calls:
 `codebase-design` with `DEEPENING.md` and `DESIGN-IT-TWICE.md`, `grilling` and

@@ -470,13 +470,13 @@ Claude Web, ChatGPT and Gemini Web cannot load skills. The [WebBased](https://gi
 ## What's Inside
 
 Andino Skills ships 8 skills from the `skills/` folder of `main`. The Andino Workflow
-brings 31 member skills with it, and `ai-rules setup` installs each member as its
+brings 32 member skills with it, and `ai-rules setup` installs each member as its
 own native skill (`/andino-planning`, `$andino-tdd`, ...) with its slash command,
 backups and rollback. Generic skill installers copy only the top-level folder.
 
 | Capability | Folder | Purpose | Example Command |
 |---|---|---|---|
-| **[Andino Workflow](skills/andino-workflow)** | `skills/andino-workflow` | Adaptive workflow protocol + **31 composable member skills** (`andino-*`). | `/andino-workflow`<br>`/andino-tdd`<br>`/andino-brainstorming` |
+| **[Andino Workflow](skills/andino-workflow)** | `skills/andino-workflow` | Adaptive workflow protocol + **32 composable member skills** (`andino-*`). | `/andino-workflow`<br>`/andino-tdd`<br>`/andino-brainstorming` |
 | **[Focus](skills/focus)** | `skills/focus` | Direct, result-first communication style (Indonesian & English). | `/focus`<br>`$focus` |
 | **[Search First](skills/search-first)** | `skills/search-first` | Evidence-based solution research (`ADOPT`, `EXTEND`, `COMPOSE`, `BUILD`). | `/search-first`<br>`$search-first` |
 | **[AI Codebase Rescue](skills/ai-codebase-rescue)** | `skills/ai-codebase-rescue` | Stabilize fragile subsystems: assess, pin behavior, fix in small verified steps (`KEEP`, `REFACTOR`, `REMAKE`, `REMOVE`, `INVESTIGATE`). | `/ai-codebase-rescue`<br>`$ai-codebase-rescue` |
@@ -494,7 +494,7 @@ backups and rollback. Generic skill installers copy only the top-level folder.
 
 | Profile | Target Needs | Included Capabilities |
 |---|---|---|
-| **Minimal** (`minimal`) | Core adaptive development & research | `andino-workflow` (+ 31 member skills), `focus`, `search-first` |
+| **Minimal** (`minimal`) | Core adaptive development & research | `andino-workflow` (+ 32 member skills), `focus`, `search-first` |
 | **Engineering** (`engineering`) | Full-stack coding & codebase recovery | Minimal + `ai-codebase-rescue` |
 | **Research / Skripsi** (`research-skripsi`) | Academic writing & thesis preparation | Minimal + `skripsi-skill` + `natural-writing` |
 | **Three.js Development** (`threejs`) | 3D graphics, shaders, and animations | Minimal + `threejs-skills` (77 3D methods) |
