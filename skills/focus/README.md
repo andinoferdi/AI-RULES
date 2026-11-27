@@ -78,7 +78,7 @@ Focus triggers automatically when installed alongside Andino Workflow, or you ca
 
 - **Andino Workflow:** Focus serves as the default presentation layer for Andino; it shapes communication while Andino owns the task lifecycle and execution plan.
 - **Natural Writing:** Focus controls conversational and progress communication; long-form writing artifacts (essays, academic chapters, documentation) are governed by `natural-writing`.
-- **Web Chatbots:** For copy-pasting into ChatGPT Web or Claude Web, refer to the [WebBased branch](https://github.com/andinoferdi/AI-RULES/tree/WebBased).
+- **Web Chatbots:** A. PRIORITAS and the daily modules for ChatGPT, Claude.ai and Gemini (upload as a skill or paste) live on the [WebBased branch](https://github.com/andinoferdi/andino-skills/tree/WebBased).
 
 ## Files
 

@@ -4,7 +4,7 @@
   "validation_refs": {
     "WebBased": {
       "branch": "WebBased",
-      "commit": "76f9af105cc1a5bffda2ff0f9fdcd39b69c63845",
+      "commit": "84406ba0d96ef1ea45dfd0e81888ab3a395f7d8f",
       "purpose": "Focus communication reference drift check"
     }
   }

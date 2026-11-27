@@ -33,7 +33,7 @@ executable (in a clone without packaged skills, the clone's `skills/` folder).
 
 **Validation ref**:
 A pinned commit of another branch used only by checks, never installed.
-`WebBased` is the source for the Focus communication reference check.
+`WebBased` holds the A. PRIORITAS text that the Focus reference check compares.
 
 **Skill checks / installer checks**:
 The two groups of `scripts/ci_checks.py`. Skill checks read real skill content;

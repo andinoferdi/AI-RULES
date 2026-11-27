@@ -274,27 +274,25 @@ def package_files(files, expected_name, modes=None):
 
 
 def focus_reference_drift(files, source):
+    """Focus's A. PRIORITAS must equal the A block in WebBased's README.
+
+    The language references live only in Focus, so they are not compared.
+    """
     normalize = lambda text: text.replace("\r\n", "\n")
     try:
-        chat = normalize(source["put-in-your-projects/chat-rules.md"])
-        priority = chat[chat.index("A. PRIORITAS\n"):]
         readme = normalize(source["README.md"])
         section = readme.split("## A. PRIORITAS\n", 1)[1]
         fenced = section.split("````text\n", 1)[1]
         readme_priority, closing, _ = fenced.partition("````")
         if not closing:
             raise ValueError("unterminated README A fence")
-        # Ignore the presentation blank lines around README's fenced text only.
-        if priority.strip("\n") != readme_priority.strip("\n"):
-            return ["focus: WebBased A. PRIORITAS sources disagree; review canonical source before syncing"]
-        expected = {"references/priority-a.md": priority}
-        for name in ("human-language-indonesia.md", "human-language-english.md"):
-            expected[f"references/{name}"] = normalize(source[f"put-in-your-projects/{name}"])
     except (KeyError, ValueError, IndexError) as exc:
         return [f"focus: missing or malformed WebBased communication source: {exc}"]
-    return [f"focus: missing or drifted bundled reference: {name}"
-            for name, text in expected.items()
-            if name not in files or normalize(files[name]) != text]
+    name = "references/priority-a.md"
+    # Ignore the presentation blank lines around README's fenced text only.
+    if name not in files or normalize(files[name]).strip("\n") != readme_priority.strip("\n"):
+        return [f"focus: missing or drifted bundled reference: {name}"]
+    return []
 
 
 FOCUS_HEADINGS = ("## Activation and priority", "## Load the bundled language references",
@@ -412,7 +410,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--skills-dir", type=Path, default=ROOT / "skills",
                         help="folder holding one directory per skill (default: skills/ in this checkout)")
-    parser.add_argument("--webbased-ref", help="WebBased commit or ref for the Focus reference drift check")
+    parser.add_argument("--webbased-ref", help="WebBased commit or ref whose README A. PRIORITAS Focus must match")
     args = parser.parse_args()
     errors = []
     try:
@@ -427,10 +425,7 @@ def main():
             if skill == "focus":
                 errors.extend(focus_contract(files))
                 if args.webbased_ref:
-                    source = {name: git("show", f"{args.webbased_ref}:{name}") for name in (
-                        "README.md", "put-in-your-projects/chat-rules.md",
-                        "put-in-your-projects/human-language-indonesia.md",
-                        "put-in-your-projects/human-language-english.md")}
+                    source = {"README.md": git("show", f"{args.webbased_ref}:README.md")}
                     errors.extend(focus_reference_drift(files, source))
         except (ValueError, OSError, subprocess.CalledProcessError) as exc:
             errors.append(str(exc))
@@ -443,7 +438,7 @@ def main():
     print("Live behavioral evaluation: NOT VERIFIED")
     print(f"PASS: one Three.js family with {len(THREEJS_SKILLS)-1} internal methods")
     if args.webbased_ref:
-        print(f"PASS: Focus communication references match WebBased {args.webbased_ref[:12]}; A sources equivalent")
+        print(f"PASS: Focus A. PRIORITAS matches WebBased {args.webbased_ref[:12]}")
     return 0
 
 

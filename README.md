@@ -456,14 +456,13 @@ Constraints:
 
 None of these examples names a workflow member such as `andino-planning`; the workflow picks them from `Mode` and **Done when**. Naming them yourself works too.
 
-### In web chatbots (no skills)
+### In web chatbots
 
-Claude Web, ChatGPT and Gemini Web cannot load skills. The [WebBased](https://github.com/andinoferdi/andino-skills/tree/WebBased) branch plays that role as copy-paste prompt modules:
+Claude.ai (every plan) and Gemini (personal Google accounts) can upload skills; ChatGPT can only on Business, Enterprise, Healthcare and Edu plans. The [WebBased](https://github.com/andinoferdi/andino-skills/tree/WebBased) branch holds what a daily chat needs:
 
-1. **A. PRIORITAS** first in every chat. It plays the role of Layer 1.
-2. Add **one** specialist module for the task (for example **O** for web design direction, **L** for thesis).
-3. To turn rough thoughts into a Layer 2 prompt for a coding agent, use **R** (prompt optimizer) or **W** (web chatbot to coding agent handoff), then paste the result into the agent.
-4. Use **Z** when the conversation drifts.
+1. **A. PRIORITAS**, the writing rules that play the role of Layer 1. Set it once in each chatbot's instructions (Claude: Settings > Your Claude > Instructions; Gemini: Settings > Personal Intelligence > Instructions for Gemini; ChatGPT: a project's Instructions, or custom instructions on Plus and above), or paste it at the start of a chat.
+2. Seven daily modules, each a folder with one `SKILL.md`: D paraphrase, E hiking-route research, G calories and body composition, H written-exam answers, R prompt optimizer, S story timeline, U best challenger. Upload a folder as a skill where the chatbot allows it, or paste the file into the chat.
+3. To turn rough notes into a Layer 2 prompt for a coding agent, use module **R**, then paste the result into the agent.
 
 ---
 
@@ -484,7 +483,7 @@ backups and rollback. Generic skill installers copy only the top-level folder.
 | **[Natural Writing](skills/natural-writing)** | `skills/natural-writing` | Prose writing, rewriting, and review without formulaic AI tells. | `/natural-writing`<br>`$natural-writing` |
 | **[Skripsi Skill](skills/skripsi-skill)** | `skills/skripsi-skill` | Academic thesis, literature matrix, and research defense guidance. | `/skripsi-skill`<br>`$skripsi-skill` |
 | **[Three.js Skills](skills/threejs-skills)** | `skills/threejs-skills` | 3D graphics family with 77 WebGL/WebGPU, realism, game and shader methods. | `/threejs-skills`<br>`$threejs-skills` |
-| **[WebBased](https://github.com/andinoferdi/andino-skills/tree/WebBased)** | `WebBased` branch | 47 ready-to-use prompt templates for web chatbots (Claude/ChatGPT Web). | *Copy-paste directly* |
+| **[WebBased](https://github.com/andinoferdi/andino-skills/tree/WebBased)** | `WebBased` branch | A. PRIORITAS plus 7 daily modules for web chatbots (Claude.ai, ChatGPT, Gemini). | *Upload as a skill or paste* |
 
 ---
 
