@@ -42,7 +42,7 @@ The exact active and cumulative retired sets are in [the distribution manifest](
 | `andino-performance-optimization` | Measured bottlenecks and verified improvements. |
 | `andino-ci-cd-and-automation` | CI gates and required checks, failing or flaky runs, workflow security, deploy promotion and rollback; optional commit-check setup. |
 | `andino-shipping-and-launch` | Authorized release readiness, rollout and recovery planning. |
-| `andino-git-skills` | Select workspace, operation-safety, change-hygiene, branch-integration or PR-draft craft. No implicit commit, push or destructive recovery. |
+| `andino-git-skills` | Six evidence gates for any Git change (snapshot, project check, classify, resource, observe, report) over five procedures: worktree setup, operation safety with a fail-closed guard hook, scoped commits, test-before-commit branch finishing, and PR bodies with evidence and merge danger. No implicit pull, push, force or cleanup on red. |
 
 ### Knowledge and collaboration
 
@@ -113,7 +113,7 @@ Examples of narrow resource requests:
 - “Fix modal focus and loading states using the frontend-engineering resource.” Load `skills/plan-execution/resources/frontend-engineering/guide.md` from the installed workflow root; do not start the executor's full lifecycle.
 - “Check import boundaries for this accepted TypeScript layout.” Select API/interface's import-enforcement resource, not HTTP design.
 - “Advise which workflow fits, without executing it.” Read the workflow-advice resource and stop at advice.
-- “Integrate this branch.” Select Git branch-integration; reuse current authorization, verify before/after, and preserve the branch on failure. A completed merge cannot be undone with `merge --abort`.
+- “Integrate this branch.” Select Git branch-integration; test the merge with `--no-commit` before committing it, `merge --abort` while MERGE_HEAD exists when it fails, and keep the worktree and branch; a completed merge is undone only by the user's choice.
 
 ## How It Works
 

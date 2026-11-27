@@ -1040,7 +1040,7 @@ Contracts use inspected installed skill IDs and actual host tool metadata. Upstr
 ## git-skills
 
 - Type: public member skill
-- Purpose: Select only the needed workspace, operation-safety, change-hygiene, branch-integration or PR-draft mode.
+- Purpose: Gate every Git change on observed evidence and select the needed workspace, operation-safety, change-hygiene, branch-integration or PR-draft procedure.
 - Invocation: [Git selection contract](../skills/git-skills/SKILL.md); shared commit-check setup remains CI/CD-owned.
 - Boundary: Selection grants no commit, push, destructive recovery or cleanup authority.
 
