@@ -1,10 +1,10 @@
 # AGENTS.md — AI-RULES
 
 `main` holds everything: the `ai-rules` installer, validators, tests and every
-skill in `skills/<id>/`. The only other long-lived branch is `WebBased` (prompt
-modules for web chatbots); leave it alone. Words used here are defined in
-[CONTEXT.md](CONTEXT.md); where each kind of document lives is in
-[docs/agents/domain.md](docs/agents/domain.md).
+skill in `skills/<id>/`. The only other long-lived branch is `WebBased`
+(A. PRIORITAS and daily modules for web chatbots); change it only when a task
+targets it. Words used here are defined in [CONTEXT.md](CONTEXT.md); where each
+kind of document lives is in [docs/agents/domain.md](docs/agents/domain.md).
 
 ## Where truth lives
 

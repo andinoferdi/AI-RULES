@@ -5,8 +5,8 @@ This maintainer contract is not a runtime skill or router.
 ## Ownership and distribution
 
 `main` owns family documentation, validators, tests, evals, audit evidence and CI.
-Runtime skills ship on separate branches; WebBased retains web/chat rules and
-project templates. Never copy runtime packages into main or quality artifacts into
+Runtime skills ship on separate branches; WebBased holds A. PRIORITAS and the
+daily chatbot modules. Never copy runtime packages into main or quality artifacts into
 runtime branches. Each runtime has README.md, SKILL.md and useful supporting files.
 
 Multi-package families can share a runtime branch using each capability's validated
@@ -96,9 +96,9 @@ and host controls, retaining stricter research ethics/access gates.
 
 ## Minimum quality and release verification
 
-Focus bundles the complete communication A from WebBased's project chat-rules
-entrypoint and unchanged Indonesian/English style references. Compare the README
-A before syncing; disagreement requires maintainer review. Main's validator accepts
+Focus bundles A. PRIORITAS, which must equal the A block in WebBased's README at
+the pinned commit, and its own Indonesian/English style references, which live
+only in Focus. Main's validator accepts
 `--webbased-ref` for a local Git source-drift check and `--focus-dir` for an
 uncommitted package; neither is a runtime dependency or an automatic overwrite.
 CI fetches WebBased and checks the current Focus branch, so publish the matching

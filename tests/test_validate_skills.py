@@ -55,10 +55,7 @@ class FocusContractTest(unittest.TestCase):
 class FocusReferenceTest(unittest.TestCase):
     def setUp(self):
         self.source = {
-            'put-in-your-projects/chat-rules.md': '# Chat Rules\n\nA. PRIORITAS\n\nComplete rules.\n',
-            'README.md': '# Template\n\n## A. PRIORITAS\n\n````text\nA. PRIORITAS\n\nComplete rules.\n````\n\n## B. Other\nOther rules.\n',
-            'put-in-your-projects/human-language-indonesia.md': '# Indonesia\nAll examples.\n',
-            'put-in-your-projects/human-language-english.md': '# English\nAll examples.\n',
+            'README.md': '# Template\n\n## A. PRIORITAS\n\n````text\nA. PRIORITAS\n\nComplete rules.\n````\n\n## Modul\nOther rules.\n',
         }
         self.files = {
             'references/priority-a.md': 'A. PRIORITAS\n\nComplete rules.\n',
@@ -66,23 +63,25 @@ class FocusReferenceTest(unittest.TestCase):
             'references/human-language-english.md': '# English\nAll examples.\n',
         }
 
-    def test_complete_copies_match_without_other_readme_sections(self):
+    DRIFT = ['focus: missing or drifted bundled reference: references/priority-a.md']
+
+    def test_matching_a_passes_with_readme_as_only_source(self):
         self.assertEqual([], focus_reference_drift(self.files, self.source))
 
-    def test_missing_copy_is_rejected(self):
-        del self.files['references/human-language-english.md']
-        self.assertTrue(focus_reference_drift(self.files, self.source))
+    def test_language_references_are_not_compared_with_webbased(self):
+        self.files['references/human-language-indonesia.md'] += 'Contoh baru.\n'
+        self.assertEqual([], focus_reference_drift(self.files, self.source))
 
-    def test_changed_example_is_rejected(self):
-        self.files['references/human-language-indonesia.md'] += 'Invented example.\n'
-        self.assertTrue(focus_reference_drift(self.files, self.source))
+    def test_changed_a_is_rejected(self):
+        self.files['references/priority-a.md'] = 'A. PRIORITAS\n\nPartial rules.\n'
+        self.assertEqual(self.DRIFT, focus_reference_drift(self.files, self.source))
+
+    def test_missing_a_copy_is_rejected(self):
+        del self.files['references/priority-a.md']
+        self.assertEqual(self.DRIFT, focus_reference_drift(self.files, self.source))
 
     def test_truncated_priority_is_rejected(self):
         self.files['references/priority-a.md'] = 'A. PRIORITAS\n'
-        self.assertTrue(focus_reference_drift(self.files, self.source))
-
-    def test_conflicting_readme_priority_is_rejected(self):
-        self.source['README.md'] = self.source['README.md'].replace('Complete rules.', 'Different rules.')
         self.assertTrue(focus_reference_drift(self.files, self.source))
 
     def test_missing_source_section_is_rejected(self):

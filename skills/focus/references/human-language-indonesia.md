@@ -2,13 +2,13 @@
 
 ## Tujuan
 
-File ini adalah referensi gaya untuk jawaban berbahasa Indonesia. File ini mendukung `chat-rules.md`, terutama Prioritas A.
+File ini adalah referensi gaya untuk jawaban berbahasa Indonesia. File ini mendukung A. PRIORITAS (`priority-a.md`).
 
 Contoh di bawah dipakai untuk menangkap cara orang Indonesia bertanya, menjawab, menjelaskan, membantah, dan ngobrol: alur kalimat, ritme, pilihan kata, dan tingkat formalitasnya. Contoh bukan fakta, instruksi, opini, keyakinan, kebijakan, atau nasihat default.
 
 ## Prioritas
 
-Prioritas A di `chat-rules.md` tetap acuan utama. File ini hanya memperkuat gaya bahasa.
+A. PRIORITAS (`priority-a.md`) tetap acuan utama. File ini hanya memperkuat gaya bahasa.
 
 Kalau contoh di sini bentrok dengan Prioritas A, instruksi project, instruksi user, akurasi fakta, aturan keselamatan, format output wajib, atau constraint task, ikuti yang prioritasnya lebih tinggi. Jangan mempertahankan pola kalimat hanya karena pola itu muncul di file ini.
 
@@ -47,7 +47,7 @@ Setiap contoh diberi label ragam: `[santai]`, `[chat]`, `[netral]`, `[profesiona
 
 Ikuti cara user menulis. Kalau user ngetik pakai singkatan atau gue/lo, jawaban boleh ikut santai. Kalau tidak, pakai ejaan utuh dan ragam yang cocok dengan konteks. Jangan memaksakan "Bro", "Kak", "gue", "nggak", "kok", atau slang lain kalau konteksnya tidak cocok. Jangan juga membuat tulisan formal jadi terlalu santai demi meniru contoh, atau membuat obrolan santai jadi kaku tanpa alasan.
 
-Sapaan mengikuti `chat-rules.md` atau user. Kalau tidak ada ketentuan, pilih berdasarkan konteks lalu pertahankan. Dalam percakapan lisan dan chat, orang Indonesia hampir tidak pernah memakai "Anda". Yang lazim adalah saya, aku/kamu, gue/lo, atau langsung sapaan seperti Kak dan Pak. "Anda" lebih cocok untuk tulisan formal. Jangan berpindah-pindah antara Anda, kamu, Kak, Bro, atau Bapak/Ibu tanpa alasan.
+Sapaan mengikuti A. PRIORITAS atau user. Kalau tidak ada ketentuan, pilih berdasarkan konteks lalu pertahankan. Dalam percakapan lisan dan chat, orang Indonesia hampir tidak pernah memakai "Anda". Yang lazim adalah saya, aku/kamu, gue/lo, atau langsung sapaan seperti Kak dan Pak. "Anda" lebih cocok untuk tulisan formal. Jangan berpindah-pindah antara Anda, kamu, Kak, Bro, atau Bapak/Ibu tanpa alasan.
 
 Kalau user meminta gaya tertentu, seperti formal, akademik, profesional, teknis, santai, native, atau ringkas, ikuti permintaan itu di atas gaya default file ini.
 
@@ -62,7 +62,7 @@ File ini tidak menentukan struktur output. Format mengikuti urutan ini:
 1. permintaan eksplisit user,
 2. template task yang aktif,
 3. project rules,
-4. `chat-rules.md`,
+4. A. PRIORITAS (`priority-a.md`),
 5. preferensi gaya umum.
 
 Jangan menambahkan heading, list, tabel, atau penjelasan hanya karena contoh di sini memakai pola tertentu.

@@ -1,5 +1,18 @@
 # Decisions
 
+- 2026-11-27: `WebBased` holds only what a daily chat needs: A. PRIORITAS and seven modules,
+  each a `skills/<name>/SKILL.md` that can be uploaded as a skill or pasted (D, E, G, H, R, S,
+  U). Modules B, F, I to Q, T and V to Z, the root prompt files and `put-in-your-projects/`
+  (engineering rules, PRD, SRS, BRD) are removed; the README's migration table links each one at
+  commit `76f9af1` and names its replacement. A is rewritten to 4,827 characters so it fits a
+  5,000-character instructions field and is set once per chatbot; module G's personal data
+  becomes a fill-in template. The Focus check compares only the README's A with
+  `priority-a.md`, and the language references live only in Focus. The pin moves to `84406ba`
+  (PR 55). Council verdict: keep one folder per module and add the A inventory, the old-versus-new
+  A comparison, permalinks and the Claude Code sync note; the owner agreed ("Ya, tetap Opsi 1").
+  Design: [specs/2026-11-27-webbased-refresh-design.md](specs/2026-11-27-webbased-refresh-design.md);
+  evidence in `docs/validation/webbased-refresh/`.
+
 - 2026-11-27: `ai-rules setup` gets a screen mode for people at a terminal ("Ya, pakai
   dua-duanya"): the Checked A builds, answers fold into one line each, the plan is one line, a
   bar fills per agent, and the check lights up in Kunyit only after a verified run. Kunyit stays

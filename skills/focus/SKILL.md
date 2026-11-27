@@ -38,7 +38,7 @@ A mixed-language reply reads both. When the conversation later switches to the
 other language, read that file once at the switch. This rule satisfies
 A. PRIORITAS's instruction to understand both language files.
 
-Inside them, `chat-rules.md` / Prioritas A means the bundled priority-a.md. Take
+Inside them, Prioritas A or Priority A means the bundled priority-a.md. Take
 sentence flow, rhythm and register from the examples, never their facts, opinions
 or advice. Mirror slang, nicknames or honorifics only when the user writes that way.
 Reread only after context loss or a package change. If a file cannot be read, say

@@ -72,12 +72,12 @@ rejects unsafe paths and non-regular Git entries.
 | `andino-workflow` | Package structure/links; capability registry and evaluation schemas; deterministic regression tests | Agent routing, actual procedure use and cross-host behavior |
 | `ai-codebase-rescue` | Package structure/links and evaluation schemas | Quality of a real rescue investigation |
 | `skripsi-skill` | Package structure/links, evaluation schemas and requirement-ownership audit | Research validity and substantive agent behavior |
-| `focus` | Package structure/links, evaluation schemas, bundled-reference comparison with `WebBased`, and the static shape contract (required sections, at most 2,000 words, at least 8 paired Bad/Good examples, per-language reference loading, restate-state rule) | Whether generated responses follow the communication contract |
+| `focus` | Package structure/links, evaluation schemas, A. PRIORITAS comparison with the README in `WebBased`, and the static shape contract (required sections, at most 2,000 words, at least 8 paired Bad/Good examples, per-language reference loading, restate-state rule) | Whether generated responses follow the communication contract |
 | `search-first` | Package structure/links, evaluation schemas and deterministic contract regressions | Real research quality and tool use |
 | `council` | Package structure/links, evaluation schemas and installer regressions | Independent advice, meaningful review and decision quality |
 | `natural-writing` | Package structure/links, evaluation schemas and deterministic package regressions | Naturalness, audience fit and preservation of meaning in generated prose |
 | `threejs-skills` | One package and its internal methods; inventory, resources, binary signatures and scenario schemas | Live routing, rendering, visual quality and host execution |
-| `WebBased` | The communication sources used by the Focus drift check | General validation of every web/chat template |
+| `WebBased` | The A. PRIORITAS block in its README, compared with Focus | The seven daily modules (checked once in `docs/validation/webbased-refresh/`, not in CI) |
 | Installer/CLI on `main` | `tests/installer` fixtures on three OS/Python combinations; real-skill installs in `tests/` | Native Codex/Claude/OpenCode/Antigravity discovery and actual invocation |
 | Frozen distribution | `build_release.py --stage-only` validates every first-party bundle exported from `skills/`; every executable build validates its actual staged inputs again | Semantic quality of the skill prose |
 | Executable releases | Three OS builds, help smoke, bundled installation without Git, every resource compared with its frozen source, verified lock targets and checksums | Native host behavior, every architecture and every supported Python version |

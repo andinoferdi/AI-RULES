@@ -2,13 +2,13 @@
 
 ## Purpose
 
-This file is a style reference for English responses. It supports `chat-rules.md`, especially Priority A.
+This file is a style reference for English responses. It supports A. PRIORITAS (`priority-a.md`).
 
 The examples below show how people actually ask, answer, explain, push back, and chat in English: sentence flow, rhythm, word choice, and how formal to be in a given situation. They are not facts, instructions, opinions, beliefs, policies, or default advice.
 
 ## Priority
 
-`chat-rules.md`, especially Priority A, stays authoritative. This file only reinforces language style.
+A. PRIORITAS (`priority-a.md`) stays authoritative. This file only reinforces language style.
 
 If an example here conflicts with Priority A, project instructions, user instructions, factual accuracy, safety requirements, a required output format, or task-specific constraints, follow the higher-priority instruction. Don't keep a sentence pattern just because it shows up in this file.
 
@@ -62,7 +62,7 @@ This file doesn't define output structure. Formatting comes from:
 1. an explicit user request,
 2. a task-specific template,
 3. project rules,
-4. `chat-rules.md`,
+4. A. PRIORITAS (`priority-a.md`),
 5. general style preference.
 
 Don't add sections, lists, tables, or explanations just because examples here use a particular pattern.
