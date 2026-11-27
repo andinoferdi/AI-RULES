@@ -82,6 +82,22 @@ class OrchestrationContract(unittest.TestCase):
                        'three at once', 'states its model and effort', 'is not approval'):
             self.assertIn(phrase, excluded)
 
+    def test_guards_name_loop_exits_and_one_approval(self):
+        guards = flat(read(f'{WORKFLOW}/references/anti-loop.md'))
+        self.assertIn('names its exit before it starts', guards)
+        self.assertIn('one approval covers the waves it lists', guards)
+        self.assertIn('ultracode keyword or mode) is not approval', guards)
+        self.assertIn('results held only in context are lost at a usage limit', guards)
+        self.assertNotIn('Before each wave', guards)
+
+    def test_unit_ledger_in_checkpoint_and_resume(self):
+        plan = read(f'{WORKFLOW}/references/execution-plan.md')
+        self.assertIn('## Unit ledger for multi-unit work', plan)
+        self.assertIn('## Unit Ledger (multi-unit work only)',
+                      read(f'{WORKFLOW}/references/execution-plan-template.md'))
+        self.assertIn('reopen only the units that changed',
+                      flat(read(f'{WORKFLOW}/references/handoff.md')))
+
     def test_guard_mapping_covers_all_ten(self):
         mapping = section(read(REFERENCE), '## Guard mapping')
         self.assertEqual(list(range(1, 11)),

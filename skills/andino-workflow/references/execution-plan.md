@@ -94,6 +94,16 @@ irreversible migration, or manual acceptance, add an `APPROVAL GATE` naming the 
 and `Status: WAITING` or `APPROVED`. Do not create gates for ordinary edits, and do not
 perform the gated action while waiting.
 
+## Unit ledger for multi-unit work
+
+Work made of many similar units ([orchestration](orchestration.md)) keeps one ledger
+table in the plan: unit, input identity (commit, file hash or source), status, result
+and evidence. Write finished units in batches (a file or module, or about ten units)
+and before any long step; a unit finished only in context is lost at a usage limit.
+On resume compare each unit's recorded identity with the current state and reopen
+only the units that changed ([handoff](handoff.md)). The ledger is progress state
+inside this plan, not a second plan or log.
+
 ## Checkpoint, resume and completion
 
 Update the plan at material discoveries, phase completion, strategy/depth changes,
