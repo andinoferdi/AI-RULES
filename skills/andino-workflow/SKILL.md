@@ -88,11 +88,22 @@ reuse valid evidence and continue the next ready task without replaying history.
 Skill-to-workflow handoff reports its result, evidence/limits and next condition;
 it does not recursively invoke Andino or start competing progress tracking.
 
+## Orchestrate multi-unit work
+
+When the work is many similar units (files, call sites, route handlers, findings, sources,
+failing tests), asks for "all" or "every", or resumes such work, follow
+[orchestration](references/orchestration.md) before the first unit: write the work list with
+its count; do the units inline, writing finished results to the checkpoint in batches; try to
+clear each consequential finding with the check that would refute it; sweep again by a
+different method until a round adds nothing (three rounds at most); end with coverage (done of
+total, not covered, UNVERIFIED) and the stop reason. Agents join only through the delegation
+envelope. Single-unit work skips this.
+
 ## Bounded execution
 
 Apply [ten anti-loop guards](references/anti-loop.md): context reuse, narrow schemas, proportional reasoning, no ping-pong, bounded retries/output, one method per concern, and bounded delegation. Guards prevent waste; they never waive acceptance or truncate artifacts.
 
-Default subagents: zero. Delegate only when the method requires independence and authority permits: max 3 direct workers, zero nested spawning, disjoint write scopes, and parent integration. Schedule in waves; avoid automatic swarms.
+Default subagents: zero. Delegate only when the method requires independence and authority permits: max 3 direct workers, zero nested spawning, disjoint write scopes, and parent integration. Schedule in waves; avoid automatic swarms. A host opt-in such as Claude Code's ultracode keyword or mode is not approval.
 
 Host boundaries are absolute: DISCOVERED, AVAILABLE, INVOKABLE, ACTIVE, and USED are distinct. Tool-mediated loading must precede governed work. Denied capabilities stay UNAVAILABLE; use honest fallbacks without impersonation, bootstrap, or unapproved installations.
 

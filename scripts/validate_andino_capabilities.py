@@ -34,7 +34,7 @@ PUBLIC_MEMBERS = {'git-skills'}
 PUBLIC_MEMBER_TYPE = 'public member skill'
 PUBLIC_MEMBER_FIELDS = ('Purpose', 'Invocation', 'Boundary')
 OTHER_SKILLS = set('focus search-first council ponytail claude-mem impeccable design-taste-frontend clone-website graphify antislop antislop-ui antislop-copywriting antislop-human antislop-layoutmobile antislop-code natural-writing'.split())
-MCPS = set('context7 playwright-mcp chrome-devtools git-mcp drawio-mcp staruml-mcp premiere-pro-mcp cheatengine-mcp'.split())
+MCPS = set('context7 playwright-mcp chrome-devtools git-mcp drawio-mcp staruml-mcp premiere-pro-mcp cheatengine-mcp rea'.split())
 CAPABILITIES = ((SUPERPOWERS | AGENT_SKILLS | ANDINO_METHODS | OTHER_SKILLS | MCPS | PUBLIC_MEMBERS | {'native-capabilities'})
                 - RETIRED_CONTRACTS)
 OPTIONAL_CAPABILITIES = {'threejs-skills'}

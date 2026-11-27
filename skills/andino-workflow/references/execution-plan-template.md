@@ -83,6 +83,14 @@ Use `UNKNOWN — update after investigation` instead of inventing paths. Remove 
 | Phase 1 — [name] | IN_PROGRESS | [goal] | [verified artifacts/sources/areas or UNKNOWN] | [actual result when known] |
 | Phase 2 — [name] | TODO | [goal] | [scope] | Pending. |
 
+## Unit Ledger (multi-unit work only)
+
+| Unit | Input identity | Status | Result | Evidence |
+| --- | --- | --- | --- | --- |
+| [unit] | [commit, file hash or source] | TODO | Pending. | |
+
+Write finished units in batches; on resume reopen only units whose identity changed.
+
 # Detailed Execution
 
 ## Phase 1 — [Name]

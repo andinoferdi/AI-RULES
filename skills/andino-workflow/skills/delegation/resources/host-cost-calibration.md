@@ -30,14 +30,19 @@ Turn count beats token price: the cheapest tier often takes two to three times a
 
 | Host | Fast | Standard | Capable | Effort control | Per-agent selection | Start-up cost per agent |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Claude Code | `haiku` | `sonnet` | `opus` | `effort`: `low` / `medium` / `high` (also `xhigh`, `max`: not used for delegation) | Yes: `model` + `effort` on each Agent call | ~58k–61k tokens (measured 2026-11-03; one-word and short-answer children). 2026-11-26: ~70k–72k total reported per no-tool child answering a 1,500–2,200-word prompt (`sonnet`/`medium` and `haiku`/`low`) |
+| Claude Code | `haiku` | `sonnet` | `opus` | `effort`: `low` / `medium` / `high` (also `xhigh`, `max`: not used for delegation) | Yes: `model` + `effort` on each Agent call | ~58k–61k tokens (measured 2026-11-03; one-word and short-answer children). 2026-11-26: ~70k–72k total reported per no-tool child answering a 1,500–2,200-word prompt (`sonnet`/`medium` and `haiku`/`low`). 2026-11-27: ~75k total per one-read council seat (`sonnet`/`medium` and `sonnet`/`low`) |
 | Codex | unmeasured | unmeasured | unmeasured | unmeasured | unmeasured | unmeasured |
 | OpenCode | unmeasured | unmeasured | unmeasured | unmeasured | unmeasured | unmeasured |
 | Antigravity | unmeasured | unmeasured | unmeasured | unmeasured | unmeasured | unmeasured |
 
 ## Host notes
 
-- **Claude Code**: user-level `modelSettings` can assign a default effort per model (for example a high default on the Fast tier). Always pass `effort` explicitly so an agent never inherits it. The `Workflow` tool can start many agents in one call; every one counts against the same envelope and the 3-agent limit.
+- **Claude Code**: user-level `modelSettings` can assign a default effort per model (for example a high default on the Fast tier). Always pass `effort` explicitly so an agent never inherits it; `CLAUDE_CODE_EFFORT_LEVEL`, when set, overrides even a per-call effort. The `Workflow` tool can start many agents in one call; every one counts against the same envelope and the 3-agent limit. Facts from the official workflows and sub-agents pages, read 2026-11-27:
+  - Concurrency: workflow agents run up to 16 at once by default; `CLAUDE_CODE_WORKFLOW_MAX_CONCURRENT_AGENTS` (1-256, v2.1.269 or later) caps them. Agent-tool subagents stop at `CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS` (default 20, v2.1.217 or later). Either setting is a change the owner makes; without it, hold three in the script (the pool in the workflow's `references/orchestration.md`).
+  - Ultracode (`/effort ultracode`, `claude --effort ultracode`, or the keyword in a typed prompt) plans a workflow for every substantive task and switches off the large-run warning, the Agent-tool concurrency limit and the first-launch approval in auto mode. It is not approval under this skill. Writing `ultracode` in backticks mentions it without starting a workflow.
+  - Models: workflow agents run on the session's model unless a stage names one.
+  - Resume: same session only; a failed agent reruns together with every agent started after it; a usage-limit pause needs an open interactive session, a reset within 24 hours and fewer than three waits. The checkpoint's unit ledger is what a new session resumes from.
+  - Size guideline (`workflowSizeGuideline`): small fewer than 5, medium fewer than 10, large fewer than 50 agents; advice, not a cap.
 - **Any host without per-agent selection**: say in the envelope that agents inherit the session's model and effort, and prefer inline work when that default is the Capable tier.
 
 ## Worked cost check

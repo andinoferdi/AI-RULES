@@ -9,6 +9,9 @@
    state instead. Do not require Git or a repository where none is involved.
 3. Compare current evidence and previous verification with CURRENT STATE. Treat
    conflicting current evidence as drift; amend only affected plan facts/phases.
+   With a unit ledger, compare each unit's recorded input identity with the current
+   one (for example `git diff <recorded>..HEAD -- <unit files>`) and reopen only the
+   units that changed; keep the others as recorded.
 4. Read applicable project constraints that are not already loaded.
 5. Resume NEXT ACTION. Do not repeat initialization, investigation, or verification
    already supported by current evidence. Reopen DONE phases only with conflicting
