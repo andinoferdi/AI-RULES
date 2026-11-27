@@ -55,10 +55,13 @@ through [delegation](../skills/delegation/SKILL.md)'s envelope, and the
    finding already seen, not only the confirmed ones. Stop at the first round that adds nothing
    new, or after three rounds, and say which. Done when a round has added nothing new or three
    rounds have run, and the report says which.
-6. **Report.** The findings with their outcome and evidence, then one coverage line:
+6. **Report.** List every unit once with its verdict: the findings first, with their outcome and
+   evidence, then the units that passed, grouped by file or module (a checkpointed run may point
+   to its ledger instead). End with one coverage line:
    `Coverage: <done> of <total> units; not covered: <what and why>; UNVERIFIED: <items>; stopped because <reason>.`
    Every cap (top-N, sampling, skipped folders, time) appears in that line: no silent caps. Done
-   when a reader can tell from the report alone what was examined and what was not.
+   when every unit appears exactly once in the report or its ledger, the coverage total equals
+   that count, and a reader can tell from the report alone what was examined and what was not.
 
 ## Unit ledger
 

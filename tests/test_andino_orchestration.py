@@ -76,6 +76,12 @@ class OrchestrationContract(unittest.TestCase):
                        'same session'):
             self.assertIn(phrase, flat(reference))
 
+    def test_report_reconciles_every_unit_with_the_count(self):
+        report = flat(read(REFERENCE))
+        self.assertIn('List every unit once with its verdict', report)
+        self.assertIn('every unit appears exactly once in the report or its ledger', report)
+        self.assertIn('the coverage total equals that count', report)
+
     def test_reference_excludes_ultracode_defaults(self):
         excluded = flat(section(read(REFERENCE), '## What this loop does not take from ultracode'))
         for phrase in ('every substantive task', '"Token cost is not a constraint"',
