@@ -142,7 +142,8 @@ Every build or change goes through six gates in order; the record quotes each **
 - **Notifications need authority.** Send a real page or message to a channel only with explicit
   authorization; otherwise evaluate the rule on controlled input and mark delivery unavailable.
 - **Say what was not proven.** Local output proves event shape, not export, cross-service
-  delivery or routing.
+  delivery or routing. Report the order you actually worked in: if the questions came after
+  the first edit, the record says so.
 
 ## Shortcuts that break observability
 
@@ -190,7 +191,7 @@ their terms (what changed, what they must decide), then add the record under its
 copy it into the commit or PR message when you commit.
 
 ```text
-On-call questions: <1-4, each -> signal, query, decision; written before the first edit>
+On-call questions: <1-4, each -> signal, query, decision>; sent: <before the first edit | after editing>, as the transcript shows
 Signals: <events / series (type, unit, labels) / spans added or changed>
 Attribution: <where entry point and request ID are set; carriers that propagate them>
 Attempt vs outcome: <per-attempt signals; terminal signal counted once per ...>

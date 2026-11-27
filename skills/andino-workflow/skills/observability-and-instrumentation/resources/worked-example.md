@@ -86,7 +86,7 @@ based on those results.
 On-call questions: 1. customers unpaid after retries -> payment.outcomes failed/all over 30m ->
   incident or not; 2. which run, attempt, entry point -> events by requestId -> scheduler, replay
   or provider; 3. queue or provider time -> oldest_age vs provider p99, one trace -> escalation
-  owner. Written before the first edit.
+  owner; sent: before the first edit, as the transcript shows.
 Signals: events payment_attempt_failed (warn), payment_failed (error), payment_paid (info);
   series payment.provider.attempts, payment.outcomes, payment.provider.duration (s),
   payment.queue.oldest_age (s); spans payment.enqueue, payment.process, payment.provider.call.
