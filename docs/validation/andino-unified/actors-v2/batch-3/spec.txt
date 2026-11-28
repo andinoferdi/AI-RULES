@@ -1,1 +1,0 @@
-Admins may open every record; members may open only records from their own organization.

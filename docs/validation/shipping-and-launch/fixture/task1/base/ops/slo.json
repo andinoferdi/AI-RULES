@@ -1,6 +1,0 @@
-{
-  "service": "tasks-api",
-  "objective": "99.9% of API requests succeed, rolling 30 days",
-  "window_end": "2026-12-06",
-  "error_budget_remaining_pct": 100
-}

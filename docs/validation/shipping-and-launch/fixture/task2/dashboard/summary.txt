@@ -1,4 +1,0 @@
-tasks-api overview, last 30 minutes (all traffic)
-5xx rate ........ 0.26%   GREEN (alert at 1.00%)
-p95 latency ..... 382 ms  GREEN (alert at 800 ms)
-Apdex ........... 0.94    GREEN

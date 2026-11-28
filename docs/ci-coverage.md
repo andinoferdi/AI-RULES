@@ -77,7 +77,7 @@ rejects unsafe paths and non-regular Git entries.
 | `council` | Package structure/links, evaluation schemas and installer regressions | Independent advice, meaningful review and decision quality |
 | `natural-writing` | Package structure/links, evaluation schemas and deterministic package regressions | Naturalness, audience fit and preservation of meaning in generated prose |
 | `threejs-skills` | One package and its internal methods; inventory, resources, binary signatures and scenario schemas | Live routing, rendering, visual quality and host execution |
-| `WebBased` | The A. PRIORITAS block in its README, compared with Focus | The seven daily modules (checked once in `docs/validation/webbased-refresh/`, not in CI) |
+| `WebBased` | The A. PRIORITAS block in its README, compared with Focus | The seven daily modules |
 | Installer/CLI on `main` | `tests/installer` fixtures on three OS/Python combinations; real-skill installs in `tests/` | Native Codex/Claude/OpenCode/Antigravity discovery and actual invocation |
 | Frozen distribution | `build_release.py --stage-only` validates every first-party bundle exported from `skills/`; every executable build validates its actual staged inputs again | Semantic quality of the skill prose |
 | Executable releases | Three OS builds, help smoke, bundled installation without Git, every resource compared with its frozen source, verified lock targets and checksums | Native host behavior, every architecture and every supported Python version |
