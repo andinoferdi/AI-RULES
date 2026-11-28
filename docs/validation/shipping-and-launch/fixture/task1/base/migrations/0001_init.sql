@@ -1,7 +1,0 @@
-CREATE TABLE users (id INTEGER PRIMARY KEY, email TEXT NOT NULL);
-CREATE TABLE tasks (
-    id INTEGER PRIMARY KEY,
-    title TEXT NOT NULL,
-    owner_id INTEGER NOT NULL REFERENCES users(id),
-    owner_email TEXT NOT NULL
-);

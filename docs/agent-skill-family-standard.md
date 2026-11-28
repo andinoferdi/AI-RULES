@@ -4,12 +4,12 @@ This maintainer contract is not a runtime skill or router.
 
 ## Ownership and distribution
 
-`main` owns family documentation, validators, tests, evals, audit evidence and CI.
-Runtime skills ship on separate branches; WebBased holds A. PRIORITAS and the
-daily chatbot modules. Never copy runtime packages into main or quality artifacts into
-runtime branches. Each runtime has README.md, SKILL.md and useful supporting files.
+`main` owns the skills in `skills/<id>/`, family documentation, validators, tests,
+evals and CI. WebBased holds A. PRIORITAS and the daily chatbot modules. Keep quality
+artifacts and records out of skill packages and out of WebBased. Each runtime has
+README.md, SKILL.md and useful supporting files.
 
-Multi-package families can share a runtime branch using each capability's validated
+Multi-package families can share one skill folder using each capability's validated
 `source.subpath`. Each selected subtree must be independently installable with its
 own root SKILL.md and stable identity. A single-package family can instead bundle
 internal methods as resources. Three.js is one branch-root package with one
@@ -99,10 +99,10 @@ and host controls, retaining stricter research ethics/access gates.
 Focus bundles A. PRIORITAS, which must equal the A block in WebBased's README at
 the pinned commit, and its own Indonesian/English style references, which live
 only in Focus. Main's validator accepts
-`--webbased-ref` for a local Git source-drift check and `--focus-dir` for an
-uncommitted package; neither is a runtime dependency or an automatic overwrite.
-CI fetches WebBased and checks the current Focus branch, so publish the matching
-runtime change before enabling the corresponding main CI change. Loading all three
+`--webbased-ref` to compare A with any WebBased commit and `--skills-dir` to check
+another skills folder; neither is a runtime dependency or an automatic overwrite.
+CI fetches WebBased and checks the pinned commit, so merge a change to A in WebBased
+first and move the pin in the `main` PR that changes Focus. Loading all three
 references is a skill instruction, not an enforced hook; package and installer
 checks cannot establish model compliance. Preserve instruction hierarchy, style-only
 examples, user overrides and the existing Focus/Andino ownership boundary.

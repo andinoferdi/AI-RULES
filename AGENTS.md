@@ -31,6 +31,18 @@ kind of document lives is in [docs/agents/domain.md](docs/agents/domain.md).
 Changes to the installer, validators or tests use the same branch-and-PR flow.
 `main` accepts changes only through a PR with green CI.
 
+## What goes in the repository
+
+Commit only files that the skills, the installer, the checks or the people using
+them need. Design notes, plans, trial and review records stay out of both `main`
+and `WebBased`: keep them in the conversation or in `docs/exec-plans/`
+(ignored), and delete them once the work is merged. `.gitignore` keeps
+`docs/specs/` and `docs/validation/` closed for that reason; the files still
+tracked there are `docs/specs/changing-skills.md` and data the checks read
+(add a new data file with `git add -f` only when a check reads it). A lasting
+owner decision gets one dated entry in `docs/DECISIONS.md`, without links to
+notes that are not in the repository.
+
 ## Adding or removing a skill
 
 Follow [docs/specs/changing-skills.md](docs/specs/changing-skills.md) in one PR.

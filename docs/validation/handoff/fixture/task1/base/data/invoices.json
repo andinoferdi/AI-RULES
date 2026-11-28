@@ -1,7 +1,0 @@
-[
-  {"number": "INV-2611-001", "customer": "PT Sinar Jaya", "issued": "2026-11-03", "kind": "invoice", "amount_idr": 1250000},
-  {"number": "INV-2611-002", "customer": "CV Maju; Bersama", "issued": "2026-11-05", "kind": "invoice", "amount_idr": 4800000},
-  {"number": "INV-2611-003", "customer": "Toko Abadi", "issued": "2026-11-10", "kind": "invoice", "amount_idr": 725000},
-  {"number": "CN-2611-001", "customer": "PT Sinar Jaya", "issued": "2026-11-12", "kind": "credit_note", "amount_idr": 250000},
-  {"number": "INV-2611-004", "customer": "Koperasi Tani Makmur", "issued": "2026-11-20", "kind": "invoice", "amount_idr": 3100000}
-]

@@ -2,8 +2,9 @@
 
 Before changing a skill, the installer or a check, read the root `CONTEXT.md`
 glossary and the decisions in `docs/adr/`. Use its terms (skill folder, local
-source, GitHub source, native member) in specs, PR titles, commit messages and
-test names.
+source, GitHub source, native member) in PR titles, commit messages and test
+names. Notes, plans and records stay out of the repository; see "What goes in the
+repository" in [AGENTS.md](../../AGENTS.md).
 
 | Need | Document |
 | --- | --- |

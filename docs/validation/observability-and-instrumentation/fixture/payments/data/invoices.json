@@ -1,8 +1,0 @@
-{
- "inv-101": {"id": "inv-101", "customer_email": "andi.r@example.com", "amount": 149000, "card_token": "tok_test_101", "status": "due"},
- "inv-102": {"id": "inv-102", "customer_email": "bunga.s@example.com", "amount": 89000, "card_token": "tok_test_102", "status": "due"},
- "inv-103": {"id": "inv-103", "customer_email": "citra.w@example.com", "amount": 249000, "card_token": "tok_test_103", "status": "due"},
- "inv-104": {"id": "inv-104", "customer_email": "dodi.h@example.com", "amount": 49000, "card_token": "tok_test_104", "status": "due"},
- "inv-105": {"id": "inv-105", "customer_email": "eka.p@example.com", "amount": 149000, "card_token": "tok_test_105", "status": "paid"},
- "inv-106": {"id": "inv-106", "customer_email": "fajar.n@example.com", "amount": 99000, "card_token": "tok_test_106", "status": "due"}
-}

@@ -1,6 +1,0 @@
-{
-  "cors_origins": ["*"],
-  "flags": {
-    "task_sharing": true
-  }
-}

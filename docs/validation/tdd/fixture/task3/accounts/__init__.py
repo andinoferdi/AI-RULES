@@ -1,1 +1,0 @@
-"""Kopi Kita loyalty accounts."""
